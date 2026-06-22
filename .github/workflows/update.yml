@@ -1,0 +1,54 @@
+name: Update Morphe Patch Data
+
+on:
+  schedule:
+    - cron: '1 0,6,12,18 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: morphe-patch-tracker
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Pipeline
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: |
+          python scripts/run_pipeline.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          # Check if there are changes staged for commit
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(data): auto-update Morphe patch tracking state [skip ci]"
+            git push origin main
+          else
+            echo "No changes detected. Skipping commit."
+          fi

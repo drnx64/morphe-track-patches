@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morphe Patch Tracker — Dashboard</title>
+    <meta name="description" content="Automated patch tracker and change detector for Morphe application patches. Monitor new apps and updates.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="glow-container">
+        <div class="glow-orb main-orb"></div>
+        <div class="glow-orb sub-orb"></div>
+    </div>
+    
+    <header class="app-header">
+        <div class="header-content">
+            <h1 id="main-title">Morphe Patch Tracker</h1>
+            <p class="subtitle">Automated compatibility & update monitoring for Morphe patches</p>
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link active" id="nav-dashboard">Dashboard</a>
+                <a href="changelog.html" class="nav-link" id="nav-changelog">Changelog History</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Today's Updates Section (Integrated Changelog at Top) -->
+        <section class="today-updates-section" aria-labelledby="updates-title-heading">
+            <div class="updates-card">
+                <div class="updates-header">
+                    <h2 class="updates-title" id="updates-title-heading">Changelog</h2>
+                    <span class="updates-date" id="updates-date-label">Updated: June 20, 2026</span>
+                </div>
+                <div class="updates-body" id="today-updates-container">
+                    <div class="loading-state">Loading latest updates...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Summary Section -->
+        <section class="stats-section" aria-labelledby="stats-heading">
+            <h2 class="sr-only" id="stats-heading">Quick Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Total Bundles</span>
+                    <span class="stat-value" id="stat-total-bundles">-</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Total Apps</span>
+                    <span class="stat-value" id="stat-total-apps">-</span>
+                </div>
+                <div class="stat-card highlight">
+                    <span class="stat-label">New Apps Today</span>
+                    <span class="stat-value" id="stat-new-apps-today">-</span>
+                </div>
+                <div class="stat-card highlight">
+                    <span class="stat-label">New Bundles Today</span>
+                    <span class="stat-value" id="stat-new-bundles-today">-</span>
+                </div>
+            </div>
+            <div class="last-updated-row">
+                <span>Last checked: <strong id="val-last-checked">-</strong></span>
+            </div>
+        </section>
+
+        <!-- Controls Section -->
+        <section class="controls-section" aria-labelledby="controls-heading">
+            <h2 class="sr-only" id="controls-heading">Search Morphe Patches</h2>
+            <div class="filters-row">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search by app name, package name, or bundle..." aria-label="Search patches">
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Channel:</span>
+                    <button class="filter-btn active" id="btn-filter-all" data-channel="all">All</button>
+                    <button class="filter-btn" id="btn-filter-stable" data-channel="stable">Stable</button>
+                    <button class="filter-btn" id="btn-filter-dev" data-channel="dev">Dev</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bundles Grid Section -->
+        <section class="bundles-section" aria-labelledby="bundles-heading">
+            <h2 class="section-title" id="bundles-heading">Patch Bundles</h2>
+            <div class="bundles-grid" id="bundles-grid-container">
+                <div class="loading-state">Loading dashboard data...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 Morphe Patch Tracker. Automated update pipeline.</p>
+    </footer>
+
+    <!-- App detail modal -->
+    <div class="modal-overlay" id="app-detail-modal" role="dialog" aria-modal="true" aria-labelledby="modal-app-name">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div class="modal-header-top">
+                    <div class="modal-app-identity">
+                        <span class="modal-app-name" id="modal-app-name"></span>
+                        <div class="modal-meta-row">
+                            <a class="app-pkg-link" id="modal-pkg-link" target="_blank" rel="noopener noreferrer"></a>
+                            <span class="modal-bundle-info" id="modal-bundle-info"></span>
+                        </div>
+                        <div class="modal-channel-row" id="modal-channel-row"></div>
+                    </div>
+                    <div class="modal-header-actions">
+                        <a class="modal-play-btn" id="modal-play-btn" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M3 18.5v-13A1.5 1.5 0 0 1 5.16 4.2l11 6.5a1.5 1.5 0 0 1 0 2.6l-11 6.5A1.5 1.5 0 0 1 3 18.5z"/></svg>
+                            Play Store
+                        </a>
+                        <button class="modal-close" id="modal-close-btn" aria-label="Close">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-versions-section">
+                    <span class="versions-label">Compatible Versions</span>
+                    <div class="versions-row" id="modal-versions-row"></div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-patches-header">
+                    <span class="modal-patches-title">Patches</span>
+                    <span class="modal-patches-count" id="modal-patches-count"></span>
+                </div>
+                <div class="modal-patches-list" id="modal-patches-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>
