@@ -20013,7 +20013,7 @@
     "bundle": "brosssh",
     "channel": "dev",
     "repo_url": "https://github.com/brosssh/morphe-patches",
-    "created_at": "2026-06-21T15:49:23",
+    "created_at": "2026-06-22T10:51:15",
     "apps": [
       {
         "app_name": "Instagram",
@@ -20191,6 +20191,10 @@
               {
                 "key": "hideSuggestedStories",
                 "description": "Hides suggested stories/users from story tray."
+              },
+              {
+                "key": "hideHighlightStories",
+                "description": "Hides highlighted stories from story tray, sponsored stories which have no set expiration."
               }
             ],
             "compatible_versions": [
@@ -24418,15 +24422,33 @@
     "bundle": "browzomje",
     "channel": "stable",
     "repo_url": "https://github.com/browzomje/browzomje-patches",
-    "created_at": "2026-06-20T21:44:48",
+    "created_at": "2026-06-22T17:47:21",
     "apps": [
       {
         "app_name": "Pinterest",
         "package": "com.pinterest",
         "patches": [
           {
-            "name": "Pinterest sponsored ad removed",
-            "description": "Inhibiting sponsored pin detection (AdCheckUtils).",
+            "name": "Disable ads",
+            "description": "Removes sponsored pins.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0"
+            ]
+          },
+          {
+            "name": "Neutralize advertising ID",
+            "description": "Returns an empty Google Advertising ID and forces ‘limit ad tracking’, disabling ad tracking without causing the app to crash.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0"
+            ]
+          },
+          {
+            "name": "Set pin as wallpaper",
+            "description": "It adds the ‘Set as wallpaper’ option to the pin menu, which downloads uses the image and sets it as the device’s wallpaper.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -25380,6 +25402,76 @@
       }
     ],
     "fingerprint": "c43984910b6715ad64255225691f21452007f9c07985363899151e864c5d9e73"
+  },
+  "samsung-morphe:dev": {
+    "bundle": "samsung-morphe",
+    "channel": "dev",
+    "repo_url": "https://github.com/bigyank/morphe-patches-samsung",
+    "created_at": "2026-06-22T18:10:19",
+    "apps": [
+      {
+        "app_name": "Samsung Health",
+        "package": "com.sec.android.app.shealth",
+        "patches": [
+          {
+            "name": "Bypass Samsung Account provider checks",
+            "description": "Replaces Samsung Account provider checks and routes account lookups through Android AccountManager.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.32.0.001",
+              "6.31.3.013"
+            ]
+          },
+          {
+            "name": "Disable Knox integrity checks",
+            "description": "Bypasses Knox, root, warranty bit, and SAK checks so Samsung Health runs on Knox-tripped devices.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.32.0.001",
+              "6.31.3.013"
+            ]
+          }
+        ]
+      }
+    ],
+    "fingerprint": "c114d5059a787166fc6aa58a4236fb4bc0d6e4a812fe0179e90d311fb3422531"
+  },
+  "samsung-morphe:stable": {
+    "bundle": "samsung-morphe",
+    "channel": "stable",
+    "repo_url": "https://github.com/bigyank/morphe-patches-samsung",
+    "created_at": "2026-06-22T18:10:19",
+    "apps": [
+      {
+        "app_name": "Samsung Health",
+        "package": "com.sec.android.app.shealth",
+        "patches": [
+          {
+            "name": "Bypass Samsung Account provider checks",
+            "description": "Replaces Samsung Account provider checks and routes account lookups through Android AccountManager.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.32.0.001",
+              "6.31.3.013"
+            ]
+          },
+          {
+            "name": "Disable Knox integrity checks",
+            "description": "Bypasses Knox, root, warranty bit, and SAK checks so Samsung Health runs on Knox-tripped devices.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.32.0.001",
+              "6.31.3.013"
+            ]
+          }
+        ]
+      }
+    ],
+    "fingerprint": "968a6f8b3f844504e6c608b526d50b9089c822296c18cfbffa2d5f45ca593bb4"
   },
   "realcyberwash:stable": {
     "bundle": "realcyberwash",
@@ -31229,7 +31321,7 @@
     "bundle": "xob0t",
     "channel": "dev",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-06-22T06:22:26",
+    "created_at": "2026-06-22T17:57:48",
     "apps": [
       {
         "app_name": "Avito",
@@ -31396,7 +31488,7 @@
     "bundle": "xob0t",
     "channel": "stable",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-06-22T06:25:39",
+    "created_at": "2026-06-22T18:05:14",
     "apps": [
       {
         "app_name": "Avito",
@@ -31895,7 +31987,7 @@
     "bundle": "bholeykabhakt",
     "channel": "stable",
     "repo_url": "https://github.com/BholeyKaBhakt/android-patches-xtra",
-    "created_at": "2026-06-17T09:50:43",
+    "created_at": "2026-06-22T17:44:41",
     "apps": [
       {
         "app_name": "ATM Fee Saver",
@@ -32114,6 +32206,21 @@
         ]
       },
       {
+        "app_name": "BlockerX",
+        "package": "io.funswitch.blocker",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.0.67"
+            ]
+          }
+        ]
+      },
+      {
         "app_name": "Speedtest",
         "package": "org.zwanoo.android.speedtest",
         "patches": [
@@ -32164,7 +32271,7 @@
         ]
       }
     ],
-    "fingerprint": "1ca2c268f6ef55d3a4ecc7a2ece5a0fbfcafcc5aa31d13f8d08dd65529b0ee2f"
+    "fingerprint": "b70840ca3b3a4360a0403069e47b7e7b8dadac4e2535ff80f21321a80efee47d"
   },
   "ameen-morphe:dev": {
     "bundle": "ameen-morphe",
@@ -35298,7 +35405,7 @@
     "bundle": "ajstrick81-androidtv",
     "channel": "stable",
     "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-    "created_at": "2026-06-22T02:33:22",
+    "created_at": "2026-06-22T18:24:11",
     "apps": [
       {
         "app_name": "Livingroom",
