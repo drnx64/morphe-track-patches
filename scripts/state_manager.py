@@ -108,8 +108,8 @@ def load_previous_snapshot():
 def load_daily_buffer():
     return load_json(DAILY_BUFFER_PATH, default={
         "date": "",
-        "bundles": {},
-        "apps": []
+        "lastChecked": "",
+        "affected_bundles": {}
     })
 
 def save_daily_buffer(buffer_data):
