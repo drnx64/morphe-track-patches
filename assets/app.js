@@ -81,6 +81,7 @@ function isAppPreRelease(bundleName, pkgName, bundlesData) {
 }
 
 let allBundlesData = {};
+let iconCache = {};
 let currentFilters = {
     search: "",
     channel: "all"
@@ -89,12 +90,17 @@ let currentFilters = {
 function initDashboard() {
     console.log("Initializing Dashboard...");
 
-    fetch("data/live.json")
-        .then(res => {
+    Promise.all([
+        fetch("data/live.json").then(res => {
             if (!res.ok) throw new Error("Status " + res.status);
             return res.json();
-        })
-        .then(data => {
+        }),
+        fetch("data/state/icon_cache.json")
+            .then(res => res.ok ? res.json() : {})
+            .catch(() => ({}))
+    ])
+        .then(([data, cache]) => {
+            iconCache = cache;
             renderStats(data);
 
             // Enrich bundles data with key
@@ -240,7 +246,7 @@ function renderTodayUpdates(data) {
                 const badgeHtml = appBadgeMap[app.badge_type] || appBadgeMap["NEW APP"];
                 const isPre = isAppPreRelease(bName, app.package, data.bundles);
                 const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
-                const appIconHtml3 = getAppIconHtml(app.icon_url);
+                const appIconHtml3 = getAppIconHtml(getAppIconUrl(app));
                 const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${app.app_name}</a>`;
 
                 const appRow = document.createElement("div");
@@ -421,6 +427,14 @@ function groupAffectedBundles(affectedBundles) {
     return grouped;
 }
 
+// Resolve icon URL from the app object, falling back to the icon cache
+function getAppIconUrl(app) {
+    if (!app) return "";
+    const url = app.icon_url || iconCache[app.package] || "";
+    if (typeof url === "string") return url;
+    return "";
+}
+
 // Generate an app icon <img> tag from a pre-fetched icon URL
 function getAppIconHtml(iconUrl, sizeClass) {
     if (!iconUrl) return "";
@@ -524,7 +538,7 @@ function buildAppCardsDrawer(card, bundle, apps) {
             ? '<span class="badge badge-pre-release">Pre-Release</span>'
             : '';
 
-        const appIconHtml2 = getAppIconHtml(app.icon_url);
+        const appIconHtml2 = getAppIconHtml(getAppIconUrl(app));
 
         appCard.innerHTML = [
             '<div class="app-mini-card-main">',
@@ -570,7 +584,7 @@ function openAppModal(app, bundle) {
     if (!modal) return;
 
     // Populate header
-    const modalIconHtml = getAppIconHtml(app.icon_url, "app-icon app-icon-modal");
+    const modalIconHtml = getAppIconHtml(getAppIconUrl(app), "app-icon app-icon-modal");
     document.getElementById("modal-app-name").innerHTML = modalIconHtml + escHtml(app.app_name);
 
     const pkgLink = document.getElementById("modal-pkg-link");
@@ -768,9 +782,13 @@ function initChangelog() {
         fetch("data/live.json").then(res => {
             if (!res.ok) throw new Error("Live status " + res.status);
             return res.json();
-        })
+        }),
+        fetch("data/state/icon_cache.json")
+            .then(res => res.ok ? res.json() : {})
+            .catch(() => ({}))
     ])
-    .then(([changelog, liveData]) => {
+    .then(([changelog, liveData, cache]) => {
+        iconCache = cache;
         renderChangelog(changelog, liveData.bundles);
     })
     .catch(err => {
@@ -856,7 +874,7 @@ function renderChangelog(changelog, bundlesData) {
                     const badgeHtml = appBadgeMap[app.badge_type] || appBadgeMap["NEW APP"];
                     const isPre = isAppPreRelease(bName, app.package, bundlesData);
                     const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
-                    const appIconHtml4 = getAppIconHtml(app.icon_url);
+                    const appIconHtml4 = getAppIconHtml(getAppIconUrl(app));
                     const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${app.app_name}</a>`;
 
                     appsListHtml += `
