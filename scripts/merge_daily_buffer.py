@@ -104,6 +104,11 @@ def finalize_buffer(buffer_data):
     date_str = buffer_data["date"]
     affected_bundles_dict = buffer_data.get("affected_bundles", {})
 
+    # Skip finalization if the buffer has no changes (idempotency)
+    if not affected_bundles_dict:
+        print(f"[*] Skipping finalization for {date_str}: buffer is empty.")
+        return
+
     print(f"[*] Finalizing daily buffer for date: {date_str}...")
 
     # 1. Update changelog.json
