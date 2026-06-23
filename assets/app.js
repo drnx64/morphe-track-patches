@@ -260,10 +260,17 @@ function renderTodayUpdates(data) {
                 "REMOVED APP": '<span class="badge badge-removed">REMOVED APP</span>'
             };
 
+            // Sort: NEW APP first, then UPDATED APP, then REMOVED APP
+            var sortOrder = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
+            bGroup.apps.sort(function(a, b) {
+                return (sortOrder[a.badge_type] ?? 1) - (sortOrder[b.badge_type] ?? 1);
+            });
+
             bGroup.apps.forEach(app => {
                 const badgeHtml = appBadgeMap[app.badge_type] || appBadgeMap["NEW APP"];
                 const isPre = isAppPreRelease(bName, app.package, data.bundles);
                 const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
+                const appIconHtml3 = getAppIconHtml(app.package);
                 const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${app.app_name}</a>`;
 
                 const appRow = document.createElement("div");
@@ -271,6 +278,7 @@ function renderTodayUpdates(data) {
                     appRow.innerHTML = `
                         ${badgeHtml}
                         ${preReleaseBadge}
+                        ${appIconHtml3}
                         <span><strong class="highlight-app">${playLink}</strong> in ${bName} patches</span>
                     `;
                 appsContainer.appendChild(appRow);
@@ -409,6 +417,14 @@ function escHtml(str) {
         .replace(/'/g, "&#39;");
 }
 
+// Generate an app icon <img> tag using Unavatar Google Play endpoint
+function getAppIconHtml(packageName, sizeClass) {
+    if (!packageName) return "";
+    sizeClass = sizeClass || "app-icon";
+    var encoded = encodeURIComponent(packageName);
+    return '<img class="' + sizeClass + '" src="https://unavatar.io/google-play/' + encoded + '?fallback=false" alt="" loading="lazy" onerror="this.remove()">';
+}
+
 const githubSvg = '<svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>';
 
 const gitlabSvg = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.957 12.355l-2.316-7.13a.9.9 0 0 0-.309-.434.908.908 0 0 0-.534-.143.91.91 0 0 0-.528.163.906.906 0 0 0-.294.417L17.7 12.355H6.3L4.024 5.228a.9.9 0 0 0-.295-.417.913.913 0 0 0-.53-.163.906.906 0 0 0-.533.143.904.904 0 0 0-.308.434l-2.316 7.13a.593.593 0 0 0 .218.675l10.963 7.97a1.32 1.32 0 0 0 1.554 0l10.963-7.97a.593.593 0 0 0 .218-.675z"/></svg>';
@@ -505,8 +521,11 @@ function buildAppCardsDrawer(card, bundle, apps) {
             ? '<span class="badge badge-pre-release">Pre-Release</span>'
             : '';
 
+        var appIconHtml2 = getAppIconHtml(app.package);
+
         appCard.innerHTML = [
             '<div class="app-mini-card-main">',
+            appIconHtml2,
             '  <div class="app-mini-card-info">',
             '    <span class="app-mini-name">' + escHtml(app.app_name) + '</span>',
             '    ' + preBadge,
@@ -548,7 +567,8 @@ function openAppModal(app, bundle) {
     if (!modal) return;
 
     // Populate header
-    document.getElementById("modal-app-name").textContent = app.app_name;
+    var modalIconHtml = getAppIconHtml(app.package, "app-icon app-icon-modal");
+    document.getElementById("modal-app-name").innerHTML = modalIconHtml + escHtml(app.app_name);
 
     const pkgLink = document.getElementById("modal-pkg-link");
     pkgLink.textContent = app.package;
@@ -853,10 +873,17 @@ function renderChangelog(changelog, bundlesData) {
                     "REMOVED APP": '<span class="badge badge-removed">REMOVED APP</span>'
                 };
 
+                // Sort: NEW APP first, then UPDATED APP, then REMOVED APP
+                var sortOrder = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
+                bGroup.apps.sort(function(a, b) {
+                    return (sortOrder[a.badge_type] ?? 1) - (sortOrder[b.badge_type] ?? 1);
+                });
+
                 bGroup.apps.forEach(app => {
                     const badgeHtml = appBadgeMap[app.badge_type] || appBadgeMap["NEW APP"];
                     const isPre = isAppPreRelease(bName, app.package, bundlesData);
                     const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
+                    const appIconHtml4 = getAppIconHtml(app.package);
                     const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${app.app_name}</a>`;
 
                     appsListHtml += `
@@ -864,6 +891,7 @@ function renderChangelog(changelog, bundlesData) {
                             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 ${badgeHtml}
                                 ${preReleaseBadge}
+                                ${appIconHtml4}
                                 <span><strong class="highlight-app">${playLink}</strong> in ${bName} patches</span>
                             </div>
                         </li>
