@@ -1,5 +1,6 @@
 import os
 import sys
+from datetime import datetime, timezone
 from state_manager import (
     load_current_snapshot,
     load_json,
@@ -10,110 +11,137 @@ from state_manager import (
     RAW_DIR
 )
 
+def apps_are_different(old_app, new_app):
+    """
+    Checks if there are actual differences in the patches, options, or compatible versions
+    of the app between the old and new snapshot.
+    """
+    def normalize_app_data(app):
+        normalized_patches = []
+        for patch in app.get("patches", []):
+            opts = patch.get("options") or []
+            normalized_opts = sorted(
+                [{"key": str(opt.get("key", "")), "description": str(opt.get("description", ""))} for opt in opts],
+                key=lambda x: x["key"]
+            )
+            comp_vers = sorted(str(v) for v in patch.get("compatible_versions", []))
+            normalized_patches.append({
+                "name": str(patch.get("name", "")),
+                "description": str(patch.get("description", "")),
+                "use": bool(patch.get("use", True)),
+                "options": normalized_opts,
+                "compatible_versions": comp_vers
+            })
+        normalized_patches.sort(key=lambda x: x["name"])
+        return {
+            "app_name": str(app.get("app_name", "")),
+            "patches": normalized_patches
+        }
+
+    return normalize_app_data(old_app) != normalize_app_data(new_app)
+
 def diff_snapshots():
     new_snapshot_path = os.path.join(RAW_DIR, "parsed_bundles.json")
     new_snapshot = load_json(new_snapshot_path, default={})
-    old_snapshot = load_current_snapshot() # This is data/state/current_snapshot.json
-    
-    new_bundles = []
-    new_apps = []
-    updated_apps = []
-    removed_apps = []
-    
+    old_snapshot = load_current_snapshot()
+
+    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    affected_bundles = []
+
     # Process each bundle:channel in the new snapshot
     for bundle_key, new_rec in new_snapshot.items():
         bundle_name = new_rec["bundle"]
         channel = new_rec["channel"]
         new_apps_list = new_rec.get("apps", [])
-        
+
         if bundle_key not in old_snapshot:
-            # Entirely new bundle+channel
+            # Scenario B: New Bundle — include all its apps
             print(f"[+] Diff: Found new bundle {bundle_key}")
-            new_bundles.append({
-                "bundle": bundle_name,
-                "channel": channel
-            })
-            
-            # All apps in this bundle are considered new
+            apps = []
             for app in new_apps_list:
-                new_apps.append({
-                    "bundle": bundle_key,
+                apps.append({
                     "app_name": app["app_name"],
-                    "package": app["package"]
+                    "package": app["package"],
+                    "badge_type": "NEW APP"
                 })
+            affected_bundles.append({
+                "bundle": bundle_name,
+                "channel": channel,
+                "badge_type": "NEW BUNDLE",
+                "apps": apps
+            })
         else:
-            # Existing bundle+channel, check fingerprint
+            # Scenario C: Existing bundle — check fingerprint
             old_rec = old_snapshot[bundle_key]
             new_fp = new_rec.get("fingerprint")
             old_fp = old_rec.get("fingerprint")
-            
+
             if new_fp != old_fp:
-                old_fp_display = old_fp[:8] if old_fp else "None"
-                new_fp_display = new_fp[:8] if new_fp else "None"
-                print(f"[+] Diff: Bundle {bundle_key} fingerprint changed ({old_fp_display} -> {new_fp_display})")
-                
-                # Check for new, updated, and removed apps
                 old_app_map = {app["package"].lower().strip(): app for app in old_rec.get("apps", [])}
                 new_app_map = {app["package"].lower().strip(): app for app in new_apps_list}
-                
+
+                changed_apps = []
+
                 for pkg, app in new_app_map.items():
                     if pkg not in old_app_map:
                         print(f"[+] Diff: Found new app {app['app_name']} ({pkg}) in {bundle_key}")
-                        new_apps.append({
-                            "bundle": bundle_key,
+                        changed_apps.append({
                             "app_name": app["app_name"],
-                            "package": app["package"]
+                            "package": app["package"],
+                            "badge_type": "NEW APP"
                         })
-                    else:
-                        # Fingerprint changed and app still exists: it was updated
+                    elif apps_are_different(old_app_map[pkg], app):
                         print(f"[~] Diff: Found updated app {app['app_name']} ({pkg}) in {bundle_key}")
-                        updated_apps.append({
-                            "bundle": bundle_key,
+                        changed_apps.append({
                             "app_name": app["app_name"],
-                            "package": app["package"]
+                            "package": app["package"],
+                            "badge_type": "UPDATED APP"
                         })
-                
+
                 for pkg, app in old_app_map.items():
                     if pkg not in new_app_map:
                         print(f"[-] Diff: Found removed app {app['app_name']} ({pkg}) in {bundle_key}")
-                        removed_apps.append({
-                            "bundle": bundle_key,
+                        changed_apps.append({
                             "app_name": app["app_name"],
-                            "package": app["package"]
+                            "package": app["package"],
+                            "badge_type": "REMOVED APP"
                         })
-            else:
-                # Fingerprints match, skip diffing
-                pass
 
-    has_changes = (len(new_bundles) > 0 or len(new_apps) > 0 or len(updated_apps) > 0 or len(removed_apps) > 0)
-    
-    # Update last_run.json
+                # Only emit the bundle if at least one app-level change exists
+                if changed_apps:
+                    old_fp_display = old_fp[:8] if old_fp else "None"
+                    new_fp_display = new_fp[:8] if new_fp else "None"
+                    print(f"[+] Diff: Bundle {bundle_key} fingerprint changed ({old_fp_display} -> {new_fp_display})")
+                    affected_bundles.append({
+                        "bundle": bundle_name,
+                        "channel": channel,
+                        "badge_type": "UPDATED",
+                        "apps": changed_apps
+                    })
+                else:
+                    print(f"[*] Diff: Bundle {bundle_key} fingerprint changed but no app-level changes. Skipping.")
+
+    has_changes = len(affected_bundles) > 0
+
+    # Update last_run.json with metadata
     last_run_data = load_last_run()
     last_run_data["has_changes"] = has_changes
-    last_run_data["new_bundles_count"] = len(new_bundles)
-    last_run_data["new_apps_count"] = len(new_apps)
+    last_run_data["affected_bundles_count"] = len(affected_bundles)
+    last_run_data["lastChecked"] = now_utc
     save_last_run(last_run_data)
-    
-    if not has_changes:
-        print("[*] No changes detected. Short-circuiting execution.")
-        # Save empty diff
-        save_json(os.path.join(RAW_DIR, "diff_result.json"), {
-            "new_bundles": [],
-            "new_apps": [],
-            "updated_apps": [],
-            "removed_apps": []
-        })
-        return False
-        
+
     # Save diff result
     diff_data = {
-        "new_bundles": new_bundles,
-        "new_apps": new_apps,
-        "updated_apps": updated_apps,
-        "removed_apps": removed_apps
+        "affected_bundles": affected_bundles
     }
     save_json(os.path.join(RAW_DIR, "diff_result.json"), diff_data)
-    print(f"Diff complete. Found {len(new_bundles)} new bundles, {len(new_apps)} new apps, {len(updated_apps)} updated apps, and {len(removed_apps)} removed apps.")
+
+    if not has_changes:
+        print("[*] No changes detected. Short-circuiting execution.")
+        return False
+
+    print(f"Diff complete. Found {len(affected_bundles)} affected bundles.")
     return True
 
 if __name__ == "__main__":

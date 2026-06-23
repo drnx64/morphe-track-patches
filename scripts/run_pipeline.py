@@ -1,6 +1,6 @@
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Import modules from scripts directory
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -41,7 +41,7 @@ def run():
     has_changes = diff_snapshots()
     
     # Check if a day rollover is pending
-    today_str = datetime.now().strftime("%Y-%m-%d")
+    today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     buffer_data = load_daily_buffer()
     is_rollover = buffer_data.get("date") and buffer_data["date"] != today_str
     
