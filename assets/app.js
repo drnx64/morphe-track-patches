@@ -152,7 +152,7 @@ function renderStats(data) {
     document.getElementById("stat-total-apps").textContent = data.stats?.total_apps ?? 0;
     document.getElementById("stat-new-apps-today").textContent = data.stats?.new_apps_today ?? 0;
     document.getElementById("stat-new-bundles-today").textContent = data.stats?.new_bundles_today ?? 0;
-    document.getElementById("val-last-checked").textContent = formatTime(data.last_run);
+    document.getElementById("val-last-checked").textContent = formatTime(data.lastChecked || data.last_run);
 }
 
 function renderTodayUpdates(data) {
@@ -204,7 +204,17 @@ function renderTodayUpdates(data) {
         }
     });
 
-    const sortedBundleNames = Object.keys(grouped).sort();
+    const sortedBundleNames = Object.keys(grouped).sort((a, b) => {
+        const aIsNew = grouped[a].badge_type === "NEW BUNDLE";
+        const bIsNew = grouped[b].badge_type === "NEW BUNDLE";
+        if (aIsNew && !bIsNew) return -1;
+        if (!aIsNew && bIsNew) return 1;
+        const aHasNewApps = grouped[a].apps.some(app => app.badge_type === "NEW APP");
+        const bHasNewApps = grouped[b].apps.some(app => app.badge_type === "NEW APP");
+        if (aHasNewApps && !bHasNewApps) return -1;
+        if (!aHasNewApps && bHasNewApps) return 1;
+        return a.localeCompare(b);
+    });
 
     sortedBundleNames.forEach(bName => {
         const bGroup = grouped[bName];
@@ -258,11 +268,11 @@ function renderTodayUpdates(data) {
 
                 const appRow = document.createElement("div");
                 appRow.className = "update-row";
-                appRow.innerHTML = `
-                    ${badgeHtml}
-                    ${preReleaseBadge}
-                    <span><strong class="highlight-app">${playLink}</strong> (<span class="app-pkg-label">${app.package}</span>) in ${bName} patches</span>
-                `;
+                    appRow.innerHTML = `
+                        ${badgeHtml}
+                        ${preReleaseBadge}
+                        <span><strong class="highlight-app">${playLink}</strong> in ${bName} patches</span>
+                    `;
                 appsContainer.appendChild(appRow);
             });
 
@@ -595,6 +605,18 @@ function openAppModal(app, bundle) {
     document.getElementById("modal-patches-count").textContent =
         mergedPatches.length + " patch" + (mergedPatches.length !== 1 ? "es" : "");
 
+    // NEW badge for dev-only (new) patches
+    const newPatchesCount = mergedPatches.filter(p => p.isDevOnly).length;
+    const newBadgeEl = document.getElementById("modal-patches-new-badge");
+    if (newBadgeEl) {
+        if (newPatchesCount > 0) {
+            newBadgeEl.textContent = newPatchesCount + " NEW";
+            newBadgeEl.style.display = "";
+        } else {
+            newBadgeEl.style.display = "none";
+        }
+    }
+
     // Patch list
     const patchesContainer = document.getElementById("modal-patches-list");
     if (mergedPatches.length === 0) {
@@ -786,7 +808,17 @@ function renderChangelog(changelog, bundlesData) {
             }
         });
 
-        const sortedBundleNames = Object.keys(grouped).sort();
+        const sortedBundleNames = Object.keys(grouped).sort((a, b) => {
+            const aIsNew = grouped[a].badge_type === "NEW BUNDLE";
+            const bIsNew = grouped[b].badge_type === "NEW BUNDLE";
+            if (aIsNew && !bIsNew) return -1;
+            if (!aIsNew && bIsNew) return 1;
+            const aHasNewApps = grouped[a].apps.some(app => app.badge_type === "NEW APP");
+            const bHasNewApps = grouped[b].apps.some(app => app.badge_type === "NEW APP");
+            if (aHasNewApps && !bHasNewApps) return -1;
+            if (!aHasNewApps && bHasNewApps) return 1;
+            return a.localeCompare(b);
+        });
         let dayHtml = "";
 
         sortedBundleNames.forEach(bName => {
@@ -799,14 +831,14 @@ function renderChangelog(changelog, bundlesData) {
                 headerHtml = `
                     <div class="changelog-bundle-header">
                         <span class="badge badge-new-bundle">NEW BUNDLE</span>
-                        <span>Bundle <strong>${bName}</strong> (${channelsStr})</span>
+                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a> (${channelsStr})</span>
                     </div>
                 `;
             } else {
                 headerHtml = `
                     <div class="changelog-bundle-header">
                         <span class="badge badge-updated">UPDATED</span>
-                        <span>Bundle <strong>${bName}</strong> patches</span>
+                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a> patches</span>
                     </div>
                 `;
             }
@@ -832,7 +864,7 @@ function renderChangelog(changelog, bundlesData) {
                             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 ${badgeHtml}
                                 ${preReleaseBadge}
-                                <span><strong class="highlight-app">${playLink}</strong> (<span class="app-pkg-label">${app.package}</span>) in ${bName} patches</span>
+                                <span><strong class="highlight-app">${playLink}</strong> in ${bName} patches</span>
                             </div>
                         </li>
                     `;
