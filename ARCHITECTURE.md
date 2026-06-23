@@ -5,11 +5,12 @@
 Morphe Patch Tracker is a fully automated monitoring system that crawls the
 [Jman-Github/ReVanced-Patch-Bundles](https://github.com/Jman-Github/ReVanced-Patch-Bundles)
 registry, discovers Morphe `.mpp` patch bundles, parses their compatible apps and patches,
-detects changes via SHA-256 fingerprinting, accumulates daily changelogs, and renders a
-dark-themed static web dashboard.
+detects changes via SHA-256 fingerprinting, accumulates daily changelogs, enriches app data
+with Google Play Store icons, and renders a dark-themed static web dashboard.
 
 The pipeline runs on GitHub Actions every 6 hours and commits results back to the repo,
-which is served via GitHub Pages.
+which is served via GitHub Pages. A Service Worker provides offline caching and
+stale-while-revalidate for the data files.
 
 ---
 
@@ -20,14 +21,16 @@ MorpheTracker/
 |
 |-- .env                          # Telegram bot token & chat ID (secrets, gitignored)
 |-- .gitignore
-|-- README.md                     # Project README
-|-- requirements.txt              # Python deps: requests, python-dotenv
+|-- sw.js                         # Service Worker (stale-while-revalidate caching)
 |-- index.html                    # Dashboard SPA entry point
 |-- changelog.html                # Historical changelog SPA entry point
+|-- ARCHITECTURE.md               # This file
+|-- README.md                     # Project README
+|-- requirements.txt              # Python deps: requests, beautifulsoup4, lxml, python-dotenv
 |
 |-- assets/
-|   |-- app.js                    # Client-side rendering engine (~683 lines)
-|   |-- style.css                 # Dark theme design system (~875 lines)
+|   |-- app.js                    # Client-side rendering engine (~950 lines)
+|   |-- style.css                 # Dark theme design system (~1320 lines)
 |
 |-- data/
 |   |-- live.json                 # Main dashboard database (stats + changes + full snapshot)
@@ -35,8 +38,8 @@ MorpheTracker/
 |   |
 |   |-- raw/
 |   |   |-- tree.json             # GitHub Git Trees API output (file listing of bundles repo)
-|   |   |-- parsed_bundles.json   # Parsed + fingerprinted bundle/app/patch data
-|   |   |-- diff_result.json      # Current pipeline run's diff (new/updated/removed)
+|   |   |-- parsed_bundles.json   # Parsed + fingerprinted bundle/app/patch data (with icon_url)
+|   |   |-- diff_result.json      # Current pipeline run's diff (affected_bundles with badge_type)
 |   |   |-- bundles/              # Downloaded raw bundle JSONs (gitignored)
 |   |
 |   |-- state/
@@ -45,24 +48,23 @@ MorpheTracker/
 |   |   |-- rollback_1..3.json    # Rollback history (3 deep)
 |   |   |-- daily_buffer.json     # Today's accumulated changes
 |   |   |-- last_run.json         # Pipeline metadata (errors, counts, timestamps)
+|   |   |-- icon_cache.json       # Cached Google Play icon URLs by package name
 |   |
 |   |-- output/
 |       |-- changelog.json        # Structured changelog (array of day entries)
 |       |-- changelog.md          # Markdown changelog (human-readable)
-|
-|-- .github/workflows/
-|   |-- update.yml                # CI/CD: runs pipeline 4x daily + manual trigger
 |
 |-- scripts/
     |-- run_pipeline.py           # Orchestrator (steps 1-9)
     |-- state_manager.py          # File I/O, dir management, snapshot rotation
     |-- fetch_patch_tree.py       # Step 1-2: crawl GitHub Git Trees API
     |-- download_bundles.py       # Step 3: download & validate Morphe bundle JSONs
-    |-- parse_bundles.py          # Step 4: extract apps, patches, repo URLs
+    |-- parse_bundles.py          # Step 4: extract apps, patches, repo URLs + icon enrichment
+    |-- icon_fetcher.py           # Google Play Store icon scraper with cache
     |-- fingerprint_engine.py     # Step 5: SHA-256 fingerprinting
     |-- diff_engine.py            # Step 6: compare old vs new fingerprints
     |-- merge_daily_buffer.py     # Step 7-8: buffer, finalize day, update live.json
-    |-- generate_site.py          # Step 9: regenerate static HTML/CSS/JS
+    |-- generate_site.py          # Step 9: sync static files to docs root
     |-- telegram_notify.py        # Send daily changelog to Telegram
     |-- inspect_data.py           # Dev utility to inspect live.json
 ```
@@ -85,29 +87,30 @@ bundles branch
   |       (raw.githubusercontent.com)       (patches-bundle + patches-list)
   |
   |--[3] parse_bundles.py----------------> data/raw/parsed_bundles.json
-  |       (compatiblePackages, repo URLs)
+  |       (compatiblePackages, repo URLs)   (each app gets icon_url from icon_fetcher.py)
+  |       + enrich with Play Store icons
   |
   |--[4] fingerprint_engine.py-----------> (fingerprint fields added)
   |
   |--[5] diff_engine.py------------------> data/raw/diff_result.json
-  |       (compare vs previous_snapshot)
+  |       (compare vs previous_snapshot)   (affected_bundles with badge_type)
   |
   |--[6] merge_daily_buffer.py-----------> data/state/daily_buffer.json
   |       (accumulate changes)
   |
   |       +-- day rollover? ------------> data/output/changelog.json (append)
   |       |                               data/output/changelog.md (prepend)
-  |       |                               -> triggers generate_site.py
+  |       |                               data/live.json (updated)
   |       |                               -> triggers telegram_notify.py
   |
   |       +-- always: -------> data/state/current_snapshot.json (rotated)
   |                            data/live.json (updated)
   |
-  |--[7] generate_site.py---------------> index.html, changelog.html,
-  |                                       assets/style.css, assets/app.js
+  |--[7] sync static files to docs root
   |
   +--[8] Browser loads app.js-----------> fetch data/live.json + data/changelog.json
-                                            -> render dashboard / changelog
+        + Service Worker caches both      -> render dashboard / changelog
+          (stale-while-revalidate)
 ```
 
 ---
@@ -123,7 +126,7 @@ bundles branch
 | Function | Purpose |
 |----------|---------|
 | `ensure_dirs()` | Creates all directories under `data/` |
-| `load_json(path, default)` | Atomic JSON load with error handling |
+| `load_json(path, default)` | JSON load with error handling, returns default on failure |
 | `save_json(path, data)` | Atomic write via `.tmp` temp file + rename |
 | `rotate_rollbacks()` | current -> rollback_1 -> rollback_2 -> rollback_3 |
 | `save_new_snapshot(data)` | Moves current to previous, rotates rollbacks, saves new current |
@@ -158,24 +161,24 @@ bundles branch
 |----------|---------|
 | `group_tree_files(tree_files)` | Parses flat tree into `{bundle: {channel: {bundle_path, list_path}}}`. Handles both nested folder layout (`my-bundle/stable/`) and flat naming (`my-bundle-stable-patches-bundle.json`) |
 | `download_file_with_retry(path)` | Downloads from `raw.githubusercontent.com`, 3 retries |
-| `is_morphe_bundle(bundle_json)` | Critical filter: checks if `download_url` ends with `.mpp` AND has >= 8 path segments. **Non-Morphe bundles are skipped here** |
+| `is_morphe_bundle(bundle_json)` | Checks if `download_url` ends with `.mpp` AND has >= 8 path segments |
 | `download_all_bundles()` | Orchestrator: clears raw dir, iterates groups, downloads + validates + saves both `patches-bundle.json` and `patches-list.json` |
 
 ---
 
-### 4. `parse_bundles.py` (310 lines)
+### 4. `parse_bundles.py` (320 lines)
 
-**Role:** Transforms raw downloads into structured bundle records.
+**Role:** Transforms raw downloads into structured bundle records with app icon enrichment.
 
 **Key functions:**
 
 | Function | Purpose |
 |----------|---------|
 | `get_app_name(package_name)` | Maps known package names to friendly names (e.g., `com.google.android.youtube` -> `YouTube`). Falls back to heuristic from last path segment |
-| `extract_repo_url(bundle_json, name)` | Extracts repo URL from `download_url`, `patches.url`, `integrations.url`, or `description`. Falls back to `https://github.com/{name}/revanced-patches` |
+| `extract_repo_url(bundle_json, name)` | Extracts repo URL from `download_url`, `patches.url`, `integrations.url`, or `description` |
 | `_extract_versions(raw)` | Normalizes version entries (handles both strings and objects with `version` key) |
-| `validate_and_parse_bundle(name, channel)` | Validates files, extracts `compatiblePackages`, builds structured records with patch details (name, description, compatible_versions, options, use flag) |
-| `parse_all_bundles()` | Orchestrator: iterates all downloaded bundles, saves to `parsed_bundles.json` |
+| `validate_and_parse_bundle(name, channel)` | Validates files, extracts `compatiblePackages`, builds structured records with patch details |
+| `parse_all_bundles()` | Orchestrator: iterates all downloaded bundles, calls `enrich_parsed_bundles_with_icons()`, saves to `parsed_bundles.json` |
 
 **Output data shape (`parsed_bundles.json`):**
 ```json
@@ -189,6 +192,7 @@ bundles branch
       {
         "app_name": "YouTube",
         "package": "com.google.android.youtube",
+        "icon_url": "https://play-lh.googleusercontent.com/...",
         "patches": [
           {
             "name": "Hide Shorts",
@@ -205,9 +209,25 @@ bundles branch
 }
 ```
 
+The `icon_url` field is populated by `icon_fetcher.py` during parsing, using Google Play Store's `og:image` meta tag.
+
 ---
 
-### 5. `fingerprint_engine.py` (83 lines)
+### 5. `icon_fetcher.py` (99 lines)
+
+**Role:** Fetches Google Play Store app icons for each package name.
+
+**How it works:**
+- Makes a request to `https://play.google.com/store/apps/details?id={package_name}` with a browser User-Agent
+- Parses the HTML with BeautifulSoup (`lxml` parser)
+- Extracts the `og:image` meta tag content as the icon URL
+- Falls back to `""` if the page errors or the tag is not found
+- Results cached in `data/state/icon_cache.json` to avoid re-scraping every pipeline run
+- Batch-enriches all apps after parsing via `enrich_parsed_bundles_with_icons()`
+
+---
+
+### 6. `fingerprint_engine.py` (83 lines)
 
 **Role:** Generates SHA-256 fingerprints for change detection.
 
@@ -219,7 +239,7 @@ bundles branch
 
 ---
 
-### 6. `diff_engine.py` (151 lines)
+### 7. `diff_engine.py` (151 lines)
 
 **Role:** Compares current parse result against the previous snapshot.
 
@@ -228,18 +248,21 @@ bundles branch
 | Function | Purpose |
 |----------|---------|
 | `apps_are_different(old_app, new_app)` | Deep comparison: normalizes both apps' patches, options, versions; compares canonical JSON |
-| `diff_snapshots()` | Loads old + new snapshots, iterates bundle:channel keys: |
-| | - **New key** -> marks as `new_bundle` + all its apps as `new_apps` |
-| | - **Fingerprint changed** -> app-level diff: checks for new/updated/removed apps |
-| | - **Fingerprint same** -> skip |
+| `diff_snapshots()` | Loads old + new snapshots, iterates bundle:channel keys |
 
-**Output (`diff_result.json`):**
+**Output (`diff_result.json`) — uses `affected_bundles` format:**
 ```json
 {
-  "new_bundles": [{"bundle": "name", "channel": "dev"}],
-  "new_apps": [{"bundle": "name:dev", "app_name": "App", "package": "com.app"}],
-  "updated_apps": [{"bundle": "name:stable", "app_name": "App", "package": "com.app"}],
-  "removed_apps": []
+  "affected_bundles": [
+    {
+      "bundle": "bundle-name",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {"app_name": "YouTube", "package": "com.google.android.youtube", "badge_type": "NEW APP"}
+      ]
+    }
+  ]
 }
 ```
 
@@ -247,7 +270,7 @@ Returns `False` if no changes detected (pipeline exits silently).
 
 ---
 
-### 7. `merge_daily_buffer.py` (382 lines)
+### 8. `merge_daily_buffer.py` (382 lines)
 
 **Role:** The most complex script — manages daily change accumulation, day rollover, and all output file generation.
 
@@ -256,32 +279,23 @@ Returns `False` if no changes detected (pipeline exits silently).
 | Function | Purpose |
 |----------|---------|
 | `merge_apps_with_status(app_list, status)` | Merges apps into buffer with status precedence: new > updated > removed |
-| `build_changelog_entry(date, bundles, apps)` | Creates `{date, new_bundles, new_apps}` for JSON changelog |
-| `generate_markdown_changelog(date, bundles, apps)` | Generates Markdown with NEW/UPDATED/PRE-RELEASE badges |
+| `build_changelog_entry(date_str, affected_bundles_dict)` | Creates `{date, lastChecked, affected_bundles[]}` for JSON changelog |
+| `generate_markdown_changelog(date_str, affected_bundles_dict)` | Generates Markdown with NEW/UPDATED/PRE-RELEASE badges |
 | `finalize_buffer(buffer_data)` | Finalizes a 24h window: appends to `changelog.json`, prepends to `changelog.md`, writes `live.json` |
 | `update_live_json_file(today, buffer, snapshot)` | Updates `live.json` with current snapshot + today's changes |
-| `update_daily_buffer_run()` | Main entry point: handles day rollover (finalize old buffer -> reset), merges current diff, saves snapshot, triggers site gen + Telegram on rollover |
+| `update_daily_buffer_run()` | Main entry point: handles day rollover, merges diff, saves snapshot, triggers notification |
 
-**Status precedence logic** (line 296-301):
-- `new` overrides `updated` or `removed`
-- `updated` overrides `removed`
-- This prevents a degraded status from overwriting a higher-priority one within the same day
-
-**Day rollover flow:**
-1. Load `daily_buffer.json`
-2. If buffer date != today -> finalize the old buffer first
-3. Reset buffer for new day
-4. Merge current `diff_result.json` into buffer
-5. Save buffer
-6. Rotate snapshots (current -> previous, rollbacks shifted)
-7. Update `live.json`
-8. If rollover happened: run `generate_site.py` + `telegram_notify.py`
+**Status precedence logic:**
+- `NEW APP` overrides `UPDATED APP` or `REMOVED APP`
+- `UPDATED APP` overrides `REMOVED APP`
+- `NEW BUNDLE` overrides `UPDATED`
 
 **`live.json` output shape:**
 ```json
 {
   "date": "2026-06-21",
   "last_run": "2026-06-21T12:01:00",
+  "lastChecked": "2026-06-21T12:01:00",
   "stats": {
     "total_bundles": 59,
     "total_apps": 291,
@@ -289,43 +303,46 @@ Returns `False` if no changes detected (pipeline exits silently).
     "new_bundles_today": 2
   },
   "changes": {
-    "new_bundles": [{"bundle": "name", "channel": "stable"}, ...],
-    "new_apps": [{"bundle": "name:stable", "app_name": "App", "package": "com.app", "status": "new"}, ...]
+    "affected_bundles": [
+      {
+        "bundle": "bundle-name",
+        "channel": "stable",
+        "badge_type": "UPDATED",
+        "apps": [
+          {"app_name": "YouTube", "package": "com.google.android.youtube", "badge_type": "NEW APP", "icon_url": "https://..."}
+        ]
+      }
+    ]
   },
-  "bundles": { ... }  // full snapshot (same as current_snapshot.json)
+  "bundles": { ... }
 }
 ```
 
 ---
 
-### 8. `generate_site.py` (1030+ lines)
+### 9. `generate_site.py` (67 lines)
 
-**Role:** Contains hardcoded Python string constants for the entire static site HTML, CSS, and JS.
+**Role:** Syncs static files to the docs root. Reads files from disk and writes them
+back (preserving them during CI checkouts). Copies `changelog.json` to `data/changelog.json`.
 
-**Key constant variables:**
-- `INDEX_HTML_CONTENT` — Full `index.html` as a Python string
-- `CHANGELOG_HTML_CONTENT` — Full `changelog.html` as a Python string
-- `STYLE_CSS_CONTENT` — Full `assets/style.css` as a Python string
-- `APP_JS_CONTENT` — Full `assets/app.js` as a Python string
-
-**Important:** The actual working static files (`index.html`, `changelog.html`, `assets/*`) are maintained **directly on disk**. The `generate_site.py` file acts as a backup — when the pipeline runs on a fresh checkout (e.g., GitHub Actions), it writes these hardcoded strings to disk if the files are missing. Currently `generate_static_files()` is a `pass` placeholder, meaning the on-disk files are the primary source.
+This is **not** a template engine — the actual working static files are maintained
+directly on disk. The script exists to ensure files survive a fresh GitHub Actions checkout.
 
 ---
 
-### 9. `telegram_notify.py` (111 lines)
+### 10. `telegram_notify.py` (111 lines)
 
 **Role:** Sends daily changelog summary to a Telegram channel.
 
 **What it does:**
 1. Loads `TG_TOKEN` and `TG_CHAT` from `.env`
 2. Reads the daily markdown changelog from `data/output/today_changelog.md`
-3. Strips/markdown dates and converts `#`/`##`/`###` headers to Telegram bold `*text*`
-4. Composes message with title + timestamp + cleaned changelog
-5. Sends via Telegram Bot API
+3. Converts markdown headers to Telegram bold format
+4. Sends via Telegram Bot API
 
 ---
 
-### 10. `run_pipeline.py` (65 lines)
+### 11. `run_pipeline.py` (65 lines)
 
 **Role:** Orchestrator — runs all pipeline steps in order.
 
@@ -333,12 +350,12 @@ Returns `False` if no changes detected (pipeline exits silently).
 1. `ensure_dirs()`
 2. `fetch_bundle_tree()` -> tree.json
 3. `download_all_bundles()` -> raw bundles
-4. `parse_all_bundles()` -> parsed_bundles.json
+4. `parse_all_bundles()` -> parsed_bundles.json (with icon enrichment)
 5. `generate_bundle_fingerprints()` -> adds fingerprints
 6. `diff_snapshots()` -> diff_result.json
 7. If no changes AND no day rollover needed -> **exit silently**
 8. `update_daily_buffer_run()` -> buffer, snapshots, live.json
-9. `generate_static_files()` -> (placeholder)
+9. `generate_static_files()` -> sync files to docs root
 
 ---
 
@@ -348,8 +365,17 @@ Returns `False` if no changes detected (pipeline exits silently).
 
 | File | Route | What it does |
 |------|-------|--------------|
-| `index.html` | `/` (Dashboard) | Loads `app.js` -> `initDashboard()` |
-| `changelog.html` | `/changelog.html` | Loads `app.js` -> `initChangelog()` |
+| `index.html` | `/` (Dashboard) | Registers Service Worker -> loads `app.js` -> `initDashboard()` |
+| `changelog.html` | `/changelog.html` | Registers Service Worker -> loads `app.js` -> `initChangelog()` |
+
+### Service Worker (`sw.js`)
+
+- **Cache strategy:** Stale-while-revalidate for `data/live.json` and `data/changelog.json`
+- **Static assets:** Cache-first (HTML, CSS, JS, fonts)
+- **Background refresh:** When fresh data is fetched, posts `DATA_UPDATED` message to all clients
+- **On message:** Dashboard re-fetches and re-renders stats, updates, and bundle grid
+- **On message:** Changelog page re-invokes `initChangelog()`
+- **Cache versioning:** Cache named `morphe-tracker-v1`, old caches purged on activate
 
 ### `app.js` Key Functions
 
@@ -358,23 +384,34 @@ Returns `False` if no changes detected (pipeline exits silently).
 | `initDashboard()` | `DOMContentLoaded` + `#nav-dashboard.active` | Fetches `data/live.json`, renders stats, today's updates, bundle grid with filters |
 | `initChangelog()` | `DOMContentLoaded` + `#nav-changelog.active` | Fetches `data/changelog.json` + `data/live.json`, renders historical changelog |
 | `renderStats(data)` | Called by `initDashboard` | Populates 4 stat cards from `data.stats` |
-| `renderTodayUpdates(data)` | Called by `initDashboard` | Groups `changes.new_bundles` + `changes.new_apps` by bundle name, renders with NEW BUNDLE / UPDATED / NEW APP / UPDATED APP / REMOVED APP / PRE-RELEASE badges |
-| `filterAndRenderBundles()` | Called by `initDashboard` + filter events | Groups bundle:channel entries by base name, applies search/channel filters, sorts (priority list -> app count desc -> alpha), renders expandable cards with app tabs, version chips, patch details |
-| `renderChangelog(changelog, bundlesData)` | Called by `initChangelog` | Iterates changelog entries, groups by bundle, renders cards with date headers and NEW BUNDLE / UPDATED status badges |
+| `renderTodayUpdates(data)` | Called by `initDashboard` | Groups `changes.affected_bundles` by bundle name, renders with status badges + app icons |
+| `filterAndRenderBundles()` | Called by `initDashboard` + filter events | Groups bundle:channel entries by base name, applies search/channel filters, sorts, renders expandable cards with app icons, version chips, patch details |
+| `renderChangelog(changelog, bundlesData)` | Called by `initChangelog` | Iterates changelog entries, groups by bundle, renders cards with date headers, status badges, app icons |
+| `getAppIconHtml(iconUrl, sizeClass)` | Utility | Generates `<img>` tag with `onerror="this.remove()"` fallback |
+| `groupAffectedBundles(affectedBundles)` | Shared utility | Groups bundles, merges channels, deduplicates apps with status precedence |
 | `getAuthorLink(repoUrl)` | Utility | Extracts GitHub/GitLab author from repo URL, generates `<a>` tag |
 | `getRepoInfo(repoUrl)` | Utility | Extracts `{isGitLab, path}` from repo URL |
 | `isAppPreRelease(bundleName, pkgName, bundlesData)` | Utility | Returns true if app is in dev channel but NOT in stable channel |
-| `togglePatch(event, patchId)` | User click on patch item | Toggles `.expanded` class on patch item to show/hide options |
+
+### App Icons
+
+App icons are loaded from Google Play Store (`icon_url` field fetched by `icon_fetcher.py`).
+The `getAppIconHtml()` function generates an `<img>` tag that:
+- Uses the pre-fetched `icon_url` from the data
+- Has `onerror="this.remove()"` to cleanly remove broken images
+- Uses `loading="lazy"` for deferred loading
+- Has `alt=""` for accessibility (decorative images)
+- Supports three size classes: `app-icon` (20px), `app-icon-lg` (28px), `app-icon-modal` (32px)
 
 ### Bundle Card Rendering (Dashboard)
 
 Each bundle card displays:
 1. **Header**: Bundle name + channel badges (green=stable, amber=dev) + GitHub/GitLab icon
 2. **Summary**: "N compatible apps"
-3. **Expandable drawer**: App tabs, version chips ("Any" or specific versions, capped at 6 + "+N more"), patch list (expandable with description + options)
+3. **Expandable drawer**: App mini-cards with icons, version chips, patch counts
 4. **"Add to Morphe" button**: Links to `https://morphe.software/add-source?github=<path>` or `?gitlab=<path>`
 
-Sorting priority (defined at `app.js:336`):
+Bundle sort priority:
 ```
 [morphe, piko, rookieenough, hoo-dles, paresh-maheshwari, brosssh, patcheddit]
 ```
@@ -384,10 +421,9 @@ Remaining bundles sorted by app count descending, then alphabetically.
 
 Each day card shows:
 1. **Date header** (e.g., "June 21, 2026")
-2. **Per-bundle groups**:
-   - New bundle: "NEW BUNDLE" badge + bundle name + channels
-   - Existing bundle with changes: "UPDATED" badge + bundle name
-3. **App list**: Each app shows its status badge (NEW APP / UPDATED APP / REMOVED APP) + PRE-RELEASE indicator + app name (linked to Google Play) + package name
+2. **Per-bundle groups** with status badges
+3. **App list**: Status badge + app icon + app name + bundle name
+4. Apps sorted: NEW APP first, then UPDATED APP, then REMOVED APP
 
 ---
 
@@ -396,65 +432,11 @@ Each day card shows:
 | Badge | CSS class | Color | Purpose |
 |-------|-----------|-------|---------|
 | NEW BUNDLE | `.badge-new-bundle` | Purple | A bundle appeared for the first time |
-| UPDATED | `.badge-updated` | Blue | An existing bundle received app changes |
+| UPDATED | `.badge-updated-bundle` | Blue | An existing bundle received app changes |
 | NEW APP | `.badge-new` | Green | A new app was added to a bundle |
 | UPDATED APP | `.badge-updated` | Blue | An existing app's patches/options changed |
 | REMOVED APP | `.badge-removed` | Red | An app was removed from a bundle |
 | PRE-RELEASE | `.badge-pre-release` | Amber | App exists in dev channel but not stable |
-
----
-
-## GitHub Actions Pipeline
-
-File: `.github/workflows/update.yml`
-
-```yaml
-Schedule:    1 0,6,12,18 * * *  (UTC: 00:01, 06:01, 12:01, 18:01)
-Trigger:     manual workflow_dispatch
-Concurrency: group "morphe-patch-tracker"
-
-Steps:
-  1. Checkout repo (full history, fetch-depth: 0)
-  2. Setup Python 3.10 (with pip cache)
-  3. pip install -r requirements.txt
-  4. python scripts/run_pipeline.py
-     (secrets: GITHUB_TOKEN, TG_TOKEN, TG_CHAT)
-  5. git add -A && git commit -m "chore(data): auto-update..." [skip ci]
-     (only if files changed)
-  6. git push
-```
-
----
-
-## Changelog Generation Lifecycle (Detailed)
-
-This is the most important flow — how a detected change becomes a visible changelog entry:
-
-### Step 1: Diff Detection
-`diff_engine.py:diff_snapshots()` compares `current_snapshot.json` (from last run) against the new `parsed_bundles.json`. It produces `diff_result.json` with four arrays:
-- `new_bundles`: Entirely new bundle:channel keys
-- `new_apps`: New package names in existing bundles
-- `updated_apps`: Existing packages whose patches/options/versions changed
-- `removed_apps`: Packages that disappeared
-
-### Step 2: Buffer Accumulation
-`merge_daily_buffer.py:update_daily_buffer_run()` merges each run's diff into `daily_buffer.json`.
-- Bundles are deduplicated by `bundle_name:channel`
-- Apps are deduplicated by `(bundle_key, package)` tuple
-- Status priority: **new > updated > removed** (a "new" app won't be downgraded to "updated")
-
-### Step 3: Day Rollover
-When the buffer's date differs from today:
-1. `finalize_buffer()` is called with the old buffer's data
-2. This creates a `changelog.json` entry: `{date, new_bundles[], new_apps[]}` (prepended to array)
-3. A markdown changelog block is generated and prepended to `changelog.md`
-4. `live.json` is updated with stats + changes + full snapshot
-5. `generate_site.py` is triggered to rebuild static assets
-6. `telegram_notify.py` sends the daily summary
-
-### Step 4: Frontend Rendering
-- Dashboard: `renderTodayUpdates()` groups `changes.new_bundles` and `changes.new_apps` by base bundle name. If a bundle appears only in `new_apps` (not `new_bundles`), it gets the **UPDATED** badge.
-- Changelog page: `renderChangelog()` does the same grouping. If `newChannels.length > 0`, the bundle was newly registered -> **NEW BUNDLE**. Otherwise -> **UPDATED**.
 
 ---
 
@@ -465,6 +447,7 @@ When the buffer's date differs from today:
 {
   "date": "2026-06-21",
   "last_run": "2026-06-21T12:01:00",
+  "lastChecked": "2026-06-21T12:01:00",
   "stats": {
     "total_bundles": 59,
     "total_apps": 291,
@@ -472,8 +455,13 @@ When the buffer's date differs from today:
     "new_bundles_today": 2
   },
   "changes": {
-    "new_bundles": [{"bundle": "name", "channel": "stable"}],
-    "new_apps": [{"bundle": "name:stable", "app_name": "App", "package": "com.app", "status": "new"}]
+    "affected_bundles": [
+      {
+        "bundle": "bundle-name", "channel": "stable",
+        "badge_type": "UPDATED",
+        "apps": [{"app_name": "YouTube", "package": "com.google.android.youtube", "badge_type": "NEW APP", "icon_url": "https://..."}]
+      }
+    ]
   },
   "bundles": { "bundle-name:stable": { "bundle": "...", "channel": "...", ... } }
 }
@@ -482,8 +470,8 @@ When the buffer's date differs from today:
 ### `data/output/changelog.json` (Historical)
 ```json
 [
-  { "date": "2026-06-21", "new_bundles": [...], "new_apps": [...] },
-  { "date": "2026-06-20", "new_bundles": [...], "new_apps": [...] }
+  { "date": "2026-06-21", "lastChecked": "...", "affected_bundles": [...] },
+  { "date": "2026-06-20", "lastChecked": "...", "affected_bundles": [...] }
 ]
 ```
 
@@ -491,10 +479,9 @@ When the buffer's date differs from today:
 ```json
 {
   "date": "2026-06-21",
-  "bundles": { "bundle-name:stable": {"bundle": "name", "channel": "stable"} },
-  "apps": [
-    { "bundle": "name:stable", "app_name": "App", "package": "com.app", "status": "new" }
-  ]
+  "affected_bundles": {
+    "bundle-name:stable": {"bundle": "name", "channel": "stable", "badge_type": "UPDATED", "apps": [...]}
+  }
 }
 ```
 
@@ -505,7 +492,7 @@ When the buffer's date differs from today:
 The design system uses CSS custom properties with a dark theme:
 
 ```
-:root ──> --bg-main (dark navy)
+:root ──> --bg-main (dark navy #0b0f19)
        ──> --bg-card (semi-transparent glass)
        ──> --primary-accent (#6366f1 indigo)
        ──> --color-stable (#10b981 green)
@@ -520,7 +507,7 @@ Key layout features:
 - **Glassmorphism**: Cards use `backdrop-filter: blur(10px)` with semi-transparent backgrounds
 - **Responsive grid**: 1 col mobile -> 2 col tablet -> 3 col desktop
 - **Bundle cards**: Clickable, expandable with smooth `max-height` transition
-- **App tabs**: Horizontal scrollable tab bar within each bundle card
+- **App icons**: 20px rounded images with `object-fit: cover` and flex-shrink for graceful removal
 - **Patch items**: Expandable to show description + options
 
 ---
@@ -537,6 +524,14 @@ set TG_CHAT=your_chat_id
 python scripts/run_pipeline.py
 ```
 
+### Running a Local Dev Server
+
+```bash
+python -m http.server 8080
+```
+
+Then open `http://localhost:8080` (required for Service Worker, which does not work with `file://`).
+
 ### Key Environment Variables
 
 | Variable | Required | Purpose |
@@ -550,11 +545,21 @@ python scripts/run_pipeline.py
 ```bash
 python scripts/inspect_data.py
 ```
-This prints the first bundle + app with patches from `live.json` for debugging.
 
 ### Manual Finalization
 
 ```bash
 python scripts/merge_daily_buffer.py --finalize
 ```
-Forces the current daily buffer to finalize immediately (creates changelog entry, triggers site gen + notification), even if there's no day rollover.
+
+Forces the current daily buffer to finalize immediately (creates changelog entry, triggers notification), even if there's no day rollover.
+
+### Icon Cache
+
+App icons are cached in `data/state/icon_cache.json`. To clear the cache and force re-fetch:
+
+```bash
+echo {} > data/state/icon_cache.json
+```
+
+The cache is checked before each pipeline run so previously fetched icons are not re-scraped.

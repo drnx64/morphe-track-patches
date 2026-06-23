@@ -40,6 +40,11 @@
         <p>&copy; 2026 Morphe Patch Tracker. Automated update pipeline.</p>
     </footer>
 
+    <script>
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js").catch(function() {});
+    }
+    </script>
     <script src="assets/app.js"></script>
 </body>
 </html>

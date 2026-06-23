@@ -172,37 +172,7 @@ function renderTodayUpdates(data) {
 
     container.innerHTML = "";
 
-    // Group by base bundle name and merge channels
-    const grouped = {};
-    const appPrecedence = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
-
-    affectedBundles.forEach(b => {
-        const bName = b.bundle;
-        if (!grouped[bName]) {
-            grouped[bName] = {
-                bundle: bName,
-                channels: [],
-                apps: [],
-                badge_type: b.badge_type
-            };
-        }
-        if (!grouped[bName].channels.includes(b.channel)) {
-            grouped[bName].channels.push(b.channel);
-        }
-        // Merge apps deduplicated by package with status precedence
-        (b.apps || []).forEach(app => {
-            const existing = grouped[bName].apps.find(a => a.package === app.package);
-            if (!existing) {
-                grouped[bName].apps.push({...app});
-            } else if (appPrecedence[app.badge_type] < appPrecedence[existing.badge_type]) {
-                existing.badge_type = app.badge_type;
-            }
-        });
-        // Bundle badge_type precedence: NEW BUNDLE > UPDATED
-        if (b.badge_type === "NEW BUNDLE") {
-            grouped[bName].badge_type = "NEW BUNDLE";
-        }
-    });
+    const grouped = groupAffectedBundles(affectedBundles);
 
     const sortedBundleNames = Object.keys(grouped).sort((a, b) => {
         const aIsNew = grouped[a].badge_type === "NEW BUNDLE";
@@ -261,7 +231,7 @@ function renderTodayUpdates(data) {
             };
 
             // Sort: NEW APP first, then UPDATED APP, then REMOVED APP
-            var sortOrder = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
+            const sortOrder = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
             bGroup.apps.sort(function(a, b) {
                 return (sortOrder[a.badge_type] ?? 1) - (sortOrder[b.badge_type] ?? 1);
             });
@@ -417,6 +387,40 @@ function escHtml(str) {
         .replace(/'/g, "&#39;");
 }
 
+// Group affected bundles by base name, merge channels, deduplicate apps with status precedence
+function groupAffectedBundles(affectedBundles) {
+    const appPrecedence = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
+    const grouped = {};
+
+    affectedBundles.forEach(function(b) {
+        const bName = b.bundle;
+        if (!grouped[bName]) {
+            grouped[bName] = {
+                bundle: bName,
+                channels: [],
+                apps: [],
+                badge_type: b.badge_type
+            };
+        }
+        if (!grouped[bName].channels.includes(b.channel)) {
+            grouped[bName].channels.push(b.channel);
+        }
+        (b.apps || []).forEach(function(app) {
+            const existing = grouped[bName].apps.find(function(a) { return a.package === app.package; });
+            if (!existing) {
+                grouped[bName].apps.push({...app});
+            } else if (appPrecedence[app.badge_type] < appPrecedence[existing.badge_type]) {
+                existing.badge_type = app.badge_type;
+            }
+        });
+        if (b.badge_type === "NEW BUNDLE") {
+            grouped[bName].badge_type = "NEW BUNDLE";
+        }
+    });
+
+    return grouped;
+}
+
 // Generate an app icon <img> tag from a pre-fetched icon URL
 function getAppIconHtml(iconUrl, sizeClass) {
     if (!iconUrl) return "";
@@ -520,7 +524,7 @@ function buildAppCardsDrawer(card, bundle, apps) {
             ? '<span class="badge badge-pre-release">Pre-Release</span>'
             : '';
 
-        var appIconHtml2 = getAppIconHtml(app.icon_url);
+        const appIconHtml2 = getAppIconHtml(app.icon_url);
 
         appCard.innerHTML = [
             '<div class="app-mini-card-main">',
@@ -566,7 +570,7 @@ function openAppModal(app, bundle) {
     if (!modal) return;
 
     // Populate header
-    var modalIconHtml = getAppIconHtml(app.icon_url, "app-icon app-icon-modal");
+    const modalIconHtml = getAppIconHtml(app.icon_url, "app-icon app-icon-modal");
     document.getElementById("modal-app-name").innerHTML = modalIconHtml + escHtml(app.app_name);
 
     const pkgLink = document.getElementById("modal-pkg-link");
@@ -795,37 +799,7 @@ function renderChangelog(changelog, bundlesData) {
 
         const affectedBundles = day.affected_bundles || [];
 
-        // Group by base bundle name, merging channels
-        const grouped = {};
-        const appPrecedence = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
-
-        affectedBundles.forEach(b => {
-            const bName = b.bundle;
-            if (!grouped[bName]) {
-                grouped[bName] = {
-                    bundle: bName,
-                    channels: [],
-                    apps: [],
-                    badge_type: b.badge_type
-                };
-            }
-            if (!grouped[bName].channels.includes(b.channel)) {
-                grouped[bName].channels.push(b.channel);
-            }
-            // Merge apps deduplicated by package with status precedence
-            (b.apps || []).forEach(app => {
-                const existing = grouped[bName].apps.find(a => a.package === app.package);
-                if (!existing) {
-                    grouped[bName].apps.push({...app});
-                } else if (appPrecedence[app.badge_type] < appPrecedence[existing.badge_type]) {
-                    existing.badge_type = app.badge_type;
-                }
-            });
-            // Bundle badge_type precedence: NEW BUNDLE > UPDATED
-            if (b.badge_type === "NEW BUNDLE") {
-                grouped[bName].badge_type = "NEW BUNDLE";
-            }
-        });
+        const grouped = groupAffectedBundles(affectedBundles);
 
         const sortedBundleNames = Object.keys(grouped).sort((a, b) => {
             const aIsNew = grouped[a].badge_type === "NEW BUNDLE";
@@ -873,7 +847,7 @@ function renderChangelog(changelog, bundlesData) {
                 };
 
                 // Sort: NEW APP first, then UPDATED APP, then REMOVED APP
-                var sortOrder = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
+            const sortOrder = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2};
                 bGroup.apps.sort(function(a, b) {
                     return (sortOrder[a.badge_type] ?? 1) - (sortOrder[b.badge_type] ?? 1);
                 });
@@ -918,5 +892,25 @@ function renderChangelog(changelog, bundlesData) {
         `;
 
         container.appendChild(card);
+    });
+}
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.addEventListener("message", function(event) {
+        if (event.data && event.data.type === "DATA_UPDATED") {
+            const isDashboard = document.getElementById("nav-dashboard") && document.getElementById("nav-dashboard").classList.contains("active");
+            if (isDashboard) {
+                fetch("data/live.json").then(function(res) { return res.json(); }).then(function(data) {
+                    renderStats(data);
+                    renderTodayUpdates(data);
+                    for (const key in data.bundles) {
+                        allBundlesData[key] = Object.assign({}, data.bundles[key], { key: key });
+                    }
+                    filterAndRenderBundles();
+                }).catch(function() {});
+            } else {
+                initChangelog();
+            }
+        }
     });
 }
