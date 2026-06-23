@@ -295,6 +295,14 @@ def parse_all_bundles():
                     "error": err_msg
                 })
                 
+    # Enrich with Google Play Store app icons
+    print("\n--- Enriching apps with Play Store icons ---")
+    try:
+        from icon_fetcher import enrich_parsed_bundles_with_icons
+        enrich_parsed_bundles_with_icons(parsed_bundles)
+    except Exception as e:
+        print(f"[-] Icon enrichment failed (non-fatal): {e}")
+
     # Save parsed bundles
     save_json(os.path.join(RAW_DIR, "parsed_bundles.json"), parsed_bundles)
     
