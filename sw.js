@@ -1,4 +1,4 @@
-const CACHE_NAME = "morphe-tracker-v2";
+const CACHE_NAME = "morphe-tracker-v3";
 const STATIC_ASSETS = [
   "/",
   "/index.html",
@@ -11,7 +11,15 @@ const DATA_URLS = ["/data/live.json", "/data/changelog.json"];
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
+      return Promise.all(
+        STATIC_ASSETS.map((url) =>
+          fetch(url + "?sw=" + Date.now(), { cache: "no-store" }).then(
+            (res) => {
+              if (res.ok) cache.put(url, res);
+            }
+          )
+        )
+      );
     })
   );
   self.skipWaiting();
@@ -59,18 +67,7 @@ self.addEventListener("fetch", (event) => {
   }
 
   if (isStaticAsset(requestUrl)) {
-    event.respondWith(
-      caches.match(event.request).then((cached) => {
-        return (
-          cached ||
-          fetch(event.request).then((response) => {
-            const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
-            return response;
-          })
-        );
-      })
-    );
+    event.respondWith(staleWhileRevalidate(event.request));
     return;
   }
 });
