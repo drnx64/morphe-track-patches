@@ -112,11 +112,12 @@ Special thanks to [@nvbangg](https://github.com/nvbangg) for his work on [awesom
 
 ## Star History
 
-<a href="https://www.star-history.com/#drnx64/morphe-track-patches&Date">
+
+<a href="https://www.star-history.com/?type=date&repos=drnx64%2Fmorphe-track-patches">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=drnx64/morphe-track-patches&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=drnx64/morphe-track-patches&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=drnx64/morphe-track-patches&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=drnx64/morphe-track-patches&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=drnx64/morphe-track-patches&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=drnx64/morphe-track-patches&type=date&legend=top-left" />
  </picture>
 </a>
 
