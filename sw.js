@@ -1,4 +1,4 @@
-const CACHE_NAME = "morphe-tracker-v1";
+const CACHE_NAME = "morphe-tracker-v2";
 const STATIC_ASSETS = [
   "/",
   "/index.html",
