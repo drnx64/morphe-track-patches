@@ -10900,8 +10900,65 @@
     "bundle": "chiggi",
     "channel": "stable",
     "repo_url": "https://github.com/durgesh0505/chiggi_morphe_patches",
-    "created_at": "2026-06-19T23:05:27",
+    "created_at": "2026-06-23T23:48:30",
     "apps": [
+      {
+        "app_name": "CrazyGames",
+        "package": "com.crazygames.crazygamesapp",
+        "patches": [
+          {
+            "name": "Bypass Play license check",
+            "description": "Stops Google Play's Automatic Integrity Protection (PairIP) license check that, on a re-signed/sideloaded build, redirects the app to the Play Store (\"get it on Google Play\"). Neuters both entry points of com.pairip.licensecheck.LicenseClient (checkLicense / initializeLicenseCheck) so the check never runs. Required for the patched app to open at all.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.6.7"
+            ]
+          },
+          {
+            "name": "Change app name",
+            "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+            "use": true,
+            "options": [
+              {
+                "key": "appName",
+                "description": "The name shown under the app icon."
+              }
+            ],
+            "compatible_versions": [
+              "1.6.7"
+            ]
+          },
+          {
+            "name": "Disable analytics",
+            "description": "Stops native Sentry crash/telemetry upload by neutering the Capacitor Sentry plugin's native init (io.sentry.capacitor.SentryCapacitor.initNativeSdk), so it resolves without starting the native Sentry SDK. Firebase auth, ConfigCat and push are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.6.7"
+            ]
+          },
+          {
+            "name": "Remove AD_ID permission",
+            "description": "Removes the advertising-id and Ad Services (Privacy Sandbox) permissions so the device advertising id, Topics, Attribution and Custom Audience signals cannot be read for ad tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.6.7"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Removes native ads (AdMob and its Pangle/Audience Network mediation) by neutering the Capacitor AdMob plugin (com.getcapacitor.community.admob.AdMob): interstitial and banner shows resolve immediately with nothing displayed, and rewarded ads auto-grant their reward without playing a video. Note: in-page web video ads served remotely inside the WebView (from crazygames.com) are not part of the app bytecode and cannot be removed here.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.6.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/zGvYCipVc-uIpRVf6P5maUThHJyuNE35Y-tQCQz6tYigWuxlZThhQh0Te8G0SlLi1j8PAgHds8EkL2KXkKPG"
+      },
       {
         "app_name": "Arrow Puzzle",
         "package": "com.easybrain.arrow.puzzle.game",
@@ -11205,7 +11262,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/KrGUFVNpzq8nghzbFI9uM11WAVEHTkZKVyypMlr8G17ravMH6WV_MbI_IAG6zvgF2te5gWQKMobPraUY3WBFpw"
       }
     ],
-    "fingerprint": "7e27415c6cccf9e9c07956ced8c78701ed6f5ab61063d65583c00db8db114482"
+    "fingerprint": "27cd1ee9ee57719659efe8752e1ce76c016db9082b3bba2b073f99935319a933"
   },
   "jasonwu1994:dev": {
     "bundle": "jasonwu1994",
@@ -15746,7 +15803,7 @@
     "bundle": "hoomans-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-06-23T02:51:55",
+    "created_at": "2026-06-23T20:59:21",
     "apps": [
       {
         "app_name": "AGAMA Car Launcher",
@@ -16125,6 +16182,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/V9TqJHU7bH4tbT3W4o9oE0SfAaAVSzJ7L5rglfhyKm8TWQIaYDF28Q4-XnuRiY0TKhjBWhNn5nbAgRxuXupJLQ"
       },
       {
+        "app_name": "Projectivy Launcher",
+        "package": "com.spocky.projengmenu",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Projectivy Launcher's premium so the paywall stops sending you to the upgrade screen. Display profiles, custom wallpapers and backgrounds, parental controls, and the locked settings and customization options all open up. The gate is decided on the device, so there is no account to sign in to.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.68"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Qo3kWBOmNFWGcGxiBHs-tR2_0uVcrGGUzKXb_e_JwpbwwzsYHAs-qvNhE-QDr2c8B4_8w0bq8yl5uo88pTdb"
+      },
+      {
         "app_name": "Tracked",
         "package": "com.tracked.mobile",
         "patches": [
@@ -16296,7 +16369,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/JHCM4AIyomRp6Lo2-5ugoznlGdsZmNnejVN8DLvtWFHShcz8YRgUE170f1CyOfrleYbtFL2g8tQ3VqlQNAgqoA"
       }
     ],
-    "fingerprint": "803111e3bed2734914f5fe329f30dfa5cc0c47dc3afeed8a53ea328798b87f90"
+    "fingerprint": "73718de229bf8bc60f6df54f7bec38fea214e220f69051f8162bda3d5a94c750"
   },
   "pepper-morphe:stable": {
     "bundle": "pepper-morphe",
@@ -23539,7 +23612,7 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-06-23T06:31:07",
+    "created_at": "2026-06-23T22:23:23",
     "apps": [
       {
         "app_name": "Snipd: AI Podcast Player",
@@ -23658,15 +23731,6 @@
         "package": "com.canva.editor",
         "patches": [
           {
-            "name": "Disable Restricted Access",
-            "description": "Removes restricted/locked indicators on premium media in Canva.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.365.o"
-            ]
-          },
-          {
             "name": "Remove Watermark",
             "description": "Removes watermarks from Canva exports and previews.",
             "use": true,
@@ -23741,7 +23805,7 @@
         "patches": [
           {
             "name": "Unlock VIP",
-            "description": "Unlocks Dubox Drive VIP/SVIP (Premium+).",
+            "description": "Unlocks Dubox Drive VIP/SVIP (Premium+)",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -24618,7 +24682,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
       }
     ],
-    "fingerprint": "2aa1c48a6f25b13f921557d4c7af39992e5a410c083694bb678f9fcfc86723ad"
+    "fingerprint": "4a6199463c22f9ed1113ea93aaddd0c004c7ecd62763fa123765bd60356a190d"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
@@ -36589,7 +36653,7 @@
     "bundle": "ajstrick81-androidtv",
     "channel": "stable",
     "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-    "created_at": "2026-06-23T18:39:10",
+    "created_at": "2026-06-23T23:10:29",
     "apps": [
       {
         "app_name": "Livingroom",
@@ -36640,7 +36704,7 @@
         "patches": [
           {
             "name": "MLB At Bat Android TV",
-            "description": "Removes VOD ads and between-innings gambling ads while preserving live game playback.",
+            "description": "Removes VOD ads and shows a commercial-break overlay over live gambling ads while preserving live game playback.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -36768,7 +36832,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/0Xve4so8vFKdWH1nadrPraSJ2XoKlc2Fd4BToADo0f8gXTbljiwzuEA-OZXV86i5ubZ9uw8giaVVP3d1g_jm"
       }
     ],
-    "fingerprint": "b4131b82a41018bd61d4a383ddeca95e515c5eaf3e4f532c154c6d51c73f6323"
+    "fingerprint": "d201a3c20df9bfcf943479f3a0ad78645c3f2b412b78960061d401741d5d178b"
   },
   "polka-bear:dev": {
     "bundle": "polka-bear",
