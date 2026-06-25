@@ -33,6 +33,42 @@ def build_changelog_entry(date_str, affected_bundles_dict):
     }
 
 
+def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
+    """Assign scan_numbers to incoming apps and merge into buffer."""
+    for bundle_entry in incoming:
+        b_key = f"{bundle_entry['bundle']}:{bundle_entry['channel']}"
+
+        if b_key not in buffer_bundles:
+            apps = []
+            for a in bundle_entry.get("apps", []):
+                app_entry = dict(a)
+                app_entry["scan_numbers"] = [scan_counter]
+                apps.append(app_entry)
+            buffer_bundles[b_key] = {
+                "bundle": bundle_entry["bundle"],
+                "channel": bundle_entry["channel"],
+                "badge_type": bundle_entry["badge_type"],
+                "apps": apps
+            }
+        else:
+            existing = buffer_bundles[b_key]
+            if BUNDLE_PRECEDENCE.get(bundle_entry["badge_type"], 99) < BUNDLE_PRECEDENCE.get(existing["badge_type"], 99):
+                existing["badge_type"] = bundle_entry["badge_type"]
+
+            existing_app_map = {a["package"]: a for a in existing["apps"]}
+            for app in bundle_entry.get("apps", []):
+                if app["package"] not in existing_app_map:
+                    new_app = dict(app)
+                    new_app["scan_numbers"] = [scan_counter]
+                    existing["apps"].append(new_app)
+                else:
+                    extant = existing_app_map[app["package"]]
+                    if APP_PRECEDENCE.get(app["badge_type"], 99) < APP_PRECEDENCE.get(extant["badge_type"], 99):
+                        extant["badge_type"] = app["badge_type"]
+                    if scan_counter not in extant.get("scan_numbers", []):
+                        extant.setdefault("scan_numbers", []).append(scan_counter)
+
+
 def generate_markdown_changelog(date_str, affected_bundles_dict):
     """Generates a clean Markdown changelog block for the day."""
     lines = [f"## [{date_str}]"]
@@ -61,6 +97,12 @@ def generate_markdown_changelog(date_str, affected_bundles_dict):
             if existing:
                 if APP_PRECEDENCE.get(app["badge_type"], 99) < APP_PRECEDENCE.get(existing["badge_type"], 99):
                     existing["badge_type"] = app["badge_type"]
+                app_scan = app.get("scan_numbers", [])
+                if app_scan:
+                    existing.setdefault("scan_numbers", [])
+                    for sn in app_scan:
+                        if sn not in existing["scan_numbers"]:
+                            existing["scan_numbers"].append(sn)
             else:
                 updates_by_bundle[b_name]["apps"].append(dict(app))
         if BUNDLE_PRECEDENCE.get(info["badge_type"], 99) < BUNDLE_PRECEDENCE.get(updates_by_bundle[b_name]["badge_type"], 99):
@@ -259,16 +301,17 @@ def update_daily_buffer_run():
         buffer_data = {
             "date": today_str,
             "lastChecked": now_utc_iso(),
+            "scan_counter": 0,
             "affected_bundles": {}
         }
     elif not buffer_data.get("date"):
         buffer_data = {
             "date": today_str,
             "lastChecked": now_utc_iso(),
+            "scan_counter": 0,
             "affected_bundles": {}
         }
     else:
-        # Update lastChecked for the current day
         buffer_data["lastChecked"] = now_utc_iso()
 
     # Load current run diff
@@ -276,35 +319,15 @@ def update_daily_buffer_run():
     diff_result = load_json(diff_path, default={"affected_bundles": []})
     incoming = diff_result.get("affected_bundles", [])
 
-    # Merge incoming affected_bundles into buffer
+    # Increment scan counter if there are incoming changes
+    scan_counter = buffer_data.get("scan_counter", 0)
+    if incoming:
+        scan_counter += 1
+        buffer_data["scan_counter"] = scan_counter
+
+    # Merge incoming affected_bundles into buffer with scan numbers
     buffer_bundles = buffer_data.setdefault("affected_bundles", {})
-
-    for bundle_entry in incoming:
-        b_key = f"{bundle_entry['bundle']}:{bundle_entry['channel']}"
-
-        if b_key not in buffer_bundles:
-            # Fresh entry — copy it wholesale
-            buffer_bundles[b_key] = {
-                "bundle": bundle_entry["bundle"],
-                "channel": bundle_entry["channel"],
-                "badge_type": bundle_entry["badge_type"],
-                "apps": [dict(a) for a in bundle_entry.get("apps", [])]
-            }
-        else:
-            existing = buffer_bundles[b_key]
-            # badge_type precedence: NEW BUNDLE > UPDATED
-            if BUNDLE_PRECEDENCE.get(bundle_entry["badge_type"], 99) < BUNDLE_PRECEDENCE.get(existing["badge_type"], 99):
-                existing["badge_type"] = bundle_entry["badge_type"]
-
-            # Merge apps with status precedence
-            existing_app_map = {a["package"]: a for a in existing["apps"]}
-            for app in bundle_entry.get("apps", []):
-                if app["package"] not in existing_app_map:
-                    existing["apps"].append(dict(app))
-                else:
-                    extant = existing_app_map[app["package"]]
-                    if APP_PRECEDENCE.get(app["badge_type"], 99) < APP_PRECEDENCE.get(extant["badge_type"], 99):
-                        extant["badge_type"] = app["badge_type"]
+    assign_scan_numbers(buffer_bundles, incoming, scan_counter)
 
     # Save daily buffer
     save_daily_buffer(buffer_data)

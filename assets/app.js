@@ -1,17 +1,11 @@
 // Dynamic UI engine
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("[MorpheTracker] DOM ready - determining page type");
-
     const isDashboard = document.getElementById("nav-dashboard") && document.getElementById("nav-dashboard").classList.contains("active");
     const isChangelog = document.getElementById("nav-changelog") && document.getElementById("nav-changelog").classList.contains("active");
 
-    console.log("[MorpheTracker] Page detection - isDashboard:", isDashboard, "| isChangelog:", isChangelog);
-
     if (isDashboard) {
-        console.log("[MorpheTracker] Initializing Dashboard page");
         initDashboard();
     } else if (isChangelog) {
-        console.log("[MorpheTracker] Initializing Changelog page");
         initChangelog();
     } else {
         console.warn("[MorpheTracker] Could not determine page type!");
@@ -88,7 +82,7 @@ function isAppPreRelease(bundleName, pkgName, bundlesData) {
     return inDev && !inStable;
 }
 
-const APP_VERSION = "2";
+const APP_VERSION = "3";
 const APP_VERSION_KEY = "morphe_app_version";
 
 const storedAppVersion = localStorage.getItem(APP_VERSION_KEY);
@@ -105,17 +99,67 @@ let currentFilters = {
     search: "",
     channel: "all"
 };
+let cachedLastRun = "";
+
+// ── IndexedDB Cache ──────────────────────────────────────────────────────────
+function idbSet(key, val) {
+    return new Promise(function(resolve) {
+        var req = indexedDB.open('MorpheTrackerCache', 1);
+        req.onupgradeneeded = function(e) { e.target.result.createObjectStore('store'); };
+        req.onsuccess = function(e) {
+            var db = e.target.result;
+            var tx = db.transaction('store', 'readwrite');
+            tx.objectStore('store').put(val, key);
+            tx.oncomplete = function() { db.close(); resolve(); };
+            tx.onerror = function() { db.close(); resolve(); };
+        };
+        req.onerror = function() { resolve(); };
+    });
+}
+
+function idbGet(key) {
+    return new Promise(function(resolve) {
+        var req = indexedDB.open('MorpheTrackerCache', 1);
+        req.onupgradeneeded = function(e) { e.target.result.createObjectStore('store'); };
+        req.onsuccess = function(e) {
+            var db = e.target.result;
+            var tx = db.transaction('store', 'readonly');
+            var store = tx.objectStore('store').get(key);
+            store.onsuccess = function() { db.close(); resolve(store.result); };
+            store.onerror = function() { db.close(); resolve(null); };
+        };
+        req.onerror = function() { resolve(null); };
+    });
+}
 
 function initDashboard() {
     const checkingEl = document.getElementById("checking-message");
     const skelUpdates = document.getElementById("skeleton-updates");
     const skelGrid = document.getElementById("skeleton-grid");
 
-    const isSessionChecked = sessionStorage.getItem("morphe_checked");
+    // Load cached data instantly from IndexedDB
+    Promise.all([idbGet('live'), idbGet('icons')]).then(function(items) {
+        if (items[0] && items[1]) {
+            cachedLastRun = items[0].last_run || items[0].lastChecked || "";
+            if (checkingEl) checkingEl.style.display = "none";
+            if (skelUpdates) skelUpdates.style.display = "none";
+            if (skelGrid) skelGrid.style.display = "none";
+            iconCache = items[1];
+            renderStats(items[0]);
+            allBundlesData = {};
+            for (const [key, b] of Object.entries(items[0].bundles || {})) {
+                allBundlesData[key] = { ...b, key: key };
+            }
+            renderTodayUpdates(items[0]);
+            setupDashboardFilters();
+            filterAndRenderBundles();
+            scrollToHighlightedBundle();
+        }
+    }).catch(function() {});
 
+    // Background check for fresh data
+    const isSessionChecked = sessionStorage.getItem("morphe_checked");
     if (isSessionChecked) {
-        if (checkingEl) checkingEl.style.display = "none";
-        if (skelUpdates) skelUpdates.style.display = "block";
         fetchAndRenderDashboard();
     } else {
         if (checkingEl) checkingEl.style.display = "block";
@@ -186,6 +230,12 @@ function fetchAndRenderDashboard() {
 }
 
 function finalizeDashboard(data, cache) {
+    var newRun = data.last_run || data.lastChecked || "";
+    if (newRun && newRun === cachedLastRun && Object.keys(allBundlesData).length > 0) {
+        return;
+    }
+    cachedLastRun = newRun;
+
     iconCache = cache;
 
     const checkingEl = document.getElementById("checking-message");
@@ -207,7 +257,8 @@ function finalizeDashboard(data, cache) {
     filterAndRenderBundles();
     scrollToHighlightedBundle();
 
-    console.log("[MorpheTracker] Dashboard initialization complete");
+    idbSet('live', data);
+    idbSet('icons', cache);
 }
 
 // Re-run highlight on same-page hash changes (e.g. clicking bundle links in Today's Updates)
@@ -333,6 +384,9 @@ function renderTodayUpdates(data) {
                 var preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
                 var iconUrl = getAppIconUrl(app);
                 var appIconHtml3 = iconUrl ? '<a href="https://play.google.com/store/apps/details?id=' + encodeURIComponent(app.package) + '" target="_blank" class="app-icon-link">' + getAppIconHtml(iconUrl) + '</a>' : '';
+                var scanBadges = (app.scan_numbers || []).map(function(sn) {
+                    return '<span class="badge badge-scan">#' + sn + '</span>';
+                }).join(' ');
 
                 var appRow = document.createElement("div");
                 appRow.className = "update-row";
@@ -340,7 +394,7 @@ function renderTodayUpdates(data) {
                     badgeHtml,
                     preReleaseBadge,
                     appIconHtml3,
-                    '<span><strong class="changelog-app-link">' + escHtml(app.app_name) + '</strong></span>'
+                    '<span><strong class="changelog-app-link">' + escHtml(app.app_name) + '</strong> ' + scanBadges + '</span>'
                 ].join(' ');
 
                 var linkEl = appRow.querySelector(".changelog-app-link");
@@ -412,13 +466,8 @@ function setupDashboardFilters() {
 }
 
 function filterAndRenderBundles() {
-    console.log("[MorpheTracker] filterAndRenderBundles() called - channel:", currentFilters.channel, "| search:", currentFilters.search);
-
     const container = document.getElementById("bundles-grid-container");
-    if (!container) {
-        console.warn("[MorpheTracker] bundles-grid-container not found");
-        return;
-    }
+    if (!container) return;
 
     // Group all bundles by bundle name, merging channels and deduplicating apps
     const grouped = {};
@@ -457,7 +506,6 @@ function filterAndRenderBundles() {
     });
 
     let list = Object.values(grouped);
-    console.log("[MorpheTracker] Grouped into", list.length, "bundle cards (before filter)");
 
     // Apply search filter
     if (currentFilters.search) {
@@ -470,7 +518,6 @@ function filterAndRenderBundles() {
             );
             return matchBundle || matchApp;
         });
-        console.log("[MorpheTracker] After search filter:", list.length, "cards");
     }
 
     // Sort: priority list first, then by app count descending, then alphabetical
@@ -490,18 +537,15 @@ function filterAndRenderBundles() {
     });
 
     if (list.length === 0) {
-        console.log("[MorpheTracker] No matching bundles, showing empty state");
         container.innerHTML = '<div class="loading-state">No matching Morphe bundles found.</div>';
         return;
     }
 
     container.innerHTML = "";
-    console.log("[MorpheTracker] Rendering", list.length, "bundle cards");
     list.forEach(b => {
         const card = buildBundleCard(b);
         container.appendChild(card);
     });
-    console.log("[MorpheTracker] Bundle cards rendered successfully");
 }
 
 // Safely escape HTML special characters
@@ -536,9 +580,21 @@ function groupAffectedBundles(affectedBundles) {
         (b.apps || []).forEach(function(app) {
             const existing = grouped[bName].apps.find(function(a) { return a.package === app.package; });
             if (!existing) {
-                grouped[bName].apps.push({...app});
-            } else if (appPrecedence[app.badge_type] < appPrecedence[existing.badge_type]) {
-                existing.badge_type = app.badge_type;
+                const merged = {...app};
+                merged.scan_numbers = app.scan_numbers ? [...app.scan_numbers] : [];
+                grouped[bName].apps.push(merged);
+            } else {
+                if (appPrecedence[app.badge_type] < appPrecedence[existing.badge_type]) {
+                    existing.badge_type = app.badge_type;
+                }
+                if (app.scan_numbers) {
+                    app.scan_numbers.forEach(function(sn) {
+                        if (!existing.scan_numbers) existing.scan_numbers = [];
+                        if (existing.scan_numbers.indexOf(sn) === -1) {
+                            existing.scan_numbers.push(sn);
+                        }
+                    });
+                }
             }
         });
         if (b.badge_type === "NEW BUNDLE") {
@@ -570,8 +626,6 @@ const gitlabSvg = '<svg viewBox="0 0 24 24" width="18" height="18" fill="current
 
 // Build a single bundle card element
 function buildBundleCard(bundle) {
-    console.log("[MorpheTracker] buildBundleCard() for bundle:", bundle.bundle, "apps:", (bundle.apps || []).length);
-
     const card = document.createElement("div");
     card.className = "bundle-card";
     card.dataset.bundleName = bundle.bundle;
@@ -622,9 +676,7 @@ function buildBundleCard(bundle) {
     buildAppCardsDrawer(card, bundle, apps);
 
     card.addEventListener("click", function(e) {
-        console.log("[MorpheTracker] Bundle card clicked:", bundle.bundle, "current expanded:", card.classList.contains("expanded"));
         card.classList.toggle("expanded");
-        // Acknowledge version — mark as seen on expand
         if (bundle.version) {
             const storedVersions = JSON.parse(localStorage.getItem("morphe_versions") || "{}");
             if (storedVersions[bundle.bundle] !== bundle.version) {
@@ -632,10 +684,7 @@ function buildBundleCard(bundle) {
                 localStorage.setItem("morphe_versions", JSON.stringify(storedVersions));
             }
         }
-        console.log("[MorpheTracker] Card now expanded:", card.classList.contains("expanded"));
     });
-
-    console.log("[MorpheTracker] Bundle card built for:", bundle.bundle);
     return card;
 }
 
@@ -980,42 +1029,44 @@ document.addEventListener("DOMContentLoaded", () => {
 // ── Changelog ─────────────────────────────────────────────────────────────────
 
 function initChangelog() {
-    console.log("[MorpheTracker] initChangelog() started - fetching changelog.json, live.json, and icon cache");
+    // Load cached data instantly
+    var cachedHtml = document.getElementById("skeleton-changelog");
+    Promise.all([idbGet('changelog'), idbGet('live'), idbGet('icons')]).then(function(items) {
+        if (items[0] && items[1] && items[2]) {
+            if (cachedHtml) cachedHtml.style.display = "none";
+            iconCache = items[2];
+            renderChangelog(items[0], (items[1].bundles || {}));
+        }
+    }).catch(function() {});
 
+    // Fetch fresh data in background
     Promise.all([
-        fetch("data/changelog.json").then(res => {
-            console.log("[MorpheTracker] changelog.json fetch status:", res.status, res.statusText);
+        fetch("data/changelog.json").then(function(res) {
             if (!res.ok) throw new Error("Changelog status " + res.status);
             return res.json();
         }),
-        fetch("data/live.json").then(res => {
-            console.log("[MorpheTracker] live.json (changelog) fetch status:", res.status, res.statusText);
+        fetch("data/live.json").then(function(res) {
             if (!res.ok) throw new Error("Live status " + res.status);
             return res.json();
         }),
         fetch("data/state/icon_cache.json")
-            .then(res => {
-                console.log("[MorpheTracker] icon_cache.json (changelog) fetch status:", res.status, res.statusText);
-                return res.ok ? res.json() : {};
-            })
-            .catch(() => ({}))
+            .then(function(res) { return res.ok ? res.json() : {}; })
+            .catch(function() { return {}; })
     ])
-    .then(([changelog, liveData, cache]) => {
-        console.log("[MorpheTracker] Changelog data loaded. Entries:", changelog ? changelog.length : 0);
-        const skelChangelog = document.getElementById("skeleton-changelog");
-        if (skelChangelog) skelChangelog.style.display = "none";
-        iconCache = cache;
-        renderChangelog(changelog, liveData.bundles);
-        console.log("[MorpheTracker] Changelog rendering complete");
+    .then(function(items) {
+        if (cachedHtml) cachedHtml.style.display = "none";
+        iconCache = items[2];
+        renderChangelog(items[0], (items[1].bundles || {}));
+        idbSet('changelog', items[0]);
+        idbSet('live', items[1]);
+        idbSet('icons', items[2]);
     })
-    .catch(err => {
+    .catch(function(err) {
         console.error("[MorpheTracker] ERROR loading changelog data:", err);
-        console.error("[MorpheTracker] Stack:", err.stack);
-        const skelChangelog = document.getElementById("skeleton-changelog");
-        if (skelChangelog) skelChangelog.style.display = "none";
-        const container = document.getElementById("changelog-list-container");
+        if (cachedHtml) cachedHtml.style.display = "none";
+        var container = document.getElementById("changelog-list-container");
         if (container) {
-            container.innerHTML = `<div class="error-state">Failed to load changelog data: ${err.message}. Ensure data/changelog.json and data/live.json are generated.</div>`;
+            container.innerHTML = '<div class="error-state">Failed to load changelog data: ' + err.message + '. Ensure data/changelog.json and data/live.json are generated.</div>';
         }
     });
 }
@@ -1096,6 +1147,7 @@ function renderChangelog(changelog, bundlesData) {
                     const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
                     const appIconHtml4 = getAppIconHtml(getAppIconUrl(app));
                     const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${app.app_name}</a>`;
+                    const scanBadges = (app.scan_numbers || []).map(sn => `<span class="badge badge-scan">#${sn}</span>`).join(' ');
 
                     appsListHtml += `
                         <li class="changelog-item">
@@ -1103,7 +1155,7 @@ function renderChangelog(changelog, bundlesData) {
                                 ${badgeHtml}
                                 ${preReleaseBadge}
                                 ${appIconHtml4}
-                                <span><strong class="highlight-app">${playLink}</strong></span>
+                                <span><strong class="highlight-app">${playLink}</strong> ${scanBadges}</span>
                             </div>
                         </li>
                     `;
