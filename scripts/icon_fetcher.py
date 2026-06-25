@@ -114,6 +114,24 @@ def fetch_and_cache_app_name(package_name):
     return name or ""
 
 
+def _clean_play_store_name(name):
+    """Strip common Play Store suffixes from an app name."""
+    suffixes = [
+        " - Apps on Google Play",
+        " - Google Play",
+        " - Aplicaciones en Google Play",
+        " - App su Google Play",
+        " - Google Play のアプリ",
+        " - Google Play 앱",
+        " - Google Play 上的应用",
+        " - Google Play 上的應用程式",
+    ]
+    for suffix in suffixes:
+        if name.endswith(suffix):
+            return name[: -len(suffix)].strip()
+    return name
+
+
 def fetch_app_name_internal(pkg):
     """Internal: fetch app name from Play Store without caching."""
     url = PLAY_STORE_URL.format(pkg)
@@ -129,7 +147,7 @@ def fetch_app_name_internal(pkg):
         if og_title and og_title.get("content"):
             name = og_title["content"].strip()
             if name:
-                return name
+                return _clean_play_store_name(name)
     except Exception:
         pass
 
@@ -137,10 +155,7 @@ def fetch_app_name_internal(pkg):
         title_tag = soup.find("title")
         if title_tag and title_tag.string:
             title = title_tag.string.strip()
-            for suffix in [" - Apps on Google Play", " - Google Play"]:
-                if title.endswith(suffix):
-                    return title[: -len(suffix)].strip()
-            return title
+            return _clean_play_store_name(title)
     except Exception:
         pass
 
