@@ -828,23 +828,34 @@ function openAppModal(app, bundle) {
         currentChannel: "stable"
     };
 
+    // Show/hide toggle buttons based on available channels
+    var stableBtn = document.querySelector('.channel-toggle-btn[data-channel="stable"]');
+    var devBtn = document.querySelector('.channel-toggle-btn[data-channel="dev"]');
+    if (stableBtn) stableBtn.style.display = stableAppData ? "" : "none";
+    if (devBtn) devBtn.style.display = devAppData ? "" : "none";
+
+    // Determine default channel
+    var defaultChannel = "stable";
+    if (!stableAppData && devAppData) defaultChannel = "dev";
+
     // Wire up toggle buttons
-    const toggleBtns = document.querySelectorAll(".channel-toggle-btn");
-    toggleBtns.forEach(btn => {
+    var toggleBtns = document.querySelectorAll(".channel-toggle-btn");
+    toggleBtns.forEach(function(btn) {
         btn.onclick = null;
         btn.addEventListener("click", function() {
-            const channel = this.getAttribute("data-channel");
-            toggleBtns.forEach(b => b.classList.remove("active"));
+            var channel = this.getAttribute("data-channel");
+            toggleBtns.forEach(function(b) { b.classList.remove("active"); });
             this.classList.add("active");
             modalState.currentChannel = channel;
             renderModalChannel();
         });
     });
 
-    // Default to stable
-    toggleBtns.forEach(b => b.classList.remove("active"));
-    document.querySelector('.channel-toggle-btn[data-channel="stable"]').classList.add("active");
-    modalState.currentChannel = "stable";
+    // Default to the available channel
+    toggleBtns.forEach(function(b) { b.classList.remove("active"); });
+    var activeBtn = document.querySelector('.channel-toggle-btn[data-channel="' + defaultChannel + '"]');
+    if (activeBtn) activeBtn.classList.add("active");
+    modalState.currentChannel = defaultChannel;
     renderModalChannel();
 
     // Show modal
