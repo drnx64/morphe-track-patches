@@ -158,6 +158,8 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    min-width: 0;
+    overflow-x: hidden;
 }
 
 @media (min-width: 640px) {
@@ -167,7 +169,8 @@ h1 {
 /* ── Today's Updates ─────────────────────────────────── */
 .today-updates-section,
 .stats-section,
-.bundles-section { width: 100%; max-width: 100%; }
+.bundles-section,
+.changelog-section { width: 100%; max-width: 100%; min-width: 0; }
 
 .updates-card {
     background: var(--bg-card);
@@ -215,6 +218,9 @@ h1 {
     font-size: 0.88rem;
     flex-wrap: wrap;
     line-height: 1.6;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 /* ── Badges ──────────────────────────────────────────── */
@@ -411,6 +417,9 @@ h1 {
     position: relative;
     transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
     touch-action: manipulation;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .bundle-card:hover {
@@ -868,6 +877,7 @@ h1 {
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
     padding-right: 4px;
+    min-width: 0;
 }
 
 .changelog-list::-webkit-scrollbar { width: 4px; }
@@ -879,6 +889,9 @@ h1 {
     border-radius: var(--border-radius);
     padding: 1.25rem;
     backdrop-filter: blur(10px);
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .changelog-date-header {
@@ -921,6 +934,9 @@ h1 {
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .changelog-bundle-group { margin-bottom: 1.25rem; }
@@ -946,6 +962,9 @@ h1 {
     font-weight: 600;
     margin-bottom: 0.4rem;
     flex-wrap: wrap;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .changelog-bundle-apps {
