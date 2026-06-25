@@ -105,7 +105,7 @@ def fetch_and_cache_app_name(package_name):
     if pkg in cache:
         cached = cache[pkg]
         if isinstance(cached, str):
-            return cached
+            return _clean_play_store_name(cached)
         return ""
 
     name = fetch_app_name_internal(pkg)
@@ -190,7 +190,7 @@ def enrich_parsed_bundles_with_names(parsed_bundles):
             pkg = app.get("package", "").lower().strip()
             play_name = cache.get(pkg, "")
             if isinstance(play_name, str) and play_name:
-                app["app_name"] = play_name
+                app["app_name"] = _clean_play_store_name(play_name)
 
     return parsed_bundles
 

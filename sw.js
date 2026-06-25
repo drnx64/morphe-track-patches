@@ -87,13 +87,17 @@ async function staleWhileRevalidate(request) {
     .catch(() => cached);
 
   if (cached) {
-    fetchPromise.then((fresh) => {
-      if (fresh && fresh.ok && fresh.url === cached.url) {
-        self.clients.matchAll().then((clients) => {
-          clients.forEach((client) => {
-            client.postMessage({ type: "DATA_UPDATED", url: request.url });
+    fetchPromise.then(async (fresh) => {
+      if (fresh && fresh.ok) {
+        const freshText = await fresh.clone().text();
+        const cachedText = await cached.clone().text();
+        if (freshText !== cachedText) {
+          self.clients.matchAll().then((clients) => {
+            clients.forEach((client) => {
+              client.postMessage({ type: "DATA_UPDATED", url: request.url });
+            });
           });
-        });
+        }
       }
     });
     return cached;

@@ -109,6 +109,7 @@ def load_daily_buffer():
     return load_json(DAILY_BUFFER_PATH, default={
         "date": "",
         "lastChecked": "",
+        "scan_counter": 0,
         "affected_bundles": {}
     })
 
