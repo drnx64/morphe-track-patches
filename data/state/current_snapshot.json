@@ -20796,8 +20796,302 @@
     "bundle": "brosssh",
     "channel": "dev",
     "repo_url": "https://github.com/brosssh/morphe-patches",
-    "created_at": "2026-06-25T13:48:32",
-    "version": "v2.8.0-dev.3",
+    "created_at": "2026-06-25T20:17:37",
+    "version": "v2.8.1-dev.2",
+    "apps": [
+      {
+        "app_name": "Instagram",
+        "package": "com.instagram.android",
+        "patches": [
+          {
+            "name": "Bypass signature check",
+            "description": "",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Clone",
+            "description": "Changes the package name and the app name. This allows you to install the patched app alongside the original Instagram app.\nCaution: Do not select the official Morphe's \"Change package name\" universal patch.",
+            "use": false,
+            "options": [
+              {
+                "key": "packageName",
+                "description": "A new package name for the patched app."
+              },
+              {
+                "key": "appName",
+                "description": "A new app name (label). Entering \"Instagram\" will skip changing the app name."
+              }
+            ],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Disable Reels scrolling",
+            "description": "Disables the endless scrolling behavior in Instagram Reels, preventing swiping to the next Reel. Note: On a clean install, the 'Tip' animation may appear but will stop on its own after a few seconds.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Disable story auto flipping",
+            "description": "Disable stories automatically flipping/skipping after some seconds.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Disable video autoplay",
+            "description": "Disable video autoplay from feed",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide ads",
+            "description": "",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide all stories",
+            "description": "Hides all stories from the tray in the feed page.\nYou may need to clean app data after the initial use of this patch to see its effects.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide explore feed",
+            "description": "Hides posts and reels from the explore/search page.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide feed content",
+            "description": "Hide the feed content, leaving only stories in the home page.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide Instants",
+            "description": "Hides Instants from DMs page.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide navigation buttons",
+            "description": "Hides navigation bar buttons, such as the Reels and Create button. Choose what button to hide using the patch options.",
+            "use": true,
+            "options": [
+              {
+                "key": "hideHome",
+                "description": "Permanently hides the Home button. App starts at next available tab."
+              },
+              {
+                "key": "hideReels",
+                "description": "Permanently hides the Reels button."
+              },
+              {
+                "key": "hideDirect",
+                "description": "Permanently hides the Direct button."
+              },
+              {
+                "key": "hideSearch",
+                "description": "Permanently hides the Search button."
+              },
+              {
+                "key": "hideProfile",
+                "description": "Permanently hides the Profile button."
+              },
+              {
+                "key": "hideCreate",
+                "description": "Permanently hides the Create button."
+              }
+            ],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide notes tray",
+            "description": "Hides the notes tray from the direct tab.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide Reels save button",
+            "description": "",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide reshare button",
+            "description": "Hides the reshare button from both posts and reels.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide suggested content",
+            "description": "Choose the suggested content to hide using the patch options.",
+            "use": true,
+            "options": [
+              {
+                "key": "hideSuggestedReels",
+                "description": "Hides suggested reels from feed and reels tab."
+              },
+              {
+                "key": "hideSuggestedStories",
+                "description": "Hides suggested stories/users from story tray."
+              },
+              {
+                "key": "hideHighlightStories",
+                "description": "Hides highlighted stories from story tray, sponsored stories which have no set expiration."
+              },
+              {
+                "key": "hideSuggestedAccount",
+                "description": "Hides suggested accounts from the list of followers and from other profiles."
+              }
+            ],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Hide Threads profile button",
+            "description": "Hides the Threads button from the profile page action bar (top right of the profile page).",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Limit feed to following profiles",
+            "description": "Filters the home feed to display only content from profiles you follow.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          },
+          {
+            "name": "Remove build expired popup",
+            "description": "Removes the popup that appears after a while, when the app version ages.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "435.0.0.37.76"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/yHi59jmO_lVamcyJ1i3rM1_E8bAiAspShnGjjURq05ipQQSUksO3QVEsXTegRSqul038-4YNA7O644XAcx251Q"
+      },
+      {
+        "app_name": "Mapy.com: Offline Outdoor Maps",
+        "package": "cz.seznam.mapy",
+        "patches": [
+          {
+            "name": "Unlock premium features",
+            "description": "",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.5.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/HDxpj_c6Nhf7wDAErKy6JknknJQLthDi4HKx1PRQno2RD28iuBv0b2eRcm1ZEdy_2r4FindeqVsdCU_5m1Bcbwc"
+      },
+      {
+        "app_name": "komoot - hike, bike & run",
+        "package": "de.komoot.android",
+        "patches": [
+          {
+            "name": "Unlock Premium features",
+            "description": "Unlock Premium features. Some features are not possible to patch (server sided), such as saving a multi-days hike.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2025.38.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/IyQKMI6etTvtjEv6pSzQ4TnTlfKWbwT39vQMO4vpBlzQJfGKdA9zZ38sOXtt0yuZbwJBdKoP_RNPZnQiTuaceg"
+      },
+      {
+        "app_name": "Chargeprice: EV map & prices",
+        "package": "fr.chargeprice.app",
+        "patches": [
+          {
+            "name": "Unlock Premium features",
+            "description": "Unlock Premium features. You have to be logged in with an account.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.9.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/2ofyHFDtgKkSvDonTT3HIqMI3DuTbMYKU1oxwojwkrb3AzayF6QFLfg6KUf4hgLAB_0dGLCmTGz3CytfKXsbww"
+      },
+      {
+        "app_name": "park4night - Motorhome camper",
+        "package": "fr.tramb.park4night",
+        "patches": [
+          {
+            "name": "Unlock Pro features",
+            "description": "Unlock Pro features (park4night +). You have to be logged in with an account.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.1.11"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/BwBPqdRT0ibqDIF_38u-LZD55vx8IXJ19T8uJcoIzrGgsr1kJUKOJpfWX3dKKK6E4Q3QaTT2xG7TlCOvdOWC"
+      }
+    ],
+    "fingerprint": "839bb751ac9ea447d446f6d8a29d9dd9a3289ffc54f8a9b56d258118a3cff498"
+  },
+  "brosssh:stable": {
+    "bundle": "brosssh",
+    "channel": "stable",
+    "repo_url": "https://github.com/brosssh/morphe-patches",
+    "created_at": "2026-06-25T20:00:02",
+    "version": "v2.8.0",
     "apps": [
       {
         "app_name": "Instagram",
@@ -21084,293 +21378,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/BwBPqdRT0ibqDIF_38u-LZD55vx8IXJ19T8uJcoIzrGgsr1kJUKOJpfWX3dKKK6E4Q3QaTT2xG7TlCOvdOWC"
       }
     ],
-    "fingerprint": "79c73bd8f22f7185f25359a3b0603b6562583bf984f60a0cd4f6fc794edab04d"
-  },
-  "brosssh:stable": {
-    "bundle": "brosssh",
-    "channel": "stable",
-    "repo_url": "https://github.com/brosssh/morphe-patches",
-    "created_at": "2026-06-21T17:31:48",
-    "version": "v2.7.0",
-    "apps": [
-      {
-        "app_name": "Instagram",
-        "package": "com.instagram.android",
-        "patches": [
-          {
-            "name": "Bypass signature check",
-            "description": "",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Clone",
-            "description": "Changes the package name and the app name. This allows you to install the patched app alongside the original Instagram app.\nCaution: Do not select the official Morphe's \"Change package name\" universal patch.",
-            "use": false,
-            "options": [
-              {
-                "key": "packageName",
-                "description": "A new package name for the patched app."
-              },
-              {
-                "key": "appName",
-                "description": "A new app name (label). Entering \"Instagram\" will skip changing the app name."
-              }
-            ],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Disable Reels scrolling",
-            "description": "Disables the endless scrolling behavior in Instagram Reels, preventing swiping to the next Reel. Note: On a clean install, the 'Tip' animation may appear but will stop on its own after a few seconds.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Disable story auto flipping",
-            "description": "Disable stories automatically flipping/skipping after some seconds.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Disable video autoplay",
-            "description": "Disable video autoplay from feed",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide ads",
-            "description": "",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide explore feed",
-            "description": "Hides posts and reels from the explore/search page.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide feed content",
-            "description": "Hide the feed content, leaving only stories in the home page.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide Instants",
-            "description": "Hides Instants from DMs page.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide navigation buttons",
-            "description": "Hides navigation bar buttons, such as the Reels and Create button. Choose what button to hide using the patch options.",
-            "use": true,
-            "options": [
-              {
-                "key": "hideHome",
-                "description": "Permanently hides the Home button. App starts at next available tab."
-              },
-              {
-                "key": "hideReels",
-                "description": "Permanently hides the Reels button."
-              },
-              {
-                "key": "hideDirect",
-                "description": "Permanently hides the Direct button."
-              },
-              {
-                "key": "hideSearch",
-                "description": "Permanently hides the Search button."
-              },
-              {
-                "key": "hideProfile",
-                "description": "Permanently hides the Profile button."
-              },
-              {
-                "key": "hideCreate",
-                "description": "Permanently hides the Create button."
-              }
-            ],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide notes tray",
-            "description": "Hides the notes tray from the direct tab.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide Reels save button",
-            "description": "",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide reshare button",
-            "description": "Hides the reshare button from both posts and reels.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide Stories from Home",
-            "description": "Hides Stories from the main page, by removing the buttons.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide suggested content",
-            "description": "Choose the suggested content to hide using the patch options.",
-            "use": true,
-            "options": [
-              {
-                "key": "hideSuggestedReels",
-                "description": "Hides suggested reels from feed and reels tab."
-              },
-              {
-                "key": "hideSuggestedStories",
-                "description": "Hides suggested stories/users from story tray."
-              }
-            ],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Hide Threads profile button",
-            "description": "Hides the Threads button from the profile page action bar (top right of the profile page).",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Limit feed to following profiles",
-            "description": "Filters the home feed to display only content from profiles you follow.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          },
-          {
-            "name": "Remove build expired popup",
-            "description": "Removes the popup that appears after a while, when the app version ages.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "430.0.0.53.80"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/yHi59jmO_lVamcyJ1i3rM1_E8bAiAspShnGjjURq05ipQQSUksO3QVEsXTegRSqul038-4YNA7O644XAcx251Q"
-      },
-      {
-        "app_name": "Mapy.com: Offline Outdoor Maps",
-        "package": "cz.seznam.mapy",
-        "patches": [
-          {
-            "name": "Unlock premium features",
-            "description": "",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.5.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/HDxpj_c6Nhf7wDAErKy6JknknJQLthDi4HKx1PRQno2RD28iuBv0b2eRcm1ZEdy_2r4FindeqVsdCU_5m1Bcbwc"
-      },
-      {
-        "app_name": "komoot - hike, bike & run",
-        "package": "de.komoot.android",
-        "patches": [
-          {
-            "name": "Unlock Premium features",
-            "description": "Unlock Premium features. Some features are not possible to patch (server sided), such as saving a multi-days hike.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2025.38.2"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/IyQKMI6etTvtjEv6pSzQ4TnTlfKWbwT39vQMO4vpBlzQJfGKdA9zZ38sOXtt0yuZbwJBdKoP_RNPZnQiTuaceg"
-      },
-      {
-        "app_name": "Chargeprice: EV map & prices",
-        "package": "fr.chargeprice.app",
-        "patches": [
-          {
-            "name": "Unlock Premium features",
-            "description": "Unlock Premium features. You have to be logged in with an account.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.9.2"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/2ofyHFDtgKkSvDonTT3HIqMI3DuTbMYKU1oxwojwkrb3AzayF6QFLfg6KUf4hgLAB_0dGLCmTGz3CytfKXsbww"
-      },
-      {
-        "app_name": "park4night - Motorhome camper",
-        "package": "fr.tramb.park4night",
-        "patches": [
-          {
-            "name": "Unlock Pro features",
-            "description": "Unlock Pro features (park4night +). You have to be logged in with an account.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.1.11"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/BwBPqdRT0ibqDIF_38u-LZD55vx8IXJ19T8uJcoIzrGgsr1kJUKOJpfWX3dKKK6E4Q3QaTT2xG7TlCOvdOWC"
-      }
-    ],
-    "fingerprint": "9a20de8af980eff7f4098c61621e485d7416a30fd95db75404afca4808c0c9d6"
+    "fingerprint": "fa46eead8fe874309a1c5a2407247503fa98b867c2b2ed156502d146c4776f45"
   },
   "ameenalasady:dev": {
     "bundle": "ameenalasady",
@@ -34099,8 +34107,8 @@
     "bundle": "piko",
     "channel": "dev",
     "repo_url": "https://github.com/crimera/piko",
-    "created_at": "2026-06-24T19:18:14",
-    "version": "v3.7.0-dev.5",
+    "created_at": "2026-06-25T19:29:14",
+    "version": "v3.7.0-dev.7",
     "apps": [
       {
         "app_name": "Instagram",
@@ -37077,8 +37085,8 @@
     "bundle": "ajstrick81-androidtv",
     "channel": "stable",
     "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-    "created_at": "2026-06-25T03:06:21",
-    "version": "v1.5.3",
+    "created_at": "2026-06-25T18:14:07",
+    "version": "v1.5.4",
     "apps": [
       {
         "app_name": "Prime Video",
@@ -37196,7 +37204,7 @@
         "patches": [
           {
             "name": "Skip ads",
-            "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring across all three OkHttp surfaces (app NetworkingKt client, Sky SDK addon network client, and the SDK root/media client), New Relic agent init no-op, and WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+            "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring across the app NetworkingKt client and the Sky SDK addon network client, New Relic agent init no-op, and WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -37257,7 +37265,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/0Xve4so8vFKdWH1nadrPraSJ2XoKlc2Fd4BToADo0f8gXTbljiwzuEA-OZXV86i5ubZ9uw8giaVVP3d1g_jm"
       }
     ],
-    "fingerprint": "65a50b33c3ece0a77452b0feaaf242e999570c7a7317015f47e67cf0272ad664"
+    "fingerprint": "c0fde35532421debb70a171b7d435eae094b0b4f1f5c51c8f0abcae4f443fc27"
   },
   "polka-bear:dev": {
     "bundle": "polka-bear",
