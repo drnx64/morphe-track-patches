@@ -88,6 +88,17 @@ function isAppPreRelease(bundleName, pkgName, bundlesData) {
     return inDev && !inStable;
 }
 
+const APP_VERSION = "2";
+const APP_VERSION_KEY = "morphe_app_version";
+
+const storedAppVersion = localStorage.getItem(APP_VERSION_KEY);
+if (storedAppVersion !== APP_VERSION) {
+  sessionStorage.removeItem("morphe_checked");
+  localStorage.removeItem("morphe_last_run");
+  localStorage.removeItem("morphe_versions");
+  localStorage.setItem(APP_VERSION_KEY, APP_VERSION);
+}
+
 let allBundlesData = {};
 let iconCache = {};
 let currentFilters = {
@@ -96,53 +107,107 @@ let currentFilters = {
 };
 
 function initDashboard() {
-    console.log("[MorpheTracker] initDashboard() started - fetching live.json and icon cache");
+    const checkingEl = document.getElementById("checking-message");
+    const skelUpdates = document.getElementById("skeleton-updates");
+    const skelGrid = document.getElementById("skeleton-grid");
 
-    Promise.all([
-        fetch("data/live.json").then(res => {
-            console.log("[MorpheTracker] live.json fetch status:", res.status, res.statusText);
-            if (!res.ok) throw new Error("Status " + res.status);
-            return res.json();
-        }),
-        fetch("data/state/icon_cache.json")
-            .then(res => {
-                console.log("[MorpheTracker] icon_cache.json fetch status:", res.status, res.statusText);
-                return res.ok ? res.json() : {};
-            })
-            .catch(() => ({}))
-    ])
-        .then(([data, cache]) => {
-            console.log("[MorpheTracker] live.json loaded successfully. Stats:", data.stats);
-            console.log("[MorpheTracker] Bundle count:", Object.keys(data.bundles || {}).length);
-            console.log("[MorpheTracker] Changes found:", (data.changes?.affected_bundles || []).length);
+    const isSessionChecked = sessionStorage.getItem("morphe_checked");
 
-            iconCache = cache;
-            renderStats(data);
+    if (isSessionChecked) {
+        if (checkingEl) checkingEl.style.display = "none";
+        if (skelUpdates) skelUpdates.style.display = "block";
+        fetchAndRenderDashboard();
+    } else {
+        if (checkingEl) checkingEl.style.display = "block";
+        if (skelUpdates) skelUpdates.style.display = "none";
+        if (checkingEl) checkingEl.textContent = "Checking for updates...";
+        runCheckPhase();
+    }
+}
 
-            // Enrich bundles data with key
-            allBundlesData = {};
-            for (const [key, b] of Object.entries(data.bundles || {})) {
-                allBundlesData[key] = { ...b, key: key };
+function runCheckPhase() {
+    const checkingEl = document.getElementById("checking-message");
+
+    fetch("data/live.json?_t=" + Date.now())
+        .then(r => { if (!r.ok) throw new Error("Status " + r.status); return r.json(); })
+        .then(data => {
+            const lastRun = data.last_run || data.lastChecked || "";
+            const storedRun = localStorage.getItem("morphe_last_run") || "";
+
+            if (lastRun && lastRun !== storedRun) {
+                if (checkingEl) checkingEl.textContent = "New updates found!";
+                localStorage.setItem("morphe_last_run", lastRun);
+                localStorage.setItem("morphe_versions", JSON.stringify(getBundleVersions(data)));
+            } else {
+                if (checkingEl) checkingEl.textContent = "Up to date";
             }
-            console.log("[MorpheTracker] Enriched allBundlesData with", Object.keys(allBundlesData).length, "entries");
 
-            renderTodayUpdates(data);
-            setupDashboardFilters();
-            filterAndRenderBundles();
+            sessionStorage.setItem("morphe_checked", "1");
 
-            // After rendering, check URL hash for a bundle highlight target
-            scrollToHighlightedBundle();
-
-            console.log("[MorpheTracker] Dashboard initialization complete");
+            fetch("data/state/icon_cache.json")
+                .then(r => r.ok ? r.json() : {})
+                .catch(() => ({}))
+                .then(cache => {
+                    setTimeout(() => {
+                        finalizeDashboard(data, cache);
+                    }, 600);
+                });
         })
+        .catch(() => {
+            sessionStorage.setItem("morphe_checked", "1");
+            fetchAndRenderDashboard();
+        });
+}
+
+function getBundleVersions(data) {
+    const versions = {};
+    for (const [key, b] of Object.entries(data.bundles || {})) {
+        const name = b.bundle || key.split(":")[0];
+        if (b.version) {
+            versions[name] = b.version;
+        }
+    }
+    return versions;
+}
+
+function fetchAndRenderDashboard() {
+    Promise.all([
+        fetch("data/live.json").then(r => { if (!r.ok) throw new Error("Status " + r.status); return r.json(); }),
+        fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
+    ])
+        .then(([data, cache]) => finalizeDashboard(data, cache))
         .catch(err => {
             console.error("[MorpheTracker] ERROR loading live.json:", err);
-            console.error("[MorpheTracker] Stack:", err.stack);
             const container = document.getElementById("bundles-grid-container");
             if (container) {
                 container.innerHTML = `<div class="error-state">Failed to load dashboard data: ${err.message}. Ensure data/live.json exists.</div>`;
             }
         });
+}
+
+function finalizeDashboard(data, cache) {
+    iconCache = cache;
+
+    const checkingEl = document.getElementById("checking-message");
+    const skelUpdates = document.getElementById("skeleton-updates");
+    const skelGrid = document.getElementById("skeleton-grid");
+    if (checkingEl) checkingEl.style.display = "none";
+    if (skelUpdates) skelUpdates.style.display = "none";
+    if (skelGrid) skelGrid.style.display = "none";
+
+    renderStats(data);
+
+    allBundlesData = {};
+    for (const [key, b] of Object.entries(data.bundles || {})) {
+        allBundlesData[key] = { ...b, key: key };
+    }
+
+    renderTodayUpdates(data);
+    setupDashboardFilters();
+    filterAndRenderBundles();
+    scrollToHighlightedBundle();
+
+    console.log("[MorpheTracker] Dashboard initialization complete");
 }
 
 // Re-run highlight on same-page hash changes (e.g. clicking bundle links in Today's Updates)
@@ -242,7 +307,7 @@ function renderTodayUpdates(data) {
         } else {
             bundleRow.innerHTML = `
                 <span class="badge badge-updated-bundle">UPDATED</span>
-                <span><a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a> patches</span>
+                <span><a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a></span>
             `;
         }
 
@@ -275,7 +340,7 @@ function renderTodayUpdates(data) {
                     badgeHtml,
                     preReleaseBadge,
                     appIconHtml3,
-                    '<span><strong class="changelog-app-link">' + escHtml(app.app_name) + '</strong> in ' + bName + ' patches</span>'
+                    '<span><strong class="changelog-app-link">' + escHtml(app.app_name) + '</strong></span>'
                 ].join(' ');
 
                 var linkEl = appRow.querySelector(".changelog-app-link");
@@ -369,9 +434,13 @@ function filterAndRenderBundles() {
                 channels: [b.channel],
                 repo_url: b.repo_url,
                 created_at: b.created_at,
+                version: b.version || "",
                 apps: [...(b.apps || [])]
             };
         } else {
+            if (b.version && !grouped[name].version) {
+                grouped[name].version = b.version;
+            }
             if (!grouped[name].channels.includes(b.channel)) {
                 grouped[name].channels.push(b.channel);
             }
@@ -522,11 +591,25 @@ function buildBundleCard(bundle) {
         badgesHtml += '<span class="channel-badge ' + ch + '">' + ch + '</span>';
     });
 
+    let updatedBadge = "";
+    if (bundle.version) {
+        const storedVersions = JSON.parse(localStorage.getItem("morphe_versions") || "{}");
+        const prevVersion = storedVersions[bundle.bundle];
+        if (prevVersion && prevVersion !== bundle.version) {
+            updatedBadge = '<span class="bundle-updated-badge">Updated</span>';
+        }
+    }
+
+    const versionTag = bundle.version
+        ? '<span class="bundle-version-tag">' + escHtml(bundle.version) + '</span>'
+        : "";
+
     card.innerHTML = [
         '<div class="bundle-card-header">',
         '  <div class="bundle-title-group">',
-        '    <span class="bundle-name-title" title="' + escHtml(bundle.bundle) + '">' + escHtml(bundle.bundle) + '</span>',
+        '    <span class="bundle-name-title" title="' + escHtml(bundle.bundle) + '">' + escHtml(bundle.bundle) + updatedBadge + '</span>',
         '    <div class="channel-badges-group">' + badgesHtml + '</div>',
+        '    ' + versionTag,
         '  </div>',
         '  <a href="' + escHtml(bundle.repo_url) + '" class="github-repo-icon-link" target="_blank" title="View Source Repository" onclick="event.stopPropagation()">' + iconSvg + '</a>',
         '</div>',
@@ -541,6 +624,14 @@ function buildBundleCard(bundle) {
     card.addEventListener("click", function(e) {
         console.log("[MorpheTracker] Bundle card clicked:", bundle.bundle, "current expanded:", card.classList.contains("expanded"));
         card.classList.toggle("expanded");
+        // Acknowledge version — mark as seen on expand
+        if (bundle.version) {
+            const storedVersions = JSON.parse(localStorage.getItem("morphe_versions") || "{}");
+            if (storedVersions[bundle.bundle] !== bundle.version) {
+                storedVersions[bundle.bundle] = bundle.version;
+                localStorage.setItem("morphe_versions", JSON.stringify(storedVersions));
+            }
+        }
         console.log("[MorpheTracker] Card now expanded:", card.classList.contains("expanded"));
     });
 
@@ -638,6 +729,8 @@ function buildAppCardsDrawer(card, bundle, apps) {
 
 // ── Modal ─────────────────────────────────────────────────────────────────────
 
+let modalState = {};
+
 function openAppModal(app, bundle) {
     const modal = document.getElementById("app-detail-modal");
     if (!modal) return;
@@ -661,57 +754,38 @@ function openAppModal(app, bundle) {
         '<span class="channel-badge ' + ch + '">' + ch + '</span>'
     ).join('');
 
-    // Merge patches from stable and dev channels, flagging dev-only ones
+    // Store modal state for channel toggling
     const stableBundleData = allBundlesData[`${bundle.bundle}:stable`];
     const devBundleData    = allBundlesData[`${bundle.bundle}:dev`];
 
-    const stableApp = stableBundleData?.apps?.find(a => a.package === app.package);
-    const devApp    = devBundleData?.apps?.find(a => a.package === app.package);
+    const stableAppData = stableBundleData?.apps?.find(a => a.package === app.package);
+    const devAppData    = devBundleData?.apps?.find(a => a.package === app.package);
 
-    const stablePatches = stableApp?.patches || [];
-    const devPatches    = devApp?.patches    || [];
+    modalState = {
+        stableApp: stableAppData || null,
+        devApp: devAppData || null,
+        bundleName: bundle.bundle,
+        currentChannel: "stable"
+    };
 
-    const stablePatchNames = new Set(stablePatches.map(p => p.name));
-    const mergedPatches = [
-        ...stablePatches,
-        ...devPatches
-            .filter(p => !stablePatchNames.has(p.name))
-            .map(p => ({ ...p, isDevOnly: true }))
-    ];
-
-    // Collect compatible versions from all merged patches
-    const allVersions = new Set();
-    mergedPatches.forEach(p => {
-        if (p.compatible_versions?.length > 0) {
-            p.compatible_versions.forEach(v => allVersions.add(v));
-        }
-    });
-    const versionArr = [...allVersions].sort();
-
-    const versionsRow = document.getElementById("modal-versions-row");
-    if (versionArr.length === 0) {
-        versionsRow.innerHTML = '<span class="version-chip any">Any version</span>';
-    } else {
-        versionsRow.innerHTML = versionArr.map(v =>
-            '<span class="version-chip">' + escHtml(v) + '</span>'
-        ).join('');
-    }
-
-    // Patch count (total merged)
-    document.getElementById("modal-patches-count").textContent =
-        mergedPatches.length + " patch" + (mergedPatches.length !== 1 ? "es" : "");
-
-    // Patch list
-    const patchesContainer = document.getElementById("modal-patches-list");
-    if (mergedPatches.length === 0) {
-        patchesContainer.innerHTML = '<div class="modal-no-patches">No patch details available for this app.</div>';
-    } else {
-        patchesContainer.innerHTML = "";
-        mergedPatches.forEach((patch, idx) => {
-            const patchEl = buildModalPatchItem(patch, idx);
-            patchesContainer.appendChild(patchEl);
+    // Wire up toggle buttons
+    const toggleBtns = document.querySelectorAll(".channel-toggle-btn");
+    toggleBtns.forEach(btn => {
+        btn.onclick = null;
+        btn.addEventListener("click", function() {
+            const channel = this.getAttribute("data-channel");
+            toggleBtns.forEach(b => b.classList.remove("active"));
+            this.classList.add("active");
+            modalState.currentChannel = channel;
+            renderModalChannel();
         });
-    }
+    });
+
+    // Default to stable
+    toggleBtns.forEach(b => b.classList.remove("active"));
+    document.querySelector('.channel-toggle-btn[data-channel="stable"]').classList.add("active");
+    modalState.currentChannel = "stable";
+    renderModalChannel();
 
     // Show modal
     modal.classList.add("open");
@@ -722,6 +796,73 @@ function openAppModal(app, bundle) {
     if (closeBtn) closeBtn.focus();
 }
 
+function renderModalChannel() {
+    const channel = modalState.currentChannel;
+    const stableApp = modalState.stableApp;
+    const devApp = modalState.devApp;
+
+    const stablePatches = stableApp?.patches || [];
+    const devPatches = devApp?.patches || [];
+    const stablePatchNames = new Set(stablePatches.map(p => p.name));
+
+    let showPatches, versionSource;
+
+    if (channel === "stable") {
+        showPatches = [...stablePatches];
+        versionSource = stableApp;
+    } else {
+        const merged = [
+            ...stablePatches,
+            ...devPatches
+                .filter(p => !stablePatchNames.has(p.name))
+                .map(p => ({ ...p, isDevOnly: true, isNew: true }))
+        ];
+        showPatches = merged;
+        versionSource = devApp || stableApp;
+    }
+
+    // Versions
+    const allVersions = new Set();
+    if (versionSource?.patches) {
+        versionSource.patches.forEach(p => {
+            if (p.compatible_versions?.length > 0) {
+                p.compatible_versions.forEach(v => allVersions.add(v));
+            }
+        });
+    }
+    const versionArr = [...allVersions].sort();
+    const versionsRow = document.getElementById("modal-versions-row");
+    if (versionArr.length === 0) {
+        versionsRow.innerHTML = '<span class="version-chip any">Any version</span>';
+    } else {
+        versionsRow.innerHTML = versionArr.map(v =>
+            '<span class="version-chip">' + escHtml(v) + '</span>'
+        ).join('');
+    }
+
+    // Patch count
+    const count = showPatches.length;
+    document.getElementById("modal-patches-count").textContent =
+        count + " patch" + (count !== 1 ? "es" : "");
+
+    // Patch list
+    const patchesContainer = document.getElementById("modal-patches-list");
+    if (showPatches.length === 0) {
+        patchesContainer.innerHTML = '<div class="modal-no-patches">No patch details available for this app.</div>';
+    } else {
+        patchesContainer.innerHTML = "";
+        const sorted = [...showPatches].sort((a, b) => {
+            if (a.isNew && !b.isNew) return -1;
+            if (!a.isNew && b.isNew) return 1;
+            return 0;
+        });
+        sorted.forEach((patch, idx) => {
+            const patchEl = buildModalPatchItem(patch, idx, channel === "dev");
+            patchesContainer.appendChild(patchEl);
+        });
+    }
+}
+
 function closeAppModal() {
     const modal = document.getElementById("app-detail-modal");
     if (!modal) return;
@@ -729,7 +870,7 @@ function closeAppModal() {
     document.body.style.overflow = "";
 }
 
-function buildModalPatchItem(patch, idx) {
+function buildModalPatchItem(patch, idx, showDevBadges) {
     const item = document.createElement("div");
     const isOff = patch.use === false;
     const desc = patch.description || "";
@@ -743,10 +884,10 @@ function buildModalPatchItem(patch, idx) {
         ? '<span class="patch-off-badge">Off by default</span>'
         : '';
 
-    const devBadgeHtml = patch.isDevOnly
+    const devBadgeHtml = showDevBadges && patch.isDevOnly
         ? '<span class="badge badge-dev">DEV</span>'
         : '';
-    const newBadgeHtml = patch.isDevOnly
+    const newBadgeHtml = showDevBadges && patch.isNew
         ? '<span class="badge badge-new-patch">NEW</span>'
         : '';
 
@@ -861,6 +1002,8 @@ function initChangelog() {
     ])
     .then(([changelog, liveData, cache]) => {
         console.log("[MorpheTracker] Changelog data loaded. Entries:", changelog ? changelog.length : 0);
+        const skelChangelog = document.getElementById("skeleton-changelog");
+        if (skelChangelog) skelChangelog.style.display = "none";
         iconCache = cache;
         renderChangelog(changelog, liveData.bundles);
         console.log("[MorpheTracker] Changelog rendering complete");
@@ -868,6 +1011,8 @@ function initChangelog() {
     .catch(err => {
         console.error("[MorpheTracker] ERROR loading changelog data:", err);
         console.error("[MorpheTracker] Stack:", err.stack);
+        const skelChangelog = document.getElementById("skeleton-changelog");
+        if (skelChangelog) skelChangelog.style.display = "none";
         const container = document.getElementById("changelog-list-container");
         if (container) {
             container.innerHTML = `<div class="error-state">Failed to load changelog data: ${err.message}. Ensure data/changelog.json and data/live.json are generated.</div>`;
@@ -924,7 +1069,7 @@ function renderChangelog(changelog, bundlesData) {
                 headerHtml = `
                     <div class="changelog-bundle-header">
                         <span class="badge badge-updated">UPDATED</span>
-                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a> patches</span>
+                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a></span>
                     </div>
                 `;
             }
@@ -958,7 +1103,7 @@ function renderChangelog(changelog, bundlesData) {
                                 ${badgeHtml}
                                 ${preReleaseBadge}
                                 ${appIconHtml4}
-                                <span><strong class="highlight-app">${playLink}</strong> in ${bName} patches</span>
+                                <span><strong class="highlight-app">${playLink}</strong></span>
                             </div>
                         </li>
                     `;

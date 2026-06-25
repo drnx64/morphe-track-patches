@@ -48,7 +48,21 @@
             >
           </div>
           <div class="updates-body" id="today-updates-container">
-            <div class="loading-state">Loading latest updates...</div>
+            <div class="skeleton-checking" id="checking-message">Checking for updates...</div>
+            <div id="skeleton-updates" style="display:none">
+              <div class="skeleton-update-row">
+                <span class="skeleton-block skeleton-badge"></span>
+                <span class="skeleton-block skeleton-text" style="height:16px;margin:0"></span>
+              </div>
+              <div class="skeleton-update-row" style="margin-left:1rem">
+                <span class="skeleton-block skeleton-badge"></span>
+                <span class="skeleton-block skeleton-text long" style="height:14px;margin:0"></span>
+              </div>
+              <div class="skeleton-update-row" style="margin-left:1rem">
+                <span class="skeleton-block skeleton-badge"></span>
+                <span class="skeleton-block skeleton-text" style="height:14px;margin:0"></span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -115,7 +129,38 @@
       <section class="bundles-section" aria-labelledby="bundles-heading">
         <h2 class="section-title" id="bundles-heading">Patch Bundles</h2>
         <div class="bundles-grid" id="bundles-grid-container">
-          <div class="loading-state">Loading dashboard data...</div>
+          <div id="skeleton-grid" style="display:grid;grid-template-columns:1fr;gap:1rem">
+            <div class="skeleton-card">
+              <div class="skeleton-card-header">
+                <div style="flex:1">
+                  <div class="skeleton-block skeleton-text" style="height:18px;margin-bottom:6px"></div>
+                  <div class="skeleton-block skeleton-badge"></div>
+                </div>
+                <div class="skeleton-block" style="width:32px;height:32px;border-radius:50%"></div>
+              </div>
+              <div class="skeleton-block skeleton-text short" style="height:12px"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card-header">
+                <div style="flex:1">
+                  <div class="skeleton-block skeleton-text" style="height:18px;margin-bottom:6px"></div>
+                  <div class="skeleton-block skeleton-badge"></div>
+                </div>
+                <div class="skeleton-block" style="width:32px;height:32px;border-radius:50%"></div>
+              </div>
+              <div class="skeleton-block skeleton-text short" style="height:12px"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card-header">
+                <div style="flex:1">
+                  <div class="skeleton-block skeleton-text" style="height:18px;margin-bottom:6px"></div>
+                  <div class="skeleton-block skeleton-badge"></div>
+                </div>
+                <div class="skeleton-block" style="width:32px;height:32px;border-radius:50%"></div>
+              </div>
+              <div class="skeleton-block skeleton-text short" style="height:12px"></div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -165,6 +210,10 @@
           <div class="modal-versions-section">
             <span class="versions-label">Versions:</span>
             <div class="versions-row" id="modal-versions-row"></div>
+          </div>
+          <div class="modal-channel-toggle" id="modal-channel-toggle">
+            <button class="channel-toggle-btn active" data-channel="stable">Stable</button>
+            <button class="channel-toggle-btn" data-channel="dev">Dev</button>
           </div>
         </div>
         <div class="modal-body">

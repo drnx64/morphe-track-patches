@@ -254,6 +254,7 @@ def validate_and_parse_bundle(bundle_name, channel):
         "channel": channel,
         "repo_url": repo_url,
         "created_at": created_at,
+        "version": bundle_json.get("version", ""),
         "apps": apps
     }
 
@@ -302,6 +303,14 @@ def parse_all_bundles():
         enrich_parsed_bundles_with_icons(parsed_bundles)
     except Exception as e:
         print(f"[-] Icon enrichment failed (non-fatal): {e}")
+
+    # Enrich with Google Play Store app names
+    print("\n--- Enriching apps with Play Store names ---")
+    try:
+        from icon_fetcher import enrich_parsed_bundles_with_names
+        enrich_parsed_bundles_with_names(parsed_bundles)
+    except Exception as e:
+        print(f"[-] Name enrichment failed (non-fatal): {e}")
 
     # Save parsed bundles
     save_json(os.path.join(RAW_DIR, "parsed_bundles.json"), parsed_bundles)
