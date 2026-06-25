@@ -1,5 +1,37 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-06-24]
+- **UPDATED** Bundle **ajstrick81-androidtv**
+  - **UPDATED APP** Atbat (`com.bamnetworks.mobile.android.gameday.atbat`) in ajstrick81-androidtv patches
+- **UPDATED** Bundle **browzomje**
+  - **UPDATED APP** Pinterest (`com.pinterest`) in browzomje patches
+- **UPDATED** Bundle **chiggi**
+  - **NEW APP** CrazyGames (`com.crazygames.crazygamesapp`) in chiggi patches
+- **UPDATED** Bundle **hoo-dles**
+  - **UPDATED APP** Daily Pocket (`kr.co.yjteam.dailypay`) in hoo-dles patches
+  - **NEW APP** Google News (`com.google.android.apps.magazines`) in hoo-dles patches
+  - **UPDATED APP** Podcast Addict (`com.bambuna.podcastaddict`) in hoo-dles patches
+  - **UPDATED APP** Solid Explorer (`pl.solidexplorer2`) in hoo-dles patches
+  - **UPDATED APP** Teuida (`net.teuida.teuida`) in hoo-dles patches
+  - **UPDATED APP** Windy (`com.windyty.android`) in hoo-dles patches
+- **UPDATED** Bundle **hoomans-morphe**
+  - **NEW APP** I Am Sober (`com.thehungrywasp.iamsober`) in hoomans-morphe patches
+  - **NEW APP** Mixel (`com.cfdrink`) in hoomans-morphe patches
+  - **NEW APP** Projectivy Launcher (`com.spocky.projengmenu`) in hoomans-morphe patches
+  - **NEW APP** Stash (`io.stashteam.games.tracker.stashapp`) in hoomans-morphe patches
+- **NEW BUNDLE** Bundle by **joristdh** (dev)
+  - **NEW APP** [PRE-RELEASE] Dev (`com.laurencedawson.reddit_sync.dev`) in joristdh patches
+  - **NEW APP** [PRE-RELEASE] Pro (`com.laurencedawson.reddit_sync.pro`) in joristdh patches
+  - **NEW APP** [PRE-RELEASE] Reddit Sync (`com.laurencedawson.reddit_sync`) in joristdh patches
+- **UPDATED** Bundle **lain**
+  - **NEW APP** [PRE-RELEASE] Hermit (`com.chimbori.hermitcrab`) in lain patches
+  - **NEW APP** [PRE-RELEASE] UDisc (`com.regasoftware.udisc`) in lain patches
+- **UPDATED** Bundle **piko**
+  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
+  - **UPDATED APP** X (`com.twitter.android`) in piko patches
+- **UPDATED** Bundle **rushiranpise**
+  - **UPDATED APP** Canva (`com.canva.editor`) in rushiranpise patches
+  - **UPDATED APP** TeraBox (`com.dubox.drive`) in rushiranpise patches
 ## [2026-06-23]
 - **UPDATED** Bundle **ajstrick81-androidtv**
   - **UPDATED APP** Hbomax (`com.wbd.hbomax`) in ajstrick81-androidtv patches
