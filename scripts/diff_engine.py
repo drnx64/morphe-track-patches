@@ -40,6 +40,44 @@ def apps_are_different(old_app, new_app):
 
     return normalize_app_data(old_app) != normalize_app_data(new_app)
 
+def patch_diff_details(old_patch, new_patch):
+    """Return a list of human-readable change descriptions between old and new patch."""
+    changes = []
+    if old_patch.get("description") != new_patch.get("description"):
+        changes.append("description updated")
+    if old_patch.get("use") != new_patch.get("use"):
+        old_use = old_patch.get("use", True)
+        new_use = new_patch.get("use", True)
+        changes.append("enabled" if new_use and not old_use else "disabled")
+    old_opts = {o.get("key", ""): o.get("description", "") for o in old_patch.get("options", [])}
+    new_opts = {o.get("key", ""): o.get("description", "") for o in new_patch.get("options", [])}
+    if old_opts != new_opts:
+        added_opts = [k for k in new_opts if k not in old_opts]
+        removed_opts = [k for k in old_opts if k not in new_opts]
+        changed_opts = [k for k in old_opts if k in new_opts and old_opts[k] != new_opts[k]]
+        parts = []
+        if added_opts:
+            parts.append(f"+{len(added_opts)} option{'s' if len(added_opts) > 1 else ''}")
+        if removed_opts:
+            parts.append(f"-{len(removed_opts)} option{'s' if len(removed_opts) > 1 else ''}")
+        if changed_opts:
+            parts.append(f"~{len(changed_opts)} option{'s' if len(changed_opts) > 1 else ''}")
+        if parts:
+            changes.append("options: " + ", ".join(parts))
+    old_cv = set(str(v) for v in old_patch.get("compatible_versions", []))
+    new_cv = set(str(v) for v in new_patch.get("compatible_versions", []))
+    if old_cv != new_cv:
+        added_vers = new_cv - old_cv
+        removed_vers = old_cv - new_cv
+        parts = []
+        if added_vers:
+            parts.append(f"+{len(added_vers)} version{'s' if len(added_vers) > 1 else ''}")
+        if removed_vers:
+            parts.append(f"-{len(removed_vers)} version{'s' if len(removed_vers) > 1 else ''}")
+        if parts:
+            changes.append("versions: " + ", ".join(parts))
+    return changes
+
 def compute_patch_diff(old_app, new_app):
     """Compute which patches were added/removed between old and new app state."""
     old_patches = {p.get("name", ""): p for p in old_app.get("patches", [])}
@@ -63,7 +101,14 @@ def compute_patch_diff(old_app, new_app):
     return {
         "patches_added": enrich(added_names, new_patches),
         "patches_removed": enrich(removed_names, old_patches),
-        "patches_modified": enrich(modified_names, new_patches)
+        "patches_modified": [
+            {
+                "name": n,
+                "description": new_patches.get(n, {}).get("description", ""),
+                "changes": patch_diff_details(old_patches[n], new_patches[n])
+            }
+            for n in modified_names
+        ]
     }
 
 def diff_snapshots():
