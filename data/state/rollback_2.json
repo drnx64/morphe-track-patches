@@ -23891,8 +23891,8 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-06-25T03:57:53",
-    "version": "v1.7.0-dev.5",
+    "created_at": "2026-06-26T00:25:20",
+    "version": "v1.7.0-dev.6",
     "apps": [
       {
         "app_name": "Snipd | AI Podcast Player",
@@ -24536,13 +24536,1092 @@
             ]
           },
           {
-            "name": "AudioKit Integration",
-            "description": "Allows third-party audio apps (like Morphe YouTube Music) to be recognized as official partners by Waze AudioKit.",
+            "name": "AutoZoom",
+            "description": "Controls how aggressively the map zooms in/out based on driving speed.\nCredits: Waze Chuppito Mod",
             "use": true,
             "options": [
               {
-                "key": "packageName",
-                "description": "The package name of the YouTube Music app to spoof."
+                "key": "speedFactor",
+                "description": "Higher = more zoom-out at speed. Official: 10."
+              },
+              {
+                "key": "scaleFactor",
+                "description": "Overall zoom scale multiplier. Official: 25."
+              },
+              {
+                "key": "maxScale",
+                "description": "Maximum zoom-out scale. Official: 8000."
+              },
+              {
+                "key": "gradientSpeed",
+                "description": "Zoom gradient activates above this speed. Official: 30."
+              }
+            ],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Disable Ads",
+            "description": "Suppresses all Waze ad systems via bundled preferences file:\n• AdMob SDK (Ad_.*)\n• Google Ads (Google_Ads.*)\n• Ads Inventory Prediction\n• ExternalPOI pins, coupons, popups (ExternalPO_ + Extern__POI both key variants)\n• Search autocomplete server ads\nCredits: Waze CGE Mod (ExternalPOI keys), Waze Chuppito (dual-key coverage).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Disable Advil Ad Requests",
+            "description": "Stubs AdvilRequest.getPageUrl() → \"\" so the Advil ad server receives no page URL and returns no ad content. ",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Enlarged Speedometer",
+            "description": "Increases speedometer digit size for better readability.",
+            "use": false,
+            "options": [
+              {
+                "key": "smallTextSize",
+                "description": "Speedometer font size when speed < 100. Default: 28sp (original: 20sp)."
+              },
+              {
+                "key": "largeTextSize",
+                "description": "Speedometer font size when speed ≥ 100. Default: 21sp (original: 13sp)."
+              }
+            ],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Map Skin (Vitamin C)",
+            "description": "Applies Chuppito's 'Vitamin C' map skin. All visual values configurable.\n• Night: true black AMOLED background (saves battery, prevents burn-in)\n• Day: warm beige background\n• Larger font labels across the board\n• Wider navigation arrow head for better visibility\n• Custom car 3D models: Batmobile, Riddler, race car, 3D arrow\nCredits: ALEX02-GTT (skin design), Waze Chuppito Mod (integration).",
+            "use": true,
+            "options": [
+              {
+                "key": "nightBg",
+                "description": "Default: 000000 (true black, AMOLED). Original Waze: 1a1a2e."
+              },
+              {
+                "key": "dayBg",
+                "description": "Default: ebe7dd (warm beige). Original Waze: f7f3eb."
+              },
+              {
+                "key": "fontHuge",
+                "description": "Default: 18 (original: 14)."
+              },
+              {
+                "key": "fontBig",
+                "description": "Default: 14 (original: 12)."
+              },
+              {
+                "key": "fontMedium",
+                "description": "Default: 12 (original: 10)."
+              },
+              {
+                "key": "fontSmall",
+                "description": "Default: 10 (original: 8)."
+              },
+              {
+                "key": "navArrow",
+                "description": "Default: 10.0 (original: 3.0). Wider = more visible chevron."
+              }
+            ],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Navigation & Map",
+            "description": "Configures navigation and map behaviour:\n• Nearing destination distance (Credits: CGE Mod)\n• Android Auto head-up alert distances\n• Map turn mode (auto-zoom to upcoming turn)\n• Traffic bar minimum time threshold\n• GPS icon visibility\n• Route notifications (hazard, school zone) both disabled by default\nCredits: Waze CGE Mod (nearing destination), Waze Chuppito (remaining keys).",
+            "use": true,
+            "options": [
+              {
+                "key": "nearingDestDist",
+                "description": "0 = silent arrival. Official: ~500m."
+              },
+              {
+                "key": "aaHeadUpNormal",
+                "description": "Official: 800m."
+              },
+              {
+                "key": "aaHeadUpFreeway",
+                "description": "Official: 1000m."
+              },
+              {
+                "key": "trafficBarMinTime",
+                "description": "Official: 300s."
+              },
+              {
+                "key": "showGpsIcon",
+                "description": "Official: yes."
+              },
+              {
+                "key": "mapTurnMode",
+                "description": "Default: enabled."
+              },
+              {
+                "key": "hazardNotif",
+                "description": "Default: disabled (0)."
+              },
+              {
+                "key": "schoolNotif",
+                "description": "Default: disabled (0)."
+              }
+            ],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Popup Suppression",
+            "description": "Prevents promotional and ad popups from appearing while driving.\nRaises the minimum trigger speed to a near-impossible value so popups never appear.\nCredits: Waze Chuppito Mod.",
+            "use": true,
+            "options": [
+              {
+                "key": "minSpeed",
+                "description": "Default 999999 = never. Official: 0 (always shows)."
+              },
+              {
+                "key": "fullyStoppedSpeed",
+                "description": "-1 = disable stopped trigger. Official: 0."
+              },
+              {
+                "key": "minDistance",
+                "description": "Official: 100m."
+              },
+              {
+                "key": "minResetScrollSpeed",
+                "description": "Speed at which scroll suppression resets. Official: 1400."
+              },
+              {
+                "key": "delayAfterInteraction",
+                "description": "Seconds before popup can appear post-interaction. Official: 0."
+              }
+            ],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Radar Sound (Any Speed)",
+            "description": "Plays radar/speed camera sound alerts regardless of current speed. Official Waze only alerts when over the speed limit.\n",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Report Speed Limit",
+            "description": "Adds a Report option when tapping the speedometer to report wrong or missing speed limits. Not available in the official version.\n",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Speed Limit Sign",
+            "description": "Sets the speed limit sign style shown on the map.",
+            "use": true,
+            "options": [
+              {
+                "key": "signStyle",
+                "description": "us = large circular US-style (recommended). metric = small local-style."
+              }
+            ],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          },
+          {
+            "name": "Uncensored Radar / Camera Display",
+            "description": "Shows exact fixed and mobile speed camera locations, including those not yet in the official Waze radar zone. Enables enforcement alerts via preferences keys:\nCredits: Waze CGE Mod.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.19.0.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/d4dltd4baeDGnfJD1H-ut68ERsIynfywij9zHRL7ioB-PJW3ENw-bFgg08KGPo8zQfSyRW36e58xhlqQ0pE1gg"
+      },
+      {
+        "app_name": "Windscribe: Fast & Secure VPN",
+        "package": "com.windscribe.vpn",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Windscribe premium account.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.1.2274"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/k2TAILEsjpI_9_0lpmRRYiaty4JXOc3RpluhKccooYQ_s5llbvcywrQPxAWi_U_-eRHK9yaH1J5zXKfPqgrMxg"
+      },
+      {
+        "app_name": "YATRI: Mumbai Local & Metro",
+        "package": "com.yatrirailways.yatri",
+        "patches": [
+          {
+            "name": "Unlock VIP",
+            "description": "Unlocks Yatri VIP by forcing active plan status and spoofing active plan DB query.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.0.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/T45yBR6PwB4nu0ncKZ_L-LfLv5CwkpJkYiiI0mUlcyqjDk3nL5xk_ibg1SmPXcptRa3sD57x_mePxTdwQmd8z4Q"
+      },
+      {
+        "app_name": "NetMonster",
+        "package": "cz.mroczis.netmonster",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.4.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/bY_d4uzxtY2_a-r3caEhTlQPzRZy7lCs428H-BIo4KGxyjWm3ZVRCtJTicy07nh3m30n5O6QPrgmYT8okHfT5Q"
+      },
+      {
+        "app_name": "Permission Pilot",
+        "package": "eu.darken.myperm",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all Pro features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.1.1-rc0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Avvq84tDNB49hhXn06aDd9TcqTH8b4VUw7VntAqcNoDgS8PFoDJS5dN0uiJ24pyEUtBxj5Pa14FqhEUdFMgi"
+      },
+      {
+        "app_name": "NetGuard - no-root firewall",
+        "package": "eu.faircode.netguard",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all pro features in NetGuard.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.335"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/lFAIySzTog17p9O5Y9cqS4nt9F7n913WO5eVlgUQDxEIpURQzSU0Mgaqb5jiDe2UVZrjpEOwOl9mbLuksZpI"
+      },
+      {
+        "app_name": "Beta Maniac",
+        "package": "it.mirko.beta",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium in Beta by Mirko.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "0.9.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/cvamBkdg3UQgYgQwlLbursoGoTRWi6DzmY7rph_dwWC9XCxUveVgU4NOx_lMj2dE0d8klY_tC1Y_9YdIOVYD"
+      },
+      {
+        "app_name": "NetShare - no-root-tethering",
+        "package": "kha.prog.mikrotik",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks Pro features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "UI/link-274"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/KWKtpXZfYosRpwxSXDT9fLtro3iN9FQOBZpz7AObcDx-KxBCscq4efe0FTvUbjPzI3oGe9PfhHqVYE3Uwl-fxA"
+      },
+      {
+        "app_name": "Hola VPN: Fast, Free VPN Proxy",
+        "package": "org.hola.play",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "AARCH64_1.248.400"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/0XpdhvjM2TUxAD4pDvp-Bd9OHRNfkfnO5iRDLEKyyjj9cnmvjYb8kH5vhVASlXSRgjHKDTgncioNqhb3Hunxew"
+      },
+      {
+        "app_name": "Speedtest by Ookla",
+        "package": "org.zwanoo.android.speedtest",
+        "patches": [
+          {
+            "name": "Unlock Ad-Free",
+            "description": "Removes ads and unlocks ad-free status in Speedtest by Ookla.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.0.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/ZH4EUfCHaf8hoFSpeLx_guqWN-DkGdJWbP5Ydim9dbvqO4L95TC3V7WD20-KsEpGaZuCrWz62ClSYdmCanL9"
+      },
+      {
+        "app_name": "Universal TV Remote Control",
+        "package": "sensustech.universal.tv.remote.control",
+        "patches": [
+          {
+            "name": "Disable Ads",
+            "description": "Prevents the AppOpen ad preloader from initialising.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.8.1"
+            ]
+          },
+          {
+            "name": "Suppress Paywall",
+            "description": "Suppresses the in-app paywall.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.8.1"
+            ]
+          },
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Premium Features In the App.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.8.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/yowpBHteTsFjVgAZN1IExwfucGxJzZ28sXYf4hs_Y4FnemiL9-qrUSr5VrzdXQNcoNTGCJ7-bEufvb--V5gpqw"
+      },
+      {
+        "app_name": "SHAREit Premium: Pure Share",
+        "package": "shareit.premium",
+        "patches": [
+          {
+            "name": "Unlock Lifetime",
+            "description": "Unlocks SHAREit lifetime premium.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.1.98"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MBk1ZzBqd0nWQFWi_hZBOKjnvJaKTtEERT2adLYSvfuY0NCRI2xzkVEiYGk_wfqm1bRt6AukfSE1FhsB3uJrPi4"
+      },
+      {
+        "app_name": "Citizen: Protect The World",
+        "package": "sp0n.citizen",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all Citizen Plus/Protect features: Safety Network, Safety Center, Zones, Live Agent, Offender alerts, Clarity crime map, incident video, and more.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "0.1297.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/WI55Qb1VObnbMnWXtYHSibC2n4dSD3ZRQc1bIjn61nBG-RWP1sBWD2WGhW_BdZwGp68u6OThbaEh8uWrkO3t_A"
+      },
+      {
+        "app_name": "Pialytic Julia Editor",
+        "package": "verbosus.pialytic",
+        "patches": [
+          {
+            "name": "Unlock All Features",
+            "description": "Bypasses PairIP DRM license check, removes all paywalls, and unlocks all premium features including cloud sync and remote access.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.2.8"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
+      }
+    ],
+    "fingerprint": "1677db9e812288b441579344566c78d80974b06063499d2755ac64b094b257a8"
+  },
+  "rushiranpise:stable": {
+    "bundle": "rushiranpise",
+    "channel": "stable",
+    "repo_url": "https://github.com/rushiranpise/morphe-patches",
+    "created_at": "2026-06-26T00:27:37",
+    "version": "v1.7.0",
+    "apps": [
+      {
+        "app_name": "Snipd | AI Podcast Player",
+        "package": "ai.topicfinder.podcastdiscovery",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all Premium features in Snipd: AI Podcast Player by spoofing the RevenueCat CustomerInfo.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.1.14"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/6tmzsW5-wGY3HYZjs4FC6d5TCX5_phdTyZvBLw2Kdag33iaQ3OyOE6p4KINyDMzoH3XAtpMUVM8pzq_nNvYsgQ"
+      },
+      {
+        "app_name": "Proton VPN: Fast & Secure VPN",
+        "package": "ch.protonvpn.android",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks local Proton VPN premium  features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.18.84.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/yLQ8EKyC_HIHiR6UND0eVjiBsW7WH3jHPzieT7YFqg9_VBRBreUDC8QD-iIUtRhEpMrIxDPVPegm4KSyfduyiw"
+      },
+      {
+        "app_name": "AccuWeather: Weather Radar",
+        "package": "com.accuweather.android",
+        "patches": [
+          {
+            "name": "Unlock Premium+",
+            "description": "Unlocks AccuWeather's Premium+ subscription tier without a Play Store purchase. Enables the full 15-day and hourly forecast detail, MinuteCast extended precision, air quality and health indexes, real-feel temperature, severe weather notifications, and widget customisation.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "21.1.11-1-rc"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/wdQXBFb3I1NgNpRzJo9tMHJuV9P069NR5GJ2J7w8eX_SVarWLRarca-6MiemrDbnSqDQflFzvzjSG2smlwe39TQ"
+      },
+      {
+        "app_name": "AdGuard Nightly",
+        "package": "com.adguard.android",
+        "patches": [
+          {
+            "name": "Unlock Lifetime Premium",
+            "description": "Unlocks all features locked behind the subscription paywall.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.14.68"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "HTTP Sniffer",
+        "package": "com.anetcapture.mock",
+        "patches": [
+          {
+            "name": "Unlock VIP (Lifetime)",
+            "description": "Forces permanent professional VIP tier, removes ads and upgrade popups, bypasses PairIP.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.11.0-ad_mob"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/24EBd10FuOQlxUVCGuvzA2SgBVZYrNMSgE-a8MzeU_r9uYB4RLShs0OSSjxKZGroeoPy3FKNI4fGoXO3DdNPJg"
+      },
+      {
+        "app_name": "Social Gamebox",
+        "package": "com.app.social_gamebox",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Social Gamebox premium features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.1.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/1AZ8QbaW9H7oCNzNGgc73Pe9RLh-wLgL2dH--dO57Iaf_W2fr1gd7eQKv18dFreEPS_4EdxnWeBVbdGTGUjZ_Q"
+      },
+      {
+        "app_name": "BlockerHero - Content Blocker",
+        "package": "com.blockerhero",
+        "patches": [
+          {
+            "name": "Unlock Lifetime",
+            "description": "Unlocks lifetime subscription features in BlockerHero.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.5.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Yyv_3i0BxSyJrH390mRiBJPkz3lwTkY1dAJDLh6ncgm1ztgWodQ55jfsJSsF5syEGdeBr9fZz2bwDcY8_gg6AQ"
+      },
+      {
+        "app_name": "Cashew—Expense Budget Tracker",
+        "package": "com.budget.tracker_app",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlock Pro Features in Cashew App",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.5.9"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/VQ1Nyf_vXLkr2anxhD0tHvtzpM93beJa5lZcSuDy52WTHEdidajo59pB-1RGHy9S8fBz6ylTUzGFD6V7hoK3elY"
+      },
+      {
+        "app_name": "Canva: AI Photo & Video Editor",
+        "package": "com.canva.editor",
+        "patches": [
+          {
+            "name": "Remove Watermark",
+            "description": "Removes watermarks from Canva exports and previews.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.365.o"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/52fzAlhKzDyZV8ttyQ_DHB-jOeLZAZEdKlgXnWL__YNMZuvsoRCshJX5mr_ArFZjK7rte4hqEJ4ucjtuKJK5"
+      },
+      {
+        "app_name": "Call Recorder - Cube ACR",
+        "package": "com.catalinagroup.callrecorder",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Premium Features In the App.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.281"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/dJwOASgiOu0tCod_WeCDjX9d_oJI9SuZpmtFlSP6ATA63hXM8pUxnTp1HCI9YK1jD5v2lQw3JSKEWatwDzPMQg"
+      },
+      {
+        "app_name": "1.1.1.1 + WARP: Safer Internet",
+        "package": "com.cloudflare.onedotonedotonedotone",
+        "patches": [
+          {
+            "name": "Disable Analytics / Telemetry",
+            "description": "Disables App Analytics / Telemetry.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "6.38.7"
+            ]
+          },
+          {
+            "name": "Spoof WARP+ Unlimited UI",
+            "description": "Unlocks WARP+ UI locally.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.38.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/PDwXxcvulfxi2bH4UjcMGJ7i0CQ7_QNypYohkhhg02zE7FdNTNRyF21-ikrLM5kyvcmNxtr77Va-7sS3NLbpNg"
+      },
+      {
+        "app_name": "CPU-Z",
+        "package": "com.cpuid.cpu_z",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Premium features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.57"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/ZrHa04Sd63PqJNHlvpCz8K94AKdmqDmCacf6iQ0rBZs4s7JmcevoetuduWsRo3S3SC0DIDh273mwU_P0gSc2cQ"
+      },
+      {
+        "app_name": "TeraBox: 1TB Cloud & AI Space",
+        "package": "com.dubox.drive",
+        "patches": [
+          {
+            "name": "Unlock VIP",
+            "description": "Unlocks Dubox Drive VIP/SVIP (Premium+)",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.18.6"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/b9KKZIvnQ_X3eIqHXeR4e0Ftd3lrDgAIkJ8N1fAvgl6zpTLuX8m74aVlRnoeLQCcAnLMbSMRJGLvsmghheZe"
+      },
+      {
+        "app_name": "AIDA64",
+        "package": "com.finalwire.aida64",
+        "patches": [
+          {
+            "name": "Remove ads",
+            "description": "Stubs all ad loading paths: banner/interstitial loaders, billing callbacks, and ad SDK init.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.20"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/KNLC9bz3iU2eQsPZmFRUTR7tjjvYQOXggWwkmFjk774XcKBX4f-qLjzViH6aoEaZuLUtj5Tk-3JghquUo-lJSw"
+      },
+      {
+        "app_name": "Flightradar24 Flight Tracker",
+        "package": "com.flightradar24free",
+        "patches": [
+          {
+            "name": "Unlock Business Premium",
+            "description": "Unlocks Business/Gold premium features in Flightradar24: ad-free map, weather layers, ATC, 3D view, flight history, and unlimited saved locations.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "11.6.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/8KtIuiRHYtY0XJigXIl-iN6X6-ht85ELWXFiynenpCW40b6zNUnLFGKwIN0iITV_1L3sN3G53PaiNiWsn5RSIv8"
+      },
+      {
+        "app_name": "Clickmate - Auto Clicker Macro",
+        "package": "com.inscode.autoclicker",
+        "patches": [
+          {
+            "name": "Unlock Premium ",
+            "description": "Unlocks premium in Clickmate",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.1.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/qPBtAmkh80PDy1ExUH4aafQVJ0zl9rNr5Lj2SJm3RJDJkjyd6tDEozuw-s1nGlXMZci83H27x7SCYey3vxVRDmc"
+      },
+      {
+        "app_name": "Photo Editor",
+        "package": "com.iudesk.android.photo.editor",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all Photo Editor premium features by bypassing license checks.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "13.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/2n2H30gUwyIKaYp0c2Nr9btyFVJBxREps11WCl6U5xlWaHPvbA3IZD4GwfFlFXgt8jsoS2BtCu1MBkS70_gLuQ"
+      },
+      {
+        "app_name": "ML Manager: APK Extractor",
+        "package": "com.javiersantos.mlmanager",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all pro features in ML Manager.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/tDjmADWkv1VGF5On3dNc4nMQZ0qU7izJKqmS_sJQ648tXazBvaLR7HO-VD7DJNKqMEOzJA-PUAEgdrNxuH6_UA"
+      },
+      {
+        "app_name": "nzb360 - Media Server Manager",
+        "package": "com.kevinforeman.nzb360",
+        "patches": [
+          {
+            "name": "Unlock All Access",
+            "description": "Unlocks All access in Nzb360.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "23.5"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/CZpq1UrZc2UUONba1GM8OWEGeYeJ1_NrBcjhGpENnhSEIzbLb-f6lW76fuso685c3pdK8KuV2nfb8AVxISJlPv8"
+      },
+      {
+        "app_name": "m-Indicator: Mumbai Local",
+        "package": "com.mobond.mindicator",
+        "patches": [
+          {
+            "name": "Remove Ads",
+            "description": "Removes interstitial and exit native ads from m-Indicator.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.352"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/6NH-2g_kwAlEExsNbcAA0w5bjfxoHMaALX4DrMpIhQe64-ZfaxLW085Cax9J-e_mvk9TNeNKZXDzeo8BNF-eExY"
+      },
+      {
+        "app_name": "SAI: Split APKs Installer",
+        "package": "com.mtv.sai",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Bypasses PairIP license check, paywall, ads, and pro upsell in SAI.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.2.8"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/NZEdYeZWgBVa10wkMBpdJrWQyL6lXuUWZDWx-ZSfWa4YJnatabcXAl7B55m1q83MrBq5OcqqFJCthyJ7muX9Hw"
+      },
+      {
+        "app_name": "CrimeRadar: Dispatch Alerts",
+        "package": "com.newsbreak.crimeradar",
+        "patches": [
+          {
+            "name": "Bypass License Check",
+            "description": "Bypasses PairIP DRM license verification to prevent forced app shutdown on non-Play-licensed installs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.23.2"
+            ]
+          },
+          {
+            "name": "Bypass Subscription Paywall",
+            "description": "Bypasses the subscription paywall in-app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.23.2"
+            ]
+          },
+          {
+            "name": "Remove Item Limits",
+            "description": "Removes all  item limits in-app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.23.2"
+            ]
+          },
+          {
+            "name": "Suppress Premium Promotions",
+            "description": "Supress all premium promotions in-app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.23.2"
+            ]
+          },
+          {
+            "name": "Unlock Followed Locations",
+            "description": "Unlocks the Followed Locations premium feature.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.23.2"
+            ]
+          },
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Premium Features In the App.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.23.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/3b7_a7m50wFj68Afd6q0bhq2HPTWQlgeViv9B9tEbhChS3h4nVTo-HotZF4OmShKwT2_zhNAr3alwYRWBjiC_g"
+      },
+      {
+        "app_name": "Greenify",
+        "package": "com.oasisfeng.greenify",
+        "patches": [
+          {
+            "name": "Unlock Donation Features",
+            "description": "Unlocks all premium donation features in Greenify.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.1.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/4Uqi_lGZdgUL4GGxELdNdBaDMs2OjhC9emw5LWtEb1XN3NWlybG9IYD5yXSLuhwtt66cuMz4L4zWYgXzgxR1sA"
+      },
+      {
+        "app_name": "Proxyman - Capture HTTPS",
+        "package": "com.proxyman.proxymanandroid",
+        "patches": [
+          {
+            "name": "Unlock Lifetime",
+            "description": "Unlocks all Lifetime features in Proxyman.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.16.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/DfGml5bkf56G_Q3sOmQwGXOoixLShTs_-s1oDyTWawjAbFt3ej5WPFrAT2NnWMy9XkblegmgCcKwmZcNnskRnQ"
+      },
+      {
+        "app_name": "Psiphon VPN: Freedom Online",
+        "package": "com.psiphon3.subscription",
+        "patches": [
+          {
+            "name": "Remove Ads / Unlock Premium",
+            "description": "Forces SubscriptionStateImpl.getStatus() (LB2/c.h) to always return HAS_UNLIMITED_SUBSCRIPTION and getPurchase() (LB2/c.g) to return a well-formed fake Purchase, removing ads and the upgrade button/banner without crashing on the now-expected non-null Purchase object.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "476"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/yOedEdrW5mbwFSzANsZyZxm6zI2DnQ_52-KGJxUWv1kJnxeyAY4avqQC0xpMHGP4ukY5pXhE00-H40ktbWkkCVc"
+      },
+      {
+        "app_name": "RAR",
+        "package": "com.rarlab.rar",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Removes ads and unlocks the no-ads subscription in RAR.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.20.build131"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/wWn5oCBNr1mP0CFWGK9esgaY62mNbHsm6T4gDCxFTz2ymSXVNpGEbigW_0oiE-TEMHAwu7BLofIQvPlBAlAdow"
+      },
+      {
+        "app_name": "Case Tracker US Immigration",
+        "package": "com.saldous.casetracker",
+        "patches": [
+          {
+            "name": "Remove Ads",
+            "description": "Removes interstitial, app-open and native ads.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "5.5.1"
+            ]
+          },
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Premium Features In the App.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.5.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MBF03v1RSEaq48wgwU8PWtrXPud7l9Gak0U5EywEdEWP2OD-mASssBpJQi0UUf4HaZDVpfFLrxXesyzD2IbWnw"
+      },
+      {
+        "app_name": "App Permission Manager",
+        "package": "com.shexa.permissionmanager",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all Pro features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.4.6.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/RzmOwc2oqu3vvXd8Lawc40E-f6OxrvwdmMUeei3Qj_fVAknevHOxWiCJ16Qw900hF-38mLPjq4Uez0Vxny1E"
+      },
+      {
+        "app_name": "Splitwise",
+        "package": "com.splitwise.splitwisemobile",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks Splitwise Pro features, removes ad banners, and suppresses all upgrade upsell prompts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.5.5"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "Hibernator: Force Stop Apps",
+        "package": "com.tafayor.hibernator",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all pro features in Hibernator.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.56.10"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/evZf3MH6957tqcIGaGqOyytkXRnrOagMDz00UHR0S13_6P46MihR5TPeZxpr-lautYOLAvvXAx45sIbA5towQA"
+      },
+      {
+        "app_name": "Killapps - Close Running Apps",
+        "package": "com.tafayor.killall",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all pro features in KillApps.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.57.9"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/n0wUxgYo8BoUhxcc_l3U_jCwCbPRQhIJKFzxdZ4katlhsswB0rLXKV4oiLj0235W_kYPLJKwIlk5-xMN-9Rt"
+      },
+      {
+        "app_name": "Rocket Money - Bills & Budgets",
+        "package": "com.truebill",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Rocket Money Premium Features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "13.15.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/1Vo_ixB4gB-cXR5MMr24xonI_6XVuvHzpDrmPJyZQaXBZUfv90OlxZmpAzthrm_hM64_ZCXbiQ0vgyKYhEYXxh8"
+      },
+      {
+        "app_name": "Stargazing Hub: Astro Guide",
+        "package": "com.twtapp",
+        "patches": [
+          {
+            "name": "Unlock Subscription",
+            "description": "Unlocks all subscription features in TWT App.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Y9rUCGFcH3Qtu0cY2Wppp5ZuSK1GNmsTVhD8jG6JUGYdYeUteBIcbll0C2z90V6X7nDOD4eGgrecyox2q8mu"
+      },
+      {
+        "app_name": "Waze Navigation & Live Traffic",
+        "package": "com.waze",
+        "patches": [
+          {
+            "name": "Alert Distances",
+            "description": "Configures radar/camera and hazard alert announcement distances.\nCredits: Waze CGE Mod.\n",
+            "use": true,
+            "options": [
+              {
+                "key": "accidentDist",
+                "description": "Official: 600m."
+              },
+              {
+                "key": "alertDist",
+                "description": "Official: 600m."
+              },
+              {
+                "key": "policeDist",
+                "description": "Official: 600m."
+              },
+              {
+                "key": "freewayDist",
+                "description": "Official: 2000m."
+              },
+              {
+                "key": "highwayDist",
+                "description": "Official: 1000m."
+              },
+              {
+                "key": "streetDist",
+                "description": "Official: 500m."
+              },
+              {
+                "key": "hazardDist",
+                "description": "Official: 600m."
+              },
+              {
+                "key": "heavyTrafDist",
+                "description": "Official: 600m."
+              },
+              {
+                "key": "betweenDist",
+                "description": "Official: 300m."
               }
             ],
             "compatible_versions": [
@@ -24878,22 +25957,6 @@
         "icon_url": "https://play-lh.googleusercontent.com/KWKtpXZfYosRpwxSXDT9fLtro3iN9FQOBZpz7AObcDx-KxBCscq4efe0FTvUbjPzI3oGe9PfhHqVYE3Uwl-fxA"
       },
       {
-        "app_name": "Tasker",
-        "package": "net.dinglisch.android.taskerm",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks Tasker Pro features.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "6.6.20"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/wjXpkVLT-LAzfcYOfhH0hF8ghU79nDHtqVLxBNmWOQJ2ghb4pgp_IBNfGdCTw-aQgh3WwA3Gp1k8Y4waZkGobmA"
-      },
-      {
         "app_name": "Hola VPN: Fast, Free VPN Proxy",
         "package": "org.hola.play",
         "patches": [
@@ -25008,711 +26071,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
       }
     ],
-    "fingerprint": "bd4e61c971523d97edc74ccf40f129c514e1700cd4b81416f6dd1cf217e15672"
-  },
-  "rushiranpise:stable": {
-    "bundle": "rushiranpise",
-    "channel": "stable",
-    "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-06-21T06:11:26",
-    "version": "v1.6.0",
-    "apps": [
-      {
-        "app_name": "Snipd | AI Podcast Player",
-        "package": "ai.topicfinder.podcastdiscovery",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks all Premium features in Snipd: AI Podcast Player by spoofing the RevenueCat CustomerInfo.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/6tmzsW5-wGY3HYZjs4FC6d5TCX5_phdTyZvBLw2Kdag33iaQ3OyOE6p4KINyDMzoH3XAtpMUVM8pzq_nNvYsgQ"
-      },
-      {
-        "app_name": "Proton VPN: Fast & Secure VPN",
-        "package": "ch.protonvpn.android",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks local Proton VPN premium  features.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "5.18.84.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/yLQ8EKyC_HIHiR6UND0eVjiBsW7WH3jHPzieT7YFqg9_VBRBreUDC8QD-iIUtRhEpMrIxDPVPegm4KSyfduyiw"
-      },
-      {
-        "app_name": "AdGuard Nightly",
-        "package": "com.adguard.android",
-        "patches": [
-          {
-            "name": "Unlock Lifetime Premium",
-            "description": "Unlocks all features locked behind the subscription paywall.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "4.14.68"
-            ]
-          }
-        ],
-        "icon_url": ""
-      },
-      {
-        "app_name": "HTTP Sniffer",
-        "package": "com.anetcapture.mock",
-        "patches": [
-          {
-            "name": "Unlock VIP (Lifetime)",
-            "description": "Forces permanent professional VIP tier, removes ads and upgrade popups, bypasses PairIP.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.11.0-ad_mob"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/24EBd10FuOQlxUVCGuvzA2SgBVZYrNMSgE-a8MzeU_r9uYB4RLShs0OSSjxKZGroeoPy3FKNI4fGoXO3DdNPJg"
-      },
-      {
-        "app_name": "Social Gamebox",
-        "package": "com.app.social_gamebox",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks Social Gamebox premium features.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.1.3"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/1AZ8QbaW9H7oCNzNGgc73Pe9RLh-wLgL2dH--dO57Iaf_W2fr1gd7eQKv18dFreEPS_4EdxnWeBVbdGTGUjZ_Q"
-      },
-      {
-        "app_name": "BlockerHero - Content Blocker",
-        "package": "com.blockerhero",
-        "patches": [
-          {
-            "name": "Unlock Lifetime",
-            "description": "Unlocks lifetime subscription features in BlockerHero.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/Yyv_3i0BxSyJrH390mRiBJPkz3lwTkY1dAJDLh6ncgm1ztgWodQ55jfsJSsF5syEGdeBr9fZz2bwDcY8_gg6AQ"
-      },
-      {
-        "app_name": "Canva: AI Photo & Video Editor",
-        "package": "com.canva.editor",
-        "patches": [
-          {
-            "name": "Disable Restricted Access",
-            "description": "Removes restricted/locked indicators on premium media in Canva.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Remove Watermark",
-            "description": "Removes watermarks from Canva exports and previews.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/52fzAlhKzDyZV8ttyQ_DHB-jOeLZAZEdKlgXnWL__YNMZuvsoRCshJX5mr_ArFZjK7rte4hqEJ4ucjtuKJK5"
-      },
-      {
-        "app_name": "Call Recorder - Cube ACR",
-        "package": "com.catalinagroup.callrecorder",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks Premium Features In the App.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/dJwOASgiOu0tCod_WeCDjX9d_oJI9SuZpmtFlSP6ATA63hXM8pUxnTp1HCI9YK1jD5v2lQw3JSKEWatwDzPMQg"
-      },
-      {
-        "app_name": "1.1.1.1 + WARP: Safer Internet",
-        "package": "com.cloudflare.onedotonedotonedotone",
-        "patches": [
-          {
-            "name": "Disable Analytics / Telemetry",
-            "description": "Disables App Analytics / Telemetry.",
-            "use": false,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Spoof WARP+ Unlimited UI",
-            "description": "Unlocks WARP+ UI locally.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/PDwXxcvulfxi2bH4UjcMGJ7i0CQ7_QNypYohkhhg02zE7FdNTNRyF21-ikrLM5kyvcmNxtr77Va-7sS3NLbpNg"
-      },
-      {
-        "app_name": "CPU-Z",
-        "package": "com.cpuid.cpu_z",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks Premium features in app.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/ZrHa04Sd63PqJNHlvpCz8K94AKdmqDmCacf6iQ0rBZs4s7JmcevoetuduWsRo3S3SC0DIDh273mwU_P0gSc2cQ"
-      },
-      {
-        "app_name": "TeraBox: 1TB Cloud & AI Space",
-        "package": "com.dubox.drive",
-        "patches": [
-          {
-            "name": "Unlock VIP",
-            "description": "Unlocks Dubox Drive VIP/SVIP (Premium+)",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/b9KKZIvnQ_X3eIqHXeR4e0Ftd3lrDgAIkJ8N1fAvgl6zpTLuX8m74aVlRnoeLQCcAnLMbSMRJGLvsmghheZe"
-      },
-      {
-        "app_name": "AIDA64",
-        "package": "com.finalwire.aida64",
-        "patches": [
-          {
-            "name": "Remove ads",
-            "description": "Stubs all ad loading paths: banner/interstitial loaders, billing callbacks, and ad SDK init.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.20"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/KNLC9bz3iU2eQsPZmFRUTR7tjjvYQOXggWwkmFjk774XcKBX4f-qLjzViH6aoEaZuLUtj5Tk-3JghquUo-lJSw"
-      },
-      {
-        "app_name": "Flightradar24 Flight Tracker",
-        "package": "com.flightradar24free",
-        "patches": [
-          {
-            "name": "Unlock Business Premium",
-            "description": "Unlocks Business/Gold premium features in Flightradar24: ad-free map, weather layers, ATC, 3D view, flight history, and unlimited saved locations.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/8KtIuiRHYtY0XJigXIl-iN6X6-ht85ELWXFiynenpCW40b6zNUnLFGKwIN0iITV_1L3sN3G53PaiNiWsn5RSIv8"
-      },
-      {
-        "app_name": "Clickmate - Auto Clicker Macro",
-        "package": "com.inscode.autoclicker",
-        "patches": [
-          {
-            "name": "Unlock Premium ",
-            "description": "Unlocks premium in Clickmate",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/qPBtAmkh80PDy1ExUH4aafQVJ0zl9rNr5Lj2SJm3RJDJkjyd6tDEozuw-s1nGlXMZci83H27x7SCYey3vxVRDmc"
-      },
-      {
-        "app_name": "Photo Editor",
-        "package": "com.iudesk.android.photo.editor",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks all Photo Editor premium features by bypassing license checks.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/2n2H30gUwyIKaYp0c2Nr9btyFVJBxREps11WCl6U5xlWaHPvbA3IZD4GwfFlFXgt8jsoS2BtCu1MBkS70_gLuQ"
-      },
-      {
-        "app_name": "ML Manager: APK Extractor",
-        "package": "com.javiersantos.mlmanager",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks all pro features in ML Manager.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/tDjmADWkv1VGF5On3dNc4nMQZ0qU7izJKqmS_sJQ648tXazBvaLR7HO-VD7DJNKqMEOzJA-PUAEgdrNxuH6_UA"
-      },
-      {
-        "app_name": "nzb360 - Media Server Manager",
-        "package": "com.kevinforeman.nzb360",
-        "patches": [
-          {
-            "name": "Unlock All Access",
-            "description": "Unlocks All access in Nzb360.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/CZpq1UrZc2UUONba1GM8OWEGeYeJ1_NrBcjhGpENnhSEIzbLb-f6lW76fuso685c3pdK8KuV2nfb8AVxISJlPv8"
-      },
-      {
-        "app_name": "m-Indicator: Mumbai Local",
-        "package": "com.mobond.mindicator",
-        "patches": [
-          {
-            "name": "Remove Ads",
-            "description": "Removes interstitial and exit native ads from m-Indicator.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/6NH-2g_kwAlEExsNbcAA0w5bjfxoHMaALX4DrMpIhQe64-ZfaxLW085Cax9J-e_mvk9TNeNKZXDzeo8BNF-eExY"
-      },
-      {
-        "app_name": "SAI: Split APKs Installer",
-        "package": "com.mtv.sai",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Bypasses PairIP license check, paywall, ads, and pro upsell in SAI.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/NZEdYeZWgBVa10wkMBpdJrWQyL6lXuUWZDWx-ZSfWa4YJnatabcXAl7B55m1q83MrBq5OcqqFJCthyJ7muX9Hw"
-      },
-      {
-        "app_name": "CrimeRadar: Dispatch Alerts",
-        "package": "com.newsbreak.crimeradar",
-        "patches": [
-          {
-            "name": "Bypass License Check",
-            "description": "Bypasses PairIP DRM license verification to prevent forced app shutdown on non-Play-licensed installs.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Bypass Subscription Paywall",
-            "description": "Bypasses the subscription paywall in-app.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Remove Item Limits",
-            "description": "Removes all  item limits in-app.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Suppress Premium Promotions",
-            "description": "Supress all premium promotions in-app.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Unlock Followed Locations",
-            "description": "Unlocks the Followed Locations premium feature.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks Premium Features In the App.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/3b7_a7m50wFj68Afd6q0bhq2HPTWQlgeViv9B9tEbhChS3h4nVTo-HotZF4OmShKwT2_zhNAr3alwYRWBjiC_g"
-      },
-      {
-        "app_name": "Greenify",
-        "package": "com.oasisfeng.greenify",
-        "patches": [
-          {
-            "name": "Unlock Donation Features",
-            "description": "Unlocks all premium donation features in Greenify.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/4Uqi_lGZdgUL4GGxELdNdBaDMs2OjhC9emw5LWtEb1XN3NWlybG9IYD5yXSLuhwtt66cuMz4L4zWYgXzgxR1sA"
-      },
-      {
-        "app_name": "Proxyman - Capture HTTPS",
-        "package": "com.proxyman.proxymanandroid",
-        "patches": [
-          {
-            "name": "Unlock Lifetime",
-            "description": "Unlocks all Lifetime features in Proxyman.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/DfGml5bkf56G_Q3sOmQwGXOoixLShTs_-s1oDyTWawjAbFt3ej5WPFrAT2NnWMy9XkblegmgCcKwmZcNnskRnQ"
-      },
-      {
-        "app_name": "Psiphon VPN: Freedom Online",
-        "package": "com.psiphon3.subscription",
-        "patches": [
-          {
-            "name": "Remove Ads / Unlock Premium",
-            "description": "Forces SubscriptionStateImpl.getStatus() (LB2/c.h) to always return HAS_UNLIMITED_SUBSCRIPTION and getPurchase() (LB2/c.g) to return a well-formed fake Purchase, removing ads and the upgrade button/banner without crashing on the now-expected non-null Purchase object.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "476"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/yOedEdrW5mbwFSzANsZyZxm6zI2DnQ_52-KGJxUWv1kJnxeyAY4avqQC0xpMHGP4ukY5pXhE00-H40ktbWkkCVc"
-      },
-      {
-        "app_name": "RAR",
-        "package": "com.rarlab.rar",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Removes ads and unlocks the no-ads subscription in RAR.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/wWn5oCBNr1mP0CFWGK9esgaY62mNbHsm6T4gDCxFTz2ymSXVNpGEbigW_0oiE-TEMHAwu7BLofIQvPlBAlAdow"
-      },
-      {
-        "app_name": "Case Tracker US Immigration",
-        "package": "com.saldous.casetracker",
-        "patches": [
-          {
-            "name": "Remove Ads",
-            "description": "Removes interstitial, app-open and native ads.",
-            "use": false,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks Premium Features In the App.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/MBF03v1RSEaq48wgwU8PWtrXPud7l9Gak0U5EywEdEWP2OD-mASssBpJQi0UUf4HaZDVpfFLrxXesyzD2IbWnw"
-      },
-      {
-        "app_name": "App Permission Manager",
-        "package": "com.shexa.permissionmanager",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks all Pro features in app.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.4.6.2"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/RzmOwc2oqu3vvXd8Lawc40E-f6OxrvwdmMUeei3Qj_fVAknevHOxWiCJ16Qw900hF-38mLPjq4Uez0Vxny1E"
-      },
-      {
-        "app_name": "Splitwise",
-        "package": "com.splitwise.splitwisemobile",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks Splitwise Pro features, removes ad banners, and suppresses all upgrade upsell prompts.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": ""
-      },
-      {
-        "app_name": "Hibernator: Force Stop Apps",
-        "package": "com.tafayor.hibernator",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks all pro features in Hibernator.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/evZf3MH6957tqcIGaGqOyytkXRnrOagMDz00UHR0S13_6P46MihR5TPeZxpr-lautYOLAvvXAx45sIbA5towQA"
-      },
-      {
-        "app_name": "Killapps - Close Running Apps",
-        "package": "com.tafayor.killall",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks all pro features in KillApps.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/n0wUxgYo8BoUhxcc_l3U_jCwCbPRQhIJKFzxdZ4katlhsswB0rLXKV4oiLj0235W_kYPLJKwIlk5-xMN-9Rt"
-      },
-      {
-        "app_name": "Stargazing Hub: Astro Guide",
-        "package": "com.twtapp",
-        "patches": [
-          {
-            "name": "Unlock Subscription",
-            "description": "Unlocks all subscription features in TWT App.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/Y9rUCGFcH3Qtu0cY2Wppp5ZuSK1GNmsTVhD8jG6JUGYdYeUteBIcbll0C2z90V6X7nDOD4eGgrecyox2q8mu"
-      },
-      {
-        "app_name": "YATRI: Mumbai Local & Metro",
-        "package": "com.yatrirailways.yatri",
-        "patches": [
-          {
-            "name": "Unlock VIP",
-            "description": "Unlocks Yatri VIP by forcing active plan status and spoofing active plan DB query.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/T45yBR6PwB4nu0ncKZ_L-LfLv5CwkpJkYiiI0mUlcyqjDk3nL5xk_ibg1SmPXcptRa3sD57x_mePxTdwQmd8z4Q"
-      },
-      {
-        "app_name": "NetMonster",
-        "package": "cz.mroczis.netmonster",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks all premium features.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/bY_d4uzxtY2_a-r3caEhTlQPzRZy7lCs428H-BIo4KGxyjWm3ZVRCtJTicy07nh3m30n5O6QPrgmYT8okHfT5Q"
-      },
-      {
-        "app_name": "Permission Pilot",
-        "package": "eu.darken.myperm",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks all Pro features in app.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.1.1-rc0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/Avvq84tDNB49hhXn06aDd9TcqTH8b4VUw7VntAqcNoDgS8PFoDJS5dN0uiJ24pyEUtBxj5Pa14FqhEUdFMgi"
-      },
-      {
-        "app_name": "NetGuard - no-root firewall",
-        "package": "eu.faircode.netguard",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks all pro features in NetGuard.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/lFAIySzTog17p9O5Y9cqS4nt9F7n913WO5eVlgUQDxEIpURQzSU0Mgaqb5jiDe2UVZrjpEOwOl9mbLuksZpI"
-      },
-      {
-        "app_name": "Beta Maniac",
-        "package": "it.mirko.beta",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks premium in Beta by Mirko.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/cvamBkdg3UQgYgQwlLbursoGoTRWi6DzmY7rph_dwWC9XCxUveVgU4NOx_lMj2dE0d8klY_tC1Y_9YdIOVYD"
-      },
-      {
-        "app_name": "NetShare - no-root-tethering",
-        "package": "kha.prog.mikrotik",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks Pro features in app.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "UI/link-274"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/KWKtpXZfYosRpwxSXDT9fLtro3iN9FQOBZpz7AObcDx-KxBCscq4efe0FTvUbjPzI3oGe9PfhHqVYE3Uwl-fxA"
-      },
-      {
-        "app_name": "Tasker",
-        "package": "net.dinglisch.android.taskerm",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks Tasker Pro features.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "6.6.20"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/wjXpkVLT-LAzfcYOfhH0hF8ghU79nDHtqVLxBNmWOQJ2ghb4pgp_IBNfGdCTw-aQgh3WwA3Gp1k8Y4waZkGobmA"
-      },
-      {
-        "app_name": "Hola VPN: Fast, Free VPN Proxy",
-        "package": "org.hola.play",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/0XpdhvjM2TUxAD4pDvp-Bd9OHRNfkfnO5iRDLEKyyjj9cnmvjYb8kH5vhVASlXSRgjHKDTgncioNqhb3Hunxew"
-      },
-      {
-        "app_name": "Speedtest by Ookla",
-        "package": "org.zwanoo.android.speedtest",
-        "patches": [
-          {
-            "name": "Unlock Ad-Free",
-            "description": "Removes ads and unlocks ad-free status in Speedtest by Ookla.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.0.4"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/ZH4EUfCHaf8hoFSpeLx_guqWN-DkGdJWbP5Ydim9dbvqO4L95TC3V7WD20-KsEpGaZuCrWz62ClSYdmCanL9"
-      },
-      {
-        "app_name": "Universal TV Remote Control",
-        "package": "sensustech.universal.tv.remote.control",
-        "patches": [
-          {
-            "name": "Disable Ads",
-            "description": "Prevents the AppOpen ad preloader from initialising.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Suppress Paywall",
-            "description": "Suppresses the in-app paywall.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks Premium Features In the App.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/yowpBHteTsFjVgAZN1IExwfucGxJzZ28sXYf4hs_Y4FnemiL9-qrUSr5VrzdXQNcoNTGCJ7-bEufvb--V5gpqw"
-      },
-      {
-        "app_name": "SHAREit Premium: Pure Share",
-        "package": "shareit.premium",
-        "patches": [
-          {
-            "name": "Unlock Lifetime",
-            "description": "Unlocks SHAREit lifetime premium.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/MBk1ZzBqd0nWQFWi_hZBOKjnvJaKTtEERT2adLYSvfuY0NCRI2xzkVEiYGk_wfqm1bRt6AukfSE1FhsB3uJrPi4"
-      },
-      {
-        "app_name": "Citizen: Protect The World",
-        "package": "sp0n.citizen",
-        "patches": [
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks all Citizen Plus/Protect features: Safety Network, Safety Center, Zones, Live Agent, Offender alerts, Clarity crime map, incident video, and more.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/WI55Qb1VObnbMnWXtYHSibC2n4dSD3ZRQc1bIjn61nBG-RWP1sBWD2WGhW_BdZwGp68u6OThbaEh8uWrkO3t_A"
-      },
-      {
-        "app_name": "Pialytic Julia Editor",
-        "package": "verbosus.pialytic",
-        "patches": [
-          {
-            "name": "Unlock All Features",
-            "description": "Bypasses PairIP DRM license check, removes all paywalls, and unlocks all premium features including cloud sync and remote access.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
-      }
-    ],
-    "fingerprint": "a177b422dbc5542cc11b54bc1f7280be35d553185c1a7fa274c0d6a59dcc848c"
+    "fingerprint": "43545623868fdab819a7129dcb0e206d7ef4956072f4c578640a5a989646bcb3"
   },
   "piko-shim:stable": {
     "bundle": "piko-shim",
@@ -25845,8 +26204,8 @@
     "bundle": "browzomje",
     "channel": "dev",
     "repo_url": "https://github.com/browzomje/browzomje-patches",
-    "created_at": "2026-06-25T07:27:58",
-    "version": "v1.2.1-dev.2",
+    "created_at": "2026-06-25T21:43:58",
+    "version": "v1.2.2-dev.1",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -25907,8 +26266,8 @@
     "bundle": "browzomje",
     "channel": "stable",
     "repo_url": "https://github.com/browzomje/browzomje-patches",
-    "created_at": "2026-06-25T07:50:34",
-    "version": "v1.2.1",
+    "created_at": "2026-06-25T21:48:23",
+    "version": "v1.2.2",
     "apps": [
       {
         "app_name": "Pinterest",
