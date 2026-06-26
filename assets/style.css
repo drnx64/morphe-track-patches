@@ -458,6 +458,14 @@ h1 {
     gap: 0.35rem;
     min-width: 0;
     flex: 1;
+    align-items: flex-start;
+}
+
+.bundle-title-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 0;
 }
 
 .bundle-name-title {
@@ -467,6 +475,8 @@ h1 {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .channel-badges-group { display: flex; gap: 4px; flex-wrap: wrap; }
@@ -1124,41 +1134,63 @@ h1 {
 
 /* ── Modal diff banner ───────────────────────────────── */
 .modal-diff-banner {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     padding: 0.55rem 0.75rem;
     margin-bottom: 0.75rem;
     background: rgba(255,255,255,0.02);
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: var(--border-radius-sm);
-    flex-wrap: wrap;
 }
 
 .modal-diff-label {
+    display: block;
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.4px;
     color: var(--text-secondary);
+    margin-bottom: 6px;
 }
 
-.badge-diff-added {
-    background: rgba(16,185,129,0.15);
+.modal-diff-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.diff-item {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.diff-added {
     color: var(--color-stable);
-    border: 1px solid rgba(16,185,129,0.3);
+    background: rgba(16,185,129,0.1);
 }
 
-.badge-diff-removed {
-    background: rgba(244,63,94,0.15);
+.diff-removed {
     color: var(--color-critical);
-    border: 1px solid rgba(244,63,94,0.3);
+    background: rgba(244,63,94,0.1);
 }
 
-.badge-diff-modified {
-    background: rgba(245,158,11,0.15);
+.diff-modified {
     color: var(--color-dev);
-    border: 1px solid rgba(245,158,11,0.3);
+    background: rgba(245,158,11,0.1);
+}
+
+.diff-name {
+    display: block;
+    font-weight: 600;
+}
+
+.diff-desc {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-top: 1px;
+    line-height: 1.35;
 }
 
 /* ── Per-patch NEW badge in modal ──────────────────── */
