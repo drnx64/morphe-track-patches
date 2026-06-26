@@ -144,6 +144,8 @@ function initDashboard() {
     const skelUpdates = document.getElementById("skeleton-updates");
     const skelGrid = document.getElementById("skeleton-grid");
 
+    applyFiltersFromUrl();
+
     // Load cached data instantly from IndexedDB
     Promise.all([idbGet('live'), idbGet('icons'), idbGet('names')]).then(function(items) {
         if (items[0] && items[1]) {
@@ -248,6 +250,8 @@ function finalizeDashboard(data, cache, names) {
     iconCache = cache || {};
     if (names) nameCache = names;
 
+    applyFiltersFromUrl();
+
     const checkingEl = document.getElementById("checking-message");
     const skelUpdates = document.getElementById("skeleton-updates");
     const skelGrid = document.getElementById("skeleton-grid");
@@ -290,6 +294,7 @@ function scrollToHighlightedBundle() {
             const nameEl = card.querySelector(".bundle-name-title");
             if (nameEl && nameEl.textContent.trim() === targetBundleName) {
                 card.scrollIntoView({ behavior: "smooth", block: "center" });
+                card.classList.add("expanded");
                 card.classList.add("highlighted");
                 card.addEventListener("animationend", () => {
                     card.classList.remove("highlighted");
@@ -364,13 +369,26 @@ function renderTodayUpdates(data) {
 
             bundleRow.innerHTML = `
                 <span class="badge badge-new-bundle">NEW BUNDLE</span>
-                <span>Bundle <a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a> (${channelsStr}) added by ${authorHtml}</span>
+                <span>Bundle <a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a> (${channelsStr}) added by ${authorHtml}</span>
             `;
         } else {
             bundleRow.innerHTML = `
                 <span class="badge badge-updated-bundle">UPDATED</span>
-                <span><a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a></span>
+                <span><a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a></span>
             `;
+        }
+
+        // Click bundle link -> open bundle modal (also update hash for bookmarking)
+        const bundleLink = bundleRow.querySelector(".changelog-bundle-link");
+        if (bundleLink) {
+            bundleLink.addEventListener("click", function(e) {
+                e.preventDefault();
+                window.location.hash = "bundle=" + encodeURIComponent(bName);
+                openBundleModal(bName, {
+                    version: bGroup.version || "",
+                    channels: bGroup.channels
+                });
+            });
         }
 
         if (bGroup.apps.length > 0) {
@@ -396,7 +414,7 @@ function renderTodayUpdates(data) {
                 var iconUrl = getAppIconUrl(app);
                 var appIconHtml3 = iconUrl ? '<a href="https://play.google.com/store/apps/details?id=' + encodeURIComponent(app.package) + '" target="_blank" class="app-icon-link">' + getAppIconHtml(iconUrl) + '</a>' : '';
                 var scanBadges = (app.scan_numbers || []).map(function(sn) {
-                    return '<span class="badge badge-scan">#' + sn + '</span>';
+                    return '<span class="badge badge-scan">' + sn + '</span>';
                 }).join(' ');
 
                 var appRow = document.createElement("div");
@@ -425,7 +443,7 @@ function renderTodayUpdates(data) {
                             appData = allBundlesData[devKey].apps.find(function(a) { return a.package === pkg; });
                         }
                         if (appData) {
-                            openAppModal(appData, { bundle: bundleName, channels: channels });
+                            openAppModal(appData, { bundle: bundleName, channels: channels, patch_diff: app.patch_diff });
                         }
                     });
                 }
@@ -456,11 +474,34 @@ function getRepoInfo(repoUrl) {
     return { isGitLab, path };
 }
 
+function syncFilterToUrl() {
+    var params = new URLSearchParams();
+    if (currentFilters.search) params.set("search", currentFilters.search);
+    if (currentFilters.channel && currentFilters.channel !== "all") params.set("channel", currentFilters.channel);
+    var newUrl = params.toString() ? "?" + params.toString() : window.location.pathname;
+    history.replaceState(null, "", newUrl);
+}
+
+function applyFiltersFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var search = params.get("search") || "";
+    var channel = params.get("channel") || "all";
+    currentFilters.search = search.toLowerCase().trim();
+    currentFilters.channel = channel;
+    var searchInput = document.getElementById("search-input");
+    if (searchInput) searchInput.value = search;
+    var filterButtons = document.querySelectorAll(".filter-group .filter-btn");
+    filterButtons.forEach(function(btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-channel") === channel);
+    });
+}
+
 function setupDashboardFilters() {
     const searchInput = document.getElementById("search-input");
     if (searchInput) {
         searchInput.addEventListener("input", (e) => {
             currentFilters.search = e.target.value.toLowerCase().trim();
+            syncFilterToUrl();
             filterAndRenderBundles();
         });
     }
@@ -471,6 +512,7 @@ function setupDashboardFilters() {
             filterButtons.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
             currentFilters.channel = btn.getAttribute("data-channel");
+            syncFilterToUrl();
             filterAndRenderBundles();
         });
     });
@@ -672,7 +714,7 @@ function buildBundleCard(bundle) {
     card.innerHTML = [
         '<div class="bundle-card-header">',
         '  <div class="bundle-title-group">',
-        '    <span class="bundle-name-title" title="' + escHtml(bundle.bundle) + '">' + escHtml(bundle.bundle) + updatedBadge + '</span>',
+        '    <span class="bundle-name-title" title="' + escHtml(bundle.bundle) + '">' + escHtml(bundle.bundle) + '</span>' + updatedBadge,
         '    <div class="channel-badges-group">' + badgesHtml + '</div>',
         '    ' + versionTag,
         '  </div>',
@@ -790,10 +832,19 @@ function buildAppCardsDrawer(card, bundle, apps) {
 // ── Modal ─────────────────────────────────────────────────────────────────────
 
 let modalState = {};
+let _bundleWasOpen = false;
 
 function openAppModal(app, bundle) {
     const modal = document.getElementById("app-detail-modal");
     if (!modal) return;
+
+    // Hide bundle modal if open (don't close — restore later)
+    _bundleWasOpen = false;
+    var bundleModal = document.getElementById("bundle-detail-modal");
+    if (bundleModal && bundleModal.classList.contains("open")) {
+        _bundleWasOpen = true;
+        bundleModal.classList.remove("open");
+    }
 
     // Populate header
     const modalIconHtml = getAppIconHtml(getAppIconUrl(app), "app-icon app-icon-modal");
@@ -825,7 +876,8 @@ function openAppModal(app, bundle) {
         stableApp: stableAppData || null,
         devApp: devAppData || null,
         bundleName: bundle.bundle,
-        currentChannel: "stable"
+        currentChannel: "stable",
+        patchDiff: bundle.patch_diff || null
     };
 
     // Show/hide toggle buttons based on available channels
@@ -916,6 +968,31 @@ function renderModalChannel() {
     document.getElementById("modal-patches-count").textContent =
         count + " patch" + (count !== 1 ? "es" : "");
 
+    // Diff banner for updated apps
+    var diffBanner = document.getElementById("modal-diff-banner");
+    if (diffBanner) diffBanner.remove();
+    var patchDiff = modalState.patchDiff;
+    if (patchDiff && (patchDiff.patches_added.length > 0 || patchDiff.patches_removed.length > 0 || patchDiff.patches_modified.length > 0)) {
+        var banner = document.createElement("div");
+        banner.id = "modal-diff-banner";
+        banner.className = "modal-diff-banner";
+        var parts = [];
+        if (patchDiff.patches_added.length > 0) {
+            parts.push('<span class="badge badge-diff-added">+' + patchDiff.patches_added.length + ' added</span>');
+        }
+        if (patchDiff.patches_removed.length > 0) {
+            parts.push('<span class="badge badge-diff-removed">-' + patchDiff.patches_removed.length + ' removed</span>');
+        }
+        if (patchDiff.patches_modified.length > 0) {
+            parts.push('<span class="badge badge-diff-modified">~' + patchDiff.patches_modified.length + ' modified</span>');
+        }
+        banner.innerHTML = '<span class="modal-diff-label">Changes detected</span> ' + parts.join(' ');
+        var patchesHeader = document.querySelector(".modal-patches-header");
+        if (patchesHeader && patchesHeader.parentNode) {
+            patchesHeader.parentNode.insertBefore(banner, patchesHeader.nextSibling);
+        }
+    }
+
     // Patch list
     const patchesContainer = document.getElementById("modal-patches-list");
     if (showPatches.length === 0) {
@@ -938,6 +1015,18 @@ function closeAppModal() {
     const modal = document.getElementById("app-detail-modal");
     if (!modal) return;
     modal.classList.remove("open");
+
+    // Re-show bundle modal if we came from there
+    if (_bundleWasOpen) {
+        _bundleWasOpen = false;
+        var bundleModal = document.getElementById("bundle-detail-modal");
+        if (bundleModal) {
+            bundleModal.classList.add("open");
+            document.body.style.overflow = "hidden";
+            return;
+        }
+    }
+
     document.body.style.overflow = "";
 }
 
@@ -1015,6 +1104,174 @@ function buildModalPatchItem(patch, idx, showDevBadges) {
     return item;
 }
 
+// ── Bundle Modal ──────────────────────────────────────────────────────────────
+
+function openBundleModal(bundleName, bundleData) {
+    const modal = document.getElementById("bundle-detail-modal");
+    if (!modal) return;
+
+    // Gather data from allBundlesData
+    var stableKey = bundleName + ":stable";
+    var devKey = bundleName + ":dev";
+    var stableBundle = allBundlesData[stableKey];
+    var devBundle = allBundlesData[devKey];
+
+    var repoUrl = (stableBundle && stableBundle.repo_url) || (devBundle && devBundle.repo_url) || "https://github.com/" + bundleName + "/revanced-patches";
+    var version = bundleData.version || (stableBundle && stableBundle.version) || (devBundle && devBundle.version) || "";
+    var channels = bundleData.channels || [];
+    if (stableBundle && channels.indexOf("stable") === -1) channels.push("stable");
+    if (devBundle && channels.indexOf("dev") === -1) channels.push("dev");
+
+    var repoInfo = getRepoInfo(repoUrl);
+    var param = repoInfo.isGitLab ? "gitlab" : "github";
+    var addMorpheUrl = "https://morphe.software/add-source?" + param + "=" + encodeURIComponent(repoInfo.path);
+    var iconSvg = repoInfo.isGitLab ? gitlabSvg : githubSvg;
+
+    document.getElementById("bundle-modal-name").textContent = bundleName;
+    document.getElementById("bundle-modal-channels").textContent = "Channels: " + channels.join(", ");
+
+    var badgesEl = document.getElementById("bundle-modal-badges");
+    badgesEl.innerHTML = channels.map(function(ch) {
+        return '<span class="channel-badge ' + ch + '">' + ch + '</span>';
+    }).join('');
+
+    var versionEl = document.getElementById("bundle-modal-version");
+    versionEl.textContent = version || "unknown";
+
+    var repoLink = document.getElementById("bundle-modal-repo-link");
+    repoLink.href = repoUrl;
+    repoLink.innerHTML = iconSvg + ' Repository';
+
+    var addBtn = document.getElementById("bundle-modal-add-morphe");
+    addBtn.href = addMorpheUrl;
+
+    // Build apps list
+    var appsList = document.getElementById("bundle-modal-apps-list");
+    var allApps = [];
+
+    if (stableBundle && stableBundle.apps) {
+        stableBundle.apps.forEach(function(a) {
+            if (!allApps.some(function(x) { return x.package === a.package; })) {
+                allApps.push(a);
+            }
+        });
+    }
+    if (devBundle && devBundle.apps) {
+        devBundle.apps.forEach(function(a) {
+            if (!allApps.some(function(x) { return x.package === a.package; })) {
+                allApps.push(a);
+            }
+        });
+    }
+
+    allApps.sort(function(a, b) {
+        return resolveAppName(a).localeCompare(resolveAppName(b));
+    });
+
+    document.getElementById("bundle-modal-apps-count").textContent = allApps.length + " app" + (allApps.length !== 1 ? "s" : "");
+
+    if (allApps.length === 0) {
+        appsList.innerHTML = '<div class="modal-no-patches">No apps available in this bundle.</div>';
+    } else {
+        appsList.innerHTML = "";
+        var frag = document.createDocumentFragment();
+        allApps.forEach(function(app) {
+            var card = document.createElement("div");
+            card.className = "app-mini-card";
+            card.setAttribute("role", "button");
+            card.setAttribute("tabindex", "0");
+            card.setAttribute("aria-label", "View patches for " + resolveAppName(app));
+
+            var isPre = isAppPreRelease(bundleName, app.package, allBundlesData);
+            var preBadge = isPre ? '<span class="badge badge-pre-release">Pre-Release</span>' : '';
+            var patchCount = (app.patches || []).length;
+
+            var allVersions = new Set();
+            (app.patches || []).forEach(function(p) {
+                if (p.compatible_versions && p.compatible_versions.length > 0) {
+                    p.compatible_versions.forEach(function(v) { allVersions.add(v); });
+                }
+            });
+            var versionArr = [...allVersions].sort();
+
+            var versionsPreview = "";
+            if (versionArr.length === 0) {
+                versionsPreview = '<span class="version-chip any">Any version</span>';
+            } else {
+                versionsPreview = versionArr.slice(0, 3).map(function(v) {
+                    return '<span class="version-chip">' + escHtml(v) + '</span>';
+                }).join('');
+                if (versionArr.length > 3) {
+                    versionsPreview += '<span class="version-chip any">+' + (versionArr.length - 3) + '</span>';
+                }
+            }
+
+            card.innerHTML = [
+                '<div class="app-mini-card-main">',
+                getAppIconHtml(getAppIconUrl(app)),
+                '  <div class="app-mini-card-info">',
+                '    <span class="app-mini-name">' + escHtml(resolveAppName(app)) + '</span>',
+                '    ' + preBadge,
+                '    <span class="app-mini-pkg">' + escHtml(app.package) + '</span>',
+                '  </div>',
+                '  <div class="app-mini-stats">',
+                '    <span class="app-mini-patch-count">' + patchCount + ' patch' + (patchCount !== 1 ? "es" : "") + '</span>',
+                '    <svg class="app-mini-arrow" viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10 8 6.22 4.28a.75.75 0 0 1 0-1.06z"/></svg>',
+                '  </div>',
+                '</div>',
+                '<div class="app-mini-versions">' + versionsPreview + '</div>'
+            ].join('');
+
+            card.addEventListener("click", function(e) {
+                e.stopPropagation();
+                openAppModal(app, { bundle: bundleName, channels: channels });
+            });
+            card.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openAppModal(app, { bundle: bundleName, channels: channels });
+                }
+            });
+
+            frag.appendChild(card);
+        });
+        appsList.appendChild(frag);
+    }
+
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    var closeBtn = document.getElementById("bundle-modal-close-btn");
+    if (closeBtn) closeBtn.focus();
+}
+
+function closeBundleModal() {
+    var modal = document.getElementById("bundle-detail-modal");
+    if (!modal) return;
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+}
+
+// ── Toast Notification ────────────────────────────────────────────────────────
+
+var toastTimer = null;
+
+function showToast(message) {
+    var toast = document.getElementById("toast-notification");
+    var msgEl = document.getElementById("toast-message");
+    if (!toast || !msgEl) return;
+    msgEl.textContent = message || "New data available";
+    toast.classList.add("visible");
+    if (toastTimer) clearTimeout(toastTimer);
+}
+
+function hideToast() {
+    var toast = document.getElementById("toast-notification");
+    if (!toast) return;
+    toast.classList.remove("visible");
+    if (toastTimer) clearTimeout(toastTimer);
+}
+
 // Modal close wiring — runs once DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.getElementById("modal-close-btn");
@@ -1027,8 +1284,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Bundle modal close wiring
+    var bundleCloseBtn = document.getElementById("bundle-modal-close-btn");
+    if (bundleCloseBtn) bundleCloseBtn.addEventListener("click", closeBundleModal);
+
+    var bundleOverlay = document.getElementById("bundle-detail-modal");
+    if (bundleOverlay) {
+        bundleOverlay.addEventListener("click", function(e) {
+            if (e.target === bundleOverlay) closeBundleModal();
+        });
+    }
+
+    // Toast close wiring
+    var toastCloseBtn = document.getElementById("toast-close-btn");
+    if (toastCloseBtn) toastCloseBtn.addEventListener("click", hideToast);
+
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closeAppModal();
+        if (e.key === "Escape") {
+            closeAppModal();
+            closeBundleModal();
+            hideToast();
+        }
     });
 
     // Back to top button
@@ -1135,23 +1411,26 @@ function renderChangelog(changelog, bundlesData) {
             const bGroup = grouped[bName];
             const isNewBundle = bGroup.badge_type === "NEW BUNDLE";
 
+            let channelsStr = bGroup.channels.join(", ");
             let headerHtml = "";
             if (isNewBundle) {
-                const channelsStr = bGroup.channels.join(", ");
                 headerHtml = `
                     <div class="changelog-bundle-header">
                         <span class="badge badge-new-bundle">NEW BUNDLE</span>
-                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a> (${channelsStr})</span>
+                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a> (${channelsStr})</span>
                     </div>
                 `;
             } else {
                 headerHtml = `
                     <div class="changelog-bundle-header">
                         <span class="badge badge-updated">UPDATED</span>
-                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName}</strong></a></span>
+                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a></span>
                     </div>
                 `;
             }
+
+            // Use innerHTML then attach event for bundle modal
+            // We'll wire the link after the fact
 
             let appsListHtml = "";
             if (bGroup.apps.length > 0) {
@@ -1175,7 +1454,7 @@ function renderChangelog(changelog, bundlesData) {
                     const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
                     const appIconHtml4 = getAppIconHtml(getAppIconUrl(app));
                     const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${escHtml(resolveAppName(app))}</a>`;
-                    const scanBadges = (app.scan_numbers || []).map(sn => `<span class="badge badge-scan">#${sn}</span>`).join(' ');
+                    const scanBadges = (app.scan_numbers || []).map(sn => `<span class="badge badge-scan">${sn}</span>`).join(' ');
 
                     appsListHtml += `
                         <li class="changelog-item">
@@ -1210,24 +1489,50 @@ function renderChangelog(changelog, bundlesData) {
         `;
 
         container.appendChild(card);
+
+        // Wire bundle links to open bundle modal (prevent navigation from changelog page)
+        var bundleLinks = card.querySelectorAll(".changelog-bundle-link");
+        bundleLinks.forEach(function(link) {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                var bundleName = link.querySelector("strong") ? link.querySelector("strong").textContent.trim() : link.textContent.trim();
+                var foundGroup = grouped[bundleName];
+                var channels = foundGroup ? foundGroup.channels : [];
+                openBundleModal(bundleName, {
+                    version: "",
+                    channels: channels
+                });
+            });
+        });
     });
 }
 
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.addEventListener("message", function(event) {
         if (event.data && event.data.type === "DATA_UPDATED") {
-            const isDashboard = document.getElementById("nav-dashboard") && document.getElementById("nav-dashboard").classList.contains("active");
-            if (isDashboard) {
-                fetch("data/live.json").then(function(res) { return res.json(); }).then(function(data) {
-                    renderStats(data);
-                    renderTodayUpdates(data);
-                    for (const key in data.bundles) {
-                        allBundlesData[key] = Object.assign({}, data.bundles[key], { key: key });
+            showToast("New data available — click to refresh");
+
+            // On toast click, refresh data
+            var toast = document.getElementById("toast-notification");
+            if (toast) {
+                var doRefresh = function() {
+                    hideToast();
+                    var isDashboard = document.getElementById("nav-dashboard") && document.getElementById("nav-dashboard").classList.contains("active");
+                    if (isDashboard) {
+                        fetch("data/live.json?_t=" + Date.now()).then(function(res) { return res.json(); }).then(function(data) {
+                            renderStats(data);
+                            renderTodayUpdates(data);
+                            for (const key in data.bundles) {
+                                allBundlesData[key] = Object.assign({}, data.bundles[key], { key: key });
+                            }
+                            filterAndRenderBundles();
+                        }).catch(function() {});
+                    } else {
+                        initChangelog();
                     }
-                    filterAndRenderBundles();
-                }).catch(function() {});
-            } else {
-                initChangelog();
+                    toast.removeEventListener("click", doRefresh);
+                };
+                toast.addEventListener("click", doRefresh);
             }
         }
     });
