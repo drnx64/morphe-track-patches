@@ -67,6 +67,9 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                         extant["badge_type"] = app["badge_type"]
                     if scan_counter not in extant.get("scan_numbers", []):
                         extant.setdefault("scan_numbers", []).append(scan_counter)
+                    # Preserve/update patch diff data
+                    if "patch_diff" in app:
+                        extant["patch_diff"] = app["patch_diff"]
 
 
 def generate_markdown_changelog(date_str, affected_bundles_dict):

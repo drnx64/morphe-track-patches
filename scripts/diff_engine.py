@@ -40,6 +40,30 @@ def apps_are_different(old_app, new_app):
 
     return normalize_app_data(old_app) != normalize_app_data(new_app)
 
+def compute_patch_diff(old_app, new_app):
+    """Compute which patches were added/removed between old and new app state."""
+    old_patches = {p.get("name", ""): p for p in old_app.get("patches", [])}
+    new_patches = {p.get("name", ""): p for p in new_app.get("patches", [])}
+    
+    old_names = set(old_patches.keys())
+    new_names = set(new_patches.keys())
+    
+    added_names = new_names - old_names
+    removed_names = old_names - new_names
+    
+    # Also detect modified patches (same name, different content)
+    modified = []
+    common_names = old_names & new_names
+    for name in common_names:
+        if old_patches[name] != new_patches[name]:
+            modified.append(name)
+    
+    return {
+        "patches_added": sorted(list(added_names)),
+        "patches_removed": sorted(list(removed_names)),
+        "patches_modified": sorted(modified)
+    }
+
 def diff_snapshots():
     new_snapshot_path = os.path.join(RAW_DIR, "parsed_bundles.json")
     new_snapshot = load_json(new_snapshot_path, default={})
@@ -93,10 +117,12 @@ def diff_snapshots():
                         })
                     elif apps_are_different(old_app_map[pkg], app):
                         print(f"[~] Diff: Found updated app {app['app_name']} ({pkg}) in {bundle_key}")
+                        patch_diff = compute_patch_diff(old_app_map[pkg], app)
                         changed_apps.append({
                             "app_name": app["app_name"],
                             "package": app["package"],
-                            "badge_type": "UPDATED APP"
+                            "badge_type": "UPDATED APP",
+                            "patch_diff": patch_diff
                         })
 
                 for pkg, app in old_app_map.items():

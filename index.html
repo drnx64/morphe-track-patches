@@ -232,9 +232,67 @@
       </div>
     </div>
 
+    <!-- Bundle Detail Modal -->
+    <div
+      class="modal-overlay"
+      id="bundle-detail-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bundle-modal-name">
+      <div class="modal-box">
+        <div class="modal-header">
+          <div class="modal-header-top">
+            <div class="modal-app-identity">
+              <h3 class="modal-app-name" id="bundle-modal-name">Bundle Name</h3>
+              <div class="modal-meta-row">
+                <span class="modal-bundle-info" id="bundle-modal-channels"></span>
+              </div>
+              <div class="modal-channel-row" id="bundle-modal-badges"></div>
+            </div>
+            <div class="modal-header-actions">
+              <a
+                class="modal-play-btn"
+                id="bundle-modal-repo-link"
+                href="#"
+                target="_blank"
+                >Repository</a
+              >
+              <button
+                class="modal-close"
+                id="bundle-modal-close-btn"
+                aria-label="Close bundle modal"
+                >&times;</button
+              >
+            </div>
+          </div>
+          <div class="bundle-modal-meta">
+            <span class="versions-label">Version:</span>
+            <span class="bundle-version-tag" id="bundle-modal-version"></span>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-patches-header">
+            <span class="modal-patches-title">Apps</span>
+            <span class="modal-patches-count" id="bundle-modal-apps-count"
+              >0 apps</span
+            >
+          </div>
+          <a class="add-morphe-btn" id="bundle-modal-add-morphe" href="#" target="_blank">Add to Morphe</a>
+          <div class="bundle-modal-apps-list" id="bundle-modal-apps-list">
+            <div class="modal-no-patches">No apps available in this bundle.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <button class="back-to-top" id="back-to-top-btn" aria-label="Back to top"
       >↑</button
     >
+    <div class="toast-notification" id="toast-notification">
+      <span class="toast-icon">&#9670;</span>
+      <span class="toast-message" id="toast-message">New data available</span>
+      <button class="toast-close" id="toast-close-btn" aria-label="Dismiss">&times;</button>
+    </div>
 
     <footer class="app-footer">
       <div class="footer-links">
