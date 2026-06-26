@@ -1,3 +1,31 @@
+// One-time storage clear after deploy (clears stale caches/localStorage/IndexedDB)
+(function() {
+    if (localStorage.getItem("morphe_storage_cleared")) return;
+
+    // Clear everything before the app boots
+    localStorage.clear();
+    sessionStorage.clear();
+
+    // Clear all IndexedDB databases
+    if (indexedDB.databases) {
+        indexedDB.databases().then(function(dbs) {
+            dbs.forEach(function(db) {
+                if (db.name) indexedDB.deleteDatabase(db.name);
+            });
+        });
+    }
+
+    // Clear all Cache Storage (SW caches)
+    if (caches && caches.keys) {
+        caches.keys().then(function(names) {
+            names.forEach(function(name) { caches.delete(name); });
+        });
+    }
+
+    localStorage.setItem("morphe_storage_cleared", "1");
+    location.reload();
+})();
+
 // Dynamic UI engine
 document.addEventListener("DOMContentLoaded", () => {
     const isDashboard = document.getElementById("nav-dashboard") && document.getElementById("nav-dashboard").classList.contains("active");
@@ -714,7 +742,9 @@ function buildBundleCard(bundle) {
     card.innerHTML = [
         '<div class="bundle-card-header">',
         '  <div class="bundle-title-group">',
-        '    <span class="bundle-name-title" title="' + escHtml(bundle.bundle) + '">' + escHtml(bundle.bundle) + '</span>' + updatedBadge,
+        '    <div class="bundle-title-row">',
+        '      <span class="bundle-name-title" title="' + escHtml(bundle.bundle) + '">' + escHtml(bundle.bundle) + '</span>' + updatedBadge,
+        '    </div>',
         '    <div class="channel-badges-group">' + badgesHtml + '</div>',
         '    ' + versionTag,
         '  </div>',
@@ -976,20 +1006,30 @@ function renderModalChannel() {
         var banner = document.createElement("div");
         banner.id = "modal-diff-banner";
         banner.className = "modal-diff-banner";
-        var parts = [];
-        if (patchDiff.patches_added.length > 0) {
-            parts.push('<span class="badge badge-diff-added">+' + patchDiff.patches_added.length + ' added</span>');
-        }
-        if (patchDiff.patches_removed.length > 0) {
-            parts.push('<span class="badge badge-diff-removed">-' + patchDiff.patches_removed.length + ' removed</span>');
-        }
-        if (patchDiff.patches_modified.length > 0) {
-            parts.push('<span class="badge badge-diff-modified">~' + patchDiff.patches_modified.length + ' modified</span>');
-        }
-        banner.innerHTML = '<span class="modal-diff-label">Changes detected</span> ' + parts.join(' ');
-        var patchesHeader = document.querySelector(".modal-patches-header");
-        if (patchesHeader && patchesHeader.parentNode) {
-            patchesHeader.parentNode.insertBefore(banner, patchesHeader.nextSibling);
+        var html = '<span class="modal-diff-label">Changes</span><div class="modal-diff-list">';
+        (patchDiff.patches_added || []).forEach(function(p) {
+            var name = typeof p === 'string' ? p : p.name;
+            var desc = typeof p === 'object' && p.description ? p.description : '';
+            html += '<div class="diff-item diff-added"><span class="diff-name">+ ' + escHtml(name) + '</span>';
+            if (desc) html += '<span class="diff-desc">' + escHtml(desc) + '</span>';
+            html += '</div>';
+        });
+        (patchDiff.patches_removed || []).forEach(function(p) {
+            var name = typeof p === 'string' ? p : p.name;
+            html += '<div class="diff-item diff-removed"><span class="diff-name">- ' + escHtml(name) + '</span></div>';
+        });
+        (patchDiff.patches_modified || []).forEach(function(p) {
+            var name = typeof p === 'string' ? p : p.name;
+            var desc = typeof p === 'object' && p.description ? p.description : '';
+            html += '<div class="diff-item diff-modified"><span class="diff-name">~ ' + escHtml(name) + '</span>';
+            if (desc) html += '<span class="diff-desc">' + escHtml(desc) + '</span>';
+            html += '</div>';
+        });
+        html += '</div>';
+        banner.innerHTML = html;
+        var afterEl = document.querySelector(".modal-patches-header") || document.getElementById("modal-versions-row");
+        if (afterEl && afterEl.parentNode) {
+            afterEl.parentNode.insertBefore(banner, afterEl.nextSibling);
         }
     }
 

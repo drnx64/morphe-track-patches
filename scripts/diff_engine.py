@@ -48,20 +48,22 @@ def compute_patch_diff(old_app, new_app):
     old_names = set(old_patches.keys())
     new_names = set(new_patches.keys())
     
-    added_names = new_names - old_names
-    removed_names = old_names - new_names
+    added_names = sorted(new_names - old_names)
+    removed_names = sorted(old_names - new_names)
     
     # Also detect modified patches (same name, different content)
-    modified = []
-    common_names = old_names & new_names
-    for name in common_names:
-        if old_patches[name] != new_patches[name]:
-            modified.append(name)
+    modified_names = sorted([
+        n for n in (old_names & new_names)
+        if old_patches[n] != new_patches[n]
+    ])
+    
+    def enrich(names, source):
+        return [{"name": n, "description": source.get(n, {}).get("description", "")} for n in names]
     
     return {
-        "patches_added": sorted(list(added_names)),
-        "patches_removed": sorted(list(removed_names)),
-        "patches_modified": sorted(modified)
+        "patches_added": enrich(added_names, new_patches),
+        "patches_removed": enrich(removed_names, old_patches),
+        "patches_modified": enrich(modified_names, new_patches)
     }
 
 def diff_snapshots():
