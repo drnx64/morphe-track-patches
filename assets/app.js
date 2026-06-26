@@ -40,6 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Ordinal suffix for scan batch tooltips
+function ordinalSuffix(n) {
+    var s = ['th', 'st', 'nd', 'rd'];
+    var v = n % 100;
+    return s[(v - 20) % 10] || s[v] || s[0];
+}
+
 // Format timestamp cleanly
 function formatTime(isoStr) {
     if (!isoStr) return "-";
@@ -442,7 +449,7 @@ function renderTodayUpdates(data) {
                 var iconUrl = getAppIconUrl(app);
                 var appIconHtml3 = iconUrl ? '<a href="https://play.google.com/store/apps/details?id=' + encodeURIComponent(app.package) + '" target="_blank" class="app-icon-link">' + getAppIconHtml(iconUrl) + '</a>' : '';
                 var scanBadges = (app.scan_numbers || []).map(function(sn) {
-                    return '<span class="badge badge-scan">' + sn + '</span>';
+                    return '<span class="badge badge-scan" title="' + sn + ordinalSuffix(sn) + ' scan batch">' + sn + '</span>';
                 }).join(' ');
 
                 var appRow = document.createElement("div");
@@ -1494,7 +1501,7 @@ function renderChangelog(changelog, bundlesData) {
                     const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
                     const appIconHtml4 = getAppIconHtml(getAppIconUrl(app));
                     const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${escHtml(resolveAppName(app))}</a>`;
-                    const scanBadges = (app.scan_numbers || []).map(sn => `<span class="badge badge-scan">${sn}</span>`).join(' ');
+                    const scanBadges = (app.scan_numbers || []).map(sn => `<span class="badge badge-scan" title="${sn}${ordinalSuffix(sn)} scan batch">${sn}</span>`).join(' ');
 
                     appsListHtml += `
                         <li class="changelog-item">
