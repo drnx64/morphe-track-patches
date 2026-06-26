@@ -1,7 +1,7 @@
 {
   "date": "2026-06-26",
-  "lastChecked": "2026-06-26T14:34:44Z",
-  "scan_counter": 3,
+  "lastChecked": "2026-06-26T17:54:01Z",
+  "scan_counter": 4,
   "affected_bundles": {
     "rushiranpise:dev": {
       "bundle": "rushiranpise",
@@ -588,7 +588,8 @@
           "badge_type": "UPDATED APP",
           "scan_numbers": [
             2,
-            3
+            3,
+            4
           ],
           "patch_diff": {
             "patches_added": [],
@@ -596,7 +597,7 @@
             "patches_modified": [
               {
                 "name": "Skip ads",
-                "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring across all three OkHttp surfaces (app NetworkingKt client, Sky SDK addon network client, and the SDK root/media client), New Relic agent init no-op, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+                "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on the app NetworkingKt OkHttp client, and a WebView shouldInterceptRequest wrapper. Pair with DNS filtering for full ad suppression. Validated v7.5.102 and v7.6.100.",
                 "changes": [
                   "description updated"
                 ]
@@ -656,8 +657,22 @@
           "package": "com.peacocktv.peacockandroid",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            3
-          ]
+            3,
+            4
+          ],
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Skip ads",
+                "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         },
         {
           "app_name": "Tubi: Free Movies & Live TV",

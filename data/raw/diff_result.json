@@ -3,52 +3,25 @@
     {
       "bundle": "ajstrick81-androidtv",
       "channel": "dev",
-      "badge_type": "NEW BUNDLE",
+      "badge_type": "UPDATED",
       "apps": [
-        {
-          "app_name": "Prime Video",
-          "package": "com.amazon.amazonvideo.livingroom",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "MLB",
-          "package": "com.bamnetworks.mobile.android.gameday.atbat",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Paramount+",
-          "package": "com.cbs.ott",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Disney+",
-          "package": "com.disney.disneyplus",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "FOX One: Live News, Sports, TV",
-          "package": "com.fox.foxone",
-          "badge_type": "NEW APP"
-        },
         {
           "app_name": "Peacock TV: Stream TV & Movies",
           "package": "com.peacocktv.peacockandroid",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Tubi: Free Movies & Live TV",
-          "package": "com.tubitv",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "ViX: TV, Deportes y Noticias",
-          "package": "com.univision.prendetv",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "HBO Max: Stream Movies & TV",
-          "package": "com.wbd.hbomax",
-          "badge_type": "NEW APP"
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Skip ads",
+                "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -67,7 +40,7 @@
             "patches_modified": [
               {
                 "name": "Skip ads",
-                "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring across all three OkHttp surfaces (app NetworkingKt client, Sky SDK addon network client, and the SDK root/media client), New Relic agent init no-op, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+                "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on the app NetworkingKt OkHttp client, and a WebView shouldInterceptRequest wrapper. Pair with DNS filtering for full ad suppression. Validated v7.5.102 and v7.6.100.",
                 "changes": [
                   "description updated"
                 ]
