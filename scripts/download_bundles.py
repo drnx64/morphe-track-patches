@@ -3,7 +3,10 @@ import requests
 import json
 import time
 from datetime import datetime
+from dotenv import load_dotenv
 from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR
+
+load_dotenv()
 
 def group_tree_files(tree_files):
     """

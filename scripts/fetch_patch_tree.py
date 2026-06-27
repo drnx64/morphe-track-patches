@@ -2,7 +2,10 @@ import os
 import sys
 import requests
 import time
+from dotenv import load_dotenv
 from state_manager import save_json, ensure_dirs, RAW_DIR
+
+load_dotenv()
 
 def fetch_bundle_tree():
     """
