@@ -912,6 +912,23 @@ function escHtml(str) {
 //   inotia00:   `App Name\n==` / `- feat(scope): desc`
 //   rushiranpise: `### 🐛 Bug Fixes` / `waze ([commit](url))`
 
+// Strip first ##/h1 version-header line from release body
+function stripVersionHeader(text) {
+    if (!text) return "";
+    var lines = text.split('\n');
+    var idx = 0;
+    // Skip leading blank lines
+    while (idx < lines.length && !lines[idx].trim()) idx++;
+    if (idx < lines.length) {
+        var first = lines[idx].trim();
+        // ## version (date)  OR  ## [version](url) (date)  OR  # version (date)
+        if (/^#{1,2}\s+(?:\[[\w.\-+]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\([^)]+\))?\s*$/.test(first)) {
+            lines.splice(idx, 1);
+        }
+    }
+    return lines.join('\n').trim();
+}
+
 function parseReleaseNotes(text) {
     if (!text) return [];
     var sections = [];
@@ -1990,7 +2007,7 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
                 '</div>';
         }
 
-        var desc = currentBundle.release_notes || currentBundle.description || "";
+        var desc = stripVersionHeader(currentBundle.release_notes || currentBundle.description || "");
         var releaseDate = currentBundle.release_date || "";
         var descHtml = "";
         if (desc) {
@@ -2092,7 +2109,8 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
                 var channelsStr = b.channel || "";
                 dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + ' <span>' + escHtml(b.version) + ' — Channel: ' + channelsStr + '</span></div>';
                 if (b.body) {
-                    var parsed = parseReleaseNotes(b.body);
+                    var cleanBody = stripVersionHeader(b.body);
+                    var parsed = parseReleaseNotes(cleanBody);
                     dayHtml += parsed.length > 0
                         ? '<div class="bundle-release-desc" style="margin-top:0.3rem">' + renderReleaseSections(parsed) + '</div>'
                         : '<div class="bundle-release-desc bundle-release-desc--empty" style="margin-top:0.3rem">No details.</div>';
