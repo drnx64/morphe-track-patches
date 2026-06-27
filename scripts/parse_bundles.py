@@ -44,6 +44,48 @@ def get_app_name(package_name):
         return name
     return package_name
 
+def _gitlab_project_path(url):
+    """Extract the full project path from a GitLab URL, handling subgroups."""
+    m = re.search(r"gitlab\.com/(.+)", url)
+    if not m:
+        return None
+    raw = m.group(1).split("?")[0]  # strip query params
+    raw = raw.rstrip("/")
+    # Remove trailing /-/... or /releases/... segments (non-project URL parts)
+    raw = re.sub(r"/-/(?:releases|issues|merge_requests|blob|tree|raw).*$", "", raw)
+    raw = re.sub(r"/releases/.*$", "", raw)
+    # Normalise API paths: /api/v4/projects/OWNER%2FREPO/...
+    api_m = re.match(r"api/v4/projects/([^/]+(?:%2F[^/]+)*)", raw)
+    if api_m:
+        return api_m.group(1).replace("%2F", "/")
+    return raw
+
+
+def _extract_repo_url_from_match(m):
+    """Reconstruct a repo URL from a (github|gitlab) regex match that captures 2 segments."""
+    platform = m.group(1)
+    if platform == "github":
+        return f"https://github.com/{m.group(2)}/{m.group(3)}"
+    # GitLab: use full project path from the original URL
+    path = _gitlab_project_path(m.group(0))
+    if path:
+        return f"https://gitlab.com/{path}"
+    return None
+
+
+_GIT_PATTERN = re.compile(r"https://(github|gitlab)\.com/([^/]+)/([^/]+)")
+
+
+def _scan_url_for_repo(url, bundle_name):
+    if not isinstance(url, str) or not url:
+        return None
+    for m in _GIT_PATTERN.finditer(url):
+        result = _extract_repo_url_from_match(m)
+        if result:
+            return result
+    return None
+
+
 def extract_repo_url(bundle_json, bundle_name):
     """
     Extract github/gitlab repository URL from patches-bundle.json.
@@ -51,35 +93,31 @@ def extract_repo_url(bundle_json, bundle_name):
     """
     download_url = bundle_json.get("download_url")
     if isinstance(download_url, str) and download_url:
-        # e.g., https://github.com/owner/repo/releases/download/... -> https://github.com/owner/repo
-        # or gitlab.com/owner/repo
-        match = re.search(r"https://(github|gitlab)\.com/([^/]+)/([^/]+)", download_url)
-        if match:
-            return f"https://{match.group(1)}.com/{match.group(2)}/{match.group(3)}"
+        result = _scan_url_for_repo(download_url, bundle_name)
+        if result:
+            return result
 
     # 1. Look for patches.url
     patches = bundle_json.get("patches", {})
     if isinstance(patches, dict) and "url" in patches:
-        url = patches["url"]
-        match = re.search(r"https://(github|gitlab)\.com/([^/]+)/([^/]+)", url)
-        if match:
-            return f"https://{match.group(1)}.com/{match.group(2)}/{match.group(3)}"
-            
+        result = _scan_url_for_repo(patches["url"], bundle_name)
+        if result:
+            return result
+
     # 2. Look for integrations.url
     integrations = bundle_json.get("integrations", {})
     if isinstance(integrations, dict) and "url" in integrations:
-        url = integrations["url"]
-        match = re.search(r"https://(github|gitlab)\.com/([^/]+)/([^/]+)", url)
-        if match:
-            return f"https://{match.group(1)}.com/{match.group(2)}/{match.group(3)}"
-            
+        result = _scan_url_for_repo(integrations["url"], bundle_name)
+        if result:
+            return result
+
     # 3. Look in description
     description = bundle_json.get("description", "")
     if description:
-        match = re.search(r"https://(github|gitlab)\.com/([^/]+)/([^/]+)", description)
-        if match:
-            return f"https://{match.group(1)}.com/{match.group(2)}/{match.group(3)}"
-            
+        result = _scan_url_for_repo(description, bundle_name)
+        if result:
+            return result
+
     # 4. Fallback default
     return f"https://github.com/{bundle_name}/revanced-patches"
 

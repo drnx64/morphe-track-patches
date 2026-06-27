@@ -728,8 +728,14 @@ function renderTodayUpdates(data) {
 function getRepoInfo(repoUrl) {
     if (!repoUrl) return { isGitLab: false, path: "" };
     const isGitLab = repoUrl.includes("gitlab.com");
-    const match = repoUrl.match(/https:\/\/(?:github|gitlab)\.com\/([^/]+\/[^/]+)/);
-    const path = match ? match[1].replace(/\.git$/, "") : "";
+    var path = "";
+    if (isGitLab) {
+        const m = repoUrl.match(/https:\/\/gitlab\.com\/(.+)/);
+        if (m) path = m[1].replace(/\.git$/, "").replace(/\/+$/, "");
+    } else {
+        const m = repoUrl.match(/https:\/\/github\.com\/([^/]+\/[^/]+)/);
+        if (m) path = m[1].replace(/\.git$/, "");
+    }
     return { isGitLab, path };
 }
 

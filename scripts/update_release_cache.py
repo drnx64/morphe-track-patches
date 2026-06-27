@@ -45,9 +45,9 @@ def fetch_github_releases(owner, repo, retry=3):
     return []
 
 
-def fetch_gitlab_releases(owner, repo, retry=3):
+def fetch_gitlab_releases(project_path, retry=3):
     token = os.environ.get("GITLAB_TOKEN", "")
-    encoded_path = urllib.parse.quote(f"{owner}/{repo}", safe="")
+    encoded_path = urllib.parse.quote(project_path, safe="")
     url = f"https://gitlab.com/api/v4/projects/{encoded_path}/releases?per_page=15"
     for attempt in range(retry):
         req = urllib.request.Request(url)
@@ -75,10 +75,10 @@ def fetch_gitlab_releases(owner, repo, retry=3):
                 print(f"    Rate limited, waiting {wait}s...")
                 time.sleep(wait)
                 continue
-            print(f"    HTTP {e.code} for GitLab {owner}/{repo}")
+            print(f"    HTTP {e.code} for GitLab {project_path}")
             return []
         except Exception as e:
-            print(f"    Error for GitLab {owner}/{repo}: {e}")
+            print(f"    Error for GitLab {project_path}: {e}")
             return []
     return []
 
@@ -139,7 +139,7 @@ def update_release_cache():
             continue
 
         github_match = re.search(r"github\.com/([^/]+)/([^/]+)", repo_url)
-        gitlab_match = re.search(r"gitlab\.com/([^/]+)/([^/]+)", repo_url)
+        gitlab_match = re.search(r"gitlab\.com/(.+)", repo_url)
         releases = []
         if github_match:
             owner = github_match.group(1)
@@ -147,10 +147,15 @@ def update_release_cache():
             print(f"  Fetching GitHub releases for {owner}/{repo_name}...")
             releases = fetch_github_releases(owner, repo_name)
         elif gitlab_match:
-            owner = gitlab_match.group(1)
-            repo_name = gitlab_match.group(2)
-            print(f"  Fetching GitLab releases for {owner}/{repo_name}...")
-            releases = fetch_gitlab_releases(owner, repo_name)
+            project_path = gitlab_match.group(1).rstrip("/")
+            # Strip non-project-path suffixes (/-/..., /releases/...)
+            project_path = re.sub(r"/-/(?:releases|issues|merge_requests|blob|tree|raw).*$", "", project_path)
+            project_path = re.sub(r"/releases/.*$", "", project_path)
+            api_m = re.match(r"api/v4/projects/([^/]+(?:%2F[^/]+)*)", project_path)
+            if api_m:
+                project_path = api_m.group(1).replace("%2F", "/")
+            print(f"  Fetching GitLab releases for {project_path}...")
+            releases = fetch_gitlab_releases(project_path)
         else:
             print(f"  SKIP {repo_url} — unsupported platform")
             continue
