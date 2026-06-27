@@ -1,5 +1,62 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-06-26]
+- **NEW BUNDLE** Bundle by **ajstrick81-androidtv** (dev, stable)
+  - **NEW APP** Disney+ (`com.disney.disneyplus`) in ajstrick81-androidtv patches
+  - **NEW APP** FOX One: Live News, Sports, TV (`com.fox.foxone`) in ajstrick81-androidtv patches
+  - **NEW APP** HBO Max: Stream Movies & TV (`com.wbd.hbomax`) in ajstrick81-androidtv patches
+  - **NEW APP** MLB (`com.bamnetworks.mobile.android.gameday.atbat`) in ajstrick81-androidtv patches
+  - **NEW APP** Paramount+ (`com.cbs.ott`) in ajstrick81-androidtv patches
+  - **NEW APP** Peacock TV: Stream TV & Movies (`com.peacocktv.peacockandroid`) in ajstrick81-androidtv patches
+  - **NEW APP** Prime Video (`com.amazon.amazonvideo.livingroom`) in ajstrick81-androidtv patches
+  - **NEW APP** Tubi: Free Movies & Live TV (`com.tubitv`) in ajstrick81-androidtv patches
+  - **NEW APP** ViX: TV, Deportes y Noticias (`com.univision.prendetv`) in ajstrick81-androidtv patches
+- **UPDATED** Bundle **hoo-dles**
+  - **UPDATED APP** AllTrails: Hike, Bike & Run (`com.alltrails.alltrails`) in hoo-dles patches
+  - **NEW APP** [PRE-RELEASE] Goodreads: Book Tracker & More (`com.goodreads`) in hoo-dles patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Gboard - the Google Keyboard (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **rushiranpise**
+  - **UPDATED APP** 1.1.1.1 + WARP: Safer Internet (`com.cloudflare.onedotonedotonedotone`) in rushiranpise patches
+  - **NEW APP** AccuWeather: Weather Radar (`com.accuweather.android`) in rushiranpise patches
+  - **UPDATED APP** Beta Maniac (`it.mirko.beta`) in rushiranpise patches
+  - **UPDATED APP** BlockerHero - Content Blocker (`com.blockerhero`) in rushiranpise patches
+  - **UPDATED APP** Call Recorder - Cube ACR (`com.catalinagroup.callrecorder`) in rushiranpise patches
+  - **UPDATED APP** Canva: AI Photo & Video Editor (`com.canva.editor`) in rushiranpise patches
+  - **UPDATED APP** Case Tracker US Immigration (`com.saldous.casetracker`) in rushiranpise patches
+  - **NEW APP** Cashew—Expense Budget Tracker (`com.budget.tracker_app`) in rushiranpise patches
+  - **UPDATED APP** Citizen: Protect The World (`sp0n.citizen`) in rushiranpise patches
+  - **UPDATED APP** Clickmate - Auto Clicker Macro (`com.inscode.autoclicker`) in rushiranpise patches
+  - **UPDATED APP** CPU-Z (`com.cpuid.cpu_z`) in rushiranpise patches
+  - **UPDATED APP** CrimeRadar: Dispatch Alerts (`com.newsbreak.crimeradar`) in rushiranpise patches
+  - **UPDATED APP** Flightradar24 Flight Tracker (`com.flightradar24free`) in rushiranpise patches
+  - **UPDATED APP** Greenify (`com.oasisfeng.greenify`) in rushiranpise patches
+  - **UPDATED APP** Hibernator: Force Stop Apps (`com.tafayor.hibernator`) in rushiranpise patches
+  - **UPDATED APP** Hola VPN: Fast, Free VPN Proxy (`org.hola.play`) in rushiranpise patches
+  - **UPDATED APP** Killapps - Close Running Apps (`com.tafayor.killall`) in rushiranpise patches
+  - **UPDATED APP** m-Indicator: Mumbai Local (`com.mobond.mindicator`) in rushiranpise patches
+  - **UPDATED APP** ML Manager: APK Extractor (`com.javiersantos.mlmanager`) in rushiranpise patches
+  - **UPDATED APP** NetGuard - no-root firewall (`eu.faircode.netguard`) in rushiranpise patches
+  - **UPDATED APP** NetMonster (`cz.mroczis.netmonster`) in rushiranpise patches
+  - **UPDATED APP** nzb360 - Media Server Manager (`com.kevinforeman.nzb360`) in rushiranpise patches
+  - **UPDATED APP** Photo Editor (`com.iudesk.android.photo.editor`) in rushiranpise patches
+  - **UPDATED APP** Pialytic Julia Editor (`verbosus.pialytic`) in rushiranpise patches
+  - **UPDATED APP** Proxyman - Capture HTTPS (`com.proxyman.proxymanandroid`) in rushiranpise patches
+  - **UPDATED APP** RAR (`com.rarlab.rar`) in rushiranpise patches
+  - **NEW APP** Rocket Money - Bills & Budgets (`com.truebill`) in rushiranpise patches
+  - **UPDATED APP** SAI: Split APKs Installer (`com.mtv.sai`) in rushiranpise patches
+  - **UPDATED APP** SHAREit Premium: Pure Share (`shareit.premium`) in rushiranpise patches
+  - **UPDATED APP** Snipd | AI Podcast Player (`ai.topicfinder.podcastdiscovery`) in rushiranpise patches
+  - **UPDATED APP** Splitwise (`com.splitwise.splitwisemobile`) in rushiranpise patches
+  - **UPDATED APP** Stargazing Hub: Astro Guide (`com.twtapp`) in rushiranpise patches
+  - **REMOVED APP** Tasker (`net.dinglisch.android.taskerm`) in rushiranpise patches
+  - **UPDATED APP** TeraBox: 1TB Cloud & AI Space (`com.dubox.drive`) in rushiranpise patches
+  - **UPDATED APP** Universal TV Remote Control (`sensustech.universal.tv.remote.control`) in rushiranpise patches
+  - **NEW APP** Waze Navigation & Live Traffic (`com.waze`) in rushiranpise patches
+  - **NEW APP** Windscribe: Fast & Secure VPN (`com.windscribe.vpn`) in rushiranpise patches
+  - **UPDATED APP** YATRI: Mumbai Local & Metro (`com.yatrirailways.yatri`) in rushiranpise patches
 ## [2026-06-25]
 - **UPDATED** Bundle **AlexNaga**
   - **UPDATED APP** Matlistan - smart inköpslista (`se.matlistan.free`) in AlexNaga patches

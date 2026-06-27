@@ -1,21 +1,112 @@
 {
   "affected_bundles": [
     {
-      "bundle": "hoo-dles",
+      "bundle": "hoomans-morphe",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Photo Editor - Polish",
+          "package": "photo.editor.photoeditor.photoeditorpro",
+          "badge_type": "REMOVED APP"
+        }
+      ]
+    },
+    {
+      "bundle": "ynotzort",
+      "channel": "dev",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "TARGOBANK Mobile Banking",
+          "package": "com.targo_prod.bad",
+          "badge_type": "NEW APP"
+        }
+      ]
+    },
+    {
+      "bundle": "ynotzort",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "TARGOBANK Mobile Banking",
+          "package": "com.targo_prod.bad",
+          "badge_type": "NEW APP"
+        }
+      ]
+    },
+    {
+      "bundle": "imxeren",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "AllTrails: Hike, Bike & Run",
-          "package": "com.alltrails.alltrails",
+          "app_name": "trakt.TV Shows & Movies",
+          "package": "tv.trakt.trakt",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Enable Peak membership",
-                "description": "Enables some app features locked behind the subscription paywall. Not all premium functionality is available.",
+                "name": "Unlock pro",
+                "description": "Remove ads, add VIP badge and allow to view 'Your Month in Review'.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "imxeren",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "trakt.TV Shows & Movies",
+          "package": "tv.trakt.trakt",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock pro",
+                "description": "Remove ads, add VIP badge and allow to view 'Your Month in Review'.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "ajstrick81-androidtv",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Prime Video",
+          "package": "com.amazon.amazonvideo.livingroom",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "GMB send diagnostic (debug)",
+                "description": "Diagnostic-only: logs outbound GMB messages (Java→native) to logcat to test whether the send direction carries ad-related traffic."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Override certificate pinning",
+                "description": "Adds a network_security_config trusting user CAs (no pin sets) so AdGuard Premium can inspect the app's platform-stack HTTPS. Optional adjunct: Prime Video's ad plane is largely native libcurl, so DNS blocking is the primary tool.",
                 "changes": [
                   "description updated"
                 ]
@@ -24,9 +115,27 @@
           }
         },
         {
-          "app_name": "Goodreads: Book Tracker & More",
-          "package": "com.goodreads",
-          "badge_type": "NEW APP"
+          "app_name": "ViX: TV, Deportes y Noticias",
+          "package": "com.univision.prendetv",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Override certificate pinning",
+                "description": "Allows HTTPS traffic inspection tools like AdGuard Premium to intercept app connections. Enables ViX live (Lura SSAI) ad suppression when used alongside AdGuard Premium."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Skip ads",
+                "description": "Suppresses ViX ad delivery by stopping the LuraPlayer linear ad-break scheduler (client-side VAST) and preventing the Innovid SSAI ad overlay from mounting.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         }
       ]
     }
