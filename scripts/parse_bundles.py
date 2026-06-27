@@ -255,6 +255,7 @@ def validate_and_parse_bundle(bundle_name, channel):
         "repo_url": repo_url,
         "created_at": created_at,
         "version": bundle_json.get("version", ""),
+        "description": bundle_json.get("description", ""),
         "apps": apps
     }
 

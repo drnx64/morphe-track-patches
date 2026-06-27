@@ -12,6 +12,7 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
       rel="stylesheet" />
+    <link rel="alternate" type="application/rss+xml" title="Morphe Patch Tracker Changelog" href="feed.xml" />
     <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
@@ -67,6 +68,42 @@
         </div>
       </section>
 
+      <!-- Scan Schedule Info Section -->
+      <section class="scan-info-section" aria-labelledby="scan-info-heading">
+        <h2 class="sr-only" id="scan-info-heading">Scan Schedule</h2>
+        <div class="scan-info-card">
+          <div class="scan-info-left">
+            <div class="scan-info-row scan-info-row-countdown">
+              <span class="scan-info-label">Next scan in</span>
+              <span class="scan-countdown" id="scan-countdown">--:--:--</span>
+            </div>
+            <div class="scan-info-row">
+              <span class="scan-info-label">Schedule</span>
+              <span class="scan-info-value">Every 3 hours at :01 UTC</span>
+            </div>
+            <div class="scan-info-row">
+              <span class="scan-info-label">Today's scans</span>
+              <span class="scan-info-value" id="scan-today-count">-</span>
+            </div>
+          </div>
+          <div class="scan-info-divider"></div>
+          <div class="scan-info-right">
+            <div class="scan-info-row">
+              <span class="scan-info-label">UTC now</span>
+              <span class="scan-info-value mono" id="scan-utc-time">--:--:--</span>
+            </div>
+            <div class="scan-info-row">
+              <span class="scan-info-label">Local time</span>
+              <span class="scan-info-value" id="scan-local-time">--:--:--</span>
+            </div>
+            <div class="scan-info-row">
+              <span class="scan-info-label">Last scan</span>
+              <span class="scan-info-value" id="scan-last-run-ago">-</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Stats Summary Section -->
       <section class="stats-section" aria-labelledby="stats-heading">
         <h2 class="sr-only" id="stats-heading">Quick Statistics</h2>
@@ -89,7 +126,9 @@
           </div>
         </div>
         <div class="last-updated-row">
+          <span class="scan-pulse" id="scan-freshness-dot"></span>
           <span>Last checked: <strong id="val-last-checked">-</strong></span>
+          <span class="last-updated-ago" id="val-last-checked-ago"></span>
         </div>
       </section>
 
@@ -97,12 +136,24 @@
       <section class="controls-section" aria-labelledby="controls-heading">
         <h2 class="sr-only" id="controls-heading">Search Morphe Patches</h2>
         <div class="filters-row">
-          <div class="search-bar">
-            <input
-              type="text"
-              id="search-input"
-              placeholder="Search by app name, package name, or bundle..."
-              aria-label="Search patches" />
+          <div class="search-row">
+            <div class="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search by app name, package name, or bundle..."
+                aria-label="Search patches" />
+            </div>
+            <div class="view-toggle-group" id="view-toggle-group">
+              <button class="view-toggle-opt" data-view="grid" title="Grid view">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h2A1.5 1.5 0 0 1 6 2.5v2A1.5 1.5 0 0 1 4.5 6h-2A1.5 1.5 0 0 1 1 4.5v-2zm5 0A1.5 1.5 0 0 1 7.5 1h2A1.5 1.5 0 0 1 11 2.5v2A1.5 1.5 0 0 1 9.5 6h-2A1.5 1.5 0 0 1 6 4.5v-2zm5 0A1.5 1.5 0 0 1 12.5 1h2A1.5 1.5 0 0 1 16 2.5v2A1.5 1.5 0 0 1 14.5 6h-2A1.5 1.5 0 0 1 11 4.5v-2zM1 7.5A1.5 1.5 0 0 1 2.5 6h2A1.5 1.5 0 0 1 6 7.5v2A1.5 1.5 0 0 1 4.5 11h-2A1.5 1.5 0 0 1 1 9.5v-2zm5 0A1.5 1.5 0 0 1 7.5 6h2A1.5 1.5 0 0 1 11 7.5v2A1.5 1.5 0 0 1 9.5 11h-2A1.5 1.5 0 0 1 6 9.5v-2zm5 0A1.5 1.5 0 0 1 12.5 6h2A1.5 1.5 0 0 1 16 7.5v2A1.5 1.5 0 0 1 14.5 11h-2A1.5 1.5 0 0 1 11 9.5v-2zM1 12.5A1.5 1.5 0 0 1 2.5 11h2A1.5 1.5 0 0 1 6 12.5v2A1.5 1.5 0 0 1 4.5 16h-2A1.5 1.5 0 0 1 1 14.5v-2zm5 0A1.5 1.5 0 0 1 7.5 11h2A1.5 1.5 0 0 1 11 12.5v2A1.5 1.5 0 0 1 9.5 16h-2A1.5 1.5 0 0 1 6 14.5v-2zm5 0a1.5 1.5 0 0 1 1.5-1.5h2a1.5 1.5 0 0 1 1.5 1.5v2a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5v-2z"/></svg>
+                <span>Grid</span>
+              </button>
+              <button class="view-toggle-opt" data-view="list" title="Compact view">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
+                <span>Compact</span>
+              </button>
+            </div>
           </div>
           <div class="filter-group">
             <span class="filter-label">Channel:</span>
@@ -232,6 +283,40 @@
       </div>
     </div>
 
+    <!-- Bundle History Modal -->
+    <div
+      class="modal-overlay"
+      id="bundle-history-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bundle-history-title">
+      <div class="modal-box modal-box--wide">
+        <div class="modal-header">
+          <div class="modal-header-top">
+            <div class="modal-app-identity">
+              <h3 class="modal-app-name" id="bundle-history-title">Bundle History</h3>
+              <div class="modal-meta-row">
+                <span class="modal-bundle-info" id="bundle-history-subtitle"></span>
+              </div>
+            </div>
+            <div class="modal-header-actions">
+              <button
+                class="modal-close"
+                id="bundle-history-close-btn"
+                aria-label="Close history modal"
+                >&times;</button
+              >
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="bundle-history-list" id="bundle-history-list">
+            <div class="loading-state">Loading history...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bundle Detail Modal -->
     <div
       class="modal-overlay"
@@ -277,7 +362,10 @@
               >0 apps</span
             >
           </div>
-          <a class="add-morphe-btn" id="bundle-modal-add-morphe" href="#" target="_blank">Add to Morphe</a>
+          <div class="bundle-modal-actions">
+            <a class="add-morphe-btn" id="bundle-modal-add-morphe" href="#" target="_blank">Add to Morphe</a>
+            <button class="history-btn" id="bundle-modal-history-btn" title="View changelog history"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3 1.5a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg></button>
+          </div>
           <div class="bundle-modal-apps-list" id="bundle-modal-apps-list">
             <div class="modal-no-patches">No apps available in this bundle.</div>
           </div>
@@ -319,6 +407,8 @@
         <a href="https://morphe.software" target="_blank" class="footer-link"
           >Powered by Morphe</a
         >
+        <span class="footer-sep">&middot;</span>
+        <a href="feed.xml" target="_blank" class="footer-link">RSS Feed</a>
       </div>
       <p class="footer-disclaimer"
         >Not affiliated with Morphe or ReVanced. Data is automatically collected

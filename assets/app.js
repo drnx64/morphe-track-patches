@@ -31,6 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const isDashboard = document.getElementById("nav-dashboard") && document.getElementById("nav-dashboard").classList.contains("active");
     const isChangelog = document.getElementById("nav-changelog") && document.getElementById("nav-changelog").classList.contains("active");
 
+    // Start generic scan timer immediately (clocks + countdown work without data)
+    if (scanTimerInterval) clearInterval(scanTimerInterval);
+    updateScanClocks(null);
+    scanTimerInterval = setInterval(function() { updateScanClocks(null); }, 1000);
+
     if (isDashboard) {
         initDashboard();
     } else if (isChangelog) {
@@ -87,6 +92,57 @@ function formatFriendlyDate(dateStr) {
     return dateStr;
 }
 
+// Pad number with leading zero
+function padNum(n) {
+    return n < 10 ? "0" + n : "" + n;
+}
+
+// Calculate next GitHub Actions scan (every 3 hours at minute 1 UTC)
+function getNextScanTime() {
+    const now = new Date();
+    const utcHour = now.getUTCHours();
+    const utcMin = now.getUTCMinutes();
+    const slot = Math.floor(utcHour / 3) * 3;
+    let nextHour;
+    if (utcMin < 1) {
+        nextHour = slot;
+    } else {
+        nextHour = slot + 3;
+    }
+    const next = new Date(now);
+    next.setUTCHours(nextHour, 1, 0, 0);
+    if (next <= now) {
+        next.setUTCDate(next.getUTCDate() + 1);
+    }
+    return next;
+}
+
+// Get current scan batch number (1-8) based on UTC hour
+function getScanBatch() {
+    return Math.floor(new Date().getUTCHours() / 3) + 1;
+}
+
+// Format relative time ago from ISO string
+function getTimeAgo(isoStr) {
+    if (!isoStr) return "-";
+    try {
+        const then = new Date(isoStr);
+        const now = new Date();
+        const diffMs = now - then;
+        if (diffMs < 0) return "just now";
+        const diffMin = Math.floor(diffMs / 60000);
+        if (diffMin < 1) return "just now";
+        if (diffMin < 60) return diffMin + "m ago";
+        const diffHrs = Math.floor(diffMin / 60);
+        const remainMin = diffMin % 60;
+        if (diffHrs < 24) return diffHrs + "h " + remainMin + "m ago";
+        const diffDays = Math.floor(diffHrs / 24);
+        return diffDays + "d ago";
+    } catch(e) {
+        return "-";
+    }
+}
+
 // Extract GitHub/GitLab profile author link from repository URL
 function getAuthorLink(repoUrl) {
     if (!repoUrl) return "unknown";
@@ -136,6 +192,9 @@ let currentFilters = {
     channel: "all"
 };
 let cachedLastRun = "";
+let liveDataDate = "";
+let scanTimerInterval = null;
+let currentView = localStorage.getItem("morphe_view") || "grid";
 
 function resolveAppName(app) {
     var n = nameCache[app.package];
@@ -185,6 +244,7 @@ function initDashboard() {
     Promise.all([idbGet('live'), idbGet('icons'), idbGet('names')]).then(function(items) {
         if (items[0] && items[1]) {
             cachedLastRun = items[0].last_run || items[0].lastChecked || "";
+            liveDataDate = items[0].date || "";
             if (checkingEl) checkingEl.style.display = "none";
             if (skelUpdates) skelUpdates.style.display = "none";
             if (skelGrid) skelGrid.style.display = "none";
@@ -196,6 +256,7 @@ function initDashboard() {
                 allBundlesData[key] = { ...b, key: key };
             }
             renderTodayUpdates(items[0]);
+            renderScanInfo(items[0]);
             setupDashboardFilters();
             filterAndRenderBundles();
             scrollToHighlightedBundle();
@@ -281,6 +342,7 @@ function finalizeDashboard(data, cache, names) {
         return;
     }
     cachedLastRun = newRun;
+    liveDataDate = data.date || "";
 
     iconCache = cache || {};
     if (names) nameCache = names;
@@ -302,6 +364,7 @@ function finalizeDashboard(data, cache, names) {
     }
 
     renderTodayUpdates(data);
+    renderScanInfo(data);
     setupDashboardFilters();
     filterAndRenderBundles();
     scrollToHighlightedBundle();
@@ -346,6 +409,87 @@ function renderStats(data) {
     document.getElementById("stat-new-apps-today").textContent = data.stats?.new_apps_today ?? 0;
     document.getElementById("stat-new-bundles-today").textContent = data.stats?.new_bundles_today ?? 0;
     document.getElementById("val-last-checked").textContent = formatTime(data.lastChecked || data.last_run);
+
+    var agoEl = document.getElementById("val-last-checked-ago");
+    if (agoEl) {
+        agoEl.textContent = "(" + getTimeAgo(data.lastChecked || data.last_run) + ")";
+    }
+    var dot = document.getElementById("scan-freshness-dot");
+    if (dot) {
+        var todayStr = new Date().toISOString().split('T')[0];
+        if (liveDataDate === todayStr) {
+            dot.className = "scan-pulse scan-pulse--fresh";
+        } else {
+            dot.className = "scan-pulse";
+        }
+    }
+}
+
+function renderScanInfo(data) {
+    if (scanTimerInterval) clearInterval(scanTimerInterval);
+    updateScanClocks(data);
+    scanTimerInterval = setInterval(function() { updateScanClocks(data); }, 1000);
+}
+
+function updateScanClocks(data) {
+    var now = new Date();
+
+    // UTC time
+    var utcEl = document.getElementById("scan-utc-time");
+    if (utcEl) {
+        utcEl.textContent = padNum(now.getUTCHours()) + ":" + padNum(now.getUTCMinutes()) + ":" + padNum(now.getUTCSeconds());
+    }
+
+    // Local time (12h format)
+    var localEl = document.getElementById("scan-local-time");
+    if (localEl) {
+        var h = now.getHours();
+        var ampm = h >= 12 ? "PM" : "AM";
+        h = h % 12 || 12;
+        localEl.textContent = h + ":" + padNum(now.getMinutes()) + ":" + padNum(now.getSeconds()) + " " + ampm;
+    }
+
+    // Next scan countdown
+    var nextScan = getNextScanTime();
+    var diffMs = nextScan - now;
+    var totalSec = Math.max(0, Math.floor(diffMs / 1000));
+    var hrs = Math.floor(totalSec / 3600);
+    var mins = Math.floor((totalSec % 3600) / 60);
+    var secs = totalSec % 60;
+    var countdownEl = document.getElementById("scan-countdown");
+    if (countdownEl) {
+        countdownEl.textContent = padNum(hrs) + ":" + padNum(mins) + ":" + padNum(secs);
+        countdownEl.classList.toggle("scan-countdown--urgent", totalSec < 300);
+    }
+
+    // Scan batch
+    var batchEl = document.getElementById("scan-today-count");
+    if (batchEl) {
+        batchEl.textContent = "Scan " + getScanBatch() + " of 8";
+    }
+
+    // Last scan time ago
+    var agoEl = document.getElementById("scan-last-run-ago");
+    if (agoEl && data) {
+        agoEl.textContent = getTimeAgo(data.lastChecked || data.last_run);
+    }
+
+    // Freshness dot in stats
+    var dot = document.getElementById("scan-freshness-dot");
+    if (dot) {
+        var todayStr = now.toISOString().split('T')[0];
+        if (liveDataDate === todayStr) {
+            dot.className = "scan-pulse scan-pulse--fresh";
+        } else {
+            dot.className = "scan-pulse";
+        }
+    }
+
+    // Update time-ago in stats row
+    var statsAgo = document.getElementById("val-last-checked-ago");
+    if (statsAgo && data) {
+        statsAgo.textContent = "(" + getTimeAgo(data.lastChecked || data.last_run) + ")";
+    }
 }
 
 function renderTodayUpdates(data) {
@@ -407,9 +551,11 @@ function renderTodayUpdates(data) {
                 <span>Bundle <a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a> (${channelsStr}) added by ${authorHtml}</span>
             `;
         } else {
+            var bVersion = bGroup.version || "";
+            var versionTag = bVersion ? ' <span class="bundle-version-tag">' + escHtml(bVersion) + '</span>' : '';
             bundleRow.innerHTML = `
                 <span class="badge badge-updated-bundle">UPDATED</span>
-                <span><a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a></span>
+                <span><a href="#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a>` + versionTag + `</span>
             `;
         }
 
@@ -551,6 +697,40 @@ function setupDashboardFilters() {
             filterAndRenderBundles();
         });
     });
+
+    // View toggle
+    var viewOpts = document.querySelectorAll(".view-toggle-opt");
+    viewOpts.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            var view = this.getAttribute("data-view");
+            if (view === currentView) return;
+            currentView = view;
+            localStorage.setItem("morphe_view", currentView);
+            updateViewToggleUI();
+            applyViewMode();
+        });
+    });
+    updateViewToggleUI();
+    applyViewMode();
+}
+
+function updateViewToggleUI() {
+    var opts = document.querySelectorAll(".view-toggle-opt");
+    opts.forEach(function(btn) {
+        var view = btn.getAttribute("data-view");
+        btn.classList.toggle("active", view === currentView);
+    });
+}
+
+function applyViewMode() {
+    var container = document.getElementById("bundles-grid-container");
+    if (!container) return;
+    container.classList.toggle("list-view", currentView === "list");
+    // Also toggle compact class on all cards
+    var cards = container.querySelectorAll(".bundle-card");
+    cards.forEach(function(c) {
+        c.classList.toggle("compact", currentView === "list");
+    });
 }
 
 function filterAndRenderBundles() {
@@ -634,6 +814,7 @@ function filterAndRenderBundles() {
         const card = buildBundleCard(b);
         container.appendChild(card);
     });
+    applyViewMode();
 }
 
 // Safely escape HTML special characters
@@ -645,6 +826,238 @@ function escHtml(str) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
+}
+
+// ── Structured release note parser ────────────────────────────────────────
+// Handles all known author patterns:
+//   anddea:     `### Bug Fixes` / `* **YouTube - Feature:** desc (commit)`
+//   MorpheApp:  `### 🐛 Bug Fixes` / `* **YouTube - Feature:** desc (#issue) (commit)`
+//   inotia00:   `App Name\n==` / `- feat(scope): desc`
+//   rushiranpise: `### 🐛 Bug Fixes` / `waze ([commit](url))`
+
+function parseReleaseNotes(text) {
+    if (!text) return [];
+    var sections = [];
+    var currentSection = null;
+    var lines = text.split('\n');
+    function startSection(heading) {
+        currentSection = { heading: heading, rawLines: [], entries: [] };
+        sections.push(currentSection);
+    }
+
+    for (var i = 0; i < lines.length; i++) {
+        var line = lines[i];
+        var trimmed = line.trim();
+
+        // Skip version headers
+        if (/^#{1,2}\s*(?:\[[\w.]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\(\d{4}-\d{2}-\d{2}\))?\s*$/.test(trimmed)) continue;
+
+        // Skip intro links: "[Original Features](...) | [Tips](...)"
+        if (/^\[.+\]\(.+\)\s*\|/.test(trimmed)) continue;
+
+        // Match `### 🐛 Bug Fixes` or `### Bug Fixes` or `### ? New Features` or `### TikTok`
+        if (/^###\s+\S/.test(trimmed)) {
+            startSection(trimmed.replace(/^###\s+/, '').trim());
+            continue;
+        }
+
+        // Match `App Name\n==` (inotia00) — detect underline THEN the name
+        if (/^={2,}\s*$/.test(trimmed) && i > 0) {
+            var nameLine = lines[i - 1].trim();
+            if (nameLine && !nameLine.startsWith('#') && !nameLine.startsWith('=') && nameLine.length < 60) {
+                startSection(nameLine);
+                continue;
+            }
+        }
+
+        // Skip underline lines
+        if (/^={2,}\s*$/.test(trimmed) || /^-{2,}\s*$/.test(trimmed)) continue;
+
+        if (currentSection) {
+            if (trimmed) currentSection.rawLines.push(trimmed);
+        } else if (trimmed) {
+            startSection("Overview");
+            currentSection.rawLines.push(trimmed);
+        }
+    }
+
+    // Parse each section's raw lines into structured entries
+    sections.forEach(function(section) {
+        var raw = section.rawLines;
+
+        // First pass: detect entry boundaries (lines starting with `-*` or standalone)
+        var entries = [];
+        var currentEntry = null;
+
+        function flushEntry() {
+            if (currentEntry !== null && currentEntry.lines.length > 0) {
+                entries.push(currentEntry.lines.join(' '));
+            }
+            currentEntry = null;
+        }
+
+        for (var j = 0; j < raw.length; j++) {
+            var rl = raw[j];
+
+            // Starts with `-` or `*` — new list item
+            if (/^[\s]*[-*]/.test(rl)) {
+                flushEntry();
+                var content = rl.replace(/^[\s]*[-*]\s+/, '');
+                currentEntry = { lines: [content] };
+                continue;
+            }
+
+            // Continuation of previous entry (or start of a new plain entry)
+            // If the line has no list marker, it's either a continuation or a new plain entry
+            if (currentEntry) {
+                currentEntry.lines.push(rl);
+            } else {
+                currentEntry = { lines: [rl] };
+            }
+        }
+        flushEntry();
+
+        // Second pass: parse each entry
+        entries.forEach(function(text) {
+            // Try `**Scope:** Description`
+            var scopeMatch = text.match(/^\*\*([^*]+)\*\*:\s*(.+)/);
+            if (scopeMatch) {
+                section.entries.push({
+                    type: 'change',
+                    scope: scopeMatch[1].trim(),
+                    description: cleanEntryDesc(scopeMatch[2])
+                });
+                return;
+            }
+
+            // Try `type(scope): Description` (inotia00)
+            var csMatch = text.match(/^(feat|fix|chore|docs|refactor)\(([^)]+)\):\s*(.+)/);
+            if (csMatch) {
+                section.entries.push({
+                    type: 'change',
+                    scope: csMatch[2].trim(),
+                    description: cleanEntryDesc(csMatch[3]),
+                    changeType: csMatch[1]
+                });
+                return;
+            }
+
+            // Try `**Scope** Description` (bold scope without colon)
+            var boldScope = text.match(/^\*\*([^*]+)\*\*\s+(.+)/);
+            if (boldScope) {
+                section.entries.push({
+                    type: 'change',
+                    scope: boldScope[1].trim(),
+                    description: cleanEntryDesc(boldScope[2])
+                });
+                return;
+            }
+
+            // Fallback: treat as a change entry with scope = description prefix (first word before `:`)
+            var colonSplit = text.match(/^([A-Za-z][A-Za-z0-9 ._-]+?):\s*(.+)/);
+            if (colonSplit) {
+                section.entries.push({
+                    type: 'change',
+                    scope: colonSplit[1].trim(),
+                    description: cleanEntryDesc(colonSplit[2])
+                });
+                return;
+            }
+
+            // Plain text entry — extract description, strip trailing commit ref
+            var desc = cleanEntryDesc(text);
+            if (desc) {
+                section.entries.push({
+                    type: 'change',
+                    scope: '',
+                    description: desc
+                });
+            }
+        });
+    });
+
+    // Remove empty sections
+    sections = sections.filter(function(s) { return s.entries.length > 0; });
+
+    return sections;
+}
+
+// Strip trailing issue/PR refs from entry descriptions (keeps commit links)
+function cleanEntryDesc(str) {
+    if (!str) return "";
+    return str
+        // `(#1234)`
+        .replace(/\s*\(#[0-9]+\)\s*$/, '')
+        // `[#1234](url)`
+        .replace(/\s*\[\#[0-9]+\]\([^)]+\)\s*$/, '')
+        .trim();
+}
+
+// Convert inline markdown (bold, code, links) to HTML — safe for descriptions
+function renderInlineMarkdown(str) {
+    if (!str) return "";
+    var html = escHtml(str);
+    // inline code
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+    // bold
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    // italic
+    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    // links [text](url) — including commit hashes
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    return html;
+}
+
+// Get a CSS class for a section heading based on its type
+function getSectionClass(heading) {
+    var h = heading.toLowerCase();
+    if (h.indexOf('bug fix') !== -1 || h.indexOf('fix') !== -1 || h.indexOf('🐛') !== -1) return 'release-section--fixes';
+    if (h.indexOf('feature') !== -1 || h.indexOf('feat') !== -1 || h.indexOf('✨') !== -1) return 'release-section--features';
+    if (h.indexOf('support') !== -1 || h.indexOf('update') !== -1 || h.indexOf('🚀') !== -1) return 'release-section--support';
+    return 'release-section--other';
+}
+
+// Get an icon for a section — no emojis, use text label
+function getSectionLabel(heading) {
+    var h = heading.toLowerCase();
+    if (h.indexOf('bug fix') !== -1 || h.indexOf('fix') !== -1 || h.indexOf('🐛') !== -1) return 'Bug Fixes';
+    if (h.indexOf('feature') !== -1 || h.indexOf('feat') !== -1 || h.indexOf('✨') !== -1) return 'Features';
+    if (h.indexOf('support') !== -1 || h.indexOf('update') !== -1 || h.indexOf('🚀') !== -1) return 'Updates';
+    if (h.indexOf('announce') !== -1) return 'Announcement';
+    return heading;
+}
+
+function renderReleaseSections(parsed) {
+    if (!parsed || parsed.length === 0) return '';
+    var html = '';
+    parsed.forEach(function(section) {
+        var sectionClass = getSectionClass(section.heading);
+        var sectionLabel = getSectionLabel(section.heading);
+        html += '<div class="release-section ' + sectionClass + '">';
+        html += '<div class="release-section-header">' + escHtml(sectionLabel) + '</div>';
+
+        section.entries.forEach(function(entry) {
+            if (entry.type === 'change') {
+                html += '<div class="release-entry">';
+                if (entry.scope) {
+                    var parts = entry.scope.split(' - ');
+                    var appName = parts[0];
+                    var featureName = parts.length > 1 ? parts.slice(1).join(' - ') : '';
+                    html += '<span class="release-entry-scope">' + escHtml(appName) + '</span>';
+                    if (featureName) {
+                        html += '<span class="release-entry-feature">' + escHtml(featureName) + '</span>';
+                    }
+                }
+                html += '<span class="release-entry-desc">' + renderInlineMarkdown(entry.description) + '</span>';
+                html += '</div>';
+            } else if (entry.type === 'text') {
+                html += '<div class="release-entry release-entry--text">' + renderInlineMarkdown(entry.text) + '</div>';
+            }
+        });
+
+        html += '</div>';
+    });
+    return html;
 }
 
 // Group affected bundles by base name, merge channels, deduplicate apps with status precedence
@@ -735,10 +1148,13 @@ function buildBundleCard(bundle) {
 
     let updatedBadge = "";
     if (bundle.version) {
-        const storedVersions = JSON.parse(localStorage.getItem("morphe_versions") || "{}");
-        const prevVersion = storedVersions[bundle.bundle];
-        if (prevVersion && prevVersion !== bundle.version) {
-            updatedBadge = '<span class="bundle-updated-badge">Updated</span>';
+        var todayStr = new Date().toISOString().split('T')[0];
+        if (liveDataDate === todayStr) {
+            const storedVersions = JSON.parse(localStorage.getItem("morphe_versions") || "{}");
+            const prevVersion = storedVersions[bundle.bundle];
+            if (prevVersion && prevVersion !== bundle.version) {
+                updatedBadge = '<span class="bundle-updated-badge">Updated</span>';
+            }
         }
     }
 
@@ -759,13 +1175,24 @@ function buildBundleCard(bundle) {
         '</div>',
         '<div class="apps-summary">' + count + ' compatible ' + appsWord + '</div>',
         '<div class="apps-card-drawer" data-drawer></div>',
-        '<a href="' + escHtml(addMorpheUrl) + '" class="add-morphe-btn" target="_blank" onclick="event.stopPropagation()">Add to Morphe</a>'
+        '<div class="bundle-card-actions">',
+        '<a href="' + escHtml(addMorpheUrl) + '" class="add-morphe-btn" target="_blank" onclick="event.stopPropagation()">Add to Morphe</a>',
+        '<button class="history-btn" data-bundle="' + escHtml(bundle.bundle) + '" onclick="event.stopPropagation(); openBundleHistory(\'' + escHtml(bundle.bundle) + '\')" title="View changelog history"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3 1.5a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg></button>',
+        '</div>'
     ].join('');
 
     // Build drawer eagerly so the first expand is instant
     buildAppCardsDrawer(card, bundle, apps);
 
     card.addEventListener("click", function(e) {
+        if (currentView === "list") {
+            window.location.hash = "bundle=" + encodeURIComponent(bundle.bundle);
+            openBundleModal(bundle.bundle, {
+                version: bundle.version || "",
+                channels: bundle.channels
+            });
+            return;
+        }
         card.classList.toggle("expanded");
         if (bundle.version) {
             const storedVersions = JSON.parse(localStorage.getItem("morphe_versions") || "{}");
@@ -1192,6 +1619,16 @@ function openBundleModal(bundleName, bundleData) {
     var addBtn = document.getElementById("bundle-modal-add-morphe");
     addBtn.href = addMorpheUrl;
 
+    var histBtn = document.getElementById("bundle-modal-history-btn");
+    if (histBtn) {
+        histBtn.onclick = null;
+        histBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            closeBundleModal();
+            openBundleHistory(bundleName);
+        });
+    }
+
     // Build apps list
     var appsList = document.getElementById("bundle-modal-apps-list");
     var allApps = [];
@@ -1299,9 +1736,170 @@ function closeBundleModal() {
     document.body.style.overflow = "";
 }
 
+// ── Bundle History Modal ────────────────────────────────────────────────────────
+
+function openBundleHistory(bundleName) {
+    var modal = document.getElementById("bundle-history-modal");
+    if (!modal) return;
+
+    document.getElementById("bundle-history-title").textContent = bundleName + " patches";
+    document.getElementById("bundle-history-subtitle").textContent = "Releases & update history";
+    document.getElementById("bundle-history-list").innerHTML = '<div class="loading-state">Loading history...</div>';
+
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+
+    // Fetch live data for current release info + changelog for history
+    Promise.all([
+        fetch("data/live.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; }),
+        fetch("data/changelog.json?_t=" + Date.now()).then(function(r) { if (!r.ok) throw new Error("Status " + r.status); return r.json(); })
+    ])
+    .then(function(items) {
+        renderBundleHistory(bundleName, items[0], items[1]);
+    })
+    .catch(function() {
+        // Fallback to cached
+        Promise.all([idbGet('live'), idbGet('changelog')]).then(function(cached) {
+            if (cached[0] && cached[1]) {
+                renderBundleHistory(bundleName, cached[0], cached[1]);
+            } else {
+                document.getElementById("bundle-history-list").innerHTML = '<div class="loading-state">Failed to load history.</div>';
+            }
+        });
+    });
+}
+
+function renderBundleHistory(bundleName, liveData, changelog) {
+    var container = document.getElementById("bundle-history-list");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    // --- Current release info ---
+    var stableKey = bundleName + ":stable";
+    var devKey = bundleName + ":dev";
+    var stableBundle = liveData && liveData.bundles && liveData.bundles[stableKey];
+    var devBundle = liveData && liveData.bundles && liveData.bundles[devKey];
+    var currentBundle = stableBundle || devBundle;
+
+    if (currentBundle && currentBundle.version) {
+        var releaseCard = document.createElement("div");
+        releaseCard.className = "bundle-release-card";
+
+        var repoUrl = currentBundle.repo_url || "";
+        var repoInfo = getRepoInfo(repoUrl);
+        var releasesUrl = repoInfo.path ? "https://github.com/" + repoInfo.path + "/releases" : "";
+
+        var channels = [];
+        if (stableBundle) channels.push("stable");
+        if (devBundle) channels.push("dev");
+
+        var channelsHtml = channels.map(function(ch) {
+            return '<span class="channel-badge ' + ch + '">' + ch + '</span>';
+        }).join(' ');
+
+        var desc = currentBundle.description || "";
+        var parsedSections = parseReleaseNotes(desc);
+        var descHtml = parsedSections.length > 0
+            ? '<div class="bundle-release-desc">' + renderReleaseSections(parsedSections) + '</div>'
+            : '';
+
+        releaseCard.innerHTML = [
+            '<div class="bundle-release-header">',
+            '  <span class="bundle-release-version">' + escHtml(currentBundle.version) + '</span>',
+            '  <span class="bundle-release-badges">' + channelsHtml + '</span>',
+            '</div>',
+            descHtml,
+            releasesUrl ? '<a href="' + escHtml(releasesUrl) + '" target="_blank" class="bundle-release-link">View all releases on GitHub →</a>' : ''
+        ].join('');
+        container.appendChild(releaseCard);
+    }
+
+    // --- Changelog history ---
+    if (!changelog) {
+        // If no changelog data, still show the release info
+        if (!currentBundle || !currentBundle.version) {
+            container.innerHTML = '<div class="loading-state">No release info found for this bundle.</div>';
+        }
+        return;
+    }
+
+    // Filter entries that include this bundle
+    var entries = [];
+    changelog.forEach(function(day) {
+        var matching = (day.affected_bundles || []).filter(function(b) { return b.bundle === bundleName; });
+        if (matching.length > 0) {
+            entries.push({ date: day.date, bundles: matching });
+        }
+    });
+
+    if (entries.length === 0) {
+        // Show just the release info if we have it
+        return;
+    }
+
+    // History header
+    var histHeader = document.createElement("div");
+    histHeader.className = "bundle-history-section-header";
+    histHeader.textContent = "Update history";
+    container.appendChild(histHeader);
+
+    entries.reverse().forEach(function(entry) {
+        var dayCard = document.createElement("div");
+        dayCard.className = "changelog-day-card";
+
+        var dayHtml = '<div class="changelog-date-header">' + formatFriendlyDate(entry.date) + '</div>';
+
+        entry.bundles.forEach(function(b) {
+            var isNew = b.badge_type === "NEW BUNDLE";
+            var badgeHtml = isNew
+                ? '<span class="badge badge-new-bundle">NEW BUNDLE</span>'
+                : '<span class="badge badge-updated">UPDATED</span>';
+            var channelsStr = b.channels || b.channel || "";
+            var versionStr = b.version ? ' <span class="bundle-version-tag">' + escHtml(b.version) + '</span>' : '';
+            dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + versionStr + ' <span>Channel: ' + channelsStr + '</span></div>';
+
+            if (b.apps && b.apps.length > 0) {
+                dayHtml += '<ul class="changelog-bundle-apps">';
+                b.apps.forEach(function(app) {
+                    var appBadgeMap = {
+                        "NEW APP": '<span class="badge badge-new">NEW APP</span>',
+                        "UPDATED APP": '<span class="badge badge-updated">UPDATED APP</span>',
+                        "REMOVED APP": '<span class="badge badge-removed">REMOVED APP</span>'
+                    };
+                    var ab = appBadgeMap[app.badge_type] || '<span class="badge badge-new">NEW APP</span>';
+                    var icon = getAppIconHtml(getAppIconUrl(app));
+                    var scanBadges = (app.scan_numbers || []).map(function(sn) {
+                        return '<span class="badge badge-scan" title="' + sn + ordinalSuffix(sn) + ' scan batch">' + sn + '</span>';
+                    }).join(' ');
+                    dayHtml += '<li class="changelog-item"><div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">' + ab + ' ' + icon + ' <span><strong>' + escHtml(resolveAppName(app)) + '</strong> ' + scanBadges + '</span></div></li>';
+                });
+                dayHtml += '</ul>';
+            }
+        });
+
+        dayCard.innerHTML = dayHtml;
+        container.appendChild(dayCard);
+    });
+}
+
+function closeBundleHistory() {
+    var modal = document.getElementById("bundle-history-modal");
+    if (!modal) return;
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+}
+
 // ── Toast Notification ────────────────────────────────────────────────────────
 
 var toastTimer = null;
+
+function requestNotifyPermission() {
+    if (!("Notification" in window)) return;
+    if (Notification.permission === "default") {
+        Notification.requestPermission().catch(function() {});
+    }
+}
 
 function showToast(message) {
     var toast = document.getElementById("toast-notification");
@@ -1310,6 +1908,8 @@ function showToast(message) {
     msgEl.textContent = message || "New data available";
     toast.classList.add("visible");
     if (toastTimer) clearTimeout(toastTimer);
+    // Request notification permission on user interaction
+    requestNotifyPermission();
 }
 
 function hideToast() {
@@ -1339,6 +1939,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (bundleOverlay) {
         bundleOverlay.addEventListener("click", function(e) {
             if (e.target === bundleOverlay) closeBundleModal();
+        });
+    }
+
+    // Bundle history modal close wiring
+    var histCloseBtn = document.getElementById("bundle-history-close-btn");
+    if (histCloseBtn) histCloseBtn.addEventListener("click", closeBundleHistory);
+
+    var histOverlay = document.getElementById("bundle-history-modal");
+    if (histOverlay) {
+        histOverlay.addEventListener("click", function(e) {
+            if (e.target === histOverlay) closeBundleHistory();
         });
     }
 
@@ -1381,7 +1992,9 @@ function initChangelog() {
             if (cachedHtml) cachedHtml.style.display = "none";
             iconCache = items[2];
             if (items[3]) nameCache = items[3];
+            liveDataDate = items[1].date || "";
             renderChangelog(items[0], (items[1].bundles || {}));
+            renderScanInfo(items[1]);
         }
     }).catch(function() {});
 
@@ -1406,7 +2019,9 @@ function initChangelog() {
         if (cachedHtml) cachedHtml.style.display = "none";
         iconCache = items[2];
         if (items[3]) nameCache = items[3];
+        liveDataDate = items[1].date || "";
         renderChangelog(items[0], (items[1].bundles || {}));
+        renderScanInfo(items[1]);
         idbSet('changelog', items[0]);
         idbSet('live', items[1]);
         idbSet('icons', items[2]);
@@ -1468,10 +2083,12 @@ function renderChangelog(changelog, bundlesData) {
                     </div>
                 `;
             } else {
+                var bVer = bGroup.version || "";
+                var verTag2 = bVer ? ' <span class="bundle-version-tag">' + escHtml(bVer) + '</span>' : '';
                 headerHtml = `
                     <div class="changelog-bundle-header">
                         <span class="badge badge-updated">UPDATED</span>
-                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a></span>
+                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a>` + verTag2 + `</span>
                     </div>
                 `;
             }
