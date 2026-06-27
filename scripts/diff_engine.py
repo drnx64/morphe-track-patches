@@ -156,12 +156,29 @@ def diff_snapshots():
 
                 for pkg, app in new_app_map.items():
                     if pkg not in old_app_map:
-                        print(f"[+] Diff: Found new app {app['app_name']} ({pkg}) in {bundle_key}")
-                        changed_apps.append({
-                            "app_name": app["app_name"],
-                            "package": app["package"],
-                            "badge_type": "NEW APP"
-                        })
+                        # Check if app was promoted from dev (pre-release) to stable
+                        promoted = False
+                        if channel == "stable":
+                            dev_key = f"{bundle_name}:dev"
+                            if dev_key in old_snapshot:
+                                old_dev_apps = old_snapshot[dev_key].get("apps", [])
+                                if any(a["package"].lower().strip() == pkg for a in old_dev_apps):
+                                    promoted = True
+                                    print(f"[→] Diff: App {app['app_name']} ({pkg}) promoted from dev to stable in {bundle_key}")
+                        if promoted:
+                            changed_apps.append({
+                                "app_name": app["app_name"],
+                                "package": app["package"],
+                                "badge_type": "UPDATED APP",
+                                "promoted_from": "dev"
+                            })
+                        else:
+                            print(f"[+] Diff: Found new app {app['app_name']} ({pkg}) in {bundle_key}")
+                            changed_apps.append({
+                                "app_name": app["app_name"],
+                                "package": app["package"],
+                                "badge_type": "NEW APP"
+                            })
                     elif apps_are_different(old_app_map[pkg], app):
                         print(f"[~] Diff: Found updated app {app['app_name']} ({pkg}) in {bundle_key}")
                         patch_diff = compute_patch_diff(old_app_map[pkg], app)

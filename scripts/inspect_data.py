@@ -1,11 +1,15 @@
 import json
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from state_manager import DOCS_DATA_DIR
 
-with open("data/live.json", "r", encoding="utf-8") as f:
+live_path = os.path.join(DOCS_DATA_DIR, "live.json")
+with open(live_path, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 bundles = data.get("bundles", {})
 
-# Find a bundle+app that actually has patches
 for key, b in bundles.items():
     for app in b.get("apps", []):
         patches = app.get("patches", [])

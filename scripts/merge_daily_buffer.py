@@ -67,6 +67,9 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                         extant["badge_type"] = app["badge_type"]
                     if scan_counter not in extant.get("scan_numbers", []):
                         extant.setdefault("scan_numbers", []).append(scan_counter)
+                    # Preserve promoted_from flag
+                    if "promoted_from" in app:
+                        extant["promoted_from"] = app["promoted_from"]
                     # Preserve/update patch diff data
                     if "patch_diff" in app:
                         extant["patch_diff"] = app["patch_diff"]

@@ -242,6 +242,7 @@ h1 {
 .badge-updated         { background: rgba(59,130,246,0.15); color: var(--color-normal); border: 1px solid rgba(59,130,246,0.3); }
 .badge-removed   { background: rgba(244,63,94,0.15); color: var(--color-critical); border: 1px solid rgba(244,63,94,0.3); }
 .badge-pre-release { background: rgba(245,158,11,0.15); color: var(--color-dev); border: 1px solid rgba(245,158,11,0.3); }
+.badge-promoted { background: rgba(139,92,246,0.15); color: var(--color-rare); border: 1px solid rgba(139,92,246,0.3); }
 .badge-new-patches { background: rgba(16,185,129,0.15); color: var(--color-stable); border: 1px solid rgba(16,185,129,0.3); margin-left: auto; }
 .badge-scan {
     background: rgba(255,255,255,0.1);
@@ -829,6 +830,27 @@ h1 {
 }
 
 .release-entry a:hover {
+    background: rgba(99,102,241,0.25);
+    color: #c7d2fe;
+}
+
+.release-commit-link {
+    display: inline-block;
+    font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.05em 0.45em;
+    border-radius: 3px;
+    background: rgba(99,102,241,0.12);
+    color: #a5b4fc;
+    text-decoration: none;
+    vertical-align: baseline;
+    line-height: 1.5;
+    transition: background 0.15s;
+    margin-left: 0.25rem;
+}
+
+.release-commit-link:hover {
     background: rgba(99,102,241,0.25);
     color: #c7d2fe;
 }
@@ -1428,6 +1450,11 @@ h1 {
     min-width: 0;
     overflow-wrap: break-word;
     word-break: break-word;
+    transition: padding 0.2s, margin 0.2s;
+}
+
+.changelog-compact .changelog-day-card {
+    padding: 0.6rem 0.8rem;
 }
 
 .changelog-date-header {
@@ -1437,6 +1464,13 @@ h1 {
     padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.05);
     color: #fff;
+    transition: font-size 0.2s, margin 0.2s;
+}
+
+.changelog-compact .changelog-date-header {
+    font-size: 0.88rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.25rem;
 }
 
 .changelog-category { margin-bottom: 1.1rem; }
@@ -1473,10 +1507,20 @@ h1 {
     min-width: 0;
     overflow-wrap: break-word;
     word-break: break-word;
+    transition: padding 0.2s, font-size 0.2s;
+}
+
+.changelog-compact .changelog-item {
+    padding: 4px 8px;
+    font-size: 0.82rem;
 }
 
 .changelog-bundle-group { margin-bottom: 1.25rem; }
 .changelog-bundle-group:last-child { margin-bottom: 0; }
+
+.changelog-compact .changelog-bundle-group {
+    margin-bottom: 0.5rem;
+}
 
 .changelog-bundle-link {
     color: #818cf8;
@@ -1501,6 +1545,12 @@ h1 {
     min-width: 0;
     overflow-wrap: break-word;
     word-break: break-word;
+    transition: font-size 0.2s, margin 0.2s;
+}
+
+.changelog-compact .changelog-bundle-header {
+    font-size: 0.82rem;
+    margin-bottom: 0.2rem;
 }
 
 .changelog-bundle-apps {
@@ -1781,13 +1831,6 @@ h1 {
     font-size: 0.72rem;
     opacity: 0.5;
     margin: 0;
-}
-.apps-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
-}
-.apps-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.2);
 }
 
 /* ── Shared patch badge + name (used in modal) ────────── */
