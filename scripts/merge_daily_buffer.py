@@ -8,13 +8,22 @@ from state_manager import (
     load_json,
     save_json,
     save_new_snapshot,
-    save_live_json,
+    save_core_json,
+    save_stats_json,
+    save_changes_json,
+    save_bundles_json,
+    load_core_json,
+    load_stats_json,
+    load_changes_json,
+    load_bundles_json,
     load_current_snapshot,
     ensure_dirs,
     RAW_DIR,
     STATE_DIR,
     OUTPUT_DIR
 )
+
+RELEASE_CACHE_PATH = os.path.join(STATE_DIR, "release_cache.json")
 
 APP_PRECEDENCE = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2}
 BUNDLE_PRECEDENCE = {"NEW BUNDLE": 0, "UPDATED": 1}
@@ -140,13 +149,61 @@ def generate_markdown_changelog(date_str, affected_bundles_dict):
     return "\n".join(lines)
 
 
+def merge_release_notes(bundles):
+    """Read release notes from cache and merge into bundles dict."""
+    release_cache = load_json(RELEASE_CACHE_PATH, default={})
+    if not release_cache:
+        return
+    for bundle_key, bundle_data in bundles.items():
+        repo_url = bundle_data.get("repo_url", "")
+        if not repo_url:
+            continue
+        repo_cache = release_cache.get(repo_url, {})
+        releases = repo_cache.get("releases", [])
+        if not releases:
+            continue
+        version = bundle_data.get("version", "")
+        matched = _match_release_to_version(version, releases)
+        if matched:
+            bundle_data["release_notes"] = matched.get("body", "")
+            bundle_data["release_tag"] = matched.get("tag", "")
+            bundle_data["release_date"] = matched.get("dateReleased", "")
+        else:
+            latest = None
+            for r in releases:
+                if not r.get("prerelease", False):
+                    latest = r
+                    break
+            if not latest and releases:
+                latest = releases[0]
+            if latest:
+                bundle_data["release_notes"] = latest.get("body", "")
+                bundle_data["release_tag"] = latest.get("tag", "")
+                bundle_data["release_date"] = latest.get("dateReleased", "")
+
+
+def _match_release_to_version(version, releases):
+    if not version:
+        return None
+    v_clean = version.lower().lstrip("v")
+    for r in releases:
+        tag_clean = r.get("tag", "").lower().lstrip("v")
+        if tag_clean == v_clean:
+            return r
+    for r in releases:
+        tag_clean = r.get("tag", "").lower().lstrip("v")
+        if v_clean in tag_clean or tag_clean in v_clean:
+            return r
+    return None
+
+
 def finalize_buffer(buffer_data):
     """
     Finalizes the daily buffer:
     1. Appends to data/output/changelog.json
     2. Prepends to data/output/changelog.md
     3. Writes the daily markdown changelog to data/output/today_changelog.md
-    4. Generates data/live.json
+    4. Generates data/core.json, data/stats.json, data/changes.json, data/bundles.json
     """
     ensure_dirs()
     date_str = buffer_data["date"]
@@ -195,7 +252,7 @@ def finalize_buffer(buffer_data):
         f.write(daily_md)
         f.write(content_body)
 
-    # 3. Update live.json
+    # 3. Update data files (core.json, stats.json, changes.json, bundles.json)
     snapshot = load_current_snapshot()
 
     unique_bundles = set()
@@ -215,28 +272,32 @@ def finalize_buffer(buffer_data):
     for b_info in affected_bundles_dict.values():
         all_apps.extend(b_info.get("apps", []))
 
-    live_data = {
+    core = {
         "date": date_str,
         "last_run": now_utc_iso(),
-        "lastChecked": now_utc_iso(),
-        "stats": {
-            "total_bundles": total_bundles,
-            "total_apps": total_apps,
-            "new_apps_today": len(set(a["package"] for a in all_apps if a.get("badge_type") == "NEW APP")),
-            "new_bundles_today": len(set(b["bundle"] for b in affected_bundles_dict.values() if b.get("badge_type") == "NEW BUNDLE"))
-        },
-        "changes": {
-            "affected_bundles": list(affected_bundles_dict.values())
-        },
-        "bundles": snapshot
+        "lastChecked": now_utc_iso()
     }
-    save_live_json(live_data)
+    stats = {
+        "total_bundles": total_bundles,
+        "total_apps": total_apps,
+        "new_apps_today": len(set(a["package"] for a in all_apps if a.get("badge_type") == "NEW APP")),
+        "new_bundles_today": len(set(b["bundle"] for b in affected_bundles_dict.values() if b.get("badge_type") == "NEW BUNDLE"))
+    }
+    changes = {
+        "affected_bundles": list(affected_bundles_dict.values())
+    }
+    bundles = dict(snapshot)
+    merge_release_notes(bundles)
+    save_core_json(core)
+    save_stats_json(stats)
+    save_changes_json(changes)
+    save_bundles_json(bundles)
     print("[*] Finalization state files written successfully.")
 
 
-def update_live_json_file(today_str, buffer_data, snapshot):
+def update_data_files(today_str, buffer_data, snapshot):
     """
-    Updates data/live.json with the current snapshot and today's accumulated changes.
+    Updates data/core.json + data/stats.json + data/changes.json + data/bundles.json with the current snapshot and today's accumulated changes.
     """
     unique_bundles = set()
     for key, b_rec in snapshot.items():
@@ -251,18 +312,23 @@ def update_live_json_file(today_str, buffer_data, snapshot):
             unique_packages.add(app["package"])
     total_apps = len(unique_packages)
 
-    # Load existing live.json to see if we should retain previous changes
-    from state_manager import load_live_json
-    existing_live = load_live_json()
-
     affected_bundles_list = list(buffer_data.get("affected_bundles", {}).values())
     has_new_changes = len(affected_bundles_list) > 0
 
-    if not has_new_changes and existing_live and "changes" in existing_live:
-        changes_to_save = existing_live["changes"]
-        date_to_save = existing_live.get("date", today_str)
-        new_apps_today = existing_live.get("stats", {}).get("new_apps_today", 0)
-        new_bundles_today = existing_live.get("stats", {}).get("new_bundles_today", 0)
+    if not has_new_changes:
+        existing_core = load_core_json()
+        existing_stats = load_stats_json()
+        existing_changes = load_changes_json()
+        if existing_changes and "affected_bundles" in existing_changes:
+            changes_to_save = existing_changes
+            date_to_save = existing_core.get("date", today_str)
+            new_apps_today = existing_stats.get("new_apps_today", 0)
+            new_bundles_today = existing_stats.get("new_bundles_today", 0)
+        else:
+            date_to_save = today_str
+            changes_to_save = {"affected_bundles": []}
+            new_apps_today = 0
+            new_bundles_today = 0
     else:
         all_apps = []
         for b_info in buffer_data.get("affected_bundles", {}).values():
@@ -274,21 +340,69 @@ def update_live_json_file(today_str, buffer_data, snapshot):
         new_apps_today = len(set(a["package"] for a in all_apps if a.get("badge_type") == "NEW APP"))
         new_bundles_today = len(set(b["bundle"] for b in buffer_data.get("affected_bundles", {}).values() if b.get("badge_type") == "NEW BUNDLE"))
 
-    live_data = {
+    core = {
         "date": date_to_save,
         "last_run": now_utc_iso(),
-        "lastChecked": now_utc_iso(),
-        "stats": {
-            "total_bundles": total_bundles,
-            "total_apps": total_apps,
-            "new_apps_today": new_apps_today,
-            "new_bundles_today": new_bundles_today
-        },
-        "changes": changes_to_save,
-        "bundles": snapshot
+        "lastChecked": now_utc_iso()
     }
-    save_live_json(live_data)
-    print("[*] Live state file (live.json) updated with the current snapshot.")
+    stats = {
+        "total_bundles": total_bundles,
+        "total_apps": total_apps,
+        "new_apps_today": new_apps_today,
+        "new_bundles_today": new_bundles_today
+    }
+    bundles = dict(snapshot)
+    merge_release_notes(bundles)
+    save_core_json(core)
+    save_stats_json(stats)
+    save_changes_json(changes_to_save)
+    save_bundles_json(bundles)
+    print("[*] Live state files updated with the current snapshot.")
+
+
+def write_data_files():
+    """Read current snapshot and write all 4 data files. Safe to call anytime."""
+    snapshot = load_current_snapshot()
+    if not snapshot:
+        print("[*] No snapshot data to write.")
+        return
+
+    unique_bundles = set()
+    for key, b_rec in snapshot.items():
+        name = key.split(':')[0]
+        repo = b_rec.get("repo_url", "")
+        unique_bundles.add((name, repo))
+    total_bundles = len(unique_bundles)
+
+    unique_packages = set()
+    for b_rec in snapshot.values():
+        for app in b_rec.get("apps", []):
+            unique_packages.add(app["package"])
+    total_apps = len(unique_packages)
+
+    existing_core = load_core_json()
+    existing_stats = load_stats_json()
+    existing_changes = load_changes_json()
+
+    now = now_utc_iso()
+    core = {
+        "date": existing_core.get("date") or now.split("T")[0],
+        "last_run": existing_core.get("last_run") or now,
+        "lastChecked": existing_core.get("lastChecked") or now
+    }
+    stats = {
+        "total_bundles": total_bundles,
+        "total_apps": total_apps,
+        "new_apps_today": existing_stats.get("new_apps_today", 0),
+        "new_bundles_today": existing_stats.get("new_bundles_today", 0)
+    }
+    bundles = dict(snapshot)
+    merge_release_notes(bundles)
+    save_core_json(core)
+    save_stats_json(stats)
+    save_changes_json(existing_changes if existing_changes and "affected_bundles" in existing_changes else {"affected_bundles": []})
+    save_bundles_json(bundles)
+    print(f"[*] Data files synced: {total_bundles} bundles, {total_apps} apps.")
 
 
 def update_daily_buffer_run():
@@ -345,8 +459,8 @@ def update_daily_buffer_run():
         save_new_snapshot(new_snapshot)
         print("[*] Current snapshot updated and rollbacks rotated.")
 
-        # Always update live.json with the latest snapshot and today's accumulated changes
-        update_live_json_file(today_str, buffer_data, new_snapshot)
+        # Always update data files with the latest snapshot and today's accumulated changes
+        update_data_files(today_str, buffer_data, new_snapshot)
 
     # If we finalized a previous day, trigger site generation and notification
     if finalized:

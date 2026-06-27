@@ -11,7 +11,8 @@ from download_bundles import download_all_bundles
 from parse_bundles import parse_all_bundles
 from fingerprint_engine import generate_bundle_fingerprints
 from diff_engine import diff_snapshots
-from merge_daily_buffer import update_daily_buffer_run
+from merge_daily_buffer import update_daily_buffer_run, write_data_files
+from update_release_cache import update_release_cache
 
 def run():
     print("=== STARTING MORPHE PATCH TRACKER PIPELINE ===")
@@ -45,23 +46,31 @@ def run():
     buffer_data = load_daily_buffer()
     is_rollover = buffer_data.get("date") and buffer_data["date"] != today_str
     
-    # Step 7 & 8: Update daily buffer and store state
+    # Step 7: Update release notes cache (always run to refresh stale cache)
+    print("\n--- STEP 7: Updating release notes cache ---")
+    update_release_cache()
+    
+    # Step 8: Always sync data files for frontend (reads current_snapshot.json)
+    print("\n--- STEP 8: Syncing data files ---")
+    write_data_files()
+    
+    # Step 9 & 10: Update daily buffer and store state
     # Silent run rule: if no changes and no rollover, exit silently before updating state/buffer/site
     if not has_changes and not is_rollover:
         print("\n=== PIPELINE FINISHED SILENTLY (No changes and no day rollover) ===")
         run_silent()
         return
         
-    print("\n--- STEP 7 & 8: Updating daily buffer and finalization check ---")
+    print("\n--- STEP 9 & 10: Updating daily buffer and finalization check ---")
     update_daily_buffer_run()
     
-    # Step 9: Regenerate site files
-    print("\n--- STEP 9: Regenerating static site ---")
+    # Step 10: Regenerate site files
+    print("\n--- STEP 10: Regenerating static site ---")
     from generate_site import generate_static_files
     generate_static_files()
     
-    # Step 10: Always generate RSS feed
-    print("\n--- STEP 10: Generating RSS feed ---")
+    # Step 11: Always generate RSS feed
+    print("\n--- STEP 11: Generating RSS feed ---")
     from generate_site import generate_rss_feed
     generate_rss_feed()
 

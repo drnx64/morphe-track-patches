@@ -1,15 +1,8 @@
 import os
 import re
 import json
-import html as html_mod
-import urllib.parse
-import urllib.request
-import urllib.error
 from datetime import datetime
-from dotenv import load_dotenv
 from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR
-
-load_dotenv()
 
 # Common package mapping helper
 COMMON_PACKAGES = {
@@ -266,147 +259,7 @@ def validate_and_parse_bundle(bundle_name, channel):
         "apps": apps
     }
 
-def _fetch_github_releases(owner, repo):
-    """Fetch all releases from GitHub for owner/repo. Returns list of {tag, body, prerelease}."""
-    token = os.environ.get("GITHUB_TOKEN", "")
-    url = f"https://api.github.com/repos/{owner}/{repo}/releases?per_page=15"
-    req = urllib.request.Request(url)
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
-    req.add_header("Accept", "application/vnd.github.v3+json")
-    req.add_header("User-Agent", "MorpheTracker/1.0")
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-            releases = []
-            for r in data:
-                tag = r.get("tag_name", "")
-                body = r.get("body", "")
-                prerelease = r.get("prerelease", False)
-                if tag:
-                    releases.append({"tag": tag, "body": body, "prerelease": prerelease})
-            return releases
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return []
-        print(f"    HTTP error fetching GitHub releases for {owner}/{repo}: {e.code}")
-        return []
-    except Exception as e:
-        print(f"    Error fetching GitHub releases for {owner}/{repo}: {e}")
-        return []
 
-def _fetch_gitlab_releases(owner, repo):
-    """Fetch all releases from GitLab for owner/repo. Returns list of {tag, body, prerelease}."""
-    token = os.environ.get("GITLAB_TOKEN", "")
-    encoded_path = urllib.parse.quote(f"{owner}/{repo}", safe="")
-    url = f"https://gitlab.com/api/v4/projects/{encoded_path}/releases?per_page=15"
-    req = urllib.request.Request(url)
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
-    req.add_header("User-Agent", "MorpheTracker/1.0")
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-            releases = []
-            for r in data:
-                tag = r.get("tag_name", "")
-                description = r.get("description", "") or ""
-                if r.get("description_html"):
-                    description = html_mod.unescape(re.sub(r'<[^>]+>', '', r["description_html"]))
-                prerelease = False  # GitLab doesn't have a prerelease flag per se
-                if tag:
-                    releases.append({"tag": tag, "body": description, "prerelease": prerelease})
-            return releases
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            return []
-        print(f"    HTTP error fetching GitLab releases for {owner}/{repo}: {e.code}")
-        return []
-    except Exception as e:
-        print(f"    Error fetching GitLab releases for {owner}/{repo}: {e}")
-        return []
-
-def _match_release_to_version(version, releases):
-    """
-    Find the best matching release for a given version string.
-    First tries exact match, then substring match.
-    Returns the release dict or None.
-    """
-    if not version:
-        return None
-    v_clean = version.lower().lstrip("v")
-    # First pass: exact match
-    for r in releases:
-        tag_clean = r["tag"].lower().lstrip("v")
-        if tag_clean == v_clean:
-            return r
-    # Second pass: substring match (version contained in tag, or vice versa)
-    for r in releases:
-        tag_clean = r["tag"].lower().lstrip("v")
-        if v_clean in tag_clean or tag_clean in v_clean:
-            return r
-    return None
-
-def _enrich_with_github_releases(parsed_bundles):
-    """Fetch release notes per-repo, matching each bundle's version to the correct release tag."""
-    # Group bundles by repo URL (always process for version matching)
-    repos = {}
-    for bundle_key, bundle_data in parsed_bundles.items():
-        repo_url = bundle_data.get("repo_url", "")
-        if not repo_url:
-            continue
-        repos.setdefault(repo_url, []).append((bundle_key, bundle_data))
-
-    for repo_url, bundle_list in repos.items():
-        github_match = re.search(r"github\.com/([^/]+)/([^/]+)", repo_url)
-        gitlab_match = re.search(r"gitlab\.com/([^/]+)/([^/]+)", repo_url)
-        releases = []
-        if github_match:
-            owner = github_match.group(1)
-            repo_name = github_match.group(2)
-            if not owner or not repo_name:
-                continue
-            print(f"  Fetching GitHub releases for {owner}/{repo_name} ({len(bundle_list)} bundle(s))...")
-            releases = _fetch_github_releases(owner, repo_name)
-        elif gitlab_match:
-            owner = gitlab_match.group(1)
-            repo_name = gitlab_match.group(2)
-            if not owner or not repo_name:
-                continue
-            print(f"  Fetching GitLab releases for {owner}/{repo_name} ({len(bundle_list)} bundle(s))...")
-            releases = _fetch_gitlab_releases(owner, repo_name)
-
-        if not releases:
-            print(f"    -> No releases found")
-            continue
-
-        for bundle_key, bundle_data in bundle_list:
-            version = bundle_data.get("version", "")
-            old_desc = bundle_data.get("description", "")
-            matched = _match_release_to_version(version, releases)
-            if matched and matched["body"]:
-                if matched["body"] != old_desc:
-                    bundle_data["description"] = matched["body"]
-                    print(f"    -> {bundle_key} v{version} matched '{matched['tag']}' — UPDATED ({len(matched['body'])} chars)")
-                else:
-                    print(f"    -> {bundle_key} v{version} matched '{matched['tag']}' — unchanged")
-            else:
-                # Fallback: use the latest non-prerelease release
-                latest = None
-                for r in releases:
-                    if not r["prerelease"]:
-                        latest = r
-                        break
-                if not latest and releases:
-                    latest = releases[0]
-                if latest and latest["body"]:
-                    if latest["body"] != old_desc:
-                        bundle_data["description"] = latest["body"]
-                        print(f"    -> {bundle_key} v{version} no tag match, using latest '{latest['tag']}' — UPDATED")
-                    else:
-                        print(f"    -> {bundle_key} v{version} no tag match, using latest '{latest['tag']}' — unchanged")
-                else:
-                    print(f"    -> {bundle_key} v{version} no release body available")
 
 def parse_all_bundles():
     bundles_raw_dir = os.path.join(RAW_DIR, "bundles")
@@ -461,13 +314,6 @@ def parse_all_bundles():
         enrich_parsed_bundles_with_names(parsed_bundles)
     except Exception as e:
         print(f"[-] Name enrichment failed (non-fatal): {e}")
-
-    # Enrich with GitHub release notes
-    print("\n--- Enriching bundles with GitHub release notes ---")
-    try:
-        _enrich_with_github_releases(parsed_bundles)
-    except Exception as e:
-        print(f"[-] GitHub release enrichment failed (non-fatal): {e}")
 
     # Save parsed bundles
     save_json(os.path.join(RAW_DIR, "parsed_bundles.json"), parsed_bundles)

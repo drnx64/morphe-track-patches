@@ -26,7 +26,12 @@ ROLLBACK_PATHS = [
 
 CHANGELOG_JSON_PATH = os.path.join(OUTPUT_DIR, "changelog.json")
 CHANGELOG_MD_PATH = os.path.join(OUTPUT_DIR, "changelog.md")
-LIVE_JSON_PATH = os.path.join(DOCS_DATA_DIR, "live.json")
+
+# Split data files (kebab-case)
+CORE_JSON_PATH = os.path.join(DOCS_DATA_DIR, "core.json")
+BUNDLES_JSON_PATH = os.path.join(DOCS_DATA_DIR, "bundles.json")
+CHANGES_JSON_PATH = os.path.join(DOCS_DATA_DIR, "changes.json")
+STATS_JSON_PATH = os.path.join(DOCS_DATA_DIR, "stats.json")
 
 def ensure_dirs():
     """Ensure all required directories exist."""
@@ -122,8 +127,26 @@ def save_last_run(last_run_data):
 def load_last_run():
     return load_json(LAST_RUN_PATH, default={})
 
-def save_live_json(live_data):
-    return save_json(LIVE_JSON_PATH, live_data)
+def save_core_json(data):
+    return save_json(CORE_JSON_PATH, data)
 
-def load_live_json():
-    return load_json(LIVE_JSON_PATH, default={})
+def save_stats_json(data):
+    return save_json(STATS_JSON_PATH, data)
+
+def save_changes_json(data):
+    return save_json(CHANGES_JSON_PATH, data)
+
+def save_bundles_json(data):
+    return save_json(BUNDLES_JSON_PATH, data)
+
+def load_core_json():
+    return load_json(CORE_JSON_PATH, default={})
+
+def load_stats_json():
+    return load_json(STATS_JSON_PATH, default={})
+
+def load_changes_json():
+    return load_json(CHANGES_JSON_PATH, default={})
+
+def load_bundles_json():
+    return load_json(BUNDLES_JSON_PATH, default={})
