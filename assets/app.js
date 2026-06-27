@@ -2135,7 +2135,8 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
                     : '<span class="channel-badge stable">stable</span>';
                 var versionBadge = '<span class="badge-version">' + escHtml(b.version) + '</span>';
                 dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + ' ' + versionBadge + ' ' + channelBadge + '</div>';
-                if (b.body) {
+                // Only show release body in history for non-current releases (current is shown in header card)
+                if (b.body && !b.isCurrent) {
                     var cleanBody = stripVersionHeader(b.body);
                     var parsed = parseReleaseNotes(cleanBody);
                     dayHtml += parsed.length > 0
