@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 var CACHE_KEYS = {
     LIVE: 'live',
     CHANGELOG: 'changelog',
+    RELEASE_CACHE: 'release_cache',
     ICONS: 'icons',
     NAMES: 'names'
 };
@@ -917,12 +918,10 @@ function stripVersionHeader(text) {
     if (!text) return "";
     var lines = text.split('\n');
     var idx = 0;
-    // Skip leading blank lines
     while (idx < lines.length && !lines[idx].trim()) idx++;
     if (idx < lines.length) {
         var first = lines[idx].trim();
-        // ## version (date)  OR  ## [version](url) (date)  OR  # version (date)
-        if (/^#{1,2}\s+(?:\[[\w.\-+]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\([^)]+\))?\s*$/.test(first)) {
+        if (/^#{1,2}\s+(?:\[[^\]]*\]\([^)]*\)|v?\d[\w.\-+]*)\s*(?:\([^)]*\))?\s*$/.test(first)) {
             lines.splice(idx, 1);
         }
     }
@@ -1902,9 +1901,9 @@ function openBundleHistory(bundleName) {
     document.body.style.overflow = "hidden";
 
     // Try cached data first for instant render
-    Promise.all([idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.CHANGELOG)]).then(function(cached) {
+    Promise.all([idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.CHANGELOG), idbGet(CACHE_KEYS.RELEASE_CACHE)]).then(function(cached) {
         if (cached[0] && cached[1]) {
-            renderBundleHistory(bundleName, cached[0], cached[1], "", null);
+            renderBundleHistory(bundleName, cached[0], cached[1], "", cached[2] || null);
         } else {
             listEl.innerHTML = '<div class="loading-state">Loading history...</div>';
         }
@@ -1920,6 +1919,9 @@ function openBundleHistory(bundleName) {
         if (items[0] && items[1]) {
             idbSet(CACHE_KEYS.LIVE, items[0]);
             idbSet(CACHE_KEYS.CHANGELOG, items[1]);
+        }
+        if (items[2] && typeof items[2] === 'object' && Object.keys(items[2]).length > 0) {
+            idbSet(CACHE_KEYS.RELEASE_CACHE, items[2]);
         }
         renderBundleHistory(bundleName, items[0], items[1], "", items[2]);
     })
@@ -2007,16 +2009,7 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
                 '</div>';
         }
 
-        var desc = stripVersionHeader(currentBundle.release_notes || currentBundle.description || "");
         var releaseDate = currentBundle.release_date || "";
-        var descHtml = "";
-        if (desc) {
-            var parsedSections = parseReleaseNotes(desc);
-            descHtml = parsedSections.length > 0
-                ? '<div class="bundle-release-desc">' + renderReleaseSections(parsedSections) + '</div>'
-                : '<div class="bundle-release-desc bundle-release-desc--empty">Release notes not available for this version.</div>';
-        }
-
         var dateHtml = releaseDate
             ? '<div class="bundle-release-date">Released ' + formatTime(releaseDate) + '</div>'
             : '';
@@ -2028,7 +2021,6 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
             '  <span class="bundle-release-badges">' + channelsHtml + '</span>',
             '</div>',
             dateHtml,
-            descHtml,
             releasesUrl ? '<a href="' + escHtml(releasesUrl) + '" target="_blank" class="bundle-release-link">View all releases' + (isGitLab ? ' on GitLab' : ' on GitHub') + ' →</a>' : ''
         ].join('');
         container.appendChild(releaseCard);
@@ -2045,13 +2037,6 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
     }
 
     // --- Changelog history ---
-    if (!changelog) {
-        if (!currentBundle || !currentBundle.version) {
-            container.innerHTML = '<div class="loading-state">No release info found for this bundle.</div>';
-        }
-        return;
-    }
-
     // Build entries: changelog + release cache entries merged
     var entriesMap = {};
 
