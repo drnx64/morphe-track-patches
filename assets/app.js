@@ -2140,8 +2140,8 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
                     var cleanBody = stripVersionHeader(b.body);
                     var parsed = parseReleaseNotes(cleanBody);
                     dayHtml += parsed.length > 0
-                        ? '<div class="bundle-release-desc" style="margin-top:0.3rem">' + renderReleaseSections(parsed) + '</div>'
-                        : '<div class="bundle-release-desc bundle-release-desc--empty" style="margin-top:0.3rem">No details.</div>';
+                        ? '<div class="bundle-release-desc">' + renderReleaseSections(parsed) + '</div>'
+                        : '<div class="bundle-release-desc bundle-release-desc--empty">No details.</div>';
                 }
             } else {
                 var isNew = b.badge_type === "NEW BUNDLE";
