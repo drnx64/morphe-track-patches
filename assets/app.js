@@ -934,33 +934,91 @@ function stripVersionHeader(text) {
     return lines.join('\n').trim();
 }
 
+function _isStructuredSection(lines) {
+    var nonEmpty = [];
+    for (var i = 0; i < lines.length; i++) {
+        var t = lines[i].trim();
+        if (t) nonEmpty.push(t);
+    }
+    if (nonEmpty.length === 0) return false;
+    var listItems = 0;
+    for (var j = 0; j < nonEmpty.length; j++) {
+        if (/^[*\-]/.test(nonEmpty[j])) listItems++;
+    }
+    return (listItems / nonEmpty.length) > 0.5;
+}
+
+function _parseStructuredEntries(raw, section) {
+    var entries = [];
+    for (var j = 0; j < raw.length; j++) {
+        var rl = raw[j].replace(/^[\s]*[-*]\s+/, '');
+        entries.push(rl);
+    }
+    entries.forEach(function(text) {
+        var commitLink = '';
+        var body = text;
+        var commitMatch = text.match(/\s*\(\[([a-f0-9]{6,40})\]\(([^)]+)\)\)\s*$/);
+        if (commitMatch) {
+            commitLink = commitMatch[0].trim();
+            body = text.slice(0, text.indexOf(commitMatch[0])).trim();
+        }
+        var scopeMatch = body.match(/^\*\*([^*]+)\*\*:\s*(.+)/);
+        if (scopeMatch) {
+            section.entries.push({ type: 'change', scope: scopeMatch[1].trim(), description: cleanEntryDesc(scopeMatch[2]), commitLink: commitLink });
+            return;
+        }
+        var csMatch = body.match(/^(feat|fix|chore|docs|refactor)\(([^)]+)\):\s*(.+)/);
+        if (csMatch) {
+            section.entries.push({ type: 'change', scope: csMatch[2].trim(), description: cleanEntryDesc(csMatch[3]), changeType: csMatch[1], commitLink: commitLink });
+            return;
+        }
+        var boldScope = body.match(/^\*\*([^*]+)\*\*\s+(.+)/);
+        if (boldScope) {
+            section.entries.push({ type: 'change', scope: boldScope[1].trim(), description: cleanEntryDesc(boldScope[2]), commitLink: commitLink });
+            return;
+        }
+        var actionAppMatch = body.match(/^(add|fix|update|remove|bump|improve)\s+(.+)/i);
+        if (actionAppMatch) {
+            section.entries.push({ type: 'change', scope: cleanEntryDesc(actionAppMatch[2]), description: actionAppMatch[1].toLowerCase(), changeType: actionAppMatch[1].toLowerCase(), commitLink: commitLink });
+            return;
+        }
+        if (commitLink) {
+            var desc = cleanEntryDesc(body);
+            if (desc) {
+                section.entries.push({ type: 'change', scope: desc, description: '', commitLink: commitLink });
+                return;
+            }
+        }
+        var colonSplit = body.match(/^([A-Za-z][A-Za-z0-9 ._-]+?):\s*(.+)/);
+        if (colonSplit) {
+            section.entries.push({ type: 'change', scope: colonSplit[1].trim(), description: cleanEntryDesc(colonSplit[2]), commitLink: commitLink });
+            return;
+        }
+        var desc = cleanEntryDesc(body);
+        if (desc) {
+            section.entries.push({ type: 'change', scope: '', description: desc, commitLink: commitLink });
+        }
+    });
+}
+
 function parseReleaseNotes(text) {
     if (!text) return [];
     var sections = [];
     var currentSection = null;
     var lines = text.split('\n');
     function startSection(heading) {
-        currentSection = { heading: heading, rawLines: [], entries: [] };
+        currentSection = { heading: heading, rawLines: [], entries: [], markdown: '' };
         sections.push(currentSection);
     }
-
     for (var i = 0; i < lines.length; i++) {
         var line = lines[i];
         var trimmed = line.trim();
-
-        // Skip version headers: `## [1.32.0](url) (date)` or `# [4.1.0](url) (date)` or `## Pepper ...`
         if (/^#{1,2}\s+(?:\[[\w.\-+]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\([\w\-\s,:]+\))?\s*$/.test(trimmed)) continue;
-
-        // Skip intro links: "[Original Features](...) | [Tips](...)" or just standalone links
         if (/^\[.+\]\(.+\)/.test(trimmed) && trimmed.indexOf('|') !== -1) continue;
-
-        // Match `### 🐛 Bug Fixes` or `### Bug Fixes` or `###? New Features` or `### TikTok`
         if (/^###\s*\S/.test(trimmed)) {
             startSection(trimmed.replace(/^###\s+/, '').trim());
             continue;
         }
-
-        // Match `App Name\n==` (inotia00) — detect underline THEN the name
         if (/^={2,}\s*$/.test(trimmed) && i > 0) {
             var nameLine = lines[i - 1].trim();
             if (nameLine && !nameLine.startsWith('#') && !nameLine.startsWith('=') && nameLine.length < 60) {
@@ -968,10 +1026,7 @@ function parseReleaseNotes(text) {
                 continue;
             }
         }
-
-        // Skip underline lines
         if (/^={2,}\s*$/.test(trimmed) || /^-{2,}\s*$/.test(trimmed)) continue;
-
         if (currentSection) {
             if (trimmed) currentSection.rawLines.push(trimmed);
         } else if (trimmed) {
@@ -979,141 +1034,28 @@ function parseReleaseNotes(text) {
             currentSection.rawLines.push(trimmed);
         }
     }
-
-    // Parse each section's raw lines into structured entries
+    // Classify and process each section
     sections.forEach(function(section) {
-        var raw = section.rawLines;
-
-        // First pass: treat every non-empty line as a separate entry
-        var entries = [];
-        for (var j = 0; j < raw.length; j++) {
-            var rl = raw[j].replace(/^[\s]*[-*]\s+/, '');
-            entries.push(rl);
+        if (_isStructuredSection(section.rawLines)) {
+            section.mode = 'structured';
+            _parseStructuredEntries(section.rawLines, section);
+        } else {
+            section.mode = 'markdown';
+            section.markdown = section.rawLines.join('\n');
         }
-
-        // Second pass: parse each entry
-        entries.forEach(function(text) {
-            // Extract trailing commit link: "desc ([hash](url))"
-            var commitLink = '';
-            var body = text;
-            var commitMatch = text.match(/\s*\(\[([a-f0-9]{6,40})\]\(([^)]+)\)\)\s*$/);
-            if (commitMatch) {
-                commitLink = commitMatch[0].trim();
-                body = text.slice(0, text.indexOf(commitMatch[0])).trim();
-            }
-
-            // Try `**Scope:** Description`
-            var scopeMatch = body.match(/^\*\*([^*]+)\*\*:\s*(.+)/);
-            if (scopeMatch) {
-                section.entries.push({
-                    type: 'change',
-                    scope: scopeMatch[1].trim(),
-                    description: cleanEntryDesc(scopeMatch[2]),
-                    commitLink: commitLink
-                });
-                return;
-            }
-
-            // Try `type(scope): Description` (inotia00)
-            var csMatch = body.match(/^(feat|fix|chore|docs|refactor)\(([^)]+)\):\s*(.+)/);
-            if (csMatch) {
-                section.entries.push({
-                    type: 'change',
-                    scope: csMatch[2].trim(),
-                    description: cleanEntryDesc(csMatch[3]),
-                    changeType: csMatch[1],
-                    commitLink: commitLink
-                });
-                return;
-            }
-
-            // Try `**Scope** Description` (bold scope without colon)
-            var boldScope = body.match(/^\*\*([^*]+)\*\*\s+(.+)/);
-            if (boldScope) {
-                section.entries.push({
-                    type: 'change',
-                    scope: boldScope[1].trim(),
-                    description: cleanEntryDesc(boldScope[2]),
-                    commitLink: commitLink
-                });
-                return;
-            }
-
-            // Try extracting scope from "add/fix/update appname" patterns
-            var actionAppMatch = body.match(/^(add|fix|update|remove|bump|improve)\s+(.+)/i);
-            if (actionAppMatch) {
-                var rest = cleanEntryDesc(actionAppMatch[2]);
-                section.entries.push({
-                    type: 'change',
-                    scope: rest,
-                    description: actionAppMatch[1].toLowerCase(),
-                    changeType: actionAppMatch[1].toLowerCase(),
-                    commitLink: commitLink
-                });
-                return;
-            }
-
-            // Try extracting scope+description from "appname description" where
-            // the first word looks like an app name (capitalized or known pattern)
-            if (commitLink) {
-                // If there's a commit link but no scope extracted, use the whole body as scope
-                var desc = cleanEntryDesc(body);
-                if (desc) {
-                    section.entries.push({
-                        type: 'change',
-                        scope: desc,
-                        description: '',
-                        commitLink: commitLink
-                    });
-                    return;
-                }
-            }
-
-            // Fallback: treat as a change entry with scope = description prefix (first word before `:`)
-            var colonSplit = body.match(/^([A-Za-z][A-Za-z0-9 ._-]+?):\s*(.+)/);
-            if (colonSplit) {
-                section.entries.push({
-                    type: 'change',
-                    scope: colonSplit[1].trim(),
-                    description: cleanEntryDesc(colonSplit[2]),
-                    commitLink: commitLink
-                });
-                return;
-            }
-
-            // Plain text entry
-            var desc = cleanEntryDesc(body);
-            if (desc) {
-                section.entries.push({
-                    type: 'change',
-                    scope: '',
-                    description: desc,
-                    commitLink: commitLink
-                });
-            }
-        });
+        delete section.rawLines;
     });
-
-    // Remove empty sections
-    sections = sections.filter(function(s) { return s.entries.length > 0; });
-
-    // Drop version-heading sections that contain only a version link
+    // Drop sections with no content
     sections = sections.filter(function(s) {
-        if (s.entries.length === 1 && !s.entries[0].scope && !s.entries[0].description && !s.entries[0].commitLink) {
-            // Check if the raw text was a version header
-            var firstRaw = s.rawLines && s.rawLines[0] || '';
-            if (/^\[?v?[\d.]+\]?/.test(firstRaw)) return false;
-        }
-        return true;
+        if (s.mode === 'structured') return s.entries.length > 0;
+        return s.markdown.trim().length > 0;
     });
-
-    // Drop sections whose heading is just a version string (e.g. "1.0.0", "v2.3.4")
+    // Drop version-only heading sections
     sections = sections.filter(function(s) {
         var h = s.heading.trim();
         if (/^v?[\d]+\.[\d]+/.test(h)) return false;
         return true;
     });
-
     return sections;
 }
 
@@ -1130,7 +1072,7 @@ function cleanEntryDesc(str) {
         .trim();
 }
 
-// Convert inline markdown (bold, code, links) to HTML — safe for descriptions
+// Convert inline markdown (bold, code, links, images) to HTML — safe for descriptions
 function renderInlineMarkdown(str) {
     if (!str) return "";
     var html = escHtml(str);
@@ -1140,8 +1082,70 @@ function renderInlineMarkdown(str) {
     html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     // italic
     html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    // images ![alt](url)
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy">');
     // links [text](url) — including commit hashes
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    return html;
+}
+
+// Render block-level markdown (paragraphs, tables, blockquotes, lists, hr, code)
+function renderMarkdown(text) {
+    if (!text) return '';
+    var blocks = text.split('\n\n');
+    var html = '';
+    for (var i = 0; i < blocks.length; i++) {
+        var block = blocks[i].trim();
+        if (!block) continue;
+        // Table: at least one line with | and a separator line with |---|
+        if (/^\|/.test(block) && /\|[-:]+\|/.test(block)) {
+            var rows = block.split('\n');
+            html += '<table>';
+            for (var r = 0; r < rows.length; r++) {
+                var cells = rows[r].split('|');
+                // Remove leading/trailing empty cells from split
+                if (cells.length > 0 && cells[0].trim() === '') cells.shift();
+                if (cells.length > 0 && cells[cells.length - 1].trim() === '') cells.pop();
+                if (r === 1 && /^\s*[-:]+\s*$/.test(cells.join(''))) continue; // skip separator
+                var tag = r === 1 ? 'th' : 'td';
+                html += '<tr>';
+                for (var c = 0; c < cells.length; c++) {
+                    html += '<' + tag + '>' + renderInlineMarkdown(cells[c].trim()) + '</' + tag + '>';
+                }
+                html += '</tr>';
+            }
+            html += '</table>';
+            continue;
+        }
+        // Blockquote
+        if (/^>\s?/.test(block)) {
+            var qlines = block.split('\n');
+            var qhtml = '';
+            for (var q = 0; q < qlines.length; q++) {
+                qhtml += (qhtml ? '\n' : '') + qlines[q].replace(/^>\s?/, '').trim();
+            }
+            html += '<blockquote><p>' + renderInlineMarkdown(qhtml) + '</p></blockquote>';
+            continue;
+        }
+        // Horizontal rule
+        if (/^-{3,}\s*$/.test(block) || /^\*{3,}\s*$/.test(block)) {
+            html += '<hr>';
+            continue;
+        }
+        // Unordered list
+        if (/^[*\-]\s/.test(block)) {
+            var llines = block.split('\n');
+            html += '<ul>';
+            for (var l = 0; l < llines.length; l++) {
+                var li = llines[l].replace(/^[*\-]\s+/, '').trim();
+                if (li) html += '<li>' + renderInlineMarkdown(li) + '</li>';
+            }
+            html += '</ul>';
+            continue;
+        }
+        // Paragraph (default)
+        html += '<p>' + renderInlineMarkdown(block) + '</p>';
+    }
     return html;
 }
 
@@ -1185,29 +1189,33 @@ function renderReleaseSections(parsed) {
         html += '<div class="release-section ' + sectionClass + '">';
         html += '<div class="release-section-header">' + escHtml(sectionLabel) + '</div>';
 
-        section.entries.forEach(function(entry) {
-            if (entry.type === 'change') {
-                html += '<div class="release-entry">';
-                if (entry.scope) {
-                    var parts = entry.scope.split(' - ');
-                    var appName = parts[0];
-                    var featureName = parts.length > 1 ? parts.slice(1).join(' - ') : '';
-                    html += '<span class="release-entry-scope">' + escHtml(appName) + '</span>';
-                    if (featureName) {
-                        html += '<span class="release-entry-feature">' + escHtml(featureName) + '</span>';
+        if (section.mode === 'markdown') {
+            html += '<div class="release-section-markdown">' + renderMarkdown(section.markdown) + '</div>';
+        } else {
+            section.entries.forEach(function(entry) {
+                if (entry.type === 'change') {
+                    html += '<div class="release-entry">';
+                    if (entry.scope) {
+                        var parts = entry.scope.split(' - ');
+                        var appName = parts[0];
+                        var featureName = parts.length > 1 ? parts.slice(1).join(' - ') : '';
+                        html += '<span class="release-entry-scope">' + escHtml(appName) + '</span>';
+                        if (featureName) {
+                            html += '<span class="release-entry-feature">' + escHtml(featureName) + '</span>';
+                        }
                     }
+                    if (entry.description) {
+                        html += '<span class="release-entry-desc">' + renderInlineMarkdown(entry.description) + '</span>';
+                    }
+                    if (entry.commitLink) {
+                        html += renderCommitLink(entry.commitLink);
+                    }
+                    html += '</div>';
+                } else if (entry.type === 'text') {
+                    html += '<div class="release-entry release-entry--text">' + renderInlineMarkdown(entry.text) + '</div>';
                 }
-                if (entry.description) {
-                    html += '<span class="release-entry-desc">' + renderInlineMarkdown(entry.description) + '</span>';
-                }
-                if (entry.commitLink) {
-                    html += renderCommitLink(entry.commitLink);
-                }
-                html += '</div>';
-            } else if (entry.type === 'text') {
-                html += '<div class="release-entry release-entry--text">' + renderInlineMarkdown(entry.text) + '</div>';
-            }
-        });
+            });
+        }
 
         html += '</div>';
     });
@@ -1984,12 +1992,11 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
     _historyChannel = defaultChannel;
 
     var currentBundle = defaultChannel === "dev" ? devBundle : stableBundle;
+    var repoUrl = currentBundle && currentBundle.repo_url || "";
 
     if (currentBundle && currentBundle.version) {
         var releaseCard = document.createElement("div");
         releaseCard.className = "bundle-release-card";
-
-        var repoUrl = currentBundle.repo_url || "";
         var repoInfo = getRepoInfo(repoUrl);
         var isGitLab = repoInfo.isGitLab;
         var releasesUrl = repoInfo.path
@@ -2020,6 +2027,31 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
             ? '<div class="bundle-release-date">Released ' + formatTime(releaseDate) + '</div>'
             : '';
 
+        // Find latest release body for the release card
+        var releaseBody = currentBundle.release_notes || "";
+        if (!releaseBody && releaseCache && repoUrl) {
+            var repoRels = releaseCache[repoUrl];
+            if (repoRels && repoRels.releases && repoRels.releases.length > 0) {
+                var matchTag = (currentBundle.release_tag || currentBundle.version || "").toLowerCase().replace(/^v/, '');
+                for (var ri = 0; ri < repoRels.releases.length; ri++) {
+                    var tagClean = (repoRels.releases[ri].tag || "").toLowerCase().replace(/^v/, '');
+                    if (tagClean === matchTag) {
+                        releaseBody = repoRels.releases[ri].body || "";
+                        break;
+                    }
+                }
+                if (!releaseBody) releaseBody = repoRels.releases[0].body || "";
+            }
+        }
+        var notesHtml = '';
+        if (releaseBody) {
+            var cleanBody = stripVersionHeader(releaseBody);
+            var parsed = parseReleaseNotes(cleanBody);
+            notesHtml = parsed.length > 0
+                ? '<div class="bundle-release-desc" style="margin-top:0.5rem">' + renderReleaseSections(parsed) + '</div>'
+                : '<div class="bundle-release-desc bundle-release-desc--empty" style="margin-top:0.5rem">No details.</div>';
+        }
+
         releaseCard.innerHTML = [
             toggleHtml,
             '<div class="bundle-release-header">',
@@ -2027,6 +2059,7 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
             '  <span class="bundle-release-badges">' + channelsHtml + '</span>',
             '</div>',
             dateHtml,
+            notesHtml,
             releasesUrl ? '<a href="' + escHtml(releasesUrl) + '" target="_blank" class="bundle-release-link">View all releases' + (isGitLab ? ' on GitLab' : ' on GitHub') + ' →</a>' : ''
         ].join('');
         container.appendChild(releaseCard);
@@ -2097,8 +2130,11 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
                 var badgeHtml = b.isCurrent
                     ? '<span class="badge" style="background:#22c55e;color:#fff">CURRENT</span>'
                     : '<span class="badge badge-updated">RELEASE</span>';
-                var channelsStr = b.channel || "";
-                dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + ' <span>' + escHtml(b.version) + ' — Channel: ' + channelsStr + '</span></div>';
+                var channelBadge = b.channel === "dev"
+                    ? '<span class="channel-badge dev">dev</span>'
+                    : '<span class="channel-badge stable">stable</span>';
+                var versionBadge = '<span class="badge-version">' + escHtml(b.version) + '</span>';
+                dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + ' ' + versionBadge + ' ' + channelBadge + '</div>';
                 if (b.body) {
                     var cleanBody = stripVersionHeader(b.body);
                     var parsed = parseReleaseNotes(cleanBody);
