@@ -1977,8 +1977,19 @@ function renderBundleHistory(bundleName, liveData, changelog) {
             var bundleKey = bundleName + ":" + bChannel;
             var bLive = liveData && liveData.bundles && liveData.bundles[bundleKey];
             var bVer = (bLive && bLive.version) || currentBundle.version || "";
+            var bDesc = (bLive && bLive.description) || currentBundle.description || "";
             var versionStr = bVer ? ' <span class="bundle-version-tag">' + escHtml(bVer) + '</span>' : '';
+            var descHtml = "";
+            if (bDesc) {
+                var parsedSections = parseReleaseNotes(bDesc);
+                if (parsedSections.length > 0) {
+                    descHtml = '<div class="bundle-release-desc" style="margin:0.5rem 0 0.75rem 1.5rem">' + renderReleaseSections(parsedSections) + '</div>';
+                } else {
+                    descHtml = '<div class="bundle-release-desc" style="margin:0.5rem 0 0.75rem 1.5rem;font-size:0.85rem;color:var(--text-secondary)">' + escHtml(bDesc) + '</div>';
+                }
+            }
             dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + versionStr + ' <span>Channel: ' + channelsStr + '</span></div>';
+            dayHtml += descHtml;
 
             if (b.apps && b.apps.length > 0) {
                 dayHtml += '<ul class="changelog-bundle-apps">';
