@@ -72,19 +72,41 @@ self.addEventListener("fetch", (event) => {
   }
 });
 
+self.addEventListener("notificationclick", function(event) {
+  event.notification.close();
+  event.waitUntil(
+    clients.matchAll({ type: "window", includeUncontrolled: true }).then(function(clientList) {
+      for (var i = 0; i < clientList.length; i++) {
+        var url = clientList[i].url;
+        if (url.indexOf("/index.html") !== -1 || url.indexOf("/changelog.html") !== -1) {
+          return clientList[i].focus();
+        }
+      }
+      return clients.openWindow("/");
+    })
+  );
+});
+
 async function staleWhileRevalidate(request) {
   const cache = await caches.open(CACHE_NAME);
   const cached = await cache.match(request);
 
   const fetchPromise = fetch(request)
-    .then((response) => {
+    .then(async (response) => {
       if (response.ok) {
-        const clone = response.clone();
-        cache.put(request, clone);
+        // Read body once, then create two independent Response objects
+        const body = await response.text();
+        const init = {
+          status: response.status,
+          statusText: response.statusText,
+          headers: response.headers
+        };
+        cache.put(request, new Response(body, init));
+        return new Response(body, init);
       }
       return response;
     })
-    .catch(() => cached);
+    .catch(() => cached || new Response(null, { status: 502 }));
 
   if (cached) {
     fetchPromise.then(async (fresh) => {
@@ -97,6 +119,11 @@ async function staleWhileRevalidate(request) {
               client.postMessage({ type: "DATA_UPDATED", url: request.url });
             });
           });
+          self.registration.showNotification("Morphe Patch Tracker", {
+            body: "New patch data available — click to refresh",
+            tag: "morphe-data-update",
+            renotify: true
+          }).catch(function() {});
         }
       }
     });

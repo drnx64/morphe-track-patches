@@ -49,6 +49,7 @@ def run():
     # Silent run rule: if no changes and no rollover, exit silently before updating state/buffer/site
     if not has_changes and not is_rollover:
         print("\n=== PIPELINE FINISHED SILENTLY (No changes and no day rollover) ===")
+        run_silent()
         return
         
     print("\n--- STEP 7 & 8: Updating daily buffer and finalization check ---")
@@ -59,7 +60,21 @@ def run():
     from generate_site import generate_static_files
     generate_static_files()
     
+    # Step 10: Always generate RSS feed
+    print("\n--- STEP 10: Generating RSS feed ---")
+    from generate_site import generate_rss_feed
+    generate_rss_feed()
+
     print("\n=== PIPELINE RUN COMPLETE ===")
+
+
+def run_silent():
+    """Run RSS generation only, for silent pipeline runs with no data changes."""
+    from generate_site import generate_rss_feed
+    generate_rss_feed()
+
+    print("\n=== SILENT RUN COMPLETE (RSS feed refreshed) ===")
+
 
 if __name__ == "__main__":
     run()
