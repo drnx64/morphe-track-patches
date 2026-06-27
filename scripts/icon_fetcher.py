@@ -190,7 +190,9 @@ def enrich_parsed_bundles_with_names(parsed_bundles):
             pkg = app.get("package", "").lower().strip()
             play_name = cache.get(pkg, "")
             if isinstance(play_name, str) and play_name:
-                app["app_name"] = _clean_play_store_name(play_name)
+                existing = app.get("app_name", "")
+                if not existing or existing == pkg:
+                    app["app_name"] = _clean_play_store_name(play_name)
 
     return parsed_bundles
 

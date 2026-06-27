@@ -1,6 +1,8 @@
 import os
 import re
 import json
+import urllib.request
+import urllib.error
 from datetime import datetime
 from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR
 
@@ -259,6 +261,54 @@ def validate_and_parse_bundle(bundle_name, channel):
         "apps": apps
     }
 
+def _fetch_github_release(owner, repo):
+    """Fetch the latest release body from GitHub for owner/repo. Returns (tag_name, body) or (None, None)."""
+    token = os.environ.get("GITHUB_TOKEN", "")
+    url = f"https://api.github.com/repos/{owner}/{repo}/releases/latest"
+    req = urllib.request.Request(url)
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
+    req.add_header("Accept", "application/vnd.github.v3+json")
+    req.add_header("User-Agent", "MorpheTracker/1.0")
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            tag = data.get("tag_name", "")
+            body = data.get("body", "")
+            return (tag, body)
+    except urllib.error.HTTPError as e:
+        if e.code == 404:
+            return (None, None)
+        print(f"    HTTP error fetching release for {owner}/{repo}: {e.code}")
+        return (None, None)
+    except Exception as e:
+        print(f"    Error fetching release for {owner}/{repo}: {e}")
+        return (None, None)
+
+def _enrich_with_github_releases(parsed_bundles):
+    """Fetch the latest GitHub release notes for each bundle and store as description."""
+    for bundle_key, bundle_data in parsed_bundles.items():
+        repo_url = bundle_data.get("repo_url", "")
+        if not repo_url:
+            continue
+        match = re.search(r"github\.com/([^/]+)/([^/]+)", repo_url)
+        if not match:
+            continue
+        owner = match.group(1)
+        repo = match.group(2)
+        if not owner or not repo:
+            continue
+        # Don't re-fetch if description is already populated
+        if bundle_data.get("description", "").strip():
+            continue
+        print(f"  Fetching release for {bundle_key} ({owner}/{repo})...")
+        tag, body = _fetch_github_release(owner, repo)
+        if body:
+            bundle_data["description"] = body
+            print(f"    -> Found release {tag} ({len(body)} chars)")
+        else:
+            print(f"    -> No release body found for {owner}/{repo}")
+
 def parse_all_bundles():
     bundles_raw_dir = os.path.join(RAW_DIR, "bundles")
     if not os.path.exists(bundles_raw_dir):
@@ -312,6 +362,13 @@ def parse_all_bundles():
         enrich_parsed_bundles_with_names(parsed_bundles)
     except Exception as e:
         print(f"[-] Name enrichment failed (non-fatal): {e}")
+
+    # Enrich with GitHub release notes
+    print("\n--- Enriching bundles with GitHub release notes ---")
+    try:
+        _enrich_with_github_releases(parsed_bundles)
+    except Exception as e:
+        print(f"[-] GitHub release enrichment failed (non-fatal): {e}")
 
     # Save parsed bundles
     save_json(os.path.join(RAW_DIR, "parsed_bundles.json"), parsed_bundles)

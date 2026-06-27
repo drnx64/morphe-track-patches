@@ -94,26 +94,33 @@ async function staleWhileRevalidate(request) {
   const fetchPromise = fetch(request)
     .then(async (response) => {
       if (response.ok) {
-        // Read body once, then create two independent Response objects
-        const body = await response.text();
-        const init = {
+        const body = await response.blob();
+        const headers = new Headers(response.headers);
+        cache.put(request, new Response(body, {
           status: response.status,
           statusText: response.statusText,
-          headers: response.headers
-        };
-        cache.put(request, new Response(body, init));
-        return new Response(body, init);
+          headers: headers
+        }));
+        return new Response(body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: headers
+        });
       }
       return response;
     })
     .catch(() => cached || new Response(null, { status: 502 }));
 
   if (cached) {
+    const cachedForCmp = cached.clone();
+    const cachedTextP = cachedForCmp.text().catch(() => null);
+
     fetchPromise.then(async (fresh) => {
-      if (fresh && fresh.ok) {
-        const freshText = await fresh.clone().text();
-        const cachedText = await cached.clone().text();
-        if (freshText !== cachedText) {
+      if (!fresh || !fresh.ok) return;
+      try {
+        const freshText = await fresh.text();
+        const cachedText = await cachedTextP;
+        if (cachedText !== null && freshText !== cachedText) {
           self.clients.matchAll().then((clients) => {
             clients.forEach((client) => {
               client.postMessage({ type: "DATA_UPDATED", url: request.url });
@@ -125,8 +132,8 @@ async function staleWhileRevalidate(request) {
             renotify: true
           }).catch(function() {});
         }
-      }
-    });
+      } catch(e) {}
+    }).catch(function() {});
     return cached;
   }
 

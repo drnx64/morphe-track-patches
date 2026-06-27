@@ -1,19 +1,22 @@
 // One-time storage clear after deploy (clears stale caches/localStorage/IndexedDB)
 (function() {
-    if (localStorage.getItem("morphe_storage_cleared")) return;
+    try {
+        if (localStorage.getItem("morphe_storage_cleared")) return;
+    } catch(e) { return; }
 
-    // Clear everything before the app boots
-    localStorage.clear();
-    sessionStorage.clear();
+    try { localStorage.clear(); } catch(e) {}
+    try { sessionStorage.clear(); } catch(e) {}
 
     // Clear all IndexedDB databases
-    if (indexedDB.databases) {
-        indexedDB.databases().then(function(dbs) {
-            dbs.forEach(function(db) {
-                if (db.name) indexedDB.deleteDatabase(db.name);
-            });
-        });
-    }
+    try {
+        if (indexedDB.databases) {
+            indexedDB.databases().then(function(dbs) {
+                dbs.forEach(function(db) {
+                    if (db.name) indexedDB.deleteDatabase(db.name);
+                });
+            }, function() {});
+        }
+    } catch(e) {}
 
     // Clear all Cache Storage (SW caches)
     if (caches && caches.keys) {
@@ -22,9 +25,25 @@
         });
     }
 
-    localStorage.setItem("morphe_storage_cleared", "1");
+    try { localStorage.setItem("morphe_storage_cleared", "1"); } catch(e) {}
     location.reload();
 })();
+
+var VERBOSE = localStorage.getItem("morphe_verbose") !== "0";
+if (VERBOSE) console.log("[MorpheTracker] Verbose logging ENABLED. Set localStorage.morphe_verbose=0 to disable.");
+window.logtrue123 = function() { VERBOSE = true; localStorage.setItem("morphe_verbose", "1"); console.log("[MorpheTracker] Verbose ENABLED"); };
+
+function log(area, msg) {
+    if (!VERBOSE) return;
+    console.log("[MorpheTracker:" + area + "]", msg);
+}
+
+// Toggle verbose from console: setVerbose(1) or setVerbose(0)
+function setVerbose(on) {
+    VERBOSE = !!on;
+    localStorage.setItem("morphe_verbose", VERBOSE ? "1" : "0");
+    console.log("[MorpheTracker] Verbose logging " + (VERBOSE ? "ENABLED" : "DISABLED"));
+}
 
 // Dynamic UI engine
 document.addEventListener("DOMContentLoaded", () => {
@@ -37,8 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
     scanTimerInterval = setInterval(function() { updateScanClocks(null); }, 1000);
 
     if (isDashboard) {
+        log("init", "Page=Dashboard, userAgent=" + navigator.userAgent);
         initDashboard();
     } else if (isChangelog) {
+        log("init", "Page=Changelog, userAgent=" + navigator.userAgent);
         initChangelog();
     } else {
         console.warn("[MorpheTracker] Could not determine page type!");
@@ -105,7 +126,11 @@ function getNextScanTime() {
     const slot = Math.floor(utcHour / 3) * 3;
     let nextHour;
     if (utcMin < 1) {
-        nextHour = slot;
+        if (utcHour === slot) {
+            nextHour = slot;
+        } else {
+            nextHour = slot + 3;
+        }
     } else {
         nextHour = slot + 3;
     }
@@ -234,6 +259,7 @@ function idbGet(key) {
 }
 
 function initDashboard() {
+    log("initDashboard", "START");
     const checkingEl = document.getElementById("checking-message");
     const skelUpdates = document.getElementById("skeleton-updates");
     const skelGrid = document.getElementById("skeleton-grid");
@@ -241,10 +267,15 @@ function initDashboard() {
     applyFiltersFromUrl();
 
     // Load cached data instantly from IndexedDB
+    fetchLastChecked().then(function(lc) {
+        if (lc) cachedLastCheckedOverride = lc;
+    });
     Promise.all([idbGet('live'), idbGet('icons'), idbGet('names')]).then(function(items) {
+        log("initDashboard", "Cache load: live=" + !!items[0] + " icons=" + !!items[1] + " names=" + !!items[2]);
         if (items[0] && items[1]) {
             cachedLastRun = items[0].last_run || items[0].lastChecked || "";
             liveDataDate = items[0].date || "";
+            log("initDashboard", "Date=" + liveDataDate + " lastRun=" + cachedLastRun);
             if (checkingEl) checkingEl.style.display = "none";
             if (skelUpdates) skelUpdates.style.display = "none";
             if (skelGrid) skelGrid.style.display = "none";
@@ -255,13 +286,16 @@ function initDashboard() {
             for (const [key, b] of Object.entries(items[0].bundles || {})) {
                 allBundlesData[key] = { ...b, key: key };
             }
+            log("initDashboard", "Bundles loaded=" + Object.keys(allBundlesData).length);
             renderTodayUpdates(items[0]);
             renderScanInfo(items[0]);
             setupDashboardFilters();
             filterAndRenderBundles();
             scrollToHighlightedBundle();
+        } else {
+            log("initDashboard", "Incomplete cached data, waiting for network");
         }
-    }).catch(function() {});
+    }).catch(function(err) { log("initDashboard", "Cache load error: " + err); });
 
     // Background check for fresh data
     const isSessionChecked = sessionStorage.getItem("morphe_checked");
@@ -276,6 +310,7 @@ function initDashboard() {
 }
 
 function runCheckPhase() {
+    log("runCheckPhase", "START");
     const checkingEl = document.getElementById("checking-message");
 
     fetch("data/live.json?_t=" + Date.now())
@@ -283,27 +318,34 @@ function runCheckPhase() {
         .then(data => {
             const lastRun = data.last_run || data.lastChecked || "";
             const storedRun = localStorage.getItem("morphe_last_run") || "";
+            log("runCheckPhase", "lastRun=" + lastRun + " storedRun=" + storedRun);
 
             if (lastRun && lastRun !== storedRun) {
                 if (checkingEl) checkingEl.textContent = "New updates found!";
                 localStorage.setItem("morphe_last_run", lastRun);
                 localStorage.setItem("morphe_versions", JSON.stringify(getBundleVersions(data)));
+                log("runCheckPhase", "NEW UPDATES FOUND");
             } else {
                 if (checkingEl) checkingEl.textContent = "Up to date";
+                log("runCheckPhase", "Up to date");
             }
 
             sessionStorage.setItem("morphe_checked", "1");
 
             Promise.all([
                 fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-                fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
+                fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+                fetchLastChecked()
             ]).then(function(items) {
+                if (items[2]) cachedLastCheckedOverride = items[2];
+                log("runCheckPhase", "Icons=" + Object.keys(items[0]||{}).length + " Names=" + Object.keys(items[1]||{}).length + " LastChecked=" + (items[2]||"-"));
                 setTimeout(function() {
                     finalizeDashboard(data, items[0], items[1]);
                 }, 600);
             });
         })
         .catch(() => {
+            log("runCheckPhase", "live.json fetch failed, fallback to fetchAndRenderDashboard");
             sessionStorage.setItem("morphe_checked", "1");
             fetchAndRenderDashboard();
         });
@@ -320,15 +362,33 @@ function getBundleVersions(data) {
     return versions;
 }
 
+let cachedLastCheckedOverride = "";
+
+function fetchLastChecked() {
+    return fetch("data/state/last_run.json").then(function(r) {
+        if (!r.ok) return null;
+        return r.json();
+    }).then(function(d) {
+        return d && d.lastChecked ? d.lastChecked : null;
+    }).catch(function() { return null; });
+}
+
 function fetchAndRenderDashboard() {
+    log("fetchAndRenderDashboard", "START");
     Promise.all([
         fetch("data/live.json").then(r => { if (!r.ok) throw new Error("Status " + r.status); return r.json(); }),
         fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-        fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({}))
+        fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+        fetchLastChecked()
     ])
-        .then(([data, cache, names]) => finalizeDashboard(data, cache, names))
+        .then(([data, cache, names, lc]) => {
+            if (lc) cachedLastCheckedOverride = lc;
+            log("fetchAndRenderDashboard", "SUCCESS, bundles=" + Object.keys(data.bundles||{}).length);
+            finalizeDashboard(data, cache, names);
+        })
         .catch(err => {
-            console.error("[MorpheTracker] ERROR loading live.json:", err);
+            log("fetchAndRenderDashboard", "ERROR: " + err.message);
+            console.error("[MorpheTracker] ERROR loading dashboard data:", err);
             const container = document.getElementById("bundles-grid-container");
             if (container) {
                 container.innerHTML = `<div class="error-state">Failed to load dashboard data: ${err.message}. Ensure data/live.json exists.</div>`;
@@ -339,8 +399,10 @@ function fetchAndRenderDashboard() {
 function finalizeDashboard(data, cache, names) {
     var newRun = data.last_run || data.lastChecked || "";
     if (newRun && newRun === cachedLastRun && Object.keys(allBundlesData).length > 0) {
+        log("finalizeDashboard", "SKIP (no change), newRun=" + newRun);
         return;
     }
+    log("finalizeDashboard", "START, newRun=" + newRun + " bundles=" + Object.keys(data.bundles||{}).length);
     cachedLastRun = newRun;
     liveDataDate = data.date || "";
 
@@ -372,6 +434,7 @@ function finalizeDashboard(data, cache, names) {
     idbSet('live', data);
     idbSet('icons', iconCache);
     idbSet('names', nameCache);
+    log("finalizeDashboard", "DONE");
 }
 
 // Re-run highlight on same-page hash changes (e.g. clicking bundle links in Today's Updates)
@@ -497,7 +560,9 @@ function renderTodayUpdates(data) {
     const container = document.getElementById("today-updates-container");
     if (!container) return;
 
-    updatesLabel.textContent = `Updated: ${formatFriendlyDate(data.date)}`;
+    var lc = cachedLastCheckedOverride || data.lastChecked || data.last_run || "";
+    updatesLabel.textContent = lc ? `Last checked: ${formatTime(lc)}` : "Last checked: -";
+    log("renderTodayUpdates", "lastChecked=" + lc + " affected=" + ((data.changes && data.changes.affected_bundles) || []).length);
 
     const changes = data.changes || {};
     const affectedBundles = changes.affected_bundles || [];
@@ -592,6 +657,7 @@ function renderTodayUpdates(data) {
                 var badgeHtml = appBadgeMap[app.badge_type] || appBadgeMap["NEW APP"];
                 var isPre = isAppPreRelease(bName, app.package, data.bundles);
                 var preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
+                var promotedBadge = app.promoted_from ? '<span class="badge badge-promoted">MOVED TO STABLE</span>' : '';
                 var iconUrl = getAppIconUrl(app);
                 var appIconHtml3 = iconUrl ? '<a href="https://play.google.com/store/apps/details?id=' + encodeURIComponent(app.package) + '" target="_blank" class="app-icon-link">' + getAppIconHtml(iconUrl) + '</a>' : '';
                 var scanBadges = (app.scan_numbers || []).map(function(sn) {
@@ -603,6 +669,7 @@ function renderTodayUpdates(data) {
                 appRow.innerHTML = [
                     badgeHtml,
                     preReleaseBadge,
+                    promotedBadge,
                     appIconHtml3,
                     '<span><strong class="changelog-app-link">' + escHtml(resolveAppName(app)) + '</strong> ' + scanBadges + '</span>'
                 ].join(' ');
@@ -849,14 +916,14 @@ function parseReleaseNotes(text) {
         var line = lines[i];
         var trimmed = line.trim();
 
-        // Skip version headers
-        if (/^#{1,2}\s*(?:\[[\w.]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\(\d{4}-\d{2}-\d{2}\))?\s*$/.test(trimmed)) continue;
+        // Skip version headers: `## [1.32.0](url) (date)` or `# [4.1.0](url) (date)` or `## Pepper ...`
+        if (/^#{1,2}\s+(?:\[[\w.]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\([\w\-\s,:]+\))?\s*$/.test(trimmed)) continue;
 
-        // Skip intro links: "[Original Features](...) | [Tips](...)"
-        if (/^\[.+\]\(.+\)\s*\|/.test(trimmed)) continue;
+        // Skip intro links: "[Original Features](...) | [Tips](...)" or just standalone links
+        if (/^\[.+\]\(.+\)/.test(trimmed) && trimmed.indexOf('|') !== -1) continue;
 
-        // Match `### 🐛 Bug Fixes` or `### Bug Fixes` or `### ? New Features` or `### TikTok`
-        if (/^###\s+\S/.test(trimmed)) {
+        // Match `### 🐛 Bug Fixes` or `### Bug Fixes` or `###? New Features` or `### TikTok`
+        if (/^###\s*\S/.test(trimmed)) {
             startSection(trimmed.replace(/^###\s+/, '').trim());
             continue;
         }
@@ -885,92 +952,111 @@ function parseReleaseNotes(text) {
     sections.forEach(function(section) {
         var raw = section.rawLines;
 
-        // First pass: detect entry boundaries (lines starting with `-*` or standalone)
+        // First pass: treat every non-empty line as a separate entry
         var entries = [];
-        var currentEntry = null;
-
-        function flushEntry() {
-            if (currentEntry !== null && currentEntry.lines.length > 0) {
-                entries.push(currentEntry.lines.join(' '));
-            }
-            currentEntry = null;
-        }
-
         for (var j = 0; j < raw.length; j++) {
-            var rl = raw[j];
-
-            // Starts with `-` or `*` — new list item
-            if (/^[\s]*[-*]/.test(rl)) {
-                flushEntry();
-                var content = rl.replace(/^[\s]*[-*]\s+/, '');
-                currentEntry = { lines: [content] };
-                continue;
-            }
-
-            // Continuation of previous entry (or start of a new plain entry)
-            // If the line has no list marker, it's either a continuation or a new plain entry
-            if (currentEntry) {
-                currentEntry.lines.push(rl);
-            } else {
-                currentEntry = { lines: [rl] };
-            }
+            var rl = raw[j].replace(/^[\s]*[-*]\s+/, '');
+            entries.push(rl);
         }
-        flushEntry();
 
         // Second pass: parse each entry
         entries.forEach(function(text) {
+            // Extract trailing commit link: "desc ([hash](url))"
+            var commitLink = '';
+            var body = text;
+            var commitMatch = text.match(/\s*\(\[([a-f0-9]{6,40})\]\(([^)]+)\)\)\s*$/);
+            if (commitMatch) {
+                commitLink = commitMatch[0].trim();
+                body = text.slice(0, text.indexOf(commitMatch[0])).trim();
+            }
+
             // Try `**Scope:** Description`
-            var scopeMatch = text.match(/^\*\*([^*]+)\*\*:\s*(.+)/);
+            var scopeMatch = body.match(/^\*\*([^*]+)\*\*:\s*(.+)/);
             if (scopeMatch) {
                 section.entries.push({
                     type: 'change',
                     scope: scopeMatch[1].trim(),
-                    description: cleanEntryDesc(scopeMatch[2])
+                    description: cleanEntryDesc(scopeMatch[2]),
+                    commitLink: commitLink
                 });
                 return;
             }
 
             // Try `type(scope): Description` (inotia00)
-            var csMatch = text.match(/^(feat|fix|chore|docs|refactor)\(([^)]+)\):\s*(.+)/);
+            var csMatch = body.match(/^(feat|fix|chore|docs|refactor)\(([^)]+)\):\s*(.+)/);
             if (csMatch) {
                 section.entries.push({
                     type: 'change',
                     scope: csMatch[2].trim(),
                     description: cleanEntryDesc(csMatch[3]),
-                    changeType: csMatch[1]
+                    changeType: csMatch[1],
+                    commitLink: commitLink
                 });
                 return;
             }
 
             // Try `**Scope** Description` (bold scope without colon)
-            var boldScope = text.match(/^\*\*([^*]+)\*\*\s+(.+)/);
+            var boldScope = body.match(/^\*\*([^*]+)\*\*\s+(.+)/);
             if (boldScope) {
                 section.entries.push({
                     type: 'change',
                     scope: boldScope[1].trim(),
-                    description: cleanEntryDesc(boldScope[2])
+                    description: cleanEntryDesc(boldScope[2]),
+                    commitLink: commitLink
                 });
                 return;
             }
 
+            // Try extracting scope from "add/fix/update appname" patterns
+            var actionAppMatch = body.match(/^(add|fix|update|remove|bump|improve)\s+(.+)/i);
+            if (actionAppMatch) {
+                var rest = cleanEntryDesc(actionAppMatch[2]);
+                section.entries.push({
+                    type: 'change',
+                    scope: rest,
+                    description: actionAppMatch[1].toLowerCase(),
+                    changeType: actionAppMatch[1].toLowerCase(),
+                    commitLink: commitLink
+                });
+                return;
+            }
+
+            // Try extracting scope+description from "appname description" where
+            // the first word looks like an app name (capitalized or known pattern)
+            if (commitLink) {
+                // If there's a commit link but no scope extracted, use the whole body as scope
+                var desc = cleanEntryDesc(body);
+                if (desc) {
+                    section.entries.push({
+                        type: 'change',
+                        scope: desc,
+                        description: '',
+                        commitLink: commitLink
+                    });
+                    return;
+                }
+            }
+
             // Fallback: treat as a change entry with scope = description prefix (first word before `:`)
-            var colonSplit = text.match(/^([A-Za-z][A-Za-z0-9 ._-]+?):\s*(.+)/);
+            var colonSplit = body.match(/^([A-Za-z][A-Za-z0-9 ._-]+?):\s*(.+)/);
             if (colonSplit) {
                 section.entries.push({
                     type: 'change',
                     scope: colonSplit[1].trim(),
-                    description: cleanEntryDesc(colonSplit[2])
+                    description: cleanEntryDesc(colonSplit[2]),
+                    commitLink: commitLink
                 });
                 return;
             }
 
-            // Plain text entry — extract description, strip trailing commit ref
-            var desc = cleanEntryDesc(text);
+            // Plain text entry
+            var desc = cleanEntryDesc(body);
             if (desc) {
                 section.entries.push({
                     type: 'change',
                     scope: '',
-                    description: desc
+                    description: desc,
+                    commitLink: commitLink
                 });
             }
         });
@@ -979,6 +1065,16 @@ function parseReleaseNotes(text) {
     // Remove empty sections
     sections = sections.filter(function(s) { return s.entries.length > 0; });
 
+    // Drop version-heading sections that contain only a version link
+    sections = sections.filter(function(s) {
+        if (s.entries.length === 1 && !s.entries[0].scope && !s.entries[0].description && !s.entries[0].commitLink) {
+            // Check if the raw text was a version header
+            var firstRaw = s.rawLines && s.rawLines[0] || '';
+            if (/^\[?v?[\d.]+\]?/.test(firstRaw)) return false;
+        }
+        return true;
+    });
+
     return sections;
 }
 
@@ -986,10 +1082,12 @@ function parseReleaseNotes(text) {
 function cleanEntryDesc(str) {
     if (!str) return "";
     return str
-        // `(#1234)`
-        .replace(/\s*\(#[0-9]+\)\s*$/, '')
+        // `([#1234](url))` — issue ref with outer parens
+        .replace(/\s*\(\[#[0-9]+\]\([^)]+\)\)\s*$/, '')
         // `[#1234](url)`
         .replace(/\s*\[\#[0-9]+\]\([^)]+\)\s*$/, '')
+        // `(#1234)`
+        .replace(/\s*\(#[0-9]+\)\s*$/, '')
         .trim();
 }
 
@@ -1008,6 +1106,18 @@ function renderInlineMarkdown(str) {
     return html;
 }
 
+// Render a commit link as a badge-style hash link
+function renderCommitLink(linkText) {
+    if (!linkText) return '';
+    // linkText is like "([abcd123](https://github.com/.../commit/abcd123))"
+    var match = linkText.match(/\(\[([a-f0-9]{6,40})\]\(([^)]+)\)\)/);
+    if (match) {
+        return '<a href="' + escHtml(match[2]) + '" target="_blank" rel="noopener" class="release-commit-link" title="' + escHtml(match[2]) + '">' + escHtml(match[1]) + '</a>';
+    }
+    // fallback: render as inline markdown
+    return renderInlineMarkdown(linkText);
+}
+
 // Get a CSS class for a section heading based on its type
 function getSectionClass(heading) {
     var h = heading.toLowerCase();
@@ -1017,7 +1127,7 @@ function getSectionClass(heading) {
     return 'release-section--other';
 }
 
-// Get an icon for a section — no emojis, use text label
+// Get a label for a section
 function getSectionLabel(heading) {
     var h = heading.toLowerCase();
     if (h.indexOf('bug fix') !== -1 || h.indexOf('fix') !== -1 || h.indexOf('🐛') !== -1) return 'Bug Fixes';
@@ -1048,7 +1158,12 @@ function renderReleaseSections(parsed) {
                         html += '<span class="release-entry-feature">' + escHtml(featureName) + '</span>';
                     }
                 }
-                html += '<span class="release-entry-desc">' + renderInlineMarkdown(entry.description) + '</span>';
+                if (entry.description) {
+                    html += '<span class="release-entry-desc">' + renderInlineMarkdown(entry.description) + '</span>';
+                }
+                if (entry.commitLink) {
+                    html += renderCommitLink(entry.commitLink);
+                }
                 html += '</div>';
             } else if (entry.type === 'text') {
                 html += '<div class="release-entry release-entry--text">' + renderInlineMarkdown(entry.text) + '</div>';
@@ -1301,6 +1416,7 @@ let _bundleWasOpen = false;
 function openAppModal(app, bundle) {
     const modal = document.getElementById("app-detail-modal");
     if (!modal) return;
+    log("openAppModal", "app=" + (app.app_name || app.package) + " bundle=" + (bundle && bundle.bundle) + " patches=" + (app.patches || []).length);
 
     // Hide bundle modal if open (don't close — restore later)
     _bundleWasOpen = false;
@@ -1583,6 +1699,7 @@ function buildModalPatchItem(patch, idx, showDevBadges) {
 function openBundleModal(bundleName, bundleData) {
     const modal = document.getElementById("bundle-detail-modal");
     if (!modal) return;
+    log("openBundleModal", "bundle=" + bundleName + " stable=" + (allBundlesData[bundleName+":stable"] ? "found" : "missing") + " dev=" + (allBundlesData[bundleName+":dev"] ? "found" : "missing") + " allBundlesData keys=" + Object.keys(allBundlesData).length);
 
     // Gather data from allBundlesData
     var stableKey = bundleName + ":stable";
@@ -1856,7 +1973,11 @@ function renderBundleHistory(bundleName, liveData, changelog) {
                 ? '<span class="badge badge-new-bundle">NEW BUNDLE</span>'
                 : '<span class="badge badge-updated">UPDATED</span>';
             var channelsStr = b.channels || b.channel || "";
-            var versionStr = b.version ? ' <span class="bundle-version-tag">' + escHtml(b.version) + '</span>' : '';
+            var bChannel = b.channel || (b.channels && b.channels[0]) || "";
+            var bundleKey = bundleName + ":" + bChannel;
+            var bLive = liveData && liveData.bundles && liveData.bundles[bundleKey];
+            var bVer = (bLive && bLive.version) || currentBundle.version || "";
+            var versionStr = bVer ? ' <span class="bundle-version-tag">' + escHtml(bVer) + '</span>' : '';
             dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + versionStr + ' <span>Channel: ' + channelsStr + '</span></div>';
 
             if (b.apps && b.apps.length > 0) {
@@ -1985,18 +2106,56 @@ document.addEventListener("DOMContentLoaded", () => {
 // ── Changelog ─────────────────────────────────────────────────────────────────
 
 function initChangelog() {
-    // Load cached data instantly
+    log("initChangelog", "START");
     var cachedHtml = document.getElementById("skeleton-changelog");
+
+    function populateBundleData(liveData) {
+        allBundlesData = {};
+        for (const [key, b] of Object.entries(liveData.bundles || {})) {
+            allBundlesData[key] = { ...b, key: key };
+        }
+        log("initChangelog", "populateBundleData: " + Object.keys(allBundlesData).length + " entries");
+    }
+
+    // Load cached data instantly
     Promise.all([idbGet('changelog'), idbGet('live'), idbGet('icons'), idbGet('names')]).then(function(items) {
+        log("initChangelog", "Cache: changelog=" + !!items[0] + " live=" + !!items[1] + " icons=" + !!items[2]);
         if (items[0] && items[1] && items[2]) {
             if (cachedHtml) cachedHtml.style.display = "none";
             iconCache = items[2];
             if (items[3]) nameCache = items[3];
             liveDataDate = items[1].date || "";
+            populateBundleData(items[1]);
             renderChangelog(items[0], (items[1].bundles || {}));
             renderScanInfo(items[1]);
+            setupChangelogViewToggle();
         }
-    }).catch(function() {});
+    }).catch(function(err) { log("initChangelog", "Cache error: " + err); });
+
+    // Changelog view toggle
+    function setupChangelogViewToggle() {
+        var toggleGroup = document.getElementById("changelog-view-toggle");
+        if (!toggleGroup) return;
+        var opts = toggleGroup.querySelectorAll(".view-toggle-opt");
+        var savedView = localStorage.getItem("morphe_changelog_view") || "grid";
+        var container = document.getElementById("changelog-list-container");
+        function applyChangelogView(view) {
+            if (container) container.classList.toggle("changelog-compact", view === "list");
+            opts.forEach(function(b) {
+                b.classList.toggle("active", b.getAttribute("data-view") === view);
+            });
+        }
+        applyChangelogView(savedView);
+        opts.forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                var view = this.getAttribute("data-view");
+                if (view === savedView) return;
+                savedView = view;
+                localStorage.setItem("morphe_changelog_view", savedView);
+                applyChangelogView(savedView);
+            });
+        });
+    }
 
     // Fetch fresh data in background
     Promise.all([
@@ -2016,18 +2175,22 @@ function initChangelog() {
             .catch(function() { return {}; })
     ])
     .then(function(items) {
+        log("initChangelog", "Network: changelog entries=" + (items[0]||[]).length + " bundles=" + Object.keys(items[1].bundles||{}).length);
         if (cachedHtml) cachedHtml.style.display = "none";
         iconCache = items[2];
         if (items[3]) nameCache = items[3];
         liveDataDate = items[1].date || "";
+        populateBundleData(items[1]);
         renderChangelog(items[0], (items[1].bundles || {}));
         renderScanInfo(items[1]);
+        setupChangelogViewToggle();
         idbSet('changelog', items[0]);
         idbSet('live', items[1]);
         idbSet('icons', items[2]);
         idbSet('names', items[3]);
     })
     .catch(function(err) {
+        log("initChangelog", "ERROR: " + err.message);
         console.error("[MorpheTracker] ERROR loading changelog data:", err);
         if (cachedHtml) cachedHtml.style.display = "none";
         var container = document.getElementById("changelog-list-container");
@@ -2040,6 +2203,7 @@ function initChangelog() {
 function renderChangelog(changelog, bundlesData) {
     const container = document.getElementById("changelog-list-container");
     if (!container) return;
+    log("renderChangelog", "entries=" + (changelog || []).length + " bundlesData keys=" + Object.keys(bundlesData).length);
 
     if (!changelog || changelog.length === 0) {
         container.innerHTML = '<div class="loading-state">No changelog entries found.</div>';
@@ -2075,15 +2239,25 @@ function renderChangelog(changelog, bundlesData) {
 
             let channelsStr = bGroup.channels.join(", ");
             let headerHtml = "";
+            var bStableKey = bName + ":stable";
+            var bDevKey = bName + ":dev";
+            var bRepoUrl = (bundlesData[bStableKey] && bundlesData[bStableKey].repo_url) ||
+                           (bundlesData[bDevKey] && bundlesData[bDevKey].repo_url) ||
+                           "https://github.com/" + bName + "/revanced-patches";
             if (isNewBundle) {
+                var authorHtml = getAuthorLink(bRepoUrl);
+                var bNewVer = (bundlesData[bStableKey] && bundlesData[bStableKey].version) ||
+                              (bundlesData[bDevKey] && bundlesData[bDevKey].version) || "";
+                var newVerTag = bNewVer ? ' <span class="bundle-version-tag">' + escHtml(bNewVer) + '</span>' : '';
                 headerHtml = `
                     <div class="changelog-bundle-header">
                         <span class="badge badge-new-bundle">NEW BUNDLE</span>
-                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a> (${channelsStr})</span>
+                        <span>Bundle <a href="index.html#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${bName} patches</strong></a>` + newVerTag + ` (${channelsStr}) added by ${authorHtml}</span>
                     </div>
                 `;
             } else {
-                var bVer = bGroup.version || "";
+                var bVer = (bundlesData[bStableKey] && bundlesData[bStableKey].version) ||
+                           (bundlesData[bDevKey] && bundlesData[bDevKey].version) || "";
                 var verTag2 = bVer ? ' <span class="bundle-version-tag">' + escHtml(bVer) + '</span>' : '';
                 headerHtml = `
                     <div class="changelog-bundle-header">
@@ -2116,6 +2290,7 @@ function renderChangelog(changelog, bundlesData) {
                     const badgeHtml = appBadgeMap[app.badge_type] || appBadgeMap["NEW APP"];
                     const isPre = isAppPreRelease(bName, app.package, bundlesData);
                     const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
+                    const promotedBadge = app.promoted_from ? '<span class="badge badge-promoted">MOVED TO STABLE</span>' : '';
                     const appIconHtml4 = getAppIconHtml(getAppIconUrl(app));
                     const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${escHtml(resolveAppName(app))}</a>`;
                     const scanBadges = (app.scan_numbers || []).map(sn => `<span class="badge badge-scan" title="${sn}${ordinalSuffix(sn)} scan batch">${sn}</span>`).join(' ');
@@ -2125,6 +2300,7 @@ function renderChangelog(changelog, bundlesData) {
                             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 ${badgeHtml}
                                 ${preReleaseBadge}
+                                ${promotedBadge}
                                 ${appIconHtml4}
                                 <span><strong class="highlight-app">${playLink}</strong> ${scanBadges}</span>
                             </div>
@@ -2160,6 +2336,7 @@ function renderChangelog(changelog, bundlesData) {
             link.addEventListener("click", function(e) {
                 e.preventDefault();
                 var bundleName = link.querySelector("strong") ? link.querySelector("strong").textContent.trim() : link.textContent.trim();
+                bundleName = bundleName.replace(/ patches$/, "");
                 var foundGroup = grouped[bundleName];
                 var channels = foundGroup ? foundGroup.channels : [];
                 openBundleModal(bundleName, {
