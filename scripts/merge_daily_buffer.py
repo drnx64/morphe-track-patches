@@ -354,21 +354,6 @@ def update_daily_buffer_run():
         gen_script = os.path.join(os.path.dirname(__file__), "generate_site.py")
         subprocess.run([sys.executable, gen_script], check=True)
 
-        print("[*] Running Telegram notifications...")
-        notify_script = os.path.join(os.path.dirname(__file__), "telegram_notify.py")
-        today_changelog_path = os.path.join(OUTPUT_DIR, "today_changelog.md")
-        subprocess.run([
-            sys.executable,
-            notify_script,
-            "--title", "Morphe Patch Update",
-            "--filepath", today_changelog_path
-        ], check=True)
-
-        try:
-            os.remove(today_changelog_path)
-        except:
-            pass
-
     # If --finalize argument is passed, force finalization of the current day
     elif len(sys.argv) > 1 and sys.argv[1] == "--finalize":
         if buffer_data.get("affected_bundles"):
@@ -385,20 +370,7 @@ def update_daily_buffer_run():
             gen_script = os.path.join(os.path.dirname(__file__), "generate_site.py")
             subprocess.run([sys.executable, gen_script], check=True)
 
-            print("[*] Running Telegram notifications (forced finalization)...")
-            notify_script = os.path.join(os.path.dirname(__file__), "telegram_notify.py")
-            today_changelog_path = os.path.join(OUTPUT_DIR, "today_changelog.md")
-            subprocess.run([
-                sys.executable,
-                notify_script,
-                "--title", "Morphe Patch Update",
-                "--filepath", today_changelog_path
-            ], check=True)
-
-            try:
-                os.remove(today_changelog_path)
-            except:
-                pass
+            print("[*] Today's changelog saved to output directory.")
         else:
             print("[*] Force finalization skipped: daily buffer is empty.")
 

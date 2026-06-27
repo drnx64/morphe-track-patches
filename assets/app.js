@@ -471,11 +471,12 @@ function renderStats(data) {
     document.getElementById("stat-total-apps").textContent = data.stats?.total_apps ?? 0;
     document.getElementById("stat-new-apps-today").textContent = data.stats?.new_apps_today ?? 0;
     document.getElementById("stat-new-bundles-today").textContent = data.stats?.new_bundles_today ?? 0;
-    document.getElementById("val-last-checked").textContent = formatTime(data.lastChecked || data.last_run);
+    var lastChecked = cachedLastCheckedOverride || data.lastChecked || data.last_run;
+    document.getElementById("val-last-checked").textContent = formatTime(lastChecked);
 
     var agoEl = document.getElementById("val-last-checked-ago");
     if (agoEl) {
-        agoEl.textContent = "(" + getTimeAgo(data.lastChecked || data.last_run) + ")";
+        agoEl.textContent = "(" + getTimeAgo(lastChecked) + ")";
     }
     var dot = document.getElementById("scan-freshness-dot");
     if (dot) {
@@ -531,10 +532,11 @@ function updateScanClocks(data) {
         batchEl.textContent = "Scan " + getScanBatch() + " of 8";
     }
 
-    // Last scan time ago
+    // Last scan time ago (use cachedLastCheckedOverride for accuracy)
     var agoEl = document.getElementById("scan-last-run-ago");
     if (agoEl && data) {
-        agoEl.textContent = getTimeAgo(data.lastChecked || data.last_run);
+        var lastChecked = cachedLastCheckedOverride || data.lastChecked || data.last_run;
+        agoEl.textContent = lastChecked ? getTimeAgo(lastChecked) : "-";
     }
 
     // Freshness dot in stats
@@ -551,7 +553,8 @@ function updateScanClocks(data) {
     // Update time-ago in stats row
     var statsAgo = document.getElementById("val-last-checked-ago");
     if (statsAgo && data) {
-        statsAgo.textContent = "(" + getTimeAgo(data.lastChecked || data.last_run) + ")";
+        var lastChecked = cachedLastCheckedOverride || data.lastChecked || data.last_run;
+        statsAgo.textContent = "(" + getTimeAgo(lastChecked) + ")";
     }
 }
 
@@ -561,7 +564,8 @@ function renderTodayUpdates(data) {
     if (!container) return;
 
     var lc = cachedLastCheckedOverride || data.lastChecked || data.last_run || "";
-    updatesLabel.textContent = lc ? `Last checked: ${formatTime(lc)}` : "Last checked: -";
+    var updateDateOnly = lc ? lc.split('T')[0] : "";
+    updatesLabel.textContent = updateDateOnly ? `Updated: ${formatFriendlyDate(updateDateOnly)}` : "Updated: -";
     log("renderTodayUpdates", "lastChecked=" + lc + " affected=" + ((data.changes && data.changes.affected_bundles) || []).length);
 
     const changes = data.changes || {};
@@ -1075,6 +1079,13 @@ function parseReleaseNotes(text) {
         return true;
     });
 
+    // Drop sections whose heading is just a version string (e.g. "1.0.0", "v2.3.4")
+    sections = sections.filter(function(s) {
+        var h = s.heading.trim();
+        if (/^v?[\d]+\.[\d]+/.test(h)) return false;
+        return true;
+    });
+
     return sections;
 }
 
@@ -1292,7 +1303,7 @@ function buildBundleCard(bundle) {
         '<div class="apps-card-drawer" data-drawer></div>',
         '<div class="bundle-card-actions">',
         '<a href="' + escHtml(addMorpheUrl) + '" class="add-morphe-btn" target="_blank" onclick="event.stopPropagation()">Add to Morphe</a>',
-        '<button class="history-btn" data-bundle="' + escHtml(bundle.bundle) + '" onclick="event.stopPropagation(); openBundleHistory(\'' + escHtml(bundle.bundle) + '\')" title="View changelog history"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3 1.5a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg></button>',
+        '<button class="history-btn" data-bundle="' + escHtml(bundle.bundle) + '" title="View changelog history"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3 1.5a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg></button>',
         '</div>'
     ].join('');
 
@@ -1861,34 +1872,52 @@ function openBundleHistory(bundleName) {
 
     document.getElementById("bundle-history-title").textContent = bundleName + " patches";
     document.getElementById("bundle-history-subtitle").textContent = "Releases & update history";
-    document.getElementById("bundle-history-list").innerHTML = '<div class="loading-state">Loading history...</div>';
+
+    var listEl = document.getElementById("bundle-history-list");
 
     modal.classList.add("open");
     document.body.style.overflow = "hidden";
 
-    // Fetch live data for current release info + changelog for history
+    // Try cached data first for instant render
+    Promise.all([idbGet('live'), idbGet('changelog')]).then(function(cached) {
+        if (cached[0] && cached[1]) {
+            renderBundleHistory(bundleName, cached[0], cached[1]);
+        } else {
+            listEl.innerHTML = '<div class="loading-state">Loading history...</div>';
+        }
+    });
+
+    // Always fetch fresh data in background
     Promise.all([
         fetch("data/live.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; }),
         fetch("data/changelog.json?_t=" + Date.now()).then(function(r) { if (!r.ok) throw new Error("Status " + r.status); return r.json(); })
     ])
     .then(function(items) {
+        if (items[0] && items[1]) {
+            idbSet('live', items[0]);
+            idbSet('changelog', items[1]);
+        }
         renderBundleHistory(bundleName, items[0], items[1]);
     })
     .catch(function() {
-        // Fallback to cached
-        Promise.all([idbGet('live'), idbGet('changelog')]).then(function(cached) {
-            if (cached[0] && cached[1]) {
-                renderBundleHistory(bundleName, cached[0], cached[1]);
-            } else {
-                document.getElementById("bundle-history-list").innerHTML = '<div class="loading-state">Failed to load history.</div>';
-            }
-        });
+        if (!listEl.querySelector(".bundle-release-card")) {
+            listEl.innerHTML = '<div class="loading-state">Failed to load history. Check your connection.</div>';
+        }
     });
 }
 
-function renderBundleHistory(bundleName, liveData, changelog) {
+let _historyBundleName = "";
+let _historyLiveData = null;
+let _historyChangelog = null;
+let _historyChannel = "";
+
+function renderBundleHistory(bundleName, liveData, changelog, channel) {
     var container = document.getElementById("bundle-history-list");
     if (!container) return;
+
+    _historyBundleName = bundleName;
+    _historyLiveData = liveData;
+    _historyChangelog = changelog;
 
     container.innerHTML = "";
 
@@ -1897,7 +1926,24 @@ function renderBundleHistory(bundleName, liveData, changelog) {
     var devKey = bundleName + ":dev";
     var stableBundle = liveData && liveData.bundles && liveData.bundles[stableKey];
     var devBundle = liveData && liveData.bundles && liveData.bundles[devKey];
-    var currentBundle = stableBundle || devBundle;
+
+    var hasStable = stableBundle && stableBundle.version;
+    var hasDev = devBundle && devBundle.version;
+
+    var defaultChannel = channel || "";
+    if (!defaultChannel) {
+        // Pick the one with higher version
+        if (hasStable && hasDev) {
+            defaultChannel = devBundle.version >= stableBundle.version ? "dev" : "stable";
+        } else if (hasDev) {
+            defaultChannel = "dev";
+        } else {
+            defaultChannel = "stable";
+        }
+    }
+    _historyChannel = defaultChannel;
+
+    var currentBundle = defaultChannel === "dev" ? devBundle : stableBundle;
 
     if (currentBundle && currentBundle.version) {
         var releaseCard = document.createElement("div");
@@ -1905,7 +1951,12 @@ function renderBundleHistory(bundleName, liveData, changelog) {
 
         var repoUrl = currentBundle.repo_url || "";
         var repoInfo = getRepoInfo(repoUrl);
-        var releasesUrl = repoInfo.path ? "https://github.com/" + repoInfo.path + "/releases" : "";
+        var isGitLab = repoInfo.isGitLab;
+        var releasesUrl = repoInfo.path
+            ? (isGitLab
+                ? "https://gitlab.com/" + repoInfo.path + "/-/releases"
+                : "https://github.com/" + repoInfo.path + "/releases")
+            : "";
 
         var channels = [];
         if (stableBundle) channels.push("stable");
@@ -1915,21 +1966,44 @@ function renderBundleHistory(bundleName, liveData, changelog) {
             return '<span class="channel-badge ' + ch + '">' + ch + '</span>';
         }).join(' ');
 
+        // Channel toggle
+        var toggleHtml = "";
+        if (hasStable && hasDev) {
+            toggleHtml = '<div class="history-channel-toggle">' +
+                '<button class="channel-toggle-btn' + (defaultChannel === "stable" ? " active" : "") + '" data-hchannel="stable">Stable</button>' +
+                '<button class="channel-toggle-btn' + (defaultChannel === "dev" ? " active" : "") + '" data-hchannel="dev">Dev</button>' +
+                '</div>';
+        }
+
         var desc = currentBundle.description || "";
-        var parsedSections = parseReleaseNotes(desc);
-        var descHtml = parsedSections.length > 0
-            ? '<div class="bundle-release-desc">' + renderReleaseSections(parsedSections) + '</div>'
-            : '';
+        var descHtml = "";
+        if (desc) {
+            var parsedSections = parseReleaseNotes(desc);
+            descHtml = parsedSections.length > 0
+                ? '<div class="bundle-release-desc">' + renderReleaseSections(parsedSections) + '</div>'
+                : '<div class="bundle-release-desc bundle-release-desc--empty">Release notes not available for this version.</div>';
+        }
 
         releaseCard.innerHTML = [
+            toggleHtml,
             '<div class="bundle-release-header">',
             '  <span class="bundle-release-version">' + escHtml(currentBundle.version) + '</span>',
             '  <span class="bundle-release-badges">' + channelsHtml + '</span>',
             '</div>',
             descHtml,
-            releasesUrl ? '<a href="' + escHtml(releasesUrl) + '" target="_blank" class="bundle-release-link">View all releases on GitHub →</a>' : ''
+            releasesUrl ? '<a href="' + escHtml(releasesUrl) + '" target="_blank" class="bundle-release-link">View all releases' + (isGitLab ? ' on GitLab' : ' on GitHub') + ' →</a>' : ''
         ].join('');
         container.appendChild(releaseCard);
+
+        // Wire channel toggle
+        var toggleBtns = releaseCard.querySelectorAll(".channel-toggle-btn");
+        toggleBtns.forEach(function(btn) {
+            btn.addEventListener("click", function() {
+                var ch = this.getAttribute("data-hchannel");
+                if (ch === _historyChannel) return;
+                renderBundleHistory(bundleName, liveData, changelog, ch);
+            });
+        });
     }
 
     // --- Changelog history ---
@@ -1961,7 +2035,7 @@ function renderBundleHistory(bundleName, liveData, changelog) {
     histHeader.textContent = "Update history";
     container.appendChild(histHeader);
 
-    entries.reverse().forEach(function(entry) {
+    entries.forEach(function(entry) {
         var dayCard = document.createElement("div");
         dayCard.className = "changelog-day-card";
 
@@ -1973,23 +2047,7 @@ function renderBundleHistory(bundleName, liveData, changelog) {
                 ? '<span class="badge badge-new-bundle">NEW BUNDLE</span>'
                 : '<span class="badge badge-updated">UPDATED</span>';
             var channelsStr = b.channels || b.channel || "";
-            var bChannel = b.channel || (b.channels && b.channels[0]) || "";
-            var bundleKey = bundleName + ":" + bChannel;
-            var bLive = liveData && liveData.bundles && liveData.bundles[bundleKey];
-            var bVer = (bLive && bLive.version) || currentBundle.version || "";
-            var bDesc = (bLive && bLive.description) || currentBundle.description || "";
-            var versionStr = bVer ? ' <span class="bundle-version-tag">' + escHtml(bVer) + '</span>' : '';
-            var descHtml = "";
-            if (bDesc) {
-                var parsedSections = parseReleaseNotes(bDesc);
-                if (parsedSections.length > 0) {
-                    descHtml = '<div class="bundle-release-desc" style="margin:0.5rem 0 0.75rem 1.5rem">' + renderReleaseSections(parsedSections) + '</div>';
-                } else {
-                    descHtml = '<div class="bundle-release-desc" style="margin:0.5rem 0 0.75rem 1.5rem;font-size:0.85rem;color:var(--text-secondary)">' + escHtml(bDesc) + '</div>';
-                }
-            }
-            dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + versionStr + ' <span>Channel: ' + channelsStr + '</span></div>';
-            dayHtml += descHtml;
+            dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + ' <span>Channel: ' + channelsStr + '</span></div>';
 
             if (b.apps && b.apps.length > 0) {
                 dayHtml += '<ul class="changelog-bundle-apps">';
@@ -2084,6 +2142,16 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.target === histOverlay) closeBundleHistory();
         });
     }
+
+    // Delegate history button clicks (fixes escaping issues with inline onclick)
+    document.addEventListener("click", function(e) {
+        var btn = e.target.closest(".history-btn");
+        if (btn) {
+            e.stopPropagation();
+            var bundle = btn.getAttribute("data-bundle");
+            if (bundle) openBundleHistory(bundle);
+        }
+    });
 
     // Toast close wiring
     var toastCloseBtn = document.getElementById("toast-close-btn");
