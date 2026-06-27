@@ -66,6 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// Cache storage constants
+var CACHE_KEYS = {
+    LIVE: 'live',
+    CHANGELOG: 'changelog',
+    ICONS: 'icons',
+    NAMES: 'names'
+};
+
 // Ordinal suffix for scan batch tooltips
 function ordinalSuffix(n) {
     var s = ['th', 'st', 'nd', 'rd'];
@@ -270,7 +278,7 @@ function initDashboard() {
     fetchLastChecked().then(function(lc) {
         if (lc) cachedLastCheckedOverride = lc;
     });
-    Promise.all([idbGet('live'), idbGet('icons'), idbGet('names')]).then(function(items) {
+    Promise.all([idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.ICONS), idbGet(CACHE_KEYS.NAMES)]).then(function(items) {
         log("initDashboard", "Cache load: live=" + !!items[0] + " icons=" + !!items[1] + " names=" + !!items[2]);
         if (items[0] && items[1]) {
             cachedLastRun = items[0].last_run || items[0].lastChecked || "";
@@ -313,42 +321,40 @@ function runCheckPhase() {
     log("runCheckPhase", "START");
     const checkingEl = document.getElementById("checking-message");
 
-    fetch("data/live.json?_t=" + Date.now())
-        .then(r => { if (!r.ok) throw new Error("Status " + r.status); return r.json(); })
-        .then(data => {
-            const lastRun = data.last_run || data.lastChecked || "";
-            const storedRun = localStorage.getItem("morphe_last_run") || "";
-            log("runCheckPhase", "lastRun=" + lastRun + " storedRun=" + storedRun);
+    fetchAllData().then(data => {
+        const lastRun = data.last_run || data.lastChecked || "";
+        const storedRun = localStorage.getItem("morphe_last_run") || "";
+        log("runCheckPhase", "lastRun=" + lastRun + " storedRun=" + storedRun);
 
-            if (lastRun && lastRun !== storedRun) {
-                if (checkingEl) checkingEl.textContent = "New updates found!";
-                localStorage.setItem("morphe_last_run", lastRun);
-                localStorage.setItem("morphe_versions", JSON.stringify(getBundleVersions(data)));
-                log("runCheckPhase", "NEW UPDATES FOUND");
-            } else {
-                if (checkingEl) checkingEl.textContent = "Up to date";
-                log("runCheckPhase", "Up to date");
-            }
+        if (lastRun && lastRun !== storedRun) {
+            if (checkingEl) checkingEl.textContent = "New updates found!";
+            localStorage.setItem("morphe_last_run", lastRun);
+            localStorage.setItem("morphe_versions", JSON.stringify(getBundleVersions(data)));
+            log("runCheckPhase", "NEW UPDATES FOUND");
+        } else {
+            if (checkingEl) checkingEl.textContent = "Up to date";
+            log("runCheckPhase", "Up to date");
+        }
 
-            sessionStorage.setItem("morphe_checked", "1");
+        sessionStorage.setItem("morphe_checked", "1");
 
-            Promise.all([
-                fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-                fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-                fetchLastChecked()
-            ]).then(function(items) {
-                if (items[2]) cachedLastCheckedOverride = items[2];
-                log("runCheckPhase", "Icons=" + Object.keys(items[0]||{}).length + " Names=" + Object.keys(items[1]||{}).length + " LastChecked=" + (items[2]||"-"));
-                setTimeout(function() {
-                    finalizeDashboard(data, items[0], items[1]);
-                }, 600);
-            });
-        })
-        .catch(() => {
-            log("runCheckPhase", "live.json fetch failed, fallback to fetchAndRenderDashboard");
-            sessionStorage.setItem("morphe_checked", "1");
-            fetchAndRenderDashboard();
+        Promise.all([
+            fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+            fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
+            fetchLastChecked()
+        ]).then(function(items) {
+            if (items[2]) cachedLastCheckedOverride = items[2];
+            log("runCheckPhase", "Icons=" + Object.keys(items[0]||{}).length + " Names=" + Object.keys(items[1]||{}).length + " LastChecked=" + (items[2]||"-"));
+            setTimeout(function() {
+                finalizeDashboard(data, items[0], items[1]);
+            }, 600);
         });
+    })
+    .catch(() => {
+        log("runCheckPhase", "data fetch failed, fallback to fetchAndRenderDashboard");
+        sessionStorage.setItem("morphe_checked", "1");
+        fetchAndRenderDashboard();
+    });
 }
 
 function getBundleVersions(data) {
@@ -376,7 +382,7 @@ function fetchLastChecked() {
 function fetchAndRenderDashboard() {
     log("fetchAndRenderDashboard", "START");
     Promise.all([
-        fetch("data/live.json").then(r => { if (!r.ok) throw new Error("Status " + r.status); return r.json(); }),
+        fetchAllData(),
         fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
         fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
         fetchLastChecked()
@@ -391,7 +397,7 @@ function fetchAndRenderDashboard() {
             console.error("[MorpheTracker] ERROR loading dashboard data:", err);
             const container = document.getElementById("bundles-grid-container");
             if (container) {
-                container.innerHTML = `<div class="error-state">Failed to load dashboard data: ${err.message}. Ensure data/live.json exists.</div>`;
+                container.innerHTML = `<div class="error-state">Failed to load dashboard data: ${err.message}. Ensure data files exist.</div>`;
             }
         });
 }
@@ -431,9 +437,9 @@ function finalizeDashboard(data, cache, names) {
     filterAndRenderBundles();
     scrollToHighlightedBundle();
 
-    idbSet('live', data);
-    idbSet('icons', iconCache);
-    idbSet('names', nameCache);
+    idbSet(CACHE_KEYS.LIVE, data);
+    idbSet(CACHE_KEYS.ICONS, iconCache);
+    idbSet(CACHE_KEYS.NAMES, nameCache);
     log("finalizeDashboard", "DONE");
 }
 
@@ -921,7 +927,7 @@ function parseReleaseNotes(text) {
         var trimmed = line.trim();
 
         // Skip version headers: `## [1.32.0](url) (date)` or `# [4.1.0](url) (date)` or `## Pepper ...`
-        if (/^#{1,2}\s+(?:\[[\w.]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\([\w\-\s,:]+\))?\s*$/.test(trimmed)) continue;
+        if (/^#{1,2}\s+(?:\[[\w.\-+]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\([\w\-\s,:]+\))?\s*$/.test(trimmed)) continue;
 
         // Skip intro links: "[Original Features](...) | [Tips](...)" or just standalone links
         if (/^\[.+\]\(.+\)/.test(trimmed) && trimmed.indexOf('|') !== -1) continue;
@@ -1879,9 +1885,9 @@ function openBundleHistory(bundleName) {
     document.body.style.overflow = "hidden";
 
     // Try cached data first for instant render
-    Promise.all([idbGet('live'), idbGet('changelog')]).then(function(cached) {
+    Promise.all([idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.CHANGELOG)]).then(function(cached) {
         if (cached[0] && cached[1]) {
-            renderBundleHistory(bundleName, cached[0], cached[1]);
+            renderBundleHistory(bundleName, cached[0], cached[1], "", null);
         } else {
             listEl.innerHTML = '<div class="loading-state">Loading history...</div>';
         }
@@ -1889,15 +1895,16 @@ function openBundleHistory(bundleName) {
 
     // Always fetch fresh data in background
     Promise.all([
-        fetch("data/live.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : null; }).catch(function() { return null; }),
-        fetch("data/changelog.json?_t=" + Date.now()).then(function(r) { if (!r.ok) throw new Error("Status " + r.status); return r.json(); })
+        fetchAllData(),
+        fetch("data/changelog.json?_t=" + Date.now()).then(function(r) { if (!r.ok) throw new Error("Status " + r.status); return r.json(); }),
+        fetch("data/state/release_cache.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; })
     ])
     .then(function(items) {
         if (items[0] && items[1]) {
-            idbSet('live', items[0]);
-            idbSet('changelog', items[1]);
+            idbSet(CACHE_KEYS.LIVE, items[0]);
+            idbSet(CACHE_KEYS.CHANGELOG, items[1]);
         }
-        renderBundleHistory(bundleName, items[0], items[1]);
+        renderBundleHistory(bundleName, items[0], items[1], "", items[2]);
     })
     .catch(function() {
         if (!listEl.querySelector(".bundle-release-card")) {
@@ -1911,7 +1918,7 @@ let _historyLiveData = null;
 let _historyChangelog = null;
 let _historyChannel = "";
 
-function renderBundleHistory(bundleName, liveData, changelog, channel) {
+function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCache) {
     var container = document.getElementById("bundle-history-list");
     if (!container) return;
 
@@ -1930,12 +1937,20 @@ function renderBundleHistory(bundleName, liveData, changelog, channel) {
     var hasStable = stableBundle && stableBundle.version;
     var hasDev = devBundle && devBundle.version;
 
+    // Determine channel visibility: dedup same version, drop stale dev
+    var showStable = hasStable;
+    var showDev = hasDev;
+    if (hasStable && hasDev) {
+        if (stableBundle.version === devBundle.version) {
+            showStable = false; // same version → dev only
+        } else if (stableBundle.version >= devBundle.version) {
+            showDev = false; // stable newer → stable only (dev is stale)
+        }
+    }
+
     var defaultChannel = channel || "";
     if (!defaultChannel) {
-        // Pick the one with higher version
-        if (hasStable && hasDev) {
-            defaultChannel = devBundle.version >= stableBundle.version ? "dev" : "stable";
-        } else if (hasDev) {
+        if (showDev) {
             defaultChannel = "dev";
         } else {
             defaultChannel = "stable";
@@ -1959,23 +1974,24 @@ function renderBundleHistory(bundleName, liveData, changelog, channel) {
             : "";
 
         var channels = [];
-        if (stableBundle) channels.push("stable");
-        if (devBundle) channels.push("dev");
+        if (showStable) channels.push("stable");
+        if (showDev) channels.push("dev");
 
         var channelsHtml = channels.map(function(ch) {
             return '<span class="channel-badge ' + ch + '">' + ch + '</span>';
         }).join(' ');
 
-        // Channel toggle
+        // Channel toggle (only when both channels are visible)
         var toggleHtml = "";
-        if (hasStable && hasDev) {
+        if (showStable && showDev) {
             toggleHtml = '<div class="history-channel-toggle">' +
                 '<button class="channel-toggle-btn' + (defaultChannel === "stable" ? " active" : "") + '" data-hchannel="stable">Stable</button>' +
                 '<button class="channel-toggle-btn' + (defaultChannel === "dev" ? " active" : "") + '" data-hchannel="dev">Dev</button>' +
                 '</div>';
         }
 
-        var desc = currentBundle.description || "";
+        var desc = currentBundle.release_notes || currentBundle.description || "";
+        var releaseDate = currentBundle.release_date || "";
         var descHtml = "";
         if (desc) {
             var parsedSections = parseReleaseNotes(desc);
@@ -1984,12 +2000,17 @@ function renderBundleHistory(bundleName, liveData, changelog, channel) {
                 : '<div class="bundle-release-desc bundle-release-desc--empty">Release notes not available for this version.</div>';
         }
 
+        var dateHtml = releaseDate
+            ? '<div class="bundle-release-date">Released ' + formatTime(releaseDate) + '</div>'
+            : '';
+
         releaseCard.innerHTML = [
             toggleHtml,
             '<div class="bundle-release-header">',
             '  <span class="bundle-release-version">' + escHtml(currentBundle.version) + '</span>',
             '  <span class="bundle-release-badges">' + channelsHtml + '</span>',
             '</div>',
+            dateHtml,
             descHtml,
             releasesUrl ? '<a href="' + escHtml(releasesUrl) + '" target="_blank" class="bundle-release-link">View all releases' + (isGitLab ? ' on GitLab' : ' on GitHub') + ' →</a>' : ''
         ].join('');
@@ -2001,35 +2022,57 @@ function renderBundleHistory(bundleName, liveData, changelog, channel) {
             btn.addEventListener("click", function() {
                 var ch = this.getAttribute("data-hchannel");
                 if (ch === _historyChannel) return;
-                renderBundleHistory(bundleName, liveData, changelog, ch);
+                renderBundleHistory(bundleName, liveData, changelog, ch, releaseCache);
             });
         });
     }
 
     // --- Changelog history ---
     if (!changelog) {
-        // If no changelog data, still show the release info
         if (!currentBundle || !currentBundle.version) {
             container.innerHTML = '<div class="loading-state">No release info found for this bundle.</div>';
         }
         return;
     }
 
-    // Filter entries that include this bundle
-    var entries = [];
-    changelog.forEach(function(day) {
-        var matching = (day.affected_bundles || []).filter(function(b) { return b.bundle === bundleName; });
-        if (matching.length > 0) {
-            entries.push({ date: day.date, bundles: matching });
+    // Build entries: changelog + release cache entries merged
+    var entriesMap = {};
+
+    if (changelog) {
+        changelog.forEach(function(day) {
+            var matching = (day.affected_bundles || []).filter(function(b) { return b.bundle === bundleName; });
+            if (matching.length > 0) {
+                var key = day.date;
+                if (!entriesMap[key]) entriesMap[key] = { date: day.date, bundles: [] };
+                entriesMap[key].bundles = entriesMap[key].bundles.concat(matching);
+            }
+        });
+    }
+
+    if (releaseCache && repoUrl) {
+        var repoReleases = releaseCache[repoUrl];
+        if (repoReleases && repoReleases.releases) {
+            repoReleases.releases.forEach(function(rl) {
+                if (!rl.dateReleased) return;
+                var dateKey = rl.dateReleased.split('T')[0];
+                if (!entriesMap[dateKey]) entriesMap[dateKey] = { date: dateKey, bundles: [] };
+                entriesMap[dateKey].bundles.push({
+                    badge_type: "RELEASE",
+                    channel: rl.prerelease ? "dev" : "stable",
+                    version: rl.tag,
+                    body: rl.body,
+                    isCurrent: rl.tag === (currentBundle && currentBundle.release_tag || "")
+                });
+            });
         }
-    });
+    }
+
+    var entries = Object.values(entriesMap).sort(function(a, b) { return b.date.localeCompare(a.date); });
 
     if (entries.length === 0) {
-        // Show just the release info if we have it
         return;
     }
 
-    // History header
     var histHeader = document.createElement("div");
     histHeader.className = "bundle-history-section-header";
     histHeader.textContent = "Update history";
@@ -2042,29 +2085,43 @@ function renderBundleHistory(bundleName, liveData, changelog, channel) {
         var dayHtml = '<div class="changelog-date-header">' + formatFriendlyDate(entry.date) + '</div>';
 
         entry.bundles.forEach(function(b) {
-            var isNew = b.badge_type === "NEW BUNDLE";
-            var badgeHtml = isNew
-                ? '<span class="badge badge-new-bundle">NEW BUNDLE</span>'
-                : '<span class="badge badge-updated">UPDATED</span>';
-            var channelsStr = b.channels || b.channel || "";
-            dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + ' <span>Channel: ' + channelsStr + '</span></div>';
+            if (b.badge_type === "RELEASE") {
+                var badgeHtml = b.isCurrent
+                    ? '<span class="badge" style="background:#22c55e;color:#fff">CURRENT</span>'
+                    : '<span class="badge badge-updated">RELEASE</span>';
+                var channelsStr = b.channel || "";
+                dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + ' <span>' + escHtml(b.version) + ' — Channel: ' + channelsStr + '</span></div>';
+                if (b.body) {
+                    var parsed = parseReleaseNotes(b.body);
+                    dayHtml += parsed.length > 0
+                        ? '<div class="bundle-release-desc" style="margin-top:0.3rem">' + renderReleaseSections(parsed) + '</div>'
+                        : '<div class="bundle-release-desc bundle-release-desc--empty" style="margin-top:0.3rem">No details.</div>';
+                }
+            } else {
+                var isNew = b.badge_type === "NEW BUNDLE";
+                var badgeHtml = isNew
+                    ? '<span class="badge badge-new-bundle">NEW BUNDLE</span>'
+                    : '<span class="badge badge-updated">UPDATED</span>';
+                var channelsStr = b.channels || b.channel || "";
+                dayHtml += '<div class="changelog-bundle-header">' + badgeHtml + ' <span>Channel: ' + channelsStr + '</span></div>';
 
-            if (b.apps && b.apps.length > 0) {
-                dayHtml += '<ul class="changelog-bundle-apps">';
-                b.apps.forEach(function(app) {
-                    var appBadgeMap = {
-                        "NEW APP": '<span class="badge badge-new">NEW APP</span>',
-                        "UPDATED APP": '<span class="badge badge-updated">UPDATED APP</span>',
-                        "REMOVED APP": '<span class="badge badge-removed">REMOVED APP</span>'
-                    };
-                    var ab = appBadgeMap[app.badge_type] || '<span class="badge badge-new">NEW APP</span>';
-                    var icon = getAppIconHtml(getAppIconUrl(app));
-                    var scanBadges = (app.scan_numbers || []).map(function(sn) {
-                        return '<span class="badge badge-scan" title="' + sn + ordinalSuffix(sn) + ' scan batch">' + sn + '</span>';
-                    }).join(' ');
-                    dayHtml += '<li class="changelog-item"><div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">' + ab + ' ' + icon + ' <span><strong>' + escHtml(resolveAppName(app)) + '</strong> ' + scanBadges + '</span></div></li>';
-                });
-                dayHtml += '</ul>';
+                if (b.apps && b.apps.length > 0) {
+                    dayHtml += '<ul class="changelog-bundle-apps">';
+                    b.apps.forEach(function(app) {
+                        var appBadgeMap = {
+                            "NEW APP": '<span class="badge badge-new">NEW APP</span>',
+                            "UPDATED APP": '<span class="badge badge-updated">UPDATED APP</span>',
+                            "REMOVED APP": '<span class="badge badge-removed">REMOVED APP</span>'
+                        };
+                        var ab = appBadgeMap[app.badge_type] || '<span class="badge badge-new">NEW APP</span>';
+                        var icon = getAppIconHtml(getAppIconUrl(app));
+                        var scanBadges = (app.scan_numbers || []).map(function(sn) {
+                            return '<span class="badge badge-scan" title="' + sn + ordinalSuffix(sn) + ' scan batch">' + sn + '</span>';
+                        }).join(' ');
+                        dayHtml += '<li class="changelog-item"><div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">' + ab + ' ' + icon + ' <span><strong>' + escHtml(resolveAppName(app)) + '</strong> ' + scanBadges + '</span></div></li>';
+                    });
+                    dayHtml += '</ul>';
+                }
             }
         });
 
@@ -2182,6 +2239,26 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// ── Fetch helper ─────────────────────────────────────────────────────────────
+
+function fetchAllData() {
+    return Promise.all([
+        fetch("data/core.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
+        fetch("data/stats.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
+        fetch("data/changes.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
+        fetch("data/bundles.json?_t=" + Date.now()).then(function(r) { if (!r.ok) throw new Error("Status " + r.status); return r.json(); }).catch(function() { return {}; })
+    ]).then(function(items) {
+        return {
+            date: (items[0] && items[0].date) || "",
+            last_run: (items[0] && items[0].last_run) || "",
+            lastChecked: (items[0] && items[0].lastChecked) || "",
+            stats: items[1] || {},
+            changes: items[2] || {},
+            bundles: items[3] || {}
+        };
+    });
+}
+
 // ── Changelog ─────────────────────────────────────────────────────────────────
 
 function initChangelog() {
@@ -2197,7 +2274,7 @@ function initChangelog() {
     }
 
     // Load cached data instantly
-    Promise.all([idbGet('changelog'), idbGet('live'), idbGet('icons'), idbGet('names')]).then(function(items) {
+    Promise.all([idbGet(CACHE_KEYS.CHANGELOG), idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.ICONS), idbGet(CACHE_KEYS.NAMES)]).then(function(items) {
         log("initChangelog", "Cache: changelog=" + !!items[0] + " live=" + !!items[1] + " icons=" + !!items[2]);
         if (items[0] && items[1] && items[2]) {
             if (cachedHtml) cachedHtml.style.display = "none";
@@ -2242,10 +2319,7 @@ function initChangelog() {
             if (!res.ok) throw new Error("Changelog status " + res.status);
             return res.json();
         }),
-        fetch("data/live.json").then(function(res) {
-            if (!res.ok) throw new Error("Live status " + res.status);
-            return res.json();
-        }),
+        fetchAllData(),
         fetch("data/state/icon_cache.json")
             .then(function(res) { return res.ok ? res.json() : {}; })
             .catch(function() { return {}; }),
@@ -2263,10 +2337,10 @@ function initChangelog() {
         renderChangelog(items[0], (items[1].bundles || {}));
         renderScanInfo(items[1]);
         setupChangelogViewToggle();
-        idbSet('changelog', items[0]);
-        idbSet('live', items[1]);
-        idbSet('icons', items[2]);
-        idbSet('names', items[3]);
+        idbSet(CACHE_KEYS.CHANGELOG, items[0]);
+        idbSet(CACHE_KEYS.LIVE, items[1]);
+        idbSet(CACHE_KEYS.ICONS, items[2]);
+        idbSet(CACHE_KEYS.NAMES, items[3]);
     })
     .catch(function(err) {
         log("initChangelog", "ERROR: " + err.message);
@@ -2274,7 +2348,7 @@ function initChangelog() {
         if (cachedHtml) cachedHtml.style.display = "none";
         var container = document.getElementById("changelog-list-container");
         if (container) {
-            container.innerHTML = '<div class="error-state">Failed to load changelog data: ' + err.message + '. Ensure data/changelog.json and data/live.json are generated.</div>';
+            container.innerHTML = '<div class="error-state">Failed to load changelog data: ' + err.message + '. Ensure data files are generated.</div>';
         }
     });
 }
@@ -2439,7 +2513,7 @@ if ("serviceWorker" in navigator) {
                     hideToast();
                     var isDashboard = document.getElementById("nav-dashboard") && document.getElementById("nav-dashboard").classList.contains("active");
                     if (isDashboard) {
-                        fetch("data/live.json?_t=" + Date.now()).then(function(res) { return res.json(); }).then(function(data) {
+                        fetchAllData().then(function(data) {
                             renderStats(data);
                             renderTodayUpdates(data);
                             for (const key in data.bundles) {

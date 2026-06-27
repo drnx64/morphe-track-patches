@@ -4,11 +4,9 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from state_manager import DOCS_DATA_DIR
 
-live_path = os.path.join(DOCS_DATA_DIR, "live.json")
-with open(live_path, "r", encoding="utf-8") as f:
-    data = json.load(f)
-
-bundles = data.get("bundles", {})
+bundles_path = os.path.join(DOCS_DATA_DIR, "bundles.json")
+with open(bundles_path, "r", encoding="utf-8") as f:
+    bundles = json.load(f)
 
 for key, b in bundles.items():
     for app in b.get("apps", []):

@@ -6,7 +6,7 @@ const STATIC_ASSETS = [
   "/assets/style.css",
   "/assets/app.js",
 ];
-const DATA_URLS = ["/data/live.json", "/data/changelog.json"];
+const DATA_URLS = ["/data/core.json", "/data/stats.json", "/data/changes.json", "/data/bundles.json", "/data/changelog.json"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
