@@ -1180,6 +1180,17 @@ function getSectionLabel(heading) {
     return heading;
 }
 
+function renderChangeType(type) {
+    if (!type) return '';
+    var t = type.toLowerCase();
+    if (t === 'add' || t === 'bump' || t === 'feat') return '<span class="change-type change-type--add">+</span>';
+    if (t === 'fix') return '<span class="change-type change-type--fix">\u2713</span>';
+    if (t === 'remove') return '<span class="change-type change-type--remove">\u2212</span>';
+    if (t === 'update' || t === 'chore' || t === 'refactor') return '<span class="change-type change-type--update">\u21BB</span>';
+    if (t === 'improve' || t === 'docs') return '<span class="change-type change-type--improve">\u2191</span>';
+    return '';
+}
+
 function renderReleaseSections(parsed) {
     if (!parsed || parsed.length === 0) return '';
     var html = '';
@@ -1195,6 +1206,10 @@ function renderReleaseSections(parsed) {
             section.entries.forEach(function(entry) {
                 if (entry.type === 'change') {
                     html += '<div class="release-entry">';
+                    var ctHtml = renderChangeType(entry.changeType);
+                    if (ctHtml) {
+                        html += ctHtml;
+                    }
                     if (entry.scope) {
                         var parts = entry.scope.split(' - ');
                         var appName = parts[0];
@@ -1204,7 +1219,7 @@ function renderReleaseSections(parsed) {
                             html += '<span class="release-entry-feature">' + escHtml(featureName) + '</span>';
                         }
                     }
-                    if (entry.description) {
+                    if (entry.description && !ctHtml) {
                         html += '<span class="release-entry-desc">' + renderInlineMarkdown(entry.description) + '</span>';
                     }
                     if (entry.commitLink) {
