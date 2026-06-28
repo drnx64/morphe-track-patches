@@ -33,6 +33,23 @@ def now_utc_iso():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
+def _compute_snapshot_stats(snapshot):
+    unique_bundles = set()
+    for key, b_rec in snapshot.items():
+        name = key.split(':')[0]
+        repo = b_rec.get("repo_url", "")
+        unique_bundles.add((name, repo))
+    total_bundles = len(unique_bundles)
+
+    unique_packages = set()
+    for b_rec in snapshot.values():
+        for app in b_rec.get("apps", []):
+            unique_packages.add(app["package"])
+    total_apps = len(unique_packages)
+
+    return total_bundles, total_apps
+
+
 def build_changelog_entry(date_str, affected_bundles_dict):
     """Builds a structured changelog entry from the buffer's affected_bundles dict."""
     return {
@@ -254,19 +271,7 @@ def finalize_buffer(buffer_data):
 
     # 3. Update data files (core.json, stats.json, changes.json, bundles.json)
     snapshot = load_current_snapshot()
-
-    unique_bundles = set()
-    for key, b_rec in snapshot.items():
-        name = key.split(':')[0]
-        repo = b_rec.get("repo_url", "")
-        unique_bundles.add((name, repo))
-    total_bundles = len(unique_bundles)
-
-    unique_packages = set()
-    for b_rec in snapshot.values():
-        for app in b_rec.get("apps", []):
-            unique_packages.add(app["package"])
-    total_apps = len(unique_packages)
+    total_bundles, total_apps = _compute_snapshot_stats(snapshot)
 
     all_apps = []
     for b_info in affected_bundles_dict.values():
@@ -299,18 +304,7 @@ def update_data_files(today_str, buffer_data, snapshot):
     """
     Updates data/core.json + data/stats.json + data/changes.json + data/bundles.json with the current snapshot and today's accumulated changes.
     """
-    unique_bundles = set()
-    for key, b_rec in snapshot.items():
-        name = key.split(':')[0]
-        repo = b_rec.get("repo_url", "")
-        unique_bundles.add((name, repo))
-    total_bundles = len(unique_bundles)
-
-    unique_packages = set()
-    for b_rec in snapshot.values():
-        for app in b_rec.get("apps", []):
-            unique_packages.add(app["package"])
-    total_apps = len(unique_packages)
+    total_bundles, total_apps = _compute_snapshot_stats(snapshot)
 
     affected_bundles_list = list(buffer_data.get("affected_bundles", {}).values())
     has_new_changes = len(affected_bundles_list) > 0
@@ -367,18 +361,7 @@ def write_data_files():
         print("[*] No snapshot data to write.")
         return
 
-    unique_bundles = set()
-    for key, b_rec in snapshot.items():
-        name = key.split(':')[0]
-        repo = b_rec.get("repo_url", "")
-        unique_bundles.add((name, repo))
-    total_bundles = len(unique_bundles)
-
-    unique_packages = set()
-    for b_rec in snapshot.values():
-        for app in b_rec.get("apps", []):
-            unique_packages.add(app["package"])
-    total_apps = len(unique_packages)
+    total_bundles, total_apps = _compute_snapshot_stats(snapshot)
 
     existing_core = load_core_json()
     existing_stats = load_stats_json()

@@ -19,7 +19,7 @@ This repository was inspired by and built upon concepts from the awesome [awesom
 - **App Icons**: Automatically fetches and caches app icons from Google Play Store.
 - **Offline-ready Caching**: Service Worker provides stale-while-revalidate caching for data files and cache-first for static assets.
 - **Full Changelog History**: Dedicated changelog viewer with daily rollups of added, updated, and removed apps.
-- **Telegram Notifications**: Sends daily changelog summaries to a configured Telegram channel.
+
 - **Dynamic Web Dashboard**: Beautiful, responsive dark-themed dashboard presenting all patch bundles, compatible apps, and change summaries.
 - **Add-to-Source Links**: Dynamic generation of one-click action links to load patch sources directly into the Morphe app.
 
@@ -46,7 +46,6 @@ MorpheTracker/
 │   ├── diff_engine.py       # Computes additions, updates, and removals of apps
 │   ├── merge_daily_buffer.py# Buffers scans and updates statistics (live.json)
 │   ├── generate_site.py     # Syncs static files to survive CI checkouts
-│   ├── telegram_notify.py   # Sends daily changelog to Telegram
 │   └── run_pipeline.py      # Main entry orchestrator
 ├── index.html               # Main dashboard web app entry
 ├── changelog.html           # Historical changelog viewer
@@ -72,8 +71,7 @@ graph TD
     I -->|No & No Rollover| J[Exit Silently]
     I -->|Yes| K[Update Daily Buffer]
     K -->|merge_daily_buffer.py| L[Update live.json + changelog.json]
-    L -->|telegram_notify.py| M[Send Telegram Summary]
-    M -->|generate_site.py| N[Sync Static Files]
+    L -->|generate_site.py| N[Sync Static Files]
     N -->|sw.js| O[Service Worker Caches Data]
 ```
 
@@ -97,7 +95,7 @@ Computes SHA-256 hashes of the parsed files. It compares the current scan snapsh
 Consolidates changes within a 24-hour window to keep notifications clean. It computes global statistics:
 - **Total Bundles**: Counts unique bundles by checking name and repository (stable and dev release channels under the same bundle name and repo count as **1**).
 - **Total Apps**: Counts unique app package names across all bundles.
-- Saves the database output to `data/live.json`.
+- Saves the database output to `data/core.json`, `data/stats.json`, `data/changes.json`, and `data/bundles.json`.
 
 ### 6. Static Site Sync (`generate_site.py`)
 Reads files from disk and writes them back to preserve them during CI checkouts. Also copies `changelog.json` to `data/changelog.json` for the web frontend. The actual working static files are maintained directly on disk — this script simply ensures they survive a fresh GitHub Actions checkout.

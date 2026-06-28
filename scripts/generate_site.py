@@ -3,7 +3,7 @@ import shutil
 import json
 from datetime import datetime, timezone
 from xml.sax.saxutils import escape as xml_escape
-from state_manager import ensure_dirs, DOCS_DIR, DOCS_DATA_DIR, OUTPUT_DIR, save_json, load_json
+from state_manager import ensure_dirs, ROOT_DIR, ROOT_DATA_DIR, OUTPUT_DIR, save_json, load_json
 
 
 def _rfc2822(date_str):
@@ -56,9 +56,10 @@ def generate_rss_feed():
         affected = day.get("affected_bundles", [])
         for bundle_entry in affected:
             bundle_name = bundle_entry.get("bundle", "unknown")
+            channel = bundle_entry.get("channel", "unknown")
             title = f"[{bundle_entry.get('badge_type', 'UPDATED')}] {bundle_name} patches — {date_str}"
             desc = _build_item_description(bundle_entry)
-            guid = f"{site_url}/changelog.html#{bundle_name}-{date_str}"
+            guid = f"{site_url}/changelog.html#{bundle_name}-{channel}-{date_str}"
             pub_date = _rfc2822(date_str)
             items.append({
                 "title": title,
@@ -92,7 +93,7 @@ def generate_rss_feed():
   </channel>
 </rss>"""
 
-    rss_path = os.path.join(DOCS_DIR, "feed.xml")
+    rss_path = os.path.join(ROOT_DIR, "feed.xml")
     with open(rss_path, "w", encoding="utf-8") as f:
         f.write(rss_xml)
     print(f"Writing RSS feed ({len(items)} items)...")
@@ -103,7 +104,7 @@ def generate_static_files():
 
     # Copy changelog.json to data/changelog.json (for frontend access)
     changelog_src = os.path.join(OUTPUT_DIR, "changelog.json")
-    changelog_dest = os.path.join(DOCS_DATA_DIR, "changelog.json")
+    changelog_dest = os.path.join(ROOT_DATA_DIR, "changelog.json")
     if os.path.exists(changelog_src):
         print(f"Copying {changelog_src} to {changelog_dest}...")
         shutil.copy2(changelog_src, changelog_dest)

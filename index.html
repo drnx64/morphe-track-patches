@@ -418,9 +418,17 @@
 
     <script>
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js").catch(function () {});
+        navigator.serviceWorker.register("/sw.js").catch(function(err) {
+          console.warn("[MorpheTracker] SW registration failed:", err);
+        });
       }
     </script>
-    <script src="assets/app.js"></script>
+    <script src="assets/app-init.js"></script>
+    <script src="assets/app-utils.js"></script>
+    <script src="assets/app-data.js"></script>
+    <script src="assets/app-release.js"></script>
+    <script src="assets/app-modal.js"></script>
+    <script src="assets/app-dashboard.js"></script>
+    <script src="assets/app-changelog.js"></script>
   </body>
 </html>

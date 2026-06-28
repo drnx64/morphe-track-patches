@@ -8,7 +8,7 @@ registry, discovers Morphe `.mpp` patch bundles, parses their compatible apps an
 detects changes via SHA-256 fingerprinting, accumulates daily changelogs, enriches app data
 with Google Play Store icons, and renders a dark-themed static web dashboard.
 
-The pipeline runs on GitHub Actions every 6 hours and commits results back to the repo,
+The pipeline runs on GitHub Actions every 3 hours and commits results back to the repo,
 which is served via GitHub Pages. A Service Worker provides offline caching and
 stale-while-revalidate for the data files.
 
@@ -29,11 +29,20 @@ MorpheTracker/
 |-- requirements.txt              # Python deps: requests, beautifulsoup4, lxml, python-dotenv
 |
 |-- assets/
-|   |-- app.js                    # Client-side rendering engine (~950 lines)
-|   |-- style.css                 # Dark theme design system (~1320 lines)
+|   |-- app-init.js               # Storage clearing + DOM init dispatch
+|   |-- app-utils.js              # Shared utility functions
+|   |-- app-data.js               # IndexedDB wrapper + data fetching
+|   |-- app-dashboard.js          # Dashboard rendering
+|   |-- app-release.js            # Release notes parser
+|   |-- app-modal.js              # Modal renderers
+|   |-- app-changelog.js          # Changelog page renderer
+|   |-- style.css                 # Dark theme design system (~2500 lines)
 |
 |-- data/
-|   |-- live.json                 # Main dashboard database (stats + changes + full snapshot)
+|   |-- core.json                 # Dashboard metadata (date, last_run, lastChecked)
+|   |-- stats.json                # Dashboard statistics (total_bundles, total_apps, etc.)
+|   |-- changes.json              # Today's affected bundles
+|   |-- bundles.json              # Full snapshot data for frontend rendering
 |   |-- changelog.json            # Root-level copy of output/changelog.json
 |   |
 |   |-- raw/
@@ -45,7 +54,7 @@ MorpheTracker/
 |   |-- state/
 |   |   |-- current_snapshot.json # Most recent parse result (with fingerprints)
 |   |   |-- previous_snapshot.json# Snapshot before current (for diffing)
-|   |   |-- rollback_1..3.json    # Rollback history (3 deep)
+|   |   |-- previous_snapshot.json# Snapshot before current (for diffing)
 |   |   |-- daily_buffer.json     # Today's accumulated changes
 |   |   |-- last_run.json         # Pipeline metadata (errors, counts, timestamps)
 |   |   |-- icon_cache.json       # Cached Google Play icon URLs by package name
@@ -63,10 +72,9 @@ MorpheTracker/
     |-- icon_fetcher.py           # Google Play Store icon scraper with cache
     |-- fingerprint_engine.py     # Step 5: SHA-256 fingerprinting
     |-- diff_engine.py            # Step 6: compare old vs new fingerprints
-    |-- merge_daily_buffer.py     # Step 7-8: buffer, finalize day, update live.json
+    |-- merge_daily_buffer.py     # Step 7-8: buffer, finalize day, update data files
     |-- generate_site.py          # Step 9: sync static files to docs root
-    |-- telegram_notify.py        # Send daily changelog to Telegram
-    |-- inspect_data.py           # Dev utility to inspect live.json
+    |-- inspect_data.py           # Dev utility to inspect bundles.json
 ```
 
 ---
@@ -100,15 +108,13 @@ bundles branch
   |
   |       +-- day rollover? ------------> data/output/changelog.json (append)
   |       |                               data/output/changelog.md (prepend)
-  |       |                               data/live.json (updated)
-  |       |                               -> triggers telegram_notify.py
   |
-  |       +-- always: -------> data/state/current_snapshot.json (rotated)
-  |                            data/live.json (updated)
+  |       +-- always: -------> data/state/current_snapshot.json (updated)
+  |                            data/core.json, data/stats.json, data/changes.json, data/bundles.json
   |
   |--[7] sync static files to docs root
   |
-  +--[8] Browser loads app.js-----------> fetch data/live.json + data/changelog.json
+  +--[8] Browser loads JS modules -----> fetch data/core.json + data/stats.json + data/changes.json + data/bundles.json + data/changelog.json
         + Service Worker caches both      -> render dashboard / changelog
           (stale-while-revalidate)
 ```
@@ -128,13 +134,15 @@ bundles branch
 | `ensure_dirs()` | Creates all directories under `data/` |
 | `load_json(path, default)` | JSON load with error handling, returns default on failure |
 | `save_json(path, data)` | Atomic write via `.tmp` temp file + rename |
-| `rotate_rollbacks()` | current -> rollback_1 -> rollback_2 -> rollback_3 |
-| `save_new_snapshot(data)` | Moves current to previous, rotates rollbacks, saves new current |
+| `save_new_snapshot(data)` | Moves current to previous, saves new current |
 | `load_current_snapshot()` | Loads `data/state/current_snapshot.json` |
 | `load_previous_snapshot()` | Loads `data/state/previous_snapshot.json` |
 | `load_daily_buffer()` / `save_daily_buffer()` | Daily buffer I/O |
 | `save_last_run()` / `load_last_run()` | Pipeline metadata I/O |
-| `save_live_json()` / `load_live_json()` | Dashboard database I/O |
+| `save_core_json()` / `load_core_json()` | Dashboard metadata I/O |
+| `save_stats_json()` / `load_stats_json()` | Dashboard statistics I/O |
+| `save_changes_json()` / `load_changes_json()` | Today's changes I/O |
+| `save_bundles_json()` / `load_bundles_json()` | Full snapshot I/O |
 
 ---
 
@@ -281,8 +289,8 @@ Returns `False` if no changes detected (pipeline exits silently).
 | `merge_apps_with_status(app_list, status)` | Merges apps into buffer with status precedence: new > updated > removed |
 | `build_changelog_entry(date_str, affected_bundles_dict)` | Creates `{date, lastChecked, affected_bundles[]}` for JSON changelog |
 | `generate_markdown_changelog(date_str, affected_bundles_dict)` | Generates Markdown with NEW/UPDATED/PRE-RELEASE badges |
-| `finalize_buffer(buffer_data)` | Finalizes a 24h window: appends to `changelog.json`, prepends to `changelog.md`, writes `live.json` |
-| `update_live_json_file(today, buffer, snapshot)` | Updates `live.json` with current snapshot + today's changes |
+| `finalize_buffer(buffer_data)` | Finalizes a 24h window: appends to `changelog.json`, prepends to `changelog.md`, writes data files |
+| `update_data_files(today, buffer, snapshot)` | Updates data files with current snapshot + today's changes |
 | `update_daily_buffer_run()` | Main entry point: handles day rollover, merges diff, saves snapshot, triggers notification |
 
 **Status precedence logic:**
@@ -290,7 +298,7 @@ Returns `False` if no changes detected (pipeline exits silently).
 - `UPDATED APP` overrides `REMOVED APP`
 - `NEW BUNDLE` overrides `UPDATED`
 
-**`live.json` output shape:**
+**Data files output shape:**
 ```json
 {
   "date": "2026-06-21",
@@ -330,19 +338,7 @@ directly on disk. The script exists to ensure files survive a fresh GitHub Actio
 
 ---
 
-### 10. `telegram_notify.py` (111 lines)
-
-**Role:** Sends daily changelog summary to a Telegram channel.
-
-**What it does:**
-1. Loads `TG_TOKEN` and `TG_CHAT` from `.env`
-2. Reads the daily markdown changelog from `data/output/today_changelog.md`
-3. Converts markdown headers to Telegram bold format
-4. Sends via Telegram Bot API
-
----
-
-### 11. `run_pipeline.py` (65 lines)
+### 10. `run_pipeline.py` (65 lines)
 
 **Role:** Orchestrator — runs all pipeline steps in order.
 
@@ -354,7 +350,7 @@ directly on disk. The script exists to ensure files survive a fresh GitHub Actio
 5. `generate_bundle_fingerprints()` -> adds fingerprints
 6. `diff_snapshots()` -> diff_result.json
 7. If no changes AND no day rollover needed -> **exit silently**
-8. `update_daily_buffer_run()` -> buffer, snapshots, live.json
+8. `update_daily_buffer_run()` -> buffer, snapshots, data files
 9. `generate_static_files()` -> sync files to docs root
 
 ---
@@ -370,7 +366,7 @@ directly on disk. The script exists to ensure files survive a fresh GitHub Actio
 
 ### Service Worker (`sw.js`)
 
-- **Cache strategy:** Stale-while-revalidate for `data/live.json` and `data/changelog.json`
+- **Cache strategy:** Stale-while-revalidate for `data/core.json`, `data/stats.json`, `data/changes.json`, `data/bundles.json`, and `data/changelog.json`
 - **Static assets:** Cache-first (HTML, CSS, JS, fonts)
 - **Background refresh:** When fresh data is fetched, posts `DATA_UPDATED` message to all clients
 - **On message:** Dashboard re-fetches and re-renders stats, updates, and bundle grid
@@ -381,8 +377,8 @@ directly on disk. The script exists to ensure files survive a fresh GitHub Actio
 
 | Function | Trigger | What it renders |
 |----------|---------|-----------------|
-| `initDashboard()` | `DOMContentLoaded` + `#nav-dashboard.active` | Fetches `data/live.json`, renders stats, today's updates, bundle grid with filters |
-| `initChangelog()` | `DOMContentLoaded` + `#nav-changelog.active` | Fetches `data/changelog.json` + `data/live.json`, renders historical changelog |
+| `initDashboard()` | `DOMContentLoaded` + `#nav-dashboard.active` | Fetches data files, renders stats, today's updates, bundle grid with filters |
+| `initChangelog()` | `DOMContentLoaded` + `#nav-changelog.active` | Fetches `data/changelog.json` + data files, renders historical changelog |
 | `renderStats(data)` | Called by `initDashboard` | Populates 4 stat cards from `data.stats` |
 | `renderTodayUpdates(data)` | Called by `initDashboard` | Groups `changes.affected_bundles` by bundle name, renders with status badges + app icons |
 | `filterAndRenderBundles()` | Called by `initDashboard` + filter events | Groups bundle:channel entries by base name, applies search/channel filters, sorts, renders expandable cards with app icons, version chips, patch details |
@@ -442,30 +438,40 @@ Each day card shows:
 
 ## Key Data Shapes
 
-### `data/live.json` (Dashboard Database)
+### `data/core.json` (Dashboard Metadata)
 ```json
 {
   "date": "2026-06-21",
   "last_run": "2026-06-21T12:01:00",
-  "lastChecked": "2026-06-21T12:01:00",
-  "stats": {
-    "total_bundles": 59,
-    "total_apps": 291,
-    "new_apps_today": 14,
-    "new_bundles_today": 2
-  },
-  "changes": {
-    "affected_bundles": [
-      {
-        "bundle": "bundle-name", "channel": "stable",
-        "badge_type": "UPDATED",
-        "apps": [{"app_name": "YouTube", "package": "com.google.android.youtube", "badge_type": "NEW APP", "icon_url": "https://..."}]
-      }
-    ]
-  },
-  "bundles": { "bundle-name:stable": { "bundle": "...", "channel": "...", ... } }
+  "lastChecked": "2026-06-21T12:01:00"
 }
 ```
+
+### `data/stats.json` (Dashboard Statistics)
+```json
+{
+  "total_bundles": 59,
+  "total_apps": 291,
+  "new_apps_today": 14,
+  "new_bundles_today": 2
+}
+```
+
+### `data/changes.json` (Today's Changes)
+```json
+{
+  "affected_bundles": [
+    {
+      "bundle": "bundle-name", "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [{"app_name": "YouTube", "package": "com.google.android.youtube", "badge_type": "NEW APP", "icon_url": "https://..."}]
+    }
+  ]
+}
+```
+
+### `data/bundles.json` (Full Snapshot)
+The complete bundle database, keyed by `bundle-name:channel`, with full app/patch/version data and release notes.
 
 ### `data/output/changelog.json` (Historical)
 ```json

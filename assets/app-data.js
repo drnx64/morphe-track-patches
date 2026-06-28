@@ -33,7 +33,7 @@ function fetchAllData() {
         fetch("data/core.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
         fetch("data/stats.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
         fetch("data/changes.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
-        fetch("data/bundles.json?_t=" + Date.now()).then(function(r) { if (!r.ok) throw new Error("Status " + r.status); return r.json(); }).catch(function() { return {}; })
+        fetch("data/bundles.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; })
     ]).then(function(items) {
         return {
             date: (items[0] && items[0].date) || "",
