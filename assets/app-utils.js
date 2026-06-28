@@ -70,16 +70,20 @@ function getNextScanTime() {
     const utcHour = now.getUTCHours();
     const utcMin = now.getUTCMinutes();
     const slot = Math.floor(utcHour / 3) * 3;
-    let nextHour;
-    if (utcMin < 1) {
-        nextHour = utcHour === slot ? slot : slot + 3;
-    } else {
-        nextHour = slot + 3;
+    let nextHour = slot + 3;
+    if (utcMin < 1 && utcHour === slot) {
+        nextHour = slot;
     }
     const next = new Date(now);
-    next.setUTCHours(nextHour, 1, 0, 0);
+    if (nextHour >= 24) {
+        next.setUTCDate(next.getUTCDate() + 1);
+        next.setUTCHours(0, 1, 0, 0);
+    } else {
+        next.setUTCHours(nextHour, 1, 0, 0);
+    }
     if (next <= now) {
         next.setUTCDate(next.getUTCDate() + 1);
+        next.setUTCHours(0, 1, 0, 0);
     }
     return next;
 }
@@ -252,3 +256,41 @@ function groupAffectedBundles(affectedBundles) {
 const githubSvg = '<svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>';
 
 const gitlabSvg = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.957 12.355l-2.316-7.13a.9.9 0 0 0-.309-.434.908.908 0 0 0-.534-.143.91.91 0 0 0-.528.163.906.906 0 0 0-.294.417L17.7 12.355H6.3L4.024 5.228a.9.9 0 0 0-.295-.417.913.913 0 0 0-.53-.163.906.906 0 0 0-.533.143.904.904 0 0 0-.308.434l-2.316 7.13a.593.593 0 0 0 .218.675l10.963 7.97a1.32 1.32 0 0 0 1.554 0l10.963-7.97a.593.593 0 0 0 .218-.675z"/></svg>';
+
+function compareVersions(a, b) {
+    var pa = a.split('.').map(Number);
+    var pb = b.split('.').map(Number);
+    for (var i = 0; i < Math.max(pa.length, pb.length); i++) {
+        var na = i < pa.length ? pa[i] : 0;
+        var nb = i < pb.length ? pb[i] : 0;
+        if (na > nb) return 1;
+        if (na < nb) return -1;
+    }
+    return 0;
+}
+
+var toastTimer = null;
+
+function requestNotifyPermission() {
+    if (!("Notification" in window)) return;
+    if (Notification.permission === "default") {
+        Notification.requestPermission().catch(function() {});
+    }
+}
+
+function showToast(message) {
+    var toast = document.getElementById("toast-notification");
+    var msgEl = document.getElementById("toast-message");
+    if (!toast || !msgEl) return;
+    msgEl.textContent = message || "New data available";
+    toast.classList.add("visible");
+    if (toastTimer) clearTimeout(toastTimer);
+    requestNotifyPermission();
+}
+
+function hideToast() {
+    var toast = document.getElementById("toast-notification");
+    if (!toast) return;
+    toast.classList.remove("visible");
+    if (toastTimer) clearTimeout(toastTimer);
+}

@@ -490,7 +490,7 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
     if (hasStable && hasDev) {
         if (stableBundle.version === devBundle.version) {
             showStable = false;
-        } else if (stableBundle.version >= devBundle.version) {
+        } else if (compareVersions(stableBundle.version, devBundle.version) >= 0) {
             showDev = false;
         }
     }

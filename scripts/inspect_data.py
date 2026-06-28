@@ -2,9 +2,9 @@ import json
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from state_manager import DOCS_DATA_DIR
+from state_manager import ROOT_DATA_DIR
 
-bundles_path = os.path.join(DOCS_DATA_DIR, "bundles.json")
+bundles_path = os.path.join(ROOT_DATA_DIR, "bundles.json")
 with open(bundles_path, "r", encoding="utf-8") as f:
     bundles = json.load(f)
 

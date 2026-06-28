@@ -7,8 +7,8 @@ DATA_DIR = os.path.join(BASE_DIR, "data")
 STATE_DIR = os.path.join(DATA_DIR, "state")
 RAW_DIR = os.path.join(DATA_DIR, "raw")
 OUTPUT_DIR = os.path.join(DATA_DIR, "output")
-DOCS_DIR = BASE_DIR
-DOCS_DATA_DIR = os.path.join(DOCS_DIR, "data")
+ROOT_DIR = BASE_DIR
+ROOT_DATA_DIR = os.path.join(ROOT_DIR, "data")
 
 # State files paths
 CURRENT_SNAPSHOT_PATH = os.path.join(STATE_DIR, "current_snapshot.json")
@@ -20,14 +20,14 @@ CHANGELOG_JSON_PATH = os.path.join(OUTPUT_DIR, "changelog.json")
 CHANGELOG_MD_PATH = os.path.join(OUTPUT_DIR, "changelog.md")
 
 # Split data files (kebab-case)
-CORE_JSON_PATH = os.path.join(DOCS_DATA_DIR, "core.json")
-BUNDLES_JSON_PATH = os.path.join(DOCS_DATA_DIR, "bundles.json")
-CHANGES_JSON_PATH = os.path.join(DOCS_DATA_DIR, "changes.json")
-STATS_JSON_PATH = os.path.join(DOCS_DATA_DIR, "stats.json")
+CORE_JSON_PATH = os.path.join(ROOT_DATA_DIR, "core.json")
+BUNDLES_JSON_PATH = os.path.join(ROOT_DATA_DIR, "bundles.json")
+CHANGES_JSON_PATH = os.path.join(ROOT_DATA_DIR, "changes.json")
+STATS_JSON_PATH = os.path.join(ROOT_DATA_DIR, "stats.json")
 
 def ensure_dirs():
     """Ensure all required directories exist."""
-    for path in [STATE_DIR, RAW_DIR, OUTPUT_DIR, DOCS_DATA_DIR]:
+    for path in [STATE_DIR, RAW_DIR, OUTPUT_DIR, ROOT_DATA_DIR]:
         os.makedirs(path, exist_ok=True)
 
 def load_json(filepath, default=None):

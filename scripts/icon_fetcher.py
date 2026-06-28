@@ -80,7 +80,7 @@ def enrich_parsed_bundles_with_icons(parsed_bundles):
             if i < len(uncached) - 1:
                 time.sleep(0.3)
 
-    cache = load_json(CACHE_PATH, default={})
+        cache = load_json(CACHE_PATH, default={})
 
     for record in parsed_bundles.values():
         for app in record.get("apps", []):
@@ -183,7 +183,7 @@ def enrich_parsed_bundles_with_names(parsed_bundles):
             if i < len(uncached) - 1:
                 time.sleep(0.3)
 
-    cache = load_json(NAME_CACHE_PATH, default={})
+        cache = load_json(NAME_CACHE_PATH, default={})
 
     for record in parsed_bundles.values():
         for app in record.get("apps", []):
