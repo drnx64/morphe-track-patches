@@ -16,9 +16,10 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Set up Python
@@ -38,15 +39,42 @@ jobs:
         run: |
           python scripts/run_pipeline.py
 
-      - name: Commit and Push Changes
+      - name: Commit and Push State Changes to main
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
-          # Check if there are changes staged for commit
           if ! git diff --cached --quiet; then
             git commit -m "chore(data): auto-update Morphe patch tracking state [skip ci]"
             git push origin main
           else
-            echo "No changes detected. Skipping commit."
+            echo "No changes detected. Skipping commit to main."
           fi
+
+      - name: Checkout gh-pages for static assets
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-static
+
+      - name: Stage deployment files
+        run: |
+          mkdir -p publish/data
+          cp gh-pages-static/index.html publish/
+          cp gh-pages-static/changelog.html publish/
+          cp gh-pages-static/sw.js publish/
+          cp gh-pages-static/ARCHITECTURE.md publish/
+          cp -r gh-pages-static/assets/ publish/
+          cp data/core.json publish/data/ 2>/dev/null || echo "Warning: data/core.json not found"
+          cp data/stats.json publish/data/ 2>/dev/null || echo "Warning: data/stats.json not found"
+          cp data/changes.json publish/data/ 2>/dev/null || echo "Warning: data/changes.json not found"
+          cp data/bundles.json publish/data/ 2>/dev/null || echo "Warning: data/bundles.json not found"
+          cp data/changelog.json publish/data/ 2>/dev/null || echo "Warning: data/changelog.json not found"
+          cp feed.xml publish/ 2>/dev/null || echo "Warning: feed.xml not found"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./publish
+          keep_files: false
