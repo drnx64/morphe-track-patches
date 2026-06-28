@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Morphe Patch Tracker — Dashboard</title>
+    <meta
+      name="description"
+      content="Automated patch tracker and change detector for Morphe application patches. Monitor new apps and updates." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link rel="alternate" type="application/rss+xml" title="Morphe Patch Tracker Changelog" href="feed.xml" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="glow-container">
+      <div class="glow-orb main-orb"></div>
+      <div class="glow-orb sub-orb"></div>
+    </div>
+
+    <header class="app-header">
+      <div class="header-content">
+        <h1 id="main-title">Morphe Tracker</h1>
+        <p class="subtitle">Patch monitoring &amp; changelog dashboard</p>
+        <nav class="main-nav">
+          <a href="index.html" class="nav-link active" id="nav-dashboard"
+            >Dashboard</a
+          >
+          <a href="changelog.html" class="nav-link" id="nav-changelog"
+            >Changelog History</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="dashboard-container">
+      <!-- Today's Updates Section (Integrated Changelog at Top) -->
+      <section
+        class="today-updates-section"
+        aria-labelledby="updates-title-heading">
+        <div class="updates-card">
+          <div class="updates-header">
+            <h2 class="updates-title" id="updates-title-heading">Changelog</h2>
+            <span class="updates-date" id="updates-date-label"
+              >Updated: -</span
+            >
+          </div>
+          <div class="updates-body" id="today-updates-container">
+            <div class="skeleton-checking" id="checking-message">Checking for updates...</div>
+            <div id="skeleton-updates" style="display:none">
+              <div class="skeleton-update-row">
+                <span class="skeleton-block skeleton-badge"></span>
+                <span class="skeleton-block skeleton-text" style="height:16px;margin:0"></span>
+              </div>
+              <div class="skeleton-update-row" style="margin-left:1rem">
+                <span class="skeleton-block skeleton-badge"></span>
+                <span class="skeleton-block skeleton-text long" style="height:14px;margin:0"></span>
+              </div>
+              <div class="skeleton-update-row" style="margin-left:1rem">
+                <span class="skeleton-block skeleton-badge"></span>
+                <span class="skeleton-block skeleton-text" style="height:14px;margin:0"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scan Schedule Info Section -->
+      <section class="scan-info-section" aria-labelledby="scan-info-heading">
+        <h2 class="sr-only" id="scan-info-heading">Scan Schedule</h2>
+        <div class="scan-info-card">
+          <div class="scan-info-left">
+            <div class="scan-info-row scan-info-row-countdown">
+              <span class="scan-info-label">Next scan in</span>
+              <span class="scan-countdown" id="scan-countdown">--:--:--</span>
+            </div>
+            <div class="scan-info-row">
+              <span class="scan-info-label">Schedule</span>
+              <span class="scan-info-value">Every 3 hours at :01 UTC</span>
+            </div>
+            <div class="scan-info-row">
+              <span class="scan-info-label">Today's scans</span>
+              <span class="scan-info-value" id="scan-today-count">-</span>
+            </div>
+          </div>
+          <div class="scan-info-divider"></div>
+          <div class="scan-info-right">
+            <div class="scan-info-row">
+              <span class="scan-info-label">UTC now</span>
+              <span class="scan-info-value mono" id="scan-utc-time">--:--:--</span>
+            </div>
+            <div class="scan-info-row">
+              <span class="scan-info-label">Local time</span>
+              <span class="scan-info-value" id="scan-local-time">--:--:--</span>
+            </div>
+            <div class="scan-info-row">
+              <span class="scan-info-label">Last scan</span>
+              <span class="scan-info-value" id="scan-last-run-ago">-</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Summary Section -->
+      <section class="stats-section" aria-labelledby="stats-heading">
+        <h2 class="sr-only" id="stats-heading">Quick Statistics</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-label">Total Bundles</span>
+            <span class="stat-value" id="stat-total-bundles">-</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-label">Total Apps</span>
+            <span class="stat-value" id="stat-total-apps">-</span>
+          </div>
+          <div class="stat-card highlight">
+            <span class="stat-label">New Apps Today</span>
+            <span class="stat-value" id="stat-new-apps-today">-</span>
+          </div>
+          <div class="stat-card highlight">
+            <span class="stat-label">New Bundles Today</span>
+            <span class="stat-value" id="stat-new-bundles-today">-</span>
+          </div>
+        </div>
+        <div class="last-updated-row">
+          <span class="scan-pulse" id="scan-freshness-dot"></span>
+          <span>Last checked: <strong id="val-last-checked">-</strong></span>
+          <span class="last-updated-ago" id="val-last-checked-ago"></span>
+        </div>
+      </section>
+
+      <!-- Controls Section -->
+      <section class="controls-section" aria-labelledby="controls-heading">
+        <h2 class="sr-only" id="controls-heading">Search Morphe Patches</h2>
+        <div class="filters-row">
+          <div class="search-row">
+            <div class="search-bar">
+              <input
+                type="text"
+                id="search-input"
+                placeholder="Search by app name, package name, or bundle..."
+                aria-label="Search patches" />
+            </div>
+            <div class="view-toggle-group" id="view-toggle-group">
+              <button class="view-toggle-opt" data-view="grid" title="Grid view">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h2A1.5 1.5 0 0 1 6 2.5v2A1.5 1.5 0 0 1 4.5 6h-2A1.5 1.5 0 0 1 1 4.5v-2zm5 0A1.5 1.5 0 0 1 7.5 1h2A1.5 1.5 0 0 1 11 2.5v2A1.5 1.5 0 0 1 9.5 6h-2A1.5 1.5 0 0 1 6 4.5v-2zm5 0A1.5 1.5 0 0 1 12.5 1h2A1.5 1.5 0 0 1 16 2.5v2A1.5 1.5 0 0 1 14.5 6h-2A1.5 1.5 0 0 1 11 4.5v-2zM1 7.5A1.5 1.5 0 0 1 2.5 6h2A1.5 1.5 0 0 1 6 7.5v2A1.5 1.5 0 0 1 4.5 11h-2A1.5 1.5 0 0 1 1 9.5v-2zm5 0A1.5 1.5 0 0 1 7.5 6h2A1.5 1.5 0 0 1 11 7.5v2A1.5 1.5 0 0 1 9.5 11h-2A1.5 1.5 0 0 1 6 9.5v-2zm5 0A1.5 1.5 0 0 1 12.5 6h2A1.5 1.5 0 0 1 16 7.5v2A1.5 1.5 0 0 1 14.5 11h-2A1.5 1.5 0 0 1 11 9.5v-2zM1 12.5A1.5 1.5 0 0 1 2.5 11h2A1.5 1.5 0 0 1 6 12.5v2A1.5 1.5 0 0 1 4.5 16h-2A1.5 1.5 0 0 1 1 14.5v-2zm5 0A1.5 1.5 0 0 1 7.5 11h2A1.5 1.5 0 0 1 11 12.5v2A1.5 1.5 0 0 1 9.5 16h-2A1.5 1.5 0 0 1 6 14.5v-2zm5 0a1.5 1.5 0 0 1 1.5-1.5h2a1.5 1.5 0 0 1 1.5 1.5v2a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5v-2z"/></svg>
+                <span>Grid</span>
+              </button>
+              <button class="view-toggle-opt" data-view="list" title="Compact view">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
+                <span>Compact</span>
+              </button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Channel:</span>
+            <button
+              class="filter-btn active"
+              id="btn-filter-all"
+              data-channel="all"
+              >All</button
+            >
+            <button
+              class="filter-btn"
+              id="btn-filter-stable"
+              data-channel="stable"
+              >Stable</button
+            >
+            <button class="filter-btn" id="btn-filter-dev" data-channel="dev"
+              >Dev</button
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Bundles Grid Section -->
+      <section class="bundles-section" aria-labelledby="bundles-heading">
+        <h2 class="section-title" id="bundles-heading">Patch Bundles</h2>
+        <div class="bundles-grid" id="bundles-grid-container">
+          <div id="skeleton-grid" style="display:grid;grid-template-columns:1fr;gap:1rem">
+            <div class="skeleton-card">
+              <div class="skeleton-card-header">
+                <div style="flex:1">
+                  <div class="skeleton-block skeleton-text" style="height:18px;margin-bottom:6px"></div>
+                  <div class="skeleton-block skeleton-badge"></div>
+                </div>
+                <div class="skeleton-block" style="width:32px;height:32px;border-radius:50%"></div>
+              </div>
+              <div class="skeleton-block skeleton-text short" style="height:12px"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card-header">
+                <div style="flex:1">
+                  <div class="skeleton-block skeleton-text" style="height:18px;margin-bottom:6px"></div>
+                  <div class="skeleton-block skeleton-badge"></div>
+                </div>
+                <div class="skeleton-block" style="width:32px;height:32px;border-radius:50%"></div>
+              </div>
+              <div class="skeleton-block skeleton-text short" style="height:12px"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-card-header">
+                <div style="flex:1">
+                  <div class="skeleton-block skeleton-text" style="height:18px;margin-bottom:6px"></div>
+                  <div class="skeleton-block skeleton-badge"></div>
+                </div>
+                <div class="skeleton-block" style="width:32px;height:32px;border-radius:50%"></div>
+              </div>
+              <div class="skeleton-block skeleton-text short" style="height:12px"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- App Detail Modal -->
+    <div
+      class="modal-overlay"
+      id="app-detail-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-app-name">
+      <div class="modal-box">
+        <div class="modal-header">
+          <div class="modal-header-top">
+            <div class="modal-app-identity">
+              <h3 class="modal-app-name" id="modal-app-name">App Name</h3>
+              <div class="modal-meta-row">
+                <a
+                  class="modal-pkg-link"
+                  id="modal-pkg-link"
+                  href="#"
+                  target="_blank"
+                  >package.name</a
+                >
+                <span class="modal-bundle-info" id="modal-bundle-info"
+                  >in bundle</span
+                >
+              </div>
+              <div class="modal-channel-row" id="modal-channel-row"></div>
+            </div>
+            <div class="modal-header-actions">
+              <a
+                class="modal-play-btn"
+                id="modal-play-btn"
+                href="#"
+                target="_blank"
+                >Play Store</a
+              >
+              <button
+                class="modal-close"
+                id="modal-close-btn"
+                aria-label="Close modal"
+                >&times;</button
+              >
+            </div>
+          </div>
+          <div class="modal-versions-section">
+            <span class="versions-label">Versions:</span>
+            <div class="versions-row" id="modal-versions-row"></div>
+          </div>
+          <div class="modal-channel-toggle" id="modal-channel-toggle">
+            <button class="channel-toggle-btn active" data-channel="stable">Stable</button>
+            <button class="channel-toggle-btn" data-channel="dev">Dev</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-patches-header">
+            <span class="modal-patches-title">Patches</span>
+            <span class="modal-patches-count" id="modal-patches-count"
+              >0 patches</span
+            >
+          </div>
+          <div class="modal-patches-list" id="modal-patches-list">
+            <div class="modal-no-patches"
+              >No patch details available for this app.</div
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bundle History Modal -->
+    <div
+      class="modal-overlay"
+      id="bundle-history-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bundle-history-title">
+      <div class="modal-box modal-box--wide">
+        <div class="modal-header">
+          <div class="modal-header-top">
+            <div class="modal-app-identity">
+              <h3 class="modal-app-name" id="bundle-history-title">Bundle History</h3>
+              <div class="modal-meta-row">
+                <span class="modal-bundle-info" id="bundle-history-subtitle"></span>
+              </div>
+            </div>
+            <div class="modal-header-actions">
+              <button
+                class="modal-close"
+                id="bundle-history-close-btn"
+                aria-label="Close history modal"
+                >&times;</button
+              >
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="bundle-history-list" id="bundle-history-list">
+            <div class="loading-state">Loading history...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bundle Detail Modal -->
+    <div
+      class="modal-overlay"
+      id="bundle-detail-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="bundle-modal-name">
+      <div class="modal-box">
+        <div class="modal-header">
+          <div class="modal-header-top">
+            <div class="modal-app-identity">
+              <h3 class="modal-app-name" id="bundle-modal-name">Bundle Name</h3>
+              <div class="modal-meta-row">
+                <span class="modal-bundle-info" id="bundle-modal-channels"></span>
+              </div>
+              <div class="modal-channel-row" id="bundle-modal-badges"></div>
+            </div>
+            <div class="modal-header-actions">
+              <a
+                class="modal-play-btn"
+                id="bundle-modal-repo-link"
+                href="#"
+                target="_blank"
+                >Repository</a
+              >
+              <button
+                class="modal-close"
+                id="bundle-modal-close-btn"
+                aria-label="Close bundle modal"
+                >&times;</button
+              >
+            </div>
+          </div>
+          <div class="bundle-modal-meta">
+            <span class="versions-label">Version:</span>
+            <span class="bundle-version-tag" id="bundle-modal-version"></span>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-patches-header">
+            <span class="modal-patches-title">Apps</span>
+            <span class="modal-patches-count" id="bundle-modal-apps-count"
+              >0 apps</span
+            >
+          </div>
+          <div class="bundle-modal-actions">
+            <a class="add-morphe-btn" id="bundle-modal-add-morphe" href="#" target="_blank">Add to Morphe</a>
+            <button class="history-btn" id="bundle-modal-history-btn" title="View changelog history"><svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3 1.5a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/></svg></button>
+          </div>
+          <div class="bundle-modal-apps-list" id="bundle-modal-apps-list">
+            <div class="modal-no-patches">No apps available in this bundle.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="back-to-top" id="back-to-top-btn" aria-label="Back to top"
+      >↑</button
+    >
+    <div class="toast-notification" id="toast-notification">
+      <span class="toast-icon">&#9670;</span>
+      <span class="toast-message" id="toast-message">New data available</span>
+      <button class="toast-close" id="toast-close-btn" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <footer class="app-footer">
+      <div class="footer-links">
+        <a
+          href="https://github.com/drnx64/morphe-track-patches"
+          target="_blank"
+          class="footer-link">
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+          </svg>
+        </a>
+        <span class="footer-sep">&middot;</span>
+        <span class="footer-text"
+          >By
+          <a
+            href="https://github.com/drnx64"
+            target="_blank"
+            class="footer-link"
+            >drnx64</a
+          ></span
+        >
+        <span class="footer-sep">&middot;</span>
+        <a href="https://morphe.software" target="_blank" class="footer-link"
+          >Powered by Morphe</a
+        >
+        <span class="footer-sep">&middot;</span>
+        <a href="feed.xml" target="_blank" class="footer-link">RSS Feed</a>
+      </div>
+      <p class="footer-disclaimer"
+        >Not affiliated with Morphe or ReVanced. Data is automatically collected
+        from public sources.</p
+      >
+    </footer>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js").catch(function () {});
+      }
+    </script>
+    <script src="assets/app.js"></script>
+  </body>
+</html>
