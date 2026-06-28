@@ -1,7 +1,5 @@
 import os
 import json
-import shutil
-from datetime import datetime
 
 # Define base paths
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -17,12 +15,6 @@ CURRENT_SNAPSHOT_PATH = os.path.join(STATE_DIR, "current_snapshot.json")
 PREVIOUS_SNAPSHOT_PATH = os.path.join(STATE_DIR, "previous_snapshot.json")
 DAILY_BUFFER_PATH = os.path.join(STATE_DIR, "daily_buffer.json")
 LAST_RUN_PATH = os.path.join(STATE_DIR, "last_run.json")
-
-ROLLBACK_PATHS = [
-    os.path.join(STATE_DIR, "rollback_1.json"),
-    os.path.join(STATE_DIR, "rollback_2.json"),
-    os.path.join(STATE_DIR, "rollback_3.json")
-]
 
 CHANGELOG_JSON_PATH = os.path.join(OUTPUT_DIR, "changelog.json")
 CHANGELOG_MD_PATH = os.path.join(OUTPUT_DIR, "changelog.md")
@@ -71,37 +63,17 @@ def save_json(filepath, data):
                 pass
         return False
 
-def rotate_rollbacks():
-    """Shift old snapshots forward: current -> r1 -> r2 -> r3."""
-    ensure_dirs()
-    
-    # Check if current snapshot exists and is valid
-    if os.path.exists(CURRENT_SNAPSHOT_PATH):
-        # Shift r2 -> r3
-        if os.path.exists(ROLLBACK_PATHS[1]):
-            shutil.copy2(ROLLBACK_PATHS[1], ROLLBACK_PATHS[2])
-        # Shift r1 -> r2
-        if os.path.exists(ROLLBACK_PATHS[0]):
-            shutil.copy2(ROLLBACK_PATHS[0], ROLLBACK_PATHS[1])
-        # Shift current -> r1
-        shutil.copy2(CURRENT_SNAPSHOT_PATH, ROLLBACK_PATHS[0])
-        print("Rollback snapshots rotated successfully.")
-
 def save_new_snapshot(snapshot_data):
     """
-    Saves a new snapshot. Shuts current snapshot to previous, rotates rollbacks,
-    and updates current snapshot.
+    Saves a new snapshot. Moves current snapshot to previous, then writes new data as current.
     """
     ensure_dirs()
     
-    # 1. If current snapshot exists, copy it to previous_snapshot.json
+    # Move current snapshot to previous_snapshot.json (overwrites old previous)
     if os.path.exists(CURRENT_SNAPSHOT_PATH):
-        shutil.copy2(CURRENT_SNAPSHOT_PATH, PREVIOUS_SNAPSHOT_PATH)
-        
-    # 2. Rotate rollbacks
-    rotate_rollbacks()
+        os.replace(CURRENT_SNAPSHOT_PATH, PREVIOUS_SNAPSHOT_PATH)
     
-    # 3. Save new data as current_snapshot.json
+    # Save new data as current_snapshot.json
     return save_json(CURRENT_SNAPSHOT_PATH, snapshot_data)
 
 def load_current_snapshot():

@@ -457,7 +457,7 @@ def update_daily_buffer_run():
     new_snapshot = load_json(new_snapshot_path, default={})
     if new_snapshot:
         save_new_snapshot(new_snapshot)
-        print("[*] Current snapshot updated and rollbacks rotated.")
+        print("[*] Current snapshot updated.")
 
         # Always update data files with the latest snapshot and today's accumulated changes
         update_data_files(today_str, buffer_data, new_snapshot)
