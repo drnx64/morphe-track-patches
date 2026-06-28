@@ -198,51 +198,9 @@ def enrich_parsed_bundles_with_names(parsed_bundles):
 
 
 def fetch_app_name(package_name, fallback_name=""):
-    """Fetch the app display name from Google Play Store.
-
-    Args:
-        package_name: The Android package name (e.g. 'com.instagram.android')
-        fallback_name: Name to return if Play Store fetch fails
-
-    Returns:
-        The app name from Play Store, or fallback_name if unavailable.
-    """
-    if not package_name or not isinstance(package_name, str):
-        return fallback_name
-
-    pkg = package_name.lower().strip()
-    url = PLAY_STORE_URL.format(pkg)
-
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=15)
-        resp.raise_for_status()
-    except requests.RequestException:
-        return fallback_name
-
-    try:
-        soup = BeautifulSoup(resp.text, "lxml")
-        og_title = soup.find("meta", property="og:title")
-        if og_title and og_title.get("content"):
-            name = og_title["content"].strip()
-            if name:
-                return name
-    except Exception:
-        pass
-
-    # Fallback: try the HTML title tag
-    try:
-        title_tag = soup.find("title")
-        if title_tag and title_tag.string:
-            title = title_tag.string.strip()
-            # Play Store titles often end with " - Apps on Google Play"
-            for suffix in [" - Apps on Google Play", " - Google Play"]:
-                if title.endswith(suffix):
-                    return title[: -len(suffix)].strip()
-            return title
-    except Exception:
-        pass
-
-    return fallback_name
+    """Fetch the app display name from Google Play Store (uses cache)."""
+    name = fetch_and_cache_app_name(package_name)
+    return name if name else fallback_name
 
 
 if __name__ == "__main__":

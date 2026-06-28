@@ -122,8 +122,8 @@ def diff_snapshots():
 
     # Process each bundle:channel in the new snapshot
     for bundle_key, new_rec in new_snapshot.items():
-        bundle_name = new_rec["bundle"]
-        channel = new_rec["channel"]
+        bundle_name = new_rec.get("bundle") or bundle_key.split(":")[0]
+        channel = new_rec.get("channel") or (bundle_key.split(":")[1] if ":" in bundle_key else "stable")
         new_apps_list = new_rec.get("apps", [])
 
         if bundle_key not in old_snapshot:

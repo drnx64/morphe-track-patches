@@ -51,20 +51,14 @@ jobs:
             echo "No changes detected. Skipping commit to main."
           fi
 
-      - name: Checkout gh-pages for static assets
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: gh-pages-static
-
       - name: Stage deployment files
         run: |
           mkdir -p publish/data
-          cp gh-pages-static/index.html publish/
-          cp gh-pages-static/changelog.html publish/
-          cp gh-pages-static/sw.js publish/
-          cp gh-pages-static/ARCHITECTURE.md publish/
-          cp -r gh-pages-static/assets/ publish/
+          cp index.html publish/
+          cp changelog.html publish/
+          cp sw.js publish/
+          cp ARCHITECTURE.md publish/
+          cp -r assets/ publish/
           cp data/core.json publish/data/ 2>/dev/null || echo "Warning: data/core.json not found"
           cp data/stats.json publish/data/ 2>/dev/null || echo "Warning: data/stats.json not found"
           cp data/changes.json publish/data/ 2>/dev/null || echo "Warning: data/changes.json not found"
