@@ -8,6 +8,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from state_manager import load_daily_buffer, ensure_dirs, load_last_run
 from fetch_patch_tree import fetch_bundle_tree
 from download_bundles import download_all_bundles
+from fetch_external_repos import fetch_external_repos
 from parse_bundles import parse_all_bundles
 from fingerprint_engine import generate_bundle_fingerprints
 from diff_engine import diff_snapshots
@@ -28,6 +29,10 @@ def run():
     # Step 3: Download bundles
     print("\n--- STEP 3: Downloading bundles ---")
     download_all_bundles()
+    
+    # Step 3b: Fetch external repos from repos.txt that aren't yet in Jman
+    print("\n--- STEP 3b: Fetching external repos from morphe-archive ---")
+    fetch_external_repos()
     
     # Step 4: Parse bundles
     print("\n--- STEP 4: Parsing bundles and validating MPP compatibility ---")

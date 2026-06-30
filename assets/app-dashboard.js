@@ -240,7 +240,8 @@ function updateScanClocks(data) {
         localEl.textContent = h + ":" + padNum(now.getMinutes()) + ":" + padNum(now.getSeconds()) + " " + ampm;
     }
 
-    var nextScan = getNextScanTime();
+    var lc = data ? (cachedLastCheckedOverride || data.lastChecked || data.last_run) : "";
+    var nextScan = lc ? new Date(new Date(lc).getTime() + 3 * 3600000) : getNextScanTime();
     var diffMs = nextScan - now;
     var totalSec = Math.max(0, Math.floor(diffMs / 1000));
     var hrs = Math.floor(totalSec / 3600);
@@ -269,6 +270,8 @@ function updateScanClocks(data) {
         var lastChecked = cachedLastCheckedOverride || data.lastChecked || data.last_run;
         agoEl.textContent = lastChecked ? getTimeAgo(lastChecked) : "-";
     }
+
+
 
     var dot = document.getElementById("scan-freshness-dot");
     if (dot) {
