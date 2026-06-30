@@ -154,6 +154,53 @@ if (storedAppVersion !== APP_VERSION) {
 var allBundlesData = {};
 var iconCache = {};
 var nameCache = {};
+var iconImageCache = {};
+
+function loadIconImage(iconUrl) {
+    if (!iconUrl || iconImageCache[iconUrl]) return Promise.resolve(iconImageCache[iconUrl] || null);
+    var cacheKey = 'img_' + Math.abs(iconUrl.split('').reduce(function(h, c) { return ((h << 5) - h) + c.charCodeAt(0) | 0; }, 0)).toString(36);
+    return idbGet(cacheKey).then(function(cached) {
+        if (cached) {
+            iconImageCache[iconUrl] = cached;
+            return cached;
+        }
+        return new Promise(function(resolve) {
+            var xhr = new XMLHttpRequest();
+            xhr.responseType = 'blob';
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var reader = new FileReader();
+                    reader.onloadend = function() {
+                        var dataUrl = reader.result;
+                        iconImageCache[iconUrl] = dataUrl;
+                        idbSet(cacheKey, dataUrl);
+                        resolve(dataUrl);
+                    };
+                    reader.readAsDataURL(xhr.response);
+                } else {
+                    resolve(null);
+                }
+            };
+            xhr.onerror = function() { resolve(null); };
+            xhr.open('GET', iconUrl, true);
+            xhr.send();
+        });
+    });
+}
+
+function preloadIcons(iconMap) {
+    var urls = {};
+    for (var pkg in iconMap) {
+        var url = iconMap[pkg];
+        if (url && typeof url === 'string' && url.indexOf('http') === 0) urls[url] = true;
+    }
+    var uniqueUrls = Object.keys(urls);
+    if (uniqueUrls.length === 0) return Promise.resolve();
+    log("preloadIcons", "Preloading " + uniqueUrls.length + " unique icon images");
+    return uniqueUrls.reduce(function(chain, url) {
+        return chain.then(function() { return loadIconImage(url); });
+    }, Promise.resolve());
+}
 var currentFilters = {
     search: "",
     channel: "all"
@@ -192,10 +239,14 @@ function getAppIconUrl(app) {
     return "";
 }
 
+var FALLBACK_ICON = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect width="20" height="20" fill="#6366f1" rx="4"/><text x="10" y="14" text-anchor="middle" fill="#fff" font-size="12" font-family="sans-serif" font-weight="bold">?</text></svg>');
+
 function getAppIconHtml(iconUrl, sizeClass) {
     if (!iconUrl) return "";
     sizeClass = sizeClass || "app-icon";
-    return '<img class="' + sizeClass + '" src="' + iconUrl + '" alt="" loading="lazy" onerror="this.remove()">';
+    var cachedDataUrl = iconImageCache[iconUrl];
+    var src = cachedDataUrl || iconUrl;
+    return '<img class="' + sizeClass + '" src="' + src + '" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'' + FALLBACK_ICON + '\'">';
 }
 
 function escHtml(str) {
