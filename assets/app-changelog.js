@@ -178,8 +178,12 @@ function renderChangelog(changelog, bundlesData) {
                     const isPre = isAppPreRelease(bName, app.package, bundlesData);
                     const preReleaseBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : '';
                     const promotedBadge = app.promoted_from ? '<span class="badge badge-promoted">MOVED TO STABLE</span>' : '';
-                    const appIconHtml4 = getAppIconHtml(getAppIconUrl(app));
-                    const playLink = `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${escHtml(resolveAppName(app))}</a>`;
+                    const appIconUrl = getAppIconUrl(app);
+                    const appIconHtml4 = getAppIconHtml(appIconUrl);
+                    const hasPlayStore = !!appIconUrl;
+                    const playLink = hasPlayStore
+                        ? `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${escHtml(resolveAppName(app))}</a>`
+                        : escHtml(resolveAppName(app));
                     const scanBadges = (app.scan_numbers || []).map(sn => `<span class="badge badge-scan" title="${sn}${ordinalSuffix(sn)} scan batch">${sn}</span>`).join(' ');
 
                     appsListHtml += `

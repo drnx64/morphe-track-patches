@@ -16,12 +16,24 @@ function openAppModal(app, bundle) {
     const modalIconHtml = getAppIconHtml(getAppIconUrl(app), "app-icon app-icon-modal");
     document.getElementById("modal-app-name").innerHTML = modalIconHtml + escHtml(resolveAppName(app));
 
+    const hasPlayStore = !!getAppIconUrl(app);
     const pkgLink = document.getElementById("modal-pkg-link");
     pkgLink.textContent = app.package;
-    pkgLink.href = "https://play.google.com/store/apps/details?id=" + encodeURIComponent(app.package);
+    if (hasPlayStore) {
+        pkgLink.href = "https://play.google.com/store/apps/details?id=" + encodeURIComponent(app.package);
+        pkgLink.style.display = "";
+    } else {
+        pkgLink.removeAttribute("href");
+        pkgLink.style.cursor = "default";
+    }
 
     const playBtn = document.getElementById("modal-play-btn");
-    playBtn.href = "https://play.google.com/store/apps/details?id=" + encodeURIComponent(app.package);
+    if (hasPlayStore) {
+        playBtn.href = "https://play.google.com/store/apps/details?id=" + encodeURIComponent(app.package);
+        playBtn.style.display = "";
+    } else {
+        playBtn.style.display = "none";
+    }
 
     document.getElementById("modal-bundle-info").textContent = "in " + bundle.bundle;
 
