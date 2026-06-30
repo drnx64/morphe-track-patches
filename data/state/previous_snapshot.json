@@ -1,4 +1,52 @@
 {
+  "abdul-hubbali:stable": {
+    "bundle": "abdul-hubbali",
+    "channel": "stable",
+    "repo_url": "https://github.com/abdul-hubbali/Morphe-Fork",
+    "created_at": "2026-03-14T05:38:19Z",
+    "version": "1.2.0",
+    "description": "# [1.2.0](https://github.com/inferno12121/Morphe-Fork/compare/v1.1.0...v1.2.0) (2026-03-14)\n\n\n### Features\n\n* Google Photos patches for Morphe ([cb1a7c7](https://github.com/inferno12121/Morphe-Fork/commit/cb1a7c78b3f497907852e58a6782b6326b94e52a))",
+    "apps": [
+      {
+        "app_name": "Google Photos",
+        "package": "com.google.android.apps.photos",
+        "patches": [
+          {
+            "name": "Enable DCIM folders backup control",
+            "description": "Disables always on backup for the Camera and other DCIM folders, allowing you to control backup for each folder individually. This will make the app default to having no folders backed up.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "GmsCore support",
+            "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Spoof features",
+            "description": "Spoofs the device to enable Google Pixel exclusive features, including unlimited storage.",
+            "use": true,
+            "options": [
+              {
+                "key": "featuresToEnable",
+                "description": "Google Pixel exclusive features to enable. Features up to Pixel XL enable the unlimited storage feature."
+              },
+              {
+                "key": "featuresToDisable",
+                "description": "Google Pixel exclusive features to disable.Features after Pixel XL may have to be disabled for unlimited storage depending on the device."
+              }
+            ],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/kErBTF4VcGwhtKbCr80Bs2R1lNZiYkHbKcf1i3ZF6dg_5LqDAlCI4wU-nzwvo7PAbxeBXM_tv1hc11gr4aIIW-Q"
+      }
+    ],
+    "fingerprint": "7749d2f78e58823fd0fb9df7a070f21d810c995de3b7846138f881293db82cc8"
+  },
   "abhis1n:dev": {
     "bundle": "abhis1n",
     "channel": "dev",
@@ -11686,6 +11734,188 @@
     ],
     "fingerprint": "396ed73af797c02d74f69a1c907b8b98d5b1b627b2f64b55fa9250428c5b6f17"
   },
+  "dumb-software:dev": {
+    "bundle": "dumb-software",
+    "channel": "dev",
+    "repo_url": "https://github.com/dumb-software/T2C-App-Patch-Morphe",
+    "created_at": "2026-05-23T17:54:00Z",
+    "version": "1.5.0-dev.1",
+    "description": "# [1.5.0](https://github.com/dumb-software/T2C-App-Patch-Morphe/compare/v1.4.0...v1.5.0) (2026-06-23)\n\n\n### Bug Fixes\n\n* anchor regex in EnvUtils to prevent unintended replacements ([032ed7f](https://github.com/dumb-software/T2C-App-Patch-Morphe/commit/032ed7ffa7239f2ec3130de60c5f81b573e722e7))\n\n\n### Features\n\n* merge force dev and local environment patches into a single selectable option ([cc70408](https://github.com/dumb-software/T2C-App-Patch-Morphe/commit/cc70408b54b941beb8a4022dec265ca90dad384c))",
+    "apps": [
+      {
+        "app_name": "T2C",
+        "package": "fr.t2c.t2c",
+        "patches": [
+          {
+            "name": "Change API endpoint",
+            "description": "Points the app to a custom backend server by modifying environment variables.",
+            "use": true,
+            "options": [
+              {
+                "key": "api_url",
+                "description": "Enter the base URL for the API (e.g., https://api.t2c.fr)"
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Custom Umami endpoint",
+            "description": "Points the app to a custom Umami analytics server.",
+            "use": true,
+            "options": [
+              {
+                "key": "umami_endpoint",
+                "description": "Enter the base URL for Umami (e.g., https://analytics.t2c.fr/api/send)"
+              },
+              {
+                "key": "umami_website",
+                "description": "Enter your Umami Website ID"
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Force environment",
+            "description": "Replaces the production environment variables with the developer or local ones.",
+            "use": true,
+            "options": [
+              {
+                "key": "environment",
+                "description": "Select the environment to force."
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Firebase tracking",
+            "description": "Removes Firebase App ID and Crashlytics API keys to disable Google tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Google Maps API key",
+            "description": "Removes the Google Maps API key from the manifest to stop Google tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Umami tracking",
+            "description": "Disables Umami tracking safely by modifying existing environment values.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/-3EKIVKVpdjiUpK8mk82aZ12p3PrQBB5sOkjVTJmZS5nlbqGVXC6bYQtMk0IqOjFwtSoWPZNJ-dWb89aRhwUGw"
+      }
+    ],
+    "fingerprint": "371efd0b7ddc1e63f93c87e47ca6154ea76782223deeb10d0cf96cc10395fd68"
+  },
+  "dumb-software:stable": {
+    "bundle": "dumb-software",
+    "channel": "stable",
+    "repo_url": "https://github.com/dumb-software/T2C-App-Patch-Morphe",
+    "created_at": "2026-06-23T17:42:46Z",
+    "version": "1.5.0",
+    "description": "# [1.5.0](https://github.com/dumb-software/T2C-App-Patch-Morphe/compare/v1.4.0...v1.5.0) (2026-06-23)\n\n\n### Bug Fixes\n\n* anchor regex in EnvUtils to prevent unintended replacements ([032ed7f](https://github.com/dumb-software/T2C-App-Patch-Morphe/commit/032ed7ffa7239f2ec3130de60c5f81b573e722e7))\n\n\n### Features\n\n* merge force dev and local environment patches into a single selectable option ([cc70408](https://github.com/dumb-software/T2C-App-Patch-Morphe/commit/cc70408b54b941beb8a4022dec265ca90dad384c))",
+    "apps": [
+      {
+        "app_name": "T2C",
+        "package": "fr.t2c.t2c",
+        "patches": [
+          {
+            "name": "Change API endpoint",
+            "description": "Points the app to a custom backend server by modifying environment variables.",
+            "use": true,
+            "options": [
+              {
+                "key": "api_url",
+                "description": "Enter the base URL for the API (e.g., https://api.t2c.fr)"
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Custom Umami endpoint",
+            "description": "Points the app to a custom Umami analytics server.",
+            "use": true,
+            "options": [
+              {
+                "key": "umami_endpoint",
+                "description": "Enter the base URL for Umami (e.g., https://analytics.t2c.fr/api/send)"
+              },
+              {
+                "key": "umami_website",
+                "description": "Enter your Umami Website ID"
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Force environment",
+            "description": "Replaces the production environment variables with the developer or local ones.",
+            "use": true,
+            "options": [
+              {
+                "key": "environment",
+                "description": "Select the environment to force."
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Firebase tracking",
+            "description": "Removes Firebase App ID and Crashlytics API keys to disable Google tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Google Maps API key",
+            "description": "Removes the Google Maps API key from the manifest to stop Google tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Umami tracking",
+            "description": "Disables Umami tracking safely by modifying existing environment values.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/-3EKIVKVpdjiUpK8mk82aZ12p3PrQBB5sOkjVTJmZS5nlbqGVXC6bYQtMk0IqOjFwtSoWPZNJ-dWb89aRhwUGw"
+      }
+    ],
+    "fingerprint": "4ad5c2f50c4b719f658dc696a039db6fa9109c5987e55d795fb7be6e917ebcc8"
+  },
   "edge-morphe:stable": {
     "bundle": "edge-morphe",
     "channel": "stable",
@@ -11738,9 +11968,9 @@
     "bundle": "ee-morphe",
     "channel": "dev",
     "repo_url": "https://gitlab.com/early.egg3707/ee-morphe-patches",
-    "created_at": "2026-06-20T23:41:44",
-    "version": "v1.3.0-dev.2",
-    "description": "# [1.3.0-dev.2](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-06-20)\n\n\n### Bug Fixes\n\n* finanzguru package name ([bee2b92](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/bee2b92f1f97baf92dc5a16f9ebc497966c4866a))\n\n\n\n",
+    "created_at": "2026-06-29T17:01:01",
+    "version": "v1.3.0-dev.11",
+    "description": "# [1.3.0-dev.11](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.3.0-dev.10...v1.3.0-dev.11) (2026-06-29)\n\n\n### Bug Fixes\n\n* debug Seedlang ([aa6da13](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/aa6da137e39e8c2f8b28d7d5076f68ca7a9946b6))\n\n\n\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -11768,47 +11998,48 @@
         "icon_url": "https://play-lh.googleusercontent.com/EeNJqDNsz4J7PzatWn3DoTUJJJvOxeWOxqMqb6uyA6mpbEUsWkzE-BtJ0vuTYIU1_qsqdFQoumo_T6R1IuwDpQ"
       },
       {
-        "app_name": "Wanderlog",
-        "package": "com.wanderlog.android",
+        "app_name": "Jack's Flight Club",
+        "package": "com.jacks_flights",
         "patches": [
           {
-            "name": "Enable Offline Mode",
-            "description": "Allows Wanderlog to run without login by injecting a local guest user and bypassing auth gates.",
-            "use": false,
+            "name": "Enable Pro",
+            "description": "Unlock all Takeoff / First Class content without a paid membership.",
+            "use": true,
             "options": [],
             "compatible_versions": [
-              "1.0.6",
-              ">=1.0.6"
+              "3.103.0",
+              ">=3.103.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/03H5G85hfzxqR2Hxp2hfkwx1PXlSV8Un2EACvqmDQr6ggK6qpTMnYs8TnPFtCpz98yC-eKeNeso64GEgb5Sqs7U"
+      },
+      {
+        "app_name": "Seedlang",
+        "package": "com.seedlang.mobile.android.all",
+        "patches": [
+          {
+            "name": "Enable Pro",
+            "description": "Forces the RevenueCat SDK to report that all entitlements are active, bypassing premium restrictions.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.9.28",
+              ">=1.9.28"
             ]
           },
           {
-            "name": "Enable Pro",
-            "description": "Forces pro entitlement checks to always pass.",
+            "name": "Enable Pro JS",
+            "description": "Patches the JS bundle to bypass Seedlang's membership gates for pro.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.0.6",
-              ">=1.0.6"
+              "1.9.28",
+              ">=1.9.28"
             ]
           }
         ],
-        "icon_url": "https://play-lh.googleusercontent.com/9OTbI7bVQ6Bb6p0n1p3HmLfi-iuTvznPtX7NEd-TXWPVUax7KHSOVs9CEZUOQpwY94oGySjTq-iBv01zKoBRHg"
-      },
-      {
-        "app_name": "Financeguru",
-        "package": "de.dwins.financeguru",
-        "patches": [
-          {
-            "name": "Enable Pro",
-            "description": "Returns a synthetic active Financeguru Plus purchase from the React Native billing bridge.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.143.13"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/0iiUM1wypsSRtfL4-RSoJkP2RcizAZ7Wdg3QiszNhiCqzVtrQaL2XlYOkAfIm8Wz4o_2qgTGY3rccYZPcUnV4w"
+        "icon_url": "https://play-lh.googleusercontent.com/YzxuJ8ObAGolR9IjOgtjya6wl88J-gw-IWKIlFMzaotSYtXtG16Uzi_ysaSkvX77lSpiI4eO1Rcb9-JTOtyOUg"
       },
       {
         "app_name": "HypnoBox",
@@ -11828,15 +12059,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/2mC3PYKQAaLdu_0u8u__eL5kxjBdOXf476B3CtMTg0mhBwrOlD8ODP2DmiyCMXXfhF4Yx7JjjRZ6cauxkJmh5A"
       }
     ],
-    "fingerprint": "ecaf04d20b0fbd99391a236faa9c53305aa8aa63d754710fdd1fd1961d7bb118"
+    "fingerprint": "0908920e05f8a4f946c497708fff82c5bfaa755fc888864db48704a551ccff5a"
   },
   "ee-morphe:stable": {
     "bundle": "ee-morphe",
     "channel": "stable",
     "repo_url": "https://gitlab.com/early.egg3707/ee-morphe-patches",
-    "created_at": "2026-06-03T15:27:55",
-    "version": "v1.2.1",
-    "description": "## [1.2.1](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.2.0...v1.2.1) (2026-06-03)\n\n\n### Bug Fixes\n\n* byair crashing with onlinepropatch ([adb8fa5](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/adb8fa53e57a9fc5e89f25e5ac378142c6b11b42))\n\n\n\n",
+    "created_at": "2026-06-28T17:36:44",
+    "version": "v1.2.2",
+    "description": "## [1.2.2](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.2.1...v1.2.2) (2026-06-28)\n\n\n### Bug Fixes\n\n* cleanup old wanderlog things ([fc92a25](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/fc92a25f85bb448d4f01c319bc414d8d1b8b376c))\n\n\n\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -11864,33 +12095,6 @@
         "icon_url": "https://play-lh.googleusercontent.com/EeNJqDNsz4J7PzatWn3DoTUJJJvOxeWOxqMqb6uyA6mpbEUsWkzE-BtJ0vuTYIU1_qsqdFQoumo_T6R1IuwDpQ"
       },
       {
-        "app_name": "Wanderlog",
-        "package": "com.wanderlog.android",
-        "patches": [
-          {
-            "name": "Enable Offline Mode",
-            "description": "Allows Wanderlog to run without login by injecting a local guest user and bypassing auth gates.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "1.0.6",
-              ">=1.0.6"
-            ]
-          },
-          {
-            "name": "Enable Pro",
-            "description": "Forces pro entitlement checks to always pass.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.0.6",
-              ">=1.0.6"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/9OTbI7bVQ6Bb6p0n1p3HmLfi-iuTvznPtX7NEd-TXWPVUax7KHSOVs9CEZUOQpwY94oGySjTq-iBv01zKoBRHg"
-      },
-      {
         "app_name": "HypnoBox",
         "package": "epixler.de.hypnobox_android",
         "patches": [
@@ -11908,7 +12112,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/2mC3PYKQAaLdu_0u8u__eL5kxjBdOXf476B3CtMTg0mhBwrOlD8ODP2DmiyCMXXfhF4Yx7JjjRZ6cauxkJmh5A"
       }
     ],
-    "fingerprint": "ba74cd6c3fb3d38a08fd07a2b8372c268f50cf0668745ab3241d2e57a97c9412"
+    "fingerprint": "fcd5af1b3301d330b926904e9decdc7343632ef4f88f2d69e84e7547d0f5509a"
   },
   "eksi:stable": {
     "bundle": "eksi",
@@ -11967,13 +12171,67 @@
     ],
     "fingerprint": "fa20a3d92d7dd19a92ce71b7cb53ee284623abd03f04100a688ae0b36dc0d56e"
   },
+  "hellveticastandard:dev": {
+    "bundle": "hellveticastandard",
+    "channel": "dev",
+    "repo_url": "https://github.com/HellveticaStandard/HellveticaPatches",
+    "created_at": "2026-06-25T02:52:03Z",
+    "version": "1.0.0-dev.1",
+    "description": "## [1.0.4](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.0.3...v1.0.4) (2026-06-26)\n\n### 🐛 Bug Fixes\n\n* migrate package from app.template to app.hellvetica to avoid namespace collisions ([8229715](https://github.com/HellveticaStandard/HellveticaPatches/commit/8229715eaf7f5bf82826ca695651f0bc8e2ba745))",
+    "apps": [
+      {
+        "app_name": "Sankaku App",
+        "package": "com.sankakucomplex.channel.black",
+        "patches": [
+          {
+            "name": "Disable Infinite Upgrade Popup",
+            "description": "Disables the \"Want unlimited access? Get Sankaku Infinite!\" upsell popup that periodically appears while browsing the app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.23"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "8b6b708bae5b85a24e1b6f6091bf46987eaa0ed9f9bbae3667bcf3ff22b6a219"
+  },
+  "hellveticastandard:stable": {
+    "bundle": "hellveticastandard",
+    "channel": "stable",
+    "repo_url": "https://github.com/HellveticaStandard/HellveticaPatches",
+    "created_at": "2026-06-26T14:06:21Z",
+    "version": "1.0.4",
+    "description": "## [1.0.4](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.0.3...v1.0.4) (2026-06-26)\n\n### 🐛 Bug Fixes\n\n* migrate package from app.template to app.hellvetica to avoid namespace collisions ([8229715](https://github.com/HellveticaStandard/HellveticaPatches/commit/8229715eaf7f5bf82826ca695651f0bc8e2ba745))",
+    "apps": [
+      {
+        "app_name": "Sankaku App",
+        "package": "com.sankakucomplex.channel.black",
+        "patches": [
+          {
+            "name": "Disable Infinite Upgrade Popup",
+            "description": "Disables the \"Want unlimited access? Get Sankaku Infinite!\" upsell popup that periodically appears while browsing the app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.23"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "d06a280424d20bcf9946e6ae28d3bae06f5d89eeba55fd4ad911839527530a05"
+  },
   "hk-morphe:dev": {
     "bundle": "hk-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/humzakh/HK-Morphe-Patches",
-    "created_at": "2026-06-28T01:28:35",
-    "version": "v1.4.0-dev.1",
-    "description": "## [1.4.0-dev.1](https://github.com/humzakh/HK-Morphe-Patches/compare/v1.3.5...v1.4.0-dev.1) (2026-06-28)\n\n### ✨ New Features\n\n* Add Restore Comment patch with more accessible button ([f8e6e07](https://github.com/humzakh/HK-Morphe-Patches/commit/f8e6e07c1b271a5b53d3be75110cdabfc1b0233a))\n",
+    "created_at": "2026-06-29T03:29:42",
+    "version": "v1.4.3-dev.1",
+    "description": "## [1.4.3-dev.1](https://github.com/humzakh/HK-Morphe-Patches/compare/v1.4.2...v1.4.3-dev.1) (2026-06-29)\n\n### 🐛 Bug Fixes\n\n* Add message when Restore Comment fails ([f761a9a](https://github.com/humzakh/HK-Morphe-Patches/commit/f761a9a7b78ab66727f8cb078a195a49c29bcaf6))\n",
     "apps": [
       {
         "app_name": "Sync for Reddit",
@@ -11990,7 +12248,7 @@
           },
           {
             "name": "Fix \"Restore Comment\"",
-            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also adds a more accessible button for this feature.",
+            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also includes UI changes to make this feature more accessible.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -12018,7 +12276,7 @@
           {
             "name": "Predictive back gesture (Reddit Sync)",
             "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
-            "use": true,
+            "use": false,
             "options": [],
             "compatible_versions": [
               "v23.06.30-13:39"
@@ -12073,7 +12331,7 @@
           },
           {
             "name": "Fix \"Restore Comment\"",
-            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also adds a more accessible button for this feature.",
+            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also includes UI changes to make this feature more accessible.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -12101,7 +12359,7 @@
           {
             "name": "Predictive back gesture (Reddit Sync)",
             "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
-            "use": true,
+            "use": false,
             "options": [],
             "compatible_versions": [
               "v23.06.30-13:39"
@@ -12156,7 +12414,7 @@
           },
           {
             "name": "Fix \"Restore Comment\"",
-            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also adds a more accessible button for this feature.",
+            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also includes UI changes to make this feature more accessible.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -12184,7 +12442,7 @@
           {
             "name": "Predictive back gesture (Reddit Sync)",
             "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
-            "use": true,
+            "use": false,
             "options": [],
             "compatible_versions": [
               "v23.06.30-13:39"
@@ -12225,15 +12483,15 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "0e784e0388b6b858503c0f275ae1257ab925c6765f1771d28f1d0cda8da31929"
+    "fingerprint": "e61c0f6f556ac46329bb59eabf667ad11036dc1c4fd2dec7a0d05811ee9577c5"
   },
   "hk-morphe:stable": {
     "bundle": "hk-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/humzakh/HK-Morphe-Patches",
-    "created_at": "2026-06-28T01:33:36",
-    "version": "v1.4.0",
-    "description": "## [1.4.0](https://github.com/humzakh/HK-Morphe-Patches/compare/v1.3.5...v1.4.0) (2026-06-28)\n\n### ✨ New Features\n\n* Add Restore Comment patch with more accessible button ([f8e6e07](https://github.com/humzakh/HK-Morphe-Patches/commit/f8e6e07c1b271a5b53d3be75110cdabfc1b0233a))\n",
+    "created_at": "2026-06-29T03:33:17",
+    "version": "v1.4.3",
+    "description": "## [1.4.3](https://github.com/humzakh/HK-Morphe-Patches/compare/v1.4.2...v1.4.3) (2026-06-29)\n\n### 🐛 Bug Fixes\n\n* Add message when Restore Comment fails ([f761a9a](https://github.com/humzakh/HK-Morphe-Patches/commit/f761a9a7b78ab66727f8cb078a195a49c29bcaf6))\n",
     "apps": [
       {
         "app_name": "Sync for Reddit",
@@ -12250,7 +12508,7 @@
           },
           {
             "name": "Fix \"Restore Comment\"",
-            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also adds a more accessible button for this feature.",
+            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also includes UI changes to make this feature more accessible.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -12278,7 +12536,7 @@
           {
             "name": "Predictive back gesture (Reddit Sync)",
             "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
-            "use": true,
+            "use": false,
             "options": [],
             "compatible_versions": [
               "v23.06.30-13:39"
@@ -12333,7 +12591,7 @@
           },
           {
             "name": "Fix \"Restore Comment\"",
-            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also adds a more accessible button for this feature.",
+            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also includes UI changes to make this feature more accessible.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -12361,7 +12619,7 @@
           {
             "name": "Predictive back gesture (Reddit Sync)",
             "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
-            "use": true,
+            "use": false,
             "options": [],
             "compatible_versions": [
               "v23.06.30-13:39"
@@ -12416,7 +12674,7 @@
           },
           {
             "name": "Fix \"Restore Comment\"",
-            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also adds a more accessible button for this feature.",
+            "description": "Fixes the \"Restore Comment\" feature (requires Sync Ultra) by fetching from an alternative API. Also includes UI changes to make this feature more accessible.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -12444,7 +12702,7 @@
           {
             "name": "Predictive back gesture (Reddit Sync)",
             "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
-            "use": true,
+            "use": false,
             "options": [],
             "compatible_versions": [
               "v23.06.30-13:39"
@@ -12485,15 +12743,15 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "5e2bbd3f5fcf1d691147d2ece53e1dc41aa9f5b85a19edf713a297653ee66d2c"
+    "fingerprint": "63977cab64324cc4d569aa9382bff1c43e117ecb273cd2b5291815a6af0a86a2"
   },
   "hoo-dles:dev": {
     "bundle": "hoo-dles",
     "channel": "dev",
     "repo_url": "https://github.com/hoo-dles/morphe-patches",
-    "created_at": "2026-06-26T20:53:19",
-    "version": "v1.38.0-dev.1",
-    "description": "# [1.38.0-dev.1](https://github.com/hoo-dles/morphe-patches/compare/v1.37.0...v1.38.0-dev.1) (2026-06-26)\n\n\n### Features\n\n* **Goodreads:** Add `Disable ads` patch ([d9da4fe](https://github.com/hoo-dles/morphe-patches/commit/d9da4feed08dc0cac0b7556ce00287bd865d02ee))\n\n\n\n",
+    "created_at": "2026-06-28T22:16:35",
+    "version": "v1.38.1-dev.1",
+    "description": "## [1.38.1-dev.1](https://github.com/hoo-dles/morphe-patches/compare/v1.38.0...v1.38.1-dev.1) (2026-06-28)\n\n\n### Bug Fixes\n\n* **Duolingo:** Update patches to support v6.85.7 ([de14559](https://github.com/hoo-dles/morphe-patches/commit/de14559633f8294b810d5ad4d625b3fe052e3482))\n\n\n\n",
     "apps": [
       {
         "app_name": "TTMIK Stories",
@@ -12744,7 +13002,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "6.84.4"
+              "6.85.7"
             ]
           },
           {
@@ -12753,7 +13011,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "6.84.4"
+              "6.85.7"
             ]
           },
           {
@@ -12767,7 +13025,7 @@
               }
             ],
             "compatible_versions": [
-              "6.84.4"
+              "6.85.7"
             ]
           }
         ],
@@ -13502,15 +13760,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/bfewUxobdHumF6r7pj6teHAPnLWXWpRapcgipF4-WjU8ziVwQpm5nyOhM9FNq2-G2axH74JiDU9z3Fc_5FeS"
       }
     ],
-    "fingerprint": "ba6e6e645cd929957c75aa8d55a277ad19511c7dd866acd1effb87f6830498d8"
+    "fingerprint": "c52eab134c1d60cc157ee0019cd832d72ceaaa8a12619360b0e24fa947da02e7"
   },
   "hoo-dles:stable": {
     "bundle": "hoo-dles",
     "channel": "stable",
     "repo_url": "https://github.com/hoo-dles/morphe-patches",
-    "created_at": "2026-06-27T16:37:21",
-    "version": "v1.38.0",
-    "description": "# [1.38.0](https://github.com/hoo-dles/morphe-patches/compare/v1.37.0...v1.38.0) (2026-06-27)\n\n\n### Features\n\n* **Goodreads:** Add `Disable ads` patch ([d9da4fe](https://github.com/hoo-dles/morphe-patches/commit/d9da4feed08dc0cac0b7556ce00287bd865d02ee))\n\n\n\n",
+    "created_at": "2026-06-28T22:46:25",
+    "version": "v1.38.1",
+    "description": "## [1.38.1](https://github.com/hoo-dles/morphe-patches/compare/v1.38.0...v1.38.1) (2026-06-28)\n\n\n### Bug Fixes\n\n* **Duolingo:** Update patches to support v6.85.7 ([de14559](https://github.com/hoo-dles/morphe-patches/commit/de14559633f8294b810d5ad4d625b3fe052e3482))\n\n\n\n",
     "apps": [
       {
         "app_name": "TTMIK Stories",
@@ -13761,7 +14019,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "6.84.4"
+              "6.85.7"
             ]
           },
           {
@@ -13770,7 +14028,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "6.84.4"
+              "6.85.7"
             ]
           },
           {
@@ -13784,7 +14042,7 @@
               }
             ],
             "compatible_versions": [
-              "6.84.4"
+              "6.85.7"
             ]
           }
         ],
@@ -14519,7 +14777,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/bfewUxobdHumF6r7pj6teHAPnLWXWpRapcgipF4-WjU8ziVwQpm5nyOhM9FNq2-G2axH74JiDU9z3Fc_5FeS"
       }
     ],
-    "fingerprint": "27e3801cd3711d453f308acbb87a0f97338c2f5bc2134f9d4d40927d2bd9cba6"
+    "fingerprint": "48a2e33bae9d92f72a4a10d7dd10497518ef031e93376033dcfeb0a7d4dbe430"
   },
   "hoomans-morphe:dev": {
     "bundle": "hoomans-morphe",
@@ -14866,10 +15124,26 @@
     "bundle": "hoomans-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-06-28T03:45:16",
-    "version": "v1.33.0",
-    "description": "## [1.33.0](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.32.0...v1.33.0) (2026-06-28)\n\n### 🐛 Bug Fixes\n\n* stop blazed sponsored posts slipping past Tumblr Remove ads ([a3ceef9](https://github.com/arandomhooman/hoomans-morphe-patches/commit/a3ceef924eb5472c55ab50310355a4298c4e7d92))\n\n### ✨ New Features\n\n* add Tumblr annoyance toggles ([570bf9f](https://github.com/arandomhooman/hoomans-morphe-patches/commit/570bf9fc296a4429b81dd54b5f88e68a14ced455))\n",
+    "created_at": "2026-06-29T17:14:55",
+    "version": "v1.35.0",
+    "description": "## [1.35.0](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.34.1...v1.35.0) (2026-06-29)\n\n### ✨ New Features\n\n* add Smart AudioBook Player full unlock ([e212cf5](https://github.com/arandomhooman/hoomans-morphe-patches/commit/e212cf500597d53fb13b9e384a06f09248a7b05f))\n",
     "apps": [
+      {
+        "app_name": "Smart AudioBook Player",
+        "package": "ak.alizandro.smartaudiobookplayer",
+        "patches": [
+          {
+            "name": "Unlock Full",
+            "description": "Unlocks Smart AudioBook Player's full version by forcing the local license decision to Full.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "11.7.8"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/XUG_zlohI-GsehLvej2Vu5wQkXwi1g1yUp1ho5oJFi6pc_To7SAgzgCZuHaMz8Qo5auGDDrGwx1ULHxM5wvU"
+      },
       {
         "app_name": "AGAMA Car Launcher",
         "package": "altergames.carlauncher",
@@ -15150,6 +15424,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/CctcODIU4O3xtMZ8DHNzIacrYDJrEeIGGgYtFCVz5ayFSnZ7D915kmo52GfQKY6dhU4C_Ln1efTHznMVuwf4RA"
       },
       {
+        "app_name": "Poweramp",
+        "package": "com.maxmpz.audioplayer",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Poweramp's full version state and Feature Package #1.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "build-1025-bundle-play"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/-21ASw97RWIu-CnDVbEEtTrfVIDqpfhY4eofgk5aT98q4E8jnrMVxNqI0J7JYgRTkHjoOoWM58ScUzu30cxevQ"
+      },
+      {
         "app_name": "WEBTOON",
         "package": "com.naver.linewebtoon",
         "patches": [
@@ -15191,7 +15481,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "2.4.8.1"
+              "2.4.8.1",
+              "2.5.0.2-beta1"
             ]
           }
         ],
@@ -15511,7 +15802,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/JHCM4AIyomRp6Lo2-5ugoznlGdsZmNnejVN8DLvtWFHShcz8YRgUE170f1CyOfrleYbtFL2g8tQ3VqlQNAgqoA"
       }
     ],
-    "fingerprint": "ba64dc415d016a3f6e771cccd3a1a796e7e9afbb60b8fce962e2915b5bd0ef5a"
+    "fingerprint": "e0a260a07a0d59ad50561c6f370c005a401a7e3975f97c641bd4d9a57cce2353"
   },
   "icysymmetra-tiktok:dev": {
     "bundle": "icysymmetra-tiktok",
@@ -17303,13 +17594,67 @@
     ],
     "fingerprint": "957510cddc4d4cb991e4743c7b652d853cf02101952ec774e2476d6069c36913"
   },
+  "kontsevoye:dev": {
+    "bundle": "kontsevoye",
+    "channel": "dev",
+    "repo_url": "https://github.com/kontsevoye/emorphe-patches",
+    "created_at": "2026-05-14T15:30:09Z",
+    "version": "1.0.0-dev.8",
+    "description": "# 1.0.0 (2026-05-14)\n\n\n### Bug Fixes\n\n* add YouTube Music proxy diagnostics ([f677567](https://github.com/kontsevoye/emorphe-patches/commit/f6775673ea4d52a2647fe82939db84e5a1911a4d))\n* align proxy runtime settings ([aa711a9](https://github.com/kontsevoye/emorphe-patches/commit/aa711a94284bfd65cad3c3d254ea041a7adc92fc))\n* open editable EMorphe settings ([1bcc42f](https://github.com/kontsevoye/emorphe-patches/commit/1bcc42fb7c09ceac0ec7a9831c2b2e45a1353197))\n* route YouTube Music media stack via HTTP proxy ([7189321](https://github.com/kontsevoye/emorphe-patches/commit/71893216cf1daed8e12a5f624ac1902cdce9b2d3))\n* use nested EMorphe preference screens ([a7118a2](https://github.com/kontsevoye/emorphe-patches/commit/a7118a2f234509a0720e9a4d76c36a37a827c18a))\n* use self-contained proxy text preferences ([5c815d4](https://github.com/kontsevoye/emorphe-patches/commit/5c815d4281ec684e0286bcee597b142c8887326d))\n\n\n### Features\n\n* add runtime proxy settings ([211820c](https://github.com/kontsevoye/emorphe-patches/commit/211820c78bdada80609f796a0a35be61a8801108))\n* add YouTube Music proxy patch ([#1](https://github.com/kontsevoye/emorphe-patches/issues/1)) ([78e6f77](https://github.com/kontsevoye/emorphe-patches/commit/78e6f779c920d24b06766541601ade6374555aba))",
+    "apps": [
+      {
+        "app_name": "YouTube Music",
+        "package": "com.google.android.apps.youtube.music",
+        "patches": [
+          {
+            "name": "YouTube Music proxy",
+            "description": "Routes YouTube Music traffic through a runtime-configurable app-level HTTP proxy.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "8.47.56"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw"
+      }
+    ],
+    "fingerprint": "1dcb58214909197199f3d5d4b54fa963dc6df43ee672f1a437a80976430162f1"
+  },
+  "kontsevoye:stable": {
+    "bundle": "kontsevoye",
+    "channel": "stable",
+    "repo_url": "https://github.com/kontsevoye/emorphe-patches",
+    "created_at": "2026-05-14T15:45:22Z",
+    "version": "1.0.0",
+    "description": "# 1.0.0 (2026-05-14)\n\n\n### Bug Fixes\n\n* add YouTube Music proxy diagnostics ([f677567](https://github.com/kontsevoye/emorphe-patches/commit/f6775673ea4d52a2647fe82939db84e5a1911a4d))\n* align proxy runtime settings ([aa711a9](https://github.com/kontsevoye/emorphe-patches/commit/aa711a94284bfd65cad3c3d254ea041a7adc92fc))\n* open editable EMorphe settings ([1bcc42f](https://github.com/kontsevoye/emorphe-patches/commit/1bcc42fb7c09ceac0ec7a9831c2b2e45a1353197))\n* route YouTube Music media stack via HTTP proxy ([7189321](https://github.com/kontsevoye/emorphe-patches/commit/71893216cf1daed8e12a5f624ac1902cdce9b2d3))\n* use nested EMorphe preference screens ([a7118a2](https://github.com/kontsevoye/emorphe-patches/commit/a7118a2f234509a0720e9a4d76c36a37a827c18a))\n* use self-contained proxy text preferences ([5c815d4](https://github.com/kontsevoye/emorphe-patches/commit/5c815d4281ec684e0286bcee597b142c8887326d))\n\n\n### Features\n\n* add runtime proxy settings ([211820c](https://github.com/kontsevoye/emorphe-patches/commit/211820c78bdada80609f796a0a35be61a8801108))\n* add YouTube Music proxy patch ([#1](https://github.com/kontsevoye/emorphe-patches/issues/1)) ([78e6f77](https://github.com/kontsevoye/emorphe-patches/commit/78e6f779c920d24b06766541601ade6374555aba))",
+    "apps": [
+      {
+        "app_name": "YouTube Music",
+        "package": "com.google.android.apps.youtube.music",
+        "patches": [
+          {
+            "name": "YouTube Music proxy",
+            "description": "Routes YouTube Music traffic through a runtime-configurable app-level HTTP proxy.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "8.47.56"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw"
+      }
+    ],
+    "fingerprint": "3f43c6d3d50ca588e5d0c23f7a87db4402d0f172721043b037dd54e5a42a1964"
+  },
   "lain:dev": {
     "bundle": "lain",
     "channel": "dev",
     "repo_url": "https://github.com/kiraio-moe/Lain-Patches",
-    "created_at": "2026-06-24T17:40:28",
-    "version": "v1.2.0-dev.2",
-    "description": "## [1.2.0-dev.2](https://github.com/kiraio-moe/Lain-Patches/compare/v1.2.0-dev.1...v1.2.0-dev.2) (2026-06-24)\n\n### ✨ New Features\n\n* **Hermit:** Add premium patch ([129d44e](https://github.com/kiraio-moe/Lain-Patches/commit/129d44eee62074b75386839173e2bab62fdbb3d3))\n* **UDisc:** Add patches for UDisc ([d3629df](https://github.com/kiraio-moe/Lain-Patches/commit/d3629df87b7ae117d1763d820c01b2b96ea918c3))\n",
+    "created_at": "2026-06-28T07:25:51",
+    "version": "v1.2.0-dev.3",
+    "description": "## [1.2.0-dev.3](https://github.com/kiraio-moe/Lain-Patches/compare/v1.2.0-dev.2...v1.2.0-dev.3) (2026-06-28)\n\n### ✨ New Features\n\n* **Boorusama:** Add plus/premium patch ([e3daee2](https://github.com/kiraio-moe/Lain-Patches/commit/e3daee2df5fb02dc3048b1be281ae9292042de93))\n* **PhotoFancie:** Add pro patch ([f80a4dd](https://github.com/kiraio-moe/Lain-Patches/commit/f80a4ddc407f28a862b1361b1b319da2c01d8070))\n* **Super Proxy:** Add pro patch ([6f4e784](https://github.com/kiraio-moe/Lain-Patches/commit/6f4e784d4c56dcfe33928352de9c0ba2f9d891ef))\n",
     "apps": [
       {
         "app_name": "Android Proxy Server",
@@ -17374,6 +17719,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/SkxvvpzgHvzG3ODTIf3EZA5kbAvFX6ahey_-wQppGxG4X6jxXBHY2LeBQShRLi7RktS02Tl6HlqON22dH62TZQ"
+      },
+      {
+        "app_name": "Boorusama (Play Store)",
+        "package": "com.degenk.boorusama",
+        "patches": [
+          {
+            "name": "Unlock Plus",
+            "description": "Unlock plus features such as Exclusive Themes, Custom Layout & Home Screen, Enhanced Bulk Downloader.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.5.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/lcHBg44Dsg7F9lNWrSkF7tyk4qu71Z_J0o_4bdyW5YQjygBDaKh3ckT0kOzS63HljGKOZCUu5pOyTQzBtk0C4A"
       },
       {
         "app_name": "Camera FV-5 Lite",
@@ -17611,17 +17972,49 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/HPZC8ZdPPSDpYzkb2JoFsLVFL94sX7FFSRKuT0Rxg-d5lsGFIe4jfPLrLsOIFRB7gnqMEDUr6E-o0O8_ZR-KIw"
+      },
+      {
+        "app_name": "Super Proxy",
+        "package": "com.scheler.superproxy",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlock pro features such as Unlimited proxy usage, Allow/disallow specific apps, Block apps in firewall and many more...",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/xMpEz29P9jI4aTrWYMNjcEhv92-kPJuWDOS4Gzw82dqm0tspnBy6y-S_6I7iRRH62www_jHwH8Jw8Pr_RFr-PrI"
+      },
+      {
+        "app_name": "Collage Maker - PhotoFancie",
+        "package": "com.surmin.photofancie.lite",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Enable pro features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.8.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Vf9qR9r19DKLRlQKiC46kHiiWwZRMPdiVzqrI9zyfN5h5cxgMw2-03MOEdoJ3eALPTH3Rz5qdZEZZSjJqecvhQI"
       }
     ],
-    "fingerprint": "740c0edbc894ece83b7d9ab74746efad5eac3d443e5bf36d80b023146c51efdd"
+    "fingerprint": "9ce53cdd22f17bc44d6037a82650668f93eaf2261d5f0d93b0c5fe61cbb64482"
   },
   "lain:stable": {
     "bundle": "lain",
     "channel": "stable",
     "repo_url": "https://github.com/kiraio-moe/Lain-Patches",
-    "created_at": "2026-06-19T01:28:39",
-    "version": "v1.1.0",
-    "description": "## [1.1.0](https://github.com/kiraio-moe/Lain-Patches/compare/v1.0.0...v1.1.0) (2026-06-19)\n\n### 🐛 Bug Fixes\n\n* **PixelLab:** Fix premium flags being overriden by HandlePurchases() ([86b278f](https://github.com/kiraio-moe/Lain-Patches/commit/86b278f2be7021627ace4dd01a32bc1c5472f53d))\n\n### ✨ New Features\n\n* **Cinema FV-5 Lite:** Add pro patches ([bbafdbb](https://github.com/kiraio-moe/Lain-Patches/commit/bbafdbbd87c412727269b502a7a3b82a7684b357))\n* **Fake GPS Location:** Add premium patch ([0c6dc6c](https://github.com/kiraio-moe/Lain-Patches/commit/0c6dc6c3fbd3e8e9a981ca774ebabf82963bdbaa))\n* **Hidden Settings:** Add Premium patch ([77170d9](https://github.com/kiraio-moe/Lain-Patches/commit/77170d95c7f717c97c0d7e9283914dd250e98921))\n* **MediBang Paint:** Add Premium & Disable Analytics patches ([befdad7](https://github.com/kiraio-moe/Lain-Patches/commit/befdad77414970e615c113cb36a61cbc834dd5a3))\n* **Nekopoi:** Add Disable Ads & Anti-Tamper Patch ([2e3e1d9](https://github.com/kiraio-moe/Lain-Patches/commit/2e3e1d9cc5bb752ab8baa1bc012650d6c2f4f2a4))\n* **Nekopoi:** Add Enable Certificate Pinning patch & add app target version for 2.5.3-build01 ([0edff5f](https://github.com/kiraio-moe/Lain-Patches/commit/0edff5f515f995fe875f7b0c6752f6d051935988))\n* **PixelLab:** Add premium patch ([f5e3bd0](https://github.com/kiraio-moe/Lain-Patches/commit/f5e3bd0bd03872ceffc1080ce793f71d7a46ae0b))\n* **Timestamp Camera:** Add `Disable Ads` patch ([69ad5ff](https://github.com/kiraio-moe/Lain-Patches/commit/69ad5ffd46cb8b408fb40c027fda54d291241927))\n",
+    "created_at": "2026-06-28T19:23:17",
+    "version": "v1.2.0",
+    "description": "## [1.2.0](https://github.com/kiraio-moe/Lain-Patches/compare/v1.1.0...v1.2.0) (2026-06-28)\n\n### ✨ New Features\n\n* **AudioRelay:** Add premium patch ([e5cfc42](https://github.com/kiraio-moe/Lain-Patches/commit/e5cfc422468c15eccd23719bdb1845c5216849cd))\n* **Boorusama:** Add plus/premium patch ([e3daee2](https://github.com/kiraio-moe/Lain-Patches/commit/e3daee2df5fb02dc3048b1be281ae9292042de93))\n* **Hermit:** Add premium patch ([129d44e](https://github.com/kiraio-moe/Lain-Patches/commit/129d44eee62074b75386839173e2bab62fdbb3d3))\n* **Paletta:** Add premium patch ([f92f9c3](https://github.com/kiraio-moe/Lain-Patches/commit/f92f9c316de89bd0df4e8c3b6d90d7e229b48dce))\n* **PhotoFancie:** Add pro patch ([f80a4dd](https://github.com/kiraio-moe/Lain-Patches/commit/f80a4ddc407f28a862b1361b1b319da2c01d8070))\n* **Super Proxy:** Add pro patch ([6f4e784](https://github.com/kiraio-moe/Lain-Patches/commit/6f4e784d4c56dcfe33928352de9c0ba2f9d891ef))\n* **UDisc:** Add patches for UDisc ([d3629df](https://github.com/kiraio-moe/Lain-Patches/commit/d3629df87b7ae117d1763d820c01b2b96ea918c3))\n",
     "apps": [
       {
         "app_name": "Android Proxy Server",
@@ -17640,6 +18033,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/F5HPClySDDA7YlVHUwdTZ-nwWaFDODbwwAFtyYi0xCYJ3yaNZQAhQ8-3CAOuxJ27sVycDj1O2IRsPWPrV9_mpU8"
       },
       {
+        "app_name": "AudioRelay",
+        "package": "com.azefsw.audioconnect",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlock premium features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "0.26.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/3H6hrklDey6YbcoHJCiqN1vUD0MqyGtca6nqBoD2I_gZ-104Vs4pDLNrEQ2TodG5Y5i2MMdSr0TgFLstxv3w"
+      },
+      {
         "app_name": "Hidden Settings",
         "package": "com.ceyhan.sets",
         "patches": [
@@ -17654,6 +18063,38 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/rSCb214Jr9ByTboIp1LoMuG-ooAcsUMPQ0YUZClUuCH9aTMk7aDW7NcfcGHvOZx06KtwpbORcx_S5ZNfegXEJoE"
+      },
+      {
+        "app_name": "Hermit",
+        "package": "com.chimbori.hermitcrab",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Enable premium features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "31.6.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/SkxvvpzgHvzG3ODTIf3EZA5kbAvFX6ahey_-wQppGxG4X6jxXBHY2LeBQShRLi7RktS02Tl6HlqON22dH62TZQ"
+      },
+      {
+        "app_name": "Boorusama (Play Store)",
+        "package": "com.degenk.boorusama",
+        "patches": [
+          {
+            "name": "Unlock Plus",
+            "description": "Unlock plus features such as Exclusive Themes, Custom Layout & Home Screen, Enhanced Bulk Downloader.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.5.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/lcHBg44Dsg7F9lNWrSkF7tyk4qu71Z_J0o_4bdyW5YQjygBDaKh3ckT0kOzS63HljGKOZCUu5pOyTQzBtk0C4A"
       },
       {
         "app_name": "Camera FV-5 Lite",
@@ -17813,6 +18254,22 @@
         "icon_url": ""
       },
       {
+        "app_name": "Paletta",
+        "package": "com.medibang.android.medibangpro",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Disable trial time counter.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.11"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Diyt_eyqkMZApFwSMNSqt7VJz4kR2fYdopfQy1cMqFM09b_65Juk02Mcs1yRpFZyh9eL8NYy__-tO6Kdfqo"
+      },
+      {
         "app_name": "MediBang Paint",
         "package": "com.medibang.android.paint.tablet",
         "patches": [
@@ -17836,9 +18293,80 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/ZZ1aedj42CKr8xbo52oIUx3xehrlKYAYqSayj1NBn0PB1Emkt-zfrKwT9488XVnXCuOWdhczGCksvRMLi8qefg"
+      },
+      {
+        "app_name": "UDisc",
+        "package": "com.regasoftware.udisc",
+        "patches": [
+          {
+            "name": "Course Maps Fix",
+            "description": "Fix course maps not rendered by using your own Google Maps API key.",
+            "use": true,
+            "options": [
+              {
+                "key": "apiKey",
+                "description": "The API key you created in Google Cloud Console. The Free key should be enough for normal daily use. DON'T SHARE YOUR OWN KEY!\nIn the Google Cloud Console: Create a project -> Enable Maps SDK for Android -> A billing account is required, you will be prompted to create one if none exists (You will not get charged as long the monthly $200 limit not passed, use wisely) -> Under Credentials, create an API key. The easiest way is to leave it unrestricted. If you do, fill in the patched app package name and SHA-1 signature. -> If the maps still blank, either the app signature is invalid; the project missing Maps SDK for Android or billing account."
+              }
+            ],
+            "compatible_versions": [
+              "24.1.2"
+            ]
+          },
+          {
+            "name": "Login Fix",
+            "description": "Fix login issue by spoofing the installation source to Play Store.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "24.1.2"
+            ]
+          },
+          {
+            "name": "Unlock Premium",
+            "description": "Enable premium features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "24.1.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/HPZC8ZdPPSDpYzkb2JoFsLVFL94sX7FFSRKuT0Rxg-d5lsGFIe4jfPLrLsOIFRB7gnqMEDUr6E-o0O8_ZR-KIw"
+      },
+      {
+        "app_name": "Super Proxy",
+        "package": "com.scheler.superproxy",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlock pro features such as Unlimited proxy usage, Allow/disallow specific apps, Block apps in firewall and many more...",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/xMpEz29P9jI4aTrWYMNjcEhv92-kPJuWDOS4Gzw82dqm0tspnBy6y-S_6I7iRRH62www_jHwH8Jw8Pr_RFr-PrI"
+      },
+      {
+        "app_name": "Collage Maker - PhotoFancie",
+        "package": "com.surmin.photofancie.lite",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Enable pro features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.8.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Vf9qR9r19DKLRlQKiC46kHiiWwZRMPdiVzqrI9zyfN5h5cxgMw2-03MOEdoJ3eALPTH3Rz5qdZEZZSjJqecvhQI"
       }
     ],
-    "fingerprint": "9fee12abd9e8e162a18d53bdcd2f231ba64124d445932149a76f424ff496462b"
+    "fingerprint": "7636e985e42d70b4429c7fce70f1803519c7c5f214a7a52f50d695b25004a067"
   },
   "lakaka:dev": {
     "bundle": "lakaka",
@@ -18104,9 +18632,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-06-27T11:32:03",
-    "version": "v1.33.0-dev.3",
-    "description": "## [1.33.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.2...v1.33.0-dev.3) (2026-06-27)\n\n### 🐛 Bug Fixes\n\n* **Change package name:** Add incompatible apps, update all permissions and providers ([#1847](https://github.com/MorpheApp/morphe-patches/issues/1847)) ([ff5359a](https://github.com/MorpheApp/morphe-patches/commit/ff5359ac6d61b7b7274a7d7ed7c06198c1ed3b7f))\n* **Reddit - Hide Trending shelves:** Hide 'Trending on Reddit' shelf ([#1849](https://github.com/MorpheApp/morphe-patches/issues/1849)) ([5dfff49](https://github.com/MorpheApp/morphe-patches/commit/5dfff49c21f0aad61e997ad1ef31c65af58f85ab))\n\n### 🚀 Updated App Support\n\n* **Reddit:** Add experimental support for `2026.26.0` ([de01fad](https://github.com/MorpheApp/morphe-patches/commit/de01fadca647632390ecf4148986880d924434b5))\n* **YouTube:** Add experimental support for `21.26.360` ([197e9ce](https://github.com/MorpheApp/morphe-patches/commit/197e9ce272515002787a41c919ff7ea8ec698f30))\n",
+    "created_at": "2026-06-29T09:02:53",
+    "version": "v1.33.0-dev.7",
+    "description": "## [1.33.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.6...v1.33.0-dev.7) (2026-06-29)\n\n### 🐛 Bug Fixes\n\n* **YouTube - System share sheet:** Prevents consecutive attempts to close the panel ([d9c6b1b](https://github.com/MorpheApp/morphe-patches/commit/d9c6b1b08fdc290ed5f59ad80056452ca5f0d52b))\n* **YouTube Music - SponsorBlock:** Support older app versions ([bb74726](https://github.com/MorpheApp/morphe-patches/commit/bb7472618b96cf6953292b8466c347a1ddd523df))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -18463,6 +18991,34 @@
             ]
           },
           {
+            "name": "Scrobbling",
+            "description": "Adds options to add played tracks to Last.fm and ListenBrainz.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.25.50",
+              "9.24.51",
+              "9.23.52",
+              "9.15.51",
+              "8.51.51",
+              "7.29.52"
+            ]
+          },
+          {
+            "name": "SponsorBlock",
+            "description": "Adds options to enable and configure SponsorBlock, which can skip non-music segments.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.25.50",
+              "9.24.51",
+              "9.23.52",
+              "9.15.51",
+              "8.51.51",
+              "7.29.52"
+            ]
+          },
+          {
             "name": "Spoof video streams",
             "description": "Adds options to spoof the client video streams to fix playback.",
             "use": true,
@@ -18516,6 +19072,21 @@
         "app_name": "YouTube",
         "package": "com.google.android.youtube",
         "patches": [
+          {
+            "name": "Add to queue",
+            "description": "Overrides the feed flyout 'Play next in queue' with the Morphe video queue.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "21.26.360",
+              "21.25.523",
+              "21.24.360",
+              "21.05.265",
+              "20.51.39",
+              "20.31.42",
+              "20.21.37"
+            ]
+          },
           {
             "name": "Alternative thumbnails",
             "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
@@ -19852,7 +20423,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/8FVS0kvM60JwqZWRNzBIlwrZZxJa8vpli8IWaaTo8QXRe1PHmCNJ8UpWoXkGPV3jKEaTY2OVAeYoisOnGJXY"
       }
     ],
-    "fingerprint": "4a4996ae8371240cb349f14b4008b67cdc0a7528c437ac084d8ecbb8e3d20cfb"
+    "fingerprint": "54a20bb638d62931b4e6907e7c49d310e4abc950fa7606c59c24ba01417e2387"
   },
   "morphe:stable": {
     "bundle": "morphe",
@@ -21761,6 +22332,78 @@
       }
     ],
     "fingerprint": "5dae1ae9002aa66e3058e73ed65f72f96ff800c43584d75cdbc31baf6e775091"
+  },
+  "npci-bhim:stable": {
+    "bundle": "npci-bhim",
+    "channel": "stable",
+    "repo_url": "https://github.com/kun-codes/npci-bhim-morphe-patches",
+    "created_at": "2026-06-28T09:33:42",
+    "version": "v1.3.0",
+    "description": "## v1.3.0\n\n### Bug Fixes\n- **Fix .mpp DEX format (root cause of patches not loading):** build.gradle.kts now depends on `buildAndroid` instead of `build`, ensuring .mpp contains DEX files (`classes.dex`) instead of just .class files. The Morphe Manager validates for .dex entries and rejects .class-only bundles.\n- **Remove BypassPairipProtection:** It used `return-void` at index 0 of `Application.attachBaseContext()` which skipped `super.attachBaseContext()`, crashing the app if ever applied. `BypassSignatureVerification` + `BypassLicenseCheck` already cover the critical paths.\n\n### New Features\n- **Add processResponse patch (defense-in-depth paywall bypass):** New `ProcessResponseFingerprint` targets `LicenseClient.processResponse(int, Bundle)` — the decision point where response code 2 triggers the paywall. Making this return-void intercepts the paywall before it can be shown.\n- **Add Bypass License Activity patch:** New `LicenseActivityOnStartFingerprint` targets `LicenseActivity.onStart()` — if LicenseActivity is ever started by any code path, this prevents both the paywall and error dialog from showing.\n\n### Improvements\n- **Enhanced BypassLicensePaywall:** Now also patches `processResponse()` for defense-in-depth\n- **Cleaned up Fingerprints.kt:** Removed unused `ApplicationAttachBaseContextFingerprint`, added documentation verifying each fingerprint against smali\n\n### Patches (7 total)\n1. Bypass Signature Verification\n2. Bypass License Check\n3. Bypass License Paywall (enhanced with processResponse)\n4. Bypass License Activity (new)\n5. Force Safe Root Status\n6. Disable Blacklisting\n",
+    "apps": [
+      {
+        "app_name": "BHIM UPI",
+        "package": "in.org.npci.upiapp",
+        "patches": [
+          {
+            "name": "Bypass License Activity",
+            "description": "Neutralizes LicenseActivity.onStart to prevent the paywall and error dialog from being displayed, acting as a catch-all guard if LicenseActivity is ever started.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.24"
+            ]
+          },
+          {
+            "name": "Bypass License Check",
+            "description": "Bypasses Google Play Store license verification in com.pairip.licensecheck.LicenseClient to prevent System.exit(0) on non-Play Store installs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.24"
+            ]
+          },
+          {
+            "name": "Bypass License Paywall",
+            "description": "Neutralizes the license paywall and error dialog at the source by patching LicenseClient.processResponse, startPaywallActivity, and handleError to return immediately.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.24"
+            ]
+          },
+          {
+            "name": "Bypass Signature Verification",
+            "description": "Bypasses APK signature verification in com.pairip.SignatureCheck to prevent SignatureTamperedException on modified APKs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.24"
+            ]
+          },
+          {
+            "name": "Disable Blacklisting",
+            "description": "Disables the blacklisting check in the affirmation flow to prevent the app from blocking rooted devices server-side.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.24"
+            ]
+          },
+          {
+            "name": "Force Safe Root Status",
+            "description": "Forces the root status to 'safe' in device details and skips root status comparison logic to bypass root detection on the client side.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.24"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/rPJLwugORRZudZYpG6HrP2ejHgdinQzqkKgdPvsoCM5jc_7d507xaYCVUWELWOTu2OEEdwtZNJ7ySq5Mpj2S7DQ"
+      }
+    ],
+    "fingerprint": "d66fedb4fd1f6ed8c7a8e716281431655c3abd9cdbe1aa721fc75053d58cdb6f"
   },
   "paresh-maheshwari:dev": {
     "bundle": "paresh-maheshwari",
@@ -26286,9 +26929,9 @@
     "bundle": "piko",
     "channel": "dev",
     "repo_url": "https://github.com/crimera/piko",
-    "created_at": "2026-06-26T18:38:21",
-    "version": "v3.7.0-dev.9",
-    "description": "## [3.7.0-dev.9](https://github.com/crimera/piko/compare/v3.7.0-dev.8...v3.7.0-dev.9) (2026-06-26)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Native comment buttons not working ([ea145d7](https://github.com/crimera/piko/commit/ea145d7759d3b7bf8af78cbab064fe76c6760cd5))\n",
+    "created_at": "2026-06-28T13:21:07",
+    "version": "v3.8.0-dev.2",
+    "description": "## [3.8.0-dev.2](https://github.com/crimera/piko/compare/v3.8.0-dev.1...v3.8.0-dev.2) (2026-06-28)\n\n### 🐛 Bug Fixes\n\n* **Twitter:** Tweet link pattern ([d2500ea](https://github.com/crimera/piko/commit/d2500ead98dd5bd77ba97f1ef2ac8388f7b559f0))\n",
     "apps": [
       {
         "app_name": "Instagram",
@@ -26902,6 +27545,18 @@
           {
             "name": "Custom font",
             "description": "Customise font style",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "11.81.0-release.0",
+              "11.99.0-release-ripped.1",
+              "12.0.0-release.0",
+              "12.2.0-release.0"
+            ]
+          },
+          {
+            "name": "Custom share menu",
+            "description": "Overrides existing share menu and adds a new one",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -27652,12 +28307,24 @@
               "12.0.0-release.0",
               "12.2.0-release.0"
             ]
+          },
+          {
+            "name": "Support external downloader",
+            "description": "",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "11.81.0-release.0",
+              "11.99.0-release-ripped.1",
+              "12.0.0-release.0",
+              "12.2.0-release.0"
+            ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/IsLsCD4eLC2CYvlkgTI6Z5TROj0BJIBgUF7BZ5eliTzyyTjqG_mbofeG4kw2s7oG_JZMSi5ErLz_qsDi169C8w"
       }
     ],
-    "fingerprint": "5fc46ca7c1d4a7524e8fefd7869ab66d41a8a1c8b67f90920c06088b79f8f2bd"
+    "fingerprint": "c1b3a511177331d9373cce1fd68e26e0e73ffa942d47cb9d94cab8521bc81a06"
   },
   "piko:stable": {
     "bundle": "piko",
@@ -29221,6 +29888,90 @@
     ],
     "fingerprint": "c4b7ee4028e5484d295cc9bfbec3f391ecf3426b1ac740a5922228a410a6dfa4"
   },
+  "prathxm:stable": {
+    "bundle": "prathxm",
+    "channel": "stable",
+    "repo_url": "https://github.com/PrathxmOp/Prathxm-Patches",
+    "created_at": "2026-06-29T20:04:19",
+    "version": "v1.3.1",
+    "description": "## [1.3.1](https://github.com/PrathxmOp/Prathxm-Patches/compare/v1.3.0...v1.3.1) (2026-06-29)\n\n### 🐛 Bug Fixes\n\n* rename discussion template to match category slug ([35569a2](https://github.com/PrathxmOp/Prathxm-Patches/commit/35569a28ac3a2dc93245bb4b97064e9d4197a76a))\n",
+    "apps": [
+      {
+        "app_name": "Chess.com",
+        "package": "com.chess",
+        "patches": [
+          {
+            "name": "Ad-Free & Local Analysis",
+            "description": "Removes advertisements, unlocks ad-free features, and enables local Stockfish engine for post-game review & analysis.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.9.49",
+              "4.9.49-googleplay"
+            ]
+          },
+          {
+            "name": "Clone Chess.com",
+            "description": "Changes the package name to com.chess.prathxm, allowing the patched app to be installed side-by-side with the original Chess.com app.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "4.9.49",
+              "4.9.49-googleplay"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/JO7Z75U1oypXpNTAklroO5emKWePni0sK9zn1E_nRgqmbAHoMxz1oQHDfSTpcycdht92dTBejkpEDXttGeCWN74"
+      }
+    ],
+    "fingerprint": "c25627803adf17f6f0a1b39a8f02f9acc28e371d6a39c8e093e24e5b1da02e1a"
+  },
+  "prathxm-ytmusic:stable": {
+    "bundle": "prathxm-ytmusic",
+    "channel": "stable",
+    "repo_url": "https://github.com/PrathxmOp/ytmusic-patches",
+    "created_at": "2026-06-28T15:27:28",
+    "version": "v1.38.0",
+    "description": "## [1.38.0](https://github.com/PrathxmOp/ytmusic-patches/compare/v1.37.4...v1.38.0) (2026-06-28)\n\n### ✨ New Features\n\n* **discord:** add manual callback URL fallback for root devices ([186d578](https://github.com/PrathxmOp/ytmusic-patches/commit/186d578ebd30c868965a29d28b4e3ea54a113793))\n",
+    "apps": [
+      {
+        "app_name": "YouTube Music",
+        "package": "com.google.android.apps.youtube.music",
+        "patches": [
+          {
+            "name": "Discord Rich Presence",
+            "description": "Displays the currently playing track on your Discord profile.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.24.51",
+              "9.23.52",
+              "9.22.53",
+              "9.15.51",
+              "8.51.51",
+              "7.29.52"
+            ]
+          },
+          {
+            "name": "Scrobbling",
+            "description": "Adds options to add played tracks to Last.fm and ListenBrainz.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.24.51",
+              "9.23.52",
+              "9.22.53",
+              "9.15.51",
+              "8.51.51",
+              "7.29.52"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw"
+      }
+    ],
+    "fingerprint": "98467162de18182a24253bc3b65b0f1a30685548fd4e0b24459fcb4f99224972"
+  },
   "proguard:stable": {
     "bundle": "proguard",
     "channel": "stable",
@@ -29247,6 +29998,114 @@
       }
     ],
     "fingerprint": "2e5be19d6cad12d79dba6c3e967cb3eea15a8c669e78640edf341ca5cd7b6fdf"
+  },
+  "quantro100:stable": {
+    "bundle": "quantro100",
+    "channel": "stable",
+    "repo_url": "https://github.com/Quantro100/Morphe-patches",
+    "created_at": "2026-06-02T20:22:14Z",
+    "version": "1.0.7",
+    "description": "Morphe patches for AliExpress",
+    "apps": [
+      {
+        "app_name": "AliExpress",
+        "package": "com.alibaba.aliexpresshd",
+        "patches": [
+          {
+            "name": "Bypass signature check",
+            "description": "Bypasses SecurityGuard integrity checks to restore login on patched APKs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Disable analytics",
+            "description": "Blocks analytics and tracking sent to AliExpress servers.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Disable forced updates",
+            "description": "Disables the forced update popup that prevents using older versions of the app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Disable promotions notifications",
+            "description": "Disables promotional push notifications for deals and coupons.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Disable splash screen",
+            "description": "Skips the splash screen on app launch.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Enable image saving",
+            "description": "Enables saving product images directly to the device gallery.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Removes sponsored products and advertisements from the AliExpress home feed and search results.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Remove affiliate tracking",
+            "description": "Removes affiliate tracking parameters from shared links.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Remove coupons popup",
+            "description": "Removes the coupon and promotion popup dialogs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          },
+          {
+            "name": "Remove sponsored items from search",
+            "description": "Filters out sponsored and promoted products from search results.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.162.8"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/-26EaFSeFE-GPfgjA98H_ukuK2AEN0ZlMNB9lECGJDxUSG7G20emcnXaHrM5fL2d7mCi3O825iShQvn2J0ZY"
+      }
+    ],
+    "fingerprint": "3541e10ebc8c3083c122169ec62424dfe7ae9113290f1b38ab9e44109f0a3346"
   },
   "rabilrbl:dev": {
     "bundle": "rabilrbl",
@@ -31457,9 +32316,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-06-27T19:26:05",
-    "version": "v1.8.0-dev.2",
-    "description": "## [1.8.0-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.8.0-dev.1...v1.8.0-dev.2) (2026-06-27)\n\n### 🐛 Bug Fixes\n\n* Strength Training ([45b1065](https://github.com/rushiranpise/morphe-patches/commit/45b10651fffada2332259ab8724bf6dc1af319dd))\n",
+    "created_at": "2026-06-29T19:25:42",
+    "version": "v1.8.1-dev.1",
+    "description": "## [1.8.1-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.8.0...v1.8.1-dev.1) (2026-06-29)\n\n\n\n",
     "apps": [
       {
         "app_name": "Snipd: AI Podcast Player",
@@ -31478,6 +32337,54 @@
         "icon_url": "https://play-lh.googleusercontent.com/6tmzsW5-wGY3HYZjs4FC6d5TCX5_phdTyZvBLw2Kdag33iaQ3OyOE6p4KINyDMzoH3XAtpMUVM8pzq_nNvYsgQ"
       },
       {
+        "app_name": "3D Anatomy & Physiology",
+        "package": "air.com.musclemotion.anatomy",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content in Anatomy by Muscle Motion.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/-ev7tnOoxWu8-aFzA0ZRh57XZbW-d6hate8PMkXi0EZoy10rjlezFT_se9T-w7snms6_lNVuMgX8CdxpxY4UqQ"
+      },
+      {
+        "app_name": "Kyphosis Exercises - Hunchback",
+        "package": "air.com.musclemotion.kyphosis",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.4.9"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/76HXdzuUyxg9saq1W1-M3MMAMR-kaIeWQeL-gIF2VucJ0SFZ289v9EE4vxSLv1QenKke6CYF0U_Ln1u3955MDQ"
+      },
+      {
+        "app_name": "Posture Correction Exercises",
+        "package": "air.com.musclemotion.posture",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content in Posture Correction by Muscle Motion.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/_Oeb8p1aWXzzBJH584lyBUY_Xpc7tCWTOMHMp5iQMshazjaS1-LrJMSqiBYYx0Bj2X7QoEx92q_9XnAoCie6SA"
+      },
+      {
         "app_name": "Strength Training: Gym Workout",
         "package": "air.com.musclemotion.strength.mobile",
         "patches": [
@@ -31494,6 +32401,38 @@
         "icon_url": "https://play-lh.googleusercontent.com/k3r3bMRWlDUuKAx2MWdrvOQGDa6gsziPvOeHJ6bj3GrsLVrdYMArGTL9mtyDfqYl7EqghuMf0ZhIqtYPxwRE0Q"
       },
       {
+        "app_name": "Workout & Gym Training Plan",
+        "package": "air.com.musclemotion.workout",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/5uZfA57ZGZXnd6l0UPiKl7MUjwEAUjO2Z0-hM9WHllazU2ia7bkDZwDOEyl8cUryLEEuO1u3SsxXldek4GR9NA"
+      },
+      {
+        "app_name": "Yoga - Poses & Classes",
+        "package": "air.com.musclemotion.yoga",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content in Yoga by Muscle Motion.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/D_O_dhkUoHd2P-6uE4m89liVBoMV3K4sCJS_SACwjU8a_z0bruSDVgShqHoxVmwE_Cnu1hQn-fzegovxdOV2ew"
+      },
+      {
         "app_name": "Ninja VPN",
         "package": "app.ninjavpn.android",
         "patches": [
@@ -31508,22 +32447,6 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/Z10nyQkvnKpejvNvZ7LS3xXzZNRqq-nXAMiorVg8Ciyp87u2A8vIfgKbukMOZ-shf2i1OZUGkVJDmlhIDg8chg"
-      },
-      {
-        "app_name": "TiviMate IPTV Player",
-        "package": "ar.tvplayer.tv",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks TiviMate Premium.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "5.3.3"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/lXaMnFHizRDP9eHCRJCMwy9qYS2U9FDvwsNOUO9qappEEfhNzSuC6r2YTC8a-RYQqlCBc_hKiYOH2UXgtuiP"
       },
       {
         "app_name": "Proton VPN",
@@ -31813,7 +32736,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "4.18.6"
+              "4.19.6"
             ]
           }
         ],
@@ -32732,15 +33655,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
       }
     ],
-    "fingerprint": "b1f5020814fb2e64dedbff7a67159971e685b0fde5fdb8bf7c19df724cea9590"
+    "fingerprint": "d2c4c08d4445ec3ae8114f90ffa0627a4d22708ef022b77aab50dbcfa7c3f71e"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
     "channel": "stable",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-06-26T00:27:37",
-    "version": "v1.7.0",
-    "description": "## [1.7.0](https://github.com/rushiranpise/morphe-patches/compare/v1.6.0...v1.7.0) (2026-06-26)\n\n### 🐛 Bug Fixes\n\n* waze ([14d4782](https://github.com/rushiranpise/morphe-patches/commit/14d47825b88661cf985cad53635ea2d7dcabe189))\n\n### ✨ New Features\n\n* add AccuWeather ([1849324](https://github.com/rushiranpise/morphe-patches/commit/18493248a9005c25c78e828150af25a14c1a60d9))\n* add cashew ([95038e2](https://github.com/rushiranpise/morphe-patches/commit/95038e27747c0ab2a78a2dea19ebcceca9971a0b))\n* add Rocket Money ([2e6090c](https://github.com/rushiranpise/morphe-patches/commit/2e6090cfed6a3bce6871e3b4bf01448223fd23ea))\n* add waze ([3b27d0e](https://github.com/rushiranpise/morphe-patches/commit/3b27d0e91e0e51910ffc5a5c5fdca883a9533d97))\n* add windscribe ([2905d3c](https://github.com/rushiranpise/morphe-patches/commit/2905d3c73b0adde98b9d2df0bfe4bc7012f78904))\n* fix terabox ([1ec09f4](https://github.com/rushiranpise/morphe-patches/commit/1ec09f4aa579898e9142e828c4f43a5f54023898))\n",
+    "created_at": "2026-06-29T19:28:43",
+    "version": "v1.8.1",
+    "description": "## [1.8.1](https://github.com/rushiranpise/morphe-patches/compare/v1.8.0...v1.8.1) (2026-06-29)\n\n\n\n",
     "apps": [
       {
         "app_name": "Snipd: AI Podcast Player",
@@ -32759,6 +33682,118 @@
         "icon_url": "https://play-lh.googleusercontent.com/6tmzsW5-wGY3HYZjs4FC6d5TCX5_phdTyZvBLw2Kdag33iaQ3OyOE6p4KINyDMzoH3XAtpMUVM8pzq_nNvYsgQ"
       },
       {
+        "app_name": "3D Anatomy & Physiology",
+        "package": "air.com.musclemotion.anatomy",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content in Anatomy by Muscle Motion.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/-ev7tnOoxWu8-aFzA0ZRh57XZbW-d6hate8PMkXi0EZoy10rjlezFT_se9T-w7snms6_lNVuMgX8CdxpxY4UqQ"
+      },
+      {
+        "app_name": "Kyphosis Exercises - Hunchback",
+        "package": "air.com.musclemotion.kyphosis",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.4.9"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/76HXdzuUyxg9saq1W1-M3MMAMR-kaIeWQeL-gIF2VucJ0SFZ289v9EE4vxSLv1QenKke6CYF0U_Ln1u3955MDQ"
+      },
+      {
+        "app_name": "Posture Correction Exercises",
+        "package": "air.com.musclemotion.posture",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content in Posture Correction by Muscle Motion.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/_Oeb8p1aWXzzBJH584lyBUY_Xpc7tCWTOMHMp5iQMshazjaS1-LrJMSqiBYYx0Bj2X7QoEx92q_9XnAoCie6SA"
+      },
+      {
+        "app_name": "Strength Training: Gym Workout",
+        "package": "air.com.musclemotion.strength.mobile",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content in Strength Training by Muscle Motion. ",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.5.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/k3r3bMRWlDUuKAx2MWdrvOQGDa6gsziPvOeHJ6bj3GrsLVrdYMArGTL9mtyDfqYl7EqghuMf0ZhIqtYPxwRE0Q"
+      },
+      {
+        "app_name": "Workout & Gym Training Plan",
+        "package": "air.com.musclemotion.workout",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/5uZfA57ZGZXnd6l0UPiKl7MUjwEAUjO2Z0-hM9WHllazU2ia7bkDZwDOEyl8cUryLEEuO1u3SsxXldek4GR9NA"
+      },
+      {
+        "app_name": "Yoga - Poses & Classes",
+        "package": "air.com.musclemotion.yoga",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium content in Yoga by Muscle Motion.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/D_O_dhkUoHd2P-6uE4m89liVBoMV3K4sCJS_SACwjU8a_z0bruSDVgShqHoxVmwE_Cnu1hQn-fzegovxdOV2ew"
+      },
+      {
+        "app_name": "Ninja VPN",
+        "package": "app.ninjavpn.android",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Ninja VPN premium.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.4.6"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Z10nyQkvnKpejvNvZ7LS3xXzZNRqq-nXAMiorVg8Ciyp87u2A8vIfgKbukMOZ-shf2i1OZUGkVJDmlhIDg8chg"
+      },
+      {
         "app_name": "Proton VPN",
         "package": "ch.protonvpn.android",
         "patches": [
@@ -32773,6 +33808,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/yLQ8EKyC_HIHiR6UND0eVjiBsW7WH3jHPzieT7YFqg9_VBRBreUDC8QD-iIUtRhEpMrIxDPVPegm4KSyfduyiw"
+      },
+      {
+        "app_name": "1Tap Cleaner",
+        "package": "com.a0soft.gphone.acc.free",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks 1Tap Cleaner PRO: history export, app-group filters, unlimited cache targets, ad removal.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.18"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/RTKE8PfBmgWxT1Q7pdvw1kkyHWegQ6c_sBFTfOByK9Ncl9oVn_WA7pqBzYqjRSLY23AmTIHnaVAMZLVLyrFabQ"
       },
       {
         "app_name": "AccuWeather: Weather Radar",
@@ -32928,6 +33979,83 @@
         "icon_url": "https://play-lh.googleusercontent.com/PDwXxcvulfxi2bH4UjcMGJ7i0CQ7_QNypYohkhhg02zE7FdNTNRyF21-ikrLM5kyvcmNxtr77Va-7sS3NLbpNg"
       },
       {
+        "app_name": "MovieBox TV",
+        "package": "com.community.oneroom",
+        "patches": [
+          {
+            "name": "Bypass member rights check",
+            "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE, bypassing the server-side membership gate and preventing the 'Get Premium / 7-day trial' dialog.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.15.0616.03",
+              "1.0.2.0526.03"
+            ]
+          },
+          {
+            "name": "Clear VIP resolution tip",
+            "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE, suppressing any 'VIP only' badge shown on resolution options.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.15.0616.03",
+              "1.0.2.0526.03"
+            ]
+          },
+          {
+            "name": "Spoof member active status",
+            "description": "Forces MemberInfo.isActive() to always return true, making the app believe the membership subscription is active.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.15.0616.03",
+              "1.0.2.0526.03"
+            ]
+          },
+          {
+            "name": "Spoof member days left",
+            "description": "Forces MemberInfo.getDaysLeft() to always return 3650 (10 years), preventing the '0 days left' display on the premium screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.15.0616.03",
+              "1.0.2.0526.03"
+            ]
+          },
+          {
+            "name": "Spoof member provider flags",
+            "description": "Forces MemberProvider.c() (kv_is_pay_enable_member) and MemberProvider.e() (kv_is_skip_ad) to always return true.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.15.0616.03",
+              "1.0.2.0526.03"
+            ]
+          },
+          {
+            "name": "Suppress newbie bonus dialog",
+            "description": "Makes MemberProvider.w(F)V return immediately, suppressing the 'Claim 7-day trial / newbies bonus' ClaimMemberDialog popup.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.15.0616.03",
+              "1.0.2.0526.03"
+            ]
+          },
+          {
+            "name": "Unlock member resolution",
+            "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE, making all locally-cached episodes appear as unlocked to the playback layer.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.15.0616.03",
+              "1.0.2.0526.03"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
         "app_name": "CPU-Z",
         "package": "com.cpuid.cpu_z",
         "patches": [
@@ -32953,7 +34081,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "4.18.6"
+              "4.19.6"
             ]
           }
         ],
@@ -33302,6 +34430,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/n0wUxgYo8BoUhxcc_l3U_jCwCbPRQhIJKFzxdZ4katlhsswB0rLXKV4oiLj0235W_kYPLJKwIlk5-xMN-9Rt"
       },
       {
+        "app_name": "TomTom GO Navigation",
+        "package": "com.tomtom.gplay.navapp",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks car and truck premium features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.6.316-beta"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/wh18vBe9n0ZsqDOjBFOvCeTTlB-fD7EOhQrloLTmJtULPpis14X-gUN_zTxhL_a3Oi4XPcWnBF1kcZqMjcHrZj0"
+      },
+      {
         "app_name": "Rocket Money",
         "package": "com.truebill",
         "patches": [
@@ -33600,6 +34744,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/d4dltd4baeDGnfJD1H-ut68ERsIynfywij9zHRL7ioB-PJW3ENw-bFgg08KGPo8zQfSyRW36e58xhlqQ0pE1gg"
       },
       {
+        "app_name": "The Weather Channel",
+        "package": "com.weather.weather",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks The Weather Channel's Premium and Premium Pro subscription tiers. Enables the ad-free experience, extended 15-day hourly forecast, real-feel temperature, air quality index, minute-by-minute precipitation, severe weather notifications, and radar overlays gated behind the subscription paywall.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "16.10.1"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
         "app_name": "Windscribe VPN",
         "package": "com.windscribe.vpn",
         "patches": [
@@ -33614,6 +34774,20 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/k2TAILEsjpI_9_0lpmRRYiaty4JXOc3RpluhKccooYQ_s5llbvcywrQPxAWi_U_-eRHK9yaH1J5zXKfPqgrMxg"
+      },
+      {
+        "app_name": "Windy: Weather Radar & Forecast",
+        "package": "com.windyty.android",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Windy Pro features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/u-KmXMFiH9SLeIpYeNBKzHrwRX3Fi53H4ij3240cuOqxnrMMTpb8n0bVEC25VzqTKU90m43l4UaBg8ahP9RcUg"
       },
       {
         "app_name": "Yatri",
@@ -33803,7 +34977,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "0.1297.0"
+              "0.1298.0"
             ]
           }
         ],
@@ -33826,7 +35000,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
       }
     ],
-    "fingerprint": "06c39cc76e8e5e7287ae9bd54c027355ffce07cfdffb2cf9e35bd0f35506c08f"
+    "fingerprint": "bd2e72f911df979eb3f0fd96d4d8db1a3059678ec01b13130295656da9abefbd"
   },
   "rvx-morphed:dev": {
     "bundle": "rvx-morphed",
@@ -37663,6 +38837,211 @@
       }
     ],
     "fingerprint": "7ffda78b0775b6f9d48b0e8c561fdaab7d4dd908d108561cf6b54cec1d299048"
+  },
+  "telegram-morphe:stable": {
+    "bundle": "telegram-morphe",
+    "channel": "stable",
+    "repo_url": "https://github.com/MoonShadowKeeper/Telegram-patchesMorphe",
+    "created_at": "2026-06-28T14:29:36",
+    "version": "v1.20.0",
+    "description": "Forced cache invalidation",
+    "apps": [
+      {
+        "app_name": "Telegram",
+        "package": "org.telegram.messenger.web",
+        "patches": [
+          {
+            "name": "Anti-delete messages",
+            "description": "Prevents deleted messages from being removed locally.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Anti-disappearing media",
+            "description": "Keeps view-once and self-destructing media viewable forever.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Bypass channel restrictions",
+            "description": "Allows opening copyrighted, sensitive, and temporarily disabled channels.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Bypass content restrictions",
+            "description": "Allows saving from restricted channels.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Bypass integrity",
+            "description": "Bypasses integrity check to allow login on patched app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Disable auto update",
+            "description": "Disables automatic app update checks.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Download speed boost",
+            "description": "Increases download chunk size and max concurrent requests.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Hide typing indicator",
+            "description": "Hides your typing indicator from other users.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Removes sponsored messages and video ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          },
+          {
+            "name": "Telegram Premium",
+            "description": "Unlocks premium features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.8.3"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "02a722cc3f2f9d9a1a28b9b0f7528c50cde05be3e68281ae6433a9fb371e2d6c"
+  },
+  "trimpsuz:dev": {
+    "bundle": "trimpsuz",
+    "channel": "dev",
+    "repo_url": "https://github.com/Trimpsuz/morphe-busuu",
+    "created_at": "2026-06-14T12:08:41Z",
+    "version": "1.0.1-dev.1",
+    "description": "## [1.0.1](https://github.com/Trimpsuz/morphe-busuu/compare/v1.0.0...v1.0.1) (2026-06-14)\n\n### 🐛 Bug Fixes\n\n* app version number ([b963f26](https://github.com/Trimpsuz/morphe-busuu/commit/b963f26c8f9d448f0e50eb97783e0b1abc62a742))",
+    "apps": [
+      {
+        "app_name": "Busuu",
+        "package": "com.busuu.android.enc",
+        "patches": [
+          {
+            "name": "Spoof premium plus status",
+            "description": "Spoofs premium plus status",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "32.41.0"
+            ]
+          },
+          {
+            "name": "Spoof premium status",
+            "description": "Spoofs premium status",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "32.41.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/bodOsAH2LLt33V_Y43_f5HcH7oPf77s8LV2cWjXTHz3DMOeKlnWZStVgW9LjFODWPD0a9lI_zalvkmr1gG5W"
+      }
+    ],
+    "fingerprint": "8a77d634007abe066c68de2c90b8b5c8395ada3c46b844a8f26a0d6ee3e118c7"
+  },
+  "trimpsuz:stable": {
+    "bundle": "trimpsuz",
+    "channel": "stable",
+    "repo_url": "https://github.com/Trimpsuz/morphe-busuu",
+    "created_at": "2026-06-14T12:11:12Z",
+    "version": "1.0.1",
+    "description": "## [1.0.1](https://github.com/Trimpsuz/morphe-busuu/compare/v1.0.0...v1.0.1) (2026-06-14)\n\n### 🐛 Bug Fixes\n\n* app version number ([b963f26](https://github.com/Trimpsuz/morphe-busuu/commit/b963f26c8f9d448f0e50eb97783e0b1abc62a742))",
+    "apps": [
+      {
+        "app_name": "Busuu",
+        "package": "com.busuu.android.enc",
+        "patches": [
+          {
+            "name": "Spoof premium plus status",
+            "description": "Spoofs premium plus status",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "32.41.0"
+            ]
+          },
+          {
+            "name": "Spoof premium status",
+            "description": "Spoofs premium status",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "32.41.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/bodOsAH2LLt33V_Y43_f5HcH7oPf77s8LV2cWjXTHz3DMOeKlnWZStVgW9LjFODWPD0a9lI_zalvkmr1gG5W"
+      }
+    ],
+    "fingerprint": "2b526996983718d345c25bc68ed2576aced2d001710febdc941a843f9e5a2a5f"
+  },
+  "trolltaylor:stable": {
+    "bundle": "trolltaylor",
+    "channel": "stable",
+    "repo_url": "https://github.com/TrollTaylor/morphe-pause-fix",
+    "created_at": "2026-03-13T01:37:12Z",
+    "version": "1.0.38",
+    "description": "YouTube Pause Fix Patch Bundle",
+    "apps": [
+      {
+        "app_name": "YouTube",
+        "package": "com.google.android.youtube",
+        "patches": [
+          {
+            "name": "Fix Auto-Play Pause",
+            "description": "Fixes YouTube videos auto-pausing immediately after opening when logged in.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg"
+      }
+    ],
+    "fingerprint": "97d4f1c2322c08225e9dccfd9b5cfb68ca389634102756bd3bb6e94c8fe4a152"
   },
   "ts-patches:dev": {
     "bundle": "ts-patches",
