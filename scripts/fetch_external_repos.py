@@ -7,11 +7,12 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 from dotenv import load_dotenv
-from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR
+from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, DATA_DIR
 
 load_dotenv()
 
 REPOS_TXT_URL = "https://raw.githubusercontent.com/rushiforai/morphe-archive/main/repos.txt"
+REPOS_LIST_PATH = os.path.join(DATA_DIR, "repos_list.txt")
 EXTERNAL_INDEX_PATH = os.path.join(STATE_DIR, "external_repos.json")
 BUNDLES_RAW_DIR = os.path.join(RAW_DIR, "bundles")
 
@@ -40,6 +41,27 @@ def parse_repos_txt(text):
         if m:
             repos.append((m.group(1).strip(), m.group(2).strip()))
     return repos
+
+
+def save_repos_list(repos):
+    """Write all known repos (owner/repo -> URL) to repos_list.txt."""
+    lines = [
+        "# Morphe Patch Tracker - All Known Repositories",
+        "# Each line: owner/repo -> full GitHub URL",
+        f"# Last updated: {datetime.now(timezone.utc).isoformat()}",
+        f"# Total: {len(repos)} repos",
+        "",
+    ]
+    for owner, repo in sorted(repos, key=lambda x: (x[0].lower(), x[1].lower())):
+        lines.append(f"{owner}/{repo} -> https://github.com/{owner}/{repo}")
+    content = "\n".join(lines) + "\n"
+    ensure_dirs()
+    try:
+        with open(REPOS_LIST_PATH, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"  Saved {len(repos)} repos to {REPOS_LIST_PATH}")
+    except Exception as e:
+        print(f"  Failed to save repos list: {e}")
 
 
 def build_known_repo_urls():
@@ -334,6 +356,9 @@ def fetch_external_repos():
     # 2. Parse into repo list
     all_repos = parse_repos_txt(repos_text)
     print(f"  Found {len(all_repos)} repos in repos.txt")
+
+    # 2b. Save/refresh the local repos list file
+    save_repos_list(all_repos)
 
     # 3. Build known repo URLs from currently-downloaded Jman bundles
     known_urls = build_known_repo_urls()
