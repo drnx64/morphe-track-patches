@@ -48,34 +48,39 @@ function initChangelog() {
         });
     }
 
-    Promise.all([
-        fetch("data/changelog.json").then(function(res) {
-            if (!res.ok) throw new Error("Changelog status " + res.status);
-            return res.json();
-        }),
-        fetchAllData(),
-        fetch("data/state/icon_cache.json")
-            .then(function(res) { return res.ok ? res.json() : {}; })
-            .catch(function() { return {}; }),
-        fetch("data/state/name_cache.json")
-            .then(function(res) { return res.ok ? res.json() : {}; })
-            .catch(function() { return {}; })
-    ])
-    .then(function(items) {
-        log("initChangelog", "Network: changelog entries=" + (items[0]||[]).length + " bundles=" + Object.keys(items[1].bundles||{}).length);
-        if (cachedHtml) cachedHtml.style.display = "none";
-        iconCache = items[2];
-        if (items[3]) nameCache = items[3];
-        liveDataDate = items[1].date || "";
-        populateBundleData(items[1]);
-        renderChangelog(items[0], (items[1].bundles || {}));
-        renderScanInfo(items[1]);
-        setupChangelogViewToggle();
-        idbSet(CACHE_KEYS.CHANGELOG, items[0]);
-        idbSet(CACHE_KEYS.LIVE, items[1]);
-        idbSet(CACHE_KEYS.ICONS, items[2]);
-        idbSet(CACHE_KEYS.NAMES, items[3]);
-    })
+    fetch("data/state/icon_cache.json")
+        .then(function(res) { return res.ok ? res.json() : {}; })
+        .catch(function() { return {}; })
+        .then(function(iconData) {
+            iconCache = iconData;
+            idbSet(CACHE_KEYS.ICONS, iconCache);
+            preloadIcons(iconCache);
+            return fetch("data/state/name_cache.json")
+                .then(function(res) { return res.ok ? res.json() : {}; })
+                .catch(function() { return {}; });
+        })
+        .then(function(nameData) {
+            if (nameData) nameCache = nameData;
+            idbSet(CACHE_KEYS.NAMES, nameCache);
+            return Promise.all([
+                fetch("data/changelog.json").then(function(res) {
+                    if (!res.ok) throw new Error("Changelog status " + res.status);
+                    return res.json();
+                }),
+                fetchAllData()
+            ]);
+        })
+        .then(function(items) {
+            log("initChangelog", "Network: changelog entries=" + (items[0]||[]).length + " bundles=" + Object.keys(items[1].bundles||{}).length);
+            if (cachedHtml) cachedHtml.style.display = "none";
+            liveDataDate = items[1].date || "";
+            populateBundleData(items[1]);
+            renderChangelog(items[0], (items[1].bundles || {}));
+            renderScanInfo(items[1]);
+            setupChangelogViewToggle();
+            idbSet(CACHE_KEYS.CHANGELOG, items[0]);
+            idbSet(CACHE_KEYS.LIVE, items[1]);
+        })
     .catch(function(err) {
         log("initChangelog", "ERROR: " + err.message);
         console.error("[MorpheTracker] ERROR loading changelog data:", err);
