@@ -192,10 +192,12 @@ function getAppIconUrl(app) {
     return "";
 }
 
+var FALLBACK_ICON = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect width="20" height="20" fill="#6366f1" rx="4"/><text x="10" y="14" text-anchor="middle" fill="#fff" font-size="12" font-family="sans-serif" font-weight="bold">?</text></svg>');
+
 function getAppIconHtml(iconUrl, sizeClass) {
     if (!iconUrl) return "";
     sizeClass = sizeClass || "app-icon";
-    return '<img class="' + sizeClass + '" src="' + iconUrl + '" alt="" loading="lazy" onerror="this.remove()">';
+    return '<img class="' + sizeClass + '" src="' + iconUrl + '" alt="" loading="lazy" onerror="this.onerror=null;this.src=\'' + FALLBACK_ICON + '\'">';
 }
 
 function escHtml(str) {

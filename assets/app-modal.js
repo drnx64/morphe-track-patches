@@ -487,21 +487,19 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
 
     var showStable = hasStable;
     var showDev = hasDev;
-    if (hasStable && hasDev) {
-        if (stableBundle.version === devBundle.version) {
-            showStable = false;
-        } else if (compareVersions(stableBundle.version, devBundle.version) >= 0) {
-            showDev = false;
+    var defaultChannel = channel || "";
+
+    if (!defaultChannel && hasStable && hasDev) {
+        var stableDate = stableBundle.release_date || "";
+        var devDate = devBundle.release_date || "";
+        if (stableDate && devDate) {
+            defaultChannel = stableDate >= devDate ? "stable" : "dev";
+        } else if (stableBundle.version !== devBundle.version) {
+            defaultChannel = compareVersions(stableBundle.version, devBundle.version) >= 0 ? "stable" : "dev";
         }
     }
-
-    var defaultChannel = channel || "";
     if (!defaultChannel) {
-        if (showDev) {
-            defaultChannel = "dev";
-        } else {
-            defaultChannel = "stable";
-        }
+        defaultChannel = hasDev ? "dev" : "stable";
     }
     _historyChannel = defaultChannel;
 
@@ -564,10 +562,12 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
                 : '<div class="bundle-release-desc bundle-release-desc--empty" style="margin-top:0.5rem">No details.</div>';
         }
 
+        var currentBadgeHtml = '<span class="badge" style="background:#22c55e;color:#fff;font-size:0.65rem;margin-left:0.5rem">CURRENT</span>';
+
         releaseCard.innerHTML = [
             toggleHtml,
             '<div class="bundle-release-header">',
-            '  <span class="bundle-release-version">' + escHtml(currentBundle.version) + '</span>',
+            '  <span class="bundle-release-version">' + escHtml(currentBundle.version) + currentBadgeHtml + '</span>',
             '  <span class="bundle-release-badges">' + channelsHtml + '</span>',
             '</div>',
             dateHtml,
