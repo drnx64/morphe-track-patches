@@ -51,7 +51,19 @@ function runCheckPhase() {
     log("runCheckPhase", "START");
     const checkingEl = document.getElementById("checking-message");
 
-    fetchAllData().then(data => {
+    fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})).then(function(iconData) {
+        iconCache = iconData || {};
+        log("runCheckPhase", "Icons fetched=" + Object.keys(iconCache).length);
+        idbSet(CACHE_KEYS.ICONS, iconCache);
+        preloadIcons(iconCache);
+        return fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({}));
+    }).then(function(nameData) {
+        if (nameData) nameCache = nameData;
+        idbSet(CACHE_KEYS.NAMES, nameCache);
+        return Promise.all([fetchAllData(), fetchLastChecked()]);
+    }).then(function([data, lc]) {
+        if (lc) cachedLastCheckedOverride = lc;
+
         const lastRun = data.last_run || data.lastChecked || "";
         const storedRun = localStorage.getItem("morphe_last_run") || "";
         log("runCheckPhase", "lastRun=" + lastRun + " storedRun=" + storedRun);
@@ -67,21 +79,10 @@ function runCheckPhase() {
         }
 
         sessionStorage.setItem("morphe_checked", "1");
-
-        Promise.all([
-            fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-            fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-            fetchLastChecked()
-        ]).then(function(items) {
-            if (items[2]) cachedLastCheckedOverride = items[2];
-            log("runCheckPhase", "Icons=" + Object.keys(items[0]||{}).length + " Names=" + Object.keys(items[1]||{}).length + " LastChecked=" + (items[2]||"-"));
-            setTimeout(function() {
-                finalizeDashboard(data, items[0], items[1]);
-            }, 600);
-        });
+        finalizeDashboard(data, iconCache, nameCache);
     })
-    .catch(() => {
-        log("runCheckPhase", "data fetch failed, fallback to fetchAndRenderDashboard");
+    .catch(function(err) {
+        log("runCheckPhase", "data fetch failed: " + err.message + ", fallback to fetchAndRenderDashboard");
         sessionStorage.setItem("morphe_checked", "1");
         fetchAndRenderDashboard();
     });
@@ -100,25 +101,30 @@ function getBundleVersions(data) {
 
 function fetchAndRenderDashboard() {
     log("fetchAndRenderDashboard", "START");
-    Promise.all([
-        fetchAllData(),
-        fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-        fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})),
-        fetchLastChecked()
-    ])
-        .then(([data, cache, names, lc]) => {
-            if (lc) cachedLastCheckedOverride = lc;
-            log("fetchAndRenderDashboard", "SUCCESS, bundles=" + Object.keys(data.bundles||{}).length);
-            finalizeDashboard(data, cache, names);
-        })
-        .catch(err => {
-            log("fetchAndRenderDashboard", "ERROR: " + err.message);
-            console.error("[MorpheTracker] ERROR loading dashboard data:", err);
-            const container = document.getElementById("bundles-grid-container");
-            if (container) {
-                container.innerHTML = `<div class="error-state">Failed to load dashboard data: ${err.message}. Ensure data files exist.</div>`;
-            }
-        });
+
+    function doRender(data, cache, names, lc) {
+        if (lc) cachedLastCheckedOverride = lc;
+        finalizeDashboard(data, cache, names);
+    }
+
+    fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})).then(function(iconData) {
+        iconCache = iconData || {};
+        preloadIcons(iconCache);
+        return fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({}));
+    }).then(function(nameData) {
+        if (nameData) nameCache = nameData;
+        return Promise.all([fetchAllData(), fetchLastChecked()]);
+    }).then(function([data, lc]) {
+        log("fetchAndRenderDashboard", "SUCCESS, bundles=" + Object.keys(data.bundles||{}).length);
+        doRender(data, iconCache, nameCache, lc);
+    }).catch(function(err) {
+        log("fetchAndRenderDashboard", "ERROR: " + err.message);
+        console.error("[MorpheTracker] ERROR loading dashboard data:", err);
+        const container = document.getElementById("bundles-grid-container");
+        if (container) {
+            container.innerHTML = `<div class="error-state">Failed to load dashboard data: ${err.message}. Ensure data files exist.</div>`;
+        }
+    });
 }
 
 function finalizeDashboard(data, cache, names) {
