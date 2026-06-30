@@ -477,12 +477,61 @@ function applyFiltersFromUrl() {
 
 function setupDashboardFilters() {
     const searchInput = document.getElementById("search-input");
-    if (searchInput) {
-        searchInput.addEventListener("input", (e) => {
-            currentFilters.search = e.target.value.toLowerCase().trim();
+    const dropdown = document.getElementById("search-dropdown");
+
+    if (searchInput && dropdown) {
+        var clearBtn = document.getElementById("search-clear-btn");
+        var debounceTimer = null;
+
+        function updateClearBtn() {
+            if (clearBtn) {
+                clearBtn.classList.toggle("visible", searchInput.value.length > 0);
+            }
+        }
+
+        searchInput.addEventListener("input", function(e) {
+            var query = e.target.value;
+            updateClearBtn();
+            currentFilters.search = query.toLowerCase().trim();
             syncFilterToUrl();
             filterAndRenderBundles();
+
+            if (debounceTimer) clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(function() {
+                renderSearchDropdown(query, dropdown);
+            }, 120);
         });
+
+        searchInput.addEventListener("focus", function() {
+            updateClearBtn();
+            var query = this.value;
+            if (query && query.trim()) renderSearchDropdown(query, dropdown);
+        });
+
+        document.addEventListener("click", function(e) {
+            if (!dropdown.contains(e.target) && e.target !== searchInput) {
+                dropdown.classList.remove("visible");
+            }
+        });
+
+        searchInput.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") {
+                dropdown.classList.remove("visible");
+                searchInput.blur();
+            }
+        });
+
+        if (clearBtn) {
+            clearBtn.addEventListener("click", function() {
+                searchInput.value = "";
+                updateClearBtn();
+                currentFilters.search = "";
+                syncFilterToUrl();
+                dropdown.classList.remove("visible");
+                filterAndRenderBundles();
+                searchInput.focus();
+            });
+        }
     }
 
     const filterButtons = document.querySelectorAll(".filter-group .filter-btn");
@@ -509,6 +558,136 @@ function setupDashboardFilters() {
     });
     updateViewToggleUI();
     applyViewMode();
+}
+
+function renderSearchDropdown(query, dropdownEl) {
+    if (!dropdownEl || !query || !query.trim()) {
+        dropdownEl.classList.remove("visible");
+        return;
+    }
+    query = query.trim();
+    var searchInput = document.getElementById("search-input");
+
+    var grouped = {};
+    Object.values(allBundlesData).forEach(function(b) {
+        var name = b.bundle;
+        if (!grouped[name]) {
+            grouped[name] = {
+                bundle: name,
+                channels: [b.channel],
+                repo_url: b.repo_url,
+                version: b.version || "",
+                apps: [...(b.apps || [])]
+            };
+        } else {
+            if (b.version && !grouped[name].version) grouped[name].version = b.version;
+            if (grouped[name].channels.indexOf(b.channel) === -1) grouped[name].channels.push(b.channel);
+            var existingPkgs = {};
+            grouped[name].apps.forEach(function(a) { existingPkgs[a.package] = true; });
+            if (b.apps) {
+                b.apps.forEach(function(a) {
+                    if (!existingPkgs[a.package]) {
+                        grouped[name].apps.push(a);
+                        existingPkgs[a.package] = true;
+                    }
+                });
+            }
+        }
+    });
+
+    var allApps = [];
+    var allBundles = [];
+    Object.values(grouped).forEach(function(b) {
+        allBundles.push({ bundleName: b.bundle, appCount: (b.apps || []).length, channels: b.channels, version: b.version });
+        (b.apps || []).forEach(function(app) {
+            allApps.push({ app: app, bundleName: b.bundle });
+        });
+    });
+
+    var matchedApps = fuzzySearchItems(query, allApps, function(item) {
+        return resolveAppName(item.app) + " " + item.app.package;
+    }, 10);
+
+    var matchedBundles = fuzzySearchItems(query, allBundles, function(item) {
+        return item.bundleName;
+    }, 5);
+
+    if (matchedApps.length === 0 && matchedBundles.length === 0) {
+        dropdownEl.classList.remove("visible");
+        return;
+    }
+
+    var html = "";
+    matchedApps.forEach(function(m) {
+        var app = m.app;
+        var name = resolveAppName(app);
+        var pkg = app.package;
+        var patchCount = (app.patches || []).length;
+        var iconHtml = getAppIconHtml(getAppIconUrl(app), "search-result-icon");
+        html += '<div class="search-result" data-type="app" data-package="' + escHtml(pkg) + '" data-bundle="' + escHtml(m.bundleName) + '">';
+        html += iconHtml;
+        html += '<div class="search-result-info">';
+        html += '  <span class="search-result-name">' + escHtml(name) + '</span>';
+        html += '  <span class="search-result-pkg">' + escHtml(pkg) + '</span>';
+        html += '</div>';
+        html += '<div class="search-result-meta">';
+        html += '  <span class="search-result-bundle">' + escHtml(m.bundleName) + '</span>';
+        html += '  <span class="search-result-patches">' + patchCount + ' patch' + (patchCount !== 1 ? "es" : "") + '</span>';
+        html += '</div>';
+        html += '</div>';
+    });
+
+    if (matchedBundles.length > 0) {
+        html += '<div class="search-result-divider">Bundles</div>';
+        matchedBundles.forEach(function(b) {
+            html += '<div class="search-result search-result-bundle-row" data-type="bundle" data-bundle="' + escHtml(b.bundleName) + '">';
+            html += '<span class="search-result-icon search-result-icon-bundle">B</span>';
+            html += '<div class="search-result-info">';
+            html += '  <span class="search-result-name">' + escHtml(b.bundleName) + '</span>';
+            html += '  <span class="search-result-pkg">' + b.appCount + ' app' + (b.appCount !== 1 ? "s" : "") + '</span>';
+            html += '</div>';
+            html += '</div>';
+        });
+    }
+
+    dropdownEl.innerHTML = html;
+    dropdownEl.classList.add("visible");
+
+    Array.from(dropdownEl.querySelectorAll(".search-result")).forEach(function(el) {
+        el.addEventListener("click", function(e) {
+            e.stopPropagation();
+            var type = this.dataset.type;
+            var bundleName = this.dataset.bundle;
+            var packageName = this.dataset.package;
+
+            dropdownEl.classList.remove("visible");
+            searchInput.value = query;
+            currentFilters.search = query.toLowerCase().trim();
+            filterAndRenderBundles();
+
+            var g = grouped[bundleName];
+            var bundleData = {
+                version: g ? g.version || "" : "",
+                channels: g ? g.channels : []
+            };
+
+            if (type === "app" && packageName) {
+                openBundleModal(bundleName, bundleData);
+                setTimeout(function() {
+                    var appCard = document.querySelector('#bundle-modal-apps-list .app-mini-card[data-package="' + packageName + '"]');
+                    if (appCard) {
+                        appCard.scrollIntoView({ behavior: "smooth", block: "center" });
+                        appCard.classList.add("app-highlighted");
+                        setTimeout(function() {
+                            appCard.classList.remove("app-highlighted");
+                        }, 2500);
+                    }
+                }, 150);
+            } else {
+                openBundleModal(bundleName, bundleData);
+            }
+        });
+    });
 }
 
 function updateViewToggleUI() {

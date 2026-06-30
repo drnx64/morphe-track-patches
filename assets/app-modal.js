@@ -361,6 +361,7 @@ function openBundleModal(bundleName, bundleData) {
             card.setAttribute("role", "button");
             card.setAttribute("tabindex", "0");
             card.setAttribute("aria-label", "View patches for " + resolveAppName(app));
+            card.dataset.package = app.package;
 
             var isPre = isAppPreRelease(bundleName, app.package, allBundlesData);
             var preBadge = isPre ? '<span class="badge badge-pre-release">Pre-Release</span>' : '';

@@ -345,3 +345,41 @@ function hideToast() {
     toast.classList.remove("visible");
     if (toastTimer) clearTimeout(toastTimer);
 }
+
+function fuzzyScore(word, text) {
+    if (!word || !text) return 0;
+    word = word.toLowerCase();
+    text = text.toLowerCase();
+    if (text === word) return 100;
+    if (text.startsWith(word)) return 80;
+    if (text.includes(word)) return 60;
+    var ti = 0;
+    for (var wi = 0; wi < word.length && ti < text.length; wi++) {
+        var found = false;
+        while (ti < text.length) {
+            if (text[ti] === word[wi]) { found = true; ti++; break; }
+            ti++;
+        }
+        if (!found) return 0;
+    }
+    return wi === word.length ? 40 : 0;
+}
+
+function fuzzySearchItems(query, items, textFn, maxResults) {
+    if (!query || !items || items.length === 0) return [];
+    var words = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    if (words.length === 0) return [];
+    var results = [];
+    items.forEach(function(item) {
+        var text = textFn(item).toLowerCase();
+        var totalScore = 0;
+        for (var i = 0; i < words.length; i++) {
+            var s = fuzzyScore(words[i], text);
+            if (s === 0) return;
+            totalScore += s;
+        }
+        results.push({ item: item, score: totalScore });
+    });
+    results.sort(function(a, b) { return b.score - a.score; });
+    return results.slice(0, maxResults || 20).map(function(r) { return r.item; });
+}
