@@ -1023,6 +1023,41 @@
           ]
         }
       ]
+    },
+    {
+      "bundle": "samsung-morphe",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Samsung Health",
+          "package": "com.sec.android.app.shealth",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Bypass Samsung Account provider checks",
+                "description": "Replaces com.osp.app.signin with com.notsamsung.dummy in dex and routes account lookups through Android AccountManager instead of Samsung Account's provider.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable Knox integrity checks",
+                "description": "Bypass Knox, root, warranty bit, and SAK checks so Samsung Health runs on Knox-tripped devices (0x1) without root.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            4
+          ]
+        }
+      ]
     }
   ]
 }
