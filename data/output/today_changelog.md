@@ -1,8 +1,72 @@
-## [2026-06-28]
+## [2026-06-30]
+- **NEW BUNDLE** Bundle by **abdul-hubbali** (stable)
+  - **NEW APP** Google Photos (`com.google.android.apps.photos`) in abdul-hubbali patches
+- **NEW BUNDLE** Bundle by **dumb-software** (dev, stable)
+  - **NEW APP** T2C (`fr.t2c.t2c`) in dumb-software patches
+- **UPDATED** Bundle **ee-morphe**
+  - **REMOVED APP** Financeguru (`de.dwins.financeguru`) in ee-morphe patches
+  - **NEW APP** [PRE-RELEASE] Jack's Flight Club (`com.jacks_flights`) in ee-morphe patches
+  - **NEW APP** [PRE-RELEASE] Seedlang (`com.seedlang.mobile.android.all`) in ee-morphe patches
+  - **REMOVED APP** Wanderlog (`com.wanderlog.android`) in ee-morphe patches
+- **NEW BUNDLE** Bundle by **hellveticastandard** (dev, stable)
+  - **NEW APP** Sankaku App (`com.sankakucomplex.channel.black`) in hellveticastandard patches
 - **UPDATED** Bundle **hk-morphe**
   - **UPDATED APP** Sync for Reddit (`com.laurencedawson.reddit_sync`) in hk-morphe patches
   - **UPDATED APP** Sync for Reddit Dev (`com.laurencedawson.reddit_sync.dev`) in hk-morphe patches
   - **UPDATED APP** Sync for Reddit Pro (`com.laurencedawson.reddit_sync.pro`) in hk-morphe patches
+- **UPDATED** Bundle **hoo-dles**
+  - **UPDATED APP** Duolingo (`com.duolingo`) in hoo-dles patches
 - **UPDATED** Bundle **hoomans-morphe**
-  - **UPDATED APP** Projectivy Launcher (`com.spocky.projengmenu`) in hoomans-morphe patches
-  - **UPDATED APP** Tumblr (`com.tumblr`) in hoomans-morphe patches
+  - **UPDATED APP** Battery Guru (`com.paget96.batteryguru`) in hoomans-morphe patches
+  - **NEW APP** Poweramp (`com.maxmpz.audioplayer`) in hoomans-morphe patches
+  - **NEW APP** Smart AudioBook Player (`ak.alizandro.smartaudiobookplayer`) in hoomans-morphe patches
+  - **NEW APP** Symfonium (`app.symfonik.music.player`) in hoomans-morphe patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **NEW BUNDLE** Bundle by **kontsevoye** (dev, stable)
+  - **NEW APP** YouTube Music (`com.google.android.apps.youtube.music`) in kontsevoye patches
+- **UPDATED** Bundle **lain**
+  - **UPDATED APP** AudioRelay (`com.azefsw.audioconnect`) in lain patches
+  - **NEW APP** Boorusama (Play Store) (`com.degenk.boorusama`) in lain patches
+  - **NEW APP** Collage Maker - PhotoFancie (`com.surmin.photofancie.lite`) in lain patches
+  - **UPDATED APP** Hermit (`com.chimbori.hermitcrab`) in lain patches
+  - **UPDATED APP** Paletta (`com.medibang.android.medibangpro`) in lain patches
+  - **NEW APP** Super Proxy (`com.scheler.superproxy`) in lain patches
+  - **UPDATED APP** UDisc (`com.regasoftware.udisc`) in lain patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+- **NEW BUNDLE** Bundle by **npci-bhim** (stable)
+  - **NEW APP** BHIM UPI (`in.org.npci.upiapp`) in npci-bhim patches
+- **UPDATED** Bundle **piko**
+  - **UPDATED APP** X (`com.twitter.android`) in piko patches
+- **NEW BUNDLE** Bundle by **prathxm** (stable)
+  - **NEW APP** Chess.com (`com.chess`) in prathxm patches
+- **NEW BUNDLE** Bundle by **prathxm-ytmusic** (stable)
+  - **NEW APP** YouTube Music (`com.google.android.apps.youtube.music`) in prathxm-ytmusic patches
+- **NEW BUNDLE** Bundle by **quantro100** (stable)
+  - **NEW APP** AliExpress (`com.alibaba.aliexpresshd`) in quantro100 patches
+- **UPDATED** Bundle **rushiranpise**
+  - **UPDATED APP** 1Tap Cleaner (`com.a0soft.gphone.acc.free`) in rushiranpise patches
+  - **NEW APP** 3D Anatomy & Physiology (`air.com.musclemotion.anatomy`) in rushiranpise patches
+  - **UPDATED APP** Citizen - Safety Alert (`sp0n.citizen`) in rushiranpise patches
+  - **NEW APP** Kyphosis Exercises - Hunchback (`air.com.musclemotion.kyphosis`) in rushiranpise patches
+  - **UPDATED APP** MovieBox TV (`com.community.oneroom`) in rushiranpise patches
+  - **UPDATED APP** Ninja VPN (`app.ninjavpn.android`) in rushiranpise patches
+  - **NEW APP** Posture Correction Exercises (`air.com.musclemotion.posture`) in rushiranpise patches
+  - **UPDATED APP** Strength Training: Gym Workout (`air.com.musclemotion.strength.mobile`) in rushiranpise patches
+  - **UPDATED APP** TeraBox (`com.dubox.drive`) in rushiranpise patches
+  - **UPDATED APP** The Weather Channel (`com.weather.weather`) in rushiranpise patches
+  - **REMOVED APP** TiviMate IPTV Player (`ar.tvplayer.tv`) in rushiranpise patches
+  - **UPDATED APP** TomTom GO Navigation (`com.tomtom.gplay.navapp`) in rushiranpise patches
+  - **UPDATED APP** Windy: Weather Radar & Forecast (`com.windyty.android`) in rushiranpise patches
+  - **NEW APP** Workout & Gym Training Plan (`air.com.musclemotion.workout`) in rushiranpise patches
+  - **NEW APP** Yoga - Poses & Classes (`air.com.musclemotion.yoga`) in rushiranpise patches
+- **UPDATED** Bundle **samsung-morphe**
+  - **UPDATED APP** Samsung Health (`com.sec.android.app.shealth`) in samsung-morphe patches
+- **NEW BUNDLE** Bundle by **telegram-morphe** (stable)
+  - **NEW APP** Telegram (`org.telegram.messenger.web`) in telegram-morphe patches
+- **NEW BUNDLE** Bundle by **trimpsuz** (dev, stable)
+  - **NEW APP** Busuu (`com.busuu.android.enc`) in trimpsuz patches
+- **NEW BUNDLE** Bundle by **trolltaylor** (stable)
+  - **NEW APP** YouTube (`com.google.android.youtube`) in trolltaylor patches
