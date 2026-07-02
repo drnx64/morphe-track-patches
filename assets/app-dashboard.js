@@ -431,7 +431,7 @@ function renderTodayUpdates(data) {
                             appData = allBundlesData[devKey].apps.find(function(a) { return a.package === pkg; });
                         }
                         if (appData) {
-                            openAppModal(appData, { bundle: bundleName, channels: channels, patch_diff: app.patch_diff });
+                            openAppModal(appData, { bundle: bundleName, channels: channels, patch_diff: app.patch_diff, summary: app.summary });
                         }
                     });
                 }
