@@ -99,6 +99,9 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                     # Preserve/update patch diff data
                     if "patch_diff" in app:
                         extant["patch_diff"] = app["patch_diff"]
+                    # Preserve/update summary
+                    if "summary" in app:
+                        extant["summary"] = app["summary"]
 
 
 def generate_markdown_changelog(date_str, affected_bundles_dict):

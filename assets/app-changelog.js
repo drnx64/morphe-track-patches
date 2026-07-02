@@ -181,19 +181,22 @@ function renderChangelog(changelog, bundlesData) {
                     const appIconUrl = getAppIconUrl(app);
                     const appIconHtml4 = getAppIconHtml(appIconUrl);
                     const hasPlayStore = !!appIconUrl;
-                    const playLink = hasPlayStore
-                        ? `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-play-link">${escHtml(resolveAppName(app))}</a>`
-                        : escHtml(resolveAppName(app));
+                    const iconLink = hasPlayStore
+                        ? `<a href="https://play.google.com/store/apps/details?id=${app.package}" target="_blank" class="app-icon-link">${appIconHtml4}</a>`
+                        : appIconHtml4;
                     const scanBadges = (app.scan_numbers || []).map(sn => `<span class="badge badge-scan" title="${sn}${ordinalSuffix(sn)} scan batch">${sn}</span>`).join(' ');
+                    const channelsJson = JSON.stringify(bGroup.channels);
+                    const patchDiffJson = app.patch_diff ? JSON.stringify(app.patch_diff) : "";
+                    const summaryAttr = app.summary ? escHtml(app.summary).replace(/'/g, "&apos;") : "";
 
                     appsListHtml += `
-                        <li class="changelog-item">
+                        <li class="changelog-item" data-bundle="${bName}" data-package="${app.package}" data-channels='${channelsJson}' data-patch-diff='${patchDiffJson}' data-summary='${summaryAttr}'>
                             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 ${badgeHtml}
                                 ${preReleaseBadge}
                                 ${promotedBadge}
-                                ${appIconHtml4}
-                                <span><strong class="highlight-app">${playLink}</strong> ${scanBadges}</span>
+                                ${iconLink}
+                                <span><strong class="changelog-app-link" role="button" tabindex="0">${escHtml(resolveAppName(app))}</strong> ${scanBadges}</span>
                             </div>
                         </li>
                     `;
@@ -233,6 +236,41 @@ function renderChangelog(changelog, bundlesData) {
                     version: "",
                     channels: channels
                 });
+            });
+        });
+
+        var appLinks = card.querySelectorAll(".changelog-app-link");
+        appLinks.forEach(function(link) {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var item = this.closest(".changelog-item");
+                if (!item) return;
+                var pkg = item.getAttribute("data-package");
+                var bundleName = item.getAttribute("data-bundle");
+                var channels = JSON.parse(item.getAttribute("data-channels") || "[]");
+                var patchDiffStr = item.getAttribute("data-patch-diff");
+                var patchDiff = patchDiffStr ? JSON.parse(patchDiffStr) : null;
+                var summaryStr = item.getAttribute("data-summary");
+                var summary = summaryStr || null;
+                var stableKey = bundleName + ":stable";
+                var devKey = bundleName + ":dev";
+                var appData = null;
+                if (allBundlesData[stableKey]) {
+                    appData = allBundlesData[stableKey].apps.find(function(a) { return a.package === pkg; });
+                }
+                if (!appData && allBundlesData[devKey]) {
+                    appData = allBundlesData[devKey].apps.find(function(a) { return a.package === pkg; });
+                }
+                if (appData) {
+                    openAppModal(appData, { bundle: bundleName, channels: channels, patch_diff: patchDiff, summary: summary });
+                }
+            });
+            link.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    this.click();
+                }
             });
         });
     });

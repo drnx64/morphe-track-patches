@@ -53,7 +53,8 @@ function openAppModal(app, bundle) {
         devApp: devAppData || null,
         bundleName: bundle.bundle,
         currentChannel: "stable",
-        patchDiff: bundle.patch_diff || null
+        patchDiff: bundle.patch_diff || null,
+        summary: bundle.summary || null
     };
 
     var stableBtn = document.querySelector('.channel-toggle-btn[data-channel="stable"]');
@@ -138,7 +139,22 @@ function renderModalChannel() {
 
     var diffBanner = document.getElementById("modal-diff-banner");
     if (diffBanner) diffBanner.remove();
+    var summaryEl = document.getElementById("modal-summary-section");
+    if (summaryEl) summaryEl.remove();
     var patchDiff = modalState.patchDiff;
+    var summary = modalState.summary;
+    var insertAfterEl = document.querySelector(".modal-patches-header") || document.getElementById("modal-versions-row");
+
+    if (summary) {
+        var sEl = document.createElement("div");
+        sEl.id = "modal-summary-section";
+        sEl.className = "modal-summary-section";
+        sEl.innerHTML = '<span class="modal-summary-label">Summary</span><div class="modal-summary-text">' + escHtml(summary) + '</div>';
+        if (insertAfterEl && insertAfterEl.parentNode) {
+            insertAfterEl.parentNode.insertBefore(sEl, insertAfterEl.nextSibling);
+        }
+    }
+
     if (patchDiff && (patchDiff.patches_added.length > 0 || patchDiff.patches_removed.length > 0 || patchDiff.patches_modified.length > 0)) {
         var banner = document.createElement("div");
         banner.id = "modal-diff-banner";
@@ -158,15 +174,27 @@ function renderModalChannel() {
         (patchDiff.patches_modified || []).forEach(function(p) {
             var name = typeof p === 'string' ? p : p.name;
             var desc = typeof p === 'object' && p.description ? p.description : '';
+            var changes = typeof p === 'object' && p.changes ? p.changes : [];
             html += '<div class="diff-item diff-modified"><span class="diff-name">~ ' + escHtml(name) + '</span>';
             if (desc) html += '<span class="diff-desc">' + escHtml(desc) + '</span>';
+            if (changes.length > 0) {
+                html += '<div class="diff-changes-list">';
+                changes.forEach(function(c) {
+                    html += '<span class="diff-change-item">' + escHtml(c) + '</span>';
+                });
+                html += '</div>';
+            }
             html += '</div>';
         });
         html += '</div>';
         banner.innerHTML = html;
-        var afterEl = document.querySelector(".modal-patches-header") || document.getElementById("modal-versions-row");
-        if (afterEl && afterEl.parentNode) {
-            afterEl.parentNode.insertBefore(banner, afterEl.nextSibling);
+        if (insertAfterEl && insertAfterEl.parentNode) {
+            var refEl = document.getElementById("modal-summary-section");
+            if (refEl && refEl.nextSibling) {
+                refEl.parentNode.insertBefore(banner, refEl.nextSibling);
+            } else {
+                insertAfterEl.parentNode.insertBefore(banner, insertAfterEl.nextSibling);
+            }
         }
     }
 
@@ -681,11 +709,20 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
                             "REMOVED APP": '<span class="badge badge-removed">REMOVED APP</span>'
                         };
                         var ab = appBadgeMap[app.badge_type] || '<span class="badge badge-new">NEW APP</span>';
-                        var icon = getAppIconHtml(getAppIconUrl(app));
+                        var appIconUrl = getAppIconUrl(app);
+                        var icon = getAppIconHtml(appIconUrl);
+                        var hasPlayStore = !!appIconUrl;
+                        var iconLink = hasPlayStore
+                            ? '<a href="https://play.google.com/store/apps/details?id=' + encodeURIComponent(app.package) + '" target="_blank" class="app-icon-link">' + icon + '</a>'
+                            : icon;
                         var scanBadges = (app.scan_numbers || []).map(function(sn) {
                             return '<span class="badge badge-scan" title="' + sn + ordinalSuffix(sn) + ' scan batch">' + sn + '</span>';
                         }).join(' ');
-                        dayHtml += '<li class="changelog-item"><div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">' + ab + ' ' + icon + ' <span><strong>' + escHtml(resolveAppName(app)) + '</strong> ' + scanBadges + '</span></div></li>';
+                        var channelsArr = b.channels || [b.channel];
+                        var channelsJson = JSON.stringify(channelsArr).replace(/'/g, "&apos;");
+                        var patchDiffJson = app.patch_diff ? JSON.stringify(app.patch_diff).replace(/'/g, "&apos;") : "";
+                        var summaryAttr = app.summary ? escHtml(app.summary).replace(/'/g, "&apos;") : "";
+                        dayHtml += '<li class="changelog-item" data-bundle="' + bundleName + '" data-package="' + app.package + '" data-channels=\'' + channelsJson + '\' data-patch-diff=\'' + patchDiffJson + '\' data-summary=\'' + summaryAttr + '\'><div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">' + ab + ' ' + iconLink + ' <span><strong class="changelog-app-link" role="button" tabindex="0">' + escHtml(resolveAppName(app)) + '</strong> ' + scanBadges + '</span></div></li>';
                     });
                     dayHtml += '</ul>';
                 }
@@ -694,6 +731,40 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
 
         dayCard.innerHTML = dayHtml;
         container.appendChild(dayCard);
+
+        var appLinks = dayCard.querySelectorAll(".changelog-app-link");
+        appLinks.forEach(function(link) {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var item = this.closest(".changelog-item");
+                if (!item) return;
+                var pkg = item.getAttribute("data-package");
+                var bName2 = item.getAttribute("data-bundle");
+                var channels = JSON.parse(item.getAttribute("data-channels") || "[]");
+                var patchDiffStr = item.getAttribute("data-patch-diff");
+                var patchDiff = patchDiffStr ? JSON.parse(patchDiffStr) : null;
+                var summary = item.getAttribute("data-summary") || null;
+                var stableKey = bName2 + ":stable";
+                var devKey = bName2 + ":dev";
+                var appData = null;
+                if (allBundlesData[stableKey]) {
+                    appData = allBundlesData[stableKey].apps.find(function(a) { return a.package === pkg; });
+                }
+                if (!appData && allBundlesData[devKey]) {
+                    appData = allBundlesData[devKey].apps.find(function(a) { return a.package === pkg; });
+                }
+                if (appData) {
+                    openAppModal(appData, { bundle: bName2, channels: channels, patch_diff: patchDiff, summary: summary });
+                }
+            });
+            link.addEventListener("keydown", function(e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
     });
 }
 
