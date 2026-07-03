@@ -40778,9 +40778,9 @@
     "bundle": "ajstrick81-androidtv",
     "channel": "stable",
     "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-    "created_at": "2026-07-02T02:15:37",
-    "version": "v1.8.0",
-    "description": "# [1.8.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.7.0...v1.8.0) (2026-07-02)\n\n\n### Bug Fixes\n\n* **primevideo:** block additional Volley ad hosts ([b47e706](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b47e706d8597ba36ad66a2385a2e1ec07a123472))\n\n\n### Features\n\n* **primevideo:** add Clone Prime Video side-by-side install patch ([0ebea56](https://github.com/ajstrick81/morphe-androidtv-patches/commit/0ebea56de302d986a3e559a224c7e5e5affdab3b))\n\n\n\n",
+    "created_at": "2026-07-03T14:00:00",
+    "version": "v1.9.0",
+    "description": "# [1.9.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.8.0...v1.9.0) (2026-07-03)\n\n\n### Features\n\n* **pluto:** add certificate-pinning override for HTTPS inspection ([723ceeb](https://github.com/ajstrick81/morphe-androidtv-patches/commit/723ceebb3ee0987efb0991478b902b467bcd2076))\n* **pluto:** strip ad-break timeline to remove VOD ads ([16cc76b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/16cc76b67468d692ef0c4c1f7b5789d8cc79883b))\n* **pluto:** verify ad hooks against dex, add clickable-ads suppression ([575612f](https://github.com/ajstrick81/morphe-androidtv-patches/commit/575612f34caf006a040df1e200b02f03f31184c3))\n\n\n\n",
     "apps": [
       {
         "app_name": "Livingroom",
@@ -40975,12 +40975,37 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/0Xve4so8vFKdWH1nadrPraSJ2XoKlc2Fd4BToADo0f8gXTbljiwzuEA-OZXV86i5ubZ9uw8giaVVP3d1g_jm"
+      },
+      {
+        "app_name": "Pluto",
+        "package": "tv.pluto.android",
+        "patches": [
+          {
+            "name": "Override certificate pinning",
+            "description": "Edits Pluto's network_security_config to trust user CAs (system + user, overridePins) on both a new base-config and every existing domain-config — including the pluto.tv entry that is otherwise system-only — so an HTTPS-filtering proxy can inspect the HLS manifest. Optional adjunct to the manifest-rewrite ad approach.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.66.0-leanback"
+            ]
+          },
+          {
+            "name": "Skip ads",
+            "description": "Suppresses Pluto TV's ads. Empties the client-side ad-break timeline (StitcherSession.adBreaks) — the same data AdGuard strips via jsonprune — which removes on-demand (VOD) ad breaks entirely: ad video, markers, overlays, and beacons. Also no-ops pause ads and clickable-ad overlays. LIVE TV ads are real broadcast time in the linear feed and are not removable. Validated on-device, 5.66.0-leanback.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.66.0-leanback"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/O6MtMEvYNmr-I_cntqWT2Lq8L5Y5bG01V5udGLT8-8LcpNzeeOCDjgaX-mQEushfwrLjT74nVJMlmSgeIxtP"
       }
     ],
-    "fingerprint": "96bd6f1dd4bf456ba31a3a817d5763ffba24c3dbeab0dbc054c5f96cc8f923dd",
-    "release_notes": "# [1.8.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.7.0...v1.8.0) (2026-07-02)\n\n\n### Bug Fixes\n\n* **primevideo:** block additional Volley ad hosts ([b47e706](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b47e706d8597ba36ad66a2385a2e1ec07a123472))\n\n\n### Features\n\n* **primevideo:** add Clone Prime Video side-by-side install patch ([0ebea56](https://github.com/ajstrick81/morphe-androidtv-patches/commit/0ebea56de302d986a3e559a224c7e5e5affdab3b))\n\n\n\n",
-    "release_tag": "v1.8.0",
-    "release_date": "2026-07-02T02:15:37Z"
+    "fingerprint": "d87d8e679711e042b445d33b353baf92d688a8c5b99e9ceafdb2a2dcae954e04",
+    "release_notes": "# [1.9.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.8.0...v1.9.0) (2026-07-03)\n\n\n### Features\n\n* **pluto:** add certificate-pinning override for HTTPS inspection ([723ceeb](https://github.com/ajstrick81/morphe-androidtv-patches/commit/723ceebb3ee0987efb0991478b902b467bcd2076))\n* **pluto:** strip ad-break timeline to remove VOD ads ([16cc76b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/16cc76b67468d692ef0c4c1f7b5789d8cc79883b))\n* **pluto:** verify ad hooks against dex, add clickable-ads suppression ([575612f](https://github.com/ajstrick81/morphe-androidtv-patches/commit/575612f34caf006a040df1e200b02f03f31184c3))\n\n\n\n",
+    "release_tag": "v1.9.0",
+    "release_date": "2026-07-03T14:00:00Z"
   },
   "polka-bear:dev": {
     "bundle": "polka-bear",
