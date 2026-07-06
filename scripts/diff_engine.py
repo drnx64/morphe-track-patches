@@ -10,7 +10,6 @@ from state_manager import (
     ensure_dirs,
     RAW_DIR
 )
-from generate_summaries import template_summary
 
 def apps_are_different(old_app, new_app):
     """
@@ -132,15 +131,10 @@ def diff_snapshots():
             print(f"[+] Diff: Found new bundle {bundle_key}")
             apps = []
             for app in new_apps_list:
-                summary = template_summary(
-                    app["app_name"], "NEW APP",
-                    patch_count=len(app.get("patches", []))
-                )
                 apps.append({
                     "app_name": app["app_name"],
                     "package": app["package"],
-                    "badge_type": "NEW APP",
-                    "summary": summary
+                    "badge_type": "NEW APP"
                 })
             affected_bundles.append({
                 "bundle": bundle_name,
@@ -172,56 +166,36 @@ def diff_snapshots():
                                     promoted = True
                                     print(f"[→] Diff: App {app['app_name']} ({pkg}) promoted from dev to stable in {bundle_key}")
                         if promoted:
-                            summary = template_summary(
-                                app["app_name"], "UPDATED APP",
-                                patch_diff=None,
-                                patch_count=len(app.get("patches", []))
-                            )
                             changed_apps.append({
                                 "app_name": app["app_name"],
                                 "package": app["package"],
                                 "badge_type": "UPDATED APP",
-                                "promoted_from": "dev",
-                                "summary": summary
+                                "promoted_from": "dev"
                             })
                         else:
                             print(f"[+] Diff: Found new app {app['app_name']} ({pkg}) in {bundle_key}")
-                            summary = template_summary(
-                                app["app_name"], "NEW APP",
-                                patch_count=len(app.get("patches", []))
-                            )
                             changed_apps.append({
                                 "app_name": app["app_name"],
                                 "package": app["package"],
-                                "badge_type": "NEW APP",
-                                "summary": summary
+                                "badge_type": "NEW APP"
                             })
                     elif apps_are_different(old_app_map[pkg], app):
                         print(f"[~] Diff: Found updated app {app['app_name']} ({pkg}) in {bundle_key}")
                         patch_diff = compute_patch_diff(old_app_map[pkg], app)
-                        summary = template_summary(
-                            app["app_name"], "UPDATED APP",
-                            patch_diff=patch_diff
-                        )
                         changed_apps.append({
                             "app_name": app["app_name"],
                             "package": app["package"],
                             "badge_type": "UPDATED APP",
-                            "patch_diff": patch_diff,
-                            "summary": summary
+                            "patch_diff": patch_diff
                         })
 
                 for pkg, app in old_app_map.items():
                     if pkg not in new_app_map:
                         print(f"[-] Diff: Found removed app {app['app_name']} ({pkg}) in {bundle_key}")
-                        summary = template_summary(
-                            app["app_name"], "REMOVED APP"
-                        )
                         changed_apps.append({
                             "app_name": app["app_name"],
                             "package": app["package"],
-                            "badge_type": "REMOVED APP",
-                            "summary": summary
+                            "badge_type": "REMOVED APP"
                         })
 
                 # Only emit the bundle if at least one app-level change exists
