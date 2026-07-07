@@ -57,17 +57,37 @@ def generate_rss_feed():
         for bundle_entry in affected:
             bundle_name = bundle_entry.get("bundle", "unknown")
             channel = bundle_entry.get("channel", "unknown")
-            title = f"[{bundle_entry.get('badge_type', 'UPDATED')}] {bundle_name} patches — {date_str}"
-            desc = _build_item_description(bundle_entry)
-            guid = f"{site_url}/changelog.html#{bundle_name}-{channel}-{date_str}"
-            pub_date = _rfc2822(date_str)
-            items.append({
-                "title": title,
-                "description": desc,
-                "guid": guid,
-                "pubDate": pub_date,
-                "link": f"{site_url}/index.html#bundle={bundle_name}"
-            })
+            apps = bundle_entry.get("apps", [])
+            badge = bundle_entry.get("badge_type", "UPDATED")
+            for app in apps:
+                bt = app.get("badge_type", "CHANGED")
+                app_name = app.get("app_name", app.get("package", "unknown"))
+                title = f"[{bt}] {app_name} in {bundle_name}"
+                desc = (
+                    f"<p><strong>{bt}</strong> &mdash; {xml_escape(app_name)} "
+                    f"in {xml_escape(bundle_name)} ({channel}) &mdash; {date_str}</p>"
+                )
+                guid = f"{site_url}/changelog.html#{bundle_name}-{channel}-{date_str}-{app.get('package', app_name)}"
+                pub_date = _rfc2822(date_str)
+                items.append({
+                    "title": title,
+                    "description": desc,
+                    "guid": guid,
+                    "pubDate": pub_date,
+                    "link": f"{site_url}/index.html#bundle={bundle_name}"
+                })
+            if not apps:
+                title = f"[{badge}] {bundle_name} patches — {date_str}"
+                desc = _build_item_description(bundle_entry)
+                guid = f"{site_url}/changelog.html#{bundle_name}-{channel}-{date_str}"
+                pub_date = _rfc2822(date_str)
+                items.append({
+                    "title": title,
+                    "description": desc,
+                    "guid": guid,
+                    "pubDate": pub_date,
+                    "link": f"{site_url}/index.html#bundle={bundle_name}"
+                })
 
     # RSS 2.0
     rss_items = []

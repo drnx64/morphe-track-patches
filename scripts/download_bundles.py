@@ -4,7 +4,7 @@ import json
 import time
 from datetime import datetime
 from dotenv import load_dotenv
-from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR
+from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, CUSTOM_REPO_PATH, IGNORE_REPO_PATH, load_repo_list
 
 load_dotenv()
 
@@ -109,6 +109,20 @@ def is_morphe_bundle(bundle_json):
 
     return True
 
+def _load_skip_bundle_names():
+    """Load custom and ignore repos and return a set of bundle names to skip.
+
+    Each custom/ignore repo's owner name is used as a potential bundle name
+    prefix to match against Jman's bundle names.
+    """
+    skip = set()
+    for filepath in (CUSTOM_REPO_PATH, IGNORE_REPO_PATH):
+        for owner, repo, _ in load_repo_list(filepath):
+            skip.add(owner.lower().replace("_", "-"))
+            skip.add(f"{owner.lower()}-{repo.lower().replace('_', '-')}")
+    return skip
+
+
 def download_all_bundles():
     tree_json_path = os.path.join(RAW_DIR, "tree.json")
     tree_files = load_json(tree_json_path, default=[])
@@ -119,6 +133,14 @@ def download_all_bundles():
         
     bundles = group_tree_files(tree_files)
     print(f"Discovered {len(bundles)} distinct bundles in tree.")
+
+    # Load skip list from custom/ignore repos to avoid downloading duplicates
+    skip_bundles = _load_skip_bundle_names()
+    if skip_bundles:
+        print(f"Skipping {len(skip_bundles)} bundle names from custom/ignore repos")
+        before = len(bundles)
+        bundles = {k: v for k, v in bundles.items() if k.lower() not in skip_bundles}
+        print(f"  Filtered from {before} to {len(bundles)} bundles (skipped {before - len(bundles)})")
     
     # Clear raw bundles directory to ensure a clean state
     bundles_raw_dir = os.path.join(RAW_DIR, "bundles")

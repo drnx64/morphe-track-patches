@@ -1,5 +1,6 @@
 import os
 import json
+import re
 
 # Define base paths
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,6 +19,10 @@ LAST_RUN_PATH = os.path.join(STATE_DIR, "last_run.json")
 
 CHANGELOG_JSON_PATH = os.path.join(OUTPUT_DIR, "changelog.json")
 CHANGELOG_MD_PATH = os.path.join(OUTPUT_DIR, "changelog.md")
+
+# Repo list files
+CUSTOM_REPO_PATH = os.path.join(ROOT_DATA_DIR, "custom_repo.txt")
+IGNORE_REPO_PATH = os.path.join(ROOT_DATA_DIR, "ignore_repo.txt")
 
 # Split data files (kebab-case)
 CORE_JSON_PATH = os.path.join(ROOT_DATA_DIR, "core.json")
@@ -113,6 +118,68 @@ def save_bundles_json(data):
 
 def load_core_json():
     return load_json(CORE_JSON_PATH, default={})
+
+def load_repo_list(filepath):
+    """Load a repo list file (custom_repo.txt or ignore_repo.txt).
+
+    Returns a list of (owner, repo, platform) tuples where platform is 'github' or 'gitlab'.
+    Lines starting with '#' are ignored. Empty lines are ignored.
+    Format: owner/repo or gl:owner/repo for GitLab.
+    """
+    repos = []
+    if not os.path.exists(filepath):
+        return repos
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#"):
+                    continue
+                platform = "github"
+                entry = line
+                if line.startswith("gl:") or line.startswith("gitlab:"):
+                    platform = "gitlab"
+                    entry = line.split(":", 1)[1].strip()
+                m = re.match(r"^([^/]+)/([^/#\s]+)", entry)
+                if m:
+                    repos.append((m.group(1).strip(), m.group(2).strip(), platform))
+    except Exception as e:
+        print(f"Error loading repo list from {filepath}: {e}")
+    return repos
+
+def save_repo_list(filepath, repos):
+    """Save a list of (owner, repo, platform) tuples back to a repo list file.
+
+    Lines starting with '#' are preserved. Existing content before the first entry is kept.
+    """
+
+    header_lines = []
+    new_entries = []
+    if os.path.exists(filepath):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                in_header = True
+                for line in f:
+                    stripped = line.strip()
+                    if in_header and (not stripped or stripped.startswith("#")):
+                        header_lines.append(line.rstrip("\n"))
+                    else:
+                        in_header = False
+        except Exception:
+            header_lines = []
+    for owner, repo, platform in repos:
+        if platform == "gitlab":
+            new_entries.append(f"gl:{owner}/{repo}")
+        else:
+            new_entries.append(f"{owner}/{repo}")
+    content = "\n".join(header_lines + new_entries) + "\n"
+    try:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+    except Exception as e:
+        print(f"Error saving repo list to {filepath}: {e}")
+
+import re
 
 def load_stats_json():
     return load_json(STATS_JSON_PATH, default={})

@@ -2,9 +2,9 @@ var modalState = {};
 var _bundleWasOpen = false;
 
 function openAppModal(app, bundle) {
+    logEntry("openAppModal", (app.app_name || app.package) + " in " + (bundle && bundle.bundle) + " patches=" + (app.patches || []).length);
     const modal = document.getElementById("app-detail-modal");
     if (!modal) return;
-    log("openAppModal", "app=" + (app.app_name || app.package) + " bundle=" + (bundle && bundle.bundle) + " patches=" + (app.patches || []).length);
 
     _bundleWasOpen = false;
     var bundleModal = document.getElementById("bundle-detail-modal");
@@ -90,7 +90,7 @@ function openAppModal(app, bundle) {
 }
 
 function renderModalChannel() {
-    const channel = modalState.currentChannel;
+    logEntry("renderModalChannel", "channel=" + modalState.currentChannel + " stableApp=" + !!modalState.stableApp + " devApp=" + !!modalState.devApp);
     const stableApp = modalState.stableApp;
     const devApp = modalState.devApp;
 
@@ -188,7 +188,7 @@ function renderModalChannel() {
 }
 
 function closeAppModal() {
-    const modal = document.getElementById("app-detail-modal");
+    logEntry("closeAppModal");
     if (!modal) return;
     modal.classList.remove("open");
 
@@ -206,7 +206,7 @@ function closeAppModal() {
 }
 
 function buildModalPatchItem(patch, idx, showDevBadges) {
-    const item = document.createElement("div");
+    logEntry("buildModalPatchItem", patch.name + " idx=" + idx);
     const isOff = patch.use === false;
     const desc = patch.description || "";
     const hasOptions = patch.options && patch.options.length > 0;
@@ -278,9 +278,9 @@ function buildModalPatchItem(patch, idx, showDevBadges) {
 }
 
 function openBundleModal(bundleName, bundleData) {
+    logEntry("openBundleModal", bundleName + " stable=" + (allBundlesData[bundleName+":stable"] ? "found" : "missing") + " dev=" + (allBundlesData[bundleName+":dev"] ? "found" : "missing"));
     const modal = document.getElementById("bundle-detail-modal");
     if (!modal) return;
-    log("openBundleModal", "bundle=" + bundleName + " stable=" + (allBundlesData[bundleName+":stable"] ? "found" : "missing") + " dev=" + (allBundlesData[bundleName+":dev"] ? "found" : "missing") + " allBundlesData keys=" + Object.keys(allBundlesData).length);
 
     var stableKey = bundleName + ":stable";
     var devKey = bundleName + ":dev";
@@ -427,38 +427,36 @@ function openBundleModal(bundleName, bundleData) {
 }
 
 function closeBundleModal() {
-    var modal = document.getElementById("bundle-detail-modal");
+    logEntry("closeBundleModal");
     if (!modal) return;
     modal.classList.remove("open");
     document.body.style.overflow = "";
 }
 
 function openBundleHistory(bundleName) {
-    var modal = document.getElementById("bundle-history-modal");
+    logEntry("openBundleHistory", bundleName);
     if (!modal) return;
 
     document.getElementById("bundle-history-title").textContent = bundleName + " patches";
     document.getElementById("bundle-history-subtitle").textContent = "Releases & update history";
 
     var listEl = document.getElementById("bundle-history-list");
+    listEl.innerHTML = '<div class="loading-state">Loading history...</div>';
 
     modal.classList.add("open");
     document.body.style.overflow = "hidden";
 
-    Promise.all([idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.CHANGELOG), idbGet(CACHE_KEYS.RELEASE_CACHE)]).then(function(cached) {
-        if (cached[0] && cached[1]) {
-            renderBundleHistory(bundleName, cached[0], cached[1], "", cached[2] || null);
-        } else {
-            listEl.innerHTML = '<div class="loading-state">Loading history...</div>';
-        }
-    });
+    var networkDone = false;
 
+    log("openBundleHistory", "Fetching: fetchAllData + changelog.json + release_cache.json");
     Promise.all([
         fetchAllData(),
-        fetch("data/changelog.json?_t=" + Date.now()).then(function(r) { if (!r.ok) throw new Error("Status " + r.status); return r.json(); }),
-        fetch("data/state/release_cache.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; })
+        fetch("data/changelog.json?_t=" + Date.now()).then(function(r) { log("openBundleHistory", "changelog.json -> " + r.status); if (!r.ok) throw new Error("Status " + r.status); return r.json(); }),
+        fetch("data/state/release_cache.json?_t=" + Date.now()).then(function(r) { log("openBundleHistory", "release_cache.json -> " + r.status); return r.ok ? r.json() : {}; }).catch(function(e) { log("openBundleHistory", "release_cache.json error: " + e.message); return {}; })
     ])
     .then(function(items) {
+        networkDone = true;
+        log("openBundleHistory", "Data loaded: live=" + (!!items[0]) + " changelog=" + (items[1] ? (items[1].length || 0) + " entries" : "null") + " releaseCache=" + (items[2] ? Object.keys(items[2]).length + " repos" : "empty"));
         if (items[0] && items[1]) {
             idbSet(CACHE_KEYS.LIVE, items[0]);
             idbSet(CACHE_KEYS.CHANGELOG, items[1]);
@@ -469,10 +467,25 @@ function openBundleHistory(bundleName) {
         renderBundleHistory(bundleName, items[0], items[1], "", items[2]);
     })
     .catch(function() {
-        if (!listEl.querySelector(".bundle-release-card")) {
+        networkDone = true;
+        if (!listEl.querySelector(".bundle-release-card") && !listEl.querySelector(".changelog-day-card")) {
             listEl.innerHTML = '<div class="loading-state">Failed to load history. Check your connection.</div>';
         }
     });
+
+    setTimeout(function() {
+        if (!networkDone) {
+            log("openBundleHistory", "Cache fallback: trying IndexedDB");
+            Promise.all([idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.CHANGELOG), idbGet(CACHE_KEYS.RELEASE_CACHE)]).then(function(cached) {
+                if (cached[0] && cached[1]) {
+                    log("openBundleHistory", "Cache HIT — rendering from cached data");
+                    renderBundleHistory(bundleName, cached[0], cached[1], "", cached[2] || null);
+                } else {
+                    log("openBundleHistory", "Cache MISS — no cached data available");
+                }
+            });
+        }
+    }, 300);
 }
 
 var _historyBundleName = "";
@@ -481,7 +494,7 @@ var _historyChangelog = null;
 var _historyChannel = "";
 
 function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCache) {
-    var container = document.getElementById("bundle-history-list");
+    logEntry("renderBundleHistory", bundleName + " channel=" + channel + " liveData=" + (!!liveData) + " changelog=" + (changelog ? changelog.length + " days" : "null") + " releaseCache=" + (releaseCache ? Object.keys(releaseCache).length + " repos" : "null"));
     if (!container) return;
 
     _historyBundleName = bundleName;
@@ -489,6 +502,11 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
     _historyChangelog = changelog;
 
     container.innerHTML = "";
+
+    if (!liveData || !liveData.bundles) {
+        container.innerHTML = '<div class="loading-state">No bundle data available.</div>';
+        return;
+    }
 
     var stableKey = bundleName + ":stable";
     var devKey = bundleName + ":dev";
@@ -698,7 +716,7 @@ function renderBundleHistory(bundleName, liveData, changelog, channel, releaseCa
 }
 
 function closeBundleHistory() {
-    var modal = document.getElementById("bundle-history-modal");
+    logEntry("closeBundleHistory");
     if (!modal) return;
     modal.classList.remove("open");
     document.body.style.overflow = "";

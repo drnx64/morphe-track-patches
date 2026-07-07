@@ -5,6 +5,7 @@ function initDashboard() {
     const skelGrid = document.getElementById("skeleton-grid");
 
     applyFiltersFromUrl();
+    setupChangelogRefresh();
 
     fetchLastChecked().then(function(lc) {
         if (lc) cachedLastCheckedOverride = lc;
@@ -31,6 +32,8 @@ function initDashboard() {
             setupDashboardFilters();
             filterAndRenderBundles();
             scrollToHighlightedBundle();
+            advanceLoadingStep("Almost ready... [5/5]");
+            hideLoadingScreen();
         } else {
             log("initDashboard", "Incomplete cached data, waiting for network");
         }
@@ -47,19 +50,58 @@ function initDashboard() {
     }
 }
 
+function setupChangelogRefresh() {
+    logEntry("setupChangelogRefresh");
+    var btn = document.getElementById("changelog-refresh-btn");
+    if (!btn) return;
+    var loading = false;
+    btn.addEventListener("click", function(e) {
+        e.stopPropagation();
+        if (loading) return;
+        loading = true;
+        btn.classList.add("refreshing");
+        btn.disabled = true;
+        var container = document.getElementById("today-updates-container");
+        if (container) container.innerHTML = '<div class="skeleton-checking">Refreshing changelog...</div>';
+        fetch("data/changes.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }).then(function(changes) {
+            fetchAllData().then(function(data) {
+                if (data.changes) data.changes = changes;
+                else data.changes = changes;
+                renderTodayUpdates(data);
+                loading = false;
+                btn.classList.remove("refreshing");
+                btn.disabled = false;
+            }).catch(function() {
+                loading = false;
+                btn.classList.remove("refreshing");
+                btn.disabled = false;
+                if (container) container.innerHTML = '<div class="error-state">Refresh failed.</div>';
+            });
+        }).catch(function() {
+            loading = false;
+            btn.classList.remove("refreshing");
+            btn.disabled = false;
+            if (container) container.innerHTML = '<div class="error-state">Refresh failed.</div>';
+        });
+    });
+}
+
 function runCheckPhase() {
-    log("runCheckPhase", "START");
+    logEntry("runCheckPhase");
     const checkingEl = document.getElementById("checking-message");
+    advanceLoadingStep("Caching icons... [1/5]");
 
     fetch("data/state/icon_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({})).then(function(iconData) {
         iconCache = iconData || {};
         log("runCheckPhase", "Icons fetched=" + Object.keys(iconCache).length);
         idbSet(CACHE_KEYS.ICONS, iconCache);
+        advanceLoadingStep("Caching icons... [2/5]");
         preloadIcons(iconCache);
         return fetch("data/state/name_cache.json").then(r => r.ok ? r.json() : {}).catch(() => ({}));
     }).then(function(nameData) {
         if (nameData) nameCache = nameData;
         idbSet(CACHE_KEYS.NAMES, nameCache);
+        advanceLoadingStep("Fetching updates... [3/5]");
         return Promise.all([fetchAllData(), fetchLastChecked()]);
     }).then(function([data, lc]) {
         if (lc) cachedLastCheckedOverride = lc;
@@ -89,6 +131,7 @@ function runCheckPhase() {
 }
 
 function getBundleVersions(data) {
+    logEntry("getBundleVersions");
     const versions = {};
     for (const [key, b] of Object.entries(data.bundles || {})) {
         const name = b.bundle || key.split(":")[0];
@@ -100,7 +143,7 @@ function getBundleVersions(data) {
 }
 
 function fetchAndRenderDashboard() {
-    log("fetchAndRenderDashboard", "START");
+    logEntry("fetchAndRenderDashboard");
 
     function doRender(data, cache, names, lc) {
         if (lc) cachedLastCheckedOverride = lc;
@@ -120,6 +163,7 @@ function fetchAndRenderDashboard() {
     }).catch(function(err) {
         log("fetchAndRenderDashboard", "ERROR: " + err.message);
         console.error("[MorpheTracker] ERROR loading dashboard data:", err);
+        hideLoadingScreen();
         const container = document.getElementById("bundles-grid-container");
         if (container) {
             container.innerHTML = `<div class="error-state">Failed to load dashboard data: ${err.message}. Ensure data files exist.</div>`;
@@ -128,9 +172,13 @@ function fetchAndRenderDashboard() {
 }
 
 function finalizeDashboard(data, cache, names) {
+    logEntry("finalizeDashboard", "newRun=" + (data.last_run || data.lastChecked || "") + " bundles=" + Object.keys(data.bundles || {}).length);
     var newRun = data.last_run || data.lastChecked || "";
     if (newRun && newRun === cachedLastRun && Object.keys(allBundlesData).length > 0) {
         log("finalizeDashboard", "SKIP (no change), newRun=" + newRun);
+        advanceLoadingStep("Loading bundles... [4/5]");
+        advanceLoadingStep("Almost ready... [5/5]");
+        hideLoadingScreen();
         return;
     }
     log("finalizeDashboard", "START, newRun=" + newRun + " bundles=" + Object.keys(data.bundles||{}).length);
@@ -165,12 +213,15 @@ function finalizeDashboard(data, cache, names) {
     idbSet(CACHE_KEYS.LIVE, data);
     idbSet(CACHE_KEYS.ICONS, iconCache);
     idbSet(CACHE_KEYS.NAMES, nameCache);
+    advanceLoadingStep("Almost ready... [5/5]");
+    hideLoadingScreen();
     log("finalizeDashboard", "DONE");
 }
 
 window.addEventListener("hashchange", scrollToHighlightedBundle);
 
 function scrollToHighlightedBundle() {
+    logEntry("scrollToHighlightedBundle");
     const hash = window.location.hash;
     if (!hash.startsWith("#bundle=")) return;
 
@@ -195,6 +246,7 @@ function scrollToHighlightedBundle() {
 }
 
 function renderStats(data) {
+    logEntry("renderStats", "stats=" + JSON.stringify(data.stats).slice(0, 80));
     document.getElementById("stat-total-bundles").textContent = data.stats?.total_bundles ?? 0;
     document.getElementById("stat-total-apps").textContent = data.stats?.total_apps ?? 0;
     document.getElementById("stat-new-apps-today").textContent = data.stats?.new_apps_today ?? 0;
@@ -218,12 +270,14 @@ function renderStats(data) {
 }
 
 function renderScanInfo(data) {
+    logEntry("renderScanInfo");
     if (scanTimerInterval) clearInterval(scanTimerInterval);
     updateScanClocks(data);
     scanTimerInterval = setInterval(function() { updateScanClocks(data); }, 1000);
 }
 
 function isScanWindowActive() {
+    logEntry("isScanWindowActive");
     var now = new Date();
     var utcMin = now.getUTCMinutes();
     var utcSec = now.getUTCSeconds();
@@ -231,6 +285,7 @@ function isScanWindowActive() {
 }
 
 function updateScanClocks(data) {
+    logEntry("updateScanClocks");
     var now = new Date();
 
     var utcEl = document.getElementById("scan-utc-time");
@@ -297,6 +352,7 @@ function updateScanClocks(data) {
 }
 
 function renderTodayUpdates(data) {
+    logEntry("renderTodayUpdates", "affected=" + ((data.changes && data.changes.affected_bundles) || []).length);
     const updatesLabel = document.getElementById("updates-date-label");
     const container = document.getElementById("today-updates-container");
     if (!container) return;
@@ -454,6 +510,7 @@ function renderTodayUpdates(data) {
 }
 
 function syncFilterToUrl() {
+    logEntry("syncFilterToUrl");
     var params = new URLSearchParams();
     if (currentFilters.search) params.set("search", currentFilters.search);
     if (currentFilters.channel && currentFilters.channel !== "all") params.set("channel", currentFilters.channel);
@@ -462,6 +519,7 @@ function syncFilterToUrl() {
 }
 
 function applyFiltersFromUrl() {
+    logEntry("applyFiltersFromUrl", window.location.search);
     var params = new URLSearchParams(window.location.search);
     var search = params.get("search") || "";
     var channel = params.get("channel") || "all";
@@ -476,7 +534,7 @@ function applyFiltersFromUrl() {
 }
 
 function setupDashboardFilters() {
-    const searchInput = document.getElementById("search-input");
+    logEntry("setupDashboardFilters");
     const dropdown = document.getElementById("search-dropdown");
 
     if (searchInput && dropdown) {
@@ -561,6 +619,7 @@ function setupDashboardFilters() {
 }
 
 function renderSearchDropdown(query, dropdownEl) {
+    logEntry("renderSearchDropdown", "query=" + query);
     if (!dropdownEl || !query || !query.trim()) {
         dropdownEl.classList.remove("visible");
         return;
@@ -691,6 +750,7 @@ function renderSearchDropdown(query, dropdownEl) {
 }
 
 function updateViewToggleUI() {
+    logEntry("updateViewToggleUI");
     var opts = document.querySelectorAll(".view-toggle-opt");
     opts.forEach(function(btn) {
         var view = btn.getAttribute("data-view");
@@ -699,7 +759,7 @@ function updateViewToggleUI() {
 }
 
 function applyViewMode() {
-    var container = document.getElementById("bundles-grid-container");
+    logEntry("applyViewMode", "view=" + currentView);
     if (!container) return;
     container.classList.toggle("list-view", currentView === "list");
     var cards = container.querySelectorAll(".bundle-card");
@@ -709,7 +769,7 @@ function applyViewMode() {
 }
 
 function filterAndRenderBundles() {
-    const container = document.getElementById("bundles-grid-container");
+    logEntry("filterAndRenderBundles", "search=" + currentFilters.search + " channel=" + currentFilters.channel + " view=" + currentView);
     if (!container) return;
 
     const grouped = {};
@@ -790,6 +850,7 @@ function filterAndRenderBundles() {
 }
 
 function buildBundleCard(bundle) {
+    logEntry("buildBundleCard", bundle.bundle + " apps=" + (bundle.apps || []).length);
     const card = document.createElement("div");
     card.className = "bundle-card";
     card.dataset.bundleName = bundle.bundle;
@@ -868,6 +929,7 @@ function buildBundleCard(bundle) {
 }
 
 function buildAppCardsDrawer(card, bundle, apps) {
+    logEntry("buildAppCardsDrawer", bundle.bundle + " apps=" + apps.length);
     const drawer = card.querySelector("[data-drawer]");
     if (!drawer) return;
 
