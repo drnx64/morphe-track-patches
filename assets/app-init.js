@@ -26,7 +26,22 @@
     location.reload();
 })();
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function() {
+    logEntry("DOMContentLoaded");
+    log("init", "Checking IndexedDB cache");
+    Promise.all([idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.ICONS)]).then(function(items) {
+        log("init", "Cache found: live=" + !!items[0] + " icons=" + !!items[1]);
+        if (!(items[0] && items[1])) {
+            log("init", "Cache MISS — showing loading screen");
+            showLoadingScreen();
+        } else {
+            log("init", "Cache HIT — skipping loading screen");
+        }
+        _initPage();
+    });
+});
+
+function _initPage() {
     const isDashboard = document.getElementById("nav-dashboard") && document.getElementById("nav-dashboard").classList.contains("active");
     const isChangelog = document.getElementById("nav-changelog") && document.getElementById("nav-changelog").classList.contains("active");
 
@@ -42,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         initChangelog();
     } else {
         console.warn("[MorpheTracker] Could not determine page type!");
+        hideLoadingScreen();
     }
 
     const closeBtn = document.getElementById("modal-close-btn");
@@ -108,4 +124,4 @@ document.addEventListener("DOMContentLoaded", () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         });
     }
-});
+}

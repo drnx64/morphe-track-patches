@@ -2,6 +2,69 @@ var VERBOSE = localStorage.getItem("morphe_verbose") !== "0";
 if (VERBOSE) console.log("[MorpheTracker] Verbose logging ENABLED. Set localStorage.morphe_verbose=0 to disable.");
 window.logtrue123 = function() { VERBOSE = true; localStorage.setItem("morphe_verbose", "1"); console.log("[MorpheTracker] Verbose ENABLED"); };
 
+// --- Global fetch interceptor: logs every HTTP request ---
+var _origFetch = window.fetch;
+window.fetch = function(input, init) {
+    var url = (typeof input === 'string' ? input : (input && input.url)) || String(input);
+    var method = (init && init.method) || "GET";
+    if (VERBOSE) console.log("[MorpheTracker:FETCH] >>> " + method + " " + url);
+    var startTime = Date.now();
+    return _origFetch.call(window, input, init).then(function(r) {
+        var elapsed = Date.now() - startTime;
+        if (VERBOSE) console.log("[MorpheTracker:FETCH] <<< " + method + " " + url + " -> " + r.status + " (" + elapsed + "ms)");
+        return r;
+    }).catch(function(e) {
+        var elapsed = Date.now() - startTime;
+        if (VERBOSE) console.log("[MorpheTracker:FETCH] <<< " + method + " " + url + " -> ERROR (" + elapsed + "ms): " + e.message);
+        throw e;
+    });
+};
+
+// --- Function entry logging helper ---
+function logEntry(fnName, detail) {
+    if (!VERBOSE) return;
+    var msg = ">>> " + fnName;
+    if (detail !== undefined) msg += " | " + (typeof detail === 'object' ? JSON.stringify(detail).slice(0, 200) : String(detail).slice(0, 200));
+    console.log("[MorpheTracker] " + msg);
+}
+
+var _loadingSteps = [
+    "Initializing...",
+    "Caching icons...",
+    "Fetching updates...",
+    "Loading bundles...",
+    "Almost ready..."
+];
+var _loadingStepIndex = 0;
+
+function showLoadingScreen() {
+    logEntry("showLoadingScreen");
+    var el = document.getElementById("loading-screen");
+    if (el) el.classList.remove("hidden");
+    updateLoadingProgress(_loadingSteps[0], 0);
+}
+
+function hideLoadingScreen() {
+    logEntry("hideLoadingScreen");
+    var el = document.getElementById("loading-screen");
+    if (el) el.classList.add("hidden");
+}
+
+function updateLoadingProgress(message, pct) {
+    logEntry("updateLoadingProgress", message + " (" + pct + "%)");
+    var textEl = document.getElementById("loading-progress-text");
+    var barEl = document.getElementById("loading-progress-bar");
+    if (textEl) textEl.textContent = message || "";
+    if (barEl) barEl.style.width = Math.min(100, Math.max(0, pct || 0)) + "%";
+}
+
+function advanceLoadingStep(message) {
+    logEntry("advanceLoadingStep", message || _loadingSteps[_loadingStepIndex]);
+    var msg = message || _loadingSteps[_loadingStepIndex];
+    var pct = Math.round((_loadingStepIndex / (_loadingSteps.length - 1)) * 100);
+    updateLoadingProgress(msg, pct);
+}
+
 function log(area, msg) {
     if (!VERBOSE) return;
     console.log("[MorpheTracker:" + area + "]", msg);
@@ -140,7 +203,7 @@ function isAppPreRelease(bundleName, pkgName, bundlesData) {
     return inDev && !inStable;
 }
 
-const APP_VERSION = "3";
+const APP_VERSION = "5";
 const APP_VERSION_KEY = "morphe_app_version";
 
 const storedAppVersion = localStorage.getItem(APP_VERSION_KEY);
@@ -149,6 +212,7 @@ if (storedAppVersion !== APP_VERSION) {
   localStorage.removeItem("morphe_last_run");
   localStorage.removeItem("morphe_versions");
   localStorage.setItem(APP_VERSION_KEY, APP_VERSION);
+  try { indexedDB.deleteDatabase("MorpheTrackerCache"); } catch(e) {}
 }
 
 var allBundlesData = {};
@@ -157,7 +221,8 @@ var nameCache = {};
 var iconImageCache = {};
 
 function loadIconImage(iconUrl) {
-    if (!iconUrl || iconImageCache[iconUrl]) return Promise.resolve(iconImageCache[iconUrl] || null);
+    logEntry("loadIconImage", iconUrl ? iconUrl.slice(0, 80) : "null");
+    if (!iconUrl || iconImageCache[iconUrl]) { log("loadIconImage", iconUrl ? "cached HIT" : "null url"); return Promise.resolve(iconImageCache[iconUrl] || null); }
     var cacheKey = 'img_' + Math.abs(iconUrl.split('').reduce(function(h, c) { return ((h << 5) - h) + c.charCodeAt(0) | 0; }, 0)).toString(36);
     return idbGet(cacheKey).then(function(cached) {
         if (cached) {
@@ -189,6 +254,7 @@ function loadIconImage(iconUrl) {
 }
 
 function preloadIcons(iconMap) {
+    logEntry("preloadIcons", "map keys=" + Object.keys(iconMap || {}).length);
     var urls = {};
     for (var pkg in iconMap) {
         var url = iconMap[pkg];

@@ -7,7 +7,11 @@ import urllib.request
 import urllib.error
 from datetime import datetime, timezone
 from dotenv import load_dotenv
-from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, DATA_DIR
+from state_manager import (
+    load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, DATA_DIR,
+    CUSTOM_REPO_PATH, IGNORE_REPO_PATH,
+    load_repo_list, save_repo_list
+)
 
 load_dotenv()
 
@@ -162,13 +166,18 @@ def is_repo_tracked(owner, repo, known_urls):
     return False
 
 
-def try_fetch_source_file(owner, repo, filename):
-    """Try to fetch a file from the repo's default branch via raw.githubusercontent.com.
+def try_fetch_source_file(owner, repo, filename, platform="github"):
+    """Try to fetch a file from the repo's default branch.
 
-    Tries 'main' first, then 'master'.  Returns (content, branch) or (None, None).
+    For GitHub: tries raw.githubusercontent.com with 'main' then 'master'.
+    For GitLab: tries gitlab.com raw with 'main' then 'master'.
+    Returns (content, branch) or (None, None).
     """
     for branch in ("main", "master"):
-        raw_url = f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{filename}"
+        if platform == "gitlab":
+            raw_url = f"https://gitlab.com/{owner}/{repo}/-/raw/{branch}/{filename}"
+        else:
+            raw_url = f"https://raw.githubusercontent.com/{owner}/{repo}/{branch}/{filename}"
         req = urllib.request.Request(raw_url, headers={"User-Agent": "MorpheTracker/1.0"})
         try:
             with urllib.request.urlopen(req, timeout=10) as resp:
@@ -245,21 +254,23 @@ def _make_bundle_slug(owner, repo):
     return slug
 
 
-def process_external_repo(owner, repo):
+def process_external_repo(owner, repo, platform="github"):
     """Attempt to fetch and save a Morphe bundle from an external repo.
 
     Returns a dict describing what was done, or None on skip.
+    platform: 'github' or 'gitlab'
     """
     bundle_slug = _make_bundle_slug(owner, repo)
-    print(f"  Processing {owner}/{repo} -> bundle name: {bundle_slug}")
+    platform_label = "GitLab" if platform == "gitlab" else "GitHub"
+    print(f"  Processing {owner}/{repo} [{platform_label}] -> bundle name: {bundle_slug}")
 
     # 1. Fetch patches-bundle.json and patches-list.json from source
-    bundle_content, branch = try_fetch_source_file(owner, repo, "patches-bundle.json")
+    bundle_content, branch = try_fetch_source_file(owner, repo, "patches-bundle.json", platform)
     if not bundle_content:
         print(f"    SKIP — no patches-bundle.json found in source")
         return None
 
-    list_content, _ = try_fetch_source_file(owner, repo, "patches-list.json")
+    list_content, _ = try_fetch_source_file(owner, repo, "patches-list.json", platform)
     if not list_content:
         print(f"    SKIP — no patches-list.json found in source")
         return None
@@ -282,7 +293,7 @@ def process_external_repo(owner, repo):
         return None
 
     # 3. Determine channel(s) based on release tags
-    releases = fetch_github_releases(owner, repo)
+    releases = fetch_github_releases(owner, repo) if platform == "github" else []
     latest_stable = None
     latest_dev = None
     today = datetime.now(timezone.utc).isoformat()
@@ -339,38 +350,94 @@ def process_external_repo(owner, repo):
         "branch": branch,
         "channels": [c for c, _ in channels_to_create],
         "version": bundle_json.get("version", ""),
-        "repo_url": f"https://github.com/{owner}/{repo}",
+        "repo_url": f"https://{'gitlab' if platform == 'gitlab' else 'github'}.com/{owner}/{repo}",
+        "platform": platform,
     }
 
 
 def fetch_external_repos():
-    """Main entry point: fetch repos.txt, compare with Jman bundles, download missing."""
+    """Main entry point:
+    1. Load custom_repo.txt — these repos are fetched directly (not from Jman)
+    2. Load ignore_repo.txt — these repos are skipped entirely
+    3. Fetch repos.txt, filter out custom/ignored repos, download the rest
+    """
     ensure_dirs()
 
-    # 1. Fetch repos.txt
-    repos_text = fetch_repos_txt()
-    if not repos_text:
-        print("  No repos.txt data — skipping external repo fetch")
-        return
+    # 0a. Load custom repos — fetch these directly, skip them in Jman scan
+    custom_repos = load_repo_list(CUSTOM_REPO_PATH)
+    custom_keys = set()
+    for owner, repo, platform in custom_repos:
+        custom_keys.add(f"{owner}/{repo}".lower())
+    print(f"  Custom repos to fetch: {len(custom_repos)}")
+    for owner, repo, platform in custom_repos:
+        print(f"    - {owner}/{repo} [{platform}]")
 
-    # 2. Parse into repo list
-    all_repos = parse_repos_txt(repos_text)
-    print(f"  Found {len(all_repos)} repos in repos.txt")
+    # 0b. Load ignored repos — skip these entirely
+    ignore_repos = load_repo_list(IGNORE_REPO_PATH)
+    ignore_keys = set()
+    for owner, repo, _ in ignore_repos:
+        ignore_keys.add(f"{owner}/{repo}".lower())
+    if ignore_repos:
+        print(f"  Ignored repos (will skip): {len(ignore_repos)}")
 
-    # 2b. Save/refresh the local repos list file
-    save_repos_list(all_repos)
-
-    # 3. Build known repo URLs from currently-downloaded Jman bundles
+    # 0c. Build known repo URLs from currently-downloaded Jman bundles
     known_urls = build_known_repo_urls()
     print(f"  Found {len(known_urls)} known repo URLs from downloaded bundles")
 
-    # 4. Filter out already-tracked repos
+    # 0d. Already-tracked filter helper
+    def is_already_tracked(owner, repo):
+        key = f"{owner}/{repo}".lower()
+        if key in custom_keys:
+            return True
+        if key in ignore_keys:
+            return True
+        return is_repo_tracked(owner, repo, known_urls)
+
+    # 1. Process custom repos first (fetch directly, not from Jman)
+    custom_results = []
+    custom_errors = []
+    for owner, repo, platform in custom_repos:
+        try:
+            result = process_external_repo(owner, repo, platform)
+            if result:
+                custom_results.append(result)
+                print(f"    [OK] Custom repo added: {owner}/{repo}")
+            else:
+                custom_errors.append({"repo": f"{owner}/{repo}", "error": "No viable bundle data"})
+        except Exception as e:
+            print(f"    [ERR] Error processing custom repo {owner}/{repo}: {e}")
+            custom_errors.append({"repo": f"{owner}/{repo}", "error": str(e)})
+        time.sleep(0.3)
+
+    # 2. Fetch repos.txt
+    repos_text = fetch_repos_txt()
+    if not repos_text:
+        print("  No repos.txt data — skipping archive repo fetch")
+        # Still save index with custom results
+        save_json(EXTERNAL_INDEX_PATH, {
+            "last_run": datetime.now(timezone.utc).isoformat(),
+            "added": custom_results,
+            "errors": custom_errors,
+            "custom_fetched": len(custom_results),
+            "total_added": len(custom_results),
+            "total_errors": len(custom_errors),
+        })
+        return
+
+    # 3. Parse into repo list
+    all_repos = parse_repos_txt(repos_text)
+    print(f"  Found {len(all_repos)} repos in repos.txt")
+
+    # 3b. Save/refresh the local repos list file
+    save_repos_list(all_repos)
+
+    # 4. Filter out repos that are already tracked (in Jman, custom, or ignored)
     missing_repos = []
     for owner, repo in all_repos:
-        if not is_repo_tracked(owner, repo, known_urls):
+        if not is_already_tracked(owner, repo):
             missing_repos.append((owner, repo))
 
-    print(f"  Repos not yet tracked in Jman: {len(missing_repos)}")
+    print(f"  Repos not yet tracked in Jman/custom/ignore: {len(missing_repos)}")
 
     # 5. Skip repos that are clearly not Morphe patch repos
     skip_patterns = [
@@ -389,8 +456,8 @@ def fetch_external_repos():
     missing_repos = filtered
 
     # 6. Process each missing repo
-    results = []
-    errors = []
+    results = list(custom_results)
+    errors = list(custom_errors)
     for owner, repo in missing_repos:
         try:
             result = process_external_repo(owner, repo)
@@ -409,11 +476,14 @@ def fetch_external_repos():
         "last_run": datetime.now(timezone.utc).isoformat(),
         "added": results,
         "errors": errors,
+        "custom_fetched": len(custom_results),
         "total_added": len(results),
         "total_errors": len(errors),
     })
 
     print(f"  Added {len(results)} external repos ({len(errors)} errors)")
+    if custom_results:
+        print(f"    Custom: {len(custom_results)}")
     if results:
         for r in results:
             print(f"    - {r['owner']}/{r['repo']} -> {r['bundle_slug']} ({', '.join(r['channels'])})")

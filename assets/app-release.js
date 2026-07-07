@@ -1,11 +1,11 @@
 function stripVersionHeader(text) {
+    logEntry("stripVersionHeader", "len=" + (text ? text.length : 0));
     if (!text) return "";
-    var lines = text.split('\n');
     var idx = 0;
     while (idx < lines.length && !lines[idx].trim()) idx++;
     if (idx < lines.length) {
         var first = lines[idx].trim();
-        if (/^#{1,2}\s+(?:\[[^\]]*\]\([^)]*\)|v?\d[\w.\-+]*)\s*(?:\([^)]*\))?\s*$/.test(first)) {
+        if (/^#\s+(?:\[[^\]]*\]\([^)]*\)|(?:[\w\u00C0-\u024F'.\-]+\s+)*v?\d[\w.\-+]*)/.test(first)) {
             lines.splice(idx, 1);
         }
     }
@@ -80,8 +80,8 @@ function _parseStructuredEntries(raw, section) {
 }
 
 function parseReleaseNotes(text) {
+    logEntry("parseReleaseNotes", "len=" + (text ? text.length : 0));
     if (!text) return [];
-    var sections = [];
     var currentSection = null;
     var lines = text.split('\n');
     function startSection(heading) {
@@ -93,8 +93,8 @@ function parseReleaseNotes(text) {
         var trimmed = line.trim();
         if (/^#{1,2}\s+(?:\[[\w.\-+]+\]\([^)]*\)|[\w.]+[\w.-]*)\s*(?:\([\w\-\s,:]+\))?\s*$/.test(trimmed)) continue;
         if (/^\[.+\]\(.+\)/.test(trimmed) && trimmed.indexOf('|') !== -1) continue;
-        if (/^###\s*\S/.test(trimmed)) {
-            startSection(trimmed.replace(/^###\s+/, '').trim());
+        if (/^#{2,3}\s*\S/.test(trimmed)) {
+            startSection(trimmed.replace(/^#{2,3}\s+/, '').trim());
             continue;
         }
         if (/^={2,}\s*$/.test(trimmed) && i > 0) {
@@ -129,6 +129,16 @@ function parseReleaseNotes(text) {
     sections = sections.filter(function(s) {
         var h = s.heading.trim();
         if (/^v?[\d]+\.[\d]+/.test(h)) return false;
+        return true;
+    });
+    sections = sections.filter(function(s) {
+        var h = s.heading.trim().toLowerCase();
+        if (s.mode === 'markdown') {
+            var trimmed = s.markdown.trim();
+            if (trimmed.length < 10) return false;
+            if (h === 'need help?' || h.indexOf('need help') === 0) return false;
+            if (h === 'verification' && trimmed.length < 80) return false;
+        }
         return true;
     });
     return sections;
@@ -245,6 +255,7 @@ function renderChangeType(type) {
 }
 
 function renderReleaseSections(parsed) {
+    logEntry("renderReleaseSections", parsed ? parsed.length + " sections" : "null");
     if (!parsed || parsed.length === 0) return '';
     var html = '';
     parsed.forEach(function(section) {

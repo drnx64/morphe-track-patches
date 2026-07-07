@@ -1,5 +1,5 @@
 function initChangelog() {
-    log("initChangelog", "START");
+    logEntry("initChangelog");
     var cachedHtml = document.getElementById("skeleton-changelog");
 
     function populateBundleData(liveData) {
@@ -9,20 +9,6 @@ function initChangelog() {
         }
         log("initChangelog", "populateBundleData: " + Object.keys(allBundlesData).length + " entries");
     }
-
-    Promise.all([idbGet(CACHE_KEYS.CHANGELOG), idbGet(CACHE_KEYS.LIVE), idbGet(CACHE_KEYS.ICONS), idbGet(CACHE_KEYS.NAMES)]).then(function(items) {
-        log("initChangelog", "Cache: changelog=" + !!items[0] + " live=" + !!items[1] + " icons=" + !!items[2]);
-        if (items[0] && items[1] && items[2]) {
-            if (cachedHtml) cachedHtml.style.display = "none";
-            iconCache = items[2];
-            if (items[3]) nameCache = items[3];
-            liveDataDate = items[1].date || "";
-            populateBundleData(items[1]);
-            renderChangelog(items[0], (items[1].bundles || {}));
-            renderScanInfo(items[1]);
-            setupChangelogViewToggle();
-        }
-    }).catch(function(err) { log("initChangelog", "Cache error: " + err); });
 
     function setupChangelogViewToggle() {
         var toggleGroup = document.getElementById("changelog-view-toggle");
@@ -48,22 +34,28 @@ function initChangelog() {
         });
     }
 
+    log("initChangelog", "Fetching icon_cache.json");
     fetch("data/state/icon_cache.json")
-        .then(function(res) { return res.ok ? res.json() : {}; })
-        .catch(function() { return {}; })
+        .then(function(res) { log("initChangelog", "icon_cache.json -> " + res.status); return res.ok ? res.json() : {}; })
+        .catch(function(e) { log("initChangelog", "icon_cache.json error: " + e.message); return {}; })
         .then(function(iconData) {
-            iconCache = iconData;
-            idbSet(CACHE_KEYS.ICONS, iconCache);
+            iconCache = iconData || {};
+            log("initChangelog", "icon_cache loaded: " + Object.keys(iconCache).length + " entries");
+            advanceLoadingStep("Caching icons... [2/5]");
             preloadIcons(iconCache);
+            log("initChangelog", "Fetching name_cache.json");
             return fetch("data/state/name_cache.json")
-                .then(function(res) { return res.ok ? res.json() : {}; })
-                .catch(function() { return {}; });
+                .then(function(res) { log("initChangelog", "name_cache.json -> " + res.status); return res.ok ? res.json() : {}; })
+                .catch(function(e) { log("initChangelog", "name_cache.json error: " + e.message); return {}; });
         })
         .then(function(nameData) {
             if (nameData) nameCache = nameData;
-            idbSet(CACHE_KEYS.NAMES, nameCache);
+            log("initChangelog", "name_cache loaded: " + Object.keys(nameCache).length + " entries");
+            advanceLoadingStep("Fetching updates... [3/5]");
+            log("initChangelog", "Fetching changelog.json + all data");
             return Promise.all([
-                fetch("data/changelog.json").then(function(res) {
+                fetch("data/changelog.json?_t=" + Date.now()).then(function(res) {
+                    log("initChangelog", "changelog.json -> " + res.status);
                     if (!res.ok) throw new Error("Changelog status " + res.status);
                     return res.json();
                 }),
@@ -72,30 +64,62 @@ function initChangelog() {
         })
         .then(function(items) {
             log("initChangelog", "Network: changelog entries=" + (items[0]||[]).length + " bundles=" + Object.keys(items[1].bundles||{}).length);
+            advanceLoadingStep("Loading bundles... [4/5]");
             if (cachedHtml) cachedHtml.style.display = "none";
             liveDataDate = items[1].date || "";
             populateBundleData(items[1]);
             renderChangelog(items[0], (items[1].bundles || {}));
             renderScanInfo(items[1]);
             setupChangelogViewToggle();
-            idbSet(CACHE_KEYS.CHANGELOG, items[0]);
-            idbSet(CACHE_KEYS.LIVE, items[1]);
+            advanceLoadingStep("Almost ready... [5/5]");
+            hideLoadingScreen();
         })
     .catch(function(err) {
         log("initChangelog", "ERROR: " + err.message);
         console.error("[MorpheTracker] ERROR loading changelog data:", err);
+        hideLoadingScreen();
         if (cachedHtml) cachedHtml.style.display = "none";
         var container = document.getElementById("changelog-list-container");
         if (container) {
             container.innerHTML = '<div class="error-state">Failed to load changelog data: ' + err.message + '. Ensure data files are generated.</div>';
         }
     });
+
+    var clRefreshBtn = document.getElementById("changelog-refresh-btn");
+    if (clRefreshBtn) {
+        var clLoading = false;
+        clRefreshBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            if (clLoading) return;
+            clLoading = true;
+            clRefreshBtn.classList.add("refreshing");
+            clRefreshBtn.disabled = true;
+            var list = document.getElementById("changelog-list-container");
+            if (list) list.innerHTML = '<div class="loading-state">Refreshing changelog...</div>';
+            Promise.all([
+                fetch("data/changelog.json?_t=" + Date.now()).then(function(r) { if (!r.ok) throw new Error("Status " + r.status); return r.json(); }),
+                fetchAllData()
+            ]).then(function(items) {
+                liveDataDate = items[1].date || "";
+                populateBundleData(items[1]);
+                renderChangelog(items[0], (items[1].bundles || {}));
+                clLoading = false;
+                clRefreshBtn.classList.remove("refreshing");
+                clRefreshBtn.disabled = false;
+            }).catch(function() {
+                clLoading = false;
+                clRefreshBtn.classList.remove("refreshing");
+                clRefreshBtn.disabled = false;
+                if (list) list.innerHTML = '<div class="error-state">Refresh failed.</div>';
+            });
+        });
+    }
 }
 
 function renderChangelog(changelog, bundlesData) {
+    logEntry("renderChangelog", "entries=" + (changelog || []).length + " bundlesData keys=" + Object.keys(bundlesData).length);
     const container = document.getElementById("changelog-list-container");
     if (!container) return;
-    log("renderChangelog", "entries=" + (changelog || []).length + " bundlesData keys=" + Object.keys(bundlesData).length);
 
     if (!changelog || changelog.length === 0) {
         container.innerHTML = '<div class="loading-state">No changelog entries found.</div>';

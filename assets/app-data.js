@@ -1,4 +1,5 @@
 function idbSet(key, val) {
+    logEntry("idbSet", key);
     return new Promise(function(resolve) {
         var req = indexedDB.open('MorpheTrackerCache', 1);
         req.onupgradeneeded = function(e) { e.target.result.createObjectStore('store'); };
@@ -14,6 +15,7 @@ function idbSet(key, val) {
 }
 
 function idbGet(key) {
+    logEntry("idbGet", key);
     return new Promise(function(resolve) {
         var req = indexedDB.open('MorpheTrackerCache', 1);
         req.onupgradeneeded = function(e) { e.target.result.createObjectStore('store'); };
@@ -29,12 +31,14 @@ function idbGet(key) {
 }
 
 function fetchAllData() {
+    logEntry("fetchAllData");
     return Promise.all([
-        fetch("data/core.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
-        fetch("data/stats.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
-        fetch("data/changes.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; }),
-        fetch("data/bundles.json?_t=" + Date.now()).then(function(r) { return r.ok ? r.json() : {}; }).catch(function() { return {}; })
+        fetch("data/core.json?_t=" + Date.now()).then(function(r) { log("fetchAllData", "core.json -> " + r.status); return r.ok ? r.json() : {}; }).catch(function(e) { log("fetchAllData", "core.json error: " + e.message); return {}; }),
+        fetch("data/stats.json?_t=" + Date.now()).then(function(r) { log("fetchAllData", "stats.json -> " + r.status); return r.ok ? r.json() : {}; }).catch(function(e) { log("fetchAllData", "stats.json error: " + e.message); return {}; }),
+        fetch("data/changes.json?_t=" + Date.now()).then(function(r) { log("fetchAllData", "changes.json -> " + r.status); return r.ok ? r.json() : {}; }).catch(function(e) { log("fetchAllData", "changes.json error: " + e.message); return {}; }),
+        fetch("data/bundles.json?_t=" + Date.now()).then(function(r) { log("fetchAllData", "bundles.json -> " + r.status); return r.ok ? r.json() : {}; }).catch(function(e) { log("fetchAllData", "bundles.json error: " + e.message); return {}; })
     ]).then(function(items) {
+        log("fetchAllData", "results: date=" + (items[0] && items[0].date) + " bundles=" + Object.keys(items[3] || {}).length);
         return {
             date: (items[0] && items[0].date) || "",
             last_run: (items[0] && items[0].last_run) || "",
@@ -47,10 +51,14 @@ function fetchAllData() {
 }
 
 function fetchLastChecked() {
+    logEntry("fetchLastChecked");
     return fetch("data/state/last_run.json").then(function(r) {
-        if (!r.ok) return null;
+        if (!r.ok) { log("fetchLastChecked", "last_run.json -> " + r.status + " (not ok)"); return null; }
+        log("fetchLastChecked", "last_run.json -> " + r.status + " OK");
         return r.json();
     }).then(function(d) {
-        return d && d.lastChecked ? d.lastChecked : null;
-    }).catch(function() { return null; });
+        var lc = d && d.lastChecked ? d.lastChecked : null;
+        log("fetchLastChecked", "lastChecked=" + lc);
+        return lc;
+    }).catch(function(e) { log("fetchLastChecked", "error: " + e.message); return null; });
 }
