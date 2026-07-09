@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useAppContext } from '../../context/AppContext'
 
 const LABELS: [number, string][] = [
@@ -19,8 +20,19 @@ function getLabel(progress: number): string {
 
 export default function LoadingOverlay() {
   const { state } = useAppContext()
+  const [forceHide, setForceHide] = useState(false)
 
-  if (!state.loading) return null
+  useEffect(() => {
+    if (!state.loading) return
+    const timer = setTimeout(() => setForceHide(true), 15000)
+    return () => clearTimeout(timer)
+  }, [state.loading])
+
+  useEffect(() => {
+    if (!state.loading) setForceHide(false)
+  }, [state.loading])
+
+  if (!state.loading || forceHide) return null
 
   return (
     <div className="loading-overlay" id="loading-overlay">

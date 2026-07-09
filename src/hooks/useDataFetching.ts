@@ -52,7 +52,7 @@ export function useDataFetching() {
     log(`icon cache: ${Object.keys(iconData).length} entries`)
     dispatch({ type: 'SET_ICON_CACHE', payload: iconData })
     idbSet(CACHE_KEYS.ICONS, iconData)
-    preloadIcons(iconData)
+    preloadIcons(iconData).catch(() => {})
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 40 })
 
     log('fetching name cache...')
