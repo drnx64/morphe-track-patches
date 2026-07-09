@@ -1,7 +1,7 @@
 {
   "date": "2026-07-09",
-  "lastChecked": "2026-07-09T17:19:09Z",
-  "scan_counter": 5,
+  "lastChecked": "2026-07-09T19:32:16Z",
+  "scan_counter": 6,
   "affected_bundles": {
     "lakaka:dev": {
       "bundle": "lakaka",
@@ -89,7 +89,26 @@
           "package": "diozz.cubex",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            2
+            2,
+            6
+          ],
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [
+              {
+                "name": "Remove relaunch protection",
+                "description": "Forces zc.k.h() to return false so the relaunch / start-like-pro decision gate is suppressed. Combined with the Unlock premium patch, this prevents the \"Baixe este app na Play Store\" screen from appearing."
+              }
+            ],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "Anger of Stick 5",
+          "package": "jpark.aos5",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
           ]
         }
       ]
@@ -1184,17 +1203,18 @@
           "package": "com.ideapreneurnepal.moneymitra",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
+            "patches_added": [],
+            "patches_removed": [
               {
                 "name": "Force Active Subscription",
                 "description": "Patches Dart AOT-compiled libapp.so to force the active_subscription field in the /profile response deserializer to always be true. Replaces `ldur x1, [x29, -8]` (load parsed JSON active value) with `add x1, x22, #0x20` (load Dart `true` object) at the StoreField instruction in ActiveSubscription.fromJson."
               }
             ],
-            "patches_removed": [],
             "patches_modified": []
           },
           "scan_numbers": [
-            5
+            5,
+            6
           ]
         }
       ]
