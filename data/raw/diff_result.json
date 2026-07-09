@@ -6,44 +6,42 @@
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "CubeX Solver",
-          "package": "diozz.cubex",
+          "app_name": "Anger of Stick 5",
+          "package": "jpark.aos5",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
-            "patches_removed": [
+            "patches_removed": [],
+            "patches_modified": [
               {
-                "name": "Remove relaunch protection",
-                "description": "Forces zc.k.h() to return false so the relaunch / start-like-pro decision gate is suppressed. Combined with the Unlock premium patch, this prevents the \"Baixe este app na Play Store\" screen from appearing."
+                "name": "Free in-app purchases",
+                "description": "Skips Google Play Billing and credits IAP items (gem packs, coin packs, starter packs) directly. Lets the original failure path run after crediting to close the Contacting screen naturally. Also disables the startup purchase-restore flow.",
+                "changes": [
+                  "description updated"
+                ]
               }
-            ],
-            "patches_modified": []
+            ]
           }
-        },
-        {
-          "app_name": "Anger of Stick 5",
-          "package": "jpark.aos5",
-          "badge_type": "NEW APP"
         }
       ]
     },
     {
-      "bundle": "franticg33k",
-      "channel": "dev",
+      "bundle": "brealorg",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "MoneyMitra",
-          "package": "com.ideapreneurnepal.moneymitra",
+          "app_name": "Boost for Reddit",
+          "package": "com.rubenmayayo.reddit",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
+            "patches_added": [
               {
-                "name": "Force Active Subscription",
-                "description": "Patches Dart AOT-compiled libapp.so to force the active_subscription field in the /profile response deserializer to always be true. Replaces `ldur x1, [x29, -8]` (load parsed JSON active value) with `add x1, x22, #0x20` (load Dart `true` object) at the StoreField instruction in ActiveSubscription.fromJson."
+                "name": "Boost search default discovery",
+                "description": "Starts Boost search on an instant cached active-subreddit landing with Reddit-native labels."
               }
             ],
+            "patches_removed": [],
             "patches_modified": []
           }
         }
