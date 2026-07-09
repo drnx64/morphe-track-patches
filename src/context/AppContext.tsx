@@ -1,5 +1,7 @@
 import { createContext, useContext, useReducer, ReactNode } from 'react'
 import type { BundleData } from '../types/bundles'
+import type { StatsData } from '../types/api'
+import type { AffectedBundle } from '../types/changes'
 
 interface AppState {
   bundles: Record<string, BundleData>
@@ -8,7 +10,10 @@ interface AppState {
   iconImageCache: Record<string, string>
   liveDataDate: string
   lastChecked: string
+  stats: StatsData | null
+  changes: { affected_bundles?: AffectedBundle[] } | null
   loading: boolean
+  loadingProgress: number
   filters: { search: string; channel: 'all' | 'stable' | 'dev' }
   viewMode: 'grid' | 'list'
   changelogViewMode: 'grid' | 'list'
@@ -20,7 +25,10 @@ type AppAction =
   | { type: 'SET_NAME_CACHE'; payload: Record<string, string> }
   | { type: 'SET_ICON_IMAGE_CACHE'; payload: Record<string, string> }
   | { type: 'SET_METADATA'; payload: { liveDataDate: string; lastChecked: string } }
+  | { type: 'SET_STATS'; payload: StatsData | null }
+  | { type: 'SET_CHANGES'; payload: { affected_bundles?: AffectedBundle[] } | null }
   | { type: 'SET_LOADING'; payload: boolean }
+  | { type: 'SET_LOADING_PROGRESS'; payload: number }
   | { type: 'SET_FILTERS'; payload: Partial<AppState['filters']> }
   | { type: 'SET_VIEW_MODE'; payload: 'grid' | 'list' }
   | { type: 'SET_CHANGELOG_VIEW_MODE'; payload: 'grid' | 'list' }
@@ -32,7 +40,10 @@ const initialState: AppState = {
   iconImageCache: {},
   liveDataDate: '',
   lastChecked: '',
+  stats: null,
+  changes: null,
   loading: true,
+  loadingProgress: 0,
   filters: { search: '', channel: 'all' },
   viewMode: (localStorage.getItem('morphe_view') as 'grid' | 'list') || 'grid',
   changelogViewMode: (localStorage.getItem('morphe_changelog_view') as 'grid' | 'list') || 'grid',
@@ -50,8 +61,14 @@ function appReducer(state: AppState, action: AppAction): AppState {
       return { ...state, iconImageCache: action.payload }
     case 'SET_METADATA':
       return { ...state, ...action.payload }
+    case 'SET_STATS':
+      return { ...state, stats: action.payload }
+    case 'SET_CHANGES':
+      return { ...state, changes: action.payload }
     case 'SET_LOADING':
       return { ...state, loading: action.payload }
+    case 'SET_LOADING_PROGRESS':
+      return { ...state, loadingProgress: action.payload }
     case 'SET_FILTERS':
       return { ...state, filters: { ...state.filters, ...action.payload } }
     case 'SET_VIEW_MODE':

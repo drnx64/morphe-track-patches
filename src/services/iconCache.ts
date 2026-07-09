@@ -66,10 +66,32 @@ export async function preloadIcons(iconMap: Record<string, string>): Promise<voi
   log(`preloadIcons: ${unique.length} unique icon URLs`)
   if (!unique.length) return
 
-  for (const url of unique) {
-    await loadIconImage(url)
+  const BATCH_SIZE = 20
+  for (let i = 0; i < unique.length; i += BATCH_SIZE) {
+    const batch = unique.slice(i, i + BATCH_SIZE)
+    await Promise.all(batch.map(url => loadIconImage(url)))
   }
   log('preloadIcons done')
+}
+
+export async function preloadIconsFromPackages(
+  packages: string[],
+  iconCache: Record<string, string>
+): Promise<void> {
+  const urls: string[] = []
+  for (const pkg of packages) {
+    const url = iconCache[pkg]
+    if (url && url.startsWith('http')) {
+      urls.push(url)
+    }
+  }
+  if (!urls.length) return
+
+  const BATCH_SIZE = 20
+  for (let i = 0; i < urls.length; i += BATCH_SIZE) {
+    const batch = urls.slice(i, i + BATCH_SIZE)
+    await Promise.all(batch.map(url => loadIconImage(url)))
+  }
 }
 
 export function getCachedIconDataUrl(iconUrl: string): string | undefined {
