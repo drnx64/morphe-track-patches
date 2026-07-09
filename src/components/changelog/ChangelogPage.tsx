@@ -26,9 +26,8 @@ export default function ChangelogPage() {
   const { state, dispatch } = useAppContext()
   const [changelog, setChangelog] = useState<ChangelogEntry[]>([])
   const [loading, setLoading] = useState(true)
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>(
-    (localStorage.getItem('morphe_changelog_view') as 'grid' | 'list') || 'grid',
-  )
+
+  const viewMode = state.changelogViewMode
 
   useEffect(() => {
     const load = async () => {
@@ -122,7 +121,7 @@ export default function ChangelogPage() {
                 className={`view-toggle-opt${viewMode === 'grid' ? ' active' : ''}`}
                 data-view="grid"
                 title="Default view"
-                onClick={() => { setViewMode('grid'); localStorage.setItem('morphe_changelog_view', 'grid') }}
+                onClick={() => dispatch({ type: 'SET_CHANGELOG_VIEW_MODE', payload: 'grid' })}
               >
                 <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h2A1.5 1.5 0 0 1 6 2.5v2A1.5 1.5 0 0 1 4.5 6h-2A1.5 1.5 0 0 1 1 4.5v-2zm5 0A1.5 1.5 0 0 1 7.5 1h2A1.5 1.5 0 0 1 11 2.5v2A1.5 1.5 0 0 1 9.5 6h-2A1.5 1.5 0 0 1 6 4.5v-2zm5 0A1.5 1.5 0 0 1 12.5 1h2A1.5 1.5 0 0 1 16 2.5v2A1.5 1.5 0 0 1 14.5 6h-2A1.5 1.5 0 0 1 11 4.5v-2zM1 7.5A1.5 1.5 0 0 1 2.5 6h2A1.5 1.5 0 0 1 6 7.5v2A1.5 1.5 0 0 1 4.5 11h-2A1.5 1.5 0 0 1 1 9.5v-2zm5 0A1.5 1.5 0 0 1 7.5 6h2A1.5 1.5 0 0 1 11 7.5v2A1.5 1.5 0 0 1 9.5 11h-2A1.5 1.5 0 0 1 6 9.5v-2zm5 0A1.5 1.5 0 0 1 12.5 6h2A1.5 1.5 0 0 1 16 7.5v2A1.5 1.5 0 0 1 14.5 11h-2A1.5 1.5 0 0 1 11 9.5v-2zM1 12.5A1.5 1.5 0 0 1 2.5 11h2A1.5 1.5 0 0 1 6 12.5v2A1.5 1.5 0 0 1 4.5 16h-2A1.5 1.5 0 0 1 1 14.5v-2zm5 0A1.5 1.5 0 0 1 7.5 11h2A1.5 1.5 0 0 1 11 12.5v2A1.5 1.5 0 0 1 9.5 16h-2A1.5 1.5 0 0 1 6 14.5v-2zm5 0a1.5 1.5 0 0 1 1.5-1.5h2a1.5 1.5 0 0 1 1.5 1.5v2a1.5 1.5 0 0 1-1.5 1.5h-2a1.5 1.5 0 0 1-1.5-1.5v-2z" /></svg>
                 <span>Cards</span>
@@ -131,7 +130,7 @@ export default function ChangelogPage() {
                 className={`view-toggle-opt${viewMode === 'list' ? ' active' : ''}`}
                 data-view="list"
                 title="Compact view"
-                onClick={() => { setViewMode('list'); localStorage.setItem('morphe_changelog_view', 'list') }}
+                onClick={() => dispatch({ type: 'SET_CHANGELOG_VIEW_MODE', payload: 'list' })}
               >
                 <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" /></svg>
                 <span>Compact</span>

@@ -7,7 +7,6 @@ interface AppState {
   bundles: Record<string, BundleData>
   iconCache: Record<string, string>
   nameCache: Record<string, string>
-  iconImageCache: Record<string, string>
   liveDataDate: string
   lastChecked: string
   stats: StatsData | null
@@ -23,7 +22,6 @@ type AppAction =
   | { type: 'SET_BUNDLES'; payload: Record<string, BundleData> }
   | { type: 'SET_ICON_CACHE'; payload: Record<string, string> }
   | { type: 'SET_NAME_CACHE'; payload: Record<string, string> }
-  | { type: 'SET_ICON_IMAGE_CACHE'; payload: Record<string, string> }
   | { type: 'SET_METADATA'; payload: { liveDataDate: string; lastChecked: string } }
   | { type: 'SET_STATS'; payload: StatsData | null }
   | { type: 'SET_CHANGES'; payload: { affected_bundles?: AffectedBundle[] } | null }
@@ -37,7 +35,6 @@ const initialState: AppState = {
   bundles: {},
   iconCache: {},
   nameCache: {},
-  iconImageCache: {},
   liveDataDate: '',
   lastChecked: '',
   stats: null,
@@ -57,8 +54,6 @@ function appReducer(state: AppState, action: AppAction): AppState {
       return { ...state, iconCache: action.payload }
     case 'SET_NAME_CACHE':
       return { ...state, nameCache: action.payload }
-    case 'SET_ICON_IMAGE_CACHE':
-      return { ...state, iconImageCache: action.payload }
     case 'SET_METADATA':
       return { ...state, ...action.payload }
     case 'SET_STATS':
