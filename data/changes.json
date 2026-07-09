@@ -1079,32 +1079,16 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Hide filter bar",
-                "description": "Adds an option to hide the filter bar at the top of the homepage."
+                "name": "Hide music action buttons",
+                "description": "Adds options to hide action buttons under the player."
               }
             ],
-            "patches_removed": [
-              {
-                "name": "Hide category bar",
-                "description": "Adds an option to hide the category bar at the top of the homepage."
-              },
-              {
-                "name": "Hide music video ads",
-                "description": "Adds an option to hide ads that appear while listening to or streaming music videos, podcasts, or songs."
-              }
-            ],
-            "patches_modified": [
-              {
-                "name": "Hide ads",
-                "description": "Adds options to hide fullscreen ads, Premium promotions and video ads.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
+            "patches_removed": [],
+            "patches_modified": []
           },
           "scan_numbers": [
-            4
+            4,
+            5
           ]
         },
         {
@@ -1131,6 +1115,83 @@
           },
           "scan_numbers": [
             4
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "modx",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Hide Video/OTT tab",
+                "description": "Hides the Video/OTT download tab from the home screen by forcing its visibility flag to always report disabled."
+              },
+              {
+                "name": "Redirect avatar click to Settings",
+                "description": "Makes the top-right avatar open Settings directly instead of the Me/Profile tab."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "lain",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Epic!",
+          "package": "com.getepic.epic",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            5
+          ]
+        },
+        {
+          "app_name": "Manga Plus",
+          "package": "jp.co.shueisha.mangaplus",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "franticg33k",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "MoneyMitra",
+          "package": "com.ideapreneurnepal.moneymitra",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Force Active Subscription",
+                "description": "Patches Dart AOT-compiled libapp.so to force the active_subscription field in the /profile response deserializer to always be true. Replaces `ldur x1, [x29, -8]` (load parsed JSON active value) with `add x1, x22, #0x20` (load Dart `true` object) at the StoreField instruction in ActiveSubscription.fromJson."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            5
           ]
         }
       ]
