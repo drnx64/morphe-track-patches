@@ -12,7 +12,7 @@ import Modal from '../shared/Modal'
 import AppIcon from '../shared/AppIcon'
 import ChannelBadge from '../shared/ChannelBadge'
 import VersionChip from '../shared/VersionChip'
-import type { AppData, PatchData } from '../../types/bundles'
+import type { AppData, PatchData, PatchDiff } from '../../types/bundles'
 import type { ReleaseCacheData } from '../../types/api'
 
 interface HistoryEntry {
@@ -32,6 +32,8 @@ export default function AppDetailModal() {
   const [appHistory, setAppHistory] = useState<HistoryEntry[]>([])
   const [historyExpanded, setHistoryExpanded] = useState(false)
   const [releaseCache, setReleaseCache] = useState<ReleaseCacheData | null>(null)
+  const [patchDiff, setPatchDiff] = useState<PatchDiff | null>(null)
+  const [patchDiffExpanded, setPatchDiffExpanded] = useState(false)
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -46,6 +48,11 @@ export default function AppDetailModal() {
     window.addEventListener('open-app', handler)
     return () => window.removeEventListener('open-app', handler)
   }, [])
+
+  useEffect(() => {
+    if (!app?.patch_diff) { setPatchDiff(null); return }
+    setPatchDiff(app.patch_diff)
+  }, [app])
 
   useEffect(() => {
     if (!open || !app) return
@@ -173,6 +180,30 @@ export default function AppDetailModal() {
         <div className="bundle-modal-actions">
           <a className="add-morphe-btn" href={addMorpheUrl} target="_blank" rel="noopener">Add to Morphe</a>
         </div>
+
+        {patchDiff && (
+          <div className="app-diff-section">
+            <div
+              className="app-diff-header"
+              role="button"
+              tabIndex={0}
+              onClick={() => setPatchDiffExpanded(!patchDiffExpanded)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setPatchDiffExpanded(!patchDiffExpanded) } }}
+            >
+              <span className="app-diff-title">Changes in this update</span>
+              <span className={`app-history-toggle${patchDiffExpanded ? ' expanded' : ''}`}>
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+                  <path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10 8 6.22 4.28a.75.75 0 0 1 0-1.06z" />
+                </svg>
+              </span>
+            </div>
+            {patchDiffExpanded && (
+              <div className="app-diff-body">
+                {renderPatchDiff(patchDiff)}
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="modal-patches-header">
           <span className="modal-patches-title">Patches</span>
@@ -399,6 +430,35 @@ function AppHistoryItem({
       )}
     </div>
   )
+}
+
+function renderPatchDiff(diff: PatchDiff): string {
+  let html = ''
+  if (diff.patches_added?.length) {
+    html += '<div class="diff-group diff-added"><div class="diff-group-label">Added</div>'
+    for (const p of diff.patches_added) {
+      const name = typeof p === 'string' ? p : p.name
+      html += `<div class="diff-entry">+ ${escHtml(name)}</div>`
+    }
+    html += '</div>'
+  }
+  if (diff.patches_removed?.length) {
+    html += '<div class="diff-group diff-removed"><div class="diff-group-label">Removed</div>'
+    for (const p of diff.patches_removed) {
+      const name = typeof p === 'string' ? p : p.name
+      html += `<div class="diff-entry">- ${escHtml(name)}</div>`
+    }
+    html += '</div>'
+  }
+  if (diff.patches_modified?.length) {
+    html += '<div class="diff-group diff-modified"><div class="diff-group-label">Modified</div>'
+    for (const p of diff.patches_modified) {
+      const name = typeof p === 'string' ? p : p.name
+      html += `<div class="diff-entry">~ ${escHtml(name)}</div>`
+    }
+    html += '</div>'
+  }
+  return html || '<div class="diff-empty">No patch changes recorded.</div>'
 }
 
 function filterAppHistory(changelog: any[], pkg: string): HistoryEntry[] {

@@ -224,7 +224,7 @@ export default function BundleHistoryModal() {
                             <span className="badge-version">{escHtml(b.version)}</span>
                             <ChannelBadge channel={b.channel} />
                           </div>
-                          {b.body && !b.isCurrent && <div dangerouslySetInnerHTML={{ __html: renderReleaseBodyFromText(b.body) }} />}
+                          {b.body && <div dangerouslySetInnerHTML={{ __html: renderReleaseBodyFromText(b.body) }} />}
                         </>
                       ) : (
                         <>

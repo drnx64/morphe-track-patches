@@ -2715,6 +2715,67 @@ h1 {
     padding: 1rem 0;
 }
 
+/* ── Patch diff section ────────────────────────────────── */
+.app-diff-section {
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--border-radius-sm);
+    background: rgba(255,255,255,0.015);
+    overflow: hidden;
+}
+
+.app-diff-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s ease;
+}
+.app-diff-header:hover { background: rgba(255,255,255,0.03); }
+
+.app-diff-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--color-dev);
+}
+
+.app-diff-body {
+    padding: 0 0.75rem 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.diff-group { display: flex; flex-direction: column; gap: 0.2rem; }
+
+.diff-group-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 0.15rem;
+}
+
+.diff-added .diff-group-label { color: var(--color-stable); }
+.diff-removed .diff-group-label { color: var(--color-critical); }
+.diff-modified .diff-group-label { color: var(--color-dev); }
+
+.diff-entry {
+    font-size: 0.78rem;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+.diff-added .diff-entry { color: var(--color-stable); }
+.diff-removed .diff-entry { color: var(--color-critical); }
+.diff-modified .diff-entry { color: var(--color-dev); }
+
+.diff-empty { font-size: 0.78rem; color: var(--text-secondary); font-style: italic; }
+
 /* ── App history section ───────────────────────────────── */
 .app-history-section {
     margin-top: 1.25rem;

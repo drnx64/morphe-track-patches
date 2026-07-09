@@ -1,19 +1,10 @@
 import { useAppContext } from '../../context/AppContext'
 import { formatTime, getTimeAgo } from '../../utils/format'
-import { useEffect, useState } from 'react'
-import { fetchLastChecked } from '../../services/fetchData'
 
 export default function StatsSection() {
   const { state } = useAppContext()
-  const [lastCheckedOverride, setLastCheckedOverride] = useState('')
 
-  useEffect(() => {
-    fetchLastChecked().then((lc) => {
-      if (lc) setLastCheckedOverride(lc)
-    })
-  }, [])
-
-  const lastChecked = lastCheckedOverride || state.lastChecked
+  const lastChecked = state.lastChecked
   const data = state.bundles
   const bundles = Object.values(data)
   const totalApps = bundles.reduce((sum, b) => sum + (b.apps?.length || 0), 0)
