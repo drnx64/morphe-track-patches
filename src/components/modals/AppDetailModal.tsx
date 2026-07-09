@@ -353,11 +353,16 @@ function AppHistoryItem({
       const lower = text.toLowerCase()
       const pkgEsc = appPackage.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
       if (new RegExp(`\\b${pkgEsc}\\b`, 'i').test(lower)) return true
-      const nameWords = appName.split(/\s+/)
+      const nameLower = appName.toLowerCase()
+      const nameWords = nameLower.split(/\s+/)
       if (nameWords.length >= 2) {
-        return nameWords.every(w => w.length > 2 && new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(lower))
+        const multiWordPat = nameWords.map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('\\s+')
+        if (new RegExp(multiWordPat, 'i').test(lower)) return true
       }
-      return new RegExp(`\\b${appName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(lower)
+      for (const word of nameWords) {
+        if (word.length >= 5 && new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(lower)) return true
+      }
+      return false
     }
     const relevant = parsed.filter((s) => {
       if (s.mode === 'markdown') {
@@ -403,7 +408,7 @@ function filterAppHistory(changelog: any[], pkg: string): HistoryEntry[] {
     for (const b of (day.affected_bundles || [])) {
       for (const app of (b.apps || [])) {
         if (app.package === pkg) {
-          const key = `${day.date}|${b.bundle}|${app.badge_type}`
+          const key = `${day.date}|${b.bundle}|${app.badge_type}|${app.package}`
           if (!seen.has(key)) {
             seen.add(key)
             result.push({
