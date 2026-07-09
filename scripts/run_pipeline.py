@@ -83,11 +83,12 @@ def run():
 
 
 def run_silent():
-    """Run RSS generation only, for silent pipeline runs with no data changes."""
-    from generate_site import generate_rss_feed
+    """Sync data files and run RSS generation for silent pipeline runs with no data changes."""
+    from generate_site import generate_static_files, generate_rss_feed
+    generate_static_files()
     generate_rss_feed()
 
-    print("\n=== SILENT RUN COMPLETE (RSS feed refreshed) ===")
+    print("\n=== SILENT RUN COMPLETE (data synced, RSS feed refreshed) ===")
 
 
 if __name__ == "__main__":

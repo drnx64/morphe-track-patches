@@ -29,6 +29,12 @@ export default function Footer() {
       <p className="footer-disclaimer">
         This site uses <a href="https://umami.is" target="_blank" rel="noopener">Umami</a> for privacy-focused analytics &mdash; no personal data is collected.
       </p>
+      <p className="footer-disclaimer footer-disclaimer--warning">
+        <svg className="warning-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6zm0 2.5a1 1 0 0 1 1 1v4a1 1 0 0 1-2 0v-4a1 1 0 0 1 1-1zm0 7a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+        </svg>
+        <span><strong>Disclaimer:</strong> Only add patch bundles or sources you trust. This site is not liable for any damages or issues arising from the use of third-party patches. Data is aggregated from public sources and provided for informational purposes only.</span>
+      </p>
     </footer>
   )
 }

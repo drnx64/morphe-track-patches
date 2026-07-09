@@ -14,6 +14,7 @@ import ScanInfoSection from '../dashboard/ScanInfoSection'
 import AppDetailModal from '../modals/AppDetailModal'
 import BundleDetailModal from '../modals/BundleDetailModal'
 import BundleHistoryModal from '../modals/BundleHistoryModal'
+import { getCachedIconDataUrl } from '../../services/iconCache'
 import AppIcon from '../shared/AppIcon'
 import { Badge } from '../shared/Badge'
 import ChannelBadge from '../shared/ChannelBadge'
@@ -210,7 +211,8 @@ function DayCard({ day }: { day: ChangelogEntry }) {
         const preBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : ''
         const promotedBadge = app.promoted_from ? '<span class="badge badge-promoted">MOVED TO STABLE</span>' : ''
         const iconUrl = getAppIconUrl(app, state.iconCache)
-        const iconHtml = iconUrl ? `<a href="https://play.google.com/store/apps/details?id=${encodeURIComponent(app.package)}" target="_blank" class="app-icon-link"><img class="app-icon" src="${iconUrl}" alt="" loading="lazy"></a>` : ''
+        const dataUrl = iconUrl ? getCachedIconDataUrl(iconUrl) : null
+        const iconHtml = iconUrl ? `<a href="https://play.google.com/store/apps/details?id=${encodeURIComponent(app.package)}" target="_blank" class="app-icon-link"><img class="app-icon" src="${dataUrl || iconUrl}" alt="" loading="lazy"></a>` : ''
         const channelsJson = escHtml(JSON.stringify(bGroup.channels))
         const patchDiffJson = app.patch_diff ? escHtml(JSON.stringify(app.patch_diff)) : ''
         const summaryAttr = app.summary ? escHtml(app.summary).replace(/'/g, '&apos;') : ''
@@ -230,9 +232,29 @@ function DayCard({ day }: { day: ChangelogEntry }) {
     dayHtml = '<div class="loading-state" style="padding: 1rem;">No major changes recorded on this date.</div>'
   }
 
+  const handleDateClick = () => {
+    const bundleNames = Object.keys(grouped)
+    if (bundleNames.length > 0) {
+      const firstBundle = bundleNames[0]
+      const channels = grouped[firstBundle].channels
+      window.dispatchEvent(new CustomEvent('open-bundle-history', {
+        detail: { bundleName: firstBundle, focusDate: day.date, channels },
+      }))
+    }
+  }
+
   return (
     <div className="changelog-day-card">
-      <div className="changelog-date-header">{formatFriendlyDate(day.date)}</div>
+      <div
+        className="changelog-date-header"
+        role="button"
+        tabIndex={0}
+        onClick={handleDateClick}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleDateClick() } }}
+      >
+        {formatFriendlyDate(day.date)}
+        <span className="changelog-date-arrow">&rarr;</span>
+      </div>
       <div
         dangerouslySetInnerHTML={{ __html: dayHtml }}
         onClick={(e) => {

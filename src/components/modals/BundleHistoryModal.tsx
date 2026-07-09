@@ -21,6 +21,8 @@ export default function BundleHistoryModal() {
   const [open, setOpen] = useState(false)
   const [bundleName, setBundleName] = useState('')
   const [historyChannel, setHistoryChannel] = useState('')
+  const [focusDate, setFocusDate] = useState('')
+  const historyListRef = useRef<HTMLDivElement>(null)
   const changelogRef = useRef<any[]>([])
   const releaseCacheRef = useRef<ReleaseCacheData | null>(null)
 
@@ -29,6 +31,7 @@ export default function BundleHistoryModal() {
       const detail = (e as CustomEvent).detail
       setBundleName(detail.bundleName)
       setHistoryChannel('')
+      setFocusDate(detail.focusDate || '')
       setOpen(true)
     }
     window.addEventListener('open-bundle-history', handler)
@@ -117,6 +120,19 @@ export default function BundleHistoryModal() {
 
   const entries = Object.values(entriesMap).sort((a, b) => b.date.localeCompare(a.date))
 
+  useEffect(() => {
+    if (!open || !focusDate || !historyListRef.current) return
+    const timer = setTimeout(() => {
+      const el = historyListRef.current?.querySelector(`[data-focus-date="${focusDate}"]`)
+      if (el && el instanceof HTMLElement) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        el.classList.add('changelog-day-card--focused')
+        setTimeout(() => el.classList.remove('changelog-day-card--focused'), 2000)
+      }
+    }, 300)
+    return () => clearTimeout(timer)
+  }, [open, focusDate])
+
   const repoInfo = getRepoInfo(repoUrl)
   const releasesUrl = repoInfo.path
     ? (repoInfo.isGitLab
@@ -179,7 +195,7 @@ export default function BundleHistoryModal() {
                 <div className="bundle-release-date">Released {formatTime(currentBundle.release_date)}</div>
               )}
 
-              {renderReleaseBody(currentBundle, repoUrl, releaseCacheRef.current)}
+              <div dangerouslySetInnerHTML={{ __html: renderReleaseBody(currentBundle, repoUrl, releaseCacheRef.current) }} />
 
               {releasesUrl && (
                 <a href={releasesUrl} target="_blank" rel="noopener" className="bundle-release-link">
@@ -193,7 +209,7 @@ export default function BundleHistoryModal() {
             <>
               <div className="bundle-history-section-header">Update history</div>
               {entries.map((entry) => (
-                <div key={entry.date} className="changelog-day-card">
+                <div key={entry.date} className="changelog-day-card" data-focus-date={entry.date}>
                   <div className="changelog-date-header">{formatFriendlyDate(entry.date)}</div>
                   {entry.bundles.map((b: any, i: number) => (
                     <div key={i}>
@@ -208,7 +224,7 @@ export default function BundleHistoryModal() {
                             <span className="badge-version">{escHtml(b.version)}</span>
                             <ChannelBadge channel={b.channel} />
                           </div>
-                          {b.body && !b.isCurrent && renderReleaseBodyFromText(b.body)}
+                          {b.body && !b.isCurrent && <div dangerouslySetInnerHTML={{ __html: renderReleaseBodyFromText(b.body) }} />}
                         </>
                       ) : (
                         <>

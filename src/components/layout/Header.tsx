@@ -5,6 +5,7 @@ import SearchDropdown from '../search/SearchDropdown'
 export default function Header() {
   const location = useLocation()
   const isDashboard = location.pathname === '/'
+  const isChangelog = location.pathname === '/changelog'
 
   return (
     <header className="app-header">
@@ -18,7 +19,7 @@ export default function Header() {
             <Link to="/" className={`nav-link${isDashboard ? ' active' : ''}`} id="nav-dashboard">
               Dashboard
             </Link>
-            <Link to="/changelog.html" className={`nav-link${!isDashboard ? ' active' : ''}`} id="nav-changelog">
+            <Link to="/changelog" className={`nav-link${isChangelog ? ' active' : ''}`} id="nav-changelog">
               Changelog History
             </Link>
           </nav>

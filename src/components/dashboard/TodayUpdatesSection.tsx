@@ -1,12 +1,12 @@
-import { useMemo } from 'react'
+import { useMemo, useCallback } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { formatFriendlyDate } from '../../utils/format'
-import { groupAffectedBundles, isAppPreRelease, resolveAppName, getAppIconUrl } from '../../utils/misc'
+import { getAppIconUrl, groupAffectedBundles, resolveAppName } from '../../utils/misc'
+import { getCachedIconDataUrl } from '../../services/iconCache'
 import { getAuthorLink, getPlayStoreUrl } from '../../utils/url'
 import { escHtml } from '../../utils/html'
-import { Badge, BADGE_CLASSES } from '../shared/Badge'
-import AppIcon from '../shared/AppIcon'
 import { FALLBACK_ICON } from '../../utils/svg'
+import { BADGE_CLASSES } from '../shared/Badge'
 import { SkeletonUpdates } from '../shared/Skeleton'
 
 const APP_BADGE_MAP: Record<string, string> = {
@@ -15,33 +15,115 @@ const APP_BADGE_MAP: Record<string, string> = {
   'REMOVED APP': `<span class="badge ${BADGE_CLASSES.REMOVED_APP}">REMOVED APP</span>`,
 }
 
+const BUNDLE_BADGE_MAP: Record<string, string> = {
+  'NEW BUNDLE': `<span class="badge ${BADGE_CLASSES.NEW_BUNDLE}">NEW BUNDLE</span>`,
+  'UPDATED': `<span class="badge ${BADGE_CLASSES.UPDATED_BUNDLE}">UPDATED</span>`,
+}
+
 const SORT_ORDER: Record<string, number> = { 'NEW APP': 0, 'UPDATED APP': 1, 'REMOVED APP': 2 }
+
+function getBundleRepoUrl(bundleName: string, bundles: Record<string, any>): string {
+  const stableKey = `${bundleName}:stable`
+  const devKey = `${bundleName}:dev`
+  return bundles[stableKey]?.repo_url || bundles[devKey]?.repo_url || ''
+}
+
+function renderChanges(changes: { affected_bundles?: any[] } | null, bundles: Record<string, any>, iconCache: Record<string, string>, nameCache: Record<string, string>, liveDataDate: string, lastChecked: string): { html: string; hasChanges: boolean } {
+  const updateDate = liveDataDate || (lastChecked ? lastChecked.split('T')[0] : '')
+  const dateStr = updateDate ? formatFriendlyDate(updateDate) : '-'
+
+  if (!changes?.affected_bundles?.length) {
+    return {
+      html: `<div class="updates-header">
+        <h2 class="updates-title" id="updates-title-heading">Changelog</h2>
+        <span class="updates-date" id="updates-date-label">Updated: ${dateStr}</span>
+      </div>
+      <div class="no-updates-msg">No compatibility changes detected in the latest update scan. All active patches match the current catalog.</div>`,
+      hasChanges: false,
+    }
+  }
+
+  const grouped = groupAffectedBundles(changes.affected_bundles)
+
+  let html = `<div class="updates-header">
+    <h2 class="updates-title" id="updates-title-heading">Changelog</h2>
+    <span class="updates-date" id="updates-date-label">Updated: ${dateStr}</span>
+  </div>`
+
+  for (const [bundleName, entry] of Object.entries(grouped)) {
+    const repoUrl = getBundleRepoUrl(bundleName, bundles)
+    const bundleBadge = entry.badge_type ? (BUNDLE_BADGE_MAP[entry.badge_type] || '') : ''
+    const channelsJson = escHtml(JSON.stringify(entry.channels))
+
+    html += `<div class="update-bundle-group">`
+    html += `<div class="update-row update-bundle-header-row">
+      ${bundleBadge}
+      <strong class="cl-bundle-link" role="button" tabindex="0" data-bundle="${escHtml(bundleName)}" data-channels='${channelsJson}'>${escHtml(bundleName)}</strong>
+      ${getAuthorLink(repoUrl)}
+    </div>`
+
+    html += `<div class="update-bundle-apps">`
+    const sortedApps = [...(entry.apps || [])].sort((a, b) => {
+      const aOrder = SORT_ORDER[a.badge_type!] ?? 99
+      const bOrder = SORT_ORDER[b.badge_type!] ?? 99
+      return aOrder - bOrder
+    })
+
+    for (const app of sortedApps) {
+      const appBadge = app.badge_type ? (APP_BADGE_MAP[app.badge_type] || '') : ''
+      const appName = resolveAppName(app, nameCache)
+      const iconUrl = getAppIconUrl(app, iconCache)
+      const dataUrl = iconUrl ? getCachedIconDataUrl(iconUrl) : null
+
+      html += `<div class="update-row update-app-row">
+        ${appBadge}
+        ${iconUrl ? `<img class="app-icon" src="${dataUrl || iconUrl}" alt="" onerror="this.src='${FALLBACK_ICON}'">` : ''}
+        <strong class="cl-app-link" role="button" tabindex="0" data-package="${escHtml(app.package)}" data-bundle="${escHtml(bundleName)}" data-channels='${channelsJson}'>${escHtml(appName)}</strong>
+      </div>`
+    }
+
+    html += `</div></div>`
+  }
+
+  return { html, hasChanges: true }
+}
 
 export default function TodayUpdatesSection() {
   const { state } = useAppContext()
 
-  const { changesHtml, hasChanges } = useMemo(() => {
-    // Simulate today's changes from the bundle data
-    // In the old app, changes.json was fetched separately; we pick up from cached data
-    let html = ''
-    let hasChangesVal = false
+  const changesHtml = useMemo(() =>
+    renderChanges(state.changes, state.bundles, state.iconCache, state.nameCache, state.liveDataDate, state.lastChecked).html,
+    [state.changes, state.bundles, state.iconCache, state.nameCache, state.liveDataDate, state.lastChecked]
+  )
 
-    const lc = state.lastChecked
-    const updateDate = state.liveDataDate || (lc ? lc.split('T')[0] : '')
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    const bundleLink = (e.target as HTMLElement).closest('.cl-bundle-link')
+    if (bundleLink && bundleLink instanceof HTMLElement) {
+      const bundleName = bundleLink.dataset.bundle
+      const channels = bundleLink.dataset.channels ? JSON.parse(bundleLink.dataset.channels) : []
+      if (bundleName) {
+        window.dispatchEvent(new CustomEvent('open-bundle', { detail: { bundleName, channels, version: '' } }))
+      }
+      return
+    }
 
-    html += `<div class="updates-header">
-      <h2 class="updates-title" id="updates-title-heading">Changelog</h2>
-      <span class="updates-date" id="updates-date-label">Updated: ${updateDate ? formatFriendlyDate(updateDate) : '-'}</span>
-    </div>`
-
-    // We don't have changes.json in the same structure anymore; this is placeholder
-    // for the migrated data flow. The actual changes rendering can be triggered
-    // from the service worker or a dedicated changes fetch later.
-    hasChangesVal = false
-    html += `<div class="no-updates-msg">No compatibility changes detected in the latest update scan. All active patches match the current catalog.</div>`
-
-    return { changesHtml: html, hasChanges: hasChangesVal }
-  }, [state.liveDataDate, state.lastChecked, state.bundles])
+    const appLink = (e.target as HTMLElement).closest('.cl-app-link')
+    if (appLink && appLink instanceof HTMLElement) {
+      const pkg = appLink.dataset.package
+      const bName = appLink.dataset.bundle
+      const channels = appLink.dataset.channels ? JSON.parse(appLink.dataset.channels) : []
+      if (pkg && bName) {
+        const stableKey = `${bName}:stable`
+        const devKey = `${bName}:dev`
+        let appData = state.bundles[stableKey]?.apps?.find((a: any) => a.package === pkg)
+        if (!appData) appData = state.bundles[devKey]?.apps?.find((a: any) => a.package === pkg)
+        if (appData) {
+          window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName: bName, channels } }))
+        }
+      }
+      return
+    }
+  }, [state.bundles])
 
   if (state.loading && Object.keys(state.bundles).length === 0) {
     return (
@@ -67,6 +149,7 @@ export default function TodayUpdatesSection() {
           className="updates-body"
           id="today-updates-container"
           dangerouslySetInnerHTML={{ __html: changesHtml }}
+          onClick={handleClick}
         />
       </div>
     </section>

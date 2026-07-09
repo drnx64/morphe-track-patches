@@ -32,11 +32,11 @@ export default function StatsSection() {
         </div>
         <div className="stat-card highlight">
           <span className="stat-label">New Apps Today</span>
-          <span className="stat-value" id="stat-new-apps-today">-</span>
+          <span className="stat-value" id="stat-new-apps-today">{state.stats?.new_apps_today ?? '-'}</span>
         </div>
         <div className="stat-card highlight">
           <span className="stat-label">New Bundles Today</span>
-          <span className="stat-value" id="stat-new-bundles-today">-</span>
+          <span className="stat-value" id="stat-new-bundles-today">{state.stats?.new_bundles_today ?? '-'}</span>
         </div>
       </div>
       <div className="last-updated-row">

@@ -1,13 +1,26 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { resolveAppName, getAppIconUrl } from '../../utils/misc'
-import { getPlayStoreUrl } from '../../utils/url'
+import { idbGet, idbSet } from '../../services/indexedDB'
+import { fetchChangelog, fetchReleaseCache } from '../../services/fetchData'
+import { stripVersionHeader, parseReleaseNotes, renderReleaseSections } from '../../services/releaseParser'
+import { formatFriendlyDate } from '../../utils/format'
+import { getPlayStoreUrl, getRepoInfo, getAddMorpheUrl } from '../../utils/url'
 import { escHtml } from '../../utils/html'
+import { CACHE_KEYS } from '../../types/utils'
 import Modal from '../shared/Modal'
 import AppIcon from '../shared/AppIcon'
 import ChannelBadge from '../shared/ChannelBadge'
 import VersionChip from '../shared/VersionChip'
 import type { AppData, PatchData } from '../../types/bundles'
+import type { ReleaseCacheData } from '../../types/api'
+
+interface HistoryEntry {
+  date: string
+  bundleName: string
+  badgeType: string
+  version: string
+}
 
 export default function AppDetailModal() {
   const { state } = useAppContext()
@@ -16,6 +29,9 @@ export default function AppDetailModal() {
   const [bundleName, setBundleName] = useState('')
   const [channels, setChannels] = useState<string[]>([])
   const [currentChannel, setCurrentChannel] = useState<'stable' | 'dev'>('stable')
+  const [appHistory, setAppHistory] = useState<HistoryEntry[]>([])
+  const [historyExpanded, setHistoryExpanded] = useState(false)
+  const [releaseCache, setReleaseCache] = useState<ReleaseCacheData | null>(null)
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -24,11 +40,39 @@ export default function AppDetailModal() {
       setBundleName(detail.bundleName)
       setChannels(detail.channels || [])
       setCurrentChannel('stable')
+      setHistoryExpanded(false)
       setOpen(true)
     }
     window.addEventListener('open-app', handler)
     return () => window.removeEventListener('open-app', handler)
   }, [])
+
+  useEffect(() => {
+    if (!open || !app) return
+    const pkg = app.package
+    const load = async () => {
+      const [cachedCL, cachedRC] = await Promise.all([
+        idbGet<any[]>(CACHE_KEYS.CHANGELOG),
+        idbGet<ReleaseCacheData>(CACHE_KEYS.RELEASE_CACHE),
+      ])
+      if (cachedCL) setAppHistory(filterAppHistory(cachedCL, pkg))
+      if (cachedRC) setReleaseCache(cachedRC)
+
+      const [freshCL, freshRC] = await Promise.all([
+        fetchChangelog(),
+        fetchReleaseCache(),
+      ])
+      if (freshCL) {
+        setAppHistory(filterAppHistory(freshCL, pkg))
+        idbSet(CACHE_KEYS.CHANGELOG, freshCL)
+      }
+      if (freshRC && Object.keys(freshRC).length > 0) {
+        setReleaseCache(freshRC)
+        idbSet(CACHE_KEYS.RELEASE_CACHE, freshRC)
+      }
+    }
+    load()
+  }, [open, app])
 
   const close = useCallback(() => setOpen(false), [])
 
@@ -47,6 +91,9 @@ export default function AppDetailModal() {
 
   const showChannel = currentChannel === 'stable' ? stableAppData : devAppData
   const showPatches = showChannel?.patches || []
+
+  const repoUrl = stableBundle?.repo_url || devBundle?.repo_url || `https://github.com/${bundleName}/revanced-patches`
+  const addMorpheUrl = getAddMorpheUrl(repoUrl)
 
   const allVersions = new Set<string>()
   for (const p of showPatches) {
@@ -123,6 +170,10 @@ export default function AppDetailModal() {
       </div>
 
       <div className="modal-body">
+        <div className="bundle-modal-actions">
+          <a className="add-morphe-btn" href={addMorpheUrl} target="_blank" rel="noopener">Add to Morphe</a>
+        </div>
+
         <div className="modal-patches-header">
           <span className="modal-patches-title">Patches</span>
           <span className="modal-patches-count" id="modal-patches-count">
@@ -143,6 +194,45 @@ export default function AppDetailModal() {
             ))
           )}
         </div>
+
+        {appHistory.length > 0 && (
+          <div className="app-history-section">
+            <div
+              className="app-history-header"
+              role="button"
+              tabIndex={0}
+              onClick={() => setHistoryExpanded(!historyExpanded)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setHistoryExpanded(!historyExpanded)
+                }
+              }}
+            >
+              <span className="app-history-title">Changelog History</span>
+              <span className="app-history-count">{appHistory.length} update{appHistory.length !== 1 ? 's' : ''}</span>
+              <span className={`app-history-toggle${historyExpanded ? ' expanded' : ''}`}>
+                <svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor">
+                  <path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10 8 6.22 4.28a.75.75 0 0 1 0-1.06z" />
+                </svg>
+              </span>
+            </div>
+            {historyExpanded && (
+              <div className="app-history-list">
+                {appHistory.map((entry, di) => (
+                  <AppHistoryItem
+                    key={di}
+                    entry={entry}
+                    releaseCache={releaseCache}
+                    appName={resolveAppName(app, state.nameCache)}
+                    appPackage={app.package}
+                    bundles={state.bundles}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   )
@@ -210,4 +300,122 @@ function PatchItem({ patch, idx, isDev }: { patch: PatchData; idx: number; isDev
       )}
     </div>
   )
+}
+
+function AppHistoryItem({
+  entry,
+  releaseCache,
+  appName,
+  appPackage,
+  bundles,
+}: {
+  entry: HistoryEntry
+  releaseCache: ReleaseCacheData | null
+  appName: string
+  appPackage: string
+  bundles: Record<string, any>
+}) {
+  const BADGE_CLS: Record<string, string> = {
+    'NEW APP': 'badge badge-new',
+    'UPDATED APP': 'badge badge-updated',
+    'REMOVED APP': 'badge badge-removed',
+  }
+
+  const [notesHtml, setNotesHtml] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!releaseCache) return
+    const stableKey = `${entry.bundleName}:stable`
+    const devKey = `${entry.bundleName}:dev`
+    const b = bundles[stableKey] || bundles[devKey]
+    const repoUrl: string = b?.repo_url || ''
+    if (!repoUrl || !releaseCache[repoUrl]) {
+      setNotesHtml(null)
+      return
+    }
+    const releases = releaseCache[repoUrl].releases
+    if (!releases?.length) {
+      setNotesHtml(null)
+      return
+    }
+    const match = releases.find((r) => {
+      const tag = r.tag.toLowerCase().replace(/^v/, '')
+      const ver = entry.version.toLowerCase().replace(/^v/, '')
+      return tag === ver
+    }) || releases[0]
+    if (!match?.body) {
+      setNotesHtml(null)
+      return
+    }
+    const clean = stripVersionHeader(match.body)
+    const parsed = parseReleaseNotes(clean)
+    const matchApp = (text: string): boolean => {
+      const lower = text.toLowerCase()
+      const pkgEsc = appPackage.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      if (new RegExp(`\\b${pkgEsc}\\b`, 'i').test(lower)) return true
+      const nameWords = appName.split(/\s+/)
+      if (nameWords.length >= 2) {
+        return nameWords.every(w => w.length > 2 && new RegExp(`\\b${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(lower))
+      }
+      return new RegExp(`\\b${appName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i').test(lower)
+    }
+    const relevant = parsed.filter((s) => {
+      if (s.mode === 'markdown') {
+        const md = s.markdown || ''
+        return matchApp(md)
+      }
+      return s.entries.some((e) => {
+        const scope = e.scope || ''
+        const desc = e.description || ''
+        return matchApp(scope) || matchApp(desc)
+      })
+    })
+    if (relevant.length > 0) {
+      setNotesHtml(renderReleaseSections(relevant))
+    } else {
+      setNotesHtml(null)
+    }
+  }, [releaseCache, entry, appName, appPackage, bundles])
+
+  return (
+    <div className="app-history-day">
+      <div className="app-history-date">{formatFriendlyDate(entry.date)}</div>
+      <div className="app-history-entry">
+        <span className={BADGE_CLS[entry.badgeType] || 'badge badge-updated'}>
+          {entry.badgeType || 'UPDATED'}
+        </span>
+        {entry.version && <span className="badge badge-version">{escHtml(entry.version)}</span>}
+        <span className="app-history-bundle">{escHtml(entry.bundleName)}</span>
+      </div>
+      {notesHtml ? (
+        <div className="app-history-notes" dangerouslySetInnerHTML={{ __html: notesHtml }} />
+      ) : (
+        <div className="app-history-notes app-history-notes--empty">No updates specified.</div>
+      )}
+    </div>
+  )
+}
+
+function filterAppHistory(changelog: any[], pkg: string): HistoryEntry[] {
+  const result: HistoryEntry[] = []
+  const seen = new Set<string>()
+  for (const day of changelog) {
+    for (const b of (day.affected_bundles || [])) {
+      for (const app of (b.apps || [])) {
+        if (app.package === pkg) {
+          const key = `${day.date}|${b.bundle}|${app.badge_type}`
+          if (!seen.has(key)) {
+            seen.add(key)
+            result.push({
+              date: day.date,
+              bundleName: b.bundle,
+              badgeType: app.badge_type,
+              version: b.version || '',
+            })
+          }
+        }
+      }
+    }
+  }
+  return result.sort((a, b) => b.date.localeCompare(a.date))
 }

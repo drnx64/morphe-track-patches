@@ -33,7 +33,7 @@ export function fetchAllData() {
   return Promise.all([
     fetchJson<CoreResponse>(`/data/core.json?_t=${ts}`, {}),
     fetchJson<StatsData>(`/data/stats.json?_t=${ts}`, {} as StatsData),
-    fetchJson<Record<string, unknown>>(`/data/changes.json?_t=${ts}`, {}),
+    fetchJson<{ affected_bundles?: AffectedBundle[] }>(`/data/changes.json?_t=${ts}`, {}),
     fetchJson<Record<string, BundleData>>(`/data/bundles.json?_t=${ts}`, {}),
   ]).then(([core, stats, changes, bundles]) => {
     log(`fetchAllData done: date=${core?.date}, bundles keys=${Object.keys(bundles).length}`)
@@ -76,6 +76,7 @@ export function fetchChangelog() {
 
 import type { ReleaseCacheData, StatsData } from '../types/api'
 import type { BundleData } from '../types/bundles'
+import type { AffectedBundle } from '../types/changes'
 
 export function fetchReleaseCache() {
   return fetchJson<ReleaseCacheData>('/data/state/release_cache.json', {} as ReleaseCacheData)

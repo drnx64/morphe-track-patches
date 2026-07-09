@@ -5,6 +5,8 @@ from datetime import datetime, timezone
 from xml.sax.saxutils import escape as xml_escape
 from state_manager import ensure_dirs, ROOT_DIR, ROOT_DATA_DIR, OUTPUT_DIR, save_json, load_json
 
+PUBLIC_DATA_DIR = os.path.join(ROOT_DIR, "public", "data")
+
 
 def _rfc2822(date_str):
     """Convert YYYY-MM-DD to RFC 2822 date string."""
@@ -131,7 +133,27 @@ def generate_static_files():
     else:
         save_json(changelog_dest, [])
 
-    print("Static site files synced.")
+    # Sync all data files to public/data/ (used by Vite dev server)
+    os.makedirs(PUBLIC_DATA_DIR, exist_ok=True)
+    for filename in ["core.json", "stats.json", "changes.json", "bundles.json", "changelog.json"]:
+        src = os.path.join(ROOT_DATA_DIR, filename)
+        dst = os.path.join(PUBLIC_DATA_DIR, filename)
+        if os.path.exists(src):
+            print(f"Syncing {src} -> {dst}...")
+            shutil.copy2(src, dst)
+
+    # Also sync state/ subdirectory
+    state_src = os.path.join(ROOT_DATA_DIR, "state")
+    state_dst = os.path.join(PUBLIC_DATA_DIR, "state")
+    if os.path.exists(state_src):
+        os.makedirs(state_dst, exist_ok=True)
+        for fname in os.listdir(state_src):
+            fsrc = os.path.join(state_src, fname)
+            fdst = os.path.join(state_dst, fname)
+            if os.path.isfile(fsrc):
+                shutil.copy2(fsrc, fdst)
+
+    print("Static site files synced to data/ and public/data/.")
 
 
 if __name__ == "__main__":
