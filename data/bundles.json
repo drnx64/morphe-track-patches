@@ -20246,9 +20246,9 @@
     "bundle": "brealorg",
     "channel": "stable",
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
-    "created_at": "2026-07-09T21:47:46Z",
-    "version": "morphe-patches-64",
-    "description": "Boost search default discovery: Adds an instant Active subreddits landing and Reddit-native Subreddit labels.\n",
+    "created_at": "2026-07-09T22:39:26Z",
+    "version": "morphe-patches-65",
+    "description": "Boost: run search discovery at SearchGenericActivity Q1 entry so Active subreddits render reliably before Random branch checks.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -21352,9 +21352,9 @@
       }
     ],
     "fingerprint": "3e64d6236bca5b5af197c72f6e7c4ce6454c7d9b6f9786468ee90004c118e497",
-    "release_notes": "# Morphe patch bundle 1.4.64\n\n### Boost for Reddit\n\n### Changes\n\n- Adds the new Boost search default discovery patch for the normal Search screen.\n- Shows an instant cached **Active subreddits** landing while a source-specific Reddit popular/HOT refresh runs in the background.\n- Uses active subreddit rows derived from current popular/HOT submissions instead of legacy trending/community sources.\n- Renames the Reddit search filter label from **Community** to **Subreddit** in the patched Boost search UI.\n\n### User impact\n\nBoost search now opens with useful active subreddit suggestions immediately, without forcing users to type first or showing stale/dead legacy community entries. The visible Reddit terminology is also corrected so the search filter says **Subreddit** rather than **Community**.\n\n### Validation\n\n- Release tag: `morphe-patches-64`\n- Release asset: `patches-1.4.64.mpp`\n- MPP SHA256: `b3e4f9a974ca42c78d73d4460a3b8140c78829f243bd1ddfff992b0dc0139ca5`\n- Local release gate passed for `1.4.64`.\n- Final MPP contains `classes.dex` and `extensions/boostforreddit.mpe`.\n- Final MPP contains marker `MORPHE_SEARCH_EXPLORE_V5M_ACTIVE_SUBREDDITS_REDDIT_LABELS`.\n- GPG signature verification passed for `patches-1.4.64.mpp.asc`.\n- Boost candidate static gate passed with target SDK 35, `Spoof client`, and `Modify login WebView`.\n- Runtime validation accepted the v5m behavior; the prior harness failure was classified as a false negative because the UI dump showed `limit_view` as **Subreddit**.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-64`.\n- Release asset: `patches-1.4.64.mpp`.\n- Signature asset: `patches-1.4.64.mpp.asc`.\n- MPP SHA256: `b3e4f9a974ca42c78d73d4460a3b8140c78829f243bd1ddfff992b0dc0139ca5`.\n",
-    "release_tag": "morphe-patches-64",
-    "release_date": "2026-07-09T21:47:46Z"
+    "release_notes": "## 1.4.65\n\n- Boost: run search discovery at SearchGenericActivity Q1 entry so Active subreddits render reliably before Random branch checks.\n\nRuntime validation:\n- SearchGenericActivity opened in Boost DEV clone.\n- MorpheSearchExplore logged cache/network refresh.\n- UI showed Active subreddits with populated rows.\n",
+    "release_tag": "morphe-patches-65",
+    "release_date": "2026-07-09T22:39:26Z"
   },
   "quantro100:stable": {
     "bundle": "quantro100",
