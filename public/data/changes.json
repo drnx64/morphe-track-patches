@@ -1470,20 +1470,16 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Repurpose Search/Games tabs to Tools/About",
-                "description": "Redirects the Search tab to the Modx Tools screen and the Games tab to the Modx About screen."
+                "name": "Register Modx extension activities",
+                "description": "Declares the Modx extension module's activities in AndroidManifest.xml so they can be launched via explicit Intent from the repurposed tabs."
               }
             ],
-            "patches_removed": [
-              {
-                "name": "Redirect avatar click to Settings",
-                "description": "Makes the top-right avatar open Settings directly instead of the Me/Profile tab."
-              }
-            ],
+            "patches_removed": [],
             "patches_modified": []
           },
           "scan_numbers": [
-            2
+            2,
+            3
           ]
         }
       ]
@@ -1694,6 +1690,42 @@
           },
           "scan_numbers": [
             2
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "miguel",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Plants vs. Zombies FREE",
+          "package": "com.ea.game.pvzfree_row",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            3
+          ]
+        },
+        {
+          "app_name": "CubeX Solver",
+          "package": "diozz.cubex",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium-gated features (Advanced Solver / Kociemba, custom color schemes, VIP support, no relaunch screens). Returns true from PremiumHelper.hasActivePurchase() so the entire app behaves as if a premium subscription is active.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            3
           ]
         }
       ]
