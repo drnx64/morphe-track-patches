@@ -1,7 +1,7 @@
 {
   "date": "2026-07-11",
-  "lastChecked": "2026-07-11T05:37:26Z",
-  "scan_counter": 2,
+  "lastChecked": "2026-07-11T07:48:13Z",
+  "scan_counter": 3,
   "affected_bundles": {
     "miguel:stable": {
       "bundle": "miguel",
@@ -275,8 +275,27 @@
           "package": "com.providelite.epicplay",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
-          ]
+            1,
+            3
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Remove Ads",
+                "description": "Blocks all ad display in Provide Lite by forcing the app's central ad gate (in libapp.so) to always take its 'skip' path. Two branch instructions are rewritten to unconditional skips: the global 'ad enabled' flag check (tbz -> b #skip) and the interstitial/rewarded cooldown gate (b.ge -> b #skip). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — no ad-show invocation is reached."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Patches the Dart AOT-compiled libapp.so to unlock all premium / VIP features. Forces the VIP state to always be true by rewriting the constant-pool loads (add xN, x22, #0x30 -> add xN, x22, #0x20) inside the cacheIsVipKey readers (getter + 3 callers). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — flutter.cacheIsVipKey=true on device.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         },
         {
           "app_name": "MoneyMitra",
@@ -298,8 +317,27 @@
           "package": "com.providelite.epicplay",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
-          ]
+            1,
+            3
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Remove Ads",
+                "description": "Blocks all ad display in Provide Lite by forcing the app's central ad gate (in libapp.so) to always take its 'skip' path. Two branch instructions are rewritten to unconditional skips: the global 'ad enabled' flag check (tbz -> b #skip) and the interstitial/rewarded cooldown gate (b.ge -> b #skip). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — no ad-show invocation is reached."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Patches the Dart AOT-compiled libapp.so to unlock all premium / VIP features. Forces the VIP state to always be true by rewriting the constant-pool loads (add xN, x22, #0x30 -> add xN, x22, #0x20) inside the cacheIsVipKey readers (getter + 3 callers). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — flutter.cacheIsVipKey=true on device.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         }
       ]
     },
