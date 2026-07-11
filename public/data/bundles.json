@@ -42821,9 +42821,9 @@
     "bundle": "franticg33k",
     "channel": "dev",
     "repo_url": "https://github.com/franticg33k/morphe-patches",
-    "created_at": "2026-07-10T21:49:43",
-    "version": "v1.2.0-dev.2",
-    "description": "## [1.2.0-dev.2](https://github.com/franticg33k/morphe-patches/compare/v1.2.0-dev.1...v1.2.0-dev.2) (2026-07-10)\n\n### 🚀 Updated App Support\n\n* add Provide Lite v1.4.0 app support ([c287260](https://github.com/franticg33k/morphe-patches/commit/c287260d5318ec0507c6c2bca9d028b450e64cc9))\n",
+    "created_at": "2026-07-11T06:13:34",
+    "version": "v1.2.1-dev.1",
+    "description": "## [1.2.1-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.2.0...v1.2.1-dev.1) (2026-07-11)\n\n### 🚀 Updated App Support\n\n* add Provide Lite v1.4.6 support (Unlock Premium + Remove Ads) ([05824b5](https://github.com/franticg33k/morphe-patches/commit/05824b5bf11c646d4220b6992cf157aee2a0eaa3))\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -42914,6 +42914,13 @@
         "package": "com.providelite.epicplay",
         "patches": [
           {
+            "name": "Remove Ads",
+            "description": "Blocks all ad display in Provide Lite by forcing the app's central ad gate (in libapp.so) to always take its 'skip' path. Two branch instructions are rewritten to unconditional skips: the global 'ad enabled' flag check (tbz -> b #skip) and the interstitial/rewarded cooldown gate (b.ge -> b #skip). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — no ad-show invocation is reached.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
             "name": "Remove License Activity",
             "description": "Removes the PairIP LicenseActivity and LicenseContentProvider from AndroidManifest.xml and the com.android.vending.CHECK_LICENSE permission, so the app runs without a valid Play Store license (required because the APK is re-signed during patching).",
             "use": true,
@@ -42922,7 +42929,7 @@
           },
           {
             "name": "Unlock Premium",
-            "description": "Patches the Dart AOT-compiled libapp.so to unlock all premium / VIP features. Forces the VIP state to always be true by rewriting the constant-pool loads (add xN, x22, #0x30 -> add xN, x22, #0x20) inside the cacheIsVipKey readers and the validatePurchase function. Verified on v1.4.0 (Dart 3.7.0, arm64, obfuscated).",
+            "description": "Patches the Dart AOT-compiled libapp.so to unlock all premium / VIP features. Forces the VIP state to always be true by rewriting the constant-pool loads (add xN, x22, #0x30 -> add xN, x22, #0x20) inside the cacheIsVipKey readers (getter + 3 callers). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — flutter.cacheIsVipKey=true on device.",
             "use": true,
             "options": [],
             "compatible_versions": []
@@ -42945,18 +42952,18 @@
         "icon_url": "https://play-lh.googleusercontent.com/cZ9_hY4QA2qnDZrHFvcgJgL1su8EDhEUMIMDvQvTkkTJJtQQo5807PoTss6zx7kYks2CCqXax5PWtJF7xV03pg"
       }
     ],
-    "fingerprint": "cd346211776667dca5e9bc9d12a20ed4add04b5ea5e84b080bf626ae5d68c065",
-    "release_notes": "## [1.2.0-dev.2](https://github.com/franticg33k/morphe-patches/compare/v1.2.0-dev.1...v1.2.0-dev.2) (2026-07-10)\n\n### 🚀 Updated App Support\n\n* add Provide Lite v1.4.0 app support ([c287260](https://github.com/franticg33k/morphe-patches/commit/c287260d5318ec0507c6c2bca9d028b450e64cc9))\n",
-    "release_tag": "v1.2.0-dev.2",
-    "release_date": "2026-07-10T21:49:43Z"
+    "fingerprint": "89c8f51b351aa7f13a8f3c9b8b048355dad2a3a8bc9885c8d3ab6a194fe41fb6",
+    "release_notes": "## [1.2.1-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.2.0...v1.2.1-dev.1) (2026-07-11)\n\n### 🚀 Updated App Support\n\n* add Provide Lite v1.4.6 support (Unlock Premium + Remove Ads) ([05824b5](https://github.com/franticg33k/morphe-patches/commit/05824b5bf11c646d4220b6992cf157aee2a0eaa3))\n",
+    "release_tag": "v1.2.1-dev.1",
+    "release_date": "2026-07-11T06:13:34Z"
   },
   "franticg33k:stable": {
     "bundle": "franticg33k",
     "channel": "stable",
     "repo_url": "https://github.com/franticg33k/morphe-patches",
-    "created_at": "2026-07-10T21:53:39",
-    "version": "v1.2.0",
-    "description": "## [1.2.0](https://github.com/franticg33k/morphe-patches/compare/v1.1.2...v1.2.0) (2026-07-10)\n\n### ✨ New Features\n\n* add Provide Lite premium and license patches ([dd5d8d1](https://github.com/franticg33k/morphe-patches/commit/dd5d8d128195659fee962bb0e0ed6b8b8ca3cbc2))\n\n### 🚀 Updated App Support\n\n* add Provide Lite v1.4.0 app support ([c287260](https://github.com/franticg33k/morphe-patches/commit/c287260d5318ec0507c6c2bca9d028b450e64cc9))\n",
+    "created_at": "2026-07-11T06:17:29",
+    "version": "v1.2.1",
+    "description": "## [1.2.1](https://github.com/franticg33k/morphe-patches/compare/v1.2.0...v1.2.1) (2026-07-11)\n\n### 🚀 Updated App Support\n\n* add Provide Lite v1.4.6 support (Unlock Premium + Remove Ads) ([05824b5](https://github.com/franticg33k/morphe-patches/commit/05824b5bf11c646d4220b6992cf157aee2a0eaa3))\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -43047,6 +43054,13 @@
         "package": "com.providelite.epicplay",
         "patches": [
           {
+            "name": "Remove Ads",
+            "description": "Blocks all ad display in Provide Lite by forcing the app's central ad gate (in libapp.so) to always take its 'skip' path. Two branch instructions are rewritten to unconditional skips: the global 'ad enabled' flag check (tbz -> b #skip) and the interstitial/rewarded cooldown gate (b.ge -> b #skip). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — no ad-show invocation is reached.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
             "name": "Remove License Activity",
             "description": "Removes the PairIP LicenseActivity and LicenseContentProvider from AndroidManifest.xml and the com.android.vending.CHECK_LICENSE permission, so the app runs without a valid Play Store license (required because the APK is re-signed during patching).",
             "use": true,
@@ -43055,7 +43069,7 @@
           },
           {
             "name": "Unlock Premium",
-            "description": "Patches the Dart AOT-compiled libapp.so to unlock all premium / VIP features. Forces the VIP state to always be true by rewriting the constant-pool loads (add xN, x22, #0x30 -> add xN, x22, #0x20) inside the cacheIsVipKey readers and the validatePurchase function. Verified on v1.4.0 (Dart 3.7.0, arm64, obfuscated).",
+            "description": "Patches the Dart AOT-compiled libapp.so to unlock all premium / VIP features. Forces the VIP state to always be true by rewriting the constant-pool loads (add xN, x22, #0x30 -> add xN, x22, #0x20) inside the cacheIsVipKey readers (getter + 3 callers). Verified on v1.4.6 (Dart 3.7.0, arm64, obfuscated) — flutter.cacheIsVipKey=true on device.",
             "use": true,
             "options": [],
             "compatible_versions": []
@@ -43078,10 +43092,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/cZ9_hY4QA2qnDZrHFvcgJgL1su8EDhEUMIMDvQvTkkTJJtQQo5807PoTss6zx7kYks2CCqXax5PWtJF7xV03pg"
       }
     ],
-    "fingerprint": "94c95556f7889a354827d5684bc032fdc64430c105a4852a71c39d41fabe93b3",
-    "release_notes": "## [1.2.0](https://github.com/franticg33k/morphe-patches/compare/v1.1.2...v1.2.0) (2026-07-10)\n\n### ✨ New Features\n\n* add Provide Lite premium and license patches ([dd5d8d1](https://github.com/franticg33k/morphe-patches/commit/dd5d8d128195659fee962bb0e0ed6b8b8ca3cbc2))\n\n### 🚀 Updated App Support\n\n* add Provide Lite v1.4.0 app support ([c287260](https://github.com/franticg33k/morphe-patches/commit/c287260d5318ec0507c6c2bca9d028b450e64cc9))\n",
-    "release_tag": "v1.2.0",
-    "release_date": "2026-07-10T21:53:39Z"
+    "fingerprint": "cd4cccd4e714c34835e32b2ab447195af47acbcecacc3e4a75ffb1d0459d34e2",
+    "release_notes": "## [1.2.1](https://github.com/franticg33k/morphe-patches/compare/v1.2.0...v1.2.1) (2026-07-11)\n\n### 🚀 Updated App Support\n\n* add Provide Lite v1.4.6 support (Unlock Premium + Remove Ads) ([05824b5](https://github.com/franticg33k/morphe-patches/commit/05824b5bf11c646d4220b6992cf157aee2a0eaa3))\n",
+    "release_tag": "v1.2.1",
+    "release_date": "2026-07-11T06:17:29Z"
   },
   "bholeykabhakt:dev": {
     "bundle": "bholeykabhakt",
