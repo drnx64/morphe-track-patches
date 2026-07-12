@@ -1,7 +1,7 @@
 {
   "date": "2026-07-12",
-  "lastChecked": "2026-07-12T18:59:39Z",
-  "scan_counter": 6,
+  "lastChecked": "2026-07-12T21:45:23Z",
+  "scan_counter": 7,
   "affected_bundles": {
     "ee-morphe:dev": {
       "bundle": "ee-morphe",
@@ -33,9 +33,10 @@
         {
           "app_name": "Going",
           "package": "com.going.mobile",
-          "badge_type": "REMOVED APP",
+          "badge_type": "NEW APP",
           "scan_numbers": [
-            4
+            4,
+            7
           ]
         }
       ]
@@ -355,23 +356,18 @@
           "badge_type": "NEW APP",
           "scan_numbers": [
             5,
-            6
+            6,
+            7
           ],
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Unlock all tribes",
-                "description": "Unlocks all 20 tribes by setting the debug flag in Unity PlayerPrefs via SharedPreferences."
-              }
-            ],
+            "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
                 "name": "Free in-app purchases",
-                "description": "Skips Google Play Billing by creating a fake Purchase and calling nativeOnPurchasesUpdated directly via extension.",
+                "description": "Skips Google Play Billing by intercepting launchBillingFlow. Creates a fake Purchase and calls nativeOnPurchasesUpdated directly.",
                 "changes": [
-                  "description updated",
-                  "disabled"
+                  "description updated"
                 ]
               }
             ]
@@ -1949,6 +1945,34 @@
           },
           "scan_numbers": [
             6
+          ]
+        }
+      ]
+    },
+    "hoomans-morphe:stable": {
+      "bundle": "hoomans-morphe",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Symfonium",
+          "package": "app.symfonik.music.player",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial: a license value the app keeps locally decides whether the paid UI is open, and two timers (the beta cutoff and the trial countdown) lock the app once they pass. This forces the license read to \"licensed\" so the paid screens open, drops the \"trial expires on ...\" line from settings, and freezes the trusted-time lookup the timers read at a fixed pre-cutoff instant so neither timer can fire. The license is checked on the client (a local Play purchase verify), so the unlock holds without an account. Connecting Plex, Jellyfin and other media servers is untouched.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            7
           ]
         }
       ]
