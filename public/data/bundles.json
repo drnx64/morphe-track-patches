@@ -11932,9 +11932,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-11T20:00:35",
-    "version": "v1.7.7",
-    "description": "## [1.7.7](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.7.6...v1.7.7) (2026-07-11)\n\n### 🐛 Bug Fixes\n\n* rewrite billing bypass extension to use typed Billing API ([60f3394](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/60f33942fd3a726b28796649a979d847e90758c6))\n* rewrite billing bypass extension to use typed Billing API ([a7bc270](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a7bc270ba1a3420a171946c1fcd5581b71676fa9))\n* rewrite billing bypass extension to use typed Billing API ([0b5ad93](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0b5ad93f30031dc21fbeec946be48c7fc89cc6ed))\n",
+    "created_at": "2026-07-11T22:13:30",
+    "version": "v1.7.8",
+    "description": "## [1.7.8](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.7.7...v1.7.8) (2026-07-11)\n\n### 🐛 Bug Fixes\n\n* remove extension to prevent crash, use simple returns only (test) ([9726b38](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/9726b388125106999a25045fdbf80588d56c98ce))\n",
     "apps": [
       {
         "app_name": "Plants vs. Zombies FREE",
@@ -12030,9 +12030,9 @@
       }
     ],
     "fingerprint": "962c8e36c5105f0749138c4b75814e62931a68f0ae285e3986749b5d51eccd4d",
-    "release_notes": "## [1.7.7](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.7.6...v1.7.7) (2026-07-11)\n\n### 🐛 Bug Fixes\n\n* rewrite billing bypass extension to use typed Billing API ([60f3394](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/60f33942fd3a726b28796649a979d847e90758c6))\n* rewrite billing bypass extension to use typed Billing API ([a7bc270](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a7bc270ba1a3420a171946c1fcd5581b71676fa9))\n* rewrite billing bypass extension to use typed Billing API ([0b5ad93](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0b5ad93f30031dc21fbeec946be48c7fc89cc6ed))\n",
-    "release_tag": "v1.7.7",
-    "release_date": "2026-07-11T20:00:35Z"
+    "release_notes": "## [1.7.8](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.7.7...v1.7.8) (2026-07-11)\n\n### 🐛 Bug Fixes\n\n* remove extension to prevent crash, use simple returns only (test) ([9726b38](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/9726b388125106999a25045fdbf80588d56c98ce))\n",
+    "release_tag": "v1.7.8",
+    "release_date": "2026-07-11T22:13:30Z"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -20340,9 +20340,9 @@
     "bundle": "brealorg",
     "channel": "stable",
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
-    "created_at": "2026-07-11T20:21:23Z",
-    "version": "morphe-patches-67",
-    "description": "Boost: restore the sidebar Trending today panel with live post rows and a cached popular/hot fallback.\nBoost: remove the invalid global community filter and suppress duplicate fallback titles.\n",
+    "created_at": "2026-07-12T00:42:20Z",
+    "version": "morphe-patches-69",
+    "description": "Boost comments toolbar foreground now follows the resolved light/dark toolbar surface.\nFixes the remaining Issue #37 regression where Comments title, sort subtitle, and action icons could become white/invisible in light theme.\nValidated in DEV clone com.rubenmayayo.reddit.dev with targetSdk 35, both Issue #37 markers present, runtime blocker count 0, and manual visual PASS.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -21455,9 +21455,9 @@
       }
     ],
     "fingerprint": "7c9312a11df453379cc6857aed9585d839fc417f68cac9ad981e2a92184765df",
-    "release_notes": "# Morphe patch bundle 1.4.67\n\n### Boost for Reddit\n\n### Changes\n\n- Restore the **Trending today** panel under **View sidebar** when Boost's legacy trending source returns no usable rows.\n- Use current Reddit posts as a safe fallback while retaining Boost's native row rendering, navigation, NSFW handling, and cache behavior.\n- Hide the global **Limit to Community** control and suppress duplicate fallback titles.\n\n### User impact\n\n- **Trending today** now displays useful current posts instead of an empty panel.\n- Trending rows open normally in Boost, without the front-page sentinel label or duplicated title text.\n\n### Validation\n\n- 12 source-contract tests passed.\n- Static APK validation passed.\n- Bytecode safety validation passed with zero findings.\n- Boost DEV runtime loaded 12 fallback rows with no relevant process crash.\n",
-    "release_tag": "morphe-patches-67",
-    "release_date": "2026-07-11T20:21:23Z"
+    "release_notes": "## Morphe patch bundle 1.4.69\n\nRelease tag: `morphe-patches-69`\n\nAsset: `patches-1.4.69.mpp`\n\nSHA256: `b0321748c9e5232b2ffec1a32599760777c2dcd761494f7dcd5971a5451cae9b`\n\n### Boost for Reddit\n\nHotfix release for Issue #37 after the initial 1.4.68 status-bar fix proved incomplete on Morphe-installed light-theme builds.\n\n### Changes\n\n- Syncs CommentsActivity toolbar foreground with the resolved light/dark toolbar surface.\n- Fixes the remaining regression where the Comments title, sort subtitle, and toolbar action icons could become white or nearly invisible on light themes.\n- Tints toolbar title/subtitle, TextView compound drawables, ImageView action icons, navigation icon, and overflow icon inside the CommentsActivity-scoped system-bar fix.\n\n### User impact\n\n- Comments screens should now keep readable toolbar text and visible toolbar icons in light theme.\n- Status bar alignment from 1.4.68 is preserved.\n- No change to normal package handling during validation; runtime validation was performed in the DEV clone.\n\n### Validation\n\n- DEV clone package: `com.rubenmayayo.reddit.dev`.\n- DEV targetSdk: `35`.\n- Markers present: `MORPHE_BOOST_COMMENTS_SYSTEM_BAR_SURFACE_V1` and `MORPHE_BOOST_COMMENTS_TOOLBAR_FOREGROUND_V1`.\n- Runtime blocker count: `0`.\n- Manual visual result: `PASS` for Comments title, Best subtitle, and toolbar icons.\n- Release tag: `morphe-patches-69`.\n- Asset: `patches-1.4.69.mpp`.\n- MPP SHA256: `b0321748c9e5232b2ffec1a32599760777c2dcd761494f7dcd5971a5451cae9b`.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-69`.\n- Release asset: `patches-1.4.69.mpp`.\n- Signature asset: `patches-1.4.69.mpp.asc`.\n- MPP SHA256: `b0321748c9e5232b2ffec1a32599760777c2dcd761494f7dcd5971a5451cae9b`.\n",
+    "release_tag": "morphe-patches-69",
+    "release_date": "2026-07-12T00:42:20Z"
   },
   "quantro100:stable": {
     "bundle": "quantro100",
@@ -46911,9 +46911,9 @@
     "bundle": "ee-morphe",
     "channel": "dev",
     "repo_url": "https://gitlab.com/early.egg3707/ee-morphe-patches",
-    "created_at": "2026-07-10T23:15:55",
-    "version": "v1.3.0-dev.32",
-    "description": "# [1.3.0-dev.32](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.3.0-dev.31...v1.3.0-dev.32) (2026-07-10)\n\n\n### Bug Fixes\n\n* going pairip ([8f5c755](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/8f5c7551d2bb2178a716e4f76f3dd880ebd3f5ff))\n\n\n\n",
+    "created_at": "2026-07-11T23:35:17",
+    "version": "v1.3.0-dev.37",
+    "description": "# [1.3.0-dev.37](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.3.0-dev.36...v1.3.0-dev.37) (2026-07-11)\n\n\n### Bug Fixes\n\n* appsales2 ([4a2fed2](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/4a2fed256af5376e4412a3c77ead4ef9020a8913))\n\n\n\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -46972,20 +46972,36 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/2mC3PYKQAaLdu_0u8u__eL5kxjBdOXf476B3CtMTg0mhBwrOlD8ODP2DmiyCMXXfhF4Yx7JjjRZ6cauxkJmh5A"
+      },
+      {
+        "app_name": "AppSales",
+        "package": "net.tsapps.appsales",
+        "patches": [
+          {
+            "name": "Enable Pro",
+            "description": "Enables app features locked behind the subscription paywall and disables UI prompts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/AD-uvZA0oDO5bTMFmMbaAXn0r-beIWPA6E6TEydlOt7ClYWZgGtQ7A2HZVuuIbMZgCC7PRiV7suikMRJ-8ZrZg"
       }
     ],
-    "fingerprint": "22ea7759d236ae8b993543b58719d9bf14aaf4d6bb65262ac3a69e4b08608395",
-    "release_notes": "# [1.3.0-dev.32](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.3.0-dev.31...v1.3.0-dev.32) (2026-07-10)\n\n\n### Bug Fixes\n\n* going pairip ([8f5c755](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/8f5c7551d2bb2178a716e4f76f3dd880ebd3f5ff))\n\n\n\n",
-    "release_tag": "v1.3.0-dev.32",
-    "release_date": "2026-07-10T23:15:55.308Z"
+    "fingerprint": "95a8fd6a544949eb58a3f16d60354a67442e29a5469f7eacdae184d8266adfec",
+    "release_notes": "# [1.3.0-dev.37](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.3.0-dev.36...v1.3.0-dev.37) (2026-07-11)\n\n\n### Bug Fixes\n\n* appsales2 ([4a2fed2](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/4a2fed256af5376e4412a3c77ead4ef9020a8913))\n\n\n\n",
+    "release_tag": "v1.3.0-dev.37",
+    "release_date": "2026-07-11T23:35:17.203Z"
   },
   "ee-morphe:stable": {
     "bundle": "ee-morphe",
     "channel": "stable",
     "repo_url": "https://gitlab.com/early.egg3707/ee-morphe-patches",
-    "created_at": "2026-06-28T17:36:44",
-    "version": "v1.2.2",
-    "description": "## [1.2.2](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.2.1...v1.2.2) (2026-06-28)\n\n\n### Bug Fixes\n\n* cleanup old wanderlog things ([fc92a25](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/fc92a25f85bb448d4f01c319bc414d8d1b8b376c))\n\n\n\n",
+    "created_at": "2026-07-12T00:03:34",
+    "version": "v1.3.0",
+    "description": "# [1.3.0](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.2.2...v1.3.0) (2026-07-12)\n\n\n### Features\n\n* appsales ([b394682](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/b394682a14e7174b1e877b41d2197ab8939a0bde))\n\n\n\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -47028,12 +47044,28 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/2mC3PYKQAaLdu_0u8u__eL5kxjBdOXf476B3CtMTg0mhBwrOlD8ODP2DmiyCMXXfhF4Yx7JjjRZ6cauxkJmh5A"
+      },
+      {
+        "app_name": "AppSales",
+        "package": "net.tsapps.appsales",
+        "patches": [
+          {
+            "name": "Enable Pro",
+            "description": "Enables app features locked behind the subscription paywall and disables UI prompts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/AD-uvZA0oDO5bTMFmMbaAXn0r-beIWPA6E6TEydlOt7ClYWZgGtQ7A2HZVuuIbMZgCC7PRiV7suikMRJ-8ZrZg"
       }
     ],
-    "fingerprint": "fcd5af1b3301d330b926904e9decdc7343632ef4f88f2d69e84e7547d0f5509a",
-    "release_notes": "# [1.3.0-dev.32](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.3.0-dev.31...v1.3.0-dev.32) (2026-07-10)\n\n\n### Bug Fixes\n\n* going pairip ([8f5c755](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/8f5c7551d2bb2178a716e4f76f3dd880ebd3f5ff))\n\n\n\n",
-    "release_tag": "v1.3.0-dev.32",
-    "release_date": "2026-07-10T23:15:55.308Z"
+    "fingerprint": "4145c671d1e3f9c406fcf136ae8851fc467996d036c24a716de129e5a9d78cd0",
+    "release_notes": "# [1.3.0](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.2.2...v1.3.0) (2026-07-12)\n\n\n### Features\n\n* appsales ([b394682](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/b394682a14e7174b1e877b41d2197ab8939a0bde))\n\n\n\n",
+    "release_tag": "v1.3.0",
+    "release_date": "2026-07-12T00:03:34.455Z"
   },
   "hackingguy:dev": {
     "bundle": "hackingguy",
