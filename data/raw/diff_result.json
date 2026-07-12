@@ -8,118 +8,22 @@
         {
           "app_name": "The Battle of Polytopia",
           "package": "air.com.midjiwan.polytopia",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "lain",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Atomic",
-          "package": "com.jlindemann.science",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Pixel Studio",
-          "package": "com.pixelstudio",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Keymate",
-          "package": "net.nemostudio.keymate",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "ChatBoost",
-          "package": "studio.muggle.chatboost",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "lain",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Sketchbook",
-          "package": "com.adsk.sketchbook",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev"
-        },
-        {
-          "app_name": "Epic!",
-          "package": "com.getepic.epic",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev"
-        },
-        {
-          "app_name": "iLovePDF",
-          "package": "com.ilovepdf.www",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev"
-        },
-        {
-          "app_name": "Atomic",
-          "package": "com.jlindemann.science",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Pixel Studio",
-          "package": "com.pixelstudio",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Manga Plus",
-          "package": "jp.co.shueisha.mangaplus",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev"
-        },
-        {
-          "app_name": "Keymate",
-          "package": "net.nemostudio.keymate",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "ChatBoost",
-          "package": "studio.muggle.chatboost",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "adobo",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Gboard",
-          "package": "com.google.android.inputmethod.latin",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Enable access points menu redesign",
-                "description": "Enables the redesign of the additional actions menu."
+                "name": "Unlock all tribes",
+                "description": "Unlocks all 20 tribes by setting the debug flag in Unity PlayerPrefs via SharedPreferences."
               }
             ],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Enable OCR feature",
-                "description": "Enables the Scan Text feature to extract text from images and insert them into text fields.",
+                "name": "Free in-app purchases",
+                "description": "Skips Google Play Billing by creating a fake Purchase and calling nativeOnPurchasesUpdated directly via extension.",
                 "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Enable Undo feature",
-                "description": "Enables the undo feature to quickly undo or correct typing mistakes.",
-                "changes": [
-                  "description updated"
+                  "description updated",
+                  "disabled"
                 ]
               }
             ]
@@ -128,558 +32,690 @@
       ]
     },
     {
-      "bundle": "piko",
+      "bundle": "rushiranpise",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Instagram",
-          "package": "com.instagram.android",
+          "app_name": "Ace Ex File Manager",
+          "package": "com.ace.ex.file.manager",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Cashew",
+          "package": "com.budget.tracker_app",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlock Pro Features in Cashew App",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Inmigreat",
+          "package": "com.changayaf.inmigreat",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlock Pro Features in app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "MovieBox (India)",
+          "package": "com.community.mbox.in",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Filter stories",
-                "description": "Filter stories to hide based on different categories"
-              },
-              {
-                "name": "Mark chat as read manually",
-                "description": "Adds option to mark a thread aka message as read manually"
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP features in app."
               }
             ],
-            "patches_removed": [],
+            "patches_removed": [
+              {
+                "name": "Bypass member rights check",
+                "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof member brief info",
+                "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Spoof member info",
+                "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis."
+              },
+              {
+                "name": "Spoof member provider flags",
+                "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package."
+              },
+              {
+                "name": "Suppress newbie bonus dialog",
+                "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search."
+              },
+              {
+                "name": "Unlock download member requirement",
+                "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
             "patches_modified": []
           }
         },
         {
-          "app_name": "X",
-          "package": "com.twitter.android",
+          "app_name": "MovieBox TV",
+          "package": "com.community.mbox.tv",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP Features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass TV episode VIP gate",
+                "description": "Forces BffSubjectInfo.isVip() to always return false, making every episode appear as non-VIP-only so playback is not blocked in DetailFragment."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof TV account VIP status",
+                "description": "Forces BffGetVipUserInfoData.isVip() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass member rights check",
+                "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof member brief info",
+                "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Spoof member info",
+                "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis."
+              },
+              {
+                "name": "Spoof member provider flags",
+                "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package."
+              },
+              {
+                "name": "Suppress newbie bonus dialog",
+                "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search."
+              },
+              {
+                "name": "Unlock download member requirement",
+                "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "Lark Player",
+          "package": "com.dywx.larkplayer",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Dailyhunt",
+          "package": "com.eterno",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Fitbod",
+          "package": "com.fitbod.fitbod",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
-            "patches_removed": [
-              {
-                "name": "Browse tweet object",
-                "description": "Adds an option to browse the tweet object in the share menu."
-              }
-            ],
+            "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Add ability to copy media link",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Block redirecting to X Lite",
-                "description": "Blocks redirecting to the new X Android UI on launch",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Bring back twitter",
-                "description": "Bring back old twitter logo and name",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Change app icon",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Change version code",
-                "description": "Changes the version code of the app. This will turn off app store updates and allows downgrading an existing app install to an older app version.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Clear tracking params",
-                "description": "Removes tracking parameters when sharing links",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Control video auto scroll",
-                "description": "Control video auto scroll in immersive view",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Custom download folder",
-                "description": "Change the download directory for video downloads",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Custom emoji font",
-                "description": "Customise emoji font style",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Custom font",
-                "description": "Customise font style",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Custom share menu",
-                "description": "Overrides existing share menu and adds a new one",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Custom sharing domain",
-                "description": "Allows for using domains like fxtwitter when sharing tweets/posts.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customise post font size",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize Inline action Bar items",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize Navigation Bar items",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize default reply sorting",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize explore tabs",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize notification tabs",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize profile tabs",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize search suggestions",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize search tab items",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize side bar items",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Customize timeline top bar",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Delete from database",
-                "description": "Delete entries from database(cache)",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Disable auto timeline scroll on launch",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Disable chirp font",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Disunify xchat system",
-                "description": "Bring back legacy features like messages and share sheet.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Download patch",
-                "description": "Unlocks the ability to download videos and gifs from Twitter/X",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Dynamic color",
-                "description": "Replaces the default Twitter Blue with the user's Material You palette.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Enable PiP mode automatically",
-                "description": "Enables PiP mode when you close the app",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Enable Undo Posts",
-                "description": "Enables ability to undo posts before posting",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Enable debug menu for posts",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Enable force HD videos",
-                "description": "Videos will be played in highest quality always",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Export all activities",
-                "description": "Makes all app activities exportable.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Force enable translate",
-                "description": "Get translate option for all posts",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Handle custom twitter links",
-                "description": "Adds support for opening custom twitter links such as vxtwitter, fxtwitter, and fixupx within the app. These will have to be manually enabled under the \"Open by default\" section in the app info!",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide Banner",
-                "description": "Hide new post banner",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide Community Notes",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide FAB",
-                "description": "Adds an option to hide Floating action button",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide FAB Menu Buttons",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide Live Threads",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide Recommended Users",
-                "description": "Hide recommended users that pops up when you follow someone",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide badges from navigation bar icons",
-                "description": "Hides notification nudges & counts from navigation bar icons",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide bookmark icon in timeline",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide community badges",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide followed by context",
-                "description": "Hides followed by context under profile",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide hidden replies",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide immersive player",
-                "description": "Removes swipe up for more videos in video player",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide nudge button",
-                "description": "Hides follow/subscribe/follow back buttons on posts",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide post metrics",
-                "description": "Hides like, reposts etc counts.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide promote button",
-                "description": "Hides promote button under self posts",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hide recommendation items",
-                "description": "Adds options to hide recommendation items such as \"Who to follow\" and \"Today's news\" in timeline, search, and replies.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Hook feature flag",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Import/Export login token",
-                "description": "Adds an feature to export and import the token of accounts. This is useful when logging in on your second device or when re-installing piko.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Legacy share links",
-                "description": "Brings back username on post share links. Works post 11.4x.xx",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Log server response",
-                "description": "Log json responses received from server",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "More information on profile",
-                "description": "Adds more details on the profile page",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Native downloader",
-                "description": "Requires X 11.0.0-release.0 or higher.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Native reader mode",
-                "description": "Requires X 11.0.0-release.0 or higher.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Native translator",
-                "description": "Requires X 11.0.0-release.0 or higher.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "No shortened URL",
-                "description": "Get rid of t.co short urls.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Pause search suggestions",
-                "description": "Search suggestions will not be saved locally",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Remove Ads",
-                "description": "Removed promoted posts, trends and google ads",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Remove premium upsell",
-                "description": "Removes premium upsell in home timeline",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Remove search suggestions",
-                "description": "Hide/Remove search suggestion in explore section",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Remove view count",
-                "description": "Removes the view count from the bottom of tweets",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Round off numbers",
-                "description": "Enable or disable rounding off numbers",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Selectable Text",
-                "description": "Makes bio and username selectable",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Share Tweet as Image",
-                "description": "Share tweets as rendered image. Requires X 11.0.0-release.0 or higher.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Show changelogs",
-                "description": "Shows changelogs when new a patch is installed.",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Show poll results",
-                "description": "Adds an option to show poll results without voting",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Show post source label",
-                "description": "Source label will be shown only on public posts",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Show sensitive media",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
-                ]
-              },
-              {
-                "name": "Support external downloader",
-                "description": "",
-                "changes": [
-                  "versions: +1 version, -4 versions"
+                "name": "Unlock Premium",
+                "description": "Unlocks all Fitbod premium features.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "BuzzCast",
+          "package": "com.guochao.faceshow",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Anime Depth Wallpapers",
+          "package": "com.jndapp.anime.depth.live.wallpaper",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Depth Live Wallpaper",
+          "package": "com.jndapp.depth.live.wallpaper",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Minimal Widgets",
+          "package": "com.jndapp.minimal.widgets",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Pocket Bard",
+          "package": "com.mojofiltermediallc.rpgsoundsystem",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "KineMaster",
+          "package": "com.nexstreaming.app.kinemasterfree",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "NYT Games",
+          "package": "com.nytimes.crossword",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Pixel Habit Tracker",
+          "package": "com.pixel.al.pixelhabittracker",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "PLAYit",
+          "package": "com.playit.videoplayer",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Case Tracker",
+          "package": "com.saldous.casetracker",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks all premium features in Case Tracker — Immigration.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Sticker.ly",
+          "package": "com.snowcorp.stickerly.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Plus",
+                "description": "Unlocks Sticker.ly PLUS subscriptionNote: For Facebook Login, Uninstall Facebook App.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Splitwise",
+          "package": "com.splitwise.splitwisemobile",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks Splitwise Pro features, removes ad banners, and suppresses all upgrade upsell prompts.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Strava",
+          "package": "com.strava",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Uptodown App Store",
+          "package": "com.uptodown",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "komoot",
+          "package": "de.komoot.android",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "MEGA",
+          "package": "mega.privacy.android.app",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Citizen",
+          "package": "sp0n.citizen",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks all Citizen Plus/Protect features: Safety Network, Safety Center, Zones, Live Agent, Offender alerts, Clarity crime map, incident video, and more.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "rushiranpise",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Ace Ex File Manager",
+          "package": "com.ace.ex.file.manager",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Cashew",
+          "package": "com.budget.tracker_app",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlock Pro Features in Cashew App",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Inmigreat",
+          "package": "com.changayaf.inmigreat",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlock Pro Features in app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "MovieBox (India)",
+          "package": "com.community.mbox.in",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass member rights check",
+                "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof member brief info",
+                "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Spoof member info",
+                "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis."
+              },
+              {
+                "name": "Spoof member provider flags",
+                "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package."
+              },
+              {
+                "name": "Suppress newbie bonus dialog",
+                "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search."
+              },
+              {
+                "name": "Unlock download member requirement",
+                "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "MovieBox TV",
+          "package": "com.community.mbox.tv",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP Features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass TV episode VIP gate",
+                "description": "Forces BffSubjectInfo.isVip() to always return false, making every episode appear as non-VIP-only so playback is not blocked in DetailFragment."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof TV account VIP status",
+                "description": "Forces BffGetVipUserInfoData.isVip() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass member rights check",
+                "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof member brief info",
+                "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Spoof member info",
+                "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis."
+              },
+              {
+                "name": "Spoof member provider flags",
+                "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package."
+              },
+              {
+                "name": "Suppress newbie bonus dialog",
+                "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search."
+              },
+              {
+                "name": "Unlock download member requirement",
+                "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "Lark Player",
+          "package": "com.dywx.larkplayer",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Dailyhunt",
+          "package": "com.eterno",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Fitbod",
+          "package": "com.fitbod.fitbod",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks all Fitbod premium features.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "BuzzCast",
+          "package": "com.guochao.faceshow",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Anime Depth Wallpapers",
+          "package": "com.jndapp.anime.depth.live.wallpaper",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Depth Live Wallpaper",
+          "package": "com.jndapp.depth.live.wallpaper",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Minimal Widgets",
+          "package": "com.jndapp.minimal.widgets",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Pocket Bard",
+          "package": "com.mojofiltermediallc.rpgsoundsystem",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "KineMaster",
+          "package": "com.nexstreaming.app.kinemasterfree",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "NYT Games",
+          "package": "com.nytimes.crossword",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Pixel Habit Tracker",
+          "package": "com.pixel.al.pixelhabittracker",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "PLAYit",
+          "package": "com.playit.videoplayer",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Case Tracker",
+          "package": "com.saldous.casetracker",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks all premium features in Case Tracker — Immigration.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Sticker.ly",
+          "package": "com.snowcorp.stickerly.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Plus",
+                "description": "Unlocks Sticker.ly PLUS subscriptionNote: For Facebook Login, Uninstall Facebook App.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Splitwise",
+          "package": "com.splitwise.splitwisemobile",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks Splitwise Pro features, removes ad banners, and suppresses all upgrade upsell prompts.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Strava",
+          "package": "com.strava",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Uptodown App Store",
+          "package": "com.uptodown",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "komoot",
+          "package": "de.komoot.android",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "MEGA",
+          "package": "mega.privacy.android.app",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Citizen",
+          "package": "sp0n.citizen",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks all Citizen Plus/Protect features: Safety Network, Safety Center, Zones, Live Agent, Offender alerts, Clarity crime map, incident video, and more.",
+                "changes": [
+                  "versions: +1 version, -1 version"
                 ]
               }
             ]

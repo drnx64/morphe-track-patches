@@ -1,7 +1,7 @@
 {
   "date": "2026-07-12",
-  "lastChecked": "2026-07-12T15:56:43Z",
-  "scan_counter": 5,
+  "lastChecked": "2026-07-12T18:59:39Z",
+  "scan_counter": 6,
   "affected_bundles": {
     "ee-morphe:dev": {
       "bundle": "ee-morphe",
@@ -354,8 +354,28 @@
           "package": "air.com.midjiwan.polytopia",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            5
-          ]
+            5,
+            6
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock all tribes",
+                "description": "Unlocks all 20 tribes by setting the debug flag in Unity PlayerPrefs via SharedPreferences."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Free in-app purchases",
+                "description": "Skips Google Play Billing by creating a fake Purchase and calling nativeOnPurchasesUpdated directly via extension.",
+                "changes": [
+                  "description updated",
+                  "disabled"
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -1075,6 +1095,860 @@
           },
           "scan_numbers": [
             5
+          ]
+        }
+      ]
+    },
+    "rushiranpise:dev": {
+      "bundle": "rushiranpise",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Ace Ex File Manager",
+          "package": "com.ace.ex.file.manager",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Cashew",
+          "package": "com.budget.tracker_app",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlock Pro Features in Cashew App",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Inmigreat",
+          "package": "com.changayaf.inmigreat",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlock Pro Features in app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "MovieBox (India)",
+          "package": "com.community.mbox.in",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass member rights check",
+                "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof member brief info",
+                "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Spoof member info",
+                "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis."
+              },
+              {
+                "name": "Spoof member provider flags",
+                "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package."
+              },
+              {
+                "name": "Suppress newbie bonus dialog",
+                "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search."
+              },
+              {
+                "name": "Unlock download member requirement",
+                "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "MovieBox TV",
+          "package": "com.community.mbox.tv",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP Features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass TV episode VIP gate",
+                "description": "Forces BffSubjectInfo.isVip() to always return false, making every episode appear as non-VIP-only so playback is not blocked in DetailFragment."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof TV account VIP status",
+                "description": "Forces BffGetVipUserInfoData.isVip() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass member rights check",
+                "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof member brief info",
+                "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Spoof member info",
+                "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis."
+              },
+              {
+                "name": "Spoof member provider flags",
+                "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package."
+              },
+              {
+                "name": "Suppress newbie bonus dialog",
+                "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search."
+              },
+              {
+                "name": "Unlock download member requirement",
+                "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Lark Player",
+          "package": "com.dywx.larkplayer",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Dailyhunt",
+          "package": "com.eterno",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Fitbod",
+          "package": "com.fitbod.fitbod",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks all Fitbod premium features.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "BuzzCast",
+          "package": "com.guochao.faceshow",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Anime Depth Wallpapers",
+          "package": "com.jndapp.anime.depth.live.wallpaper",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Depth Live Wallpaper",
+          "package": "com.jndapp.depth.live.wallpaper",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Minimal Widgets",
+          "package": "com.jndapp.minimal.widgets",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Pocket Bard",
+          "package": "com.mojofiltermediallc.rpgsoundsystem",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "KineMaster",
+          "package": "com.nexstreaming.app.kinemasterfree",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "NYT Games",
+          "package": "com.nytimes.crossword",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Pixel Habit Tracker",
+          "package": "com.pixel.al.pixelhabittracker",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "PLAYit",
+          "package": "com.playit.videoplayer",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Case Tracker",
+          "package": "com.saldous.casetracker",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks all premium features in Case Tracker — Immigration.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Sticker.ly",
+          "package": "com.snowcorp.stickerly.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Plus",
+                "description": "Unlocks Sticker.ly PLUS subscriptionNote: For Facebook Login, Uninstall Facebook App.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Splitwise",
+          "package": "com.splitwise.splitwisemobile",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks Splitwise Pro features, removes ad banners, and suppresses all upgrade upsell prompts.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Strava",
+          "package": "com.strava",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Uptodown App Store",
+          "package": "com.uptodown",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "komoot",
+          "package": "de.komoot.android",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "MEGA",
+          "package": "mega.privacy.android.app",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Citizen",
+          "package": "sp0n.citizen",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks all Citizen Plus/Protect features: Safety Network, Safety Center, Zones, Live Agent, Offender alerts, Clarity crime map, incident video, and more.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        }
+      ]
+    },
+    "rushiranpise:stable": {
+      "bundle": "rushiranpise",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Ace Ex File Manager",
+          "package": "com.ace.ex.file.manager",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Cashew",
+          "package": "com.budget.tracker_app",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlock Pro Features in Cashew App",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Inmigreat",
+          "package": "com.changayaf.inmigreat",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlock Pro Features in app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "MovieBox (India)",
+          "package": "com.community.mbox.in",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass member rights check",
+                "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof member brief info",
+                "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Spoof member info",
+                "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis."
+              },
+              {
+                "name": "Spoof member provider flags",
+                "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package."
+              },
+              {
+                "name": "Suppress newbie bonus dialog",
+                "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search."
+              },
+              {
+                "name": "Unlock download member requirement",
+                "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "MovieBox TV",
+          "package": "com.community.mbox.tv",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP Features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass TV episode VIP gate",
+                "description": "Forces BffSubjectInfo.isVip() to always return false, making every episode appear as non-VIP-only so playback is not blocked in DetailFragment."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof TV account VIP status",
+                "description": "Forces BffGetVipUserInfoData.isVip() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Unlock VIP",
+                "description": "Unlocks VIP features in app."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Bypass member rights check",
+                "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE."
+              },
+              {
+                "name": "Clear VIP resolution tip",
+                "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE."
+              },
+              {
+                "name": "Spoof member brief info",
+                "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Spoof member info",
+                "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis."
+              },
+              {
+                "name": "Spoof member provider flags",
+                "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package."
+              },
+              {
+                "name": "Suppress newbie bonus dialog",
+                "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search."
+              },
+              {
+                "name": "Unlock download member requirement",
+                "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis."
+              },
+              {
+                "name": "Unlock member resolution",
+                "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Lark Player",
+          "package": "com.dywx.larkplayer",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Dailyhunt",
+          "package": "com.eterno",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Fitbod",
+          "package": "com.fitbod.fitbod",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks all Fitbod premium features.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "BuzzCast",
+          "package": "com.guochao.faceshow",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Anime Depth Wallpapers",
+          "package": "com.jndapp.anime.depth.live.wallpaper",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Depth Live Wallpaper",
+          "package": "com.jndapp.depth.live.wallpaper",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Minimal Widgets",
+          "package": "com.jndapp.minimal.widgets",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Pocket Bard",
+          "package": "com.mojofiltermediallc.rpgsoundsystem",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "KineMaster",
+          "package": "com.nexstreaming.app.kinemasterfree",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "NYT Games",
+          "package": "com.nytimes.crossword",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Pixel Habit Tracker",
+          "package": "com.pixel.al.pixelhabittracker",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "PLAYit",
+          "package": "com.playit.videoplayer",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Case Tracker",
+          "package": "com.saldous.casetracker",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks all premium features in Case Tracker — Immigration.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Sticker.ly",
+          "package": "com.snowcorp.stickerly.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Plus",
+                "description": "Unlocks Sticker.ly PLUS subscriptionNote: For Facebook Login, Uninstall Facebook App.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Splitwise",
+          "package": "com.splitwise.splitwisemobile",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks Splitwise Pro features, removes ad banners, and suppresses all upgrade upsell prompts.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Strava",
+          "package": "com.strava",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Uptodown App Store",
+          "package": "com.uptodown",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "komoot",
+          "package": "de.komoot.android",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "MEGA",
+          "package": "mega.privacy.android.app",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Citizen",
+          "package": "sp0n.citizen",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks all Citizen Plus/Protect features: Safety Network, Safety Center, Zones, Live Agent, Offender alerts, Clarity crime map, incident video, and more.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
           ]
         }
       ]
