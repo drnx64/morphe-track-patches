@@ -11864,9 +11864,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-12T14:57:01",
-    "version": "v1.8.6",
-    "description": "## [1.8.6](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.8.5...v1.8.6) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* ensure store is connected and run on main thread ([37b468f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/37b468f94bc5a6410f96f91ab51bb60ab8bd40d4))\n* ensure store is connected and run on main thread ([ee42de3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/ee42de358b8d6296c93ccc0a9bc66d933953d0c6))\n* intercept onPurchasesUpdated instead of launchBillingFlow ([e65a7ac](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e65a7ac86cd2001c7f3a6168c315bced8e19e554))\n* intercept onPurchasesUpdated instead of launchBillingFlow ([e72dee2](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e72dee26058cd1303c8f82a1b5d9388635e2871c))\n",
+    "created_at": "2026-07-12T17:55:03",
+    "version": "v1.9.1",
+    "description": "## [1.9.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.0...v1.9.1) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* use p-registers for tribe unlock and fix billing bridge instance ([ca6f1ec](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/ca6f1ec77f66b93567eae7a82c35433c09995ff7))\n* use p-registers for tribe unlock and fix billing bridge instance ([a25301c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a25301cdf6766a5665e3398cf6140b56fc7a714a))\n* use p-registers for tribe unlock and fix billing bridge instance ([e4e084a](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e4e084a3b62c49ba1ef32399642b1c1bd974b226))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -11874,7 +11874,16 @@
         "patches": [
           {
             "name": "Free in-app purchases",
-            "description": "Intercepts purchase callbacks to simulate successful purchases. Stores the SKU when launchBillingFlow is called, then intercepts onPurchasesUpdated to call nativeOnPurchasesUpdated with a fake Purchase.",
+            "description": "Skips Google Play Billing by creating a fake Purchase and calling nativeOnPurchasesUpdated directly via extension.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.17.2.16299"
+            ]
+          },
+          {
+            "name": "Unlock all tribes",
+            "description": "Unlocks all 20 tribes by setting the debug flag in Unity PlayerPrefs via SharedPreferences.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -11977,7 +11986,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "3f4586d11b1b22c91a06a074f157e0aabd1f4cbff82bf14a3c8159c7c674f133"
+    "fingerprint": "99f483deb9e9ff4bf1553e6aabbb17d892835fd444f5f91f6c2d773f7dd94d38"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -29399,9 +29408,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-07-10T01:01:08",
-    "version": "v1.11.0-dev.5",
-    "description": "# Rushi's Patches v1.11.0-dev.5\nPatch source for Morphe.\n**Channel:** dev prerelease  \n**Branch:** `dev`  \n**Patch count:** 165\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.11.0-dev.5.mpp` from the release assets below.\n> This is a dev prerelease and may be less stable than a stable release.\n\n## Supported Apps Changed\n\n### Added Apps\n- **Life360** (`com.life360.android.safetymapd`)\n- **MovieBox (India)** (`com.community.mbox.in`)\n- **Today Weather** (`mobi.lockdown.weather`)\n- **UbikiTouch** (`eu.toneiv.ubktouch`)\n\n### Updated App Versions\n- **JEFIT** (`je.fit`): `17.1.0` -> `17.2.5`\n- **SCRL** (`com.appostrophe.scrl`): `1.21` -> `1.22`\n- **Windscribe VPN** (`com.windscribe.vpn`): `4.2.2326` -> `4.2.2328`\n\n### Removed Apps\n- **AMBOSS** (`com.amboss.medical.knowledge`)\n- **SkinSort** (`com.skinsort`)\n- **Tracked** (`com.tracked.mobile`)\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.11.0-dev.5](https://github.com/rushiranpise/morphe-patches/compare/v1.11.0-dev.4...v1.11.0-dev.5) (2026-07-10)\n\n### New Patches\n\n* add life360 ([6b26e06](https://github.com/rushiranpise/morphe-patches/commit/6b26e067124fa4a624e18ee49342140e410b2769))\n* add moviebox india ([a7662ba](https://github.com/rushiranpise/morphe-patches/commit/a7662ba12f5b858dfcb20bdb88f8f95c0ef6cbe9))\n* add todays weather ([ebe3e49](https://github.com/rushiranpise/morphe-patches/commit/ebe3e49a68e37312466cfb2aaac9341e0e9f3f18))\n* add UbikiTouch ([086ac80](https://github.com/rushiranpise/morphe-patches/commit/086ac80378e76a4a5f4f34c515d3ec3b5c7da2b5))\n\n### Fixes\n\n* amazon ([7f9fe2a](https://github.com/rushiranpise/morphe-patches/commit/7f9fe2afa45379173fab5edb974fa8d2978c940b))",
+    "created_at": "2026-07-12T16:59:11",
+    "version": "v1.12.0-dev.1",
+    "description": "# Rushi's Patches v1.12.0-dev.1\nPatch source for Morphe.\n**Channel:** dev prerelease  \n**Branch:** `dev`  \n**Patch count:** 212\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.12.0-dev.1.mpp` from the release assets below.\n> This is a dev prerelease and may be less stable than a stable release.\n\n## Supported Apps Changed\n\n### Added Apps\n- **Ace Ex File Manager** (`com.ace.ex.file.manager`)\n- **Anime Depth Wallpapers** (`com.jndapp.anime.depth.live.wallpaper`)\n- **BuzzCast** (`com.guochao.faceshow`)\n- **Dailyhunt** (`com.eterno`)\n- **Depth Live Wallpaper** (`com.jndapp.depth.live.wallpaper`)\n- **KineMaster** (`com.nexstreaming.app.kinemasterfree`)\n- **komoot** (`de.komoot.android`)\n- **Lark Player** (`com.dywx.larkplayer`)\n- **MEGA** (`mega.privacy.android.app`)\n- **Minimal Widgets** (`com.jndapp.minimal.widgets`)\n- **NYT Games** (`com.nytimes.crossword`)\n- **Pixel Habit Tracker** (`com.pixel.al.pixelhabittracker`)\n- ...and 5 more\n\n### Updated App Versions\n- **Case Tracker** (`com.saldous.casetracker`): `5.5.2` -> `5.5.3`\n- **Cashew** (`com.budget.tracker_app`): `6.5.9` -> `6.6.11`\n- **Citizen** (`sp0n.citizen`): `0.1298.0` -> `0.1300.0`\n- **Fitbod** (`com.fitbod.fitbod`): `8.24.0-1` -> `8.24.1-0`\n- **Inmigreat** (`com.changayaf.inmigreat`): `2.2.83` -> `2.3.4`\n- **MovieBox** (`com.community.oneroom`): `3.0.16.0703.03` -> `3.0.16.0709.03`\n- **MovieBox TV** (`com.community.mbox.tv`): `1.1.1.0702.03` -> `1.1.4.0710.03`\n- **Splitwise** (`com.Splitwise.SplitwiseMobile`): `26.6.3` -> `26.7.1`\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.12.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.11.0...v1.12.0-dev.1) (2026-07-12)\n\n### New Patches\n\n* add ace ([6535fc2](https://github.com/rushiranpise/morphe-patches/commit/6535fc23c68398b2a3164788333052ad72d0cfed))\n* add buzzcast ([7d640be](https://github.com/rushiranpise/morphe-patches/commit/7d640bec1b163ca37c9119d3a959a32c971b0c05))\n* add daily hunt ([650c983](https://github.com/rushiranpise/morphe-patches/commit/650c983d8796297090d1fd0ef92b0978cd77937d))\n* add ex ([03af341](https://github.com/rushiranpise/morphe-patches/commit/03af3414ee323851b1c5b62b5ca9aeb629215ac2))\n* add justnew design apps ([0bfb500](https://github.com/rushiranpise/morphe-patches/commit/0bfb5002e8ce8ec438b616e71c88378c0f975615))\n* add kinemaster ([c9d9912](https://github.com/rushiranpise/morphe-patches/commit/c9d9912b14e24f43d8b3f83796719506c7c030d4))\n* add komoot ([58494ca](https://github.com/rushiranpise/morphe-patches/commit/58494ca40ec398d785e62b8088364edac706fed1))\n* add lark player ([cf76807](https://github.com/rushiranpise/morphe-patches/commit/cf7680717f8cce6f27b0ef21588a0234ff4b6a5d))\n* add mega ([74b2412](https://github.com/rushiranpise/morphe-patches/commit/74b24124d709ff21b9890df442649f3eca910bb8))\n* add nyttgames ([e531da4](https://github.com/rushiranpise/morphe-patches/commit/e531da4247e2da775f6932c5b3cff3ce72590160))\n* add pixelhabit ([89d4b0d](https://github.com/rushiranpise/morphe-patches/commit/89d4b0d3346797925216deaaf241a6ff4d85d22e))\n* add playit ([da32bef](https://github.com/rushiranpise/morphe-patches/commit/da32bef3169cc558d0316f2d4f1d3ac208b21a9c))\n* add pocketbard ([e0f8315](https://github.com/rushiranpise/morphe-patches/commit/e0f8315ab548135087a9ef348f5804c471ae1415))\n* add strava ([8e55342](https://github.com/rushiranpise/morphe-patches/commit/8e55342e7f9cb33561d55c57ca4d60bda53dba17))\n* add universal patches ([a80ca36](https://github.com/rushiranpise/morphe-patches/commit/a80ca366f446e2d93d271f43b0e87fdd3ea391f5))\n* add uptodown ([f5bbc0e](https://github.com/rushiranpise/morphe-patches/commit/f5bbc0ea9471e2be6cd486070d685ef7d9af647d))\n\n### Fixes\n\n* dailyhunt ([53561e8](https://github.com/rushiranpise/morphe-patches/commit/53561e8cfb8bf50509f60273d00956f120ebe857))\n* moovit crash ([4d64bc7](https://github.com/rushiranpise/morphe-patches/commit/4d64bc71c7bf92e9e03f90163d1f919f01ea9df8))",
     "apps": [
       {
         "app_name": "Snipd",
@@ -29658,6 +29667,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/wdQXBFb3I1NgNpRzJo9tMHJuV9P069NR5GJ2J7w8eX_SVarWLRarca-6MiemrDbnSqDQflFzvzjSG2smlwe39TQ"
+      },
+      {
+        "app_name": "Ace Ex File Manager",
+        "package": "com.ace.ex.file.manager",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.6.0.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/nz9hmHaHAynzg6g25uEqTkdjBNyCw3ojPPxW-IvVAH0Rf0OOZIxMu6acfVsciCP_0J2uPSdwaRIRW430tNjW9g"
       },
       {
         "app_name": "MyRadar",
@@ -29922,7 +29947,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "6.5.9"
+              "6.6.11"
             ]
           }
         ],
@@ -29970,7 +29995,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "2.2.83"
+              "2.3.4"
             ]
           }
         ],
@@ -30022,71 +30047,8 @@
         "package": "com.community.mbox.in",
         "patches": [
           {
-            "name": "Bypass member rights check",
-            "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Clear VIP resolution tip",
-            "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Spoof member brief info",
-            "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Spoof member info",
-            "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Spoof member provider flags",
-            "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Suppress newbie bonus dialog",
-            "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Unlock download member requirement",
-            "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Unlock member resolution",
-            "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE.",
+            "name": "Unlock VIP",
+            "description": "Unlocks VIP features in app.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -30101,39 +30063,12 @@
         "package": "com.community.mbox.tv",
         "patches": [
           {
-            "name": "Bypass TV episode VIP gate",
-            "description": "Forces BffSubjectInfo.isVip() to always return false, making every episode appear as non-VIP-only so playback is not blocked in DetailFragment.",
+            "name": "Unlock VIP",
+            "description": "Unlocks VIP Features in app.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.1.1.0702.03"
-            ]
-          },
-          {
-            "name": "Clear VIP resolution tip",
-            "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.1.1.0702.03"
-            ]
-          },
-          {
-            "name": "Spoof TV account VIP status",
-            "description": "Forces BffGetVipUserInfoData.isVip() to always return Boolean.TRUE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.1.1.0702.03"
-            ]
-          },
-          {
-            "name": "Unlock member resolution",
-            "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.1.1.0702.03"
+              "1.1.4.0710.03"
             ]
           }
         ],
@@ -30144,75 +30079,12 @@
         "package": "com.community.oneroom",
         "patches": [
           {
-            "name": "Bypass member rights check",
-            "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE.",
+            "name": "Unlock VIP",
+            "description": "Unlocks VIP features in app.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Clear VIP resolution tip",
-            "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Spoof member brief info",
-            "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Spoof member info",
-            "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Spoof member provider flags",
-            "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Suppress newbie bonus dialog",
-            "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Unlock download member requirement",
-            "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Unlock member resolution",
-            "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
+              "3.0.16.0709.03"
             ]
           }
         ],
@@ -30281,6 +30153,38 @@
         "icon_url": "https://play-lh.googleusercontent.com/wRh3wXmWiBlqdUSH6Q6IQzVdodOMWDI2kgE00Cd7CyBtfcILa0Hh7zF1S6Jx__E2ED8ldXGn-onqmA478YY0SQ"
       },
       {
+        "app_name": "Lark Player",
+        "package": "com.dywx.larkplayer",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.9.6"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/R9N82-_YF9nBKiJrelXqDhIAkTsRGXbr7wSZAKRp9G_If69LgSbHgGeaQC8EWCi9ln9o2rQSP_ww66K9Bm3w"
+      },
+      {
+        "app_name": "Dailyhunt",
+        "package": "com.eterno",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features after login.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "33.5.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/gQO-QGyxpIHxi2BpUbz00wwssXNO1qIpEkafN8FrxJi0wiD4ZiKT4KYFcUFLI2DvyrS_vV0UGXY0WRt612t3"
+      },
+      {
         "app_name": "AIDA64",
         "package": "com.finalwire.aida64",
         "patches": [
@@ -30306,7 +30210,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.24.0-1"
+              "8.24.1-0"
             ]
           }
         ],
@@ -30359,6 +30263,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/DXrF5vnF9dq1oD4tH9QYTC_T-LMWnBZnBrgRc_HUyULImVzcLnfaYw8Awg7qkwxHvcEIXY05qoCEgM7L4T4Rvw"
+      },
+      {
+        "app_name": "BuzzCast",
+        "package": "com.guochao.faceshow",
+        "patches": [
+          {
+            "name": "Unlock SVIP",
+            "description": "Unlocks SViP features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.80"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/m47d-2epJmb3wScj2W_4gLc8CYbmd6_NIfR33YJHHkIbVoOc40whqKW90hRDL_bYM9LzW2FGLFyDIGMp1gVe"
       },
       {
         "app_name": "Clickmate",
@@ -30432,6 +30352,54 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/tDjmADWkv1VGF5On3dNc4nMQZ0qU7izJKqmS_sJQ648tXazBvaLR7HO-VD7DJNKqMEOzJA-PUAEgdrNxuH6_UA"
+      },
+      {
+        "app_name": "Anime Depth Wallpapers",
+        "package": "com.jndapp.anime.depth.live.wallpaper",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium wallpapers.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.0.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/jYmevEkyKdHZs_FSQEIRg8Ifxx4YU2-BQtso3Z0iQkMPM9w9ZkrOcbD7rys6Kq34t4Evufy1UVOgwwP0y4KKWc8"
+      },
+      {
+        "app_name": "Depth Live Wallpaper",
+        "package": "com.jndapp.depth.live.wallpaper",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium wallpapers.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.1.06"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/h9g140jbgc6tR6o2VgL2lF0OYTr8cq2n9x_GihS_Toxe3PioggBfXHzIwM2OeNeEyWHfZFpqoMov5Whdm_qMeg"
+      },
+      {
+        "app_name": "Minimal Widgets",
+        "package": "com.jndapp.minimal.widgets",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlockins all premium widgets.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.0.08"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/YdxN2n40wSiPp-WZi832aZHxGFQSafDcHqNif-Wy9YH__t2nCXoB5yGaCQkisJaHWe13H37lI_olM7sKsfONBg"
       },
       {
         "app_name": "Carbon",
@@ -30642,6 +30610,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/6NH-2g_kwAlEExsNbcAA0w5bjfxoHMaALX4DrMpIhQe64-ZfaxLW085Cax9J-e_mvk9TNeNKZXDzeo8BNF-eExY"
       },
       {
+        "app_name": "Pocket Bard",
+        "package": "com.mojofiltermediallc.rpgsoundsystem",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Unlock Premium features in app",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.16"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
         "app_name": "SAI",
         "package": "com.mtv.sai",
         "patches": [
@@ -30735,6 +30719,38 @@
         "icon_url": "https://play-lh.googleusercontent.com/3b7_a7m50wFj68Afd6q0bhq2HPTWQlgeViv9B9tEbhChS3h4nVTo-HotZF4OmShKwT2_zhNAr3alwYRWBjiC_g"
       },
       {
+        "app_name": "KineMaster",
+        "package": "com.nexstreaming.app.kinemasterfree",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlock Premium features after login.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.1.13.36552.GP"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Jc_gKnGxM5p4_FuWQ_v2k6HlMaCcExeIDt--PkcWrLj_VQ2OyMPhDaycC1s9wG3yOwjviVA4M1go0O-foAx0"
+      },
+      {
+        "app_name": "NYT Games",
+        "package": "com.nytimes.crossword",
+        "patches": [
+          {
+            "name": "Unlock subscription",
+            "description": "Unlocks subscription in app",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.33.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/TBQl70kBjktUn0lqfEAIhSo4ooo_zaWfBAoIn2XdXvAsgfHchPnJdzEESs4G3gvhOxDTeUbLbsrJ-U8H9UFRVD4"
+      },
+      {
         "app_name": "Greenify",
         "package": "com.oasisfeng.greenify",
         "patches": [
@@ -30797,6 +30813,38 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/se79iBHBV6jc6JVSQg7cRlM77USmaZp7rHhuQz4LPrrbfI-H-R8_BPy_ITwTN9ZlELLRzP5AkCrBfwCIL9-F"
+      },
+      {
+        "app_name": "Pixel Habit Tracker",
+        "package": "com.pixel.al.pixelhabittracker",
+        "patches": [
+          {
+            "name": "Unlock PRO",
+            "description": "Unlocks all PRO features in app",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.1.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/UOwh11oam6H0hAqMT0Dy5kMX_c_PrxfFf5TW55yE5UAh2dAcTpVYOopEyHqUstERrERs81SWyzOoGcvRJQEqfw"
+      },
+      {
+        "app_name": "PLAYit",
+        "package": "com.playit.videoplayer",
+        "patches": [
+          {
+            "name": "Unlock VIP",
+            "description": "Unlock VIP subscription in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.7.50.12"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/NjgxMQUNrXlfiVATypBUGsfdjw-jdXfWiE5sld3KXAFt6O207w7XvTie5AR2WpZMCXBLBp0-QGGy_yqbrODE4w"
       },
       {
         "app_name": "Pocket Prep",
@@ -30895,6 +30943,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/HPZC8ZdPPSDpYzkb2JoFsLVFL94sX7FFSRKuT0Rxg-d5lsGFIe4jfPLrLsOIFRB7gnqMEDUr6E-o0O8_ZR-KIw"
       },
       {
+        "app_name": "RS File Manager",
+        "package": "com.rs.explorer.filemanager",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.3.0.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/qk5ZNXn_E2bAi_9JSHhMB_pn1b1NloWWCeMr16cJIAsv05Gy5Rm8nlmd5KjnLOIisgiMtNrG5LOjmdlF_ksQk8o"
+      },
+      {
         "app_name": "Case Tracker",
         "package": "com.saldous.casetracker",
         "patches": [
@@ -30904,7 +30968,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.5.2"
+              "5.5.3"
             ]
           }
         ],
@@ -30948,7 +31012,7 @@
         "patches": [
           {
             "name": "Unlock Plus",
-            "description": "Unlocks Sticker.ly PLUS subscription.",
+            "description": "Unlocks Sticker.ly PLUS subscriptionNote: For Facebook Login, Uninstall Facebook App.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -30984,7 +31048,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.3"
+              "26.7.1"
             ]
           }
         ],
@@ -31005,6 +31069,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/ud7_eSQtO0lJe8P_svEttScCPMP1b7GTFhbyOh_HPOQKwDOB368hQbAGd8wCdHT-7hQiDLQWUREIyjGvAZ0cOA"
+      },
+      {
+        "app_name": "Strava",
+        "package": "com.strava",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Premium features in app. Also re-enables password login after OTP.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "471.11"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/J4LN2qH2PQkZ3sFQonz-HWYkd7M38BtEO4Grzh1Xn7L2J6NUILHPkhYvPjdhMZQzrdm4BarUj547wfthyMz_vWM"
       },
       {
         "app_name": "Hibernator",
@@ -31202,6 +31282,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/Y9rUCGFcH3Qtu0cY2Wppp5ZuSK1GNmsTVhD8jG6JUGYdYeUteBIcbll0C2z90V6X7nDOD4eGgrecyox2q8mu"
+      },
+      {
+        "app_name": "Uptodown App Store",
+        "package": "com.uptodown",
+        "patches": [
+          {
+            "name": "Unlock Turbo",
+            "description": "Unlocks Turbo subscription after login.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.34"
+            ]
+          }
+        ],
+        "icon_url": ""
       },
       {
         "app_name": "KineStop",
@@ -31630,6 +31726,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/bY_d4uzxtY2_a-r3caEhTlQPzRZy7lCs428H-BIo4KGxyjWm3ZVRCtJTicy07nh3m30n5O6QPrgmYT8okHfT5Q"
       },
       {
+        "app_name": "komoot",
+        "package": "de.komoot.android",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features and all map packs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.28.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/IyQKMI6etTvtjEv6pSzQ4TnTlfKWbwT39vQMO4vpBlzQJfGKdA9zZ38sOXtt0yuZbwJBdKoP_RNPZnQiTuaceg"
+      },
+      {
         "app_name": "Permission Pilot",
         "package": "eu.darken.myperm",
         "patches": [
@@ -31883,6 +31995,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/KWKtpXZfYosRpwxSXDT9fLtro3iN9FQOBZpz7AObcDx-KxBCscq4efe0FTvUbjPzI3oGe9PfhHqVYE3Uwl-fxA"
       },
       {
+        "app_name": "MEGA",
+        "package": "mega.privacy.android.app",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all Pro features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "16.9(261881039)(3c7e30562a)"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/4IDzX-5oH2pR3xvhtV7U0q2_3hPFd7KHmcK9Jj5oN0ISJfIBuctADot0Z1kQK1OFLX87nWxmPUzUU6TdymGdIw"
+      },
+      {
         "app_name": "Today Weather",
         "package": "mobi.lockdown.weather",
         "patches": [
@@ -32022,7 +32150,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "0.1298.0"
+              "0.1300.0"
             ]
           }
         ],
@@ -32045,15 +32173,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
       }
     ],
-    "fingerprint": "42d004fe4176b62f366ca628241f198dc04d308d1883cc59e8c6ca6d2aa42e37"
+    "fingerprint": "11efe902d745b9c7d04ba4c6d08017a1d55d00cb2fef8fb5e8aa97395e929d8d"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
     "channel": "stable",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-07-10T01:04:44",
-    "version": "v1.11.0",
-    "description": "# Rushi's Patches v1.11.0\nPatch source for Morphe.\n**Channel:** stable  \n**Branch:** `main`  \n**Patch count:** 165\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.11.0.mpp` from the release assets below.\n\n## Supported Apps Changed\n\n### Added Apps\n- **AiScore** (`com.onesports.score`)\n- **Amazon India** (`in.amazon.mShop.android.shopping`)\n- **Amazon Shopping** (`com.amazon.mShop.android.shopping`)\n- **AmoledPix** (`com.androholic.amoledpix`)\n- **APKMirror Installer** (`com.apkmirror.helper.prod`)\n- **Block Puzzle** (`game.puzzle.blockpuzzle`)\n- **Blurams** (`com.blurams.ipc`)\n- **Carousell** (`com.thecarousell.Carousell`)\n- **ColorNote** (`com.socialnmobile.dictapps.notepad.color.note`)\n- **Duolingo** (`com.duolingo`)\n- **Excel** (`com.microsoft.office.excel`)\n- **Fitbod** (`com.fitbod.fitbod`)\n- ...and 26 more\n\n### Updated App Versions\n- **AccuWeather** (`com.accuweather.android`): `21.1.11-1-rc` -> `21.1.13-1-rc`\n- **Anatomy** (`air.com.musclemotion.anatomy`): `3.2.0` -> `3.2.1`\n- **CamScanner** (`com.intsig.camscanner`): `7.20.0.2606230000` -> `7.20.5.2606250000`\n- **Canva** (`com.canva.editor`): `2.365.o` -> `2.367.0`\n- **Case Tracker** (`com.saldous.casetracker`): `5.5.1` -> `5.5.2`\n- **Flightradar24** (`com.flightradar24free`): `11.6.1` -> `11.7.0`\n- **HTTP Sniffer** (`com.anetcapture.mock`): `2.11.0-ad_mob` -> `2.11.1-ad_mob`\n- **Lawfully** (`com.lawfully.lawfully_ai_tracker`): `6.6.2` -> `6.7.1`\n- **m-Indicator** (`com.mobond.mindicator`): `18.0.352` -> `18.0.356`\n- **Moovit** (`com.tranzmate`): `5.195.0.1789` -> `5.195.2.1792`\n- **MovieBox** (`com.community.oneroom`): `3.0.15.0616.03` -> `3.0.16.0703.03`\n- **NetShare** (`kha.prog.mikrotik`): `UI/link-274` -> `277`\n- ...and 19 more\n\n### Removed Apps\n- **SkinSort** (`com.skinsort`)\n- **Tracked** (`com.tracked.mobile`)\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.11.0](https://github.com/rushiranpise/morphe-patches/compare/v1.10.1...v1.11.0) (2026-07-10)\n\n### New Patches\n\n* add aiscore ([b758b02](https://github.com/rushiranpise/morphe-patches/commit/b758b024ca4c1f9b890bb8261e1a25bf5a542dcf))\n* add aiscore ([9884851](https://github.com/rushiranpise/morphe-patches/commit/9884851302d0244e85660716dd1ff651334224c6))\n* add amazon india ([6455cb7](https://github.com/rushiranpise/morphe-patches/commit/6455cb71d7878ad60ee8d1e4fc590d369e9ff232))\n* add amboss ([bb7701e](https://github.com/rushiranpise/morphe-patches/commit/bb7701ea2a9d74e9280950bbb9a6c6a160648d67))\n* add blurams ([08d6a77](https://github.com/rushiranpise/morphe-patches/commit/08d6a77966a880f03762b646849e13c04fa80464))\n* add Carousell ([78a814b](https://github.com/rushiranpise/morphe-patches/commit/78a814b6b798a52c9207f359557c86399d31a127))\n* add duolingo ([68bfbe4](https://github.com/rushiranpise/morphe-patches/commit/68bfbe40ccf17ecd524afcc3ce573c5dd5af74c1))\n* add flight apps ([78b3b79](https://github.com/rushiranpise/morphe-patches/commit/78b3b791a3c92c5cfc2ee9fcc083a74b236f2da0))\n* add historical calendar ([b530405](https://github.com/rushiranpise/morphe-patches/commit/b530405bcc295ed99f567b61341ed752ed0759c5))\n* add JEFIT ([19199f3](https://github.com/rushiranpise/morphe-patches/commit/19199f350f980d34c6ff45ec6d249f4691d5cb17))\n* add life360 ([6b26e06](https://github.com/rushiranpise/morphe-patches/commit/6b26e067124fa4a624e18ee49342140e410b2769))\n* add moviebox india ([a7662ba](https://github.com/rushiranpise/morphe-patches/commit/a7662ba12f5b858dfcb20bdb88f8f95c0ef6cbe9))\n* add movieboxtv ([998983d](https://github.com/rushiranpise/morphe-patches/commit/998983d0dbe11bbcd8ecdfd1eb6f919e239d8e19))\n* add myradar ([3c0b8a0](https://github.com/rushiranpise/morphe-patches/commit/3c0b8a06913408555ea1b968d5558eda9be8613c))\n* add picturethis apps ([2af13cf](https://github.com/rushiranpise/morphe-patches/commit/2af13cf2e0b4b9cd0669465ea6d2b422ca08f57d))\n* add pocketprep ([84bffb8](https://github.com/rushiranpise/morphe-patches/commit/84bffb817d597d8aa2ffc18d743cd42acee4bf81))\n* add RecipeBro ([ee4ee1d](https://github.com/rushiranpise/morphe-patches/commit/ee4ee1d642fe7d6b03b8fa10ed6b2f69d9bd000c))\n* add scrl ([75119d0](https://github.com/rushiranpise/morphe-patches/commit/75119d06342a224f50cff764788932e42a6bc169))\n* add stickerly ([af24434](https://github.com/rushiranpise/morphe-patches/commit/af24434cce7b8d8ce00cf1e8318c43ed81705115))\n* add todays weather ([ebe3e49](https://github.com/rushiranpise/morphe-patches/commit/ebe3e49a68e37312466cfb2aaac9341e0e9f3f18))\n* add toomics ([b3b213b](https://github.com/rushiranpise/morphe-patches/commit/b3b213bd47e069f04f66cdeb8c5cf5c58899bbc5))\n* add tradingview ([69e7d07](https://github.com/rushiranpise/morphe-patches/commit/69e7d07fb712b378755a54ecad62db70f3b105fc))\n* add UbikiTouch ([086ac80](https://github.com/rushiranpise/morphe-patches/commit/086ac80378e76a4a5f4f34c515d3ec3b5c7da2b5))\n* add WolframAlpha ([040db33](https://github.com/rushiranpise/morphe-patches/commit/040db33b9a46a59eecc6e496f569cb7a7a914ab0))\n* add word & excel ([1445673](https://github.com/rushiranpise/morphe-patches/commit/1445673f029e958f3fff60f5b490865b05d1514d))\n* amazon ([d2221ca](https://github.com/rushiranpise/morphe-patches/commit/d2221ca3793766fb59954cb2ea9407282c67e25a))\n* amoledpix ([5622279](https://github.com/rushiranpise/morphe-patches/commit/562227950f8002d29423226ba60f25f6acd43c25))\n* apkmirror ([4a56688](https://github.com/rushiranpise/morphe-patches/commit/4a56688db4cb0dadbb57e317bff190fcff1f448b))\n* blockpuzzle ([fc7896c](https://github.com/rushiranpise/morphe-patches/commit/fc7896c84075af63840d4573856b82df66aa2a2b))\n* colornote ([ecc74f5](https://github.com/rushiranpise/morphe-patches/commit/ecc74f53539d78c74801bc0f0e9084cd4812e51f))\n* fitpod ([b7ffd25](https://github.com/rushiranpise/morphe-patches/commit/b7ffd25593fa2ec0dbac31d82fdea01cb4faaee3))\n* pocketcast ([743da24](https://github.com/rushiranpise/morphe-patches/commit/743da241b5ea1a98d864b086c3cf8f4cc7f480ba))\n* stickermaker ([3a2268a](https://github.com/rushiranpise/morphe-patches/commit/3a2268abf3d2de449a7405776d77e3bec11d320a))\n* subwaynow ([62fc6ce](https://github.com/rushiranpise/morphe-patches/commit/62fc6ce86f6e50c88472d85d8ee64ca709e3146d))\n* trackercheck ([58a049c](https://github.com/rushiranpise/morphe-patches/commit/58a049cb5fb29a556121a2561d109dedaa5f3e78))\n* vizmanga ([14e3941](https://github.com/rushiranpise/morphe-patches/commit/14e39418d9b3be0478ac83588acb929cba1f7f3d))\n\n### Fixes\n\n* amazon ([7f9fe2a](https://github.com/rushiranpise/morphe-patches/commit/7f9fe2afa45379173fab5edb974fa8d2978c940b))\n* inject map api keys from actions secrets ([7d5d282](https://github.com/rushiranpise/morphe-patches/commit/7d5d282a29181e196677407d8c415a17b83f8853))\n* livescore ([0d7552a](https://github.com/rushiranpise/morphe-patches/commit/0d7552a4e7733b06c459cddb595eba156af3b7e8))\n* pkge ([933081f](https://github.com/rushiranpise/morphe-patches/commit/933081fe0f94292c92d9c38500cd9e35fa0294bd))\n* release ([76daaf4](https://github.com/rushiranpise/morphe-patches/commit/76daaf4c0ad922cb9dd08502c6da46108a8d8592))\n* Strength Training ([962d3c1](https://github.com/rushiranpise/morphe-patches/commit/962d3c1cb708f1581b4920f898ad3c41236b1628))",
+    "created_at": "2026-07-12T17:32:56",
+    "version": "v1.12.0",
+    "description": "# Rushi's Patches v1.12.0\nPatch source for Morphe.\n**Channel:** stable  \n**Branch:** `main`  \n**Patch count:** 212\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.12.0.mpp` from the release assets below.\n\n## Supported Apps Changed\n\n### Added Apps\n- **Ace Ex File Manager** (`com.ace.ex.file.manager`)\n- **Anime Depth Wallpapers** (`com.jndapp.anime.depth.live.wallpaper`)\n- **BuzzCast** (`com.guochao.faceshow`)\n- **Dailyhunt** (`com.eterno`)\n- **Depth Live Wallpaper** (`com.jndapp.depth.live.wallpaper`)\n- **KineMaster** (`com.nexstreaming.app.kinemasterfree`)\n- **komoot** (`de.komoot.android`)\n- **Lark Player** (`com.dywx.larkplayer`)\n- **MEGA** (`mega.privacy.android.app`)\n- **Minimal Widgets** (`com.jndapp.minimal.widgets`)\n- **NYT Games** (`com.nytimes.crossword`)\n- **Pixel Habit Tracker** (`com.pixel.al.pixelhabittracker`)\n- ...and 5 more\n\n### Updated App Versions\n- **Case Tracker** (`com.saldous.casetracker`): `5.5.2` -> `5.5.3`\n- **Cashew** (`com.budget.tracker_app`): `6.5.9` -> `6.6.11`\n- **Citizen** (`sp0n.citizen`): `0.1298.0` -> `0.1300.0`\n- **Fitbod** (`com.fitbod.fitbod`): `8.24.0-1` -> `8.24.1-0`\n- **Inmigreat** (`com.changayaf.inmigreat`): `2.2.83` -> `2.3.4`\n- **MovieBox** (`com.community.oneroom`): `3.0.16.0703.03` -> `3.0.16.0709.03`\n- **MovieBox TV** (`com.community.mbox.tv`): `1.1.1.0702.03` -> `1.1.4.0710.03`\n- **Splitwise** (`com.Splitwise.SplitwiseMobile`): `26.6.3` -> `26.7.1`\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.12.0](https://github.com/rushiranpise/morphe-patches/compare/v1.11.0...v1.12.0) (2026-07-12)\n\n### New Patches\n\n* add ace ([6535fc2](https://github.com/rushiranpise/morphe-patches/commit/6535fc23c68398b2a3164788333052ad72d0cfed))\n* add buzzcast ([7d640be](https://github.com/rushiranpise/morphe-patches/commit/7d640bec1b163ca37c9119d3a959a32c971b0c05))\n* add daily hunt ([650c983](https://github.com/rushiranpise/morphe-patches/commit/650c983d8796297090d1fd0ef92b0978cd77937d))\n* add ex ([03af341](https://github.com/rushiranpise/morphe-patches/commit/03af3414ee323851b1c5b62b5ca9aeb629215ac2))\n* add justnew design apps ([0bfb500](https://github.com/rushiranpise/morphe-patches/commit/0bfb5002e8ce8ec438b616e71c88378c0f975615))\n* add kinemaster ([c9d9912](https://github.com/rushiranpise/morphe-patches/commit/c9d9912b14e24f43d8b3f83796719506c7c030d4))\n* add komoot ([58494ca](https://github.com/rushiranpise/morphe-patches/commit/58494ca40ec398d785e62b8088364edac706fed1))\n* add lark player ([cf76807](https://github.com/rushiranpise/morphe-patches/commit/cf7680717f8cce6f27b0ef21588a0234ff4b6a5d))\n* add mega ([74b2412](https://github.com/rushiranpise/morphe-patches/commit/74b24124d709ff21b9890df442649f3eca910bb8))\n* add nyttgames ([e531da4](https://github.com/rushiranpise/morphe-patches/commit/e531da4247e2da775f6932c5b3cff3ce72590160))\n* add pixelhabit ([89d4b0d](https://github.com/rushiranpise/morphe-patches/commit/89d4b0d3346797925216deaaf241a6ff4d85d22e))\n* add playit ([da32bef](https://github.com/rushiranpise/morphe-patches/commit/da32bef3169cc558d0316f2d4f1d3ac208b21a9c))\n* add pocketbard ([e0f8315](https://github.com/rushiranpise/morphe-patches/commit/e0f8315ab548135087a9ef348f5804c471ae1415))\n* add strava ([8e55342](https://github.com/rushiranpise/morphe-patches/commit/8e55342e7f9cb33561d55c57ca4d60bda53dba17))\n* add universal patches ([a80ca36](https://github.com/rushiranpise/morphe-patches/commit/a80ca366f446e2d93d271f43b0e87fdd3ea391f5))\n* add uptodown ([f5bbc0e](https://github.com/rushiranpise/morphe-patches/commit/f5bbc0ea9471e2be6cd486070d685ef7d9af647d))\n\n### Fixes\n\n* dailyhunt ([53561e8](https://github.com/rushiranpise/morphe-patches/commit/53561e8cfb8bf50509f60273d00956f120ebe857))\n* moovit crash ([4d64bc7](https://github.com/rushiranpise/morphe-patches/commit/4d64bc71c7bf92e9e03f90163d1f919f01ea9df8))\n* typo [skip ci] ([d458f73](https://github.com/rushiranpise/morphe-patches/commit/d458f731b58f3b87eb6bd50ddaa1b3afc0121318))",
     "apps": [
       {
         "app_name": "Snipd",
@@ -32310,6 +32438,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/wdQXBFb3I1NgNpRzJo9tMHJuV9P069NR5GJ2J7w8eX_SVarWLRarca-6MiemrDbnSqDQflFzvzjSG2smlwe39TQ"
+      },
+      {
+        "app_name": "Ace Ex File Manager",
+        "package": "com.ace.ex.file.manager",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.6.0.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/nz9hmHaHAynzg6g25uEqTkdjBNyCw3ojPPxW-IvVAH0Rf0OOZIxMu6acfVsciCP_0J2uPSdwaRIRW430tNjW9g"
       },
       {
         "app_name": "MyRadar",
@@ -32574,7 +32718,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "6.5.9"
+              "6.6.11"
             ]
           }
         ],
@@ -32622,7 +32766,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "2.2.83"
+              "2.3.4"
             ]
           }
         ],
@@ -32674,71 +32818,8 @@
         "package": "com.community.mbox.in",
         "patches": [
           {
-            "name": "Bypass member rights check",
-            "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Clear VIP resolution tip",
-            "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Spoof member brief info",
-            "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Spoof member info",
-            "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Spoof member provider flags",
-            "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Suppress newbie bonus dialog",
-            "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Unlock download member requirement",
-            "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0707.03"
-            ]
-          },
-          {
-            "name": "Unlock member resolution",
-            "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE.",
+            "name": "Unlock VIP",
+            "description": "Unlocks VIP features in app.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -32753,39 +32834,12 @@
         "package": "com.community.mbox.tv",
         "patches": [
           {
-            "name": "Bypass TV episode VIP gate",
-            "description": "Forces BffSubjectInfo.isVip() to always return false, making every episode appear as non-VIP-only so playback is not blocked in DetailFragment.",
+            "name": "Unlock VIP",
+            "description": "Unlocks VIP Features in app.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.1.1.0702.03"
-            ]
-          },
-          {
-            "name": "Clear VIP resolution tip",
-            "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.1.1.0702.03"
-            ]
-          },
-          {
-            "name": "Spoof TV account VIP status",
-            "description": "Forces BffGetVipUserInfoData.isVip() to always return Boolean.TRUE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.1.1.0702.03"
-            ]
-          },
-          {
-            "name": "Unlock member resolution",
-            "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.1.1.0702.03"
+              "1.1.4.0710.03"
             ]
           }
         ],
@@ -32796,75 +32850,12 @@
         "package": "com.community.oneroom",
         "patches": [
           {
-            "name": "Bypass member rights check",
-            "description": "Forces MemberCheckResult.isPassed() to always return Boolean.TRUE.",
+            "name": "Unlock VIP",
+            "description": "Unlocks VIP features in app.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Clear VIP resolution tip",
-            "description": "Forces MemberResolutionBean.getVipResolutionTip() to always return Boolean.FALSE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Spoof member brief info",
-            "description": "Forces MemberBriefInfo.isActive()=true, getMemberType()=2, getExpiryDate()='2035-12-31'. MemberBriefInfo is a lightweight summary bean used in home/profile cards — discovered via MovieboxHooker (Kero309x) analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Spoof member info",
-            "description": "Forces MemberInfo active=true, memberType=2 (VIP), days=3650, expiryDate/nextRenewDate='2035-12-31'. Previously only patched isActive+getDaysLeft+getExpiryDate; now also patches getMemberType()+getNextRenewDate() discovered via MovieboxHooker analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Spoof member provider flags",
-            "description": "Forces MMKV member gates to true. Phone (com.community.oneroom): e()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. India (com.community.mbox.in): d()Z=kv_is_pay_enable_member, f()Z=kv_is_skip_ad. Both share f()Z for kv_is_skip_ad; primary gate method differs per package.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Suppress newbie bonus dialog",
-            "description": "Makes MemberProvider ClaimMemberDialog trigger return-void. Phone (com.community.oneroom): z(F)V. India (com.community.mbox.in): w(F)V. Both suppressed via name search.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Unlock download member requirement",
-            "description": "Forces DownloadBean.getRequireMemberType() to always return Integer(0), making all download items appear as freely downloadable regardless of VIP tier. Discovered via MovieboxHooker (Kero309x) analysis.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
-            ]
-          },
-          {
-            "name": "Unlock member resolution",
-            "description": "Forces MemberResolutionBean.isUnlock() to always return Boolean.TRUE.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.16.0703.03"
+              "3.0.16.0709.03"
             ]
           }
         ],
@@ -32933,6 +32924,38 @@
         "icon_url": "https://play-lh.googleusercontent.com/wRh3wXmWiBlqdUSH6Q6IQzVdodOMWDI2kgE00Cd7CyBtfcILa0Hh7zF1S6Jx__E2ED8ldXGn-onqmA478YY0SQ"
       },
       {
+        "app_name": "Lark Player",
+        "package": "com.dywx.larkplayer",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.9.6"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/R9N82-_YF9nBKiJrelXqDhIAkTsRGXbr7wSZAKRp9G_If69LgSbHgGeaQC8EWCi9ln9o2rQSP_ww66K9Bm3w"
+      },
+      {
+        "app_name": "Dailyhunt",
+        "package": "com.eterno",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features after login.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "33.5.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/gQO-QGyxpIHxi2BpUbz00wwssXNO1qIpEkafN8FrxJi0wiD4ZiKT4KYFcUFLI2DvyrS_vV0UGXY0WRt612t3"
+      },
+      {
         "app_name": "AIDA64",
         "package": "com.finalwire.aida64",
         "patches": [
@@ -32958,7 +32981,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.24.0-1"
+              "8.24.1-0"
             ]
           }
         ],
@@ -33011,6 +33034,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/DXrF5vnF9dq1oD4tH9QYTC_T-LMWnBZnBrgRc_HUyULImVzcLnfaYw8Awg7qkwxHvcEIXY05qoCEgM7L4T4Rvw"
+      },
+      {
+        "app_name": "BuzzCast",
+        "package": "com.guochao.faceshow",
+        "patches": [
+          {
+            "name": "Unlock SVIP",
+            "description": "Unlocks SViP features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.80"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/m47d-2epJmb3wScj2W_4gLc8CYbmd6_NIfR33YJHHkIbVoOc40whqKW90hRDL_bYM9LzW2FGLFyDIGMp1gVe"
       },
       {
         "app_name": "Clickmate",
@@ -33084,6 +33123,54 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/tDjmADWkv1VGF5On3dNc4nMQZ0qU7izJKqmS_sJQ648tXazBvaLR7HO-VD7DJNKqMEOzJA-PUAEgdrNxuH6_UA"
+      },
+      {
+        "app_name": "Anime Depth Wallpapers",
+        "package": "com.jndapp.anime.depth.live.wallpaper",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium wallpapers.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.0.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/jYmevEkyKdHZs_FSQEIRg8Ifxx4YU2-BQtso3Z0iQkMPM9w9ZkrOcbD7rys6Kq34t4Evufy1UVOgwwP0y4KKWc8"
+      },
+      {
+        "app_name": "Depth Live Wallpaper",
+        "package": "com.jndapp.depth.live.wallpaper",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks all premium wallpapers.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.1.06"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/h9g140jbgc6tR6o2VgL2lF0OYTr8cq2n9x_GihS_Toxe3PioggBfXHzIwM2OeNeEyWHfZFpqoMov5Whdm_qMeg"
+      },
+      {
+        "app_name": "Minimal Widgets",
+        "package": "com.jndapp.minimal.widgets",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlock all premium widgets.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.0.08"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/YdxN2n40wSiPp-WZi832aZHxGFQSafDcHqNif-Wy9YH__t2nCXoB5yGaCQkisJaHWe13H37lI_olM7sKsfONBg"
       },
       {
         "app_name": "Carbon",
@@ -33294,6 +33381,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/6NH-2g_kwAlEExsNbcAA0w5bjfxoHMaALX4DrMpIhQe64-ZfaxLW085Cax9J-e_mvk9TNeNKZXDzeo8BNF-eExY"
       },
       {
+        "app_name": "Pocket Bard",
+        "package": "com.mojofiltermediallc.rpgsoundsystem",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Unlock Premium features in app",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.16"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
         "app_name": "SAI",
         "package": "com.mtv.sai",
         "patches": [
@@ -33387,6 +33490,38 @@
         "icon_url": "https://play-lh.googleusercontent.com/3b7_a7m50wFj68Afd6q0bhq2HPTWQlgeViv9B9tEbhChS3h4nVTo-HotZF4OmShKwT2_zhNAr3alwYRWBjiC_g"
       },
       {
+        "app_name": "KineMaster",
+        "package": "com.nexstreaming.app.kinemasterfree",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlock Premium features after login.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.1.13.36552.GP"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Jc_gKnGxM5p4_FuWQ_v2k6HlMaCcExeIDt--PkcWrLj_VQ2OyMPhDaycC1s9wG3yOwjviVA4M1go0O-foAx0"
+      },
+      {
+        "app_name": "NYT Games",
+        "package": "com.nytimes.crossword",
+        "patches": [
+          {
+            "name": "Unlock subscription",
+            "description": "Unlocks subscription in app",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.33.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/TBQl70kBjktUn0lqfEAIhSo4ooo_zaWfBAoIn2XdXvAsgfHchPnJdzEESs4G3gvhOxDTeUbLbsrJ-U8H9UFRVD4"
+      },
+      {
         "app_name": "Greenify",
         "package": "com.oasisfeng.greenify",
         "patches": [
@@ -33449,6 +33584,38 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/se79iBHBV6jc6JVSQg7cRlM77USmaZp7rHhuQz4LPrrbfI-H-R8_BPy_ITwTN9ZlELLRzP5AkCrBfwCIL9-F"
+      },
+      {
+        "app_name": "Pixel Habit Tracker",
+        "package": "com.pixel.al.pixelhabittracker",
+        "patches": [
+          {
+            "name": "Unlock PRO",
+            "description": "Unlocks all PRO features in app",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.1.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/UOwh11oam6H0hAqMT0Dy5kMX_c_PrxfFf5TW55yE5UAh2dAcTpVYOopEyHqUstERrERs81SWyzOoGcvRJQEqfw"
+      },
+      {
+        "app_name": "PLAYit",
+        "package": "com.playit.videoplayer",
+        "patches": [
+          {
+            "name": "Unlock VIP",
+            "description": "Unlock VIP subscription in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.7.50.12"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/NjgxMQUNrXlfiVATypBUGsfdjw-jdXfWiE5sld3KXAFt6O207w7XvTie5AR2WpZMCXBLBp0-QGGy_yqbrODE4w"
       },
       {
         "app_name": "Pocket Prep",
@@ -33547,6 +33714,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/HPZC8ZdPPSDpYzkb2JoFsLVFL94sX7FFSRKuT0Rxg-d5lsGFIe4jfPLrLsOIFRB7gnqMEDUr6E-o0O8_ZR-KIw"
       },
       {
+        "app_name": "RS File Manager",
+        "package": "com.rs.explorer.filemanager",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.3.0.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/qk5ZNXn_E2bAi_9JSHhMB_pn1b1NloWWCeMr16cJIAsv05Gy5Rm8nlmd5KjnLOIisgiMtNrG5LOjmdlF_ksQk8o"
+      },
+      {
         "app_name": "Case Tracker",
         "package": "com.saldous.casetracker",
         "patches": [
@@ -33556,7 +33739,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.5.2"
+              "5.5.3"
             ]
           }
         ],
@@ -33600,7 +33783,7 @@
         "patches": [
           {
             "name": "Unlock Plus",
-            "description": "Unlocks Sticker.ly PLUS subscription.",
+            "description": "Unlocks Sticker.ly PLUS subscriptionNote: For Facebook Login, Uninstall Facebook App.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -33636,7 +33819,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.3"
+              "26.7.1"
             ]
           }
         ],
@@ -33657,6 +33840,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/ud7_eSQtO0lJe8P_svEttScCPMP1b7GTFhbyOh_HPOQKwDOB368hQbAGd8wCdHT-7hQiDLQWUREIyjGvAZ0cOA"
+      },
+      {
+        "app_name": "Strava",
+        "package": "com.strava",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Premium features in app. Also re-enables password login after OTP.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "471.11"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/J4LN2qH2PQkZ3sFQonz-HWYkd7M38BtEO4Grzh1Xn7L2J6NUILHPkhYvPjdhMZQzrdm4BarUj547wfthyMz_vWM"
       },
       {
         "app_name": "Hibernator",
@@ -33854,6 +34053,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/Y9rUCGFcH3Qtu0cY2Wppp5ZuSK1GNmsTVhD8jG6JUGYdYeUteBIcbll0C2z90V6X7nDOD4eGgrecyox2q8mu"
+      },
+      {
+        "app_name": "Uptodown App Store",
+        "package": "com.uptodown",
+        "patches": [
+          {
+            "name": "Unlock Turbo",
+            "description": "Unlocks Turbo subscription after login.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.34"
+            ]
+          }
+        ],
+        "icon_url": ""
       },
       {
         "app_name": "KineStop",
@@ -34282,6 +34497,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/bY_d4uzxtY2_a-r3caEhTlQPzRZy7lCs428H-BIo4KGxyjWm3ZVRCtJTicy07nh3m30n5O6QPrgmYT8okHfT5Q"
       },
       {
+        "app_name": "komoot",
+        "package": "de.komoot.android",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features and all map packs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.28.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/IyQKMI6etTvtjEv6pSzQ4TnTlfKWbwT39vQMO4vpBlzQJfGKdA9zZ38sOXtt0yuZbwJBdKoP_RNPZnQiTuaceg"
+      },
+      {
         "app_name": "Permission Pilot",
         "package": "eu.darken.myperm",
         "patches": [
@@ -34535,6 +34766,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/KWKtpXZfYosRpwxSXDT9fLtro3iN9FQOBZpz7AObcDx-KxBCscq4efe0FTvUbjPzI3oGe9PfhHqVYE3Uwl-fxA"
       },
       {
+        "app_name": "MEGA",
+        "package": "mega.privacy.android.app",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all Pro features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "16.9(261881039)(3c7e30562a)"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/4IDzX-5oH2pR3xvhtV7U0q2_3hPFd7KHmcK9Jj5oN0ISJfIBuctADot0Z1kQK1OFLX87nWxmPUzUU6TdymGdIw"
+      },
+      {
         "app_name": "Today Weather",
         "package": "mobi.lockdown.weather",
         "patches": [
@@ -34674,7 +34921,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "0.1298.0"
+              "0.1300.0"
             ]
           }
         ],
@@ -34697,7 +34944,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
       }
     ],
-    "fingerprint": "f20b3e23fbf1895af4a42aec9ec06c33ccfda99776ea6687f69fe72766e2a4ed"
+    "fingerprint": "0ef521f2e6dc65cc4ab9a6a9d6ab073b539abe8140f9ba2c12674912c4526ebf"
   },
   "piko-shim:stable": {
     "bundle": "piko-shim",
