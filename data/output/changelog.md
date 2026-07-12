@@ -1,5 +1,47 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-11]
+- **UPDATED** Bundle **brealorg**
+  - **UPDATED APP** Boost for Reddit (`com.rubenmayayo.reddit`) in brealorg patches
+- **NEW BUNDLE** Bundle by **chirag127** (stable)
+  - **NEW APP** Agent (`com.google.android.apps.pixel.agent`) in chirag127 patches
+  - **NEW APP** Barcelona (`com.instagram.barcelona`) in chirag127 patches
+  - **NEW APP** Creativeassistant (`com.google.android.apps.pixel.creativeassistant`) in chirag127 patches
+  - **NEW APP** Duolingo (`com.duolingo`) in chirag127 patches
+  - **NEW APP** Facebook (`com.facebook.katana`) in chirag127 patches
+  - **NEW APP** Github (`com.github.android`) in chirag127 patches
+  - **NEW APP** Google Maps (`com.google.android.apps.maps`) in chirag127 patches
+  - **NEW APP** Instagram (`com.instagram.android`) in chirag127 patches
+  - **NEW APP** Linkedin (`com.linkedin.android`) in chirag127 patches
+  - **NEW APP** Magazines (`com.google.android.apps.magazines`) in chirag127 patches
+  - **NEW APP** Moonreaderp (`com.flyersoft.moonreaderp`) in chirag127 patches
+  - **NEW APP** Recorder (`com.google.android.apps.recorder`) in chirag127 patches
+  - **NEW APP** Reddit (`com.reddit.frontpage`) in chirag127 patches
+  - **NEW APP** Shopping (`in.amazon.mshop.android.shopping`) in chirag127 patches
+  - **NEW APP** Snapchat (`com.snapchat.android`) in chirag127 patches
+  - **NEW APP** Spotify (`com.spotify.music`) in chirag127 patches
+  - **NEW APP** Thirdpartyclient (`com.amazon.avod.thirdpartyclient`) in chirag127 patches
+  - **NEW APP** TikTok (`com.zhiliaoapp.musically`) in chirag127 patches
+  - **NEW APP** Truecaller (`com.truecaller`) in chirag127 patches
+  - **NEW APP** Twitter (`com.twitter.android`) in chirag127 patches
+  - **NEW APP** Weather (`com.google.android.apps.weather`) in chirag127 patches
+  - **NEW APP** WhatsApp (`com.whatsapp`) in chirag127 patches
+  - **NEW APP** YouTube (`com.google.android.youtube`) in chirag127 patches
+- **UPDATED** Bundle **ee-morphe**
+  - **NEW APP** [PRE-RELEASE] Going (`com.going.mobile`) in ee-morphe patches
+  - **REMOVED APP** LingQ (`com.linguist`) in ee-morphe patches
+  - **REMOVED APP** MacroDroid (`com.arlosoft.macrodroid`) in ee-morphe patches
+- **NEW BUNDLE** Bundle by **ethanm6** (stable)
+  - **NEW APP** Letterboxd (`com.letterboxd.letterboxd`) in ethanm6 patches
+- **UPDATED** Bundle **franticg33k**
+  - **REMOVED APP** MoneyMitra (`com.ideapreneurnepal.moneymitra`) in franticg33k patches
+  - **NEW APP** Provide Lite (`com.providelite.epicplay`) in franticg33k patches
+- **UPDATED** Bundle **hoo-dles**
+  - **UPDATED APP** Duolingo (`com.duolingo`) in hoo-dles patches
+- **UPDATED** Bundle **miguel**
+  - **UPDATED APP** Hunter Assassin (`com.rubygames.assassin`) in miguel patches
+- **UPDATED** Bundle **modx**
+  - **UPDATED APP** MX Player (`com.mxtech.videoplayer.ad`) in modx patches
 ## [2026-07-10]
 - **UPDATED** Bundle **hoo-dles**
   - **UPDATED APP** IbisPaint X (`jp.ne.ibis.ibispaintx.app`) in hoo-dles patches
