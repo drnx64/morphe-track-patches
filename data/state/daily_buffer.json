@@ -1,7 +1,7 @@
 {
   "date": "2026-07-13",
-  "lastChecked": "2026-07-13T17:12:21Z",
-  "scan_counter": 5,
+  "lastChecked": "2026-07-13T19:20:29Z",
+  "scan_counter": 6,
   "affected_bundles": {
     "miguel:stable": {
       "bundle": "miguel",
@@ -18,7 +18,14 @@
             "patches_modified": [
               {
                 "name": "Free in-app purchases",
-                "description": "Forces Purchase.isAcknowledged() to return true and getPurchaseState() to return PURCHASED (1), so the game thinks every purchase is valid and completed. Also patches the billing bridge to report success on setup and purchase updates.",
+                "description": "Skips Google Play Billing and credits IAP items (crystal packs, tribe skins) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and swallows purchase errors so no error dialog appears.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Unlock all tribes",
+                "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) and all skins by patching the native IL2CPP library (libil2cpp.so). Makes IsTribeUnlocked() and IsSkinUnlocked() always return true via ARM64 hex patching.",
                 "changes": [
                   "description updated"
                 ]
@@ -28,7 +35,8 @@
           "scan_numbers": [
             1,
             2,
-            5
+            5,
+            6
           ]
         }
       ]
@@ -295,8 +303,19 @@
           "package": "com.innologica.inoreader",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
-          ]
+            1,
+            6
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Increase Daily Limits",
+                "description": "Forces daily usage and other limits to 500 when loading from server."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
         }
       ]
     },
