@@ -15,7 +15,14 @@
             "patches_modified": [
               {
                 "name": "Free in-app purchases",
-                "description": "Forces Purchase.isAcknowledged() to return true and getPurchaseState() to return PURCHASED (1), so the game thinks every purchase is valid and completed. Also patches the billing bridge to report success on setup and purchase updates.",
+                "description": "Skips Google Play Billing and credits IAP items (crystal packs, tribe skins) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and swallows purchase errors so no error dialog appears.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Unlock all tribes",
+                "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) and all skins by patching the native IL2CPP library (libil2cpp.so). Makes IsTribeUnlocked() and IsSkinUnlocked() always return true via ARM64 hex patching.",
                 "changes": [
                   "description updated"
                 ]
@@ -26,41 +33,24 @@
       ]
     },
     {
-      "bundle": "lain",
+      "bundle": "ee-morphe",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "DROFUS",
-          "package": "com.mixapplications.rufus",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Ultimate USB",
-          "package": "com.mixapplications.ultimateusb",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "USB TOOLS",
-          "package": "com.mixapplications.usbtools",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Ventoy",
-          "package": "com.mixapplications.ventoy_app",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "babyhuehnchen",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "ESApp",
-          "package": "at.notrufnoe.edi",
-          "badge_type": "NEW APP"
+          "app_name": "Inoreader",
+          "package": "com.innologica.inoreader",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Increase Daily Limits",
+                "description": "Forces daily usage and other limits to 500 when loading from server."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
         }
       ]
     }
