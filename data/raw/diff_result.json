@@ -15,7 +15,14 @@
             "patches_modified": [
               {
                 "name": "Free in-app purchases",
-                "description": "Skips Google Play Billing by intercepting launchBillingFlow. Creates a fake Purchase and calls nativeOnPurchasesUpdated directly.",
+                "description": "Skips Google Play Billing and credits IAP items (tribes, skins, crystal packs) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and intercepts launchBillingFlow to create a fake Purchase with the product ID and feed it to the game's native billing callback — no payment, no Play Store dialog, instant credit.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Unlock all tribes",
+                "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) by activating the game's built-in DEBUG MODE. Writes a user.cfg file with debugUnlock=true before the game loads, which makes Polytopia use its internal EverythingUnlockedPlatformPurchaseManager (a debug class that unlocks everything for free).",
                 "changes": [
                   "description updated"
                 ]
@@ -27,7 +34,7 @@
     },
     {
       "bundle": "hoomans-morphe",
-      "channel": "stable",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
@@ -47,6 +54,171 @@
               }
             ]
           }
+        },
+        {
+          "app_name": "Alpha Progression",
+          "package": "com.alphaprogression.alphaprogression",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks Alpha Progression's premium training tools without a subscription, like the training-plan generator, charts, exercise evaluations, the warmup calculator, and more. They run on the workout data already on your device, so they keep working offline.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Quizlet",
+          "package": "com.quizlet.quizletandroid",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Plus",
+                "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription, including unlimited Learn and Test rounds and textbook explanation views that free accounts meter. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Tracked",
+          "package": "com.tracked.mobile",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics, training programs, dashboard customization, and session density/net progression. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "hoomans-morphe",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Alpha Progression",
+          "package": "com.alphaprogression.alphaprogression",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks Alpha Progression's premium training tools without a subscription, like the training-plan generator, charts, exercise evaluations, the warmup calculator, and more. They run on the workout data already on your device, so they keep working offline.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Quizlet",
+          "package": "com.quizlet.quizletandroid",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Plus",
+                "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription, including unlimited Learn and Test rounds and textbook explanation views that free accounts meter. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Tracked",
+          "package": "com.tracked.mobile",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics, training programs, dashboard customization, and session density/net progression. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "brealorg",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Boost for Reddit",
+          "package": "com.rubenmayayo.reddit",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Add Boost Search bottom navigation",
+                "description": "Shows Boost's native Home, Search, Subscriptions, Inbox and Profile menu in Search and Go To."
+              },
+              {
+                "name": "Stabilize Boost subreddit bottom navigation surface",
+                "description": "Applies theme contrast and gesture-inset surface handling to SubredditActivity while preserving native selection and routes."
+              },
+              {
+                "name": "Standardize Boost Home bottom navigation",
+                "description": "Applies the canonical five-destination Material navigation and native Home tint when MainActivity resumes."
+              },
+              {
+                "name": "Standardize Boost Inbox and Profile bottom navigation",
+                "description": "Applies the canonical five-destination Material bottom-navigation contract after Inbox and Profile complete lifecycle setup."
+              },
+              {
+                "name": "Standardize Boost bottom navigation",
+                "description": "Applies one destination, listener, selection, tint, and system-surface contract to Boost's Material bottom navigation."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "cobalt-morphe",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
+          "badge_type": "NEW APP"
         }
       ]
     },
@@ -58,6 +230,36 @@
         {
           "app_name": "Going",
           "package": "com.going.mobile",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Enable Pro",
+                "description": "Forces Going (Going) subscription checks to always pass and disables the app-specific PairIP license redirect.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Inoreader",
+          "package": "com.innologica.inoreader",
+          "badge_type": "NEW APP"
+        }
+      ]
+    },
+    {
+      "bundle": "pichiwa",
+      "channel": "dev",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "WhatsApp",
+          "package": "com.whatsapp",
           "badge_type": "NEW APP"
         }
       ]
