@@ -11864,9 +11864,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-12T20:23:08",
-    "version": "v1.9.3",
-    "description": "## [1.9.3](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.2...v1.9.3) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* inject tribe unlock after super.onCreate and remove startConnection patch ([c4a5733](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/c4a573319a3bd22a71339f5e40e6c3de108b77b0))\n* inject tribe unlock after super.onCreate and remove startConnection patch ([23ab05a](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/23ab05a21f0f9567826c6d937a398b80159ff893))\n* inject tribe unlock after super.onCreate and remove startConnection patch ([f8cadec](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f8cadec4f56997c2103f2ddbb974bde0d1d26a0a))\n",
+    "created_at": "2026-07-13T01:02:26",
+    "version": "v1.9.6",
+    "description": "## [1.9.6](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.5...v1.9.6) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **polytopia:** resolve register crashes in both patches ([8b5f1ec](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8b5f1ec316a0ee4385c99c2ba5bea2b588a63383))\n* **polytopia:** resolve register crashes in both patches ([bbf38a8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/bbf38a82370249e7a9b328c352fe2287669a2150))\n* **polytopia:** resolve register crashes in both patches ([fcab7a4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fcab7a48860db1c5dbfc0ee491f9889b935ac352))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -11874,7 +11874,7 @@
         "patches": [
           {
             "name": "Free in-app purchases",
-            "description": "Skips Google Play Billing by intercepting launchBillingFlow. Creates a fake Purchase and calls nativeOnPurchasesUpdated directly.",
+            "description": "Skips Google Play Billing and credits IAP items (tribes, skins, crystal packs) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and intercepts launchBillingFlow to create a fake Purchase with the product ID and feed it to the game's native billing callback — no payment, no Play Store dialog, instant credit.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -11883,7 +11883,7 @@
           },
           {
             "name": "Unlock all tribes",
-            "description": "Unlocks all 20 tribes by setting the debug flag in Unity PlayerPrefs via SharedPreferences.",
+            "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) by activating the game's built-in DEBUG MODE. Writes a user.cfg file with debugUnlock=true before the game loads, which makes Polytopia use its internal EverythingUnlockedPlatformPurchaseManager (a debug class that unlocks everything for free).",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -11986,7 +11986,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "6b39dbc825a19b471674144e57c608dc0a3a90ee916650dca8c8e01670f20ad7"
+    "fingerprint": "5b70ec7ca88951dad4591c910fa538d6b7280d87a8a7cd3a8e99fe3fa256fc70"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -13824,9 +13824,9 @@
     "bundle": "hoo-dles",
     "channel": "dev",
     "repo_url": "https://github.com/hoo-dles/morphe-patches",
-    "created_at": "2026-07-10T23:03:15",
-    "version": "v1.39.0-dev.3",
-    "description": "# [1.39.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0-dev.2...v1.39.0-dev.3) (2026-07-10)\n\n\n### Features\n\n* **Duolingo:** Update patches to support v6.86.5 ([266024c](https://github.com/hoo-dles/morphe-patches/commit/266024ce90fe0b6fca71a1c5b914dff7031a4208))\n\n\n\n",
+    "created_at": "2026-07-12T22:16:14",
+    "version": "v1.39.0-dev.4",
+    "description": "# [1.39.0-dev.4](https://github.com/hoo-dles/morphe-patches/compare/v1.39.0-dev.3...v1.39.0-dev.4) (2026-07-12)\n\n\n### Bug Fixes\n\n* **SuperChinese:** Allow starting pre-downloaded lessons after VIP lapse ([3f84b3c](https://github.com/hoo-dles/morphe-patches/commit/3f84b3c47ecf66c7cae96d17481fc9ed0be14a0a))\n\n\n\n",
     "apps": [
       {
         "app_name": "TTMIK Stories",
@@ -17277,9 +17277,9 @@
     "bundle": "hoomans-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-07-05T17:21:57",
-    "version": "v1.43.0-dev.1",
-    "description": "## [1.43.0-dev.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.42.0...v1.43.0-dev.1) (2026-07-05)\n\n### 🐛 Bug Fixes\n\n* hide DirectChat message-bubble ad in Unlock Premium ([c5b42c4](https://github.com/arandomhooman/hoomans-morphe-patches/commit/c5b42c4c86c4c9ed02d2adeed1738c1bbf17ff3a))\n\n### ✨ New Features\n\n* add DirectChat unlock premium patch ([5c670b0](https://github.com/arandomhooman/hoomans-morphe-patches/commit/5c670b05587cd2f24fc8086c397cf2287f6014d6))\n",
+    "created_at": "2026-07-12T21:54:44",
+    "version": "v1.44.0-dev.1",
+    "description": "## [1.44.0-dev.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.0...v1.44.0-dev.1) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* hide DirectChat message-bubble ad in Unlock Premium ([c5b42c4](https://github.com/arandomhooman/hoomans-morphe-patches/commit/c5b42c4c86c4c9ed02d2adeed1738c1bbf17ff3a))\n\n### ✨ New Features\n\n* add DirectChat unlock premium patch ([5c670b0](https://github.com/arandomhooman/hoomans-morphe-patches/commit/5c670b05587cd2f24fc8086c397cf2287f6014d6))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -17335,7 +17335,7 @@
         "patches": [
           {
             "name": "Unlock Premium",
-            "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial: a license value the app keeps locally decides whether the paid UI is open, and two timers (the beta cutoff and the trial countdown) lock the app once they pass. This forces the license read to \"licensed\" so the paid screens open, drops the \"trial expires on ...\" line from settings, and stops the cutoff from triggering by cutting off the trusted-time lookup the timers rely on, which leaves the app in its offline state where neither timer fires. The license is checked on the client (a local Play purchase verify), so the unlock holds without an account. Connecting Plex, Jellyfin and other media servers is untouched.",
+            "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial: a license value the app keeps locally decides whether the paid UI is open, and two timers (the beta cutoff and the trial countdown) lock the app once they pass. This forces the license read to \"licensed\" so the paid screens open, drops the \"trial expires on ...\" line from settings, and freezes the trusted-time lookup the timers read at a fixed pre-cutoff instant so neither timer can fire. The license is checked on the client (a local Play purchase verify), so the unlock holds without an account. Connecting Plex, Jellyfin and other media servers is untouched.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -17371,7 +17371,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "6.8.1"
+              "6.8.1",
+              "7.1.1"
             ]
           }
         ],
@@ -17695,7 +17696,7 @@
         "patches": [
           {
             "name": "Unlock Plus",
-            "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
+            "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription, including unlimited Learn and Test rounds and textbook explanation views that free accounts meter. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -17825,7 +17826,7 @@
         "patches": [
           {
             "name": "Unlock Pro",
-            "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics and training programs. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
+            "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics, training programs, dashboard customization, and session density/net progression. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -18068,15 +18069,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/JHCM4AIyomRp6Lo2-5ugoznlGdsZmNnejVN8DLvtWFHShcz8YRgUE170f1CyOfrleYbtFL2g8tQ3VqlQNAgqoA"
       }
     ],
-    "fingerprint": "00f5b02d050c61ab3f3ab5285be82f7288e4abb101468ba7923b4648d5dd3cc6"
+    "fingerprint": "a142bdc34183c4b6e58e2f02f6e2a1f58f7c658ceec117e93c930699c9a80e46"
   },
   "hoomans-morphe:stable": {
     "bundle": "hoomans-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-07-12T20:49:57",
-    "version": "v1.42.1",
-    "description": "## [1.42.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.42.0...v1.42.1) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* neutralize Poweramp settings export/import crash on re-sign ([7f263ed](https://github.com/arandomhooman/hoomans-morphe-patches/commit/7f263ed3bdd2c865a7bc95c52bda3874cb930293))\n* return fixed SNTP time for Symfonium beta cutoff ([a184ae4](https://github.com/arandomhooman/hoomans-morphe-patches/commit/a184ae4efe4b3b11e2461fa75e0dece14eb28a40))\n* stop Poweramp 0-byte settings export and Symfonium post-cutoff SNTP ([11a9e9a](https://github.com/arandomhooman/hoomans-morphe-patches/commit/11a9e9a2c4768284a40d000fe2f00ec6ec406462))\n",
+    "created_at": "2026-07-12T21:44:53",
+    "version": "v1.43.0",
+    "description": "## [1.43.0](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.42.1...v1.43.0) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* unlock Quizlet Learn/Test meters and Tracked free-tier StrictEq sites ([bf81012](https://github.com/arandomhooman/hoomans-morphe-patches/commit/bf81012c023f16cf8d3ac633dc15054113202b6b))\n* unlock Quizlet mid-quiz Plus gates ([37e9290](https://github.com/arandomhooman/hoomans-morphe-patches/commit/37e929084c1ec4d8db9776c4a3867a5f117e0386))\n* unlock Tracked customize-dashboard pro gate ([8dd606f](https://github.com/arandomhooman/hoomans-morphe-patches/commit/8dd606f857860267a938f60fdd509909c5f9e4e6))\n\n### ✨ New Features\n\n* support Alpha Progression 7.0 Unlock Premium ([db931b4](https://github.com/arandomhooman/hoomans-morphe-patches/commit/db931b4406e93bed5aa90bc3bb910fc3e0fca41f))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -18168,7 +18169,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "6.8.1"
+              "6.8.1",
+              "7.1.1"
             ]
           }
         ],
@@ -18492,7 +18494,7 @@
         "patches": [
           {
             "name": "Unlock Plus",
-            "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
+            "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription, including unlimited Learn and Test rounds and textbook explanation views that free accounts meter. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -18622,7 +18624,7 @@
         "patches": [
           {
             "name": "Unlock Pro",
-            "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics and training programs. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
+            "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics, training programs, dashboard customization, and session density/net progression. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -18849,7 +18851,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/JHCM4AIyomRp6Lo2-5ugoznlGdsZmNnejVN8DLvtWFHShcz8YRgUE170f1CyOfrleYbtFL2g8tQ3VqlQNAgqoA"
       }
     ],
-    "fingerprint": "6314decaea1c4d8eb1a6cf8a757fac0a3c44b4b501572e88f7a740ea288ba0dc"
+    "fingerprint": "5e26d5139a6e3c49082d707e66580e9a7db7f7bca8bcb7857e61c5004d3c9d4c"
   },
   "pepper-morphe:stable": {
     "bundle": "pepper-morphe",
@@ -20243,9 +20245,9 @@
     "bundle": "brealorg",
     "channel": "stable",
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
-    "created_at": "2026-07-12T09:02:21Z",
-    "version": "morphe-patches-70",
-    "description": "Fix Boost system bar color sync on Android edge-to-edge surfaces.\nRestore readable toolbar/status bar foreground on main feed, comments, and settings.\nAdd scoped main-feed bottom navigation/gesture surface sync without changing media fullscreen behavior.\n",
+    "created_at": "2026-07-13T00:38:49Z",
+    "version": "morphe-patches-71",
+    "description": "Boost for Reddit: Stabilize the five-button bottom navigation and fix remaining portrait/landscape system-inset and display-cutout rendering issues.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -20732,6 +20734,15 @@
         "package": "com.rubenmayayo.reddit",
         "patches": [
           {
+            "name": "Add Boost Search bottom navigation",
+            "description": "Shows Boost's native Home, Search, Subscriptions, Inbox and Profile menu in Search and Go To.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
+          },
+          {
             "name": "Add archive links to context menu",
             "description": "",
             "use": true,
@@ -21001,6 +21012,42 @@
                 "description": "The app's user agent. Refer to Patcheddit documentation for more information on what to put here. Default value is RedReader's user agent."
               }
             ],
+            "compatible_versions": [
+              "1.12.12"
+            ]
+          },
+          {
+            "name": "Stabilize Boost subreddit bottom navigation surface",
+            "description": "Applies theme contrast and gesture-inset surface handling to SubredditActivity while preserving native selection and routes.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
+          },
+          {
+            "name": "Standardize Boost Home bottom navigation",
+            "description": "Applies the canonical five-destination Material navigation and native Home tint when MainActivity resumes.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
+          },
+          {
+            "name": "Standardize Boost Inbox and Profile bottom navigation",
+            "description": "Applies the canonical five-destination Material bottom-navigation contract after Inbox and Profile complete lifecycle setup.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
+          },
+          {
+            "name": "Standardize Boost bottom navigation",
+            "description": "Applies one destination, listener, selection, tint, and system-surface contract to Boost's Material bottom navigation.",
+            "use": true,
+            "options": [],
             "compatible_versions": [
               "1.12.12"
             ]
@@ -21357,7 +21404,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/Sjpaa6xIyJJ9zA4QYOERjsd6ePt-_azhjGVXMMXmHyNhsWunH6CY_gS3GuluGsXk0hVJ1j7YIiLQmFJhr3-qGg"
       }
     ],
-    "fingerprint": "7c9312a11df453379cc6857aed9585d839fc417f68cac9ad981e2a92184765df"
+    "fingerprint": "1f8bacc4321c1a3bbf9b0359d717f0ef5296f886837fe6937da48e74f87423d5"
   },
   "quantro100:stable": {
     "bundle": "quantro100",
@@ -35157,6 +35204,39 @@
     ],
     "fingerprint": "26efadde8314181cdf15f18bd720871a288e52179997a7d857a5bc6d4f91eb2e"
   },
+  "cobalt-morphe:stable": {
+    "bundle": "cobalt-morphe",
+    "channel": "stable",
+    "repo_url": "https://github.com/skulldogged/cobalt-morphe",
+    "created_at": "2026-07-12T23:25:40",
+    "version": "v1.0.0",
+    "description": "## 1.0.0 (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* make Gradle wrapper executable ([0ffa89f](https://github.com/skulldogged/cobalt-morphe/commit/0ffa89fdb5f456e2c4a2bcf098ac47c042aa5516))\n* restore generated patch list markers ([d552cd2](https://github.com/skulldogged/cobalt-morphe/commit/d552cd2bf40f234f9a2e6edcb367830fce19bf35))\n\n### ✨ New Features\n\n* add native cobalt downloads for YouTube ([9f4bc3c](https://github.com/skulldogged/cobalt-morphe/commit/9f4bc3cbe2865aee1129f48107cd8dae1fa0ec17))\n",
+    "apps": [
+      {
+        "app_name": "YouTube",
+        "package": "com.google.android.youtube",
+        "patches": [
+          {
+            "name": "Cobalt downloads",
+            "description": "Replaces YouTube's native download action with a direct cobalt download.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "21.26.360",
+              "21.25.523",
+              "21.24.360",
+              "21.05.265",
+              "20.51.39",
+              "20.31.42",
+              "20.21.37"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg"
+      }
+    ],
+    "fingerprint": "5dd0418f6e88f5ee8cc2d7d4939000dedfadeea2963eb1a48bffe888edeb6591"
+  },
   "browzomje:dev": {
     "bundle": "browzomje",
     "channel": "dev",
@@ -46857,9 +46937,9 @@
     "bundle": "ee-morphe",
     "channel": "dev",
     "repo_url": "https://gitlab.com/early.egg3707/ee-morphe-patches",
-    "created_at": "2026-07-12T20:51:37",
-    "version": "v1.5.0-dev.3",
-    "description": "# [1.5.0-dev.3](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.5.0-dev.2...v1.5.0-dev.3) (2026-07-12)\n\n\n### Bug Fixes\n\n* going edit ([420e988](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/420e9883944185d2dc0a480b4d2647c701899ac6))\n\n\n\n",
+    "created_at": "2026-07-12T23:05:57",
+    "version": "v1.5.0-dev.6",
+    "description": "# [1.5.0-dev.6](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.5.0-dev.5...v1.5.0-dev.6) (2026-07-12)\n\n\n### Bug Fixes\n\n* add inoreader test ([04ccaa0](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/04ccaa0649106252d41cdd0dcc0446b8511733e5))\n* color? ([5c31331](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/5c3133157e0497b5722cace1cf5caed5c37c9a0e))\n* define app target ([fb5e939](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/fb5e939cb037fd52c12352b5dac276aa7740b0ce))\n* inoreader apptarget ([7143314](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/7143314c687e2e212b90903f1da3687bf8d5809e))\n* inoreader issue ([416f2c0](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/416f2c0d28d7ec4be2773b4d2c0ebdf3c4af12ab))\n\n\n\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -46892,7 +46972,7 @@
         "patches": [
           {
             "name": "Enable Pro",
-            "description": "Forces Going subscription checks to always pass and disables the app-specific PairIP license redirect.",
+            "description": "Forces Going (Going) subscription checks to always pass and disables the app-specific PairIP license redirect.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -46901,6 +46981,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/GRGFAZQdcTYd549h1OtEpsCd-vpatHbAMhSN9SAxFNeqDvpJCsxlxpacNe6IpQLXy8sjXKW7iA2UyhbuFFY6"
+      },
+      {
+        "app_name": "Inoreader",
+        "package": "com.innologica.inoreader",
+        "patches": [
+          {
+            "name": "Enable Pro",
+            "description": "Forces Inoreader to always pass pro checks and disables free.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.9.11"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/KrGL0xbbl_J9MbkQhtPA_Bz0Hy8SJ-v4iY1a5tRIyXVJiF3wKwIxACISm-3rRaLTG1TA74NTHVmkEAXPeeij"
       },
       {
         "app_name": "HypnoBox",
@@ -46936,7 +47032,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/AD-uvZA0oDO5bTMFmMbaAXn0r-beIWPA6E6TEydlOt7ClYWZgGtQ7A2HZVuuIbMZgCC7PRiV7suikMRJ-8ZrZg"
       }
     ],
-    "fingerprint": "8d4bdf866e4d076d75d0b0f8e5479903cfb563f714562ed11ed49d9d835fa029"
+    "fingerprint": "224caed51bae16eaacbf4ba90892c8ce14115670210960287a7c21c56a6339f5"
   },
   "ee-morphe:stable": {
     "bundle": "ee-morphe",
@@ -47452,6 +47548,195 @@
       }
     ],
     "fingerprint": "f5c29ad4226f4adaacf2db7b63ef618b63fa1c07046f7020829f552d3eeb1e70"
+  },
+  "pichiwa:dev": {
+    "bundle": "pichiwa",
+    "channel": "dev",
+    "repo_url": "https://github.com/alejandrobellver/pichiwa-patches",
+    "created_at": "2026-07-13T00:50:59",
+    "version": "v0.3.2-dev.2",
+    "description": "## [0.3.2-dev.2](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.3.2-dev.1...v0.3.2-dev.2) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* correct path to extension.mpe for release upload ([dbb3891](https://github.com/alejandrobellver/pichiwa-patches/commit/dbb38912f96cb2f4135354418def3a4d9b6adcef))\n",
+    "apps": [
+      {
+        "app_name": "WhatsApp",
+        "package": "com.whatsapp",
+        "patches": [
+          {
+            "name": "Anti Desaparecer",
+            "description": "Mantiene los mensajes temporales visibles.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Anti Detector",
+            "description": "Bypass detección de root, emulador y ROM personalizada.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Anti Editar",
+            "description": "Evita que otros editen mensajes enviados.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Anti Expiracion",
+            "description": "Evita la verificacion forzada de version y expiracion de WhatsApp.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Anti Revoke",
+            "description": "Evita que otros borren sus mensajes o estados.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Anti-View Once",
+            "description": "Ve medios efímeros sin límite y permite capturas.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Copiar estados",
+            "description": "Permite copiar texto de estados de contactos.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Descargar estados",
+            "description": "Guarda estados de foto y video directamente.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "DND Mode",
+            "description": "No marca mensajes como leídos al abrir chats.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Freeze Last Seen",
+            "description": "Congela la hora de última conexión.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "HD Media",
+            "description": "Envía imágenes y video sin compresión.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Ocultar escritura",
+            "description": "Escribe sin mostrar \"escribiendo...\".",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Ocultar lectura",
+            "description": "Lee mensajes sin enviar ticks azules.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Ocultar reenviado",
+            "description": "Quita la etiqueta \"reenviado\" de los mensajes.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Quitar Comunidades",
+            "description": "Oculta la pestaña de comunidades.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Quitar Novedades",
+            "description": "Oculta la pestaña de novedades/estados.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Settings Menu",
+            "description": "Añade acceso a ajustes de PichiWA en el menú de Home.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Sin límite de reenvío",
+            "description": "Reenvía mensajes a contactos ilimitados.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Spoof instalador",
+            "description": "Finge instalación desde Google Play para evitar restricciones.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Gqxk4T0uZsDwFp07DE-508hkyvcNmgFuRwPiwTEfF7D7OzGv1FdHDzEyMxNsSBZLOJlGpe3ULvVM2RgrRAlBqA"
+      }
+    ],
+    "fingerprint": "0f1435488297dfc27f9fde60c76a749a23ae224ff397778d6dd713b963f4b391"
   },
   "pichiwa:stable": {
     "bundle": "pichiwa",
