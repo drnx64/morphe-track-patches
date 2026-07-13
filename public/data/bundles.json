@@ -48191,17 +48191,26 @@
     "bundle": "pichiwa",
     "channel": "dev",
     "repo_url": "https://github.com/alejandrobellver/pichiwa-patches",
-    "created_at": "2026-07-13T04:08:36",
-    "version": "v0.3.2-dev.13",
-    "description": "## [0.3.2-dev.13](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.3.2-dev.12...v0.3.2-dev.13) (2026-07-13)\n\n### Bug Fixes\n\n* resolve ClassNotFoundException during early startup ([27b4b86](https://github.com/alejandrobellver/pichiwa-patches/commit/27b4b869a13ef70c0a67a4e001097f7681f62798))\n",
+    "created_at": "2026-07-13T19:56:35",
+    "version": "v0.3.2-dev.20",
+    "description": "## [0.3.2-dev.20](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.3.2-dev.19...v0.3.2-dev.20) (2026-07-13)\n\n### Bug Fixes\n\n* **patches:** rip out WExtension completely ([aefab87](https://github.com/alejandrobellver/pichiwa-patches/commit/aefab8771b8a0b2dcdb48890d265c99be3da7846))\n* **patches:** rip out WExtension completely ([b8df012](https://github.com/alejandrobellver/pichiwa-patches/commit/b8df012ba0f7ff8743789d3ca50c054a27be130b))\n* resolve merge conflict in patches.json ([8424d62](https://github.com/alejandrobellver/pichiwa-patches/commit/8424d62bc015227f4d279f9c142ea0fc0e111566))\n",
     "apps": [
       {
         "app_name": "WhatsApp",
         "package": "com.whatsapp",
         "patches": [
           {
-            "name": "Anti Desaparecer",
-            "description": "Mantiene los mensajes temporales visibles.",
+            "name": "Anti Detector",
+            "description": "Bypass root, emulator, and custom ROM detection.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Anti Disappearing",
+            "description": "Keep disappearing messages visible.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -48209,8 +48218,8 @@
             ]
           },
           {
-            "name": "Anti Detector",
-            "description": "Bypass detección de root, emulador y ROM personalizada.",
+            "name": "Anti Edit",
+            "description": "Prevent others from editing sent messages.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48218,17 +48227,8 @@
             ]
           },
           {
-            "name": "Anti Editar",
-            "description": "Evita que otros editen mensajes enviados.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.26.27.4"
-            ]
-          },
-          {
-            "name": "Anti Expiracion",
-            "description": "Evita la verificacion forzada de version y expiracion de WhatsApp.",
+            "name": "Anti Expiration",
+            "description": "Bypass WhatsApp forced version and expiration verification.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48237,7 +48237,7 @@
           },
           {
             "name": "Anti Revoke",
-            "description": "Evita que otros borren sus mensajes o estados.",
+            "description": "Prevent others from deleting their messages or statuses.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48245,8 +48245,8 @@
             ]
           },
           {
-            "name": "Anti-View Once",
-            "description": "Ve medios efímeros sin límite y permite capturas.",
+            "name": "Anti View Once",
+            "description": "View ephemeral media without limits and allow screenshots.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48254,8 +48254,8 @@
             ]
           },
           {
-            "name": "Copiar estados",
-            "description": "Permite copiar texto de estados de contactos.",
+            "name": "Copy Statuses",
+            "description": "Allow copying text from contact statuses.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -48264,7 +48264,16 @@
           },
           {
             "name": "Freeze Last Seen",
-            "description": "Congela la hora de ultima conexion.",
+            "description": "Freeze the last seen time.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Ghost Mode",
+            "description": "Do not receive or send messages while active.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -48273,7 +48282,7 @@
           },
           {
             "name": "HD Media",
-            "description": "Envía imágenes y video sin compresión.",
+            "description": "Send images and videos without compression.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48281,34 +48290,7 @@
             ]
           },
           {
-            "name": "Modo Fantasma",
-            "description": "No recibes ni envias mensajes mientras este activo.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.26.27.4"
-            ]
-          },
-          {
-            "name": "Ocultar escritura",
-            "description": "Escribe sin mostrar \"escribiendo...\".",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.26.27.4"
-            ]
-          },
-          {
-            "name": "Ocultar lectura",
-            "description": "Lee mensajes sin enviar ticks azules.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.26.27.4"
-            ]
-          },
-          {
-            "name": "Ocultar reenviado",
+            "name": "Hide Forwarded",
             "description": "Quita la etiqueta \"reenviado\" de los mensajes.",
             "use": false,
             "options": [],
@@ -48317,8 +48299,35 @@
             ]
           },
           {
-            "name": "Quitar Comunidades",
-            "description": "Oculta la pestaña de comunidades.",
+            "name": "Hide Read Receipts",
+            "description": "Read messages without sending blue ticks.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Hide Typing",
+            "description": "Escribe sin mostrar \"escribiendo...\".",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "No Forward Limit",
+            "description": "Forward messages to unlimited contacts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
+          },
+          {
+            "name": "Remove Communities",
+            "description": "Hide the communities tab.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -48326,8 +48335,8 @@
             ]
           },
           {
-            "name": "Quitar Novedades",
-            "description": "Oculta la pestaña de novedades/estados.",
+            "name": "Remove Updates",
+            "description": "Hide the updates/statuses tab.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -48336,7 +48345,7 @@
           },
           {
             "name": "Settings Menu",
-            "description": "Añade acceso a ajustes de PichiWA en el menú de Home.",
+            "description": "Add the Pichiwa menu in settings.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48344,17 +48353,8 @@
             ]
           },
           {
-            "name": "Sin límite de reenvío",
-            "description": "Reenvía mensajes a contactos ilimitados.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.26.27.4"
-            ]
-          },
-          {
-            "name": "Spoof instalador",
-            "description": "Finge instalación desde Google Play para evitar restricciones.",
+            "name": "Spoof Installer",
+            "description": "Fake installation from Google Play to avoid restrictions.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48365,10 +48365,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/Gqxk4T0uZsDwFp07DE-508hkyvcNmgFuRwPiwTEfF7D7OzGv1FdHDzEyMxNsSBZLOJlGpe3ULvVM2RgrRAlBqA"
       }
     ],
-    "fingerprint": "af0f99930d72b21ec9032d4ae096b4aafd479eb1ee8a893e7aa9ea55cae4932d",
-    "release_notes": "## [0.3.2-dev.13](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.3.2-dev.12...v0.3.2-dev.13) (2026-07-13)\n\n### Bug Fixes\n\n* resolve ClassNotFoundException during early startup ([27b4b86](https://github.com/alejandrobellver/pichiwa-patches/commit/27b4b869a13ef70c0a67a4e001097f7681f62798))\n",
-    "release_tag": "v0.3.2-dev.13",
-    "release_date": "2026-07-13T04:08:36Z"
+    "fingerprint": "05522cc9121d9de32959b99a3378005b68c6995282cbea058ca10f46731fc9d0",
+    "release_notes": "## [0.3.2-dev.20](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.3.2-dev.19...v0.3.2-dev.20) (2026-07-13)\n\n### Bug Fixes\n\n* **patches:** rip out WExtension completely ([aefab87](https://github.com/alejandrobellver/pichiwa-patches/commit/aefab8771b8a0b2dcdb48890d265c99be3da7846))\n* **patches:** rip out WExtension completely ([b8df012](https://github.com/alejandrobellver/pichiwa-patches/commit/b8df012ba0f7ff8743789d3ca50c054a27be130b))\n* resolve merge conflict in patches.json ([8424d62](https://github.com/alejandrobellver/pichiwa-patches/commit/8424d62bc015227f4d279f9c142ea0fc0e111566))\n",
+    "release_tag": "v0.3.2-dev.20",
+    "release_date": "2026-07-13T19:56:35Z"
   },
   "pichiwa:stable": {
     "bundle": "pichiwa",
