@@ -11948,9 +11948,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-13T01:23:25",
-    "version": "v1.9.7",
-    "description": "## [1.9.7](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.6...v1.9.7) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* move IAP fake purchase logic to Java extension ([60a64f6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/60a64f63a0fab79dc0195a1382da91aeb8d5f292))\n* move IAP fake purchase logic to Java extension ([ccf8b40](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/ccf8b4075ef1c2fb97e614528a1ec95719b616f3))\n",
+    "created_at": "2026-07-13T13:59:39",
+    "version": "v1.9.8",
+    "description": "## [1.9.8](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.7...v1.9.8) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **polytopia:** re-add MainActivityOnCreateFingerprint to Fingerprints.kt ([5e83a48](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/5e83a48a186511feca5f03fb7a15924653452187))\n* **polytopia:** simplify IAP patch to follow morphe-ai billing-bypass pattern ([fee271c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fee271cbefe0f73904536a914aa2db0c3fb19a41))\n* **polytopia:** simplify IAP patch to follow morphe-ai billing-bypass pattern ([9253c7d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/9253c7d3fef4a2bdcee20271af7d69b71bb317b9))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -11958,7 +11958,7 @@
         "patches": [
           {
             "name": "Free in-app purchases",
-            "description": "Skips Google Play Billing and credits IAP items (tribes, skins, crystal packs) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and intercepts launchBillingFlow to create a fake Purchase via Java extension and feed it to the game's native billing callback — no payment, no Play Store dialog, instant credit.",
+            "description": "Forces Purchase.isAcknowledged() to return true and getPurchaseState() to return PURCHASED (1), so the game thinks every purchase is valid and completed. Also patches the billing bridge to report success on setup and purchase updates.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -12070,10 +12070,10 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "9de5822d7c1f5af63db805a2ff686cdba4bac54135a93df530f836ea69405028",
-    "release_notes": "## [1.9.7](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.6...v1.9.7) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* move IAP fake purchase logic to Java extension ([60a64f6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/60a64f63a0fab79dc0195a1382da91aeb8d5f292))\n* move IAP fake purchase logic to Java extension ([ccf8b40](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/ccf8b4075ef1c2fb97e614528a1ec95719b616f3))\n",
-    "release_tag": "v1.9.7",
-    "release_date": "2026-07-13T01:23:25Z"
+    "fingerprint": "6dbd1f226388cf9f711384c9b296f2a2586ffc1acbcc47044b5a639376e41208",
+    "release_notes": "## [1.9.8](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.7...v1.9.8) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **polytopia:** re-add MainActivityOnCreateFingerprint to Fingerprints.kt ([5e83a48](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/5e83a48a186511feca5f03fb7a15924653452187))\n* **polytopia:** simplify IAP patch to follow morphe-ai billing-bypass pattern ([fee271c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fee271cbefe0f73904536a914aa2db0c3fb19a41))\n* **polytopia:** simplify IAP patch to follow morphe-ai billing-bypass pattern ([9253c7d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/9253c7d3fef4a2bdcee20271af7d69b71bb317b9))\n",
+    "release_tag": "v1.9.8",
+    "release_date": "2026-07-13T13:59:39Z"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -24931,9 +24931,9 @@
     "bundle": "lain",
     "channel": "dev",
     "repo_url": "https://github.com/kiraio-moe/Lain-Patches",
-    "created_at": "2026-07-12T15:00:00",
-    "version": "v1.3.0-dev.3",
-    "description": "## [1.3.0-dev.3](https://github.com/kiraio-moe/Lain-Patches/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-07-12)\n\n### ✨ New Features\n\n* **Atomic:** Add PRO+ premium patch ([775fbd5](https://github.com/kiraio-moe/Lain-Patches/commit/775fbd5d922a857c40fcf86d50b46b9da682add8))\n* **ChatBoost:** Add premium patch ([12a966d](https://github.com/kiraio-moe/Lain-Patches/commit/12a966d9a32bb194281e1aba40dda03f9bcfd719))\n* **Keymate:** Add premium patch ([f6b4fe5](https://github.com/kiraio-moe/Lain-Patches/commit/f6b4fe57f78b613497e74a3309ec93d4a19750e2))\n* **Pixel Studio:** Add pro patch ([bb741bb](https://github.com/kiraio-moe/Lain-Patches/commit/bb741bb8af4bad3cdc43db4c7244843db22aec0f))\n",
+    "created_at": "2026-07-13T14:13:02",
+    "version": "v1.4.0-dev.1",
+    "description": "## [1.4.0-dev.1](https://github.com/kiraio-moe/Lain-Patches/compare/v1.3.0...v1.4.0-dev.1) (2026-07-13)\n\n### ✨ New Features\n\n* **DROFUS:** Add premium patch ([2a8254e](https://github.com/kiraio-moe/Lain-Patches/commit/2a8254ede8c7e77b14eba520fe21cac212234506))\n* Moving DROFUS patch into group of MixApplications patches ([52e7956](https://github.com/kiraio-moe/Lain-Patches/commit/52e79568efb153c9979db2f2de848e2978741c41))\n",
     "apps": [
       {
         "app_name": "Android Proxy Server",
@@ -25287,6 +25287,70 @@
         "icon_url": "https://play-lh.googleusercontent.com/ZZ1aedj42CKr8xbo52oIUx3xehrlKYAYqSayj1NBn0PB1Emkt-zfrKwT9488XVnXCuOWdhczGCksvRMLi8qefg"
       },
       {
+        "app_name": "DROFUS",
+        "package": "com.mixapplications.rufus",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlock unlimited use of ISO Burner, disable ads and disable coins system.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "10.2.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/rWQ8vSkeSMVt85fzmIhZKg02mA_VbL-ecF1k3sYoe1jo8I8WM6TeWiWV999mJmKDA4Bd5gRxbwwnS3iB6Mh3"
+      },
+      {
+        "app_name": "Ultimate USB",
+        "package": "com.mixapplications.ultimateusb",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlock unlimited use of all tools, disable ads and disable coins system.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "10.2.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/KfoSg6mRuLJaJJfYllYX0l_8QvEV7bsf-R16dSsO6DcxMppopj8D8Yo6b-VHJWdMzNxFbMn_2uc_QPH24ykc"
+      },
+      {
+        "app_name": "USB TOOLS",
+        "package": "com.mixapplications.usbtools",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlock unlimited use of Disk Management & Gaming Tools, disable ads and disable coins system.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "10.2.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/oBQsvUvNuEokudV-SEPjK7j1yT0Ky3pCwH8E6iZ0EeU3_o9WP19WI0Bj5MffkT-Xfrz9ijka9xKT7M43ZU7dbw"
+      },
+      {
+        "app_name": "Ventoy",
+        "package": "com.mixapplications.ventoy_app",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlock unlimited use of Bootable USB drive creator, disable ads and disable coins system.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "10.2.3 (1.1.16)"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/iDmPs-RP3nd2DwTpONpFk7CYDY6aBnsq36lS6Ac43w6uosKKaTTjaIl5LVKG6tVQ602ycUIeozQlpXKFSzFMug"
+      },
+      {
         "app_name": "Pixel Studio",
         "package": "com.pixelstudio",
         "patches": [
@@ -25431,10 +25495,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/T3CAUVTyQVRydZSmaJjYJEU7K05vKBxLC_-m_ahnbVd0n0JnfVqRXPk83tgL2m2EwxShBh90Zg8jVZDaPGpw9Q"
       }
     ],
-    "fingerprint": "4ee80daa6c95b957883304b8200558b31203816352ada39b1adf44e7e1d38096",
-    "release_notes": "## [1.3.0-dev.3](https://github.com/kiraio-moe/Lain-Patches/compare/v1.3.0-dev.2...v1.3.0-dev.3) (2026-07-12)\n\n### ✨ New Features\n\n* **Atomic:** Add PRO+ premium patch ([775fbd5](https://github.com/kiraio-moe/Lain-Patches/commit/775fbd5d922a857c40fcf86d50b46b9da682add8))\n* **ChatBoost:** Add premium patch ([12a966d](https://github.com/kiraio-moe/Lain-Patches/commit/12a966d9a32bb194281e1aba40dda03f9bcfd719))\n* **Keymate:** Add premium patch ([f6b4fe5](https://github.com/kiraio-moe/Lain-Patches/commit/f6b4fe57f78b613497e74a3309ec93d4a19750e2))\n* **Pixel Studio:** Add pro patch ([bb741bb](https://github.com/kiraio-moe/Lain-Patches/commit/bb741bb8af4bad3cdc43db4c7244843db22aec0f))\n",
-    "release_tag": "v1.3.0-dev.3",
-    "release_date": "2026-07-12T15:00:00Z"
+    "fingerprint": "b529e89e4ba960061529af2febcb5f934cad290d719bb1f6530233c9cb278dc4",
+    "release_notes": "## [1.4.0-dev.1](https://github.com/kiraio-moe/Lain-Patches/compare/v1.3.0...v1.4.0-dev.1) (2026-07-13)\n\n### ✨ New Features\n\n* **DROFUS:** Add premium patch ([2a8254e](https://github.com/kiraio-moe/Lain-Patches/commit/2a8254ede8c7e77b14eba520fe21cac212234506))\n* Moving DROFUS patch into group of MixApplications patches ([52e7956](https://github.com/kiraio-moe/Lain-Patches/commit/52e79568efb153c9979db2f2de848e2978741c41))\n",
+    "release_tag": "v1.4.0-dev.1",
+    "release_date": "2026-07-13T14:13:02Z"
   },
   "lain:stable": {
     "bundle": "lain",
@@ -29671,6 +29735,34 @@
     "release_notes": "## [1.0.3](https://gitlab.com/inotia00/proguard-patches/compare/v1.0.2...v1.0.3) (2026-06-05)\n\n\n### Bug Fixes\n\n* Patch bundle download_url is invalid ([88a1c56](https://gitlab.com/inotia00/proguard-patches/commit/88a1c56cc3f3a7baa83b6713715d5c8a1df6f590))\n",
     "release_tag": "v1.0.3",
     "release_date": "2026-06-05T01:03:40.951Z"
+  },
+  "babyhuehnchen:stable": {
+    "bundle": "babyhuehnchen",
+    "channel": "stable",
+    "repo_url": "https://github.com/babyhuehnchen/morphe-patches",
+    "created_at": "2026-07-13T13:59:29",
+    "version": "v1.0.2",
+    "description": "## [1.0.2](https://github.com/babyhuehnchen/morphe-patches/compare/v1.0.1...v1.0.2) (2026-07-13)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* show ESApp app name ([6d7cdb3](https://github.com/babyhuehnchen/morphe-patches/commit/6d7cdb3bc84744c5c7c505643806380e7bc6bdc6))\r\n",
+    "apps": [
+      {
+        "app_name": "ESApp",
+        "package": "at.notrufnoe.edi",
+        "patches": [
+          {
+            "name": "Force dark mode",
+            "description": "Enables hidden dark mode setting",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/ltYcBcvtbyRJf14SaFyIIc2vLk5wLP4YryH7z8nWM3tc5-5MYtJbPW8e0gpdl-D6Agcen_-2cUt5pXfVvKzbzw"
+      }
+    ],
+    "fingerprint": "078fd9d1962ccc2207563cdae46dc0ab24d6fdbc522c668639bbd30c9fc7cd66",
+    "release_notes": "## [1.0.2](https://github.com/babyhuehnchen/morphe-patches/compare/v1.0.1...v1.0.2) (2026-07-13)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* show ESApp app name ([6d7cdb3](https://github.com/babyhuehnchen/morphe-patches/commit/6d7cdb3bc84744c5c7c505643806380e7bc6bdc6))\r\n",
+    "release_tag": "v1.0.2",
+    "release_date": "2026-07-13T13:59:29Z"
   },
   "lynx6319:stable": {
     "bundle": "lynx6319",
@@ -35531,9 +35623,9 @@
     "bundle": "cobalt-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/skulldogged/cobalt-morphe",
-    "created_at": "2026-07-13T05:04:39",
-    "version": "v1.4.2",
-    "description": "## [1.4.2](https://github.com/skulldogged/cobalt-morphe/compare/v1.4.1...v1.4.2) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* read Morphe download settings ([ba19764](https://github.com/skulldogged/cobalt-morphe/commit/ba1976464a2e1635db79efd0ebb3b39a5e0bc8a9))\n",
+    "created_at": "2026-07-13T13:49:49",
+    "version": "v1.5.0",
+    "description": "## [1.5.0](https://github.com/skulldogged/cobalt-morphe/compare/v1.4.2...v1.5.0) (2026-07-13)\n\n### ✨ New Features\n\n* add audio-only downloads ([c4bbec8](https://github.com/skulldogged/cobalt-morphe/commit/c4bbec8b62ea5442700113a4ddf1db7ce197af26))\n",
     "apps": [
       {
         "app_name": "YouTube",
@@ -35559,9 +35651,9 @@
       }
     ],
     "fingerprint": "d25c0fc04677869910cc97e500a15886f72136a77f7475c424b0844012a6e67f",
-    "release_notes": "## [1.4.2](https://github.com/skulldogged/cobalt-morphe/compare/v1.4.1...v1.4.2) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* read Morphe download settings ([ba19764](https://github.com/skulldogged/cobalt-morphe/commit/ba1976464a2e1635db79efd0ebb3b39a5e0bc8a9))\n",
-    "release_tag": "v1.4.2",
-    "release_date": "2026-07-13T05:04:39Z"
+    "release_notes": "## [1.5.0](https://github.com/skulldogged/cobalt-morphe/compare/v1.4.2...v1.5.0) (2026-07-13)\n\n### ✨ New Features\n\n* add audio-only downloads ([c4bbec8](https://github.com/skulldogged/cobalt-morphe/commit/c4bbec8b62ea5442700113a4ddf1db7ce197af26))\n",
+    "release_tag": "v1.5.0",
+    "release_date": "2026-07-13T13:49:49Z"
   },
   "browzomje:dev": {
     "bundle": "browzomje",
@@ -35908,9 +36000,9 @@
     "bundle": "adobo",
     "channel": "dev",
     "repo_url": "https://github.com/jkennethcarino/adobo",
-    "created_at": "2026-07-12T15:19:57",
-    "version": "v1.3.0-dev.4",
-    "description": "## [1.3.0-dev.4](https://github.com/jkennethcarino/adobo/compare/v1.3.0-dev.3...v1.3.0-dev.4) (2026-07-12)\n\n### Features\n\n* **Gboard - Enable OCR feature:** Always show Scan Text option regardless of language ([#36](https://github.com/jkennethcarino/adobo/issues/36)) ([aa23f0a](https://github.com/jkennethcarino/adobo/commit/aa23f0a45126fde76c06296ae67f7d192364bd23))\n",
+    "created_at": "2026-07-13T13:22:09",
+    "version": "v1.3.0-dev.5",
+    "description": "## [1.3.0-dev.5](https://github.com/jkennethcarino/adobo/compare/v1.3.0-dev.4...v1.3.0-dev.5) (2026-07-13)\n\n### Updated App Support\n\n* **IMDb:** Add support for `9.3.3` ([67766d9](https://github.com/jkennethcarino/adobo/commit/67766d992018af5983b8df3d944446d1e21c6b99))\n",
     "apps": [
       {
         "app_name": "Gboard",
@@ -36300,9 +36392,9 @@
       }
     ],
     "fingerprint": "60f0a35f96fe27bbb835469a0d8009d82429caa1758e8e2e98b5ef69cead83a5",
-    "release_notes": "## [1.3.0-dev.4](https://github.com/jkennethcarino/adobo/compare/v1.3.0-dev.3...v1.3.0-dev.4) (2026-07-12)\n\n### Features\n\n* **Gboard - Enable OCR feature:** Always show Scan Text option regardless of language ([#36](https://github.com/jkennethcarino/adobo/issues/36)) ([aa23f0a](https://github.com/jkennethcarino/adobo/commit/aa23f0a45126fde76c06296ae67f7d192364bd23))\n",
-    "release_tag": "v1.3.0-dev.4",
-    "release_date": "2026-07-12T15:19:57Z"
+    "release_notes": "## [1.3.0-dev.5](https://github.com/jkennethcarino/adobo/compare/v1.3.0-dev.4...v1.3.0-dev.5) (2026-07-13)\n\n### Updated App Support\n\n* **IMDb:** Add support for `9.3.3` ([67766d9](https://github.com/jkennethcarino/adobo/commit/67766d992018af5983b8df3d944446d1e21c6b99))\n",
+    "release_tag": "v1.3.0-dev.5",
+    "release_date": "2026-07-13T13:22:09Z"
   },
   "adobo:stable": {
     "bundle": "adobo",
@@ -36839,9 +36931,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-07-13T10:10:39",
-    "version": "v1.35.0-dev.2",
-    "description": "## [1.35.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.1...v1.35.0-dev.2) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Playback speed:** Support new native playback speed menu ([#1957](https://github.com/MorpheApp/morphe-patches/issues/1957)) ([a4641d6](https://github.com/MorpheApp/morphe-patches/commit/a4641d6731170e03b26abc4ecb37230193271673))\n* **YouTube Music - Downloads:** Hide Premium dialog on external download ([#2009](https://github.com/MorpheApp/morphe-patches/issues/2009)) ([4cfe552](https://github.com/MorpheApp/morphe-patches/commit/4cfe552daa946c8d4ca946aeffffb63b62ad8370))\n\n### ✨ New Features\n\n* **YouTube Music:** Add `Disable dislike redirection` patch ([#1962](https://github.com/MorpheApp/morphe-patches/issues/1962)) ([e399e05](https://github.com/MorpheApp/morphe-patches/commit/e399e05835f40e00a5efb9f311eadbee9be599a9))\n",
+    "created_at": "2026-07-13T14:59:32",
+    "version": "v1.35.0-dev.3",
+    "description": "## [1.35.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.2...v1.35.0-dev.3) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **YouTube Music:** Fix 9.15.51 startup ([9e2c372](https://github.com/MorpheApp/morphe-patches/commit/9e2c37218aeb601d1d05d66fba4d89255d20c01f))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -38686,9 +38778,9 @@
       }
     ],
     "fingerprint": "a188c5fe995b36858c16f25db94c1f1e3d288136d2ab95803ffacba53f3f2f60",
-    "release_notes": "## [1.35.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.1...v1.35.0-dev.2) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Playback speed:** Support new native playback speed menu ([#1957](https://github.com/MorpheApp/morphe-patches/issues/1957)) ([a4641d6](https://github.com/MorpheApp/morphe-patches/commit/a4641d6731170e03b26abc4ecb37230193271673))\n* **YouTube Music - Downloads:** Hide Premium dialog on external download ([#2009](https://github.com/MorpheApp/morphe-patches/issues/2009)) ([4cfe552](https://github.com/MorpheApp/morphe-patches/commit/4cfe552daa946c8d4ca946aeffffb63b62ad8370))\n\n### ✨ New Features\n\n* **YouTube Music:** Add `Disable dislike redirection` patch ([#1962](https://github.com/MorpheApp/morphe-patches/issues/1962)) ([e399e05](https://github.com/MorpheApp/morphe-patches/commit/e399e05835f40e00a5efb9f311eadbee9be599a9))\n",
-    "release_tag": "v1.35.0-dev.2",
-    "release_date": "2026-07-13T10:10:39Z"
+    "release_notes": "## [1.35.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.2...v1.35.0-dev.3) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **YouTube Music:** Fix 9.15.51 startup ([9e2c372](https://github.com/MorpheApp/morphe-patches/commit/9e2c37218aeb601d1d05d66fba4d89255d20c01f))\n",
+    "release_tag": "v1.35.0-dev.3",
+    "release_date": "2026-07-13T14:59:32Z"
   },
   "morphe:stable": {
     "bundle": "morphe",
