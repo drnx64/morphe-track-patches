@@ -1,7 +1,7 @@
 {
   "date": "2026-07-13",
-  "lastChecked": "2026-07-13T02:11:28Z",
-  "scan_counter": 1,
+  "lastChecked": "2026-07-13T06:12:46Z",
+  "scan_counter": 2,
   "affected_bundles": {
     "miguel:stable": {
       "bundle": "miguel",
@@ -18,14 +18,7 @@
             "patches_modified": [
               {
                 "name": "Free in-app purchases",
-                "description": "Skips Google Play Billing and credits IAP items (tribes, skins, crystal packs) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and intercepts launchBillingFlow to create a fake Purchase with the product ID and feed it to the game's native billing callback — no payment, no Play Store dialog, instant credit.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Unlock all tribes",
-                "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) by activating the game's built-in DEBUG MODE. Writes a user.cfg file with debugUnlock=true before the game loads, which makes Polytopia use its internal EverythingUnlockedPlatformPurchaseManager (a debug class that unlocks everything for free).",
+                "description": "Skips Google Play Billing and credits IAP items (tribes, skins, crystal packs) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and intercepts launchBillingFlow to create a fake Purchase via Java extension and feed it to the game's native billing callback — no payment, no Play Store dialog, instant credit.",
                 "changes": [
                   "description updated"
                 ]
@@ -33,7 +26,8 @@
             ]
           },
           "scan_numbers": [
-            1
+            1,
+            2
           ]
         }
       ]
@@ -250,8 +244,22 @@
           "package": "com.google.android.youtube",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
-          ]
+            1,
+            2
+          ],
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Cobalt downloads",
+                "description": "Replaces YouTube's download action and Downloads page with a native cobalt manager.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -301,7 +309,60 @@
           "package": "com.whatsapp",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
+            1,
+            2
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Modo Fantasma",
+                "description": "No recibes ni envias mensajes mientras este activo."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "DND Mode",
+                "description": "No marca mensajes como leídos al abrir chats."
+              },
+              {
+                "name": "Descargar estados",
+                "description": "Guarda estados de foto y video directamente."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Freeze Last Seen",
+                "description": "Congela la hora de ultima conexion.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "modx:stable": {
+      "bundle": "modx",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Capture tab host for programmatic tab switching",
+                "description": "Lets extension Activities (Tools/About) trigger a real MX Player tab switch instead of just finishing back to whatever tab was last visible."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            2
           ]
         }
       ]
