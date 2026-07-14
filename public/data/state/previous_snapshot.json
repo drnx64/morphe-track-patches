@@ -12110,9 +12110,9 @@
     "bundle": "modx",
     "channel": "stable",
     "repo_url": "https://github.com/Utsavrajputt/Modx-patches",
-    "created_at": "2026-07-13T10:25:35",
-    "version": "v1.4.2",
-    "description": "## [1.4.2](https://github.com/Utsavrajputt/Modx-patches/compare/v1.4.1...v1.4.2) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* Crash on clicking tools ([89d28b3](https://github.com/Utsavrajputt/Modx-patches/commit/89d28b36638626750ca3445220b41f8d9e6ee2be))\n",
+    "created_at": "2026-07-14T06:25:28",
+    "version": "v1.5.1",
+    "description": "## [1.5.1](https://github.com/Utsavrajputt/Modx-patches/compare/v1.5.0...v1.5.1) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* typo in maintainer's name ([05a1bdc](https://github.com/Utsavrajputt/Modx-patches/commit/05a1bdc431110a5730e257d8ff059ef6a1e79f9b))\n",
     "apps": [
       {
         "app_name": "MX Player",
@@ -22176,9 +22176,9 @@
     "bundle": "pinterest-morphed",
     "channel": "dev",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-07T23:35:24",
-    "version": "v1.0.0-dev.2",
-    "description": "## [1.0.0-dev.2](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-07-07)\n\n### ✨ New Features\n\n* add Sanitize sharing links + make cross-version patches resilient ([10f2940](https://github.com/SouBryan/pinterest-morphed/commit/10f29407fc835fabae467b7a05aa66c75982e44c))\n",
+    "created_at": "2026-07-14T05:10:37",
+    "version": "v1.0.0-dev.4",
+    "description": "## [1.0.0-dev.4](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* cover shopping ads and ad_data in HidePromotedPinsPatch ([c8a55c1](https://github.com/SouBryan/pinterest-morphed/commit/c8a55c1fade7eba7adca23b83010ca4989642b3a))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -22252,7 +22252,7 @@
           },
           {
             "name": "Hide promoted pins",
-            "description": "Overrides every `isPromoted` getter on the Pinterest pin/story models to return false, so ad chrome, ad beacons and click-out CTAs are never rendered or fired.",
+            "description": "Neutralises every ad-indicator field on the Pinterest pin/story models (is_promoted, promoted_is_*, is_native, ad_data, ...) so Promoted Pins, shopping-carousel ads, native-content ads and click-out CTAs are never rendered or fired.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -22284,6 +22284,17 @@
             ]
           },
           {
+            "name": "Sanitize copied links",
+            "description": "Resolves Pinterest short URLs (pin.it/…, pinterest.com/url_shortener/…) to their canonical pin URL before they are placed on the system clipboard, so \"Copy link\" no longer produces a fingerprinted short link.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.26.0",
+              "14.25.0",
+              "14.24.0"
+            ]
+          },
+          {
             "name": "Sanitize sharing links",
             "description": "Strips UTM and click-ID tracking parameters from the URL the app puts on the Android share sheet, so friends receive clean pin links.",
             "use": true,
@@ -22298,15 +22309,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
       }
     ],
-    "fingerprint": "070d172a3d59a220847a5c345d3c91a40ddf8ea5d67fb4d197a1666e835a372c"
+    "fingerprint": "e067c8b193429a30aeb1d315c506eea7a701b1b1fab0b47338ff2605b689d64a"
   },
   "pinterest-morphed:stable": {
     "bundle": "pinterest-morphed",
     "channel": "stable",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-07T23:35:35",
-    "version": "v1.1.0",
-    "description": "## [1.1.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0...v1.1.0) (2026-07-07)\n\n### ✨ New Features\n\n* add Sanitize sharing links + make cross-version patches resilient ([0989429](https://github.com/SouBryan/pinterest-morphed/commit/0989429e1e85dc021c8985cf2affe934fe283207))\n",
+    "created_at": "2026-07-14T05:11:00",
+    "version": "v1.2.1",
+    "description": "## [1.2.1](https://github.com/SouBryan/pinterest-morphed/compare/v1.2.0...v1.2.1) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* cover shopping ads and ad_data in HidePromotedPinsPatch ([2ac9672](https://github.com/SouBryan/pinterest-morphed/commit/2ac967234e54f113e693454fd6066cc5ba13e312))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -22380,7 +22391,7 @@
           },
           {
             "name": "Hide promoted pins",
-            "description": "Overrides every `isPromoted` getter on the Pinterest pin/story models to return false, so ad chrome, ad beacons and click-out CTAs are never rendered or fired.",
+            "description": "Neutralises every ad-indicator field on the Pinterest pin/story models (is_promoted, promoted_is_*, is_native, ad_data, ...) so Promoted Pins, shopping-carousel ads, native-content ads and click-out CTAs are never rendered or fired.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -22412,6 +22423,17 @@
             ]
           },
           {
+            "name": "Sanitize copied links",
+            "description": "Resolves Pinterest short URLs (pin.it/…, pinterest.com/url_shortener/…) to their canonical pin URL before they are placed on the system clipboard, so \"Copy link\" no longer produces a fingerprinted short link.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.26.0",
+              "14.25.0",
+              "14.24.0"
+            ]
+          },
+          {
             "name": "Sanitize sharing links",
             "description": "Strips UTM and click-ID tracking parameters from the URL the app puts on the Android share sheet, so friends receive clean pin links.",
             "use": true,
@@ -22426,7 +22448,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
       }
     ],
-    "fingerprint": "c03dcd4f3cfdefd6452cf15601a0756369c2c80cd4495f52651fd87185bc6921"
+    "fingerprint": "fa8dc75d4ed90a1b3b9f9a1e76e796d2166ed2ca2cb011c690c15a092b74011d"
   },
   "amplerevanced:dev": {
     "bundle": "amplerevanced",
@@ -29671,9 +29693,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-07-13T05:33:26",
-    "version": "v1.13.0-dev.1",
-    "description": "# Rushi's Patches v1.13.0-dev.1\nPatch source for Morphe.\n**Channel:** dev prerelease  \n**Branch:** `dev`  \n**Patch count:** 215\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.13.0-dev.1.mpp` from the release assets below.\n> This is a dev prerelease and may be less stable than a stable release.\n\n## Supported Apps Changed\n\n### Added Apps\n- **ES File Explorer** (`com.estrongs.android.pop`)\n- **Super File** (`com.esuper.file.explorer`)\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.13.0-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.12.0...v1.13.0-dev.1) (2026-07-13)\n\n### New Patches\n\n* add es strong ([f1e23ef](https://github.com/rushiranpise/morphe-patches/commit/f1e23efbcffea3b35949915bd3fa50c06276b1e2))\n* add super explorer ([1e26302](https://github.com/rushiranpise/morphe-patches/commit/1e26302512dc40c4be892e2bb8c6d252037aa0e5))",
+    "created_at": "2026-07-14T04:14:38",
+    "version": "v1.13.0-dev.2",
+    "description": "# Rushi's Patches v1.13.0-dev.2\nPatch source for Morphe.\n**Channel:** dev prerelease  \n**Branch:** `dev`  \n**Patch count:** 218\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.13.0-dev.2.mpp` from the release assets below.\n> This is a dev prerelease and may be less stable than a stable release.\n\n## Supported Apps Changed\n\n### Added Apps\n- **Block Blast!** (`com.block.juggle`)\n- **Kahoot!** (`no.mobitroll.kahoot.android`)\n- **NAVITIME** (`com.navitime.inbound.walk`)\n\n### Updated App Versions\n- **AiScore** (`com.onesports.score`): `4.2.4` -> `4.2.6`\n- **Canva** (`com.canva.editor`): `2.367.0` -> `2.368.0`\n- **JEFIT** (`je.fit`): `17.2.5` -> `17.2.6`\n- **Minimal Widgets** (`com.jndapp.minimal.widgets`): `1.0.08` -> `1.1.01`\n- **MyRadar** (`com.acmeaom.android.myradar`): `8.71.2` -> `8.71.3`\n- **NewsBreak** (`com.particlenews.newsbreak`): `26.27.0` -> `26.28.0`\n- **Pialytic** (`verbosus.pialytic`): `1.2.8` -> `1.3.0`\n- **Proxyman** (`com.proxyman.proxymanandroid`): `1.18.0` -> `1.19.0`\n- **Snow-Forecast.com** (`com.snow_forecast.snowforecast`): `8.0.6` -> `8.0.8`\n- **Super File** (`com.esuper.file.explorer`): `1.5.6.2` -> `1.5.6.3`\n- **Waze** (`com.waze`): `5.21.0.0` -> `5.21.90.800`\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.13.0-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.13.0-dev.1...v1.13.0-dev.2) (2026-07-14)\n\n### New Patches\n\n* add new apps ([78a06d5](https://github.com/rushiranpise/morphe-patches/commit/78a06d5c7f40d5c5c9154fde9613aed39a1feb4b))",
     "apps": [
       {
         "app_name": "Snipd",
@@ -29957,7 +29979,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.71.2"
+              "8.71.3"
             ]
           }
         ],
@@ -30169,6 +30191,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/lxQjbpVTFHvkfuOZVrcIBqlj8LJNYspLJppPXJwa4oTXswlR-vwCKvi09-ic4HeaQioowYHr_olZCj2lj3EH"
       },
       {
+        "app_name": "Block Blast!",
+        "package": "com.block.juggle",
+        "patches": [
+          {
+            "name": "Unlock VIP",
+            "description": "Unlock ViP features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "10.3.5"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/5FLR-EBlfNvoV9ydZkOMDqRF10nV64XcKdZzW_oQzmz2e8Me9PS5Zncnvviki0J3XumjO2a_lg6_IdwOqwnV"
+      },
+      {
         "app_name": "BlockerHero",
         "package": "com.blockerhero",
         "patches": [
@@ -30226,7 +30264,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "2.367.0"
+              "2.368.0"
             ]
           }
         ],
@@ -30466,7 +30504,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.5.6.2"
+              "1.5.6.3"
             ]
           }
         ],
@@ -30699,7 +30737,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.0.08"
+              "1.1.01"
             ]
           }
         ],
@@ -30962,6 +31000,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/smFSNxskrk_HPKDvKciVTJ_F0BGdjUHNkVyAjOrWqCCGq9QDj_TX_Dea7mXzQvjloX2NpN60vQHXDTLB6jxThA"
       },
       {
+        "app_name": "NAVITIME",
+        "package": "com.navitime.inbound.walk",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Unlocks NAVITIME Japan Travel Premium features in app",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.0.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/EkFWFEcKUvRnEBo2K62JeNPAVPjd1IQMSV4-Ghw6pkpJOrGGyG1n0L7NP_hB9o5YFccK7hDSfxZBW_t1X0Vx4A"
+      },
+      {
         "app_name": "Crime Radar",
         "package": "com.newsbreak.crimeradar",
         "patches": [
@@ -31080,7 +31134,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "4.2.4"
+              "4.2.6"
             ]
           }
         ],
@@ -31096,7 +31150,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.27.0"
+              "26.28.0"
             ]
           }
         ],
@@ -31176,7 +31230,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.18.0"
+              "1.19.0"
             ]
           }
         ],
@@ -31304,7 +31358,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.0.6"
+              "8.0.8"
             ]
           }
         ],
@@ -31698,7 +31752,7 @@
               }
             ],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31724,7 +31778,7 @@
               }
             ],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31733,7 +31787,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31742,7 +31796,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31760,7 +31814,7 @@
               }
             ],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31798,7 +31852,7 @@
               }
             ],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31840,7 +31894,7 @@
               }
             ],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31870,7 +31924,7 @@
               }
             ],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31879,7 +31933,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31888,7 +31942,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31902,7 +31956,7 @@
               }
             ],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           },
           {
@@ -31911,7 +31965,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.21.0.0"
+              "5.21.90.800"
             ]
           }
         ],
@@ -32276,7 +32330,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "17.2.5"
+              "17.2.6"
             ]
           }
         ],
@@ -32345,6 +32399,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/Cg2qJ_ZYQbkbDlquXnlbe4utHXUHdW7I1ruuAGi_J8cmbSV9vZHQFhM0AtOtLpA3c75Ua57Ma6mgE2vcXHmq8g"
+      },
+      {
+        "app_name": "Kahoot!",
+        "package": "no.mobitroll.kahoot.android",
+        "patches": [
+          {
+            "name": "Unlock Gold",
+            "description": "Unlocks Kahoot! Plus Gold features in app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.6.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/eIlvMkUf_Sv4k4RVN2MAnxIzojgRbKNop8tgKpU31_LsIWBWr41ZkfGW6c3nABJLUlcWyCn7cfiplXBWQxRnBQ"
       },
       {
         "app_name": "Hola VPN Proxy Plus",
@@ -32470,14 +32540,14 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.2.8"
+              "1.3.0"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
       }
     ],
-    "fingerprint": "562c3d7d9254bcd9b17c28b02d11043b476b11d6df7afd678fbce27384f1dc39"
+    "fingerprint": "d536d939ecdeafde52ba65e974907b82e16c981cddb7f6f92898b99c9f654bea"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
@@ -48584,9 +48654,9 @@
     "bundle": "pichiwa",
     "channel": "dev",
     "repo_url": "https://github.com/alejandrobellver/pichiwa-patches",
-    "created_at": "2026-07-14T03:03:53",
-    "version": "v0.4.0-dev.1",
-    "description": "## [0.4.0-dev.1](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.3.2-dev.21...v0.4.0-dev.1) (2026-07-14)\n\n### Bug Fixes\n\n* **patches:** update HideGMS to new Morphe API ([01ea4e1](https://github.com/alejandrobellver/pichiwa-patches/commit/01ea4e1ce6d9a898ea86bd03182f6b1dd7a99d7b))\n\n### New Features\n\n* **patches:** add HideGMS to bypass integrity ([f0e2ca8](https://github.com/alejandrobellver/pichiwa-patches/commit/f0e2ca8c1790f1e1b189651cb5bcdb61b4a1d10d))\n",
+    "created_at": "2026-07-14T05:12:40",
+    "version": "v0.4.0-dev.5",
+    "description": "## [0.4.0-dev.5](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.4.0-dev.4...v0.4.0-dev.5) (2026-07-14)\n\n### Bug Fixes\n\n* **whatsapp:** properly check if instruction is ReferenceInstruction in SpoofSignature ([dda93f1](https://github.com/alejandrobellver/pichiwa-patches/commit/dda93f18e61e537e79111c45bed3d8d8d68c1d27))\n",
     "apps": [
       {
         "app_name": "WhatsApp",
@@ -48762,12 +48832,21 @@
             "compatible_versions": [
               "2.26.27.4"
             ]
+          },
+          {
+            "name": "Spoof Signature",
+            "description": "Forces WhatsApp signature checks to pass by patching the equals method comparison.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.26.27.4"
+            ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/Gqxk4T0uZsDwFp07DE-508hkyvcNmgFuRwPiwTEfF7D7OzGv1FdHDzEyMxNsSBZLOJlGpe3ULvVM2RgrRAlBqA"
       }
     ],
-    "fingerprint": "595f5b28d6e17e126255e3c621f8fa21f4778ad3a9f8fb1c5aea400ae5827cb3"
+    "fingerprint": "21f67cbb179f6bb1d1f9d45432be9c70560b621f9a8c5ca24c28694659f6aba8"
   },
   "pichiwa:stable": {
     "bundle": "pichiwa",
