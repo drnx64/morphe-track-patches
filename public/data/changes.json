@@ -1,659 +1,294 @@
 {
   "affected_bundles": [
     {
-      "bundle": "miguel",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "The Battle of Polytopia",
-          "package": "air.com.midjiwan.polytopia",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Free in-app purchases",
-                "description": "Skips Google Play Billing and credits IAP items (crystal packs, tribe skins) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and swallows purchase errors so no error dialog appears.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Unlock all tribes",
-                "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) and all skins by patching the native IL2CPP library (libil2cpp.so). Makes IsTribeUnlocked() and IsSkinUnlocked() always return true via ARM64 hex patching.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1,
-            2,
-            5,
-            6
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "hoomans-morphe",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Symfonium",
-          "package": "app.symfonik.music.player",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Premium",
-                "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial: a license value the app keeps locally decides whether the paid UI is open, and two timers (the beta cutoff and the trial countdown) lock the app once they pass. This forces the license read to \"licensed\" so the paid screens open, drops the \"trial expires on ...\" line from settings, and freezes the trusted-time lookup the timers read at a fixed pre-cutoff instant so neither timer can fire. The license is checked on the client (a local Play purchase verify), so the unlock holds without an account. Connecting Plex, Jellyfin and other media servers is untouched.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Alpha Progression",
-          "package": "com.alphaprogression.alphaprogression",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Premium",
-                "description": "Unlocks Alpha Progression's premium training tools without a subscription, like the training-plan generator, charts, exercise evaluations, the warmup calculator, and more. They run on the workout data already on your device, so they keep working offline.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Quizlet",
-          "package": "com.quizlet.quizletandroid",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Plus",
-                "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription, including unlimited Learn and Test rounds and textbook explanation views that free accounts meter. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Tracked",
-          "package": "com.tracked.mobile",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Pro",
-                "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics, training programs, dashboard customization, and session density/net progression. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "hoomans-morphe",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Alpha Progression",
-          "package": "com.alphaprogression.alphaprogression",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Premium",
-                "description": "Unlocks Alpha Progression's premium training tools without a subscription, like the training-plan generator, charts, exercise evaluations, the warmup calculator, and more. They run on the workout data already on your device, so they keep working offline.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Quizlet",
-          "package": "com.quizlet.quizletandroid",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Plus",
-                "description": "Removes ads and unlocks the on-device Quizlet Plus features without a subscription, including unlimited Learn and Test rounds and textbook explanation views that free accounts meter. The AI tools, like Magic Notes and generation, run on Quizlet's servers and stay locked.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Tracked",
-          "package": "com.tracked.mobile",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Pro",
-                "description": "Unlocks Tracked's premium training tools without a subscription, like muscle analytics, training programs, dashboard customization, and session density/net progression. They run on the workout data already on your device, so they keep working offline. The separate human-coaching marketplace still needs its own subscription.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "brealorg",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Boost for Reddit",
-          "package": "com.rubenmayayo.reddit",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Add Boost Search bottom navigation",
-                "description": "Shows Boost's native Home, Search, Subscriptions, Inbox and Profile menu in Search and Go To."
-              },
-              {
-                "name": "Stabilize Boost subreddit bottom navigation surface",
-                "description": "Applies theme contrast and gesture-inset surface handling to SubredditActivity while preserving native selection and routes."
-              },
-              {
-                "name": "Standardize Boost Home bottom navigation",
-                "description": "Applies the canonical five-destination Material navigation and native Home tint when MainActivity resumes."
-              },
-              {
-                "name": "Standardize Boost Inbox and Profile bottom navigation",
-                "description": "Applies the canonical five-destination Material bottom-navigation contract after Inbox and Profile complete lifecycle setup."
-              },
-              {
-                "name": "Standardize Boost bottom navigation",
-                "description": "Applies one destination, listener, selection, tint, and system-surface contract to Boost's Material bottom navigation."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "cobalt-morphe",
+      "bundle": "proxma",
       "channel": "stable",
       "badge_type": "NEW BUNDLE",
       "apps": [
         {
-          "app_name": "YouTube",
-          "package": "com.google.android.youtube",
+          "app_name": "Investify",
+          "package": "com.blueinklabs.investifystocks.free",
           "badge_type": "NEW APP",
-          "scan_numbers": [
-            1,
-            2
-          ],
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Cobalt downloads",
-                "description": "Replaces YouTube's download action and Downloads page with a native cobalt manager.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "bundle": "ee-morphe",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Going",
-          "package": "com.going.mobile",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Enable Pro",
-                "description": "Forces Going (Going) subscription checks to always pass and disables the app-specific PairIP license redirect.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
           "scan_numbers": [
             1
           ]
         },
         {
-          "app_name": "Inoreader",
-          "package": "com.innologica.inoreader",
+          "app_name": "Daraz",
+          "package": "com.daraz.android",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1,
-            6
-          ],
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Increase Daily Limits",
-                "description": "Forces daily usage and other limits to 500 when loading from server."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          }
+            1
+          ]
+        },
+        {
+          "app_name": "Simosa",
+          "package": "com.jazz.jazzworld",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MyZong",
+          "package": "com.zong.customercare",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "NetMonster",
+          "package": "cz.mroczis.netmonster",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "dumb-software",
+      "channel": "dev",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "T2C",
+          "package": "fr.t2c.t2c",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "dumb-software",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "T2C",
+          "package": "fr.t2c.t2c",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "jouss",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "TrackIt",
+          "package": "app.vinztech.trackit",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Proton VPN",
+          "package": "ch.protonvpn.android",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MacroDroid",
+          "package": "com.arlosoft.macrodroid",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Alarmo",
+          "package": "com.bytesong.missionalarm",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "StarSense Explorer",
+          "package": "com.celestron.skybox",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Cricbuzz",
+          "package": "com.cricbuzz.android",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Document Scanner",
+          "package": "com.cv.docscanner",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Eyecon Caller ID & Spam Block",
+          "package": "com.eyecon.global",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "VN",
+          "package": "com.frontrow.vlog",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Lumina Walls",
+          "package": "com.lumina.wallpapers",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Mark",
+          "package": "com.markone.ss_app",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MX Player Pro",
+          "package": "com.mxtech.videoplayer.pro",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Fing",
+          "package": "com.overlook.android.fing",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "TaskManager",
+          "package": "com.rk.taskmanager",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Prompter Pal",
+          "package": "com.solid.teleprompter",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "TickTick",
+          "package": "com.ticktick.task",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Truecaller",
+          "package": "com.truecaller",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Morolingo",
+          "package": "com.vivredarija",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "SD Maid SE",
+          "package": "eu.darken.sdmse",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "CREX - Just Cricket",
+          "package": "in.cricketexchange.app.cricketexchange",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "JioHotstar",
+          "package": "in.startv.hotstar",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Telegram",
+          "package": "org.telegram.messenger.web",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Plus Messenger",
+          "package": "org.telegram.plus",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
         }
       ]
     },
     {
       "bundle": "pichiwa",
       "channel": "dev",
-      "badge_type": "NEW BUNDLE",
+      "badge_type": "UPDATED",
       "apps": [
         {
           "app_name": "WhatsApp",
           "package": "com.whatsapp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1,
-            2,
-            7
-          ],
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Anti Disappearing",
-                "description": "Keep disappearing messages visible."
-              },
-              {
-                "name": "Anti Edit",
-                "description": "Prevent others from editing sent messages."
-              },
-              {
-                "name": "Anti Expiration",
-                "description": "Bypass WhatsApp forced version and expiration verification."
-              },
-              {
-                "name": "Anti View Once",
-                "description": "View ephemeral media without limits and allow screenshots."
-              },
-              {
-                "name": "Copy Statuses",
-                "description": "Allow copying text from contact statuses."
-              },
-              {
-                "name": "Ghost Mode",
-                "description": "Do not receive or send messages while active."
-              },
-              {
-                "name": "Hide Forwarded",
-                "description": "Quita la etiqueta \"reenviado\" de los mensajes."
-              },
-              {
-                "name": "Hide Read Receipts",
-                "description": "Read messages without sending blue ticks."
-              },
-              {
-                "name": "Hide Typing",
-                "description": "Escribe sin mostrar \"escribiendo...\"."
-              },
-              {
-                "name": "No Forward Limit",
-                "description": "Forward messages to unlimited contacts."
-              },
-              {
-                "name": "Remove Communities",
-                "description": "Hide the communities tab."
-              },
-              {
-                "name": "Remove Updates",
-                "description": "Hide the updates/statuses tab."
-              },
-              {
-                "name": "Spoof Installer",
-                "description": "Fake installation from Google Play to avoid restrictions."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Anti Desaparecer",
-                "description": "Mantiene los mensajes temporales visibles."
-              },
-              {
-                "name": "Anti Editar",
-                "description": "Evita que otros editen mensajes enviados."
-              },
-              {
-                "name": "Anti Expiracion",
-                "description": "Evita la verificacion forzada de version y expiracion de WhatsApp."
-              },
-              {
-                "name": "Anti-View Once",
-                "description": "Ve medios efímeros sin límite y permite capturas."
-              },
-              {
-                "name": "Copiar estados",
-                "description": "Permite copiar texto de estados de contactos."
-              },
-              {
-                "name": "Modo Fantasma",
-                "description": "No recibes ni envias mensajes mientras este activo."
-              },
-              {
-                "name": "Ocultar escritura",
-                "description": "Escribe sin mostrar \"escribiendo...\"."
-              },
-              {
-                "name": "Ocultar lectura",
-                "description": "Lee mensajes sin enviar ticks azules."
-              },
-              {
-                "name": "Ocultar reenviado",
-                "description": "Quita la etiqueta \"reenviado\" de los mensajes."
-              },
-              {
-                "name": "Quitar Comunidades",
-                "description": "Oculta la pestaña de comunidades."
-              },
-              {
-                "name": "Quitar Novedades",
-                "description": "Oculta la pestaña de novedades/estados."
-              },
-              {
-                "name": "Sin límite de reenvío",
-                "description": "Reenvía mensajes a contactos ilimitados."
-              },
-              {
-                "name": "Spoof instalador",
-                "description": "Finge instalación desde Google Play para evitar restricciones."
-              }
-            ],
-            "patches_modified": [
-              {
-                "name": "Anti Detector",
-                "description": "Bypass root, emulator, and custom ROM detection.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Anti Revoke",
-                "description": "Prevent others from deleting their messages or statuses.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Freeze Last Seen",
-                "description": "Freeze the last seen time.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "HD Media",
-                "description": "Send images and videos without compression.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Settings Menu",
-                "description": "Add the Pichiwa menu in settings.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "bundle": "modx",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "MX Player",
-          "package": "com.mxtech.videoplayer.ad",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Capture tab host for programmatic tab switching",
-                "description": "Lets extension Activities (Tools/About) trigger a real MX Player tab switch instead of just finishing back to whatever tab was last visible."
+                "name": "Hide GMS",
+                "description": "Pretends that Google Play Services is missing to force fallback registration flows."
               }
             ],
             "patches_removed": [],
             "patches_modified": []
           },
           "scan_numbers": [
-            2
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "rushiranpise",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "ES File Explorer",
-          "package": "com.estrongs.android.pop",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            3
-          ]
-        },
-        {
-          "app_name": "Super File",
-          "package": "com.esuper.file.explorer",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            3
-          ]
-        },
-        {
-          "app_name": "Minimal Widgets",
-          "package": "com.jndapp.minimal.widgets",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Premium",
-                "description": "Unlock all premium widgets.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            3
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "morphe",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "YouTube Music",
-          "package": "com.google.android.apps.youtube.music",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Disable dislike redirection",
-                "description": "Adds an option to prevent skipping to the next track when the dislike button is pressed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            4
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "franticg33k",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Atlas Photo",
-          "package": "com.ensembleai.scoutai",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            4
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "franticg33k",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Atlas Photo",
-          "package": "com.ensembleai.scoutai",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            4
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "lain",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "DROFUS",
-          "package": "com.mixapplications.rufus",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            5
-          ]
-        },
-        {
-          "app_name": "Ultimate USB",
-          "package": "com.mixapplications.ultimateusb",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            5
-          ]
-        },
-        {
-          "app_name": "USB TOOLS",
-          "package": "com.mixapplications.usbtools",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            5
-          ]
-        },
-        {
-          "app_name": "Ventoy",
-          "package": "com.mixapplications.ventoy_app",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            5
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "babyhuehnchen",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "ESApp",
-          "package": "at.notrufnoe.edi",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            5
+            1
           ]
         }
       ]
