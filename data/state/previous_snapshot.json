@@ -4989,60 +4989,6 @@
     ],
     "fingerprint": "cb75f5ff4f0053ca7d462f19ecfeb15755d071b0527b959b6925a4154b7df9aa"
   },
-  "ts-patches:dev": {
-    "bundle": "ts-patches",
-    "channel": "dev",
-    "repo_url": "https://github.com/osirisad/ts-patches",
-    "created_at": "2026-06-20T03:02:19",
-    "version": "v1.0.4",
-    "description": "",
-    "apps": [
-      {
-        "app_name": "TeamSnap",
-        "package": "com.teamsnap.teamsnap",
-        "patches": [
-          {
-            "name": "Disable ads",
-            "description": "Removes ads by forcing TeamSnap+ Tier 1 subscription status.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.63.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/e4dHkRsmQD_sXSCTrFn2XxH735F8bRgtsVBix631H1fuFzATZVSBUclORTjqut2iZjBoTYLI9ahS8nr6mS8kHBU"
-      }
-    ],
-    "fingerprint": "97e675b4fbfb3e4b20222b1072a57d955f3f1747ac120583149033420d026ff5"
-  },
-  "ts-patches:stable": {
-    "bundle": "ts-patches",
-    "channel": "stable",
-    "repo_url": "https://github.com/osirisad/ts-patches",
-    "created_at": "2026-06-21T02:17:19",
-    "version": "v1.0.0",
-    "description": "**Full Changelog**: https://github.com/osirisad/ts-patches/commits/v1.0.0",
-    "apps": [
-      {
-        "app_name": "TeamSnap",
-        "package": "com.teamsnap.teamsnap",
-        "patches": [
-          {
-            "name": "Disable ads",
-            "description": "Removes ads by forcing TeamSnap+ Tier 1 subscription status.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.63.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/e4dHkRsmQD_sXSCTrFn2XxH735F8bRgtsVBix631H1fuFzATZVSBUclORTjqut2iZjBoTYLI9ahS8nr6mS8kHBU"
-      }
-    ],
-    "fingerprint": "7e4f86d00ac4374e5764ed80f6de2fff4924f0615a75d60d3f6b3bf017f5e1a5"
-  },
   "rvx-morphed:dev": {
     "bundle": "rvx-morphed",
     "channel": "dev",
@@ -12110,9 +12056,9 @@
     "bundle": "modx",
     "channel": "stable",
     "repo_url": "https://github.com/Utsavrajputt/Modx-patches",
-    "created_at": "2026-07-14T06:25:28",
+    "created_at": "2026-07-14T14:26:57",
     "version": "v1.5.1",
-    "description": "## [1.5.1](https://github.com/Utsavrajputt/Modx-patches/compare/v1.5.0...v1.5.1) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* typo in maintainer's name ([05a1bdc](https://github.com/Utsavrajputt/Modx-patches/commit/05a1bdc431110a5730e257d8ff059ef6a1e79f9b))\n",
+    "description": "## [1.5.1](https://github.com/Utsavrajputt/Modx-patches/compare/v1.5.0...v1.5.1) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* Navbar item ([6d37aa6](https://github.com/Utsavrajputt/Modx-patches/commit/6d37aa6d59064abc68d8d8e36ee9d794ea6c38b3))\n* typo in maintainer's name ([4be0943](https://github.com/Utsavrajputt/Modx-patches/commit/4be0943e20cd61bcf8639121ad6b4f279336d8b1))\n",
     "apps": [
       {
         "app_name": "MX Player",
@@ -22176,9 +22122,9 @@
     "bundle": "pinterest-morphed",
     "channel": "dev",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-14T05:10:37",
-    "version": "v1.0.0-dev.4",
-    "description": "## [1.0.0-dev.4](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.3...v1.0.0-dev.4) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* cover shopping ads and ad_data in HidePromotedPinsPatch ([c8a55c1](https://github.com/SouBryan/pinterest-morphed/commit/c8a55c1fade7eba7adca23b83010ca4989642b3a))\n",
+    "created_at": "2026-07-14T17:38:32",
+    "version": "v1.0.0-dev.5",
+    "description": "## [1.0.0-dev.5](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.4...v1.0.0-dev.5) (2026-07-14)\n\n### ✨ New Features\n\n* add HideAdViewsPatch — collapse ad-specific views to GONE ([eb96762](https://github.com/SouBryan/pinterest-morphed/commit/eb96762fb376907227899a65e7d0466a37eeda27))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -22251,6 +22197,17 @@
             ]
           },
           {
+            "name": "Hide ad views",
+            "description": "Collapses Pinterest's ad-specific views (TextAdView, promoted closeup action bars, board sponsor headers, …) to zero-size on construction, so ad chrome never draws even if the feed adapter tries to render one.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.26.0",
+              "14.25.0",
+              "14.24.0"
+            ]
+          },
+          {
             "name": "Hide promoted pins",
             "description": "Neutralises every ad-indicator field on the Pinterest pin/story models (is_promoted, promoted_is_*, is_native, ad_data, ...) so Promoted Pins, shopping-carousel ads, native-content ads and click-out CTAs are never rendered or fired.",
             "use": true,
@@ -22309,15 +22266,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
       }
     ],
-    "fingerprint": "e067c8b193429a30aeb1d315c506eea7a701b1b1fab0b47338ff2605b689d64a"
+    "fingerprint": "2b6b8e4bc8d470d3d22a8c9cd72829027066a4762b70e5c0787bf07f8882fe3c"
   },
   "pinterest-morphed:stable": {
     "bundle": "pinterest-morphed",
     "channel": "stable",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-14T05:11:00",
-    "version": "v1.2.1",
-    "description": "## [1.2.1](https://github.com/SouBryan/pinterest-morphed/compare/v1.2.0...v1.2.1) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* cover shopping ads and ad_data in HidePromotedPinsPatch ([2ac9672](https://github.com/SouBryan/pinterest-morphed/commit/2ac967234e54f113e693454fd6066cc5ba13e312))\n",
+    "created_at": "2026-07-14T17:38:33",
+    "version": "v1.3.0",
+    "description": "## [1.3.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.2.1...v1.3.0) (2026-07-14)\n\n### ✨ New Features\n\n* add HideAdViewsPatch — collapse ad-specific views to GONE ([064d99c](https://github.com/SouBryan/pinterest-morphed/commit/064d99ccb5cbcd7b70955f7b6de0b2d298b83163))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -22390,6 +22347,17 @@
             ]
           },
           {
+            "name": "Hide ad views",
+            "description": "Collapses Pinterest's ad-specific views (TextAdView, promoted closeup action bars, board sponsor headers, …) to zero-size on construction, so ad chrome never draws even if the feed adapter tries to render one.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.26.0",
+              "14.25.0",
+              "14.24.0"
+            ]
+          },
+          {
             "name": "Hide promoted pins",
             "description": "Neutralises every ad-indicator field on the Pinterest pin/story models (is_promoted, promoted_is_*, is_native, ad_data, ...) so Promoted Pins, shopping-carousel ads, native-content ads and click-out CTAs are never rendered or fired.",
             "use": true,
@@ -22448,7 +22416,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
       }
     ],
-    "fingerprint": "fa8dc75d4ed90a1b3b9f9a1e76e796d2166ed2ca2cb011c690c15a092b74011d"
+    "fingerprint": "6d5f0fd11ced41fd93f81857c46cf0d346b0b9d5590297450059390a1e789f50"
   },
   "amplerevanced:dev": {
     "bundle": "amplerevanced",
@@ -24110,6 +24078,34 @@
       }
     ],
     "fingerprint": "4fef58ca371e15b946cd636a1b5c5243af01980315a123d6eb345b57302a8c87"
+  },
+  "gmaps:stable": {
+    "bundle": "gmaps",
+    "channel": "stable",
+    "repo_url": "https://github.com/fangkampanat/gmaps-patches",
+    "created_at": "2026-07-14T15:51:11",
+    "version": "v1.0.3",
+    "description": "## Changes\r\n\r\n- Enable `Google Maps MicroG` by default for Morphe Desktop Quick mode.\r\n- Update the README with the Quick mode patch-source setup flow.\r\n- Keep the supported Google Maps versions and patch logic unchanged.\r\n\r\n## Artifact\r\n\r\n`patches-1.0.3.mpp`\r\nSHA-256: `C07B85B1D4EEE50C447C0B7519C0C4119FFAC6F1FAAB2F53705D9CA004C163EF`",
+    "apps": [
+      {
+        "app_name": "Google Maps",
+        "package": "google maps",
+        "patches": [
+          {
+            "name": "Google Maps MicroG",
+            "description": "Routes supported Google Maps builds through ReVanced GmsCore using the patched Maps package and known Google Maps certificate spoof metadata.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.26.04.935742811",
+              "26.27.05.941319029"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "8ae64021077f0b36440b0a323532094512c4429101dffc5fba8f883110efbead"
   },
   "chirag127:stable": {
     "bundle": "chirag127",
@@ -26607,6 +26603,60 @@
     ],
     "fingerprint": "231cdb8ca7c55b15b45d1adda092bd635ee45dc0ee377063282c912fe3afceab"
   },
+  "seobject:dev": {
+    "bundle": "seobject",
+    "channel": "dev",
+    "repo_url": "https://github.com/Seobject/Seobject-patches",
+    "created_at": "2026-07-14T14:44:37",
+    "version": "v1.1.0-dev.1",
+    "description": "## [1.1.0-dev.1](https://github.com/Seobject/Seobject-patches/compare/v1.0.3...v1.1.0-dev.1) (2026-07-14)\n\n### Features\n\n* add experimental newer YouTube Music support ([171c14f](https://github.com/Seobject/Seobject-patches/commit/171c14f93add58c5711d6c66347b815f397e4774))\n",
+    "apps": [
+      {
+        "app_name": "YouTube Music",
+        "package": "com.google.android.apps.youtube.music",
+        "patches": [
+          {
+            "name": "Pin playlists",
+            "description": "Replaces Speed Dial pinning with persistent Library playlist pinning.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.15.51"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw"
+      }
+    ],
+    "fingerprint": "5541a1f9f6e5abf8598689dbd9ac6ac12ed0ccd3a2d6c8f7786a9d2ed5e59b63"
+  },
+  "seobject:stable": {
+    "bundle": "seobject",
+    "channel": "stable",
+    "repo_url": "https://github.com/Seobject/Seobject-patches",
+    "created_at": "2026-07-14T09:06:30",
+    "version": "v1.0.3",
+    "description": "## [1.0.3](https://github.com/Seobject/Seobject-patches/compare/v1.0.2...v1.0.3) (2026-07-14)\n\n### Bug Fixes\n\n* support stable YouTube Music 9.15.51 ([138e316](https://github.com/Seobject/Seobject-patches/commit/138e316a1328f8395b3f53b519f25f4c0a27369f))\n",
+    "apps": [
+      {
+        "app_name": "YouTube Music",
+        "package": "com.google.android.apps.youtube.music",
+        "patches": [
+          {
+            "name": "Pin playlists",
+            "description": "Replaces Speed Dial pinning with persistent Library playlist pinning.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.15.51"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw"
+      }
+    ],
+    "fingerprint": "9a0bd6e320f378ace6c55cee54b4264d20ffe046d3c918f0d2d8035eb6969c87"
+  },
   "hellveticastandard:dev": {
     "bundle": "hellveticastandard",
     "channel": "dev",
@@ -27026,228 +27076,6 @@
       }
     ],
     "fingerprint": "dfc603a72c69e3d262ef2ab778c16ccd17884b94cea612fa0bbed69c8c090b95"
-  },
-  "arunpdl:dev": {
-    "bundle": "arunpdl",
-    "channel": "dev",
-    "repo_url": "https://github.com/arunpdl/morphe-patches",
-    "created_at": "2026-07-05T16:07:16",
-    "version": "v1.0.4-dev.3",
-    "description": "## [1.0.4-dev.3](https://github.com/arunpdl/morphe-patches/compare/v1.0.4-dev.2...v1.0.4-dev.3) (2026-07-05)\n\n\n\n",
-    "apps": [
-      {
-        "app_name": "byAir",
-        "package": "com.byairapp.android",
-        "patches": [
-          {
-            "name": "Enable Online Pro",
-            "description": "Experimental companion patch that keeps byAir's online Pro gates open without forcing the crash-prone global entitlement refresh path.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.37.0"
-            ]
-          },
-          {
-            "name": "Enable Pro",
-            "description": "Suppresses the main byAir paywall, unlock banners, and local user gating.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.37.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/EeNJqDNsz4J7PzatWn3DoTUJJJvOxeWOxqMqb6uyA6mpbEUsWkzE-BtJ0vuTYIU1_qsqdFQoumo_T6R1IuwDpQ"
-      },
-      {
-        "app_name": "Mero Karobar",
-        "package": "com.bytecaretech.merokarobar",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Patches Dart AOT-compiled libapp.so to unlock all premium features. Forces hasPremiumAccess and isPaidUser to always return true by NOPing their ARM64 conditional branch instructions.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.8.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/9Gx38ML5KX24JSQ4rJq1nlxvl7EEB_UosLexB7xhlZon_Fht7gNEsR-bClQ30qtmf9fa28JaLYyuXIwQGmiZ"
-      },
-      {
-        "app_name": "Prismatica Pro",
-        "package": "com.harwin.prismatica",
-        "patches": [
-          {
-            "name": "Remove License Activity",
-            "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.5.41"
-            ]
-          },
-          {
-            "name": "Remove License Check",
-            "description": "Bypasses the PairIP Google Play Licensing check so the app runs without a valid Play Store license.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.5.41"
-            ]
-          },
-          {
-            "name": "Remove Watermark",
-            "description": "Patches the procedural GLSL shader in libharwin_native.so to disable the \"PRISMATICA\" watermark in the video player and exported videos.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.5.41"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/-JobtL9RKnBwUNh4uuJqPE1cGFUXhca5G9GMa_gyssFbbTWPvqGtRCutqYA8jj2jXyTJpf1_IZZ6A7gm0wOQ"
-      },
-      {
-        "app_name": "JellyWatch",
-        "package": "com.jellywatch.app",
-        "patches": [
-          {
-            "name": "Remove License Activity",
-            "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.0.REV-1707"
-            ]
-          },
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks all premium features and shop items in JellyWatch.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.0.REV-1707"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/7-Y4y44gnorJcG37GUeDzSDgh5HkqmgE07Il3D_tHficwAQw32a4A3CgBrdfUKgaRAZ9lsZTgwg2vWH6KEmQHw"
-      }
-    ],
-    "fingerprint": "094ebd2d6050cf7c71421706d04a0557f31bc21f270df9298b45acacce0787ef"
-  },
-  "arunpdl:stable": {
-    "bundle": "arunpdl",
-    "channel": "stable",
-    "repo_url": "https://github.com/arunpdl/morphe-patches",
-    "created_at": "2026-07-06T07:08:57",
-    "version": "v1.0.5",
-    "description": "## [1.0.5](https://github.com/arunpdl/morphe-patches/compare/v1.0.4...v1.0.5) (2026-07-06)\n\n### 🚀 Updated App Support\n\n* add Karobar v7.8.0 premium unlock patch ([12e59ff](https://github.com/arunpdl/morphe-patches/commit/12e59ff24cf2311c1f44414af30e91ebef4a6a43))\n",
-    "apps": [
-      {
-        "app_name": "byAir",
-        "package": "com.byairapp.android",
-        "patches": [
-          {
-            "name": "Enable Online Pro",
-            "description": "Experimental companion patch that keeps byAir's online Pro gates open without forcing the crash-prone global entitlement refresh path.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.37.0"
-            ]
-          },
-          {
-            "name": "Enable Pro",
-            "description": "Suppresses the main byAir paywall, unlock banners, and local user gating.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.37.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/EeNJqDNsz4J7PzatWn3DoTUJJJvOxeWOxqMqb6uyA6mpbEUsWkzE-BtJ0vuTYIU1_qsqdFQoumo_T6R1IuwDpQ"
-      },
-      {
-        "app_name": "Mero Karobar",
-        "package": "com.bytecaretech.merokarobar",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Patches Dart AOT-compiled libapp.so to unlock all premium features. Forces hasPremiumAccess and isPaidUser to always return true by NOPing their ARM64 conditional branch instructions.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.8.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/9Gx38ML5KX24JSQ4rJq1nlxvl7EEB_UosLexB7xhlZon_Fht7gNEsR-bClQ30qtmf9fa28JaLYyuXIwQGmiZ"
-      },
-      {
-        "app_name": "Prismatica Pro",
-        "package": "com.harwin.prismatica",
-        "patches": [
-          {
-            "name": "Remove License Activity",
-            "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.5.41"
-            ]
-          },
-          {
-            "name": "Remove License Check",
-            "description": "Bypasses the PairIP Google Play Licensing check so the app runs without a valid Play Store license.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.5.41"
-            ]
-          },
-          {
-            "name": "Remove Watermark",
-            "description": "Patches the procedural GLSL shader in libharwin_native.so to disable the \"PRISMATICA\" watermark in the video player and exported videos.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.5.41"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/-JobtL9RKnBwUNh4uuJqPE1cGFUXhca5G9GMa_gyssFbbTWPvqGtRCutqYA8jj2jXyTJpf1_IZZ6A7gm0wOQ"
-      },
-      {
-        "app_name": "JellyWatch",
-        "package": "com.jellywatch.app",
-        "patches": [
-          {
-            "name": "Remove License Activity",
-            "description": "Removes the PairIP LicenseActivity from AndroidManifest.xml.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.0.REV-1707"
-            ]
-          },
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks all premium features and shop items in JellyWatch.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.0.REV-1707"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/7-Y4y44gnorJcG37GUeDzSDgh5HkqmgE07Il3D_tHficwAQw32a4A3CgBrdfUKgaRAZ9lsZTgwg2vWH6KEmQHw"
-      }
-    ],
-    "fingerprint": "1bc03c8e2fa244094de1498c9e9bb4d4342aef11baf66aa28dd023f2466557f4"
   },
   "telegram-morphe:stable": {
     "bundle": "telegram-morphe",
@@ -29371,9 +29199,9 @@
     "bundle": "prathxm",
     "channel": "dev",
     "repo_url": "https://github.com/PrathxmOp/Prathxm-Patches",
-    "created_at": "2026-07-13T11:03:17",
-    "version": "v1.13.1-dev.2",
-    "description": "## [1.13.1-dev.2](https://github.com/PrathxmOp/Prathxm-Patches/compare/v1.13.1-dev.1...v1.13.1-dev.2) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **Chess.com:** resolve multi-version getPlayedMove field mapping mismatch ([#27](https://github.com/PrathxmOp/Prathxm-Patches/issues/27), [#28](https://github.com/PrathxmOp/Prathxm-Patches/issues/28), [#29](https://github.com/PrathxmOp/Prathxm-Patches/issues/29)) ([e984f84](https://github.com/PrathxmOp/Prathxm-Patches/commit/e984f8450d008758f499dc31dff5b6b7bb2d6f5a))\n",
+    "created_at": "2026-07-14T16:29:24",
+    "version": "v1.13.1-dev.3",
+    "description": "## [1.13.1-dev.3](https://github.com/PrathxmOp/Prathxm-Patches/compare/v1.13.1-dev.2...v1.13.1-dev.3) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* **Chess.com:** resolve NullPointerException on maximum game review analysis ([59cfe39](https://github.com/PrathxmOp/Prathxm-Patches/commit/59cfe3905aa1e933ad9bf7c13bd206f1c7145540))\n",
     "apps": [
       {
         "app_name": "Chess.com",
@@ -35811,9 +35639,9 @@
     "bundle": "adobo",
     "channel": "dev",
     "repo_url": "https://github.com/jkennethcarino/adobo",
-    "created_at": "2026-07-13T13:22:09",
-    "version": "v1.3.0-dev.5",
-    "description": "## [1.3.0-dev.5](https://github.com/jkennethcarino/adobo/compare/v1.3.0-dev.4...v1.3.0-dev.5) (2026-07-13)\n\n### Updated App Support\n\n* **IMDb:** Add support for `9.3.3` ([67766d9](https://github.com/jkennethcarino/adobo/commit/67766d992018af5983b8df3d944446d1e21c6b99))\n",
+    "created_at": "2026-07-14T16:16:49",
+    "version": "v1.3.0-dev.8",
+    "description": "## [1.3.0-dev.8](https://github.com/jkennethcarino/adobo/compare/v1.3.0-dev.7...v1.3.0-dev.8) (2026-07-14)\n\n### Updated App Support\n\n* **Reddit:** Add support for `2026.28.0` ([177cf38](https://github.com/jkennethcarino/adobo/commit/177cf38a6b6e31ab000dc7a5bc3c53dc00adecdb))\n",
     "apps": [
       {
         "app_name": "Gboard",
@@ -35961,10 +35789,10 @@
               }
             ],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -35974,10 +35802,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -35987,10 +35815,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36000,10 +35828,10 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36013,10 +35841,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36026,10 +35854,10 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36039,10 +35867,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36052,10 +35880,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36065,10 +35893,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36078,10 +35906,10 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36091,10 +35919,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36104,10 +35932,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36126,10 +35954,10 @@
               }
             ],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36139,10 +35967,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36152,10 +35980,10 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36165,10 +35993,10 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36178,10 +36006,10 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           },
@@ -36191,10 +36019,10 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "2026.28.0",
+              "2026.27.0",
+              "2026.26.0",
               "2026.25.0",
-              "2026.24.0",
-              "2026.23.0",
-              "2026.22.0",
               "2026.14.0"
             ]
           }
@@ -36202,7 +36030,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/8FVS0kvM60JwqZWRNzBIlwrZZxJa8vpli8IWaaTo8QXRe1PHmCNJ8UpWoXkGPV3jKEaTY2OVAeYoisOnGJXY"
       }
     ],
-    "fingerprint": "60f0a35f96fe27bbb835469a0d8009d82429caa1758e8e2e98b5ef69cead83a5"
+    "fingerprint": "c5b1b961f9f7cc2d465c4cc69274e10b09ca7c25009c747a2b77dcac1eaca332"
   },
   "adobo:stable": {
     "bundle": "adobo",
@@ -36682,6 +36510,96 @@
       }
     ],
     "fingerprint": "f99d8d7188390ff47b881b57db238aa3f7e97e86f1edb391a2e430833d0e9c0f"
+  },
+  "itsthejoker:dev": {
+    "bundle": "itsthejoker",
+    "channel": "dev",
+    "repo_url": "https://github.com/itsthejoker/itsthejoker-patches",
+    "created_at": "2026-07-14T16:44:47",
+    "version": "v1.1.0-dev.1",
+    "description": "## [1.1.0-dev.1](https://github.com/itsthejoker/itsthejoker-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-07-14)\n\n### ✨ New Features\n\n* **roost:** bypass PairIP Play Store license wall ([74f34bf](https://github.com/itsthejoker/itsthejoker-patches/commit/74f34bf829a617c2262b8308a1c1e9e24a637b61))\n",
+    "apps": [
+      {
+        "app_name": "Roost",
+        "package": "com.rookery.courier",
+        "patches": [
+          {
+            "name": "10x Bullet Damage",
+            "description": "Multiplies the player's bullet damage by 10 in the Bullet Hell minigame (damage 1 -> 10), applied to both enemies and bosses.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.4.12"
+            ]
+          },
+          {
+            "name": "Bypass Play Store license check",
+            "description": "Disables the PairIP Play-license check so a non-Play (e.g. patched/sideloaded) install no longer redirects to the \"get it on Google Play\" wall on launch.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.4.12"
+            ]
+          },
+          {
+            "name": "Triple Bullet Size",
+            "description": "Triples the on-screen size of the player's bullets in the Bullet Hell minigame (sizePx 6.0 -> 18.0).",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.4.12"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/wb_9H23PJOWrL9aQkjQtGD_YxmDx87M2rp_g-knGRHadVb6WQC_twOLXXb-p2JUia61B1ngUyRy7NPJeecLwP0Y"
+      }
+    ],
+    "fingerprint": "9a2027d33d8f6f7c46d1496416d2b150d000f2fb8211d2757b6b335312bee475"
+  },
+  "itsthejoker:stable": {
+    "bundle": "itsthejoker",
+    "channel": "stable",
+    "repo_url": "https://github.com/itsthejoker/itsthejoker-patches",
+    "created_at": "2026-07-14T17:03:20",
+    "version": "v1.1.0",
+    "description": "## [1.1.0](https://github.com/itsthejoker/itsthejoker-patches/compare/v1.0.0...v1.1.0) (2026-07-14)\n\n### ✨ New Features\n\n* **roost:** bypass PairIP Play Store license wall ([74f34bf](https://github.com/itsthejoker/itsthejoker-patches/commit/74f34bf829a617c2262b8308a1c1e9e24a637b61))\n",
+    "apps": [
+      {
+        "app_name": "Roost",
+        "package": "com.rookery.courier",
+        "patches": [
+          {
+            "name": "10x Bullet Damage",
+            "description": "Multiplies the player's bullet damage by 10 in the Bullet Hell minigame (damage 1 -> 10), applied to both enemies and bosses.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.4.12"
+            ]
+          },
+          {
+            "name": "Bypass Play Store license check",
+            "description": "Disables the PairIP Play-license check so a non-Play (e.g. patched/sideloaded) install no longer redirects to the \"get it on Google Play\" wall on launch.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.4.12"
+            ]
+          },
+          {
+            "name": "Triple Bullet Size",
+            "description": "Triples the on-screen size of the player's bullets in the Bullet Hell minigame (sizePx 6.0 -> 18.0).",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.4.12"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/wb_9H23PJOWrL9aQkjQtGD_YxmDx87M2rp_g-knGRHadVb6WQC_twOLXXb-p2JUia61B1ngUyRy7NPJeecLwP0Y"
+      }
+    ],
+    "fingerprint": "937d5cc47615f5bc78a4d35f05af6faa07e3e99075025520835a2e8df7c0b9aa"
   },
   "realcyberwash:stable": {
     "bundle": "realcyberwash",
@@ -49598,5 +49516,86 @@
       }
     ],
     "fingerprint": "c4b7ee4028e5484d295cc9bfbec3f391ecf3426b1ac740a5922228a410a6dfa4"
+  },
+  "abeja:dev": {
+    "bundle": "abeja",
+    "channel": "dev",
+    "repo_url": "https://github.com/TheRealCrazyfuy/abeja-morphe-patches",
+    "created_at": "2026-07-14T14:04:50",
+    "version": "v1.1.0-dev.2",
+    "description": "## [1.1.0-dev.2](https://github.com/TheRealCrazyfuy/abeja-morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-07-14)\n\n### ✨ New Features\n\n* **ZTE Gallery:** Experimental support all versions of ZTE Gallery ([5e01099](https://github.com/TheRealCrazyfuy/abeja-morphe-patches/commit/5e01099da86b4abb3c33918b6a67c0564d005c37))\n",
+    "apps": [
+      {
+        "app_name": "ZTE Gallery",
+        "package": "com.android.gallery3d",
+        "patches": [
+          {
+            "name": "Disable AI features",
+            "description": "Patch to disable the AI features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "16.0.002.000.2601041449"
+            ]
+          },
+          {
+            "name": "Fix Background Service",
+            "description": "Patch to make the PolicyForegroundService background service not start.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "16.0.002.000.2601041449"
+            ]
+          },
+          {
+            "name": "Fix storage permission",
+            "description": "Patch to fix the storage permission.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "16.0.002.000.2601041449"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "4b514efa1dde56b840936a1f44ad57820f0bf5b995a8003800b70cefebeda79f"
+  },
+  "abeja:stable": {
+    "bundle": "abeja",
+    "channel": "stable",
+    "repo_url": "https://github.com/TheRealCrazyfuy/abeja-morphe-patches",
+    "created_at": "2026-07-14T12:56:16",
+    "version": "v1.0.0",
+    "description": "## 1.0.0 (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* remove unused internal patch ([19dca90](https://github.com/TheRealCrazyfuy/abeja-morphe-patches/commit/19dca90bdc98ac70f7213431f34855642e24e0bb))\n",
+    "apps": [
+      {
+        "app_name": "ZTE Gallery",
+        "package": "com.android.gallery3d",
+        "patches": [
+          {
+            "name": "Fix Background Service",
+            "description": "Patch to make the PolicyForegroundService background service not start.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "16.0.002.000.2601041449"
+            ]
+          },
+          {
+            "name": "Fix storage permission",
+            "description": "Patch to fix the storage permission.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "16.0.002.000.2601041449"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "20ba4c03410aaaf2370acfeadbf099d678f03559ec015dd1a770fcdd4b4af99a"
   }
 }

@@ -18,7 +18,8 @@
           "package": "com.daraz.android",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
+            1,
+            6
           ]
         },
         {
@@ -305,18 +306,99 @@
           "package": "com.pinterest",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Disable Android Privacy Sandbox Ad Services",
+                "description": "Removes the AD_SERVICES_CONFIG property so Android Privacy Sandbox ad APIs (Topics, Attribution Reporting, Custom Audiences) are not opted into.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable AppsFlyer tracking",
+                "description": "Neutralises the AppsFlyer attribution / tracking SDK. init() becomes a no-op and isStopped() always returns true, so no events, installs, uninstalls or attribution data are transmitted.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable Bugsnag crash tracking",
+                "description": "Removes the Bugsnag API key metadata so the crash reporting SDK cannot initialize or upload telemetry.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable Google Ads SDK",
+                "description": "Removes the Google Mobile Ads (AdMob) initialization metadata so the SDK never starts.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable Google Engage integration",
+                "description": "Removes the Google Engage broadcast receiver so Pinterest cannot publish content recommendations back to Google (Discover, Assistant, Play Store, etc.).",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable Google Engage worker",
+                "description": "Rewrites GoogleEngageWorker.createWork() to return null so WorkManager fails the periodic job and no content recommendations are ever published to Google.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
               {
                 "name": "Hide ad views",
-                "description": "Collapses Pinterest's ad-specific views (TextAdView, promoted closeup action bars, board sponsor headers, …) to zero-size on construction, so ad chrome never draws even if the feed adapter tries to render one."
+                "description": "Collapses Pinterest's ad-specific views (TextAdView, promoted closeup action bars, board sponsor headers, …) to zero-size on construction, so ad chrome never draws even if the feed adapter tries to render one.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Hide promoted pins",
+                "description": "Neutralises every ad-indicator field on the Pinterest pin/story models (is_promoted, promoted_is_*, is_native, ad_data, ...) so Promoted Pins, shopping-carousel ads, native-content ads and click-out CTAs are never rendered or fired.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Opt out of Google Analytics",
+                "description": "Sets the default Google Analytics consent flags to false so the Firebase Measurement SDK does not collect analytics, ad data or personalization signals.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Remove Advertising ID permission",
+                "description": "Strips the com.google.android.gms.permission.AD_ID permission so any residual SDK cannot read the device's Google Advertising ID.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Sanitize copied links",
+                "description": "Resolves Pinterest short URLs (pin.it/…, pinterest.com/url_shortener/…) to their canonical pin URL before they are placed on the system clipboard, so \"Copy link\" no longer produces a fingerprinted short link.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Sanitize sharing links",
+                "description": "Strips UTM and click-ID tracking parameters from the URL the app puts on the Android share sheet, so friends receive clean pin links.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
               }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
+            ]
           },
           "scan_numbers": [
             2,
-            5
+            5,
+            6
           ]
         }
       ]
@@ -331,18 +413,99 @@
           "package": "com.pinterest",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Disable Android Privacy Sandbox Ad Services",
+                "description": "Removes the AD_SERVICES_CONFIG property so Android Privacy Sandbox ad APIs (Topics, Attribution Reporting, Custom Audiences) are not opted into.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable AppsFlyer tracking",
+                "description": "Neutralises the AppsFlyer attribution / tracking SDK. init() becomes a no-op and isStopped() always returns true, so no events, installs, uninstalls or attribution data are transmitted.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable Bugsnag crash tracking",
+                "description": "Removes the Bugsnag API key metadata so the crash reporting SDK cannot initialize or upload telemetry.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable Google Ads SDK",
+                "description": "Removes the Google Mobile Ads (AdMob) initialization metadata so the SDK never starts.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable Google Engage integration",
+                "description": "Removes the Google Engage broadcast receiver so Pinterest cannot publish content recommendations back to Google (Discover, Assistant, Play Store, etc.).",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Disable Google Engage worker",
+                "description": "Rewrites GoogleEngageWorker.createWork() to return null so WorkManager fails the periodic job and no content recommendations are ever published to Google.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
               {
                 "name": "Hide ad views",
-                "description": "Collapses Pinterest's ad-specific views (TextAdView, promoted closeup action bars, board sponsor headers, …) to zero-size on construction, so ad chrome never draws even if the feed adapter tries to render one."
+                "description": "Collapses Pinterest's ad-specific views (TextAdView, promoted closeup action bars, board sponsor headers, …) to zero-size on construction, so ad chrome never draws even if the feed adapter tries to render one.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Hide promoted pins",
+                "description": "Neutralises every ad-indicator field on the Pinterest pin/story models (is_promoted, promoted_is_*, is_native, ad_data, ...) so Promoted Pins, shopping-carousel ads, native-content ads and click-out CTAs are never rendered or fired.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Opt out of Google Analytics",
+                "description": "Sets the default Google Analytics consent flags to false so the Firebase Measurement SDK does not collect analytics, ad data or personalization signals.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Remove Advertising ID permission",
+                "description": "Strips the com.google.android.gms.permission.AD_ID permission so any residual SDK cannot read the device's Google Advertising ID.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Sanitize copied links",
+                "description": "Resolves Pinterest short URLs (pin.it/…, pinterest.com/url_shortener/…) to their canonical pin URL before they are placed on the system clipboard, so \"Copy link\" no longer produces a fingerprinted short link.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
+              },
+              {
+                "name": "Sanitize sharing links",
+                "description": "Strips UTM and click-ID tracking parameters from the URL the app puts on the Android share sheet, so friends receive clean pin links.",
+                "changes": [
+                  "versions: +5 versions"
+                ]
               }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
+            ]
           },
           "scan_numbers": [
             2,
-            5
+            5,
+            6
           ]
         }
       ]
@@ -953,8 +1116,24 @@
           "package": "com.google.android.apps.youtube.music",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            5
-          ]
+            5,
+            6
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Pin playlists (dev)",
+                "description": "Experimental YouTube Music 9.24.51, 9.25.50, and 9.26.51 patch that replaces Speed Dial pinning with persistent Library playlist pinning."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Pin playlists",
+                "description": "Replaces Speed Dial pinning with persistent Library playlist pinning."
+              }
+            ],
+            "patches_modified": []
+          }
         }
       ]
     },
@@ -968,8 +1147,22 @@
           "package": "com.google.android.apps.youtube.music",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            5
-          ]
+            5,
+            6
+          ],
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Pin playlists",
+                "description": "Replaces Speed Dial pinning with persistent Library playlist pinning on YouTube Music 9.15.51.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -1130,8 +1323,27 @@
           "package": "com.rookery.courier",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            5
-          ]
+            5,
+            6
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Beam of Death (10x Fire Rate)",
+                "description": "Multiplies the player's firing speed by 10 in the Bullet Hell minigame (fire interval 0.15 -> 0.015, and rapid-fire 0.1 -> 0.01) for a near-continuous beam."
+              },
+              {
+                "name": "Redirect Google login to microG",
+                "description": "Routes Roost's Google Play Services calls to microG RE so a patched install can sign in with Google. Requires microG RE (app.revanced.android.gms) installed."
+              },
+              {
+                "name": "Skip Play Integrity (fix microG Firebase delay)",
+                "description": "Makes Play Integrity attestation fail fast instead of hanging ~60s under microG, removing the delay before Firebase logins, leaderboards, and other backend calls."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
         }
       ]
     },
@@ -1145,8 +1357,27 @@
           "package": "com.rookery.courier",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            5
-          ]
+            5,
+            6
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Beam of Death (10x Fire Rate)",
+                "description": "Multiplies the player's firing speed by 10 in the Bullet Hell minigame (fire interval 0.15 -> 0.015, and rapid-fire 0.1 -> 0.01) for a near-continuous beam."
+              },
+              {
+                "name": "Redirect Google login to microG",
+                "description": "Routes Roost's Google Play Services calls to microG RE so a patched install can sign in with Google. Requires microG RE (app.revanced.android.gms) installed."
+              },
+              {
+                "name": "Skip Play Integrity (fix microG Firebase delay)",
+                "description": "Makes Play Integrity attestation fail fast instead of hanging ~60s under microG, removing the delay before Firebase logins, leaderboards, and other backend calls."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
         }
       ]
     },
