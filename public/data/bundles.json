@@ -348,9 +348,9 @@
     "bundle": "anddea",
     "channel": "dev",
     "repo_url": "https://github.com/anddea/revanced-patches",
-    "created_at": "2026-07-10T18:06:51",
-    "version": "v4.2.0-dev.4",
-    "description": "# [4.2.0-dev.4](https://github.com/anddea/revanced-patches/compare/v4.2.0-dev.3...v4.2.0-dev.4) (2026-07-10)\n\n\n### Bug Fixes\n\n* **YouTube - Hook download actions:** Prevent crash on hooking playlist download button ([9da5fa4](https://github.com/anddea/revanced-patches/commit/9da5fa4b37bd25237a25f0a60884be1444acebeb))\n\n\n\n",
+    "created_at": "2026-07-14T09:19:57",
+    "version": "v4.2.0-dev.5",
+    "description": "# [4.2.0-dev.5](https://github.com/anddea/revanced-patches/compare/v4.2.0-dev.4...v4.2.0-dev.5) (2026-07-14)\n\n\n### Bug Fixes\n\n* **YouTube Music - SponsorBlock:** Action dialog attached to parent activity ([ff7fa97](https://github.com/anddea/revanced-patches/commit/ff7fa978ea136c16400409488738e74caef10ede))\n\n\n### Features\n\n* **YouTube Music - Hide action bar components:** Add `Hide Details button` and `Hide Live chat replay button` settings ([6a5873e](https://github.com/anddea/revanced-patches/commit/6a5873efcbf0db5cb69a5aaccca28cf5731ef03f))\n\n\n\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -2440,9 +2440,9 @@
       }
     ],
     "fingerprint": "300b630c9f3f2484e226e7023bbfe61f75b1d7c8b6fbc3580f1147c6f8466d6a",
-    "release_notes": "# [4.2.0-dev.4](https://github.com/anddea/revanced-patches/compare/v4.2.0-dev.3...v4.2.0-dev.4) (2026-07-10)\n\n\n### Bug Fixes\n\n* **YouTube - Hook download actions:** Prevent crash on hooking playlist download button ([9da5fa4](https://github.com/anddea/revanced-patches/commit/9da5fa4b37bd25237a25f0a60884be1444acebeb))\n\n\n\n",
-    "release_tag": "v4.2.0-dev.4",
-    "release_date": "2026-07-10T18:06:51Z"
+    "release_notes": "# [4.2.0-dev.5](https://github.com/anddea/revanced-patches/compare/v4.2.0-dev.4...v4.2.0-dev.5) (2026-07-14)\n\n\n### Bug Fixes\n\n* **YouTube Music - SponsorBlock:** Action dialog attached to parent activity ([ff7fa97](https://github.com/anddea/revanced-patches/commit/ff7fa978ea136c16400409488738e74caef10ede))\n\n\n### Features\n\n* **YouTube Music - Hide action bar components:** Add `Hide Details button` and `Hide Live chat replay button` settings ([6a5873e](https://github.com/anddea/revanced-patches/commit/6a5873efcbf0db5cb69a5aaccca28cf5731ef03f))\n\n\n\n",
+    "release_tag": "v4.2.0-dev.5",
+    "release_date": "2026-07-14T09:19:57Z"
   },
   "anddea:stable": {
     "bundle": "anddea",
@@ -12069,9 +12069,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-13T23:57:24",
-    "version": "v1.9.10",
-    "description": "## [1.9.10](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.9...v1.9.10) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **billing:** fix parameterTypes type mismatch + add per-method logs ([929f8b0](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/929f8b0f556ad76f2f0e6063c1af3998b3300a74))\n* **billing:** rewrite universal billing bypass with 4 phases and compact logs ([2e75f7d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/2e75f7d8fa4c08838f9e8daca6149d478fcba1f1))\n",
+    "created_at": "2026-07-14T12:06:59",
+    "version": "v1.9.11",
+    "description": "## [1.9.11](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.10...v1.9.11) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* **polytopia:** native hex patch on libil2cpp.so for free IAP ([247e3c8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/247e3c8c9eeade977ab396f5417df22371269a7f)), closes [#1](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/1)\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -12079,7 +12079,7 @@
         "patches": [
           {
             "name": "Free in-app purchases",
-            "description": "Skips Google Play Billing and credits IAP items (crystal packs, tribe skins) directly. Patches the billing bridge to report success, forces Purchase.isAcknowledged() and getPurchaseState() to return valid values, and swallows purchase errors so no error dialog appears.",
+            "description": "Bypasses Polytopia's purchase validation by patching the native IL2CPP library (libil2cpp.so). Makes IsProductUnlocked return true, skips the purchase flow, and suppresses the 'Purchase error' dialog. Pure hex patching, no smali, no extension.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -12191,10 +12191,10 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "38a0069f59ce2420c6349e60b818e116fafee2a58665a80358faba558a2f2464",
-    "release_notes": "## [1.9.10](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.9...v1.9.10) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **billing:** fix parameterTypes type mismatch + add per-method logs ([929f8b0](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/929f8b0f556ad76f2f0e6063c1af3998b3300a74))\n* **billing:** rewrite universal billing bypass with 4 phases and compact logs ([2e75f7d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/2e75f7d8fa4c08838f9e8daca6149d478fcba1f1))\n",
-    "release_tag": "v1.9.10",
-    "release_date": "2026-07-13T23:57:24Z"
+    "fingerprint": "d84853568f0cbc69bd4c6ccec942e24179730114870e179d8d1ef36179c845d8",
+    "release_notes": "## [1.9.11](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.10...v1.9.11) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* **polytopia:** native hex patch on libil2cpp.so for free IAP ([247e3c8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/247e3c8c9eeade977ab396f5417df22371269a7f)), closes [#1](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/1)\n",
+    "release_tag": "v1.9.11",
+    "release_date": "2026-07-14T12:06:59Z"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -37042,9 +37042,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-07-13T14:59:32",
-    "version": "v1.35.0-dev.3",
-    "description": "## [1.35.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.2...v1.35.0-dev.3) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **YouTube Music:** Fix 9.15.51 startup ([9e2c372](https://github.com/MorpheApp/morphe-patches/commit/9e2c37218aeb601d1d05d66fba4d89255d20c01f))\n",
+    "created_at": "2026-07-14T10:14:00",
+    "version": "v1.35.0-dev.4",
+    "description": "## [1.35.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.3...v1.35.0-dev.4) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* **Network proxy:** Support HTTPS proxies for auxiliary requests ([#2022](https://github.com/MorpheApp/morphe-patches/issues/2022)) ([ee52f90](https://github.com/MorpheApp/morphe-patches/commit/ee52f9033687b6022f494f9afba4e0abb1bccba1))\n* **YouTube - Hide ads:** Hide shopping links in transcripts ([#2025](https://github.com/MorpheApp/morphe-patches/issues/2025)) ([0cf389b](https://github.com/MorpheApp/morphe-patches/commit/0cf389b921c813961f8b4d3bd12636b84e3f61d1))\n* **YouTube - Open system share sheet:** Support channelID & commentID fetching ([#1975](https://github.com/MorpheApp/morphe-patches/issues/1975)) ([34c2b58](https://github.com/MorpheApp/morphe-patches/commit/34c2b58eab29967b1fc784ae0c644297b850ca36))\n\n### ✨ New Features\n\n* **YouTube Music:** Add `Remember shuffle state` patch ([#1963](https://github.com/MorpheApp/morphe-patches/issues/1963)) ([7e8a6ba](https://github.com/MorpheApp/morphe-patches/commit/7e8a6babdbafd1dd87ac1397c088f318b89a02da))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -37415,8 +37415,22 @@
             ]
           },
           {
-            "name": "Permanent repeat",
-            "description": "Adds an option to always repeat even if the playlist ends or another track is played.",
+            "name": "Remember repeat state",
+            "description": "Adds an option to remember the repeat state when playing a new track or playlist.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.26.51",
+              "9.25.50",
+              "9.24.51",
+              "9.15.51",
+              "8.51.51",
+              "7.29.52"
+            ]
+          },
+          {
+            "name": "Remember shuffle state",
+            "description": "Adds an option to remember the shuffle state when playing a new track or playlist.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -38888,10 +38902,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/8FVS0kvM60JwqZWRNzBIlwrZZxJa8vpli8IWaaTo8QXRe1PHmCNJ8UpWoXkGPV3jKEaTY2OVAeYoisOnGJXY"
       }
     ],
-    "fingerprint": "a188c5fe995b36858c16f25db94c1f1e3d288136d2ab95803ffacba53f3f2f60",
-    "release_notes": "## [1.35.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.2...v1.35.0-dev.3) (2026-07-13)\n\n### 🐛 Bug Fixes\n\n* **YouTube Music:** Fix 9.15.51 startup ([9e2c372](https://github.com/MorpheApp/morphe-patches/commit/9e2c37218aeb601d1d05d66fba4d89255d20c01f))\n",
-    "release_tag": "v1.35.0-dev.3",
-    "release_date": "2026-07-13T14:59:32Z"
+    "fingerprint": "4ad75e30f41154d19f49c9fe752e25189321c3c510b707494ae495a39cf403ff",
+    "release_notes": "## [1.35.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.35.0-dev.3...v1.35.0-dev.4) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* **Network proxy:** Support HTTPS proxies for auxiliary requests ([#2022](https://github.com/MorpheApp/morphe-patches/issues/2022)) ([ee52f90](https://github.com/MorpheApp/morphe-patches/commit/ee52f9033687b6022f494f9afba4e0abb1bccba1))\n* **YouTube - Hide ads:** Hide shopping links in transcripts ([#2025](https://github.com/MorpheApp/morphe-patches/issues/2025)) ([0cf389b](https://github.com/MorpheApp/morphe-patches/commit/0cf389b921c813961f8b4d3bd12636b84e3f61d1))\n* **YouTube - Open system share sheet:** Support channelID & commentID fetching ([#1975](https://github.com/MorpheApp/morphe-patches/issues/1975)) ([34c2b58](https://github.com/MorpheApp/morphe-patches/commit/34c2b58eab29967b1fc784ae0c644297b850ca36))\n\n### ✨ New Features\n\n* **YouTube Music:** Add `Remember shuffle state` patch ([#1963](https://github.com/MorpheApp/morphe-patches/issues/1963)) ([7e8a6ba](https://github.com/MorpheApp/morphe-patches/commit/7e8a6babdbafd1dd87ac1397c088f318b89a02da))\n",
+    "release_tag": "v1.35.0-dev.4",
+    "release_date": "2026-07-14T10:14:00Z"
   },
   "morphe:stable": {
     "bundle": "morphe",
@@ -43738,9 +43752,9 @@
     "bundle": "franticg33k",
     "channel": "dev",
     "repo_url": "https://github.com/franticg33k/morphe-patches",
-    "created_at": "2026-07-13T11:08:48",
-    "version": "v1.2.2-dev.1",
-    "description": "## [1.2.2-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.2.1...v1.2.2-dev.1) (2026-07-13)\n\n### 🚀 Updated App Support\n\n* add Atlas Photo support (Unlock Pro + Remove License Check) ([914cf24](https://github.com/franticg33k/morphe-patches/commit/914cf2447c7ea03c9f0303a63c31c9847ace5696))\n",
+    "created_at": "2026-07-14T09:53:17",
+    "version": "v1.3.0-dev.1",
+    "description": "## [1.3.0-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.2.2-dev.1...v1.3.0-dev.1) (2026-07-14)\n\n### ✨ New Features\n\n* add Hamro Patro Remove Ads patch ([a907709](https://github.com/franticg33k/morphe-patches/commit/a90770932a1840b4206d605696b86f8270e9e493))\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -43804,6 +43818,20 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/my1_lwCNvyyhh-nYyjNT9JXJo4uzxgJfbTzZaThrqoGmDdNu6wj8HU3sf86GgpFGh4Q5WySOO7syTsy0GF5tAsA"
+      },
+      {
+        "app_name": "Hamropatro",
+        "package": "com.hamropatro",
+        "patches": [
+          {
+            "name": "Remove Ads",
+            "description": "Disables all ad serving in Hamro Patro by no-oping the native ad-placement resolver (HamroAdsPlacements). Every banner, native, interstitial, fullscreen and roadblock placement funnels through these leaf builders, so returning an empty list means no ad request is ever built for AdMob, Pangle, IronSource or Facebook Audience Network. Verified on v10.7.30.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/FW2G3tMfU1wF4NF5gE4oX4w7rY3oPVBBWdBew4sMM7vnPFPP-FWPSsFe0HKvfc2wO7ICCqL3K3nCRg5g85t8Lg"
       },
       {
         "app_name": "Prismatica Pro",
@@ -43897,18 +43925,18 @@
         "icon_url": "https://play-lh.googleusercontent.com/cZ9_hY4QA2qnDZrHFvcgJgL1su8EDhEUMIMDvQvTkkTJJtQQo5807PoTss6zx7kYks2CCqXax5PWtJF7xV03pg"
       }
     ],
-    "fingerprint": "7b3b8ca5ea3bb748cc53b25bdfe080be0293587f4b373d9aff8076a794d0b4ca",
-    "release_notes": "## [1.2.2-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.2.1...v1.2.2-dev.1) (2026-07-13)\n\n### 🚀 Updated App Support\n\n* add Atlas Photo support (Unlock Pro + Remove License Check) ([914cf24](https://github.com/franticg33k/morphe-patches/commit/914cf2447c7ea03c9f0303a63c31c9847ace5696))\n",
-    "release_tag": "v1.2.2-dev.1",
-    "release_date": "2026-07-13T11:08:48Z"
+    "fingerprint": "83dd8e1e3b9603799cf43c21ce18cb9aa05404ad965e610b28d43677b713374e",
+    "release_notes": "## [1.3.0-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.2.2-dev.1...v1.3.0-dev.1) (2026-07-14)\n\n### ✨ New Features\n\n* add Hamro Patro Remove Ads patch ([a907709](https://github.com/franticg33k/morphe-patches/commit/a90770932a1840b4206d605696b86f8270e9e493))\n",
+    "release_tag": "v1.3.0-dev.1",
+    "release_date": "2026-07-14T09:53:17Z"
   },
   "franticg33k:stable": {
     "bundle": "franticg33k",
     "channel": "stable",
     "repo_url": "https://github.com/franticg33k/morphe-patches",
-    "created_at": "2026-07-13T11:14:39",
-    "version": "v1.2.2",
-    "description": "## [1.2.2](https://github.com/franticg33k/morphe-patches/compare/v1.2.1...v1.2.2) (2026-07-13)\n\n### 🚀 Updated App Support\n\n* add Atlas Photo support (Unlock Pro + Remove License Check) ([914cf24](https://github.com/franticg33k/morphe-patches/commit/914cf2447c7ea03c9f0303a63c31c9847ace5696))\n",
+    "created_at": "2026-07-14T10:01:16",
+    "version": "v1.3.0",
+    "description": "## [1.3.0](https://github.com/franticg33k/morphe-patches/compare/v1.2.2...v1.3.0) (2026-07-14)\n\n### ✨ New Features\n\n* add Hamro Patro Remove Ads patch ([a907709](https://github.com/franticg33k/morphe-patches/commit/a90770932a1840b4206d605696b86f8270e9e493))\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -43972,6 +44000,20 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/my1_lwCNvyyhh-nYyjNT9JXJo4uzxgJfbTzZaThrqoGmDdNu6wj8HU3sf86GgpFGh4Q5WySOO7syTsy0GF5tAsA"
+      },
+      {
+        "app_name": "Hamropatro",
+        "package": "com.hamropatro",
+        "patches": [
+          {
+            "name": "Remove Ads",
+            "description": "Disables all ad serving in Hamro Patro by no-oping the native ad-placement resolver (HamroAdsPlacements). Every banner, native, interstitial, fullscreen and roadblock placement funnels through these leaf builders, so returning an empty list means no ad request is ever built for AdMob, Pangle, IronSource or Facebook Audience Network. Verified on v10.7.30.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/FW2G3tMfU1wF4NF5gE4oX4w7rY3oPVBBWdBew4sMM7vnPFPP-FWPSsFe0HKvfc2wO7ICCqL3K3nCRg5g85t8Lg"
       },
       {
         "app_name": "Prismatica Pro",
@@ -44065,10 +44107,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/cZ9_hY4QA2qnDZrHFvcgJgL1su8EDhEUMIMDvQvTkkTJJtQQo5807PoTss6zx7kYks2CCqXax5PWtJF7xV03pg"
       }
     ],
-    "fingerprint": "64a9b608409ae72edc6ec1c311272d17b8b954923af782e9e1b81aeb11d0ec22",
-    "release_notes": "## [1.2.2](https://github.com/franticg33k/morphe-patches/compare/v1.2.1...v1.2.2) (2026-07-13)\n\n### 🚀 Updated App Support\n\n* add Atlas Photo support (Unlock Pro + Remove License Check) ([914cf24](https://github.com/franticg33k/morphe-patches/commit/914cf2447c7ea03c9f0303a63c31c9847ace5696))\n",
-    "release_tag": "v1.2.2",
-    "release_date": "2026-07-13T11:14:39Z"
+    "fingerprint": "51b01eba7ef74ba4c48e7a27131c13cda635dd5e5c2ed077b57d55676f6a8260",
+    "release_notes": "## [1.3.0](https://github.com/franticg33k/morphe-patches/compare/v1.2.2...v1.3.0) (2026-07-14)\n\n### ✨ New Features\n\n* add Hamro Patro Remove Ads patch ([a907709](https://github.com/franticg33k/morphe-patches/commit/a90770932a1840b4206d605696b86f8270e9e493))\n",
+    "release_tag": "v1.3.0",
+    "release_date": "2026-07-14T10:01:16Z"
   },
   "bholeykabhakt:dev": {
     "bundle": "bholeykabhakt",
@@ -49860,6 +49902,33 @@
     "release_notes": "# [1.12.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.11.0...v1.12.0) (2026-07-12)\n\n\n### Features\n\n* **disney:** cover new DMP SGAI/SSAI VOD ad insertion pipeline ([57d0b76](https://github.com/ajstrick81/morphe-androidtv-patches/commit/57d0b76f07c498087843a39247a758cc44cf532a))\n\n\n\n",
     "release_tag": "v1.12.0",
     "release_date": "2026-07-12T19:54:20Z"
+  },
+  "bernardo7894:stable": {
+    "bundle": "bernardo7894",
+    "channel": "stable",
+    "repo_url": "https://github.com/bernardo7894/revanced-patches",
+    "created_at": "2026-05-08T00:00:00",
+    "version": "0.1.3",
+    "description": "Fixes the home banner fingerprint to match Reddit's range invoke renderer call.",
+    "apps": [
+      {
+        "app_name": "Reddit",
+        "package": "com.reddit.frontpage",
+        "patches": [
+          {
+            "name": "Hide permanent ban banner",
+            "description": "Hides Reddit's persistent permanent-ban account banner without changing account state or API behavior.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.10.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/8FVS0kvM60JwqZWRNzBIlwrZZxJa8vpli8IWaaTo8QXRe1PHmCNJ8UpWoXkGPV3jKEaTY2OVAeYoisOnGJXY"
+      }
+    ],
+    "fingerprint": "6687ef412202f474b644e068b209131471e124ff9286a0a18b5e12389993741f"
   },
   "polka-bear:dev": {
     "bundle": "polka-bear",
