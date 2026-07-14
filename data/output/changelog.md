@@ -1,5 +1,39 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-13]
+- **NEW BUNDLE** Bundle by **babyhuehnchen** (stable)
+  - **NEW APP** ESApp (`at.notrufnoe.edi`) in babyhuehnchen patches
+- **UPDATED** Bundle **brealorg**
+  - **UPDATED APP** Boost for Reddit (`com.rubenmayayo.reddit`) in brealorg patches
+- **NEW BUNDLE** Bundle by **cobalt-morphe** (stable)
+  - **NEW APP** YouTube (`com.google.android.youtube`) in cobalt-morphe patches
+- **UPDATED** Bundle **ee-morphe**
+  - **UPDATED APP** [PRE-RELEASE] Going (`com.going.mobile`) in ee-morphe patches
+  - **NEW APP** [PRE-RELEASE] Inoreader (`com.innologica.inoreader`) in ee-morphe patches
+- **UPDATED** Bundle **franticg33k**
+  - **NEW APP** Atlas Photo (`com.ensembleai.scoutai`) in franticg33k patches
+- **UPDATED** Bundle **hoomans-morphe**
+  - **UPDATED APP** Alpha Progression (`com.alphaprogression.alphaprogression`) in hoomans-morphe patches
+  - **UPDATED APP** Quizlet (`com.quizlet.quizletandroid`) in hoomans-morphe patches
+  - **UPDATED APP** Symfonium (`app.symfonik.music.player`) in hoomans-morphe patches
+  - **UPDATED APP** Tracked (`com.tracked.mobile`) in hoomans-morphe patches
+- **UPDATED** Bundle **lain**
+  - **NEW APP** [PRE-RELEASE] DROFUS (`com.mixapplications.rufus`) in lain patches
+  - **NEW APP** [PRE-RELEASE] Ultimate USB (`com.mixapplications.ultimateusb`) in lain patches
+  - **NEW APP** [PRE-RELEASE] USB TOOLS (`com.mixapplications.usbtools`) in lain patches
+  - **NEW APP** [PRE-RELEASE] Ventoy (`com.mixapplications.ventoy_app`) in lain patches
+- **UPDATED** Bundle **miguel**
+  - **UPDATED APP** The Battle of Polytopia (`air.com.midjiwan.polytopia`) in miguel patches
+- **UPDATED** Bundle **modx**
+  - **UPDATED APP** MX Player (`com.mxtech.videoplayer.ad`) in modx patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+- **NEW BUNDLE** Bundle by **pichiwa** (dev)
+  - **NEW APP** WhatsApp (`com.whatsapp`) in pichiwa patches
+- **UPDATED** Bundle **rushiranpise**
+  - **NEW APP** [PRE-RELEASE] ES File Explorer (`com.estrongs.android.pop`) in rushiranpise patches
+  - **UPDATED APP** Minimal Widgets (`com.jndapp.minimal.widgets`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] Super File (`com.esuper.file.explorer`) in rushiranpise patches
 ## [2026-07-12]
 - **UPDATED** Bundle **adobo**
   - **UPDATED APP** Gboard (`com.google.android.inputmethod.latin`) in adobo patches

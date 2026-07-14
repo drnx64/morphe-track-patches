@@ -1,65 +1,34 @@
-## [2026-07-12]
-- **UPDATED** Bundle **adobo**
-  - **UPDATED APP** Gboard (`com.google.android.inputmethod.latin`) in adobo patches
-- **UPDATED** Bundle **ajstrick81-androidtv**
-  - **UPDATED APP** Prendetv (`com.univision.prendetv`) in ajstrick81-androidtv patches
+## [2026-07-13]
+- **NEW BUNDLE** Bundle by **babyhuehnchen** (stable)
+  - **NEW APP** ESApp (`at.notrufnoe.edi`) in babyhuehnchen patches
+- **UPDATED** Bundle **brealorg**
+  - **UPDATED APP** Boost for Reddit (`com.rubenmayayo.reddit`) in brealorg patches
+- **NEW BUNDLE** Bundle by **cobalt-morphe** (stable)
+  - **NEW APP** YouTube (`com.google.android.youtube`) in cobalt-morphe patches
 - **UPDATED** Bundle **ee-morphe**
-  - **NEW APP** AppSales (`net.tsapps.appsales`) in ee-morphe patches
-  - **NEW APP** [PRE-RELEASE] Going (`com.going.mobile`) in ee-morphe patches
+  - **UPDATED APP** [PRE-RELEASE] Going (`com.going.mobile`) in ee-morphe patches
+  - **NEW APP** [PRE-RELEASE] Inoreader (`com.innologica.inoreader`) in ee-morphe patches
+- **UPDATED** Bundle **franticg33k**
+  - **NEW APP** Atlas Photo (`com.ensembleai.scoutai`) in franticg33k patches
 - **UPDATED** Bundle **hoomans-morphe**
+  - **UPDATED APP** Alpha Progression (`com.alphaprogression.alphaprogression`) in hoomans-morphe patches
+  - **UPDATED APP** Quizlet (`com.quizlet.quizletandroid`) in hoomans-morphe patches
   - **UPDATED APP** Symfonium (`app.symfonik.music.player`) in hoomans-morphe patches
+  - **UPDATED APP** Tracked (`com.tracked.mobile`) in hoomans-morphe patches
 - **UPDATED** Bundle **lain**
-  - **NEW APP** Atomic (`com.jlindemann.science`) in lain patches
-  - **NEW APP** ChatBoost (`studio.muggle.chatboost`) in lain patches
-  - **UPDATED APP** Epic! (`com.getepic.epic`) in lain patches
-  - **UPDATED APP** iLovePDF (`com.ilovepdf.www`) in lain patches
-  - **NEW APP** Keymate (`net.nemostudio.keymate`) in lain patches
-  - **UPDATED APP** Manga Plus (`jp.co.shueisha.mangaplus`) in lain patches
-  - **NEW APP** Pixel Studio (`com.pixelstudio`) in lain patches
-  - **UPDATED APP** Sketchbook (`com.adsk.sketchbook`) in lain patches
-- **NEW BUNDLE** Bundle by **letterboxd-stremio** (stable)
-  - **NEW APP** Letterboxd (`com.letterboxd.letterboxd`) in letterboxd-stremio patches
+  - **NEW APP** [PRE-RELEASE] DROFUS (`com.mixapplications.rufus`) in lain patches
+  - **NEW APP** [PRE-RELEASE] Ultimate USB (`com.mixapplications.ultimateusb`) in lain patches
+  - **NEW APP** [PRE-RELEASE] USB TOOLS (`com.mixapplications.usbtools`) in lain patches
+  - **NEW APP** [PRE-RELEASE] Ventoy (`com.mixapplications.ventoy_app`) in lain patches
 - **UPDATED** Bundle **miguel**
-  - **NEW APP** The Battle of Polytopia (`air.com.midjiwan.polytopia`) in miguel patches
+  - **UPDATED APP** The Battle of Polytopia (`air.com.midjiwan.polytopia`) in miguel patches
+- **UPDATED** Bundle **modx**
+  - **UPDATED APP** MX Player (`com.mxtech.videoplayer.ad`) in modx patches
 - **UPDATED** Bundle **morphe**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
   - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
-- **NEW BUNDLE** Bundle by **pichiwa** (stable)
+- **NEW BUNDLE** Bundle by **pichiwa** (dev)
   - **NEW APP** WhatsApp (`com.whatsapp`) in pichiwa patches
-- **UPDATED** Bundle **piko**
-  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
-  - **UPDATED APP** X (`com.twitter.android`) in piko patches
 - **UPDATED** Bundle **rushiranpise**
-  - **NEW APP** Ace Ex File Manager (`com.ace.ex.file.manager`) in rushiranpise patches
-  - **NEW APP** Anime Depth Wallpapers (`com.jndapp.anime.depth.live.wallpaper`) in rushiranpise patches
-  - **NEW APP** BuzzCast (`com.guochao.faceshow`) in rushiranpise patches
-  - **UPDATED APP** Case Tracker (`com.saldous.casetracker`) in rushiranpise patches
-  - **UPDATED APP** Cashew (`com.budget.tracker_app`) in rushiranpise patches
-  - **UPDATED APP** Citizen (`sp0n.citizen`) in rushiranpise patches
-  - **NEW APP** Dailyhunt (`com.eterno`) in rushiranpise patches
-  - **NEW APP** Depth Live Wallpaper (`com.jndapp.depth.live.wallpaper`) in rushiranpise patches
-  - **UPDATED APP** Fitbod (`com.fitbod.fitbod`) in rushiranpise patches
-  - **UPDATED APP** Inmigreat (`com.changayaf.inmigreat`) in rushiranpise patches
-  - **NEW APP** KineMaster (`com.nexstreaming.app.kinemasterfree`) in rushiranpise patches
-  - **NEW APP** komoot (`de.komoot.android`) in rushiranpise patches
-  - **NEW APP** Lark Player (`com.dywx.larkplayer`) in rushiranpise patches
-  - **NEW APP** MEGA (`mega.privacy.android.app`) in rushiranpise patches
-  - **NEW APP** Minimal Widgets (`com.jndapp.minimal.widgets`) in rushiranpise patches
-  - **UPDATED APP** MovieBox (`com.community.oneroom`) in rushiranpise patches
-  - **UPDATED APP** MovieBox (India) (`com.community.mbox.in`) in rushiranpise patches
-  - **UPDATED APP** MovieBox TV (`com.community.mbox.tv`) in rushiranpise patches
-  - **NEW APP** NYT Games (`com.nytimes.crossword`) in rushiranpise patches
-  - **NEW APP** Pixel Habit Tracker (`com.pixel.al.pixelhabittracker`) in rushiranpise patches
-  - **NEW APP** PLAYit (`com.playit.videoplayer`) in rushiranpise patches
-  - **NEW APP** Pocket Bard (`com.mojofiltermediallc.rpgsoundsystem`) in rushiranpise patches
-  - **NEW APP** RS File Manager (`com.rs.explorer.filemanager`) in rushiranpise patches
-  - **UPDATED APP** Splitwise (`com.splitwise.splitwisemobile`) in rushiranpise patches
-  - **UPDATED APP** Sticker.ly (`com.snowcorp.stickerly.android`) in rushiranpise patches
-  - **NEW APP** Strava (`com.strava`) in rushiranpise patches
-  - **NEW APP** Uptodown App Store (`com.uptodown`) in rushiranpise patches
-- **NEW BUNDLE** Bundle by **saiesh** (stable)
-  - **NEW APP** AT4K Launcher (Android TV) (`com.overdevs.at4k`) in saiesh patches
-  - **NEW APP** Lightroom (`com.adobe.lrmobile`) in saiesh patches
-- **UPDATED** Bundle **shaun-sheep**
-  - **NEW APP** [PRE-RELEASE] Pinnit (`dev.sasikanth.pinnit`) in shaun-sheep patches
+  - **NEW APP** [PRE-RELEASE] ES File Explorer (`com.estrongs.android.pop`) in rushiranpise patches
+  - **UPDATED APP** Minimal Widgets (`com.jndapp.minimal.widgets`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] Super File (`com.esuper.file.explorer`) in rushiranpise patches
