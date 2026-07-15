@@ -1,38 +1,6 @@
 {
   "affected_bundles": [
     {
-      "bundle": "miguel",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "The Battle of Polytopia",
-          "package": "air.com.midjiwan.polytopia",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Free in-app purchases",
-                "description": "Patches the Google Play Billing bridge to report success and validate purchases. Handles crystal packs and other IAP items at the billing layer. For unlocking tribes and skins, use the 'Unlock all tribes' patch instead.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Unlock all tribes",
-                "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) and all skins by patching the native IL2CPP library (libil2cpp.so). Makes IsProductUnlocked return true, skips the purchase flow, and suppresses the 'Purchase error' dialog. Pure ARM64 hex patching, no smali, no extension.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
       "bundle": "pichiwa",
       "channel": "dev",
       "badge_type": "UPDATED",
@@ -44,26 +12,14 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "SMS Verification Bypass",
-                "description": "Bypasses SMS verification bans by spoofing signatures, installers, and hiding GMS. REQUIRED: You must manually install microG-RE for Play Integrity to pass."
+                "name": "Login Fix",
+                "description": "Bypasses verification bans by spoofing signatures, installers, and faking GMS checks. REQUIRED: You must manually install microG-RE for Play Integrity to pass."
               }
             ],
             "patches_removed": [
               {
-                "name": "Hide GMS",
-                "description": "Pretends that Google Play Services is missing to force fallback registration flows."
-              },
-              {
-                "name": "MicroG Support",
-                "description": "Redirects Play Integrity to microG-RE and prompts auto-install if missing."
-              },
-              {
-                "name": "Spoof Installer",
-                "description": "Fake installation from Google Play to avoid restrictions."
-              },
-              {
-                "name": "Spoof Signature",
-                "description": "Forces WhatsApp signature checks to pass by patching the equals method comparison."
+                "name": "SMS Verification Bypass",
+                "description": "Bypasses SMS verification bans by spoofing signatures, installers, and hiding GMS. REQUIRED: You must manually install microG-RE for Play Integrity to pass."
               }
             ],
             "patches_modified": []
