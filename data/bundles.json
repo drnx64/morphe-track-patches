@@ -11999,9 +11999,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-14T21:06:21",
-    "version": "v1.9.12",
-    "description": "## [1.9.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.11...v1.9.12) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* \"}\" ([31af059](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/31af05938ec3f1e83b3bcdc8082f20b1bc7f02fe))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([bf15319](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/bf153190f88527a1cafd62fc04ac99730cfa08d9))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([8ea53da](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8ea53da8afa990f9edf6d8ad2c3b37b2412dd19c))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([3f97a2e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/3f97a2e233fbfe1dc86600c21f6cfde621b4e4a1))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([a48a741](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a48a741151e9367a0afe8f050a52cf1c79fa8401))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([8554780](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8554780176e63103707ef3b7848e415dae798ff1))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([a3ea0f4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a3ea0f416f64f1a1a3699962a15fac429c5b8f3c))\n* **billing:** move findPattern before rawResourcePatch to fix resolution ([d5182e5](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d5182e5d849adc9ee80b0bad79f7c198e9457afb))\n* **billing:** replace triple-quoted strings with concatenation in Phase 3 ([7bba16f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/7bba16f0ccf38e3345ed55f388a3dc9457d48ecb))\n* **billing:** separate IL2CPP hex patch into rawResourcePatch ([b8f0923](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/b8f0923a1c130e4714d85fdfd4453a42e8a3b2d4))\n* **billing:** use string concatenation for className in all phases ([8d5772f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8d5772fbc5996f92f31824ee0cc9d2befed5cb79))\n",
+    "created_at": "2026-07-15T20:35:45",
+    "version": "v1.10.0",
+    "description": "## [1.10.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.12...v1.10.0) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **climb:** call matchOrNull() as function, not property ([5066fe6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/5066fe6ca48eb1398dce8e11b07c9960d69b2461))\n* **climb:** simulate 'climbnoads' IAP purchase instead of patching ads ([e037cef](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e037cef95855ee84ac9ed42d17988f7c8fc8cad9))\n\n### ✨ New Features\n\n* **climb:** add No Ads + Free IAP patches for Climb! ([02b7895](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/02b78957b22f9bf5d3b86af7805719022f1cc918))\n* **climb:** add No Ads + Free IAP patches for Climb! ([cf4098d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cf4098d2370a836649c0688b00c2187e49b050f2))\n* **climb:** add No Ads + Free IAP patches for Climb! ([24d5f23](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/24d5f239fb068f24699f47f782c6128100c12c12))\n* **climb:** add No Ads + Free IAP patches for Climb! ([c4d3f7f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/c4d3f7f3d95eece4f45b16419507e65eb50df8a7))\n* **climb:** add No Ads + Free IAP patches for Climb! ([6ea15e6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6ea15e65252f546b5bde83c5ed8a10c5781c55f4))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -12063,6 +12063,31 @@
         "icon_url": "https://play-lh.googleusercontent.com/FGB00L2-aGHPAiRJPxbC3Th_KEaGvVroVF-tPSf_1Unh9kzzY-al4mp1yJT16I16FuLK6oJ-3H-KrVgTrg3ABFc"
       },
       {
+        "app_name": "Climb!",
+        "package": "com.ivanaf.climbamiypfree",
+        "patches": [
+          {
+            "name": "Free in-app purchases",
+            "description": "Skips purchase signature verification and forces billing to report success. Patches RunnerBillingSecurity.verifyPurchase to always return true, Purchase.isAcknowledged/getPurchaseState to return valid values, and the billing bridge callbacks.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "6.0.5"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Simulates the purchase of the 'climbnoads' IAP product so the game thinks you bought No Ads and stops showing ads naturally. Injects a fake Purchase with productId='climbnoads' into the purchase list when the game queries purchases.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.0.5"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
         "app_name": "Hunter Assassin",
         "package": "com.rubygames.assassin",
         "patches": [
@@ -12121,10 +12146,10 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "fc3aa3a2feaa47718ab34b28fe925221cfaad1d9e812af8e44454b54c0f58d35",
-    "release_notes": "## [1.9.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.11...v1.9.12) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* \"}\" ([31af059](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/31af05938ec3f1e83b3bcdc8082f20b1bc7f02fe))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([bf15319](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/bf153190f88527a1cafd62fc04ac99730cfa08d9))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([8ea53da](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8ea53da8afa990f9edf6d8ad2c3b37b2412dd19c))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([3f97a2e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/3f97a2e233fbfe1dc86600c21f6cfde621b4e4a1))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([a48a741](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a48a741151e9367a0afe8f050a52cf1c79fa8401))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([8554780](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8554780176e63103707ef3b7848e415dae798ff1))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([a3ea0f4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a3ea0f416f64f1a1a3699962a15fac429c5b8f3c))\n* **billing:** move findPattern before rawResourcePatch to fix resolution ([d5182e5](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d5182e5d849adc9ee80b0bad79f7c198e9457afb))\n* **billing:** replace triple-quoted strings with concatenation in Phase 3 ([7bba16f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/7bba16f0ccf38e3345ed55f388a3dc9457d48ecb))\n* **billing:** separate IL2CPP hex patch into rawResourcePatch ([b8f0923](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/b8f0923a1c130e4714d85fdfd4453a42e8a3b2d4))\n* **billing:** use string concatenation for className in all phases ([8d5772f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8d5772fbc5996f92f31824ee0cc9d2befed5cb79))\n",
-    "release_tag": "v1.9.12",
-    "release_date": "2026-07-14T21:06:21Z"
+    "fingerprint": "5b860782b971a25239cfb3fc9871493a1227ea8d97067cfc6fa380259632b3f5",
+    "release_notes": "## [1.10.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.12...v1.10.0) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **climb:** call matchOrNull() as function, not property ([5066fe6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/5066fe6ca48eb1398dce8e11b07c9960d69b2461))\n* **climb:** simulate 'climbnoads' IAP purchase instead of patching ads ([e037cef](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e037cef95855ee84ac9ed42d17988f7c8fc8cad9))\n\n### ✨ New Features\n\n* **climb:** add No Ads + Free IAP patches for Climb! ([02b7895](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/02b78957b22f9bf5d3b86af7805719022f1cc918))\n* **climb:** add No Ads + Free IAP patches for Climb! ([cf4098d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cf4098d2370a836649c0688b00c2187e49b050f2))\n* **climb:** add No Ads + Free IAP patches for Climb! ([24d5f23](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/24d5f239fb068f24699f47f782c6128100c12c12))\n* **climb:** add No Ads + Free IAP patches for Climb! ([c4d3f7f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/c4d3f7f3d95eece4f45b16419507e65eb50df8a7))\n* **climb:** add No Ads + Free IAP patches for Climb! ([6ea15e6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6ea15e65252f546b5bde83c5ed8a10c5781c55f4))\n",
+    "release_tag": "v1.10.0",
+    "release_date": "2026-07-15T20:35:45Z"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -26988,8 +27013,8 @@
     "bundle": "hellveticastandard",
     "channel": "dev",
     "repo_url": "https://github.com/HellveticaStandard/HellveticaPatches",
-    "created_at": "2026-07-04T19:32:18Z",
-    "version": "1.1.0-dev.3",
+    "created_at": "2026-07-15T21:51:59Z",
+    "version": "1.1.1-dev.1",
     "description": "## [1.1.0](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.0.5...v1.1.0) (2026-07-04)\n\n### 🐛 Bug Fixes\n\n* **docs:** remove UnlockPremiumFeaturesPatch from README and patches-list ([43fd8b7](https://github.com/HellveticaStandard/HellveticaPatches/commit/43fd8b75a542bd6e9243aa233e1914c2cc3b27a8))\n* **sankaku:** correct ads toggle and GET SANKAKU PLUS card patches ([9995a46](https://github.com/HellveticaStandard/HellveticaPatches/commit/9995a467ba394b5d574401aefa25f79d54ece1fe)), closes [#12010](https://github.com/HellveticaStandard/HellveticaPatches/issues/12010)\n\n### ✨ New Features\n\n* **sankaku:** add UnlockPremiumFeaturesPatch for 4.24-rc92 ([3aba245](https://github.com/HellveticaStandard/HellveticaPatches/commit/3aba245c4e7a60eb71843117cf595defd9a403fe)), closes [#22029](https://github.com/HellveticaStandard/HellveticaPatches/issues/22029) [#22038](https://github.com/HellveticaStandard/HellveticaPatches/issues/22038) [#16428](https://github.com/HellveticaStandard/HellveticaPatches/issues/16428)",
     "apps": [
       {
@@ -27011,9 +27036,9 @@
       }
     ],
     "fingerprint": "f5de73de0e3d3be73a0b82ae60b6260b093efe53e63c559e7912871d4dfa9677",
-    "release_notes": "## [1.1.0-dev.3](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-07-04)\n\n### 🐛 Bug Fixes\n\n* **docs:** remove UnlockPremiumFeaturesPatch from README and patches-list ([43fd8b7](https://github.com/HellveticaStandard/HellveticaPatches/commit/43fd8b75a542bd6e9243aa233e1914c2cc3b27a8))\n",
-    "release_tag": "v1.1.0-dev.3",
-    "release_date": "2026-07-04T19:32:18Z"
+    "release_notes": "## [1.1.1-dev.1](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.1.0...v1.1.1-dev.1) (2026-07-15)\n\n### 🚀 Updated App Support\n\n* **sankaku:** add support for 4.25-rc93 ([4f1d854](https://github.com/HellveticaStandard/HellveticaPatches/commit/4f1d854f968bd743dd08e0f61aa844406add1150)), closes [#37517](https://github.com/HellveticaStandard/HellveticaPatches/issues/37517) [#19483](https://github.com/HellveticaStandard/HellveticaPatches/issues/19483)\n",
+    "release_tag": "v1.1.1-dev.1",
+    "release_date": "2026-07-15T21:51:59Z"
   },
   "hellveticastandard:stable": {
     "bundle": "hellveticastandard",
