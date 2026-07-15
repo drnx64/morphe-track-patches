@@ -11912,9 +11912,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-14T12:06:59",
-    "version": "v1.9.11",
-    "description": "## [1.9.11](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.10...v1.9.11) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* **polytopia:** native hex patch on libil2cpp.so for free IAP ([247e3c8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/247e3c8c9eeade977ab396f5417df22371269a7f)), closes [#1](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/1)\n",
+    "created_at": "2026-07-14T21:06:21",
+    "version": "v1.9.12",
+    "description": "## [1.9.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.11...v1.9.12) (2026-07-14)\n\n### 🐛 Bug Fixes\n\n* \"}\" ([31af059](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/31af05938ec3f1e83b3bcdc8082f20b1bc7f02fe))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([bf15319](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/bf153190f88527a1cafd62fc04ac99730cfa08d9))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([8ea53da](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8ea53da8afa990f9edf6d8ad2c3b37b2412dd19c))\n* **billing:** add Phase 4 IL2CPP hex patch to universal + move hex to UnlockTribes UnlockAllTribesPatch (Polytopia) ([3f97a2e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/3f97a2e233fbfe1dc86600c21f6cfde621b4e4a1))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([a48a741](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a48a741151e9367a0afe8f050a52cf1c79fa8401))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([8554780](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8554780176e63103707ef3b7848e415dae798ff1))\n* **billing:** file was truncated - restore complete Phase 4 Fallback ([a3ea0f4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a3ea0f416f64f1a1a3699962a15fac429c5b8f3c))\n* **billing:** move findPattern before rawResourcePatch to fix resolution ([d5182e5](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d5182e5d849adc9ee80b0bad79f7c198e9457afb))\n* **billing:** replace triple-quoted strings with concatenation in Phase 3 ([7bba16f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/7bba16f0ccf38e3345ed55f388a3dc9457d48ecb))\n* **billing:** separate IL2CPP hex patch into rawResourcePatch ([b8f0923](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/b8f0923a1c130e4714d85fdfd4453a42e8a3b2d4))\n* **billing:** use string concatenation for className in all phases ([8d5772f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8d5772fbc5996f92f31824ee0cc9d2befed5cb79))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -11922,7 +11922,7 @@
         "patches": [
           {
             "name": "Free in-app purchases",
-            "description": "Bypasses Polytopia's purchase validation by patching the native IL2CPP library (libil2cpp.so). Makes IsProductUnlocked return true, skips the purchase flow, and suppresses the 'Purchase error' dialog. Pure hex patching, no smali, no extension.",
+            "description": "Patches the Google Play Billing bridge to report success and validate purchases. Handles crystal packs and other IAP items at the billing layer. For unlocking tribes and skins, use the 'Unlock all tribes' patch instead.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -11931,7 +11931,7 @@
           },
           {
             "name": "Unlock all tribes",
-            "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) and all skins by patching the native IL2CPP library (libil2cpp.so). Makes IsTribeUnlocked() and IsSkinUnlocked() always return true via ARM64 hex patching.",
+            "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) and all skins by patching the native IL2CPP library (libil2cpp.so). Makes IsProductUnlocked return true, skips the purchase flow, and suppresses the 'Purchase error' dialog. Pure ARM64 hex patching, no smali, no extension.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -12034,7 +12034,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "d84853568f0cbc69bd4c6ccec942e24179730114870e179d8d1ef36179c845d8"
+    "fingerprint": "fc3aa3a2feaa47718ab34b28fe925221cfaad1d9e812af8e44454b54c0f58d35"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -22106,9 +22106,9 @@
     "bundle": "pinterest-morphed",
     "channel": "dev",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-14T19:34:53",
-    "version": "v1.0.0-dev.6",
-    "description": "## [1.0.0-dev.6](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.5...v1.0.0-dev.6) (2026-07-14)\n\n### ✨ New Features\n\n* **compat:** support Pinterest 14.20.0-14.27.0 as stable ([159ace4](https://github.com/SouBryan/pinterest-morphed/commit/159ace43b72515b14b3ec15eb206e43385bfdfa8))\n",
+    "created_at": "2026-07-14T21:05:24",
+    "version": "v1.0.0-dev.7",
+    "description": "## [1.0.0-dev.7](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2026-07-14)\n\n### ✨ New Features\n\n* **safety:** pin Pinterest signing certificate SHA-256 ([2576aea](https://github.com/SouBryan/pinterest-morphed/commit/2576aeac40436416593dcc1c4a32ccfcdbc2ef84))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -22316,9 +22316,9 @@
     "bundle": "pinterest-morphed",
     "channel": "stable",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-14T19:34:48",
-    "version": "v1.4.0",
-    "description": "## [1.4.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.3.0...v1.4.0) (2026-07-14)\n\n### ✨ New Features\n\n* **compat:** support Pinterest 14.20.0-14.27.0 as stable ([0e10291](https://github.com/SouBryan/pinterest-morphed/commit/0e1029111ef8530982d215bd1af05694767de7ae))\n",
+    "created_at": "2026-07-14T21:05:33",
+    "version": "v1.5.0",
+    "description": "## [1.5.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.4.0...v1.5.0) (2026-07-14)\n\n### ✨ New Features\n\n* **safety:** pin Pinterest signing certificate SHA-256 ([0a3fff7](https://github.com/SouBryan/pinterest-morphed/commit/0a3fff7e3ff7b1040e902d333ae27168649bb931))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -26711,9 +26711,9 @@
     "bundle": "seobject",
     "channel": "dev",
     "repo_url": "https://github.com/Seobject/Seobject-patches",
-    "created_at": "2026-07-14T20:34:40",
-    "version": "v1.1.0-dev.4",
-    "description": "## [1.1.0-dev.4](https://github.com/Seobject/Seobject-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-07-14)\n\n### Bug Fixes\n\n* fail open for flyout hook errors ([84c0824](https://github.com/Seobject/Seobject-patches/commit/84c08246305be8281fa11aa9209cd7fa639510ed))\n",
+    "created_at": "2026-07-14T20:54:06",
+    "version": "v1.1.0-dev.5",
+    "description": "## [1.1.0-dev.5](https://github.com/Seobject/Seobject-patches/compare/v1.1.0-dev.4...v1.1.0-dev.5) (2026-07-14)\n\n### Bug Fixes\n\n* preserve onClick argument order ([d761c95](https://github.com/Seobject/Seobject-patches/commit/d761c95909f33e4c37af8e794d877d0f6c5e5414))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -48694,9 +48694,9 @@
     "bundle": "pichiwa",
     "channel": "dev",
     "repo_url": "https://github.com/alejandrobellver/pichiwa-patches",
-    "created_at": "2026-07-14T09:03:50",
-    "version": "v0.4.0-dev.11",
-    "description": "## [0.4.0-dev.11](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.4.0-dev.10...v0.4.0-dev.11) (2026-07-14)\n\n### Bug Fixes\n\n* make fingerprint strictly match tab population method to prevent PatchException and apply patch correctly ([18cf53f](https://github.com/alejandrobellver/pichiwa-patches/commit/18cf53fe4f9dcb5411f5c84fa1548d09b0ca2704))\n",
+    "created_at": "2026-07-15T00:51:03",
+    "version": "v0.4.0-dev.22",
+    "description": "## [0.4.0-dev.22](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.4.0-dev.21...v0.4.0-dev.22) (2026-07-15)\n\n### Bug Fixes\n\n* force GooglePlayServicesUtil to return SUCCESS to prevent update prompts ([793fc8c](https://github.com/alejandrobellver/pichiwa-patches/commit/793fc8c424638d8adee585756bc43bdd481af167))\n",
     "apps": [
       {
         "app_name": "WhatsApp",
@@ -48802,15 +48802,6 @@
             ]
           },
           {
-            "name": "Hide GMS",
-            "description": "Pretends that Google Play Services is missing to force fallback registration flows.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.26.27.4"
-            ]
-          },
-          {
             "name": "Hide Read Receipts",
             "description": "Read messages without sending blue ticks.",
             "use": true,
@@ -48822,15 +48813,6 @@
           {
             "name": "Hide Typing",
             "description": "Escribe sin mostrar \"escribiendo...\".",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.26.27.4"
-            ]
-          },
-          {
-            "name": "MicroG Support",
-            "description": "Redirects Play Integrity to microG-RE and prompts auto-install if missing.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48874,17 +48856,8 @@
             ]
           },
           {
-            "name": "Spoof Installer",
-            "description": "Fake installation from Google Play to avoid restrictions.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.26.27.4"
-            ]
-          },
-          {
-            "name": "Spoof Signature",
-            "description": "Forces WhatsApp signature checks to pass by patching the equals method comparison.",
+            "name": "SMS Verification Bypass",
+            "description": "Bypasses SMS verification bans by spoofing signatures, installers, and hiding GMS. REQUIRED: You must manually install microG-RE for Play Integrity to pass.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48895,7 +48868,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/Gqxk4T0uZsDwFp07DE-508hkyvcNmgFuRwPiwTEfF7D7OzGv1FdHDzEyMxNsSBZLOJlGpe3ULvVM2RgrRAlBqA"
       }
     ],
-    "fingerprint": "8c99db3a0189f72c28ee986fe1427aad12f4b452eb0e9f2ed85c69a2a016b533"
+    "fingerprint": "75097f5864061f288a23320e737350a94cff9af5ae0a8dc2f306c3ffb0390d29"
   },
   "pichiwa:stable": {
     "bundle": "pichiwa",
