@@ -14,24 +14,17 @@
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Free in-app purchases",
-                "description": "Skips purchase signature verification and forces billing to report success. Patches RunnerBillingSecurity.verifyPurchase to always return true, Purchase.isAcknowledged/getPurchaseState to return valid values, and the billing bridge callbacks.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
                 "name": "Remove ads",
-                "description": "Simulates the purchase of the 'climbnoads' IAP product so the game thinks you bought No Ads and stops showing ads naturally. Patches GPBilling_Purchase_GetState to return PURCHASED when called with 'climbnoads'.",
+                "description": "Simulates the purchase of the 'climbnoads' IAP product by injecting a fake Purchase into the purchase list when the game queries purchases. The game finds 'climbnoads' and treats No Ads as purchased.",
                 "changes": [
-                  "description updated",
-                  "versions: +1 version"
+                  "description updated"
                 ]
               }
             ]
           },
           "scan_numbers": [
-            1
+            1,
+            2
           ]
         }
       ]
@@ -138,6 +131,34 @@
           },
           "scan_numbers": [
             1
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "pichiwa",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "WhatsApp",
+          "package": "com.whatsapp",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Login Fix",
+                "description": "Bypasses verification bans by spoofing signatures and faking GMS checks. REQUIRED: You must manually install microG-RE for Play Integrity to pass.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
           ]
         }
       ]
