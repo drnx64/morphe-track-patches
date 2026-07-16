@@ -11912,9 +11912,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-15T21:08:28",
-    "version": "v1.10.1",
-    "description": "## [1.10.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.10.0...v1.10.1) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([d71007e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d71007e16982703367f3352663b20f40f074cf3c))\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([de9bcd3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/de9bcd37349dd3284dde911ee091908880b822ef))\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([f1aa7c8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f1aa7c860e15e0bc24708469e74d5dffedfe89f1))\n",
+    "created_at": "2026-07-16T00:13:40",
+    "version": "v1.10.3",
+    "description": "## [1.10.3](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.10.2...v1.10.3) (2026-07-16)\n\n### 🐛 Bug Fixes\n\n* **climb:** escape JSON quotes in smali string literals ([41922ff](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/41922ffc48b374a32f328d3694f99aa2dc0f9e33))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -11991,7 +11991,7 @@
           },
           {
             "name": "Remove ads",
-            "description": "Simulates the purchase of the 'climbnoads' IAP product so the game thinks you bought No Ads and stops showing ads naturally. Patches GPBilling_Purchase_GetState to return PURCHASED when called with 'climbnoads'.",
+            "description": "Simulates the purchase of the 'climbnoads' IAP product by injecting a fake Purchase into the purchase list when the game queries purchases. The game finds 'climbnoads' and treats No Ads as purchased.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -12061,7 +12061,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "e088e7c1fabce6cdc73361e2d769be0e5ac98f0458f7f532bdf0c5f0e278f45a"
+    "fingerprint": "07ee742301ce71f97ce98f1fc85ae8050e111d2b15d0af1b295073be648a1007"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -48824,9 +48824,9 @@
     "bundle": "pichiwa",
     "channel": "dev",
     "repo_url": "https://github.com/alejandrobellver/pichiwa-patches",
-    "created_at": "2026-07-15T08:28:00",
-    "version": "v0.4.0-dev.44",
-    "description": "## [0.4.0-dev.44](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.4.0-dev.43...v0.4.0-dev.44) (2026-07-15)\n\n### Bug Fixes\n\n* **whatsapp:** disable Play Integrity locally by returning NameNotFound for vending and SERVICE_MISSING for GMS ([7924f4d](https://github.com/alejandrobellver/pichiwa-patches/commit/7924f4d81dcbdd4d4f7b9ac49741d2ec4d2bcebf))\n",
+    "created_at": "2026-07-16T03:43:50",
+    "version": "v0.4.0-dev.52",
+    "description": "## [0.4.0-dev.52](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.4.0-dev.51...v0.4.0-dev.52) (2026-07-16)\n\n### Bug Fixes\n\n* **whatsapp:** eliminate PackageInfo spoofing completely - caused VerifyError in X.1ZI - use direct string comparison forcing instead ([20217b4](https://github.com/alejandrobellver/pichiwa-patches/commit/20217b469499705665dd556985a4a2ff7274334e))\n",
     "apps": [
       {
         "app_name": "WhatsApp",
@@ -48951,7 +48951,7 @@
           },
           {
             "name": "Login Fix",
-            "description": "Bypasses verification bans by spoofing signatures, installers, and faking GMS checks. REQUIRED: You must manually install microG-RE for Play Integrity to pass.",
+            "description": "Bypasses verification bans by spoofing signatures and faking GMS checks. REQUIRED: You must manually install microG-RE for Play Integrity to pass.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48998,7 +48998,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/Gqxk4T0uZsDwFp07DE-508hkyvcNmgFuRwPiwTEfF7D7OzGv1FdHDzEyMxNsSBZLOJlGpe3ULvVM2RgrRAlBqA"
       }
     ],
-    "fingerprint": "341167920b7e9673250a0210741d50e81c78c7b906f3423d8294be1df018036d"
+    "fingerprint": "65ef5bb4419fc1c8836035e32515bf9fd6d6ef04169e5712f0afb11f650fda6f"
   },
   "pichiwa:stable": {
     "bundle": "pichiwa",
