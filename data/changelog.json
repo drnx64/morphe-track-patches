@@ -1,5 +1,1193 @@
 [
   {
+    "date": "2026-07-15",
+    "lastChecked": "2026-07-16T02:04:14Z",
+    "affected_bundles": [
+      {
+        "bundle": "miguel",
+        "channel": "stable",
+        "badge_type": "UPDATED",
+        "apps": [
+          {
+            "app_name": "The Battle of Polytopia",
+            "package": "air.com.midjiwan.polytopia",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Free in-app purchases",
+                  "description": "Patches the Google Play Billing bridge to report success and validate purchases. Handles crystal packs and other IAP items at the billing layer. For unlocking tribes and skins, use the 'Unlock all tribes' patch instead.",
+                  "changes": [
+                    "description updated"
+                  ]
+                },
+                {
+                  "name": "Unlock all tribes",
+                  "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) and all skins by patching the native IL2CPP library (libil2cpp.so). Makes IsProductUnlocked return true, skips the purchase flow, and suppresses the 'Purchase error' dialog. Pure ARM64 hex patching, no smali, no extension.",
+                  "changes": [
+                    "description updated"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              1
+            ]
+          },
+          {
+            "app_name": "Climb!",
+            "package": "com.ivanaf.climbamiypfree",
+            "badge_type": "NEW APP",
+            "scan_numbers": [
+              8
+            ]
+          }
+        ]
+      },
+      {
+        "bundle": "pichiwa",
+        "channel": "dev",
+        "badge_type": "UPDATED",
+        "apps": [
+          {
+            "app_name": "WhatsApp",
+            "package": "com.whatsapp",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [
+                {
+                  "name": "Login Fix",
+                  "description": "Bypasses verification bans by spoofing signatures, installers, and faking GMS checks. REQUIRED: You must manually install microG-RE for Play Integrity to pass."
+                }
+              ],
+              "patches_removed": [
+                {
+                  "name": "SMS Verification Bypass",
+                  "description": "Bypasses SMS verification bans by spoofing signatures, installers, and hiding GMS. REQUIRED: You must manually install microG-RE for Play Integrity to pass."
+                }
+              ],
+              "patches_modified": []
+            },
+            "scan_numbers": [
+              1,
+              2
+            ]
+          }
+        ]
+      },
+      {
+        "bundle": "modx",
+        "channel": "stable",
+        "badge_type": "UPDATED",
+        "apps": [
+          {
+            "app_name": "MX Player",
+            "package": "com.mxtech.videoplayer.ad",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [
+                {
+                  "name": "Restyle Search/Games tab icons to Tools/About",
+                  "description": "Overrides the native Search/Games bottom-nav icons with the Modx Tools/About artwork."
+                },
+                {
+                  "name": "Restyle Search/Games tab labels to Tools/About",
+                  "description": "Renames the native Search/Games tab labels to Tools/About."
+                }
+              ],
+              "patches_modified": []
+            },
+            "scan_numbers": [
+              3,
+              4,
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "bundle": "rushiranpise",
+        "channel": "dev",
+        "badge_type": "UPDATED",
+        "apps": [
+          {
+            "app_name": "Proton VPN",
+            "package": "ch.protonvpn.android",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Premium",
+                  "description": "Unlocks local Proton VPN premium  features.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Amazon Shopping",
+            "package": "com.amazon.mshop.android.shopping",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Dark mode",
+                  "description": "Force dark mode for Amazon Shopping.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable search suggestions tracking",
+                  "description": "Prevents search keypress and focus events from being sent with suggestion requests.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable video autoplay",
+                  "description": "Prevents product and ad videos from autoplaying.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Fix Amazon manifest conflicts",
+                  "description": "Updates shared Amazon permissions so other Amazon apps can coexist.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Hide Rufus tab",
+                  "description": "Removes the Rufus AI assistant tab from Amazon's bottom navigation bar.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Open links in browser",
+                  "description": "Opens non-Amazon URLs in the default browser instead of the in-app WebView.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Price history charts",
+                  "description": "Injects Keepa and CamelCamelCamel price history charts on Amazon product pages.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove ads",
+                  "description": "Hides sponsored and ad content in Amazon Shopping via CSS injection.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Sanitize share links",
+                  "description": "Strips tracking parameters from copied/shared Amazon links, leaving only the clean product URL.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Citymapper",
+            "package": "com.citymapper.app.release",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Club",
+                  "description": "Unlocks Citymapper Club Membership Note: Need to manually Purchase inside APP!.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "1.1.1.1",
+            "package": "com.cloudflare.onedotonedotonedotone",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Disable Analytics / Telemetry",
+                  "description": "Disables App Analytics / Telemetry.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Spoof WARP+ Unlimited UI",
+                  "description": "Unlocks WARP+ UI locally.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Clue Period & Cycle Tracker",
+            "package": "com.clue.android",
+            "badge_type": "NEW APP",
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "MovieBox TV",
+            "package": "com.community.mbox.tv",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock VIP",
+                  "description": "Unlocks VIP Features in app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "FlightAware",
+            "package": "com.flightaware.android.liveflighttracker",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Ad-Free",
+                  "description": "Forces FlightAware ad-free subscribed state.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Android Developer Verifier",
+            "package": "com.google.android.verifier",
+            "badge_type": "NEW APP",
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "LiveScore",
+            "package": "com.livescore",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Remove ads",
+                  "description": "Disables LiveScore banner, native, and interstitial ad requests.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Scoopz",
+            "package": "com.localaiapp.scoops",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Drama Episodes",
+                  "description": "Bypasses the IAA (ad-watch-to-unlock) episode gate for drama mini-series.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Crime Radar",
+            "package": "com.newsbreak.crimeradar",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Bypass License Check",
+                  "description": "Bypasses PairIP DRM license verification to prevent forced app shutdown on non-Play-licensed installs.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Bypass Subscription Paywall",
+                  "description": "Bypasses the subscription paywall in-app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove Item Limits",
+                  "description": "Removes all  item limits in-app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Suppress Premium Promotions",
+                  "description": "Supress all premium promotions in-app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Unlock Followed Locations",
+                  "description": "Unlocks the Followed Locations premium feature.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Unlock Premium",
+                  "description": "Unlocks Premium Features In the App.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "NYT Games",
+            "package": "com.nytimes.crossword",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock subscription",
+                  "description": "Unlocks subscription in app",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Pixel Habit Tracker",
+            "package": "com.pixel.al.pixelhabittracker",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock PRO",
+                  "description": "Unlocks all PRO features in app",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "ColorNote",
+            "package": "com.socialnmobile.dictapps.notepad.color.note",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Premium",
+                  "description": "Unlocks ColorNote premium and removes advertising ID permissions.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "MigraConnect",
+            "package": "com.tecso.migraconnect",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Enterprise",
+                  "description": "Unlocks Enterprise features in app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "TradingView",
+            "package": "com.tradingview.tradingviewapp",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Premium",
+                  "description": "Unlock premium features in app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Wavve Boating",
+            "package": "com.wavve.boating.gps",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Premium",
+                  "description": "Unlocks all Wavve Boating GPS premium features: charts, weather, tide data, and removes subscription paywall.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Yatri",
+            "package": "com.yatrirailways.yatri",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock VIP",
+                  "description": "Unlocks Yatri VIP by forcing active plan status and spoofing active plan DB query.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          },
+          {
+            "app_name": "Permission Pilot",
+            "package": "eu.darken.myperm",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Unlock Pro",
+                  "description": "Unlocks all Pro features in app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              5
+            ]
+          }
+        ]
+      },
+      {
+        "bundle": "amplerevanced",
+        "channel": "dev",
+        "badge_type": "UPDATED",
+        "apps": [
+          {
+            "app_name": "Kakao Talk",
+            "package": "com.kakao.talk",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [
+                {
+                  "name": "Show message read receipts",
+                  "description": "Shows the members who have or have not read each chat message."
+                }
+              ],
+              "patches_removed": [
+                {
+                  "name": "Enable recording pause/resume feature",
+                  "description": "Enable recording pause/resume feature in KakaoTalk"
+                },
+                {
+                  "name": "Play YouTube player in chat room",
+                  "description": "Allows playing YouTube videos in KakaoTalk chat rooms."
+                }
+              ],
+              "patches_modified": [
+                {
+                  "name": "Add Packet Handler",
+                  "description": "Adding the Loco Packet Handler allows external applications to handle the app's packets, which may compromise security.\nConflicts may occur on some systems.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Add Pine Lib",
+                  "description": "add libpine.so to the app's native libraries",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Add settings resources",
+                  "description": "Adds Morphe settings layout resources to the app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Add settings tab",
+                  "description": "Adds a settings tab to the app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Allow Hide on Any Chat",
+                  "description": "Users with hiding privileges can hide any chat, including their own messages.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Allow reply to feed",
+                  "description": "Allows replying to feed messages",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Always Show Kick Button",
+                  "description": "Always shows the kick button in group member management.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Bypass Moat check",
+                  "description": "Add a setting to bypass the Moat integrity check that can prevent KakaoPay from running.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Bypass input mention limit in non-multichat",
+                  "description": "Bypass the limit of input mentions in non-multichat rooms",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Change model",
+                  "description": "Changes the device model to supporting subdevice features",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Change package name",
+                  "description": "Appends \".revanced\" to the package name by default. For KakaoTalk only",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Custom branding",
+                  "description": "Customize app branding (name)",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Default external browser",
+                  "description": "Sets the default external browser for KakaoTalk to the system's default browser.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable 300+ unread limit",
+                  "description": "Always show the real unread count instead of '300+' in chatroom list",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable 99 unread limit",
+                  "description": "Skip the 99-cap so unread count shows full value",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable ChatRoomAdController",
+                  "description": "Disables the open-link chat room BizBoard ad controller.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable Collapse Button",
+                  "description": "Disable collapse button on OpenChatList",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable Community Tab",
+                  "description": "Disables Community Tab",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable Friend Feed tab",
+                  "description": "Disables the Friend Feed tab in KakaoTalk.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable Friend Lists ad",
+                  "description": "Disables the friend tab BizBoard ads in KakaoTalk.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable OpenChat feed ad",
+                  "description": "Disables the OpenChat tab feed ad load and render paths.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable Pay banner ad",
+                  "description": "Disables the KakaoPay banner ad load and render paths.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable S2Event",
+                  "description": "Disables Tracker",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable SDK Tracker",
+                  "description": "Disables the SDK Tracker in KakaoTalk.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable Sentry",
+                  "description": "Disables Sentry error reporting in KakaoTalk.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable ShortForm ad",
+                  "description": "Disables the shortform ad load and render paths.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable Talk Share Log",
+                  "description": "Disable talk share log",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable chat room list ad",
+                  "description": "Disable the chat room list ad.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable open chat room comments",
+                  "description": "Adds a setting to disable comments in open chat rooms.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Disable verifying signature",
+                  "description": "Disables the signature verification check that prevents the app from running.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Enable Markdown",
+                  "description": "Render plain text messages with markdown-style formatting.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Enable reaction mention flag",
+                  "description": "Enables the reaction mention flag in KakaoTalk chat logs.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Enable send big text",
+                  "description": "Allows sending big text messages in KakaoTalk.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Force enable debug mode",
+                  "description": "Enables debug mode in the app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Force enable emoticon plus feature",
+                  "description": "Force enable emoticon plus feature (Unpurchased emoticon can be sent once per day)",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Ghost Mode",
+                  "description": "Don't expose your typing status to the other party.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Hide More tab Game tab",
+                  "description": "Hides the Game tab from the More tab.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Hide More tab components",
+                  "description": "Adds options to hide components from the More tab.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Hook Package Manager",
+                  "description": "Hooks the Package Manager to bypass integrity checks.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Open profile from open chat feed",
+                  "description": "Opens open chat member profiles from join and leave feed messages.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Override feature flag",
+                  "description": "Overrides the feature flag to enable the feature.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Register settings activity",
+                  "description": "Registers the Morphe settings activity in the app manifest.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove BizBoard ads",
+                  "description": "Removes the BizBoard ad by forcing its dimensions to 0x0 and visibility to GONE in onMeasure.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove More tab ad",
+                  "description": "Removes the ad from the More tab.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove OpenLink chat room list ad",
+                  "description": "Removes the OpenLink chat room list ad.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove Short-form Tab",
+                  "description": "Removes the Short-form tab from the now fragment.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove feed ad",
+                  "description": "Removes the feed ad from the app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove focus ad",
+                  "description": "Removes the focus ad from the app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove native ad",
+                  "description": "Removes the native ad from the app.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Remove shop tab",
+                  "description": "Removes the shop tab from the bottom navigation bar.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Show chatroom channel ID",
+                  "description": "Shows the channel ID in chatroom settings and copies it when tapping the chat side title.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Show deleted, hidden, or edited messages",
+                  "description": "Allows you to see deleted, hidden, and edited message history in chat logs.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Spoof App ID",
+                  "description": "Spoofs the App ID to bypass integrity checks. (to bypass biometric auth etc.)",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Spoof apk checksums",
+                  "description": "Spoofs the apk checksums to pass integrity checks.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Spoof signature",
+                  "description": "Spoofs the app signature to pass integrity checks.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Version info patch",
+                  "description": "Patches the version info to include '(ReVanced)' in the version string.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              6
+            ]
+          }
+        ]
+      },
+      {
+        "bundle": "hoo-dles",
+        "channel": "stable",
+        "badge_type": "UPDATED",
+        "apps": [
+          {
+            "app_name": "Niagara Launcher",
+            "package": "bitpit.launcher",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Enable Niagara Pro",
+                  "description": "Enables app features locked behind the subscription paywall.",
+                  "changes": [
+                    "versions: +1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              7
+            ]
+          },
+          {
+            "app_name": "Duolingo",
+            "package": "com.duolingo",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Disable dynamic app icon",
+                  "description": "Prevents Duolingo from changing the app icon. Only the default icon will be available.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Enable Premium",
+                  "description": "Enables app features locked behind the subscription paywall.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                },
+                {
+                  "name": "Enable debug mode",
+                  "description": "Enables hidden debug menu in settings.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              7
+            ]
+          },
+          {
+            "app_name": "SoundCloud",
+            "package": "com.soundcloud.android",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [
+                {
+                  "name": "Enable SoundCloud Go",
+                  "description": "Enables app features locked behind the subscription paywall."
+                }
+              ],
+              "patches_removed": [
+                {
+                  "name": "Enable SoundCloud Go+",
+                  "description": "Enables app features locked behind the subscription paywall."
+                }
+              ],
+              "patches_modified": []
+            },
+            "scan_numbers": [
+              7
+            ]
+          },
+          {
+            "app_name": "SuperChinese",
+            "package": "com.superchinese",
+            "badge_type": "UPDATED APP",
+            "promoted_from": "dev",
+            "scan_numbers": [
+              7
+            ]
+          },
+          {
+            "app_name": "IbisPaint X",
+            "package": "jp.ne.ibis.ibispaintx.app",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [],
+              "patches_removed": [],
+              "patches_modified": [
+                {
+                  "name": "Enable Prime membership",
+                  "description": "Enables app features locked behind the subscription paywall.",
+                  "changes": [
+                    "versions: +1 version, -1 version"
+                  ]
+                }
+              ]
+            },
+            "scan_numbers": [
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "bundle": "adobo",
+        "channel": "dev",
+        "badge_type": "UPDATED",
+        "apps": [
+          {
+            "app_name": "Reddit",
+            "package": "com.reddit.frontpage",
+            "badge_type": "UPDATED APP",
+            "patch_diff": {
+              "patches_added": [
+                {
+                  "name": "Hide community menu badge",
+                  "description": "Hides the red notification badge on the community menu (hamburger menu)."
+                }
+              ],
+              "patches_removed": [],
+              "patches_modified": []
+            },
+            "scan_numbers": [
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "bundle": "saiesh",
+        "channel": "stable",
+        "badge_type": "UPDATED",
+        "apps": [
+          {
+            "app_name": "ISS Live Now",
+            "package": "com.nicedayapps.iss_free",
+            "badge_type": "NEW APP",
+            "scan_numbers": [
+              7
+            ]
+          },
+          {
+            "app_name": "Projectivy Launcher",
+            "package": "com.spocky.projengmenu",
+            "badge_type": "NEW APP",
+            "scan_numbers": [
+              7
+            ]
+          },
+          {
+            "app_name": "Lightroom",
+            "package": "com.adobe.lrmobile",
+            "badge_type": "REMOVED APP",
+            "scan_numbers": [
+              7
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     "date": "2026-07-14",
     "lastChecked": "2026-07-15T01:54:38Z",
     "affected_bundles": [

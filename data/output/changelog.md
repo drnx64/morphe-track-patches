@@ -1,5 +1,47 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-15]
+- **UPDATED** Bundle **adobo**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+- **UPDATED** Bundle **hoo-dles**
+  - **UPDATED APP** Duolingo (`com.duolingo`) in hoo-dles patches
+  - **UPDATED APP** IbisPaint X (`jp.ne.ibis.ibispaintx.app`) in hoo-dles patches
+  - **UPDATED APP** Niagara Launcher (`bitpit.launcher`) in hoo-dles patches
+  - **UPDATED APP** SoundCloud (`com.soundcloud.android`) in hoo-dles patches
+  - **UPDATED APP** SuperChinese (`com.superchinese`) in hoo-dles patches
+- **UPDATED** Bundle **miguel**
+  - **NEW APP** Climb! (`com.ivanaf.climbamiypfree`) in miguel patches
+  - **UPDATED APP** The Battle of Polytopia (`air.com.midjiwan.polytopia`) in miguel patches
+- **UPDATED** Bundle **modx**
+  - **UPDATED APP** MX Player (`com.mxtech.videoplayer.ad`) in modx patches
+- **UPDATED** Bundle **pichiwa**
+  - **UPDATED APP** WhatsApp (`com.whatsapp`) in pichiwa patches
+- **UPDATED** Bundle **rushiranpise**
+  - **UPDATED APP** 1.1.1.1 (`com.cloudflare.onedotonedotonedotone`) in rushiranpise patches
+  - **UPDATED APP** Amazon Shopping (`com.amazon.mshop.android.shopping`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] Android Developer Verifier (`com.google.android.verifier`) in rushiranpise patches
+  - **UPDATED APP** Citymapper (`com.citymapper.app.release`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] Clue Period & Cycle Tracker (`com.clue.android`) in rushiranpise patches
+  - **UPDATED APP** ColorNote (`com.socialnmobile.dictapps.notepad.color.note`) in rushiranpise patches
+  - **UPDATED APP** Crime Radar (`com.newsbreak.crimeradar`) in rushiranpise patches
+  - **UPDATED APP** FlightAware (`com.flightaware.android.liveflighttracker`) in rushiranpise patches
+  - **UPDATED APP** LiveScore (`com.livescore`) in rushiranpise patches
+  - **UPDATED APP** MigraConnect (`com.tecso.migraconnect`) in rushiranpise patches
+  - **UPDATED APP** MovieBox TV (`com.community.mbox.tv`) in rushiranpise patches
+  - **UPDATED APP** NYT Games (`com.nytimes.crossword`) in rushiranpise patches
+  - **UPDATED APP** Permission Pilot (`eu.darken.myperm`) in rushiranpise patches
+  - **UPDATED APP** Pixel Habit Tracker (`com.pixel.al.pixelhabittracker`) in rushiranpise patches
+  - **UPDATED APP** Proton VPN (`ch.protonvpn.android`) in rushiranpise patches
+  - **UPDATED APP** Scoopz (`com.localaiapp.scoops`) in rushiranpise patches
+  - **UPDATED APP** TradingView (`com.tradingview.tradingviewapp`) in rushiranpise patches
+  - **UPDATED APP** Wavve Boating (`com.wavve.boating.gps`) in rushiranpise patches
+  - **UPDATED APP** Yatri (`com.yatrirailways.yatri`) in rushiranpise patches
+- **UPDATED** Bundle **saiesh**
+  - **NEW APP** ISS Live Now (`com.nicedayapps.iss_free`) in saiesh patches
+  - **REMOVED APP** Lightroom (`com.adobe.lrmobile`) in saiesh patches
+  - **NEW APP** Projectivy Launcher (`com.spocky.projengmenu`) in saiesh patches
 ## [2026-07-14]
 - **NEW BUNDLE** Bundle by **abeja** (dev, stable)
   - **NEW APP** ZTE Gallery (`com.android.gallery3d`) in abeja patches

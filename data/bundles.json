@@ -11999,9 +11999,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-15T20:35:45",
-    "version": "v1.10.0",
-    "description": "## [1.10.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.12...v1.10.0) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **climb:** call matchOrNull() as function, not property ([5066fe6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/5066fe6ca48eb1398dce8e11b07c9960d69b2461))\n* **climb:** simulate 'climbnoads' IAP purchase instead of patching ads ([e037cef](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e037cef95855ee84ac9ed42d17988f7c8fc8cad9))\n\n### ✨ New Features\n\n* **climb:** add No Ads + Free IAP patches for Climb! ([02b7895](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/02b78957b22f9bf5d3b86af7805719022f1cc918))\n* **climb:** add No Ads + Free IAP patches for Climb! ([cf4098d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cf4098d2370a836649c0688b00c2187e49b050f2))\n* **climb:** add No Ads + Free IAP patches for Climb! ([24d5f23](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/24d5f239fb068f24699f47f782c6128100c12c12))\n* **climb:** add No Ads + Free IAP patches for Climb! ([c4d3f7f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/c4d3f7f3d95eece4f45b16419507e65eb50df8a7))\n* **climb:** add No Ads + Free IAP patches for Climb! ([6ea15e6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6ea15e65252f546b5bde83c5ed8a10c5781c55f4))\n",
+    "created_at": "2026-07-15T21:08:28",
+    "version": "v1.10.1",
+    "description": "## [1.10.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.10.0...v1.10.1) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([d71007e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d71007e16982703367f3352663b20f40f074cf3c))\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([de9bcd3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/de9bcd37349dd3284dde911ee091908880b822ef))\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([f1aa7c8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f1aa7c860e15e0bc24708469e74d5dffedfe89f1))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -12072,15 +12072,17 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "6.0.6",
               "6.0.5"
             ]
           },
           {
             "name": "Remove ads",
-            "description": "Simulates the purchase of the 'climbnoads' IAP product so the game thinks you bought No Ads and stops showing ads naturally. Injects a fake Purchase with productId='climbnoads' into the purchase list when the game queries purchases.",
+            "description": "Simulates the purchase of the 'climbnoads' IAP product so the game thinks you bought No Ads and stops showing ads naturally. Patches GPBilling_Purchase_GetState to return PURCHASED when called with 'climbnoads'.",
             "use": true,
             "options": [],
             "compatible_versions": [
+              "6.0.6",
               "6.0.5"
             ]
           }
@@ -12146,10 +12148,10 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "5b860782b971a25239cfb3fc9871493a1227ea8d97067cfc6fa380259632b3f5",
-    "release_notes": "## [1.10.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.9.12...v1.10.0) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **climb:** call matchOrNull() as function, not property ([5066fe6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/5066fe6ca48eb1398dce8e11b07c9960d69b2461))\n* **climb:** simulate 'climbnoads' IAP purchase instead of patching ads ([e037cef](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e037cef95855ee84ac9ed42d17988f7c8fc8cad9))\n\n### ✨ New Features\n\n* **climb:** add No Ads + Free IAP patches for Climb! ([02b7895](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/02b78957b22f9bf5d3b86af7805719022f1cc918))\n* **climb:** add No Ads + Free IAP patches for Climb! ([cf4098d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cf4098d2370a836649c0688b00c2187e49b050f2))\n* **climb:** add No Ads + Free IAP patches for Climb! ([24d5f23](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/24d5f239fb068f24699f47f782c6128100c12c12))\n* **climb:** add No Ads + Free IAP patches for Climb! ([c4d3f7f](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/c4d3f7f3d95eece4f45b16419507e65eb50df8a7))\n* **climb:** add No Ads + Free IAP patches for Climb! ([6ea15e6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6ea15e65252f546b5bde83c5ed8a10c5781c55f4))\n",
-    "release_tag": "v1.10.0",
-    "release_date": "2026-07-15T20:35:45Z"
+    "fingerprint": "e088e7c1fabce6cdc73361e2d769be0e5ac98f0458f7f532bdf0c5f0e278f45a",
+    "release_notes": "## [1.10.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.10.0...v1.10.1) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([d71007e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d71007e16982703367f3352663b20f40f074cf3c))\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([de9bcd3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/de9bcd37349dd3284dde911ee091908880b822ef))\n* **climb:** patch GPBilling_Purchase_GetState for No Ads instead of GetPurchases ([f1aa7c8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f1aa7c860e15e0bc24708469e74d5dffedfe89f1))\n",
+    "release_tag": "v1.10.1",
+    "release_date": "2026-07-15T21:08:28Z"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -22319,9 +22321,9 @@
     "bundle": "pinterest-morphed",
     "channel": "dev",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-14T21:05:24",
-    "version": "v1.0.0-dev.7",
-    "description": "## [1.0.0-dev.7](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2026-07-14)\n\n### ✨ New Features\n\n* **safety:** pin Pinterest signing certificate SHA-256 ([2576aea](https://github.com/SouBryan/pinterest-morphed/commit/2576aeac40436416593dcc1c4a32ccfcdbc2ef84))\n",
+    "created_at": "2026-07-15T21:17:40",
+    "version": "v1.0.0-dev.8",
+    "description": "## [1.0.0-dev.8](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.7...v1.0.0-dev.8) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **ads:** cover third-party, sponsored and promoted-variant flags on first-boot feed ([85457cf](https://github.com/SouBryan/pinterest-morphed/commit/85457cf0d7c20e32ca07c2a7406173749964d618))\n\n### ✨ New Features\n\n* **tracking:** add DisableFirebaseServicesPatch to flip 5 Firebase auto-init flags ([822dbc4](https://github.com/SouBryan/pinterest-morphed/commit/822dbc4784d8550df35aa8733d1a43ddc520feee))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -22362,6 +22364,22 @@
           {
             "name": "Disable Bugsnag crash tracking",
             "description": "Removes the Bugsnag API key metadata so the crash reporting SDK cannot initialize or upload telemetry.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.27.0",
+              "14.26.0",
+              "14.25.0",
+              "14.24.0",
+              "14.23.0",
+              "14.22.0",
+              "14.21.0",
+              "14.20.0"
+            ]
+          },
+          {
+            "name": "Disable Firebase services",
+            "description": "Adds the officially documented Firebase off-switches (`firebase_analytics_collection_deactivated`, `firebase_crashlytics_collection_enabled=false`, `firebase_performance_collection_deactivated`, `google_analytics_adid_collection_enabled=false`) so the Firebase Analytics, Crashlytics and Performance SDKs go dormant.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -22523,18 +22541,18 @@
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
       }
     ],
-    "fingerprint": "e5379534f0d24e5aa847f6da59ad0cd505cdcbded2130afefd1ff27839dad765",
-    "release_notes": "## [1.0.0-dev.7](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2026-07-14)\n\n### ✨ New Features\n\n* **safety:** pin Pinterest signing certificate SHA-256 ([2576aea](https://github.com/SouBryan/pinterest-morphed/commit/2576aeac40436416593dcc1c4a32ccfcdbc2ef84))\n",
-    "release_tag": "v1.0.0-dev.7",
-    "release_date": "2026-07-14T21:05:24Z"
+    "fingerprint": "695b6b2460b80ad8516961d3156269105342d1ffcea6ee98757a0dd0c4472fe0",
+    "release_notes": "## [1.0.0-dev.8](https://github.com/SouBryan/pinterest-morphed/compare/v1.0.0-dev.7...v1.0.0-dev.8) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **ads:** cover third-party, sponsored and promoted-variant flags on first-boot feed ([85457cf](https://github.com/SouBryan/pinterest-morphed/commit/85457cf0d7c20e32ca07c2a7406173749964d618))\n\n### ✨ New Features\n\n* **tracking:** add DisableFirebaseServicesPatch to flip 5 Firebase auto-init flags ([822dbc4](https://github.com/SouBryan/pinterest-morphed/commit/822dbc4784d8550df35aa8733d1a43ddc520feee))\n",
+    "release_tag": "v1.0.0-dev.8",
+    "release_date": "2026-07-15T21:17:40Z"
   },
   "pinterest-morphed:stable": {
     "bundle": "pinterest-morphed",
     "channel": "stable",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-14T21:05:33",
-    "version": "v1.5.0",
-    "description": "## [1.5.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.4.0...v1.5.0) (2026-07-14)\n\n### ✨ New Features\n\n* **safety:** pin Pinterest signing certificate SHA-256 ([0a3fff7](https://github.com/SouBryan/pinterest-morphed/commit/0a3fff7e3ff7b1040e902d333ae27168649bb931))\n",
+    "created_at": "2026-07-15T21:51:07",
+    "version": "v1.6.0",
+    "description": "## [1.6.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.5.0...v1.6.0) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **ads:** cover third-party, sponsored and promoted-variant flags on first-boot feed ([89e0dec](https://github.com/SouBryan/pinterest-morphed/commit/89e0decc797b53b216f176829d162b48da1b7c7f))\n\n### ✨ New Features\n\n* **tracking:** add DisableFirebaseServicesPatch to flip 5 Firebase auto-init flags ([e536843](https://github.com/SouBryan/pinterest-morphed/commit/e5368437da1accfe06ea8aae4e0b616387f56c29))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -22575,6 +22593,22 @@
           {
             "name": "Disable Bugsnag crash tracking",
             "description": "Removes the Bugsnag API key metadata so the crash reporting SDK cannot initialize or upload telemetry.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.27.0",
+              "14.26.0",
+              "14.25.0",
+              "14.24.0",
+              "14.23.0",
+              "14.22.0",
+              "14.21.0",
+              "14.20.0"
+            ]
+          },
+          {
+            "name": "Disable Firebase services",
+            "description": "Adds the officially documented Firebase off-switches (`firebase_analytics_collection_deactivated`, `firebase_crashlytics_collection_enabled=false`, `firebase_performance_collection_deactivated`, `google_analytics_adid_collection_enabled=false`) so the Firebase Analytics, Crashlytics and Performance SDKs go dormant.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -22736,10 +22770,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
       }
     ],
-    "fingerprint": "253bcfd3f4349c7389df82bd4d87fae3ba0bb2a088e644cb5923fd6534d67c4a",
-    "release_notes": "## [1.5.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.4.0...v1.5.0) (2026-07-14)\n\n### ✨ New Features\n\n* **safety:** pin Pinterest signing certificate SHA-256 ([0a3fff7](https://github.com/SouBryan/pinterest-morphed/commit/0a3fff7e3ff7b1040e902d333ae27168649bb931))\n",
-    "release_tag": "v1.5.0",
-    "release_date": "2026-07-14T21:05:33Z"
+    "fingerprint": "830371237ae3e354cdb35fe27ff0dd50083d86399aea145a46ffe805c600c20a",
+    "release_notes": "## [1.6.0](https://github.com/SouBryan/pinterest-morphed/compare/v1.5.0...v1.6.0) (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* **ads:** cover third-party, sponsored and promoted-variant flags on first-boot feed ([89e0dec](https://github.com/SouBryan/pinterest-morphed/commit/89e0decc797b53b216f176829d162b48da1b7c7f))\n\n### ✨ New Features\n\n* **tracking:** add DisableFirebaseServicesPatch to flip 5 Firebase auto-init flags ([e536843](https://github.com/SouBryan/pinterest-morphed/commit/e5368437da1accfe06ea8aae4e0b616387f56c29))\n",
+    "release_tag": "v1.6.0",
+    "release_date": "2026-07-15T21:51:07Z"
   },
   "amplerevanced:dev": {
     "bundle": "amplerevanced",
@@ -27015,7 +27049,7 @@
     "repo_url": "https://github.com/HellveticaStandard/HellveticaPatches",
     "created_at": "2026-07-15T21:51:59Z",
     "version": "1.1.1-dev.1",
-    "description": "## [1.1.0](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.0.5...v1.1.0) (2026-07-04)\n\n### 🐛 Bug Fixes\n\n* **docs:** remove UnlockPremiumFeaturesPatch from README and patches-list ([43fd8b7](https://github.com/HellveticaStandard/HellveticaPatches/commit/43fd8b75a542bd6e9243aa233e1914c2cc3b27a8))\n* **sankaku:** correct ads toggle and GET SANKAKU PLUS card patches ([9995a46](https://github.com/HellveticaStandard/HellveticaPatches/commit/9995a467ba394b5d574401aefa25f79d54ece1fe)), closes [#12010](https://github.com/HellveticaStandard/HellveticaPatches/issues/12010)\n\n### ✨ New Features\n\n* **sankaku:** add UnlockPremiumFeaturesPatch for 4.24-rc92 ([3aba245](https://github.com/HellveticaStandard/HellveticaPatches/commit/3aba245c4e7a60eb71843117cf595defd9a403fe)), closes [#22029](https://github.com/HellveticaStandard/HellveticaPatches/issues/22029) [#22038](https://github.com/HellveticaStandard/HellveticaPatches/issues/22038) [#16428](https://github.com/HellveticaStandard/HellveticaPatches/issues/16428)",
+    "description": "## [1.1.1](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.1.0...v1.1.1) (2026-07-15)\n\n### 🚀 Updated App Support\n\n* **sankaku:** add support for 4.25-rc93 ([4f1d854](https://github.com/HellveticaStandard/HellveticaPatches/commit/4f1d854f968bd743dd08e0f61aa844406add1150)), closes [#37517](https://github.com/HellveticaStandard/HellveticaPatches/issues/37517) [#19483](https://github.com/HellveticaStandard/HellveticaPatches/issues/19483)",
     "apps": [
       {
         "app_name": "Sankaku App",
@@ -27028,14 +27062,15 @@
             "options": [],
             "compatible_versions": [
               "4.23",
-              "4.24"
+              "4.24",
+              "4.25"
             ]
           }
         ],
         "icon_url": ""
       }
     ],
-    "fingerprint": "f5de73de0e3d3be73a0b82ae60b6260b093efe53e63c559e7912871d4dfa9677",
+    "fingerprint": "c4c7bc1b08c857ef5b240d696efbb651738e445e992316ade9846e3adf57e073",
     "release_notes": "## [1.1.1-dev.1](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.1.0...v1.1.1-dev.1) (2026-07-15)\n\n### 🚀 Updated App Support\n\n* **sankaku:** add support for 4.25-rc93 ([4f1d854](https://github.com/HellveticaStandard/HellveticaPatches/commit/4f1d854f968bd743dd08e0f61aa844406add1150)), closes [#37517](https://github.com/HellveticaStandard/HellveticaPatches/issues/37517) [#19483](https://github.com/HellveticaStandard/HellveticaPatches/issues/19483)\n",
     "release_tag": "v1.1.1-dev.1",
     "release_date": "2026-07-15T21:51:59Z"
@@ -27044,9 +27079,9 @@
     "bundle": "hellveticastandard",
     "channel": "stable",
     "repo_url": "https://github.com/HellveticaStandard/HellveticaPatches",
-    "created_at": "2026-07-04T19:37:49Z",
-    "version": "1.1.0",
-    "description": "## [1.1.0](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.0.5...v1.1.0) (2026-07-04)\n\n### 🐛 Bug Fixes\n\n* **docs:** remove UnlockPremiumFeaturesPatch from README and patches-list ([43fd8b7](https://github.com/HellveticaStandard/HellveticaPatches/commit/43fd8b75a542bd6e9243aa233e1914c2cc3b27a8))\n* **sankaku:** correct ads toggle and GET SANKAKU PLUS card patches ([9995a46](https://github.com/HellveticaStandard/HellveticaPatches/commit/9995a467ba394b5d574401aefa25f79d54ece1fe)), closes [#12010](https://github.com/HellveticaStandard/HellveticaPatches/issues/12010)\n\n### ✨ New Features\n\n* **sankaku:** add UnlockPremiumFeaturesPatch for 4.24-rc92 ([3aba245](https://github.com/HellveticaStandard/HellveticaPatches/commit/3aba245c4e7a60eb71843117cf595defd9a403fe)), closes [#22029](https://github.com/HellveticaStandard/HellveticaPatches/issues/22029) [#22038](https://github.com/HellveticaStandard/HellveticaPatches/issues/22038) [#16428](https://github.com/HellveticaStandard/HellveticaPatches/issues/16428)",
+    "created_at": "2026-07-15T22:03:09Z",
+    "version": "1.1.1",
+    "description": "## [1.1.1](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.1.0...v1.1.1) (2026-07-15)\n\n### 🚀 Updated App Support\n\n* **sankaku:** add support for 4.25-rc93 ([4f1d854](https://github.com/HellveticaStandard/HellveticaPatches/commit/4f1d854f968bd743dd08e0f61aa844406add1150)), closes [#37517](https://github.com/HellveticaStandard/HellveticaPatches/issues/37517) [#19483](https://github.com/HellveticaStandard/HellveticaPatches/issues/19483)",
     "apps": [
       {
         "app_name": "Sankaku App",
@@ -27059,17 +27094,18 @@
             "options": [],
             "compatible_versions": [
               "4.23",
-              "4.24"
+              "4.24",
+              "4.25"
             ]
           }
         ],
         "icon_url": ""
       }
     ],
-    "fingerprint": "6d61c6638344ebf0fd9676c385fa2ec3d353a40a15b3995c796eeb38108a7c2e",
-    "release_notes": "## [1.1.0](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.0.5...v1.1.0) (2026-07-04)\n\n### 🐛 Bug Fixes\n\n* **docs:** remove UnlockPremiumFeaturesPatch from README and patches-list ([43fd8b7](https://github.com/HellveticaStandard/HellveticaPatches/commit/43fd8b75a542bd6e9243aa233e1914c2cc3b27a8))\n* **sankaku:** correct ads toggle and GET SANKAKU PLUS card patches ([9995a46](https://github.com/HellveticaStandard/HellveticaPatches/commit/9995a467ba394b5d574401aefa25f79d54ece1fe)), closes [#12010](https://github.com/HellveticaStandard/HellveticaPatches/issues/12010)\n\n### ✨ New Features\n\n* **sankaku:** add UnlockPremiumFeaturesPatch for 4.24-rc92 ([3aba245](https://github.com/HellveticaStandard/HellveticaPatches/commit/3aba245c4e7a60eb71843117cf595defd9a403fe)), closes [#22029](https://github.com/HellveticaStandard/HellveticaPatches/issues/22029) [#22038](https://github.com/HellveticaStandard/HellveticaPatches/issues/22038) [#16428](https://github.com/HellveticaStandard/HellveticaPatches/issues/16428)\n",
-    "release_tag": "v1.1.0",
-    "release_date": "2026-07-04T19:37:49Z"
+    "fingerprint": "b6a5add18f223151d1b4fbd11daf5d5e5996c90b14d598ef60e83a0de60acd15",
+    "release_notes": "## [1.1.1](https://github.com/HellveticaStandard/HellveticaPatches/compare/v1.1.0...v1.1.1) (2026-07-15)\n\n### 🚀 Updated App Support\n\n* **sankaku:** add support for 4.25-rc93 ([4f1d854](https://github.com/HellveticaStandard/HellveticaPatches/commit/4f1d854f968bd743dd08e0f61aa844406add1150)), closes [#37517](https://github.com/HellveticaStandard/HellveticaPatches/issues/37517) [#19483](https://github.com/HellveticaStandard/HellveticaPatches/issues/19483)\n",
+    "release_tag": "v1.1.1",
+    "release_date": "2026-07-15T22:03:09Z"
   },
   "ts2:dev": {
     "bundle": "ts2",
@@ -49590,9 +49626,9 @@
       }
     ],
     "fingerprint": "0988d1839b7adc21edb4648ac2a1faa278c8269ebb9c888b0afcb7af0915d663",
-    "release_notes": "## [0.4.0-dev.44](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.4.0-dev.43...v0.4.0-dev.44) (2026-07-15)\n\n### Bug Fixes\n\n* **whatsapp:** disable Play Integrity locally by returning NameNotFound for vending and SERVICE_MISSING for GMS ([7924f4d](https://github.com/alejandrobellver/pichiwa-patches/commit/7924f4d81dcbdd4d4f7b9ac49741d2ec4d2bcebf))\n",
-    "release_tag": "v0.4.0-dev.44",
-    "release_date": "2026-07-15T08:28:00Z"
+    "release_notes": "## [0.4.0-dev.47](https://github.com/alejandrobellver/pichiwa-patches/compare/v0.4.0-dev.46...v0.4.0-dev.47) (2026-07-16)\n\n### Bug Fixes\n\n* **whatsapp:** Fix Kotlin string interpolation syntax in injected Smali labels ([e4f651f](https://github.com/alejandrobellver/pichiwa-patches/commit/e4f651f9a90980cc2cb08da82ad84a66a14111fb))\n",
+    "release_tag": "v0.4.0-dev.47",
+    "release_date": "2026-07-16T01:52:45Z"
   },
   "ajstrick81-androidtv:dev": {
     "bundle": "ajstrick81-androidtv",
