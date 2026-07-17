@@ -1,42 +1,112 @@
-## [2026-07-15]
-- **UPDATED** Bundle **adobo**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
-- **UPDATED** Bundle **amplerevanced**
-  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+## [2026-07-16]
+- **NEW BUNDLE** Bundle by **arhcos** (stable)
+  - **NEW APP** XYZ app (`com.example.app`) in arhcos patches
+- **NEW BUNDLE** Bundle by **brealorg** (dev, stable)
+  - **NEW APP** BaconReader (`com.onelouder.baconreader`) in brealorg patches
+  - **NEW APP** BaconReader Premium (`com.onelouder.baconreader.premium`) in brealorg patches
+  - **NEW APP** Boost for Reddit (`com.rubenmayayo.reddit`) in brealorg patches
+  - **NEW APP** Continuum (`org.cygnusx1.continuum`) in brealorg patches
+  - **NEW APP** Imgur (`com.imgur.mobile`) in brealorg patches
+  - **NEW APP** Infinity for Reddit (Patreon) (`ml.docilealligator.infinityforreddit.patreon`) in brealorg patches
+  - **NEW APP** Infinity for Reddit+ (`ml.docilealligator.infinityforreddit.plus`) in brealorg patches
+  - **NEW APP** Joey for Reddit (`o.o.joey`) in brealorg patches
+  - **NEW APP** Joey for Reddit Dev (`o.o.joey.dev`) in brealorg patches
+  - **NEW APP** Joey for Reddit Pro (`o.o.joey.pro`) in brealorg patches
+  - **NEW APP** Relay for Reddit (`free.reddit.news`) in brealorg patches
+  - **NEW APP** Relay for Reddit Pro (`reddit.news`) in brealorg patches
+  - **NEW APP** rif is fun (`com.andrewshu.android.reddit`) in brealorg patches
+  - **NEW APP** rif is fun golden platinum (`com.andrewshu.android.redditdonation`) in brealorg patches
+  - **NEW APP** Slide (fork) (`me.edgan.redditslide`) in brealorg patches
+  - **NEW APP** Sync for Lemmy (`io.syncapps.lemmy_sync`) in brealorg patches
+  - **NEW APP** Sync for Reddit (`com.laurencedawson.reddit_sync`) in brealorg patches
+  - **NEW APP** Sync for Reddit Dev (`com.laurencedawson.reddit_sync.dev`) in brealorg patches
+  - **NEW APP** Sync for Reddit Pro (`com.laurencedawson.reddit_sync.pro`) in brealorg patches
+- **UPDATED** Bundle **brosssh**
+  - **UPDATED APP** Instagram (`com.instagram.android`) in brosssh patches
+  - **UPDATED APP** Komoot (`de.komoot.android`) in brosssh patches
+- **NEW BUNDLE** Bundle by **drosocode** (dev, stable)
+  - **NEW APP** ImperiHome (`com.imperihome.lite`) in drosocode patches
+- **UPDATED** Bundle **hellveticastandard**
+  - **UPDATED APP** Sankaku App (`com.sankakucomplex.channel.black`) in hellveticastandard patches
 - **UPDATED** Bundle **hoo-dles**
-  - **UPDATED APP** Duolingo (`com.duolingo`) in hoo-dles patches
-  - **UPDATED APP** IbisPaint X (`jp.ne.ibis.ibispaintx.app`) in hoo-dles patches
+  - **UPDATED APP** GitHub (`com.github.android`) in hoo-dles patches
   - **UPDATED APP** Niagara Launcher (`bitpit.launcher`) in hoo-dles patches
   - **UPDATED APP** SoundCloud (`com.soundcloud.android`) in hoo-dles patches
-  - **UPDATED APP** SuperChinese (`com.superchinese`) in hoo-dles patches
 - **UPDATED** Bundle **miguel**
-  - **NEW APP** Climb! (`com.ivanaf.climbamiypfree`) in miguel patches
-  - **UPDATED APP** The Battle of Polytopia (`air.com.midjiwan.polytopia`) in miguel patches
+  - **UPDATED APP** Climb! (`com.ivanaf.climbamiypfree`) in miguel patches
+  - **NEW APP** Zombie Catchers (`fi.twomenandadog.zombiecatchers`) in miguel patches
 - **UPDATED** Bundle **modx**
   - **UPDATED APP** MX Player (`com.mxtech.videoplayer.ad`) in modx patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
 - **UPDATED** Bundle **pichiwa**
   - **UPDATED APP** WhatsApp (`com.whatsapp`) in pichiwa patches
+- **UPDATED** Bundle **pinterest-morphed**
+  - **UPDATED APP** Pinterest (`com.pinterest`) in pinterest-morphed patches
+- **NEW BUNDLE** Bundle by **rivanced-universal** (dev, stable)
+  - **NEW APP** XYZ app (`com.example.app`) in rivanced-universal patches
 - **UPDATED** Bundle **rushiranpise**
   - **UPDATED APP** 1.1.1.1 (`com.cloudflare.onedotonedotonedotone`) in rushiranpise patches
+  - **UPDATED APP** AiScore (`com.onesports.score`) in rushiranpise patches
   - **UPDATED APP** Amazon Shopping (`com.amazon.mshop.android.shopping`) in rushiranpise patches
-  - **NEW APP** [PRE-RELEASE] Android Developer Verifier (`com.google.android.verifier`) in rushiranpise patches
+  - **REMOVED APP** Anatomy (`air.com.musclemotion.anatomy`) in rushiranpise patches
+  - **UPDATED APP** Android Developer Verifier (`com.google.android.verifier`) in rushiranpise patches
+  - **UPDATED APP** Block Blast! (`com.block.juggle`) in rushiranpise patches
+  - **UPDATED APP** Canva (`com.canva.editor`) in rushiranpise patches
+  - **UPDATED APP** Citizen (`sp0n.citizen`) in rushiranpise patches
   - **UPDATED APP** Citymapper (`com.citymapper.app.release`) in rushiranpise patches
-  - **NEW APP** [PRE-RELEASE] Clue Period & Cycle Tracker (`com.clue.android`) in rushiranpise patches
+  - **UPDATED APP** Clue Period & Cycle Tracker (`com.clue.android`) in rushiranpise patches
   - **UPDATED APP** ColorNote (`com.socialnmobile.dictapps.notepad.color.note`) in rushiranpise patches
+  - **UPDATED APP** Countdown Widget (`me.gira.widget.countdown`) in rushiranpise patches
   - **UPDATED APP** Crime Radar (`com.newsbreak.crimeradar`) in rushiranpise patches
+  - **UPDATED APP** ES File Explorer (`com.estrongs.android.pop`) in rushiranpise patches
+  - **UPDATED APP** Fitbod (`com.fitbod.fitbod`) in rushiranpise patches
   - **UPDATED APP** FlightAware (`com.flightaware.android.liveflighttracker`) in rushiranpise patches
+  - **UPDATED APP** HTTP Sniffer (`com.anetcapture.mock`) in rushiranpise patches
+  - **UPDATED APP** JEFIT (`je.fit`) in rushiranpise patches
+  - **UPDATED APP** Kahoot! (`no.mobitroll.kahoot.android`) in rushiranpise patches
+  - **REMOVED APP** Kyphosis (`air.com.musclemotion.kyphosis`) in rushiranpise patches
+  - **UPDATED APP** Life360 (`com.life360.android.safetymapd`) in rushiranpise patches
   - **UPDATED APP** LiveScore (`com.livescore`) in rushiranpise patches
   - **UPDATED APP** MigraConnect (`com.tecso.migraconnect`) in rushiranpise patches
+  - **UPDATED APP** Minimal Widgets (`com.jndapp.minimal.widgets`) in rushiranpise patches
   - **UPDATED APP** MovieBox TV (`com.community.mbox.tv`) in rushiranpise patches
+  - **UPDATED APP** MyRadar (`com.acmeaom.android.myradar`) in rushiranpise patches
+  - **UPDATED APP** NAVITIME (`com.navitime.inbound.walk`) in rushiranpise patches
+  - **UPDATED APP** NewsBreak (`com.particlenews.newsbreak`) in rushiranpise patches
   - **UPDATED APP** NYT Games (`com.nytimes.crossword`) in rushiranpise patches
+  - **UPDATED APP** Parallel Space Pro (`com.parallel.space.pro`) in rushiranpise patches
   - **UPDATED APP** Permission Pilot (`eu.darken.myperm`) in rushiranpise patches
+  - **UPDATED APP** Pialytic (`verbosus.pialytic`) in rushiranpise patches
+  - **UPDATED APP** PictureThis - Plant Identifier (`cn.danatech.xingseus`) in rushiranpise patches
   - **UPDATED APP** Pixel Habit Tracker (`com.pixel.al.pixelhabittracker`) in rushiranpise patches
+  - **REMOVED APP** pkge (`net.pkge.pkge`) in rushiranpise patches
+  - **REMOVED APP** Posture (`air.com.musclemotion.posture`) in rushiranpise patches
   - **UPDATED APP** Proton VPN (`ch.protonvpn.android`) in rushiranpise patches
+  - **UPDATED APP** Proxyman (`com.proxyman.proxymanandroid`) in rushiranpise patches
   - **UPDATED APP** Scoopz (`com.localaiapp.scoops`) in rushiranpise patches
+  - **UPDATED APP** Snow-Forecast.com (`com.snow_forecast.snowforecast`) in rushiranpise patches
+  - **UPDATED APP** Splitwise (`com.splitwise.splitwisemobile`) in rushiranpise patches
+  - **REMOVED APP** Strength Training (`air.com.musclemotion.strength.mobile`) in rushiranpise patches
+  - **UPDATED APP** Super File (`com.esuper.file.explorer`) in rushiranpise patches
+  - **UPDATED APP** The Weather Channel (`com.weather.weather`) in rushiranpise patches
   - **UPDATED APP** TradingView (`com.tradingview.tradingviewapp`) in rushiranpise patches
   - **UPDATED APP** Wavve Boating (`com.wavve.boating.gps`) in rushiranpise patches
+  - **UPDATED APP** Waze (`com.waze`) in rushiranpise patches
+  - **REMOVED APP** Workout (`air.com.musclemotion.workout`) in rushiranpise patches
   - **UPDATED APP** Yatri (`com.yatrirailways.yatri`) in rushiranpise patches
-- **UPDATED** Bundle **saiesh**
-  - **NEW APP** ISS Live Now (`com.nicedayapps.iss_free`) in saiesh patches
-  - **REMOVED APP** Lightroom (`com.adobe.lrmobile`) in saiesh patches
-  - **NEW APP** Projectivy Launcher (`com.spocky.projengmenu`) in saiesh patches
+  - **REMOVED APP** Yoga (`air.com.musclemotion.yoga`) in rushiranpise patches
+- **NEW BUNDLE** Bundle by **rushiranpise-ri-vanced-universal-morphe-patches** (dev, stable)
+  - **NEW APP** XYZ app (`com.example.app`) in rushiranpise-ri-vanced-universal-morphe-patches patches
+- **UPDATED** Bundle **seobject**
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in seobject patches
+- **NEW BUNDLE** Bundle by **variablenine** (stable)
+  - **NEW APP** Reddit (`com.reddit.frontpage`) in variablenine patches
+  - **NEW APP** YouTube (`com.google.android.youtube`) in variablenine patches
+  - **NEW APP** YouTube Music (`com.google.android.apps.youtube.music`) in variablenine patches
+- **UPDATED** Bundle **xhehab**
+  - **NEW APP** BASE Strength AI (`com.skynetcoaching.bromleyapp`) in xhehab patches
+  - **NEW APP** JuggernautAI (`com.jtsstrength.juggernautai`) in xhehab patches
+  - **UPDATED APP** Video Player All Format (`video.player.videoplayer`) in xhehab patches
