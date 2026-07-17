@@ -10483,10 +10483,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/wb_9H23PJOWrL9aQkjQtGD_YxmDx87M2rp_g-knGRHadVb6WQC_twOLXXb-p2JUia61B1ngUyRy7NPJeecLwP0Y"
       }
     ],
-    "fingerprint": "a2db34788b71c0db0106693843a321267beb9d3ccec7925444c9dfb051a886b9",
-    "release_notes": "## [1.4.0](https://github.com/itsthejoker/itsthejoker-patches/compare/v1.3.0...v1.4.0) (2026-07-14)\n\n### ✨ New Features\n\n* **roost:** add Beam of Death (10x fire rate) bullet-hell patch ([fd3ba42](https://github.com/itsthejoker/itsthejoker-patches/commit/fd3ba4252ceadc295371a51884a6277f55e02a28))\n",
-    "release_tag": "v1.4.0",
-    "release_date": "2026-07-14T19:23:12Z"
+    "fingerprint": "a2db34788b71c0db0106693843a321267beb9d3ccec7925444c9dfb051a886b9"
   },
   "itsthejoker:dev": {
     "bundle": "itsthejoker",
@@ -10558,10 +10555,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/wb_9H23PJOWrL9aQkjQtGD_YxmDx87M2rp_g-knGRHadVb6WQC_twOLXXb-p2JUia61B1ngUyRy7NPJeecLwP0Y"
       }
     ],
-    "fingerprint": "34722903a2659b91a1405210606714d7194bd2b97f0474f6062fd35aaa0d36b3",
-    "release_notes": "## [1.4.0-dev.1](https://github.com/itsthejoker/itsthejoker-patches/compare/v1.3.0...v1.4.0-dev.1) (2026-07-14)\n\n### ✨ New Features\n\n* **roost:** add Beam of Death (10x fire rate) bullet-hell patch ([fd3ba42](https://github.com/itsthejoker/itsthejoker-patches/commit/fd3ba4252ceadc295371a51884a6277f55e02a28))\n",
-    "release_tag": "v1.4.0-dev.1",
-    "release_date": "2026-07-14T19:19:25Z"
+    "fingerprint": "34722903a2659b91a1405210606714d7194bd2b97f0474f6062fd35aaa0d36b3"
   },
   "miguel:stable": {
     "bundle": "miguel",
@@ -18988,9 +18982,9 @@
     "bundle": "proxma",
     "channel": "stable",
     "repo_url": "https://github.com/totsiaw/proxma-patches",
-    "created_at": "2026-07-14T18:30:54",
-    "version": "1.5.1",
-    "description": "## [1.5.1](https://github.com/totsiaw/proxma-patches/compare/1.5.0...1.5.1) (2026-07-14)\n\n### Bug Fixes\n\n* delist Daraz — remove patches (unusable on re-signed builds) ([e6cd42e](https://github.com/totsiaw/proxma-patches/commit/e6cd42ef5c4e43adb7fbab16d303b809d197740c))\n",
+    "created_at": "2026-07-17T12:19:34",
+    "version": "1.6.0",
+    "description": "## [1.6.0](https://github.com/totsiaw/proxma-patches/compare/1.5.1...1.6.0) (2026-07-17)\n\n### New Features\n\n* add mytelenor patches (Remove ads, Block trackers, manifest flags) ([47b6550](https://github.com/totsiaw/proxma-patches/commit/47b65503d78f254b9d8517051ef17dac33107e16))\n",
     "apps": [
       {
         "app_name": "Investify",
@@ -19043,6 +19037,40 @@
         "icon_url": "https://play-lh.googleusercontent.com/zJzp3VpEwpbBSonC7xY8f0O7Mwc3f490tFqO2lj6qfR4RjLKlD0-az0ZiUQ72QaCwL4g1fml-UjPV-i8OwrJCt0"
       },
       {
+        "app_name": "My Telenor",
+        "package": "com.telenor.pakistan.mytelenor",
+        "patches": [
+          {
+            "name": "Block trackers",
+            "description": "Stops the Insider, TikTok Business SDK and Mixpanel Session Replay trackers from initializing (event/attribution/session-replay tracking never starts). Leaves AWS Amplify, Firebase core/RemoteConfig/FCM and Google Ads init untouched so app data, push and the remote ad-config the ads patch relies on keep working.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.2.62"
+            ]
+          },
+          {
+            "name": "Block trackers (manifest flags)",
+            "description": "Disables Firebase Analytics + Google advertiser-id auto-collection and the Facebook SDK's auto app-events / advertiser-id / auto-init via AndroidManifest <meta-data> flags — the SDK-side auto-collection that no bytecode init-stub can reach. Leaves Firebase core (FCM push, RemoteConfig) and the Facebook ContentProvider intact. Separate from the bytecode Block trackers patch so you can pick either or both.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.2.62"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Removes every Google Ad Manager ad (banners + interstitials) across Daily Rewards, Home, Test Your Skills and Explore by nulling the remote ad-config chokepoint, so each surface renders its no-ads layout and never requests an interstitial.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.2.62"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/qWyKgf6pUPWpefJlcA9OQupoCEpktkwL0BhEWwZso_Dg0qhxlAGFNJ6RmKVUyJXHD4GCoTuNXyFN8wE5-2uy8w"
+      },
+      {
         "app_name": "MyZong",
         "package": "com.zong.customercare",
         "patches": [
@@ -19084,10 +19112,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/bY_d4uzxtY2_a-r3caEhTlQPzRZy7lCs428H-BIo4KGxyjWm3ZVRCtJTicy07nh3m30n5O6QPrgmYT8okHfT5Q"
       }
     ],
-    "fingerprint": "cc5d54141e1794d037352d6e0f269aed9a4e63df887c0c6d6b93b335f9fb9eb5",
-    "release_notes": "## [1.5.1](https://github.com/totsiaw/proxma-patches/compare/1.5.0...1.5.1) (2026-07-14)\n\n### Bug Fixes\n\n* delist Daraz — remove patches (unusable on re-signed builds) ([e6cd42e](https://github.com/totsiaw/proxma-patches/commit/e6cd42ef5c4e43adb7fbab16d303b809d197740c))\n",
-    "release_tag": "1.5.1",
-    "release_date": "2026-07-14T18:30:54Z"
+    "fingerprint": "f5a59de8ab8c8f1c5c0550e07bb38d044c5bd738ba4a32f4260797ce4755a251",
+    "release_notes": "## [1.6.0](https://github.com/totsiaw/proxma-patches/compare/1.5.1...1.6.0) (2026-07-17)\n\n### New Features\n\n* add mytelenor patches (Remove ads, Block trackers, manifest flags) ([47b6550](https://github.com/totsiaw/proxma-patches/commit/47b65503d78f254b9d8517051ef17dac33107e16))\n",
+    "release_tag": "1.6.0",
+    "release_date": "2026-07-17T12:19:34Z"
   },
   "paresh-maheshwari:stable": {
     "bundle": "paresh-maheshwari",
@@ -41832,9 +41860,9 @@
     "bundle": "brealorg",
     "channel": "stable",
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
-    "created_at": "2026-07-17T12:43:20Z",
-    "version": "morphe-patches-77",
-    "description": "Bug Fixes:\n- Hide the non-functional bottom navigation from Settings search.\n- Make Settings preference icons follow the active light or dark theme.\n- Show and dynamically update the unread Inbox badge in Morphe canonical bottom navigation.\n",
+    "created_at": "2026-07-17T15:43:41Z",
+    "version": "morphe-patches-80",
+    "description": "Allow Boost users to configure a custom self-hosted Synccit API endpoint for read-state synchronization.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -42370,6 +42398,20 @@
             "description": "Starts Boost search on an instant cached active-subreddit landing with Reddit-native labels.",
             "use": true,
             "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
+          },
+          {
+            "name": "Custom Synccit URL",
+            "description": "Allows Boost to use a custom self-hosted Synccit API endpoint.",
+            "use": true,
+            "options": [
+              {
+                "key": "synccit-url",
+                "description": "Full HTTP or HTTPS URL to a Synccit-compatible API endpoint, including api.php."
+              }
+            ],
             "compatible_versions": [
               "1.12.12"
             ]
@@ -43027,10 +43069,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/Sjpaa6xIyJJ9zA4QYOERjsd6ePt-_azhjGVXMMXmHyNhsWunH6CY_gS3GuluGsXk0hVJ1j7YIiLQmFJhr3-qGg"
       }
     ],
-    "fingerprint": "c8f656d09ceba9729b100f68d1516f63f44b6f14307c65eed69b34d9e537b5b8",
-    "release_notes": "# Morphe patch bundle 1.4.77\n\n### Boost for Reddit\n\n### Changes\n\n- Hide the non-functional bottom navigation from Settings search.\n- Make Settings preference icons follow the active light or dark theme.\n- Synchronize the unread Inbox badge with Morphe's canonical bottom navigation.\n\n### User impact\n\nSettings search no longer displays a dead navigation bar. Preference icons remain readable in both light and dark themes. The bottom navigation now displays the current unread Inbox count and updates it dynamically.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-77`.\n- Release asset: `patches-1.4.77.mpp`.\n- Signature asset: `patches-1.4.77.mpp.asc`.\n- MPP SHA256: `a47f0df38caaa488be5c574e35ea308122869cb7593e73ffb349b0ad20a08e5e`.\n",
-    "release_tag": "morphe-patches-77",
-    "release_date": "2026-07-17T12:43:20Z"
+    "fingerprint": "2c6baca87156474015a09dad72f67da71eeb367ed0dc56820e5f71fc5ec0309a",
+    "release_notes": "# Morphe patch bundle 1.4.80\n\n### Boost for Reddit\n\n### Changes\n\n- Added the **Custom Synccit URL** patch.\n- Added the `synccit-url` option for configuring a self-hosted Synccit-compatible API endpoint.\n- Replaced Boost's discontinued hardcoded Synccit endpoint for authentication, read-state uploads, and read-state retrieval.\n\n### User impact\n\nUsers with a self-hosted Synccit-compatible server can now synchronize read state between Boost and other Synccit clients.\n\nThe complete endpoint URL must be configured in the patch option, including `/api.php`.\n\nThe implementation was verified against a real self-hosted server for both read and write synchronization.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-80`.\n- Release asset: `patches-1.4.80.mpp`.\n- Signature asset: `patches-1.4.80.mpp.asc`.\n- MPP SHA256: `5aee2dcf48b65f2671f5192351da505446d8f255a9f0b56ba51b433391314206`.\n",
+    "release_tag": "morphe-patches-80",
+    "release_date": "2026-07-17T15:43:41Z"
   },
   "brealorg:dev": {
     "bundle": "brealorg",
@@ -43038,7 +43080,7 @@
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
     "created_at": "2026-07-16T20:54:38Z",
     "version": "issue41-test-v2",
-    "description": "Bug Fixes:\n- Hide the non-functional bottom navigation from Settings search.\n- Make Settings preference icons follow the active light or dark theme.\n- Show and dynamically update the unread Inbox badge in Morphe canonical bottom navigation.\n",
+    "description": "Allow Boost users to configure a custom self-hosted Synccit API endpoint for read-state synchronization.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -43574,6 +43616,20 @@
             "description": "Starts Boost search on an instant cached active-subreddit landing with Reddit-native labels.",
             "use": true,
             "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
+          },
+          {
+            "name": "Custom Synccit URL",
+            "description": "Allows Boost to use a custom self-hosted Synccit API endpoint.",
+            "use": true,
+            "options": [
+              {
+                "key": "synccit-url",
+                "description": "Full HTTP or HTTPS URL to a Synccit-compatible API endpoint, including api.php."
+              }
+            ],
             "compatible_versions": [
               "1.12.12"
             ]
@@ -44231,7 +44287,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/Sjpaa6xIyJJ9zA4QYOERjsd6ePt-_azhjGVXMMXmHyNhsWunH6CY_gS3GuluGsXk0hVJ1j7YIiLQmFJhr3-qGg"
       }
     ],
-    "fingerprint": "a278c0dd9b13c393cc33ef0e80f7c3c56a2a0cfb1a37fa42c3eff4f662c84e14",
+    "fingerprint": "7bee6263ad1971829a3aaff599f1d7ebdb118bed00e73792f20b478e7fc5e25c",
     "release_notes": "Temporary test bundle for Issue #41.\n\nThis is not a normal Morphe patch release.\n\nIt adds the Boost patch \"Custom Synccit URL\", allowing a tester to\nreplace Boost's discontinued Synccit endpoint with a self-hosted\nSynccit-compatible endpoint.\n\nThe issue remains open until testing against a real server is complete.\n",
     "release_tag": "issue41-test-v2",
     "release_date": "2026-07-16T20:54:38Z"
