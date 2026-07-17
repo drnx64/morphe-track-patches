@@ -41832,9 +41832,9 @@
     "bundle": "brealorg",
     "channel": "stable",
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
-    "created_at": "2026-07-17T08:06:11Z",
-    "version": "morphe-patches-76",
-    "description": "Bug Fixes: Marking a Boost post as read now removes the correct post immediately while preserving invalid-index crash protection across feed variants.\n",
+    "created_at": "2026-07-17T12:43:20Z",
+    "version": "morphe-patches-77",
+    "description": "Bug Fixes:\n- Hide the non-functional bottom navigation from Settings search.\n- Make Settings preference icons follow the active light or dark theme.\n- Show and dynamically update the unread Inbox badge in Morphe canonical bottom navigation.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -42674,6 +42674,15 @@
             "compatible_versions": [
               "1.12.12"
             ]
+          },
+          {
+            "name": "Theme Boost settings icons",
+            "description": "Uses the active theme primary text color for Boost preference icons.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
           }
         ],
         "icon_url": ""
@@ -43018,10 +43027,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/Sjpaa6xIyJJ9zA4QYOERjsd6ePt-_azhjGVXMMXmHyNhsWunH6CY_gS3GuluGsXk0hVJ1j7YIiLQmFJhr3-qGg"
       }
     ],
-    "fingerprint": "e679834bd17db5dc6cc148ffa5c779ca676ed7b6155b3065c851e1aebda2b631",
-    "release_notes": "Morphe patch bundle 1.4.76\n\n### Boost for Reddit\n\n### Changes\n\n- Corrects the shared feed-position resolver used by all three affected Boost feed fragment variants.\n- Preserves the original list position when no wrapper adapter is active, instead of incorrectly replacing it with `-1`.\n- Keeps wrapper-provided invalid positions intact for advertisements and other non-submission rows.\n- Retains the existing bounds guard that prevents invalid-index crashes.\n- Adds a permanent structural verifier for the resolver contract and safety guard.\n\n### User impact\n\nPosts marked as read now disappear immediately when **Hide read permanently** is enabled, without reintroducing the invalid-index crash previously addressed in Issue #19. The separate **Hide read posts** action remains functional.\n\nValidated in Boost Dev on Home and subreddit feeds, including individual mark-as-read removal, bulk hide behavior, and crash regression testing.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-76`.\n- Release asset: `patches-1.4.76.mpp`.\n- Signature asset: `patches-1.4.76.mpp.asc`.\n- MPP SHA256: `62938c0ed7f1357107a079d54e1c59b4d99645144b2d5f91c8882ba7b57af5c7`.\n",
-    "release_tag": "morphe-patches-76",
-    "release_date": "2026-07-17T08:06:11Z"
+    "fingerprint": "c8f656d09ceba9729b100f68d1516f63f44b6f14307c65eed69b34d9e537b5b8",
+    "release_notes": "# Morphe patch bundle 1.4.77\n\n### Boost for Reddit\n\n### Changes\n\n- Hide the non-functional bottom navigation from Settings search.\n- Make Settings preference icons follow the active light or dark theme.\n- Synchronize the unread Inbox badge with Morphe's canonical bottom navigation.\n\n### User impact\n\nSettings search no longer displays a dead navigation bar. Preference icons remain readable in both light and dark themes. The bottom navigation now displays the current unread Inbox count and updates it dynamically.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-77`.\n- Release asset: `patches-1.4.77.mpp`.\n- Signature asset: `patches-1.4.77.mpp.asc`.\n- MPP SHA256: `a47f0df38caaa488be5c574e35ea308122869cb7593e73ffb349b0ad20a08e5e`.\n",
+    "release_tag": "morphe-patches-77",
+    "release_date": "2026-07-17T12:43:20Z"
   },
   "brealorg:dev": {
     "bundle": "brealorg",
@@ -43029,7 +43038,7 @@
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
     "created_at": "2026-07-16T20:54:38Z",
     "version": "issue41-test-v2",
-    "description": "Bug Fixes: Marking a Boost post as read now removes the correct post immediately while preserving invalid-index crash protection across feed variants.\n",
+    "description": "Bug Fixes:\n- Hide the non-functional bottom navigation from Settings search.\n- Make Settings preference icons follow the active light or dark theme.\n- Show and dynamically update the unread Inbox badge in Morphe canonical bottom navigation.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -43869,6 +43878,15 @@
             "compatible_versions": [
               "1.12.12"
             ]
+          },
+          {
+            "name": "Theme Boost settings icons",
+            "description": "Uses the active theme primary text color for Boost preference icons.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
           }
         ],
         "icon_url": ""
@@ -44213,7 +44231,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/Sjpaa6xIyJJ9zA4QYOERjsd6ePt-_azhjGVXMMXmHyNhsWunH6CY_gS3GuluGsXk0hVJ1j7YIiLQmFJhr3-qGg"
       }
     ],
-    "fingerprint": "fcb2a43ea0c0204073d32526e253f7715e97ce9249ceeb08bc52b66687dc59d2",
+    "fingerprint": "a278c0dd9b13c393cc33ef0e80f7c3c56a2a0cfb1a37fa42c3eff4f662c84e14",
     "release_notes": "Temporary test bundle for Issue #41.\n\nThis is not a normal Morphe patch release.\n\nIt adds the Boost patch \"Custom Synccit URL\", allowing a tester to\nreplace Boost's discontinued Synccit endpoint with a self-hosted\nSynccit-compatible endpoint.\n\nThe issue remains open until testing against a real server is complete.\n",
     "release_tag": "issue41-test-v2",
     "release_date": "2026-07-16T20:54:38Z"
