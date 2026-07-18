@@ -21111,9 +21111,9 @@
     "bundle": "variablenine",
     "channel": "stable",
     "repo_url": "https://github.com/variablenine/morphe-patches",
-    "created_at": "2026-07-15T18:13:39",
-    "version": "v1.1.0",
-    "description": "## [1.1.0](https://github.com/variablenine/morphe-patches/compare/v1.0.0...v1.1.0) (2026-07-15)\n\n### ✨ New Features\n\n* Add Cat lock player button for YouTube ([29dde1a](https://github.com/variablenine/morphe-patches/commit/29dde1a402120f88376bb743d3ac4a760aecdfec))\n",
+    "created_at": "2026-07-17T23:58:21",
+    "version": "v1.1.2",
+    "description": "## [1.1.2](https://github.com/variablenine/morphe-patches/compare/v1.1.1...v1.1.2) (2026-07-17)\n\n\n\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -22973,9 +22973,9 @@
       }
     ],
     "fingerprint": "c706b7ce0dfcb94ef181f41e1c668f6390b3fcdcf7b85692553c2269ccbc2821",
-    "release_notes": "## [1.1.0](https://github.com/variablenine/morphe-patches/compare/v1.0.0...v1.1.0) (2026-07-15)\n\n### ✨ New Features\n\n* Add Cat lock player button for YouTube ([29dde1a](https://github.com/variablenine/morphe-patches/commit/29dde1a402120f88376bb743d3ac4a760aecdfec))\n",
-    "release_tag": "v1.1.0",
-    "release_date": "2026-07-15T18:13:39Z"
+    "release_notes": "## [1.1.2](https://github.com/variablenine/morphe-patches/compare/v1.1.1...v1.1.2) (2026-07-17)\n\n\n\n",
+    "release_tag": "v1.1.2",
+    "release_date": "2026-07-17T23:58:21Z"
   },
   "edge-morphe:stable": {
     "bundle": "edge-morphe",
@@ -42170,9 +42170,9 @@
     "bundle": "brealorg",
     "channel": "stable",
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
-    "created_at": "2026-07-17T18:08:09Z",
-    "version": "morphe-patches-82",
-    "description": "Fixed Back navigation from Search by preserving the calling Boost activity.\n",
+    "created_at": "2026-07-17T23:08:21Z",
+    "version": "morphe-patches-83",
+    "description": "Boost for Reddit\n\n- Autoplay the selected animated gallery item after swiping settles.\n- Prevent neighboring pages and player surfaces from flickering during rapid swipes.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -42670,6 +42670,15 @@
           {
             "name": "Add archive links to context menu",
             "description": "",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.12.12"
+            ]
+          },
+          {
+            "name": "Animate media in Boost gallery previews",
+            "description": "Autoplays the selected Reddit gallery GIF while preserving Boost's poster, data preferences, and full-screen media route.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -43379,10 +43388,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/Sjpaa6xIyJJ9zA4QYOERjsd6ePt-_azhjGVXMMXmHyNhsWunH6CY_gS3GuluGsXk0hVJ1j7YIiLQmFJhr3-qGg"
       }
     ],
-    "fingerprint": "2c6baca87156474015a09dad72f67da71eeb367ed0dc56820e5f71fc5ec0309a",
-    "release_notes": "# Morphe patch bundle 1.4.82\n\n### Boost for Reddit\n\n### Changes\n\n- Fixed Back navigation from Search.\n- Opening Search from Morphe's bottom navigation now preserves the previous Boost activity.\n- The correction is included in the existing **Add Boost Search bottom navigation** patch; no additional user-visible patch was added.\n\n### User impact\n\nSwiping back from Search now returns to the previous Boost screen instead of exiting Boost and returning to the launcher.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-82`.\n- Release asset: `patches-1.4.82.mpp`.\n- Signature asset: `patches-1.4.82.mpp.asc`.\n- MPP SHA256: `698a01f9dfc806945a817a68db363bb2756cef60cea28d51661e14d91a3b9fe7`.\n",
-    "release_tag": "morphe-patches-82",
-    "release_date": "2026-07-17T18:08:09Z"
+    "fingerprint": "a76747ffd572e5febabb2d66b29551118a66e03960916e2afec72166c33b45ff",
+    "release_notes": "# Morphe patch bundle 1.4.83\n\n### Boost for Reddit — animated gallery previews\n\n### Changes\n\n- Autoplays the selected animated Reddit gallery item inside Boost's existing pager, without requiring the separate full-screen player for preview playback.\n- Starts playback only after the legacy ViewPager becomes idle and releases neighboring page players during swipes.\n- Preserves Boost's poster fallback, autoplay and data-reduction preferences, and normal full-screen media route.\n- Uses a TextureView-backed ExoPlayer surface to keep playback clipped to its page and prevent play-icon or surface flicker during rapid swipes.\n\n### User impact\n\nAnimated gallery entries now play inline when the selected page settles. Static posters remain available whenever playback is disabled, blocked by data preferences, or fails to initialize. The nine-item test gallery was manually validated in Boost Dev on a Pixel 6 running Android 17. Normal Boost remains untouched pending the later Manager validation gate.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-83`.\n- Release asset: `patches-1.4.83.mpp`.\n- Signature asset: `patches-1.4.83.mpp.asc`.\n- MPP SHA256: `c1dbd9dd3e50252d4215334f5c75f7a37c67c1932855f35063ae0912c284993b`.\n",
+    "release_tag": "morphe-patches-83",
+    "release_date": "2026-07-17T23:08:21Z"
   },
   "saiesh:stable": {
     "bundle": "saiesh",
