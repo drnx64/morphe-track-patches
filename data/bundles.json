@@ -42593,9 +42593,9 @@
     "bundle": "brealorg",
     "channel": "stable",
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
-    "created_at": "2026-07-18T17:38:31Z",
-    "version": "morphe-patches-89",
-    "description": "Bug Fixes\n\n- Removed obsolete Gilded and Friends tabs from Boost profiles.\n",
+    "created_at": "2026-07-18T20:54:44Z",
+    "version": "morphe-patches-90",
+    "description": "Bug Fixes\n\n- Preserved subreddit search context and restored reliable Search routing.\n- Tapping the selected Search destination again now opens the keyboard.\n",
     "apps": [
       {
         "app_name": "rif is fun",
@@ -43821,9 +43821,9 @@
       }
     ],
     "fingerprint": "8b2f213279f179c38a4efb38ece7c457ae2789c88a3164002ae8249c314984b4",
-    "release_notes": "Morphe patch bundle 1.4.89\n\n### Boost for Reddit\n\n### Changes\n\n- Adds the `Remove obsolete profile tabs` compatibility patch for Boost 1.12.12.\n- Removes the legacy `Gilded` and `Friends` tabs from both the signed-in account profile and other user profiles.\n- Keeps supported profile destinations and their ordering intact, including Overview, Posts, Comments, Saved, Hidden, Downvoted and Blocked.\n- Uses a fail-closed runtime shape check so unexpected Boost layouts are left unchanged instead of partially rewriting the profile tab model.\n\n### User impact\n\nBoost no longer presents two profile destinations backed by Reddit features that are unavailable or nonfunctional in the legacy client. Profiles open with only usable destinations, avoiding the misleading empty Friends screen and obsolete Gilded view. This does not add a follower viewer, scrape Reddit, or change authentication or network behavior. Runtime validation passed in the isolated Boost Followers DEV package, and Normal Boost was not overwritten.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-89`.\n- Release asset: `patches-1.4.89.mpp`.\n- Signature asset: `patches-1.4.89.mpp.asc`.\n- MPP SHA256: `dfe157f062111bbed6befe239c63ea8931a2bd8acc1974b12049d23aa07a263c`.\n",
-    "release_tag": "morphe-patches-89",
-    "release_date": "2026-07-18T17:38:31Z"
+    "release_notes": "# Morphe patch bundle 1.4.90\n\n### Boost for Reddit\n\n### Changes\n\n- Preserve Boost’s native subreddit context when Search is opened from a community.\n- Display `Search in r/<subreddit>` in the search field so the active scope is immediately visible.\n- Restore global Search routing from Home, Inbox, Profile, and Subscriptions without incorrectly invoking the subreddit-only native route.\n- Focus the search field and open the keyboard when the already-selected Search destination is tapped again.\n- Add a permanent Search routing contract to the release workflow.\n\n### User impact\n\nSubreddit searches now remain scoped to the community from which Search was opened. Global Search remains site-wide and retains the `Search reddit` hint. Search can be opened consistently from all canonical bottom-navigation destinations, and tapping Search a second time provides immediate keyboard access.\n\nThe asynchronous Active subreddits section movement tracked in #95 is separate and is not included in this release.\n\n### Validation\n\n- Final local release gate passed before publish.\n- README SHA is aligned to the published MPP.\n- Release tag: `morphe-patches-90`.\n- Release asset: `patches-1.4.90.mpp`.\n- Signature asset: `patches-1.4.90.mpp.asc`.\n- MPP SHA256: `f279ad26e41d51b183c0b8cf099151c18c5f4be9d33f64b83069b15c37802156`.\n",
+    "release_tag": "morphe-patches-90",
+    "release_date": "2026-07-18T20:54:44Z"
   },
   "saiesh:stable": {
     "bundle": "saiesh",
@@ -43984,9 +43984,9 @@
     "bundle": "bufferk",
     "channel": "stable",
     "repo_url": "https://github.com/bufferk/morphe-patches",
-    "created_at": "2026-07-18T09:23:06",
-    "version": "v1.7.1",
-    "description": "## [1.7.1](https://github.com/bufferk/morphe-patches/compare/v1.7.0...v1.7.1) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **brave:** Fixed XML resource issue for Brave Patch ([#17](https://github.com/bufferk/morphe-patches/issues/17)) ([0c0ada3](https://github.com/bufferk/morphe-patches/commit/0c0ada3dfeaad7e741e46e66e104795fea2e07e1))\n",
+    "created_at": "2026-07-18T18:58:06",
+    "version": "v1.8.0",
+    "description": "## [1.8.0](https://github.com/bufferk/morphe-patches/compare/v1.7.1...v1.8.0) (2026-07-18)\n\n### ✨ New Features\n\n* **mygate:** Introducing MyGate Premium Patch ([#19](https://github.com/bufferk/morphe-patches/issues/19)) ([ff0953b](https://github.com/bufferk/morphe-patches/commit/ff0953bf3219fab9a14841c2fee258cfbb85094c))\n",
     "apps": [
       {
         "app_name": "Bounce Companion",
@@ -44041,29 +44041,12 @@
         "package": "com.mygate.user",
         "patches": [
           {
-            "name": "Flutter Premium Bypass",
-            "description": "Forces premium status inside the JSON payload sent to Flutter",
+            "name": "MyGate",
+            "description": "Unlocks MyGate premium, removes ads, fixes notifications and e-Intercom.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "7.26.1"
-            ]
-          },
-          {
-            "name": "Hide ads",
-            "description": "Removes MyGate in-app ads (pre-approval screen, allow-entries screen, activity feed, and visitor profile masthead).",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.26.1"
-            ]
-          },
-          {
-            "name": "Unlock premium",
-            "description": "Unlocks all MyGate premium features: spoofs USER_PREMIUM_PLAN status, suppresses upgrade dialogs and paywalls, enables frequent pre-approvals for deliveries, cabs and visiting help, unlocks surprise delivery and the always-approve-entries toggle.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
+              "7.31.0",
               "7.26.1"
             ]
           }
@@ -44171,10 +44154,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/kVMxXC3fV4cyG56MZunYS2-HYaHh3eM3YTWoDbYaN5-G9xIU2k235hHVQmRrm79tzBSzt0cZ6GsBbzGzGbbMwg"
       }
     ],
-    "fingerprint": "5bf88127f201b23b76ce0f5a89479ec1c367d0b86d6b148fac288c4315322a01",
-    "release_notes": "## [1.7.1](https://github.com/bufferk/morphe-patches/compare/v1.7.0...v1.7.1) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **brave:** Fixed XML resource issue for Brave Patch ([#17](https://github.com/bufferk/morphe-patches/issues/17)) ([0c0ada3](https://github.com/bufferk/morphe-patches/commit/0c0ada3dfeaad7e741e46e66e104795fea2e07e1))\n",
-    "release_tag": "v1.7.1",
-    "release_date": "2026-07-18T09:23:06Z"
+    "fingerprint": "e813e369ca90f1faf0ebbbd5346fcd78c3352f5ae945de7061aacd54a41067c4",
+    "release_notes": "## [1.8.0](https://github.com/bufferk/morphe-patches/compare/v1.7.1...v1.8.0) (2026-07-18)\n\n### ✨ New Features\n\n* **mygate:** Introducing MyGate Premium Patch ([#19](https://github.com/bufferk/morphe-patches/issues/19)) ([ff0953b](https://github.com/bufferk/morphe-patches/commit/ff0953bf3219fab9a14841c2fee258cfbb85094c))\n",
+    "release_tag": "v1.8.0",
+    "release_date": "2026-07-18T18:58:06Z"
   },
   "bufferk:dev": {
     "bundle": "bufferk",
@@ -46720,9 +46703,9 @@
     "bundle": "drosocode",
     "channel": "stable",
     "repo_url": "https://github.com/drosoCode/morphe-patches",
-    "created_at": "2026-07-15T00:29:15Z",
-    "version": "1.0.1",
-    "description": "## 1.0.0 (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* restore patches_end tag ([d66e55a](https://github.com/drosoCode/morphe-patches/commit/d66e55a7fd3b91a2e4f86bf0ef0111656be01a1f))\n\n### ✨ New Features\n\n* imperihome patch ([7f20aae](https://github.com/drosoCode/morphe-patches/commit/7f20aae53c13ecf30c2f72cd538c1f8d70e9ff40))",
+    "created_at": "2026-07-18T20:36:06Z",
+    "version": "1.0.0",
+    "description": "## 1.0.0 (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* restore patches_end tag ([d66e55a](https://github.com/drosoCode/morphe-patches/commit/d66e55a7fd3b91a2e4f86bf0ef0111656be01a1f))\n\n### ✨ New Features\n\n* imperihome patch ([7f20aae](https://github.com/drosoCode/morphe-patches/commit/7f20aae53c13ecf30c2f72cd538c1f8d70e9ff40))",
     "apps": [
       {
         "app_name": "ImperiHome",
@@ -46742,39 +46725,9 @@
       }
     ],
     "fingerprint": "aa46778f8fdef2d4edb3f2fc4a12e3f0821d56e5ab81618b8cdcfebbfedae1a3",
-    "release_notes": "",
-    "release_tag": "v1.0.1",
-    "release_date": "2026-07-15T00:29:15Z"
-  },
-  "drosocode:dev": {
-    "bundle": "drosocode",
-    "channel": "dev",
-    "repo_url": "https://github.com/drosoCode/morphe-patches",
-    "created_at": "2026-07-15T00:51:23Z",
-    "version": "1.0.0-dev.2",
-    "description": "## 1.0.0 (2026-07-15)\n\n### 🐛 Bug Fixes\n\n* restore patches_end tag ([d66e55a](https://github.com/drosoCode/morphe-patches/commit/d66e55a7fd3b91a2e4f86bf0ef0111656be01a1f))\n\n### ✨ New Features\n\n* imperihome patch ([7f20aae](https://github.com/drosoCode/morphe-patches/commit/7f20aae53c13ecf30c2f72cd538c1f8d70e9ff40))",
-    "apps": [
-      {
-        "app_name": "ImperiHome",
-        "package": "com.imperihome.lite",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlock all premium features (no unlocker app required).",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.11"
-            ]
-          }
-        ],
-        "icon_url": ""
-      }
-    ],
-    "fingerprint": "669fd76cb8f6d8c0d668da3e9ec0b5b880fe72dce310e39442a42224c388e526",
-    "release_notes": "## [1.0.0-dev.2](https://github.com/drosoCode/morphe-patches/compare/v1.0.0-dev.1...v1.0.0-dev.2) (2026-07-15)\n\n### ✨ New Features\n\n* test ([2044e7f](https://github.com/drosoCode/morphe-patches/commit/2044e7fd60032defdee294c52b646cb48579d3e0))\n",
-    "release_tag": "v1.0.0-dev.2",
-    "release_date": "2026-07-15T00:51:23Z"
+    "release_notes": "## 1.0.0 (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* restore patches_end tag ([d66e55a](https://github.com/drosoCode/morphe-patches/commit/d66e55a7fd3b91a2e4f86bf0ef0111656be01a1f))\n\n### ✨ New Features\n\n* imperihome patch ([7f20aae](https://github.com/drosoCode/morphe-patches/commit/7f20aae53c13ecf30c2f72cd538c1f8d70e9ff40))\n",
+    "release_tag": "v1.0.0",
+    "release_date": "2026-07-18T20:36:06Z"
   },
   "lynx6319:stable": {
     "bundle": "lynx6319",
