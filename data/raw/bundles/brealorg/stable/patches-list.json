@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.4.83",
+  "version": "1.4.85",
   "patches": [
     {
       "name": "Add Boost Search bottom navigation",
@@ -61,7 +61,7 @@
     },
     {
       "name": "Animate media in Boost gallery previews",
-      "description": "Autoplays the selected Reddit gallery GIF while preserving Boost's poster, data preferences, and full-screen media route.",
+      "description": "Autoplays selected Reddit gallery GIF and video media while preserving Boost's poster, data preferences, and full-screen media route.",
       "default": true,
       "dependencies": [
         "BytecodePatch"
@@ -621,32 +621,6 @@
           "targets": [
             {
               "version": "",
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": 21,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Fix Boost Home floating action menu overlap",
-      "description": "Raises the Home floating action menu above the bottom navigation without changing Comments or split-screen layouts.",
-      "default": true,
-      "dependencies": [],
-      "compatiblePackages": [
-        {
-          "packageName": "com.rubenmayayo.reddit",
-          "name": "Boost for Reddit",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#FF4500",
-          "signatures": null,
-          "targets": [
-            {
-              "version": "1.12.12",
               "versionCodes": null,
               "isExperimental": false,
               "minSdk": 21,
@@ -2560,6 +2534,32 @@
       "dependencies": [
         "BytecodePatch"
       ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.rubenmayayo.reddit",
+          "name": "Boost for Reddit",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF4500",
+          "signatures": null,
+          "targets": [
+            {
+              "version": "1.12.12",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": 21,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Standardize Boost bottom-navigation FAB clearance",
+      "description": "Keeps Home/Subreddit, Random, Inbox and Profile FABs 16 dp above the canonical bottom navigation.",
+      "default": true,
+      "dependencies": [],
       "compatiblePackages": [
         {
           "packageName": "com.rubenmayayo.reddit",
