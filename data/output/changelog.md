@@ -1,5 +1,33 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-17]
+- **UPDATED** Bundle **brealorg**
+  - **UPDATED APP** Boost for Reddit (`com.rubenmayayo.reddit`) in brealorg patches
+- **UPDATED** Bundle **bufferk**
+  - **NEW APP** [PRE-RELEASE] Brave Browser (`com.brave.browser`) in bufferk patches
+- **UPDATED** Bundle **hoo-dles**
+  - **UPDATED APP** MacroFactor (`com.sbs.diet`) in hoo-dles patches
+- **NEW BUNDLE** Bundle by **hxreborn** (dev, stable)
+  - **NEW APP** ForusApp (`com.myvitale.forus`) in hxreborn patches
+  - **NEW APP** Projectivy Launcher (`com.spocky.projengmenu`) in hxreborn patches
+  - **NEW APP** Showly: Track Shows & Movies (`com.michaldrabik.showly2`) in hxreborn patches
+- **NEW BUNDLE** Bundle by **ikura** (dev, stable)
+  - **NEW APP** CarbitLink (`net.easyconn.carman.wws`) in ikura patches
+  - **NEW APP** XYZ app (`com.example.app`) in ikura patches
+- **UPDATED** Bundle **miguel**
+  - **UPDATED APP** Zombie Catchers (`fi.twomenandadog.zombiecatchers`) in miguel patches
+- **UPDATED** Bundle **pichiwa**
+  - **UPDATED APP** WhatsApp (`com.whatsapp`) in pichiwa patches
+- **UPDATED** Bundle **pinterest-morphed**
+  - **UPDATED APP** Pinterest (`com.pinterest`) in pinterest-morphed patches
+- **UPDATED** Bundle **proxma**
+  - **NEW APP** My Telenor (`com.telenor.pakistan.mytelenor`) in proxma patches
+- **UPDATED** Bundle **rushiranpise**
+  - **NEW APP** [PRE-RELEASE] Box Box (`club.boxbox.android`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] PC Remote - Desktop & Phone (`com.monect.portable`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] TorrDroid (`intelligems.torrdroid`) in rushiranpise patches
+- **NEW BUNDLE** Bundle by **stylus** (stable)
+  - **NEW APP** Reddit (`com.reddit.frontpage`) in stylus patches
 ## [2026-07-16]
 - **NEW BUNDLE** Bundle by **arhcos** (stable)
   - **NEW APP** XYZ app (`com.example.app`) in arhcos patches
