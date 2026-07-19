@@ -19621,9 +19621,9 @@
     "bundle": "proxma",
     "channel": "stable",
     "repo_url": "https://github.com/totsiaw/proxma-patches",
-    "created_at": "2026-07-17T12:19:34",
-    "version": "1.6.0",
-    "description": "## [1.6.0](https://github.com/totsiaw/proxma-patches/compare/1.5.1...1.6.0) (2026-07-17)\n\n### New Features\n\n* add mytelenor patches (Remove ads, Block trackers, manifest flags) ([47b6550](https://github.com/totsiaw/proxma-patches/commit/47b65503d78f254b9d8517051ef17dac33107e16))\n",
+    "created_at": "2026-07-19T10:19:09",
+    "version": "1.7.0",
+    "description": "## [1.7.0](https://github.com/totsiaw/proxma-patches/compare/1.6.0...1.7.0) (2026-07-19)\n\n### New Features\n\n* add mytelenor Bypass device validation patch ([7d9a1a7](https://github.com/totsiaw/proxma-patches/commit/7d9a1a76c66a1bc436a9998ea3f18d5d1cb52b39))\n",
     "apps": [
       {
         "app_name": "Investify",
@@ -19698,6 +19698,15 @@
             ]
           },
           {
+            "name": "Bypass device validation",
+            "description": "Neutralizes the client-side device-validation gate (anti-root / anti-emulator / anti-Frida / anti-Xposed / anti-tamper battery) that shows a \"Device validation failed\" toast and kills the app via finishAffinity() on a rooted, emulated or re-signed build. Redirects the single failure callback to the success path so all ~16 checks report as passed and the app keeps running pre- and post-login.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.2.62"
+            ]
+          },
+          {
             "name": "Remove ads",
             "description": "Removes every Google Ad Manager ad (banners + interstitials) across Daily Rewards, Home, Test Your Skills and Explore by nulling the remote ad-config chokepoint, so each surface renders its no-ads layout and never requests an interstitial.",
             "use": true,
@@ -19751,10 +19760,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/bY_d4uzxtY2_a-r3caEhTlQPzRZy7lCs428H-BIo4KGxyjWm3ZVRCtJTicy07nh3m30n5O6QPrgmYT8okHfT5Q"
       }
     ],
-    "fingerprint": "f5a59de8ab8c8f1c5c0550e07bb38d044c5bd738ba4a32f4260797ce4755a251",
-    "release_notes": "## [1.6.0](https://github.com/totsiaw/proxma-patches/compare/1.5.1...1.6.0) (2026-07-17)\n\n### New Features\n\n* add mytelenor patches (Remove ads, Block trackers, manifest flags) ([47b6550](https://github.com/totsiaw/proxma-patches/commit/47b65503d78f254b9d8517051ef17dac33107e16))\n",
-    "release_tag": "1.6.0",
-    "release_date": "2026-07-17T12:19:34Z"
+    "fingerprint": "2c609e7dffd49cbecd70f4833d1aff188ae29a4cef83059f1adf58923568e1a5",
+    "release_notes": "## [1.7.0](https://github.com/totsiaw/proxma-patches/compare/1.6.0...1.7.0) (2026-07-19)\n\n### New Features\n\n* add mytelenor Bypass device validation patch ([7d9a1a7](https://github.com/totsiaw/proxma-patches/commit/7d9a1a76c66a1bc436a9998ea3f18d5d1cb52b39))\n",
+    "release_tag": "1.7.0",
+    "release_date": "2026-07-19T10:19:09Z"
   },
   "stylus:stable": {
     "bundle": "stylus",
