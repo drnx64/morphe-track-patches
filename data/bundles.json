@@ -3752,9 +3752,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-07-18T05:26:03",
-    "version": "v1.14.0-dev.2",
-    "description": "# Rushi's Patches v1.14.0-dev.2\nPatch source for Morphe.\n**Channel:** dev prerelease  \n**Branch:** `dev`  \n**Patch count:** 212\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.14.0-dev.2.mpp` from the release assets below.\n> This is a dev prerelease and may be less stable than a stable release.\n\n## Supported Apps Changed\n\n### Added Apps\n- **Flud** (`com.delphicoder.flud`)\n- **Mapy** (`cz.seznam.mapy`)\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.14.0-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.1...v1.14.0-dev.2) (2026-07-18)\n\n### New Patches\n\n* add flud ([ce7c0a1](https://github.com/rushiranpise/morphe-patches/commit/ce7c0a1f4570e4935a0e35ce6dccca37e365d476))\n* add mapy ([eedc71a](https://github.com/rushiranpise/morphe-patches/commit/eedc71ae90ee77bc9a4ea4129212593aa6487a46))",
+    "created_at": "2026-07-19T08:42:31",
+    "version": "v1.14.0-dev.3",
+    "description": "# Rushi's Patches v1.14.0-dev.3\nPatch source for Morphe.\n**Channel:** dev prerelease  \n**Branch:** `dev`  \n**Patch count:** 218\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.14.0-dev.3.mpp` from the release assets below.\n> This is a dev prerelease and may be less stable than a stable release.\n\n## Supported Apps Changed\n\n### Added Apps\n- **Google Photos** (`com.google.android.apps.photos`)\n\n### Updated App Versions\n- **Android Developer Verifier** (`com.google.android.verifier`): `1.0.940985764` -> `1.0.943911795`\n- **Block Blast!** (`com.block.juggle`): `10.3.5` -> `10.3.9`\n- **Flud** (`com.delphicoder.flud`): `2.0.13` -> `2.0.13-beta02`\n- **JEFIT** (`je.fit`): `17.2.6` -> `17.2.8`\n- **Minimal Widgets** (`com.jndapp.minimal.widgets`): `1.1.01` -> `1.3.01`\n- **NAVITIME** (`com.navitime.inbound.walk`): `12.0.4` -> `12.0.5`\n- **Stargazing Hub** (`com.twtapp`): `3.3.1` -> `3.3.2`\n- **VIZ Manga** (`com.vizmanga.android`): `4.14.0` -> `4.14.2`\n- **Wavve Boating** (`com.wavve.boating.gps`): `5.7.1` -> `5.7.3`\n- **Weawow: Weather & Widget** (`com.weawow`): `7.1.7` -> `7.1.8`\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.14.0-dev.3](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.2...v1.14.0-dev.3) (2026-07-19)\n\n### New Patches\n\n* add google photos ([58552d0](https://github.com/rushiranpise/morphe-patches/commit/58552d0154b588ad1b05a2934cf2b9b7d81a002b))",
     "apps": [
       {
         "app_name": "Snipd",
@@ -4179,7 +4179,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "10.3.5"
+              "10.3.9"
             ]
           }
         ],
@@ -4412,7 +4412,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "2.0.13"
+              "2.0.13-beta02"
             ]
           }
         ],
@@ -4618,6 +4618,89 @@
         "icon_url": "https://play-lh.googleusercontent.com/DXrF5vnF9dq1oD4tH9QYTC_T-LMWnBZnBrgRc_HUyULImVzcLnfaYw8Awg7qkwxHvcEIXY05qoCEgM7L4T4Rvw"
       },
       {
+        "app_name": "Google Photos",
+        "package": "com.google.android.apps.photos",
+        "patches": [
+          {
+            "name": "AMOLED dark theme",
+            "description": "Makes Google Photos dark surfaces true black.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.83.0.943371825"
+            ]
+          },
+          {
+            "name": "Change package name",
+            "description": "Installs Google Photos beside the system Photos app by changing package, permissions, providers, and app name.",
+            "use": false,
+            "options": [
+              {
+                "key": "googlePhotosPackageName",
+                "description": "Package name for the cloned Google Photos app."
+              },
+              {
+                "key": "googlePhotosAppName",
+                "description": "Launcher name for the cloned Google Photos app."
+              }
+            ],
+            "compatible_versions": [
+              "7.83.0.943371825"
+            ]
+          },
+          {
+            "name": "Enable DCIM folders backup control",
+            "description": "Allows controlling Camera and other DCIM folder backup individually.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.83.0.943371825"
+            ]
+          },
+          {
+            "name": "Fix DCIM folder classification",
+            "description": "Prevents non-Camera DCIM folders from being grouped as Camera.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.83.0.943371825"
+            ]
+          },
+          {
+            "name": "GmsCore support",
+            "description": "Adds MicroG/GmsCore support metadata for Google Photos.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.83.0.943371825"
+            ]
+          },
+          {
+            "name": "Spoof features",
+            "description": "Spoofs selectable Pixel Photos build and feature flags.",
+            "use": false,
+            "options": [
+              {
+                "key": "googlePhotosSpoofProfile",
+                "description": "Device profile used for Build fields and Pixel feature levels."
+              },
+              {
+                "key": "googlePhotosAndroidVersion",
+                "description": "Optionally spoof Build.VERSION fields. Follow profile uses the selected Pixel's matching Android version."
+              },
+              {
+                "key": "googlePhotosOverrideRomFeatureLevels",
+                "description": "Force newer Pixel feature flags off when the selected profile should not have them."
+              }
+            ],
+            "compatible_versions": [
+              "7.83.0.943371825"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/kErBTF4VcGwhtKbCr80Bs2R1lNZiYkHbKcf1i3ZF6dg_5LqDAlCI4wU-nzwvo7PAbxeBXM_tv1hc11gr4aIIW-Q"
+      },
+      {
         "app_name": "Android Developer Verifier",
         "package": "com.google.android.verifier",
         "patches": [
@@ -4627,7 +4710,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.0.940985764"
+              "1.0.943911795"
             ]
           }
         ],
@@ -4764,7 +4847,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.1.01"
+              "1.3.01"
             ]
           }
         ],
@@ -5052,7 +5135,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.0.4"
+              "12.0.5"
             ]
           }
         ],
@@ -5694,7 +5777,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "3.3.1"
+              "3.3.2"
             ]
           }
         ],
@@ -5742,7 +5825,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "4.14.0"
+              "4.14.2"
             ]
           }
         ],
@@ -5758,7 +5841,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.7.1"
+              "5.7.3"
             ]
           }
         ],
@@ -6056,7 +6139,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "7.1.7"
+              "7.1.8"
             ]
           }
         ],
@@ -6421,7 +6504,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "17.2.6"
+              "17.2.8"
             ]
           }
         ],
@@ -6638,10 +6721,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/w24A3A8HtaBv-DBFCA_uDOpLvcCMRphB0Q59mPKN1UJAN1zqERv1U-qXOBPqJYjLUcCDiTRZ6DUGU8pgzckDEc8"
       }
     ],
-    "fingerprint": "40bad422c4dd90ae6c41a9b714182d84716a3b1a181248131bd48d4a11a7b86c",
-    "release_notes": "# Rushi's Patches v1.14.0-dev.2\nPatch source for Morphe.\n**Channel:** dev prerelease  \n**Branch:** `dev`  \n**Patch count:** 212\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.14.0-dev.2.mpp` from the release assets below.\n> This is a dev prerelease and may be less stable than a stable release.\n\n## Supported Apps Changed\n\n### Added Apps\n- **Flud** (`com.delphicoder.flud`)\n- **Mapy** (`cz.seznam.mapy`)\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.14.0-dev.2](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.1...v1.14.0-dev.2) (2026-07-18)\n\n### New Patches\n\n* add flud ([ce7c0a1](https://github.com/rushiranpise/morphe-patches/commit/ce7c0a1f4570e4935a0e35ce6dccca37e365d476))\n* add mapy ([eedc71a](https://github.com/rushiranpise/morphe-patches/commit/eedc71ae90ee77bc9a4ea4129212593aa6487a46))",
-    "release_tag": "v1.14.0-dev.2",
-    "release_date": "2026-07-18T05:26:03Z"
+    "fingerprint": "5b677bd5c573476ab3bf6bcd53caee77dc874824567c1aefbbbc03a602f6e9b8",
+    "release_notes": "# Rushi's Patches v1.14.0-dev.3\nPatch source for Morphe.\n**Channel:** dev prerelease  \n**Branch:** `dev`  \n**Patch count:** 218\n**Install in Morphe:** https://morphe.software/add-source?github=rushiranpise/morphe-patches  \n**Download:** `patches-1.14.0-dev.3.mpp` from the release assets below.\n> This is a dev prerelease and may be less stable than a stable release.\n\n## Supported Apps Changed\n\n### Added Apps\n- **Google Photos** (`com.google.android.apps.photos`)\n\n### Updated App Versions\n- **Android Developer Verifier** (`com.google.android.verifier`): `1.0.940985764` -> `1.0.943911795`\n- **Block Blast!** (`com.block.juggle`): `10.3.5` -> `10.3.9`\n- **Flud** (`com.delphicoder.flud`): `2.0.13` -> `2.0.13-beta02`\n- **JEFIT** (`je.fit`): `17.2.6` -> `17.2.8`\n- **Minimal Widgets** (`com.jndapp.minimal.widgets`): `1.1.01` -> `1.3.01`\n- **NAVITIME** (`com.navitime.inbound.walk`): `12.0.4` -> `12.0.5`\n- **Stargazing Hub** (`com.twtapp`): `3.3.1` -> `3.3.2`\n- **VIZ Manga** (`com.vizmanga.android`): `4.14.0` -> `4.14.2`\n- **Wavve Boating** (`com.wavve.boating.gps`): `5.7.1` -> `5.7.3`\n- **Weawow: Weather & Widget** (`com.weawow`): `7.1.7` -> `7.1.8`\n\n## Need Help?\n\nIf a patch fails, open a bug report and include:\n\n- App version\n- Patch source release/build\n- APK source/type\n- Logs\n\nUse the bug templates so the required details are included:\nhttps://github.com/rushiranpise/morphe-patches/issues/new/choose\n\n## Verification\n\nDownload `SHA256SUMS.txt` from the release assets and compare it with the `.mpp` file you downloaded.\n\n## [1.14.0-dev.3](https://github.com/rushiranpise/morphe-patches/compare/v1.14.0-dev.2...v1.14.0-dev.3) (2026-07-19)\n\n### New Patches\n\n* add google photos ([58552d0](https://github.com/rushiranpise/morphe-patches/commit/58552d0154b588ad1b05a2934cf2b9b7d81a002b))",
+    "release_tag": "v1.14.0-dev.3",
+    "release_date": "2026-07-19T08:42:31Z"
   },
   "trimpsuz:stable": {
     "bundle": "trimpsuz",
