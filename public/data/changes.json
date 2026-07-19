@@ -833,6 +833,31 @@
           ]
         }
       ]
+    },
+    {
+      "bundle": "proxma",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "My Telenor",
+          "package": "com.telenor.pakistan.mytelenor",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Bypass device validation",
+                "description": "Neutralizes the client-side device-validation gate (anti-root / anti-emulator / anti-Frida / anti-Xposed / anti-tamper battery) that shows a \"Device validation failed\" toast and kills the app via finishAffinity() on a rooted, emulated or re-signed build. Redirects the single failure callback to the success path so all ~16 checks report as passed and the app keeps running pre- and post-login."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            4
+          ]
+        }
+      ]
     }
   ]
 }
