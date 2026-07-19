@@ -1,4 +1,5 @@
 import os
+import re
 import shutil
 import json
 from datetime import datetime, timezone
@@ -6,6 +7,8 @@ from xml.sax.saxutils import escape as xml_escape
 from state_manager import ensure_dirs, ROOT_DIR, ROOT_DATA_DIR, OUTPUT_DIR, save_json, load_json
 
 PUBLIC_DATA_DIR = os.path.join(ROOT_DIR, "public", "data")
+REPOS_LIST_PATH = os.path.join(ROOT_DATA_DIR, "repos_list.txt")
+README_PATH = os.path.join(ROOT_DIR, "README.md")
 
 
 def _rfc2822(date_str):
@@ -135,7 +138,7 @@ def generate_static_files():
 
     # Sync all data files to public/data/ (used by Vite dev server)
     os.makedirs(PUBLIC_DATA_DIR, exist_ok=True)
-    for filename in ["core.json", "stats.json", "changes.json", "bundles.json", "changelog.json"]:
+    for filename in ["core.json", "stats.json", "changes.json", "bundles.json", "changelog.json", "repos_list.txt"]:
         src = os.path.join(ROOT_DATA_DIR, filename)
         dst = os.path.join(PUBLIC_DATA_DIR, filename)
         if os.path.exists(src):
@@ -153,7 +156,80 @@ def generate_static_files():
             if os.path.isfile(fsrc):
                 shutil.copy2(fsrc, fdst)
 
+    # Update README repos table
+    update_readme_repos_table()
+
     print("Static site files synced to data/ and public/data/.")
+
+
+def update_readme_repos_table():
+    """Update the repository table in README.md from repos_list.txt."""
+    if not os.path.exists(REPOS_LIST_PATH):
+        print("No repos_list.txt found, skipping README update.")
+        return
+
+    if not os.path.exists(README_PATH):
+        print("No README.md found, skipping README update.")
+        return
+
+    repos = []
+    with open(REPOS_LIST_PATH, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#"):
+                continue
+            m = re.match(r"^([^/]+/[^/#\s]+)\s*->\s*(https://\S+)", line)
+            if m:
+                owner_repo = m.group(1)
+                url = m.group(2)
+                author = owner_repo.split("/")[0]
+                repos.append((owner_repo, url, author))
+
+    if not repos:
+        print("No repos parsed from repos_list.txt, skipping README update.")
+        return
+
+    # Generate table rows
+    table_rows = []
+    for i, (owner_repo, url, author) in enumerate(sorted(repos, key=lambda x: x[0].lower()), 1):
+        table_rows.append(
+            f"| {i} | [{owner_repo}]({url}) | [@{author}](https://github.com/{author}) |"
+        )
+
+    table_header = f"| # | Repo | Author |\n|---|------|--------|\n"
+    table_body = "\n".join(table_rows)
+
+    with open(README_PATH, "r", encoding="utf-8") as f:
+        readme = f.read()
+
+    start_marker = "Thanks to every developer who publishes Morphe patches."
+    end_marker = "Missing or new? Check"
+
+    start_idx = readme.find(start_marker)
+    end_idx = readme.find(end_marker)
+
+    if start_idx == -1 or end_idx == -1:
+        print("Could not find table markers in README.md, skipping update.")
+        return
+
+    start_line_end = readme.index("\n", start_idx) + 1
+    end_line_start = readme.rindex("\n", 0, end_idx) + 1
+
+    new_replacement = "\n" + table_header + table_body + "\n\n"
+
+    updated_readme = readme[:start_line_end] + new_replacement + readme[end_line_start:]
+
+    total = len(repos)
+    updated_readme = re.sub(
+        r'\(\d+\+? repos\)',
+        f'({total} repos)',
+        updated_readme
+    )
+
+    with open(README_PATH, "w", encoding="utf-8") as f:
+        f.write(updated_readme)
+
+    print(f"README.md updated with {total} repositories in the table.")
 
 
 if __name__ == "__main__":

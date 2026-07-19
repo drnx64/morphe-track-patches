@@ -181,7 +181,7 @@ export default function BundleHistoryModal() {
 
               <div className="bundle-release-header">
                 <span className="bundle-release-version">
-                  {escHtml(currentBundle.version)}
+                  {currentBundle.version}
                   <span className="badge" style={{ background: '#22c55e', color: '#fff', fontSize: '0.65rem', marginLeft: '0.5rem' }}>CURRENT</span>
                 </span>
                 <span className="bundle-release-badges">
@@ -221,7 +221,7 @@ export default function BundleHistoryModal() {
                             ) : (
                               <span className="badge badge-updated">RELEASE</span>
                             )}
-                            <span className="badge-version">{escHtml(b.version)}</span>
+                            <span className="badge-version">{b.version}</span>
                             <ChannelBadge channel={b.channel} />
                           </div>
                           {b.body && <div dangerouslySetInnerHTML={{ __html: renderReleaseBodyFromText(b.body) }} />}
@@ -256,7 +256,7 @@ export default function BundleHistoryModal() {
                                           tabIndex={0}
                                           onClick={() => window.dispatchEvent(new CustomEvent('open-app', { detail: { app, bundleName, channels: b.channels || [b.channel] } }))}
                                         >
-                                          {escHtml(resolveAppName(app, state.nameCache))}
+                                          {resolveAppName(app, state.nameCache)}
                                         </strong>
                                       </span>
                                     </div>

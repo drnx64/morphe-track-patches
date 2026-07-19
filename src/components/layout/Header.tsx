@@ -6,6 +6,7 @@ export default function Header() {
   const location = useLocation()
   const isDashboard = location.pathname === '/'
   const isChangelog = location.pathname === '/changelog'
+  const isDiff = location.pathname === '/diff'
 
   return (
     <header className="app-header">
@@ -21,6 +22,9 @@ export default function Header() {
             </Link>
             <Link to="/changelog" className={`nav-link${isChangelog ? ' active' : ''}`} id="nav-changelog">
               Changelog History
+            </Link>
+            <Link to="/diff" className={`nav-link${isDiff ? ' active' : ''}`} id="nav-diff">
+              Bundle Diff
             </Link>
           </nav>
         </div>

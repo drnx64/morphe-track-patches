@@ -14,7 +14,10 @@ function isStructuredSection(lines: string[]): boolean {
   const nonEmpty = lines.filter((l) => l.trim())
   if (nonEmpty.length === 0) return false
   const listItems = nonEmpty.filter((l) => /^[*\-]/.test(l)).length
-  return listItems / nonEmpty.length > 0.5
+  if (listItems / nonEmpty.length <= 0.5) return false
+  const listTexts = nonEmpty.filter((l) => /^[*\-]/.test(l)).map((l) => l.replace(/^[\s]*[-*]\s+/, ''))
+  const structuredItems = listTexts.filter((t) => /^\*\*[^*]+\*\*/.test(t)).length
+  return structuredItems / listTexts.length > 0.5
 }
 
 function parseStructuredEntries(raw: string[], section: ReleaseSection): void {
@@ -113,6 +116,11 @@ export function parseReleaseNotes(text: string): ReleaseSection[] {
       continue
     }
 
+    if (/^##(?!\s*#)\s*\S/.test(trimmed)) {
+      current = addLine(trimmed.replace(/^##\s+/, '').trim(), '')
+      continue
+    }
+
     if (/^={2,}\s*$/.test(trimmed) && i > 0) {
       const nameLine = lines[i - 1].trim()
       if (nameLine && !nameLine.startsWith('#') && !nameLine.startsWith('=') && nameLine.length < 60) {
@@ -146,6 +154,14 @@ export function parseReleaseNotes(text: string): ReleaseSection[] {
     if (s.mode === 'structured') return s.entries.length > 0
     return (s.markdown || '').trim().length > 0
   }).filter((s) => !/^v?[\d]+\.[\d]+/.test(s.heading.trim()))
+  .filter((s) => {
+    const h = s.heading.toLowerCase().trim()
+    const irrelevant = ['overview', 'need help', 'verification', 'verify', 'about', 'usage']
+    for (const ir of irrelevant) {
+      if (h === ir || h.startsWith(ir) || h.includes(ir)) return false
+    }
+    return true
+  })
 }
 
 export function getSectionClass(heading: string): string {
@@ -240,14 +256,25 @@ export function renderMarkdown(text: string): string {
   return html
 }
 
+function decodeHtmlEntities(str: string): string {
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x27;/g, "'")
+}
+
 export function renderInlineMarkdown(str: string): string {
   if (!str) return ''
-  let html = escHtml(str)
+  let html = escHtml(decodeHtmlEntities(str))
   html = html.replace(/`([^`]+)`/g, '<code>$1</code>')
   html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
   html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>')
   html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy">')
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+  html = html.replace(/(^|[\s()>])(https?:\/\/[^\s<)]+)/g, '$1<a href="$2" target="_blank" rel="noopener" class="release-link">$2</a>')
   return html
 }
 

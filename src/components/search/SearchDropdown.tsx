@@ -112,11 +112,11 @@ export default function SearchDropdown() {
                 <span className="search-result-icon search-result-icon-bundle">A</span>
               )}
               <div className="search-result-info">
-                <span className="search-result-name">{escHtml(name)}</span>
-                <span className="search-result-pkg">{escHtml(r.app.package)}</span>
+                <span className="search-result-name">{name}</span>
+                <span className="search-result-pkg">{r.app.package}</span>
               </div>
               <div className="search-result-meta">
-                <span className="search-result-bundle">{escHtml(r.bundleName)}</span>
+                <span className="search-result-bundle">{r.bundleName}</span>
                 <span className="search-result-patches">{patchCount} patch{patchCount !== 1 ? 'es' : ''}</span>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function SearchDropdown() {
             >
               <span className="search-result-icon search-result-icon-bundle">B</span>
               <div className="search-result-info">
-                <span className="search-result-name">{escHtml(r.bundleName)}</span>
+                <span className="search-result-name">{r.bundleName}</span>
                 <span className="search-result-pkg">{appCount} app{appCount !== 1 ? 's' : ''}</span>
               </div>
             </div>

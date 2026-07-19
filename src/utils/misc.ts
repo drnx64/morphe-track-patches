@@ -121,3 +121,25 @@ export function getAppIconUrl(
   const url = app.icon_url || (app.package ? iconCache[app.package] : '') || ''
   return typeof url === 'string' ? url : ''
 }
+
+export function daysSince(dateStr: string | undefined | null): number | null {
+  if (!dateStr) return null
+  const dt = new Date(dateStr)
+  if (isNaN(dt.getTime())) return null
+  const now = new Date()
+  return Math.floor((now.getTime() - dt.getTime()) / (1000 * 60 * 60 * 24))
+}
+
+export interface StalenessInfo {
+  days: number
+  level: 'fresh' | 'moderate' | 'stale'
+  label: string
+}
+
+export function getStaleness(dateStr: string | undefined | null): StalenessInfo | null {
+  const d = daysSince(dateStr)
+  if (d === null) return null
+  if (d <= 7) return { days: d, level: 'fresh', label: `${d}d` }
+  if (d <= 14) return { days: d, level: 'moderate', label: `${d}d` }
+  return { days: d, level: 'stale', label: `${d}d` }
+}
