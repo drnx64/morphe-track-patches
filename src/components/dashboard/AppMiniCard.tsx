@@ -1,6 +1,6 @@
 import { useCallback, memo } from 'react'
 import { useAppContext } from '../../context/AppContext'
-import { resolveAppName, isAppPreRelease } from '../../utils/misc'
+import { resolveAppName, isAppPreRelease, getAppIconUrl } from '../../utils/misc'
 import { escHtml } from '../../utils/html'
 import { ARROW_ICON } from '../../utils/svg'
 import AppIcon from '../shared/AppIcon'
@@ -68,9 +68,9 @@ const AppMiniCard = memo(function AppMiniCard({ app, bundleName, bundleChannels 
       <div className="app-mini-card-main">
         <AppIcon iconUrl={getAppIconUrl(app, state.iconCache)} />
         <div className="app-mini-card-info">
-          <span className="app-mini-name">{escHtml(resolveAppName(app, state.nameCache))}</span>
+          <span className="app-mini-name">{resolveAppName(app, state.nameCache)}</span>
           {isPre && <Badge className={BADGE_CLASSES.PRE_RELEASE}>Pre-Release</Badge>}
-          <span className="app-mini-pkg">{escHtml(app.package)}</span>
+          <span className="app-mini-pkg">{app.package}</span>
         </div>
         <div className="app-mini-stats">
           <span className="app-mini-patch-count">
@@ -96,9 +96,3 @@ const AppMiniCard = memo(function AppMiniCard({ app, bundleName, bundleChannels 
 })
 
 export default AppMiniCard
-
-function getAppIconUrl(app: AppData, iconCache: Record<string, string>): string {
-  if (!app) return ''
-  const url = app.icon_url || iconCache[app.package] || ''
-  return typeof url === 'string' ? url : ''
-}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAppContext } from '../../context/AppContext'
-import { resolveAppName, isAppPreRelease } from '../../utils/misc'
+import { resolveAppName, isAppPreRelease, getStaleness } from '../../utils/misc'
 import { getRepoInfo, getAddMorpheUrl } from '../../utils/url'
 import { escHtml } from '../../utils/html'
 import { GITHUB_SVG, GITLAB_SVG, HISTORY_ICON, ARROW_ICON } from '../../utils/svg'
@@ -83,6 +83,11 @@ export default function BundleDetailModal() {
         <div className="bundle-modal-meta">
           <span className="versions-label">Version:</span>
           <span className="bundle-version-tag" id="bundle-modal-version">{displayVersion || 'unknown'}</span>
+          {(() => {
+            const rd = stableBundle?.release_date || devBundle?.release_date
+            const s = rd ? getStaleness(rd) : null
+            return s ? <span className={`staleness-badge staleness--${s.level}`} title={`Released ${rd}`}>{s.label}</span> : null
+          })()}
         </div>
       </div>
 
@@ -117,6 +122,7 @@ export default function BundleDetailModal() {
                 app={app}
                 bundleName={bundleName}
                 channels={allChannels}
+                onClose={close}
               />
             ))
           )}
@@ -130,10 +136,12 @@ function BundleAppCard({
   app,
   bundleName,
   channels,
+  onClose,
 }: {
   app: { package: string; app_name: string; icon_url?: string; patches?: { name: string; compatible_versions?: string[] }[] }
   bundleName: string
   channels: string[]
+  onClose: () => void
 }) {
   const { state } = useAppContext()
   const isPre = isAppPreRelease(bundleName, app.package, state.bundles)
@@ -148,9 +156,12 @@ function BundleAppCard({
   const versionArr = [...allVersions].sort()
 
   const handleClick = () => {
-    window.dispatchEvent(
-      new CustomEvent('open-app', { detail: { app, bundleName, channels } }),
-    )
+    onClose()
+    setTimeout(() => {
+      window.dispatchEvent(
+        new CustomEvent('open-app', { detail: { app, bundleName, channels } }),
+      )
+    }, 200)
   }
 
   return (
@@ -166,9 +177,9 @@ function BundleAppCard({
       <div className="app-mini-card-main">
         <AppIcon iconUrl={app.icon_url || state.iconCache[app.package]} />
         <div className="app-mini-card-info">
-          <span className="app-mini-name">{escHtml(resolveAppName(app, state.nameCache))}</span>
+          <span className="app-mini-name">{resolveAppName(app, state.nameCache)}</span>
           {isPre && <Badge className={BADGE_CLASSES.PRE_RELEASE}>Pre-Release</Badge>}
-          <span className="app-mini-pkg">{escHtml(app.package)}</span>
+          <span className="app-mini-pkg">{app.package}</span>
         </div>
         <div className="app-mini-stats">
           <span className="app-mini-patch-count">{patchCount} patch{patchCount !== 1 ? 'es' : ''}</span>

@@ -30,6 +30,8 @@ export default function ChangelogPage() {
   const viewMode = state.changelogViewMode
 
   useEffect(() => {
+    const abort = new AbortController()
+
     const load = async () => {
       const [cachedCL, cachedLive, cachedIcons, cachedNames] = await Promise.all([
         idbGet<ChangelogEntry[]>(CACHE_KEYS.CHANGELOG),
@@ -37,6 +39,8 @@ export default function ChangelogPage() {
         idbGet<Record<string, string>>(CACHE_KEYS.ICONS),
         idbGet<Record<string, string>>(CACHE_KEYS.NAMES),
       ])
+
+      if (abort.signal.aborted) return
 
       if (cachedCL && cachedLive && cachedIcons) {
         setChangelog(cachedCL)
@@ -47,10 +51,15 @@ export default function ChangelogPage() {
         setLoading(false)
       }
 
+      if (abort.signal.aborted) return
+
       const [iconData, nameData] = await Promise.all([
         fetchIconCache(),
         fetchNameCache(),
       ])
+
+      if (abort.signal.aborted) return
+
       dispatch({ type: 'SET_ICON_CACHE', payload: iconData })
       idbSet(CACHE_KEYS.ICONS, iconData)
       preloadIcons(iconData)
@@ -59,10 +68,15 @@ export default function ChangelogPage() {
         idbSet(CACHE_KEYS.NAMES, nameData)
       }
 
+      if (abort.signal.aborted) return
+
       const [clData, liveData] = await Promise.all([
         fetchChangelog(),
         fetchAllData(),
       ])
+
+      if (abort.signal.aborted) return
+
       const cl = clData as ChangelogEntry[]
       setChangelog(cl)
       dispatch({ type: 'SET_BUNDLES', payload: liveData.bundles || {} })
@@ -75,6 +89,7 @@ export default function ChangelogPage() {
       setLoading(false)
     }
     load()
+    return () => abort.abort()
   }, [])
 
   if (loading && changelog.length === 0) {
@@ -141,8 +156,8 @@ export default function ChangelogPage() {
             {changelog.length === 0 ? (
               <div className="loading-state">No changelog entries found.</div>
             ) : (
-              changelog.map((day) => (
-                <DayCard key={day.date} day={day} />
+              changelog.map((day, idx) => (
+                <DayCard key={day.date} day={day} scanIndex={changelog.length - idx} />
               ))
             )}
           </div>
@@ -159,7 +174,7 @@ export default function ChangelogPage() {
   )
 }
 
-function DayCard({ day }: { day: ChangelogEntry }) {
+function DayCard({ day, scanIndex }: { day: ChangelogEntry; scanIndex: number }) {
   const { state } = useAppContext()
   const grouped = groupAffectedBundles(day.affected_bundles || [])
 
@@ -177,54 +192,78 @@ function DayCard({ day }: { day: ChangelogEntry }) {
 
   let dayHtml = ''
 
+  const newBundles: string[] = []
+  const updatedWithNewApps: string[] = []
+  const updatedBundles: string[] = []
+
   for (const bName of sortedBundleNames) {
     const bGroup = grouped[bName]
-    const isNewBundle = bGroup.badge_type === 'NEW BUNDLE'
-    const stableKey = `${bName}:stable`
-    const devKey = `${bName}:dev`
-    const stableB = state.bundles[stableKey]
-    const devB = state.bundles[devKey]
-    const repoUrl = stableB?.repo_url || devB?.repo_url || `https://github.com/${bName}/revanced-patches`
-    const bVersion = stableB?.version || devB?.version || ''
-    const versionTag = bVersion ? ` <span class="bundle-version-tag">${escHtml(bVersion)}</span>` : ''
-
-    dayHtml += `<div class="changelog-bundle-group">`
-
-    if (isNewBundle) {
-      const authorHtml = getAuthorHtml(repoUrl)
-      dayHtml += `<div class="changelog-bundle-header"><span class="badge badge-new-bundle">NEW BUNDLE</span><span>Bundle <a href="/#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${escHtml(bName)} patches</strong></a>${versionTag} (${bGroup.channels.join(', ')}) added by ${authorHtml}</span></div>`
+    if (bGroup.badge_type === 'NEW BUNDLE') {
+      newBundles.push(bName)
+    } else if (bGroup.apps.some((app) => app.badge_type === 'NEW APP')) {
+      updatedWithNewApps.push(bName)
     } else {
-      dayHtml += `<div class="changelog-bundle-header"><span class="badge badge-updated">UPDATED</span><span>Bundle <a href="/#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${escHtml(bName)} patches</strong></a>${versionTag}</span></div>`
+      updatedBundles.push(bName)
     }
+  }
 
-    if (bGroup.apps.length > 0) {
-      dayHtml += `<ul class="changelog-bundle-apps">`
-      const sortedApps = [...bGroup.apps].sort((a, b) => {
-        const order: Record<string, number> = { 'NEW APP': 0, 'UPDATED APP': 1, 'REMOVED APP': 2 }
-        return (order[a.badge_type!] ?? 1) - (order[b.badge_type!] ?? 1)
-      })
+  const sections: { title: string; names: string[] }[] = []
+  if (newBundles.length > 0) sections.push({ title: 'New Bundles', names: newBundles })
+  if (updatedWithNewApps.length > 0) sections.push({ title: 'Updated Bundles with New Apps', names: updatedWithNewApps })
+  if (updatedBundles.length > 0) sections.push({ title: 'Updated Bundles', names: updatedBundles })
 
-      for (const app of sortedApps) {
-        const badgeHtml = getAppBadgeHtml(app.badge_type)
-        const isPre = isAppPreRelease(bName, app.package, state.bundles)
-        const preBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : ''
-        const promotedBadge = app.promoted_from ? '<span class="badge badge-promoted">MOVED TO STABLE</span>' : ''
-        const iconUrl = getAppIconUrl(app, state.iconCache)
-        const dataUrl = iconUrl ? getCachedIconDataUrl(iconUrl) : null
-        const iconHtml = iconUrl ? `<a href="https://play.google.com/store/apps/details?id=${encodeURIComponent(app.package)}" target="_blank" class="app-icon-link"><img class="app-icon" src="${dataUrl || iconUrl}" alt="" loading="lazy"></a>` : ''
-        const channelsJson = escHtml(JSON.stringify(bGroup.channels))
-        const patchDiffJson = app.patch_diff ? escHtml(JSON.stringify(app.patch_diff)) : ''
-        const summaryAttr = app.summary ? escHtml(app.summary).replace(/'/g, '&apos;') : ''
-        const scanBadges = (app.scan_numbers || []).map((sn) => `<span class="badge badge-scan">${sn}</span>`).join(' ')
+  for (const section of sections) {
+    dayHtml += `<div class="changelog-section-header">${escHtml(section.title)}</div>`
 
-        dayHtml += `<li class="changelog-item" data-bundle="${escHtml(bName)}" data-package="${escHtml(app.package)}" data-channels='${channelsJson}' data-patch-diff='${patchDiffJson}' data-summary='${summaryAttr}'>`
-        dayHtml += `<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">${badgeHtml}${preBadge}${promotedBadge}${iconHtml}<span><strong class="changelog-app-link" role="button" tabindex="0">${escHtml(resolveAppName(app, state.nameCache))}</strong> ${scanBadges}</span></div>`
-        dayHtml += `</li>`
+    for (const bName of section.names) {
+      const bGroup = grouped[bName]
+      const isNewBundle = bGroup.badge_type === 'NEW BUNDLE'
+      const stableKey = `${bName}:stable`
+      const devKey = `${bName}:dev`
+      const stableB = state.bundles[stableKey]
+      const devB = state.bundles[devKey]
+      const repoUrl = stableB?.repo_url || devB?.repo_url || `https://github.com/${bName}/revanced-patches`
+      const bVersion = stableB?.version || devB?.version || ''
+      const versionTag = bVersion ? ` <span class="bundle-version-tag">${escHtml(bVersion)}</span>` : ''
+
+      dayHtml += `<div class="changelog-bundle-group">`
+
+      if (isNewBundle) {
+        const authorHtml = getAuthorHtml(repoUrl)
+        dayHtml += `<div class="changelog-bundle-header"><span class="badge badge-new-bundle">NEW BUNDLE</span><span>Bundle <a href="/#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${escHtml(bName)} patches</strong></a>${versionTag} (${bGroup.channels.join(', ')}) added by ${authorHtml}</span></div>`
+      } else {
+        dayHtml += `<div class="changelog-bundle-header"><span class="badge badge-updated">UPDATED</span><span>Bundle <a href="/#bundle=${encodeURIComponent(bName)}" class="changelog-bundle-link"><strong>${escHtml(bName)} patches</strong></a>${versionTag}</span></div>`
       }
-      dayHtml += `</ul>`
-    }
 
-    dayHtml += `</div>`
+      if (bGroup.apps.length > 0) {
+        dayHtml += `<ul class="changelog-bundle-apps">`
+        const sortedApps = [...bGroup.apps].sort((a, b) => {
+          const order: Record<string, number> = { 'NEW APP': 0, 'UPDATED APP': 1, 'REMOVED APP': 2 }
+          return (order[a.badge_type!] ?? 1) - (order[b.badge_type!] ?? 1)
+        })
+
+        for (const app of sortedApps) {
+          const badgeHtml = getAppBadgeHtml(app.badge_type)
+          const isPre = isAppPreRelease(bName, app.package, state.bundles)
+          const preBadge = isPre ? '<span class="badge badge-pre-release">PRE-RELEASE</span>' : ''
+          const promotedBadge = app.promoted_from ? '<span class="badge badge-promoted">MOVED TO STABLE</span>' : ''
+          const iconUrl = getAppIconUrl(app, state.iconCache)
+          const dataUrl = iconUrl ? getCachedIconDataUrl(iconUrl) : null
+          const iconHtml = iconUrl ? `<a href="https://play.google.com/store/apps/details?id=${encodeURIComponent(app.package)}" target="_blank" class="app-icon-link"><img class="app-icon" src="${dataUrl || iconUrl}" alt="" loading="lazy"></a>` : ''
+          const channelsJson = escHtml(JSON.stringify(bGroup.channels))
+          const patchDiffJson = app.patch_diff ? escHtml(JSON.stringify(app.patch_diff)) : ''
+          const summaryAttr = app.summary ? escHtml(app.summary).replace(/'/g, '&apos;') : ''
+          const scanBadges = (app.scan_numbers || []).map((sn) => `<span class="badge badge-scan">${sn}</span>`).join(' ')
+
+          dayHtml += `<li class="changelog-item" data-bundle="${escHtml(bName)}" data-package="${escHtml(app.package)}" data-channels='${channelsJson}' data-patch-diff='${patchDiffJson}' data-summary='${summaryAttr}'>`
+          dayHtml += `<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">${badgeHtml}${preBadge}${promotedBadge}${iconHtml}<span><strong class="changelog-app-link" role="button" tabindex="0">${escHtml(resolveAppName(app, state.nameCache))}</strong> ${scanBadges}</span></div>`
+          dayHtml += `</li>`
+        }
+        dayHtml += `</ul>`
+      }
+
+      dayHtml += `</div>`
+    }
   }
 
   if (!dayHtml) {
@@ -251,7 +290,8 @@ function DayCard({ day }: { day: ChangelogEntry }) {
         onClick={handleDateClick}
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleDateClick() } }}
       >
-        {formatFriendlyDate(day.date)}
+        <span className="changelog-batch-badge">Scan #{scanIndex}</span>
+        <span>{formatFriendlyDate(day.date)}</span>
         <span className="changelog-date-arrow">&rarr;</span>
       </div>
       <div

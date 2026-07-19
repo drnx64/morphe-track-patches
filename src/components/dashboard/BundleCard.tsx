@@ -1,6 +1,6 @@
 import { useState, useCallback, memo } from 'react'
 import { useAppContext } from '../../context/AppContext'
-import { resolveAppName, getAppIconUrl, isAppPreRelease } from '../../utils/misc'
+import { resolveAppName, getAppIconUrl, isAppPreRelease, getStaleness } from '../../utils/misc'
 import { getRepoInfo, getAddMorpheUrl } from '../../utils/url'
 import { escHtml } from '../../utils/html'
 import { GITHUB_SVG, GITLAB_SVG, HISTORY_ICON } from '../../utils/svg'
@@ -40,6 +40,14 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
 
   const versionTag = bundle.version
     ? `<span class="bundle-version-tag">${escHtml(bundle.version)}</span>`
+    : ''
+
+  const stableKey = `${bundle.bundle}:stable`
+  const devKey = `${bundle.bundle}:dev`
+  const releaseDate = state.bundles[stableKey]?.release_date || state.bundles[devKey]?.release_date || ''
+  const staleness = getStaleness(releaseDate)
+  const stalenessHtml = staleness
+    ? `<span class="staleness-badge staleness--${staleness.level}" title="Released ${releaseDate}">${staleness.label}</span>`
     : ''
 
   const handleClick = useCallback(() => {
@@ -92,6 +100,7 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
             ))}
           </div>
           <span dangerouslySetInnerHTML={{ __html: versionTag }} />
+          <span dangerouslySetInnerHTML={{ __html: stalenessHtml }} />
         </div>
         <a
           href={bundle.repo_url}

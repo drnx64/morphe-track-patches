@@ -62,7 +62,7 @@ export default function AppDetailModal() {
         idbGet<any[]>(CACHE_KEYS.CHANGELOG),
         idbGet<ReleaseCacheData>(CACHE_KEYS.RELEASE_CACHE),
       ])
-      if (cachedCL) setAppHistory(filterAppHistory(cachedCL, pkg))
+      if (cachedCL) setAppHistory(filterAppHistory(cachedCL, pkg, bundleName))
       if (cachedRC) setReleaseCache(cachedRC)
 
       const [freshCL, freshRC] = await Promise.all([
@@ -70,7 +70,7 @@ export default function AppDetailModal() {
         fetchReleaseCache(),
       ])
       if (freshCL) {
-        setAppHistory(filterAppHistory(freshCL, pkg))
+        setAppHistory(filterAppHistory(freshCL, pkg, bundleName))
         idbSet(CACHE_KEYS.CHANGELOG, freshCL)
       }
       if (freshRC && Object.keys(freshRC).length > 0) {
@@ -79,7 +79,7 @@ export default function AppDetailModal() {
       }
     }
     load()
-  }, [open, app])
+  }, [open, app, bundleName])
 
   const close = useCallback(() => setOpen(false), [])
 
@@ -102,6 +102,8 @@ export default function AppDetailModal() {
   const repoUrl = stableBundle?.repo_url || devBundle?.repo_url || `https://github.com/${bundleName}/revanced-patches`
   const addMorpheUrl = getAddMorpheUrl(repoUrl)
 
+  const hasPlayStore = !!(getAppIconUrl(app, state.iconCache))
+
   const allVersions = new Set<string>()
   for (const p of showPatches) {
     if (p.compatible_versions) {
@@ -117,18 +119,22 @@ export default function AppDetailModal() {
           <div className="modal-app-identity">
             <h3 className="modal-app-name" id="modal-app-name">
               <AppIcon iconUrl={getAppIconUrl(app, state.iconCache)} sizeClass="app-icon app-icon-modal" />
-              {escHtml(resolveAppName(app, state.nameCache))}
+              {resolveAppName(app, state.nameCache)}
             </h3>
             <div className="modal-meta-row">
-              <a
-                className="modal-pkg-link"
-                id="modal-pkg-link"
-                href={getPlayStoreUrl(app.package)}
-                target="_blank"
-                rel="noopener"
-              >
-                {app.package}
-              </a>
+              {hasPlayStore ? (
+                <a
+                  className="modal-pkg-link"
+                  id="modal-pkg-link"
+                  href={getPlayStoreUrl(app.package)}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {app.package}
+                </a>
+              ) : (
+                <span className="modal-pkg-link modal-pkg-link--text" id="modal-pkg-link">{app.package}</span>
+              )}
               <span className="modal-bundle-info" id="modal-bundle-info">in {bundleName}</span>
             </div>
             <div className="modal-channel-row" id="modal-channel-row">
@@ -138,9 +144,11 @@ export default function AppDetailModal() {
             </div>
           </div>
           <div className="modal-header-actions">
-            <a className="modal-play-btn" href={getPlayStoreUrl(app.package)} target="_blank" rel="noopener">
-              Play Store
-            </a>
+            {hasPlayStore && (
+              <a className="modal-play-btn" href={getPlayStoreUrl(app.package)} target="_blank" rel="noopener">
+                Play Store
+              </a>
+            )}
             <button className="modal-close" id="modal-close-btn" aria-label="Close modal" onClick={close}>
               &times;
             </button>
@@ -298,7 +306,7 @@ function PatchItem({ patch, idx, isDev }: { patch: PatchData; idx: number; isDev
       >
         <div className="modal-patch-title-row">
           <span className={`patch-name${isExpandable ? ' patch-name--clickable' : ''}`}>
-            {escHtml(patch.name)}
+            {patch.name}
           </span>
           {isDev && patch.isDevOnly && <span className="badge badge-dev">DEV</span>}
           {isDev && patch.isNew && <span className="badge badge-new-patch">NEW</span>}
@@ -314,14 +322,14 @@ function PatchItem({ patch, idx, isDev }: { patch: PatchData; idx: number; isDev
       </div>
       {isExpandable && expanded && (
         <div className="modal-patch-body">
-          {desc && <p className="modal-patch-desc">{escHtml(desc)}</p>}
+          {desc && <p className="modal-patch-desc">{desc}</p>}
           {hasOptions && (
             <div className="modal-patch-options">
               {patch.options!.map((opt) => (
                 <div key={opt.key} className="modal-patch-option">
-                  <span className="patch-option-key">{escHtml(opt.key)}</span>
+                  <span className="patch-option-key">{opt.key}</span>
                   {opt.description && (
-                    <span className="patch-option-desc">{escHtml(opt.description)}</span>
+                    <span className="patch-option-desc">{opt.description}</span>
                   )}
                 </div>
               ))}
@@ -420,8 +428,8 @@ function AppHistoryItem({
         <span className={BADGE_CLS[entry.badgeType] || 'badge badge-updated'}>
           {entry.badgeType || 'UPDATED'}
         </span>
-        {entry.version && <span className="badge badge-version">{escHtml(entry.version)}</span>}
-        <span className="app-history-bundle">{escHtml(entry.bundleName)}</span>
+        {entry.version && <span className="badge badge-version">{entry.version}</span>}
+        <span className="app-history-bundle">{entry.bundleName}</span>
       </div>
       {notesHtml ? (
         <div className="app-history-notes" dangerouslySetInnerHTML={{ __html: notesHtml }} />
@@ -461,11 +469,12 @@ function renderPatchDiff(diff: PatchDiff): string {
   return html || '<div class="diff-empty">No patch changes recorded.</div>'
 }
 
-function filterAppHistory(changelog: any[], pkg: string): HistoryEntry[] {
+function filterAppHistory(changelog: any[], pkg: string, bundleName?: string): HistoryEntry[] {
   const result: HistoryEntry[] = []
   const seen = new Set<string>()
   for (const day of changelog) {
     for (const b of (day.affected_bundles || [])) {
+      if (bundleName && b.bundle !== bundleName) continue
       for (const app of (b.apps || [])) {
         if (app.package === pkg) {
           const key = `${day.date}|${b.bundle}|${app.badge_type}|${app.package}`

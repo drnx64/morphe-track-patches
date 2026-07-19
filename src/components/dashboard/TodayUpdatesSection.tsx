@@ -3,7 +3,7 @@ import { useAppContext } from '../../context/AppContext'
 import { formatFriendlyDate } from '../../utils/format'
 import { getAppIconUrl, groupAffectedBundles, resolveAppName } from '../../utils/misc'
 import { getCachedIconDataUrl } from '../../services/iconCache'
-import { getAuthorLink, getPlayStoreUrl } from '../../utils/url'
+import { getAuthorLink } from '../../utils/url'
 import { escHtml } from '../../utils/html'
 import { FALLBACK_ICON } from '../../utils/svg'
 import { BADGE_CLASSES } from '../shared/Badge'
@@ -50,39 +50,77 @@ function renderChanges(changes: { affected_bundles?: any[] } | null, bundles: Re
     <span class="updates-date" id="updates-date-label">Updated: ${dateStr}</span>
   </div>`
 
-  for (const [bundleName, entry] of Object.entries(grouped)) {
-    const repoUrl = getBundleRepoUrl(bundleName, bundles)
-    const bundleBadge = entry.badge_type ? (BUNDLE_BADGE_MAP[entry.badge_type] || '') : ''
-    const channelsJson = escHtml(JSON.stringify(entry.channels))
+  const sortedNames = Object.keys(grouped).sort((a, b) => {
+    const aIsNew = grouped[a].badge_type === 'NEW BUNDLE'
+    const bIsNew = grouped[b].badge_type === 'NEW BUNDLE'
+    if (aIsNew && !bIsNew) return -1
+    if (!aIsNew && bIsNew) return 1
+    const aHasNew = grouped[a].apps.some((app) => app.badge_type === 'NEW APP')
+    const bHasNew = grouped[b].apps.some((app) => app.badge_type === 'NEW APP')
+    if (aHasNew && !bHasNew) return -1
+    if (!aHasNew && bHasNew) return 1
+    return a.localeCompare(b)
+  })
 
-    html += `<div class="update-bundle-group">`
-    html += `<div class="update-row update-bundle-header-row">
-      ${bundleBadge}
-      <strong class="cl-bundle-link" role="button" tabindex="0" data-bundle="${escHtml(bundleName)}" data-channels='${channelsJson}'>${escHtml(bundleName)}</strong>
-      ${getAuthorLink(repoUrl)}
-    </div>`
+  const newBundles: string[] = []
+  const updatedWithNewApps: string[] = []
+  const updatedBundles: string[] = []
 
-    html += `<div class="update-bundle-apps">`
-    const sortedApps = [...(entry.apps || [])].sort((a, b) => {
-      const aOrder = SORT_ORDER[a.badge_type!] ?? 99
-      const bOrder = SORT_ORDER[b.badge_type!] ?? 99
-      return aOrder - bOrder
-    })
-
-    for (const app of sortedApps) {
-      const appBadge = app.badge_type ? (APP_BADGE_MAP[app.badge_type] || '') : ''
-      const appName = resolveAppName(app, nameCache)
-      const iconUrl = getAppIconUrl(app, iconCache)
-      const dataUrl = iconUrl ? getCachedIconDataUrl(iconUrl) : null
-
-      html += `<div class="update-row update-app-row">
-        ${appBadge}
-        ${iconUrl ? `<img class="app-icon" src="${dataUrl || iconUrl}" alt="" onerror="this.src='${FALLBACK_ICON}'">` : ''}
-        <strong class="cl-app-link" role="button" tabindex="0" data-package="${escHtml(app.package)}" data-bundle="${escHtml(bundleName)}" data-channels='${channelsJson}'>${escHtml(appName)}</strong>
-      </div>`
+  for (const bName of sortedNames) {
+    const entry = grouped[bName]
+    if (entry.badge_type === 'NEW BUNDLE') {
+      newBundles.push(bName)
+    } else if (entry.apps.some((app) => app.badge_type === 'NEW APP')) {
+      updatedWithNewApps.push(bName)
+    } else {
+      updatedBundles.push(bName)
     }
+  }
 
-    html += `</div></div>`
+  const sections: { title: string; names: string[] }[] = []
+  if (newBundles.length > 0) sections.push({ title: 'New Bundles', names: newBundles })
+  if (updatedWithNewApps.length > 0) sections.push({ title: 'Updated with New Apps', names: updatedWithNewApps })
+  if (updatedBundles.length > 0) sections.push({ title: 'Updated Bundles', names: updatedBundles })
+
+  for (const section of sections) {
+    html += `<div class="updates-section-header">${escHtml(section.title)}</div>`
+
+    for (const bundleName of section.names) {
+      const entry = grouped[bundleName]
+      const repoUrl = getBundleRepoUrl(bundleName, bundles)
+      const bundleBadge = entry.badge_type ? (BUNDLE_BADGE_MAP[entry.badge_type] || '') : ''
+      const channelsJson = escHtml(JSON.stringify(entry.channels))
+
+      html += `<div class="update-bundle-group">`
+      html += `<div class="update-row update-bundle-header-row">
+        ${bundleBadge}
+        <strong class="cl-bundle-link" role="button" tabindex="0" data-bundle="${escHtml(bundleName)}" data-channels='${channelsJson}'>${escHtml(bundleName)}</strong>
+        ${getAuthorLink(repoUrl)}
+      </div>`
+
+      html += `<div class="update-bundle-apps">`
+      const sortedApps = [...(entry.apps || [])].sort((a, b) => {
+        const aOrder = SORT_ORDER[a.badge_type!] ?? 99
+        const bOrder = SORT_ORDER[b.badge_type!] ?? 99
+        return aOrder - bOrder
+      })
+
+      for (const app of sortedApps) {
+        const appBadge = app.badge_type ? (APP_BADGE_MAP[app.badge_type] || '') : ''
+        const appName = resolveAppName(app, nameCache)
+        const iconUrl = getAppIconUrl(app, iconCache)
+        const dataUrl = iconUrl ? getCachedIconDataUrl(iconUrl) : null
+        const promotedBadge = app.promoted_from ? '<span class="badge badge-promoted">MOVED TO STABLE</span>' : ''
+
+        html += `<div class="update-row update-app-row">
+          ${appBadge}${promotedBadge}
+          ${iconUrl ? `<img class="app-icon" src="${dataUrl || iconUrl}" alt="" onerror="this.src='${FALLBACK_ICON}'">` : ''}
+          <strong class="cl-app-link" role="button" tabindex="0" data-package="${escHtml(app.package)}" data-bundle="${escHtml(bundleName)}" data-channels='${channelsJson}'>${escHtml(appName)}</strong>
+        </div>`
+      }
+
+      html += `</div></div>`
+    }
   }
 
   return { html, hasChanges: true }

@@ -396,11 +396,13 @@ def fetch_external_repos():
     # 1. Process custom repos first (fetch directly, not from Jman)
     custom_results = []
     custom_errors = []
+    custom_success_keys = set()
     for owner, repo, platform in custom_repos:
         try:
             result = process_external_repo(owner, repo, platform)
             if result:
                 custom_results.append(result)
+                custom_success_keys.add(f"{owner}/{repo}".lower())
                 print(f"    [OK] Custom repo added: {owner}/{repo}")
             else:
                 custom_errors.append({"repo": f"{owner}/{repo}", "error": "No viable bundle data"})
@@ -408,6 +410,17 @@ def fetch_external_repos():
             print(f"    [ERR] Error processing custom repo {owner}/{repo}: {e}")
             custom_errors.append({"repo": f"{owner}/{repo}", "error": str(e)})
         time.sleep(0.3)
+
+    # Remove successfully processed repos from custom_repo.txt
+    if custom_success_keys:
+        remaining = [(o, r, p) for o, r, p in custom_repos if f"{o}/{r}".lower() not in custom_success_keys]
+        save_repo_list(CUSTOM_REPO_PATH, remaining)
+        print(f"  Removed {len(custom_success_keys)} successfully processed repos from {CUSTOM_REPO_PATH}")
+        # Also update known_urls so these repos are not re-fetched as missing
+        for owner, repo, platform in custom_repos:
+            if f"{owner}/{repo}".lower() in custom_success_keys:
+                url = f"https://{'gitlab' if platform == 'gitlab' else 'github'}.com/{owner}/{repo}"
+                known_urls.add(_normalize_url(url))
 
     # 2. Fetch repos.txt
     repos_text = fetch_repos_txt()
@@ -422,11 +435,23 @@ def fetch_external_repos():
             "total_added": len(custom_results),
             "total_errors": len(custom_errors),
         })
+        # Still save custom repos to repos_list.txt
+        custom_repo_list = [(o, r) for o, r, p in custom_repos if f"{o}/{r}".lower() in custom_success_keys]
+        if custom_repo_list:
+            from state_manager import save_repos_list as save_repos_list_file
+            save_repos_list_file(custom_repo_list)
         return
 
     # 3. Parse into repo list
     all_repos = parse_repos_txt(repos_text)
     print(f"  Found {len(all_repos)} repos in repos.txt")
+
+    # 3a. Add successfully processed custom repos to all_repos
+    for owner, repo, platform in custom_repos:
+        key = f"{owner}/{repo}".lower()
+        if key in custom_success_keys and (owner, repo) not in all_repos:
+            all_repos.append((owner, repo))
+            print(f"  Added custom repo to repos list: {owner}/{repo}")
 
     # 3b. Save/refresh the local repos list file
     save_repos_list(all_repos)
