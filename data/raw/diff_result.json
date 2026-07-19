@@ -1,36 +1,31 @@
 {
   "affected_bundles": [
     {
-      "bundle": "bufferk",
+      "bundle": "miguel",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "MyGate",
-          "package": "com.mygate.user",
+          "app_name": "Oddmar",
+          "package": "com.mobge.oddmar",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "MyGate",
-                "description": "Unlocks MyGate premium, removes ads, fixes notifications and e-Intercom."
+                "name": "Free in-app purchases",
+                "description": "Makes every IAP purchase succeed instantly without contacting Google Play Billing. When the user taps 'Buy' on any in-app product, the game credits the purchase immediately and skips the Play Store dialog. For Oddmar 0.111 the only IAP product is 'unlock_all_levels', so this patch gives a free full-game unlock on demand. Note: literal 'unlimited coins' (the in-game currency counter) requires native libil2cpp.so patching and is NOT covered by this Java patch."
               }
             ],
-            "patches_removed": [
+            "patches_removed": [],
+            "patches_modified": [
               {
-                "name": "Flutter Premium Bypass",
-                "description": "Forces premium status inside the JSON payload sent to Flutter"
-              },
-              {
-                "name": "Hide ads",
-                "description": "Removes MyGate in-app ads (pre-approval screen, allow-entries screen, activity feed, and visitor profile masthead)."
-              },
-              {
-                "name": "Unlock premium",
-                "description": "Unlocks all MyGate premium features: spoofs USER_PREMIUM_PLAN status, suppresses upgrade dialogs and paywalls, enables frequent pre-approvals for deliveries, cabs and visiting help, unlocks surprise delivery and the always-approve-entries toggle."
+                "name": "Unlock full game",
+                "description": "Unlocks the full game (all levels, all worlds) by intercepting the IAP 'has product been purchased' check. Oddmar's only IAP product is 'unlock_all_levels' — this patch makes the game think it has already been purchased, so every level is unlocked from the start. No Google Play Billing connection is required. Also disables the startup 'acknowledge all purchases' query so the patch doesn't try to reach Google Play at boot.",
+                "changes": [
+                  "description updated"
+                ]
               }
-            ],
-            "patches_modified": []
+            ]
           }
         }
       ]
