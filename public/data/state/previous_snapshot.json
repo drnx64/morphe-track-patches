@@ -10845,9 +10845,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-18T14:51:21",
-    "version": "v1.12.0",
-    "description": "## [1.12.0](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.11.13...v1.12.0) (2026-07-18)\n\n### ✨ New Features\n\n* **oddmar:** add Unlock full game patch ([4d6965c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/4d6965cbfdb4a41ebde7047942e34a158d4c818c))\n* **oddmar:** add Unlock full game patch ([4b63f67](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/4b63f67928efd8e81f55e44952f9aabf9733fb2a))\n* **oddmar:** add Unlock full game patch ([34c1eb3](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/34c1eb3c9304b4868e458c6be01122bc4f0287a5))\n",
+    "created_at": "2026-07-18T22:46:50",
+    "version": "v1.12.1",
+    "description": "## [1.12.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.0...v1.12.1) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([6b5ca91](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6b5ca91b79a457542acd4c4b92e31326694e79e3))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([7ccbb03](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/7ccbb03b550c541aad8f6e38a7c7b5d61b69769e))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([3b5b264](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/3b5b2649bae2f62d72acab50ed9d42d55dd79091))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([cdf8cf4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cdf8cf4de5cd3428b795dac6ac4d08a3c8182008))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -10940,8 +10940,17 @@
         "package": "com.mobge.oddmar",
         "patches": [
           {
+            "name": "Free in-app purchases",
+            "description": "Makes every IAP purchase succeed instantly without contacting Google Play Billing. When the user taps 'Buy' on any in-app product, the game credits the purchase immediately and skips the Play Store dialog. For Oddmar 0.111 the only IAP product is 'unlock_all_levels', so this patch gives a free full-game unlock on demand. Note: literal 'unlimited coins' (the in-game currency counter) requires native libil2cpp.so patching and is NOT covered by this Java patch.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "0.111"
+            ]
+          },
+          {
             "name": "Unlock full game",
-            "description": "Unlocks all levels by making the game think the 'unlock_all_levels' IAP product was purchased. Patches HasProductBeenPurchasedCall to always report success.",
+            "description": "Unlocks the full game (all levels, all worlds) by intercepting the IAP 'has product been purchased' check. Oddmar's only IAP product is 'unlock_all_levels' — this patch makes the game think it has already been purchased, so every level is unlocked from the start. No Google Play Billing connection is required. Also disables the startup 'acknowledge all purchases' query so the patch doesn't try to reach Google Play at boot.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -11035,7 +11044,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "781cdb00e9c1020113743f903b9ec7611eabd9d58301fe174073782fc90067e0"
+    "fingerprint": "b9d71aba147d6755516599df8b8fd860d67ae93fa346269e3d93b22b082d0d2d"
   },
   "ameenalasady:stable": {
     "bundle": "ameenalasady",
@@ -15389,9 +15398,9 @@
     "bundle": "ee-morphe",
     "channel": "dev",
     "repo_url": "https://gitlab.com/early.egg3707/ee-morphe-patches",
-    "created_at": "2026-07-13T16:24:21",
-    "version": "v1.5.0-dev.7",
-    "description": "# [1.5.0-dev.7](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.5.0-dev.6...v1.5.0-dev.7) (2026-07-13)\n\n\n### Bug Fixes\n\n* ino ([b12e30c](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/b12e30c6c02b94298a3543dec4a29af62d4b8cc6))\n* ino2 ([ea1214d](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/ea1214d3e772ff788d4a0e4df50ba64f6e4c7b93))\n\n\n\n",
+    "created_at": "2026-07-18T22:38:59",
+    "version": "v1.5.0-dev.9",
+    "description": "# [1.5.0-dev.9](https://gitlab.com/early.egg3707/ee-morphe-patches/compare/v1.5.0-dev.8...v1.5.0-dev.9) (2026-07-18)\n\n\n### Bug Fixes\n\n* revert immo patches — serverside only ([be6748a](https://gitlab.com/early.egg3707/ee-morphe-patches/commit/be6748ae5917f8778b6d35871632ca195c44da71))\n\n\n\n",
     "apps": [
       {
         "app_name": "byAir",
@@ -42224,9 +42233,9 @@
     "bundle": "brealorg",
     "channel": "stable",
     "repo_url": "https://github.com/brealorg/breal-morphe-patches",
-    "created_at": "2026-07-18T20:54:44Z",
-    "version": "morphe-patches-90",
-    "description": "Bug Fixes\n\n- Preserved subreddit search context and restored reliable Search routing.\n- Tapping the selected Search destination again now opens the keyboard.\n",
+    "created_at": "2026-07-18T22:03:53Z",
+    "version": "morphe-patches-91",
+    "description": "Bug Fixes\n\n- Restored native bottom-navigation hide-on-scroll across Home, Search, Subscriptions, Inbox, and Profile.\n- Removed residual Inbox/Profile artifacts during hide animations and corrected Search/Subscriptions bottom-bar alignment.\n",
     "apps": [
       {
         "app_name": "rif is fun",
