@@ -1,33 +1,49 @@
-## [2026-07-18]
-- **UPDATED** Bundle **adobo**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
-- **UPDATED** Bundle **ajstrick81-androidtv**
-  - **UPDATED APP** Hbomax (`com.wbd.hbomax`) in ajstrick81-androidtv patches
-- **UPDATED** Bundle **brealorg**
-  - **UPDATED APP** Boost for Reddit (`com.rubenmayayo.reddit`) in brealorg patches
-- **UPDATED** Bundle **bufferk**
-  - **UPDATED APP** Brave Browser (`com.brave.browser`) in bufferk patches
-  - **UPDATED APP** MyGate (`com.mygate.user`) in bufferk patches
+## [2026-07-19]
 - **UPDATED** Bundle **chiggi**
-  - **NEW APP** JioHotstar (`in.startv.hotstar`) in chiggi patches
-  - **NEW APP** Jiotv+: LiveTV & OTT (`com.jio.media.jiotvplus`) in chiggi patches
-  - **NEW APP** Vi Movies and TV (`com.vimtv`) in chiggi patches
-- **UPDATED** Bundle **docbt**
-  - **UPDATED APP** Magazines (`com.google.android.apps.magazines`) in docbt patches
-- **UPDATED** Bundle **lain**
-  - **NEW APP** [PRE-RELEASE] Kapi Cam (`com.sensemobile.action`) in lain patches
-  - **NEW APP** [PRE-RELEASE] Key Mapper (`io.github.sds100.keymapper`) in lain patches
+  - **UPDATED APP** JioHotstar (`in.startv.hotstar`) in chiggi patches
+- **UPDATED** Bundle **edge-morphe**
+  - **UPDATED APP** Microsoft Edge (`com.microsoft.emmx`) in edge-morphe patches
+- **UPDATED** Bundle **gmaps**
+  - **NEW APP** Google Maps (`com.google.android.apps.maps`) in gmaps patches
+  - **REMOVED APP** Google Maps (`google maps`) in gmaps patches
+- **UPDATED** Bundle **hxreborn**
+  - **UPDATED APP** ForusApp (`com.myvitale.forus`) in hxreborn patches
+  - **UPDATED APP** Projectivy Launcher (`com.spocky.projengmenu`) in hxreborn patches
+  - **NEW APP** [PRE-RELEASE] Proton Mail (`ch.protonmail.android`) in hxreborn patches
 - **UPDATED** Bundle **miguel**
-  - **NEW APP** Oddmar (`com.mobge.oddmar`) in miguel patches
-  - **UPDATED APP** Zombie Catchers (`fi.twomenandadog.zombiecatchers`) in miguel patches
+  - **UPDATED APP** Oddmar (`com.mobge.oddmar`) in miguel patches
 - **UPDATED** Bundle **morphe**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
   - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
 - **UPDATED** Bundle **pichiwa**
   - **UPDATED APP** WhatsApp (`com.whatsapp`) in pichiwa patches
+- **UPDATED** Bundle **piko**
+  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
+- **UPDATED** Bundle **proxma**
+  - **NEW APP** MTProxy (`com.sdev.mtproxy`) in proxma patches
+  - **UPDATED APP** My Telenor (`com.telenor.pakistan.mytelenor`) in proxma patches
 - **UPDATED** Bundle **rushiranpise**
-  - **NEW APP** [PRE-RELEASE] Flud (`com.delphicoder.flud`) in rushiranpise patches
-  - **NEW APP** [PRE-RELEASE] Mapy (`cz.seznam.mapy`) in rushiranpise patches
-- **UPDATED** Bundle **variablenine**
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in variablenine patches
-  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in variablenine patches
+  - **UPDATED APP** Android Developer Verifier (`com.google.android.verifier`) in rushiranpise patches
+  - **UPDATED APP** Block Blast! (`com.block.juggle`) in rushiranpise patches
+  - **UPDATED APP** Box Box (`club.boxbox.android`) in rushiranpise patches
+  - **UPDATED APP** Flud (`com.delphicoder.flud`) in rushiranpise patches
+  - **NEW APP** Google Photos (`com.google.android.apps.photos`) in rushiranpise patches
+  - **UPDATED APP** JEFIT (`je.fit`) in rushiranpise patches
+  - **UPDATED APP** Mapy (`cz.seznam.mapy`) in rushiranpise patches
+  - **UPDATED APP** Minimal Widgets (`com.jndapp.minimal.widgets`) in rushiranpise patches
+  - **UPDATED APP** NAVITIME (`com.navitime.inbound.walk`) in rushiranpise patches
+  - **UPDATED APP** nzb360 (`com.kevinforeman.nzb360`) in rushiranpise patches
+  - **UPDATED APP** PC Remote - Desktop & Phone (`com.monect.portable`) in rushiranpise patches
+  - **UPDATED APP** Stargazing Hub (`com.twtapp`) in rushiranpise patches
+  - **UPDATED APP** Subway Now (`io.goodservice.theweekendest`) in rushiranpise patches
+  - **UPDATED APP** TorrDroid (`intelligems.torrdroid`) in rushiranpise patches
+  - **UPDATED APP** VIZ Manga (`com.vizmanga.android`) in rushiranpise patches
+  - **UPDATED APP** Wavve Boating (`com.wavve.boating.gps`) in rushiranpise patches
+  - **UPDATED APP** Weawow: Weather & Widget (`com.weawow`) in rushiranpise patches
+- **NEW BUNDLE** Bundle by **stylus** (dev)
+  - **NEW APP** Reddit (`com.reddit.frontpage`) in stylus patches
+- **NEW BUNDLE** Bundle by **trimpsuz** (dev, stable)
+  - **NEW APP** Busuu (`com.busuu.android.enc`) in trimpsuz patches
+- **UPDATED** Bundle **zpatches**
+  - **UPDATED APP** Minesweeper (`ee.dustland.android.minesweeper`) in zpatches patches
+  - **NEW APP** Solitaire (`ee.dustland.android.solitaire`) in zpatches patches
