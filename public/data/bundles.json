@@ -50779,9 +50779,9 @@
     "bundle": "hoomans-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-07-12T21:44:53",
-    "version": "v1.43.0",
-    "description": "## [1.43.0](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.42.1...v1.43.0) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* unlock Quizlet Learn/Test meters and Tracked free-tier StrictEq sites ([bf81012](https://github.com/arandomhooman/hoomans-morphe-patches/commit/bf81012c023f16cf8d3ac633dc15054113202b6b))\n* unlock Quizlet mid-quiz Plus gates ([37e9290](https://github.com/arandomhooman/hoomans-morphe-patches/commit/37e929084c1ec4d8db9776c4a3867a5f117e0386))\n* unlock Tracked customize-dashboard pro gate ([8dd606f](https://github.com/arandomhooman/hoomans-morphe-patches/commit/8dd606f857860267a938f60fdd509909c5f9e4e6))\n\n### ✨ New Features\n\n* support Alpha Progression 7.0 Unlock Premium ([db931b4](https://github.com/arandomhooman/hoomans-morphe-patches/commit/db931b4406e93bed5aa90bc3bb910fc3e0fca41f))\n",
+    "created_at": "2026-07-20T22:11:47",
+    "version": "v1.43.1",
+    "description": "## [1.43.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.0...v1.43.1) (2026-07-20)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([d99af82](https://github.com/arandomhooman/hoomans-morphe-patches/commit/d99af82f4dd1babdf11bd14fdffee0880cce5ad0))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -50837,7 +50837,7 @@
         "patches": [
           {
             "name": "Unlock Premium",
-            "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial: a license value the app keeps locally decides whether the paid UI is open, and two timers (the beta cutoff and the trial countdown) lock the app once they pass. This forces the license read to \"licensed\" so the paid screens open, drops the \"trial expires on ...\" line from settings, and freezes the trusted-time lookup the timers read at a fixed pre-cutoff instant so neither timer can fire. The license is checked on the client (a local Play purchase verify), so the unlock holds without an account. Connecting Plex, Jellyfin and other media servers is untouched.",
+            "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial, so this also prevents the expired-beta screen. The license is checked locally and the unlock does not require an account. Connecting Plex, Jellyfin and other media servers is untouched.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -51137,7 +51137,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "build-1025-bundle-play"
+              "build-1025-bundle-play",
+              "build-1025-uni"
             ]
           }
         ],
@@ -51263,7 +51264,7 @@
         "patches": [
           {
             "name": "Remove Ads",
-            "description": "Stops the banner and interstitial ads SofaScore shows around scores and between screens. Every ad site reads one decision method off the cached account, and the app's own ad master switch caches that method's result, so forcing it to \"no ads\" turns them all off with no login needed. The result holds across a sync because the switch re-reads the same method. Ads that are served by the video/story SDK inside embedded content are not affected. Re-signing breaks SofaScore's login (it only offers Google and Facebook sign-in, both of which reject the new signature), but removing ads does not need an account so the patch still works.",
+            "description": "Stops the banner and interstitial ads SofaScore shows around scores and between screens. Every ad site reads one decision method off the cached account, and the app's own ad master switch caches that method's result, so forcing it to \"no ads\" turns them all off with no login needed. The result holds across a sync because the switch re-reads the same method. Ads that are served by the video/story SDK inside embedded content are not affected. The patch also keeps Firebase notification registration compatible with the re-signed build. Re-signing breaks SofaScore's login (it only offers Google and Facebook sign-in, both of which reject the new signature), but removing ads does not need an account so the patch still works.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -51555,18 +51556,18 @@
         "icon_url": "https://play-lh.googleusercontent.com/JHCM4AIyomRp6Lo2-5ugoznlGdsZmNnejVN8DLvtWFHShcz8YRgUE170f1CyOfrleYbtFL2g8tQ3VqlQNAgqoA"
       }
     ],
-    "fingerprint": "5e26d5139a6e3c49082d707e66580e9a7db7f7bca8bcb7857e61c5004d3c9d4c",
-    "release_notes": "## [1.43.0](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.42.1...v1.43.0) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* unlock Quizlet Learn/Test meters and Tracked free-tier StrictEq sites ([bf81012](https://github.com/arandomhooman/hoomans-morphe-patches/commit/bf81012c023f16cf8d3ac633dc15054113202b6b))\n* unlock Quizlet mid-quiz Plus gates ([37e9290](https://github.com/arandomhooman/hoomans-morphe-patches/commit/37e929084c1ec4d8db9776c4a3867a5f117e0386))\n* unlock Tracked customize-dashboard pro gate ([8dd606f](https://github.com/arandomhooman/hoomans-morphe-patches/commit/8dd606f857860267a938f60fdd509909c5f9e4e6))\n\n### ✨ New Features\n\n* support Alpha Progression 7.0 Unlock Premium ([db931b4](https://github.com/arandomhooman/hoomans-morphe-patches/commit/db931b4406e93bed5aa90bc3bb910fc3e0fca41f))\n",
-    "release_tag": "v1.43.0",
-    "release_date": "2026-07-12T21:44:53Z"
+    "fingerprint": "0ea947e7ef5869efa141e3c541d48d2a15e7b3a9875fde75877f5834fb0529c2",
+    "release_notes": "## [1.43.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.0...v1.43.1) (2026-07-20)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([d99af82](https://github.com/arandomhooman/hoomans-morphe-patches/commit/d99af82f4dd1babdf11bd14fdffee0880cce5ad0))\n",
+    "release_tag": "v1.43.1",
+    "release_date": "2026-07-20T22:11:47Z"
   },
   "hoomans-morphe:dev": {
     "bundle": "hoomans-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-07-12T21:54:44",
-    "version": "v1.44.0-dev.1",
-    "description": "## [1.44.0-dev.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.0...v1.44.0-dev.1) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* hide DirectChat message-bubble ad in Unlock Premium ([c5b42c4](https://github.com/arandomhooman/hoomans-morphe-patches/commit/c5b42c4c86c4c9ed02d2adeed1738c1bbf17ff3a))\n\n### ✨ New Features\n\n* add DirectChat unlock premium patch ([5c670b0](https://github.com/arandomhooman/hoomans-morphe-patches/commit/5c670b05587cd2f24fc8086c397cf2287f6014d6))\n",
+    "created_at": "2026-07-20T22:01:19",
+    "version": "v1.44.0-dev.2",
+    "description": "## [1.44.0-dev.2](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.44.0-dev.1...v1.44.0-dev.2) (2026-07-20)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([332560b](https://github.com/arandomhooman/hoomans-morphe-patches/commit/332560b405623d8888802d7fc89c98af0e9235ae))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -51622,7 +51623,7 @@
         "patches": [
           {
             "name": "Unlock Premium",
-            "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial: a license value the app keeps locally decides whether the paid UI is open, and two timers (the beta cutoff and the trial countdown) lock the app once they pass. This forces the license read to \"licensed\" so the paid screens open, drops the \"trial expires on ...\" line from settings, and freezes the trusted-time lookup the timers read at a fixed pre-cutoff instant so neither timer can fire. The license is checked on the client (a local Play purchase verify), so the unlock holds without an account. Connecting Plex, Jellyfin and other media servers is untouched.",
+            "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial, so this also prevents the expired-beta screen. The license is checked locally and the unlock does not require an account. Connecting Plex, Jellyfin and other media servers is untouched.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -51922,7 +51923,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "build-1025-bundle-play"
+              "build-1025-bundle-play",
+              "build-1025-uni"
             ]
           }
         ],
@@ -52048,7 +52050,7 @@
         "patches": [
           {
             "name": "Remove Ads",
-            "description": "Stops the banner and interstitial ads SofaScore shows around scores and between screens. Every ad site reads one decision method off the cached account, and the app's own ad master switch caches that method's result, so forcing it to \"no ads\" turns them all off with no login needed. The result holds across a sync because the switch re-reads the same method. Ads that are served by the video/story SDK inside embedded content are not affected. Re-signing breaks SofaScore's login (it only offers Google and Facebook sign-in, both of which reject the new signature), but removing ads does not need an account so the patch still works.",
+            "description": "Stops the banner and interstitial ads SofaScore shows around scores and between screens. Every ad site reads one decision method off the cached account, and the app's own ad master switch caches that method's result, so forcing it to \"no ads\" turns them all off with no login needed. The result holds across a sync because the switch re-reads the same method. Ads that are served by the video/story SDK inside embedded content are not affected. The patch also keeps Firebase notification registration compatible with the re-signed build. Re-signing breaks SofaScore's login (it only offers Google and Facebook sign-in, both of which reject the new signature), but removing ads does not need an account so the patch still works.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -52356,10 +52358,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/JHCM4AIyomRp6Lo2-5ugoznlGdsZmNnejVN8DLvtWFHShcz8YRgUE170f1CyOfrleYbtFL2g8tQ3VqlQNAgqoA"
       }
     ],
-    "fingerprint": "a142bdc34183c4b6e58e2f02f6e2a1f58f7c658ceec117e93c930699c9a80e46",
-    "release_notes": "## [1.44.0-dev.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.0...v1.44.0-dev.1) (2026-07-12)\n\n### 🐛 Bug Fixes\n\n* hide DirectChat message-bubble ad in Unlock Premium ([c5b42c4](https://github.com/arandomhooman/hoomans-morphe-patches/commit/c5b42c4c86c4c9ed02d2adeed1738c1bbf17ff3a))\n\n### ✨ New Features\n\n* add DirectChat unlock premium patch ([5c670b0](https://github.com/arandomhooman/hoomans-morphe-patches/commit/5c670b05587cd2f24fc8086c397cf2287f6014d6))\n",
-    "release_tag": "v1.44.0-dev.1",
-    "release_date": "2026-07-12T21:54:44Z"
+    "fingerprint": "eb18caebc3e75949fd0d9915aea6067f31f1ce129dce18c6ec49d021e213df8e",
+    "release_notes": "## [1.44.0-dev.2](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.44.0-dev.1...v1.44.0-dev.2) (2026-07-20)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([332560b](https://github.com/arandomhooman/hoomans-morphe-patches/commit/332560b405623d8888802d7fc89c98af0e9235ae))\n",
+    "release_tag": "v1.44.0-dev.2",
+    "release_date": "2026-07-20T22:01:19Z"
   },
   "rabilrbl:dev": {
     "bundle": "rabilrbl",
