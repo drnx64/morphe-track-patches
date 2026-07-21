@@ -11233,9 +11233,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-18T22:46:50",
-    "version": "v1.12.1",
-    "description": "## [1.12.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.0...v1.12.1) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([6b5ca91](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6b5ca91b79a457542acd4c4b92e31326694e79e3))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([7ccbb03](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/7ccbb03b550c541aad8f6e38a7c7b5d61b69769e))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([3b5b264](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/3b5b2649bae2f62d72acab50ed9d42d55dd79091))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([cdf8cf4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cdf8cf4de5cd3428b795dac6ac4d08a3c8182008))\n",
+    "created_at": "2026-07-21T16:48:15",
+    "version": "v1.12.2",
+    "description": "## [1.12.2](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.1...v1.12.2) (2026-07-21)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add missing DisplayLoginDialogIfNecessaryFingerprint to Fingerprints.kt ([66087e8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/66087e8c608833b4b5925c3105443336906eafb8))\n* **oddmar:** suppress Google Play Games popup only when already signed in (fixes [#4](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/4)) ([f5da909](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f5da9092e6f3a633be985ae09c8858b3d9e2430e))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -11327,6 +11327,15 @@
         "app_name": "Oddmar",
         "package": "com.mobge.oddmar",
         "patches": [
+          {
+            "name": "Disable Google Play Games sign-in prompt when already signed in",
+            "description": "Suppresses the Google Play Games sign-in popup ONLY when the user has already signed in before. On first launch (or after signing out) the popup still appears so the user can authenticate and get cloud saves. On subsequent launches the popup is suppressed because getAccount() returns the cached GoogleSignInAccount. Cloud saves, leaderboards and achievements continue to work normally. The in-game Sign In button is unaffected. Fixes the issue where the popup reappeared on every launch even after the user had already signed in.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "0.111"
+            ]
+          },
           {
             "name": "Free in-app purchases",
             "description": "Makes every IAP purchase succeed instantly without contacting Google Play Billing. When the user taps 'Buy' on any in-app product, the game credits the purchase immediately and skips the Play Store dialog. For Oddmar 0.111 the only IAP product is 'unlock_all_levels', so this patch gives a free full-game unlock on demand. Note: literal 'unlimited coins' (the in-game currency counter) requires native libil2cpp.so patching and is NOT covered by this Java patch.",
@@ -11432,10 +11441,10 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "b9d71aba147d6755516599df8b8fd860d67ae93fa346269e3d93b22b082d0d2d",
-    "release_notes": "## [1.12.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.0...v1.12.1) (2026-07-18)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([6b5ca91](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/6b5ca91b79a457542acd4c4b92e31326694e79e3))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([7ccbb03](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/7ccbb03b550c541aad8f6e38a7c7b5d61b69769e))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([3b5b264](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/3b5b2649bae2f62d72acab50ed9d42d55dd79091))\n* **oddmar:** add unlock full game and free IAP patches for v0.111 ([cdf8cf4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/cdf8cf4de5cd3428b795dac6ac4d08a3c8182008))\n",
-    "release_tag": "v1.12.1",
-    "release_date": "2026-07-18T22:46:50Z"
+    "fingerprint": "7db1734aee94b81edf114f86921e9875ef838caf820dafe66315b8360f132d55",
+    "release_notes": "## [1.12.2](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.12.1...v1.12.2) (2026-07-21)\n\n### 🐛 Bug Fixes\n\n* **oddmar:** add missing DisplayLoginDialogIfNecessaryFingerprint to Fingerprints.kt ([66087e8](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/66087e8c608833b4b5925c3105443336906eafb8))\n* **oddmar:** suppress Google Play Games popup only when already signed in (fixes [#4](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/4)) ([f5da909](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f5da9092e6f3a633be985ae09c8858b3d9e2430e))\n",
+    "release_tag": "v1.12.2",
+    "release_date": "2026-07-21T16:48:15Z"
   },
   "ameenalasady:stable": {
     "bundle": "ameenalasady",
