@@ -1,27 +1,68 @@
 {
   "affected_bundles": [
     {
-      "bundle": "morphe",
-      "channel": "dev",
+      "bundle": "hoomans-morphe",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Reddit",
-          "package": "com.reddit.frontpage",
+          "app_name": "Symfonium",
+          "package": "app.symfonik.music.player",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Custom font",
-                "description": "Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime."
-              },
-              {
-                "name": "Force system font",
-                "description": "Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto."
-              }
-            ],
+            "patches_added": [],
             "patches_removed": [],
-            "patches_modified": []
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial, so this also prevents the expired-beta screen. The license is checked locally and the unlock does not require an account. Connecting Plex, Jellyfin and other media servers is untouched.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Poweramp",
+          "package": "com.maxmpz.audioplayer",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks Poweramp's full version state and Feature Package #1.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "SofaScore",
+          "package": "com.sofascore.results",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove Ads",
+                "description": "Stops the banner and interstitial ads SofaScore shows around scores and between screens. Every ad site reads one decision method off the cached account, and the app's own ad master switch caches that method's result, so forcing it to \"no ads\" turns them all off with no login needed. The result holds across a sync because the switch re-reads the same method. Ads that are served by the video/story SDK inside embedded content are not affected. The patch also keeps Firebase notification registration compatible with the re-signed build. Re-signing breaks SofaScore's login (it only offers Google and Facebook sign-in, both of which reject the new signature), but removing ads does not need an account so the patch still works.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
           },
           "scan_numbers": [
             1
@@ -30,79 +71,21 @@
       ]
     },
     {
-      "bundle": "ajstrick81-androidtv",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Tubitv",
-          "package": "com.tubitv",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Skip ads",
-                "description": "Suppresses all ad delivery systems in Tubi Android TV.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            2
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "gmaps",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Google Maps",
-          "package": "com.google.android.apps.maps",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Google Maps for ReVanced GmsCore",
-                "description": "Routes supported Google Maps builds through ReVanced GmsCore using the patched Maps package and known Google Maps certificate spoof metadata."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Google Maps MicroG",
-                "description": "Routes supported Google Maps builds through ReVanced GmsCore using the patched Maps package and known Google Maps certificate spoof metadata."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            3
-          ]
-        }
-      ]
-    },
-    {
-      "bundle": "pichiwa",
+      "bundle": "hoomans-morphe",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "WhatsApp",
-          "package": "com.whatsapp",
+          "app_name": "Symfonium",
+          "package": "app.symfonik.music.player",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Login Fix",
-                "description": "Bypasses verification bans by spoofing signatures, installers, and faking GMS checks. REQUIRED: You must manually install microG-RE for Play Integrity to pass.",
+                "name": "Unlock Premium",
+                "description": "Turns on Symfonium's paid features. The build ships as a public beta with a built-in trial, so this also prevents the expired-beta screen. The license is checked locally and the unlock does not require an account. Connecting Plex, Jellyfin and other media servers is untouched.",
                 "changes": [
                   "description updated"
                 ]
@@ -110,7 +93,49 @@
             ]
           },
           "scan_numbers": [
-            4
+            1
+          ]
+        },
+        {
+          "app_name": "Poweramp",
+          "package": "com.maxmpz.audioplayer",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks Poweramp's full version state and Feature Package #1.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "SofaScore",
+          "package": "com.sofascore.results",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove Ads",
+                "description": "Stops the banner and interstitial ads SofaScore shows around scores and between screens. Every ad site reads one decision method off the cached account, and the app's own ad master switch caches that method's result, so forcing it to \"no ads\" turns them all off with no login needed. The result holds across a sync because the switch re-reads the same method. Ads that are served by the video/story SDK inside embedded content are not affected. The patch also keeps Firebase notification registration compatible with the re-signed build. Re-signing breaks SofaScore's login (it only offers Google and Facebook sign-in, both of which reject the new signature), but removing ads does not need an account so the patch still works.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
           ]
         }
       ]
