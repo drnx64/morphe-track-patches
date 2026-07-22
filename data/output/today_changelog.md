@@ -1,9 +1,14 @@
-## [2026-07-20]
-- **UPDATED** Bundle **ajstrick81-androidtv**
-  - **UPDATED APP** Tubitv (`com.tubitv`) in ajstrick81-androidtv patches
-- **UPDATED** Bundle **gmaps**
-  - **UPDATED APP** Google Maps (`com.google.android.apps.maps`) in gmaps patches
+## [2026-07-21]
+- **UPDATED** Bundle **hoomans-morphe**
+  - **UPDATED APP** Poweramp (`com.maxmpz.audioplayer`) in hoomans-morphe patches
+  - **UPDATED APP** SofaScore (`com.sofascore.results`) in hoomans-morphe patches
+  - **UPDATED APP** Symfonium (`app.symfonik.music.player`) in hoomans-morphe patches
+- **UPDATED** Bundle **miguel**
+  - **UPDATED APP** Oddmar (`com.mobge.oddmar`) in miguel patches
 - **UPDATED** Bundle **morphe**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
 - **UPDATED** Bundle **pichiwa**
   - **UPDATED APP** WhatsApp (`com.whatsapp`) in pichiwa patches
+- **UPDATED** Bundle **stylus**
+  - **NEW APP** Bitwarden (`com.x8bit.bitwarden`) in stylus patches
