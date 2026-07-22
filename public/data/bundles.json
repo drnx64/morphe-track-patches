@@ -9661,9 +9661,9 @@
     "bundle": "chiggi",
     "channel": "stable",
     "repo_url": "https://github.com/durgesh0505/chiggi_morphe_patches",
-    "created_at": "2026-07-19T15:34:53",
-    "version": "v1.15.1",
-    "description": "JioHotstar account-flag fix. The re-signed build was sending IsTampered=true in the device-attestation blob (Kg/b) it posts to the server, which locked the account 24h for \"suspicious activity\" (error NM-4290). Adds \"Spoof device attestation\": forces all 8 attestation security flags (IsEmulator/IsRooted/IsTampered/IsProxy/isVpnActive/isSuspiciousFileExists/isPortsOpen/isDebuggerEnabled) to false at the blob constructor, so the app reports a clean device. WARNING: this only removes a client-sent signal — the server still sees the VPN exit IP and an already-flagged account stays on Hotstars radar. Do NOT run on an account you cannot afford to lose; test on a throwaway Jio number first. Other apps unchanged.",
+    "created_at": "2026-07-22T16:15:56",
+    "version": "v1.17.0",
+    "description": "## [1.17.0](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.16.0...v1.17.0) (2026-07-22)\n\n### ✨ New Features\n\n* **cryanalyzer:** remove analysis limit (unlimited, no rewarded-ad) ([8d34ac9](https://github.com/durgesh0505/chiggi_morphe_patches/commit/8d34ac9fdd7eb9060979e15e7bfd55a20c869e1b))\n",
     "apps": [
       {
         "app_name": "CrazyGames",
@@ -9721,6 +9721,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/zGvYCipVc-uIpRVf6P5maUThHJyuNE35Y-tQCQz6tYigWuxlZThhQh0Te8G0SlLi1j8PAgHds8EkL2KXkKPG"
+      },
+      {
+        "app_name": "AYA Baby AI",
+        "package": "com.cry.analyzer",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Unlocks AYA Baby AI premium without a purchase by forcing the Apphud SDK entitlement checks Apphud.hasPremiumAccess() and hasActiveSubscription() to return true. The app gates premium features on these, so the app treats the user as subscribed. Because it uses an ads-or-premium model, unlocking premium also stops the Appodeal/AdMob ads. No Google Play purchase is made or needed.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.8"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/lnglfX48b743QojydHCUIlLEhS_gerZAmIkdJaQLr_igBbBzikqZpF7vtCXmr4HR8_YGNlo2w2sLWa5BGr4c"
       },
       {
         "app_name": "Arrow Puzzle",
@@ -9886,6 +9902,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/YzCDPantLFE3sw1tmkOcxSKORt_uACVBpfSprVjyx0FR4arX3O3EUbrSJ0t_7MukyOQMylBxu1W8kD2doyDh"
       },
       {
+        "app_name": "Does Not Commute",
+        "package": "com.mediocre.commute",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Unlocks the paid 'premium' upgrade (IAP com.mediocre.commute.premium) without a purchase. The native game asks the Java billing bridge AndroidStore whether the product is owned via isProductIdRestored() and reads the store status via getStatusAsString(); this forces the former to true and the latter to \"2\" (STORE_SUCCEEDED), so the game treats premium as owned. No Play purchase is made or needed. Note: the game's actual entitlement logic is in native libcommute.so, which cannot be patched here — if it independently re-verifies the purchase, this may not take effect.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.5.5"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/NgntHB7Nm-9GSfkq8vu60toy_tZRKwFse_LpyeY7DLj838-oGfmAEizTtFckgE1cQghVR788lJCImDzgHdHdld4"
+      },
+      {
         "app_name": "SonyLIV",
         "package": "com.sonyliv",
         "patches": [
@@ -10020,6 +10052,15 @@
             ]
           },
           {
+            "name": "Disable forced update",
+            "description": "Removes the 'update available' popup (both the forced/non-cancelable and the optional variant) shown on splash/home. The pinned 10.8 re-signed build would otherwise be nagged — or hard-blocked — to update whenever the server reports a newer version. The popup is gated on ClientInfo.getVersionNumber(); forcing it to \"0\" makes the version check in SplashActivity and MainActivity conclude no update is needed.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "10.8"
+            ]
+          },
+          {
             "name": "Premium unlock (UI)",
             "description": "Forces the client 'subscribed' flags true so premium UI state shows unlocked. OFF by default: Vi Movies and TV enforces entitlement server-side with Widevine DRM, so this does NOT grant content you are not entitled to — it only changes UI, and content that appears playable may still be refused by the server. Cosmetic UI change only.",
             "use": true,
@@ -10040,6 +10081,15 @@
           {
             "name": "Remove ads",
             "description": "Removes pre-roll, mid-roll and SSAI video ads. The player builds its IMA/SSAI ad-tag URL from AdUrlResponse.getAdUrlTypes(); forcing that to null (and the TorcAiAdConfig.isAdEnabled() gate to false) means no ad tag is ever loaded, so no ad plays.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "10.8"
+            ]
+          },
+          {
+            "name": "Remove player watermark",
+            "description": "Removes the per-content watermark/logo overlaid on the video (the one that changes depending on what you play). The player only shows the watermark ImageView when Configs.getWaterMarkInfoOnPlayer() returns non-empty JSON; forcing that getter to null makes the player's own guard hide the overlay. Client render only, so this is fully removable (it is not baked into the stream).",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -10179,6 +10229,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/02xiO0ptbXjD8NR3sbS2StP1P9aytDN56dDR15zqM_i66Vwq5W_hD-98CoFxvRVoUS4uV_xMSv-iQh3nQFeDeQ"
       },
       {
+        "app_name": "Cry Analyzer",
+        "package": "jp.firstascent.cryanalyzer",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Unlocks Cry Analyzer premium and removes all usage limits without a purchase. Forces BillingClientWrapper.isPurchased(...) true (every ownership check reports owned) and UserData.getRestrictionRelease() true (the master 'restrictions removed' flag). Together this gives unlimited analyses with no free-count / rewarded-ad requirement, no ads, and no free-analysis reminder nag. No Google Play purchase is made or needed.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.3.28"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/rbJMF0-4GBVQy2afDUCdeomuHcO5-gLccClRMyEOeb0JFaenr3eHrteA2VmLCAYPuu5gRgmlO-ECw7FfVuQS"
+      },
+      {
         "app_name": "Nutrilio",
         "package": "net.nutrilio",
         "patches": [
@@ -10259,10 +10325,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/KrGUFVNpzq8nghzbFI9uM11WAVEHTkZKVyypMlr8G17ravMH6WV_MbI_IAG6zvgF2te5gWQKMobPraUY3WBFpw"
       }
     ],
-    "fingerprint": "127144867a3a09fa171ba3c2f360857f1cb9a6dfb6b8ba9c99f10661c983cec8",
-    "release_notes": "JioHotstar account-flag fix. The re-signed build was sending IsTampered=true in the device-attestation blob (Kg/b) it posts to the server, which locked the account 24h for \"suspicious activity\" (error NM-4290). Adds \"Spoof device attestation\": forces all 8 attestation security flags (IsEmulator/IsRooted/IsTampered/IsProxy/isVpnActive/isSuspiciousFileExists/isPortsOpen/isDebuggerEnabled) to false at the blob constructor, so the app reports a clean device. WARNING: this only removes a client-sent signal — the server still sees the VPN exit IP and an already-flagged account stays on Hotstars radar. Do NOT run on an account you cannot afford to lose; test on a throwaway Jio number first. Other apps unchanged.",
-    "release_tag": "v1.15.1",
-    "release_date": "2026-07-19T15:34:53Z"
+    "fingerprint": "5f1ca2a2a8f5cab24a6353fd7a3aa88de3b59aea15aab648539f8bfc0b063015",
+    "release_notes": "## [1.17.0](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.16.0...v1.17.0) (2026-07-22)\n\n### ✨ New Features\n\n* **cryanalyzer:** remove analysis limit (unlimited, no rewarded-ad) ([8d34ac9](https://github.com/durgesh0505/chiggi_morphe_patches/commit/8d34ac9fdd7eb9060979e15e7bfd55a20c869e1b))\n",
+    "release_tag": "v1.17.0",
+    "release_date": "2026-07-22T16:15:56Z"
   },
   "telegram-morphe:stable": {
     "bundle": "telegram-morphe",
@@ -47386,9 +47452,9 @@
     "bundle": "amplerevanced",
     "channel": "dev",
     "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
-    "created_at": "2026-07-22T14:04:27",
-    "version": "v1.2.0-dev.13",
-    "description": "# [1.2.0-dev.13](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.12...v1.2.0-dev.13) (2026-07-22)\n\n\n### Bug Fixes\n\n* **flexcil:** unlock all premium gates in Unlock Premium features ([e5e83b5](https://github.com/AmpleReVanced/revanced-patches/commit/e5e83b51e28fe585a8cb673f6057529fc623e233))\n\n\n### Features\n\n* **flexcil:** update flexcil patches for version 1.4.4.9 ([86b96a1](https://github.com/AmpleReVanced/revanced-patches/commit/86b96a14ca87b40fe47e5aaa67936964dc3f13e4))\n\n\n\n",
+    "created_at": "2026-07-22T15:55:17",
+    "version": "v1.2.0-dev.16",
+    "description": "# [1.2.0-dev.16](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.15...v1.2.0-dev.16) (2026-07-22)\n\n\n### Performance Improvements\n\n* **kakaotalk:** speed up chat side title copy setup ([094e18a](https://github.com/AmpleReVanced/revanced-patches/commit/094e18a77e4189fd0c767c0e9fef8a72a6c1775c))\n\n\n\n",
     "apps": [
       {
         "app_name": "dcinside",
@@ -47626,6 +47692,15 @@
         "app_name": "Flexcil",
         "package": "com.flexcil.flexcilnote",
         "patches": [
+          {
+            "name": "Bypass login",
+            "description": "Skips the mandatory account sign-in on launch and opens the app directly.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.4.4.9"
+            ]
+          },
           {
             "name": "Unlock Premium features",
             "description": "Enables app features locked behind the subscription paywall.",
@@ -48232,10 +48307,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/kkYJ-GrCRS0WWNWjshvFCyqnYPdC7PY6UZ5NK5ju7OFnp0lmU7JlOLIfPvQnr4Y_LWhnab-Fqz9PkCrEwpPjLQ"
       }
     ],
-    "fingerprint": "13916c692d5f2ab2d8fa7c8cad6f719f81d95628e099842d677a72fe8844a354",
-    "release_notes": "# [1.2.0-dev.13](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.12...v1.2.0-dev.13) (2026-07-22)\n\n\n### Bug Fixes\n\n* **flexcil:** unlock all premium gates in Unlock Premium features ([e5e83b5](https://github.com/AmpleReVanced/revanced-patches/commit/e5e83b51e28fe585a8cb673f6057529fc623e233))\n\n\n### Features\n\n* **flexcil:** update flexcil patches for version 1.4.4.9 ([86b96a1](https://github.com/AmpleReVanced/revanced-patches/commit/86b96a14ca87b40fe47e5aaa67936964dc3f13e4))\n\n\n\n",
-    "release_tag": "v1.2.0-dev.13",
-    "release_date": "2026-07-22T14:04:27Z"
+    "fingerprint": "cdabf29f2f3e6a6aecc72d6878bf4c55d532eabfb02f0a26e610ab60d58d8891",
+    "release_notes": "# [1.2.0-dev.16](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.15...v1.2.0-dev.16) (2026-07-22)\n\n\n### Performance Improvements\n\n* **kakaotalk:** speed up chat side title copy setup ([094e18a](https://github.com/AmpleReVanced/revanced-patches/commit/094e18a77e4189fd0c767c0e9fef8a72a6c1775c))\n\n\n\n",
+    "release_tag": "v1.2.0-dev.16",
+    "release_date": "2026-07-22T15:55:17Z"
   },
   "ihealth-morphe:stable": {
     "bundle": "ihealth-morphe",

@@ -1,7 +1,7 @@
 {
   "date": "2026-07-22",
-  "lastChecked": "2026-07-22T16:20:12Z",
-  "scan_counter": 4,
+  "lastChecked": "2026-07-22T19:06:27Z",
+  "scan_counter": 5,
   "affected_bundles": {
     "seobject:dev": {
       "bundle": "seobject",
@@ -1063,20 +1063,71 @@
           "package": "com.flexcil.flexcilnote",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
+            "patches_added": [
               {
-                "name": "Unlock Premium features",
-                "description": "Enables app features locked behind the subscription paywall.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
+                "name": "Bypass login",
+                "description": "Skips the mandatory account sign-in on launch and opens the app directly."
               }
-            ]
+            ],
+            "patches_removed": [],
+            "patches_modified": []
           },
           "scan_numbers": [
-            4
+            4,
+            5
+          ]
+        }
+      ]
+    },
+    "chiggi:stable": {
+      "bundle": "chiggi",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "AYA Baby AI",
+          "package": "com.cry.analyzer",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            5
+          ]
+        },
+        {
+          "app_name": "Does Not Commute",
+          "package": "com.mediocre.commute",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            5
+          ]
+        },
+        {
+          "app_name": "Vi Movies and TV",
+          "package": "com.vimtv",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Disable forced update",
+                "description": "Removes the 'update available' popup (both the forced/non-cancelable and the optional variant) shown on splash/home. The pinned 10.8 re-signed build would otherwise be nagged — or hard-blocked — to update whenever the server reports a newer version. The popup is gated on ClientInfo.getVersionNumber(); forcing it to \"0\" makes the version check in SplashActivity and MainActivity conclude no update is needed."
+              },
+              {
+                "name": "Remove player watermark",
+                "description": "Removes the per-content watermark/logo overlaid on the video (the one that changes depending on what you play). The player only shows the watermark ImageView when Configs.getWaterMarkInfoOnPlayer() returns non-empty JSON; forcing that getter to null makes the player's own guard hide the overlay. Client render only, so this is fully removable (it is not baked into the stream)."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            5
+          ]
+        },
+        {
+          "app_name": "Cry Analyzer",
+          "package": "jp.firstascent.cryanalyzer",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            5
           ]
         }
       ]
