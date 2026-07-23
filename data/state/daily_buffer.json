@@ -1,7 +1,7 @@
 {
   "date": "2026-07-23",
-  "lastChecked": "2026-07-23T02:11:49Z",
-  "scan_counter": 1,
+  "lastChecked": "2026-07-23T05:51:14Z",
+  "scan_counter": 2,
   "affected_bundles": {
     "xob0t:stable": {
       "bundle": "xob0t",
@@ -350,6 +350,31 @@
           "badge_type": "NEW APP",
           "scan_numbers": [
             1
+          ]
+        }
+      ]
+    },
+    "chiggi:stable": {
+      "bundle": "chiggi",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "JioHotstar",
+          "package": "in.startv.hotstar",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Spoof device id",
+                "description": "Replaces the device id JioHotstar derives from Settings.Secure ANDROID_ID with a stable-per-install random UUID, so the re-signed build presents as a device the server has never flagged. This is the verified single source of both the X-HS-Device-Id request header and the /v2/start body device ids; ANDROID_ID otherwise survives an app-data clear (it is keyed to the signing key), which is why a flagged device kept getting the \"device logged out / suspicious activity\" page on every launch. The id is persisted, and regenerates on an app-data clear so a re-flagged device can be rotated. NOTE: the server also sees the connection IP — pair this with a clean (ideally residential) India IP; a flagged exit IP is not something the client can change. Do not run on an account you cannot afford to lose."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            2
           ]
         }
       ]

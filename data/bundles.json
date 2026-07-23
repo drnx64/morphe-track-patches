@@ -9661,9 +9661,9 @@
     "bundle": "chiggi",
     "channel": "stable",
     "repo_url": "https://github.com/durgesh0505/chiggi_morphe_patches",
-    "created_at": "2026-07-22T16:15:56",
-    "version": "v1.17.0",
-    "description": "## [1.17.0](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.16.0...v1.17.0) (2026-07-22)\n\n### ✨ New Features\n\n* **cryanalyzer:** remove analysis limit (unlimited, no rewarded-ad) ([8d34ac9](https://github.com/durgesh0505/chiggi_morphe_patches/commit/8d34ac9fdd7eb9060979e15e7bfd55a20c869e1b))\n",
+    "created_at": "2026-07-23T01:30:52",
+    "version": "v1.18.0",
+    "description": "## [1.18.0](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.17.0...v1.18.0) (2026-07-23)\n\n### ✨ New Features\n\n* **jiohotstar:** spoof device id (ANDROID_ID) to resolve device-logged-out ([7c4f109](https://github.com/durgesh0505/chiggi_morphe_patches/commit/7c4f10902dd72dba20d429c1c86abd11de24bf85))\n",
     "apps": [
       {
         "app_name": "CrazyGames",
@@ -10217,6 +10217,15 @@
             ]
           },
           {
+            "name": "Spoof device id",
+            "description": "Replaces the device id JioHotstar derives from Settings.Secure ANDROID_ID with a stable-per-install random UUID, so the re-signed build presents as a device the server has never flagged. This is the verified single source of both the X-HS-Device-Id request header and the /v2/start body device ids; ANDROID_ID otherwise survives an app-data clear (it is keyed to the signing key), which is why a flagged device kept getting the \"device logged out / suspicious activity\" page on every launch. The id is persisted, and regenerates on an app-data clear so a re-flagged device can be rotated. NOTE: the server also sees the connection IP — pair this with a clean (ideally residential) India IP; a flagged exit IP is not something the client can change. Do not run on an account you cannot afford to lose.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.06.22.3"
+            ]
+          },
+          {
             "name": "Spoof device-integrity self-report",
             "description": "Forces JioHotstar's security-suite checks (VPN, proxy, root, debugger, open ports, suspicious files) to report false, so the device-integrity attestation the app sends to the server looks clean. Helps rooted/modded devices and complements the VPN bypass. Note: the attestation is also server-validated (signed nonce) and the server sees the connection IP, so this is not guaranteed to defeat a server-side check on its own.",
             "use": true,
@@ -10325,10 +10334,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/KrGUFVNpzq8nghzbFI9uM11WAVEHTkZKVyypMlr8G17ravMH6WV_MbI_IAG6zvgF2te5gWQKMobPraUY3WBFpw"
       }
     ],
-    "fingerprint": "5f1ca2a2a8f5cab24a6353fd7a3aa88de3b59aea15aab648539f8bfc0b063015",
-    "release_notes": "## [1.17.0](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.16.0...v1.17.0) (2026-07-22)\n\n### ✨ New Features\n\n* **cryanalyzer:** remove analysis limit (unlimited, no rewarded-ad) ([8d34ac9](https://github.com/durgesh0505/chiggi_morphe_patches/commit/8d34ac9fdd7eb9060979e15e7bfd55a20c869e1b))\n",
-    "release_tag": "v1.17.0",
-    "release_date": "2026-07-22T16:15:56Z"
+    "fingerprint": "5e9a29cec8cd45136de70b84b1f24b2de43c94126e3cbc1af791ae64f78d2924",
+    "release_notes": "## [1.18.0](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.17.0...v1.18.0) (2026-07-23)\n\n### ✨ New Features\n\n* **jiohotstar:** spoof device id (ANDROID_ID) to resolve device-logged-out ([7c4f109](https://github.com/durgesh0505/chiggi_morphe_patches/commit/7c4f10902dd72dba20d429c1c86abd11de24bf85))\n",
+    "release_tag": "v1.18.0",
+    "release_date": "2026-07-23T01:30:52Z"
   },
   "telegram-morphe:stable": {
     "bundle": "telegram-morphe",
@@ -19329,9 +19338,9 @@
     "bundle": "xob0t",
     "channel": "stable",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-07-23T00:01:20",
-    "version": "v1.7.0",
-    "description": "## [1.7.0](https://github.com/xob0t/morphe-patches/compare/v1.6.1...v1.7.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* **avito:** harden fingerprints for 229.1 ([55beb08](https://github.com/xob0t/morphe-patches/commit/55beb08de2c1cab9715a9e53a861e258dd257082))\n* **avito:** hide sales promo in search results ([e226828](https://github.com/xob0t/morphe-patches/commit/e22682800023bd7a0a89cfa81d9333664fedfae4))\n* **avito:** restart after Favorites tab changes ([47be975](https://github.com/xob0t/morphe-patches/commit/47be975590c9f5cb362d26f6077a71f66c600d4d))\n* enforce strict targets for current app builds ([b8e3a38](https://github.com/xob0t/morphe-patches/commit/b8e3a38fc33a95aaf30347dc1f433d5e6c80d809))\n\n### ✨ New Features\n\n* **avito:** add kindness banner toggle ([9e10b25](https://github.com/xob0t/morphe-patches/commit/9e10b25155361768cb85adb70a16afafc54e0602))\n* **avito:** harden UI tweaks for 229.1 ([4b13452](https://github.com/xob0t/morphe-patches/commit/4b13452d965d82cf92fd310b6b00dfb2d56683d8))\n",
+    "created_at": "2026-07-23T00:54:44",
+    "version": "v1.7.1",
+    "description": "## [1.7.1](https://github.com/xob0t/morphe-patches/compare/v1.7.0...v1.7.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* stub all TBank Executor.execN native calls (exec5/exec6) ([47abf03](https://github.com/xob0t/morphe-patches/commit/47abf034f63267e3324cd863b01b93ad6f81cb62))\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -19548,17 +19557,17 @@
       }
     ],
     "fingerprint": "24ad61dc53a5a52f7437ea02769f0c42736dd2ba993a7aa7b038389cd588a4eb",
-    "release_notes": "## [1.7.0](https://github.com/xob0t/morphe-patches/compare/v1.6.1...v1.7.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* **avito:** harden fingerprints for 229.1 ([55beb08](https://github.com/xob0t/morphe-patches/commit/55beb08de2c1cab9715a9e53a861e258dd257082))\n* **avito:** hide sales promo in search results ([e226828](https://github.com/xob0t/morphe-patches/commit/e22682800023bd7a0a89cfa81d9333664fedfae4))\n* **avito:** restart after Favorites tab changes ([47be975](https://github.com/xob0t/morphe-patches/commit/47be975590c9f5cb362d26f6077a71f66c600d4d))\n* enforce strict targets for current app builds ([b8e3a38](https://github.com/xob0t/morphe-patches/commit/b8e3a38fc33a95aaf30347dc1f433d5e6c80d809))\n\n### ✨ New Features\n\n* **avito:** add kindness banner toggle ([9e10b25](https://github.com/xob0t/morphe-patches/commit/9e10b25155361768cb85adb70a16afafc54e0602))\n* **avito:** harden UI tweaks for 229.1 ([4b13452](https://github.com/xob0t/morphe-patches/commit/4b13452d965d82cf92fd310b6b00dfb2d56683d8))\n",
-    "release_tag": "v1.7.0",
-    "release_date": "2026-07-23T00:01:20Z"
+    "release_notes": "## [1.7.1](https://github.com/xob0t/morphe-patches/compare/v1.7.0...v1.7.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* stub all TBank Executor.execN native calls (exec5/exec6) ([47abf03](https://github.com/xob0t/morphe-patches/commit/47abf034f63267e3324cd863b01b93ad6f81cb62))\n",
+    "release_tag": "v1.7.1",
+    "release_date": "2026-07-23T00:54:44Z"
   },
   "xob0t:dev": {
     "bundle": "xob0t",
     "channel": "dev",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-07-22T23:02:13",
-    "version": "v1.7.0-dev.1",
-    "description": "## [1.7.0-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.6.1...v1.7.0-dev.1) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* **avito:** harden fingerprints for 229.1 ([55beb08](https://github.com/xob0t/morphe-patches/commit/55beb08de2c1cab9715a9e53a861e258dd257082))\n* **avito:** hide sales promo in search results ([e226828](https://github.com/xob0t/morphe-patches/commit/e22682800023bd7a0a89cfa81d9333664fedfae4))\n* **avito:** restart after Favorites tab changes ([47be975](https://github.com/xob0t/morphe-patches/commit/47be975590c9f5cb362d26f6077a71f66c600d4d))\n* enforce strict targets for current app builds ([b8e3a38](https://github.com/xob0t/morphe-patches/commit/b8e3a38fc33a95aaf30347dc1f433d5e6c80d809))\n\n### ✨ New Features\n\n* **avito:** add kindness banner toggle ([9e10b25](https://github.com/xob0t/morphe-patches/commit/9e10b25155361768cb85adb70a16afafc54e0602))\n* **avito:** harden UI tweaks for 229.1 ([4b13452](https://github.com/xob0t/morphe-patches/commit/4b13452d965d82cf92fd310b6b00dfb2d56683d8))\n",
+    "created_at": "2026-07-23T00:51:46",
+    "version": "v1.7.1-dev.1",
+    "description": "## [1.7.1-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.7.0...v1.7.1-dev.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* stub all TBank Executor.execN native calls (exec5/exec6) ([47abf03](https://github.com/xob0t/morphe-patches/commit/47abf034f63267e3324cd863b01b93ad6f81cb62))\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -19775,9 +19784,9 @@
       }
     ],
     "fingerprint": "96fea6da1083cea58b4c989d440427a8948873ab623a8301cea5bef555b8b23d",
-    "release_notes": "## [1.7.0](https://github.com/xob0t/morphe-patches/compare/v1.6.1...v1.7.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* **avito:** harden fingerprints for 229.1 ([55beb08](https://github.com/xob0t/morphe-patches/commit/55beb08de2c1cab9715a9e53a861e258dd257082))\n* **avito:** hide sales promo in search results ([e226828](https://github.com/xob0t/morphe-patches/commit/e22682800023bd7a0a89cfa81d9333664fedfae4))\n* **avito:** restart after Favorites tab changes ([47be975](https://github.com/xob0t/morphe-patches/commit/47be975590c9f5cb362d26f6077a71f66c600d4d))\n* enforce strict targets for current app builds ([b8e3a38](https://github.com/xob0t/morphe-patches/commit/b8e3a38fc33a95aaf30347dc1f433d5e6c80d809))\n\n### ✨ New Features\n\n* **avito:** add kindness banner toggle ([9e10b25](https://github.com/xob0t/morphe-patches/commit/9e10b25155361768cb85adb70a16afafc54e0602))\n* **avito:** harden UI tweaks for 229.1 ([4b13452](https://github.com/xob0t/morphe-patches/commit/4b13452d965d82cf92fd310b6b00dfb2d56683d8))\n",
-    "release_tag": "v1.7.0",
-    "release_date": "2026-07-23T00:01:20Z"
+    "release_notes": "## [1.7.1-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.7.0...v1.7.1-dev.1) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* stub all TBank Executor.execN native calls (exec5/exec6) ([47abf03](https://github.com/xob0t/morphe-patches/commit/47abf034f63267e3324cd863b01b93ad6f81cb62))\n",
+    "release_tag": "v1.7.1-dev.1",
+    "release_date": "2026-07-23T00:51:46Z"
   },
   "kareemlukitomo:stable": {
     "bundle": "kareemlukitomo",
