@@ -19329,9 +19329,9 @@
     "bundle": "xob0t",
     "channel": "stable",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-07-07T11:05:57",
-    "version": "v1.6.1",
-    "description": "## [1.6.1](https://github.com/xob0t/morphe-patches/compare/v1.6.0...v1.6.1) (2026-07-07)\n\n### 🐛 Bug Fixes\n\n* **avito:** hide profile prize portal junk ([73a6a30](https://github.com/xob0t/morphe-patches/commit/73a6a305a96abddf63ba556696f0ffea12436242))\n* support Avito 228.0 ([96f5dee](https://github.com/xob0t/morphe-patches/commit/96f5dee6a57336c3a72b54d460964b240b696a96))\n",
+    "created_at": "2026-07-23T00:01:20",
+    "version": "v1.7.0",
+    "description": "## [1.7.0](https://github.com/xob0t/morphe-patches/compare/v1.6.1...v1.7.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* **avito:** harden fingerprints for 229.1 ([55beb08](https://github.com/xob0t/morphe-patches/commit/55beb08de2c1cab9715a9e53a861e258dd257082))\n* **avito:** hide sales promo in search results ([e226828](https://github.com/xob0t/morphe-patches/commit/e22682800023bd7a0a89cfa81d9333664fedfae4))\n* **avito:** restart after Favorites tab changes ([47be975](https://github.com/xob0t/morphe-patches/commit/47be975590c9f5cb362d26f6077a71f66c600d4d))\n* enforce strict targets for current app builds ([b8e3a38](https://github.com/xob0t/morphe-patches/commit/b8e3a38fc33a95aaf30347dc1f433d5e6c80d809))\n\n### ✨ New Features\n\n* **avito:** add kindness banner toggle ([9e10b25](https://github.com/xob0t/morphe-patches/commit/9e10b25155361768cb85adb70a16afafc54e0602))\n* **avito:** harden UI tweaks for 229.1 ([4b13452](https://github.com/xob0t/morphe-patches/commit/4b13452d965d82cf92fd310b6b00dfb2d56683d8))\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -19343,6 +19343,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19356,6 +19357,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19367,8 +19369,14 @@
             "name": "Disable telemetry",
             "description": "Disables Avito first-party clickstream analytics and Avito's direct Adjust telemetry wrapper.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "strictTargets",
+                "description": "Fail patching when a known Avito telemetry entry point cannot be found."
+              }
+            ],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19382,6 +19390,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19393,8 +19402,14 @@
             "name": "Morphe settings",
             "description": "Adds a \"Настройки Morphe\" entry to Avito's settings that hosts the configuration for the other Morphe patches.",
             "use": false,
-            "options": [],
+            "options": [
+              {
+                "key": "strictHooks",
+                "description": "Fail patching when the Avito settings entry or Konveyor bind hook cannot be applied."
+              }
+            ],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19408,6 +19423,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19419,8 +19435,14 @@
             "name": "UI tweaks",
             "description": "Optional interface tweaks, each toggleable in Настройки Morphe: single-row home categories, hide the \"Подписки\" tab in Избранное, hide installments (Рассрочка) and the \"Спросите у продавца\" block on offers, expand descriptions by default (no \"Читать далее\"), and hide the Avi assistant tab in the bottom navigation.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "strictFavoritesTabs",
+                "description": "Fail patching when the Favorites-tab filtering hook cannot be applied."
+              }
+            ],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19439,8 +19461,14 @@
             "name": "Bypass anti-tamper",
             "description": "Stubs TBank's native RASP executor calls and neutralizes tamper flag reporting.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "strictTargets",
+                "description": "Fails when a current integrity-check target no longer matches. Intended for automated builds."
+              }
+            ],
             "compatible_versions": [
+              "7.40.0",
               "7.36.0"
             ]
           },
@@ -19448,8 +19476,14 @@
             "name": "Remove TBank ads",
             "description": "Removes TBank stories and promotional surfaces.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "strictTargets",
+                "description": "Fails when a current promotional surface no longer matches. Intended for automated builds."
+              }
+            ],
             "compatible_versions": [
+              "7.40.0",
               "7.36.0"
             ]
           }
@@ -19468,9 +19502,14 @@
               {
                 "key": "hideRecommendationGrids",
                 "description": "Removes recommendation grids from cart and product screens."
+              },
+              {
+                "key": "strictTargets",
+                "description": "Fails when a current banner or recommendation surface no longer matches. Intended for automated builds."
               }
             ],
             "compatible_versions": [
+              "7.7.2001-rustore",
               "7.6.8001",
               "7.6.1000-rustore",
               "7.0.6000"
@@ -19491,9 +19530,14 @@
               {
                 "key": "hideRecommendationGrids",
                 "description": "Removes recommendation grids from product, cart, profile, and favorites screens."
+              },
+              {
+                "key": "strictTargets",
+                "description": "Fails when a current ad surface no longer matches. Intended for automated builds."
               }
             ],
             "compatible_versions": [
+              "19.27.0",
               "19.22.0",
               "19.16.0",
               "18.37.0"
@@ -19503,18 +19547,18 @@
         "icon_url": "https://play-lh.googleusercontent.com/Rz5gPi2gs8Vs8VZVn7mpJQpIB7XzeeErGGNAMIdr9NmWJigvmFpaWtMlpyC2rdieC6gxnpmQ5guTUUMjnZn97g"
       }
     ],
-    "fingerprint": "86f9b869b0d5c428f266fb97bac9f7824cbe72fc3ba68858b531ffa31ed1af18",
-    "release_notes": "## [1.6.1](https://github.com/xob0t/morphe-patches/compare/v1.6.0...v1.6.1) (2026-07-07)\n\n### 🐛 Bug Fixes\n\n* **avito:** hide profile prize portal junk ([73a6a30](https://github.com/xob0t/morphe-patches/commit/73a6a305a96abddf63ba556696f0ffea12436242))\n* support Avito 228.0 ([96f5dee](https://github.com/xob0t/morphe-patches/commit/96f5dee6a57336c3a72b54d460964b240b696a96))\n",
-    "release_tag": "v1.6.1",
-    "release_date": "2026-07-07T11:05:57Z"
+    "fingerprint": "24ad61dc53a5a52f7437ea02769f0c42736dd2ba993a7aa7b038389cd588a4eb",
+    "release_notes": "## [1.7.0](https://github.com/xob0t/morphe-patches/compare/v1.6.1...v1.7.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* **avito:** harden fingerprints for 229.1 ([55beb08](https://github.com/xob0t/morphe-patches/commit/55beb08de2c1cab9715a9e53a861e258dd257082))\n* **avito:** hide sales promo in search results ([e226828](https://github.com/xob0t/morphe-patches/commit/e22682800023bd7a0a89cfa81d9333664fedfae4))\n* **avito:** restart after Favorites tab changes ([47be975](https://github.com/xob0t/morphe-patches/commit/47be975590c9f5cb362d26f6077a71f66c600d4d))\n* enforce strict targets for current app builds ([b8e3a38](https://github.com/xob0t/morphe-patches/commit/b8e3a38fc33a95aaf30347dc1f433d5e6c80d809))\n\n### ✨ New Features\n\n* **avito:** add kindness banner toggle ([9e10b25](https://github.com/xob0t/morphe-patches/commit/9e10b25155361768cb85adb70a16afafc54e0602))\n* **avito:** harden UI tweaks for 229.1 ([4b13452](https://github.com/xob0t/morphe-patches/commit/4b13452d965d82cf92fd310b6b00dfb2d56683d8))\n",
+    "release_tag": "v1.7.0",
+    "release_date": "2026-07-23T00:01:20Z"
   },
   "xob0t:dev": {
     "bundle": "xob0t",
     "channel": "dev",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-07-07T11:04:59",
-    "version": "v1.6.0-dev.3",
-    "description": "## [1.6.0-dev.3](https://github.com/xob0t/morphe-patches/compare/v1.6.0-dev.2...v1.6.0-dev.3) (2026-07-07)\n\n### 🐛 Bug Fixes\n\n* **avito:** hide profile prize portal junk ([73a6a30](https://github.com/xob0t/morphe-patches/commit/73a6a305a96abddf63ba556696f0ffea12436242))\n",
+    "created_at": "2026-07-22T23:02:13",
+    "version": "v1.7.0-dev.1",
+    "description": "## [1.7.0-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.6.1...v1.7.0-dev.1) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* **avito:** harden fingerprints for 229.1 ([55beb08](https://github.com/xob0t/morphe-patches/commit/55beb08de2c1cab9715a9e53a861e258dd257082))\n* **avito:** hide sales promo in search results ([e226828](https://github.com/xob0t/morphe-patches/commit/e22682800023bd7a0a89cfa81d9333664fedfae4))\n* **avito:** restart after Favorites tab changes ([47be975](https://github.com/xob0t/morphe-patches/commit/47be975590c9f5cb362d26f6077a71f66c600d4d))\n* enforce strict targets for current app builds ([b8e3a38](https://github.com/xob0t/morphe-patches/commit/b8e3a38fc33a95aaf30347dc1f433d5e6c80d809))\n\n### ✨ New Features\n\n* **avito:** add kindness banner toggle ([9e10b25](https://github.com/xob0t/morphe-patches/commit/9e10b25155361768cb85adb70a16afafc54e0602))\n* **avito:** harden UI tweaks for 229.1 ([4b13452](https://github.com/xob0t/morphe-patches/commit/4b13452d965d82cf92fd310b6b00dfb2d56683d8))\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -19526,6 +19570,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19539,6 +19584,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19550,8 +19596,14 @@
             "name": "Disable telemetry",
             "description": "Disables Avito first-party clickstream analytics and Avito's direct Adjust telemetry wrapper.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "strictTargets",
+                "description": "Fail patching when a known Avito telemetry entry point cannot be found."
+              }
+            ],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19565,6 +19617,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19576,8 +19629,14 @@
             "name": "Morphe settings",
             "description": "Adds a \"Настройки Morphe\" entry to Avito's settings that hosts the configuration for the other Morphe patches.",
             "use": false,
-            "options": [],
+            "options": [
+              {
+                "key": "strictHooks",
+                "description": "Fail patching when the Avito settings entry or Konveyor bind hook cannot be applied."
+              }
+            ],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19591,6 +19650,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19602,8 +19662,14 @@
             "name": "UI tweaks",
             "description": "Optional interface tweaks, each toggleable in Настройки Morphe: single-row home categories, hide the \"Подписки\" tab in Избранное, hide installments (Рассрочка) and the \"Спросите у продавца\" block on offers, expand descriptions by default (no \"Читать далее\"), and hide the Avi assistant tab in the bottom navigation.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "strictFavoritesTabs",
+                "description": "Fail patching when the Favorites-tab filtering hook cannot be applied."
+              }
+            ],
             "compatible_versions": [
+              "229.1",
               "228.0",
               "227.0",
               "226.5",
@@ -19622,8 +19688,14 @@
             "name": "Bypass anti-tamper",
             "description": "Stubs TBank's native RASP executor calls and neutralizes tamper flag reporting.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "strictTargets",
+                "description": "Fails when a current integrity-check target no longer matches. Intended for automated builds."
+              }
+            ],
             "compatible_versions": [
+              "7.40.0",
               "7.36.0"
             ]
           },
@@ -19631,8 +19703,14 @@
             "name": "Remove TBank ads",
             "description": "Removes TBank stories and promotional surfaces.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "strictTargets",
+                "description": "Fails when a current promotional surface no longer matches. Intended for automated builds."
+              }
+            ],
             "compatible_versions": [
+              "7.40.0",
               "7.36.0"
             ]
           }
@@ -19651,9 +19729,14 @@
               {
                 "key": "hideRecommendationGrids",
                 "description": "Removes recommendation grids from cart and product screens."
+              },
+              {
+                "key": "strictTargets",
+                "description": "Fails when a current banner or recommendation surface no longer matches. Intended for automated builds."
               }
             ],
             "compatible_versions": [
+              "7.7.2001-rustore",
               "7.6.8001",
               "7.6.1000-rustore",
               "7.0.6000"
@@ -19674,9 +19757,14 @@
               {
                 "key": "hideRecommendationGrids",
                 "description": "Removes recommendation grids from product, cart, profile, and favorites screens."
+              },
+              {
+                "key": "strictTargets",
+                "description": "Fails when a current ad surface no longer matches. Intended for automated builds."
               }
             ],
             "compatible_versions": [
+              "19.27.0",
               "19.22.0",
               "19.16.0",
               "18.37.0"
@@ -19686,10 +19774,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/Rz5gPi2gs8Vs8VZVn7mpJQpIB7XzeeErGGNAMIdr9NmWJigvmFpaWtMlpyC2rdieC6gxnpmQ5guTUUMjnZn97g"
       }
     ],
-    "fingerprint": "be6919cfaebad9918c534958eb5fff12d99a3f79b9f8b286faad14716cb52e46",
-    "release_notes": "## [1.6.0](https://github.com/xob0t/morphe-patches/compare/v1.5.1...v1.6.0) (2026-06-23)\n\n### ✨ New Features\n\n* **avito:** enable Block listings and UI tweaks by default ([#25](https://github.com/xob0t/morphe-patches/issues/25)) ([6ca33dd](https://github.com/xob0t/morphe-patches/commit/6ca33dd5fb624f9a10a9a0ce2e93be90695a0b97))\n",
-    "release_tag": "v1.6.0",
-    "release_date": "2026-06-23T06:18:13Z"
+    "fingerprint": "96fea6da1083cea58b4c989d440427a8948873ab623a8301cea5bef555b8b23d",
+    "release_notes": "## [1.7.0](https://github.com/xob0t/morphe-patches/compare/v1.6.1...v1.7.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* **avito:** harden fingerprints for 229.1 ([55beb08](https://github.com/xob0t/morphe-patches/commit/55beb08de2c1cab9715a9e53a861e258dd257082))\n* **avito:** hide sales promo in search results ([e226828](https://github.com/xob0t/morphe-patches/commit/e22682800023bd7a0a89cfa81d9333664fedfae4))\n* **avito:** restart after Favorites tab changes ([47be975](https://github.com/xob0t/morphe-patches/commit/47be975590c9f5cb362d26f6077a71f66c600d4d))\n* enforce strict targets for current app builds ([b8e3a38](https://github.com/xob0t/morphe-patches/commit/b8e3a38fc33a95aaf30347dc1f433d5e6c80d809))\n\n### ✨ New Features\n\n* **avito:** add kindness banner toggle ([9e10b25](https://github.com/xob0t/morphe-patches/commit/9e10b25155361768cb85adb70a16afafc54e0602))\n* **avito:** harden UI tweaks for 229.1 ([4b13452](https://github.com/xob0t/morphe-patches/commit/4b13452d965d82cf92fd310b6b00dfb2d56683d8))\n",
+    "release_tag": "v1.7.0",
+    "release_date": "2026-07-23T00:01:20Z"
   },
   "kareemlukitomo:stable": {
     "bundle": "kareemlukitomo",
@@ -49526,9 +49614,9 @@
     "bundle": "hoo-dles",
     "channel": "dev",
     "repo_url": "https://github.com/hoo-dles/morphe-patches",
-    "created_at": "2026-07-17T03:40:06",
-    "version": "v1.40.0-dev.2",
-    "description": "# [1.40.0-dev.2](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.1...v1.40.0-dev.2) (2026-07-17)\n\n\n### Bug Fixes\n\n* **MacroFactor:** Bump version and spoof installer source ([cde3be0](https://github.com/hoo-dles/morphe-patches/commit/cde3be0710459043ebd1d622c9356a1388ef04e4))\n\n\n\n",
+    "created_at": "2026-07-22T22:24:32",
+    "version": "v1.40.0-dev.3",
+    "description": "# [1.40.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.2...v1.40.0-dev.3) (2026-07-22)\n\n\n### Features\n\n* **Ling:** Add `Enable Pro` patch ([5d682ef](https://github.com/hoo-dles/morphe-patches/commit/5d682ef19539896349af176273b31101e8372451))\n\n\n\n",
     "apps": [
       {
         "app_name": "TTMIK Stories",
@@ -49573,7 +49661,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.17.72.0"
+              "5.19.43.0"
             ]
           },
           {
@@ -49582,7 +49670,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.17.72.0"
+              "5.19.43.0"
             ]
           },
           {
@@ -49591,7 +49679,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.17.72.0"
+              "5.19.43.0"
             ]
           },
           {
@@ -49600,7 +49688,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.17.72.0"
+              "5.19.43.0"
             ]
           }
         ],
@@ -50103,6 +50191,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/F3t0pahlU3r8-6Hf9iWw07KXH_ye4-nEZYNht7RZlMBdWJGUwPdkxrPWii_jqMg6WWc0v0TdYBofI7IG8xj0u5k"
       },
       {
+        "app_name": "Ling",
+        "package": "com.simyasolutions.ling.universal",
+        "patches": [
+          {
+            "name": "Enable Pro",
+            "description": "Enables app features locked behind the subscription paywall.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.4.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/gSo2NaX1KH9i2tlc9MGxSQKt8P49-VXkygRtz6XWWnsP0-EYMQwJusOwMp5gSDY0Sw6gFB4xU7qlfGooipVuZg"
+      },
+      {
         "app_name": "SnoreLab",
         "package": "com.snorelab.app",
         "patches": [
@@ -50563,10 +50667,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/bfewUxobdHumF6r7pj6teHAPnLWXWpRapcgipF4-WjU8ziVwQpm5nyOhM9FNq2-G2axH74JiDU9z3Fc_5FeS"
       }
     ],
-    "fingerprint": "d7660b4433c9c83d9ccf982ccf6557040a2a7b6f5a4e5a775afded8a7170fd1d",
-    "release_notes": "# [1.40.0-dev.2](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.1...v1.40.0-dev.2) (2026-07-17)\n\n\n### Bug Fixes\n\n* **MacroFactor:** Bump version and spoof installer source ([cde3be0](https://github.com/hoo-dles/morphe-patches/commit/cde3be0710459043ebd1d622c9356a1388ef04e4))\n\n\n\n",
-    "release_tag": "v1.40.0-dev.2",
-    "release_date": "2026-07-17T03:40:06Z"
+    "fingerprint": "c79fb89c29b332124ad28d48a6f5ec29526459607a1cbdb26d5972aa318c97d6",
+    "release_notes": "# [1.40.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.2...v1.40.0-dev.3) (2026-07-22)\n\n\n### Features\n\n* **Ling:** Add `Enable Pro` patch ([5d682ef](https://github.com/hoo-dles/morphe-patches/commit/5d682ef19539896349af176273b31101e8372451))\n\n\n\n",
+    "release_tag": "v1.40.0-dev.3",
+    "release_date": "2026-07-22T22:24:32Z"
   },
   "browzomje:stable": {
     "bundle": "browzomje",
@@ -50936,9 +51040,9 @@
     "bundle": "hoomans-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-07-20T22:11:47",
-    "version": "v1.43.1",
-    "description": "## [1.43.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.0...v1.43.1) (2026-07-20)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([d99af82](https://github.com/arandomhooman/hoomans-morphe-patches/commit/d99af82f4dd1babdf11bd14fdffee0880cce5ad0))\n",
+    "created_at": "2026-07-22T21:59:04",
+    "version": "v1.43.4",
+    "description": "## [1.43.4](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.3...v1.43.4) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* handle install residue during release back-merge ([5fe8fb1](https://github.com/arandomhooman/hoomans-morphe-patches/commit/5fe8fb112354c9a3e1b2f41f095ff6176df6b5b3))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -51714,17 +51818,17 @@
       }
     ],
     "fingerprint": "0ea947e7ef5869efa141e3c541d48d2a15e7b3a9875fde75877f5834fb0529c2",
-    "release_notes": "## [1.43.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.0...v1.43.1) (2026-07-20)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([d99af82](https://github.com/arandomhooman/hoomans-morphe-patches/commit/d99af82f4dd1babdf11bd14fdffee0880cce5ad0))\n",
-    "release_tag": "v1.43.1",
-    "release_date": "2026-07-20T22:11:47Z"
+    "release_notes": "## [1.43.4](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.43.3...v1.43.4) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* handle install residue during release back-merge ([5fe8fb1](https://github.com/arandomhooman/hoomans-morphe-patches/commit/5fe8fb112354c9a3e1b2f41f095ff6176df6b5b3))\n",
+    "release_tag": "v1.43.4",
+    "release_date": "2026-07-22T21:59:04Z"
   },
   "hoomans-morphe:dev": {
     "bundle": "hoomans-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-07-20T22:01:19",
-    "version": "v1.44.0-dev.2",
-    "description": "## [1.44.0-dev.2](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.44.0-dev.1...v1.44.0-dev.2) (2026-07-20)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([332560b](https://github.com/arandomhooman/hoomans-morphe-patches/commit/332560b405623d8888802d7fc89c98af0e9235ae))\n",
+    "created_at": "2026-07-22T21:28:31",
+    "version": "v1.44.0-dev.3",
+    "description": "## [1.44.0-dev.3](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.44.0-dev.2...v1.44.0-dev.3) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([d99af82](https://github.com/arandomhooman/hoomans-morphe-patches/commit/d99af82f4dd1babdf11bd14fdffee0880cce5ad0))\n* resolve Symfonium playback and Poweramp settings crashes ([7fe01ae](https://github.com/arandomhooman/hoomans-morphe-patches/commit/7fe01aee708e3b2114b1e4f7a47d5c7b78a0e1f3))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -52516,9 +52620,9 @@
       }
     ],
     "fingerprint": "eb18caebc3e75949fd0d9915aea6067f31f1ce129dce18c6ec49d021e213df8e",
-    "release_notes": "## [1.44.0-dev.2](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.44.0-dev.1...v1.44.0-dev.2) (2026-07-20)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([332560b](https://github.com/arandomhooman/hoomans-morphe-patches/commit/332560b405623d8888802d7fc89c98af0e9235ae))\n",
-    "release_tag": "v1.44.0-dev.2",
-    "release_date": "2026-07-20T22:01:19Z"
+    "release_notes": "## [1.44.0-dev.3](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.44.0-dev.2...v1.44.0-dev.3) (2026-07-22)\n\n### 🐛 Bug Fixes\n\n* resolve reported patch regressions ([d99af82](https://github.com/arandomhooman/hoomans-morphe-patches/commit/d99af82f4dd1babdf11bd14fdffee0880cce5ad0))\n* resolve Symfonium playback and Poweramp settings crashes ([7fe01ae](https://github.com/arandomhooman/hoomans-morphe-patches/commit/7fe01aee708e3b2114b1e4f7a47d5c7b78a0e1f3))\n",
+    "release_tag": "v1.44.0-dev.3",
+    "release_date": "2026-07-22T21:28:31Z"
   },
   "rabilrbl:dev": {
     "bundle": "rabilrbl",

@@ -1,5 +1,22 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-22]
+- **UPDATED** Bundle **ajstrick81-androidtv**
+  - **UPDATED APP** Disneyplus (`com.disney.disneyplus`) in ajstrick81-androidtv patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
+  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+  - **UPDATED APP** [PRE-RELEASE] SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
+- **UPDATED** Bundle **chiggi**
+  - **NEW APP** AYA Baby AI (`com.cry.analyzer`) in chiggi patches
+  - **NEW APP** Cry Analyzer (`jp.firstascent.cryanalyzer`) in chiggi patches
+  - **NEW APP** Does Not Commute (`com.mediocre.commute`) in chiggi patches
+  - **UPDATED APP** Vi Movies and TV (`com.vimtv`) in chiggi patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **seobject**
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in seobject patches
 ## [2026-07-21]
 - **UPDATED** Bundle **hoomans-morphe**
   - **UPDATED APP** Poweramp (`com.maxmpz.audioplayer`) in hoomans-morphe patches

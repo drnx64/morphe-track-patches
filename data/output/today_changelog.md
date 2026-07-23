@@ -1,14 +1,17 @@
-## [2026-07-21]
-- **UPDATED** Bundle **hoomans-morphe**
-  - **UPDATED APP** Poweramp (`com.maxmpz.audioplayer`) in hoomans-morphe patches
-  - **UPDATED APP** SofaScore (`com.sofascore.results`) in hoomans-morphe patches
-  - **UPDATED APP** Symfonium (`app.symfonik.music.player`) in hoomans-morphe patches
-- **UPDATED** Bundle **miguel**
-  - **UPDATED APP** Oddmar (`com.mobge.oddmar`) in miguel patches
+## [2026-07-22]
+- **UPDATED** Bundle **ajstrick81-androidtv**
+  - **UPDATED APP** Disneyplus (`com.disney.disneyplus`) in ajstrick81-androidtv patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
+  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+  - **UPDATED APP** [PRE-RELEASE] SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
+- **UPDATED** Bundle **chiggi**
+  - **NEW APP** AYA Baby AI (`com.cry.analyzer`) in chiggi patches
+  - **NEW APP** Cry Analyzer (`jp.firstascent.cryanalyzer`) in chiggi patches
+  - **NEW APP** Does Not Commute (`com.mediocre.commute`) in chiggi patches
+  - **UPDATED APP** Vi Movies and TV (`com.vimtv`) in chiggi patches
 - **UPDATED** Bundle **morphe**
   - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
-  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
-- **UPDATED** Bundle **pichiwa**
-  - **UPDATED APP** WhatsApp (`com.whatsapp`) in pichiwa patches
-- **UPDATED** Bundle **stylus**
-  - **NEW APP** Bitwarden (`com.x8bit.bitwarden`) in stylus patches
+- **UPDATED** Bundle **seobject**
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in seobject patches
