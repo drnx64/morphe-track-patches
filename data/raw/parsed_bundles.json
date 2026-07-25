@@ -5827,6 +5827,132 @@
     ],
     "fingerprint": "e6d6252d4a087a3b307a8580cab1155f9bdde0e079a7a0e0d48497f15026df80"
   },
+  "andrewliang25:stable": {
+    "bundle": "andrewliang25",
+    "channel": "stable",
+    "repo_url": "https://github.com/andrewliang25/morphe-patches",
+    "created_at": "2026-07-25T12:47:16",
+    "version": "v1.0.0",
+    "description": "## 1.0.0 (2026-07-25)\r\n\r\n### ✨ New Features\r\n\r\n* Add Hide Home modules patch ([02a84ea](https://github.com/andrewliang25/morphe-patches/commit/02a84ea212bc5b2f1c60f54698b9a11b24d4872b))\r\n* Add hide-calendar-button and hide-community-button patches ([a073efc](https://github.com/andrewliang25/morphe-patches/commit/a073efc7eb86db0c235ecba1bbd349a1ad0ad845))\r\n* Add LINE disable-pay patch ([b97dd49](https://github.com/andrewliang25/morphe-patches/commit/b97dd4934e3fb50ea5dd611f6db528e536806c0f))\r\n* Add LINE disable-voom patch ([dd780cd](https://github.com/andrewliang25/morphe-patches/commit/dd780cd07ee210ea08cabe534832a170e2d2ac46))\r\n* Add LINE hide-ad-views patch ([79af586](https://github.com/andrewliang25/morphe-patches/commit/79af586389c709ba895b919005fe1a51064c9ac4))\r\n* Add LINE hide-line-today-tab patch ([92255fd](https://github.com/andrewliang25/morphe-patches/commit/92255fdfa7bb1cf5de4651bf71816394715c986e))\r\n* Add LINE hide-voom-tab patch ([e7a33f6](https://github.com/andrewliang25/morphe-patches/commit/e7a33f6035bdde6011fa7781ab71c7f8bfc0aef6))\r\n* Add LINE hide-wallet-tab patch ([661c955](https://github.com/andrewliang25/morphe-patches/commit/661c9550fca657703bf7b564795cb7957d165df9))\r\n* Add LINE open-links-in-external-browser patch ([9c90b23](https://github.com/andrewliang25/morphe-patches/commit/9c90b231135c6f58ec1baadf7f3e5d13ba0b294a))\r\n* Add LINE remove-banner-ads patch ([96c8334](https://github.com/andrewliang25/morphe-patches/commit/96c83349f9c6162b3809ed7c01b9ec3f5d132e04))\r\n* Add LINE keep-chats-unread patch ([1a8d9af](https://github.com/andrewliang25/morphe-patches/commit/1a8d9aff3a2585efc82a1f7dd350e4a6d2005f1f))\r\n",
+    "apps": [
+      {
+        "app_name": "LINE",
+        "package": "jp.naver.line.android",
+        "patches": [
+          {
+            "name": "Disable LINE Pay",
+            "description": "Closes any LINE Pay screen immediately on open, so Pay flows (and their device-integrity check) never run. Messaging is unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Disable VOOM",
+            "description": "Neutralizes VOOM entry points: VOOM deep links, shares, and notifications (line://home/*) do nothing, and the standalone VOOM feed closes on open. Also disables VOOM LIVE, the birthday board, and share-to-VOOM. Messaging, friend profiles, and other tabs are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide ad views",
+            "description": "Hides LINE display ad views — the LINE Ads SDK containers across the app, the chat-list Smart Channel banner, and Google AdManager ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide calendar button",
+            "description": "Removes the calendar button from the top of the Chats tab header.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide community button",
+            "description": "Removes the community (OpenChat) button from the top of the Chats tab header.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Home modules",
+            "description": "Hides Home-tab clutter modules: the recommended stickers/content section, the real-time hot-topics (即時夯話題) block, and Home feed ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide LINE TODAY tab",
+            "description": "Removes the LINE TODAY (News) tab from the main bottom navigation, in both the news-tab and news-row layouts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide VOOM tab",
+            "description": "Removes the VOOM (formerly Timeline) tab from the main bottom navigation.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Wallet tab",
+            "description": "Removes the Wallet (LINE Pay) tab from the main bottom navigation, in both the normal and mini-tab layouts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Keep chats unread",
+            "description": "Opening a 1:1 or group chat no longer marks it read — it stays unread and no read receipt is sent. Manually using \"Mark as read\" / \"Mark all as read\" still marks the chat read and sends the receipt as normal.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Open links in external browser",
+            "description": "Opens tapped web links (http/https) in your default browser instead of LINE's in-app browser. LIFF mini-apps and LINE deep links are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Remove banner ads",
+            "description": "Stops LINE from loading Smart Channel banner ads (neutralizes the getBanners and getPrefetchableBanners responses).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
+      }
+    ],
+    "fingerprint": "55c9cdf6d16430a79d9ef346259a4f8e3f7b03612aae3752dd6783997c43fb3d"
+  },
   "franticg33k:dev": {
     "bundle": "franticg33k",
     "channel": "dev",
@@ -7535,6 +7661,116 @@
       }
     ],
     "fingerprint": "29e47781128e12734e8653f63444fcbfc3e0831236a4f547eb54e83f514fc191"
+  },
+  "dh6k:dev": {
+    "bundle": "dh6k",
+    "channel": "dev",
+    "repo_url": "https://github.com/dh6k/morphe-patches",
+    "created_at": "2026-07-25T19:01:34",
+    "version": "v1.1.0-dev.4",
+    "description": "## [1.1.0-dev.4](https://github.com/dh6k/morphe-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-07-25)\n\n### 🐛 Bug Fixes\n\n* **universal:** restore appName option key ([83f1677](https://github.com/dh6k/morphe-patches/commit/83f1677388c16073f71ed83d99a6663d63cd63a3))\n",
+    "apps": [
+      {
+        "app_name": "Brave Browser",
+        "package": "com.brave.browser",
+        "patches": [
+          {
+            "name": "Brave Origin",
+            "description": "Unlocks Brave Origin and enables feature toggle controls.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.92.140"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/UBrZnuXGb-QACU0uUdF5r_n5nx5oBbdfPyEbtsr0xXv00RN7rpaTVu3GjLeE90aHFmNlbaCmm8vNcmY0eE98U9E"
+      },
+      {
+        "app_name": "Brave Beta",
+        "package": "com.brave.browser_beta",
+        "patches": [
+          {
+            "name": "Brave Origin",
+            "description": "Unlocks Brave Origin and enables feature toggle controls.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/m3LnXsbsKcEOw-IpXms9eT6f4X9NvJqtTLpg7dyU93tsKvioJWruRWqZ3keWHx0RC7ebAmMwFf3tF8UnjmHIlQ"
+      },
+      {
+        "app_name": "Brave Nightly",
+        "package": "com.brave.browser_nightly",
+        "patches": [
+          {
+            "name": "Brave Origin",
+            "description": "Unlocks Brave Origin and enables feature toggle controls.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/m1tbP30ZVRu7-sHKEDrtqt9ObgL4hsIgGTYKQQZy-6GCxGoJ_z7fhuQZpX8AeLbe-Y-s6dLgEi8Zpl5PKpbp"
+      }
+    ],
+    "fingerprint": "f7320182827acae5df2616c9de73bab45538d939aef880f264c047c8f5f6b30b"
+  },
+  "dh6k:stable": {
+    "bundle": "dh6k",
+    "channel": "stable",
+    "repo_url": "https://github.com/dh6k/morphe-patches",
+    "created_at": "2026-07-25T19:18:00",
+    "version": "v1.1.0",
+    "description": "## [1.1.0](https://github.com/dh6k/morphe-patches/compare/v1.0.2...v1.1.0) (2026-07-25)\n\n### 🐛 Bug Fixes\n\n* **build:** keep generator dependencies out of patch dex ([fe0a25e](https://github.com/dh6k/morphe-patches/commit/fe0a25e9767e47ffd90342e116e58c4c7e7f4e2b))\n* **release:** publish appName option on main ([87f6a6e](https://github.com/dh6k/morphe-patches/commit/87f6a6ed75ced66379debe0ba89bdf66da693189))\n* **universal:** release bundle-specific app name option ([dbdb4fc](https://github.com/dh6k/morphe-patches/commit/dbdb4fc184f82ddfc010e9d7f8fb1f4bde527758))\n* **universal:** restore appName option key ([83f1677](https://github.com/dh6k/morphe-patches/commit/83f1677388c16073f71ed83d99a6663d63cd63a3))\n\n### ✨ New Features\n\n* **universal:** add custom app icon patch ([affb2d4](https://github.com/dh6k/morphe-patches/commit/affb2d4e578a91da7ce5ec6a40c56b47d7ae968f))\n",
+    "apps": [
+      {
+        "app_name": "Brave Browser",
+        "package": "com.brave.browser",
+        "patches": [
+          {
+            "name": "Brave Origin",
+            "description": "Unlocks Brave Origin and enables feature toggle controls.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.92.140"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/UBrZnuXGb-QACU0uUdF5r_n5nx5oBbdfPyEbtsr0xXv00RN7rpaTVu3GjLeE90aHFmNlbaCmm8vNcmY0eE98U9E"
+      },
+      {
+        "app_name": "Brave Beta",
+        "package": "com.brave.browser_beta",
+        "patches": [
+          {
+            "name": "Brave Origin",
+            "description": "Unlocks Brave Origin and enables feature toggle controls.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/m3LnXsbsKcEOw-IpXms9eT6f4X9NvJqtTLpg7dyU93tsKvioJWruRWqZ3keWHx0RC7ebAmMwFf3tF8UnjmHIlQ"
+      },
+      {
+        "app_name": "Brave Nightly",
+        "package": "com.brave.browser_nightly",
+        "patches": [
+          {
+            "name": "Brave Origin",
+            "description": "Unlocks Brave Origin and enables feature toggle controls.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/m1tbP30ZVRu7-sHKEDrtqt9ObgL4hsIgGTYKQQZy-6GCxGoJ_z7fhuQZpX8AeLbe-Y-s6dLgEi8Zpl5PKpbp"
+      }
+    ],
+    "fingerprint": "7172d30c2af44bc344ae2ba0b3fda6c14a14b67b80899b1f3eaff09df260fc4e"
   },
   "andronedev:dev": {
     "bundle": "andronedev",
@@ -12766,6 +13002,159 @@
       }
     ],
     "fingerprint": "a9b8b31dcc305f79ae6591b488f0298b028da125f1cd9b1815d8f8ec3c983613"
+  },
+  "vocacolle:dev": {
+    "bundle": "vocacolle",
+    "channel": "dev",
+    "repo_url": "https://github.com/ilikeadofai/vocacolle-morphe-patches",
+    "created_at": "2026-07-24T00:28:26",
+    "version": "v1.2.0-dev.2",
+    "description": "## [1.2.0-dev.2](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.2.0-dev.1...v1.2.0-dev.2) (2026-07-24)\n\n### 🐛 Bug Fixes\n\n* harden ad surface controls ([70836ed](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/70836ed8d73645e80a7f57b0a06c2df95497c625))\n",
+    "apps": [
+      {
+        "app_name": "VocaColle",
+        "package": "jp.nicovideo.nicobox",
+        "patches": [
+          {
+            "name": "Customize VocaColle branding",
+            "description": "Optionally changes the launcher name and icon while preserving the original Japanese branding by default.",
+            "use": false,
+            "options": [
+              {
+                "key": "vocacolleAppName",
+                "description": "Launcher name. Keep ボカコレ to preserve the original Japanese name."
+              },
+              {
+                "key": "vocacolleAppIconPath",
+                "description": "Path to a square PNG. Leave empty to preserve the original icon."
+              }
+            ],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "English UI",
+            "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "Korean UI",
+            "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "VocaColle ad control",
+            "description": "Adds opt-in controls for VocaColle advertising surfaces.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "VocaColle compatibility probe",
+            "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "VocaColle Morphe settings",
+            "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/KebeLOyAcJvXyvUm-S7prz8gMMUqdNKq96lcSJrAtcLcGV6xrGPN9nwEC38nUmAIgdurDRLOksD10mL8WSThMQ"
+      }
+    ],
+    "fingerprint": "e039b229d91f80ab22ec1836d3b27277ec9214a1ac62f96139a810ff5d6f7e63"
+  },
+  "vocacolle:stable": {
+    "bundle": "vocacolle",
+    "channel": "stable",
+    "repo_url": "https://github.com/ilikeadofai/vocacolle-morphe-patches",
+    "created_at": "2026-07-23T14:39:19",
+    "version": "v1.1.0",
+    "description": "## [1.1.0](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.0.0...v1.1.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* add native Morphe settings row ([7a6ac24](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/7a6ac24c3b5bbe869d2710ea8b62788435687fbe))\n* harden network and cache runtime safety ([8c0d133](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/8c0d133f54c84055ee1d5411cb3537805fb7575f))\n* keep desktop image types out of patch metadata ([9edd493](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/9edd4933fa80ccaa9bff8bd69fb8be434144c778))\n* redesign Morphe settings for native theming ([d7a149d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/d7a149dfcafbca38554a40b48f43b9765b23e25e))\n* select Korean localization patches by default ([64cc95d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/64cc95d4724eb66af499e1b0ed63eeb8e9b9d078))\n\n### ✨ New Features\n\n* complete VocaColle Morphe v1.1 ([23fa3f9](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/23fa3f9051177f747f4c250101cf86071f6ef052))\n* consolidate language patches ([672bdcf](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/672bdcf63548d1d18bba3735872c93d78a67bb40))\n",
+    "apps": [
+      {
+        "app_name": "VocaColle",
+        "package": "jp.nicovideo.nicobox",
+        "patches": [
+          {
+            "name": "Customize VocaColle branding",
+            "description": "Optionally changes the launcher name and icon while preserving the original Japanese branding by default.",
+            "use": false,
+            "options": [
+              {
+                "key": "vocacolleAppName",
+                "description": "Launcher name. Keep ボカコレ to preserve the original Japanese name."
+              },
+              {
+                "key": "vocacolleAppIconPath",
+                "description": "Path to a square PNG. Leave empty to preserve the original icon."
+              }
+            ],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "English UI",
+            "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "Korean UI",
+            "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "VocaColle compatibility probe",
+            "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          },
+          {
+            "name": "VocaColle Morphe settings",
+            "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.40.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/KebeLOyAcJvXyvUm-S7prz8gMMUqdNKq96lcSJrAtcLcGV6xrGPN9nwEC38nUmAIgdurDRLOksD10mL8WSThMQ"
+      }
+    ],
+    "fingerprint": "efadd89c5268ef21ed2040dd0aa6a9e32269b7c8169d46550905a59fcda4c1de"
   },
   "bufferk:dev": {
     "bundle": "bufferk",
@@ -38454,6 +38843,40 @@
     ],
     "fingerprint": "2becef7970c38055c2dbc97a5f6ed991bfed0ee8ae9b271914d9232331ccd10a"
   },
+  "yandex-vot:stable": {
+    "bundle": "yandex-vot",
+    "channel": "stable",
+    "repo_url": "https://github.com/MarcaDian/morphe-patches-yavot",
+    "created_at": "2026-07-24T08:20:07",
+    "version": "v1.0.0",
+    "description": "## 1.0.0 (2026-07-24)\n\n### ✨ New Features\n\n* add Yandex VoT as add-on for Morphe Patches ([622d92b](https://github.com/MarcaDian/morphe-patches-yavot/commit/622d92befc976fa5d9771cd24bfe11f2ec310993))\n",
+    "apps": [
+      {
+        "app_name": "YouTube",
+        "package": "com.google.android.youtube",
+        "patches": [
+          {
+            "name": "Voice Over Translation (Yandex)",
+            "description": "Adds an option to enable Yandex voice-over translation of video audio tracks.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "21.29.366",
+              "21.28.204",
+              "21.26.360",
+              "21.05.265",
+              "21.04.223",
+              "20.51.39",
+              "20.31.42",
+              "20.21.37"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg"
+      }
+    ],
+    "fingerprint": "c03ee58b5ff5152938f7166b51d65e216011cfb38defa61b69d7f6fe10900fac"
+  },
   "vladon:stable": {
     "bundle": "vladon",
     "channel": "stable",
@@ -42514,150 +42937,6 @@
       }
     ],
     "fingerprint": "a8cacce2999d71ee9cc2d4c479fd4bf627437b625a4cc188c2ced917bbcf21a0"
-  },
-  "ilikeadofai:dev": {
-    "bundle": "ilikeadofai",
-    "channel": "dev",
-    "repo_url": "https://github.com/ilikeadofai/vocacolle-morphe-patches",
-    "created_at": "2026-07-24T00:28:26Z",
-    "version": "1.2.0-dev.2",
-    "description": "## [1.1.0](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.0.0...v1.1.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* add native Morphe settings row ([7a6ac24](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/7a6ac24c3b5bbe869d2710ea8b62788435687fbe))\n* harden network and cache runtime safety ([8c0d133](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/8c0d133f54c84055ee1d5411cb3537805fb7575f))\n* keep desktop image types out of patch metadata ([9edd493](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/9edd4933fa80ccaa9bff8bd69fb8be434144c778))\n* redesign Morphe settings for native theming ([d7a149d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/d7a149dfcafbca38554a40b48f43b9765b23e25e))\n* select Korean localization patches by default ([64cc95d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/64cc95d4724eb66af499e1b0ed63eeb8e9b9d078))\n\n### ✨ New Features\n\n* complete VocaColle Morphe v1.1 ([23fa3f9](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/23fa3f9051177f747f4c250101cf86071f6ef052))\n* consolidate language patches ([672bdcf](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/672bdcf63548d1d18bba3735872c93d78a67bb40))",
-    "apps": [
-      {
-        "app_name": "VocaColle",
-        "package": "jp.nicovideo.nicobox",
-        "patches": [
-          {
-            "name": "Customize VocaColle branding",
-            "description": "Optionally changes the launcher name and icon while preserving the original Japanese branding by default.",
-            "use": false,
-            "options": [
-              {
-                "key": "vocacolleAppName",
-                "description": "Launcher name. Keep ボカコレ to preserve the original Japanese name."
-              },
-              {
-                "key": "vocacolleAppIconPath",
-                "description": "Path to a square PNG. Leave empty to preserve the original icon."
-              }
-            ],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          },
-          {
-            "name": "English UI",
-            "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          },
-          {
-            "name": "Korean UI",
-            "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          },
-          {
-            "name": "VocaColle Morphe settings",
-            "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          },
-          {
-            "name": "VocaColle compatibility probe",
-            "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/KebeLOyAcJvXyvUm-S7prz8gMMUqdNKq96lcSJrAtcLcGV6xrGPN9nwEC38nUmAIgdurDRLOksD10mL8WSThMQ"
-      }
-    ],
-    "fingerprint": "89b5d2f6c56912a1dece844e4e345aadd901302de8dadb7be7f75e969fdeede9"
-  },
-  "ilikeadofai:stable": {
-    "bundle": "ilikeadofai",
-    "channel": "stable",
-    "repo_url": "https://github.com/ilikeadofai/vocacolle-morphe-patches",
-    "created_at": "2026-07-23T14:39:19Z",
-    "version": "1.1.0",
-    "description": "## [1.1.0](https://github.com/ilikeadofai/vocacolle-morphe-patches/compare/v1.0.0...v1.1.0) (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* add native Morphe settings row ([7a6ac24](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/7a6ac24c3b5bbe869d2710ea8b62788435687fbe))\n* harden network and cache runtime safety ([8c0d133](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/8c0d133f54c84055ee1d5411cb3537805fb7575f))\n* keep desktop image types out of patch metadata ([9edd493](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/9edd4933fa80ccaa9bff8bd69fb8be434144c778))\n* redesign Morphe settings for native theming ([d7a149d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/d7a149dfcafbca38554a40b48f43b9765b23e25e))\n* select Korean localization patches by default ([64cc95d](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/64cc95d4724eb66af499e1b0ed63eeb8e9b9d078))\n\n### ✨ New Features\n\n* complete VocaColle Morphe v1.1 ([23fa3f9](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/23fa3f9051177f747f4c250101cf86071f6ef052))\n* consolidate language patches ([672bdcf](https://github.com/ilikeadofai/vocacolle-morphe-patches/commit/672bdcf63548d1d18bba3735872c93d78a67bb40))",
-    "apps": [
-      {
-        "app_name": "VocaColle",
-        "package": "jp.nicovideo.nicobox",
-        "patches": [
-          {
-            "name": "Customize VocaColle branding",
-            "description": "Optionally changes the launcher name and icon while preserving the original Japanese branding by default.",
-            "use": false,
-            "options": [
-              {
-                "key": "vocacolleAppName",
-                "description": "Launcher name. Keep ボカコレ to preserve the original Japanese name."
-              },
-              {
-                "key": "vocacolleAppIconPath",
-                "description": "Path to a square PNG. Leave empty to preserve the original icon."
-              }
-            ],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          },
-          {
-            "name": "English UI",
-            "description": "Adds complete English static, hardcoded, and server-provided UI localization.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          },
-          {
-            "name": "Korean UI",
-            "description": "Adds complete Korean static, hardcoded, and server-provided UI localization.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          },
-          {
-            "name": "VocaColle Morphe settings",
-            "description": "Adds display-language, cache, diagnostic, and patch-version controls to native Morphe settings.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          },
-          {
-            "name": "VocaColle compatibility probe",
-            "description": "Verifies that VocaColle 7.40.0 can be decoded, rebuilt, and signed without changing app behavior.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "7.40.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/KebeLOyAcJvXyvUm-S7prz8gMMUqdNKq96lcSJrAtcLcGV6xrGPN9nwEC38nUmAIgdurDRLOksD10mL8WSThMQ"
-      }
-    ],
-    "fingerprint": "7d4ed21cc572007d84f79bfdb8f00f6cdcdf589ef8ea6fadebd36f868ff4803f"
   },
   "docbt:dev": {
     "bundle": "docbt",
@@ -50311,6 +50590,65 @@
     ],
     "fingerprint": "f36a6aab707ec61701524d66f117712017256bba0671144be953ce1f6875f090"
   },
+  "morning-entree:stable": {
+    "bundle": "morning-entree",
+    "channel": "stable",
+    "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
+    "created_at": "2026-07-25T05:43:57",
+    "version": "v1.2.0",
+    "description": "## [1.2.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.1.0...v1.2.0) (2026-07-25)\n\n### ✨ New Features\n\n* added lifesum ([1709256](https://github.com/Entree3k/Morning-Entree-Patches/commit/170925622ff76f0b646bb12fbaf0becb94d1766a))\n",
+    "apps": [
+      {
+        "app_name": "Sponge",
+        "package": "com.prismtree.sponge",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlock Sponge Premium",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.8.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/LSGsxmUkZcwr-KQKoMGcpFuiLZ1AJhCPoDwiDQispBXyLF6DKwzvB479WBss0vUunx_D4dOg-k9R9syEnV57RkI"
+      },
+      {
+        "app_name": "Lifesum",
+        "package": "com.sillens.shapeupclub",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlock Lifesum Premium",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "20.8.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/gMeT8cxzZOnlrCKwYIOPHT90C9kb9pPbE0mHlk2gixDIadJ_B9QmslnPkQ3Sc0y9KuS8KMxPDxFgsL_GLnXbsg"
+      },
+      {
+        "app_name": "Ling",
+        "package": "com.simyasolutions.ling.universal",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Ling Pro",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "8.4.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/gSo2NaX1KH9i2tlc9MGxSQKt8P49-VXkygRtz6XWWnsP0-EYMQwJusOwMp5gSDY0Sw6gFB4xU7qlfGooipVuZg"
+      }
+    ],
+    "fingerprint": "65f4697f849d80e4e86838df32bc7edcf42bd0fb650f68b0b31e4b70da4cecfd"
+  },
   "proxma:stable": {
     "bundle": "proxma",
     "channel": "stable",
@@ -53927,6 +54265,66 @@
       }
     ],
     "fingerprint": "1cd25b1f8f09a19ca573e8d030312f9bda4615211dccbf94fd87d5a978f92297"
+  },
+  "dbtcoach:dev": {
+    "bundle": "dbtcoach",
+    "channel": "dev",
+    "repo_url": "https://github.com/mxkrgt/dbtcoach-morphe-patches",
+    "created_at": "2026-07-23T12:38:13",
+    "version": "v1.0.0-dev.1",
+    "description": "## 1.0.0-dev.1 (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* add dependencyResolutionManagement for Morphe GitHub Packages registry ([9a7b8ee](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/9a7b8eee5503b9fb9a874a1d9ee267aa763fba92))\n* add patchListGeneratorClasspath(morphe-patcher) for runtime classpath ([2d51034](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/2d51034db9c8a0a36d357ac55cd85aee7167ddcb))\n* align build structure with working Morphe patches repo ([4925698](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/49256987985bb1091a17b47b58fd375c2b16c2f3))\n* align project structure with official Morphe patches template ([c3e4752](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/c3e4752f3e19128d947b8d5c6cfbc9aa3b72eeb8))\n* correct morphe-patcher module (app.morphe:morphe-patcher) and version (1.5.1) ([5006c55](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/5006c55add2ab48f90bd021f78f60970750a63b5))\n* include buildscript classpath for generatePatchesList task ([b5e5fba](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/b5e5fba6afd7380de27d7dfa1e8c9db085258bc7))\n* remove generatePatchesList task (class not in patcher JAR) ([d85739c](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/d85739c5560ae9a4a90dde132c4bd6c9124ef221))\n* remove npm cache (no package-lock.json) ([842253c](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/842253ca04252d796c9e5491a04bcad535291124))\n* use implementation for morphe-patcher so it lands on runtimeClasspath ([57b1a62](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/57b1a6201a80c282fade35f3f16a5a42038445aa))\n* use setOf for versions (compatibleWith expects Set not List) ([c16384e](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/c16384e587fdefbb3e5f1b0f6749bbdb92787a0b))\n\n### ✨ New Features\n\n* initial Morphe patches for DBT Coach ([194c567](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/194c567fecbb679b08a40ff38b09c7c6cd52ce74))\n",
+    "apps": [
+      {
+        "app_name": "DBT Coach",
+        "package": "co.swasth.dbtcoach",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Déverrouille toutes les fonctionnalités premium de DBT Coach en court-circuitant la vérification d'abonnement RevenueCat.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "6.4.2",
+              "6.4.1",
+              "6.4.0",
+              "6.1.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/i0DuiyLZJ0uo-Nlksq6bBaudm0_o1paJ7AzQj1ymQBJqP7a817EJOSKrzea450JAvngMMEtmrnIFQy5rODszTA"
+      }
+    ],
+    "fingerprint": "ab6cd7aeb66c6f263444e8fda14bade27d512f01dad8de647dde48e4d1417e3e"
+  },
+  "dbtcoach:stable": {
+    "bundle": "dbtcoach",
+    "channel": "stable",
+    "repo_url": "https://github.com/mxkrgt/dbtcoach-morphe-patches",
+    "created_at": "2026-07-23T12:15:01",
+    "version": "v1.0.0",
+    "description": "## 1.0.0 (2026-07-23)\n\n### 🐛 Bug Fixes\n\n* add dependencyResolutionManagement for Morphe GitHub Packages registry ([9a7b8ee](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/9a7b8eee5503b9fb9a874a1d9ee267aa763fba92))\n* add patchListGeneratorClasspath(morphe-patcher) for runtime classpath ([2d51034](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/2d51034db9c8a0a36d357ac55cd85aee7167ddcb))\n* align build structure with working Morphe patches repo ([4925698](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/49256987985bb1091a17b47b58fd375c2b16c2f3))\n* align project structure with official Morphe patches template ([c3e4752](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/c3e4752f3e19128d947b8d5c6cfbc9aa3b72eeb8))\n* correct morphe-patcher module (app.morphe:morphe-patcher) and version (1.5.1) ([5006c55](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/5006c55add2ab48f90bd021f78f60970750a63b5))\n* include buildscript classpath for generatePatchesList task ([b5e5fba](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/b5e5fba6afd7380de27d7dfa1e8c9db085258bc7))\n* remove generatePatchesList task (class not in patcher JAR) ([d85739c](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/d85739c5560ae9a4a90dde132c4bd6c9124ef221))\n* remove npm cache (no package-lock.json) ([842253c](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/842253ca04252d796c9e5491a04bcad535291124))\n* use implementation for morphe-patcher so it lands on runtimeClasspath ([57b1a62](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/57b1a6201a80c282fade35f3f16a5a42038445aa))\n* use setOf for versions (compatibleWith expects Set not List) ([c16384e](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/c16384e587fdefbb3e5f1b0f6749bbdb92787a0b))\n\n### ✨ New Features\n\n* initial Morphe patches for DBT Coach ([194c567](https://github.com/mxkrgt/dbtcoach-morphe-patches/commit/194c567fecbb679b08a40ff38b09c7c6cd52ce74))\n",
+    "apps": [
+      {
+        "app_name": "DBT Coach",
+        "package": "co.swasth.dbtcoach",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Déverrouille toutes les fonctionnalités premium de DBT Coach en court-circuitant la vérification d'abonnement RevenueCat.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "6.4.2",
+              "6.4.1",
+              "6.4.0",
+              "6.1.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/i0DuiyLZJ0uo-Nlksq6bBaudm0_o1paJ7AzQj1ymQBJqP7a817EJOSKrzea450JAvngMMEtmrnIFQy5rODszTA"
+      }
+    ],
+    "fingerprint": "e9f8c1c7a57180a1aaef53f697cc18c7a9f9e5f63e839903cc3f5859e12045c6"
   },
   "eyalm2000:stable": {
     "bundle": "eyalm2000",
