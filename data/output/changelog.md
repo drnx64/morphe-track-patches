@@ -1,5 +1,26 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-24]
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
+  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
+  - **UPDATED APP** [PRE-RELEASE] SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
+- **UPDATED** Bundle **anddea**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in anddea patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in anddea patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **piko**
+  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
+  - **UPDATED APP** X (`com.twitter.android`) in piko patches
+- **UPDATED** Bundle **variablenine**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in variablenine patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in variablenine patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in variablenine patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
 ## [2026-07-23]
 - **UPDATED** Bundle **amplerevanced**
   - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
