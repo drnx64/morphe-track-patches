@@ -1,21 +1,29 @@
-## [2026-07-24]
+## [2026-07-25]
 - **UPDATED** Bundle **amplerevanced**
   - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
   - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
-  - **UPDATED APP** [PRE-RELEASE] SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
-- **UPDATED** Bundle **anddea**
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in anddea patches
-  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in anddea patches
+  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+  - **UPDATED APP** SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
+- **NEW BUNDLE** Bundle by **andrewliang25** (stable)
+  - **NEW APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
+- **NEW BUNDLE** Bundle by **dbtcoach** (dev, stable)
+  - **NEW APP** DBT Coach (`co.swasth.dbtcoach`) in dbtcoach patches
+- **NEW BUNDLE** Bundle by **dh6k** (dev, stable)
+  - **NEW APP** Brave Beta (`com.brave.browser_beta`) in dh6k patches
+  - **NEW APP** Brave Browser (`com.brave.browser`) in dh6k patches
+  - **NEW APP** Brave Nightly (`com.brave.browser_nightly`) in dh6k patches
+- **UPDATED** Bundle **hoo-dles**
+  - **REMOVED APP** Teuida (`net.teuida.teuida`) in hoo-dles patches
 - **UPDATED** Bundle **jasonwu1994**
   - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
-- **UPDATED** Bundle **morphe**
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
-- **UPDATED** Bundle **piko**
-  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
-  - **UPDATED APP** X (`com.twitter.android`) in piko patches
-- **UPDATED** Bundle **variablenine**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in variablenine patches
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in variablenine patches
-  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in variablenine patches
-- **UPDATED** Bundle **xob0t**
-  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
+- **NEW BUNDLE** Bundle by **morning-entree** (stable)
+  - **NEW APP** Lifesum (`com.sillens.shapeupclub`) in morning-entree patches
+  - **NEW APP** Ling (`com.simyasolutions.ling.universal`) in morning-entree patches
+  - **NEW APP** Sponge (`com.prismtree.sponge`) in morning-entree patches
+- **NEW BUNDLE** Bundle by **vocacolle** (dev, stable)
+  - **NEW APP** VocaColle (`jp.nicovideo.nicobox`) in vocacolle patches
+- **NEW BUNDLE** Bundle by **yandex-vot** (stable)
+  - **NEW APP** YouTube (`com.google.android.youtube`) in yandex-vot patches
+- **UPDATED** Bundle **zpatches**
+  - **NEW APP** Dustlandsudoku (`ee.dustland.android.dustlandsudoku`) in zpatches patches
