@@ -1,5 +1,32 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-26]
+- **UPDATED** Bundle **adobo**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
+- **UPDATED** Bundle **icysymmetra-tiktok**
+  - **UPDATED APP** TikTok (`com.zhiliaoapp.musically`) in icysymmetra-tiktok patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **paresh-maheshwari**
+  - **UPDATED APP** Plus Messenger (`org.telegram.plus`) in paresh-maheshwari patches
+  - **UPDATED APP** Proton VPN (`ch.protonvpn.android`) in paresh-maheshwari patches
+  - **UPDATED APP** Telegram (`org.telegram.messenger.web`) in paresh-maheshwari patches
+- **UPDATED** Bundle **piko**
+  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
+  - **UPDATED APP** X (`com.twitter.android`) in piko patches
+- **NEW BUNDLE** Bundle by **pseudofractal** (dev, stable)
+  - **NEW APP** XYZ app (`com.example.app`) in pseudofractal patches
+- **UPDATED** Bundle **variablenine**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in variablenine patches
+- **NEW BUNDLE** Bundle by **watch-later** (stable)
+  - **NEW APP** YouTube (`com.google.android.youtube`) in watch-later patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches
+- **UPDATED** Bundle **zpatches**
+  - **UPDATED APP** Lyon (`com.jcdecaux.vls.lyon`) in zpatches patches
+  - **NEW APP** Release (`com.citymapper.app.release`) in zpatches patches
 ## [2026-07-25]
 - **UPDATED** Bundle **amplerevanced**
   - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches

@@ -1,29 +1,27 @@
-## [2026-07-25]
-- **UPDATED** Bundle **amplerevanced**
-  - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
-  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
-  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
-  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
-  - **UPDATED APP** SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
-- **NEW BUNDLE** Bundle by **andrewliang25** (stable)
-  - **NEW APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
-- **NEW BUNDLE** Bundle by **dbtcoach** (dev, stable)
-  - **NEW APP** DBT Coach (`co.swasth.dbtcoach`) in dbtcoach patches
-- **NEW BUNDLE** Bundle by **dh6k** (dev, stable)
-  - **NEW APP** Brave Beta (`com.brave.browser_beta`) in dh6k patches
-  - **NEW APP** Brave Browser (`com.brave.browser`) in dh6k patches
-  - **NEW APP** Brave Nightly (`com.brave.browser_nightly`) in dh6k patches
-- **UPDATED** Bundle **hoo-dles**
-  - **REMOVED APP** Teuida (`net.teuida.teuida`) in hoo-dles patches
+## [2026-07-26]
+- **UPDATED** Bundle **adobo**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
+- **UPDATED** Bundle **icysymmetra-tiktok**
+  - **UPDATED APP** TikTok (`com.zhiliaoapp.musically`) in icysymmetra-tiktok patches
 - **UPDATED** Bundle **jasonwu1994**
   - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
-- **NEW BUNDLE** Bundle by **morning-entree** (stable)
-  - **NEW APP** Lifesum (`com.sillens.shapeupclub`) in morning-entree patches
-  - **NEW APP** Ling (`com.simyasolutions.ling.universal`) in morning-entree patches
-  - **NEW APP** Sponge (`com.prismtree.sponge`) in morning-entree patches
-- **NEW BUNDLE** Bundle by **vocacolle** (dev, stable)
-  - **NEW APP** VocaColle (`jp.nicovideo.nicobox`) in vocacolle patches
-- **NEW BUNDLE** Bundle by **yandex-vot** (stable)
-  - **NEW APP** YouTube (`com.google.android.youtube`) in yandex-vot patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **paresh-maheshwari**
+  - **UPDATED APP** Plus Messenger (`org.telegram.plus`) in paresh-maheshwari patches
+  - **UPDATED APP** Proton VPN (`ch.protonvpn.android`) in paresh-maheshwari patches
+  - **UPDATED APP** Telegram (`org.telegram.messenger.web`) in paresh-maheshwari patches
+- **UPDATED** Bundle **piko**
+  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
+  - **UPDATED APP** X (`com.twitter.android`) in piko patches
+- **NEW BUNDLE** Bundle by **pseudofractal** (dev, stable)
+  - **NEW APP** XYZ app (`com.example.app`) in pseudofractal patches
+- **UPDATED** Bundle **variablenine**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in variablenine patches
+- **NEW BUNDLE** Bundle by **watch-later** (stable)
+  - **NEW APP** YouTube (`com.google.android.youtube`) in watch-later patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches
 - **UPDATED** Bundle **zpatches**
-  - **NEW APP** Dustlandsudoku (`ee.dustland.android.dustlandsudoku`) in zpatches patches
+  - **UPDATED APP** Lyon (`com.jcdecaux.vls.lyon`) in zpatches patches
+  - **NEW APP** Release (`com.citymapper.app.release`) in zpatches patches
