@@ -1,5 +1,68 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-27]
+- **UPDATED** Bundle **miguel**
+  - **UPDATED APP** Oddmar (`com.mobge.oddmar`) in miguel patches
+  - **REMOVED APP** Zombie Catchers (`fi.twomenandadog.zombiecatchers`) in miguel patches
+- **UPDATED** Bundle **morning-entree**
+  - **NEW APP** AI-900 (`com.trieudadlovestun.ai900exam`) in morning-entree patches
+  - **NEW APP** AWS AIF-C01 (`com.trieudadlovestun.aifc01exam`) in morning-entree patches
+  - **NEW APP** AWS CLF-C01 (`com.trieudadlovestun.clfc01`) in morning-entree patches
+  - **NEW APP** AWS DOP-C01 (`com.trieudadlovestun.dopc01`) in morning-entree patches
+  - **NEW APP** AWS DVA-C01 (`com.trieudadlovestun.dvac01ver3`) in morning-entree patches
+  - **NEW APP** AWS MLA-C01 (`com.trieudadlovestun.mlac01exam`) in morning-entree patches
+  - **NEW APP** AWS SAA-C02 (`com.trieudadlovestun.saac02ver3`) in morning-entree patches
+  - **NEW APP** AWS SAP-C01 (`com.trieudadlovestun.sapc01`) in morning-entree patches
+  - **NEW APP** AWS SCS-C01 (`com.trieudadlovestun.scsc01`) in morning-entree patches
+  - **NEW APP** AWS SOA-C02 (`com.trieudadlovestun.soac02`) in morning-entree patches
+  - **NEW APP** AZ-104 (`com.trieudadlovestun.az104`) in morning-entree patches
+  - **NEW APP** AZ-204 (`com.trieudadlovestun.az204ver2022`) in morning-entree patches
+  - **NEW APP** AZ-400 (`com.trieudadlovestun.az400`) in morning-entree patches
+  - **NEW APP** AZ-500 (`com.trieudadlovestun.az500`) in morning-entree patches
+  - **NEW APP** AZ-700 (`com.trieudadlovestun.az700exam`) in morning-entree patches
+  - **NEW APP** AZ-900 (`com.trieudadlovestun.az900ver3`) in morning-entree patches
+  - **NEW APP** CAPM (`com.trieudadlovestun.capm`) in morning-entree patches
+  - **NEW APP** CCNA 200-301 (`com.trieudadlovestun.ccna200301`) in morning-entree patches
+  - **NEW APP** CCNP 350-401 (`com.trieudadlovestun.ccnp350401`) in morning-entree patches
+  - **NEW APP** CCNP SCOR 350-701 (`com.trieudadlovestun.scor350701`) in morning-entree patches
+  - **NEW APP** CEH v11 (`com.trieudadlovestun.cehv11`) in morning-entree patches
+  - **NEW APP** CISM (`com.trieudadlovestun.cism`) in morning-entree patches
+  - **NEW APP** CISSP (`com.trieudadlovestun.cissp`) in morning-entree patches
+  - **NEW APP** CompTIA A+ Core 1 (`com.trieudadlovestun.comptiacore1`) in morning-entree patches
+  - **NEW APP** CompTIA A+ Core 2 (`com.trieudadlovestun.comptiacore2`) in morning-entree patches
+  - **NEW APP** CompTIA CySA+ (`com.trieudadlovestun.comptiacysa`) in morning-entree patches
+  - **NEW APP** CompTIA ITF+ (`com.trieudadlovestun.comptiaitf`) in morning-entree patches
+  - **NEW APP** CompTIA Linux+ (`com.trieudadlovestun.comptialinuxplusexam`) in morning-entree patches
+  - **NEW APP** CompTIA PenTest+ (`com.trieudadlovestun.pentestplusexam`) in morning-entree patches
+  - **NEW APP** CompTIA SecAI (`com.trieudadlovestun.comptiasecai`) in morning-entree patches
+  - **NEW APP** CompTIA Security+ (`com.trieudadlovestun.comptiasecurityplus`) in morning-entree patches
+  - **NEW APP** CompTIA SecurityX (`com.trieudadlovestun.comptiasecux`) in morning-entree patches
+  - **NEW APP** CompTIA Server+ (`com.trieudadlovestun.comptiaserverplus`) in morning-entree patches
+  - **NEW APP** DASM (`com.trieudadlovestun.dasm`) in morning-entree patches
+  - **NEW APP** DP-203 (`com.trieudadlovestun.dp203`) in morning-entree patches
+  - **NEW APP** DP-300 (`com.trieudadlovestun.dp300`) in morning-entree patches
+  - **NEW APP** DP-900 (`com.trieudadlovestun.dp900`) in morning-entree patches
+  - **NEW APP** GCP Associate Cloud Engineer (`com.trieudadlovestun.gcpassociatecloudengineer`) in morning-entree patches
+  - **NEW APP** ISTQB Foundation (`com.trieudadlovestun.istqbfoundation`) in morning-entree patches
+  - **NEW APP** PCEP-30-02 (`com.trieudadlovestun.pcep3002`) in morning-entree patches
+  - **NEW APP** PMI-ACP (`com.trieudadlovestun.pmiacp`) in morning-entree patches
+  - **NEW APP** PSM II (`com.trieudadlovestun.psm2`) in morning-entree patches
+  - **NEW APP** PSPO I (`com.trieudadlovestun.pspooneexam`) in morning-entree patches
+  - **NEW APP** Salesforce Admin (`com.trieudadlovestun.salesforceadmin`) in morning-entree patches
+  - **NEW APP** SC-200 (`com.trieudadlovestun.sc200exam`) in morning-entree patches
+  - **NEW APP** SC-900 (`com.trieudadlovestun.sc900`) in morning-entree patches
+  - **NEW APP** ServiceNow CSA (`com.trieudadlovestun.servicenowsystemadmin`) in morning-entree patches
+  - **NEW APP** SnowPro Core (`com.trieudadlovestun.snowprocore`) in morning-entree patches
+  - **NEW APP** Tableau Desktop (`com.trieudadlovestun.tableaudesktop`) in morning-entree patches
+  - **NEW APP** Terraform Associate (`com.trieudadlovestun.terraform`) in morning-entree patches
+  - **NEW APP** Vocabulary (`com.hrd.vocabulary`) in morning-entree patches
+- **NEW BUNDLE** Bundle by **sofatime** (stable)
+  - **NEW APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
+  - **UPDATED APP** Ozon (`ru.ozon.app.android`) in xob0t patches
+  - **UPDATED APP** TBank (`com.idamob.tinkoff.android`) in xob0t patches
+  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches
 ## [2026-07-26]
 - **UPDATED** Bundle **adobo**
   - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
