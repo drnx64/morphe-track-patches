@@ -1824,9 +1824,9 @@
     "bundle": "itsthejoker",
     "channel": "dev",
     "repo_url": "https://github.com/itsthejoker/itsthejoker-patches",
-    "created_at": "2026-07-27T23:08:26",
-    "version": "v1.5.0-dev.1",
-    "description": "## [1.5.0-dev.1](https://github.com/itsthejoker/itsthejoker-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-07-27)\n\n### ✨ New Features\n\n* **roost:** force deploy ([a86dfae](https://github.com/itsthejoker/itsthejoker-patches/commit/a86dfae2e271cd47a39ef67c72d7d63cf8899a6a))\n",
+    "created_at": "2026-07-28T01:01:31",
+    "version": "v1.6.0-dev.4",
+    "description": "## [1.6.0-dev.4](https://github.com/itsthejoker/itsthejoker-patches/compare/v1.6.0-dev.3...v1.6.0-dev.4) (2026-07-28)\n\n### ✨ New Features\n\n* **roost:** fix nest egg patch more 2 ([4ac20f7](https://github.com/itsthejoker/itsthejoker-patches/commit/4ac20f762f80f3b62efc603329e1b8781927cf7a))\n",
     "apps": [
       {
         "app_name": "Roost",
@@ -1854,6 +1854,15 @@
             "name": "Bypass Play Store license check",
             "description": "Disables the PairIP Play-license check so a non-Play (e.g. patched/sideloaded) install no longer redirects to the \"get it on Google Play\" wall on launch.",
             "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.4.12"
+            ]
+          },
+          {
+            "name": "Free Nest Egg (bypass claim cooldown)",
+            "description": "Removes the client-side cooldown timer check on the nest-egg free-bird claim button so the claim request is sent to the server on every tap. The server still controls eligibility; this only stops the client from blocking the request.",
+            "use": false,
             "options": [],
             "compatible_versions": [
               "1.4.12"
@@ -1890,7 +1899,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/wb_9H23PJOWrL9aQkjQtGD_YxmDx87M2rp_g-knGRHadVb6WQC_twOLXXb-p2JUia61B1ngUyRy7NPJeecLwP0Y"
       }
     ],
-    "fingerprint": "4f81199b05f362af51c13f29c70964ee281df82b3aba13cc5d32cf754a5692dd"
+    "fingerprint": "1d00fc29765a8a54c9707446498741086f2f1c1584069a71e0dc5ba0e8809910"
   },
   "itsthejoker:stable": {
     "bundle": "itsthejoker",
@@ -50821,10 +50830,60 @@
     "bundle": "morning-entree",
     "channel": "stable",
     "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-    "created_at": "2026-07-27T04:05:50",
-    "version": "v1.3.0",
-    "description": "## [1.3.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.2.0...v1.3.0) (2026-07-27)\n\n### ✨ New Features\n\n* Added Vocabulary & Various Exam Practice Tests ([9c30a01](https://github.com/Entree3k/Morning-Entree-Patches/commit/9c30a01ca74e9b095e5cb0cc204a88971f56975d))\n",
+    "created_at": "2026-07-28T02:18:15",
+    "version": "v1.4.0",
+    "description": "## [1.4.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.3.0...v1.4.0) (2026-07-28)\n\n### ✨ New Features\n\n* Added Universe Install Source Spoof, Gboard, Gradient Weather ([4167890](https://github.com/Entree3k/Morning-Entree-Patches/commit/41678902f7ea972de13719cb37c5b9d6baeeafc1))\n",
     "apps": [
+      {
+        "app_name": "Gboard",
+        "package": "com.google.android.inputmethod.latin",
+        "patches": [
+          {
+            "name": "Always incognito mode",
+            "description": "Always opens Gboard in incognito mode to disable typing-history collection and personalization, while keeping clipboard and voice typing working in incognito.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Block tracking and analytics",
+            "description": "Redirects Gboard's known tracking, analytics, and ad host literals to 0.0.0.0 using a built-in blocklist. Note: telemetry sent through Google Play Services is not affected; use the always-incognito patch for that.",
+            "use": false,
+            "options": [
+              {
+                "key": "isWildcard",
+                "description": "When enabled, an entry like \"example.com\" also blocks subdomains such as \"www.example.com\"."
+              }
+            ],
+            "compatible_versions": []
+          },
+          {
+            "name": "Change package name",
+            "description": "Installs Gboard as a clone by appending \".clone\" to the package name (configurable), so it installs next to the stock Gboard. Changing an app's package name can lead to unexpected issues.",
+            "use": false,
+            "options": [
+              {
+                "key": "packageName",
+                "description": "The package name to rename the app to. \"Default\" appends \".clone\"."
+              },
+              {
+                "key": "updatePermissions",
+                "description": "Update compatibility receiver permissions. Enabling this can fix installation errors, but can also break features in certain apps."
+              },
+              {
+                "key": "updateOtherPermissions",
+                "description": "Update other permissions declared by the app. Enabling this can fix installation errors, but can also break features in certain apps."
+              },
+              {
+                "key": "updateProviders",
+                "description": "Update content provider URI authorities. Enabling this can fix installation errors, but can also break features in certain apps."
+              }
+            ],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
+      },
       {
         "app_name": "Vocabulary",
         "package": "com.hrd.vocabulary",
@@ -50888,6 +50947,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/gSo2NaX1KH9i2tlc9MGxSQKt8P49-VXkygRtz6XWWnsP0-EYMQwJusOwMp5gSDY0Sw6gFB4xU7qlfGooipVuZg"
+      },
+      {
+        "app_name": "Gradient Weather",
+        "package": "com.subtlesignals.gradientweather",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Gradient Weather Premium (forces the paid Lifetime tier).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.1.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/04xiToIui2lD8Co9xPb-_V3JW90vSS8ej7aEAMqzdA9uadnjkGbPFvtkQPxB4okIIkrZquPYnxE3Eg6d6Ik_XQ"
       },
       {
         "app_name": "AI-900",
@@ -51690,7 +51765,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "305a39adb8595ef4b0aba6fc1b44fa276bbfe7e487fa0e84a8f286034592f007"
+    "fingerprint": "e4ab33c960b91a2b901ac525470fdd6d5d38571195f7008b9ba7f379bee901c6"
   },
   "proxma:stable": {
     "bundle": "proxma",
