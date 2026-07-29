@@ -4500,16 +4500,16 @@
     "bundle": "sofatime",
     "channel": "stable",
     "repo_url": "https://github.com/alan7383/sofatime-patches",
-    "created_at": "2026-07-28T23:31:52",
-    "version": "v1.2.1",
-    "description": "## [1.2.1](https://github.com/alan7383/sofatime-patches/compare/v1.2.0...v1.2.1) (2026-07-28)\n\n### 🐛 Bug Fixes\n\n* update README to clarify ZIP backup archive export and restore format ([af0cc9b](https://github.com/alan7383/sofatime-patches/commit/af0cc9be8294a7bf64d9c92d495b2b591d0f03e6))\n* update README with verified backup UI instructions from Smali analysis ([be28afa](https://github.com/alan7383/sofatime-patches/commit/be28afad5abc5501abd627200fb96da9d9099003))\n",
+    "created_at": "2026-07-29T00:15:33",
+    "version": "v1.3.0",
+    "description": "## [1.3.0](https://github.com/alan7383/sofatime-patches/compare/v1.2.1...v1.3.0) (2026-07-29)\n\n### ✨ New Features\n\n* add Disable Telemetry patch (Firebase Crashlytics + Sessions) ([4a620b5](https://github.com/alan7383/sofatime-patches/commit/4a620b52519c67b9cb37ce579a0a03b5fb973f9e))\n",
     "apps": [
       {
         "app_name": "SofaTime",
         "package": "com.theclashsoft.sofatime",
         "patches": [
           {
-            "name": "SofaTime Google Sign-In Bypass",
+            "name": "Bypass Google Sign-In",
             "description": "Bypasses SHA-1 check by using embedded WebView OAuth for Google Sign-In.",
             "use": true,
             "options": [],
@@ -4518,7 +4518,7 @@
             ]
           },
           {
-            "name": "SofaTime License Check Bypass",
+            "name": "Bypass license check",
             "description": "Bypasses PairIP license verification.",
             "use": true,
             "options": [],
@@ -4527,7 +4527,16 @@
             ]
           },
           {
-            "name": "SofaTime Premium",
+            "name": "Disable telemetry",
+            "description": "Disables Firebase Crashlytics, Sessions, and Analytics.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.1.4"
+            ]
+          },
+          {
+            "name": "Unlock premium features",
             "description": "Unlocks all premium capabilities.",
             "use": true,
             "options": [],
@@ -4539,7 +4548,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/h-lFEq_K6xrQU2PdEccOtG_FQr_KxuzYilNCRO7ktYNOV55VdhuhtuT2SGLOBAUMWsAmAQrO8WrHDLyb9Zu5l0U"
       }
     ],
-    "fingerprint": "9a2c0f667a424c6e4bb7375c770876adaa8616f9420895b4c2305603b35a118b"
+    "fingerprint": "ee320d0005d06067c77f97fa361f17eddf82a0f5b37e66bfe7a8bc82c3ac414a"
   },
   "lynx6319:stable": {
     "bundle": "lynx6319",
@@ -5956,6 +5965,168 @@
       }
     ],
     "fingerprint": "e6d6252d4a087a3b307a8580cab1155f9bdde0e079a7a0e0d48497f15026df80"
+  },
+  "andrewliang25:dev": {
+    "bundle": "andrewliang25",
+    "channel": "dev",
+    "repo_url": "https://github.com/andrewliang25/morphe-patches",
+    "created_at": "2026-07-29T03:15:57",
+    "version": "v1.1.0-dev.1",
+    "description": "## [1.1.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-07-29)\n\n### ✨ New Features\n\n* also hide the chat-menu \"Events\" row ([a7e592f](https://github.com/andrewliang25/morphe-patches/commit/a7e592fb61301b5e0bbc701713f9e8672eb62940))\n* hide all server-driven extra tools in the + attach menu ([b8dc6a0](https://github.com/andrewliang25/morphe-patches/commit/b8dc6a0f917e55c1838fe624b310a0b9f417842c))\n* hide in-chat-room calendar buttons ([bf7b46e](https://github.com/andrewliang25/morphe-patches/commit/bf7b46e2f8b3dac840d12486b030b7f453da57eb))\n* hide the Transfer and LINE GIFT buttons in the + attach menu ([af8b4df](https://github.com/andrewliang25/morphe-patches/commit/af8b4df3419361738a5f5314d4d3dd3347d991d1))\n* split Events into its own patch; rename calendar patch to \"Hide LINE Calendar\" ([9370397](https://github.com/andrewliang25/morphe-patches/commit/93703972b1e0fe0a641cafc2fb2ee3a4b194d09e))\n",
+    "apps": [
+      {
+        "app_name": "LINE",
+        "package": "jp.naver.line.android",
+        "patches": [
+          {
+            "name": "Disable LINE Pay",
+            "description": "Closes any LINE Pay screen immediately on open, so Pay flows (and their device-integrity check) never run. Messaging is unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Disable VOOM",
+            "description": "Neutralizes VOOM entry points: VOOM deep links, shares, and notifications (line://home/*) do nothing, and the standalone VOOM feed closes on open. Also disables VOOM LIVE, the birthday board, and share-to-VOOM. Messaging, friend profiles, and other tabs are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide ad views",
+            "description": "Hides LINE display ad views — the LINE Ads SDK containers across the app, the chat-list Smart Channel banner, and Google AdManager ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide attach menu extra tools",
+            "description": "Removes all the server-provided extra tools from a chat room's + attach menu (Poll, Reservation, Schedule, Ladder shuffle, and any others). The built-in tiles (camera, gallery, files, contact, etc.) are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide calendar buttons",
+            "description": "Removes every LINE Calendar button inside the messenger: the one in the Chats-tab header, and the four inside a chat room — the top toolbar, the + attach menu, the slide-out chat menu, and the message long-press menu.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide community button",
+            "description": "Removes the community (OpenChat) button from the top of the Chats tab header.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Events button",
+            "description": "Removes the \"Events\" row from a chat room's slide-out menu. (Events is a separate feature from LINE Calendar — it opens a server-hosted page.)",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Home modules",
+            "description": "Hides Home-tab clutter modules: the recommended stickers/content section, the real-time hot-topics (即時夯話題) block, and Home feed ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide LINE GIFT button",
+            "description": "Removes the LINE GIFT tile from a chat room's + attach menu.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide LINE TODAY tab",
+            "description": "Removes the LINE TODAY (News) tab from the main bottom navigation, in both the news-tab and news-row layouts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Transfer button",
+            "description": "Removes the Transfer (LINE Pay) tile from a chat room's + attach menu.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide VOOM tab",
+            "description": "Removes the VOOM (formerly Timeline) tab from the main bottom navigation.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Wallet tab",
+            "description": "Removes the Wallet (LINE Pay) tab from the main bottom navigation, in both the normal and mini-tab layouts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Keep chats unread",
+            "description": "Opening a 1:1 or group chat no longer marks it read — it stays unread and no read receipt is sent. Manually using \"Mark as read\" / \"Mark all as read\" still marks the chat read and sends the receipt as normal.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Open links in external browser",
+            "description": "Opens tapped web links (http/https) in your default browser instead of LINE's in-app browser. LIFF mini-apps and LINE deep links are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Remove banner ads",
+            "description": "Stops LINE from loading Smart Channel banner ads (neutralizes the getBanners and getPrefetchableBanners responses).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
+      }
+    ],
+    "fingerprint": "177d3f7d0ddc687f35db0ac4f7b4abb5a3bba27e9f22e2c15ebbf5a98158039b"
   },
   "andrewliang25:stable": {
     "bundle": "andrewliang25",
@@ -52762,9 +52933,9 @@
     "bundle": "jasonwu1994",
     "channel": "stable",
     "repo_url": "https://github.com/jasonwu1994/Gboard-patches",
-    "created_at": "2026-07-26T20:56:31",
-    "version": "v2.1.0",
-    "description": "### ✨ New Features\n\n* **Gboard:** add `Developer options`, allowing you to modify flag values at any time.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Developer options`，可隨時修改 Flag 值。\n",
+    "created_at": "2026-07-29T00:12:33",
+    "version": "v2.2.0",
+    "description": "### ✨ New Features\n\n* **Gboard:** add the `Use Bluetooth Microphone` patch.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Use Bluetooth Microphone` Patch。\n",
     "apps": [
       {
         "app_name": "Latin",
@@ -52906,6 +53077,15 @@
             ]
           },
           {
+            "name": "Use Bluetooth Microphone",
+            "description": "啟用 語音輸入 -> 使用藍芽麥克風\nEnable Voice typing -> Use Bluetooth microphone.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "17.7.7.932364120-release-arm64-v8a"
+            ]
+          },
+          {
             "name": "Web Clipboard",
             "description": "新增手機自架的 Web Clipboard，支援瀏覽器同步、配對碼與快速設定開關\nAdd the phone-hosted Web Clipboard with browser sync, pairing, and a Quick Settings Tile.",
             "use": true,
@@ -52945,7 +53125,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       }
     ],
-    "fingerprint": "4e029aacb12f8d819fc93b43849bc08516bc6cb6522144d13b15da7a5588a831"
+    "fingerprint": "361b170e606f02cb81fda56a17e86bd609bb980132d06b6634061cd369ce75f0"
   },
   "jouss:stable": {
     "bundle": "jouss",
