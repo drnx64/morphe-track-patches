@@ -1,7 +1,7 @@
 {
   "date": "2026-07-30",
-  "lastChecked": "2026-07-30T11:04:14Z",
-  "scan_counter": 3,
+  "lastChecked": "2026-07-30T16:26:02Z",
+  "scan_counter": 4,
   "affected_bundles": {
     "browzomje:stable": {
       "bundle": "browzomje",
@@ -106,8 +106,22 @@
           "package": "com.jeffprod.cubesolver",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            2
-          ]
+            2,
+            4
+          ],
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Bypass PairIP integrity check",
+                "description": "Bypasses Google Play's PairIP by changing the application class in AndroidManifest.xml from com.pairip.application.Application to com.jeffprod.cubesolver.App. This completely skips the PairIP attachBaseContext which runs the APK signature check (crashes on patched APK) and the Google Play licensing check (redirects to Play Store). Also removes LicenseActivity and CHECK_LICENSE permission from the manifest. The PairIP VM is NOT disabled — it provides real onCreate implementations via reflection. REQUIRED for all other patches.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -142,6 +156,140 @@
           },
           "scan_numbers": [
             3
+          ]
+        }
+      ]
+    },
+    "hxreborn:stable": {
+      "bundle": "hxreborn",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Proton Mail",
+          "package": "ch.protonmail.android",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "ForusApp",
+          "package": "com.myvitale.forus",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium features.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "Projectivy Launcher",
+          "package": "com.spocky.projengmenu",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium features.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            4
+          ]
+        }
+      ]
+    },
+    "morning-entree:stable": {
+      "bundle": "morning-entree",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Panels",
+          "package": "com.fossor.panels",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "AutoLocation",
+          "package": "com.joaomgcd.autolocation",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "AutoTools",
+          "package": "com.joaomgcd.autotools",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "Gradient Weather",
+          "package": "com.subtlesignals.gradientweather",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Enable Premium",
+                "description": "Unlocks Gradient Weather Premium. Use With Spoof Install Source",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "Nova Launcher",
+          "package": "com.teslacoilsw.launcher",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "Pinnit",
+          "package": "dev.sasikanth.pinnit2",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "UbikiTouch",
+          "package": "eu.toneiv.ubktouch",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
           ]
         }
       ]
