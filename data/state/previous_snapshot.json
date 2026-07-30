@@ -19975,9 +19975,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-30T01:20:42",
-    "version": "v1.13.3",
-    "description": "## [1.13.3](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.2...v1.13.3) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** fix compile error and add initializeLicenseCheck hook ([ed1d17d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/ed1d17d7fcc13c931d9eae71f86ede723be50754))\n* **cubesolver:** fix compile error and add initializeLicenseCheck hook ([683b18c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/683b18c34a15c2da43e050399f1dd4a272ab5821))\n* **cubesolver:** improve PairIP bypass ([f2f16f7](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/f2f16f70e9610078f09d495f97679aaff246230c))\n* **cubesolver:** improve PairIP bypass ([66ae6f4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/66ae6f4394e72798eb92d54ff65dd85da49e591c))\n",
+    "created_at": "2026-07-30T14:24:46",
+    "version": "v1.13.4",
+    "description": "## [1.13.4](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.3...v1.13.4) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** bypass PairIP via manifest modification instead of bytecode no-ops ([0c4a27d](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/0c4a27df2fc98f6c2ecce80b6511560b9d4c3a5d))\n* **cubesolver:** bypass PairIP via manifest modification instead of bytecode no-ops ([b8f2613](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/b8f261389a58173e1b7dd76e275b9dfb597c2ae7))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -20071,7 +20071,7 @@
         "patches": [
           {
             "name": "Bypass PairIP integrity check",
-            "description": "Bypasses Google Play's PairIP by disabling the APK signature check and the Google Play licensing check. Without this patch, the app crashes on launch (signature mismatch) or redirects to the Play Store (license check failure). The license check has TWO entry points that must both be blocked: checkLicense (from attachBaseContext) and initializeLicenseCheck (from ContentProvider, which runs before attachBaseContext). REQUIRED for all other patches.",
+            "description": "Bypasses Google Play's PairIP by changing the application class in AndroidManifest.xml from com.pairip.application.Application to com.jeffprod.cubesolver.App. This completely skips the PairIP attachBaseContext which runs the APK signature check (crashes on patched APK) and the Google Play licensing check (redirects to Play Store). Also removes LicenseActivity and CHECK_LICENSE permission from the manifest. The PairIP VM is NOT disabled — it provides real onCreate implementations via reflection. REQUIRED for all other patches.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -20183,7 +20183,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "e34fbdbe2753a715dd832c2afac134eac77936c8b4867f2b9d5c6d3c499af157"
+    "fingerprint": "aa14ba1c0faf341117724a7542ac6457a2984ec0ef682e447a03ef0f4c028154"
   },
   "anddea-morphed:dev": {
     "bundle": "anddea-morphed",
@@ -39160,10 +39160,53 @@
     "bundle": "hxreborn",
     "channel": "stable",
     "repo_url": "https://github.com/hxreborn/morphe-patches",
-    "created_at": "2026-07-17T18:43:34",
-    "version": "v1.0.1",
-    "description": "## [1.0.1](https://github.com/hxreborn/morphe-patches/compare/v1.0.0...v1.0.1) (2026-07-17)\n\n### Bug Fixes\n\n* **compat:** add app metadata, drop template patches ([faf5a83](https://github.com/hxreborn/morphe-patches/commit/faf5a83a0e7295feaaa5254ded0ff0a9493fcebc))\n",
+    "created_at": "2026-07-30T14:45:48",
+    "version": "v1.1.0",
+    "description": "## [1.1.0](https://github.com/hxreborn/morphe-patches/compare/v1.0.1...v1.1.0) (2026-07-30)\n\n### Bug Fixes\n\n* **Proton Mail - Remove 'Sent from' signature:** support 7.10.4 ([e5249a0](https://github.com/hxreborn/morphe-patches/commit/e5249a097a74b11dc2490dcc4f03956614a011d3))\n\n### New Features\n\n* **Proton Mail - AMOLED dark theme:** add patch ([57c71b8](https://github.com/hxreborn/morphe-patches/commit/57c71b88367df3397899125d937545f035aa6a8b))\n* **Proton Mail - Hide sidebar upselling:** add patch ([799b985](https://github.com/hxreborn/morphe-patches/commit/799b985465528fae922be42f8e39dec99f716497))\n* **Proton Mail - Hide upgrade upselling:** hide top-bar button and promotional sidebar rows ([4b15bc9](https://github.com/hxreborn/morphe-patches/commit/4b15bc92367f7de7c4082a1558981dd3bb4aefc8))\n* **Proton Mail - Remove 'Sent from' signature:** port patch ([56009c8](https://github.com/hxreborn/morphe-patches/commit/56009c8d280333a31bc363b063fc2b74da524495))\n* **Proton Mail - Remove free accounts limit:** port patch ([fe78a8f](https://github.com/hxreborn/morphe-patches/commit/fe78a8fd4e9ae59b0a2b05bd9b99b87bcca53da1))\n* **Proton Mail:** support 7.10.4 ([bae3087](https://github.com/hxreborn/morphe-patches/commit/bae3087079651d221625823cfe883c08cf08d91a))\n",
     "apps": [
+      {
+        "app_name": "Proton Mail",
+        "package": "ch.protonmail.android",
+        "patches": [
+          {
+            "name": "AMOLED dark theme",
+            "description": "Replaces the dark theme background with pure black.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.10.4"
+            ]
+          },
+          {
+            "name": "Hide upgrade upselling",
+            "description": "Hides the top-bar upgrade button and promotional sidebar rows.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.10.4"
+            ]
+          },
+          {
+            "name": "Remove 'Sent from' signature",
+            "description": "Removes the 'Sent from Proton Mail' signature from emails.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.10.4"
+            ]
+          },
+          {
+            "name": "Remove free accounts limit",
+            "description": "Removes the limit for maximum free accounts logged in.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.10.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/TrxNlz9xizn4GBiVB2gWyws0majvL7tuCS1OsoaZxK1Sbi-uWFd51vo7eO9ghIDR6jQkIRF47mHoudd73KHazmI"
+      },
       {
         "app_name": "Showly",
         "package": "com.michaldrabik.showly2",
@@ -39184,7 +39227,7 @@
         "patches": [
           {
             "name": "Unlock premium",
-            "description": "Unlocks premium features.",
+            "description": "Unlocks all premium features.",
             "use": true,
             "options": [],
             "compatible_versions": []
@@ -39205,7 +39248,7 @@
           },
           {
             "name": "Unlock premium",
-            "description": "Unlocks premium features.",
+            "description": "Unlocks all premium features.",
             "use": true,
             "options": [],
             "compatible_versions": []
@@ -39214,7 +39257,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/Qo3kWBOmNFWGcGxiBHs-tR2_0uVcrGGUzKXb_e_JwpbwwzsYHAs-qvNhE-QDr2c8B4_8w0bq8yl5uo88pTdb"
       }
     ],
-    "fingerprint": "9d23add23662e4524f3a68020ec2289c9766465bca67629b236b052f6d2db848"
+    "fingerprint": "ffe2f120bf7ba4c187bd4711d2e7a1505cc9175c12de68db0ebde1ecdfff1179"
   },
   "ameenalasady:dev": {
     "bundle": "ameenalasady",
@@ -39692,9 +39735,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-07-29T10:04:50",
-    "version": "v1.38.0-dev.1",
-    "description": "## [1.38.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.37.1-dev.1...v1.38.0-dev.1) (2026-07-29)\n\n### ✨ New Features\n\n* **YouTube - Hide layout components:** Add \"Hide explore menu components\" setting ([#2159](https://github.com/MorpheApp/morphe-patches/issues/2159)) ([7dc29bc](https://github.com/MorpheApp/morphe-patches/commit/7dc29bcbd7d2927ebcc65145fb23d4f9e46581ec))\n* **YouTube Music - Hide layout components:** Add \"Hide Audio / Video toggle\", \"Hide comment components\", \"Hide feed components\", \"Hide Repeat button\", and \"Hide Shuffle button\" settings ([#2228](https://github.com/MorpheApp/morphe-patches/issues/2228)) ([931bb3a](https://github.com/MorpheApp/morphe-patches/commit/931bb3ac6c042b7113bd31e9fdccef9a8972ce87))\n* **YouTube:** Add `Wide search bar` patch ([#2221](https://github.com/MorpheApp/morphe-patches/issues/2221)) ([be8de15](https://github.com/MorpheApp/morphe-patches/commit/be8de1567731623f91a391bc479fab019e7b81a5))\n",
+    "created_at": "2026-07-30T13:44:03",
+    "version": "v1.38.0-dev.2",
+    "description": "## [1.38.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0-dev.1...v1.38.0-dev.2) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* **Settings:** Hidden category title is included when copying a setting breadcrumb ([f412fc8](https://github.com/MorpheApp/morphe-patches/commit/f412fc81d7bce31de9c511212d9672813ea54620))\n* **YouTube Music - Bypass certificate checks:** Resolve Android Auto crash ([#2239](https://github.com/MorpheApp/morphe-patches/issues/2239)) ([0b6a7b0](https://github.com/MorpheApp/morphe-patches/commit/0b6a7b0fd2491a8f33647bfce76ebd0a92e20225))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add experimental support for `9.30.52` ([#2254](https://github.com/MorpheApp/morphe-patches/issues/2254)) ([422fbf4](https://github.com/MorpheApp/morphe-patches/commit/422fbf40304842ca66d835f66889f48eee23702b))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -51101,9 +51144,9 @@
     "bundle": "ajstrick81-androidtv",
     "channel": "stable",
     "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-    "created_at": "2026-07-27T23:58:28",
-    "version": "v1.15.0",
-    "description": "# [1.15.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.14.0...v1.15.0) (2026-07-27)\n\n\n### Bug Fixes\n\n* **primevideo-native:** skip decompression chunks to stop CURL 61 corruption ([9787c81](https://github.com/ajstrick81/morphe-androidtv-patches/commit/9787c8170e44eec3ce9d19e10b43351290139dbf))\n\n\n### Features\n\n* **primevideo-native:** working GOT/PLT import hook for in-process ad strip ([516017d](https://github.com/ajstrick81/morphe-androidtv-patches/commit/516017d20a21bd18c252d602cf783442003434d4))\n\n\n\n",
+    "created_at": "2026-07-30T14:42:24",
+    "version": "v1.16.0",
+    "description": "# [1.16.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.15.0...v1.16.0) (2026-07-30)\n\n\n### Features\n\n* **primevideo-native:** suppress TV-show preroll/mid-roll ads (regolith) ([35c4725](https://github.com/ajstrick81/morphe-androidtv-patches/commit/35c4725aa3d5f3052f602f332700f202f6aa6a26))\n\n\n\n",
     "apps": [
       {
         "app_name": "Livingroom",
@@ -51391,10 +51434,35 @@
     "bundle": "morning-entree",
     "channel": "stable",
     "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-    "created_at": "2026-07-28T02:18:15",
-    "version": "v1.4.0",
-    "description": "## [1.4.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.3.0...v1.4.0) (2026-07-28)\n\n### ✨ New Features\n\n* Added Universe Install Source Spoof, Gboard, Gradient Weather ([4167890](https://github.com/Entree3k/Morning-Entree-Patches/commit/41678902f7ea972de13719cb37c5b9d6baeeafc1))\n",
+    "created_at": "2026-07-30T15:29:05",
+    "version": "v1.5.0",
+    "description": "## [1.5.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.4.0...v1.5.0) (2026-07-30)\n\n### ✨ New Features\n\n* Added New Support ([75b6a55](https://github.com/Entree3k/Morning-Entree-Patches/commit/75b6a5591ac718428ed4e90f091743dced8ff8c9))\n",
     "apps": [
+      {
+        "app_name": "Panels",
+        "package": "com.fossor.panels",
+        "patches": [
+          {
+            "name": "Disable Signature Verification",
+            "description": "Disable Signature Verification So The App Doesn't Crash When The APK Signature Changes After Patching",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.596"
+            ]
+          },
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Premium. Use With Spoof Install Source.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.596"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/29zFEdvcZAvtuOM81lbYmfInGZXzvnamaHD5MMfAYeoDidTevwDx2XddoBOvXK-p3SVufCDQrqxE2PsaCFvSWus"
+      },
       {
         "app_name": "Gboard",
         "package": "com.google.android.inputmethod.latin",
@@ -51462,6 +51530,38 @@
         "icon_url": "https://play-lh.googleusercontent.com/lxqbwaL36m_080hRNVbDQAjnmCwyDA8tT3B_gPT_yHsuTjeSJfkejJpi19r_qtAm2_QWoTZQS-6MT1T7AILdBA"
       },
       {
+        "app_name": "AutoLocation",
+        "package": "com.joaomgcd.autolocation",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks AutoLocation's full version",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.2.6"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MyQbMAWmucDAagdKZg1VldF1tUB4xVHB10R9OxOH82_UAajG8d-jvFZ7gGmup0DBp4LexJsSnwmnDAOp9imt"
+      },
+      {
+        "app_name": "AutoTools",
+        "package": "com.joaomgcd.autotools",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks AutoTools",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.3.19"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/UZRdSU6R1j0Mj1xL5kAg0Cxj9MCHJHme8jt48qFeACW8od5oQ9nKivZa60h9kQtQpNsMvJTWAhSREtwNw5XgYQ"
+      },
+      {
         "app_name": "Sponge",
         "package": "com.prismtree.sponge",
         "patches": [
@@ -51515,7 +51615,7 @@
         "patches": [
           {
             "name": "Enable Premium",
-            "description": "Unlocks Gradient Weather Premium (forces the paid Lifetime tier).",
+            "description": "Unlocks Gradient Weather Premium. Use With Spoof Install Source",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -51524,6 +51624,31 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/04xiToIui2lD8Co9xPb-_V3JW90vSS8ej7aEAMqzdA9uadnjkGbPFvtkQPxB4okIIkrZquPYnxE3Eg6d6Ik_XQ"
+      },
+      {
+        "app_name": "Nova Launcher",
+        "package": "com.teslacoilsw.launcher",
+        "patches": [
+          {
+            "name": "Disable Analytics & AD Tracking",
+            "description": "Turns off analytics, collection and removes the advertising-ID / ad-services permissions. Pair with \"Block Internet Patch\" to fully block trackers.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "88600 (8.8.6)"
+            ]
+          },
+          {
+            "name": "Enable Prime",
+            "description": "Unlocks Nova Launcher Prime",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "88600 (8.8.6)"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/EihoqDPSzditTLnmP-N0GjXmbvNdnZyW7YZKxRocA_kVIsaXhM9lBlfPrJmhBcSQmiydPXgise1ZTAlOOH7ZsQ"
       },
       {
         "app_name": "AI-900",
@@ -52324,9 +52449,41 @@
           }
         ],
         "icon_url": ""
+      },
+      {
+        "app_name": "Pinnit",
+        "package": "dev.sasikanth.pinnit2",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Pinnit Pro. Just Tap Restore Purchase When Prompted. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.13.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/8em5gBbzRGav2MXv4_WWQztXUg13aMf9tElXpgg47eOGkAffDCRi_eCuPc4wfsqaqmWv4o5bXWE0QA2p0Jut07k"
+      },
+      {
+        "app_name": "UbikiTouch",
+        "package": "eu.toneiv.ubktouch",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks UbikiTouch Premium. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.17.6"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/mwINWGvA1fZZwTzDfYgl7FTTTj-iElnsWrRCjuwnVAtR62hJyZdcHgG1SRSSi5LiBjlcKINIchP-Ut0DRWPDfQ"
       }
     ],
-    "fingerprint": "e4ab33c960b91a2b901ac525470fdd6d5d38571195f7008b9ba7f379bee901c6"
+    "fingerprint": "c17824774ddd625941c507fb6408ca595cad61cee0a25cb24573918d48136c49"
   },
   "proxma:stable": {
     "bundle": "proxma",
