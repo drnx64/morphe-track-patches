@@ -10032,9 +10032,9 @@
     "bundle": "browzomje",
     "channel": "stable",
     "repo_url": "https://github.com/browzomje/browzomje-patches",
-    "created_at": "2026-07-01T16:43:57",
-    "version": "v1.3.2",
-    "description": "## [1.3.2](https://github.com/browzomje/browzomje-patches/compare/v1.3.1...v1.3.2) (2026-07-01)\n\n### 🐛 Bug Fixes\n\n* **pinterest:** fixed snackbar using again the same system of other pinterest features instead of stock android snackbars ([4f14937](https://github.com/browzomje/browzomje-patches/commit/4f14937fad4ef1710bbcd2c64356401c66235993))\n",
+    "created_at": "2026-07-29T21:33:23",
+    "version": "v1.4.0",
+    "description": "## [1.4.0](https://github.com/browzomje/browzomje-patches/compare/v1.3.2...v1.4.0) (2026-07-29)\n\n### ✨ New Features\n\n* **pinterest:** add support for 14.28.0 ([cf77af0](https://github.com/browzomje/browzomje-patches/commit/cf77af08ad6096df961046feade92724bd7e177a))\n* **pinterest:** add the Morphe settings screen ([d440913](https://github.com/browzomje/browzomje-patches/commit/d440913f305550992ffc644a4198acea1eead657))\n* **pinterest:** download every pin of a board ([705c1cb](https://github.com/browzomje/browzomje-patches/commit/705c1cb80e00d78ba07c0eb2691325c365c2d871))\n* **pinterest:** hide the search history ([b93e1af](https://github.com/browzomje/browzomje-patches/commit/b93e1af5606afcd068ade429ea3e6e8b2de94756))\n* **pinterest:** mark 14.28.0 stable and drop 14.24.0 ([c243d0b](https://github.com/browzomje/browzomje-patches/commit/c243d0bd76d3d43eba2c66796cc03f9233a87d42))\n* **pinterest:** translate patch descriptions to English ([4a42bce](https://github.com/browzomje/browzomje-patches/commit/4a42bceff0a352817b7332ae3f8498b4353d3f1d))\n* **pinterest:** translate patcher log and feedback messages to English ([1893e58](https://github.com/browzomje/browzomje-patches/commit/1893e582d3ed23fca3a429e8c22c02e1ac29a7a3))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -10047,7 +10047,7 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.24.0"
+              "14.28.0"
             ]
           },
           {
@@ -10057,7 +10057,27 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.24.0"
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Disable email confirmation dialog",
+            "description": "Immediately closes the \"confirm your email\" modal (and similar ones: connect Google, etc.) if enabled in Morphe settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Download board",
+            "description": "Adds an option to the board's \"…\" menu to bulk download images and videos from already loaded pins. Streaming-only videos are reported and skipped.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
             ]
           },
           {
@@ -10067,7 +10087,77 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.24.0"
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Hide Create nav button",
+            "description": "Hooks the '+' (create Pin) navigation bar button: hidden if enabled in Morphe settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Hide Notifications nav button",
+            "description": "Hooks the notifications button: hidden if enabled in Morphe settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Hide search history",
+            "description": "Hides the \"Recent searches\" section both on the search screen and in the carousel below the search bar. It does not prevent Pinterest from logging searches (server-side), but stops them from being shown anywhere in the app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Hide Search nav button",
+            "description": "Hooks the search button: hidden if enabled in Morphe settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Morphe settings entry",
+            "description": "Adds the \"Morphe\" item to the Account Settings list to open the toggle screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Morphe settings screen (label)",
+            "description": "Renames the reused string resource for the \"Morphe\" entry in Settings, across all languages.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
+            ]
+          },
+          {
+            "name": "Morphe settings screen (manifest)",
+            "description": "Registers the Morphe settings Activity in the manifest, with an intent-filter for the morphe:// scheme.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0"
             ]
           },
           {
@@ -10077,7 +10167,7 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.24.0"
+              "14.28.0"
             ]
           },
           {
@@ -10087,17 +10177,17 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.24.0"
+              "14.28.0"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
       }
     ],
-    "fingerprint": "4c1a1122dd4487cc5cd84048b1c8dc1c5008d3fb9312422d0dad01b4a448d2bc",
-    "release_notes": "## [1.3.2](https://github.com/browzomje/browzomje-patches/compare/v1.3.1...v1.3.2) (2026-07-01)\n\n### 🐛 Bug Fixes\n\n* **pinterest:** fixed snackbar using again the same system of other pinterest features instead of stock android snackbars ([4f14937](https://github.com/browzomje/browzomje-patches/commit/4f14937fad4ef1710bbcd2c64356401c66235993))\n",
-    "release_tag": "v1.3.2",
-    "release_date": "2026-07-01T16:43:57Z"
+    "fingerprint": "121adab8fa7239e241370b6ce777906c1828df1773f9af9f82fa5ae16ef2cd16",
+    "release_notes": "## [1.4.0](https://github.com/browzomje/browzomje-patches/compare/v1.3.2...v1.4.0) (2026-07-29)\n\n### ✨ New Features\n\n* **pinterest:** add support for 14.28.0 ([cf77af0](https://github.com/browzomje/browzomje-patches/commit/cf77af08ad6096df961046feade92724bd7e177a))\n* **pinterest:** add the Morphe settings screen ([d440913](https://github.com/browzomje/browzomje-patches/commit/d440913f305550992ffc644a4198acea1eead657))\n* **pinterest:** download every pin of a board ([705c1cb](https://github.com/browzomje/browzomje-patches/commit/705c1cb80e00d78ba07c0eb2691325c365c2d871))\n* **pinterest:** hide the search history ([b93e1af](https://github.com/browzomje/browzomje-patches/commit/b93e1af5606afcd068ade429ea3e6e8b2de94756))\n* **pinterest:** mark 14.28.0 stable and drop 14.24.0 ([c243d0b](https://github.com/browzomje/browzomje-patches/commit/c243d0bd76d3d43eba2c66796cc03f9233a87d42))\n* **pinterest:** translate patch descriptions to English ([4a42bce](https://github.com/browzomje/browzomje-patches/commit/4a42bceff0a352817b7332ae3f8498b4353d3f1d))\n* **pinterest:** translate patcher log and feedback messages to English ([1893e58](https://github.com/browzomje/browzomje-patches/commit/1893e582d3ed23fca3a429e8c22c02e1ac29a7a3))\n",
+    "release_tag": "v1.4.0",
+    "release_date": "2026-07-29T21:33:23Z"
   },
   "prathxm:dev": {
     "bundle": "prathxm",
@@ -18109,9 +18199,9 @@
     "bundle": "hoo-dles",
     "channel": "dev",
     "repo_url": "https://github.com/hoo-dles/morphe-patches",
-    "created_at": "2026-07-29T16:44:56",
-    "version": "v1.40.0-dev.5",
-    "description": "# [1.40.0-dev.5](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.4...v1.40.0-dev.5) (2026-07-29)\n\n\n### Features\n\n* **Lightroom:** Add `Bypass login` and `Unlock premium features` patches ([d05f378](https://github.com/hoo-dles/morphe-patches/commit/d05f378b776ca4c2a4d423c2c90ec652b1ff070f))\n\n\n\n",
+    "created_at": "2026-07-29T20:49:32",
+    "version": "v1.40.0-dev.6",
+    "description": "# [1.40.0-dev.6](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.5...v1.40.0-dev.6) (2026-07-29)\n\n\n### Bug Fixes\n\n* **Adguard:** Update patch to support v4.13.0 ([8c2facc](https://github.com/hoo-dles/morphe-patches/commit/8c2facc2827c8e5c416180fa18af1454b7ad17d4))\n\n\n\n",
     "apps": [
       {
         "app_name": "TTMIK Stories",
@@ -19138,9 +19228,9 @@
       }
     ],
     "fingerprint": "c319495ad0a7c1ffe704c7482d0353365152d4f84ae4037f348a12f1d1174047",
-    "release_notes": "# [1.40.0-dev.5](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.4...v1.40.0-dev.5) (2026-07-29)\n\n\n### Features\n\n* **Lightroom:** Add `Bypass login` and `Unlock premium features` patches ([d05f378](https://github.com/hoo-dles/morphe-patches/commit/d05f378b776ca4c2a4d423c2c90ec652b1ff070f))\n\n\n\n",
-    "release_tag": "v1.40.0-dev.5",
-    "release_date": "2026-07-29T16:44:56Z"
+    "release_notes": "# [1.40.0-dev.6](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0-dev.5...v1.40.0-dev.6) (2026-07-29)\n\n\n### Bug Fixes\n\n* **Adguard:** Update patch to support v4.13.0 ([8c2facc](https://github.com/hoo-dles/morphe-patches/commit/8c2facc2827c8e5c416180fa18af1454b7ad17d4))\n\n\n\n",
+    "release_tag": "v1.40.0-dev.6",
+    "release_date": "2026-07-29T20:49:32Z"
   },
   "hoo-dles:stable": {
     "bundle": "hoo-dles",

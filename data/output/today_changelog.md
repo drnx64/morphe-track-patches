@@ -1,21 +1,24 @@
-## [2026-07-28]
-- **UPDATED** Bundle **ajstrick81-androidtv**
-  - **UPDATED APP** Livingroom (`com.amazon.amazonvideo.livingroom`) in ajstrick81-androidtv patches
-- **UPDATED** Bundle **franticg33k**
-  - **NEW APP** OldRoll (`com.accordion.analogcam`) in franticg33k patches
-- **NEW BUNDLE** Bundle by **hiosdra** (stable)
+## [2026-07-29]
+- **NEW BUNDLE** Bundle by **andrewliang25** (dev, stable)
+  - **NEW APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
+- **UPDATED** Bundle **browzomje**
+  - **UPDATED APP** Pinterest (`com.pinterest`) in browzomje patches
+- **NEW BUNDLE** Bundle by **hiosdra** (dev)
   - **NEW APP** F1 TV (`com.formulaone.production`) in hiosdra patches
-- **UPDATED** Bundle **itsthejoker**
-  - **UPDATED APP** Roost (`com.rookery.courier`) in itsthejoker patches
+  - **NEW APP** [PRE-RELEASE] Movie Paradise (`com.techkitlabs.movieparadise`) in hiosdra patches
 - **UPDATED** Bundle **jasonwu1994**
   - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
-- **NEW BUNDLE** Bundle by **jl4ctuk** (stable)
-  - **NEW APP** Ozon (`ru.ozon.app.android`) in jl4ctuk patches
-  - **NEW APP** RuStore (`ru.vk.store`) in jl4ctuk patches
-- **UPDATED** Bundle **morning-entree**
-  - **NEW APP** Gboard (`com.google.android.inputmethod.latin`) in morning-entree patches
-  - **NEW APP** Gradient Weather (`com.subtlesignals.gradientweather`) in morning-entree patches
+- **UPDATED** Bundle **kondratjev**
+  - **UPDATED APP** Lyfta (`com.lyfta`) in kondratjev patches
+  - **UPDATED APP** Medisafe (`com.medisafe.android.client`) in kondratjev patches
+  - **UPDATED APP** Pillo (`xyz.rtrvr.pillo`) in kondratjev patches
+  - **UPDATED APP** RuStore (`ru.vk.store`) in kondratjev patches
 - **UPDATED** Bundle **morphe**
-  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **okish-morphe**
+  - **NEW APP** FreeJobAlert (`com.freejobalert`) in okish-morphe patches
 - **UPDATED** Bundle **sofatime**
   - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Ozon (`ru.ozon.app.android`) in xob0t patches
+  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches
