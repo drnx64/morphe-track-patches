@@ -1,5 +1,35 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-07-30]
+- **UPDATED** Bundle **browzomje**
+  - **UPDATED APP** Pinterest (`com.pinterest`) in browzomje patches
+- **UPDATED** Bundle **hoo-dles**
+  - **UPDATED APP** AdGuard (`com.adguard.android`) in hoo-dles patches
+  - **NEW APP** [PRE-RELEASE] Lightroom Mobile (`com.adobe.lrmobile`) in hoo-dles patches
+  - **UPDATED APP** Nova Launcher (`com.teslacoilsw.launcher`) in hoo-dles patches
+  - **UPDATED APP** Smart Launcher (`ginlemon.flowerfree`) in hoo-dles patches
+  - **UPDATED APP** Solid Explorer (`pl.solidexplorer2`) in hoo-dles patches
+  - **UPDATED APP** Xodo (`com.xodo.pdf.reader`) in hoo-dles patches
+- **UPDATED** Bundle **hxreborn**
+  - **UPDATED APP** ForusApp (`com.myvitale.forus`) in hxreborn patches
+  - **UPDATED APP** Projectivy Launcher (`com.spocky.projengmenu`) in hxreborn patches
+  - **UPDATED APP** Proton Mail (`ch.protonmail.android`) in hxreborn patches
+- **UPDATED** Bundle **miguel**
+  - **NEW APP** Cube Solver (`com.jeffprod.cubesolver`) in miguel patches
+- **UPDATED** Bundle **morning-entree**
+  - **NEW APP** AutoLocation (`com.joaomgcd.autolocation`) in morning-entree patches
+  - **NEW APP** AutoTools (`com.joaomgcd.autotools`) in morning-entree patches
+  - **UPDATED APP** Gradient Weather (`com.subtlesignals.gradientweather`) in morning-entree patches
+  - **NEW APP** Nova Launcher (`com.teslacoilsw.launcher`) in morning-entree patches
+  - **NEW APP** Panels (`com.fossor.panels`) in morning-entree patches
+  - **NEW APP** Pinnit (`dev.sasikanth.pinnit2`) in morning-entree patches
+  - **NEW APP** UbikiTouch (`eu.toneiv.ubktouch`) in morning-entree patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** TBank (`com.idamob.tinkoff.android`) in xob0t patches
 ## [2026-07-29]
 - **NEW BUNDLE** Bundle by **andrewliang25** (dev, stable)
   - **NEW APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
