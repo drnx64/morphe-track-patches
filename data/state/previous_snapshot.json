@@ -6103,9 +6103,9 @@
     "bundle": "andrewliang25",
     "channel": "dev",
     "repo_url": "https://github.com/andrewliang25/morphe-patches",
-    "created_at": "2026-07-29T03:15:57",
-    "version": "v1.1.0-dev.1",
-    "description": "## [1.1.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-07-29)\n\n### ✨ New Features\n\n* also hide the chat-menu \"Events\" row ([a7e592f](https://github.com/andrewliang25/morphe-patches/commit/a7e592fb61301b5e0bbc701713f9e8672eb62940))\n* hide all server-driven extra tools in the + attach menu ([b8dc6a0](https://github.com/andrewliang25/morphe-patches/commit/b8dc6a0f917e55c1838fe624b310a0b9f417842c))\n* hide in-chat-room calendar buttons ([bf7b46e](https://github.com/andrewliang25/morphe-patches/commit/bf7b46e2f8b3dac840d12486b030b7f453da57eb))\n* hide the Transfer and LINE GIFT buttons in the + attach menu ([af8b4df](https://github.com/andrewliang25/morphe-patches/commit/af8b4df3419361738a5f5314d4d3dd3347d991d1))\n* split Events into its own patch; rename calendar patch to \"Hide LINE Calendar\" ([9370397](https://github.com/andrewliang25/morphe-patches/commit/93703972b1e0fe0a641cafc2fb2ee3a4b194d09e))\n",
+    "created_at": "2026-07-31T14:34:49",
+    "version": "v1.2.0-dev.1",
+    "description": "## [1.2.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-07-31)\n\n### ⚠ BREAKING CHANGES\n\n* drop non-functional unlock patch; enable Disable LINE Premium by default\n\n### 🐛 Bug Fixes\n\n* also hide the green \"Unsend discreetly\" button, not just its label ([dbfdb5b](https://github.com/andrewliang25/morphe-patches/commit/dbfdb5b63b2e900c8e33be89ac1a0c1fbaccfab9))\n\n### ✨ New Features\n\n* add Disable LINE Premium patch (hide all LYP upsells & entry points) ([c0244b4](https://github.com/andrewliang25/morphe-patches/commit/c0244b40fa040fa6f768ac2c5551028be4c06758))\n* add experimental LYP premium unlock patch + premium gating doc ([b7dcfca](https://github.com/andrewliang25/morphe-patches/commit/b7dcfca0291da09ad1c407364bcb1d73c699749a))\n* add Hide premium unsend upsells patch ([e5ce130](https://github.com/andrewliang25/morphe-patches/commit/e5ce130575e8772ba350680c83ce19bcb2af0ca8))\n* drop non-functional unlock patch; enable Disable LINE Premium by default ([38cea29](https://github.com/andrewliang25/morphe-patches/commit/38cea2951f07e35a429a8260f4a2359e050399e9))\n* enable Hide premium unsend upsells by default ([9d12e7b](https://github.com/andrewliang25/morphe-patches/commit/9d12e7bd6d84f6ac54d90ad836b7823f73bb3fe1))\n",
     "apps": [
       {
         "app_name": "LINE",
@@ -6114,6 +6114,15 @@
           {
             "name": "Disable LINE Pay",
             "description": "Closes any LINE Pay screen immediately on open, so Pay flows (and their device-integrity check) never run. Messaging is unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Disable LINE Premium",
+            "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsell popups/banners, premium badges & locks, the \"LINE Premium\" settings page and its entry rows, and the subscribe/manage flows — by forcing the app's own \"premium available in this market\" flag off. The app then behaves exactly as it does in a region where LYP isn't offered. Does not unlock anything (premium is server-enforced); it only removes premium from view. A LYP subscriber would lose their in-app premium management UI.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6202,6 +6211,15 @@
             ]
           },
           {
+            "name": "Hide premium unsend upsells",
+            "description": "Removes the two LYP premium-unsend upsells that survive \"Disable LINE Premium\" (they read config directly instead of the market-availability flag): the \"Unsend discreetly\" button in the unsend-message confirmation dialog, and the \"How to unsend discreetly\" promotion link shown after unsending. The dialog keeps its ordinary \"Unsend\" and \"Close\" buttons.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
             "name": "Hide Transfer button",
             "description": "Removes the Transfer (LINE Pay) tile from a chat room's + attach menu.",
             "use": true,
@@ -6259,15 +6277,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
       }
     ],
-    "fingerprint": "177d3f7d0ddc687f35db0ac4f7b4abb5a3bba27e9f22e2c15ebbf5a98158039b"
+    "fingerprint": "60dc25d223d5ed901d5f947549f514a84d280a999ac76c59f4396d1d0daf6cc3"
   },
   "andrewliang25:stable": {
     "bundle": "andrewliang25",
     "channel": "stable",
     "repo_url": "https://github.com/andrewliang25/morphe-patches",
-    "created_at": "2026-07-29T15:15:36",
-    "version": "v1.1.0",
-    "description": "## [1.1.0](https://github.com/andrewliang25/morphe-patches/compare/v1.0.0...v1.1.0) (2026-07-29)\r\n\r\n### ✨ New Features\r\n\r\n* Add hide the chat-menu \"Events\" row ([a7e592f](https://github.com/andrewliang25/morphe-patches/commit/a7e592fb61301b5e0bbc701713f9e8672eb62940))\r\n* Add hide all server-driven extra tools in the + attach menu ([b8dc6a0](https://github.com/andrewliang25/morphe-patches/commit/b8dc6a0f917e55c1838fe624b310a0b9f417842c))\r\n* Add hide calendar buttons ([bf7b46e](https://github.com/andrewliang25/morphe-patches/commit/bf7b46e2f8b3dac840d12486b030b7f453da57eb))\r\n* Add hide the Transfer and LINE GIFT buttons in the + attach menu ([af8b4df](https://github.com/andrewliang25/morphe-patches/commit/af8b4df3419361738a5f5314d4d3dd3347d991d1))\r\n",
+    "created_at": "2026-07-31T14:40:14",
+    "version": "v1.2.0",
+    "description": "## [1.2.0](https://github.com/andrewliang25/morphe-patches/compare/v1.1.0...v1.2.0) (2026-07-31)\r\n\r\n### ✨ New Features\r\n\r\n* add Disable LINE Premium patch (hide all LYP upsells & entry points) ([c0244b4](https://github.com/andrewliang25/morphe-patches/commit/c0244b40fa040fa6f768ac2c5551028be4c06758))\r\n* add Hide premium unsend upsells patch ([e5ce130](https://github.com/andrewliang25/morphe-patches/commit/e5ce130575e8772ba350680c83ce19bcb2af0ca8))\r\n",
     "apps": [
       {
         "app_name": "LINE",
@@ -6276,6 +6294,15 @@
           {
             "name": "Disable LINE Pay",
             "description": "Closes any LINE Pay screen immediately on open, so Pay flows (and their device-integrity check) never run. Messaging is unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Disable LINE Premium",
+            "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsell popups/banners, premium badges & locks, the \"LINE Premium\" settings page and its entry rows, and the subscribe/manage flows — by forcing the app's own \"premium available in this market\" flag off. The app then behaves exactly as it does in a region where LYP isn't offered. Does not unlock anything (premium is server-enforced); it only removes premium from view. A LYP subscriber would lose their in-app premium management UI.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6364,6 +6391,15 @@
             ]
           },
           {
+            "name": "Hide premium unsend upsells",
+            "description": "Removes the two LYP premium-unsend upsells that survive \"Disable LINE Premium\" (they read config directly instead of the market-availability flag): the \"Unsend discreetly\" button in the unsend-message confirmation dialog, and the \"How to unsend discreetly\" promotion link shown after unsending. The dialog keeps its ordinary \"Unsend\" and \"Close\" buttons.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
             "name": "Hide Transfer button",
             "description": "Removes the Transfer (LINE Pay) tile from a chat room's + attach menu.",
             "use": true,
@@ -6421,7 +6457,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
       }
     ],
-    "fingerprint": "db8d2c7957c4bfdd5538a55a784bf261602b1d7306c56224bb6fbabb64be9b3e"
+    "fingerprint": "58efda8165e7f03fcbc7ec18c42ac61ed7de1ced885091e51a67b6487b6c4296"
   },
   "franticg33k:dev": {
     "bundle": "franticg33k",
@@ -14434,9 +14470,9 @@
     "bundle": "okish-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-    "created_at": "2026-07-29T06:58:02",
-    "version": "v1.1.0-dev.1",
-    "description": "## [1.1.0-dev.1](https://github.com/byehi98/okish-morphe-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-07-29)\n\n\n\n",
+    "created_at": "2026-07-31T13:23:02",
+    "version": "v1.2.0-dev.1",
+    "description": "## [1.2.0-dev.1](https://github.com/byehi98/okish-morphe-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-07-31)\n\n\n\n",
     "apps": [
       {
         "app_name": "FreeJobAlert",
@@ -14478,17 +14514,33 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/HMNPjnirCROB85XXIZqHtJADfdOzxYRIPXmHNsWbj919SF4Z0egS3i8RZlMJo7jGjUEslJkWmQ3qPmXem72C"
+      },
+      {
+        "app_name": "Smash Hit",
+        "package": "com.mediocre.smashhit",
+        "patches": [
+          {
+            "name": "Smash Hit Premium Unlock",
+            "description": "Unlocks premium and all game modes without purchase.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.5.14"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/ueP4ZNBXNdqNWIR23mdGnQuS-9c7dVvFp981Poc9ZEDkk6vddPGBxCYk3A_fWketiNpGO_GEHbmtDh8-qX-X"
       }
     ],
-    "fingerprint": "b5b9dfee5f36e30dc153fc72bc825db9e3bc79ace340798a54964d6a1acaa4b1"
+    "fingerprint": "32a057339832be266de08e61dd4847e7af4769d23f4aed8532e17e15895f2d94"
   },
   "okish-morphe:stable": {
     "bundle": "okish-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-    "created_at": "2026-07-29T10:32:53",
-    "version": "v1.1.0",
-    "description": "## [1.1.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.0.0...v1.1.0) (2026-07-29)\n\n\n\n",
+    "created_at": "2026-07-31T13:30:46",
+    "version": "v1.2.0",
+    "description": "## [1.2.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.1.0...v1.2.0) (2026-07-31)\n\n\n\n",
     "apps": [
       {
         "app_name": "FreeJobAlert",
@@ -14530,9 +14582,25 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/HMNPjnirCROB85XXIZqHtJADfdOzxYRIPXmHNsWbj919SF4Z0egS3i8RZlMJo7jGjUEslJkWmQ3qPmXem72C"
+      },
+      {
+        "app_name": "Smash Hit",
+        "package": "com.mediocre.smashhit",
+        "patches": [
+          {
+            "name": "Smash Hit Premium Unlock",
+            "description": "Unlocks premium and all game modes without purchase.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.5.14"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/ueP4ZNBXNdqNWIR23mdGnQuS-9c7dVvFp981Poc9ZEDkk6vddPGBxCYk3A_fWketiNpGO_GEHbmtDh8-qX-X"
       }
     ],
-    "fingerprint": "3d11d5ba5de21af393bb46956fce4448283e7325226bddbd9fe043fbaf2018e8"
+    "fingerprint": "52a8c4a3f79adc69e8436940296a8bf90dc1f90de62b9e36478bf8f57c94eaab"
   },
   "amplerevanced:dev": {
     "bundle": "amplerevanced",
@@ -39740,6 +39808,231 @@
       }
     ],
     "fingerprint": "2becef7970c38055c2dbc97a5f6ed991bfed0ee8ae9b271914d9232331ccd10a"
+  },
+  "jl4ctuk:dev": {
+    "bundle": "jl4ctuk",
+    "channel": "dev",
+    "repo_url": "https://github.com/Jl4cTuk/morphe-patches",
+    "created_at": "2026-07-31T13:58:52",
+    "version": "v1.3.0-dev.1",
+    "description": "## [1.3.0-dev.1](https://github.com/Jl4cTuk/morphe-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-07-31)\n\n### ✨ New Features\n\n* add Ozon Bank cleanup patches ([e98d203](https://github.com/Jl4cTuk/morphe-patches/commit/e98d203b4657cae66b65bf809b72b2982603b504))\n",
+    "apps": [
+      {
+        "app_name": "Ozon",
+        "package": "ru.ozon.app.android",
+        "patches": [
+          {
+            "name": "Disable checkout tips",
+            "description": "Removes courier tips UI and prevents tip IDs or tip API calls from being submitted.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.28.0"
+            ]
+          },
+          {
+            "name": "Disable lottery and in-app pushes",
+            "description": "Disables lottery onboarding and the in-app push SDK used for reward popups.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.28.0"
+            ]
+          },
+          {
+            "name": "Disable telemetry",
+            "description": "Disables Ozon analytics, attribution, crash reporting, and telemetry uploads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.28.0"
+            ]
+          },
+          {
+            "name": "Hide account lottery and review feed",
+            "description": "Removes the lottery entry banner and review feed shortcut from the account screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.28.0"
+            ]
+          },
+          {
+            "name": "Hide Ozon Bank ad banner",
+            "description": "Removes the advertising banner carousel from the Ozon Bank screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.28.0"
+            ]
+          },
+          {
+            "name": "Hide seller rating prompt",
+            "description": "Removes the post-purchase seller rating prompt.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.28.0"
+            ]
+          },
+          {
+            "name": "Remove Ozon ads",
+            "description": "Removes Ozon ad widgets, checkout promotions, floating promotions, banner carousels, and PDP promo blocks.",
+            "use": true,
+            "options": [
+              {
+                "key": "hideRecommendationGrids",
+                "description": "Removes recommendation grids from product, cart, profile, and favorites screens."
+              }
+            ],
+            "compatible_versions": [
+              "19.28.0"
+            ]
+          },
+          {
+            "name": "Show final prices only",
+            "description": "Hides crossed-out prices, discount percentages, and redundant price rows in the cart total.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.28.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Rz5gPi2gs8Vs8VZVn7mpJQpIB7XzeeErGGNAMIdr9NmWJigvmFpaWtMlpyC2rdieC6gxnpmQ5guTUUMjnZn97g"
+      },
+      {
+        "app_name": "Ozon Bank",
+        "package": "ru.ozon.fintech.finance",
+        "patches": [
+          {
+            "name": "Disable Ozon Bank VPN warning",
+            "description": "Removes the warning shown when Ozon Bank detects an active VPN connection.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.27.0"
+            ]
+          },
+          {
+            "name": "Hide Ozon Bank benefit sections",
+            "description": "Adds options to hide selected non-advertising sections from the Benefit page.",
+            "use": false,
+            "options": [
+              {
+                "key": "hideBuyForOneRuble",
+                "description": "Hides the Buy for 1 ruble product carousel."
+              },
+              {
+                "key": "hidePartnerBenefits",
+                "description": "Hides the Partner benefits section."
+              },
+              {
+                "key": "hideOzonShoppingBenefits",
+                "description": "Hides the For shopping on Ozon section."
+              },
+              {
+                "key": "hideOzonPremium",
+                "description": "Hides the Ozon Premium benefits section."
+              }
+            ],
+            "compatible_versions": [
+              "19.27.0"
+            ]
+          },
+          {
+            "name": "Hide Ozon Bank promotions",
+            "description": "Uses the classic home design and removes promotional cards, sections, shortcuts, and the startup installment offer from Ozon Bank pages.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.27.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/1kJBA1bnQZXKXniwg5KV089Bfxveqb0FVAI4rc_A2A1XNCL27e35Ap9Ax-u4FcWOUy2n-5lmv_AlVE0iFlikbA"
+      },
+      {
+        "app_name": "RuStore",
+        "package": "ru.vk.store",
+        "patches": [
+          {
+            "name": "Disable ads",
+            "description": "Removes advertisements and recommendations from search.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.106.0.3"
+            ]
+          },
+          {
+            "name": "Disable analytics",
+            "description": "Disables analytics and tracking in RuStore.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.106.0.3"
+            ]
+          },
+          {
+            "name": "Disable background scan",
+            "description": "Disables the periodic Kaspersky background device scan.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.106.0.3"
+            ]
+          },
+          {
+            "name": "Disable gaming profile",
+            "description": "Removes the Game Profile section from the Mine screen, including the button and the usage statistics screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.106.0.3"
+            ]
+          },
+          {
+            "name": "Disable Mine redesign",
+            "description": "Reverts the Mine screen to the classic layout, disabling the redesigned V2/V3 interface.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.106.0.3"
+            ]
+          },
+          {
+            "name": "Hide Featured and Games tabs",
+            "description": "Removes the Featured and Games tabs and opens Apps by default.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.106.0.3"
+            ]
+          },
+          {
+            "name": "Hide notification buttons",
+            "description": "Removes notification buttons from the search bar and Mine screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.106.0.3"
+            ]
+          },
+          {
+            "name": "Skip update auth",
+            "description": "Removes the login requirement when updating apps.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.106.0.3"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "6140021ef252b295ffe65ab169441efd8f4f338a2a7ced171353eac7f89898db"
   },
   "jl4ctuk:stable": {
     "bundle": "jl4ctuk",
