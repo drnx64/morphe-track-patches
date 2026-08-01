@@ -6103,9 +6103,9 @@
     "bundle": "andrewliang25",
     "channel": "dev",
     "repo_url": "https://github.com/andrewliang25/morphe-patches",
-    "created_at": "2026-08-01T11:09:57",
-    "version": "v1.3.0-dev.1",
-    "description": "## [1.3.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-01)\n\n### ✨ New Features\n\n* hide the \"Unsend\" option for messages past the free unsend window ([1cce49d](https://github.com/andrewliang25/morphe-patches/commit/1cce49dd9550ac778370dc6d1359d554696abe50))\n* redirect LINE Pay to the standalone LINE Pay app ([2d9c476](https://github.com/andrewliang25/morphe-patches/commit/2d9c476d69561a9d7fb1c0fc43d97af7f7aa1e67))\n",
+    "created_at": "2026-08-01T17:13:12",
+    "version": "v1.4.0-dev.1",
+    "description": "## [1.4.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.3.0...v1.4.0-dev.1) (2026-08-01)\n\n### ✨ New Features\n\n* add \"Fix push notifications\" patch ([e20ce9d](https://github.com/andrewliang25/morphe-patches/commit/e20ce9d99de2f38286710683a9fcdbeba07a05e3))\n",
     "apps": [
       {
         "app_name": "LINE",
@@ -6113,7 +6113,7 @@
         "patches": [
           {
             "name": "Disable LINE Premium",
-            "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsell popups/banners, premium badges & locks, the \"LINE Premium\" settings page and its entry rows, and the subscribe/manage flows — by forcing the app's own \"premium available in this market\" flag off. The app then behaves exactly as it does in a region where LYP isn't offered. Does not unlock anything (premium is server-enforced); it only removes premium from view. A LYP subscriber would lose their in-app premium management UI.",
+            "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsells, badges, the Premium settings page, and subscribe/manage flows. Doesn't unlock anything (premium is server-enforced).",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6122,7 +6122,16 @@
           },
           {
             "name": "Disable VOOM",
-            "description": "Neutralizes VOOM entry points: VOOM deep links, shares, and notifications (line://home/*) do nothing, and the standalone VOOM feed closes on open. Also disables VOOM LIVE, the birthday board, and share-to-VOOM. Messaging, friend profiles, and other tabs are unaffected.",
+            "description": "Neutralizes VOOM entry points — deep links, shares, and notifications do nothing and the standalone VOOM feed closes on open. Messaging and other tabs are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Fix push notifications",
+            "description": "Restores push notifications on re-signed builds when LINE is fully closed. If they still don't arrive, use a Root Mount install.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6203,7 +6212,7 @@
           },
           {
             "name": "Hide premium unsend upsells",
-            "description": "Removes the two LYP premium-unsend upsells that survive \"Disable LINE Premium\" (they read config directly instead of the market-availability flag): the \"Unsend discreetly\" button in the unsend-message confirmation dialog, and the \"How to unsend discreetly\" promotion link shown after unsending. The dialog keeps its ordinary \"Unsend\" and \"Close\" buttons. Also removes the \"Unsend\" long-press option for messages older than the free unsend window (~1h) so it no longer shows the \"Give yourself more time\" upgrade upsell — matching how messages past the premium window behave.",
+            "description": "Removes the LYP premium-unsend upsells that survive \"Disable LINE Premium\": the \"Unsend discreetly\" button, the post-unsend promo link, and the expired-window unsend upsell. Ordinary unsend still works.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6257,7 +6266,7 @@
           },
           {
             "name": "Redirect LINE Pay",
-            "description": "Forwards LINE Pay flows to the separately-installed standalone LINE Pay app instead of running them inside the messenger, so the in-app device-integrity check (which fails on a re-signed build) never runs. Falls back to closing the Pay screen if the standalone app can't be opened. Messaging is unaffected.",
+            "description": "Forwards LINE Pay flows to the standalone LINE Pay app instead of running them in-app, so the device-integrity check that fails on a re-signed build never runs. Messaging is unaffected.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6277,7 +6286,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
       }
     ],
-    "fingerprint": "2cc360506b5141bc0bffb993dfe017752f22dcf0dd3544e43060e36c9e1ba5e9"
+    "fingerprint": "d031aab4a58b5c7634cf6a26fbc8a60238f0adaa28751627be748458066fbd3f"
   },
   "andrewliang25:stable": {
     "bundle": "andrewliang25",
@@ -14722,9 +14731,9 @@
     "bundle": "amplerevanced",
     "channel": "dev",
     "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
-    "created_at": "2026-08-01T12:57:48",
-    "version": "v1.3.0-dev.1",
-    "description": "# [1.3.0-dev.1](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-01)\n\n\n### Bug Fixes\n\n* **kakaotalk:** allocate registers for Allow invisible characters ([ec4bcad](https://github.com/AmpleReVanced/revanced-patches/commit/ec4bcadfb0b2e06aa79fe347864a2f508fa163b4))\n* **settings:** adopt piko switch checkmark and stroke blending ([4204a1c](https://github.com/AmpleReVanced/revanced-patches/commit/4204a1cc37d0978a793be7e0daa880a827a88883))\n* **settings:** align preference styling with piko and fix nested screen toolbar ([b7edcf3](https://github.com/AmpleReVanced/revanced-patches/commit/b7edcf3f6907775c1c7598f9fc301bb6c0c4f581))\n\n\n### Features\n\n* **chzzk:** add support chzzk patches for version `3.10.0` ([4d6972e](https://github.com/AmpleReVanced/revanced-patches/commit/4d6972e778f846cb18ee8d4cc9be56bbd5b8e6a6))\n* **dcinside:** update dcinside patches for version `5.3.2` ([7c58146](https://github.com/AmpleReVanced/revanced-patches/commit/7c5814633dd8a67050c42f8bfd1013ef310e7ce5))\n* **flexcil:** add support flexcil patches for version `1.4.4.10` ([ba011f0](https://github.com/AmpleReVanced/revanced-patches/commit/ba011f0b9d21cc0e12f0cd45160489797b900d0d))\n* **kakaotalk:** add Allow invisible characters patch ([8ad87d0](https://github.com/AmpleReVanced/revanced-patches/commit/8ad87d084742dc04a764fae3e1f0c85d9c41fcbc))\n* **kakaotalk:** add Allow profile media download patch ([b6d3822](https://github.com/AmpleReVanced/revanced-patches/commit/b6d382288009ec337841aac5cdcf639bda91578c))\n* **kakaotalk:** update kakaotalk patches for version `26.6.2` ([52fcbb6](https://github.com/AmpleReVanced/revanced-patches/commit/52fcbb6ea2f56accb05b9913d4662a6c197b79a7))\n* **kakaotalk:** update kakaotalk patches for version `26.6.3` ([1982c1f](https://github.com/AmpleReVanced/revanced-patches/commit/1982c1fa97d01d01c1c8070d47b49f5a4b3da673))\n* **settings:** back up and restore settings to a file ([05d7236](https://github.com/AmpleReVanced/revanced-patches/commit/05d7236b7d3e4e03edf161dec341fa3748bb2d95))\n* **soop:** update soop patches for version `8.28.5` ([bd831f9](https://github.com/AmpleReVanced/revanced-patches/commit/bd831f94e9fcbad442bf4cd41280ff10f88b6fe5))\n\n\n\n",
+    "created_at": "2026-08-01T15:42:15",
+    "version": "v1.3.0-dev.2",
+    "description": "# [1.3.0-dev.2](https://github.com/AmpleReVanced/revanced-patches/compare/v1.3.0-dev.1...v1.3.0-dev.2) (2026-08-01)\n\n\n### Bug Fixes\n\n* **kakaotalk:** allow swiping feed messages while comments are enabled ([8ec8bd0](https://github.com/AmpleReVanced/revanced-patches/commit/8ec8bd052d4f498b8bbd155d5d723670ff795ed7))\n\n\n### Features\n\n* **dcinside:** show author identifier in comments ([4bee018](https://github.com/AmpleReVanced/revanced-patches/commit/4bee018f51ee2843593967192683f7aedacdb0c0))\n\n\n\n",
     "apps": [
       {
         "app_name": "dcinside",
@@ -14948,7 +14957,7 @@
           },
           {
             "name": "Show author identifier",
-            "description": "Adds options to show the author identifier next to the nickname in posts, post lists, and the recently-viewed posts list. The recently-viewed list only shows it for posts opened after this patch is installed.",
+            "description": "Adds options to show the author identifier next to the nickname in posts, post lists, comments, and the recently-viewed posts list. The recently-viewed list only shows it for posts opened after this patch is installed.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -15063,7 +15072,7 @@
           },
           {
             "name": "Allow reply to feed",
-            "description": "Allows replying to feed messages",
+            "description": "Allows swiping feed messages to reply, or to comment where chat room comments are enabled.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -15719,7 +15728,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/kkYJ-GrCRS0WWNWjshvFCyqnYPdC7PY6UZ5NK5ju7OFnp0lmU7JlOLIfPvQnr4Y_LWhnab-Fqz9PkCrEwpPjLQ"
       }
     ],
-    "fingerprint": "7ab7508d4dc3d0d559addb246327cd6f32bc0392775bc86d9a17bab2ff4afb9b"
+    "fingerprint": "dcc5081df6b08e1da88b4be37bfab3aa704149fdcb81d316d31d38c28ba1cbe1"
   },
   "amplerevanced:stable": {
     "bundle": "amplerevanced",
