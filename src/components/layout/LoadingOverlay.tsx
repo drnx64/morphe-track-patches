@@ -35,11 +35,12 @@ export default function LoadingOverlay() {
           <div className="loading-console">
             {state.loadingLog.map((msg, i) => (
               <div key={i} className={
-                msg.startsWith('Fetching') ? 'loading-console-line loading-console-line--fetch' :
-                msg.includes('✓') ? 'loading-console-line loading-console-line--ok' :
+                msg.startsWith('[fetch]') || msg.startsWith('Fetching') ? 'loading-console-line loading-console-line--fetch' :
+                msg.startsWith('  ✓') || msg.includes('✓') ? 'loading-console-line loading-console-line--ok' :
                 msg.startsWith('Processing') || msg.startsWith('Building') ? 'loading-console-line loading-console-line--work' :
                 msg.startsWith('─') ? 'loading-console-line loading-console-line--sep' :
                 msg.startsWith('[done]') || msg.startsWith('✓ done') ? 'loading-console-line loading-console-line--done' :
+                msg.startsWith('[') ? 'loading-console-line loading-console-line--work' :
                 msg.startsWith('[diff]') || msg.startsWith('  ') && !msg.includes('✓') ? 'loading-console-line loading-console-line--sub' :
                 'loading-console-line'
               }>

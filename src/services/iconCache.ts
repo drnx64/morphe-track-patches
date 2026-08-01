@@ -4,7 +4,7 @@ function log(...args: unknown[]) {
   if (VERBOSE) console.log('[iconCache]', ...args)
 }
 
-import { idbGet, idbSet } from './indexedDB'
+import { idbGet, idbGetMany, idbSetMany } from './indexedDB'
 
 const imageCache: Record<string, string> = {}
 
@@ -37,7 +37,7 @@ export async function loadIconImage(iconUrl: string): Promise<string | null> {
         reader.onloadend = () => {
           const dataUrl = reader.result as string
           imageCache[iconUrl] = dataUrl
-          idbSet(cacheKey, dataUrl)
+          idbSetMany([[cacheKey, dataUrl]])
           resolve(dataUrl)
         }
         reader.readAsDataURL(xhr.response)
@@ -66,9 +66,21 @@ export async function preloadIcons(iconMap: Record<string, string>): Promise<voi
   log(`preloadIcons: ${unique.length} unique icon URLs`)
   if (!unique.length) return
 
+  const missing: string[] = []
+  const entries = await idbGetMany<string>(unique.map(hashStr))
+  for (const url of unique) {
+    const cached = entries.get(hashStr(url))
+    if (cached) {
+      imageCache[url] = cached
+    } else {
+      missing.push(url)
+    }
+  }
+  log(`preloadIcons: ${missing.length} missing after cache read`)
+
   const BATCH_SIZE = 20
-  for (let i = 0; i < unique.length; i += BATCH_SIZE) {
-    const batch = unique.slice(i, i + BATCH_SIZE)
+  for (let i = 0; i < missing.length; i += BATCH_SIZE) {
+    const batch = missing.slice(i, i + BATCH_SIZE)
     await Promise.all(batch.map(url => loadIconImage(url)))
   }
   log('preloadIcons done')
@@ -87,9 +99,20 @@ export async function preloadIconsFromPackages(
   }
   if (!urls.length) return
 
+  const missing: string[] = []
+  const entries = await idbGetMany<string>(urls.map(hashStr))
+  for (const url of urls) {
+    const cached = entries.get(hashStr(url))
+    if (cached) {
+      imageCache[url] = cached
+    } else {
+      missing.push(url)
+    }
+  }
+
   const BATCH_SIZE = 20
-  for (let i = 0; i < urls.length; i += BATCH_SIZE) {
-    const batch = urls.slice(i, i + BATCH_SIZE)
+  for (let i = 0; i < missing.length; i += BATCH_SIZE) {
+    const batch = missing.slice(i, i + BATCH_SIZE)
     await Promise.all(batch.map(url => loadIconImage(url)))
   }
 }

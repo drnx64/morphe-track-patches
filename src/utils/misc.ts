@@ -113,6 +113,22 @@ export function resolveAppName(
   return app.app_name
 }
 
+export function scoreAppSearch(query: string, name: string, pkg: string): number {
+  const q = query.toLowerCase().trim()
+  if (!q) return 0
+  const n = name.toLowerCase()
+  const p = pkg.toLowerCase()
+  let score = 0
+  if (n === q || p === q) score += 1000
+  if (n.startsWith(q)) score += 800
+  if (p.startsWith(q)) score += 700
+  if (n.split(/[\s.\-]+/).some((w) => w.startsWith(q))) score += 450
+  if (p.split(/[\s.\-]+/).some((w) => w.startsWith(q))) score += 350
+  if (n.includes(q)) score += 250
+  if (p.includes(q)) score += 150
+  return score
+}
+
 export function getAppIconUrl(
   app: { icon_url?: string; package?: string },
   iconCache: Record<string, string>,
@@ -120,6 +136,30 @@ export function getAppIconUrl(
   if (!app) return ''
   const url = app.icon_url || (app.package ? iconCache[app.package] : '') || ''
   return typeof url === 'string' ? url : ''
+}
+
+let versionsCache: Record<string, string> | null = null
+
+export function getStoredVersions(): Record<string, string> {
+  if (!versionsCache) {
+    try {
+      versionsCache = JSON.parse(localStorage.getItem('morphe_versions') || '{}') as Record<string, string>
+    } catch {
+      versionsCache = {}
+    }
+  }
+  return versionsCache
+}
+
+export function setStoredVersion(bundle: string, version: string): void {
+  const stored = getStoredVersions()
+  if (stored[bundle] === version) return
+  stored[bundle] = version
+  try {
+    localStorage.setItem('morphe_versions', JSON.stringify(stored))
+  } catch {
+    // ignore quota/security errors
+  }
 }
 
 export function daysSince(dateStr: string | undefined | null): number | null {
@@ -142,4 +182,51 @@ export function getStaleness(dateStr: string | undefined | null): StalenessInfo 
   if (d <= 7) return { days: d, level: 'fresh', label: `${d}d` }
   if (d <= 14) return { days: d, level: 'moderate', label: `${d}d` }
   return { days: d, level: 'stale', label: `${d}d` }
+}
+
+export interface AppBundleRef {
+  bundleName: string
+  repoUrl: string
+  version: string
+  channels: string[]
+}
+
+export interface AppIndexEntry {
+  package: string
+  name: string
+  iconUrl: string
+  bundles: AppBundleRef[]
+}
+
+export function buildAppIndex(
+  bundlesData: Record<string, BundleData>,
+  nameCache: Record<string, string>,
+  iconCache: Record<string, string>,
+): AppIndexEntry[] {
+  const map = new Map<string, AppIndexEntry>()
+  for (const key of Object.keys(bundlesData)) {
+    const bundle = bundlesData[key]
+    const bundleName = key.replace(/:(stable|dev)$/, '')
+    const repoUrl = bundle.repo_url || `https://github.com/${bundleName}/revanced-patches`
+    for (const app of bundle.apps || []) {
+      let entry = map.get(app.package)
+      if (!entry) {
+        entry = {
+          package: app.package,
+          name: resolveAppName(app, nameCache),
+          iconUrl: getAppIconUrl(app, iconCache),
+          bundles: [],
+        }
+        map.set(app.package, entry)
+      }
+      let ref = entry.bundles.find((b) => b.bundleName === bundleName && b.repoUrl === repoUrl)
+      if (!ref) {
+        ref = { bundleName, repoUrl, version: '', channels: [] }
+        entry.bundles.push(ref)
+      }
+      if (!ref.channels.includes(bundle.channel)) ref.channels.push(bundle.channel)
+      if (bundle.version && !ref.version) ref.version = bundle.version
+    }
+  }
+  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name))
 }

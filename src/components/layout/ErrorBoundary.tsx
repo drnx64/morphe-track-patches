@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from 'react'
+import { Component, ErrorInfo, ReactNode, createRef } from 'react'
 
 interface Props {
   children: ReactNode
@@ -8,12 +8,16 @@ interface State {
   hasError: boolean
   error: Error | null
   errorInfo: ErrorInfo | null
+  copied: boolean
+  copyFailed: boolean
 }
 
 export default class ErrorBoundary extends Component<Props, State> {
+  private copyTextarea = createRef<HTMLTextAreaElement>()
+
   constructor(props: Props) {
     super(props)
-    this.state = { hasError: false, error: null, errorInfo: null }
+    this.state = { hasError: false, error: null, errorInfo: null, copied: false, copyFailed: false }
   }
 
   static getDerivedStateFromError(error: Error): Partial<State> {
@@ -27,9 +31,9 @@ export default class ErrorBoundary extends Component<Props, State> {
     if (loadingEl) loadingEl.style.display = 'none'
   }
 
-  private handleCopy = async () => {
+  private buildErrorText(): string {
     const { error, errorInfo } = this.state
-    const lines = [
+    return [
       `Error: ${error?.name || 'Unknown'}`,
       `Message: ${error?.message || 'No message'}`,
       `Stack: ${error?.stack || 'No stack trace'}`,
@@ -52,22 +56,73 @@ export default class ErrorBoundary extends Component<Props, State> {
       ``,
       `--- How to fix ---`,
       `Paste the above error details in your chat with opencode to get help fixing this issue.`,
-    ]
+    ].join('\n')
+  }
+
+  private handleCopy = async () => {
+    const text = this.buildErrorText()
+
+    let ok = false
     try {
-      await navigator.clipboard.writeText(lines.join('\n'))
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text)
+        ok = true
+      }
     } catch {
-      console.warn('[MorpheTracker] Clipboard write failed')
+      /* fall through to legacy path */
+    }
+    if (!ok) {
+      ok = this.legacyCopy(text)
+    }
+
+    if (ok) {
+      this.setState({ copied: true, copyFailed: false })
+      setTimeout(() => this.setState({ copied: false }), 2000)
+    } else {
+      this.setState({ copyFailed: true })
+      setTimeout(() => {
+        const ta = this.copyTextarea.current
+        if (ta) {
+          ta.focus()
+          ta.select()
+        }
+      }, 50)
+    }
+  }
+
+  private legacyCopy(text: string): boolean {
+    try {
+      const textarea = document.createElement('textarea')
+      textarea.value = text
+      textarea.setAttribute('readonly', '')
+      textarea.style.position = 'fixed'
+      textarea.style.top = '0'
+      textarea.style.left = '0'
+      textarea.style.opacity = '0'
+      document.body.appendChild(textarea)
+      textarea.focus()
+      textarea.select()
+      let ok = false
+      try {
+        ok = document.execCommand('copy')
+      } catch {
+        ok = false
+      }
+      document.body.removeChild(textarea)
+      return ok
+    } catch {
+      return false
     }
   }
 
   private handleRetry = () => {
-    this.setState({ hasError: false, error: null, errorInfo: null })
+    this.setState({ hasError: false, error: null, errorInfo: null, copied: false, copyFailed: false })
   }
 
   render() {
     if (!this.state.hasError) return this.props.children
 
-    const { error, errorInfo } = this.state
+    const { error, errorInfo, copied, copyFailed } = this.state
 
     return (
       <div className="error-page-overlay">
@@ -110,14 +165,32 @@ export default class ErrorBoundary extends Component<Props, State> {
                 <li>Python 3 (backend crawl &amp; diff pipeline)</li>
               </ul>
             </div>
+
+            {copyFailed && (
+              <div className="error-page-section">
+                <span className="error-page-label">
+                  Automatic copy failed — the text is selected below, press Ctrl/Cmd + C
+                </span>
+                <textarea
+                  ref={this.copyTextarea}
+                  className="error-page-copy-area"
+                  readOnly
+                  value={this.buildErrorText()}
+                  onFocus={(e) => e.currentTarget.select()}
+                />
+              </div>
+            )}
           </div>
 
           <div className="error-page-actions">
             <button className="error-page-btn error-page-btn-primary" onClick={this.handleRetry}>
               Retry
             </button>
-            <button className="error-page-btn error-page-btn-copy" onClick={this.handleCopy}>
-              Copy Error Details
+            <button
+              className={`error-page-btn error-page-btn-copy${copied ? ' error-page-btn-copied' : ''}`}
+              onClick={this.handleCopy}
+            >
+              {copied ? 'Copied!' : copyFailed ? 'Try Again' : 'Copy Error Details'}
             </button>
           </div>
         </div>

@@ -2,11 +2,13 @@ import { createContext, useContext, useReducer, ReactNode } from 'react'
 import type { BundleData } from '../types/bundles'
 import type { StatsData } from '../types/api'
 import type { AffectedBundle } from '../types/changes'
+import type { ChangelogEntry } from '../types/changelog'
 
 interface AppState {
   bundles: Record<string, BundleData>
   iconCache: Record<string, string>
   nameCache: Record<string, string>
+  changelog: ChangelogEntry[]
   liveDataDate: string
   lastChecked: string
   stats: StatsData | null
@@ -21,10 +23,11 @@ interface AppState {
   changelogViewMode: 'grid' | 'list'
 }
 
-type AppAction =
+export type AppAction =
   | { type: 'SET_BUNDLES'; payload: Record<string, BundleData> }
   | { type: 'SET_ICON_CACHE'; payload: Record<string, string> }
   | { type: 'SET_NAME_CACHE'; payload: Record<string, string> }
+  | { type: 'SET_CHANGELOG'; payload: ChangelogEntry[] }
   | { type: 'SET_METADATA'; payload: { liveDataDate: string; lastChecked: string } }
   | { type: 'SET_STATS'; payload: StatsData | null }
   | { type: 'SET_CHANGES'; payload: { affected_bundles?: AffectedBundle[] } | null }
@@ -42,6 +45,7 @@ const initialState: AppState = {
   bundles: {},
   iconCache: {},
   nameCache: {},
+  changelog: [],
   liveDataDate: '',
   lastChecked: '',
   stats: null,
@@ -64,6 +68,8 @@ function appReducer(state: AppState, action: AppAction): AppState {
       return { ...state, iconCache: action.payload }
     case 'SET_NAME_CACHE':
       return { ...state, nameCache: action.payload }
+    case 'SET_CHANGELOG':
+      return { ...state, changelog: action.payload }
     case 'SET_METADATA':
       return { ...state, ...action.payload }
     case 'SET_STATS':

@@ -1,133 +1,55 @@
-import { useEffect, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useAppContext } from '../../context/AppContext'
-import { idbGet, idbSet } from '../../services/indexedDB'
-import { fetchChangelog, fetchAllData, fetchIconCache, fetchNameCache } from '../../services/fetchData'
-import { preloadIcons } from '../../services/iconCache'
+import { useDataFetching } from '../../hooks/useDataFetching'
 import { formatFriendlyDate } from '../../utils/format'
 import { groupAffectedBundles, isAppPreRelease, resolveAppName, getAppIconUrl } from '../../utils/misc'
 import { escHtml } from '../../utils/html'
-import { CACHE_KEYS } from '../../types/utils'
-import Header from '../layout/Header'
-import Footer from '../layout/Footer'
-import ToastNotification from '../layout/ToastNotification'
+import PageShell from '../layout/PageShell'
 import ScanInfoSection from '../dashboard/ScanInfoSection'
 import AppDetailModal from '../modals/AppDetailModal'
 import BundleDetailModal from '../modals/BundleDetailModal'
 import BundleHistoryModal from '../modals/BundleHistoryModal'
 import { getCachedIconDataUrl } from '../../services/iconCache'
-import AppIcon from '../shared/AppIcon'
-import { Badge } from '../shared/Badge'
 import ChannelBadge from '../shared/ChannelBadge'
 import { SkeletonChangelog } from '../shared/Skeleton'
 import type { ChangelogEntry } from '../../types/changelog'
-import type { BundleData } from '../../types/bundles'
 
 export default function ChangelogPage() {
   const { state, dispatch } = useAppContext()
-  const [changelog, setChangelog] = useState<ChangelogEntry[]>([])
-  const [loading, setLoading] = useState(true)
+  const { loading } = useDataFetching()
 
+  const changelog = state.changelog
   const viewMode = state.changelogViewMode
+  const PAGE_SIZE = 10
+  const [page, setPage] = useState(0)
 
-  useEffect(() => {
-    const abort = new AbortController()
+  const totalPages = Math.max(1, Math.ceil(changelog.length / PAGE_SIZE))
+  const safePage = Math.min(page, totalPages - 1)
 
-    const load = async () => {
-      const [cachedCL, cachedLive, cachedIcons, cachedNames] = await Promise.all([
-        idbGet<ChangelogEntry[]>(CACHE_KEYS.CHANGELOG),
-        idbGet<any>(CACHE_KEYS.LIVE),
-        idbGet<Record<string, string>>(CACHE_KEYS.ICONS),
-        idbGet<Record<string, string>>(CACHE_KEYS.NAMES),
-      ])
-
-      if (abort.signal.aborted) return
-
-      if (cachedCL && cachedLive && cachedIcons) {
-        setChangelog(cachedCL)
-        dispatch({ type: 'SET_BUNDLES', payload: cachedLive.bundles || {} })
-        dispatch({ type: 'SET_ICON_CACHE', payload: cachedIcons })
-        if (cachedNames) dispatch({ type: 'SET_NAME_CACHE', payload: cachedNames })
-        dispatch({ type: 'SET_METADATA', payload: { liveDataDate: cachedLive.date || '', lastChecked: cachedLive.lastChecked || '' } })
-        setLoading(false)
-      }
-
-      if (abort.signal.aborted) return
-
-      const [iconData, nameData] = await Promise.all([
-        fetchIconCache(),
-        fetchNameCache(),
-      ])
-
-      if (abort.signal.aborted) return
-
-      dispatch({ type: 'SET_ICON_CACHE', payload: iconData })
-      idbSet(CACHE_KEYS.ICONS, iconData)
-      preloadIcons(iconData)
-      if (nameData) {
-        dispatch({ type: 'SET_NAME_CACHE', payload: nameData })
-        idbSet(CACHE_KEYS.NAMES, nameData)
-      }
-
-      if (abort.signal.aborted) return
-
-      const [clData, liveData] = await Promise.all([
-        fetchChangelog(),
-        fetchAllData(),
-      ])
-
-      if (abort.signal.aborted) return
-
-      const cl = clData as ChangelogEntry[]
-      setChangelog(cl)
-      dispatch({ type: 'SET_BUNDLES', payload: liveData.bundles || {} })
-      dispatch({
-        type: 'SET_METADATA',
-        payload: { liveDataDate: liveData.date || '', lastChecked: liveData.lastChecked || '' },
-      })
-      idbSet(CACHE_KEYS.CHANGELOG, cl)
-      idbSet(CACHE_KEYS.LIVE, liveData)
-      setLoading(false)
-    }
-    load()
-    return () => abort.abort()
-  }, [])
+  const pageItems = useMemo(
+    () => changelog.slice(safePage * PAGE_SIZE, (safePage + 1) * PAGE_SIZE),
+    [changelog, safePage, PAGE_SIZE],
+  )
 
   if (loading && changelog.length === 0) {
     return (
-      <>
-        <Header />
-        <main className="dashboard-container">
-          <div className="glow-container">
-            <div className="glow-orb main-orb" />
-            <div className="glow-orb sub-orb" />
+      <PageShell>
+        <section className="changelog-section" aria-labelledby="changelog-heading">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <h2 className="section-title" id="changelog-heading" style={{ margin: 0 }}>Historical Updates</h2>
           </div>
-          <section className="changelog-section" aria-labelledby="changelog-heading">
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <h2 className="section-title" id="changelog-heading" style={{ margin: 0 }}>Historical Updates</h2>
-            </div>
-            <div className="changelog-list" id="changelog-list-container">
-              <div id="skeleton-changelog"><SkeletonChangelog /></div>
-            </div>
-          </section>
-          <ScanInfoSection />
-        </main>
-        <Footer />
-        <AppDetailModal />
-        <BundleDetailModal />
-        <BundleHistoryModal />
-      </>
+          <div className="changelog-list" id="changelog-list-container">
+            <div id="skeleton-changelog"><SkeletonChangelog /></div>
+          </div>
+        </section>
+        <ScanInfoSection />
+      </PageShell>
     )
   }
 
   return (
     <>
-      <Header />
-      <main className="dashboard-container">
-        <div className="glow-container">
-          <div className="glow-orb main-orb" />
-          <div className="glow-orb sub-orb" />
-        </div>
-
+      <PageShell>
         <section className="changelog-section" aria-labelledby="changelog-heading">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem' }}>
             <h2 className="section-title" id="changelog-heading" style={{ margin: 0 }}>Historical Updates</h2>
@@ -153,20 +75,42 @@ export default function ChangelogPage() {
             </div>
           </div>
           <div className={`changelog-list${viewMode === 'list' ? ' changelog-compact' : ''}`} id="changelog-list-container">
-            {changelog.length === 0 ? (
+            {pageItems.length === 0 ? (
               <div className="loading-state">No changelog entries found.</div>
             ) : (
-              changelog.map((day, idx) => (
-                <DayCard key={day.date} day={day} scanIndex={changelog.length - idx} />
+              pageItems.map((day, idx) => (
+                <DayCard key={day.date} day={day} scanIndex={changelog.length - (safePage * PAGE_SIZE) - idx} />
               ))
             )}
           </div>
+
+          {totalPages > 1 && (
+            <div className="changelog-pagination">
+              <button
+                className="changelog-page-btn"
+                onClick={() => setPage((p) => Math.max(0, p - 1))}
+                disabled={safePage === 0}
+              >
+                &larr; Previous
+              </button>
+              <span className="changelog-page-info">
+                Page {safePage + 1} of {totalPages}
+                <span className="changelog-page-count">({changelog.length} scans)</span>
+              </span>
+              <button
+                className="changelog-page-btn"
+                onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
+                disabled={safePage >= totalPages - 1}
+              >
+                Next &rarr;
+              </button>
+            </div>
+          )}
         </section>
 
         <ScanInfoSection />
-      </main>
-      <Footer />
-      <ToastNotification />
+      </PageShell>
+
       <AppDetailModal />
       <BundleDetailModal />
       <BundleHistoryModal />
