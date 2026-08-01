@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import DashboardPage from './components/dashboard/DashboardPage'
 import ErrorBoundary from './components/layout/ErrorBoundary'
 import LoadingOverlay from './components/layout/LoadingOverlay'
+import Background from './components/background/Background'
+import AppsPage from './components/apps/AppsPage'
 import DiffPage from './components/diff/DiffPage'
 
 const ChangelogPage = lazy(() => import('./components/changelog/ChangelogPage'))
@@ -10,10 +12,16 @@ const ChangelogPage = lazy(() => import('./components/changelog/ChangelogPage'))
 export default function App() {
   return (
     <ErrorBoundary>
+      <Background />
       <LoadingOverlay />
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<DashboardPage />} />
+          <Route path="/apps" element={
+            <ErrorBoundary>
+              <AppsPage />
+            </ErrorBoundary>
+          } />
           <Route path="/changelog" element={
             <ErrorBoundary>
               <ChangelogPage />

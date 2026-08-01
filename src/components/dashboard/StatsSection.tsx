@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { formatTime, getTimeAgo } from '../../utils/format'
 
@@ -7,7 +8,13 @@ export default function StatsSection() {
   const lastChecked = state.lastChecked
   const data = state.bundles
   const bundles = Object.values(data)
-  const totalApps = bundles.reduce((sum, b) => sum + (b.apps?.length || 0), 0)
+  const totalApps = useMemo(() => {
+    const seen = new Set<string>()
+    for (const b of Object.values(data)) {
+      for (const app of b.apps || []) seen.add(app.package)
+    }
+    return seen.size
+  }, [data])
 
   return (
     <section className="stats-section" aria-labelledby="stats-heading">

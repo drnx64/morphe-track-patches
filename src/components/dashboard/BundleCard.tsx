@@ -1,6 +1,6 @@
 import { useState, useCallback, memo } from 'react'
 import { useAppContext } from '../../context/AppContext'
-import { resolveAppName, getAppIconUrl, isAppPreRelease, getStaleness } from '../../utils/misc'
+import { resolveAppName, getAppIconUrl, isAppPreRelease, getStaleness, getStoredVersions, setStoredVersion } from '../../utils/misc'
 import { getRepoInfo, getAddMorpheUrl } from '../../utils/url'
 import { escHtml } from '../../utils/html'
 import { GITHUB_SVG, GITLAB_SVG, HISTORY_ICON } from '../../utils/svg'
@@ -30,7 +30,7 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
   if (bundle.version) {
     const todayStr = new Date().toISOString().split('T')[0]
     if (state.liveDataDate === todayStr) {
-      const stored = JSON.parse(localStorage.getItem('morphe_versions') || '{}')
+      const stored = getStoredVersions()
       const prev = stored[bundle.bundle]
       if (prev && prev !== bundle.version) {
         updatedBadge = '<span class="bundle-updated-badge">Updated</span>'
@@ -62,11 +62,7 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
     }
     setExpanded((prev) => !prev)
     if (bundle.version) {
-      const stored = JSON.parse(localStorage.getItem('morphe_versions') || '{}')
-      if (stored[bundle.bundle] !== bundle.version) {
-        stored[bundle.bundle] = bundle.version
-        localStorage.setItem('morphe_versions', JSON.stringify(stored))
-      }
+      setStoredVersion(bundle.bundle, bundle.version)
     }
   }, [bundle, state.viewMode])
 
@@ -102,15 +98,6 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
           <span dangerouslySetInnerHTML={{ __html: versionTag }} />
           <span dangerouslySetInnerHTML={{ __html: stalenessHtml }} />
         </div>
-        <a
-          href={bundle.repo_url}
-          className="github-repo-icon-link"
-          target="_blank"
-          rel="noopener"
-          title="View Source Repository"
-          onClick={(e) => e.stopPropagation()}
-          dangerouslySetInnerHTML={{ __html: iconSvg }}
-        />
       </div>
 
       <div className="apps-summary">{count} compatible {appsWord}</div>
@@ -133,6 +120,24 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
       )}
 
       <div className="bundle-card-actions">
+        <div className="bundle-card-icon-actions">
+          <a
+            href={bundle.repo_url}
+            className="github-repo-icon-link"
+            target="_blank"
+            rel="noopener"
+            title="View Source Repository"
+            onClick={(e) => e.stopPropagation()}
+            dangerouslySetInnerHTML={{ __html: iconSvg }}
+          />
+          <button
+            className="history-btn"
+            data-bundle={bundle.bundle}
+            title="View changelog history"
+            onClick={handleHistory}
+            dangerouslySetInnerHTML={{ __html: HISTORY_ICON }}
+          />
+        </div>
         <a
           href={addMorpheUrl}
           className="add-morphe-btn"
@@ -142,13 +147,6 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
         >
           Add to Morphe
         </a>
-        <button
-          className="history-btn"
-          data-bundle={bundle.bundle}
-          title="View changelog history"
-          onClick={handleHistory}
-          dangerouslySetInnerHTML={{ __html: HISTORY_ICON }}
-        />
       </div>
     </div>
   )

@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { useAppContext } from '../../context/AppContext'
+import { useProgressiveCount } from '../../hooks/useProgressiveCount'
 import { resolveAppName, sortBundleNames } from '../../utils/misc'
 import BundleCard from './BundleCard'
 import { SkeletonGrid } from '../shared/Skeleton'
@@ -56,6 +57,8 @@ export default function BundlesGrid({ loading }: BundlesGridProps) {
     return sortBundleNames(list)
   }, [grouped, state.filters.search, state.nameCache])
 
+  const visibleCount = useProgressiveCount(filtered.length)
+
   if (loading && Object.keys(state.bundles).length === 0) {
     return (
       <section className="bundles-section" aria-labelledby="bundles-heading">
@@ -74,7 +77,14 @@ export default function BundlesGrid({ loading }: BundlesGridProps) {
         {filtered.length === 0 ? (
           <div className="loading-state">No matching Morphe bundles found.</div>
         ) : (
-          filtered.map((b) => <BundleCard key={b.bundle} bundle={b} />)
+          <>
+            {filtered.slice(0, visibleCount).map((b) => (
+              <BundleCard key={b.bundle} bundle={b} />
+            ))}
+            {visibleCount < filtered.length && (
+              <div className="grid-loading-more" aria-hidden="true">Rendering {Math.min(visibleCount, filtered.length)} of {filtered.length} bundles…</div>
+            )}
+          </>
         )}
       </div>
     </section>
