@@ -1,6 +1,6 @@
 {
   "https://github.com/abhis1n/Morphe-Patches": {
-    "fetched_at": "2026-08-01T15:58:27.910626+00:00",
+    "fetched_at": "2026-08-01T19:01:58.311746+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -29,7 +29,7 @@
     ]
   },
   "https://github.com/jkennethcarino/adobo": {
-    "fetched_at": "2026-08-01T15:58:10.410247+00:00",
+    "fetched_at": "2026-08-01T19:01:40.712175+00:00",
     "releases": [
       {
         "tag": "v1.3.0-dev.13",
@@ -124,8 +124,14 @@
     ]
   },
   "https://github.com/ajstrick81/morphe-androidtv-patches": {
-    "fetched_at": "2026-08-01T15:59:01.619769+00:00",
+    "fetched_at": "2026-08-01T19:02:32.619832+00:00",
     "releases": [
+      {
+        "tag": "v1.18.0",
+        "body": "# [1.18.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.17.0...v1.18.0) (2026-08-01)\n\n\n### Bug Fixes\n\n* **twitch:** correct playerType-spoof layer, remove broken GrandDads layer ([42250c5](https://github.com/ajstrick81/morphe-androidtv-patches/commit/42250c524ef8799d7bd370ce88cb6e42dd407f9f))\n\n\n### Features\n\n* **twitch:** add two-layer ad suppression patch (untested) ([e39ed70](https://github.com/ajstrick81/morphe-androidtv-patches/commit/e39ed706e08f226da61eb00281f2182a37137c54))\n* **twitch:** ship live ad-reduction (embed playerType + GrandDads + stitched-metadata) ([f79108f](https://github.com/ajstrick81/morphe-androidtv-patches/commit/f79108ffdce197a02a83a14a0204c6db52776223)), closes [#75](https://github.com/ajstrick81/morphe-androidtv-patches/issues/75)\n\n\n\n\n\n---\n\n## Twitch — install the ad-reduction patch\n\nReduces ads on the **official Twitch Android TV app** (`tv.twitch.android.app`). Long SSAI mid-rolls are eliminated and the join pre-roll drops to ~15s. A short residual pre-roll remains (server-stitched in Twitch's native IVS path — not reachable from bytecode). Details in #75.\n\n**Requirements**\n- A PC with Java, plus [APKEditor](https://github.com/REAndroid/APKEditor) and the Morphe CLI/Manager\n- The Twitch **Android TV** APK, **version 30.2.2** — the split bundle (`.apkm`) from APKMirror (the patch is version-pinned)\n- A TV (Onn 4K / Fire TV / Shield) with ADB debugging enabled\n\n**Steps**\n1. Download the Twitch Android TV `30.2.2` `.apkm` bundle from APKMirror.\n2. Merge the split bundle into a universal APK (base alone is missing native libs):\n   ```bash\n   java -jar APKEditor.jar m -i twitch-30.2.2.apkm -o universal.apk\n   ```\n3. Patch it (the **Skip ads** patch is enabled by default — look for `Applied: Skip ads`):\n   ```bash\n   java -jar morphe-cli.jar patch -p patches.mpp -o twitch-patched.apk universal.apk\n   ```\n4. On the TV, enable **Developer options → Network debugging** and note the IP.\n5. Connect and install:\n   ```bash\n   adb connect <TV-IP>:5555\n   adb install -r twitch-patched.apk\n   ```\n   If you get `INSTALL_FAILED_UPDATE_INCOMPATIBLE`, run `adb uninstall tv.twitch.android.app` first (you'll need to sign in again), then install.\n6. Launch Twitch and join a live channel.\n",
+        "prerelease": false,
+        "dateReleased": "2026-08-01T18:04:15Z"
+      },
       {
         "tag": "v1.17.0",
         "body": "# [1.17.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.16.0...v1.17.0) (2026-07-31)\n\n\n### Features\n\n* **pluto:** remove VOD ads via DASH period surgery (Skip ads Hook 5) ([#80](https://github.com/ajstrick81/morphe-androidtv-patches/issues/80)) ([901d617](https://github.com/ajstrick81/morphe-androidtv-patches/commit/901d6175d3736d2889b3b67eb17fab67a17d6bfe))\n\n\n\n",
@@ -209,17 +215,11 @@
         "body": "# [1.7.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.6.0...v1.7.0) (2026-06-27)\n\n\n### Bug Fixes\n\n* **dns:** match akamaized.net safe-harbor host by concatenated prefix ([b883df7](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b883df7853da554f75e0a184bafdb08988ddf709))\n\n\n### Features\n\n* **primevideo:** remove GMB send diagnostic patch, add DNS rules from live testing ([48b744b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/48b744bb136a49ecdaa8c7d3a5ed11e618e73d60))\n\n\n\n",
         "prerelease": false,
         "dateReleased": "2026-06-27T14:10:27Z"
-      },
-      {
-        "tag": "v1.6.0",
-        "body": "# [1.6.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.7...v1.6.0) (2026-06-26)\n\n\n### Bug Fixes\n\n* **vix:** retarget Innovid hook to mount method, drop broken FreeWheel hook ([33cefba](https://github.com/ajstrick81/morphe-androidtv-patches/commit/33cefba404703be7f7da0cf02c25e8f3aab63206))\n\n\n### Features\n\n* add GMB send-direction diagnostic patch (debug-only) ([b0552cb](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b0552cb7f84a74b455bef5473b781328164c5fae))\n* **primevideo dns:** v4.2 — add hercule trigger after live-session validation ([82c94cd](https://github.com/ajstrick81/morphe-androidtv-patches/commit/82c94cd445750966a73aad2e8d3e2efe1a8898c1))\n* **primevideo dns:** v4.3 — optional general-tracker section (triaged) ([4182df0](https://github.com/ajstrick81/morphe-androidtv-patches/commit/4182df0c6594e966a596f49516b99a17c6b037e1))\n* **primevideo:** add evidence-graded DNS ad-suppression list (dual-layer) ([c55bb0e](https://github.com/ajstrick81/morphe-androidtv-patches/commit/c55bb0e1e10ee82529a5b5102987c24b02f0582d))\n* **primevideo:** block getVideoAds path on dual-use playback host ([940b91a](https://github.com/ajstrick81/morphe-androidtv-patches/commit/940b91aff4a56a347e44eaf498d7351dfb8f3cdd))\n* **primevideo:** expand Volley ad-host block list from v3.6 session diff ([6f05cb5](https://github.com/ajstrick81/morphe-androidtv-patches/commit/6f05cb5a9922a24f9f50759083287ee571895f9e))\n* **vix:** add \"Override certificate pinning\" companion patch ([1fcdccf](https://github.com/ajstrick81/morphe-androidtv-patches/commit/1fcdccf651d01cc1ee9e3ba2ddf45154b796fc1a))\n* **vix:** block LuraPlayer linear (client-side VAST) ad-break scheduler ([1360354](https://github.com/ajstrick81/morphe-androidtv-patches/commit/1360354a9275a2fbcd1d363114876c5e9bef6c04))\n\n\n\n",
-        "prerelease": false,
-        "dateReleased": "2026-06-26T23:04:04Z"
       }
     ]
   },
   "https://github.com/AlexNaga/android-patches": {
-    "fetched_at": "2026-08-01T15:58:29.512801+00:00",
+    "fetched_at": "2026-08-01T19:01:59.908923+00:00",
     "releases": [
       {
         "tag": "v1.30.0",
@@ -236,7 +236,7 @@
     ]
   },
   "https://github.com/Almewty/my-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:21.438319+00:00",
+    "fetched_at": "2026-08-01T19:01:51.711278+00:00",
     "releases": [
       {
         "tag": "v1.0.0-dev.1",
@@ -247,7 +247,7 @@
     ]
   },
   "https://github.com/ameenalasady/ameen-morphe": {
-    "fetched_at": "2026-08-01T15:58:51.954927+00:00",
+    "fetched_at": "2026-08-01T19:02:22.901032+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -276,7 +276,7 @@
     ]
   },
   "https://github.com/ameenalasady/photogrid-morphe": {
-    "fetched_at": "2026-08-01T15:58:41.615081+00:00",
+    "fetched_at": "2026-08-01T19:02:12.181210+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -299,7 +299,7 @@
     ]
   },
   "https://github.com/AmpleReVanced/revanced-patches": {
-    "fetched_at": "2026-08-01T15:58:25.490717+00:00",
+    "fetched_at": "2026-08-01T19:01:55.853308+00:00",
     "releases": [
       {
         "tag": "v1.3.0-dev.2",
@@ -394,7 +394,7 @@
     ]
   },
   "https://github.com/anddea/revanced-patches": {
-    "fetched_at": "2026-08-01T15:58:38.527486+00:00",
+    "fetched_at": "2026-08-01T19:02:08.976948+00:00",
     "releases": [
       {
         "tag": "v4.2.0-dev.9",
@@ -489,7 +489,7 @@
     ]
   },
   "https://github.com/wchill/anddea-rvx-morphed": {
-    "fetched_at": "2026-08-01T15:58:33.575886+00:00",
+    "fetched_at": "2026-08-01T19:02:03.987824+00:00",
     "releases": [
       {
         "tag": "v3.17.0-dev.2",
@@ -506,7 +506,7 @@
     ]
   },
   "https://github.com/andronedev/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:05.124178+00:00",
+    "fetched_at": "2026-08-01T19:01:35.414676+00:00",
     "releases": [
       {
         "tag": "v2.3.0",
@@ -601,7 +601,7 @@
     ]
   },
   "https://github.com/ariecos/gemini-patches": {
-    "fetched_at": "2026-08-01T15:57:59.457495+00:00",
+    "fetched_at": "2026-08-01T19:01:29.727619+00:00",
     "releases": [
       {
         "tag": "v1.1.16",
@@ -696,7 +696,7 @@
     ]
   },
   "https://github.com/BholeyKaBhakt/android-patches-xtra": {
-    "fetched_at": "2026-08-01T15:59:00.767738+00:00",
+    "fetched_at": "2026-08-01T19:02:31.767507+00:00",
     "releases": [
       {
         "tag": "v2.12.0",
@@ -791,7 +791,7 @@
     ]
   },
   "https://github.com/binarymend/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:16.101232+00:00",
+    "fetched_at": "2026-08-01T19:01:46.312450+00:00",
     "releases": [
       {
         "tag": "v1.3.1",
@@ -886,11 +886,11 @@
     ]
   },
   "https://github.com/BrayDog2010/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:42.357848+00:00",
+    "fetched_at": "2026-08-01T19:02:12.924930+00:00",
     "releases": []
   },
   "https://github.com/brosssh/morphe-patches": {
-    "fetched_at": "2026-08-01T15:59:04.966898+00:00",
+    "fetched_at": "2026-08-01T19:02:35.880629+00:00",
     "releases": [
       {
         "tag": "v2.8.1",
@@ -985,7 +985,7 @@
     ]
   },
   "https://github.com/browzomje/browzomje-patches": {
-    "fetched_at": "2026-08-01T15:58:12.826043+00:00",
+    "fetched_at": "2026-08-01T19:01:43.017069+00:00",
     "releases": [
       {
         "tag": "v1.5.0",
@@ -1080,7 +1080,7 @@
     ]
   },
   "https://github.com/durgesh0505/chiggi_morphe_patches": {
-    "fetched_at": "2026-08-01T15:58:02.740180+00:00",
+    "fetched_at": "2026-08-01T19:01:33.037550+00:00",
     "releases": [
       {
         "tag": "v1.18.0",
@@ -1175,7 +1175,7 @@
     ]
   },
   "https://github.com/docbt/patched-up": {
-    "fetched_at": "2026-08-01T15:58:47.964073+00:00",
+    "fetched_at": "2026-08-01T19:02:18.757290+00:00",
     "releases": [
       {
         "tag": "v1.10.0",
@@ -1270,7 +1270,7 @@
     ]
   },
   "https://github.com/quantavil/edge-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:17.703123+00:00",
+    "fetched_at": "2026-08-01T19:01:47.887124+00:00",
     "releases": [
       {
         "tag": "v1.33.0",
@@ -1299,7 +1299,7 @@
     ]
   },
   "https://gitlab.com/early.egg3707/ee-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:18.527722+00:00",
+    "fetched_at": "2026-08-01T19:01:48.722158+00:00",
     "releases": [
       {
         "tag": "v1.5.0-dev.9",
@@ -1394,7 +1394,7 @@
     ]
   },
   "https://github.com/HvQ/eksi-morphe": {
-    "fetched_at": "2026-08-01T15:58:40.066798+00:00",
+    "fetched_at": "2026-08-01T19:02:10.633969+00:00",
     "releases": [
       {
         "tag": "v0.1.2",
@@ -1411,7 +1411,7 @@
     ]
   },
   "https://github.com/eyalm2000/tidal-debug-menu": {
-    "fetched_at": "2026-08-01T15:59:11.180084+00:00",
+    "fetched_at": "2026-08-01T19:02:42.382737+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -1440,7 +1440,7 @@
     ]
   },
   "https://github.com/humzakh/HK-Morphe-Patches": {
-    "fetched_at": "2026-08-01T15:57:57.697940+00:00",
+    "fetched_at": "2026-08-01T19:01:28.114708+00:00",
     "releases": [
       {
         "tag": "v1.6.0",
@@ -1535,7 +1535,7 @@
     ]
   },
   "https://github.com/hoo-dles/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:31.956918+00:00",
+    "fetched_at": "2026-08-01T19:02:02.380041+00:00",
     "releases": [
       {
         "tag": "v1.40.0-dev.7",
@@ -1630,7 +1630,7 @@
     ]
   },
   "https://github.com/arandomhooman/hoomans-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:55.182812+00:00",
+    "fetched_at": "2026-08-01T19:02:26.319845+00:00",
     "releases": [
       {
         "tag": "v1.44.0-dev.3",
@@ -1725,7 +1725,7 @@
     ]
   },
   "https://github.com/icysymmetra/tiktok-patches-for-morphe": {
-    "fetched_at": "2026-08-01T15:59:09.732987+00:00",
+    "fetched_at": "2026-08-01T19:02:40.756081+00:00",
     "releases": [
       {
         "tag": "v0.4.1",
@@ -1814,7 +1814,7 @@
     ]
   },
   "https://github.com/bdgerszewski/morphe-patches-ihealth": {
-    "fetched_at": "2026-08-01T15:58:49.569424+00:00",
+    "fetched_at": "2026-08-01T19:02:20.353339+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -1855,7 +1855,7 @@
     ]
   },
   "https://github.com/ImmortalZeus/ImmortalZeus-Morphe-Patches": {
-    "fetched_at": "2026-08-01T15:59:05.756707+00:00",
+    "fetched_at": "2026-08-01T19:02:36.699661+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -1872,7 +1872,7 @@
     ]
   },
   "https://github.com/IMXEren/mix-patches": {
-    "fetched_at": "2026-08-01T15:57:45.560036+00:00",
+    "fetched_at": "2026-08-01T19:01:16.754148+00:00",
     "releases": [
       {
         "tag": "v1.4.1",
@@ -1943,7 +1943,7 @@
     ]
   },
   "https://github.com/jasonwu1994/Gboard-patches": {
-    "fetched_at": "2026-08-01T15:59:06.570536+00:00",
+    "fetched_at": "2026-08-01T19:02:37.484219+00:00",
     "releases": [
       {
         "tag": "v2.4.0",
@@ -2038,7 +2038,7 @@
     ]
   },
   "https://github.com/Joristdh/Platypatch": {
-    "fetched_at": "2026-08-01T15:57:40.252906+00:00",
+    "fetched_at": "2026-08-01T19:01:11.408542+00:00",
     "releases": [
       {
         "tag": "v1.2.0-dev.2",
@@ -2079,7 +2079,7 @@
     ]
   },
   "https://github.com/kareemlukitomo/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:55.971741+00:00",
+    "fetched_at": "2026-08-01T19:02:27.085860+00:00",
     "releases": [
       {
         "tag": "v26.4.30-8eabfa",
@@ -2090,7 +2090,7 @@
     ]
   },
   "https://github.com/kolaron/morphe-patches": {
-    "fetched_at": "2026-08-01T15:59:08.911256+00:00",
+    "fetched_at": "2026-08-01T19:02:39.906475+00:00",
     "releases": [
       {
         "tag": "v1.1.0-dev.1",
@@ -2107,7 +2107,7 @@
     ]
   },
   "https://github.com/kondratjev/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:39.280840+00:00",
+    "fetched_at": "2026-08-01T19:02:09.796733+00:00",
     "releases": [
       {
         "tag": "v1.18.0-dev.1",
@@ -2202,7 +2202,7 @@
     ]
   },
   "https://github.com/kiraio-moe/Lain-Patches": {
-    "fetched_at": "2026-08-01T15:58:31.164594+00:00",
+    "fetched_at": "2026-08-01T19:02:01.542377+00:00",
     "releases": [
       {
         "tag": "v1.4.0-dev.2",
@@ -2297,7 +2297,7 @@
     ]
   },
   "https://github.com/LaKakaReal/LaKakaShitPatches": {
-    "fetched_at": "2026-08-01T15:59:11.962919+00:00",
+    "fetched_at": "2026-08-01T19:02:43.231776+00:00",
     "releases": [
       {
         "tag": "v1.3.1",
@@ -2380,7 +2380,7 @@
     ]
   },
   "https://github.com/loskutov/youtube-domain-fronting-patch": {
-    "fetched_at": "2026-08-01T15:58:12.003817+00:00",
+    "fetched_at": "2026-08-01T19:01:42.238723+00:00",
     "releases": [
       {
         "tag": "v1.0.2",
@@ -2409,11 +2409,11 @@
     ]
   },
   "https://github.com/Lynx6319/patch-youtube-scroll-block": {
-    "fetched_at": "2026-08-01T15:57:52.471470+00:00",
+    "fetched_at": "2026-08-01T19:01:23.733032+00:00",
     "releases": []
   },
   "https://github.com/meridianfresco/morphe-meta-patches": {
-    "fetched_at": "2026-08-01T15:58:20.008759+00:00",
+    "fetched_at": "2026-08-01T19:01:50.293344+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -2424,7 +2424,7 @@
     ]
   },
   "https://github.com/MorpheApp/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:47.072680+00:00",
+    "fetched_at": "2026-08-01T19:02:17.944113+00:00",
     "releases": [
       {
         "tag": "v1.38.1-dev.1",
@@ -2519,7 +2519,7 @@
     ]
   },
   "https://github.com/andronedev/morphe-portal-patch": {
-    "fetched_at": "2026-08-01T15:57:53.264945+00:00",
+    "fetched_at": "2026-08-01T19:01:24.447667+00:00",
     "releases": [
       {
         "tag": "v0.1.0",
@@ -2530,7 +2530,7 @@
     ]
   },
   "https://gitlab.com/Paresh-Maheshwari/paresh-patches": {
-    "fetched_at": "2026-08-01T15:57:40.935570+00:00",
+    "fetched_at": "2026-08-01T19:01:12.235762+00:00",
     "releases": [
       {
         "tag": "v1.19.1-dev.1",
@@ -2625,7 +2625,7 @@
     ]
   },
   "https://github.com/wchill/patcheddit": {
-    "fetched_at": "2026-08-01T15:58:36.092820+00:00",
+    "fetched_at": "2026-08-01T19:02:06.529659+00:00",
     "releases": [
       {
         "tag": "v1.4.1-dev.1",
@@ -2720,7 +2720,7 @@
     ]
   },
   "https://github.com/PawiX25/pepper-morphe-patches": {
-    "fetched_at": "2026-08-01T15:59:08.184110+00:00",
+    "fetched_at": "2026-08-01T19:02:39.103113+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -2737,7 +2737,7 @@
     ]
   },
   "https://github.com/crimera/piko": {
-    "fetched_at": "2026-08-01T15:58:15.265210+00:00",
+    "fetched_at": "2026-08-01T19:01:45.477731+00:00",
     "releases": [
       {
         "tag": "v3.9.0-dev.2",
@@ -2832,7 +2832,7 @@
     ]
   },
   "https://gitlab.com/inotia00/x-shim": {
-    "fetched_at": "2026-08-01T15:57:54.706636+00:00",
+    "fetched_at": "2026-08-01T19:01:25.921808+00:00",
     "releases": [
       {
         "tag": "v1.7.0",
@@ -2927,7 +2927,7 @@
     ]
   },
   "https://github.com/PixelPusher247/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:53.607867+00:00",
+    "fetched_at": "2026-08-01T19:02:24.601384+00:00",
     "releases": [
       {
         "tag": "v1.4.0",
@@ -2962,7 +2962,7 @@
     ]
   },
   "https://github.com/polka-bear/morphe-patches": {
-    "fetched_at": "2026-08-01T15:57:56.015140+00:00",
+    "fetched_at": "2026-08-01T19:01:26.700827+00:00",
     "releases": [
       {
         "tag": "v1.4.1-dev.1",
@@ -3057,7 +3057,7 @@
     ]
   },
   "https://gitlab.com/inotia00/proguard-patches": {
-    "fetched_at": "2026-08-01T15:57:51.071823+00:00",
+    "fetched_at": "2026-08-01T19:01:22.295747+00:00",
     "releases": [
       {
         "tag": "v1.0.3",
@@ -3086,7 +3086,7 @@
     ]
   },
   "https://github.com/rabilrbl/fluffy-patches": {
-    "fetched_at": "2026-08-01T15:58:48.780991+00:00",
+    "fetched_at": "2026-08-01T19:02:19.564861+00:00",
     "releases": [
       {
         "tag": "v1.0.0-dev.19",
@@ -3181,7 +3181,7 @@
     ]
   },
   "https://github.com/RealCyberwash/max-patches": {
-    "fetched_at": "2026-08-01T15:58:28.710408+00:00",
+    "fetched_at": "2026-08-01T19:01:59.103561+00:00",
     "releases": [
       {
         "tag": "v1.1.1",
@@ -3204,7 +3204,7 @@
     ]
   },
   "https://github.com/lyyako/realme-link-patches": {
-    "fetched_at": "2026-08-01T15:57:50.348096+00:00",
+    "fetched_at": "2026-08-01T19:01:21.563613+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -3215,7 +3215,7 @@
     ]
   },
   "https://github.com/RookieEnough/De-Vanced": {
-    "fetched_at": "2026-08-01T15:58:37.672342+00:00",
+    "fetched_at": "2026-08-01T19:02:08.168063+00:00",
     "releases": [
       {
         "tag": "v1.0.4",
@@ -3256,7 +3256,7 @@
     ]
   },
   "https://github.com/rushiranpise/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:35.253966+00:00",
+    "fetched_at": "2026-08-01T19:02:05.688775+00:00",
     "releases": [
       {
         "tag": "v1.15.1",
@@ -3351,7 +3351,7 @@
     ]
   },
   "https://github.com/wchill/rvx-morphed": {
-    "fetched_at": "2026-08-01T15:58:57.582751+00:00",
+    "fetched_at": "2026-08-01T19:02:28.634749+00:00",
     "releases": [
       {
         "tag": "v5.16.4",
@@ -3398,7 +3398,7 @@
     ]
   },
   "https://github.com/bigyank/morphe-patches-samsung": {
-    "fetched_at": "2026-08-01T15:58:08.187311+00:00",
+    "fetched_at": "2026-08-01T19:01:38.483258+00:00",
     "releases": [
       {
         "tag": "v1.2.1",
@@ -3425,7 +3425,7 @@
     "releases": []
   },
   "https://github.com/osirisad/teamsnap-patches": {
-    "fetched_at": "2026-08-01T15:57:41.744404+00:00",
+    "fetched_at": "2026-08-01T19:01:12.946801+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -3442,7 +3442,7 @@
     ]
   },
   "https://github.com/vladon/morphe-patches-navi": {
-    "fetched_at": "2026-08-01T15:58:46.249787+00:00",
+    "fetched_at": "2026-08-01T19:02:17.122531+00:00",
     "releases": [
       {
         "tag": "v1.0.6",
@@ -3489,7 +3489,7 @@
     ]
   },
   "https://github.com/xob0t/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:26.329369+00:00",
+    "fetched_at": "2026-08-01T19:01:56.676014+00:00",
     "releases": [
       {
         "tag": "v1.11.3",
@@ -3584,7 +3584,7 @@
     ]
   },
   "https://github.com/ynotzort/morphe-patches": {
-    "fetched_at": "2026-08-01T15:57:49.565745+00:00",
+    "fetched_at": "2026-08-01T19:01:20.761574+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -3601,7 +3601,7 @@
     ]
   },
   "https://github.com/cesbar/zpatches": {
-    "fetched_at": "2026-08-01T15:58:03.485161+00:00",
+    "fetched_at": "2026-08-01T19:01:33.870943+00:00",
     "releases": [
       {
         "tag": "v1.8.0",
@@ -3683,7 +3683,7 @@
     ]
   },
   "https://github.com/dumb-software/T2C-App-Patch-Morphe": {
-    "fetched_at": "2026-08-01T15:57:58.569615+00:00",
+    "fetched_at": "2026-08-01T19:01:28.949353+00:00",
     "releases": [
       {
         "tag": "v1.5.0",
@@ -3778,7 +3778,7 @@
     ]
   },
   "https://github.com/HellveticaStandard/HellveticaPatches": {
-    "fetched_at": "2026-08-01T15:58:51.211479+00:00",
+    "fetched_at": "2026-08-01T19:02:22.086110+00:00",
     "releases": [
       {
         "tag": "v1.1.1",
@@ -3873,7 +3873,7 @@
     ]
   },
   "https://github.com/kontsevoye/emorphe-patches": {
-    "fetched_at": "2026-08-01T15:58:27.118901+00:00",
+    "fetched_at": "2026-08-01T19:01:57.524871+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -3932,7 +3932,7 @@
     ]
   },
   "https://github.com/kun-codes/npci-bhim-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:06.552279+00:00",
+    "fetched_at": "2026-08-01T19:01:36.951608+00:00",
     "releases": [
       {
         "tag": "v1.3.0",
@@ -3955,7 +3955,7 @@
     ]
   },
   "https://github.com/PrathxmOp/Prathxm-Patches": {
-    "fetched_at": "2026-08-01T15:58:13.647051+00:00",
+    "fetched_at": "2026-08-01T19:01:43.851242+00:00",
     "releases": [
       {
         "tag": "v1.13.1-dev.3",
@@ -4050,7 +4050,7 @@
     ]
   },
   "https://github.com/PrathxmOp/ytmusic-patches": {
-    "fetched_at": "2026-08-01T15:58:52.799470+00:00",
+    "fetched_at": "2026-08-01T19:02:23.788610+00:00",
     "releases": [
       {
         "tag": "v1.38.0",
@@ -4145,7 +4145,7 @@
     ]
   },
   "https://github.com/Quantro100/Morphe-patches": {
-    "fetched_at": "2026-08-01T15:57:47.900631+00:00",
+    "fetched_at": "2026-08-01T19:01:19.218659+00:00",
     "releases": [
       {
         "tag": "v1.0.7",
@@ -4198,7 +4198,7 @@
     ]
   },
   "https://github.com/MoonShadowKeeper/Telegram-patchesMorphe": {
-    "fetched_at": "2026-08-01T15:57:36.971625+00:00",
+    "fetched_at": "2026-08-01T19:01:08.196763+00:00",
     "releases": [
       {
         "tag": "v1.20.0",
@@ -4215,7 +4215,7 @@
     ]
   },
   "https://github.com/Trimpsuz/morphe-busuu": {
-    "fetched_at": "2026-08-01T15:57:47.137449+00:00",
+    "fetched_at": "2026-08-01T19:01:18.431418+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -4333,7 +4333,7 @@
     ]
   },
   "https://github.com/Ripthulhu/morphe-google-patches": {
-    "fetched_at": "2026-08-01T15:58:07.360397+00:00",
+    "fetched_at": "2026-08-01T19:01:37.714649+00:00",
     "releases": [
       {
         "tag": "v1.1.4",
@@ -4378,7 +4378,7 @@
     "releases": []
   },
   "https://github.com/Xhehab/Xhehab-Patches": {
-    "fetched_at": "2026-08-01T15:58:09.577001+00:00",
+    "fetched_at": "2026-08-01T19:01:39.888955+00:00",
     "releases": [
       {
         "tag": "v3.3.0",
@@ -4473,7 +4473,7 @@
     ]
   },
   "https://github.com/Tornillo2/movistar-block-ads-morphe": {
-    "fetched_at": "2026-08-01T15:58:11.198880+00:00",
+    "fetched_at": "2026-08-01T19:01:41.414433+00:00",
     "releases": [
       {
         "tag": "v1.0.9",
@@ -4484,7 +4484,7 @@
     ]
   },
   "https://github.com/byehi98/okish-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:24.670242+00:00",
+    "fetched_at": "2026-08-01T19:01:54.941707+00:00",
     "releases": [
       {
         "tag": "v1.4.0",
@@ -4549,7 +4549,7 @@
     ]
   },
   "https://github.com/hackingguy/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:19.298392+00:00",
+    "fetched_at": "2026-08-01T19:01:49.576133+00:00",
     "releases": [
       {
         "tag": "v1.6.15-dev.1",
@@ -4644,7 +4644,7 @@
     ]
   },
   "https://github.com/NekoGryphou/gryphous-morphe-patches": {
-    "fetched_at": "2026-08-01T15:57:46.359505+00:00",
+    "fetched_at": "2026-08-01T19:01:17.655988+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -4679,11 +4679,11 @@
     ]
   },
   "https://github.com/Utsavrajputt/Modx-patches": {
-    "fetched_at": "2026-08-01T15:57:53.891588+00:00",
+    "fetched_at": "2026-08-01T19:01:25.063642+00:00",
     "releases": []
   },
   "https://github.com/bufferk/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:23.914489+00:00",
+    "fetched_at": "2026-08-01T19:01:54.114058+00:00",
     "releases": [
       {
         "tag": "v1.8.0",
@@ -4778,7 +4778,7 @@
     ]
   },
   "https://github.com/franticg33k/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:01.108840+00:00",
+    "fetched_at": "2026-08-01T19:01:31.346461+00:00",
     "releases": [
       {
         "tag": "v1.3.6",
@@ -4873,7 +4873,7 @@
     ]
   },
   "https://github.com/shaun-the-sheep-patches/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:34.398330+00:00",
+    "fetched_at": "2026-08-01T19:02:04.819426+00:00",
     "releases": [
       {
         "tag": "v1.2.0-dev.1",
@@ -4932,11 +4932,11 @@
     ]
   },
   "https://github.com/bernardo7894/revanced-patches": {
-    "fetched_at": "2026-08-01T15:57:56.844439+00:00",
+    "fetched_at": "2026-08-01T19:01:27.284088+00:00",
     "releases": []
   },
   "https://github.com/SouBryan/pinterest-morphed": {
-    "fetched_at": "2026-08-01T15:58:01.862935+00:00",
+    "fetched_at": "2026-08-01T19:01:32.180521+00:00",
     "releases": [
       {
         "tag": "v1.7.0-dev.1",
@@ -4995,7 +4995,7 @@
     ]
   },
   "https://github.com/MiguelNinja19/miguel-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:32.800166+00:00",
+    "fetched_at": "2026-08-01T19:02:03.225643+00:00",
     "releases": [
       {
         "tag": "v1.13.5",
@@ -5185,7 +5185,7 @@
     ]
   },
   "https://github.com/chirag127/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:36.925326+00:00",
+    "fetched_at": "2026-08-01T19:02:07.362007+00:00",
     "releases": [
       {
         "tag": "v1.6.0",
@@ -5262,7 +5262,7 @@
     ]
   },
   "https://github.com/ethanm6/letterboxd-stremio-morphe-patch": {
-    "fetched_at": "2026-08-01T15:57:43.876330+00:00",
+    "fetched_at": "2026-08-01T19:01:15.197578+00:00",
     "releases": [
       {
         "tag": "v1.3.2",
@@ -5309,7 +5309,7 @@
     ]
   },
   "https://github.com/saieshshirodkar/saiesh-morphe-patches": {
-    "fetched_at": "2026-08-01T15:57:42.515927+00:00",
+    "fetched_at": "2026-08-01T19:01:13.744628+00:00",
     "releases": [
       {
         "tag": "v1.0.7",
@@ -5362,7 +5362,7 @@
     ]
   },
   "https://github.com/alejandrobellver/pichiwa-patches": {
-    "fetched_at": "2026-08-01T15:58:54.427965+00:00",
+    "fetched_at": "2026-08-01T19:02:25.450509+00:00",
     "releases": [
       {
         "tag": "v0.4.0-dev.72",
@@ -5457,7 +5457,7 @@
     ]
   },
   "https://github.com/skulldogged/cobalt-morphe": {
-    "fetched_at": "2026-08-01T15:58:50.319514+00:00",
+    "fetched_at": "2026-08-01T19:02:21.221728+00:00",
     "releases": [
       {
         "tag": "v1.8.2",
@@ -5552,11 +5552,11 @@
     ]
   },
   "https://github.com/babyhuehnchen/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:20.644409+00:00",
+    "fetched_at": "2026-08-01T19:01:50.927593+00:00",
     "releases": []
   },
   "https://github.com/totsiaw/proxma-patches": {
-    "fetched_at": "2026-08-01T15:59:03.269024+00:00",
+    "fetched_at": "2026-08-01T19:02:34.263604+00:00",
     "releases": [
       {
         "tag": "1.8.0",
@@ -5645,7 +5645,7 @@
     ]
   },
   "https://github.com/Joussflls10/Jouss-Patches": {
-    "fetched_at": "2026-08-01T15:59:07.333372+00:00",
+    "fetched_at": "2026-08-01T19:02:38.273526+00:00",
     "releases": [
       {
         "tag": "v1.21.0",
@@ -5674,7 +5674,7 @@
     ]
   },
   "https://github.com/fangkampanat/gmaps-patches": {
-    "fetched_at": "2026-08-01T15:58:14.461170+00:00",
+    "fetched_at": "2026-08-01T19:01:44.656390+00:00",
     "releases": [
       {
         "tag": "v1.0.8",
@@ -5721,7 +5721,7 @@
     ]
   },
   "https://github.com/Seobject/Seobject-patches": {
-    "fetched_at": "2026-08-01T15:57:37.842444+00:00",
+    "fetched_at": "2026-08-01T19:01:09.020861+00:00",
     "releases": [
       {
         "tag": "v1.1.0-dev.18",
@@ -5816,11 +5816,11 @@
     ]
   },
   "https://github.com/itsthejoker/itsthejoker-patches": {
-    "fetched_at": "2026-08-01T15:57:43.148060+00:00",
+    "fetched_at": "2026-08-01T19:01:14.375525+00:00",
     "releases": []
   },
   "https://github.com/TheRealCrazyfuy/abeja-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:59.133803+00:00",
+    "fetched_at": "2026-08-01T19:02:30.210743+00:00",
     "releases": [
       {
         "tag": "v1.1.0-dev.2",
@@ -5849,7 +5849,7 @@
     ]
   },
   "https://github.com/drosoCode/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:58.349675+00:00",
+    "fetched_at": "2026-08-01T19:02:29.419092+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -5860,7 +5860,7 @@
     ]
   },
   "https://github.com/variablenine/morphe-patches": {
-    "fetched_at": "2026-08-01T15:57:48.781027+00:00",
+    "fetched_at": "2026-08-01T19:01:19.958577+00:00",
     "releases": [
       {
         "tag": "v1.1.6",
@@ -5942,7 +5942,7 @@
     ]
   },
   "https://github.com/ARHCOS/arhcos-patches": {
-    "fetched_at": "2026-08-01T15:58:30.318133+00:00",
+    "fetched_at": "2026-08-01T19:02:00.731871+00:00",
     "releases": [
       {
         "tag": "v1.1.1",
@@ -6053,7 +6053,7 @@
     ]
   },
   "https://github.com/hxreborn/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:40.814962+00:00",
+    "fetched_at": "2026-08-01T19:02:11.441404+00:00",
     "releases": [
       {
         "tag": "v1.1.1",
@@ -6118,7 +6118,7 @@
     ]
   },
   "https://github.com/Ikuradachi/ikura-patches": {
-    "fetched_at": "2026-08-01T15:58:22.225800+00:00",
+    "fetched_at": "2026-08-01T19:01:52.463879+00:00",
     "releases": [
       {
         "tag": "v1.1.0-dev.1",
@@ -6141,7 +6141,7 @@
     ]
   },
   "https://github.com/ch3thanhs/stylus": {
-    "fetched_at": "2026-08-01T15:58:43.926312+00:00",
+    "fetched_at": "2026-08-01T19:02:14.668682+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -6188,7 +6188,7 @@
     ]
   },
   "https://github.com/dexnis-dev/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:43.121097+00:00",
+    "fetched_at": "2026-08-01T19:02:13.857422+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -6205,7 +6205,7 @@
     ]
   },
   "https://github.com/tiaruebar1024/tiaruebar-patches": {
-    "fetched_at": "2026-08-01T15:57:39.431225+00:00",
+    "fetched_at": "2026-08-01T19:01:10.609477+00:00",
     "releases": [
       {
         "tag": "v1.3.2",
@@ -6276,11 +6276,11 @@
     ]
   },
   "https://github.com/WZSE/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:05.809748+00:00",
+    "fetched_at": "2026-08-01T19:01:36.143584+00:00",
     "releases": []
   },
   "https://github.com/ilikeadofai/vocacolle-morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:23.069032+00:00",
+    "fetched_at": "2026-08-01T19:01:53.293314+00:00",
     "releases": [
       {
         "tag": "v1.2.0-dev.4",
@@ -6375,8 +6375,14 @@
     ]
   },
   "https://github.com/andrewliang25/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:00.330190+00:00",
+    "fetched_at": "2026-08-01T19:01:30.533525+00:00",
     "releases": [
+      {
+        "tag": "v1.4.0-dev.1",
+        "body": "## [1.4.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.3.0...v1.4.0-dev.1) (2026-08-01)\n\n### ✨ New Features\n\n* add \"Fix push notifications\" patch ([e20ce9d](https://github.com/andrewliang25/morphe-patches/commit/e20ce9d99de2f38286710683a9fcdbeba07a05e3))\n",
+        "prerelease": true,
+        "dateReleased": "2026-08-01T17:13:12Z"
+      },
       {
         "tag": "v1.3.0",
         "body": "## [1.3.0](https://github.com/andrewliang25/morphe-patches/compare/v1.2.0...v1.3.0) (2026-08-01)\n\n### ✨ New Features\n\n* hide the \"Unsend\" option for messages past the free unsend window ([1cce49d](https://github.com/andrewliang25/morphe-patches/commit/1cce49dd9550ac778370dc6d1359d554696abe50))\n* redirect LINE Pay to the standalone LINE Pay app ([2d9c476](https://github.com/andrewliang25/morphe-patches/commit/2d9c476d69561a9d7fb1c0fc43d97af7f7aa1e67))\n",
@@ -6422,7 +6428,7 @@
     ]
   },
   "https://github.com/dh6k/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:04.333156+00:00",
+    "fetched_at": "2026-08-01T19:01:34.610813+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -6481,7 +6487,7 @@
     ]
   },
   "https://github.com/MarcaDian/morphe-patches-yavot": {
-    "fetched_at": "2026-08-01T15:58:45.432011+00:00",
+    "fetched_at": "2026-08-01T19:02:16.273054+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -6492,7 +6498,7 @@
     ]
   },
   "https://github.com/Entree3k/Morning-Entree-Patches": {
-    "fetched_at": "2026-08-01T15:59:02.424880+00:00",
+    "fetched_at": "2026-08-01T19:02:33.434725+00:00",
     "releases": [
       {
         "tag": "v1.6.0",
@@ -6539,7 +6545,7 @@
     ]
   },
   "https://github.com/mxkrgt/dbtcoach-morphe-patches": {
-    "fetched_at": "2026-08-01T15:59:10.453276+00:00",
+    "fetched_at": "2026-08-01T19:02:41.571643+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -6556,7 +6562,7 @@
     ]
   },
   "https://github.com/ciraolone/morphe-watch-later": {
-    "fetched_at": "2026-08-01T15:58:59.915772+00:00",
+    "fetched_at": "2026-08-01T19:02:31.011642+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -6573,7 +6579,7 @@
     ]
   },
   "https://github.com/pseudofractal/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:16.893519+00:00",
+    "fetched_at": "2026-08-01T19:01:47.078405+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -6590,7 +6596,7 @@
     ]
   },
   "https://github.com/alan7383/sofatime-patches": {
-    "fetched_at": "2026-08-01T15:57:51.833480+00:00",
+    "fetched_at": "2026-08-01T19:01:23.106954+00:00",
     "releases": [
       {
         "tag": "v1.3.4",
@@ -6655,7 +6661,7 @@
     ]
   },
   "https://github.com/Hiosdra/morphe-patches": {
-    "fetched_at": "2026-08-01T15:57:38.596626+00:00",
+    "fetched_at": "2026-08-01T19:01:09.804640+00:00",
     "releases": [
       {
         "tag": "v1.4.0-dev.2",
@@ -6714,7 +6720,7 @@
     ]
   },
   "https://github.com/Jl4cTuk/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:44.645396+00:00",
+    "fetched_at": "2026-08-01T19:02:15.486770+00:00",
     "releases": [
       {
         "tag": "v1.3.0-dev.2",
@@ -6749,7 +6755,7 @@
     ]
   },
   "https://github.com/LaBlazer/morphe-patches": {
-    "fetched_at": "2026-08-01T15:57:44.707570+00:00",
+    "fetched_at": "2026-08-01T19:01:16.006719+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -6766,11 +6772,11 @@
     ]
   },
   "https://github.com/claviola/morphe-patches-nl": {
-    "fetched_at": "2026-08-01T15:58:08.767785+00:00",
+    "fetched_at": "2026-08-01T19:01:39.061191+00:00",
     "releases": []
   },
   "https://github.com/d0nj/morphe-patches": {
-    "fetched_at": "2026-08-01T15:58:56.788273+00:00",
+    "fetched_at": "2026-08-01T19:02:27.880491+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -6799,7 +6805,7 @@
     ]
   },
   "https://github.com/chukfinley/tidal-patches": {
-    "fetched_at": "2026-08-01T15:59:04.129535+00:00",
+    "fetched_at": "2026-08-01T19:02:35.103878+00:00",
     "releases": [
       {
         "tag": "v1.6.0",
