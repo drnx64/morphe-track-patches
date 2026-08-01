@@ -2,11 +2,15 @@ import { Link, useLocation } from 'react-router-dom'
 import SearchBar from '../search/SearchBar'
 import SearchDropdown from '../search/SearchDropdown'
 
+const NAV_TABS: ReadonlyArray<{ to: string; label: string; end?: boolean }> = [
+  { to: '/', label: 'Main', end: true },
+  { to: '/apps', label: 'Apps' },
+  { to: '/changelog', label: 'Changelog' },
+  { to: '/diff', label: 'Diff' },
+]
+
 export default function Header() {
   const location = useLocation()
-  const isDashboard = location.pathname === '/'
-  const isChangelog = location.pathname === '/changelog'
-  const isDiff = location.pathname === '/diff'
 
   return (
     <header className="app-header">
@@ -16,23 +20,22 @@ export default function Header() {
             <h1 id="main-title">Morphe Tracker</h1>
             <p className="subtitle">Patch monitoring &amp; changelog dashboard</p>
           </div>
-          <nav className="main-nav">
-            <Link to="/" className={`nav-link${isDashboard ? ' active' : ''}`} id="nav-dashboard">
-              Dashboard
-            </Link>
-            <Link to="/changelog" className={`nav-link${isChangelog ? ' active' : ''}`} id="nav-changelog">
-              Changelog History
-            </Link>
-            <Link to="/diff" className={`nav-link${isDiff ? ' active' : ''}`} id="nav-diff">
-              Bundle Diff
-            </Link>
-          </nav>
-        </div>
-        {isDashboard && (
           <div className="header-search-row">
             <SearchBar />
           </div>
-        )}
+        </div>
+        <nav className="app-nav" aria-label="Main navigation">
+          {NAV_TABS.map((tab) => {
+            const active = tab.end
+              ? location.pathname === tab.to
+              : location.pathname === tab.to || location.pathname.startsWith(`${tab.to}/`)
+            return (
+              <Link key={tab.to} to={tab.to} className={`nav-tab${active ? ' active' : ''}`}>
+                {tab.label}
+              </Link>
+            )
+          })}
+        </nav>
       </div>
       <SearchDropdown />
     </header>
