@@ -48,6 +48,22 @@ export function fetchAllData() {
   })
 }
 
+export function fetchCore() {
+  return fetchJson<CoreResponse>(`/data/core.json?_t=${Date.now()}`, {})
+}
+
+export function fetchStats() {
+  return fetchJson<StatsData>(`/data/stats.json?_t=${Date.now()}`, {} as StatsData)
+}
+
+export function fetchChanges() {
+  return fetchJson<{ affected_bundles?: AffectedBundle[] }>(`/data/changes.json?_t=${Date.now()}`, {})
+}
+
+export function fetchBundles() {
+  return fetchJson<Record<string, BundleData>>(`/data/bundles.json?_t=${Date.now()}`, {})
+}
+
 export function fetchLastChecked() {
   log('fetchLastChecked...')
   return fetch('/data/state/last_run.json')

@@ -2,10 +2,7 @@ import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { useDataFetching } from '../../hooks/useDataFetching'
-import Header from '../layout/Header'
-import Footer from '../layout/Footer'
-import BackToTopButton from '../layout/BackToTopButton'
-import ToastNotification from '../layout/ToastNotification'
+import PageShell from '../layout/PageShell'
 import StatsSection from './StatsSection'
 import ScanInfoSection from './ScanInfoSection'
 import TodayUpdatesSection from './TodayUpdatesSection'
@@ -30,22 +27,13 @@ export default function DashboardPage() {
 
   return (
     <>
-      <Header />
-      <main className="dashboard-container">
-        <div className="glow-container">
-          <div className="glow-orb main-orb" />
-          <div className="glow-orb sub-orb" />
-        </div>
-
+      <PageShell>
         <TodayUpdatesSection />
         <ScanInfoSection />
         <StatsSection />
         <ControlsSection />
         <BundlesGrid loading={loading} />
-      </main>
-      <Footer />
-      <BackToTopButton />
-      <ToastNotification />
+      </PageShell>
       <AppDetailModal />
       <BundleDetailModal />
       <BundleHistoryModal />
