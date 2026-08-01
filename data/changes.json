@@ -1013,6 +1013,44 @@
           ]
         }
       ]
+    },
+    {
+      "bundle": "andrewliang25",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "LINE",
+          "package": "jp.naver.line.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Redirect LINE Pay",
+                "description": "Forwards LINE Pay flows to the separately-installed standalone LINE Pay app instead of running them inside the messenger, so the in-app device-integrity check (which fails on a re-signed build) never runs. Falls back to closing the Pay screen if the standalone app can't be opened. Messaging is unaffected."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Disable LINE Pay",
+                "description": "Closes any LINE Pay screen immediately on open, so Pay flows (and their device-integrity check) never run. Messaging is unaffected."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Hide premium unsend upsells",
+                "description": "Removes the two LYP premium-unsend upsells that survive \"Disable LINE Premium\" (they read config directly instead of the market-availability flag): the \"Unsend discreetly\" button in the unsend-message confirmation dialog, and the \"How to unsend discreetly\" promotion link shown after unsending. The dialog keeps its ordinary \"Unsend\" and \"Close\" buttons. Also removes the \"Unsend\" long-press option for messages older than the free unsend window (~1h) so it no longer shows the \"Give yourself more time\" upgrade upsell — matching how messages past the premium window behave.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            4
+          ]
+        }
+      ]
     }
   ]
 }
