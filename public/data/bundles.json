@@ -6409,26 +6409,17 @@
     "bundle": "andrewliang25",
     "channel": "stable",
     "repo_url": "https://github.com/andrewliang25/morphe-patches",
-    "created_at": "2026-07-31T14:40:14",
-    "version": "v1.2.0",
-    "description": "## [1.2.0](https://github.com/andrewliang25/morphe-patches/compare/v1.1.0...v1.2.0) (2026-07-31)\r\n\r\n### ✨ New Features\r\n\r\n* add Disable LINE Premium patch (hide all LYP upsells & entry points) ([c0244b4](https://github.com/andrewliang25/morphe-patches/commit/c0244b40fa040fa6f768ac2c5551028be4c06758))\r\n* add Hide premium unsend upsells patch ([e5ce130](https://github.com/andrewliang25/morphe-patches/commit/e5ce130575e8772ba350680c83ce19bcb2af0ca8))\r\n",
+    "created_at": "2026-08-01T12:46:19",
+    "version": "v1.3.0",
+    "description": "## [1.3.0](https://github.com/andrewliang25/morphe-patches/compare/v1.2.0...v1.3.0) (2026-08-01)\n\n### ✨ New Features\n\n* hide the \"Unsend\" option for messages past the free unsend window ([1cce49d](https://github.com/andrewliang25/morphe-patches/commit/1cce49dd9550ac778370dc6d1359d554696abe50))\n* redirect LINE Pay to the standalone LINE Pay app ([2d9c476](https://github.com/andrewliang25/morphe-patches/commit/2d9c476d69561a9d7fb1c0fc43d97af7f7aa1e67))\n",
     "apps": [
       {
         "app_name": "LINE",
         "package": "jp.naver.line.android",
         "patches": [
           {
-            "name": "Disable LINE Pay",
-            "description": "Closes any LINE Pay screen immediately on open, so Pay flows (and their device-integrity check) never run. Messaging is unaffected.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
             "name": "Disable LINE Premium",
-            "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsell popups/banners, premium badges & locks, the \"LINE Premium\" settings page and its entry rows, and the subscribe/manage flows — by forcing the app's own \"premium available in this market\" flag off. The app then behaves exactly as it does in a region where LYP isn't offered. Does not unlock anything (premium is server-enforced); it only removes premium from view. A LYP subscriber would lose their in-app premium management UI.",
+            "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsells, badges, the Premium settings page, and subscribe/manage flows. Doesn't unlock anything (premium is server-enforced).",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6437,7 +6428,7 @@
           },
           {
             "name": "Disable VOOM",
-            "description": "Neutralizes VOOM entry points: VOOM deep links, shares, and notifications (line://home/*) do nothing, and the standalone VOOM feed closes on open. Also disables VOOM LIVE, the birthday board, and share-to-VOOM. Messaging, friend profiles, and other tabs are unaffected.",
+            "description": "Neutralizes VOOM entry points — deep links, shares, and notifications do nothing and the standalone VOOM feed closes on open. Messaging and other tabs are unaffected.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6518,7 +6509,7 @@
           },
           {
             "name": "Hide premium unsend upsells",
-            "description": "Removes the two LYP premium-unsend upsells that survive \"Disable LINE Premium\" (they read config directly instead of the market-availability flag): the \"Unsend discreetly\" button in the unsend-message confirmation dialog, and the \"How to unsend discreetly\" promotion link shown after unsending. The dialog keeps its ordinary \"Unsend\" and \"Close\" buttons.",
+            "description": "Removes the LYP premium-unsend upsells that survive \"Disable LINE Premium\": the \"Unsend discreetly\" button, the post-unsend promo link, and the expired-window unsend upsell. Ordinary unsend still works.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -6571,6 +6562,15 @@
             ]
           },
           {
+            "name": "Redirect LINE Pay",
+            "description": "Forwards LINE Pay flows to the standalone LINE Pay app instead of running them in-app, so the device-integrity check that fails on a re-signed build never runs. Messaging is unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
             "name": "Remove banner ads",
             "description": "Stops LINE from loading Smart Channel banner ads (neutralizes the getBanners and getPrefetchableBanners responses).",
             "use": true,
@@ -6583,10 +6583,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
       }
     ],
-    "fingerprint": "58efda8165e7f03fcbc7ec18c42ac61ed7de1ced885091e51a67b6487b6c4296",
-    "release_notes": "## [1.2.0](https://github.com/andrewliang25/morphe-patches/compare/v1.1.0...v1.2.0) (2026-07-31)\r\n\r\n### ✨ New Features\r\n\r\n* add Disable LINE Premium patch (hide all LYP upsells & entry points) ([c0244b4](https://github.com/andrewliang25/morphe-patches/commit/c0244b40fa040fa6f768ac2c5551028be4c06758))\r\n* add Hide premium unsend upsells patch ([e5ce130](https://github.com/andrewliang25/morphe-patches/commit/e5ce130575e8772ba350680c83ce19bcb2af0ca8))\r\n",
-    "release_tag": "v1.2.0",
-    "release_date": "2026-07-31T14:40:14Z"
+    "fingerprint": "dc72abdb678f6425fb3b72a7db689fe438e3cd35ccc01d97619b59c9c7a0b117",
+    "release_notes": "## [1.3.0](https://github.com/andrewliang25/morphe-patches/compare/v1.2.0...v1.3.0) (2026-08-01)\n\n### ✨ New Features\n\n* hide the \"Unsend\" option for messages past the free unsend window ([1cce49d](https://github.com/andrewliang25/morphe-patches/commit/1cce49dd9550ac778370dc6d1359d554696abe50))\n* redirect LINE Pay to the standalone LINE Pay app ([2d9c476](https://github.com/andrewliang25/morphe-patches/commit/2d9c476d69561a9d7fb1c0fc43d97af7f7aa1e67))\n",
+    "release_tag": "v1.3.0",
+    "release_date": "2026-08-01T12:46:19Z"
   },
   "franticg33k:dev": {
     "bundle": "franticg33k",
@@ -14989,9 +14989,9 @@
     "bundle": "amplerevanced",
     "channel": "dev",
     "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
-    "created_at": "2026-07-24T18:32:08",
-    "version": "v1.2.0-dev.20",
-    "description": "# [1.2.0-dev.20](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.19...v1.2.0-dev.20) (2026-07-24)\n\n\n### Features\n\n* **dcinside:** show author identifier in posts and post lists ([2f38791](https://github.com/AmpleReVanced/revanced-patches/commit/2f38791fa4d2287f98408de1f61182c2f952b7c0))\n* **dcinside:** show author identifier in recently viewed posts ([5caa2e1](https://github.com/AmpleReVanced/revanced-patches/commit/5caa2e1fcb4770417999a14be3b3a25efe7873b4))\n\n\n\n",
+    "created_at": "2026-08-01T12:57:48",
+    "version": "v1.3.0-dev.1",
+    "description": "# [1.3.0-dev.1](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-01)\n\n\n### Bug Fixes\n\n* **kakaotalk:** allocate registers for Allow invisible characters ([ec4bcad](https://github.com/AmpleReVanced/revanced-patches/commit/ec4bcadfb0b2e06aa79fe347864a2f508fa163b4))\n* **settings:** adopt piko switch checkmark and stroke blending ([4204a1c](https://github.com/AmpleReVanced/revanced-patches/commit/4204a1cc37d0978a793be7e0daa880a827a88883))\n* **settings:** align preference styling with piko and fix nested screen toolbar ([b7edcf3](https://github.com/AmpleReVanced/revanced-patches/commit/b7edcf3f6907775c1c7598f9fc301bb6c0c4f581))\n\n\n### Features\n\n* **chzzk:** add support chzzk patches for version `3.10.0` ([4d6972e](https://github.com/AmpleReVanced/revanced-patches/commit/4d6972e778f846cb18ee8d4cc9be56bbd5b8e6a6))\n* **dcinside:** update dcinside patches for version `5.3.2` ([7c58146](https://github.com/AmpleReVanced/revanced-patches/commit/7c5814633dd8a67050c42f8bfd1013ef310e7ce5))\n* **flexcil:** add support flexcil patches for version `1.4.4.10` ([ba011f0](https://github.com/AmpleReVanced/revanced-patches/commit/ba011f0b9d21cc0e12f0cd45160489797b900d0d))\n* **kakaotalk:** add Allow invisible characters patch ([8ad87d0](https://github.com/AmpleReVanced/revanced-patches/commit/8ad87d084742dc04a764fae3e1f0c85d9c41fcbc))\n* **kakaotalk:** add Allow profile media download patch ([b6d3822](https://github.com/AmpleReVanced/revanced-patches/commit/b6d382288009ec337841aac5cdcf639bda91578c))\n* **kakaotalk:** update kakaotalk patches for version `26.6.2` ([52fcbb6](https://github.com/AmpleReVanced/revanced-patches/commit/52fcbb6ea2f56accb05b9913d4662a6c197b79a7))\n* **kakaotalk:** update kakaotalk patches for version `26.6.3` ([1982c1f](https://github.com/AmpleReVanced/revanced-patches/commit/1982c1fa97d01d01c1c8070d47b49f5a4b3da673))\n* **settings:** back up and restore settings to a file ([05d7236](https://github.com/AmpleReVanced/revanced-patches/commit/05d7236b7d3e4e03edf161dec341fa3748bb2d95))\n* **soop:** update soop patches for version `8.28.5` ([bd831f9](https://github.com/AmpleReVanced/revanced-patches/commit/bd831f94e9fcbad442bf4cd41280ff10f88b6fe5))\n\n\n\n",
     "apps": [
       {
         "app_name": "dcinside",
@@ -15003,7 +15003,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15012,7 +15012,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15021,7 +15021,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15035,7 +15035,7 @@
               }
             ],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15044,7 +15044,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15066,7 +15066,7 @@
               }
             ],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15084,7 +15084,7 @@
               }
             ],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15093,7 +15093,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15102,7 +15102,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15111,7 +15111,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15120,7 +15120,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15129,7 +15129,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15138,7 +15138,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15147,7 +15147,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15156,7 +15156,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15165,7 +15165,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15174,7 +15174,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15183,7 +15183,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15192,7 +15192,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15201,7 +15201,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15210,7 +15210,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15219,7 +15219,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           },
           {
@@ -15228,7 +15228,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.3.0"
+              "5.3.2"
             ]
           }
         ],
@@ -15244,6 +15244,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "1.4.4.10",
               "1.4.4.9"
             ]
           },
@@ -15253,6 +15254,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "1.4.4.10",
               "1.4.4.9"
             ]
           }
@@ -15269,7 +15271,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15278,7 +15280,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15287,7 +15289,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15296,7 +15298,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15305,7 +15307,25 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
+            ]
+          },
+          {
+            "name": "Allow invisible characters",
+            "description": "Stops zero width and other invisible characters from being stripped out of the chat input and out of the messages shown in a chat room.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.6.3"
+            ]
+          },
+          {
+            "name": "Allow profile media download",
+            "description": "Adds the save option of the profile media viewer to the profile pictures and background images of other people.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.6.3"
             ]
           },
           {
@@ -15314,7 +15334,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15323,7 +15343,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15332,7 +15352,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15341,7 +15361,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15350,7 +15370,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15372,7 +15392,7 @@
               }
             ],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15386,7 +15406,7 @@
               }
             ],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15395,7 +15415,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15404,7 +15424,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15413,7 +15433,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15422,7 +15442,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15431,7 +15451,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15440,7 +15460,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15449,7 +15469,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15458,7 +15478,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15467,7 +15487,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15476,7 +15496,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15485,7 +15505,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15494,7 +15514,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15503,7 +15523,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15512,7 +15532,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15521,7 +15541,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15530,7 +15550,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15539,7 +15559,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15548,7 +15568,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15557,7 +15577,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15566,7 +15586,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15575,7 +15595,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15584,7 +15604,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15593,7 +15613,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15602,7 +15622,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15611,7 +15631,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15620,7 +15640,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15629,7 +15649,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15638,7 +15658,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15652,7 +15672,7 @@
               }
             ],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15661,7 +15681,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15670,7 +15690,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15679,7 +15699,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15688,7 +15708,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15697,7 +15717,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15706,7 +15726,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15715,7 +15735,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15724,7 +15744,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15733,7 +15753,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15742,7 +15762,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15760,7 +15780,7 @@
               }
             ],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15769,7 +15789,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15778,7 +15798,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15787,7 +15807,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15796,7 +15816,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           },
           {
@@ -15805,7 +15825,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "26.6.1"
+              "26.6.3"
             ]
           }
         ],
@@ -15821,6 +15841,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "3.10.0",
               "3.9.0"
             ]
           },
@@ -15830,6 +15851,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "3.10.0",
               "3.9.0"
             ]
           },
@@ -15839,6 +15861,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "3.10.0",
               "3.9.0"
             ]
           },
@@ -15848,6 +15871,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "3.10.0",
               "3.9.0"
             ]
           },
@@ -15857,6 +15881,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "3.10.0",
               "3.9.0"
             ]
           }
@@ -15873,7 +15898,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15882,7 +15907,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15891,7 +15916,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15900,7 +15925,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15909,7 +15934,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15918,7 +15943,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15927,7 +15952,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15936,7 +15961,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15945,7 +15970,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           },
           {
@@ -15954,17 +15979,17 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "8.28.3"
+              "8.28.5"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/kkYJ-GrCRS0WWNWjshvFCyqnYPdC7PY6UZ5NK5ju7OFnp0lmU7JlOLIfPvQnr4Y_LWhnab-Fqz9PkCrEwpPjLQ"
       }
     ],
-    "fingerprint": "35ca92f352c919d0e5cf269338d3d0b787837b7371f417ae15479594e75a4774",
-    "release_notes": "# [1.2.0-dev.20](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0-dev.19...v1.2.0-dev.20) (2026-07-24)\n\n\n### Features\n\n* **dcinside:** show author identifier in posts and post lists ([2f38791](https://github.com/AmpleReVanced/revanced-patches/commit/2f38791fa4d2287f98408de1f61182c2f952b7c0))\n* **dcinside:** show author identifier in recently viewed posts ([5caa2e1](https://github.com/AmpleReVanced/revanced-patches/commit/5caa2e1fcb4770417999a14be3b3a25efe7873b4))\n\n\n\n",
-    "release_tag": "v1.2.0-dev.20",
-    "release_date": "2026-07-24T18:32:08Z"
+    "fingerprint": "7ab7508d4dc3d0d559addb246327cd6f32bc0392775bc86d9a17bab2ff4afb9b",
+    "release_notes": "# [1.3.0-dev.1](https://github.com/AmpleReVanced/revanced-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-08-01)\n\n\n### Bug Fixes\n\n* **kakaotalk:** allocate registers for Allow invisible characters ([ec4bcad](https://github.com/AmpleReVanced/revanced-patches/commit/ec4bcadfb0b2e06aa79fe347864a2f508fa163b4))\n* **settings:** adopt piko switch checkmark and stroke blending ([4204a1c](https://github.com/AmpleReVanced/revanced-patches/commit/4204a1cc37d0978a793be7e0daa880a827a88883))\n* **settings:** align preference styling with piko and fix nested screen toolbar ([b7edcf3](https://github.com/AmpleReVanced/revanced-patches/commit/b7edcf3f6907775c1c7598f9fc301bb6c0c4f581))\n\n\n### Features\n\n* **chzzk:** add support chzzk patches for version `3.10.0` ([4d6972e](https://github.com/AmpleReVanced/revanced-patches/commit/4d6972e778f846cb18ee8d4cc9be56bbd5b8e6a6))\n* **dcinside:** update dcinside patches for version `5.3.2` ([7c58146](https://github.com/AmpleReVanced/revanced-patches/commit/7c5814633dd8a67050c42f8bfd1013ef310e7ce5))\n* **flexcil:** add support flexcil patches for version `1.4.4.10` ([ba011f0](https://github.com/AmpleReVanced/revanced-patches/commit/ba011f0b9d21cc0e12f0cd45160489797b900d0d))\n* **kakaotalk:** add Allow invisible characters patch ([8ad87d0](https://github.com/AmpleReVanced/revanced-patches/commit/8ad87d084742dc04a764fae3e1f0c85d9c41fcbc))\n* **kakaotalk:** add Allow profile media download patch ([b6d3822](https://github.com/AmpleReVanced/revanced-patches/commit/b6d382288009ec337841aac5cdcf639bda91578c))\n* **kakaotalk:** update kakaotalk patches for version `26.6.2` ([52fcbb6](https://github.com/AmpleReVanced/revanced-patches/commit/52fcbb6ea2f56accb05b9913d4662a6c197b79a7))\n* **kakaotalk:** update kakaotalk patches for version `26.6.3` ([1982c1f](https://github.com/AmpleReVanced/revanced-patches/commit/1982c1fa97d01d01c1c8070d47b49f5a4b3da673))\n* **settings:** back up and restore settings to a file ([05d7236](https://github.com/AmpleReVanced/revanced-patches/commit/05d7236b7d3e4e03edf161dec341fa3748bb2d95))\n* **soop:** update soop patches for version `8.28.5` ([bd831f9](https://github.com/AmpleReVanced/revanced-patches/commit/bd831f94e9fcbad442bf4cd41280ff10f88b6fe5))\n\n\n\n",
+    "release_tag": "v1.3.0-dev.1",
+    "release_date": "2026-08-01T12:57:48Z"
   },
   "amplerevanced:stable": {
     "bundle": "amplerevanced",

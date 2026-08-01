@@ -2,7 +2,7 @@
   "affected_bundles": [
     {
       "bundle": "andrewliang25",
-      "channel": "dev",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
@@ -13,7 +13,7 @@
             "patches_added": [
               {
                 "name": "Redirect LINE Pay",
-                "description": "Forwards LINE Pay flows to the separately-installed standalone LINE Pay app instead of running them inside the messenger, so the in-app device-integrity check (which fails on a re-signed build) never runs. Falls back to closing the Pay screen if the standalone app can't be opened. Messaging is unaffected."
+                "description": "Forwards LINE Pay flows to the standalone LINE Pay app instead of running them in-app, so the device-integrity check that fails on a re-signed build never runs. Messaging is unaffected."
               }
             ],
             "patches_removed": [
@@ -24,10 +24,774 @@
             ],
             "patches_modified": [
               {
-                "name": "Hide premium unsend upsells",
-                "description": "Removes the two LYP premium-unsend upsells that survive \"Disable LINE Premium\" (they read config directly instead of the market-availability flag): the \"Unsend discreetly\" button in the unsend-message confirmation dialog, and the \"How to unsend discreetly\" promotion link shown after unsending. The dialog keeps its ordinary \"Unsend\" and \"Close\" buttons. Also removes the \"Unsend\" long-press option for messages older than the free unsend window (~1h) so it no longer shows the \"Give yourself more time\" upgrade upsell — matching how messages past the premium window behave.",
+                "name": "Disable LINE Premium",
+                "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsells, badges, the Premium settings page, and subscribe/manage flows. Doesn't unlock anything (premium is server-enforced).",
                 "changes": [
                   "description updated"
+                ]
+              },
+              {
+                "name": "Disable VOOM",
+                "description": "Neutralizes VOOM entry points — deep links, shares, and notifications do nothing and the standalone VOOM feed closes on open. Messaging and other tabs are unaffected.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Hide premium unsend upsells",
+                "description": "Removes the LYP premium-unsend upsells that survive \"Disable LINE Premium\": the \"Unsend discreetly\" button, the post-unsend promo link, and the expired-window unsend upsell. Ordinary unsend still works.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "amplerevanced",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "dcinside",
+          "package": "com.dcinside.app.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Add notification shortcut",
+                "description": "Adds a notification shortcut button above quick write in the post list.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Add settings",
+                "description": "Adds a Morphe settings entry to the DCInside settings screen.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Add settings resources",
+                "description": "Adds Morphe settings resources to the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Adjust image download menu",
+                "description": "Moves the image download menu buttons upward by adding bottom padding.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Bypass getText",
+                "description": "Bypasses the integrity check for getText.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Change package name",
+                "description": "Appends \".revanced\" to the package name by default. For DCinside only",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Custom branding",
+                "description": "Customize app branding (name and icon)",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Dimens Patch",
+                "description": "reassigns ad_minimum_height to 0dp to remove ads from the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Comment Ad",
+                "description": "Disables the comment ad in the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable DCCon loading",
+                "description": "Adds settings to block DCCon image loading in posts and replies.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Image Ad",
+                "description": "Disables the image ad in the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable ad controller",
+                "description": "Disables the ad controller that manages ads in the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable update check",
+                "description": "Disables the app's update check.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable OneStore feature",
+                "description": "Enables the OneStore feature in DC Inside app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide DC official notices",
+                "description": "Hides official DCInside operator notices from gallery notice lists.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide Main Ad",
+                "description": "Hides the main ad in the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide home components",
+                "description": "Adds settings to hide selected DCInside home screen components.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide mini gallery cover image",
+                "description": "Adds a setting to hide the mini gallery cover image above post lists.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Register settings activity",
+                "description": "Registers the Morphe settings activity in the app manifest.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Render big DCCon as normal size",
+                "description": "Adds a setting to render big DCCon at normal DCCon size.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Restore old post icons",
+                "description": "Adds a setting to restore DCInside 4.7.x post list and read footer icons.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Show author identifier",
+                "description": "Adds options to show the author identifier next to the nickname in posts, post lists, and the recently-viewed posts list. The recently-viewed list only shows it for posts opened after this patch is installed.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof Signature",
+                "description": "Spoofs the app signature to bypass integrity checks.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Flexcil",
+          "package": "com.flexcil.flexcilnote",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Bypass login",
+                "description": "Skips the mandatory account sign-in on launch and opens the app directly.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Unlock Premium features",
+                "description": "Enables app features locked behind the subscription paywall.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Kakao Talk",
+          "package": "com.kakao.talk",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Allow invisible characters",
+                "description": "Stops zero width and other invisible characters from being stripped out of the chat input and out of the messages shown in a chat room."
+              },
+              {
+                "name": "Allow profile media download",
+                "description": "Adds the save option of the profile media viewer to the profile pictures and background images of other people."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Add Packet Handler",
+                "description": "Adding the Loco Packet Handler allows external applications to handle the app's packets, which may compromise security.\nConflicts may occur on some systems.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Add Pine Lib",
+                "description": "add libpine.so to the app's native libraries",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Add settings resources",
+                "description": "Adds Morphe settings layout resources to the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Add settings tab",
+                "description": "Adds a settings tab to the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Allow Hide on Any Chat",
+                "description": "Users with hiding privileges can hide any chat, including their own messages.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Allow reply to feed",
+                "description": "Allows replying to feed messages",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Always Show Kick Button",
+                "description": "Always shows the kick button in group member management.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Bypass Moat check",
+                "description": "Add a setting to bypass the Moat integrity check that can prevent KakaoPay from running.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Bypass input mention limit in non-multichat",
+                "description": "Bypass the limit of input mentions in non-multichat rooms",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Change model",
+                "description": "Changes the device model to supporting subdevice features",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Change package name",
+                "description": "Appends \".revanced\" to the package name by default. For KakaoTalk only",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Custom branding",
+                "description": "Customize app branding (name)",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Default external browser",
+                "description": "Sets the default external browser for KakaoTalk to the system's default browser.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable 300+ unread limit",
+                "description": "Always show the real unread count instead of '300+' in chatroom list",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable 99 unread limit",
+                "description": "Skip the 99-cap so unread count shows full value",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable ChatRoomAdController",
+                "description": "Disables the open-link chat room BizBoard ad controller.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Collapse Button",
+                "description": "Disable collapse button on OpenChatList",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Community Tab",
+                "description": "Disables Community Tab",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Friend Feed tab",
+                "description": "Disables the Friend Feed tab in KakaoTalk.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Friend Lists ad",
+                "description": "Disables the friend tab BizBoard ads in KakaoTalk.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable OpenChat feed ad",
+                "description": "Disables the OpenChat tab feed ad load and render paths.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Pay banner ad",
+                "description": "Disables the KakaoPay banner ad load and render paths.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable S2Event",
+                "description": "Disables Tracker",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable SDK Tracker",
+                "description": "Disables the SDK Tracker in KakaoTalk.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Sentry",
+                "description": "Disables Sentry error reporting in KakaoTalk.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable ShortForm ad",
+                "description": "Disables the shortform ad load and render paths.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Talk Share Log",
+                "description": "Disable talk share log",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable chat room list ad",
+                "description": "Disable the chat room list ad.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable open chat room comments",
+                "description": "Adds a setting to disable comments in open chat rooms.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable verifying signature",
+                "description": "Disables the signature verification check that prevents the app from running.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable Markdown",
+                "description": "Render plain text messages with markdown-style formatting.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable reaction mention flag",
+                "description": "Enables the reaction mention flag in KakaoTalk chat logs.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable send big text",
+                "description": "Allows sending big text messages in KakaoTalk.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Force enable debug mode",
+                "description": "Enables debug mode in the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Force enable emoticon plus feature",
+                "description": "Force enable emoticon plus feature (Unpurchased emoticon can be sent once per day)",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Ghost Mode",
+                "description": "Don't expose your typing status to the other party.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide More tab Game tab",
+                "description": "Hides the Game tab from the More tab.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide More tab components",
+                "description": "Adds options to hide components from the More tab.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hook Package Manager",
+                "description": "Hooks the Package Manager to bypass integrity checks.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Open profile from open chat feed",
+                "description": "Opens open chat member profiles from join and leave feed messages.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Override feature flag",
+                "description": "Overrides the feature flag to enable the feature.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Register settings activity",
+                "description": "Registers the Morphe settings activity in the app manifest.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove BizBoard ads",
+                "description": "Removes the BizBoard ad by forcing its dimensions to 0x0 and visibility to GONE in onMeasure.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove More tab ad",
+                "description": "Removes the ad from the More tab.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove OpenLink chat room list ad",
+                "description": "Removes the OpenLink chat room list ad.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove Short-form Tab",
+                "description": "Removes the Short-form tab from the now fragment.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove feed ad",
+                "description": "Removes the feed ad from the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove focus ad",
+                "description": "Removes the focus ad from the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove native ad",
+                "description": "Removes the native ad from the app.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove shop tab",
+                "description": "Removes the shop tab from the bottom navigation bar.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Show chatroom channel ID",
+                "description": "Shows the channel ID in chatroom settings and copies it when tapping the chat side title.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Show deleted, hidden, or edited messages",
+                "description": "Allows you to see deleted, hidden, and edited message history in chat logs.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Show message read receipts",
+                "description": "Shows the members who have or have not read each chat message.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof App ID",
+                "description": "Spoofs the App ID to bypass integrity checks. (to bypass biometric auth etc.)",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof apk checksums",
+                "description": "Spoofs the apk checksums to pass integrity checks.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof signature",
+                "description": "Spoofs the app signature to pass integrity checks.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Version info patch",
+                "description": "Patches the version info to include '(ReVanced)' in the version string.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Chzzk",
+          "package": "com.navercorp.game.android.community",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Auto claim TongPow",
+                "description": "Automatically claims CHZZK TongPow rewards when they become available while watching streams.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable P2P",
+                "description": "Disables CHZZK peer-assisted grid streaming and forces CDN playback.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable ads",
+                "description": "Disables CHZZK advertisements, including live stream pre-roll, mid-roll and post-roll ads and clip feed ads.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide home banners",
+                "description": "Hides promotional banners on the CHZZK home recommend tab, including the top banner carousel and the in-feed event and image banners.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Unlock cheat key",
+                "description": "Unlocks CHZZK cheat key subscription benefits without an active subscription.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "SOOP",
+          "package": "kr.co.nowcom.mobile.afreeca",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Disable P2P",
+                "description": "Disables SOOP peer-assisted grid streaming.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove Catch ads",
+                "description": "Removes the ads inserted between clips in the Catch feed by reporting no ad slots.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove VOD ads",
+                "description": "Removes VOD pre-roll ads by reporting every stream as QuickView Plus to the player's own ad-skip check.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove banner ads",
+                "description": "Removes the VOD companion and search banner ads.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove exit dialog ad",
+                "description": "Removes the ad area shown in the app-exit confirmation dialog, keeping the dialog itself.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove intro ads",
+                "description": "Removes the image, video and cinema intro ad banners shown on launch.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove list banner ads",
+                "description": "Removes the native banner ads under the live player and in feeds by stopping their ad request, so no banner is fetched or shown.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove live ads",
+                "description": "Removes the live pre-roll ad by routing every ad decision into the app's own no-video path so the stream starts immediately.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove live banner ads",
+                "description": "Removes the banner ads shown under the live player by stopping their driver from attaching the banner fragments.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove main board ads",
+                "description": "Removes the native \"main board\" banner ad shown in feeds and under the live player.",
+                "changes": [
+                  "versions: +1 version, -1 version"
                 ]
               }
             ]
