@@ -1,69 +1,45 @@
 {
   "affected_bundles": [
     {
-      "bundle": "kondratjev",
-      "channel": "dev",
+      "bundle": "andrewliang25",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "SoundCloud",
-          "package": "com.soundcloud.android",
+          "app_name": "LINE",
+          "package": "jp.naver.line.android",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Enable SoundCloud Go",
-                "description": "Enables SoundCloud Go premium features."
+                "name": "Fix push notifications",
+                "description": "Restores push notifications on re-signed builds when LINE is fully closed. Root Mount install does not need this patch."
               }
             ],
-            "patches_removed": [
-              {
-                "name": "Enable SoundCloud Go+",
-                "description": "Enables all premium features, hides upsell UI and ads."
-              }
-            ],
-            "patches_modified": [
-              {
-                "name": "Disable analytics",
-                "description": "Disables SoundCloud's analytics.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable consent popup",
-                "description": "Disables the OneTrust consent/cookies popup on first launch.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
+            "patches_removed": [],
+            "patches_modified": []
           }
         }
       ]
     },
     {
-      "bundle": "yandex-vot",
-      "channel": "stable",
+      "bundle": "kondratjev",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "YouTube",
-          "package": "com.google.android.youtube",
+          "app_name": "Pillo",
+          "package": "xyz.rtrvr.pillo",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
+            "patches_added": [
               {
-                "name": "Voice Over Translation (Yandex)",
-                "description": "Adds an option to enable Yandex voice-over translation of video audio tracks. Requires the \"Add-on support\" patch of Morphe Patches.",
-                "changes": [
-                  "description updated",
-                  "versions: -8 versions"
-                ]
+                "name": "Pillo GmsCore support",
+                "description": "Routes Pillo Google services and legacy Google Sign-In through MicroG-RE."
               }
-            ]
+            ],
+            "patches_removed": [],
+            "patches_modified": []
           }
         }
       ]
