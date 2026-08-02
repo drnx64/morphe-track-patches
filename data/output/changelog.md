@@ -1,5 +1,28 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-08-01]
+- **UPDATED** Bundle **ajstrick81-androidtv**
+  - **NEW APP** Android (`tv.twitch.android.app`) in ajstrick81-androidtv patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
+  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
+  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+  - **UPDATED APP** SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
+- **UPDATED** Bundle **andrewliang25**
+  - **UPDATED APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
+- **UPDATED** Bundle **browzomje**
+  - **NEW APP** Easy Sudoku (`easy.sudoku.puzzle.solver.free`) in browzomje patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **jl4ctuk**
+  - **UPDATED APP** RuStore (`ru.vk.store`) in jl4ctuk patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+- **UPDATED** Bundle **okish-morphe**
+  - **NEW APP** Jetpack Joyride (`com.halfbrick.jetpackjoyride`) in okish-morphe patches
+  - **NEW APP** Swordigo (`com.touchfoo.swordigo`) in okish-morphe patches
 ## [2026-07-31]
 - **UPDATED** Bundle **ajstrick81-androidtv**
   - **UPDATED APP** Pluto (`tv.pluto.android`) in ajstrick81-androidtv patches

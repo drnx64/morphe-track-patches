@@ -1,14 +1,70 @@
 {
   "affected_bundles": [
     {
-      "bundle": "ajstrick81-androidtv",
+      "bundle": "kondratjev",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "SoundCloud",
+          "package": "com.soundcloud.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Enable SoundCloud Go",
+                "description": "Enables SoundCloud Go premium features."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Enable SoundCloud Go+",
+                "description": "Enables all premium features, hides upsell UI and ads."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Disable analytics",
+                "description": "Disables SoundCloud's analytics.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable consent popup",
+                "description": "Disables the OneTrust consent/cookies popup on first launch.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "yandex-vot",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Android",
-          "package": "tv.twitch.android.app",
-          "badge_type": "NEW APP"
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Voice Over Translation (Yandex)",
+                "description": "Adds an option to enable Yandex voice-over translation of video audio tracks. Requires the \"Add-on support\" patch of Morphe Patches.",
+                "changes": [
+                  "description updated",
+                  "versions: -8 versions"
+                ]
+              }
+            ]
+          }
         }
       ]
     }
