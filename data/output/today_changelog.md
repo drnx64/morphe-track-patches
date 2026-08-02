@@ -1,36 +1,23 @@
-## [2026-07-31]
+## [2026-08-01]
 - **UPDATED** Bundle **ajstrick81-androidtv**
-  - **UPDATED APP** Pluto (`tv.pluto.android`) in ajstrick81-androidtv patches
-- **UPDATED** Bundle **anddea**
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in anddea patches
+  - **NEW APP** Android (`tv.twitch.android.app`) in ajstrick81-androidtv patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
+  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
+  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+  - **UPDATED APP** SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
 - **UPDATED** Bundle **andrewliang25**
   - **UPDATED APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
 - **UPDATED** Bundle **browzomje**
-  - **UPDATED APP** Pinterest (`com.pinterest`) in browzomje patches
-- **NEW BUNDLE** Bundle by **d0nj** (dev, stable)
-  - **NEW APP** AI Audio Novel Reader (`com.thien.novelreader`) in d0nj patches
-- **UPDATED** Bundle **franticg33k**
-  - **NEW APP** Native Camera (`com.rawcam.app`) in franticg33k patches
-  - **REMOVED APP** OldRoll (`com.accordion.analogcam`) in franticg33k patches
-- **UPDATED** Bundle **gmaps**
-  - **UPDATED APP** Google Maps (`com.google.android.apps.maps`) in gmaps patches
-- **NEW BUNDLE** Bundle by **ikura** (dev)
-  - **NEW APP** [PRE-RELEASE] CarbitLink (`net.easyconn.carman.wws`) in ikura patches
+  - **NEW APP** Easy Sudoku (`easy.sudoku.puzzle.solver.free`) in browzomje patches
 - **UPDATED** Bundle **jasonwu1994**
   - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
-- **NEW BUNDLE** Bundle by **jl4ctuk** (dev)
-  - **NEW APP** Ozon (`ru.ozon.app.android`) in jl4ctuk patches
-  - **NEW APP** [PRE-RELEASE] Ozon Bank (`ru.ozon.fintech.finance`) in jl4ctuk patches
-  - **NEW APP** RuStore (`ru.vk.store`) in jl4ctuk patches
-- **NEW BUNDLE** Bundle by **lablazer** (dev, stable)
-  - **NEW APP** eTesty Autoškola (`cz.etesty.autoskola`) in lablazer patches
-- **UPDATED** Bundle **miguel**
-  - **UPDATED APP** Cube Solver (`com.jeffprod.cubesolver`) in miguel patches
-- **UPDATED** Bundle **morning-entree**
-  - **NEW APP** Phi Launcher (`com.launcher.hype`) in morning-entree patches
-- **NEW BUNDLE** Bundle by **morphe-nl** (dev, stable)
-  - **NEW APP** Flitsmeister (`nl.flitsmeister`) in morphe-nl patches
+- **UPDATED** Bundle **jl4ctuk**
+  - **UPDATED APP** RuStore (`ru.vk.store`) in jl4ctuk patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
 - **UPDATED** Bundle **okish-morphe**
-  - **NEW APP** Smash Hit (`com.mediocre.smashhit`) in okish-morphe patches
-- **NEW BUNDLE** Bundle by **tidal** (dev, stable)
-  - **NEW APP** TIDAL (`com.aspiro.tidal`) in tidal patches
+  - **NEW APP** Jetpack Joyride (`com.halfbrick.jetpackjoyride`) in okish-morphe patches
+  - **NEW APP** Swordigo (`com.touchfoo.swordigo`) in okish-morphe patches
