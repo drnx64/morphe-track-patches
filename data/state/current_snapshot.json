@@ -39929,37 +39929,30 @@
     "bundle": "braydog2010",
     "channel": "dev",
     "repo_url": "https://github.com/BrayDog2010/morphe-patches",
-    "created_at": "2026-06-22T23:17:46",
-    "version": "v1.1.0-dev.4",
-    "description": "## [1.1.0-dev.4](https://github.com/BrayDog2010/morphe-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-06-22)\n\n### 🐛 Bug Fixes\n\n* stop premium crash by feeding a valid subscription object ([13a2aeb](https://github.com/BrayDog2010/morphe-patches/commit/13a2aebfb20fb3655d39c5cfd016222bae7e4630))\n",
+    "created_at": "2026-08-03T03:12:45",
+    "version": "v1.0.0-dev.3",
+    "description": "## [1.0.0-dev.3](https://github.com/BrayDog2010/morphe-patches/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2026-08-03)\n\n### 🚀 Updated App Support\n\n* Add support for Venabox Hub 1.3.5 and 1.3.6 ([73eefda](https://github.com/BrayDog2010/morphe-patches/commit/73eefda0019f8a134cf27179bf57af6f32973ffe))\n",
     "apps": [
       {
         "app_name": "Venabox Hub",
         "package": "com.dubani.dub",
         "patches": [
           {
-            "name": "Block trackers",
-            "description": "Blocks analytics and tracking. The app routes every event through the util.n1 dispatcher, which forwards each one to both Firebase Analytics and Facebook (AppEventsLogger). This neutralizes that dispatcher so no tracking event is ever sent.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.3.2"
-            ]
-          },
-          {
             "name": "Premium",
-            "description": "Unlocks premium. Makes the app's session helper report a valid, active subscription so locked content and premium-only features become available, and removes ads. Note: media that the server streams and authorizes per-account may still depend on the backend honouring the account.",
+            "description": "Unlocks premium",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "1.3.2"
+              "1.3.6",
+              "1.3.5",
+              "1.3.4"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/KzYokHC_OdEP2bODUXSJVyAdBXrBcGeBP7X_tVH1O85gimaL2mVZSMukQr6ar3X61_GuhqvcGHOs9nRJ-EXu9Q"
       }
     ],
-    "fingerprint": "1dfe4b2328e7f8107a872646aaf0d01b9e840878f569d81a273b097bf65c3c61"
+    "fingerprint": "6c2c54a157a5d4f766468b16bf8e38790be80b13c666253a1cdf1bae1e496bfc"
   },
   "braydog2010:stable": {
     "bundle": "braydog2010",
@@ -52582,10 +52575,26 @@
     "bundle": "morning-entree",
     "channel": "stable",
     "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-    "created_at": "2026-07-31T15:47:39",
-    "version": "v1.6.0",
-    "description": "## [1.6.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.5.0...v1.6.0) (2026-07-31)\n\n### ✨ New Features\n\n* Added Phi Launcher ([7c622fb](https://github.com/Entree3k/Morning-Entree-Patches/commit/7c622fb7c1001e1b8770ff971dff66ce6b0ce473))\n",
+    "created_at": "2026-08-03T01:57:15",
+    "version": "v1.7.0",
+    "description": "## [1.7.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.6.0...v1.7.0) (2026-08-03)\n\n### ✨ New Features\n\n* Added Boosted and Todo Mate ([6312ee3](https://github.com/Entree3k/Morning-Entree-Patches/commit/6312ee3f4975c79523254f6089208eaf21acb4fb))\n",
     "apps": [
+      {
+        "app_name": "Boosted Productivity",
+        "package": "com.boostedproductivity.app",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Boosted Premium",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.6.21"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/rKZL4Vywl-10IfP3bD_5fLn8gh4puFe1MozH5GG_SZSfh-Hprz6lxGrluaSeXnWI7OCGB_0jUqM1mFUd_B6Yqg"
+      },
       {
         "app_name": "Panels",
         "package": "com.fossor.panels",
@@ -53615,6 +53624,22 @@
         "icon_url": ""
       },
       {
+        "app_name": "Todo Mate",
+        "package": "com.undefined.mate",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Todo Mate Premium. Use With Spoof Install Source",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.15.8"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/t7nJ7PPhv5f_ETV-Mn10dp0YW7PhF8wyerhwzkfJpRAbZVIGlTzfL-jUpBkkwliFSreAGxv9-A6Vua6AryQT4Vo"
+      },
+      {
         "app_name": "Pinnit",
         "package": "dev.sasikanth.pinnit2",
         "patches": [
@@ -53647,7 +53672,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/mwINWGvA1fZZwTzDfYgl7FTTTj-iElnsWrRCjuwnVAtR62hJyZdcHgG1SRSSi5LiBjlcKINIchP-Ut0DRWPDfQ"
       }
     ],
-    "fingerprint": "e9e6bba45f0147e21f71998a047f0b98e818c6d1994204108c78b920741cbe8e"
+    "fingerprint": "a62f6dc5f8b787595b67a946a7bc8949c105dfaf539a07e862f30111b2165099"
   },
   "proxma:stable": {
     "bundle": "proxma",
@@ -54514,9 +54539,9 @@
     "bundle": "jasonwu1994",
     "channel": "dev",
     "repo_url": "https://github.com/jasonwu1994/Gboard-patches",
-    "created_at": "2026-08-01T02:57:31",
-    "version": "v2.4.0-dev.2",
-    "description": "### ✨ New Features\n\n* **Gboard:** add the `Advanced Voice Typing` patch. See `Patches > Keyboard > Advanced Voice Typing` for the requirements to enable it.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Advanced Voice Typing` Patch；請前往 `Patches > Keyboard > Advanced Voice Typing` 查看啟用所需條件。\n",
+    "created_at": "2026-08-03T03:19:38",
+    "version": "v2.5.0-dev.1",
+    "description": "### ✨ New Features\n\n* **Gboard:** add the `Clipboard Custom Character Limit` patch, allowing you to customize the maximum character count for each text clipboard item.\n* **Gboard:** add an option to render only the first `1,000` characters on each clipboard card.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Clipboard Custom Character Limit` Patch，可自訂每個文字剪貼簿項目的最大字元數。\n* **Gboard:** 新增選項，可讓每張剪貼簿卡片僅渲染前 `1,000` 個字元。\n",
     "apps": [
       {
         "app_name": "Latin",
@@ -54543,6 +54568,15 @@
           {
             "name": "AI Writing Tools",
             "description": "啟用 AI 撰寫工具，支援所有語言\nEnable AI writing tools with support for all languages.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "17.7.7.932364120-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Clipboard Custom Character Limit",
+            "description": "自訂每個文字剪貼簿項目的最大字元數\nCustomize the maximum character count for each text clipboard item.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -54724,7 +54758,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       }
     ],
-    "fingerprint": "0f8f89708a69e7b2aa89d75979b7707eac534da00f4bb9c52e8fe1e23fac9ba6"
+    "fingerprint": "fc198adf7f322a5a6177a2eae1aea5ba7c8ea7b91c1fb638394aab8855e61b21"
   },
   "jasonwu1994:stable": {
     "bundle": "jasonwu1994",
