@@ -1,23 +1,24 @@
-## [2026-08-01]
-- **UPDATED** Bundle **ajstrick81-androidtv**
-  - **NEW APP** Android (`tv.twitch.android.app`) in ajstrick81-androidtv patches
-- **UPDATED** Bundle **amplerevanced**
-  - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
-  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
-  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
-  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
-  - **UPDATED APP** SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
+## [2026-08-02]
+- **UPDATED** Bundle **adobo**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
 - **UPDATED** Bundle **andrewliang25**
   - **UPDATED APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
-- **UPDATED** Bundle **browzomje**
-  - **NEW APP** Easy Sudoku (`easy.sudoku.puzzle.solver.free`) in browzomje patches
-- **UPDATED** Bundle **jasonwu1994**
-  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
-- **UPDATED** Bundle **jl4ctuk**
-  - **UPDATED APP** RuStore (`ru.vk.store`) in jl4ctuk patches
+- **NEW BUNDLE** Bundle by **ez4rk0** (dev, stable)
+  - **NEW APP** Sunrise Alarm: Wake-Up Light (`com.laironcorp.sunrisealarm`) in ez4rk0 patches
+- **UPDATED** Bundle **kondratjev**
+  - **UPDATED APP** Pillo (`xyz.rtrvr.pillo`) in kondratjev patches
+  - **UPDATED APP** SoundCloud (`com.soundcloud.android`) in kondratjev patches
 - **UPDATED** Bundle **morphe**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
   - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
-  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
 - **UPDATED** Bundle **okish-morphe**
-  - **NEW APP** Jetpack Joyride (`com.halfbrick.jetpackjoyride`) in okish-morphe patches
-  - **NEW APP** Swordigo (`com.touchfoo.swordigo`) in okish-morphe patches
+  - **NEW APP** Doodle Jump (`com.lima.doodlejump`) in okish-morphe patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **NEW BUNDLE** Bundle by **tiktok-lite** (stable)
+  - **NEW APP** Go (`com.zhiliaoapp.musically.go`) in tiktok-lite patches
+  - **NEW APP** TikTok (`com.zhiliaoapp.musically`) in tiktok-lite patches
+- **UPDATED** Bundle **yandex-vot**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in yandex-vot patches
+- **NEW BUNDLE** Bundle by **zarko** (dev, stable)
+  - **NEW APP** Sunrise Alarm: Wake-Up Light (`com.laironcorp.sunrisealarm`) in zarko patches
