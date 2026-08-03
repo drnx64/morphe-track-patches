@@ -1,5 +1,29 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-08-02]
+- **UPDATED** Bundle **adobo**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
+- **UPDATED** Bundle **andrewliang25**
+  - **UPDATED APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
+- **NEW BUNDLE** Bundle by **ez4rk0** (dev, stable)
+  - **NEW APP** Sunrise Alarm: Wake-Up Light (`com.laironcorp.sunrisealarm`) in ez4rk0 patches
+- **UPDATED** Bundle **kondratjev**
+  - **UPDATED APP** Pillo (`xyz.rtrvr.pillo`) in kondratjev patches
+  - **UPDATED APP** SoundCloud (`com.soundcloud.android`) in kondratjev patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **okish-morphe**
+  - **NEW APP** Doodle Jump (`com.lima.doodlejump`) in okish-morphe patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **NEW BUNDLE** Bundle by **tiktok-lite** (stable)
+  - **NEW APP** Go (`com.zhiliaoapp.musically.go`) in tiktok-lite patches
+  - **NEW APP** TikTok (`com.zhiliaoapp.musically`) in tiktok-lite patches
+- **UPDATED** Bundle **yandex-vot**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in yandex-vot patches
+- **NEW BUNDLE** Bundle by **zarko** (dev, stable)
+  - **NEW APP** Sunrise Alarm: Wake-Up Light (`com.laironcorp.sunrisealarm`) in zarko patches
 ## [2026-08-01]
 - **UPDATED** Bundle **ajstrick81-androidtv**
   - **NEW APP** Android (`tv.twitch.android.app`) in ajstrick81-androidtv patches
