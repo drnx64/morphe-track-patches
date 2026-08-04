@@ -1,8 +1,8 @@
-import { useState, useMemo, useEffect, useRef } from 'react'
+import { useState, useMemo, useEffect, useRef, useCallback } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { useDataFetching } from '../../hooks/useDataFetching'
-import { buildAppIndex, scoreAppSearch } from '../../utils/misc'
+import { buildAppIndex, scoreAppSearch, type AppIndexEntry } from '../../utils/misc'
 import { escHtml } from '../../utils/html'
 import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON, GRID_ICON } from '../../utils/svg'
 import PageShell from '../layout/PageShell'
@@ -37,7 +37,10 @@ export default function DiffPage() {
   const appParam = searchParams.get('app') || ''
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedPkg, setSelectedPkg] = useState('')
+  const [suggestedApps, setSuggestedApps] = useState<AppIndexEntry[]>([])
+  const [copied, setCopied] = useState(false)
   const lastAppliedParam = useRef<string | null>(null)
+  const suggestionsDone = useRef(false)
 
   useEffect(() => {
     if (appParam && lastAppliedParam.current !== appParam && Object.keys(state.bundles).length > 0) {
@@ -50,6 +53,21 @@ export default function DiffPage() {
     () => buildAppIndex(state.bundles, state.nameCache, state.iconCache),
     [state.bundles, state.nameCache, state.iconCache],
   )
+
+  const pickSuggestions = useCallback(() => {
+    const multi = allApps.filter((a) => a.bundles.length >= 2)
+    if (multi.length === 0) return
+    const shuffled = [...multi].sort(() => Math.random() - 0.5)
+    setSuggestedApps(shuffled.slice(0, 6))
+  }, [allApps])
+
+  useEffect(() => {
+    if (suggestionsDone.current) return
+    if (allApps.some((a) => a.bundles.length >= 2)) {
+      suggestionsDone.current = true
+      pickSuggestions()
+    }
+  }, [allApps, pickSuggestions])
 
   const filteredApps = useMemo(() => {
     if (!searchQuery.trim()) return []
@@ -112,6 +130,16 @@ export default function DiffPage() {
     setSearchParams(next, { replace: true })
   }
 
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(`${location.origin}${location.pathname}?app=${selectedPkg}`)
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 2000)
+    } catch {
+      /* clipboard unavailable */
+    }
+  }
+
   return (
     <>
       <PageShell className="diff-page-shell">
@@ -119,7 +147,11 @@ export default function DiffPage() {
           <div className="diff-header">
             <div className="diff-title-row">
               <h1 className="diff-title" id="diff-title">App Comparison</h1>
-              <Link to="/apps" className="diff-back-link" aria-label="Back to apps">
+              <Link
+                to={selectedPkg ? `/?open-app=${encodeURIComponent(selectedPkg)}` : '/'}
+                className="diff-back-link"
+                aria-label="Back to apps"
+              >
                 <span className="diff-back-arrow">&larr;</span>
                 <span>Back to Apps</span>
               </Link>
@@ -182,6 +214,38 @@ export default function DiffPage() {
                   <div className="diff-empty-icon" dangerouslySetInnerHTML={{ __html: GRID_ICON }} />
                   <p>Search for an app above to compare its version and patches across bundles.</p>
                   <p className="diff-empty-hint">{allApps.length} apps tracked across {new Set(Object.keys(state.bundles).map(k => k.replace(/:(stable|dev)$/, ''))).size} bundles.</p>
+
+                  {suggestedApps.length > 0 && (
+                    <div className="diff-suggestions">
+                      <div className="diff-suggestions-title">
+                        Apps in multiple bundles — try comparing:
+                        <button type="button" className="diff-suggestions-shuffle" onClick={pickSuggestions} title="Show different apps">
+                          Shuffle
+                        </button>
+                      </div>
+                      <div className="diff-suggestions-grid">
+                        {suggestedApps.map((a) => (
+                          <button
+                            key={a.package}
+                            type="button"
+                            className="diff-suggestion-card"
+                            onClick={() => handleSelect(a.package)}
+                          >
+                            {a.iconUrl ? (
+                              <img className="diff-suggestion-icon" src={a.iconUrl} alt="" loading="lazy" onError={(e) => { e.currentTarget.src = FALLBACK_ICON }} />
+                            ) : (
+                              <span className="diff-suggestion-icon diff-suggestion-icon-letter">{a.name.charAt(0).toUpperCase()}</span>
+                            )}
+                            <div className="diff-suggestion-info">
+                              <span className="diff-suggestion-name">{escHtml(a.name)}</span>
+                              <span className="diff-suggestion-pkg">{a.package}</span>
+                            </div>
+                            <span className="diff-suggestion-count">{a.bundles.length} bundle{a.bundles.length !== 1 ? 's' : ''}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -191,6 +255,14 @@ export default function DiffPage() {
                     <h2 className="diff-app-selected-name">{escHtml(selectedAppName)}</h2>
                     <span className="diff-app-selected-pkg">{selectedPkg}</span>
                     <span className="diff-app-bundle-count">{bundleApps.length} bundle{bundleApps.length !== 1 ? 's' : ''}</span>
+                    <button
+                      type="button"
+                      className={`diff-copy-link${copied ? ' copied' : ''}`}
+                      onClick={handleCopyLink}
+                      aria-label="Copy share link for this comparison"
+                    >
+                      {copied ? 'Link copied' : 'Copy link'}
+                    </button>
                   </div>
 
                   {bundleApps.length > 0 && ['stable', 'dev'].map((ch) => {
@@ -213,6 +285,8 @@ export default function DiffPage() {
                       }
                     }
 
+                    const patchColorMap = buildPatchColorMap(group)
+
                     return (
                       <div key={ch} className="diff-channel-group">
                         <h3 className="diff-channel-group-title">
@@ -229,6 +303,9 @@ export default function DiffPage() {
                           </span>
                           <span className="diff-legend-item">
                             <span className="diff-legend-dot diff-level-unique" /> unique to a bundle
+                          </span>
+                          <span className="diff-legend-item diff-legend-item--patch">
+                            <span className="diff-legend-dot diff-level-patch" /> shared patches are color-matched
                           </span>
                         </div>
 
@@ -278,7 +355,7 @@ export default function DiffPage() {
 
                               <div className="diff-bundle-card-row diff-bundle-card-row--patches">
                                 <span className="diff-bundle-card-label">Patches</span>
-                                <PatchBlock patches={ba.patches} pc={pc} groupSize={group.length} />
+                                <PatchBlock patches={ba.patches} pc={pc} groupSize={group.length} patchColorMap={patchColorMap} />
                               </div>
                             </div>
                           ))}
@@ -317,14 +394,48 @@ function formatFriendlyDate(dateStr: string): string {
   return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
+const PATCH_COLOR_PALETTE = [
+  '#4ade80',
+  '#60a5fa',
+  '#fbbf24',
+  '#f472b6',
+  '#a78bfa',
+  '#fb923c',
+  '#22d3ee',
+  '#f87171',
+  '#a3e635',
+  '#c084fc',
+  '#facc15',
+  '#34d399',
+  '#fca5a5',
+  '#93c5fd',
+  '#f9a8d4',
+  '#86efac',
+]
+
+function buildPatchColorMap(group: BundleAppInfo[]): Map<string, string> {
+  const names = new Set<string>()
+  for (const ba of group) {
+    for (const p of ba.patches) names.add(p.name)
+  }
+  const sorted = [...names].sort((a, b) => a.localeCompare(b))
+  const map = new Map<string, string>()
+  sorted.forEach((name, i) => {
+    map.set(name, PATCH_COLOR_PALETTE[i % PATCH_COLOR_PALETTE.length])
+  })
+  return map
+}
+
 function PatchBlock({
   patches,
   pc,
   groupSize,
+  patchColorMap,
 }: {
   patches: PatchData[]
   pc: Map<string, number>
   groupSize: number
+  patchColorMap: Map<string, string>
 }) {
   const [expanded, setExpanded] = useState(false)
   const total = patches.length
@@ -353,12 +464,13 @@ function PatchBlock({
       <ul className="diff-patch-list">
         {visible.map((p) => {
           const c = pc.get(p.name) || 0
-          const level = c === groupSize ? 'all' : c > 1 ? 'some' : 'unique'
+          const isUnique = c === 1
+          const color = isUnique ? 'var(--text-secondary)' : (patchColorMap.get(p.name) || 'rgba(255,255,255,0.35)')
           return (
-            <li key={p.name} className={`diff-patch-item diff-patch-item--${level}`}>
-              <span className="diff-patch-dot" aria-hidden="true" />
-              {escHtml(p.name)}
-              {level === 'some' && <span className="diff-patch-count">({c}/{groupSize})</span>}
+            <li key={p.name} className={`diff-patch-item${isUnique ? ' diff-patch-item--unique' : ''}`}>
+              <span className="diff-patch-dot" style={isUnique ? undefined : { backgroundColor: color }} aria-hidden="true" />
+              <span className="diff-patch-name" style={isUnique ? undefined : { color }}>{escHtml(p.name)}</span>
+              {c > 1 && c < groupSize && <span className="diff-patch-count">({c}/{groupSize})</span>}
             </li>
           )
         })}
