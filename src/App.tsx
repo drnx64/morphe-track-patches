@@ -1,10 +1,10 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import DashboardPage from './components/dashboard/DashboardPage'
 import ErrorBoundary from './components/layout/ErrorBoundary'
 import LoadingOverlay from './components/layout/LoadingOverlay'
 import Background from './components/background/Background'
 import AppsPage from './components/apps/AppsPage'
+import BundlesPage from './components/bundles/BundlesPage'
 import DiffPage from './components/diff/DiffPage'
 
 const ChangelogPage = lazy(() => import('./components/changelog/ChangelogPage'))
@@ -16,10 +16,15 @@ export default function App() {
       <LoadingOverlay />
       <Suspense fallback={null}>
         <Routes>
-          <Route path="/" element={<DashboardPage />} />
-          <Route path="/apps" element={
+          <Route path="/" element={
             <ErrorBoundary>
               <AppsPage />
+            </ErrorBoundary>
+          } />
+          <Route path="/apps" element={<Navigate to="/" replace />} />
+          <Route path="/bundles" element={
+            <ErrorBoundary>
+              <BundlesPage />
             </ErrorBoundary>
           } />
           <Route path="/changelog" element={

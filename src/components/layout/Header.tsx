@@ -3,10 +3,10 @@ import SearchBar from '../search/SearchBar'
 import SearchDropdown from '../search/SearchDropdown'
 
 const NAV_TABS: ReadonlyArray<{ to: string; label: string; end?: boolean }> = [
-  { to: '/', label: 'Main', end: true },
-  { to: '/apps', label: 'Apps' },
+  { to: '/', label: 'Apps', end: true },
   { to: '/changelog', label: 'Changelog' },
-  { to: '/diff', label: 'Diff' },
+  { to: '/bundles', label: 'Bundles' },
+  { to: '/diff', label: 'Bundle Diff' },
 ]
 
 export default function Header() {

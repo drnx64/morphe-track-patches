@@ -50,25 +50,3 @@ jobs:
           else
             echo "No changes detected. Skipping commit to main."
           fi
-
-      - name: Stage deployment files
-        run: |
-          mkdir -p publish/data
-          cp index.html publish/
-          cp changelog.html publish/
-          cp sw.js publish/
-          cp ARCHITECTURE.md publish/
-          cp -r assets/ publish/
-          cp data/core.json publish/data/ 2>/dev/null || echo "Warning: data/core.json not found"
-          cp data/stats.json publish/data/ 2>/dev/null || echo "Warning: data/stats.json not found"
-          cp data/changes.json publish/data/ 2>/dev/null || echo "Warning: data/changes.json not found"
-          cp data/bundles.json publish/data/ 2>/dev/null || echo "Warning: data/bundles.json not found"
-          cp data/changelog.json publish/data/ 2>/dev/null || echo "Warning: data/changelog.json not found"
-          cp feed.xml publish/ 2>/dev/null || echo "Warning: feed.xml not found"
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./publish
-          keep_files: false
