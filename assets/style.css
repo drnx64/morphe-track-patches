@@ -2709,6 +2709,33 @@ h1 {
     font-weight: 500;
 }
 
+.modal-bundle-select-wrap {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.modal-bundle-select {
+    font-family: var(--font-stack);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #a5b4fc;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 6px;
+    padding: 2px 8px;
+    cursor: pointer;
+    max-width: 180px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.modal-bundle-select option {
+    background: #1e1b4b;
+    color: #e0e7ff;
+    font-weight: 500;
+}
+
 .modal-channel-row {
     display: flex;
     gap: 0.35rem;
@@ -2743,6 +2770,29 @@ h1 {
     background: rgba(255, 255, 255, 0.09);
     color: var(--text-primary);
     border-color: rgba(255, 255, 255, 0.18);
+}
+
+.modal-compare-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    border-radius: 6px;
+    color: #a5b4fc;
+    font-family: var(--font-stack);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 10px;
+    text-decoration: none;
+    transition: all var(--transition-speed);
+    white-space: nowrap;
+}
+
+.modal-compare-btn:hover {
+    background: rgba(99, 102, 241, 0.2);
+    color: #c7d2fe;
+    border-color: rgba(99, 102, 241, 0.5);
 }
 
 .modal-close {
@@ -3645,29 +3695,24 @@ h1 {
 }
 .diff-patch-dot {
     flex-shrink: 0;
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: rgba(255,255,255,0.35);
     align-self: center;
 }
-.diff-patch-item--all {
-    color: #86efac;
-}
-.diff-patch-item--all .diff-patch-dot {
-    background: #4ade80;
-}
-.diff-patch-item--some {
-    color: #fde68a;
-}
-.diff-patch-item--some .diff-patch-dot {
-    background: #fbbf24;
+.diff-patch-name {
+    font-weight: 600;
 }
 .diff-patch-item--unique {
-    color: #d1d5db;
+    color: var(--text-secondary);
+    opacity: 0.75;
+}
+.diff-patch-item--unique .diff-patch-name {
+    font-weight: 400;
 }
 .diff-patch-item--unique .diff-patch-dot {
-    background: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.35);
 }
 .diff-patch-count {
     font-size: 0.65rem;
@@ -3794,6 +3839,9 @@ h1 {
 .diff-level-unique {
     background: rgba(255,255,255,0.35);
 }
+.diff-legend-item--patch .diff-level-patch {
+    background: conic-gradient(#4ade80, #60a5fa, #fbbf24, #f472b6, #a78bfa, #4ade80);
+}
 
 /* Scroll fade hint */
 .diff-table-scroll {
@@ -3848,6 +3896,26 @@ h1 {
     color: #818cf8;
     font-weight: 600;
     margin-left: auto;
+}
+.diff-copy-link {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.15s, background 0.15s;
+}
+.diff-copy-link:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.09);
+}
+.diff-copy-link.copied {
+    color: #4ade80;
+    border-color: rgba(74,222,128,0.35);
+    background: rgba(74,222,128,0.1);
 }
 
 /* Scrollable table wrapper */
@@ -3936,6 +4004,126 @@ h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* Suggestions (apps in multiple bundles) */
+.diff-suggestions {
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 720px;
+    text-align: left;
+}
+
+.diff-suggestions-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+.diff-suggestions-shuffle {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(99,102,241,0.12);
+    border: 1px solid rgba(99,102,241,0.35);
+    color: #818cf8;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: normal;
+    transition: background 0.15s;
+}
+.diff-suggestions-shuffle:hover {
+    background: rgba(99,102,241,0.22);
+}
+
+.diff-suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    gap: 0.75rem;
+}
+
+.diff-suggestion-card {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: inherit;
+    font-family: var(--font-stack);
+    text-align: left;
+    cursor: pointer;
+    min-width: 0;
+    transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.diff-suggestion-card:hover {
+    border-color: rgba(99,102,241,0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.diff-suggestion-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.diff-suggestion-icon-letter {
+    background: rgba(99,102,241,0.15);
+    color: #a5b4fc;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.diff-suggestion-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+    flex: 1;
+}
+
+.diff-suggestion-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.diff-suggestion-pkg {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.diff-suggestion-count {
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: rgba(245,158,11,0.12);
+    color: #fbbf24;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .diff-channel-tag {
@@ -4078,6 +4266,77 @@ h1 {
     background: rgba(255,255,255,0.08);
 }
 
+.apps-filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.apps-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.apps-filter-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.apps-filter-btn {
+    font-family: var(--font-stack);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 999px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.apps-filter-btn:hover {
+    background: rgba(99,102,241,0.15);
+    color: #a5b4fc;
+    border-color: rgba(99,102,241,0.4);
+}
+
+.apps-filter-btn.active {
+    background: rgba(99,102,241,0.2);
+    border-color: rgba(99,102,241,0.5);
+    color: #c7d2fe;
+}
+
+.apps-sort-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.apps-sort-select {
+    font-family: var(--font-stack);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.apps-sort-select option {
+    background: #1e1b4b;
+    color: #e0e7ff;
+}
+
 .apps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
@@ -4110,6 +4369,10 @@ h1 {
     transform: translateY(-2px);
 }
 
+.app-card {
+    cursor: pointer;
+}
+
 .app-card-main {
     display: flex;
     align-items: center;
@@ -4117,10 +4380,14 @@ h1 {
     min-width: 0;
 }
 
-.app-card-icon-link {
+.app-card-open-btn {
     flex-shrink: 0;
     display: flex;
-    text-decoration: none;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 .app-card-icon {
@@ -4148,6 +4415,7 @@ h1 {
     gap: 0.25rem;
     min-width: 0;
     flex: 1;
+    cursor: pointer;
 }
 
 .app-card-name {
@@ -4402,6 +4670,10 @@ h1 {
     padding: 0.75rem 0 1.5rem;
     animation: skeleton-shimmer 1.6s ease-in-out infinite;
     opacity: 0.7;
+}
+.apps-load-sentinel {
+    grid-column: 1 / -1;
+    height: 1px;
 }
 
 /* Changelog pagination */

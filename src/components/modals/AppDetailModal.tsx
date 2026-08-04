@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { resolveAppName, getAppIconUrl } from '../../utils/misc'
 import { idbGet, idbSet } from '../../services/indexedDB'
@@ -41,13 +42,41 @@ export default function AppDetailModal() {
       setApp(detail.app)
       setBundleName(detail.bundleName)
       setChannels(detail.channels || [])
-      setCurrentChannel('stable')
+      setCurrentChannel(detail.channels && detail.channels.length > 0 && !detail.channels.includes('stable') ? 'dev' : 'stable')
       setHistoryExpanded(false)
       setOpen(true)
     }
     window.addEventListener('open-app', handler)
     return () => window.removeEventListener('open-app', handler)
   }, [])
+
+  const bundleOptions = useMemo(() => {
+    if (!app) return []
+    const map = new Map<string, { bundleName: string; channels: string[] }>()
+    for (const key of Object.keys(state.bundles)) {
+      const bundle = state.bundles[key]
+      if ((bundle.apps || []).some((a) => a.package === app.package)) {
+        const name = key.replace(/:(stable|dev)$/, '')
+        const ch = key.endsWith(':stable') ? 'stable' : 'dev'
+        const entry = map.get(name) || { bundleName: name, channels: [] }
+        if (!entry.channels.includes(ch)) entry.channels.push(ch)
+        map.set(name, entry)
+      }
+    }
+    return [...map.values()].sort((a, b) => a.bundleName.localeCompare(b.bundleName))
+  }, [state.bundles, app?.package])
+
+  const bundleCount = useMemo(() => bundleOptions.length, [bundleOptions])
+
+  useEffect(() => {
+    if (!open || !app || bundleOptions.length === 0) return
+    if (!bundleOptions.some((b) => b.bundleName === bundleName)) {
+      const first = bundleOptions[0]
+      setBundleName(first.bundleName)
+      setChannels(first.channels)
+      setCurrentChannel(first.channels.includes('stable') ? 'stable' : 'dev')
+    }
+  }, [open, app, bundleName, bundleOptions])
 
   useEffect(() => {
     if (!app?.patch_diff) { setPatchDiff(null); return }
@@ -94,15 +123,23 @@ export default function AppDetailModal() {
 
   const hasStable = !!stableAppData
   const hasDev = !!devAppData
-  const defaultChannel: 'stable' | 'dev' = !hasStable && hasDev ? 'dev' : 'stable'
 
-  const showChannel = currentChannel === 'stable' ? stableAppData : devAppData
+  const showChannel = currentChannel === 'stable' ? (stableAppData || devAppData) : (devAppData || stableAppData)
   const showPatches = showChannel?.patches || []
 
   const repoUrl = stableBundle?.repo_url || devBundle?.repo_url || `https://github.com/${bundleName}/revanced-patches`
   const addMorpheUrl = getAddMorpheUrl(repoUrl)
 
   const hasPlayStore = !!(getAppIconUrl(app, state.iconCache))
+
+  const handleBundleChange = (name: string) => {
+    const opt = bundleOptions.find((b) => b.bundleName === name)
+    if (!opt) return
+    setBundleName(name)
+    setChannels(opt.channels)
+    setCurrentChannel(opt.channels.includes('stable') ? 'stable' : 'dev')
+    setHistoryExpanded(false)
+  }
 
   const allVersions = new Set<string>()
   for (const p of showPatches) {
@@ -135,7 +172,20 @@ export default function AppDetailModal() {
               ) : (
                 <span className="modal-pkg-link modal-pkg-link--text" id="modal-pkg-link">{app.package}</span>
               )}
-              <span className="modal-bundle-info" id="modal-bundle-info">in {bundleName}</span>
+              <span className="modal-bundle-info" id="modal-bundle-info">in</span>
+              <span className="modal-bundle-select-wrap">
+                <select
+                  className="modal-bundle-select"
+                  id="modal-bundle-select"
+                  value={bundleName}
+                  onChange={(e) => handleBundleChange(e.target.value)}
+                  aria-label="Bundle"
+                >
+                  {bundleOptions.map((b) => (
+                    <option key={b.bundleName} value={b.bundleName}>{b.bundleName}</option>
+                  ))}
+                </select>
+              </span>
             </div>
             <div className="modal-channel-row" id="modal-channel-row">
               {channels.map((ch) => (
@@ -144,6 +194,15 @@ export default function AppDetailModal() {
             </div>
           </div>
           <div className="modal-header-actions">
+            {bundleCount >= 2 && (
+              <Link
+                className="modal-compare-btn"
+                to={`/diff?app=${encodeURIComponent(app.package)}`}
+                onClick={close}
+              >
+                Compare {bundleCount} bundles
+              </Link>
+            )}
             {hasPlayStore && (
               <a className="modal-play-btn" href={getPlayStoreUrl(app.package)} target="_blank" rel="noopener">
                 Play Store
