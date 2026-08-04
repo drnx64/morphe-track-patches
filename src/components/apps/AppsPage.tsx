@@ -1,8 +1,7 @@
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useMemo, useState, useCallback, useEffect, useRef } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { useDataFetching } from '../../hooks/useDataFetching'
-import { useProgressiveCount } from '../../hooks/useProgressiveCount'
 import { buildAppIndex, scoreAppSearch, type AppIndexEntry } from '../../utils/misc'
 import { getAddMorpheUrl, getPlayStoreUrl } from '../../utils/url'
 import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON } from '../../utils/svg'
@@ -10,15 +9,53 @@ import PageShell from '../layout/PageShell'
 import Modal from '../shared/Modal'
 import ChannelBadge from '../shared/ChannelBadge'
 import { SkeletonGrid } from '../shared/Skeleton'
+import TodayUpdatesSection from '../dashboard/TodayUpdatesSection'
 import AppDetailModal from '../modals/AppDetailModal'
 import BundleDetailModal from '../modals/BundleDetailModal'
 import BundleHistoryModal from '../modals/BundleHistoryModal'
+import type { AppData } from '../../types/bundles'
+
+function findAppData(
+  bundles: Record<string, any>,
+  pkg: string,
+): { app: AppData; bundleName: string; channels: string[] } | null {
+  for (const key of Object.keys(bundles)) {
+    const bundle = bundles[key]
+    const app = (bundle.apps || []).find((a: any) => a.package === pkg)
+    if (app) {
+      const bundleName = key.replace(/:(stable|dev)$/, '')
+      const channels: string[] = []
+      if (bundles[`${bundleName}:stable`]) channels.push('stable')
+      if (bundles[`${bundleName}:dev`]) channels.push('dev')
+      return { app, bundleName, channels }
+    }
+  }
+  return null
+}
 
 export default function AppsPage() {
   const { state } = useAppContext()
   const { loading } = useDataFetching()
+  const [searchParams, setSearchParams] = useSearchParams()
   const [search, setSearch] = useState('')
+  const [bundleFilter, setBundleFilter] = useState<'all' | 'multi' | 'single'>('all')
+  const [sortBy, setSortBy] = useState<'name' | 'bundles-desc' | 'bundles-asc'>('name')
   const [chooserApp, setChooserApp] = useState<AppIndexEntry | null>(null)
+
+  const openAppParam = searchParams.get('open-app') || ''
+
+  useEffect(() => {
+    if (!openAppParam || Object.keys(state.bundles).length === 0) return
+    const found = findAppData(state.bundles, openAppParam)
+    if (found) {
+      window.dispatchEvent(
+        new CustomEvent('open-app', { detail: { app: found.app, bundleName: found.bundleName, channels: found.channels } }),
+      )
+    }
+    const next = new URLSearchParams(searchParams)
+    next.delete('open-app')
+    setSearchParams(next, { replace: true })
+  }, [openAppParam, state.bundles])
 
   const apps = useMemo(
     () => buildAppIndex(state.bundles, state.nameCache, state.iconCache),
@@ -26,15 +63,50 @@ export default function AppsPage() {
   )
 
   const filtered = useMemo(() => {
-    if (!search.trim()) return apps
-    return apps
-      .map((a) => ({ a, score: scoreAppSearch(search, a.name, a.package) }))
-      .filter((x) => x.score > 0)
-      .sort((x, y) => y.score - x.score || x.a.name.localeCompare(y.a.name))
-      .map((x) => x.a)
-  }, [apps, search])
+    let list = apps
 
-  const visibleCount = useProgressiveCount(filtered.length)
+    if (bundleFilter === 'multi') list = list.filter((a) => a.bundles.length >= 2)
+    else if (bundleFilter === 'single') list = list.filter((a) => a.bundles.length === 1)
+
+    if (search.trim()) {
+      list = list
+        .map((a) => ({ a, score: scoreAppSearch(search, a.name, a.package) }))
+        .filter((x) => x.score > 0)
+        .sort((x, y) => y.score - x.score || x.a.name.localeCompare(y.a.name))
+        .map((x) => x.a)
+    } else {
+      list = [...list].sort((x, y) => {
+        if (sortBy === 'bundles-desc') return y.bundles.length - x.bundles.length || x.name.localeCompare(y.name)
+        if (sortBy === 'bundles-asc') return x.bundles.length - y.bundles.length || x.name.localeCompare(y.name)
+        return x.name.localeCompare(y.name)
+      })
+    }
+    return list
+  }, [apps, search, bundleFilter, sortBy])
+
+  const [visibleCount, setVisibleCount] = useState(() => Math.min(24, filtered.length))
+  const sentinelRef = useRef<HTMLDivElement>(null)
+  const filteredLenRef = useRef(filtered.length)
+  filteredLenRef.current = filtered.length
+
+  useEffect(() => {
+    setVisibleCount(Math.min(24, filtered.length))
+  }, [filtered.length])
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current
+    if (!sentinel) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVisibleCount((c) => Math.min(c + 24, filteredLenRef.current))
+        }
+      },
+      { rootMargin: '400px' },
+    )
+    io.observe(sentinel)
+    return () => io.disconnect()
+  }, [filtered.length])
 
   const handleAddToMorphe = (app: AppIndexEntry) => {
     if (app.bundles.length >= 2) {
@@ -45,9 +117,18 @@ export default function AppsPage() {
     }
   }
 
+  const handleOpenApp = useCallback((app: AppIndexEntry) => {
+    const found = findAppData(state.bundles, app.package)
+    if (!found) return
+    window.dispatchEvent(
+      new CustomEvent('open-app', { detail: { app: found.app, bundleName: found.bundleName, channels: found.channels } }),
+    )
+  }, [state.bundles])
+
   return (
     <>
       <PageShell className="apps-page-shell">
+        <TodayUpdatesSection />
         <section className="apps-section" aria-labelledby="apps-heading">
           <div className="apps-header">
             <div className="apps-header-text">
@@ -77,21 +158,58 @@ export default function AppsPage() {
             )}
           </div>
 
+          <div className="apps-filter-row">
+            <div className="apps-filter-group">
+              <span className="apps-filter-label">Bundles:</span>
+              <button
+                className={`apps-filter-btn${bundleFilter === 'all' ? ' active' : ''}`}
+                onClick={() => setBundleFilter('all')}
+              >
+                All
+              </button>
+              <button
+                className={`apps-filter-btn${bundleFilter === 'multi' ? ' active' : ''}`}
+                onClick={() => setBundleFilter('multi')}
+              >
+                Multi-bundle ({apps.filter((a) => a.bundles.length >= 2).length})
+              </button>
+              <button
+                className={`apps-filter-btn${bundleFilter === 'single' ? ' active' : ''}`}
+                onClick={() => setBundleFilter('single')}
+              >
+                Single-bundle ({apps.filter((a) => a.bundles.length === 1).length})
+              </button>
+            </div>
+            <div className="apps-sort-group">
+              <label className="apps-filter-label" htmlFor="apps-sort">Sort:</label>
+              <select
+                id="apps-sort"
+                className="apps-sort-select"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+              >
+                <option value="name">Name (A–Z)</option>
+                <option value="bundles-desc">Most bundles</option>
+                <option value="bundles-asc">Fewest bundles</option>
+              </select>
+            </div>
+          </div>
+
           {loading && apps.length === 0 ? (
             <div className="apps-grid" id="apps-grid">
               <SkeletonGrid />
             </div>
           ) : filtered.length === 0 ? (
-            <div className="loading-state" id="apps-empty">No apps match &quot;{search}&quot;</div>
+            <div className="loading-state" id="apps-empty">No apps match the current filters.</div>
           ) : (
             <>
               <div className="apps-grid" id="apps-grid">
                 {filtered.slice(0, visibleCount).map((app) => (
-                  <AppCard key={app.package} app={app} onAdd={() => handleAddToMorphe(app)} />
+                  <AppCard key={app.package} app={app} onAdd={() => handleAddToMorphe(app)} onOpen={() => handleOpenApp(app)} />
                 ))}
               </div>
               {visibleCount < filtered.length && (
-                <div className="grid-loading-more" aria-hidden="true">Rendering {Math.min(visibleCount, filtered.length)} of {filtered.length} apps…</div>
+                <div ref={sentinelRef} className="apps-load-sentinel" aria-hidden="true" />
               )}
             </>
           )}
@@ -107,19 +225,26 @@ export default function AppsPage() {
   )
 }
 
-function AppCard({ app, onAdd }: { app: AppIndexEntry; onAdd: () => void }) {
+function AppCard({ app, onAdd, onOpen }: { app: AppIndexEntry; onAdd: () => void; onOpen: () => void }) {
   const playStoreUrl = getPlayStoreUrl(app.package)
   const multi = app.bundles.length >= 2
 
   return (
-    <div className="app-card" data-package={app.package}>
+    <div
+      className="app-card"
+      data-package={app.package}
+      role="button"
+      tabIndex={0}
+      aria-label={`${app.name}, ${app.bundles.length} bundle${app.bundles.length !== 1 ? 's' : ''}, open details`}
+      onClick={onOpen}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpen() } }}
+    >
       <div className="app-card-main">
-        <a
-          className="app-card-icon-link"
-          href={playStoreUrl}
-          target="_blank"
-          rel="noopener"
-          aria-label={`Open ${app.name} on Google Play`}
+        <button
+          type="button"
+          className="app-card-open-btn"
+          aria-label={`Open details for ${app.name}`}
+          onClick={(e) => { e.stopPropagation(); onOpen() }}
         >
           {app.iconUrl ? (
             <img
@@ -132,7 +257,7 @@ function AppCard({ app, onAdd }: { app: AppIndexEntry; onAdd: () => void }) {
           ) : (
             <span className="app-card-icon app-card-icon-letter">{app.name.charAt(0).toUpperCase()}</span>
           )}
-        </a>
+        </button>
         <div className="app-card-info">
           <span className="app-card-name" title={app.name}>{app.name}</span>
           <span className="app-card-pkg" title={app.package}>{app.package}</span>
@@ -152,6 +277,7 @@ function AppCard({ app, onAdd }: { app: AppIndexEntry; onAdd: () => void }) {
             rel="noopener"
             title="Open on Google Play"
             aria-label={`Open ${app.name} on Google Play`}
+            onClick={(e) => e.stopPropagation()}
           >
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
               <path d="M3.609 1.814a1.5 1.5 0 0 0-.363 1.316v17.74a1.5 1.5 0 0 0 2.213 1.321l14.99-8.87a1.5 1.5 0 0 0 0-2.598L5.46 1.604a1.5 1.5 0 0 0-1.852.21zM7.2 3.703l6.32 3.693L5.4 17.188v-13.5l1.8.015z"/>
@@ -159,7 +285,7 @@ function AppCard({ app, onAdd }: { app: AppIndexEntry; onAdd: () => void }) {
             </svg>
           </a>
         </div>
-        <button className="app-card-add" onClick={onAdd}>Add to Morphe</button>
+        <button className="app-card-add" onClick={(e) => { e.stopPropagation(); onAdd() }}>Add to Morphe</button>
       </div>
     </div>
   )
