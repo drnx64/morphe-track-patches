@@ -114,9 +114,9 @@
     "bundle": "nuviotv",
     "channel": "dev",
     "repo_url": "https://github.com/liongalahad/nuviotv-morphe-patches",
-    "created_at": "2026-08-05T09:24:12",
-    "version": "v1.0.0-dev.12",
-    "description": "## [1.0.0-dev.12](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.11...v1.0.0-dev.12) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* fetch release tags before semantic-release ([7e151f7](https://github.com/liongalahad/nuviotv-morphe-patches/commit/7e151f72a7786484912d049014080f1950ab87c3))\n* fetch semantic-release channel notes ([68ac430](https://github.com/liongalahad/nuviotv-morphe-patches/commit/68ac4302a4131d5d8a8d2f62d65d28c624c31388))\n",
+    "created_at": "2026-08-05T12:27:51",
+    "version": "v1.0.0-dev.13",
+    "description": "## [1.0.0-dev.13](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* intercept all Media3 subtitle cue groups ([c471059](https://github.com/liongalahad/nuviotv-morphe-patches/commit/c471059fa5db240437172799b41ed39b64f527f9))\n",
     "apps": [
       {
         "app_name": "NuvioTV",
@@ -145,9 +145,9 @@
       }
     ],
     "fingerprint": "01ceaa5ec4d578832f2b7309e202b321eb556eb6fb6eb9392b96a4ccd7d66364",
-    "release_notes": "## [1.0.0-dev.12](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.11...v1.0.0-dev.12) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* fetch release tags before semantic-release ([7e151f7](https://github.com/liongalahad/nuviotv-morphe-patches/commit/7e151f72a7786484912d049014080f1950ab87c3))\n* fetch semantic-release channel notes ([68ac430](https://github.com/liongalahad/nuviotv-morphe-patches/commit/68ac4302a4131d5d8a8d2f62d65d28c624c31388))\n",
-    "release_tag": "v1.0.0-dev.12",
-    "release_date": "2026-08-05T09:24:12Z"
+    "release_notes": "## [1.0.0-dev.13](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* intercept all Media3 subtitle cue groups ([c471059](https://github.com/liongalahad/nuviotv-morphe-patches/commit/c471059fa5db240437172799b41ed39b64f527f9))\n",
+    "release_tag": "v1.0.0-dev.13",
+    "release_date": "2026-08-05T12:27:51Z"
   },
   "seobject:dev": {
     "bundle": "seobject",
@@ -41513,10 +41513,54 @@
     "bundle": "stylus",
     "channel": "dev",
     "repo_url": "https://github.com/ch3thanhs/stylus",
-    "created_at": "2026-07-23T12:12:47",
-    "version": "v1.2.0-dev.1",
-    "description": "## [1.2.0-dev.1](https://github.com/ch3thanhs/stylus/compare/v1.1.0...v1.2.0-dev.1) (2026-07-23)\r\n\r\n### ✨ New Features\r\n\r\n* **reddit:** remove Stylus Reddit font patches, as they are now included in the official morphe-patches ([6cb87e3](https://github.com/ch3thanhs/stylus/commit/6cb87e3b5cc4d4d1338ae0c983dff288e4547b18))",
+    "created_at": "2026-08-05T14:52:29",
+    "version": "v1.3.0-dev.1",
+    "description": "## [1.3.0-dev.1](https://github.com/ch3thanhs/stylus/compare/v1.2.0...v1.3.0-dev.1) (2026-08-05)\n\n### ✨ New Features\n\n* **github:** add font patches ([df4b6de](https://github.com/ch3thanhs/stylus/commit/df4b6de71da56f8ae4fe7d9563260cd9c80ebb32))\n",
     "apps": [
+      {
+        "app_name": "GitHub",
+        "package": "com.github.android",
+        "patches": [
+          {
+            "name": "Custom font (GitHub)",
+            "description": "Replaces GitHub's bundled Inter and Mona Sans UI fonts with a custom font file.",
+            "use": false,
+            "options": [
+              {
+                "key": "customFontFile",
+                "description": "The file path to your font file. Tap the file picker and select it. The font file must be in TTF or OTF format. A variable font is recommended so heading and body text keep their different weights."
+              }
+            ],
+            "compatible_versions": [
+              "1.270.0"
+            ]
+          },
+          {
+            "name": "Custom monospace font (GitHub)",
+            "description": "Replaces GitHub's bundled Roboto Mono code font with a custom monospace font file.",
+            "use": false,
+            "options": [
+              {
+                "key": "customMonospaceFontFile",
+                "description": "The file path to your monospace font file. Tap the file picker and select it. The font file must be in TTF or OTF format."
+              }
+            ],
+            "compatible_versions": [
+              "1.270.0"
+            ]
+          },
+          {
+            "name": "Force system font (GitHub)",
+            "description": "Renders GitHub UI text using the device system font by overriding bundled font resources at runtime.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.270.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/nxpwi4UD84GNJuJ42S9U0f3lGDsHu8VkIDPCccFmJL6kyNVb1O3pTY1rl1YZICLBk6EcWIaX6n9prCbdUoQEOw"
+      },
       {
         "app_name": "Bitwarden",
         "package": "com.x8bit.bitwarden",
@@ -41527,6 +41571,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "2026.7.0",
               "2026.6.1"
             ]
           }
@@ -41534,10 +41579,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/ezsPZ5JtRMkMd6DtbUOZghm4m-EbYcZSzXAIxJMumYOaDP9sI8o-DN8-tZpds0HJUXb-ur7F-oB9rFH78Jy2lA"
       }
     ],
-    "fingerprint": "3bc9073211c4e69f5d9ef4e4b52130fcc7110d04d133b9515310b739544c7cb0",
-    "release_notes": "## [1.2.0-dev.1](https://github.com/ch3thanhs/stylus/compare/v1.1.0...v1.2.0-dev.1) (2026-07-23)\r\n\r\n### ✨ New Features\r\n\r\n* **reddit:** remove Stylus Reddit font patches, as they are now included in the official morphe-patches ([6cb87e3](https://github.com/ch3thanhs/stylus/commit/6cb87e3b5cc4d4d1338ae0c983dff288e4547b18))",
-    "release_tag": "v1.2.0-dev.1",
-    "release_date": "2026-07-23T12:12:47Z"
+    "fingerprint": "7b85c0f681e52d8738a248739671d8656a3a0cfc7703a92b490988d2464ad4e7",
+    "release_notes": "## [1.3.0-dev.1](https://github.com/ch3thanhs/stylus/compare/v1.2.0...v1.3.0-dev.1) (2026-08-05)\n\n### ✨ New Features\n\n* **github:** add font patches ([df4b6de](https://github.com/ch3thanhs/stylus/commit/df4b6de71da56f8ae4fe7d9563260cd9c80ebb32))\n",
+    "release_tag": "v1.3.0-dev.1",
+    "release_date": "2026-08-05T14:52:29Z"
   },
   "stylus:stable": {
     "bundle": "stylus",
@@ -46796,9 +46841,9 @@
     "bundle": "alastor-kaneki",
     "channel": "stable",
     "repo_url": "https://github.com/Alastor-Kaneki/Morphe-Patches",
-    "created_at": "2026-08-05T08:44:06",
-    "version": "v1.7.0",
-    "description": "Morphe Patches 1.7.0. Includes the Opera GX raw mod downloader and the cloneable MonkeyScript manager embedded in Chrome's app menu with Greasy Fork/Sleazy Fork browsing, installation, and userscript publishing.",
+    "created_at": "2026-08-05T10:10:49",
+    "version": "v1.7.1",
+    "description": "Morphe Patches 1.7.1. Includes the Opera GX raw mod downloader and the cloneable MonkeyScript manager embedded in Chrome's app menu with Greasy Fork/Sleazy Fork browsing, installation, and userscript publishing.",
     "apps": [
       {
         "app_name": "Opera GX",
@@ -46816,9 +46861,9 @@
       }
     ],
     "fingerprint": "f2bb2636f3005594992bbe1a6aea071441c2d27602f8673824f1cfcf31ec212d",
-    "release_notes": "Morphe Patches 1.7.0. Includes the Opera GX raw mod downloader and the cloneable MonkeyScript manager embedded in Chrome's app menu with Greasy Fork/Sleazy Fork browsing, installation, and userscript publishing.",
-    "release_tag": "v1.7.0",
-    "release_date": "2026-08-05T08:44:06Z"
+    "release_notes": "Morphe Patches 1.7.1. Includes the Opera GX raw mod downloader and the cloneable MonkeyScript manager embedded in Chrome's app menu with Greasy Fork/Sleazy Fork browsing, installation, and userscript publishing.",
+    "release_tag": "v1.7.1",
+    "release_date": "2026-08-05T10:10:49Z"
   },
   "cobalt-morphe:stable": {
     "bundle": "cobalt-morphe",
