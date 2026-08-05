@@ -113,10 +113,10 @@
   "nuviotv:dev": {
     "bundle": "nuviotv",
     "channel": "dev",
-    "repo_url": "https://github.com/liongalahad/nuviotv-patches",
-    "created_at": "2026-08-04T23:50:39",
-    "version": "v1.0.0-dev.7",
-    "description": "## [1.0.0-dev.7](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* restore full SDH annotation removal ([b498bf4](https://github.com/liongalahad/nuviotv-patches/commit/b498bf4a1292ddf9b6cace3ef9bc1611b21592ce))\n",
+    "repo_url": "https://github.com/liongalahad/nuviotv-morphe-patches",
+    "created_at": "2026-08-05T03:05:44",
+    "version": "v1.0.0-dev.10",
+    "description": "## [1.0.0-dev.10](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.9...v1.0.0-dev.10) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* stabilize SDH dialog position ([2de520b](https://github.com/liongalahad/nuviotv-morphe-patches/commit/2de520b650a2066fd4f63225d5e4ad31b60de2c4))\n",
     "apps": [
       {
         "app_name": "NuvioTV",
@@ -136,9 +136,9 @@
       }
     ],
     "fingerprint": "c24f8f16868a6a5a1d0908ea880d3ed9c10112f165f30b4ebe3d831f1229aac1",
-    "release_notes": "## [1.0.0-dev.7](https://github.com/liongalahad/nuviotv-patches/compare/v1.0.0-dev.6...v1.0.0-dev.7) (2026-08-04)\n\n### 🐛 Bug Fixes\n\n* restore full SDH annotation removal ([b498bf4](https://github.com/liongalahad/nuviotv-patches/commit/b498bf4a1292ddf9b6cace3ef9bc1611b21592ce))\n",
-    "release_tag": "v1.0.0-dev.7",
-    "release_date": "2026-08-04T23:50:39Z"
+    "release_notes": "## [1.0.0-dev.10](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.9...v1.0.0-dev.10) (2026-08-05)\n\n### 🐛 Bug Fixes\n\n* stabilize SDH dialog position ([2de520b](https://github.com/liongalahad/nuviotv-morphe-patches/commit/2de520b650a2066fd4f63225d5e4ad31b60de2c4))\n",
+    "release_tag": "v1.0.0-dev.10",
+    "release_date": "2026-08-05T03:05:44Z"
   },
   "seobject:dev": {
     "bundle": "seobject",
@@ -33371,6 +33371,262 @@
     "release_notes": "# [1.4.0](https://github.com/wchill/patcheddit/compare/v1.3.1...v1.4.0) (2026-04-07)\n\n\n### Bug Fixes\n\n* Don't show fake premium patch for reddit is fun golden platinum ([15d372e](https://github.com/wchill/patcheddit/commit/15d372e09cd36252483cf468a7d0a09188d2d4d1))\n* Make /r/all patch available ([9740e3d](https://github.com/wchill/patcheddit/commit/9740e3d2ba1c67ae5ba7247f992f3724e8837dbe))\n* reddit is fun imgur album loading ([66c73c9](https://github.com/wchill/patcheddit/commit/66c73c969acbbfa038d52cd020533eb39f95f224))\n\n\n### Features\n\n* /r/all patch for Boost ([60b8743](https://github.com/wchill/patcheddit/commit/60b8743b6fe47aea55fe10d87124b416d692c355))\n* Add experimental patch to help resolve some login issues ([3a1025e](https://github.com/wchill/patcheddit/commit/3a1025e0370e9d7f5f5f0c8a5f4202e81f434979))\n\n\n\n",
     "release_tag": "v1.4.0",
     "release_date": "2026-04-07T19:10:56Z"
+  },
+  "hu-liberator:dev": {
+    "bundle": "hu-liberator",
+    "channel": "dev",
+    "repo_url": "https://github.com/hu-liberator/patches",
+    "created_at": "2026-08-04T20:41:32",
+    "version": "v1.0.0-dev.1",
+    "description": "## 1.0.0-dev.1 (2026-08-04)\n\n### ✨ New Features\n\n* add mav and idokep patches ([9ce1b7c](https://github.com/hu-liberator/patches/commit/9ce1b7cd04cef89c9768ff3a1832ca6ed2e16b61))\n",
+    "apps": [
+      {
+        "app_name": "Időkép",
+        "package": "hu.idokep.idokep",
+        "patches": [
+          {
+            "name": "Remove idokep ads",
+            "description": "Removes ads from the idokep app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.3.7",
+              "1.0.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/2pGYWvo1jMsKQUdZ6VEYvcFQkOnFU1PuM6PDUKh8_cujx8gwwqXTLu6rE0L00-NR9AJHMCHxZQoHqXAY63Ql8A"
+      },
+      {
+        "app_name": "MÁVPlusz",
+        "package": "hu.mav.emmapp",
+        "patches": [
+          {
+            "name": "Disable broadcast receiver security check",
+            "description": "Removes SecurityException throws gating a BroadcastReceiver's onReceive, which fail when the broadcast sender isn't verified as the real Play Store.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable certificate pinning",
+            "description": "Prevents the app's OkHttp CertificatePinner from ever being installed, allowing HTTPS traffic to be intercepted (e.g. by a proxy) for analysis.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Firebase Crashlytics",
+            "description": "Adds the official firebase_crashlytics_collection_enabled=false manifest flag, disabling all crash/log reporting to Firebase Crashlytics at SDK init.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Pairip license check",
+            "description": "Prevents the Pairip-injected Application class from binding to the Play Store licensing service, which would otherwise redirect to / force-close for a side-loaded APK.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Play Integrity failure crash",
+            "description": "Prevents SecurityException when the Play Integrity API call itself fails (APP_NOT_INSTALLED / APP_UID_MISMATCH), as happens for side-loaded APKs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Play Integrity gating flag wait",
+            "description": "Stops the startup coroutine from waiting forever on a Remote-Config-backed flag to decide whether to run the Play Integrity flow, by always treating it as disabled.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Play Integrity token request",
+            "description": "Makes the Play Integrity token request always fail immediately with an unclassified exception, so the app treats it as gracefully unavailable and continues initialization instead of getting stuck on a Play-Store-required gate.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Play Integrity verdict validation",
+            "description": "Removes client-side SecurityException throws that reject unlicensed/unattested/unrecognized Play Integrity verdicts, without touching unrelated code sharing the same method.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable StoreLogs telemetry",
+            "description": "Prevents the app from uploading queued client-side log entries to its own backend telemetry endpoint (.../Log/StoreLogs).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Trust user-installed certificates",
+            "description": "Adds a user certificate trust anchor to the network security config, so a MITM proxy's installed CA is accepted (this is separate from and in addition to disabling OkHttp's code-level certificate pinning).",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/gFU2tl4AA0dXCUNA9oEKtyzKz27zPnPZD94mVsVayU80Bqg6bTSzQR64Q7F8SzoszeDFZ9DhDKk3VW7yOykbZg"
+      }
+    ],
+    "fingerprint": "b36cebb5dea8f11853ffc90b08cd330cb3dc075243f68785cbd2aa5cea32954a",
+    "release_notes": "## 1.0.0-dev.1 (2026-08-04)\n\n### ✨ New Features\n\n* add mav and idokep patches ([9ce1b7c](https://github.com/hu-liberator/patches/commit/9ce1b7cd04cef89c9768ff3a1832ca6ed2e16b61))\n",
+    "release_tag": "v1.0.0-dev.1",
+    "release_date": "2026-08-04T20:41:32Z"
+  },
+  "hu-liberator:stable": {
+    "bundle": "hu-liberator",
+    "channel": "stable",
+    "repo_url": "https://github.com/hu-liberator/patches",
+    "created_at": "2026-08-04T20:36:22",
+    "version": "v1.0.0",
+    "description": "## 1.0.0 (2026-08-04)\n\n### ✨ New Features\n\n* add mav and idokep patches ([9ce1b7c](https://github.com/hu-liberator/patches/commit/9ce1b7cd04cef89c9768ff3a1832ca6ed2e16b61))\n",
+    "apps": [
+      {
+        "app_name": "Időkép",
+        "package": "hu.idokep.idokep",
+        "patches": [
+          {
+            "name": "Remove idokep ads",
+            "description": "Removes ads from the idokep app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.3.7",
+              "1.0.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/2pGYWvo1jMsKQUdZ6VEYvcFQkOnFU1PuM6PDUKh8_cujx8gwwqXTLu6rE0L00-NR9AJHMCHxZQoHqXAY63Ql8A"
+      },
+      {
+        "app_name": "MÁVPlusz",
+        "package": "hu.mav.emmapp",
+        "patches": [
+          {
+            "name": "Disable broadcast receiver security check",
+            "description": "Removes SecurityException throws gating a BroadcastReceiver's onReceive, which fail when the broadcast sender isn't verified as the real Play Store.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable certificate pinning",
+            "description": "Prevents the app's OkHttp CertificatePinner from ever being installed, allowing HTTPS traffic to be intercepted (e.g. by a proxy) for analysis.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Firebase Crashlytics",
+            "description": "Adds the official firebase_crashlytics_collection_enabled=false manifest flag, disabling all crash/log reporting to Firebase Crashlytics at SDK init.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Pairip license check",
+            "description": "Prevents the Pairip-injected Application class from binding to the Play Store licensing service, which would otherwise redirect to / force-close for a side-loaded APK.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Play Integrity failure crash",
+            "description": "Prevents SecurityException when the Play Integrity API call itself fails (APP_NOT_INSTALLED / APP_UID_MISMATCH), as happens for side-loaded APKs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Play Integrity gating flag wait",
+            "description": "Stops the startup coroutine from waiting forever on a Remote-Config-backed flag to decide whether to run the Play Integrity flow, by always treating it as disabled.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Play Integrity token request",
+            "description": "Makes the Play Integrity token request always fail immediately with an unclassified exception, so the app treats it as gracefully unavailable and continues initialization instead of getting stuck on a Play-Store-required gate.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable Play Integrity verdict validation",
+            "description": "Removes client-side SecurityException throws that reject unlicensed/unattested/unrecognized Play Integrity verdicts, without touching unrelated code sharing the same method.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Disable StoreLogs telemetry",
+            "description": "Prevents the app from uploading queued client-side log entries to its own backend telemetry endpoint (.../Log/StoreLogs).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          },
+          {
+            "name": "Trust user-installed certificates",
+            "description": "Adds a user certificate trust anchor to the network security config, so a MITM proxy's installed CA is accepted (this is separate from and in addition to disabling OkHttp's code-level certificate pinning).",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.4.19-prod"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/gFU2tl4AA0dXCUNA9oEKtyzKz27zPnPZD94mVsVayU80Bqg6bTSzQR64Q7F8SzoszeDFZ9DhDKk3VW7yOykbZg"
+      }
+    ],
+    "fingerprint": "575b7f77f7a6b24f3acd699db9c2933ef9a9e852ec53a37bacfbcebef3fef2b5",
+    "release_notes": "## 1.0.0 (2026-08-04)\n\n### ✨ New Features\n\n* add mav and idokep patches ([9ce1b7c](https://github.com/hu-liberator/patches/commit/9ce1b7cd04cef89c9768ff3a1832ca6ed2e16b61))\n",
+    "release_tag": "v1.0.0",
+    "release_date": "2026-08-04T20:36:22Z"
   },
   "chirag127:stable": {
     "bundle": "chirag127",
