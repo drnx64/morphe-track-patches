@@ -1,38 +1,35 @@
 {
   "affected_bundles": [
     {
-      "bundle": "anddea",
-      "channel": "dev",
+      "bundle": "petalmaps-androidauto",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "YouTube Music",
-          "package": "com.google.android.apps.youtube.music",
+          "app_name": "Petal Maps",
+          "package": "com.huawei.maps.app",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Third-party lyrics",
-                "description": "Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          }
-        },
-        {
-          "app_name": "YouTube",
-          "package": "com.google.android.youtube",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Custom DPI",
-                "description": "Forces a higher display density for this app only, so the whole UI scales up without changing system density."
+                "name": "Android Auto Manifest",
+                "description": "Adds the Android Auto CarAppService declaration, meta-data, and permissions to AndroidManifest.xml."
               },
               {
-                "name": "Playback in feeds",
-                "description": "Adds the 'Playback in feeds' setting of YouTube to the RVX settings, where it is always available even if YouTube hides it."
+                "name": "Android Auto Resources",
+                "description": "Adds the automotive_app_desc.xml resource required by Android Auto."
+              },
+              {
+                "name": "Android Auto allowlist (root)",
+                "description": "Registers the app in Android Auto's allowlist on startup when root is available; no-op without root."
+              },
+              {
+                "name": "Change package name",
+                "description": "Changes the package name from com.huawei.maps.app to morphe.huawei.petal.maps by default, allowing the patched app to coexist with the original. Changing the package name can lead to unexpected issues."
+              },
+              {
+                "name": "Huawei login fix",
+                "description": "Forces the Account Picker sign-in flow with WebView fallback, fixing login on devices without HMS Core."
               }
             ],
             "patches_removed": [],
@@ -56,72 +53,9 @@
             "patches_modified": [
               {
                 "name": "Ad Removal",
-                "description": "Removes all ad displays: navigation bar banner, native feed ads, live streaming banner ads, live square ads, conversation Google ads, marriage guide card, four-select-one card, daily selection card, visitor list ads",
+                "description": "Removes all ad displays: navigation bar banner, native feed ads, live streaming banner ads, live video feed ads, live square ads, conversation Google ads, marriage guide card, four-select-one card, daily selection card, visitor list ads, likers ads, meet likers ads, meet visitor ads",
                 "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Analytics Disable",
-                "description": "Disables all analytics, telemetry, and device fingerprinting for privacy",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Dialog Cleanup",
-                "description": "Removes annoying promotional dialogs: 5-star rating, appstore rating, version upgrade, offline popup, notification permission, phone auth prompts, purchase pages",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "GMS Compatibility",
-                "description": "Makes Google Maps and GMS-dependent features work in re-signed APKs. Includes signature spoofing, auth header fixes, MicroG support, and GMS availability bypass.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Live Streaming Enhancement",
-                "description": "Live streaming enhancement: push limit bypass, swipe card unlimited, chat rate limit removal, voice game access, all-day PK battles, gift leaderboard, knight privileges, entrance limits, permission control, daily payment, noble config, stealth privacy, video chat, voice features, monetization, game operations, star toggle",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Messaging Enhancement",
-                "description": "Removes message limits, unlimited pin chat, voice/video calls, quick chat, typing indicator, free gifts, letter, greeting, ice breaker, read receipts, AI translation, message recall, group chat, live chat, message filter, chat partner config, ODiamond visitor config, prologue config, love buzz data, secret crush limit, boost limit",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Premium Unlock",
-                "description": "Unlocks all premium features, tier statuses, subscription validation, and display",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Privacy Controls",
-                "description": "Unlocks privacy features: hide from nearby, visitor footprint hiding, mysterious mode, nearby people access, read receipt unlock, read receipt dialog suppression, contact access block, location privacy, privacy settings force enable, hide activity time, hide age, hide icon, frozen activity, frozen time, hide distance, core service privacy gate, hide active from SVip, disable ad suggestions, live stealth privacy, online status visibility, hide VIP badge, heartbeat disable, verified user messages, online reminder, unreplied reminder, greeting do not disturb, only show about me inside",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Privacy Enhancement",
-                "description": "Advanced privacy protections: root/emulator detection bypass, ShuMeng SDK blocking, Facebook SDK emulator detection bypass, APK signature verification bypass, package enumeration prevention",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "UI Cleanup",
-                "description": "Removes guides, banners, stickers, decorations, and AI prompts",
-                "changes": [
-                  "versions: +1 version, -1 version"
+                  "description updated"
                 ]
               }
             ]
@@ -130,156 +64,133 @@
       ]
     },
     {
-      "bundle": "adobo",
+      "bundle": "xob0t",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Reddit",
-          "package": "com.reddit.frontpage",
+          "app_name": "Avito",
+          "package": "com.avito.android",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Colorize comment indent lines",
-                "description": "Replaces the default gray comment indent lines with color-coded lines.",
+                "name": "AMOLED dark theme",
+                "description": "Makes dark-theme page, app navigation and system bars pure black (AMOLED) while keeping elevated cards, sheets and controls gray so their boundaries remain visible.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable bottom navigation bar auto-hide",
-                "description": "Prevents the bottom navigation bar from hiding when scrolling down.",
+                "name": "Block listings",
+                "description": "Hides Avito offers from blacklisted adverts or sellers and adds a blacklist manager (import/export compatible with the Ave Blacklist extension).",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable home feed auto-refresh",
-                "description": "Disables the automatic refresh of the home feed after viewing a post or after being away from the app.",
+                "name": "Disable telemetry",
+                "description": "Disables Avito first-party clickstream analytics and Avito's direct Adjust telemetry wrapper.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable home feed swipe",
-                "description": "Disables the horizontal page swipe gesture used to switch feeds.",
+                "name": "Disable update prompts",
+                "description": "Prevents Avito's force-update screen opener from launching update screens. Toggleable in Настройки Morphe.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable home screen redirect",
-                "description": "Disables the automatic redirect to the home screen after being away from the app or returning from the background.",
+                "name": "Hide professional sellers",
+                "description": "Adds a maximum seller review count to Avito search filters and hides or dims offers from sellers above that limit.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable post detail swipe",
-                "description": "Disables the horizontal swipe gesture used to navigate between posts.",
+                "name": "Morphe settings",
+                "description": "Adds a \"Настройки Morphe\" entry to Avito's settings that hosts the configuration for the other Morphe patches.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable screenshot banner",
-                "description": "Disables the banner that shows up after taking a screenshot.",
+                "name": "Remove ads",
+                "description": "Disables Avito ads by removing ad SDK entry points and short-circuiting commercial banner loading.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Hide Ask button from search bar",
-                "description": "Hides the Ask button (Reddit Answers) from the search bar.",
+                "name": "UI tweaks",
+                "description": "Optional interface tweaks, each toggleable in Настройки Morphe: single-row home categories, hide the \"Подписки\" tab in Избранное, hide installments (Рассрочка) and the \"Спросите у продавца\" block on offers, expand descriptions by default (no \"Читать далее\"), hide offer recommendations, hide profile raffle, referral and Avito Pro promos, and hide the Avi assistant tab in the bottom navigation.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "TBank",
+          "package": "com.idamob.tinkoff.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Bypass anti-tamper",
+                "description": "Stubs TBank's native RASP executor calls and neutralizes tamper flag reporting.",
+                "changes": [
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Hide awards",
-                "description": "Hides the awards on Reddit posts and comments.",
+                "name": "Remove TBank ads",
+                "description": "Removes TBank stories and promotional surfaces.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
-              },
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Wildberries",
+          "package": "com.wildberries.ru",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
               {
-                "name": "Hide community highlights",
-                "description": "Hides the community highlights section.",
+                "name": "Remove Wildberries ads",
+                "description": "Removes Wildberries home banners, grid banners, profile banners, promo headers, product recommendations, and lottery popups.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +2 versions"
                 ]
-              },
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Ozon",
+          "package": "ru.ozon.app.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
               {
-                "name": "Hide community menu badge",
-                "description": "Hides the red notification badge on the community menu (hamburger menu).",
+                "name": "Remove Ozon ads",
+                "description": "Removes Ozon ad widgets, banner carousels, video ads, and PDP promo blocks.",
                 "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide post view counts",
-                "description": "Removes the \"views\" indicator from the post metadata.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide prominent search bar",
-                "description": "Hides the new prominent search bar on the main screen. Applicable only to version 2026.24.0 and earlier.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide share count",
-                "description": "Hides the share count on Reddit posts.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide upvote scores",
-                "description": "Hides the scores on Reddit posts and comments.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide user community badges",
-                "description": "Hides the user community badges on Reddit comments.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide user flairs",
-                "description": "Hides the user flairs on Reddit comments.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Open external links directly",
-                "description": "Opens external links directly without going through out.reddit.com.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Remove ads and telemetry",
-                "description": "Removes ads and telemetry everywhere.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Sanitize share links",
-                "description": "Unshortens and removes the tracking query parameters from shared links.",
-                "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               }
             ]
