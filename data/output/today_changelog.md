@@ -1,19 +1,22 @@
-## [2026-08-04]
-- **NEW BUNDLE** Bundle by **alastor-kaneki** (stable)
-  - **NEW APP** Opera GX (`com.opera.gx`) in alastor-kaneki patches
-- **UPDATED** Bundle **amplerevanced**
-  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
-- **UPDATED** Bundle **franticg33k**
-  - **UPDATED APP** Karobar (`com.bytecaretech.merokarobar`) in franticg33k patches
-- **UPDATED** Bundle **jasonwu1994**
-  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
-- **UPDATED** Bundle **morning-entree**
-  - **NEW APP** Listy (`pro.listy`) in morning-entree patches
-  - **NEW APP** Super Status Bar (`com.tombayley.statusbar`) in morning-entree patches
-  - **NEW APP** Volume Styles (`com.tombayley.volumepanel`) in morning-entree patches
-- **NEW BUNDLE** Bundle by **niconico-yt** (stable)
-  - **NEW APP** YouTube (`com.google.android.youtube`) in niconico-yt patches
-- **NEW BUNDLE** Bundle by **nuviotv** (dev)
-  - **NEW APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
-- **UPDATED** Bundle **xob0t**
-  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
+## [2026-08-05]
+- **NEW BUNDLE** Bundle by **dexnis** (dev, stable)
+  - **NEW APP** IDOS (`cz.mafra.jizdnirady`) in dexnis patches
+- **NEW BUNDLE** Bundle by **goldrift** (dev, stable)
+  - **NEW APP** Strong (`io.strongapp.strong`) in goldrift patches
+- **NEW BUNDLE** Bundle by **hu-liberator** (dev, stable)
+  - **NEW APP** Időkép (`hu.idokep.idokep`) in hu-liberator patches
+  - **NEW APP** MÁVPlusz (`hu.mav.emmapp`) in hu-liberator patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **nuviotv**
+  - **UPDATED APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
+- **UPDATED** Bundle **rookieenough**
+  - **UPDATED APP** Messenger (`com.facebook.orca`) in rookieenough patches
+  - **UPDATED APP** Mp3 (`com.amazon.mp3`) in rookieenough patches
+- **NEW BUNDLE** Bundle by **roundsalmon4** (stable)
+  - **NEW APP** SeriesGuide (`com.battlelancer.seriesguide`) in roundsalmon4 patches
+- **UPDATED** Bundle **stylus**
+  - **UPDATED APP** Bitwarden (`com.x8bit.bitwarden`) in stylus patches
+  - **NEW APP** GitHub (`com.github.android`) in stylus patches
+- **UPDATED** Bundle **zpatches**
+  - **UPDATED APP** Lyon (`com.jcdecaux.vls.lyon`) in zpatches patches
