@@ -116,6 +116,40 @@ export async function idbGetMany<T>(keys: string[]): Promise<Map<string, T>> {
   return result || map
 }
 
+export async function idbKeys(prefix = ''): Promise<string[]> {
+  const result = await withStore<string[]>('readonly', (store) => {
+    return new Promise<string[]>((resolve) => {
+      const keys: string[] = []
+      const req = store.openCursor()
+      req.onsuccess = () => {
+        const cur = req.result
+        if (cur) {
+          const key = String(cur.key)
+          if (!prefix || key.startsWith(prefix)) keys.push(key)
+          cur.continue()
+        } else {
+          resolve(keys)
+        }
+      }
+      req.onerror = () => resolve(keys)
+    })
+  })
+  return result || []
+}
+
+export async function idbDeleteMany(keys: string[]): Promise<void> {
+  if (!keys.length) return
+  try {
+    const db = await openDB()
+    const tx = db.transaction(STORE_NAME, 'readwrite')
+    const store = tx.objectStore(STORE_NAME)
+    for (const k of keys) store.delete(k)
+    await txDone(tx)
+  } catch (err) {
+    log(`idbDeleteMany exception: ${err}`)
+  }
+}
+
 export async function clearAllCaches(): Promise<void> {
   log('clearAllCaches')
   try {

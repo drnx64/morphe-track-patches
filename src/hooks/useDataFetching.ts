@@ -19,6 +19,7 @@ import {
   fetchNameCache,
 } from '../services/fetchData'
 import { preloadIcons } from '../services/iconCache'
+import { notifyWatchedUpdates } from '../services/watchlist'
 import { CACHE_KEYS } from '../types/utils'
 import type { ChangelogEntry } from '../types/changelog'
 
@@ -148,6 +149,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   dispatch({ type: 'SET_BUNDLES', payload: bundles })
   dispatch({ type: 'SET_STATS', payload: stats || null })
   dispatch({ type: 'SET_CHANGES', payload: changes || null })
+  notifyWatchedUpdates(changes)
   dispatch({ type: 'SET_CHANGELOG', payload: cl })
   dispatch({ type: 'SET_METADATA', payload: { liveDataDate: core?.date || '', lastChecked } })
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 95 })
@@ -194,6 +196,7 @@ export function useDataFetching() {
         dispatch({ type: 'SET_BUNDLES', payload: d.bundles || {} })
         dispatch({ type: 'SET_STATS', payload: d.stats || null })
         dispatch({ type: 'SET_CHANGES', payload: d.changes || null })
+        notifyWatchedUpdates(d.changes)
         dispatch({ type: 'SET_CHANGELOG', payload: (c as ChangelogEntry[]) || [] })
         dispatch({
           type: 'SET_METADATA',

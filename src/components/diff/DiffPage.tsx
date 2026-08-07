@@ -9,6 +9,7 @@ import PageShell from '../layout/PageShell'
 import AppDetailModal from '../modals/AppDetailModal'
 import BundleDetailModal from '../modals/BundleDetailModal'
 import BundleHistoryModal from '../modals/BundleHistoryModal'
+import { usePageMeta } from '../../hooks/usePageMeta'
 import type { PatchData } from '../../types/bundles'
 
 interface BundleAppInfo {
@@ -33,6 +34,10 @@ function getAppVersions(patches: PatchData[]): string[] {
 export default function DiffPage() {
   const { state } = useAppContext()
   const { loading } = useDataFetching()
+  usePageMeta(
+    'Bundle Diff',
+    'Compare an app\'s version and patches across Morphe patch bundles.',
+  )
   const [searchParams, setSearchParams] = useSearchParams()
   const appParam = searchParams.get('app') || ''
   const [searchQuery, setSearchQuery] = useState('')

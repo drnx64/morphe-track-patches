@@ -1,8 +1,8 @@
-import { useMemo, useCallback } from 'react'
+import { useMemo, useCallback, useEffect, useState } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { formatFriendlyDate } from '../../utils/format'
 import { getAppIconUrl, groupAffectedBundles, resolveAppName } from '../../utils/misc'
-import { getCachedIconDataUrl } from '../../services/iconCache'
+import { getCachedIconDataUrl, preloadIconsFromPackages } from '../../services/iconCache'
 import { getAuthorLink } from '../../utils/url'
 import { escHtml } from '../../utils/html'
 import { FALLBACK_ICON } from '../../utils/svg'
@@ -128,10 +128,27 @@ function renderChanges(changes: { affected_bundles?: any[] } | null, bundles: Re
 
 export default function TodayUpdatesSection() {
   const { state } = useAppContext()
+  const [iconTick, setIconTick] = useState(0)
+
+  useEffect(() => {
+    if (!state.changes?.affected_bundles?.length) return
+    const pkgs = new Set<string>()
+    for (const ab of state.changes.affected_bundles) {
+      for (const a of ab.apps || []) {
+        if (a.package) pkgs.add(a.package)
+      }
+    }
+    if (pkgs.size === 0) return
+    let cancelled = false
+    preloadIconsFromPackages([...pkgs], state.iconCache).then(() => {
+      if (!cancelled) setIconTick((n) => n + 1)
+    }).catch(() => {})
+    return () => { cancelled = true }
+  }, [state.changes, state.iconCache])
 
   const changesHtml = useMemo(() =>
     renderChanges(state.changes, state.bundles, state.iconCache, state.nameCache, state.liveDataDate, state.lastChecked).html,
-    [state.changes, state.bundles, state.iconCache, state.nameCache, state.liveDataDate, state.lastChecked]
+    [state.changes, state.bundles, state.iconCache, state.nameCache, state.liveDataDate, state.lastChecked, iconTick]
   )
 
   const handleClick = useCallback((e: React.MouseEvent) => {
@@ -163,7 +180,7 @@ export default function TodayUpdatesSection() {
     }
   }, [state.bundles])
 
-  if (state.loading && Object.keys(state.bundles).length === 0) {
+  if (state.changes === null) {
     return (
       <section className="today-updates-section" aria-labelledby="updates-title-heading">
         <div className="updates-card">

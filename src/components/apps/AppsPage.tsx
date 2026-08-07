@@ -2,6 +2,7 @@ import { useMemo, useState, useCallback, useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { useDataFetching } from '../../hooks/useDataFetching'
+import { usePageMeta } from '../../hooks/usePageMeta'
 import { buildAppIndex, scoreAppSearch, type AppIndexEntry } from '../../utils/misc'
 import { getAddMorpheUrl, getPlayStoreUrl } from '../../utils/url'
 import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON } from '../../utils/svg'
@@ -36,6 +37,10 @@ function findAppData(
 export default function AppsPage() {
   const { state } = useAppContext()
   const { loading } = useDataFetching()
+  usePageMeta(
+    'Apps',
+    'Browse every app supported by tracked Morphe patch bundles and add patch sources to Morphe with one tap.',
+  )
   const [searchParams, setSearchParams] = useSearchParams()
   const [search, setSearch] = useState('')
   const [bundleFilter, setBundleFilter] = useState<'all' | 'multi' | 'single'>('all')
