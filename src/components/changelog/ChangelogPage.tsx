@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { useDataFetching } from '../../hooks/useDataFetching'
 import { formatFriendlyDate } from '../../utils/format'
@@ -9,7 +9,9 @@ import ScanInfoSection from '../dashboard/ScanInfoSection'
 import AppDetailModal from '../modals/AppDetailModal'
 import BundleDetailModal from '../modals/BundleDetailModal'
 import BundleHistoryModal from '../modals/BundleHistoryModal'
-import { getCachedIconDataUrl } from '../../services/iconCache'
+import { getCachedIconDataUrl, preloadIconsFromPackages } from '../../services/iconCache'
+import { usePageMeta } from '../../hooks/usePageMeta'
+import { useLastVisit } from '../../hooks/useLastVisit'
 import ChannelBadge from '../shared/ChannelBadge'
 import { SkeletonChangelog } from '../shared/Skeleton'
 import type { ChangelogEntry } from '../../types/changelog'
@@ -17,11 +19,17 @@ import type { ChangelogEntry } from '../../types/changelog'
 export default function ChangelogPage() {
   const { state, dispatch } = useAppContext()
   const { loading } = useDataFetching()
+  usePageMeta(
+    'Changelog',
+    'Historical changelog of Morphe patch bundle updates across stable and dev channels.',
+  )
+  const { isNew: isNewDay } = useLastVisit()
 
   const changelog = state.changelog
   const viewMode = state.changelogViewMode
   const PAGE_SIZE = 10
   const [page, setPage] = useState(0)
+  const [, setIconTick] = useState(0)
 
   const totalPages = Math.max(1, Math.ceil(changelog.length / PAGE_SIZE))
   const safePage = Math.min(page, totalPages - 1)
@@ -30,6 +38,24 @@ export default function ChangelogPage() {
     () => changelog.slice(safePage * PAGE_SIZE, (safePage + 1) * PAGE_SIZE),
     [changelog, safePage, PAGE_SIZE],
   )
+
+  useEffect(() => {
+    if (pageItems.length === 0) return
+    const pkgs = new Set<string>()
+    for (const day of pageItems) {
+      for (const bundle of day.affected_bundles || []) {
+        for (const app of bundle.apps || []) {
+          if (app.package) pkgs.add(app.package)
+        }
+      }
+    }
+    if (pkgs.size === 0) return
+    let cancelled = false
+    preloadIconsFromPackages([...pkgs], state.iconCache).then(() => {
+      if (!cancelled) setIconTick((n) => n + 1)
+    }).catch(() => {})
+    return () => { cancelled = true }
+  }, [pageItems, state.iconCache])
 
   if (loading && changelog.length === 0) {
     return (
@@ -79,7 +105,7 @@ export default function ChangelogPage() {
               <div className="loading-state">No changelog entries found.</div>
             ) : (
               pageItems.map((day, idx) => (
-                <DayCard key={day.date} day={day} scanIndex={changelog.length - (safePage * PAGE_SIZE) - idx} />
+                <DayCard key={day.date} day={day} scanIndex={changelog.length - (safePage * PAGE_SIZE) - idx} isNew={isNewDay(day.date)} />
               ))
             )}
           </div>
@@ -118,7 +144,7 @@ export default function ChangelogPage() {
   )
 }
 
-function DayCard({ day, scanIndex }: { day: ChangelogEntry; scanIndex: number }) {
+function DayCard({ day, scanIndex, isNew }: { day: ChangelogEntry; scanIndex: number; isNew: boolean }) {
   const { state } = useAppContext()
   const grouped = groupAffectedBundles(day.affected_bundles || [])
 
@@ -236,6 +262,7 @@ function DayCard({ day, scanIndex }: { day: ChangelogEntry; scanIndex: number })
       >
         <span className="changelog-batch-badge">Scan #{scanIndex}</span>
         <span>{formatFriendlyDate(day.date)}</span>
+        {isNew && <span className="badge badge-new badge-changelog-new">NEW</span>}
         <span className="changelog-date-arrow">&rarr;</span>
       </div>
       <div

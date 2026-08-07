@@ -1,7 +1,6 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import ErrorBoundary from './components/layout/ErrorBoundary'
-import LoadingOverlay from './components/layout/LoadingOverlay'
 import Background from './components/background/Background'
 import AppsPage from './components/apps/AppsPage'
 import BundlesPage from './components/bundles/BundlesPage'
@@ -10,10 +9,16 @@ import DiffPage from './components/diff/DiffPage'
 const ChangelogPage = lazy(() => import('./components/changelog/ChangelogPage'))
 
 export default function App() {
+  useEffect(() => {
+    const fallback = setTimeout(() => {
+      void import('./components/changelog/ChangelogPage')
+    }, 2000)
+    return () => clearTimeout(fallback)
+  }, [])
+
   return (
     <ErrorBoundary>
       <Background />
-      <LoadingOverlay />
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={

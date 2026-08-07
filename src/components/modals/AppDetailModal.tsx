@@ -9,6 +9,7 @@ import { formatFriendlyDate } from '../../utils/format'
 import { getPlayStoreUrl, getRepoInfo, getAddMorpheUrl } from '../../utils/url'
 import { escHtml } from '../../utils/html'
 import { CACHE_KEYS } from '../../types/utils'
+import { isWatched, toggleWatched, ensureNotificationPermission } from '../../services/watchlist'
 import Modal from '../shared/Modal'
 import AppIcon from '../shared/AppIcon'
 import ChannelBadge from '../shared/ChannelBadge'
@@ -35,6 +36,18 @@ export default function AppDetailModal() {
   const [releaseCache, setReleaseCache] = useState<ReleaseCacheData | null>(null)
   const [patchDiff, setPatchDiff] = useState<PatchDiff | null>(null)
   const [patchDiffExpanded, setPatchDiffExpanded] = useState(false)
+  const [watched, setWatched] = useState(false)
+
+  useEffect(() => {
+    if (!app) return
+    setWatched(isWatched(app.package))
+  }, [app])
+
+  const handleWatchToggle = () => {
+    if (!app) return
+    ensureNotificationPermission()
+    setWatched(toggleWatched(app.package))
+  }
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -208,6 +221,14 @@ export default function AppDetailModal() {
                 Play Store
               </a>
             )}
+            <button
+              className={`modal-watch-btn${watched ? ' active' : ''}`}
+              onClick={handleWatchToggle}
+              aria-pressed={watched}
+              title={watched ? 'Unwatch this app' : 'Watch this app for updates'}
+            >
+              {watched ? 'Watching' : 'Watch'}
+            </button>
             <button className="modal-close" id="modal-close-btn" aria-label="Close modal" onClick={close}>
               &times;
             </button>

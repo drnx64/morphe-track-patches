@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { useDataFetching } from '../../hooks/useDataFetching'
+import { usePageMeta } from '../../hooks/usePageMeta'
 import PageShell from '../layout/PageShell'
 import StatsSection from '../dashboard/StatsSection'
 import ScanInfoSection from '../dashboard/ScanInfoSection'
@@ -14,6 +15,10 @@ import BundleHistoryModal from '../modals/BundleHistoryModal'
 export default function BundlesPage() {
   const { state, dispatch } = useAppContext()
   const { loading } = useDataFetching()
+  usePageMeta(
+    'Bundles',
+    'Browse Morphe patch bundles across stable and dev channels with full version and release history.',
+  )
   const [searchParams] = useSearchParams()
 
   useEffect(() => {
