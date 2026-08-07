@@ -1,5 +1,79 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-08-06]
+- **UPDATED** Bundle **adobo**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
+- **UPDATED** Bundle **anddea**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in anddea patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in anddea patches
+- **NEW BUNDLE** Bundle by **heinrich26** (stable)
+  - **NEW APP** MT Capsule (`com.pryshedko.mtisland`) in heinrich26 patches
+- **UPDATED** Bundle **hxreborn**
+  - **UPDATED APP** Proton Mail (`ch.protonmail.android`) in hxreborn patches
+- **NEW BUNDLE** Bundle by **jonnyvr1** (dev)
+  - **NEW APP** [PRE-RELEASE] Tantan (`com.tantantribe.tribe`) in jonnyvr1 patches
+- **NEW BUNDLE** Bundle by **logm1lo** (dev, stable)
+  - **NEW APP** Calistree (`com.calistree.calistree`) in logm1lo patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
+- **UPDATED** Bundle **nuviotv**
+  - **UPDATED APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
+- **UPDATED** Bundle **okish-morphe**
+  - **NEW APP** Dr. Driving (`com.ansangha.drdriving`) in okish-morphe patches
+- **NEW BUNDLE** Bundle by **petalmaps-androidauto** (stable)
+  - **NEW APP** Petal Maps (`com.huawei.maps.app`) in petalmaps-androidauto patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **NEW BUNDLE** Bundle by **spookyexe** (dev, stable)
+  - **NEW APP** Beeline (`co.beeline`) in spookyexe patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
+  - **UPDATED APP** Ozon (`ru.ozon.app.android`) in xob0t patches
+  - **UPDATED APP** TBank (`com.idamob.tinkoff.android`) in xob0t patches
+  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches
+## [2026-08-05]
+- **NEW BUNDLE** Bundle by **dexnis** (dev, stable)
+  - **NEW APP** IDOS (`cz.mafra.jizdnirady`) in dexnis patches
+- **NEW BUNDLE** Bundle by **goldrift** (dev, stable)
+  - **NEW APP** Strong (`io.strongapp.strong`) in goldrift patches
+- **NEW BUNDLE** Bundle by **hu-liberator** (dev, stable)
+  - **NEW APP** Időkép (`hu.idokep.idokep`) in hu-liberator patches
+  - **NEW APP** MÁVPlusz (`hu.mav.emmapp`) in hu-liberator patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+- **UPDATED** Bundle **nuviotv**
+  - **UPDATED APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
+- **UPDATED** Bundle **rookieenough**
+  - **UPDATED APP** Messenger (`com.facebook.orca`) in rookieenough patches
+  - **UPDATED APP** Mp3 (`com.amazon.mp3`) in rookieenough patches
+- **NEW BUNDLE** Bundle by **roundsalmon4** (stable)
+  - **NEW APP** SeriesGuide (`com.battlelancer.seriesguide`) in roundsalmon4 patches
+- **UPDATED** Bundle **stylus**
+  - **UPDATED APP** Bitwarden (`com.x8bit.bitwarden`) in stylus patches
+  - **NEW APP** GitHub (`com.github.android`) in stylus patches
+- **UPDATED** Bundle **zpatches**
+  - **UPDATED APP** Lyon (`com.jcdecaux.vls.lyon`) in zpatches patches
+## [2026-08-04]
+- **NEW BUNDLE** Bundle by **alastor-kaneki** (stable)
+  - **NEW APP** Opera GX (`com.opera.gx`) in alastor-kaneki patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+- **UPDATED** Bundle **franticg33k**
+  - **UPDATED APP** Karobar (`com.bytecaretech.merokarobar`) in franticg33k patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **morning-entree**
+  - **NEW APP** Listy (`pro.listy`) in morning-entree patches
+  - **NEW APP** Super Status Bar (`com.tombayley.statusbar`) in morning-entree patches
+  - **NEW APP** Volume Styles (`com.tombayley.volumepanel`) in morning-entree patches
+- **NEW BUNDLE** Bundle by **niconico-yt** (stable)
+  - **NEW APP** YouTube (`com.google.android.youtube`) in niconico-yt patches
+- **NEW BUNDLE** Bundle by **nuviotv** (dev)
+  - **NEW APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
 ## [2026-08-03]
 - **UPDATED** Bundle **braydog2010**
   - **UPDATED APP** Venabox Hub (`com.dubani.dub`) in braydog2010 patches
