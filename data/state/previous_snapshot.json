@@ -5340,9 +5340,9 @@
     "bundle": "hk-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/humzakh/HK-Morphe-Patches",
-    "created_at": "2026-08-08T12:28:28",
-    "version": "v1.7.0-dev.1",
-    "description": "## [1.7.0-dev.1](https://github.com/humzakh/HK-Morphe-Patches/compare/v1.6.0...v1.7.0-dev.1) (2026-08-08)\n\n### ✨ New Features\n\n* Add Fix Inline Images patch ([a0a1cfc](https://github.com/humzakh/HK-Morphe-Patches/commit/a0a1cfc0391509f46ee4d0f5aa3f7a120b8417d3)), closes [#55](https://github.com/humzakh/HK-Morphe-Patches/issues/55)\n",
+    "created_at": "2026-08-08T15:21:59",
+    "version": "v1.7.0-dev.3",
+    "description": "## [1.7.0-dev.3](https://github.com/humzakh/HK-Morphe-Patches/compare/v1.7.0-dev.2...v1.7.0-dev.3) (2026-08-08)\n\n### 🐛 Bug Fixes\n\n* Fix smali parse error in Inline Images Patch ([6579d64](https://github.com/humzakh/HK-Morphe-Patches/commit/6579d6471e33f26f86cd03a028589a7dae302d6e))\n",
     "apps": [
       {
         "app_name": "Sync for Reddit",
@@ -5386,7 +5386,7 @@
           },
           {
             "name": "Fix inline images",
-            "description": "Fixes images in text posts showing as plain links instead of rendering inline.",
+            "description": "Fixes images in text posts showing as plain links instead of rendering inline. Also adds captions below the images where applicable.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -5496,7 +5496,7 @@
           },
           {
             "name": "Fix inline images",
-            "description": "Fixes images in text posts showing as plain links instead of rendering inline.",
+            "description": "Fixes images in text posts showing as plain links instead of rendering inline. Also adds captions below the images where applicable.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -5606,7 +5606,7 @@
           },
           {
             "name": "Fix inline images",
-            "description": "Fixes images in text posts showing as plain links instead of rendering inline.",
+            "description": "Fixes images in text posts showing as plain links instead of rendering inline. Also adds captions below the images where applicable.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -5675,7 +5675,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "8f17c42fc242e2405ab3e1005d7879aaf6f5b3ac3eb7cd4a63b6fa69471c2878"
+    "fingerprint": "da3ed984480a6ac8a2f4d70ab06cee59fe6603442c115b985edf7453fd258e25"
   },
   "hk-morphe:stable": {
     "bundle": "hk-morphe",
@@ -5990,6 +5990,188 @@
       }
     ],
     "fingerprint": "4434535b4ea6621c4512cf972b4f7ce48b36aa6e99005cb1c87dcbe1c4a5e79b"
+  },
+  "dumb-software:dev": {
+    "bundle": "dumb-software",
+    "channel": "dev",
+    "repo_url": "https://github.com/dumb-software/T2C-App-Patch-Morphe",
+    "created_at": "2026-05-23T17:54:00Z",
+    "version": "1.5.0-dev.1",
+    "description": "# [1.5.0](https://github.com/dumb-software/T2C-App-Patch-Morphe/compare/v1.4.0...v1.5.0) (2026-06-23)\n\n\n### Bug Fixes\n\n* anchor regex in EnvUtils to prevent unintended replacements ([032ed7f](https://github.com/dumb-software/T2C-App-Patch-Morphe/commit/032ed7ffa7239f2ec3130de60c5f81b573e722e7))\n\n\n### Features\n\n* merge force dev and local environment patches into a single selectable option ([cc70408](https://github.com/dumb-software/T2C-App-Patch-Morphe/commit/cc70408b54b941beb8a4022dec265ca90dad384c))",
+    "apps": [
+      {
+        "app_name": "T2C",
+        "package": "fr.t2c.t2c",
+        "patches": [
+          {
+            "name": "Change API endpoint",
+            "description": "Points the app to a custom backend server by modifying environment variables.",
+            "use": true,
+            "options": [
+              {
+                "key": "api_url",
+                "description": "Enter the base URL for the API (e.g., https://api.t2c.fr)"
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Custom Umami endpoint",
+            "description": "Points the app to a custom Umami analytics server.",
+            "use": true,
+            "options": [
+              {
+                "key": "umami_endpoint",
+                "description": "Enter the base URL for Umami (e.g., https://analytics.t2c.fr/api/send)"
+              },
+              {
+                "key": "umami_website",
+                "description": "Enter your Umami Website ID"
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Force environment",
+            "description": "Replaces the production environment variables with the developer or local ones.",
+            "use": true,
+            "options": [
+              {
+                "key": "environment",
+                "description": "Select the environment to force."
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Firebase tracking",
+            "description": "Removes Firebase App ID and Crashlytics API keys to disable Google tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Google Maps API key",
+            "description": "Removes the Google Maps API key from the manifest to stop Google tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Umami tracking",
+            "description": "Disables Umami tracking safely by modifying existing environment values.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/-3EKIVKVpdjiUpK8mk82aZ12p3PrQBB5sOkjVTJmZS5nlbqGVXC6bYQtMk0IqOjFwtSoWPZNJ-dWb89aRhwUGw"
+      }
+    ],
+    "fingerprint": "371efd0b7ddc1e63f93c87e47ca6154ea76782223deeb10d0cf96cc10395fd68"
+  },
+  "dumb-software:stable": {
+    "bundle": "dumb-software",
+    "channel": "stable",
+    "repo_url": "https://github.com/dumb-software/T2C-App-Patch-Morphe",
+    "created_at": "2026-06-23T17:42:46Z",
+    "version": "1.5.0",
+    "description": "# [1.5.0](https://github.com/dumb-software/T2C-App-Patch-Morphe/compare/v1.4.0...v1.5.0) (2026-06-23)\n\n\n### Bug Fixes\n\n* anchor regex in EnvUtils to prevent unintended replacements ([032ed7f](https://github.com/dumb-software/T2C-App-Patch-Morphe/commit/032ed7ffa7239f2ec3130de60c5f81b573e722e7))\n\n\n### Features\n\n* merge force dev and local environment patches into a single selectable option ([cc70408](https://github.com/dumb-software/T2C-App-Patch-Morphe/commit/cc70408b54b941beb8a4022dec265ca90dad384c))",
+    "apps": [
+      {
+        "app_name": "T2C",
+        "package": "fr.t2c.t2c",
+        "patches": [
+          {
+            "name": "Change API endpoint",
+            "description": "Points the app to a custom backend server by modifying environment variables.",
+            "use": true,
+            "options": [
+              {
+                "key": "api_url",
+                "description": "Enter the base URL for the API (e.g., https://api.t2c.fr)"
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Custom Umami endpoint",
+            "description": "Points the app to a custom Umami analytics server.",
+            "use": true,
+            "options": [
+              {
+                "key": "umami_endpoint",
+                "description": "Enter the base URL for Umami (e.g., https://analytics.t2c.fr/api/send)"
+              },
+              {
+                "key": "umami_website",
+                "description": "Enter your Umami Website ID"
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Force environment",
+            "description": "Replaces the production environment variables with the developer or local ones.",
+            "use": true,
+            "options": [
+              {
+                "key": "environment",
+                "description": "Select the environment to force."
+              }
+            ],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Firebase tracking",
+            "description": "Removes Firebase App ID and Crashlytics API keys to disable Google tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Google Maps API key",
+            "description": "Removes the Google Maps API key from the manifest to stop Google tracking.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          },
+          {
+            "name": "Remove Umami tracking",
+            "description": "Disables Umami tracking safely by modifying existing environment values.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/-3EKIVKVpdjiUpK8mk82aZ12p3PrQBB5sOkjVTJmZS5nlbqGVXC6bYQtMk0IqOjFwtSoWPZNJ-dWb89aRhwUGw"
+      }
+    ],
+    "fingerprint": "4ad5c2f50c4b719f658dc696a039db6fa9109c5987e55d795fb7be6e917ebcc8"
   },
   "roundsalmon4:stable": {
     "bundle": "roundsalmon4",
@@ -6955,9 +7137,9 @@
     "bundle": "pinterest-morphed",
     "channel": "dev",
     "repo_url": "https://github.com/SouBryan/pinterest-morphed",
-    "created_at": "2026-07-17T04:24:35",
-    "version": "v1.7.0-dev.1",
-    "description": "## [1.7.0-dev.1](https://github.com/SouBryan/pinterest-morphed/compare/v1.6.0...v1.7.0-dev.1) (2026-07-17)\n\n### ✨ New Features\n\n* **auth:** SpoofGoogleAuthPatch — restore Google Sign-In on microG-RE ([8d4fc62](https://github.com/SouBryan/pinterest-morphed/commit/8d4fc6281c68e13b22f6f949a5fcb6067e185ce2))\n",
+    "created_at": "2026-08-08T17:23:26",
+    "version": "v1.7.0-dev.3",
+    "description": "## [1.7.0-dev.3](https://github.com/SouBryan/pinterest-morphed/compare/v1.7.0-dev.2...v1.7.0-dev.3) (2026-08-08)\n\n### 🐛 Bug Fixes\n\n* **auth:** don't redeclare FAKE_PACKAGE_SIGNATURE — XSpoofSignatures owns it ([ffea710](https://github.com/SouBryan/pinterest-morphed/commit/ffea71043f1576c7117db603de01a8d2cb478fe0))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -7140,8 +7322,8 @@
             ]
           },
           {
-            "name": "Restore Google login (microG-RE)",
-            "description": "Adds the microG-RE signature-spoof meta-data so \"Continue with Google\" works on devices that use microG-RE instead of Google Play Services. Ignored by vanilla Play Services.",
+            "name": "Restore Google login (signature spoofing)",
+            "description": "Adds the signature-spoof metadata used by microG-RE (per-caller) and XSpoofSignatures (system-wide, via LSPosed) so \"Continue with Google\" works on both microG-RE and stock Google Play Services. No-op if neither is present.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -7191,7 +7373,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
       }
     ],
-    "fingerprint": "917d66a2b5616d04e36014eddc8af229d23c60a6c031d641b49549aeeaa7a045"
+    "fingerprint": "fca8fd9cba243e2c7f9fbe63c4ef1c26b58a67dd7a1694377db2929658d76efd"
   },
   "pinterest-morphed:stable": {
     "bundle": "pinterest-morphed",
@@ -8177,9 +8359,9 @@
     "bundle": "zpatches",
     "channel": "stable",
     "repo_url": "https://github.com/cesbar/zpatches",
-    "created_at": "2026-08-05T20:01:21",
-    "version": "v1.9.1",
-    "description": "## [1.9.1](https://github.com/cesbar/zpatches/compare/v1.9.0...v1.9.1) (2026-08-05)\n\n### 🚀 Updated App Support\n\n* **Citymapper:** support for 11.56.2 ([ff6b099](https://github.com/cesbar/zpatches/commit/ff6b099e563c07f1a8821552a8f5fc2f840db827))\n",
+    "created_at": "2026-08-08T16:15:01",
+    "version": "v1.10.0",
+    "description": "## [1.10.0](https://github.com/cesbar/zpatches/compare/v1.9.1...v1.10.0) (2026-08-08)\n\n### ✨ New Features\n\n* **velov:** Block data collection ([833dc4d](https://github.com/cesbar/zpatches/commit/833dc4d838c79c1b0bb69a487e82ec05cbddc532))\n",
     "apps": [
       {
         "app_name": "Release",
@@ -8211,6 +8393,15 @@
         "app_name": "Lyon",
         "package": "com.jcdecaux.vls.lyon",
         "patches": [
+          {
+            "name": "Block data collection",
+            "description": "Block Didomi tracking SDK, disable consent prompt.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          },
           {
             "name": "Disable map animations",
             "description": "Disable the map zoom-in animation",
@@ -8335,7 +8526,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/uYuj3GH-LlGxb2KyY5nq2DiHpYAIZgQAQF2o2or0pSTjsWqypT2pH_aCptFmFTwLxGfBGESChBvphMzQt6PIKw"
       }
     ],
-    "fingerprint": "e2b859ee9d7e898a35bdf65d043c6156c211034254e69514d125b8b08b3af005"
+    "fingerprint": "a7dfed4908cb726b335d81b77f434edb0ea287cc096490dbbff21cbcb1eb99c1"
   },
   "dh6k:dev": {
     "bundle": "dh6k",
@@ -41829,9 +42020,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-08-08T09:12:53",
-    "version": "v1.39.0-dev.11",
-    "description": "## [1.39.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.39.0-dev.10...v1.39.0-dev.11) (2026-08-08)\n\n### 🐛 Bug Fixes\n\n* Rename `Change package name` to `Clone app` ([#2347](https://github.com/MorpheApp/morphe-patches/issues/2347)) ([efd4d01](https://github.com/MorpheApp/morphe-patches/commit/efd4d01fe822b6b7f8d58147f6363e09bc89d335))\n* **Spoof video streams:** Restore missing YT method ([#2362](https://github.com/MorpheApp/morphe-patches/issues/2362)) ([23c1d7c](https://github.com/MorpheApp/morphe-patches/commit/23c1d7c2bc3672dec481aca835aa5c6d4127fc88))\n* **YouTube - Add to queue:** Improved \"Add feed flyout queue menu item\" UI ([69701d7](https://github.com/MorpheApp/morphe-patches/commit/69701d7e3c7652ad483448f95380d2e101192400))\n\n### ✨ New Features\n\n* **Spoof video streams:** Add 'TVHTML5 DASH' as a temporary workaround for 'TVHTML5 SABR' (playback issues in livestreams) ([173a925](https://github.com/MorpheApp/morphe-patches/commit/173a9253cf3e93d5234682ddb6031092b91b2853))\n* **YouTube - Hide Shorts components:** Add \"Hide Save button\" setting ([#2363](https://github.com/MorpheApp/morphe-patches/issues/2363)) ([12846cb](https://github.com/MorpheApp/morphe-patches/commit/12846cb75497d52562bed0d4feb163f1c35bbcc0))\n",
+    "created_at": "2026-08-08T15:37:43",
+    "version": "v1.39.1-dev.1",
+    "description": "## [1.39.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.39.0...v1.39.1-dev.1) (2026-08-08)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Add to queue:** Flyout menu not available in fullscreen ([b270824](https://github.com/MorpheApp/morphe-patches/commit/b270824072a4fc0f8df758ab48ca8090c3965323))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -43744,9 +43935,9 @@
     "bundle": "morphe",
     "channel": "stable",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-08-08T11:22:51",
-    "version": "v1.39.0",
-    "description": "## [1.39.0](https://github.com/MorpheApp/morphe-patches/compare/v1.38.0...v1.39.0) (2026-08-08)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* **Reddit:** Show Morphe in-app settings with Reddit 2026.25.0+ ([#2260](https://github.com/MorpheApp/morphe-patches/issues/2260)) ([ec780c5](https://github.com/MorpheApp/morphe-patches/commit/ec780c5975f9ef3c4e578fff90ad09ba293e9b8e))\r\n* Rename `Change package name` to `Clone app` ([#2347](https://github.com/MorpheApp/morphe-patches/issues/2347)) ([efd4d01](https://github.com/MorpheApp/morphe-patches/commit/efd4d01fe822b6b7f8d58147f6363e09bc89d335))\r\n* **Spoof video streams:** Restore missing YT method ([#2362](https://github.com/MorpheApp/morphe-patches/issues/2362)) ([23c1d7c](https://github.com/MorpheApp/morphe-patches/commit/23c1d7c2bc3672dec481aca835aa5c6d4127fc88))\r\n* **YouTube - Add to queue:** Improved \"Add feed flyout queue menu item\" UI ([69701d7](https://github.com/MorpheApp/morphe-patches/commit/69701d7e3c7652ad483448f95380d2e101192400))\r\n* **YouTube - Disable fullscreen gestures:** Disable feature flag to restore zoom functionality ([#2292](https://github.com/MorpheApp/morphe-patches/issues/2292)) ([4413218](https://github.com/MorpheApp/morphe-patches/commit/44132182e2b148486ea72dd5d849e8dadb1520dd))\r\n* **YouTube - Disable sign in to TV popup:** Add support for newer versions ([#2226](https://github.com/MorpheApp/morphe-patches/issues/2226)) ([96716ef](https://github.com/MorpheApp/morphe-patches/commit/96716efdf6f7ddcf05a6cf642df88804e99af487))\r\n* **YouTube - Hide layout components:** Hide trending hashtags ([7f375cc](https://github.com/MorpheApp/morphe-patches/commit/7f375ccf058f5782d0533743f5a06c6d649dbf0e))\r\n* **YouTube - Seekbar thumbnail:** Hide thumbnail during precise seeking ([9f5848a](https://github.com/MorpheApp/morphe-patches/commit/9f5848a0120e6b472d59442d1a1e94a762b60d50))\r\n* **YouTube - Seekbar thumbnail:** Show slide-to-seek thumbnail when option is enabled ([174c4e6](https://github.com/MorpheApp/morphe-patches/commit/174c4e62f2c03fa5a673bff095d82b1475f8b82c))\r\n* **YouTube - Seekbar:** Show Shorts seekbar thumbnails ([bd648dc](https://github.com/MorpheApp/morphe-patches/commit/bd648dc703685987d493c54c95524795a9faaa25))\r\n* **YouTube Music - Hide layout components:** Remove \"Hide 'Suggested for you' shelf\" setting as it hides playlist content ([c279c40](https://github.com/MorpheApp/morphe-patches/commit/c279c4054ffbb004594bc1066bb234aa0f8624b5))\r\n* **YouTube Music - Spoof app version:** Add spoof targets `8.23.51` and `9.13.51`, remove 6.x and 7.x targets that YT is shutting down support for ([74e4b1d](https://github.com/MorpheApp/morphe-patches/commit/74e4b1daae905301fc9ea9590de42637854a324e))\r\n* **YouTube Music - Third-party lyrics:** Do not cover the comments and live chat panels ([5e3eb4c](https://github.com/MorpheApp/morphe-patches/commit/5e3eb4cf492abd7524f787ffce11f02f1803869b))\r\n* **YouTube Music:** Remove `7.29.52` app target that YouTube no longer supports ([8b453db](https://github.com/MorpheApp/morphe-patches/commit/8b453dbfe30d695458d913808c8a4bc2a6813ed4))\r\n* **YouTube:** Prevent chapter titles from being truncated ([#2352](https://github.com/MorpheApp/morphe-patches/issues/2352)) ([1609eb1](https://github.com/MorpheApp/morphe-patches/commit/1609eb113d5ed1081205ce58bf7ae566531dcdfe))\r\n* **YouTube:** Remove \"Restore old YouTube settings screen\" from 21.30+ targets ([51c0af2](https://github.com/MorpheApp/morphe-patches/commit/51c0af26c9d3e2c7c351a3ce521a0e4a404d60e8))\r\n\r\n### ✨ New Features\r\n\r\n* **Spoof video streams:** Add 'TVHTML5 DASH' as a temporary workaround for 'TVHTML5 SABR' (playback issues in livestreams) ([173a925](https://github.com/MorpheApp/morphe-patches/commit/173a9253cf3e93d5234682ddb6031092b91b2853))\r\n* **Spoof video streams:** Default client maintenance ([#2309](https://github.com/MorpheApp/morphe-patches/issues/2309)) ([e86d61f](https://github.com/MorpheApp/morphe-patches/commit/e86d61f5d874d57f72fac9b8c0c534a89f264ca4))\r\n* **YouTube - Add to queue:** Add \"Add feed flyout queue menu item\" setting ([#2333](https://github.com/MorpheApp/morphe-patches/issues/2333)) ([1c54df8](https://github.com/MorpheApp/morphe-patches/commit/1c54df894a7836c5c3764cef5eb5f14e8af5fcd5))\r\n* **YouTube - Disable sign in to TV popup:** Add \"Disable 'Connect your devices' popup\" setting ([#2325](https://github.com/MorpheApp/morphe-patches/issues/2325)) ([8b8837e](https://github.com/MorpheApp/morphe-patches/commit/8b8837eb3f0450d5c89eb59912fa1a84dd555dbf))\r\n* **YouTube - Hide layout components:** Add \"Hide 'Invite others to message' card\" setting ([#2304](https://github.com/MorpheApp/morphe-patches/issues/2304)) ([b582e75](https://github.com/MorpheApp/morphe-patches/commit/b582e757c5d93a4d7e68f10688a399963d0360bd))\r\n* **YouTube - Hide layout components:** Add \"Hide Chapters and 'In this video' button\" setting ([#2354](https://github.com/MorpheApp/morphe-patches/issues/2354)) ([ec15b89](https://github.com/MorpheApp/morphe-patches/commit/ec15b89a9a7e33caf43f7e95a17bc771dc37ba8b))\r\n* **YouTube - Hide layout components:** Add \"Hide Learning menu\" and \"Hide 'How YouTube works' menu\" settings ([997f433](https://github.com/MorpheApp/morphe-patches/commit/997f4337cff8e1ba7c6bd4e36f61589e3db0e97e))\r\n* **YouTube - Hide layout components:** Add \"Hide player gesture hints\" setting ([#2328](https://github.com/MorpheApp/morphe-patches/issues/2328)) ([588b8c0](https://github.com/MorpheApp/morphe-patches/commit/588b8c0f41bac446d1479d60bf632d88762cb057))\r\n* **YouTube - Hide Shorts components:** Add \"Hide Save button\" setting ([#2363](https://github.com/MorpheApp/morphe-patches/issues/2363)) ([12846cb](https://github.com/MorpheApp/morphe-patches/commit/12846cb75497d52562bed0d4feb163f1c35bbcc0))\r\n* **YouTube Music:** Add `Remove viewer discretion dialog` patch ([#2297](https://github.com/MorpheApp/morphe-patches/issues/2297)) ([f0d3ba1](https://github.com/MorpheApp/morphe-patches/commit/f0d3ba149d81f72680b571ce596eabdd8990c572))\r\n* **YouTube Music:** Add `Third-party lyrics` patch ([#2269](https://github.com/MorpheApp/morphe-patches/issues/2269)) ([fbf2e63](https://github.com/MorpheApp/morphe-patches/commit/fbf2e63d66be9baa4d825d986ab405a679b96df0))\r\n* **YouTube:** Add `Playback in feeds` patch ([#2261](https://github.com/MorpheApp/morphe-patches/issues/2261)) ([fced431](https://github.com/MorpheApp/morphe-patches/commit/fced4313f612031bfea7d15fe341e80a7c3e4567))\r\n\r\n### 🚀 Updated App Support\r\n\r\n* **Reddit:** Add experimental support for `2026.30.0` ([f8dbf83](https://github.com/MorpheApp/morphe-patches/commit/f8dbf83a99508b3e08beb0e6061af7f1fb6880ca))\r\n* **Reddit:** Add experimental support for `2026.31.1` ([7bf92f4](https://github.com/MorpheApp/morphe-patches/commit/7bf92f4f4ead5f28d95ff06452e1d1af376628d9))\r\n* **YouTube:** Add experimental support for `21.31.523` ([#2207](https://github.com/MorpheApp/morphe-patches/issues/2207)) ([061663b](https://github.com/MorpheApp/morphe-patches/commit/061663b85b76f0aabe9337de8d84970d4ca406b5))\r\n* **YouTube:** Add experimental support for `21.32.2` ([adc044b](https://github.com/MorpheApp/morphe-patches/commit/adc044bcb75ac3270cf04f778e230c2c80b24841))\r\n",
+    "created_at": "2026-08-08T17:05:00",
+    "version": "v1.39.1",
+    "description": "## [1.39.1](https://github.com/MorpheApp/morphe-patches/compare/v1.39.0...v1.39.1) (2026-08-08)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Add to queue:** Flyout menu not available in fullscreen ([b270824](https://github.com/MorpheApp/morphe-patches/commit/b270824072a4fc0f8df758ab48ca8090c3965323))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -53824,10 +54015,58 @@
     "bundle": "morning-entree",
     "channel": "stable",
     "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-    "created_at": "2026-08-04T01:22:41",
-    "version": "v1.8.0",
-    "description": "## [1.8.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.7.0...v1.8.0) (2026-08-04)\n\n### ✨ New Features\n\n* Added Listy, Super Status Bar, Volume Styles ([a489b0b](https://github.com/Entree3k/Morning-Entree-Patches/commit/a489b0bc37f1f17a9bffe4212053eb63784dff37))\n",
+    "created_at": "2026-08-08T14:51:30",
+    "version": "v1.9.0",
+    "description": "## [1.9.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.8.0...v1.9.0) (2026-08-08)\n\n### ✨ New Features\n\n* Added Support ([5ce4c59](https://github.com/Entree3k/Morning-Entree-Patches/commit/5ce4c59089e7add3edca50631f21fe82c552de41))\n",
     "apps": [
+      {
+        "app_name": "Smart AudioBook Player",
+        "package": "ak.alizandro.smartaudiobookplayer",
+        "patches": [
+          {
+            "name": "Enable Full Version",
+            "description": "Unlocks the full version of Smart AudioBook Player",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "11.8.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/XUG_zlohI-GsehLvej2Vu5wQkXwi1g1yUp1ho5oJFi6pc_To7SAgzgCZuHaMz8Qo5auGDDrGwx1ULHxM5wvU"
+      },
+      {
+        "app_name": "Arm Workout",
+        "package": "armworkout.armworkoutformen.armexercises",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Arm Workout Premium. Use with Spoof App Signature",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/8yiWsYUyb-RyJd9sBdD2tv7jxw133zimpNrKHsaovEh6RdviocSSS2-5arEyy_45hWtnRxJ6NmEvQJf9havV5Q"
+      },
+      {
+        "app_name": "MacroDroid",
+        "package": "com.arlosoft.macrodroid",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks MacroDroid Pro, Use With Spoof App Signature",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.65.9"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Jtx8e9Ievb-DmpQa-68I9e1f6JJ1D63RmjvV9Z5IH2V1FHnekVMtC9hOcityelZXzbEEPd0V4mU7vq6WRLCy"
+      },
       {
         "app_name": "Boosted Productivity",
         "package": "com.boostedproductivity.app",
@@ -53843,6 +54082,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/rKZL4Vywl-10IfP3bD_5fLn8gh4puFe1MozH5GG_SZSfh-Hprz6lxGrluaSeXnWI7OCGB_0jUqM1mFUd_B6Yqg"
+      },
+      {
+        "app_name": "Obd Mary",
+        "package": "com.elm.elm327.obd2.eobd.obd.car.scanner.diagnostics.tool.dashboard.doctor.check.engine.torque.speed.trouble.codes.mary",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Obd Mary's Paid Features, Including the Diagnostics Edition",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.318"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/n-hNHOPyi7p85kQ7kMB3fYW8242FSPD39ceA32cLOENG3qb-0spUV-gSe0C55ycxN4OFyqbFPJwCUnyr2Mdl6g"
       },
       {
         "app_name": "Panels",
@@ -53920,6 +54175,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       },
       {
+        "app_name": "Photon Camera",
+        "package": "com.hinnka.mycamera",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Photon Camera Pro",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.25.1.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/vBtFSSjAhYZjHsEeryKN115tbD9hNvkB9m_9r7VcPUQRvPuRfNWTngzgfpD2xvjXQmPP-JJ23pNqB2M9962PpQ"
+      },
+      {
         "app_name": "Vocabulary",
         "package": "com.hrd.vocabulary",
         "patches": [
@@ -53984,6 +54255,54 @@
         "icon_url": "https://play-lh.googleusercontent.com/AR3sf_LLFuc66xzP97CLuyCtpZ-lkjG_pkBzFOqPecMOG-APpyVAdWXDOasSI7-v74rZ2DffAdt9XbSpRLDy"
       },
       {
+        "app_name": "Does Not Commute",
+        "package": "com.mediocre.commute",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Does Not Commute Premium. Just Tap Get Premium and Restore Purchase When Prompted",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.5.5"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/NgntHB7Nm-9GSfkq8vu60toy_tZRKwFse_LpyeY7DLj838-oGfmAEizTtFckgE1cQghVR788lJCImDzgHdHdld4"
+      },
+      {
+        "app_name": "PinOut",
+        "package": "com.mediocre.pinout",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks PinOut Premium. Just Tap Get Premium and Restore Purchase When Prompted",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.0.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/uQn1okYkYazTUTDY3mvJL1902XicVEdwFyaRkDeV8avg4b1fTUyJDwIPmH_Rmnudld2CzZLr1dUnSzhZgSMS"
+      },
+      {
+        "app_name": "Smash Hit",
+        "package": "com.mediocre.smashhit",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Smash Hit. Just Tap Get Premium and Restore Purchase When Prompted",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.5.14"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/ueP4ZNBXNdqNWIR23mdGnQuS-9c7dVvFp981Poc9ZEDkk6vddPGBxCYk3A_fWketiNpGO_GEHbmtDh8-qX-X"
+      },
+      {
         "app_name": "Sponge",
         "package": "com.prismtree.sponge",
         "patches": [
@@ -53998,6 +54317,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/LSGsxmUkZcwr-KQKoMGcpFuiLZ1AJhCPoDwiDQispBXyLF6DKwzvB479WBss0vUunx_D4dOg-k9R9syEnV57RkI"
+      },
+      {
+        "app_name": "Material Capsule",
+        "package": "com.pryshedko.mtisland",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Material Capsule Pro",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "15.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/mrNuw058MP_GKlWVCLuZrg3QyONOUJAzrw4mCkdTvtGckt5EGUEzbO26z49bMCJTlX5WRs1qP9fSljF30k3xcAk"
       },
       {
         "app_name": "Lifesum",
@@ -54921,6 +55256,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/t7nJ7PPhv5f_ETV-Mn10dp0YW7PhF8wyerhwzkfJpRAbZVIGlTzfL-jUpBkkwliFSreAGxv9-A6Vua6AryQT4Vo"
       },
       {
+        "app_name": "Sleep as Android",
+        "package": "com.urbandroid.sleep",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Sleep as Android Premium. Tap Wait I already Paid when Prompted",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "20260616"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/LsHymWZZyoDfB1R5AEetD2E2PDspZGeVCkwE8jxCcP5XyTxBRkJsVx_OG2w2oIuK58Btnpz5eIczbCWDjvZkCw"
+      },
+      {
         "app_name": "Pinnit",
         "package": "dev.sasikanth.pinnit2",
         "patches": [
@@ -54953,6 +55304,38 @@
         "icon_url": "https://play-lh.googleusercontent.com/mwINWGvA1fZZwTzDfYgl7FTTTj-iElnsWrRCjuwnVAtR62hJyZdcHgG1SRSSi5LiBjlcKINIchP-Ut0DRWPDfQ"
       },
       {
+        "app_name": "Lose Weight App for Men",
+        "package": "menloseweight.loseweightappformen.weightlossformen",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Lose Weight App for Men Premium. Use with Spoof App Signature",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.4.37"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/49q7rHLxoLR1Szt6PqUWuwcjbIcvWO_HqmUlvpXwH0gl8Nis21Pdn9n0ISPxwaGqskPTMybWPvirOW35A7DZeQ"
+      },
+      {
+        "app_name": "EOBD Facile",
+        "package": "org.eobdfacile.android",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks EOBD Facile Premium",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.87.1179"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/g7OIRTpmVFEyFF1balbPH_mx2jSbj2qF9U2xuELgw98_eWrV1lPJSRXfxNdKtaTzZjkVyPnwB_2Kwo0O6vmSbg"
+      },
+      {
         "app_name": "Listy",
         "package": "pro.listy",
         "patches": [
@@ -54969,7 +55352,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/wKvF6emyUIhJfSRO76zlVAKsOGxaMxj0IZN7ghIL3XqYsICjuh1eWx1NFtKZCykCdtIyJD0z6f_lh6VuXpdYWg"
       }
     ],
-    "fingerprint": "9abdb86dc86218ee0bade406ba6d244f1f0d5ead134af1563bd0b60b9f0a18a6"
+    "fingerprint": "4b6b0e904fa71666b8ed4586c678556076641fc3a9dc1e7fb4529b960ee7c700"
   },
   "proxma:stable": {
     "bundle": "proxma",
