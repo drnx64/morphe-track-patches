@@ -1,7 +1,7 @@
 {
   "date": "2026-08-09",
-  "lastChecked": "2026-08-09T12:40:55Z",
-  "scan_counter": 5,
+  "lastChecked": "2026-08-09T15:27:11Z",
+  "scan_counter": 6,
   "affected_bundles": {
     "ee-morphe:dev": {
       "bundle": "ee-morphe",
@@ -58,8 +58,19 @@
           "package": "com.netflix.ninja",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
-          ]
+            1,
+            6
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Suppress Household Prompt",
+                "description": "Hides the Netflix \"you're traveling\" / update-your-household prompt by keeping the client from activating the misdetection challenge session. Does NOT change what Netflix's servers detect (that's driven by your public IP — use a VPN for that); it only suppresses the on-screen prompt. Opt-in / experimental; only takes visible effect when the account would otherwise be prompted."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
         }
       ]
     },
@@ -1973,6 +1984,62 @@
           },
           "scan_numbers": [
             5
+          ]
+        }
+      ]
+    },
+    "piko:dev": {
+      "bundle": "piko",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Instagram",
+          "package": "com.instagram.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Recommended flags",
+                "description": "Developer flags suggested by the community"
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Theme",
+                "description": "Adds Material You and AMOLED controls to Piko settings on Android 12 and later. On Android 8–11, it applies a fixed Material You-style theme or an optional AMOLED theme.",
+                "changes": [
+                  "description updated",
+                  "options: ~1 option"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "Twitter",
+          "package": "com.twitter.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Dynamic color",
+                "description": "Replaces the default Twitter Blue with the user's Material You palette.",
+                "changes": [
+                  "description updated",
+                  "disabled"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
           ]
         }
       ]
