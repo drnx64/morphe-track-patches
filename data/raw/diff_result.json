@@ -1,47 +1,63 @@
 {
   "affected_bundles": [
     {
-      "bundle": "okish-morphe",
+      "bundle": "andrewliang25",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Hill Climb Racing",
-          "package": "com.fingersoft.hillclimb",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "okish-morphe",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Hill Climb Racing",
-          "package": "com.fingersoft.hillclimb",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "jasonwu1994",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Latin",
-          "package": "com.google.android.inputmethod.latin",
+          "app_name": "LINE",
+          "package": "jp.naver.line.android",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Enable OCR / Scan Text",
-                "description": "啟用 OCR / 掃描文字功能，支援 拉丁、中文、日文、韓文 與 天城文 辨識後端\nEnable the OCR / Scan Text feature with Latin, Chinese, Japanese, Korean, and Devanagari recognition backends."
+                "name": "Keep unsent messages",
+                "description": "Keeps messages that were unsent in 1:1 and group chats on your device instead of destroying them, and shows the usual \"unsent a message\" notice directly below the message it kept. Doesn't apply to OpenChat."
               }
             ],
             "patches_removed": [],
-            "patches_modified": []
+            "patches_modified": [
+              {
+                "name": "Fix push notifications",
+                "description": "Restores push notifications on re-signed builds when LINE is fully closed. Root Mount install does not need this patch.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "xob0t",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "TBank",
+          "package": "com.idamob.tinkoff.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Bypass anti-tamper",
+                "description": "Stubs TBank's native RASP executor calls and neutralizes tamper flag reporting.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Remove TBank ads",
+                "description": "Removes TBank stories and promotional surfaces.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
           }
         }
       ]
