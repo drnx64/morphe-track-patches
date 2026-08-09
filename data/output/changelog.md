@@ -1,5 +1,50 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-08-08]
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
+  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
+  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+  - **UPDATED APP** SOOP (`kr.co.nowcom.mobile.afreeca`) in amplerevanced patches
+- **NEW BUNDLE** Bundle by **dumb-software** (dev, stable)
+  - **NEW APP** T2C (`fr.t2c.t2c`) in dumb-software patches
+- **UPDATED** Bundle **hk-morphe**
+  - **UPDATED APP** Sync for Reddit (`com.laurencedawson.reddit_sync`) in hk-morphe patches
+  - **UPDATED APP** Sync for Reddit Dev (`com.laurencedawson.reddit_sync.dev`) in hk-morphe patches
+  - **UPDATED APP** Sync for Reddit Pro (`com.laurencedawson.reddit_sync.pro`) in hk-morphe patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **jonnyvr1**
+  - **UPDATED APP** [PRE-RELEASE] Tantan (`com.tantantribe.tribe`) in jonnyvr1 patches
+- **UPDATED** Bundle **logm1lo**
+  - **UPDATED APP** Calistree (`com.calistree.calistree`) in logm1lo patches
+  - **NEW APP** Cube Solver (`com.jeffprod.cubesolver`) in logm1lo patches
+- **UPDATED** Bundle **morning-entree**
+  - **NEW APP** Arm Workout (`armworkout.armworkoutformen.armexercises`) in morning-entree patches
+  - **NEW APP** Does Not Commute (`com.mediocre.commute`) in morning-entree patches
+  - **NEW APP** EOBD Facile (`org.eobdfacile.android`) in morning-entree patches
+  - **NEW APP** Lose Weight App for Men (`menloseweight.loseweightappformen.weightlossformen`) in morning-entree patches
+  - **NEW APP** MacroDroid (`com.arlosoft.macrodroid`) in morning-entree patches
+  - **NEW APP** Material Capsule (`com.pryshedko.mtisland`) in morning-entree patches
+  - **NEW APP** Obd Mary (`com.elm.elm327.obd2.eobd.obd.car.scanner.diagnostics.tool.dashboard.doctor.check.engine.torque.speed.trouble.codes.mary`) in morning-entree patches
+  - **NEW APP** Photon Camera (`com.hinnka.mycamera`) in morning-entree patches
+  - **NEW APP** PinOut (`com.mediocre.pinout`) in morning-entree patches
+  - **NEW APP** Sleep as Android (`com.urbandroid.sleep`) in morning-entree patches
+  - **NEW APP** Smart AudioBook Player (`ak.alizandro.smartaudiobookplayer`) in morning-entree patches
+  - **NEW APP** Smash Hit (`com.mediocre.smashhit`) in morning-entree patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+- **UPDATED** Bundle **paresh-maheshwari**
+  - **UPDATED APP** TickTick (`com.ticktick.task`) in paresh-maheshwari patches
+- **UPDATED** Bundle **pinterest-morphed**
+  - **UPDATED APP** Pinterest (`com.pinterest`) in pinterest-morphed patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **UPDATED** Bundle **zpatches**
+  - **UPDATED APP** Lyon (`com.jcdecaux.vls.lyon`) in zpatches patches
 ## [2026-08-07]
 - **UPDATED** Bundle **ajstrick81-androidtv**
   - **UPDATED APP** Ott (`com.cbs.ott`) in ajstrick81-androidtv patches
