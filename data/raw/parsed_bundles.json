@@ -14909,9 +14909,9 @@
     "bundle": "okish-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-    "created_at": "2026-08-06T04:38:19",
-    "version": "v1.6.0-dev.1",
-    "description": "## [1.6.0-dev.1](https://github.com/byehi98/okish-morphe-patches/compare/v1.5.0...v1.6.0-dev.1) (2026-08-06)\n\n### ✨ New Features\n\n* add Dr. Driving patches (ad removal, unlimited gold, unlimited coins) ([7148309](https://github.com/byehi98/okish-morphe-patches/commit/71483091e9d59c3ac9833caabf66469adb8c7e78))\n",
+    "created_at": "2026-08-09T04:44:58",
+    "version": "v1.7.0-dev.1",
+    "description": "## [1.7.0-dev.1](https://github.com/byehi98/okish-morphe-patches/compare/v1.6.0...v1.7.0-dev.1) (2026-08-09)\n\n### ✨ New Features\n\n* add Hill Climb Racing patches (ad removal, rewarded video, free store) ([346ddea](https://github.com/byehi98/okish-morphe-patches/commit/346ddea89640e6ebd95761a1881bd685cc5584e7))\n",
     "apps": [
       {
         "app_name": "Dr. Driving",
@@ -14946,6 +14946,40 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/yn0pNj885cKSpr-9zwz1ZY1NmIYdY8gxur-gkY3f3HBtbdXva-ZQJEsNl7Cj2xYzmiPDNCz4u3SE1RH1cxSB"
+      },
+      {
+        "app_name": "Hill Climb Racing",
+        "package": "com.fingersoft.hillclimb",
+        "patches": [
+          {
+            "name": "Hill Climb Racing Ad Removal",
+            "description": "Completely removes ads: banners and interstitials can never be displayed (CFirebaseAds.showBanners/showInterstitial become no-ops) and ad-free is granted once per app start — loadStore() seeds mAdFree = 1, the native engine's poll grants it and the store's own reset (inappPurchasesProcessed) zeroes the field, so no repeated purchase popups.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.70.0"
+            ]
+          },
+          {
+            "name": "Hill Climb Racing Free Store",
+            "description": "Every store item is granted instantly and free: coins, gems, paints, ad-skips, ad-free and bundles, without launching Google Play billing.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.70.0"
+            ]
+          },
+          {
+            "name": "Hill Climb Racing Instant Rewarded Video Rewards",
+            "description": "Rewarded video ads grant their reward instantly without playing the ad: the native engine receives onVideoStartedSuccess + onVideoCompletedSuccess on the GL thread, exactly as if the video had been watched and completed.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.70.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/7YJtBKClRTrPRIO-vm-_GoqAEwob4kQ-wJd0qmUMLdbor5Jxj-IKpsXOj6MQejf2XYN9YE0q6IUgYnu-fcAGIg"
       },
       {
         "app_name": "FreeJobAlert",
@@ -15053,15 +15087,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/MozMtuCRKyEdjTKi4z2eF8x16VK-CuUm1RN0zbxYWIJiGm3i9dd9CGaVj341yFTcna96ggAI2m8deDLPIzO__g"
       }
     ],
-    "fingerprint": "b38cc50801a69370f63aac94cd6f0b8a5b2123db7e880c79bcc6780d7b05ff17"
+    "fingerprint": "6664564ce97ddbc846adf033da02a342e3dfb20e068e511727fd780a74a9e4af"
   },
   "okish-morphe:stable": {
     "bundle": "okish-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-    "created_at": "2026-08-06T04:43:50",
-    "version": "v1.6.0",
-    "description": "## [1.6.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.5.0...v1.6.0) (2026-08-06)\n\n### ✨ New Features\n\n* add Dr. Driving patches (ad removal, unlimited gold, unlimited coins) ([7148309](https://github.com/byehi98/okish-morphe-patches/commit/71483091e9d59c3ac9833caabf66469adb8c7e78))\n",
+    "created_at": "2026-08-09T04:58:38",
+    "version": "v1.7.0",
+    "description": "## [1.7.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.6.0...v1.7.0) (2026-08-09)\n\n### ✨ New Features\n\n* add Hill Climb Racing patches (ad removal, rewarded video, free store) ([346ddea](https://github.com/byehi98/okish-morphe-patches/commit/346ddea89640e6ebd95761a1881bd685cc5584e7))\n",
     "apps": [
       {
         "app_name": "Dr. Driving",
@@ -15096,6 +15130,40 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/yn0pNj885cKSpr-9zwz1ZY1NmIYdY8gxur-gkY3f3HBtbdXva-ZQJEsNl7Cj2xYzmiPDNCz4u3SE1RH1cxSB"
+      },
+      {
+        "app_name": "Hill Climb Racing",
+        "package": "com.fingersoft.hillclimb",
+        "patches": [
+          {
+            "name": "Hill Climb Racing Ad Removal",
+            "description": "Completely removes ads: banners and interstitials can never be displayed (CFirebaseAds.showBanners/showInterstitial become no-ops) and ad-free is granted once per app start — loadStore() seeds mAdFree = 1, the native engine's poll grants it and the store's own reset (inappPurchasesProcessed) zeroes the field, so no repeated purchase popups.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.70.0"
+            ]
+          },
+          {
+            "name": "Hill Climb Racing Free Store",
+            "description": "Every store item is granted instantly and free: coins, gems, paints, ad-skips, ad-free and bundles, without launching Google Play billing.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.70.0"
+            ]
+          },
+          {
+            "name": "Hill Climb Racing Instant Rewarded Video Rewards",
+            "description": "Rewarded video ads grant their reward instantly without playing the ad: the native engine receives onVideoStartedSuccess + onVideoCompletedSuccess on the GL thread, exactly as if the video had been watched and completed.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.70.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/7YJtBKClRTrPRIO-vm-_GoqAEwob4kQ-wJd0qmUMLdbor5Jxj-IKpsXOj6MQejf2XYN9YE0q6IUgYnu-fcAGIg"
       },
       {
         "app_name": "FreeJobAlert",
@@ -15203,7 +15271,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/MozMtuCRKyEdjTKi4z2eF8x16VK-CuUm1RN0zbxYWIJiGm3i9dd9CGaVj341yFTcna96ggAI2m8deDLPIzO__g"
       }
     ],
-    "fingerprint": "7182da1780af2609c58bdd5b272275f4343a94eb4edb8c9da1dbdc485e59f2dc"
+    "fingerprint": "bc504351652ca43457ba1dd389980a6cf14a8ee10fe451758949c029c238dc89"
   },
   "amplerevanced:dev": {
     "bundle": "amplerevanced",
@@ -56617,9 +56685,9 @@
     "bundle": "jasonwu1994",
     "channel": "stable",
     "repo_url": "https://github.com/jasonwu1994/Gboard-patches",
-    "created_at": "2026-08-07T02:53:18",
-    "version": "v2.6.0",
-    "description": "### ✨ New Features\n\n* **Gboard:** add a `Show sensitive clipboard contents` option to reveal the original text of clipboard items marked as sensitive.\n\n### ✨ 新功能\n\n* **Gboard:** 新增「顯示敏感剪貼簿內容」選項，可顯示被標記為敏感的剪貼簿項目原文。\n",
+    "created_at": "2026-08-09T04:04:17",
+    "version": "v2.7.0",
+    "description": "### ✨ New Features\n\n* **Gboard:** add the `OCR / Scan Text` patch with support for Latin, Chinese, Japanese, Korean, and Devanagari recognition backends.\n* **Gboard:** add OCR model downloads through Google Play services for the official recognition models.\n\n### 🐛 Bug Fixes\n\n* **Gboard:** harden Web Clipboard loopback authentication.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `OCR / Scan Text` Patch，支援拉丁文、中文、日文、韓文與天城文辨識後端。\n* **Gboard:** OCR 功能新增模型下載，透過 Google Play services 下載官方辨識模型。\n\n### 🐛 修復\n\n* **Gboard:** 強化 Web Clipboard 的 loopback 驗證機制。\n",
     "apps": [
       {
         "app_name": "Latin",
@@ -56700,6 +56768,15 @@
           {
             "name": "Enable Inline Autofill Suggestions",
             "description": "啟用內嵌自動填入建議\nEnable Inline Autofill Suggestions",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "17.7.7.932364120-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Enable OCR / Scan Text",
+            "description": "啟用 OCR / 掃描文字功能，支援 拉丁、中文、日文、韓文 與 天城文 辨識後端\nEnable the OCR / Scan Text feature with Latin, Chinese, Japanese, Korean, and Devanagari recognition backends.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -56836,7 +56913,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       }
     ],
-    "fingerprint": "4975902d0fe44c4066550ef01249b042aa18d9c1dea6849d970dda3f286ade40"
+    "fingerprint": "7b585d95b42d1b32b5c3d41bb930b67c1391c5e45286bf10a0741a0c4a6ac49a"
   },
   "jouss:stable": {
     "bundle": "jouss",
