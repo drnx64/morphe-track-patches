@@ -8567,9 +8567,9 @@
     "bundle": "zpatches",
     "channel": "stable",
     "repo_url": "https://github.com/cesbar/zpatches",
-    "created_at": "2026-08-08T16:15:01",
-    "version": "v1.10.0",
-    "description": "## [1.10.0](https://github.com/cesbar/zpatches/compare/v1.9.1...v1.10.0) (2026-08-08)\n\n### ✨ New Features\n\n* **velov:** Block data collection ([833dc4d](https://github.com/cesbar/zpatches/commit/833dc4d838c79c1b0bb69a487e82ec05cbddc532))\n",
+    "created_at": "2026-08-10T15:10:34",
+    "version": "v1.11.0",
+    "description": "## [1.11.0](https://github.com/cesbar/zpatches/compare/v1.10.0...v1.11.0) (2026-08-10)\n\n### 🐛 Bug Fixes\n\n* **velov:** Block data collection : block Matomo sdk ([e1c7a42](https://github.com/cesbar/zpatches/commit/e1c7a42effb29c109f4356ce60908ce87ccc725c))\n* **velov:** Block data collection : skip geolocation data consent prompt ([933ea08](https://github.com/cesbar/zpatches/commit/933ea08d8f7bbefd8663d9071dd9e4d4816aae79))\n\n### ✨ New Features\n\n* **velov:** Hide onboarding screen ([2cce15a](https://github.com/cesbar/zpatches/commit/2cce15a9fa52ceb74a55295ab61633bd7d020d61))\n",
     "apps": [
       {
         "app_name": "Release",
@@ -8603,7 +8603,7 @@
         "patches": [
           {
             "name": "Block data collection",
-            "description": "Block Didomi tracking SDK, disable consent prompt.",
+            "description": "Block Didomi & Matomo tracking SDKs, hide consent prompts for 3rd party & geolocation data",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -8638,6 +8638,15 @@
                 "description": "Google Maps API key"
               }
             ],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          },
+          {
+            "name": "Hide onboarding screen",
+            "description": "Hide the onboarding \"Plan you journey\" screen",
+            "use": true,
+            "options": [],
             "compatible_versions": [
               "3.1.1"
             ]
@@ -8734,10 +8743,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/uYuj3GH-LlGxb2KyY5nq2DiHpYAIZgQAQF2o2or0pSTjsWqypT2pH_aCptFmFTwLxGfBGESChBvphMzQt6PIKw"
       }
     ],
-    "fingerprint": "a7dfed4908cb726b335d81b77f434edb0ea287cc096490dbbff21cbcb1eb99c1",
-    "release_notes": "## [1.10.0](https://github.com/cesbar/zpatches/compare/v1.9.1...v1.10.0) (2026-08-08)\n\n### ✨ New Features\n\n* **velov:** Block data collection ([833dc4d](https://github.com/cesbar/zpatches/commit/833dc4d838c79c1b0bb69a487e82ec05cbddc532))\n",
-    "release_tag": "v1.10.0",
-    "release_date": "2026-08-08T16:15:01Z"
+    "fingerprint": "a73e2fd175cb5366a2c7c8eb6f3cb27ed00b3703aac412d8e8552812b0b19fd2",
+    "release_notes": "## [1.11.0](https://github.com/cesbar/zpatches/compare/v1.10.0...v1.11.0) (2026-08-10)\n\n### 🐛 Bug Fixes\n\n* **velov:** Block data collection : block Matomo sdk ([e1c7a42](https://github.com/cesbar/zpatches/commit/e1c7a42effb29c109f4356ce60908ce87ccc725c))\n* **velov:** Block data collection : skip geolocation data consent prompt ([933ea08](https://github.com/cesbar/zpatches/commit/933ea08d8f7bbefd8663d9071dd9e4d4816aae79))\n\n### ✨ New Features\n\n* **velov:** Hide onboarding screen ([2cce15a](https://github.com/cesbar/zpatches/commit/2cce15a9fa52ceb74a55295ab61633bd7d020d61))\n",
+    "release_tag": "v1.11.0",
+    "release_date": "2026-08-10T15:10:34Z"
   },
   "dh6k:dev": {
     "bundle": "dh6k",
@@ -8948,6 +8957,45 @@
     "release_notes": "# [2.3.0](https://github.com/andronedev/morphe-patches/compare/v2.2.1...v2.3.0) (2026-04-01)\n\n\n### Features\n\n* Update Morphe dependencies and refactor Transit compatibility ([1613c6b](https://github.com/andronedev/morphe-patches/commit/1613c6b1e7b21be9b25e403ec2e45516115156ff))\n\n\n\n",
     "release_tag": "v2.3.0",
     "release_date": "2026-04-01T21:23:06Z"
+  },
+  "atharv:stable": {
+    "bundle": "atharv",
+    "channel": "stable",
+    "repo_url": "https://github.com/madhu-gowda6/atharv-patches",
+    "created_at": "2026-08-10T13:08:22",
+    "version": "v1.0.0",
+    "description": "# 1.0.0 (2026-08-10)\n\n\n### Features\n\n* **atharv-patches:** add extension framework with patching utilities ([133dee1](https://github.com/madhu-gowda6/atharv-patches/commit/133dee16e1f729bde9ac4fd350af8c707ff517e8))\n",
+    "apps": [
+      {
+        "app_name": "Ola Electric",
+        "package": "com.olaelectric.companion",
+        "patches": [
+          {
+            "name": "Force enable Megaphone, Tamper Detection, Krutrim and Kruti",
+            "description": "Forces the Megaphone, Tamper & Fall Detection, Krutrim Assistant, and Kruti features to always report as available, regardless of the server-driven onboarding feature flags returned by the app's backend.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.4.0"
+            ]
+          },
+          {
+            "name": "High quality document upload",
+            "description": "Raises the JPEG re-encode quality used by the camera capture-with-compression flow from 0 to 100, and raises the 6MB per-file size limit enforced on document uploads to 100MB, so scanned documents and high-resolution photos are no longer degraded or rejected before upload.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.4.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/ken81YUQbqAz9TOL6gCtOXYSvNRGD6eOIgaB0Ok7aB3w4sHulSV-29O9jqz4kLhAYiv48XeoegbSA7ieneHsEg"
+      }
+    ],
+    "fingerprint": "6aa2f7d3a6fd8bb58ac62eb8ea78ea9ec56b482d36cf970d76a83dc894b72b7e",
+    "release_notes": "# 1.0.0 (2026-08-10)\n\n\n### Features\n\n* **atharv-patches:** add extension framework with patching utilities ([133dee1](https://github.com/madhu-gowda6/atharv-patches/commit/133dee16e1f729bde9ac4fd350af8c707ff517e8))\n",
+    "release_tag": "v1.0.0",
+    "release_date": "2026-08-10T13:08:22Z"
   },
   "zarko:dev": {
     "bundle": "zarko",
@@ -11197,9 +11245,9 @@
     "bundle": "gmaps",
     "channel": "stable",
     "repo_url": "https://github.com/fangkampanat/gmaps-patches",
-    "created_at": "2026-08-03T04:19:10",
-    "version": "v1.0.9",
-    "description": "Google Maps for ReVanced GmsCore\n\n- Renames app-owned custom permissions to the patched Maps namespace, preventing duplicate-permission installation conflicts with original Google Maps.\n- Suppresses the misleading Google Play services update notification for an unavailable optional feature without reporting that feature as supported.\n- Supports Google Maps 26.30.09.950492155 and the earlier declared compatible versions.\n\nMPP SHA-256: 0aff2c6d0431cb78a8031eb550cb2f5f4751b4281f07553858bc924d89791485",
+    "created_at": "2026-08-10T15:47:23",
+    "version": "v1.0.10",
+    "description": "## Google Maps for ReVanced GmsCore\n\n- Adds inspected compatibility for Google Maps `26.32.06.958047303`.\n- Preserves existing ReVanced GmsCore routing, app-owned permission coexistence, optional-feature update-notification suppression, and the original picture-in-picture declaration.\n\n`.mpp` SHA-256: `b65d2e3f27726bedf9dfe01f87b1caf2611eb2c67ef35bd794bd8d4702c39f6d`",
     "apps": [
       {
         "app_name": "Google Maps",
@@ -11215,17 +11263,18 @@
               "26.27.05.941319029",
               "26.28.03.942936911",
               "26.29.02.946673643",
-              "26.30.09.950492155"
+              "26.30.09.950492155",
+              "26.32.06.958047303"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/B8pdO_2K5nBsF0g1h6dKwV_jQFLP-XombGDEQGtJT-mw1EUKCKJpa9lBGCF4rP_MwCsozSXyvI3z19g9R3J4"
       }
     ],
-    "fingerprint": "08c4d41731f80507d94bd9b41876972219ecfd24d006f5991d581637687f342d",
-    "release_notes": "Google Maps for ReVanced GmsCore\n\n- Renames app-owned custom permissions to the patched Maps namespace, preventing duplicate-permission installation conflicts with original Google Maps.\n- Suppresses the misleading Google Play services update notification for an unavailable optional feature without reporting that feature as supported.\n- Supports Google Maps 26.30.09.950492155 and the earlier declared compatible versions.\n\nMPP SHA-256: 0aff2c6d0431cb78a8031eb550cb2f5f4751b4281f07553858bc924d89791485",
-    "release_tag": "v1.0.9",
-    "release_date": "2026-08-03T04:19:10Z"
+    "fingerprint": "95a10b0ebba6ccf3c6956a8613c0325cf2233284da1909cdac8ff3f8541a2ae7",
+    "release_notes": "## Google Maps for ReVanced GmsCore\n\n- Adds inspected compatibility for Google Maps `26.32.06.958047303`.\n- Preserves existing ReVanced GmsCore routing, app-owned permission coexistence, optional-feature update-notification suppression, and the original picture-in-picture declaration.\n\n`.mpp` SHA-256: `b65d2e3f27726bedf9dfe01f87b1caf2611eb2c67ef35bd794bd8d4702c39f6d`",
+    "release_tag": "v1.0.10",
+    "release_date": "2026-08-10T15:47:23Z"
   },
   "piko:dev": {
     "bundle": "piko",
@@ -47221,7 +47270,7 @@
           },
           {
             "name": "Messaging Enhancement",
-            "description": "Removes message limits, unlimited pin chat, voice/video calls, quick chat, typing indicator, free gifts, letter, greeting, ice breaker, read receipts, AI translation, message recall, group chat, live chat, message filter, chat partner config, ODiamond visitor config, prologue config, love buzz data, secret crush limit, boost limit, message tab revision, collapsible conversation, chat helper AI, call duration, conversation refresh interval, heartbeat match, message integration, assistant message clear, ice break dialog config, continues op conv config",
+            "description": "Removes message limits, unlimited pin chat, voice/video calls, quick chat, typing indicator, free gifts, letter, greeting, ice breaker, read receipts, AI translation, message recall, group chat, live chat, message filter, chat partner config, ODiamond visitor config, prologue config, love buzz data, secret crush limit, boost limit, message tab revision, collapsible conversation, chat helper AI, call duration, conversation refresh interval",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -47268,7 +47317,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/MhQtY7rMyZYH6mRBIqoWh0YN80l3aO6oVHxVEkvn6fO5V_lSexViFl75gUgdgIHDGWLF7Rji5n-WcIyR1ZgQ0w"
       }
     ],
-    "fingerprint": "1596f373527da0cf0d29efd2c166f52bb5120c5efc335acff8414c94856e3ebc",
+    "fingerprint": "a24d7983b2988be8f7d63704b4875ffd6882e6071d66086f65ae20f64e3a4a17",
     "release_notes": "## Dev2 Patchset - 29 New Patches\n\n### AnalyticsDisablePatch (+9)\n- Firebase Analytics disable\n- MoTracing (distributed tracing) disable\n- MEStatistics (XEngine media engine) disable\n- Device ID expansion (IMEI, Android ID, Google Advertising ID)\n- Network Metrics tracking disable\n- Push Notification Statistics disable\n- MediaLog/Battery Metrics disable\n- MoLive APM (FPS/CPU/temperature) disable\n- DNS SLA Logging disable\n\n### PrivacyControlsPatch (+3)\n- Contact Access Block (READ_CONTACTS)\n- Location Privacy (profile hideLocation)\n- Privacy Settings Force Enable (hideContacts, hideMutualContacts, hideSchool)\n\n### PremiumUnlockPatch (+1)\n- Live Streaming Permission Controls (canStartLive, canUseMaskMode, canVoiceLive)\n\n### DialogCleanupPatch (+2)\n- VIP Upgrade Popup suppression\n- Dislike Who Liked Me popup suppression\n\n### UiCleanupPatch (+11)\n- Privilege Enhanced Promotion Banner\n- Profile Thin Popup\n- Super Like Banner\n- Compliment Received Banner\n- Operation Banner\n- New User Special Like Banner\n- Profile Fake View\n- Super Like/Undo Guide Card\n- Boost Guide Card\n- City Top Greet Dialog\n- Multi Super Like Push Bubble\n\n### LiveStreamingPatch (+3)\n- Chat Rate Limiting removal\n- Voice Game Joining enable\n- PK Battle All-Day enable\n\n**Total: 80 patches across 7 patchsets**",
     "release_tag": "v0.0.1-dev2",
     "release_date": "2026-07-30T21:06:22Z"
@@ -47601,6 +47650,70 @@
     "release_notes": "## [1.38.0](https://github.com/PrathxmOp/ytmusic-patches/compare/v1.37.4...v1.38.0) (2026-06-28)\n\n### ✨ New Features\n\n* **discord:** add manual callback URL fallback for root devices ([186d578](https://github.com/PrathxmOp/ytmusic-patches/commit/186d578ebd30c868965a29d28b4e3ea54a113793))\n",
     "release_tag": "v1.38.0",
     "release_date": "2026-06-28T15:27:28Z"
+  },
+  "google-clock:stable": {
+    "bundle": "google-clock",
+    "channel": "stable",
+    "repo_url": "https://github.com/tadikwa/google-clock-morphe-patches",
+    "created_at": "2026-08-10T16:40:27",
+    "version": "v1.7.1",
+    "description": "Google Clock + Morphe YouTube Music alarm integration. v1.1 adds premium-entitlement status normalization for the external MediaBrowser integration.",
+    "apps": [
+      {
+        "app_name": "YT Music Morphe",
+        "package": "app.morphe.android.apps.youtube.music",
+        "patches": [
+          {
+            "name": "Google Clock alarm MediaBrowser bridge",
+            "description": "Allows Google Clock to obtain a browsable root from Morphe-patched YouTube Music on non-Premium accounts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.15.51"
+            ]
+          },
+          {
+            "name": "YT Music MediaBrowser diagnostic logging",
+            "description": "Safe diagnostic build: starts logging only when Google Clock requests MediaBrowser children; normal YT Music startup is untouched.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "9.15.51"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "Clock",
+        "package": "com.google.android.deskclock",
+        "patches": [
+          {
+            "name": "Diagnostic logging for YouTube Music alarms",
+            "description": "Writes detailed MediaBrowser diagnostics to Download/ClockMorpheDiag-LAST.txt.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "9.0 (943154005)"
+            ]
+          },
+          {
+            "name": "Use Morphe YouTube Music for alarms",
+            "description": "Redirects Google Clock to Morphe YouTube Music and converts its Premium-required playback session into Clock's normal ready MediaBrowser state.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.0 (943154005)"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/bMXVYcZZKB873HmUFhaqOOakT5ZETbOpzv1-YvZ6Qs-hPEXeYw3zzkPm38GAz6E3D7JpUFpiQy7RR4nkktSnf0E"
+      }
+    ],
+    "fingerprint": "e910f4916e2df5569f498b4ccd2608ec7547718299fad62ea0751be9f41c1e69",
+    "release_notes": "Google Clock + Morphe YouTube Music alarm integration. v1.1 adds premium-entitlement status normalization for the external MediaBrowser integration.",
+    "release_tag": "v1.7.1",
+    "release_date": "2026-08-10T16:40:27Z"
   },
   "pixelpusher247:stable": {
     "bundle": "pixelpusher247",
@@ -49759,6 +49872,66 @@
     "release_notes": "## [1.1.0](https://github.com/logm1lo/logm1lo-patches/compare/v1.0.10...v1.1.0) (2026-08-08)\n\n### New Features\n\n* add Cube Solver patches, fix Calistree Dart unlock ([a0d978a](https://github.com/logm1lo/logm1lo-patches/commit/a0d978a743dd6701077d45d264c1cab038bec4ea))\n",
     "release_tag": "v1.1.0",
     "release_date": "2026-08-08T00:12:29Z"
+  },
+  "tiaruebar:dev": {
+    "bundle": "tiaruebar",
+    "channel": "dev",
+    "repo_url": "https://github.com/electiveDev/tiaruebar-patches-vip-fix",
+    "created_at": "2026-08-10T12:42:32",
+    "version": "v1.3.3-dev.2",
+    "description": "## [1.3.3-dev.2](https://github.com/electiveDev/tiaruebar-patches-vip-fix/compare/v1.3.3-dev.1...v1.3.3-dev.2) (2026-08-10)\n\n### 🐛 Bug Fixes\n\n* complete blocked ad flows ([8becd06](https://github.com/electiveDev/tiaruebar-patches-vip-fix/commit/8becd0689d5eaac4679d45a9c48cca604ea9a941))\n",
+    "apps": [
+      {
+        "app_name": "Devices Tycoon",
+        "package": "com.roasterygames.devicestycoon",
+        "patches": [
+          {
+            "name": "Devices Tycoon Premium",
+            "description": "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/D7ZeEeEbTOHre_sCohLA-jZ0anMOstAaSmS9Q1-tSRuclV29i5vg4tQfr_7RP5crq3e3bcZCt3wTthLGq-C35A"
+      }
+    ],
+    "fingerprint": "e69ea951422f65ab093c70adcd28a5c1c9c5854d0ef1419b9d35ef524ca63c33",
+    "release_notes": "## [1.3.3-dev.2](https://github.com/electiveDev/tiaruebar-patches-vip-fix/compare/v1.3.3-dev.1...v1.3.3-dev.2) (2026-08-10)\n\n### 🐛 Bug Fixes\n\n* complete blocked ad flows ([8becd06](https://github.com/electiveDev/tiaruebar-patches-vip-fix/commit/8becd0689d5eaac4679d45a9c48cca604ea9a941))\n",
+    "release_tag": "v1.3.3-dev.2",
+    "release_date": "2026-08-10T12:42:32Z"
+  },
+  "tiaruebar:stable": {
+    "bundle": "tiaruebar",
+    "channel": "stable",
+    "repo_url": "https://github.com/electiveDev/tiaruebar-patches-vip-fix",
+    "created_at": "2026-08-10T13:30:28",
+    "version": "v1.3.3",
+    "description": "## [1.3.3](https://github.com/electiveDev/tiaruebar-patches-vip-fix/compare/v1.3.2...v1.3.3) (2026-08-10)\n\n### 🐛 Bug Fixes\n\n* complete blocked ad flows ([8becd06](https://github.com/electiveDev/tiaruebar-patches-vip-fix/commit/8becd0689d5eaac4679d45a9c48cca604ea9a941))\n* prevent duplicate VIP purchase completion ([117e84c](https://github.com/electiveDev/tiaruebar-patches-vip-fix/commit/117e84c3bd8f7ca6517d7fa6f35efb6e46073f21))\n",
+    "apps": [
+      {
+        "app_name": "Devices Tycoon",
+        "package": "com.roasterygames.devicestycoon",
+        "patches": [
+          {
+            "name": "Devices Tycoon Premium",
+            "description": "Instantly completes all IAP purchases (remove ads, research coins, budget) on tap and disables all ads in Devices Tycoon.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/D7ZeEeEbTOHre_sCohLA-jZ0anMOstAaSmS9Q1-tSRuclV29i5vg4tQfr_7RP5crq3e3bcZCt3wTthLGq-C35A"
+      }
+    ],
+    "fingerprint": "3be811360b75930b766c5b2b4e9f1fc3bae31ed81b3d7bf8a1ce295efa6cdf45",
+    "release_notes": "## [1.3.3](https://github.com/electiveDev/tiaruebar-patches-vip-fix/compare/v1.3.2...v1.3.3) (2026-08-10)\n\n### 🐛 Bug Fixes\n\n* complete blocked ad flows ([8becd06](https://github.com/electiveDev/tiaruebar-patches-vip-fix/commit/8becd0689d5eaac4679d45a9c48cca604ea9a941))\n* prevent duplicate VIP purchase completion ([117e84c](https://github.com/electiveDev/tiaruebar-patches-vip-fix/commit/117e84c3bd8f7ca6517d7fa6f35efb6e46073f21))\n",
+    "release_tag": "v1.3.3",
+    "release_date": "2026-08-10T13:30:28Z"
   },
   "kareemlukitomo:stable": {
     "bundle": "kareemlukitomo",
@@ -55044,9 +55217,9 @@
     "bundle": "morning-entree",
     "channel": "stable",
     "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-    "created_at": "2026-08-09T23:00:29",
-    "version": "v1.11.0",
-    "description": "## [1.11.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.10.0...v1.11.0) (2026-08-09)\n\n### 🐛 Bug Fixes\n\n* Removed Patch ([0adf49c](https://github.com/Entree3k/Morning-Entree-Patches/commit/0adf49c6d9645cb2e12333044d448798a1fd83fc))\n\n### ✨ New Features\n\n* added gps faker ([5c7a07a](https://github.com/Entree3k/Morning-Entree-Patches/commit/5c7a07a1800ce28bf3ff1762982bc3ba1f69e41f))\n",
+    "created_at": "2026-08-10T15:08:32",
+    "version": "v1.12.0",
+    "description": "## [1.12.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.11.0...v1.12.0) (2026-08-10)\n\n### ✨ New Features\n\n* Added Home Workout ([42f7cb1](https://github.com/Entree3k/Morning-Entree-Patches/commit/42f7cb159a07146a1eb15b19cc522bb421b04d6e))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -56349,6 +56522,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/mwINWGvA1fZZwTzDfYgl7FTTTj-iElnsWrRCjuwnVAtR62hJyZdcHgG1SRSSi5LiBjlcKINIchP-Ut0DRWPDfQ"
       },
       {
+        "app_name": "Home Workout - No Equipment",
+        "package": "homeworkout.homeworkouts.noequipment",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Home Workout Premium",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.7.6"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/NlQFS5pgo96dzbRuwZfkBhGf3ecKSGH5lRx0DSsmELYZXRYHlXrd7YVCR7tS7-R84eEVLhZ1qBIQj1WP_RCJAQ"
+      },
+      {
         "app_name": "Lose Weight App for Men",
         "package": "menloseweight.loseweightappformen.weightlossformen",
         "patches": [
@@ -56397,10 +56586,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/wKvF6emyUIhJfSRO76zlVAKsOGxaMxj0IZN7ghIL3XqYsICjuh1eWx1NFtKZCykCdtIyJD0z6f_lh6VuXpdYWg"
       }
     ],
-    "fingerprint": "f2a7a63d352a953ce5a4459302b5d9fcbd969892a7827ca2911388f85c634ee3",
-    "release_notes": "## [1.11.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.10.0...v1.11.0) (2026-08-09)\n\n### 🐛 Bug Fixes\n\n* Removed Patch ([0adf49c](https://github.com/Entree3k/Morning-Entree-Patches/commit/0adf49c6d9645cb2e12333044d448798a1fd83fc))\n\n### ✨ New Features\n\n* added gps faker ([5c7a07a](https://github.com/Entree3k/Morning-Entree-Patches/commit/5c7a07a1800ce28bf3ff1762982bc3ba1f69e41f))\n",
-    "release_tag": "v1.11.0",
-    "release_date": "2026-08-09T23:00:29Z"
+    "fingerprint": "20ae7954830a3bcf031e4503b71556839c3595fa99a385d27238d549f35c7e68",
+    "release_notes": "## [1.12.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.11.0...v1.12.0) (2026-08-10)\n\n### ✨ New Features\n\n* Added Home Workout ([42f7cb1](https://github.com/Entree3k/Morning-Entree-Patches/commit/42f7cb159a07146a1eb15b19cc522bb421b04d6e))\n",
+    "release_tag": "v1.12.0",
+    "release_date": "2026-08-10T15:08:32Z"
   },
   "proxma:stable": {
     "bundle": "proxma",
@@ -58456,6 +58645,66 @@
     "release_tag": "v1.21.0",
     "release_date": "2026-07-13T17:39:19Z"
   },
+  "heval99:dev": {
+    "bundle": "heval99",
+    "channel": "dev",
+    "repo_url": "https://github.com/heval99/morphe-patches",
+    "created_at": "2026-08-10T11:14:04",
+    "version": "v1.0.0-dev.1",
+    "description": "## 1.0.0-dev.1 (2026-08-10)\n\n### ✨ New Features\n\n* Add Sofascore disable ads patch ([2e57b6f](https://github.com/heval99/morphe-patches/commit/2e57b6f7c60a9ea655651e28bfc533468fa14c9c))\n",
+    "apps": [
+      {
+        "app_name": "Sofascore",
+        "package": "com.sofascore.results",
+        "patches": [
+          {
+            "name": "Disable ads",
+            "description": "Disables banner, interstitial, feed, native, preroll and rewarded ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.07.27"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/V5evYzdmAVEFl9Gy9fh4-XTIb_mPnMPzNdV8rhDyZ31yftOncktYxWnI5xbX4QlAnoCd1fcBvGTzGJU_MxtY"
+      }
+    ],
+    "fingerprint": "186fe5257b9a4be56607f8bb06fbc0d0c91dcf779b69f62e3903580947c78358",
+    "release_notes": "## 1.0.0-dev.1 (2026-08-10)\n\n### ✨ New Features\n\n* Add Sofascore disable ads patch ([2e57b6f](https://github.com/heval99/morphe-patches/commit/2e57b6f7c60a9ea655651e28bfc533468fa14c9c))\n",
+    "release_tag": "v1.0.0-dev.1",
+    "release_date": "2026-08-10T11:14:04Z"
+  },
+  "heval99:stable": {
+    "bundle": "heval99",
+    "channel": "stable",
+    "repo_url": "https://github.com/heval99/morphe-patches",
+    "created_at": "2026-08-10T11:17:17",
+    "version": "v1.0.0",
+    "description": "## 1.0.0 (2026-08-10)\n\n### ✨ New Features\n\n* Add Sofascore disable ads patch ([2e57b6f](https://github.com/heval99/morphe-patches/commit/2e57b6f7c60a9ea655651e28bfc533468fa14c9c))\n",
+    "apps": [
+      {
+        "app_name": "Sofascore",
+        "package": "com.sofascore.results",
+        "patches": [
+          {
+            "name": "Disable ads",
+            "description": "Disables banner, interstitial, feed, native, preroll and rewarded ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.07.27"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/V5evYzdmAVEFl9Gy9fh4-XTIb_mPnMPzNdV8rhDyZ31yftOncktYxWnI5xbX4QlAnoCd1fcBvGTzGJU_MxtY"
+      }
+    ],
+    "fingerprint": "e6430a35d6c2004ae214eabb9c42c4cd39fb430176c755dca4478f8a99cd647c",
+    "release_notes": "## 1.0.0 (2026-08-10)\n\n### ✨ New Features\n\n* Add Sofascore disable ads patch ([2e57b6f](https://github.com/heval99/morphe-patches/commit/2e57b6f7c60a9ea655651e28bfc533468fa14c9c))\n",
+    "release_tag": "v1.0.0",
+    "release_date": "2026-08-10T11:17:17Z"
+  },
   "pepper-morphe:stable": {
     "bundle": "pepper-morphe",
     "channel": "stable",
@@ -59846,6 +60095,210 @@
     "release_notes": "## Pepper PL 8.13.02 prebuilt variants\n\nMaintenance release: **patches and `.mpp` bundle are byte-equivalent to v1.0.0** — the only change is a fresh set of four prebuilt XAPKs targeting Pepper PL **8.13.02** (versionCode 81302) instead of 8.13.00.\n\nIf you build through Morphe Manager / `morphe-cli` you can keep using v1.0.0's bundle — there is no patch delta. The new release exists so that anyone grabbing a ready XAPK doesn't have to start from the old 8.13.00 base.\n\n> 📦 **Also on ReVanced** → [pepper-revanced-patches v1.4.1](https://github.com/PawiX25/pepper-revanced-patches/releases/tag/v1.4.1) — same patch set, upstream [ReVanced Patcher](https://github.com/ReVanced/revanced-patcher) bundle for [ReVanced Manager](https://github.com/ReVanced/revanced-manager).\n\n### What changed in Pepper 8.13.02 (upstream)\n\nDiffed against 8.13.00 — the delta is one new feature plus the usual build-time noise. **None of it touches any patch's fingerprint surface**, so every patch from v1.0.0 applies unchanged:\n\n| Layer | Change |\n|---|---|\n| New feature | **Views Challenge** — weekly-visit Club-points streak system: 15 new `views_challenge_*` strings, 1 plural, 1 vector drawable (`branding_mascot_smiling.xml`), corresponding DEX |\n| Strings | +15 in base APK; same 15 translated in `config.de` / `config.es` / `config.fr` splits (+4 KB each) |\n| `AndroidManifest.xml` (decoded) | **no semantic change** |\n| Permissions | **no change** |\n| `target_sdk` / `min_sdk` | 36 / 24 — unchanged |\n| Noise | Crashlytics `mapping_file_id`, `version-control-info.textproto` revision, R8 service renames (`c95→e95`, `i18→r18`, `rr2→sr2` under `META-INF/services/`), regenerated `baseline.prof` / `baseline.profm` |\n\nAll 14 patches apply cleanly. Verified end-to-end against the APKPure 8.13.02 XAPK.\n\n### Prebuilt XAPK variants\n\nSame 2×2 matrix as v1.0.0 (debug menu × compact cards):\n\n| File | Debug menu | Compact cards |\n|---|---|---|\n| `pepperpl-8.13.02.xapk` | ✗ | ✗ |\n| `pepperpl-8.13.02-debug.xapk` | ✓ | ✗ |\n| `pepperpl-8.13.02-compact.xapk` | ✗ | ✓ |\n| `pepperpl-8.13.02-debug-compact.xapk` | ✓ | ✓ |\n\nEach XAPK ships:\n- patched **base** APK (DEX-rewritten, all default-on patches applied)\n- `config.arm64_v8a` + `config.xxxhdpi` splits\n- `config.en` + `config.pl` language splits\n\nFor any other ABI / DPI / language combo, grab the matching split from the unpatched APKPure 8.13.02 XAPK and side-load alongside via `adb install-multiple`.\n\n### Patches in the bundle (unchanged from v1.0.0)\n\n| # | Patch | Default | Effect |\n|---|---|---|---|\n| 1 | Enable debug menu | **opt-in** | Re-enables the hidden 3-dot debug menu (45 dev actions). |\n| 2 | Unlock tier-locked icons | on | All 12 membership-tier icons available in the picker. |\n| 3 | Hide banner ads in feed | on | Pubmatic / DFPBanner ads never load; empty cell collapsed. |\n| 4 | Always show event-theming icons | on | All 4 event icons available regardless of the active event. |\n| 5 | Keep event icon after restart | on | Chosen event icon stays after the event ends. |\n| 6 | Fix spacing around hidden ad cells | on | Companion to patch #3. |\n| 7 | Compact deal cards | **opt-in** | Resource-only XML edits to deal-list cards + skeletons. |\n| T1 | Redirect tracker URLs to localhost | on | dex string-pool rewrite — Iterable, Pepper Ocular, Usercentrics, Adjust, Vungle, Pubmatic, FB, GMA. |\n| T2 | Neuter tracker auto-init ContentProviders | on | Vungle, Adjust, FB Audience Network. |\n| T3 | Kill Pepper first-party pixel tracking | on | NOP pixel worker + mock hwid (32-char MD5-hex format). |\n| T4 | Kill Datatransport upload pipeline | on | Crashlytics + Firebase logging upload jobs. |\n| T5 | Disable Google Mobile Ads SDK init | on | NOP `MobileAds.initialize`. |\n| T6 | Disable GMA ad-load entry points | on | NOP every `loadAd*` on AdLoader / AdManager / RewardedAd. |\n| T7 | Disable Adjust SDK | on | NOP every state-mutating `Adjust.*` static method. |\n| T8 | Disable PAIRIP license check | on (`com.pepperdeals` only) | Sideloaded US build can open. |\n| T9 | Skip Usercentrics consent screen | on | CMP screen + fetch wait → straight to notif prompt. |\n| T10 | Block Pepper analytics-event-report tracker | on | Retrofit `@POST` rewrite to `http://127.0.0.1:1`. |\n\nSee [v1.0.0 release notes](https://github.com/PawiX25/pepper-morphe-patches/releases/tag/v1.0.0) for the full visual diff of compact deal cards and per-element XML breakdown.\n\n### Files\n\n- `patches.mpp` / `patches-1.0.1.mpp` — patch bundle for [Morphe Manager](https://github.com/MorpheApp/morphe-manager) / [morphe-cli](https://github.com/MorpheApp/morphe-cli) (functionally equivalent to v1.0.0)\n- `patches-list.json` — patch metadata for Morphe Manager\n- `manifest.json` — Morphe Manager source URL pointer\n- `pepperpl-8.13.02.xapk` — vanilla telemetry-blocked Pepper PL\n- `pepperpl-8.13.02-debug.xapk` — + debug menu\n- `pepperpl-8.13.02-compact.xapk` — + compact cards\n- `pepperpl-8.13.02-debug-compact.xapk` — + debug menu **and** compact cards\n\nInstall the XAPK with SAI / APKMirror Installer / Morphe Manager.\n\n### Compatible with\n\nAll 10 sister apps from the family (Pepper PL, NL, DE, UK, FR, MX, ES, AT, SE and the US `com.pepperdeals` build). T8 is restricted to `com.pepperdeals` (only that build ships PAIRIP).\n",
     "release_tag": "v1.0.1",
     "release_date": "2026-05-14T00:53:02Z"
+  },
+  "ftl-portal:dev": {
+    "bundle": "ftl-portal",
+    "channel": "dev",
+    "repo_url": "https://github.com/BlazeFTL/Morphe-Portal-Patches-New",
+    "created_at": "2026-08-10T05:45:21",
+    "version": "v1.0.0-dev.3",
+    "description": "## [1.0.0-dev.3](https://github.com/BlazeFTL/Morphe-Portal-Patches-New/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2026-08-10)\n\n### ✨ New Features\n\n* up ([59fcd73](https://github.com/BlazeFTL/Morphe-Portal-Patches-New/commit/59fcd7338152d92c10578581da7a1c7674b7b018))\n",
+    "apps": [
+      {
+        "app_name": "YouTube Music",
+        "package": "com.google.android.apps.youtube.music",
+        "patches": [
+          {
+            "name": "Custom DPI",
+            "description": "Forces a higher display density for this app only, so the whole UI scales up without changing the system density. Intended for low-dpi devices such as Meta Portal (160 dpi).",
+            "use": false,
+            "options": [
+              {
+                "key": "dpi",
+                "description": "Forced display density in dots-per-inch for this app only. 160 = system default (mdpi), 240 is roughly 1.5x larger. Range 96-640."
+              }
+            ],
+            "compatible_versions": [
+              "8.51.51"
+            ]
+          },
+          {
+            "name": "Custom version name",
+            "description": "Overrides the app versionName so a re-patched build of the same upstream version is recognised as a new version. Lets patch-only changes propagate as updates even when the upstream YouTube/YT Music version is unchanged.",
+            "use": false,
+            "options": [
+              {
+                "key": "versionName",
+                "description": "Full value written to android:versionName, e.g. \"20.51.39+1781904670\". Use a monotonic numeric suffix so newer builds compare greater."
+              }
+            ],
+            "compatible_versions": [
+              "8.51.51"
+            ]
+          },
+          {
+            "name": "Disable experimental notice",
+            "description": "Removes the morphe experimental-version warning dialog, which otherwise nags on every re-patched build whose version differs from the recommended one.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "8.51.51"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw"
+      },
+      {
+        "app_name": "YouTube",
+        "package": "com.google.android.youtube",
+        "patches": [
+          {
+            "name": "Custom DPI",
+            "description": "Forces a higher display density for this app only, so the whole UI scales up without changing the system density. Intended for low-dpi devices such as Meta Portal (160 dpi).",
+            "use": false,
+            "options": [
+              {
+                "key": "dpi",
+                "description": "Forced display density in dots-per-inch for this app only. 160 = system default (mdpi), 240 is roughly 1.5x larger. Range 96-640."
+              }
+            ],
+            "compatible_versions": [
+              "20.51.39"
+            ]
+          },
+          {
+            "name": "Custom version name",
+            "description": "Overrides the app versionName so a re-patched build of the same upstream version is recognised as a new version. Lets patch-only changes propagate as updates even when the upstream YouTube/YT Music version is unchanged.",
+            "use": false,
+            "options": [
+              {
+                "key": "versionName",
+                "description": "Full value written to android:versionName, e.g. \"20.51.39+1781904670\". Use a monotonic numeric suffix so newer builds compare greater."
+              }
+            ],
+            "compatible_versions": [
+              "20.51.39"
+            ]
+          },
+          {
+            "name": "Disable experimental notice",
+            "description": "Removes the morphe experimental-version warning dialog, which otherwise nags on every re-patched build whose version differs from the recommended one.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "20.51.39"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg"
+      }
+    ],
+    "fingerprint": "8a734e9e9ffe3cab6cfcf66e8757e633c024c8818d3feca43077898c16c7fd9d",
+    "release_notes": "## [1.0.0-dev.3](https://github.com/BlazeFTL/Morphe-Portal-Patches-New/compare/v1.0.0-dev.2...v1.0.0-dev.3) (2026-08-10)\n\n### ✨ New Features\n\n* up ([59fcd73](https://github.com/BlazeFTL/Morphe-Portal-Patches-New/commit/59fcd7338152d92c10578581da7a1c7674b7b018))\n",
+    "release_tag": "v1.0.0-dev.3",
+    "release_date": "2026-08-10T05:45:21Z"
+  },
+  "ftl-portal:stable": {
+    "bundle": "ftl-portal",
+    "channel": "stable",
+    "repo_url": "https://github.com/BlazeFTL/Morphe-Portal-Patches-New",
+    "created_at": "2026-08-10T06:19:05",
+    "version": "v1.0.0",
+    "description": "## 1.0.0 (2026-08-10)\r\n\r\n### ✨ New Features\r\n\r\n* Initial Release ",
+    "apps": [
+      {
+        "app_name": "YouTube Music",
+        "package": "com.google.android.apps.youtube.music",
+        "patches": [
+          {
+            "name": "Custom DPI",
+            "description": "Forces a higher display density for this app only, so the whole UI scales up without changing the system density. Intended for low-dpi devices such as Meta Portal (160 dpi).",
+            "use": false,
+            "options": [
+              {
+                "key": "dpi",
+                "description": "Forced display density in dots-per-inch for this app only. 160 = system default (mdpi), 240 is roughly 1.5x larger. Range 96-640."
+              }
+            ],
+            "compatible_versions": [
+              "8.51.51"
+            ]
+          },
+          {
+            "name": "Custom version name",
+            "description": "Overrides the app versionName so a re-patched build of the same upstream version is recognised as a new version. Lets patch-only changes propagate as updates even when the upstream YouTube/YT Music version is unchanged.",
+            "use": false,
+            "options": [
+              {
+                "key": "versionName",
+                "description": "Full value written to android:versionName, e.g. \"20.51.39+1781904670\". Use a monotonic numeric suffix so newer builds compare greater."
+              }
+            ],
+            "compatible_versions": [
+              "8.51.51"
+            ]
+          },
+          {
+            "name": "Disable experimental notice",
+            "description": "Removes the morphe experimental-version warning dialog, which otherwise nags on every re-patched build whose version differs from the recommended one.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "8.51.51"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MyptZXmcCyF59phIWPsNCfHq6zSO_ojEdw_4rMYYWPOGdikSjqeOXcoszBZ053VYpINe5K7ZR9KV1nkFWgxdOw"
+      },
+      {
+        "app_name": "YouTube",
+        "package": "com.google.android.youtube",
+        "patches": [
+          {
+            "name": "Custom DPI",
+            "description": "Forces a higher display density for this app only, so the whole UI scales up without changing the system density. Intended for low-dpi devices such as Meta Portal (160 dpi).",
+            "use": false,
+            "options": [
+              {
+                "key": "dpi",
+                "description": "Forced display density in dots-per-inch for this app only. 160 = system default (mdpi), 240 is roughly 1.5x larger. Range 96-640."
+              }
+            ],
+            "compatible_versions": [
+              "20.51.39"
+            ]
+          },
+          {
+            "name": "Custom version name",
+            "description": "Overrides the app versionName so a re-patched build of the same upstream version is recognised as a new version. Lets patch-only changes propagate as updates even when the upstream YouTube/YT Music version is unchanged.",
+            "use": false,
+            "options": [
+              {
+                "key": "versionName",
+                "description": "Full value written to android:versionName, e.g. \"20.51.39+1781904670\". Use a monotonic numeric suffix so newer builds compare greater."
+              }
+            ],
+            "compatible_versions": [
+              "20.51.39"
+            ]
+          },
+          {
+            "name": "Disable experimental notice",
+            "description": "Removes the morphe experimental-version warning dialog, which otherwise nags on every re-patched build whose version differs from the recommended one.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "20.51.39"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg"
+      }
+    ],
+    "fingerprint": "5047ec16520878cea55c49912d91b8efe5ef1acf28d0cec74743cf5ebd0e97f5",
+    "release_notes": "## 1.0.0 (2026-08-10)\r\n\r\n### ✨ New Features\r\n\r\n* Initial Release ",
+    "release_tag": "v1.0.0",
+    "release_date": "2026-08-10T06:19:05Z"
   },
   "kolaron:dev": {
     "bundle": "kolaron",
