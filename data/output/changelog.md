@@ -1,5 +1,42 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-08-09]
+- **UPDATED** Bundle **adobo**
+  - **UPDATED APP** Gboard (`com.google.android.inputmethod.latin`) in adobo patches
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
+- **UPDATED** Bundle **ajstrick81-androidtv**
+  - **NEW APP** Ninja (`com.netflix.ninja`) in ajstrick81-androidtv patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+- **UPDATED** Bundle **andrewliang25**
+  - **UPDATED APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
+- **NEW BUNDLE** Bundle by **ang3lo** (stable)
+  - **NEW APP** Skimboarding (`com.findthefirellc.findthefire`) in ang3lo patches
+- **NEW BUNDLE** Bundle by **braintropy** (stable)
+  - **NEW APP** Waking Up (`org.wakingup.android`) in braintropy patches
+- **UPDATED** Bundle **ee-morphe**
+  - **NEW APP** [PRE-RELEASE] Derdy (`com.fentek.derdy`) in ee-morphe patches
+- **UPDATED** Bundle **icysymmetra-tiktok**
+  - **UPDATED APP** TikTok (`com.zhiliaoapp.musically`) in icysymmetra-tiktok patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **morning-entree**
+  - **NEW APP** Paisa (`dev.hemanths.paisa`) in morning-entree patches
+- **UPDATED** Bundle **okish-morphe**
+  - **NEW APP** Hill Climb Racing (`com.fingersoft.hillclimb`) in okish-morphe patches
+- **UPDATED** Bundle **piko**
+  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
+  - **UPDATED APP** Twitter (`com.twitter.android`) in piko patches
+- **UPDATED** Bundle **pinterest-morphed**
+  - **UPDATED APP** Pinterest (`com.pinterest`) in pinterest-morphed patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **UPDATED** Bundle **variablenine**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in variablenine patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in variablenine patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in variablenine patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** TBank (`com.idamob.tinkoff.android`) in xob0t patches
 ## [2026-08-08]
 - **UPDATED** Bundle **amplerevanced**
   - **UPDATED APP** Chzzk (`com.navercorp.game.android.community`) in amplerevanced patches
