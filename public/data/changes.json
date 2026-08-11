@@ -10,19 +10,23 @@
           "package": "app.morphe.android.apps.youtube.music",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Google Clock MediaBrowser error stack diagnostic",
-                "description": "Temporary diagnostic that dumps the call stack from both known YT Music MediaBrowser error publishers (Llin.e and Lkzf.f). Depends on the full bridge."
-              }
-            ],
+            "patches_added": [],
             "patches_removed": [],
-            "patches_modified": []
+            "patches_modified": [
+              {
+                "name": "Google Clock MediaBrowser full bridge",
+                "description": "Full Google Clock/YT Music MediaBrowser chain: root/entitlement/consent fixes, upstream package identity/certificate compatibility, loadChildren capability and client allow-list bypasses, plus the cached browse-error fast-path bypass that was still returning empty children and the Music Premium PlaybackState ERROR(7).",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
           },
           "scan_numbers": [
             1,
             4,
-            5
+            5,
+            6
           ]
         }
       ]
@@ -406,6 +410,34 @@
           },
           "scan_numbers": [
             5
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "icysymmetra-tiktok",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Diagnostic tools",
+                "description": "Adds optional Morphe diagnostic logging, filtered reports, and local TikTok crash capture.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
           ]
         }
       ]
