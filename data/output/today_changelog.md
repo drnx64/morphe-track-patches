@@ -1,37 +1,40 @@
-## [2026-08-09]
-- **UPDATED** Bundle **adobo**
-  - **UPDATED APP** Gboard (`com.google.android.inputmethod.latin`) in adobo patches
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
-- **UPDATED** Bundle **ajstrick81-androidtv**
-  - **NEW APP** Ninja (`com.netflix.ninja`) in ajstrick81-androidtv patches
+## [2026-08-10]
 - **UPDATED** Bundle **amplerevanced**
   - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
-- **UPDATED** Bundle **andrewliang25**
-  - **UPDATED APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
-- **NEW BUNDLE** Bundle by **ang3lo** (stable)
-  - **NEW APP** Skimboarding (`com.findthefirellc.findthefire`) in ang3lo patches
-- **NEW BUNDLE** Bundle by **braintropy** (stable)
-  - **NEW APP** Waking Up (`org.wakingup.android`) in braintropy patches
-- **UPDATED** Bundle **ee-morphe**
-  - **NEW APP** [PRE-RELEASE] Derdy (`com.fentek.derdy`) in ee-morphe patches
+- **NEW BUNDLE** Bundle by **atharv** (stable)
+  - **NEW APP** Ola Electric (`com.olaelectric.companion`) in atharv patches
+- **NEW BUNDLE** Bundle by **ftl** (dev)
+  - **NEW APP** [PRE-RELEASE] SnapTube (`com.snaptube.premium`) in ftl patches
+- **NEW BUNDLE** Bundle by **ftl-portal** (dev, stable)
+  - **NEW APP** YouTube (`com.google.android.youtube`) in ftl-portal patches
+  - **NEW APP** YouTube Music (`com.google.android.apps.youtube.music`) in ftl-portal patches
+- **UPDATED** Bundle **gmaps**
+  - **UPDATED APP** Google Maps (`com.google.android.apps.maps`) in gmaps patches
+- **NEW BUNDLE** Bundle by **google-clock** (stable)
+  - **NEW APP** Clock (`com.google.android.deskclock`) in google-clock patches
+  - **NEW APP** YT Music Morphe (`app.morphe.android.apps.youtube.music`) in google-clock patches
+- **NEW BUNDLE** Bundle by **heval99** (dev, stable)
+  - **NEW APP** Sofascore (`com.sofascore.results`) in heval99 patches
 - **UPDATED** Bundle **icysymmetra-tiktok**
   - **UPDATED APP** TikTok (`com.zhiliaoapp.musically`) in icysymmetra-tiktok patches
-- **UPDATED** Bundle **jasonwu1994**
-  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **jonnyvr1**
+  - **UPDATED APP** [PRE-RELEASE] Tantan (`com.tantantribe.tribe`) in jonnyvr1 patches
 - **UPDATED** Bundle **morning-entree**
-  - **NEW APP** Paisa (`dev.hemanths.paisa`) in morning-entree patches
-- **UPDATED** Bundle **okish-morphe**
-  - **NEW APP** Hill Climb Racing (`com.fingersoft.hillclimb`) in okish-morphe patches
-- **UPDATED** Bundle **piko**
-  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
-  - **UPDATED APP** Twitter (`com.twitter.android`) in piko patches
-- **UPDATED** Bundle **pinterest-morphed**
-  - **UPDATED APP** Pinterest (`com.pinterest`) in pinterest-morphed patches
-- **UPDATED** Bundle **sofatime**
-  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
-- **UPDATED** Bundle **variablenine**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in variablenine patches
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in variablenine patches
-  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in variablenine patches
+  - **NEW APP** AppSales (`net.tsapps.appsales`) in morning-entree patches
+  - **NEW APP** Fake GPS Location (`com.hopefactory2021.fakegpslocation`) in morning-entree patches
+  - **NEW APP** Home Workout - No Equipment (`homeworkout.homeworkouts.noequipment`) in morning-entree patches
+  - **NEW APP** JEFIT (`je.fit`) in morning-entree patches
+  - **REMOVED APP** Material Capsule (`com.pryshedko.mtisland`) in morning-entree patches
+  - **NEW APP** Projectivy Launcher (`com.spocky.projengmenu`) in morning-entree patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+- **NEW BUNDLE** Bundle by **tiaruebar** (dev, stable)
+  - **NEW APP** Devices Tycoon (`com.roasterygames.devicestycoon`) in tiaruebar patches
+- **UPDATED** Bundle **vocacolle**
+  - **UPDATED APP** VocaColle (`jp.nicovideo.nicobox`) in vocacolle patches
 - **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
   - **UPDATED APP** TBank (`com.idamob.tinkoff.android`) in xob0t patches
+  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches
+- **UPDATED** Bundle **zpatches**
+  - **UPDATED APP** Lyon (`com.jcdecaux.vls.lyon`) in zpatches patches

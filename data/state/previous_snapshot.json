@@ -11058,9 +11058,9 @@
     "bundle": "piko",
     "channel": "dev",
     "repo_url": "https://github.com/crimera/piko",
-    "created_at": "2026-08-09T15:19:06",
-    "version": "v3.9.0-dev.6",
-    "description": "## [3.9.0-dev.6](https://github.com/crimera/piko/compare/v3.9.0-dev.5...v3.9.0-dev.6) (2026-08-09)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Fix default flag state while extracting recommended flags map ([82785a8](https://github.com/crimera/piko/commit/82785a858bae02ee11bd8ff07f06fa260bcceea2))\n",
+    "created_at": "2026-08-10T18:24:24",
+    "version": "v3.9.0-dev.7",
+    "description": "## [3.9.0-dev.7](https://github.com/crimera/piko/compare/v3.9.0-dev.6...v3.9.0-dev.7) (2026-08-10)\n\n### 🔧 Improvements\n\n* **Instagram:** Turn off `Disable analytics` by default ([#1674](https://github.com/crimera/piko/issues/1674)) ([753a70b](https://github.com/crimera/piko/commit/753a70be81449c27f0a8e056f7f0e938a11e964e))\n",
     "apps": [
       {
         "app_name": "Instagram",
@@ -14450,7 +14450,7 @@
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
     "created_at": "2026-08-10T15:01:19",
     "version": "v1.23.0-dev.3",
-    "description": "## [1.23.0-dev.3](https://github.com/BlazeFTL/FTL-Patches/compare/v1.23.0-dev.2...v1.23.0-dev.3) (2026-08-10)\n\n### ✨ New Features\n\n* update SnapTube ([1067f78](https://github.com/BlazeFTL/FTL-Patches/commit/1067f78b3872e24f1a1f73fdaec6358ea2a75a8c))\n",
+    "description": "## [1.23.0-dev.3](https://github.com/BlazeFTL/FTL-Patches/compare/v1.23.0-dev.2...v1.23.0-dev.3) (2026-08-10)\r\n\r\n### ✨ New Features\r\n\r\n* update SnapTube patch ([1067f78](https://github.com/BlazeFTL/FTL-Patches/commit/1067f78b3872e24f1a1f73fdaec6358ea2a75a8c))\r\n",
     "apps": [
       {
         "app_name": "SnapTube",
@@ -47163,8 +47163,8 @@
     "bundle": "google-clock",
     "channel": "stable",
     "repo_url": "https://github.com/tadikwa/google-clock-morphe-patches",
-    "created_at": "2026-08-10T16:40:27",
-    "version": "v1.7.1",
+    "created_at": "2026-08-10T20:46:24",
+    "version": "v2.0.0",
     "description": "Google Clock + Morphe YouTube Music alarm integration. v1.1 adds premium-entitlement status normalization for the external MediaBrowser integration.",
     "apps": [
       {
@@ -47173,7 +47173,7 @@
         "patches": [
           {
             "name": "Google Clock alarm MediaBrowser bridge",
-            "description": "Allows Google Clock to obtain a browsable root from Morphe-patched YouTube Music on non-Premium accounts.",
+            "description": "Short-circuits YT Music's MediaBrowser capability gate before it can publish PlaybackState ERROR(7), keeps browse entitlement metadata coherent, bypasses the DeskClock browse-consent detour, and enables background alarm playback.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -47181,9 +47181,9 @@
             ]
           },
           {
-            "name": "YT Music MediaBrowser diagnostic logging",
-            "description": "Safe diagnostic build: starts logging only when Google Clock requests MediaBrowser children; normal YT Music startup is untouched.",
-            "use": false,
+            "name": "Google Clock alarm MediaBrowser bridge v2",
+            "description": "Adds the YT Music loadChildren gate fix that prevents the Premium PlaybackState error after Google Clock subscribes. Depends on the base Google Clock alarm MediaBrowser bridge.",
+            "use": true,
             "options": [],
             "compatible_versions": [
               "9.15.51"
@@ -47197,17 +47197,8 @@
         "package": "com.google.android.deskclock",
         "patches": [
           {
-            "name": "Diagnostic logging for YouTube Music alarms",
-            "description": "Writes detailed MediaBrowser diagnostics to Download/ClockMorpheDiag-LAST.txt.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "9.0 (943154005)"
-            ]
-          },
-          {
             "name": "Use Morphe YouTube Music for alarms",
-            "description": "Redirects Google Clock to Morphe YouTube Music and converts its Premium-required playback session into Clock's normal ready MediaBrowser state.",
+            "description": "Redirects Google Clock to the Morphe YouTube Music package.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -47218,7 +47209,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/bMXVYcZZKB873HmUFhaqOOakT5ZETbOpzv1-YvZ6Qs-hPEXeYw3zzkPm38GAz6E3D7JpUFpiQy7RR4nkktSnf0E"
       }
     ],
-    "fingerprint": "e910f4916e2df5569f498b4ccd2608ec7547718299fad62ea0751be9f41c1e69"
+    "fingerprint": "1efec018bb36ec89830cba9bbce95bb715de1cd2c32d443d5f309be2a895a5f4"
   },
   "pixelpusher247:stable": {
     "bundle": "pixelpusher247",
@@ -54653,9 +54644,9 @@
     "bundle": "morning-entree",
     "channel": "stable",
     "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-    "created_at": "2026-08-10T15:08:32",
-    "version": "v1.12.0",
-    "description": "## [1.12.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.11.0...v1.12.0) (2026-08-10)\n\n### ✨ New Features\n\n* Added Home Workout ([42f7cb1](https://github.com/Entree3k/Morning-Entree-Patches/commit/42f7cb159a07146a1eb15b19cc522bb421b04d6e))\n",
+    "created_at": "2026-08-10T17:31:43",
+    "version": "v1.13.0",
+    "description": "## [1.13.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.12.0...v1.13.0) (2026-08-10)\n\n### ✨ New Features\n\n* Added ([f0c5cf7](https://github.com/Entree3k/Morning-Entree-Patches/commit/f0c5cf71be9e28257703842b5b77d937ca56bd8e))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -55003,6 +54994,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/gSo2NaX1KH9i2tlc9MGxSQKt8P49-VXkygRtz6XWWnsP0-EYMQwJusOwMp5gSDY0Sw6gFB4xU7qlfGooipVuZg"
+      },
+      {
+        "app_name": "Projectivy Launcher",
+        "package": "com.spocky.projengmenu",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Projectivy Launcher Premium",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.71"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Qo3kWBOmNFWGcGxiBHs-tR2_0uVcrGGUzKXb_e_JwpbwwzsYHAs-qvNhE-QDr2c8B4_8w0bq8yl5uo88pTdb"
       },
       {
         "app_name": "Gradient Weather",
@@ -55963,7 +55970,7 @@
         "patches": [
           {
             "name": "Enable Premium",
-            "description": "Unlocks Home Workout Premium",
+            "description": "Unlocks Home Workout Premium. Use with Spoof Signature Verification",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -55972,6 +55979,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/NlQFS5pgo96dzbRuwZfkBhGf3ecKSGH5lRx0DSsmELYZXRYHlXrd7YVCR7tS7-R84eEVLhZ1qBIQj1WP_RCJAQ"
+      },
+      {
+        "app_name": "JEFIT",
+        "package": "je.fit",
+        "patches": [
+          {
+            "name": "Unlock Elite",
+            "description": "Unlocks JEFIT Elite",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "17.2.10"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/urhFtqMp4ZIAsERTr8WVQFCqEFU-ZYK2a-B2NeGqvy2jxL8PyXhYi5ybwxFQemQ9VVYQyS-QhA8zn5iKaGmbpgo"
       },
       {
         "app_name": "Lose Weight App for Men",
@@ -55988,6 +56011,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/49q7rHLxoLR1Szt6PqUWuwcjbIcvWO_HqmUlvpXwH0gl8Nis21Pdn9n0ISPxwaGqskPTMybWPvirOW35A7DZeQ"
+      },
+      {
+        "app_name": "AppSales",
+        "package": "net.tsapps.appsales",
+        "patches": [
+          {
+            "name": "Enable Pro",
+            "description": "Enables Appsales Premium.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/AD-uvZA0oDO5bTMFmMbaAXn0r-beIWPA6E6TEydlOt7ClYWZgGtQ7A2HZVuuIbMZgCC7PRiV7suikMRJ-8ZrZg"
       },
       {
         "app_name": "EOBD Facile",
@@ -56022,7 +56061,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/wKvF6emyUIhJfSRO76zlVAKsOGxaMxj0IZN7ghIL3XqYsICjuh1eWx1NFtKZCykCdtIyJD0z6f_lh6VuXpdYWg"
       }
     ],
-    "fingerprint": "20ae7954830a3bcf031e4503b71556839c3595fa99a385d27238d549f35c7e68"
+    "fingerprint": "908a8d1096fc5f808bca4e2a926d41da75e3da8050af296f98eef78aa7f897b6"
   },
   "proxma:stable": {
     "bundle": "proxma",
@@ -59744,9 +59783,9 @@
     "bundle": "icysymmetra-tiktok",
     "channel": "dev",
     "repo_url": "https://github.com/icysymmetra/tiktok-patches-for-morphe",
-    "created_at": "2026-07-26T01:31:02",
-    "version": "v0.4.0-dev.1",
-    "description": "# [0.4.0-dev.1](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.3.1...v0.4.0-dev.1) (2026-07-26)\n\n\n### Features\n\n* **tiktok:** add feature gate lab and UI suppressors ([72bf32a](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/72bf32aa6991257ace0bab91d3a8767617cbd802))\n* **tiktok:** add translation language exclusions ([8f60185](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/8f60185434a3cbb13653438a6561e2d7fc45f4dd))\n* **tiktok:** enable Feature Gate Lab by default ([a164b70](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/a164b70cf046a738d3b0a817a57b1fedf515ef2e))\n* **tiktok:** enable hold-and-slide 2x lock ([a2fd626](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/a2fd626ecb1fb116461b760445128bfdd8980f29))\n* **tiktok:** improve feature gate lab search ([ffc19de](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/ffc19dece888a6ef814d20401d0bc4b9ba93858d))\n* **tiktok:** port external browser patch from lyyako ([7a517c2](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/7a517c218a35508ac4f284450ff6d6c4d3ea05d8))\n* **tiktok:** port publish date patch from lyyako ([1b6c386](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/1b6c386611239c39242bc813fca9614c8de3d3d1))\n* **tiktok:** redesign support row ([cc39469](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/cc39469c98eabc0ccdea40fc423e94639c34703f))\n\n\n\n\n\n## 0.4.0-dev.1",
+    "created_at": "2026-08-10T19:16:25",
+    "version": "v0.6.2-dev.1",
+    "description": "## [0.6.2-dev.1](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.6.1...v0.6.2-dev.1) (2026-08-10)\n\n\n### Bug Fixes\n\n* **tiktok:** cover direct Turing CAPTCHA dialogs ([27b2639](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/27b263920ffadaf2e27777c703c225f2e4f3ce40))\n\n\n\n\n\n## 0.6.2-dev.1",
     "apps": [
       {
         "app_name": "TikTok",
@@ -59758,61 +59797,88 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Copy comments without username",
-            "description": "Copies only the comment text when copying TikTok comments. (Supports TikTok 43.8.3.)",
+            "description": "Copies only the comment text without including the creator's username.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Custom offline videos limit",
-            "description": "Adds a configurable custom option to TikTok's offline videos menu. (Supports TikTok 43.8.3.)",
+            "description": "Adds a custom entry to TikTok's offline videos menu with a configurable limit of up to 500 videos.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
+            ]
+          },
+          {
+            "name": "Diagnostic tools",
+            "description": "Adds optional Morphe diagnostic logging, filtered reports, and local Java crash capture.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "46.2.3"
             ]
           },
           {
             "name": "Disable login requirement",
-            "description": "Disables mandatory login for TikTok. (Supports TikTok 43.8.3.)",
+            "description": "Removes TikTok's mandatory login gate from supported flows.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
+            ]
+          },
+          {
+            "name": "Disable long-press quick share",
+            "description": "Keeps long-pressing Share from opening TikTok's quick-share interaction.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "46.2.3"
             ]
           },
           {
             "name": "Disable screen capture detection",
-            "description": "Disables screen recording and screenshot detection. (Supports TikTok 43.8.3.)",
+            "description": "Prevents TikTok from reacting to screenshots and screen recordings.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Downloads",
-            "description": "Downloads videos and images without watermark, saves comment stickers/images, and adds download-related controls. (Supports TikTok 43.8.3.)",
+            "description": "Adds watermark-free downloads, comment sticker saving, configurable folders, and filename templates.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
-            "name": "Enable Open Debug",
-            "description": "Uses TikTok's hidden Open Debug settings cell as the entry point for Morphe settings. Required for the Morphe settings menu to appear. Supports TikTok 43.8.3.",
+            "name": "Enable Live search",
+            "description": "Shows TikTok's search entry in the Live drawer where supported.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
+            ]
+          },
+          {
+            "name": "Enable non-personalized search",
+            "description": "Uses TikTok's non-personalized search mode instead of its saved account choice.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "46.2.3"
             ]
           },
           {
@@ -59821,43 +59887,43 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Feed filter",
-            "description": "Removes ads, livestreams, stories, image videos and videos with a specific amount of views or likes from the feed. (Supports TikTok 43.8.3.)",
+            "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, and videos outside configured view or like ranges.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Feed tab navigation",
-            "description": "Adds controls to choose which top feed tabs are visible. For You stays enabled for stability. Supports TikTok 43.8.3.",
+            "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Fix Google login",
-            "description": "Allows logging in with a Google account. (Supports TikTok 43.8.3.)",
+            "description": "Restores Google account sign-in after patching.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Hide CAPTCHA popups",
-            "description": "Prevents client-side verification puzzle dialogs from opening, including those shown while browsing LIVE. This does not bypass server-side checks.",
+            "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs while preserving login and account verification.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
@@ -59866,7 +59932,16 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
+            ]
+          },
+          {
+            "name": "Hide quick comment reactions",
+            "description": "Hides TikTok's exposed quick emoji row in supported comment inputs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "46.2.3"
             ]
           },
           {
@@ -59875,7 +59950,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
@@ -59884,52 +59959,70 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Playback speed",
-            "description": "Enables the playback speed option for all videos and retains the speed configurations in between videos. (Supports TikTok 43.8.3.)",
+            "description": "Enables playback-speed controls for all videos and remembers the selected speed between videos.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Remember clear display",
-            "description": "Remembers the clear display configurations in between videos. (Supports TikTok 43.8.3.)",
+            "description": "Remembers TikTok's clear-display state between videos.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
+            ]
+          },
+          {
+            "name": "Resume videos after scrolling",
+            "description": "Continues supported videos from where playback stopped when returning after a scroll.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "46.2.3"
             ]
           },
           {
             "name": "Sanitize sharing links",
-            "description": "Removes tracking parameters from shared links. (Supports TikTok 43.8.3.)",
+            "description": "Removes tracking parameters from TikTok links before they are shared.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Settings",
-            "description": "Adds Morphe settings to TikTok. Supports TikTok 43.8.3.",
+            "description": "Adds the Metra patches settings menu to TikTok. Supports TikTok 46.2.3.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           },
           {
             "name": "Show seekbar",
-            "description": "Shows a progress bar for all videos. (Supports TikTok 43.8.3.)",
+            "description": "Shows TikTok's native video seekbar where it would normally be hidden.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
+            ]
+          },
+          {
+            "name": "Show seekbar thumbnail",
+            "description": "Shows TikTok's video preview thumbnail while dragging the seekbar.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "46.2.3"
             ]
           },
           {
@@ -59938,23 +60031,32 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
+            ]
+          },
+          {
+            "name": "Stop video looping",
+            "description": "Stops videos at the end instead of replaying them.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "46.2.3"
             ]
           },
           {
             "name": "Translate comments",
-            "description": "Adds comment translation controls that use TikTok's loaded comment batch. Supports TikTok 43.8.3.",
+            "description": "Adds comment translation controls using TikTok's translation system, with selectable language exclusions.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "43.8.3"
+              "46.2.3"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/2o7iuqPe-0msP3DvNhzoOgNo4eZ6GkL_RtGVeKyBn5UBQAW5cw-GW5V3wDOHB1yTQuqWzrFLFOv2u4_5ea1uhg"
       }
     ],
-    "fingerprint": "08af826369ee55ed03e5d1aadd2b33a4042149e36c1c6504956a0d1b32c06361"
+    "fingerprint": "b346ca5e2ecdf4d60827f5a45c4bc5a221874962e867bca5f8353c28bd511a73"
   },
   "icysymmetra-tiktok:stable": {
     "bundle": "icysymmetra-tiktok",
