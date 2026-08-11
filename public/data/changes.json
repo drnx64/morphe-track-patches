@@ -12,15 +12,16 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Google Clock MediaBrowser upstream compatibility",
-                "description": "Isolated port of the upstream YT Music MediaBrowser unlock: bypasses the caller certificate gate and restores the original com.google.android.apps.youtube.music identity inside search_media_items."
+                "name": "Google Clock MediaBrowser full bridge",
+                "description": "Full Google Clock/YT Music MediaBrowser chain: combines root/entitlement/consent fixes, upstream package identity/certificate compatibility, the Premium-producing onLoadChildren capability gate, and the client browse allow-list gate."
               }
             ],
             "patches_removed": [],
             "patches_modified": []
           },
           "scan_numbers": [
-            1
+            1,
+            4
           ]
         }
       ]
@@ -182,6 +183,50 @@
           },
           "scan_numbers": [
             3
+          ]
+        },
+        {
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
+          ]
+        },
+        {
+          "app_name": "MX Player Pro",
+          "package": "com.mxtech.videoplayer.pro",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "xob0t",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Ozon",
+          "package": "ru.ozon.app.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove Ozon ads",
+                "description": "Removes Ozon ad widgets, banner carousels, video ads, and PDP promo blocks.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            4
           ]
         }
       ]
