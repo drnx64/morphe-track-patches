@@ -111,9 +111,9 @@
     "bundle": "nuviotv",
     "channel": "dev",
     "repo_url": "https://github.com/liongalahad/nuviotv-morphe-patches",
-    "created_at": "2026-08-10T05:33:36",
-    "version": "v1.0.0-dev.17",
-    "description": "## [1.0.0-dev.17](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.16...v1.0.0-dev.17) (2026-08-10)\n\n### 🐛 Bug Fixes\n\n* **local-subtitles:** isolate imports by content ([6adc7b3](https://github.com/liongalahad/nuviotv-morphe-patches/commit/6adc7b31a5a8737a77e331ceda65cb556f7f5a30))\n* **settings:** match native category spacing ([920f9b6](https://github.com/liongalahad/nuviotv-morphe-patches/commit/920f9b62dc13b00d9fbc67da670108996afd2e75))\n",
+    "created_at": "2026-08-10T23:53:15",
+    "version": "v1.0.0-dev.18",
+    "description": "## [1.0.0-dev.18](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.17...v1.0.0-dev.18) (2026-08-10)\n\n### ✨ New Features\n\n* update patch suite for NuvioTV 0.8.3-beta ([a23474f](https://github.com/liongalahad/nuviotv-morphe-patches/commit/a23474f17591793195eb5505867eeac25a8f45e9))\n",
     "apps": [
       {
         "app_name": "NuvioTV",
@@ -121,20 +121,29 @@
         "patches": [
           {
             "name": "Allow Importing Subs from Local Storage",
-            "description": "Adds Local Storage to Nuvio's ExoPlayer subtitle menu and imports subtitle files from the device.",
+            "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
             "use": false,
             "options": [],
             "compatible_versions": [
-              "0.8.2-beta"
+              "0.8.3-beta"
             ]
           },
           {
-            "name": "Binge Group Manual Fallback",
-            "description": "Adds Morphe > Playback control to open the source picker when no preferred binge-group stream is found.",
+            "name": "Library Mode Focus Fix",
+            "description": "Returns Library focus to the previously selected Saved or Cloud mode.",
             "use": false,
             "options": [],
             "compatible_versions": [
-              "0.8.2-beta"
+              "0.8.3-beta"
+            ]
+          },
+          {
+            "name": "Local Media",
+            "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "0.8.3-beta"
             ]
           },
           {
@@ -143,7 +152,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "0.8.2-beta"
+              "0.8.3-beta"
             ]
           },
           {
@@ -152,7 +161,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "0.8.2-beta"
+              "0.8.3-beta"
             ]
           },
           {
@@ -161,7 +170,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "0.8.2-beta"
+              "0.8.3-beta"
             ]
           },
           {
@@ -170,14 +179,14 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "0.8.2-beta"
+              "0.8.3-beta"
             ]
           }
         ],
         "icon_url": ""
       }
     ],
-    "fingerprint": "4eb70f7d5a6d8c64ee14fc00aba4bd1d08efd1ff537b80b51f19e65153c0b678"
+    "fingerprint": "396e870cbd3fa6c0dad117c3d7cc986845c7c7b8e419559b6dd36d1d00e45ab4"
   },
   "seobject:dev": {
     "bundle": "seobject",
@@ -21530,6 +21539,50 @@
       }
     ],
     "fingerprint": "3c5ac6895925f69f2fb01b87c27c30a6318373945edb64ef981a2dd1d20423d6"
+  },
+  "nagol12344:stable": {
+    "bundle": "nagol12344",
+    "channel": "stable",
+    "repo_url": "https://github.com/Nagol12344/patch",
+    "created_at": "2026-08-11T02:13:22Z",
+    "version": "1.2.2",
+    "description": "## [1.2.2](https://github.com/Nagol12344/patch/compare/v1.2.1...v1.2.2) (2026-08-11)\n\n### 🐛 Bug Fixes\n\n* **maybe:** idfkatp ([58ce455](https://github.com/Nagol12344/patch/commit/58ce45541b79a8508c4cd776df612fd01c4747e8))",
+    "apps": [
+      {
+        "app_name": "Better Place",
+        "package": "com.bplace",
+        "patches": [
+          {
+            "name": "Remote script injector",
+            "description": "Hooks WebView to inject integrity-checked userscripts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.0.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/JRF3zvWS6qdhgGnVLdnaei8u6FukLufJzp3E7hXzuEVXtvCA_VFxyJKinFxlddIf5DtqAjVJu5DQtQECY0e2_Ns"
+      },
+      {
+        "app_name": "XYZ app",
+        "package": "com.example.app",
+        "patches": [
+          {
+            "name": "Example Patch",
+            "description": "Example patch to start with.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.0.0",
+              "1.0.2"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "6db3602f209bf34ba2589a63e545a86df39d32561e0e2b1449fa8b889709d211"
   },
   "miguel:stable": {
     "bundle": "miguel",

@@ -1,40 +1,86 @@
 {
   "affected_bundles": [
     {
-      "bundle": "google-clock",
-      "channel": "stable",
+      "bundle": "nuviotv",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "YT Music Morphe",
-          "package": "app.morphe.android.apps.youtube.music",
+          "app_name": "NuvioTV",
+          "package": "com.nuvio.tv",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Google Clock MediaBrowser upstream compatibility",
-                "description": "Isolated port of the upstream YT Music MediaBrowser unlock: bypasses the caller certificate gate and restores the original com.google.android.apps.youtube.music identity inside search_media_items."
+                "name": "Library Mode Focus Fix",
+                "description": "Returns Library focus to the previously selected Saved or Cloud mode."
+              },
+              {
+                "name": "Local Media",
+                "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files."
               }
             ],
-            "patches_removed": [],
-            "patches_modified": []
+            "patches_removed": [
+              {
+                "name": "Binge Group Manual Fallback",
+                "description": "Adds Morphe > Playback control to open the source picker when no preferred binge-group stream is found."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Allow Importing Subs from Local Storage",
+                "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Mark SDH Subtitles",
+                "description": "Marks explicitly labelled SDH tracks and detected English SDH subtitle files.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Random Episode",
+                "description": "Adds Morphe > Detail Page > Show Random Episode Button and random series playback.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Rating Visibility",
+                "description": "Adds Settings > Morphe > Ratings with independent overall and episode rating controls.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove SDH Annotations",
+                "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
           }
         }
       ]
     },
     {
-      "bundle": "morning-entree",
+      "bundle": "nagol12344",
       "channel": "stable",
-      "badge_type": "UPDATED",
+      "badge_type": "NEW BUNDLE",
       "apps": [
         {
-          "app_name": "Hydro Coach",
-          "package": "com.codium.hydrocoach",
+          "app_name": "Better Place",
+          "package": "com.bplace",
           "badge_type": "NEW APP"
         },
         {
-          "app_name": "Bluetooth Volume Manager",
-          "package": "eu.darken.bluemusic",
+          "app_name": "XYZ app",
+          "package": "com.example.app",
           "badge_type": "NEW APP"
         }
       ]
