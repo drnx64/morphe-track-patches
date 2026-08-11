@@ -1,7 +1,7 @@
 {
   "date": "2026-08-11",
-  "lastChecked": "2026-08-11T10:00:04Z",
-  "scan_counter": 4,
+  "lastChecked": "2026-08-11T12:52:49Z",
+  "scan_counter": 5,
   "affected_bundles": {
     "google-clock:stable": {
       "bundle": "google-clock",
@@ -15,8 +15,8 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Google Clock MediaBrowser full bridge",
-                "description": "Full Google Clock/YT Music MediaBrowser chain: combines root/entitlement/consent fixes, upstream package identity/certificate compatibility, the Premium-producing onLoadChildren capability gate, and the client browse allow-list gate."
+                "name": "Google Clock MediaBrowser error stack diagnostic",
+                "description": "Temporary diagnostic that dumps the call stack from both known YT Music MediaBrowser error publishers (Llin.e and Lkzf.f). Depends on the full bridge."
               }
             ],
             "patches_removed": [],
@@ -24,7 +24,8 @@
           },
           "scan_numbers": [
             1,
-            4
+            4,
+            5
           ]
         }
       ]
@@ -230,6 +231,184 @@
           },
           "scan_numbers": [
             4
+          ]
+        }
+      ]
+    },
+    "ftl:stable": {
+      "bundle": "ftl",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            5
+          ]
+        },
+        {
+          "app_name": "MX Player Pro",
+          "package": "com.mxtech.videoplayer.pro",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            5
+          ]
+        },
+        {
+          "app_name": "SnapTube",
+          "package": "com.snaptube.premium",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            5
+          ]
+        }
+      ]
+    },
+    "morphe:dev": {
+      "bundle": "morphe",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Reddit",
+          "package": "com.reddit.frontpage",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Custom branding name for Reddit",
+                "description": "Changes the Reddit app name to the name specified in patch options.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Custom font",
+                "description": "Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable modern home",
+                "description": "Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable screenshot popup",
+                "description": "Adds an option to disable the popup that appears when taking a screenshot.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Force system font",
+                "description": "Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide Ask button",
+                "description": "Adds an option to hide Ask button in the search bar.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide Reddit search",
+                "description": "Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide Trending shelves",
+                "description": "Adds an option to hide the Trending shelves from feed and search suggestions.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide ads",
+                "description": "Adds options to hide ads.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide communities shelf",
+                "description": "Adds an option to hide the related or suggested communities shelf in subreddits.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide navigation buttons",
+                "description": "Adds options to hide buttons in the navigation bar.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide sidebar components",
+                "description": "Adds options to hide the sidebar components.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Open links directly",
+                "description": "Adds an option to skip over redirection URLs in external links.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Open links externally",
+                "description": "Adds an option to always open links in your browser instead of with the in-app-browser.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove subreddit dialog",
+                "description": "Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Sanitize sharing links",
+                "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Show view count",
+                "description": "Adds an option to show the view count of Posts.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof signature",
+                "description": "Spoofs the signature of the app to fix notification issues.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            5
           ]
         }
       ]
