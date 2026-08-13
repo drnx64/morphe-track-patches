@@ -1,5 +1,69 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-08-12]
+- **UPDATED** Bundle **ajstrick81-androidtv**
+  - **UPDATED APP** Android (`tv.twitch.android.app`) in ajstrick81-androidtv patches
+- **UPDATED** Bundle **andrewliang25**
+  - **UPDATED APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
+- **UPDATED** Bundle **dh6k**
+  - **UPDATED APP** Helium Browser (`io.github.jqssun.helium`) in dh6k patches
+  - **NEW APP** Quetta Browser (`net.quetta.browser`) in dh6k patches
+  - **NEW APP** Quetta Browser Official (`net.quetta.browser.official`) in dh6k patches
+- **UPDATED** Bundle **ftl**
+  - **NEW APP** [PRE-RELEASE] ES File Explorer (`com.estrongs.android.pop`) in ftl patches
+  - **UPDATED APP** MX Player (`com.mxtech.videoplayer.ad`) in ftl patches
+  - **UPDATED APP** MX Player Pro (`com.mxtech.videoplayer.pro`) in ftl patches
+- **UPDATED** Bundle **hxreborn**
+  - **NEW APP** Audible (`com.audible.application`) in hxreborn patches
+  - **UPDATED APP** Showly (`com.michaldrabik.showly2`) in hxreborn patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **morning-entree**
+  - **NEW APP** Automate (`com.llamalab.automate`) in morning-entree patches
+  - **NEW APP** Flud (`com.delphicoder.flud`) in morning-entree patches
+  - **NEW APP** Lightmeter (`com.vodemn.lightmeter`) in morning-entree patches
+  - **NEW APP** nzb360 (`com.kevinforeman.nzb360`) in morning-entree patches
+  - **NEW APP** TheFor (`xyz.thefor.habits.habits`) in morning-entree patches
+- **UPDATED** Bundle **rookieenough**
+  - **UPDATED APP** Amazon Music (`com.amazon.mp3`) in rookieenough patches
+  - **UPDATED APP** Amazon Shopping (`com.amazon.mshop.android.shopping`) in rookieenough patches
+  - **UPDATED APP** Disney+ (`com.disney.disneyplus`) in rookieenough patches
+  - **UPDATED APP** Facebook (`com.facebook.katana`) in rookieenough patches
+  - **UPDATED APP** GMX Mail (`de.gmx.mobile.android.mail`) in rookieenough patches
+  - **UPDATED APP** Google News (`com.google.android.apps.magazines`) in rookieenough patches
+  - **UPDATED APP** Google Recorder (`com.google.android.apps.recorder`) in rookieenough patches
+  - **UPDATED APP** Hex Editor (`com.myprog.hexedit`) in rookieenough patches
+  - **UPDATED APP** Icon Pack Studio (`ginlemon.iconpackstudio`) in rookieenough patches
+  - **UPDATED APP** Inshorts (`com.nis.app`) in rookieenough patches
+  - **UPDATED APP** irplus (`net.binarymode.android.irplus`) in rookieenough patches
+  - **UPDATED APP** Messenger (`com.facebook.orca`) in rookieenough patches
+  - **UPDATED APP** Microsoft Lens (`com.microsoft.office.officelens`) in rookieenough patches
+  - **UPDATED APP** Nothing X (`com.nothing.smartcenter`) in rookieenough patches
+  - **UPDATED APP** NU.nl (`nl.sanomamedia.android.nu`) in rookieenough patches
+  - **UPDATED APP** Peacock TV (`com.peacocktv.peacockandroid`) in rookieenough patches
+  - **UPDATED APP** Photoshop Mix (`com.adobe.photoshopmix`) in rookieenough patches
+  - **UPDATED APP** Pixiv (`jp.pxv.android`) in rookieenough patches
+  - **UPDATED APP** Proton Mail (`ch.protonmail.android`) in rookieenough patches
+  - **UPDATED APP** RAR (`com.rarlab.rar`) in rookieenough patches
+  - **UPDATED APP** SoundCloud (`com.soundcloud.android`) in rookieenough patches
+  - **UPDATED APP** Threads (`com.instagram.barcelona`) in rookieenough patches
+  - **REMOVED APP** TikTok (`com.zhiliaoapp.musically`) in rookieenough patches
+  - **UPDATED APP** TikTok (JP) (`com.ss.android.ugc.trill`) in rookieenough patches
+  - **REMOVED APP** Tumblr (`com.tumblr`) in rookieenough patches
+  - **UPDATED APP** Twitch (`tv.twitch.android.app`) in rookieenough patches
+  - **UPDATED APP** Viber (`com.viber.voip`) in rookieenough patches
+- **UPDATED** Bundle **rushiranpise**
+  - **UPDATED APP** Bluetooth Volume Manager (`eu.darken.bluemusic`) in rushiranpise patches
+  - **NEW APP** Facebook (`com.facebook.katana`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] Messenger (`com.facebook.orca`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] Reddit (`com.reddit.frontpage`) in rushiranpise patches
+  - **UPDATED APP** Telegram (`org.telegram.messenger`) in rushiranpise patches
+  - **UPDATED APP** Telegram Plus (`org.telegram.plus`) in rushiranpise patches
+  - **UPDATED APP** Telegram Web (`org.telegram.messenger.web`) in rushiranpise patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
+- **UPDATED** Bundle **zpatches**
+  - **UPDATED APP** Lyon (`com.jcdecaux.vls.lyon`) in zpatches patches
 ## [2026-08-11]
 - **NEW BUNDLE** Bundle by **ftl** (dev, stable)
   - **NEW APP** MX Player (`com.mxtech.videoplayer.ad`) in ftl patches
