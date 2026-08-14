@@ -47953,6 +47953,15 @@
         "package": "com.tantantribe.tribe",
         "patches": [
           {
+            "name": "AB Test Override",
+            "description": "Overrides A/B test values to enable beneficial features: instant match, quick message, batch icebreak, chat optimization, letter features, me tab revamp, push enhancements, verified chat, tiered membership, platinum membership, surprise box, anti-harass customization",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.3.6"
+            ]
+          },
+          {
             "name": "Ad Removal",
             "description": "Removes all ad displays: navigation bar banner, native feed ads, live streaming banner ads, live video feed ads, live square ads, conversation Google ads, marriage guide card, four-select-one card, daily selection card, visitor list ads, likers ads, meet likers ads, meet visitor ads, splash screen ads, profile photo carousel ads, incentive video ads, fake splash view, video ad player, official advert, ad reward dialogs, live streaming ad user, treasure prize ads",
             "use": true,
@@ -47999,7 +48008,7 @@
           },
           {
             "name": "Messaging Enhancement",
-            "description": "Removes message limits, unlimited pin chat, voice/video calls, quick chat, typing indicator, free gifts, letter, greeting, ice breaker, read receipts, AI translation, message recall, group chat, live chat, message filter, chat partner config, ODiamond visitor config, prologue config, love buzz data, secret crush limit, boost limit, message tab revision, collapsible conversation, chat helper AI, call duration, conversation refresh interval",
+            "description": "Removes message limits, unlimited pin chat, voice/video calls, quick chat, typing indicator, free gifts, letter, greeting, ice breaker, read receipts, AI translation, message recall, group chat, live chat, message filter, chat partner config, ODiamond visitor config, prologue config, love buzz data, secret crush limit, boost limit, message tab revision, collapsible conversation, chat helper AI, call duration, conversation refresh interval, heartbeat match, message integration, assistant message clear, love buzz prolong count, ice break dialog config, continues op conv config",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48026,7 +48035,25 @@
           },
           {
             "name": "Privacy Enhancement",
-            "description": "Advanced privacy protections: root/emulator detection bypass, ShuMeng SDK blocking, Facebook SDK emulator detection bypass, APK signature verification bypass, package enumeration prevention",
+            "description": "Advanced privacy protections: root/emulator detection bypass, ShuMeng SDK blocking, Facebook SDK emulator detection bypass, APK signature verification bypass, package enumeration prevention, VPN/proxy detection bypass, overlay detection bypass",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.3.6"
+            ]
+          },
+          {
+            "name": "Remote Config Override",
+            "description": "Overrides remote configuration values: disables popup scheduling, prevents aggressive token expiry, removes quick chat limits, disables text buzz auto-delete",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "7.3.6"
+            ]
+          },
+          {
+            "name": "Search Discovery",
+            "description": "Enhances search and discovery: disables auto-adjust radius, removes invisible radius, enables Gaea distance algorithm, expands liked user and visitor filter ranges",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -48046,7 +48073,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/MhQtY7rMyZYH6mRBIqoWh0YN80l3aO6oVHxVEkvn6fO5V_lSexViFl75gUgdgIHDGWLF7Rji5n-WcIyR1ZgQ0w"
       }
     ],
-    "fingerprint": "e2b821b11ba241d92d65c85ad4ef9633b119a6195acd57b509275899f5f0d3d7",
+    "fingerprint": "935cb42615d85299132f1efce1d5216acc92e0584eb9184f7cfd366e7b93c376",
     "release_notes": "## Dev2 Patchset - 29 New Patches\n\n### AnalyticsDisablePatch (+9)\n- Firebase Analytics disable\n- MoTracing (distributed tracing) disable\n- MEStatistics (XEngine media engine) disable\n- Device ID expansion (IMEI, Android ID, Google Advertising ID)\n- Network Metrics tracking disable\n- Push Notification Statistics disable\n- MediaLog/Battery Metrics disable\n- MoLive APM (FPS/CPU/temperature) disable\n- DNS SLA Logging disable\n\n### PrivacyControlsPatch (+3)\n- Contact Access Block (READ_CONTACTS)\n- Location Privacy (profile hideLocation)\n- Privacy Settings Force Enable (hideContacts, hideMutualContacts, hideSchool)\n\n### PremiumUnlockPatch (+1)\n- Live Streaming Permission Controls (canStartLive, canUseMaskMode, canVoiceLive)\n\n### DialogCleanupPatch (+2)\n- VIP Upgrade Popup suppression\n- Dislike Who Liked Me popup suppression\n\n### UiCleanupPatch (+11)\n- Privilege Enhanced Promotion Banner\n- Profile Thin Popup\n- Super Like Banner\n- Compliment Received Banner\n- Operation Banner\n- New User Special Like Banner\n- Profile Fake View\n- Super Like/Undo Guide Card\n- Boost Guide Card\n- City Top Greet Dialog\n- Multi Super Like Push Bubble\n\n### LiveStreamingPatch (+3)\n- Chat Rate Limiting removal\n- Voice Game Joining enable\n- PK Battle All-Day enable\n\n**Total: 80 patches across 7 patchsets**",
     "release_tag": "v0.0.1-dev2",
     "release_date": "2026-07-30T21:06:22Z"
@@ -57516,9 +57543,9 @@
       }
     ],
     "fingerprint": "39891b6ac6f1f7f159f321c8c5bf22b1124c6d2c2b51a3537171d0e0b2768321",
-    "release_notes": "# [1.25.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.24.0...v1.25.0) (2026-08-12)\n\n\n### Features\n\n* **twitch-atv:** block ads on the Twitch Android-TV app (Starshot WebView) ([#101](https://github.com/ajstrick81/morphe-androidtv-patches/issues/101)) ([4ff8030](https://github.com/ajstrick81/morphe-androidtv-patches/commit/4ff80309a60d5513545301b96c888b4fce9cb725)), closes [#EXT-X-DISCONTINUITY](https://github.com/ajstrick81/morphe-androidtv-patches/issues/EXT-X-DISCONTINUITY) [#EXTINF](https://github.com/ajstrick81/morphe-androidtv-patches/issues/EXTINF) [#EXT-X-DISCONTINUITY](https://github.com/ajstrick81/morphe-androidtv-patches/issues/EXT-X-DISCONTINUITY)\n\n\n\n",
-    "release_tag": "v1.25.0",
-    "release_date": "2026-08-12T02:33:40Z"
+    "release_notes": "# [1.26.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.25.0...v1.26.0) (2026-08-14)\n\n\n### Features\n\n* **netflix:** rebuild ad-strip for dynamic ad insertion + household prompt ([#103](https://github.com/ajstrick81/morphe-androidtv-patches/issues/103)) ([2b8f2db](https://github.com/ajstrick81/morphe-androidtv-patches/commit/2b8f2dbdfe7e29e7354300378e9e5893d4cbfd95))\n\n\n\n",
+    "release_tag": "v1.26.0",
+    "release_date": "2026-08-14T00:47:10Z"
   },
   "ajstrick81-androidtv:stable": {
     "bundle": "ajstrick81-androidtv",
