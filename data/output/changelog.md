@@ -1,5 +1,31 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-08-14]
+- **NEW BUNDLE** Bundle by **aapam** (dev, stable)
+  - **NEW APP** ZEE5 Android TV (`com.graymatrix.did`) in aapam patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+- **NEW BUNDLE** Bundle by **braintropy** (dev, stable)
+  - **NEW APP** MyoAdapt (`com.myoadapt.app.android`) in braintropy patches
+  - **NEW APP** Waking Up (`org.wakingup.android`) in braintropy patches
+- **UPDATED** Bundle **ftl**
+  - **NEW APP** Xender (`cn.xender`) in ftl patches
+- **UPDATED** Bundle **itsthejoker**
+  - **UPDATED APP** Roost (`com.rookery.courier`) in itsthejoker patches
+- **UPDATED** Bundle **jasonwu1994**
+  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
+- **UPDATED** Bundle **jonnyvr1**
+  - **UPDATED APP** [PRE-RELEASE] Tantan (`com.tantantribe.tribe`) in jonnyvr1 patches
+- **NEW BUNDLE** Bundle by **rabehx** (stable)
+  - **NEW APP** BaridiMob (`ru.bpc.mobilebank.bpc`) in rabehx patches
+  - **NEW APP** My Ooredoo (`com.algeria.selfcare.app.android`) in rabehx patches
+  - **NEW APP** Webetu (`app.progres.webetu`) in rabehx patches
+- **UPDATED** Bundle **roundsalmon4**
+  - **UPDATED APP** SeriesGuide (`com.battlelancer.seriesguide`) in roundsalmon4 patches
+- **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
+  - **UPDATED APP** Ozon (`ru.ozon.app.android`) in xob0t patches
+  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches
 ## [2026-08-13]
 - **UPDATED** Bundle **anddea**
   - **UPDATED APP** YouTube (`com.google.android.youtube`) in anddea patches

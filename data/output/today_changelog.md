@@ -1,27 +1,26 @@
-## [2026-08-13]
-- **UPDATED** Bundle **anddea**
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in anddea patches
-- **UPDATED** Bundle **browzomje**
-  - **UPDATED APP** Pinterest (`com.pinterest`) in browzomje patches
+## [2026-08-14]
+- **NEW BUNDLE** Bundle by **aapam** (dev, stable)
+  - **NEW APP** ZEE5 Android TV (`com.graymatrix.did`) in aapam patches
+- **UPDATED** Bundle **amplerevanced**
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
+- **NEW BUNDLE** Bundle by **braintropy** (dev, stable)
+  - **NEW APP** MyoAdapt (`com.myoadapt.app.android`) in braintropy patches
+  - **NEW APP** Waking Up (`org.wakingup.android`) in braintropy patches
 - **UPDATED** Bundle **ftl**
-  - **UPDATED APP** ES File Explorer (`com.estrongs.android.pop`) in ftl patches
-  - **REMOVED APP** [PRE-RELEASE] MX Player (`com.mxtech.videoplayer.ad`) in ftl patches
-- **UPDATED** Bundle **hoomans-morphe**
-  - **UPDATED APP** DirectChat (`net.uniquegem.directchat`) in hoomans-morphe patches
-  - **UPDATED APP** Moovit (`com.tranzmate`) in hoomans-morphe patches
+  - **NEW APP** Xender (`cn.xender`) in ftl patches
+- **UPDATED** Bundle **itsthejoker**
+  - **UPDATED APP** Roost (`com.rookery.courier`) in itsthejoker patches
 - **UPDATED** Bundle **jasonwu1994**
   - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
 - **UPDATED** Bundle **jonnyvr1**
   - **UPDATED APP** [PRE-RELEASE] Tantan (`com.tantantribe.tribe`) in jonnyvr1 patches
-- **UPDATED** Bundle **morphe**
-  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
-- **UPDATED** Bundle **nuviotv**
-  - **UPDATED APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
-- **UPDATED** Bundle **okish-morphe**
-  - **NEW APP** Into the Dead (`com.sidheinteractive.sif.dr`) in okish-morphe patches
-- **NEW BUNDLE** Bundle by **ozeroztas** (stable)
-  - **NEW APP** Reddit (`com.reddit.frontpage`) in ozeroztas patches
-  - **NEW APP** YouTube (`com.google.android.youtube`) in ozeroztas patches
-  - **NEW APP** YouTube Music (`com.google.android.apps.youtube.music`) in ozeroztas patches
+- **NEW BUNDLE** Bundle by **rabehx** (stable)
+  - **NEW APP** BaridiMob (`ru.bpc.mobilebank.bpc`) in rabehx patches
+  - **NEW APP** My Ooredoo (`com.algeria.selfcare.app.android`) in rabehx patches
+  - **NEW APP** Webetu (`app.progres.webetu`) in rabehx patches
+- **UPDATED** Bundle **roundsalmon4**
+  - **UPDATED APP** SeriesGuide (`com.battlelancer.seriesguide`) in roundsalmon4 patches
 - **UPDATED** Bundle **xob0t**
+  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
+  - **UPDATED APP** Ozon (`ru.ozon.app.android`) in xob0t patches
   - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches

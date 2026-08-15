@@ -3080,26 +3080,10 @@
     "bundle": "braintropy",
     "channel": "stable",
     "repo_url": "https://github.com/braiNtropy/braintropy-patches",
-    "created_at": "2026-08-14T13:24:35",
-    "version": "v1.1.0",
-    "description": "## [1.1.0](https://github.com/braiNtropy/braintropy-patches/compare/v1.0.1...v1.1.0) (2026-08-14)\n\n### ✨ New Features\n\n* Add Unlock Premium patch for MyoAdapt v1.5.1 ([a259876](https://github.com/braiNtropy/braintropy-patches/commit/a2598766ad5504e0dd91838943223843da831f6d))\n",
+    "created_at": "2026-08-14T21:22:37",
+    "version": "v2.0.0",
+    "description": "## Why was the MyoAdapt patch removed?\r\n\r\nMyoAdapt's core feature, its adaptive training engine, which plans your next workout based on your completed sessions, runs entirely on MyoAdapt's servers and is fed only by server-side workout history. For accounts without an active subscription, the server hard-blocks (HTTP 402) every action that records or updates a workout.\r\n\r\nA client-side patch can fake the workout flow (start, log, finish a session), but the server never learns about any of it: no history, no stats, and the proposed next workout never changes. The patch could therefore never deliver the one thing MyoAdapt is actually worth using for. So rather than shipping something that promises premium but can't deliver it, it has been removed.\r\n\r\n---\r\n\r\n## [2.0.0](https://github.com/braiNtropy/braintropy-patches/compare/v1.1.0...v2.0.0) (2026-08-14)\r\n\r\n### ⚠ BREAKING CHANGES\r\n\r\n* The MyoAdapt patch is removed and no longer ships in the patches bundle.\r\n\r\n### ✨ New Features\r\n\r\n* Remove MyoAdapt \"Unlock Premium\" patch ([3886626](https://github.com/braiNtropy/braintropy-patches/commit/388662616750583e26394b3fbeec07858988057b))",
     "apps": [
-      {
-        "app_name": "MyoAdapt",
-        "package": "com.myoadapt.app.android",
-        "patches": [
-          {
-            "name": "Unlock Premium",
-            "description": "Unlocks all premium content and fixes logouts.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "1.5.1"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/nUxstMZiYpZ95f1w1FlH-TNYY0pq82ZrdRkUwSOZPIVhpHrAUCVvoC-oeozgB0ClEsIKY-Dih0OtKkdoQePong"
-      },
       {
         "app_name": "Waking Up",
         "package": "org.wakingup.android",
@@ -3117,7 +3101,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/itRAH70PPbadqD9Iu-GDauiVud8XvSpuz9G1g-f-OyPHhinLEL-JgD5CJRsAzHNaSRjJz4o3-kbzlV7_rebf5Po"
       }
     ],
-    "fingerprint": "26cae8df9cf15290c4102a2805e7c69086e663c335527e3585cb5971fc0fd0e9"
+    "fingerprint": "286c8827943c6c39c3b8532b2c86a26111d61b1e4a475d9501211dfd1dbb0fbf"
   },
   "braintropy:dev": {
     "bundle": "braintropy",
@@ -12597,9 +12581,9 @@
     "bundle": "jasonwu1994",
     "channel": "stable",
     "repo_url": "https://github.com/jasonwu1994/Gboard-patches",
-    "created_at": "2026-08-13T20:47:42",
-    "version": "v2.9.0",
-    "description": "### ✨ New Features\n\n* **Gboard:** add the `Change emoji size` patch, which enables Gboard's emoji size setting.\n* **Gboard:** add the `Enable cursor trackpad mode` patch, which enables long-press-spacebar trackpad and cursor lock modes.\n* **Gboard:** add the `Access Points menu style` patch, which lets you switch between the new and legacy Access Points menu styles.\n* **Gboard:** add the `Enable split keyboard` patch, with Access Point controls and an optional Auto split setting.\n* **Gboard:** add the `Enable accessibility layout` patch, which exposes Gboard's accessibility layout setting.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Change emoji size` Patch，啟用 Gboard 的表情符號大小設定。\n* **Gboard:** 新增 `Enable cursor trackpad mode` Patch，啟用長按空白鍵觸控板與游標鎖定模式。\n* **Gboard:** 新增 `Access Points menu style` Patch，可切換新版與舊版 Access Points 選單樣式。\n* **Gboard:** 新增 `Enable split keyboard` Patch，提供 Access Point 控制與可選的自動分離設定。\n* **Gboard:** 新增 `Enable accessibility layout` Patch，顯示 Gboard 的無障礙鍵盤配置設定。\n",
+    "created_at": "2026-08-14T21:01:10",
+    "version": "v2.10.0",
+    "description": "### ✨ New Features\n\n* **Gboard:** add the `G Logo on Spacebar` patch.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `G Logo on Spacebar` Patch。\n",
     "apps": [
       {
         "app_name": "Latin",
@@ -12750,6 +12734,15 @@
             ]
           },
           {
+            "name": "G Logo on Spacebar",
+            "description": "在空白鍵顯示 G Logo，並隱藏語言名稱\nShow the G Logo on the spacebar and hide the language label.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "17.7.7.932364120-release-arm64-v8a"
+            ]
+          },
+          {
             "name": "Grammar Checker",
             "description": "啟用 修正和建議 > 文法檢查\nEnable Text correction > Grammar check.",
             "use": true,
@@ -12879,7 +12872,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       }
     ],
-    "fingerprint": "e158285857606675475635d62cf46a65bb5166b53070a92dddf0f37497b2f476"
+    "fingerprint": "f3f78d6767012500e52b8e9367e9dee78941f921399fcdd8e373cd92bf9d6473"
   },
   "jasonwu1994:dev": {
     "bundle": "jasonwu1994",
@@ -45468,9 +45461,9 @@
     "bundle": "morning-entree",
     "channel": "stable",
     "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-    "created_at": "2026-08-12T18:33:09",
-    "version": "v1.15.0",
-    "description": "## [1.15.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.14.0...v1.15.0) (2026-08-12)\n\n### ✨ New Features\n\n* Added Support ([f4c1e5d](https://github.com/Entree3k/Morning-Entree-Patches/commit/f4c1e5d154e30f0374bede6faea0769cf704ec25))\n",
+    "created_at": "2026-08-14T23:24:50",
+    "version": "v1.16.0",
+    "description": "## [1.16.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.15.0...v1.16.0) (2026-08-14)\n\n### ✨ New Features\n\n* Added Six Pack in 30 Days ([9ac9dd9](https://github.com/Entree3k/Morning-Entree-Patches/commit/9ac9dd990aad99060cdfc48ca3633ffd4ed7c3fd))\n* Update ([3155a56](https://github.com/Entree3k/Morning-Entree-Patches/commit/3155a569e52bb0479cf50af81f116f68b2bc3a78))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -46981,6 +46974,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/wKvF6emyUIhJfSRO76zlVAKsOGxaMxj0IZN7ghIL3XqYsICjuh1eWx1NFtKZCykCdtIyJD0z6f_lh6VuXpdYWg"
       },
       {
+        "app_name": "Six Pack in 30 Days",
+        "package": "sixpack.sixpackabs.absworkout",
+        "patches": [
+          {
+            "name": "Enable Premium",
+            "description": "Unlocks Premium",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.4.8"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/RcWT7FOY5u8eyJYGNEKrv_2f9CBSlTus-nBxjaZ_aE2ijWbg_YwUmqPMasZfsHGvTs61HCf8NRFRsgGdW1_-8g"
+      },
+      {
         "app_name": "TheFor",
         "package": "xyz.thefor.habits.habits",
         "patches": [
@@ -46997,7 +47006,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/H84gSuQ2SIxtjm7RcC6fAQSHZm0I7eToclkEN4LajGtL25blbX7wMpb70018wqRWkSa_HxveWCOluSWfGkLZ"
       }
     ],
-    "fingerprint": "8d46ffe5a225cf7b3e69e41255c7398ccef53377e5bf0a440dfbd7c5b1ed2d32"
+    "fingerprint": "f1875c107e92e1cd8c9d3477b707d1cb71b552abbee5d8eb328f9a5243c3520c"
   },
   "modx:stable": {
     "bundle": "modx",
@@ -63097,9 +63106,9 @@
     "bundle": "ajstrick81-androidtv",
     "channel": "stable",
     "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-    "created_at": "2026-08-14T17:49:02",
-    "version": "v1.26.2",
-    "description": "## [1.26.2](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.26.1...v1.26.2) (2026-08-14)\n\n\n### Bug Fixes\n\n* **twitchatv:** strip client-side ad-pod tags so the \"Ad 1 of 3\" break is gone ([9e77b17](https://github.com/ajstrick81/morphe-androidtv-patches/commit/9e77b17898766c0693aa8cc4ba926718211942e6)), closes [#EXT-X-DATERANGE](https://github.com/ajstrick81/morphe-androidtv-patches/issues/EXT-X-DATERANGE) [#EXT-X-DATERANGE](https://github.com/ajstrick81/morphe-androidtv-patches/issues/EXT-X-DATERANGE) [#75](https://github.com/ajstrick81/morphe-androidtv-patches/issues/75)\n\n\n\n",
+    "created_at": "2026-08-14T21:42:01",
+    "version": "v1.26.3",
+    "description": "## [1.26.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.26.2...v1.26.3) (2026-08-14)\n\n\n### Bug Fixes\n\n* **primevideo:** stop native ad-strip causing the mid-roll/resume restart ([#14](https://github.com/ajstrick81/morphe-androidtv-patches/issues/14)) ([0e7a4fe](https://github.com/ajstrick81/morphe-androidtv-patches/commit/0e7a4fe5922065244f932665d15dadd96175d880))\n\n\n\n",
     "apps": [
       {
         "app_name": "Livingroom",
