@@ -1,5 +1,5 @@
 {
-    "version": "v1.14.0-dev.1",
+    "version": "v1.14.0-dev.4",
     "patches": [
         {
             "compatiblePackages": [
@@ -337,7 +337,7 @@
             ],
             "default": true,
             "dependencies": [],
-            "description": "Hex patches libil2cpp.so to skip SaveCoins, preventing the game from persisting coin deductions.",
+            "description": "Hex patches libil2cpp.so to skip SaveCoins only. This prevents the game from persisting coin deductions — when you spend coins, the reduced amount is never saved. Your balance stays unlimited across sessions. Does NOT affect SavePlayerData or SavePlayerProfile (those caused crashes).",
             "name": "Unlimited coins",
             "options": []
         },
@@ -385,8 +385,8 @@
             ],
             "default": true,
             "dependencies": [],
-            "description": "Hex patches libil2cpp.so to: (1) make get_AdsRemoved return true (No Ads purchased), (2) make unlockBattleMode and unlockMiniGame free, (3) skip rewarded ads for weapons and rewards.",
-            "name": "Unlock all (weapons, modes, maps, no ads)",
+            "description": "Hex patches libil2cpp.so to: (1) make get_AdsRemoved return true (No Ads purchased), (2) skip all rewarded ads (ShowRewardedWeaponAd, WatchReward, WatchRewardedAd, SkinAd) while still granting the rewards. Combined with the 'Unlimited coins' patch, the player can buy everything without losing coins.",
+            "name": "Unlock all (no ads + skip rewarded ads)",
             "options": []
         },
         {
