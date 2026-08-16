@@ -13907,9 +13907,9 @@
     "bundle": "nuviotv",
     "channel": "dev",
     "repo_url": "https://github.com/liongalahad/nuviotv-morphe-patches",
-    "created_at": "2026-08-13T13:28:07",
-    "version": "v1.0.0-dev.20",
-    "description": "## [1.0.0-dev.20](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.19...v1.0.0-dev.20) (2026-08-13)\n\n### 🐛 Bug Fixes\n\n* resolve subtitle workers across architectures ([f288334](https://github.com/liongalahad/nuviotv-morphe-patches/commit/f28833422cbcb47975346743a93e08ad23698c77))\n\n### ✨ New Features\n\n* restore source picker selection ([e6d2a79](https://github.com/liongalahad/nuviotv-morphe-patches/commit/e6d2a79dc54d5bfec08b28278d9a98151d87d764))\n",
+    "created_at": "2026-08-16T16:18:22",
+    "version": "v1.0.0-dev.21",
+    "description": "## [1.0.0-dev.21](https://github.com/liongalahad/nuviotv-morphe-patches/compare/v1.0.0-dev.20...v1.0.0-dev.21) (2026-08-16)\n\n### ✨ New Features\n\n* update patch suite and add side-by-side installs ([d18802b](https://github.com/liongalahad/nuviotv-morphe-patches/commit/d18802ba3daf75fb056af26dd62c4763c300dcf2))\n",
     "apps": [
       {
         "app_name": "NuvioTV",
@@ -13980,7 +13980,7 @@
           },
           {
             "name": "Remove SDH Annotations",
-            "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
+            "description": "Adds Settings → Morphe → Subtitles to normalize music symbols and remove SDH annotations from Media3 subtitles.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -13995,12 +13995,21 @@
             "compatible_versions": [
               "0.8.4-beta"
             ]
+          },
+          {
+            "name": "Side-by-side installation",
+            "description": "Installs the patched app separately as Nuvio Morphe instead of replacing NuvioTV.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "0.8.4-beta"
+            ]
           }
         ],
         "icon_url": ""
       }
     ],
-    "fingerprint": "b186ab32a4a2fd4f0fe164f3df69b34ee344678cc1550575c839884a0e2649ae"
+    "fingerprint": "1b9abe0fc8e95f05e84e73108cbb8bdae0ae7020427c752a06e0ef40a201c432"
   },
   "atharv:stable": {
     "bundle": "atharv",
@@ -34467,9 +34476,9 @@
     "bundle": "miguel",
     "channel": "dev",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-08-16T14:17:22",
-    "version": "v1.14.0-dev.1",
-    "description": "## [1.14.0-dev.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.6...v1.14.0-dev.1) (2026-08-16)\n\n### ✨ New Features\n\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([39b02ed](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/39b02edd571c430e3b63658040af4c03e2b2e921))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([b5b460e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/b5b460e92c089fb0a075c68b6f9a44c0cb27e69f))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([fbaea0b](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fbaea0b157f3bc1517f50452b2ce12d2ff7c7ebd))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([8252689](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8252689bdbe91dbb20bbe72cd322f05821694e2f))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([d87e20c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d87e20c25c684281aa532fa43681e204b95e3594))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([8c4a683](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8c4a68310522f08217909a2c7a5c86b01f1c94d5))\n",
+    "created_at": "2026-08-16T16:56:52",
+    "version": "v1.14.0-dev.4",
+    "description": "## [1.14.0-dev.4](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.3...v1.14.0-dev.4) (2026-08-16)\n\n### 🐛 Bug Fixes\n\n* **supreme:** fix black screen crash by removing unsafe hex patches ([fe3c040](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fe3c0407d494ca8af3f635b68062b1400ab74124))\n* **supreme:** fix black screen crash by removing unsafe hex patches ([e020eb6](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/e020eb61fc7c140760aa532e726f1b54578d7609))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -34615,7 +34624,7 @@
           },
           {
             "name": "Unlimited coins",
-            "description": "Hex patches libil2cpp.so to skip SaveCoins, preventing the game from persisting coin deductions.",
+            "description": "Hex patches libil2cpp.so to skip SaveCoins only. This prevents the game from persisting coin deductions — when you spend coins, the reduced amount is never saved. Your balance stays unlimited across sessions. Does NOT affect SavePlayerData or SavePlayerProfile (those caused crashes).",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -34623,8 +34632,8 @@
             ]
           },
           {
-            "name": "Unlock all (weapons, modes, maps, no ads)",
-            "description": "Hex patches libil2cpp.so to: (1) make get_AdsRemoved return true (No Ads purchased), (2) make unlockBattleMode and unlockMiniGame free, (3) skip rewarded ads for weapons and rewards.",
+            "name": "Unlock all (no ads + skip rewarded ads)",
+            "description": "Hex patches libil2cpp.so to: (1) make get_AdsRemoved return true (No Ads purchased), (2) skip all rewarded ads (ShowRewardedWeaponAd, WatchReward, WatchRewardedAd, SkinAd) while still granting the rewards. Combined with the 'Unlimited coins' patch, the player can buy everything without losing coins.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -34693,7 +34702,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "396ea8f489aa429494c577d7d50289fd19eb93f0963c42bca314b2299fa9e595"
+    "fingerprint": "c9c52c1b036e0a5a0fea8d508afc6244329a3a63796374732631767f81e9f132"
   },
   "brosssh:stable": {
     "bundle": "brosssh",
@@ -41278,9 +41287,9 @@
     "bundle": "hxreborn",
     "channel": "stable",
     "repo_url": "https://github.com/hxreborn/morphe-patches",
-    "created_at": "2026-08-16T07:45:13",
-    "version": "v1.6.0",
-    "description": "## [1.6.0](https://github.com/hxreborn/morphe-patches/compare/v1.5.1...v1.6.0) (2026-08-16)\n\n### New Features\n\n* **Audible - Hide membership upselling:** add patch ([7898c5f](https://github.com/hxreborn/morphe-patches/commit/7898c5fc603a0455641d3eff17dc107582c45ea5))\n* **Perplexity - AMOLED dark theme:** add patch ([279ce08](https://github.com/hxreborn/morphe-patches/commit/279ce0849ddec8ffbab58b3add0a4fdaea787528))\n",
+    "created_at": "2026-08-16T17:04:30",
+    "version": "v1.7.0",
+    "description": "## [1.7.0](https://github.com/hxreborn/morphe-patches/compare/v1.6.0...v1.7.0) (2026-08-16)\n\n### New Features\n\n* **ReadEra - Remove nags:** add patch ([dbd52e3](https://github.com/hxreborn/morphe-patches/commit/dbd52e341cdc9b4a79da86624e4994279963bc2b))\n* **Trainline - Hide ads:** add patch ([9903161](https://github.com/hxreborn/morphe-patches/commit/9903161c8a416c641ee46d8147c8f8a5a707f54b))\n",
     "apps": [
       {
         "app_name": "Perplexity",
@@ -41452,9 +41461,41 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/Qo3kWBOmNFWGcGxiBHs-tR2_0uVcrGGUzKXb_e_JwpbwwzsYHAs-qvNhE-QDr2c8B4_8w0bq8yl5uo88pTdb"
+      },
+      {
+        "app_name": "Trainline",
+        "package": "com.thetrainline",
+        "patches": [
+          {
+            "name": "Hide ads",
+            "description": "Removes the adverts shown between search results.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "407.0.0.178994"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/M3DswNatq2IZlqNc5RWzSaekFDgQKyN9zl2uK6XI6j7cnrCXtwLvkHIg38OxcfFly0sDxIYDtBWVZXTIiK5P"
+      },
+      {
+        "app_name": "ReadEra",
+        "package": "org.readera",
+        "patches": [
+          {
+            "name": "Remove nags",
+            "description": "Removes the rate this app dialog and the promotional dialogs shown on startup.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.05.20+2300"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/IYYIJY9HttxtQhZjbsA7tzQRdMQ675qFtOJFiRbvJvRJarsBzvBn4tcjE2RbWgSQfhEJn4wpbUtEzq-4CXUorg"
       }
     ],
-    "fingerprint": "307c9174094d220ff63ced24dd4e386fd88c0267c70a9684b3f57fb52f6092b7"
+    "fingerprint": "64ed395168410330f730ba4541c3e36825d2485b17b9d8fa34482432bdca56d6"
   },
   "hxreborn:dev": {
     "bundle": "hxreborn",
@@ -60813,9 +60854,9 @@
     "bundle": "amplerevanced",
     "channel": "dev",
     "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
-    "created_at": "2026-08-16T14:17:02",
-    "version": "v1.4.0-dev.8",
-    "description": "# [1.4.0-dev.8](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.7...v1.4.0-dev.8) (2026-08-16)\n\n\n### Bug Fixes\n\n* **samsung-keyboard:** apply situation volume to key sounds ([c883844](https://github.com/AmpleReVanced/revanced-patches/commit/c883844f857bcef032d10c085d94b0f7afbdfbcf))\n* **samsung-keyboard:** preserve activity transition animations ([2c7b5da](https://github.com/AmpleReVanced/revanced-patches/commit/2c7b5dadbe802e1a55108416ae0e388ffd82edf9))\n\n\n### Features\n\n* **samsung-keyboard:** map Samsung haptics to Android effects ([bc35095](https://github.com/AmpleReVanced/revanced-patches/commit/bc35095588fec47dc5a5ae7b8ac182d5b6446459))\n\n\n\n",
+    "created_at": "2026-08-16T15:47:06",
+    "version": "v1.4.0-dev.11",
+    "description": "# [1.4.0-dev.11](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.10...v1.4.0-dev.11) (2026-08-16)\n\n\n### Bug Fixes\n\n* **samsung-keyboard:** restore keyboard preview in size settings ([dc4be94](https://github.com/AmpleReVanced/revanced-patches/commit/dc4be947ec14b306c3287636ae8b502369dd6d8b))\n\n\n\n",
     "apps": [
       {
         "app_name": "dcinside",
