@@ -1,77 +1,217 @@
 {
   "affected_bundles": [
     {
-      "bundle": "hk-morphe",
+      "bundle": "hoomans-morphe",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Sync for Reddit",
-          "package": "com.laurencedawson.reddit_sync",
+          "app_name": "Cronometer",
+          "package": "com.cronometer.android.gold",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Hacker News Feed",
-                "description": "Integrates Hacker News (news.ycombinator.com) into Reddit Sync as a custom feed."
-              }
-            ],
+            "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Predictive back gesture (Reddit Sync)",
-                "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
+                "name": "Unlock Gold",
+                "description": "Unlocks Cronometer Gold without a subscription, like custom charts, advanced reports, the fasting tracker, custom biometrics, an ad-free view, and more. Anything Cronometer works out on its own servers still needs Gold.",
                 "changes": [
-                  "enabled"
+                  "versions: +1 version, -1 version"
                 ]
               }
             ]
           }
         },
         {
-          "app_name": "Sync for Reddit Dev",
-          "package": "com.laurencedawson.reddit_sync.dev",
+          "app_name": "Battery Guru",
+          "package": "com.paget96.batteryguru",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Hacker News Feed",
-                "description": "Integrates Hacker News (news.ycombinator.com) into Reddit Sync as a custom feed."
-              }
-            ],
+            "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Predictive back gesture (Reddit Sync)",
-                "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
+                "name": "Unlock PRO",
+                "description": "Unlocks Battery Guru's PRO and removes the ads. PRO is decided on the device, so the deep sleep stats, charge history, themes, and the ad-free view all open up.",
                 "changes": [
-                  "enabled"
+                  "versions: +1 version"
                 ]
               }
             ]
           }
         },
         {
-          "app_name": "Sync for Reddit Pro",
-          "package": "com.laurencedawson.reddit_sync.pro",
+          "app_name": "Microsoft SwiftKey",
+          "package": "com.touchtype.swiftkey",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Tumblr",
+          "package": "com.tumblr",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Hacker News Feed",
-                "description": "Integrates Hacker News (news.ycombinator.com) into Reddit Sync as a custom feed."
+                "name": "Disable screenshot sharing",
+                "description": "Stops the share sheet that pops up when you take a screenshot in the app."
               }
             ],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Predictive back gesture (Reddit Sync)",
-                "description": "Enables the predictive back gesture with fixes for Reddit Sync.",
+                "name": "Disable Tumblr TV",
+                "description": "Removes the Tumblr TV tab from the bottom navigation bar.",
                 "changes": [
-                  "enabled"
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable ad-free banner",
+                "description": "Hides the banner with the frog that prompts you to buy Tumblr Ad-Free.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable blog notification reminder",
+                "description": "Stops the reminder asking you to enable notifications for blogs you visit.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable gift message popup",
+                "description": "Stops the popup that suggests buying TumblrMart items for other people.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable in-app update",
+                "description": "Turns off the in-app update check and the update prompt.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable premium UI",
+                "description": "Turns on the cosmetic Tumblr Premium look: the premium badge and the premium settings entry. This only changes how the app looks on your device. It does not buy or unlock anything on Tumblr's side, so ad-free, the badge on your blog, and anything the server checks still need a real subscription. Use \"Remove ads\" for an actually ad-free feed.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove ads",
+                "description": "Removes the ads in Tumblr: the dashboard ads from the ad networks and the Blaze posts (the paid-promoted posts other people pay to inject into the feed). It leaves your own following feed and reblogs untouched. Premium content like ad-free badges and TumblrMart items are sold by Tumblr's servers and still need a purchase.",
+                "changes": [
+                  "versions: +1 version, -1 version"
                 ]
               }
             ]
+          }
+        },
+        {
+          "app_name": "Twitch",
+          "package": "tv.twitch.android.app",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "7TV and BTTV emotes",
+                "description": "Renders global and current-channel 7TV and BTTV emotes in incoming live chat. Type an emote code normally to send it; this patch does not add a picker or provider login."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Auto claim channel points",
+                "description": "Claims the channel points bonus chest for you automatically. Whenever Twitch makes a bonus available, the claim fires on its own so you don't have to tap the chest.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Block live ads",
+                "description": "Routes live streams through a free third-party proxy that strips the ads baked into the stream, so the proxy has to be up for playback to work; turn this patch off if it goes down. Mid-stream ads get dropped reliably, but a single preroll can still slip through when you first open a channel and Twitch has flagged the shared proxy. VOD ads aren't covered.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide display ads",
+                "description": "Hides the banner, overlay, and in-feed display ads Twitch shows around the app. This doesn't touch the video ads in the stream itself.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Show deleted messages",
+                "description": "Keeps deleted or moderated chat messages readable instead of replacing them with \"<message deleted>\". The message turns into a tappable spoiler: tap it to reveal the original text. Normally only moderators can do this; the patch grants that access to everyone.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Rodeo Stampede: Sky Zoo Safari",
+          "package": "com.yodo1.rodeo.safari",
+          "badge_type": "NEW APP"
+        }
+      ]
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Rodeo Stampede: Sky Zoo Safari",
+          "package": "com.yodo1.rodeo.safari",
+          "badge_type": "NEW APP"
+        }
+      ]
+    },
+    {
+      "bundle": "itsthejoker",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Roost",
+          "package": "com.rookery.courier",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "100x Bullet Damage",
+                "description": "Multiplies the player's bullet damage by 10 in the Bullet Hell minigame,  applied to both enemies and bosses."
+              },
+              {
+                "name": "Beam of Death (50x Fire Rate)",
+                "description": "Multiplies the player's firing speed by 50 in the Bullet Hell minigame for a near-continuous beam."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "10x Bullet Damage",
+                "description": "Multiplies the player's bullet damage by 10 in the Bullet Hell minigame (Normal: 1→10, Focused: 2→20), applied to both enemies and bosses."
+              },
+              {
+                "name": "Beam of Death (10x Fire Rate)",
+                "description": "Multiplies the player's firing speed by 10 in the Bullet Hell minigame (fire interval 0.15 -> 0.015) for a near-continuous beam."
+              }
+            ],
+            "patches_modified": []
           }
         }
       ]
