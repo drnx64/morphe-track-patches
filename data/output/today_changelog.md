@@ -1,26 +1,23 @@
-## [2026-08-14]
-- **NEW BUNDLE** Bundle by **aapam** (dev, stable)
-  - **NEW APP** ZEE5 Android TV (`com.graymatrix.did`) in aapam patches
+## [2026-08-15]
 - **UPDATED** Bundle **amplerevanced**
-  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
-- **NEW BUNDLE** Bundle by **braintropy** (dev, stable)
-  - **NEW APP** MyoAdapt (`com.myoadapt.app.android`) in braintropy patches
-  - **NEW APP** Waking Up (`org.wakingup.android`) in braintropy patches
+  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
+- **UPDATED** Bundle **braintropy**
+  - **REMOVED APP** [PRE-RELEASE] MyoAdapt (`com.myoadapt.app.android`) in braintropy patches
 - **UPDATED** Bundle **ftl**
+  - **UPDATED APP** ES File Explorer (`com.estrongs.android.pop`) in ftl patches
+  - **REMOVED APP** MX Player (`com.mxtech.videoplayer.ad`) in ftl patches
   - **NEW APP** Xender (`cn.xender`) in ftl patches
-- **UPDATED** Bundle **itsthejoker**
-  - **UPDATED APP** Roost (`com.rookery.courier`) in itsthejoker patches
+- **UPDATED** Bundle **hk-morphe**
+  - **UPDATED APP** Sync for Reddit (`com.laurencedawson.reddit_sync`) in hk-morphe patches
+  - **UPDATED APP** Sync for Reddit Dev (`com.laurencedawson.reddit_sync.dev`) in hk-morphe patches
+  - **UPDATED APP** Sync for Reddit Pro (`com.laurencedawson.reddit_sync.pro`) in hk-morphe patches
+- **UPDATED** Bundle **hoomans-morphe**
+  - **NEW APP** Moneta (`currency.converter.moneta`) in hoomans-morphe patches
+- **UPDATED** Bundle **hxreborn**
+  - **NEW APP** Symfonium (`app.symfonik.music.player`) in hxreborn patches
 - **UPDATED** Bundle **jasonwu1994**
   - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
-- **UPDATED** Bundle **jonnyvr1**
-  - **UPDATED APP** [PRE-RELEASE] Tantan (`com.tantantribe.tribe`) in jonnyvr1 patches
-- **NEW BUNDLE** Bundle by **rabehx** (stable)
-  - **NEW APP** BaridiMob (`ru.bpc.mobilebank.bpc`) in rabehx patches
-  - **NEW APP** My Ooredoo (`com.algeria.selfcare.app.android`) in rabehx patches
-  - **NEW APP** Webetu (`app.progres.webetu`) in rabehx patches
-- **UPDATED** Bundle **roundsalmon4**
-  - **UPDATED APP** SeriesGuide (`com.battlelancer.seriesguide`) in roundsalmon4 patches
-- **UPDATED** Bundle **xob0t**
-  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
-  - **UPDATED APP** Ozon (`ru.ozon.app.android`) in xob0t patches
-  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches
+- **UPDATED** Bundle **morning-entree**
+  - **NEW APP** Six Pack in 30 Days (`sixpack.sixpackabs.absworkout`) in morning-entree patches
+- **UPDATED** Bundle **petalmaps-androidauto**
+  - **UPDATED APP** Petal Maps (`com.huawei.maps.app`) in petalmaps-androidauto patches
