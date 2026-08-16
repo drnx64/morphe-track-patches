@@ -4876,9 +4876,9 @@
     "bundle": "piko",
     "channel": "dev",
     "repo_url": "https://github.com/crimera/piko",
-    "created_at": "2026-08-10T18:24:24",
-    "version": "v3.9.0-dev.7",
-    "description": "## [3.9.0-dev.7](https://github.com/crimera/piko/compare/v3.9.0-dev.6...v3.9.0-dev.7) (2026-08-10)\n\n### 🔧 Improvements\n\n* **Instagram:** Turn off `Disable analytics` by default ([#1674](https://github.com/crimera/piko/issues/1674)) ([753a70b](https://github.com/crimera/piko/commit/753a70be81449c27f0a8e056f7f0e938a11e964e))\n",
+    "created_at": "2026-08-16T14:01:04",
+    "version": "v3.9.0-dev.8",
+    "description": "## [3.9.0-dev.8](https://github.com/crimera/piko/compare/v3.9.0-dev.7...v3.9.0-dev.8) (2026-08-16)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** block permission onboarding screens ([#1686](https://github.com/crimera/piko/issues/1686)) ([de6bcea](https://github.com/crimera/piko/commit/de6bceaa0ceace832a63f8c116c8efc562a5c488))\n* **Instagram:** Correct shared link sanitization ([#1698](https://github.com/crimera/piko/issues/1698)) ([cbb5577](https://github.com/crimera/piko/commit/cbb55775f3448e0d50322ebde636bfbf4e8db2fd))\n* **Instagram:** Fix more profile options ([#1708](https://github.com/crimera/piko/issues/1708)) ([ebf8ff1](https://github.com/crimera/piko/commit/ebf8ff1d9031c7e3a974a646d8dc4fde4419e1e8))\n* **Instagram:** handle missing context for comment media downloads ([#1677](https://github.com/crimera/piko/issues/1677)) ([4588900](https://github.com/crimera/piko/commit/45889000685d29e07bdf223050ebaa0eadc38eb2))\n* **Instagram:** preserve pill button contrast ([#1722](https://github.com/crimera/piko/issues/1722)) ([8e08ffc](https://github.com/crimera/piko/commit/8e08ffcccc675f8f995fe950e71091c9a46eca9b))\n* **Instagram:** preserve reels media control colors ([#1681](https://github.com/crimera/piko/issues/1681)) ([3befb48](https://github.com/crimera/piko/commit/3befb4800a92a2a3046b394a4e6c230083fc8bb2))\n* **Instagram:** Prevent notification registration crash ([#1678](https://github.com/crimera/piko/issues/1678)) ([4f67a78](https://github.com/crimera/piko/commit/4f67a78430871afa0eff393d9127f78fd11a85e0))\n* **instagram:** restore amoled after dark mode returns ([#1679](https://github.com/crimera/piko/issues/1679)) ([96536bb](https://github.com/crimera/piko/commit/96536bbf24544219e0bd279ed6bba357e2b3da28))\n* **Instagram:** use xml mime type for settings export ([#1720](https://github.com/crimera/piko/issues/1720)) ([accfdc8](https://github.com/crimera/piko/commit/accfdc8066862cc8a80cf022cf8463d951fd9b27))\n* **Twitter:** Fix `Show sensitive media` patch ([#1723](https://github.com/crimera/piko/issues/1723)) ([84919ef](https://github.com/crimera/piko/commit/84919ef416924643ec75c6834cb867ec1506a8bc))\n\n### ✨ New Features\n\n* **Instagram:** Add custom sharing domain ([#1712](https://github.com/crimera/piko/issues/1712)) ([879f269](https://github.com/crimera/piko/commit/879f269cc6f3e69e489b6b574961da9c9d2096b2))\n* **Instagram:** Add in-app profile picture viewer ([#1721](https://github.com/crimera/piko/issues/1721)) ([7d34500](https://github.com/crimera/piko/commit/7d34500c7553ed8baf61816ab0bf6ad0ca7f18d8))\n* **Instagram:** Add loop story ([#1713](https://github.com/crimera/piko/issues/1713)) ([4b75ec7](https://github.com/crimera/piko/commit/4b75ec78428836bb5fd8bedf65a34f52f42a7315))\n* **Instagram:** save deleted messages ([#1531](https://github.com/crimera/piko/issues/1531)) ([6c120d6](https://github.com/crimera/piko/commit/6c120d603cb830c0ccc8c4a99acc9eab089f70bd))\n\n### 🚀 Updated App Support\n\n* **Twitter:** bump support to `12.17.0-release.0` ([9d08cd3](https://github.com/crimera/piko/commit/9d08cd33d4bdba67cd86d441747a8e3300522aa2))\n\n### 🔧 Improvements\n\n* **Instagram:** Improve piko settings ([#1684](https://github.com/crimera/piko/issues/1684)) ([17662c3](https://github.com/crimera/piko/commit/17662c3d311a093b4f35545db5ba73d4c8547a6d))\n* **Instagram:** refresh recommended flags after download ([#1685](https://github.com/crimera/piko/issues/1685)) ([85057c0](https://github.com/crimera/piko/commit/85057c09a76f2efbd481f0ffb6454c40d067cfb7))\n* **Twitter:** improve more profile info ([#1687](https://github.com/crimera/piko/issues/1687)) ([46cb754](https://github.com/crimera/piko/commit/46cb754e48b66606f19804b610cd085d54f5d173))\n",
     "apps": [
       {
         "app_name": "Instagram",
@@ -4946,6 +4946,15 @@
           {
             "name": "Copy comment",
             "description": "Adds a button to copy comments on posts and reels.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "439.0.0.37.89"
+            ]
+          },
+          {
+            "name": "Custom sharing domain",
+            "description": "Allows for using custom domains when sharing posts, reels and stories.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -5035,7 +5044,7 @@
           },
           {
             "name": "Disable onboarding permission prompts",
-            "description": "Prevents contacts and location permission onboarding prompts from appearing on launch.",
+            "description": "Prevents contacts and location permission onboarding prompts from appearing.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -5223,6 +5232,15 @@
             ]
           },
           {
+            "name": "Loop story",
+            "description": "Replay the current story when it ends",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "439.0.0.37.89"
+            ]
+          },
+          {
             "name": "Make ephemeral media permanent",
             "description": "Changes unexpired view once, view twice media to permanent view.",
             "use": true,
@@ -5297,6 +5315,15 @@
           {
             "name": "Sanitize share links",
             "description": "",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "439.0.0.37.89"
+            ]
+          },
+          {
+            "name": "Save deleted messages",
+            "description": "Captures incoming DMs locally as they arrive from the server and marks them when the sender deletes them.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -5420,7 +5447,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5429,7 +5456,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5438,7 +5465,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5447,7 +5474,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5461,7 +5488,7 @@
               }
             ],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5470,7 +5497,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5479,7 +5506,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5488,7 +5515,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5497,7 +5524,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5506,7 +5533,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5515,7 +5542,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5524,7 +5551,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5533,7 +5560,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5542,7 +5569,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5551,7 +5578,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5560,7 +5587,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5569,7 +5596,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5578,7 +5605,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5587,7 +5614,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5596,7 +5623,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5605,7 +5632,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5614,7 +5641,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5623,7 +5650,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5632,7 +5659,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5641,7 +5668,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5650,7 +5677,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5659,7 +5686,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5668,7 +5695,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5677,7 +5704,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5686,7 +5713,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5695,7 +5722,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5704,7 +5731,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5713,7 +5740,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5722,7 +5749,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5740,7 +5767,7 @@
               }
             ],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5749,7 +5776,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5758,7 +5785,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5767,7 +5794,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5776,7 +5803,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5785,7 +5812,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5794,7 +5821,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5803,7 +5830,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5812,7 +5839,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5821,7 +5848,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5830,7 +5857,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5839,7 +5866,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5848,7 +5875,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5857,7 +5884,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5866,7 +5893,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5875,7 +5902,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5884,7 +5911,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5893,7 +5920,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5902,7 +5929,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5911,7 +5938,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5920,7 +5947,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5929,7 +5956,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5938,7 +5965,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5947,7 +5974,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5956,7 +5983,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5965,7 +5992,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5974,7 +6001,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5983,7 +6010,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -5992,7 +6019,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6001,7 +6028,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6010,7 +6037,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6019,7 +6046,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6028,7 +6055,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6037,7 +6064,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6046,7 +6073,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6055,7 +6082,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6064,7 +6091,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6073,7 +6100,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           },
           {
@@ -6082,14 +6109,14 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "12.11.0-release.0"
+              "12.17.0-release.0"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/IsLsCD4eLC2CYvlkgTI6Z5TROj0BJIBgUF7BZ5eliTzyyTjqG_mbofeG4kw2s7oG_JZMSi5ErLz_qsDi169C8w"
       }
     ],
-    "fingerprint": "1c134d884296e646e0b9debba4ad5195cee9e7b8eb3a1f307ef27e6c1b2cde1b"
+    "fingerprint": "2968ad080cefae3f380b798cdfdb405b5057920ccd469615a00cbbd576ee62fd"
   },
   "piko-shim:stable": {
     "bundle": "piko-shim",
@@ -10677,8 +10704,8 @@
     "bundle": "tiaruebar1024",
     "channel": "dev",
     "repo_url": "https://github.com/tiaruebar1024/tiaruebar-patches",
-    "created_at": "2026-08-16T11:13:47Z",
-    "version": "1.4.0-dev.3",
+    "created_at": "2026-08-16T13:20:06Z",
+    "version": "1.5.0-dev.1",
     "description": "## [1.4.0](https://github.com/tiaruebar1024/tiaruebar-patches/compare/v1.3.2...v1.4.0) (2026-08-16)\n\n### 🐛 Bug Fixes\n\n* remove temp mail, has quite good pairip, didn't figure out how to bypass it ([18d5302](https://github.com/tiaruebar1024/tiaruebar-patches/commit/18d53021fe2255957e9525f9a1ebf1d932276102))\n* use correct patcher APIs for Temp Mail patches ([3359b5c](https://github.com/tiaruebar1024/tiaruebar-patches/commit/3359b5c93d949692768cc710f51a07c977a126fb))\n\n### ✨ New Features\n\n* add Play Integrity check bypass to Temp Mail (fixes startup redirect) ([1d5cdcf](https://github.com/tiaruebar1024/tiaruebar-patches/commit/1d5cdcf9a1048325f2886dd93c58ac18e4326e40))\n* add Play Store redirect bypass to Temp Mail premium patch ([b941a78](https://github.com/tiaruebar1024/tiaruebar-patches/commit/b941a78dd4a494eb373e11683da6a8d370cd2f8a))\n\n### 🚀 Updated App Support\n\n* I'm sorry changelog ([bd36295](https://github.com/tiaruebar1024/tiaruebar-patches/commit/bd362955df4547f1d5ce3197d2545d12ae5e3f7e))\n* placeholder fully ([b44e933](https://github.com/tiaruebar1024/tiaruebar-patches/commit/b44e933399bc70aa275f26a1b3ede7c068d1d60a))",
     "apps": [
       {
@@ -11378,10 +11405,24 @@
     "bundle": "franticg33k",
     "channel": "dev",
     "repo_url": "https://github.com/franticg33k/morphe-patches",
-    "created_at": "2026-08-06T19:19:18",
-    "version": "v1.3.7-dev.4",
-    "description": "## [1.3.7-dev.4](https://github.com/franticg33k/morphe-patches/compare/v1.3.7-dev.3...v1.3.7-dev.4) (2026-08-06)\n\n### 🚀 Updated App Support\n\n* fix JellyWatch premium unlock for 2.0.REV-1712 ([ed92817](https://github.com/franticg33k/morphe-patches/commit/ed92817c5fb13a2192919291ed0caea7a2ac2ec0))\n",
+    "created_at": "2026-08-16T14:07:24",
+    "version": "v1.3.8-dev.1",
+    "description": "## [1.3.8-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.7...v1.3.8-dev.1) (2026-08-16)\n\n### 🚀 Updated App Support\n\n* add Bolpatra Nepal premium unlock + permanent free-trial patch ([09df518](https://github.com/franticg33k/morphe-patches/commit/09df518d563180cedf95b903d58e09c7cc52c187))\n",
     "apps": [
+      {
+        "app_name": "Bolpatra Nepal",
+        "package": "com.bolpatranepal.axios",
+        "patches": [
+          {
+            "name": "Unlock Premium, Skip Login & Make Free Trial Permanent",
+            "description": "Patches the Dart AOT-compiled libapp.so of Bolpatra Nepal to skip the login screen, unlock premium/paid features, and make the 7-day free trial permanent. LoginManager::isNotValidatedUser is forced to always return false, lifting the Free-plan paywall and the trial-expiry gate: the trial expiry is computed client-side from the server plan_end_date into statics (isPaid = (plan_end_date - now).inDays <= 0) that only isNotValidatedUser reads, so with it pinned to false the free trial never expires and premium features stay unlocked forever (PPMO/EGP contact redirect, hidden works tab, document download and gallery gates). The isActive() result is left honest so the app stops attaching the invalid Authorization header, and the four login redirects (notice View, document download, gallery, subscription purchase) are bypassed at the branch level so actions run straight through without sending the user to the login page. Verified on v1.1.33 (Dart 3.9.2, arm64, non-obfuscated).",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/Y-juKF9i6iGYWoNzA-GPdKrKaPpia1GG31biShzymqfzcbWf0ITTwGtOT0s3PMu8WEcN1r9TwI3jQ9WVlskT0A"
+      },
       {
         "app_name": "byAir",
         "package": "com.byairapp.android",
@@ -11596,7 +11637,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/cZ9_hY4QA2qnDZrHFvcgJgL1su8EDhEUMIMDvQvTkkTJJtQQo5807PoTss6zx7kYks2CCqXax5PWtJF7xV03pg"
       }
     ],
-    "fingerprint": "56a47c248930311289a7feca23644f9a828863c386b23bfe5dedeede0ca6c3a2"
+    "fingerprint": "2e4a10475c0a432360c05591fe56b762b8d27482dd5527ece8b921386cf4a1da"
   },
   "chiggi:stable": {
     "bundle": "chiggi",
@@ -34246,9 +34287,9 @@
     "bundle": "miguel",
     "channel": "stable",
     "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-    "created_at": "2026-07-31T17:20:31",
-    "version": "v1.13.5",
-    "description": "## [1.13.5](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.4...v1.13.5) (2026-07-31)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** disable PairIP VM entirely and replace onCreate ([8f600b1](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8f600b16adaa44b27771c42270ca95426ed8639b))\n* **cubesolver:** disable PairIP VM entirely and replace onCreate ([4037504](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/40375042791850a50c5f093c97424f186f56e2ce))\n* **cubesolver:** move openPlayStore no-op to BypassPairIPPatch ([4b40d64](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/4b40d648df123e7cdc0cc75462a8c33b5f5d3ce8))\n* **cubesolver:** split PairIP bypass into resource + bytecode patches (fixes CI) ([a187a6a](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/a187a6a6ca63cd5c0041ce44fbde56a62f7e4d2d))\n* **cubesolver:** split PairIP bypass into resource + bytecode patches (fixes CI) ([31f49bc](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/31f49bcf79841cc6c4b3d77e967c091906865073))\n",
+    "created_at": "2026-08-16T12:35:21",
+    "version": "v1.13.6",
+    "description": "## [1.13.6](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.5...v1.13.6) (2026-08-16)\n\n### 🐛 Bug Fixes\n\n* **cubesolver:** remove ([d69291c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d69291c49da4c7868bc026af2d4cd74408b061af))\n",
     "apps": [
       {
         "app_name": "The Battle of Polytopia",
@@ -34337,49 +34378,6 @@
         "icon_url": ""
       },
       {
-        "app_name": "Cube Solver",
-        "package": "com.jeffprod.cubesolver",
-        "patches": [
-          {
-            "name": "Bypass PairIP integrity check",
-            "description": "Completely bypasses Google Play's PairIP by (1) disabling the PairIP VM (prevents native integrity checks and Play Store redirects from libpairipcore.so), (2) replacing MainActivity.onCreate with direct WebView setup (no VM needed), and (3) no-oping openPlayStore. The native library libpairipcore.so is never loaded, so it can't do JNI-based redirects. Also applies the manifest modifications from the companion 'Bypass PairIP manifest' patch. REQUIRED for all other patches.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "5.0.3"
-            ]
-          },
-          {
-            "name": "Bypass PairIP manifest",
-            "description": "Modifies AndroidManifest.xml to skip the PairIP Application class, remove LicenseActivity, and remove CHECK_LICENSE permission. Part of the PairIP bypass.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "5.0.3"
-            ]
-          },
-          {
-            "name": "Remove ads",
-            "description": "Removes all advertisements (rewarded ads and interstitial ads) from the app. When the user taps 'Watch ad to unlock' on a locked design, the ad is skipped and the design is unlocked instantly — the reward is granted without showing any ad. Also disables rewarded ad preloading to save bandwidth. Note: this patch does NOT automatically unlock designs — the user must still tap each locked design to unlock it (the ad is just skipped). For automatic unlock of ALL designs at startup, enable the 'Unlock all designs' patch. Requires the 'Bypass PairIP integrity check' patch.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "5.0.3"
-            ]
-          },
-          {
-            "name": "Unlock all designs",
-            "description": "Unlocks all puzzle designs (kilominx, mirror 2x2x2, and all other premium designs) by injecting localStorage[\"ulcsall\"] = \"ok\" into the WebView when the app starts. The JS-side isPaidUser() function checks this key and, when it returns true, treats every design as unlocked. Also skips the GDPR consent popup. Note: setting ulcsall=ok also removes all ads as a side effect (because the JS ad functions check isPaidUser first), so this patch is a superset of the 'Remove ads' patch. If you only want to remove ads without unlocking everything, use only the 'Remove ads' patch. Requires the 'Bypass PairIP integrity check' patch.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "5.0.3"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/LgVoi5xD9WDswkXhpBXd85Ad1SE_e98uH2LYvOC2e6ls5T4yusM23VRs4gJcqJo70dg7LkG03WvqvyNSjWXdkw"
-      },
-      {
         "app_name": "Oddmar",
         "package": "com.mobge.oddmar",
         "patches": [
@@ -34463,7 +34461,239 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "fc60612d4c9a40a06a0a14fb2c82a9184929dba1ae4ab7d92713673199df6287"
+    "fingerprint": "988fa9d86e69e422e3f26a369ae4491e2ab8adb2dfbb78a591732263a439590b"
+  },
+  "miguel:dev": {
+    "bundle": "miguel",
+    "channel": "dev",
+    "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
+    "created_at": "2026-08-16T14:17:22",
+    "version": "v1.14.0-dev.1",
+    "description": "## [1.14.0-dev.1](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.13.6...v1.14.0-dev.1) (2026-08-16)\n\n### ✨ New Features\n\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([39b02ed](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/39b02edd571c430e3b63658040af4c03e2b2e921))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([b5b460e](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/b5b460e92c089fb0a075c68b6f9a44c0cb27e69f))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([fbaea0b](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fbaea0b157f3bc1517f50452b2ce12d2ff7c7ebd))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([8252689](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8252689bdbe91dbb20bbe72cd322f05821694e2f))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([d87e20c](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/d87e20c25c684281aa532fa43681e204b95e3594))\n* **supreme:** add 4 patches for Supreme Duelist Stickman v4.0.5 ([8c4a683](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/8c4a68310522f08217909a2c7a5c86b01f1c94d5))\n",
+    "apps": [
+      {
+        "app_name": "The Battle of Polytopia",
+        "package": "air.com.midjiwan.polytopia",
+        "patches": [
+          {
+            "name": "Free in-app purchases",
+            "description": "Patches the Google Play Billing bridge to report success and validate purchases. Handles crystal packs and other IAP items at the billing layer. For unlocking tribes and skins, use the 'Unlock all tribes' patch instead.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.17.2.16299"
+            ]
+          },
+          {
+            "name": "Unlock all tribes",
+            "description": "Unlocks all 20 tribes (Xinxi, Imperius, Bardur, Oumaji, Kickoo, Hoodrick, Luxidoor, Vengir, Zebasi, Aimo, Aquarion, Elyrion, Polaris, Magma, Yadakk, Quetzali, Cymanti, Swamp, Ikarus, Urkaz) and all skins by patching the native IL2CPP library (libil2cpp.so). Makes IsProductUnlocked return true, skips the purchase flow, and suppresses the 'Purchase error' dialog. Pure ARM64 hex patching, no smali, no extension.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.17.2.16299"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/_XOGXn-bwLMfsaeGMdIkMFtj4zBgTUldfJpFMS76akYHNLZX2oXKvwiPsmE3o0DLE9p-gM_CU8nLc6WbdKpREQ"
+      },
+      {
+        "app_name": "Plants vs. Zombies FREE",
+        "package": "com.ea.game.pvzfree_row",
+        "patches": [
+          {
+            "name": "Free in-app purchases",
+            "description": "When you try to buy something, the purchase is immediately marked as successful without contacting Google Play. The EA Nimble MTX system receives a null error (success) and grants the item.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.16.0"
+            ]
+          },
+          {
+            "name": "Free reward ads",
+            "description": "When the game tries to show a rewarded ad, it immediately fires the ad-clicked and ad-closed callbacks without actually showing the ad. You get the reward instantly.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.16.0"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Prevents video ads from loading. When the game tries to load an ad, nothing happens. Ads will not be shown.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.16.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/FGB00L2-aGHPAiRJPxbC3Th_KEaGvVroVF-tPSf_1Unh9kzzY-al4mp1yJT16I16FuLK6oJ-3H-KrVgTrg3ABFc"
+      },
+      {
+        "app_name": "Climb!",
+        "package": "com.ivanaf.climbamiypfree",
+        "patches": [
+          {
+            "name": "Free in-app purchases",
+            "description": "Skips purchase signature verification and forces billing to report success. Patches RunnerBillingSecurity.verifyPurchase to always return true, Purchase.isAcknowledged/getPurchaseState to return valid values, and the billing bridge callbacks.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "6.0.6",
+              "6.0.5"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Simulates the purchase of the 'climbnoads' IAP product by injecting a fake Purchase into the purchase list when the game queries purchases. The game finds 'climbnoads' and treats No Ads as purchased.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.0.6",
+              "6.0.5"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "Oddmar",
+        "package": "com.mobge.oddmar",
+        "patches": [
+          {
+            "name": "Free in-app purchases",
+            "description": "Makes every IAP purchase succeed instantly without contacting Google Play Billing. When the user taps 'Buy' on any in-app product, the game credits the purchase immediately and skips the Play Store dialog. For Oddmar 0.111 the only IAP product is 'unlock_all_levels', so this patch gives a free full-game unlock on demand. Note: literal 'unlimited coins' (the in-game currency counter) requires native libil2cpp.so patching and is NOT covered by this Java patch.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "0.111"
+            ]
+          },
+          {
+            "name": "Unlock full game",
+            "description": "Unlocks the full game (all levels, all worlds) by intercepting the IAP 'has product been purchased' check. Oddmar's only IAP product is 'unlock_all_levels' — this patch makes the game think it has already been purchased, so every level is unlocked from the start. No Google Play Billing connection is required. Also disables the startup 'acknowledge all purchases' query so the patch doesn't try to reach Google Play at boot.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "0.111"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "Supreme Duelist Stickman",
+        "package": "com.neurononfire.supremeduelist",
+        "patches": [
+          {
+            "name": "Bypass PairIP license check",
+            "description": "Bypasses the PairIP license check by (1) no-oping LicenseClient.checkLicense (static, from attachBaseContext), (2) no-oping LicenseClient.initializeLicenseCheck (instance, from any caller), and (3) modifying AndroidManifest to skip the PairIP Application class, remove LicenseActivity, and remove CHECK_LICENSE permission. This app uses a simple PairIP setup (no VM, no signature check) — only the license check.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.5"
+            ]
+          },
+          {
+            "name": "Bypass PairIP manifest",
+            "description": "Modifies AndroidManifest.xml to skip the PairIP Application class, remove LicenseActivity, and remove CHECK_LICENSE permission. Part of the PairIP bypass.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.5"
+            ]
+          },
+          {
+            "name": "Free in-app purchases",
+            "description": "Makes every IAP purchase succeed instantly without contacting Google Play Billing. When the user taps 'Buy' on any product (Remove Ads), the purchase is credited immediately.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.5"
+            ]
+          },
+          {
+            "name": "Unlimited coins",
+            "description": "Hex patches libil2cpp.so to skip SaveCoins, preventing the game from persisting coin deductions.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.5"
+            ]
+          },
+          {
+            "name": "Unlock all (weapons, modes, maps, no ads)",
+            "description": "Hex patches libil2cpp.so to: (1) make get_AdsRemoved return true (No Ads purchased), (2) make unlockBattleMode and unlockMiniGame free, (3) skip rewarded ads for weapons and rewards.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.0.5"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "Hunter Assassin",
+        "package": "com.rubygames.assassin",
+        "patches": [
+          {
+            "name": "Auto reward ads",
+            "description": "When a rewarded ad is closed, the game always thinks you watched the entire ad. You get the reward even if you skip or close the ad immediately.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.041"
+            ]
+          },
+          {
+            "name": "Unlimited gems, rubies & unlock all",
+            "description": "Sets gems, rubies (diamonds), keys and tickets to 9999999. Unlocks VIP (removes ads + VIP rewards + Ninja Assassin VIP character), all assassin characters (2-44), including all Legendary characters (Scarecrow, Dracula, Thor, Wolverine, Myers, Santa, Grinch, Nutcracker, Cricket Player), and all special knives.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.041"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/c2plZekGHW4efm2udEpRub-HPnIrZ8LjpF1LhwlaIdu8cbGHIXtDAyno_skY-ujbhBfOSpOJbtKFeaphTZl4Pg"
+      },
+      {
+        "app_name": "CubeX Solver",
+        "package": "diozz.cubex",
+        "patches": [
+          {
+            "name": "Unlock premium",
+            "description": "Unlocks all premium-gated features (Advanced Solver / Kociemba, custom color schemes, VIP support, no relaunch screens). Returns true from PremiumHelper.hasActivePurchase() so the entire app behaves as if a premium subscription is active.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.1.1",
+              "4.1.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/L3BjsGX7Rixnki8p27jkdJTa1Bpu7PBE7QGzAqJONNMnZha8SKv1SuHrcPJrbuqA8BRtOzf3TeY_kJRg6xRRYA"
+      },
+      {
+        "app_name": "Anger of Stick 5",
+        "package": "jpark.aos5",
+        "patches": [
+          {
+            "name": "Free in-app purchases",
+            "description": "Skips Google Play Billing and credits IAP items (gem packs, coin packs, starter packs) directly. Lets the original failure path run after crediting to close the Contacting screen naturally. Also disables the startup purchase-restore flow.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.1.94"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "396ea8f489aa429494c577d7d50289fd19eb93f0963c42bca314b2299fa9e595"
   },
   "brosssh:stable": {
     "bundle": "brosssh",
@@ -51065,9 +51295,9 @@
     "bundle": "okish-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-    "created_at": "2026-08-16T04:42:33",
-    "version": "v1.9.0",
-    "description": "## [1.9.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.8.0...v1.9.0) (2026-08-16)\n\n### ✨ New Features\n\n* add Rodeo Stampede Safari patches (free purchase + ad-free) ([da9a1b0](https://github.com/byehi98/okish-morphe-patches/commit/da9a1b0dccd168cd580339787204dd0e399ea22d))\n",
+    "created_at": "2026-08-16T13:41:30",
+    "version": "v1.10.0",
+    "description": "## [1.10.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.9.0...v1.10.0) (2026-08-16)\n\n### ✨ New Features\n\n* relocate patches package structure under app namespace ([5627eea](https://github.com/byehi98/okish-morphe-patches/commit/5627eeadf0acf97654ffe3792ee30b69046a4e68))\n",
     "apps": [
       {
         "app_name": "Dr. Driving",
@@ -51195,6 +51425,49 @@
         "icon_url": "https://play-lh.googleusercontent.com/fo_dS1ZkonPQsBvxnbuIcPU8kuTbmRHsDojJIRsK1zqtlgDHMmzP8hHL2Ex-aapGjYZC7OfsvX92gZNPzxkAwg"
       },
       {
+        "app_name": "Big Hunter",
+        "package": "com.kakarod.bighunter",
+        "patches": [
+          {
+            "name": "Big Hunter Fake Purchase",
+            "description": "Tapping any store item grants the product immediately (via the game's own confirmed-purchase path -> native applyProduct) without opening Google Play billing. Entitlements persist across restarts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          },
+          {
+            "name": "Big Hunter PairIP License Bypass",
+            "description": "Disables the PairIP license check (installer verification + Google Play licensing service validation + paywall/exit dialog). Required for patched APKs — the original check fails on any non-Play signature and force-closes the app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          },
+          {
+            "name": "Big Hunter Remove Ads",
+            "description": "Interstitial ads are never shown (show() short-circuits via the ad-not-ready path on all three network bridges: AdMob, AppLovin, Unity Ads).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          },
+          {
+            "name": "Big Hunter Rewards Without Ads",
+            "description": "Rewarded video requests grant the reward immediately via the game's own native rewardCallback() without loading or showing any ad (AdMob, AppLovin, Unity Ads).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/rIyqCfZUZlf70Mc5yzDwztiboPVTGaWbIp99vwr40vSy_brmLlUuuS-pLIClJeWx_oG88do82ct2GAX87CO6gg"
+      },
+      {
         "app_name": "Doodle Jump",
         "package": "com.lima.doodlejump",
         "patches": [
@@ -51293,15 +51566,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/3doN5J__xKmKo9o7IxPtaQw9CrceklAb7_gkRAe2bgovGRJG7zh0lWAwHxgS1d5zbuYV0mw625MhDHcNo8Yfew"
       }
     ],
-    "fingerprint": "fd29c4038940712ef15907a0109b4d35561c65d38bef32c0e2c8d61037c6756b"
+    "fingerprint": "cc2f4c5e810f19512d8c8964ac36aa9887ba2dffdbe134615482fd05354d17f5"
   },
   "okish-morphe:dev": {
     "bundle": "okish-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-    "created_at": "2026-08-16T04:31:01",
-    "version": "v1.9.0-dev.1",
-    "description": "## [1.9.0-dev.1](https://github.com/byehi98/okish-morphe-patches/compare/v1.8.0...v1.9.0-dev.1) (2026-08-16)\n\n### ✨ New Features\n\n* add Rodeo Stampede Safari patches (free purchase + ad-free) ([da9a1b0](https://github.com/byehi98/okish-morphe-patches/commit/da9a1b0dccd168cd580339787204dd0e399ea22d))\n",
+    "created_at": "2026-08-16T13:33:56",
+    "version": "v1.10.0-dev.1",
+    "description": "## [1.10.0-dev.1](https://github.com/byehi98/okish-morphe-patches/compare/v1.9.0...v1.10.0-dev.1) (2026-08-16)\n\n### ✨ New Features\n\n* relocate patches package structure under app namespace ([5627eea](https://github.com/byehi98/okish-morphe-patches/commit/5627eeadf0acf97654ffe3792ee30b69046a4e68))\n",
     "apps": [
       {
         "app_name": "Dr. Driving",
@@ -51429,6 +51702,49 @@
         "icon_url": "https://play-lh.googleusercontent.com/fo_dS1ZkonPQsBvxnbuIcPU8kuTbmRHsDojJIRsK1zqtlgDHMmzP8hHL2Ex-aapGjYZC7OfsvX92gZNPzxkAwg"
       },
       {
+        "app_name": "Big Hunter",
+        "package": "com.kakarod.bighunter",
+        "patches": [
+          {
+            "name": "Big Hunter Fake Purchase",
+            "description": "Tapping any store item grants the product immediately (via the game's own confirmed-purchase path -> native applyProduct) without opening Google Play billing. Entitlements persist across restarts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          },
+          {
+            "name": "Big Hunter PairIP License Bypass",
+            "description": "Disables the PairIP license check (installer verification + Google Play licensing service validation + paywall/exit dialog). Required for patched APKs — the original check fails on any non-Play signature and force-closes the app.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          },
+          {
+            "name": "Big Hunter Remove Ads",
+            "description": "Interstitial ads are never shown (show() short-circuits via the ad-not-ready path on all three network bridges: AdMob, AppLovin, Unity Ads).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          },
+          {
+            "name": "Big Hunter Rewards Without Ads",
+            "description": "Rewarded video requests grant the reward immediately via the game's own native rewardCallback() without loading or showing any ad (AdMob, AppLovin, Unity Ads).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.1.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/rIyqCfZUZlf70Mc5yzDwztiboPVTGaWbIp99vwr40vSy_brmLlUuuS-pLIClJeWx_oG88do82ct2GAX87CO6gg"
+      },
+      {
         "app_name": "Doodle Jump",
         "package": "com.lima.doodlejump",
         "patches": [
@@ -51527,7 +51843,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/3doN5J__xKmKo9o7IxPtaQw9CrceklAb7_gkRAe2bgovGRJG7zh0lWAwHxgS1d5zbuYV0mw625MhDHcNo8Yfew"
       }
     ],
-    "fingerprint": "e31086ba4c82787cc1bed10497d119c1129917fc2ff8d9ff05582f5f3d067796"
+    "fingerprint": "4abce7735931f0ee39ba2d77f32017524d869516e6b4e596cd0f395b0eb965d5"
   },
   "ftl-portal:stable": {
     "bundle": "ftl-portal",
@@ -52773,9 +53089,9 @@
     "bundle": "sofatime",
     "channel": "stable",
     "repo_url": "https://github.com/alan7383/sofatime-patches",
-    "created_at": "2026-08-12T13:09:24",
-    "version": "v1.4.3",
-    "description": "## [1.4.3](https://github.com/alan7383/sofatime-patches/compare/v1.4.2...v1.4.3) (2026-08-12)\n\n### 🐛 Bug Fixes\n\n* Support SofaTime v1.2.5 (Fixes [#4](https://github.com/alan7383/sofatime-patches/issues/4)) ([09cc1ca](https://github.com/alan7383/sofatime-patches/commit/09cc1ca4303acd4789a03ebca35395be9f8d9c78))\n",
+    "created_at": "2026-08-16T13:35:58",
+    "version": "v1.4.4",
+    "description": "## [1.4.4](https://github.com/alan7383/sofatime-patches/compare/v1.4.3...v1.4.4) (2026-08-16)\n\n### 🐛 Bug Fixes\n\n* Support SofaTime v1.2.7 (Fixes [#5](https://github.com/alan7383/sofatime-patches/issues/5)) ([9f8386d](https://github.com/alan7383/sofatime-patches/commit/9f8386db1921a60a01b2d96af56835cb6ffba9a9))\n",
     "apps": [
       {
         "app_name": "SofaTime",
@@ -52790,7 +53106,8 @@
               "1.2.2",
               "1.2.3",
               "1.2.4",
-              "1.2.5"
+              "1.2.5",
+              "1.2.7"
             ]
           },
           {
@@ -52802,7 +53119,8 @@
               "1.2.2",
               "1.2.3",
               "1.2.4",
-              "1.2.5"
+              "1.2.5",
+              "1.2.7"
             ]
           },
           {
@@ -52814,7 +53132,8 @@
               "1.2.2",
               "1.2.3",
               "1.2.4",
-              "1.2.5"
+              "1.2.5",
+              "1.2.7"
             ]
           },
           {
@@ -52826,14 +53145,15 @@
               "1.2.2",
               "1.2.3",
               "1.2.4",
-              "1.2.5"
+              "1.2.5",
+              "1.2.7"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/h-lFEq_K6xrQU2PdEccOtG_FQr_KxuzYilNCRO7ktYNOV55VdhuhtuT2SGLOBAUMWsAmAQrO8WrHDLyb9Zu5l0U"
       }
     ],
-    "fingerprint": "1cea56bec760bdce51848aaff2ae89461962e2b5a8048be7e3572d1d7a28bf54"
+    "fingerprint": "443f659788d216e76f891974fe4fd04d86c923507ea8de7463a3a0e72710e8d5"
   },
   "lablazer:stable": {
     "bundle": "lablazer",
@@ -60493,9 +60813,9 @@
     "bundle": "amplerevanced",
     "channel": "dev",
     "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
-    "created_at": "2026-08-15T17:52:08",
-    "version": "v1.4.0-dev.6",
-    "description": "# [1.4.0-dev.6](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.5...v1.4.0-dev.6) (2026-08-15)\n\n\n### Features\n\n* **dcinside:** add gallery watch mode ([77f2208](https://github.com/AmpleReVanced/revanced-patches/commit/77f2208e123774a60ee81c4c3be79feaaf708b3d))\n* **dcinside:** add Hide post list page indicators patch ([afeba91](https://github.com/AmpleReVanced/revanced-patches/commit/afeba91b2753fd3dbc5e0f887ba6f7a846dd58e7))\n\n\n\n",
+    "created_at": "2026-08-16T14:17:02",
+    "version": "v1.4.0-dev.8",
+    "description": "# [1.4.0-dev.8](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.7...v1.4.0-dev.8) (2026-08-16)\n\n\n### Bug Fixes\n\n* **samsung-keyboard:** apply situation volume to key sounds ([c883844](https://github.com/AmpleReVanced/revanced-patches/commit/c883844f857bcef032d10c085d94b0f7afbdfbcf))\n* **samsung-keyboard:** preserve activity transition animations ([2c7b5da](https://github.com/AmpleReVanced/revanced-patches/commit/2c7b5dadbe802e1a55108416ae0e388ffd82edf9))\n\n\n### Features\n\n* **samsung-keyboard:** map Samsung haptics to Android effects ([bc35095](https://github.com/AmpleReVanced/revanced-patches/commit/bc35095588fec47dc5a5ae7b8ac182d5b6446459))\n\n\n\n",
     "apps": [
       {
         "app_name": "dcinside",
@@ -61512,6 +61832,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/X9wOAI11HK3M4WyhYq4k4fmNcT4Fi8Gd1WRwU3s4IR4YGl1k7hKic9teHN2cnsURsUNm26MC9NHnyS-nMKRr"
       },
       {
+        "app_name": "Samsung Keyboard",
+        "package": "com.samsung.android.honeyboard",
+        "patches": [
+          {
+            "name": "Enable non-One UI ROM support",
+            "description": "Makes Samsung Keyboard installable and usable on non-One UI ROMs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.9.40.48"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
         "app_name": "SOOP",
         "package": "kr.co.nowcom.mobile.afreeca",
         "patches": [
@@ -61609,7 +61945,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/kkYJ-GrCRS0WWNWjshvFCyqnYPdC7PY6UZ5NK5ju7OFnp0lmU7JlOLIfPvQnr4Y_LWhnab-Fqz9PkCrEwpPjLQ"
       }
     ],
-    "fingerprint": "972d94160072cdb8f4d8cbce5b714016a6a47f2d24b60bb5797e0d01a4f5bf4e"
+    "fingerprint": "9e696c3050e33751f6e9f6f439f723f98b4db21a9aa4be97d6527931a3284d40"
   },
   "kareemlukitomo:stable": {
     "bundle": "kareemlukitomo",
@@ -62900,9 +63236,9 @@
     "bundle": "petalmaps-androidauto",
     "channel": "stable",
     "repo_url": "https://github.com/andersonlucasg3/PetalMaps-AndroidAuto",
-    "created_at": "2026-08-16T11:27:44",
-    "version": "v1.1.18",
-    "description": "Fix input dying after seconds and letterboxed layout: debounce VirtualDisplay recreation (700ms, host sends a burst of area changes), drop MULTIPLE_TASK (single task reuse), finish the old activity before destroying its display, and only dispatch touch to the live activity instance on the current display.",
+    "created_at": "2026-08-16T14:23:24",
+    "version": "v1.1.24",
+    "description": "Remove forced car mode (power-off/lockscreen — natural behavior preferred) and attack the portrait letterbox: force SENSOR_LANDSCAPE in runtime on the projected activity + explicit resizeableActivity=true in the manifest. Window bounds logged 2s after orientation change for diagnosis.",
     "apps": [
       {
         "app_name": "Petal Maps",
@@ -62963,6 +63299,15 @@
             ]
           },
           {
+            "name": "Automotive orientation fix (main activity)",
+            "description": "Changes PetalMapsActivity's screenOrientation from behind to sensorLandscape so it renders in landscape on the car display.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.7.0.322(001)"
+            ]
+          },
+          {
             "name": "Change package name",
             "description": "Changes the package name from com.huawei.maps.app to morphe.huawei.petal.maps by default, allowing the patched app to coexist with the original. Changing the package name can lead to unexpected issues.",
             "use": false,
@@ -63006,7 +63351,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/WBHbeYq1QUHbdVEOwhCxqlMXJ0rUHlYGItTfpCwfiIUG32txrutVLn-LlfZW8tHCBPkrpbIti6wD0sobYYad"
       }
     ],
-    "fingerprint": "f56211f564d2232cbb5e2d147409ab2e96424474c19f39222a3fd766b8ecd090"
+    "fingerprint": "a9b4f4546a37dd1a91c693fb00c78977806f4fd01177887cdf0963b55e472023"
   },
   "gryphous-morphe:stable": {
     "bundle": "gryphous-morphe",
