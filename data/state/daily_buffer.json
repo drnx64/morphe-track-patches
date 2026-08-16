@@ -1,7 +1,7 @@
 {
   "date": "2026-08-16",
-  "lastChecked": "2026-08-16T09:25:53Z",
-  "scan_counter": 3,
+  "lastChecked": "2026-08-16T12:28:56Z",
+  "scan_counter": 4,
   "affected_bundles": {
     "hk-morphe:stable": {
       "bundle": "hk-morphe",
@@ -218,44 +218,16 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "7TV and BTTV emotes",
-                "description": "Renders global and current-channel 7TV and BTTV emotes in incoming live chat. Type an emote code normally to send it; this patch does not add a picker or provider login."
+                "name": "Fix login",
+                "description": "Fixes the \"This app version/OS is not currently supported\" error that blocks login after the app has been patched. Twitch runs a Play Integrity check in the background and reports the result to its login server; re-signing makes that check fail, so the server refuses the login. This stops the app from sending that attestation, so it looks like a device without Google Play, where login works normally. It does not change anything else about how you log in."
               }
             ],
             "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Auto claim channel points",
-                "description": "Claims the channel points bonus chest for you automatically. Whenever Twitch makes a bonus available, the claim fires on its own so you don't have to tap the chest.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Block live ads",
-                "description": "Routes live streams through a free third-party proxy that strips the ads baked into the stream, so the proxy has to be up for playback to work; turn this patch off if it goes down. Mid-stream ads get dropped reliably, but a single preroll can still slip through when you first open a channel and Twitch has flagged the shared proxy. VOD ads aren't covered.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide display ads",
-                "description": "Hides the banner, overlay, and in-feed display ads Twitch shows around the app. This doesn't touch the video ads in the stream itself.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Show deleted messages",
-                "description": "Keeps deleted or moderated chat messages readable instead of replacing them with \"<message deleted>\". The message turns into a tappable spoiler: tap it to reveal the original text. Normally only moderators can do this; the patch grants that access to everyone.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
+            "patches_modified": []
           },
           "scan_numbers": [
-            2
+            2,
+            4
           ]
         }
       ]

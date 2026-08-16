@@ -24724,9 +24724,9 @@
     "bundle": "ftl",
     "channel": "stable",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-15T08:24:10",
-    "version": "v1.32.0",
-    "description": "## [1.32.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.31.0...v1.32.0) (2026-08-15)\r\n\r\n### ✨ New Features\r\n\r\n* Add Es File Explorer Clean Ui Patch ([c82f6fe](https://github.com/BlazeFTL/FTL-Patches/commit/c82f6fec95d7bf6bfb75c45d76ca2b7558b8d257))\r\n* make snaptube watch ad patch more robust ([0378fb2](https://github.com/BlazeFTL/FTL-Patches/commit/0378fb20f57b20e0b27280845ea2fd414fc025fd))\r\n* update Es Description ([4a7022e](https://github.com/BlazeFTL/FTL-Patches/commit/4a7022e8253e0f91eebb653cb93e1d137236250a))\r\n",
+    "created_at": "2026-08-16T07:21:44",
+    "version": "v1.33.0",
+    "description": "## [1.33.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.32.0...v1.33.0) (2026-08-16)\r\n\r\n### ✨ New Features\r\n\r\n* Add All Video Downloader ([840b2c6](https://github.com/BlazeFTL/FTL-Patches/commit/840b2c63d51597157ad482f2a032beaf194a7fb8))\r\n* Improve Remove Ads ([eb52cd0](https://github.com/BlazeFTL/FTL-Patches/commit/eb52cd03cb9200a765f0b733d505b8fb7def31f9))\r\n",
     "apps": [
       {
         "app_name": "Xender",
@@ -24828,41 +24828,50 @@
           }
         ],
         "icon_url": ""
+      },
+      {
+        "app_name": "All Video Downloader & Ace Player",
+        "package": "videoplayer.videodownloader.downloader",
+        "patches": [
+          {
+            "name": "Disable ad dialog when reopening app",
+            "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.9.7"
+            ]
+          },
+          {
+            "name": "Skip splash and language screens",
+            "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.9.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
       }
     ],
-    "fingerprint": "1181671ac4ce3580714a0a08b49c8ce74b4134b97db0bcf414e675ca5718a326"
+    "fingerprint": "6c5f37c01e71dc8e506b18488167e248a90275498e79e71e1c23928db3cc211a"
   },
   "ftl:dev": {
     "bundle": "ftl",
     "channel": "dev",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-15T16:39:24",
-    "version": "v1.33.0-dev.2",
-    "description": "## [1.33.0-dev.2](https://github.com/BlazeFTL/FTL-Patches/compare/v1.33.0-dev.1...v1.33.0-dev.2) (2026-08-15)\n\n### ✨ New Features\n\n* ads up 2 ([eb52cd0](https://github.com/BlazeFTL/FTL-Patches/commit/eb52cd03cb9200a765f0b733d505b8fb7def31f9))\n",
+    "created_at": "2026-08-13T10:46:28",
+    "version": "v1.28.0-dev.7",
+    "description": "## [1.28.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.28.0-dev.6...v1.28.0-dev.7) (2026-08-13)\n\n### ✨ New Features\n\n* f es ([7abc8d6](https://github.com/BlazeFTL/FTL-Patches/commit/7abc8d657e51a2494ef87af098afe3a66985f67c))\n",
     "apps": [
-      {
-        "app_name": "Xender",
-        "package": "cn.xender",
-        "patches": [
-          {
-            "name": "Speed up splash screen",
-            "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "18.8.0.prime"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/7Hf2rw_3DdwM5015tvel3IE_0S3fhHWK7iRYonCd66RI0y2tFB5w_qYxMjflRFNey37Uqnmgsh8XTIRM5sTu"
-      },
       {
         "app_name": "ES File Explorer",
         "package": "com.estrongs.android.pop",
         "patches": [
           {
-            "name": "ES File Explorer Ui Cleanup",
-            "description": "Removes BookMark, New Files, Cleaner Row In HomePage, Cleans More menu actions",
+            "name": "ES File Explorer Cleanup",
+            "description": "Removes selected ES File Explorer home tiles, menu actions, navigation header, media handler, and web-search entry.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -24871,6 +24880,41 @@
           }
         ],
         "icon_url": ""
+      },
+      {
+        "app_name": "MX Player",
+        "package": "com.mxtech.videoplayer.ad",
+        "patches": [
+          {
+            "name": "Hide File Transfer, Video Playlist, Private Folder tiles",
+            "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from the tools tile list.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Hide local tiles banner",
+            "description": "Collapses the local device tiles banner.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Hide Me tab promo items",
+            "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Skip welcome screen",
+            "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/kuU8L2zHfkE8rDQ8iUwMpYcV8TzUDBz7n_KYaEV4R5M7W5qHiZGqxWk9f1ysP2Lk72GmRTps3iaXUXfH-18pWw"
       },
       {
         "app_name": "MX Player Pro",
@@ -24942,7 +24986,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "a80839811caa88b9773905475612fd75117e097d01eeff1d937c3adab3789300"
+    "fingerprint": "bedd033380d52b36562f58c2284c9999bcbeb2ebcd832799873d1b9c3998cb49"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
@@ -40995,10 +41039,24 @@
     "bundle": "hxreborn",
     "channel": "stable",
     "repo_url": "https://github.com/hxreborn/morphe-patches",
-    "created_at": "2026-08-15T16:49:39",
-    "version": "v1.5.1",
-    "description": "## [1.5.1](https://github.com/hxreborn/morphe-patches/compare/v1.5.0...v1.5.1) (2026-08-15)\n\n### Bug Fixes\n\n* **Symfonium - Unlock premium:** force the native key check that halts playback ([f35b796](https://github.com/hxreborn/morphe-patches/commit/f35b796d57999dc69b3d7cbaf059cebb3aa2f1a1))\n",
+    "created_at": "2026-08-16T07:45:13",
+    "version": "v1.6.0",
+    "description": "## [1.6.0](https://github.com/hxreborn/morphe-patches/compare/v1.5.1...v1.6.0) (2026-08-16)\n\n### New Features\n\n* **Audible - Hide membership upselling:** add patch ([7898c5f](https://github.com/hxreborn/morphe-patches/commit/7898c5fc603a0455641d3eff17dc107582c45ea5))\n* **Perplexity - AMOLED dark theme:** add patch ([279ce08](https://github.com/hxreborn/morphe-patches/commit/279ce0849ddec8ffbab58b3add0a4fdaea787528))\n",
     "apps": [
+      {
+        "app_name": "Perplexity",
+        "package": "ai.perplexity.app.android",
+        "patches": [
+          {
+            "name": "AMOLED dark theme",
+            "description": "Replaces the dark theme background with pure black.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/vg7sPhgWiPr0L2cK_NLLcCl0mrkEmNNv7C-aUkBdIUEa-9uSnCi5x4z_3Mw0vNYWKoSVWHfgri7THMOsOZKQuA"
+      },
       {
         "app_name": "Symfonium",
         "package": "app.symfonik.music.player",
@@ -41082,6 +41140,13 @@
         "package": "com.audible.application",
         "patches": [
           {
+            "name": "Hide membership upselling",
+            "description": "Hides the membership promotion on the Home screen and the free trial bottom sheet.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
             "name": "Open Library on launch",
             "description": "Opens the Library tab instead of Home on launch. Applies only while signed in.",
             "use": true,
@@ -41150,7 +41215,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/Qo3kWBOmNFWGcGxiBHs-tR2_0uVcrGGUzKXb_e_JwpbwwzsYHAs-qvNhE-QDr2c8B4_8w0bq8yl5uo88pTdb"
       }
     ],
-    "fingerprint": "7b97b3966d4b44f27d1382e07a7864025eaec7bcc49788cceef5f2839f10a1f7"
+    "fingerprint": "307c9174094d220ff63ced24dd4e386fd88c0267c70a9684b3f57fb52f6092b7"
   },
   "hxreborn:dev": {
     "bundle": "hxreborn",
