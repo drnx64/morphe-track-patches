@@ -1,23 +1,51 @@
-## [2026-08-15]
+## [2026-08-16]
+- **UPDATED** Bundle **ajstrick81-androidtv**
+  - **UPDATED APP** Ott (`com.cbs.ott`) in ajstrick81-androidtv patches
 - **UPDATED** Bundle **amplerevanced**
-  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
-- **UPDATED** Bundle **braintropy**
-  - **REMOVED APP** [PRE-RELEASE] MyoAdapt (`com.myoadapt.app.android`) in braintropy patches
+  - **NEW APP** [PRE-RELEASE] Samsung Keyboard (`com.samsung.android.honeyboard`) in amplerevanced patches
+- **UPDATED** Bundle **franticg33k**
+  - **NEW APP** [PRE-RELEASE] Bolpatra Nepal (`com.bolpatranepal.axios`) in franticg33k patches
 - **UPDATED** Bundle **ftl**
+  - **NEW APP** All Video Downloader & Ace Player (`videoplayer.videodownloader.downloader`) in ftl patches
   - **UPDATED APP** ES File Explorer (`com.estrongs.android.pop`) in ftl patches
-  - **REMOVED APP** MX Player (`com.mxtech.videoplayer.ad`) in ftl patches
-  - **NEW APP** Xender (`cn.xender`) in ftl patches
+  - **NEW APP** [PRE-RELEASE] MX Player (`com.mxtech.videoplayer.ad`) in ftl patches
+  - **REMOVED APP** Xender (`cn.xender`) in ftl patches
 - **UPDATED** Bundle **hk-morphe**
   - **UPDATED APP** Sync for Reddit (`com.laurencedawson.reddit_sync`) in hk-morphe patches
   - **UPDATED APP** Sync for Reddit Dev (`com.laurencedawson.reddit_sync.dev`) in hk-morphe patches
   - **UPDATED APP** Sync for Reddit Pro (`com.laurencedawson.reddit_sync.pro`) in hk-morphe patches
 - **UPDATED** Bundle **hoomans-morphe**
-  - **NEW APP** Moneta (`currency.converter.moneta`) in hoomans-morphe patches
+  - **UPDATED APP** Battery Guru (`com.paget96.batteryguru`) in hoomans-morphe patches
+  - **UPDATED APP** Cronometer (`com.cronometer.android.gold`) in hoomans-morphe patches
+  - **NEW APP** Microsoft SwiftKey (`com.touchtype.swiftkey`) in hoomans-morphe patches
+  - **UPDATED APP** Tumblr (`com.tumblr`) in hoomans-morphe patches
+  - **UPDATED APP** Twitch (`tv.twitch.android.app`) in hoomans-morphe patches
 - **UPDATED** Bundle **hxreborn**
-  - **NEW APP** Symfonium (`app.symfonik.music.player`) in hxreborn patches
-- **UPDATED** Bundle **jasonwu1994**
-  - **UPDATED APP** Latin (`com.google.android.inputmethod.latin`) in jasonwu1994 patches
-- **UPDATED** Bundle **morning-entree**
-  - **NEW APP** Six Pack in 30 Days (`sixpack.sixpackabs.absworkout`) in morning-entree patches
+  - **UPDATED APP** Audible (`com.audible.application`) in hxreborn patches
+  - **NEW APP** Perplexity (`ai.perplexity.app.android`) in hxreborn patches
+  - **NEW APP** ReadEra (`org.readera`) in hxreborn patches
+  - **NEW APP** Trainline (`com.thetrainline`) in hxreborn patches
+- **UPDATED** Bundle **itsthejoker**
+  - **UPDATED APP** Roost (`com.rookery.courier`) in itsthejoker patches
+- **NEW BUNDLE** Bundle by **miguel** (dev, stable)
+  - **NEW APP** Anger of Stick 5 (`jpark.aos5`) in miguel patches
+  - **NEW APP** Climb! (`com.ivanaf.climbamiypfree`) in miguel patches
+  - **REMOVED APP** Cube Solver (`com.jeffprod.cubesolver`) in miguel patches
+  - **NEW APP** CubeX Solver (`diozz.cubex`) in miguel patches
+  - **NEW APP** Hunter Assassin (`com.rubygames.assassin`) in miguel patches
+  - **NEW APP** Oddmar (`com.mobge.oddmar`) in miguel patches
+  - **NEW APP** Plants vs. Zombies FREE (`com.ea.game.pvzfree_row`) in miguel patches
+  - **NEW APP** [PRE-RELEASE] Supreme Duelist Stickman (`com.neurononfire.supremeduelist`) in miguel patches
+  - **NEW APP** The Battle of Polytopia (`air.com.midjiwan.polytopia`) in miguel patches
+- **UPDATED** Bundle **nuviotv**
+  - **UPDATED APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
+- **UPDATED** Bundle **okish-morphe**
+  - **NEW APP** Big Hunter (`com.kakarod.bighunter`) in okish-morphe patches
+  - **NEW APP** Rodeo Stampede: Sky Zoo Safari (`com.yodo1.rodeo.safari`) in okish-morphe patches
 - **UPDATED** Bundle **petalmaps-androidauto**
   - **UPDATED APP** Petal Maps (`com.huawei.maps.app`) in petalmaps-androidauto patches
+- **UPDATED** Bundle **piko**
+  - **UPDATED APP** Instagram (`com.instagram.android`) in piko patches
+  - **UPDATED APP** Twitter (`com.twitter.android`) in piko patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
