@@ -3627,10 +3627,26 @@
     "bundle": "riky",
     "channel": "stable",
     "repo_url": "https://github.com/riky-dev/morphe-patches",
-    "created_at": "2026-08-17T20:32:56",
-    "version": "v1.1.0",
-    "description": "## [1.1.0](https://github.com/riky-dev/morphe-patches/compare/v1.0.0...v1.1.0) (2026-08-17)\n\n### ✨ New Features\n\n* add agent-friendly patch development framework ([68f76b7](https://github.com/riky-dev/morphe-patches/commit/68f76b72268e2273cfb57fded12e47039bc88798))\n",
+    "created_at": "2026-08-18T17:28:44",
+    "version": "v1.3.1",
+    "description": "## [1.3.1](https://github.com/riky-dev/morphe-patches/compare/v1.3.0...v1.3.1) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **devcheck:** bypass PairIP protection on re-signed APKs ([65e6ece](https://github.com/riky-dev/morphe-patches/commit/65e6ecefd746b511c366d2b30d620192db26c7f5))\n",
     "apps": [
+      {
+        "app_name": "Electron: battery health info",
+        "package": "com.mahersafadi.electron",
+        "patches": [
+          {
+            "name": "Hide ads",
+            "description": "Spoofs premium/unlocked state to disable ad-gated behavior.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/0t-xeeDB6UuldF-nGTXFlE1Yvzm1NVBx-bYdnVYCdMfIyyT0niQNLa9dYLketH9ESOpeF4YzuihgI_Mz6SnlgQ"
+      },
       {
         "app_name": "3BMeteo",
         "package": "com.meteosolutions.meteo3b",
@@ -3646,9 +3662,34 @@
           }
         ],
         "icon_url": ""
+      },
+      {
+        "app_name": "DevCheck Device & System Info",
+        "package": "flar2.devcheck",
+        "patches": [
+          {
+            "name": "Bypass app protection",
+            "description": "Disables PairIP signature and startup integrity checks that block re-signed APKs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.50"
+            ]
+          },
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks all paid DevCheck Pro features (tests, tools, widgets, floating monitors, color schemes) without purchasing.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "6.50"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/xS5MzTqoVxoGd_Zz852hz11aHT3KTzpHLplKHPsjpx59iyG2d-9T_WpfIw6Nm4VOF6lhEwSSy2pfyvyMs6mcbw"
       }
     ],
-    "fingerprint": "0a894f9462053f7deb77ea70e83fd405669869a027ce95ff08765ef94c9d1770"
+    "fingerprint": "6f17075e21dca37c5d1ea80dc15f825b918d0f4d4dcc283805517fd52d74cee2"
   },
   "riky:dev": {
     "bundle": "riky",
@@ -40295,9 +40336,9 @@
     "bundle": "hoomans-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/arandomhooman/hoomans-morphe-patches",
-    "created_at": "2026-08-18T04:30:21",
-    "version": "v1.50.1",
-    "description": "## [1.50.1](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.50.0...v1.50.1) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* stop the Twitch 7TV/BTTV emotes patch from breaking chat ([57d24ee](https://github.com/arandomhooman/hoomans-morphe-patches/commit/57d24ee1cec93c34622613d0cf749ba6311767f2))\n",
+    "created_at": "2026-08-18T17:30:26",
+    "version": "v1.50.2",
+    "description": "## [1.50.2](https://github.com/arandomhooman/hoomans-morphe-patches/compare/v1.50.1...v1.50.2) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* clarify Twitch 7TV and BTTV patch details ([702146d](https://github.com/arandomhooman/hoomans-morphe-patches/commit/702146df60fa1ffc9c8b76ef52ba50510252c625))\n",
     "apps": [
       {
         "app_name": "Smart AudioBook Player",
@@ -41145,7 +41186,7 @@
         "patches": [
           {
             "name": "7TV and BTTV emotes",
-            "description": "Renders global and current-channel 7TV and BTTV emotes in incoming live chat. Type an emote code normally to send it; this patch does not add a picker or provider login.",
+            "description": "Displays 7TV and BTTV emotes directly in Twitch live chat. It loads the global emote sets and the emotes for the channel you are watching, then replaces matching emote codes in incoming messages with their emote images. Sending works through normal Twitch chat: type an emote's text code and send it normally. The patch does not add an emote picker, 7TV/BTTV login, or account linking.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -41201,7 +41242,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/JHCM4AIyomRp6Lo2-5ugoznlGdsZmNnejVN8DLvtWFHShcz8YRgUE170f1CyOfrleYbtFL2g8tQ3VqlQNAgqoA"
       }
     ],
-    "fingerprint": "b79096ee1cd5ecedb59a073cac1480368abf68032a419af990f94916bf98cbb4"
+    "fingerprint": "5845fab2f0458bc8f0223f9d75f0a1d6077846623dc31952ade1f4ac06792892"
   },
   "hoomans-morphe:dev": {
     "bundle": "hoomans-morphe",
@@ -60190,44 +60231,17 @@
     "bundle": "rabilrbl",
     "channel": "dev",
     "repo_url": "https://github.com/rabilrbl/fluffy-patches",
-    "created_at": "2026-08-18T14:02:33",
-    "version": "v1.0.0-dev.21",
-    "description": "# [1.0.0-dev.21](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.20...v1.0.0-dev.21) (2026-08-18)\n\n\n### Bug Fixes\n\n* **alarmy:** update patches for v26.32.1 class rename ([66eb088](https://github.com/rabilrbl/fluffy-patches/commit/66eb0882c33b940e48b7d2a17a23a05c48f471b6))\n\n\n\n",
+    "created_at": "2026-08-18T16:30:49",
+    "version": "v1.0.0-dev.22",
+    "description": "# [1.0.0-dev.22](https://github.com/rabilrbl/fluffy-patches/compare/v1.0.0-dev.21...v1.0.0-dev.22) (2026-08-18)\n\n\n### Bug Fixes\n\n* **alarmy:** replace premium gates ([71e4686](https://github.com/rabilrbl/fluffy-patches/commit/71e468654b86888fd93e07d09b8eff84325ae353))\n\n\n\n",
     "apps": [
       {
         "app_name": "Sleepifucan",
         "package": "droom.sleepifucan",
         "patches": [
           {
-            "name": "Remove Ads",
-            "description": "Removes all ads by forcing ad-free status to true.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.32.1"
-            ]
-          },
-          {
-            "name": "Remove ads",
-            "description": "Removes ads by forcing PremiumState.isRemoveAdPremium() to always return true.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.32.1"
-            ]
-          },
-          {
             "name": "Unlock Premium",
-            "description": "Forces premium state to return true.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.32.1"
-            ]
-          },
-          {
-            "name": "Unlock Pro subscription",
-            "description": "Bypasses premium checks by forcing PremiumState.isPremium() to always return true.",
+            "description": "Unlocks premium features and disables ads by forcing both premium gates true.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -60238,7 +60252,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "52de384906bdd77ff2077342e6437b745dbc4cfec86cdda813f8c65eaaa90da8"
+    "fingerprint": "aded2b24f10f12254f2e1e78c6a7c89b454abc5d75464ae60c458475a3a9ec68"
   },
   "paresh-maheshwari:stable": {
     "bundle": "paresh-maheshwari",
@@ -64046,9 +64060,9 @@
     "bundle": "xob0t",
     "channel": "stable",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-08-18T06:36:16",
-    "version": "v1.12.1",
-    "description": "## [1.12.1](https://github.com/xob0t/morphe-patches/compare/v1.12.0...v1.12.1) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **avito:** support version 231.0 ([57b844a](https://github.com/xob0t/morphe-patches/commit/57b844a7183321feee778151baeabd5cb49276f7))\n",
+    "created_at": "2026-08-18T15:17:41",
+    "version": "v1.12.2",
+    "description": "## [1.12.2](https://github.com/xob0t/morphe-patches/compare/v1.12.1...v1.12.2) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **ozon:** support common cell migration in 19.31 ([7619fcf](https://github.com/xob0t/morphe-patches/commit/7619fcfb1c40209d0c1f8f9908b05699d27ce599))\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -64225,6 +64239,7 @@
               }
             ],
             "compatible_versions": [
+              "19.31.0",
               "19.30.0",
               "19.29.0",
               "19.28.0",
@@ -64235,15 +64250,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/Rz5gPi2gs8Vs8VZVn7mpJQpIB7XzeeErGGNAMIdr9NmWJigvmFpaWtMlpyC2rdieC6gxnpmQ5guTUUMjnZn97g"
       }
     ],
-    "fingerprint": "d1ce6d850987c034a0e677aad6a30cb3a1f05ea34b339d8233c52c2fecbe50ee"
+    "fingerprint": "b011522f8588cb3cb6326120d23e4961175c547627d15a98a0f6ab57eab3b45c"
   },
   "xob0t:dev": {
     "bundle": "xob0t",
     "channel": "dev",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-08-14T20:20:33",
-    "version": "v1.12.0-dev.1",
-    "description": "## [1.12.0-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.11.13...v1.12.0-dev.1) (2026-08-14)\n\n### ✨ New Features\n\n* **avito:** hide reserved offers ([830fb67](https://github.com/xob0t/morphe-patches/commit/830fb6732652f1494467f4a8d982b10b72cf0a01))\n",
+    "created_at": "2026-08-18T15:09:36",
+    "version": "v1.12.2-dev.1",
+    "description": "## [1.12.2-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.12.1...v1.12.2-dev.1) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **ozon:** support common cell migration in 19.31 ([7619fcf](https://github.com/xob0t/morphe-patches/commit/7619fcfb1c40209d0c1f8f9908b05699d27ce599))\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -64255,6 +64270,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "231.0",
               "230.5",
               "230.0",
               "229.1"
@@ -64266,6 +64282,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "231.0",
               "230.5",
               "230.0",
               "229.1"
@@ -64277,6 +64294,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "231.0",
               "230.5",
               "230.0",
               "229.1"
@@ -64288,6 +64306,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "231.0",
               "230.5",
               "230.0",
               "229.1"
@@ -64299,6 +64318,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "231.0",
               "230.5",
               "230.0",
               "229.1"
@@ -64310,6 +64330,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "231.0",
               "230.5",
               "230.0",
               "229.1"
@@ -64321,6 +64342,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "231.0",
               "230.5",
               "230.0",
               "229.1"
@@ -64332,6 +64354,7 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "231.0",
               "230.5",
               "230.0",
               "229.1"
@@ -64412,6 +64435,7 @@
               }
             ],
             "compatible_versions": [
+              "19.31.0",
               "19.30.0",
               "19.29.0",
               "19.28.0",
@@ -64422,7 +64446,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/Rz5gPi2gs8Vs8VZVn7mpJQpIB7XzeeErGGNAMIdr9NmWJigvmFpaWtMlpyC2rdieC6gxnpmQ5guTUUMjnZn97g"
       }
     ],
-    "fingerprint": "e47c85b7ca695e7f64fc98036370f8040541871b77c0a2dbc08a3064b85729e3"
+    "fingerprint": "2f12600b1695cb157547911604f397178ff89ce00e69e08ff66d2297c4680a2b"
   },
   "binarymend:stable": {
     "bundle": "binarymend",
