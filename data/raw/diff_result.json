@@ -1,46 +1,76 @@
 {
   "affected_bundles": [
     {
-      "bundle": "rushiranpise",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "WetterOnline",
-          "package": "de.wetteronline.wetterapp",
-          "badge_type": "REMOVED APP"
-        }
-      ]
-    },
-    {
-      "bundle": "rushiranpise",
+      "bundle": "flexboard",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "WetterOnline",
-          "package": "de.wetteronline.wetterapp",
-          "badge_type": "REMOVED APP"
-        }
-      ]
-    },
-    {
-      "bundle": "ajstrick81-androidtv",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Disneyplus",
-          "package": "com.disney.disneyplus",
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Suppress Household Prompt",
-                "description": "Hides the Disney+ \"Verify Household Network\" / out-of-household prompt by forcing the client's out-of-household check to report in-household, so the app routes straight to home. Does NOT change what Disney's servers detect (that's driven by your public IP — use a VPN for that); it only suppresses the on-screen prompt/routing. Opt-in / experimental; only takes visible effect when the device would otherwise be prompted."
+                "name": "Bigger Toolbar",
+                "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu."
               }
             ],
             "patches_removed": [],
+            "patches_modified": []
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "rustore-privacy",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "RuStore",
+          "package": "ru.vk.store",
+          "badge_type": "NEW APP"
+        }
+      ]
+    },
+    {
+      "bundle": "petalmaps-androidauto",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Petal Maps",
+          "package": "com.huawei.maps.app",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [
+              {
+                "name": "Android Auto",
+                "description": "Injects full Android Auto support into Petal Maps, including CarAppService, manifest declarations, and required resources. Also apply 'Anti-Repack Bypass' and 'Manufacturer Check Bypass' for full functionality on non-Huawei devices."
+              },
+              {
+                "name": "Android Auto API Level File",
+                "description": "Adds car-app-api.level to the APK root for androidx.car.app compatibility."
+              },
+              {
+                "name": "Android Auto Manifest",
+                "description": "Adds the Android Auto CarAppService declaration, meta-data, and permissions to AndroidManifest.xml."
+              },
+              {
+                "name": "Android Auto Resources",
+                "description": "Adds the automotive_app_desc.xml resource required by Android Auto."
+              },
+              {
+                "name": "Android Auto allowlist (root)",
+                "description": "Registers the app in Android Auto's allowlist on startup when root is available; no-op without root."
+              },
+              {
+                "name": "Automotive orientation fix (main activity)",
+                "description": "Changes PetalMapsActivity's screenOrientation from behind to sensorLandscape so it renders in landscape on the car display."
+              }
+            ],
             "patches_modified": []
           }
         }
