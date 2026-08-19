@@ -66,28 +66,21 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Clean up main UI",
-                "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top."
-              }
-            ],
-            "patches_removed": [
-              {
                 "name": "Clean main UI",
                 "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily."
               }
             ],
-            "patches_modified": [
+            "patches_removed": [
               {
-                "name": "Skip splash screen",
-                "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
-                "changes": [
-                  "description updated"
-                ]
+                "name": "Clean up main UI",
+                "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top."
               }
-            ]
+            ],
+            "patches_modified": []
           },
           "scan_numbers": [
-            1
+            1,
+            4
           ]
         }
       ]
@@ -269,38 +262,16 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Disable news notifications",
-                "description": "Disables Bing news and weather push notifications by short-circuiting device push token registration and notification dispatch services."
+                "name": "Change package name",
+                "description": "Changes the application package name in AndroidManifest.xml (e.g. for media display whitelist compatibility or cloning)."
               }
             ],
             "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Copilot feature toggle",
-                "description": "Disables all Copilot and Bing Chat feature flags by forcing boolean feature evaluation methods to return false.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable Play Store updates",
-                "description": "Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Telemetry elimination",
-                "description": "Eliminates Microsoft Edge telemetry and tracking by redirecting data collection endpoints (OneCollector, AppCenter, Adjust) to localhost and short-circuiting OneDS and Adjust tracking methods.",
-                "changes": [
-                  "description updated",
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
+            "patches_modified": []
           },
           "scan_numbers": [
-            3
+            3,
+            4
           ]
         }
       ]
@@ -347,6 +318,50 @@
           "badge_type": "NEW APP",
           "scan_numbers": [
             3
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "ftl",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Xender",
+          "package": "cn.xender",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Clean main UI",
+                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily."
+              },
+              {
+                "name": "Skip splash screen",
+                "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "hxreborn",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Kick",
+          "package": "com.kick.mobile",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            4
           ]
         }
       ]
