@@ -25342,9 +25342,9 @@
     "bundle": "ftl",
     "channel": "dev",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-19T06:35:14",
-    "version": "v1.37.0-dev.7",
-    "description": "## [1.37.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.6...v1.37.0-dev.7) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Clean+ Splash Merged",
+    "created_at": "2026-08-19T11:29:43",
+    "version": "v1.38.0-dev.2",
+    "description": "## [1.38.0-dev.2](https://github.com/BlazeFTL/FTL-Patches/compare/v1.38.0-dev.1...v1.38.0-dev.2) (2026-08-19)\n\n### ✨ New Features\n\n* Add All Video Downloader Remove DownloadMenu ([432f4d1](https://github.com/BlazeFTL/FTL-Patches/commit/432f4d1d52867d1f3cf96f3ab758adec3a6357ea))\n",
     "apps": [
       {
         "app_name": "Xender",
@@ -25352,7 +25352,7 @@
         "patches": [
           {
             "name": "Clean main UI",
-            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -25436,6 +25436,15 @@
         "package": "com.rs.explorer.filemanager",
         "patches": [
           {
+            "name": "Disable downloader from download menu",
+            "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.3.0.4"
+            ]
+          },
+          {
             "name": "Hide more actions",
             "description": "Hides Hide, Add to desktop, Encrypt, Decrypt, Add bookmark, Web Search, Copy to, Move to, Transfer, and Playing from the \"More actions\" menu.",
             "use": false,
@@ -25513,6 +25522,15 @@
             ]
           },
           {
+            "name": "Disable downloader from download menu",
+            "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.9.7"
+            ]
+          },
+          {
             "name": "Skip splash and language screens",
             "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
             "use": false,
@@ -25525,7 +25543,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
       }
     ],
-    "fingerprint": "cd18230f373ccc58a78b16d544d3b3cc82d3f356af678387a2cadc015fa736dd"
+    "fingerprint": "9a3b2b71ddfa1b6e0426a45163b7e8c3a05638456c51331b819b12ed90eb2e29"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
@@ -30329,9 +30347,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-08-18T20:46:34",
-    "version": "v1.19.0-dev.5",
-    "description": "## [1.19.0-dev.5](https://github.com/rushiranpise/morphe-patches/compare/v1.19.0-dev.4...v1.19.0-dev.5) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **amazon:** fall back to link when price chart image fails ([ac61248](https://github.com/rushiranpise/morphe-patches/commit/ac61248ed37db5c3fd192027f82e62e822830c98))\n\n### ✨ New Features\n\n* **amazon:** harden price charts with placeholder gate and SPA re-injection ([2023973](https://github.com/rushiranpise/morphe-patches/commit/20239731406de72bb4c4c284791f35866e8c69e2))\n",
+    "created_at": "2026-08-19T08:47:48",
+    "version": "v1.19.0-dev.6",
+    "description": "## [1.19.0-dev.6](https://github.com/rushiranpise/morphe-patches/compare/v1.19.0-dev.5...v1.19.0-dev.6) (2026-08-19)\n\n### 🐛 Bug Fixes\n\n* **amazon:** use canonical CCC chart URL and numeric Keepa marketplace ids ([5ba6ec5](https://github.com/rushiranpise/morphe-patches/commit/5ba6ec53774b560ed42db3eeb14e4ada7a75ec79))\n\n### ✨ New Features\n\n* **amazon:** add chart customization options for Keepa and CCC ([136fe0c](https://github.com/rushiranpise/morphe-patches/commit/136fe0cb6453220bc65e3c676d54b4be484c896b))\n* **amazon:** add period toggle to Keepa chart via numeric range ([dd0de74](https://github.com/rushiranpise/morphe-patches/commit/dd0de7496329f2d8ef86d4fcf0b66d55ffeafa3e))\n* **amazon:** gate Keepa by region and add configurable CCC chart period ([6d00545](https://github.com/rushiranpise/morphe-patches/commit/6d005451a9c68cecf1679b69aa7f9539e1110544))\n",
     "apps": [
       {
         "app_name": "OBD Android",
@@ -30818,7 +30836,40 @@
             "name": "Price history charts",
             "description": "Injects Keepa and CamelCamelCamel price history charts on Amazon product pages.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "amazonPriceChartPeriod",
+                "description": "Default time range for the price history charts."
+              },
+              {
+                "key": "amazonPriceChartToggle",
+                "description": "Add period buttons under each chart to switch views."
+              },
+              {
+                "key": "amazonPriceChartTogglePeriods",
+                "description": "Which periods appear in the toggle buttons."
+              },
+              {
+                "key": "amazonKeepaSeries",
+                "description": "Which price series the Keepa chart shows."
+              },
+              {
+                "key": "amazonCccChartType",
+                "description": "Which price lines the CCC chart shows."
+              },
+              {
+                "key": "amazonCccHideZero",
+                "description": "Omit flat zero-price segments on the CCC chart."
+              },
+              {
+                "key": "amazonChartSize",
+                "description": "Width of the CCC chart image (Keepa renders at a fixed size)."
+              },
+              {
+                "key": "amazonChartsCollapsed",
+                "description": "Render the charts inside a collapsed section; tap to expand."
+              }
+            ],
             "compatible_versions": [
               "32.13.2.100"
             ]
@@ -34202,7 +34253,40 @@
             "name": "Price history charts",
             "description": "Injects Keepa and CamelCamelCamel price history charts on Amazon product pages.",
             "use": true,
-            "options": [],
+            "options": [
+              {
+                "key": "amazonPriceChartPeriod",
+                "description": "Default time range for the price history charts."
+              },
+              {
+                "key": "amazonPriceChartToggle",
+                "description": "Add period buttons under each chart to switch views."
+              },
+              {
+                "key": "amazonPriceChartTogglePeriods",
+                "description": "Which periods appear in the toggle buttons."
+              },
+              {
+                "key": "amazonKeepaSeries",
+                "description": "Which price series the Keepa chart shows."
+              },
+              {
+                "key": "amazonCccChartType",
+                "description": "Which price lines the CCC chart shows."
+              },
+              {
+                "key": "amazonCccHideZero",
+                "description": "Omit flat zero-price segments on the CCC chart."
+              },
+              {
+                "key": "amazonChartSize",
+                "description": "Width of the CCC chart image (Keepa renders at a fixed size)."
+              },
+              {
+                "key": "amazonChartsCollapsed",
+                "description": "Render the charts inside a collapsed section; tap to expand."
+              }
+            ],
             "compatible_versions": [
               "32.12.4.300"
             ]
@@ -35169,7 +35253,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/5zIWi1LMtVRPpffktQtKhPoJNRzorFE8ycINm3fl2i0-_8JQZI30qZN7vkla3b6HrOMLO-bo9OpzZohZSnay"
       }
     ],
-    "fingerprint": "dfcca45eb6516b6b74568418df5aa1d43869569cc0f6181761b4e5fa7626233f"
+    "fingerprint": "7288078ced99699e8eb858bbb366eefe8b6c190a804ef8221833fbd7dcf079fc"
   },
   "ipusnas:stable": {
     "bundle": "ipusnas",
@@ -45445,9 +45529,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-08-18T14:21:59",
-    "version": "v1.40.0-dev.10",
-    "description": "## [1.40.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.9...v1.40.0-dev.10) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Add to queue:** Error toast is shown when using YouTube `20.21.37` ([a1c5aef](https://github.com/MorpheApp/morphe-patches/commit/a1c5aef3bf9f1320f797c74a6caf1e49872a10a4))\n* **YouTube - Override YouTube Music buttons:** Resolve intent routing failure ([#2487](https://github.com/MorpheApp/morphe-patches/issues/2487)) ([a8761c2](https://github.com/MorpheApp/morphe-patches/commit/a8761c2efeedb16ecb41dc925f144352c0b5b350))\n\n### ✨ New Features\n\n* **YouTube:** Add \"Back button exits the feed\" setting ([#2488](https://github.com/MorpheApp/morphe-patches/issues/2488)) ([fe8e03c](https://github.com/MorpheApp/morphe-patches/commit/fe8e03cc67266e022a46c281e3962eaf7a253b14))\n",
+    "created_at": "2026-08-19T09:08:13",
+    "version": "v1.40.0-dev.11",
+    "description": "## [1.40.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.10...v1.40.0-dev.11) (2026-08-19)\n\n### 🐛 Bug Fixes\n\n* **SponsorBlock:** Allow SB user id with curly brackets ([8df4e08](https://github.com/MorpheApp/morphe-patches/commit/8df4e085c0d01ad2d1a16ecedf0e9ff4d5206c3e))\n* **YouTube - Playback speed:** Separate playback speed observations from commands ([#2501](https://github.com/MorpheApp/morphe-patches/issues/2501)) ([a433b29](https://github.com/MorpheApp/morphe-patches/commit/a433b29bf86d6545fc106f4c7d5e8fed7e4e91e9))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add experimental support for `9.33.52` ([2e7fe4c](https://github.com/MorpheApp/morphe-patches/commit/2e7fe4cbf8ca42a07dce812c181cc8d1a1511014))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -45459,9 +45543,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45472,13 +45556,13 @@
             "options": [
               {
                 "key": "custom",
-                "description": "Folder with images to use as a custom header logo.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\nEach of the folders must contain the following file(s):\n- morphe_header_custom_dark.png\n\nRequired dimensions:\n- drawable-hdpi: 121x36 px\n- drawable-xhdpi: 160x48 px\n- drawable-xxhdpi: 240x72 px\n- drawable-xxxhdpi: 320x96 px"
+                "description": "\n            Folder with images to use as a custom header logo.\n\n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\n            Each of the folders must contain the following file(s):\n            - morphe_header_custom_dark.png\n\n            Required dimensions:\n            - drawable-hdpi: 121x36 px\n- drawable-xhdpi: 160x48 px\n- drawable-xxhdpi: 240x72 px\n- drawable-xxxhdpi: 320x96 px\n        "
               }
             ],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45488,9 +45572,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45500,9 +45584,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45512,9 +45596,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45524,9 +45608,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45541,13 +45625,13 @@
               },
               {
                 "key": "customIcon",
-                "description": "Folder with images to use as a custom icon.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n\nThe image dimensions must be as follows:\n- mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\nOptionally, the path contains a 'drawable' folder with a monochrome icon file:\nmorphe_adaptive_monochrome_custom.xml\n\nOptionally, the path contains a notification icon in one of the following formats:\n- XML vector drawable placed in 'drawable':\nmorphe_notification_icon_custom.xml\n- PNG raster images placed in the matching 'drawable-<dpi>' folders:\n- drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)"
+                "description": "\n            Folder with images to use as a custom icon.\n            \n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n            \n            Each of the folders must contain all of the following files:\n            morphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n            \n            The image dimensions must be as follows:\n            - mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\n            Optionally, the path contains a 'drawable' folder with a monochrome icon file:\n            morphe_adaptive_monochrome_custom.xml\n\n            Optionally, the path contains a notification icon in one of the following formats:\n            - XML vector drawable placed in 'drawable':\n              morphe_notification_icon_custom.xml\n            - PNG raster images placed in the matching 'drawable-<dpi>' folders:\n              - drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)\n        "
               }
             ],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45557,9 +45641,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45569,9 +45653,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45581,9 +45665,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45593,9 +45677,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45605,9 +45689,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45617,9 +45701,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45629,9 +45713,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45641,9 +45725,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45653,9 +45737,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45665,9 +45749,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45677,9 +45761,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45689,9 +45773,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45701,9 +45785,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45713,9 +45797,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45725,9 +45809,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45737,9 +45821,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45749,9 +45833,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45761,9 +45845,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45773,9 +45857,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45785,9 +45869,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45797,9 +45881,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45809,9 +45893,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45821,9 +45905,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45833,9 +45917,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45845,9 +45929,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45857,9 +45941,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45869,9 +45953,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45881,9 +45965,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45893,9 +45977,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45905,9 +45989,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45922,9 +46006,9 @@
               }
             ],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           },
@@ -45934,9 +46018,9 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "9.33.52",
               "9.32.51",
               "9.31.51",
-              "9.30.52",
               "9.15.51"
             ]
           }
@@ -46059,7 +46143,7 @@
             "options": [
               {
                 "key": "custom",
-                "description": "Folder with images to use as a custom header logo.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\nEach of the folders must contain the following file(s):\n- morphe_header_custom_light.png\n- morphe_header_custom_dark.png\n\nRequired dimensions:\n- drawable-hdpi: 194x72 px\n- drawable-xhdpi: 258x96 px\n- drawable-xxhdpi: 387x144 px\n- drawable-xxxhdpi: 512x192 px"
+                "description": "\n            Folder with images to use as a custom header logo.\n\n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\n            Each of the folders must contain the following file(s):\n            - morphe_header_custom_light.png\n- morphe_header_custom_dark.png\n\n            Required dimensions:\n            - drawable-hdpi: 194x72 px\n- drawable-xhdpi: 258x96 px\n- drawable-xxhdpi: 387x144 px\n- drawable-xxxhdpi: 512x192 px\n        "
               }
             ],
             "compatible_versions": [
@@ -46128,7 +46212,7 @@
               },
               {
                 "key": "customIcon",
-                "description": "Folder with images to use as a custom icon.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n\nThe image dimensions must be as follows:\n- mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\nOptionally, the path contains a 'drawable' folder with a monochrome icon file:\nmorphe_adaptive_monochrome_custom.xml\n\nOptionally, the path contains a notification icon in one of the following formats:\n- XML vector drawable placed in 'drawable':\nmorphe_notification_icon_custom.xml\n- PNG raster images placed in the matching 'drawable-<dpi>' folders:\n- drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)"
+                "description": "\n            Folder with images to use as a custom icon.\n            \n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n            \n            Each of the folders must contain all of the following files:\n            morphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n            \n            The image dimensions must be as follows:\n            - mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\n            Optionally, the path contains a 'drawable' folder with a monochrome icon file:\n            morphe_adaptive_monochrome_custom.xml\n\n            Optionally, the path contains a notification icon in one of the following formats:\n            - XML vector drawable placed in 'drawable':\n              morphe_notification_icon_custom.xml\n            - PNG raster images placed in the matching 'drawable-<dpi>' folders:\n              - drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)\n        "
               }
             ],
             "compatible_versions": [
@@ -47355,7 +47439,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/8FVS0kvM60JwqZWRNzBIlwrZZxJa8vpli8IWaaTo8QXRe1PHmCNJ8UpWoXkGPV3jKEaTY2OVAeYoisOnGJXY"
       }
     ],
-    "fingerprint": "3bba97af6165e2a07dfe8cae48f55aa124051764cad91311f875ef361c061d2d"
+    "fingerprint": "e5f7fddd4eef4e4e80360bbf8c1f1ff6318a51d61657b72d722210f877fab8f2"
   },
   "ee-morphe:stable": {
     "bundle": "ee-morphe",

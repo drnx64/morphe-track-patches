@@ -2,32 +2,6 @@
   "affected_bundles": [
     {
       "bundle": "ftl",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Xender",
-          "package": "cn.xender",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Clean main UI",
-                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily."
-              },
-              {
-                "name": "Skip splash screen",
-                "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          }
-        }
-      ]
-    },
-    {
-      "bundle": "ftl",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
@@ -36,37 +10,43 @@
           "package": "cn.xender",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
               {
                 "name": "Clean main UI",
-                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily."
+                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+                "changes": [
+                  "description updated"
+                ]
               }
-            ],
-            "patches_removed": [
-              {
-                "name": "Clean up main UI",
-                "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top."
-              }
-            ],
-            "patches_modified": []
+            ]
           }
-        }
-      ]
-    },
-    {
-      "bundle": "edge-morphe",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
+        },
         {
-          "app_name": "Microsoft Edge",
-          "package": "com.microsoft.emmx",
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Change package name",
-                "description": "Changes the application package name in AndroidManifest.xml (e.g. for media display whitelist compatibility or cloning)."
+                "name": "Disable downloader from download menu",
+                "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "All Video Downloader & Ace Player",
+          "package": "videoplayer.videodownloader.downloader",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Disable downloader from download menu",
+                "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
               }
             ],
             "patches_removed": [],
@@ -76,14 +56,363 @@
       ]
     },
     {
-      "bundle": "hxreborn",
-      "channel": "stable",
+      "bundle": "rushiranpise",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Kick",
-          "package": "com.kick.mobile",
-          "badge_type": "NEW APP"
+          "app_name": "Amazon Shopping",
+          "package": "com.amazon.mshop.android.shopping",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Price history charts",
+                "description": "Injects Keepa and CamelCamelCamel price history charts on Amazon product pages.",
+                "changes": [
+                  "options: +8 options"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Amazon India",
+          "package": "in.amazon.mshop.android.shopping",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Price history charts",
+                "description": "Injects Keepa and CamelCamelCamel price history charts on Amazon product pages.",
+                "changes": [
+                  "options: +8 options"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "morphe",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "YouTube Music",
+          "package": "com.google.android.apps.youtube.music",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Bypass certificate checks",
+                "description": "Bypasses certificate checks which prevent YouTube Music from working on Android Auto.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Change header",
+                "description": "Adds an option to change the header logo in the top left corner of the app.",
+                "changes": [
+                  "options: ~1 option",
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Change miniplayer color",
+                "description": "Adds an option to change the miniplayer background color to match the fullscreen player.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Change start page",
+                "description": "Adds an option to set which page the app opens in instead of the homepage.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Check watch history domain name resolution",
+                "description": "Checks if the device DNS server is preventing user watch history from being saved.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Crossfade",
+                "description": "Adds a true dual-player crossfade between consecutive tracks. Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Custom branding",
+                "description": "Adds options to change the app icon and app name. Branding cannot be changed for mounted (root) installations.",
+                "changes": [
+                  "options: ~1 option",
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable DRC audio",
+                "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable QUIC protocol",
+                "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable dislike redirection",
+                "description": "Adds an option to prevent skipping to the next track when the dislike button is pressed.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Downloads",
+                "description": "Adds support to download songs with an external downloader app using the in-app download button.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable debugging",
+                "description": "Adds options for debugging and exporting Morphe logs to the clipboard.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable exclusive audio playback",
+                "description": "Enables the option to play audio without video.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable forced miniplayer",
+                "description": "Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Enable swipe to dismiss miniplayer",
+                "description": "Adds an option to enable dismissing the miniplayer by swiping down on it.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Force original audio",
+                "description": "Adds an option to always use the original audio track.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "GmsCore support",
+                "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide ads",
+                "description": "Adds options to hide fullscreen ads, Premium promotions and video ads.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide buttons",
+                "description": "Adds options to hide the cast, history, notification, and search buttons.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide filter bar",
+                "description": "Adds an option to hide the filter bar at the top of the homepage.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide flyout menu components",
+                "description": "Adds options to hide individual items from the player and queue flyout menus.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide layout components",
+                "description": "Adds options to hide general layout components.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Hide music action buttons",
+                "description": "Adds options to hide action buttons under the player.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Miniplayer previous and next buttons",
+                "description": "Adds options to show previous and next track buttons in the miniplayer.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Navigation bar",
+                "description": "Adds options to hide navigation bar, labels and buttons.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Network proxy",
+                "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remember repeat state",
+                "description": "Adds an option to remember the repeat state when playing a new track or playlist.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remember shuffle state",
+                "description": "Adds an option to remember the shuffle state when playing a new track or playlist.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove background playback restrictions",
+                "description": "Removes restrictions on background playback, including playing kids videos in the background.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove viewer discretion dialog",
+                "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Return YouTube Dislike",
+                "description": "Adds an option to show the dislike count of tracks with Return YouTube Dislike.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Sanitize sharing links",
+                "description": "Removes the tracking query parameters from shared links.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Scrobbling",
+                "description": "Adds options to add played tracks to Last.fm and ListenBrainz.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Settings menu filter",
+                "description": "Adds an option to hide items on the standard YouTube Music settings screen by their visible name.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "SponsorBlock",
+                "description": "Adds options to enable and configure SponsorBlock, which can skip non-music segments.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof app version",
+                "description": "Adds an option to trick the app into thinking you are running an older version.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof video streams",
+                "description": "Adds options to spoof the client video streams to fix playback.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Theme",
+                "description": "Adds options for theming and applies a custom background theme (dark background theme defaults to pure black).",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Third-party lyrics",
+                "description": "Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Change header",
+                "description": "Adds an option to change the header logo in the top left corner of the app.",
+                "changes": [
+                  "options: ~1 option"
+                ]
+              },
+              {
+                "name": "Custom branding",
+                "description": "Adds options to change the app icon and app name. Branding cannot be changed for mounted (root) installations.",
+                "changes": [
+                  "options: ~1 option"
+                ]
+              }
+            ]
+          }
         }
       ]
     }
