@@ -1,60 +1,40 @@
 {
   "affected_bundles": [
     {
-      "bundle": "riky",
-      "channel": "stable",
+      "bundle": "flexboard",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "DevCheck Device & System Info",
-          "package": "flar2.devcheck",
-          "badge_type": "REMOVED APP"
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Bigger Toolbar",
+                "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu."
+              },
+              {
+                "name": "Select All Button",
+                "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
         }
       ]
     },
     {
       "bundle": "maurogamervn",
       "channel": "stable",
-      "badge_type": "NEW BUNDLE",
+      "badge_type": "UPDATED",
       "apps": [
         {
           "app_name": "Doramasia - Ver Doramas",
           "package": "com.asiapp.doramasgo",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Multi Run - Parallel Dual App",
-          "package": "com.dong.multirun",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "abhishek-bhujang",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Rhythm with Tabla & Tanpura",
-          "package": "com.psslabs.rhythm",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Harmonium",
-          "package": "harmonium.music.gameg.real.harmoniumfree",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "abhishek-bhujang",
-      "channel": "dev",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Rhythm Free",
-          "package": "com.psslabs.rhythm",
-          "badge_type": "NEW APP"
+          "badge_type": "REMOVED APP"
         }
       ]
     },
@@ -70,104 +50,22 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Clean main UI",
-                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily."
+                "name": "Clean up main UI",
+                "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top."
               }
             ],
             "patches_removed": [
               {
-                "name": "Clean up main UI",
-                "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top."
+                "name": "Clean main UI",
+                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily."
               }
             ],
             "patches_modified": [
               {
                 "name": "Skip splash screen",
-                "description": "Jumps straight from SplashActivity.onCreate() to the main activity, skipping the splash/guide UI and its permission flow entirely.",
+                "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
                 "changes": [
                   "description updated"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "bundle": "rushiranpise",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Inure App Manager (GitHub)",
-          "package": "app.simple.inure",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Inure App Manager",
-          "package": "app.simple.inure.play",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Zutobi",
-          "package": "com.driverlicenseapp",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Android Developer Verifier",
-          "package": "com.google.android.verifier",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Bypass developer verification",
-                "description": "Forces all APK install verification sessions to be bypassed, preventing the verifier from blocking sideloaded or unsigned apps on Android 16+ devices. Only available for root (mount) installations.Important: Requires pushing the patched APK as a system app replacement (e.g. via Magisk module or ADB with root)since the original holds DEVELOPER_VERIFICATION_AGENT permission. ADB installs are exempt from verification regardless.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "bundle": "rabilrbl",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Sleepifucan",
-          "package": "droom.sleepifucan",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "ajstrick81-androidtv",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Hbomax",
-          "package": "com.wbd.hbomax",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "HBO Max - Block SSAI Ad Origins",
-                "description": "Reproduces the AdGuard DNS ad-block inside the app: fails media3 segment requests to HBO's SSAI ad origins (amer-free/emea-free.prd.media.max.com, gmss, FreeWheel) so the player's resiliency layer falls back to the clean, ad-free manifest — removing the stitched ad VIDEO the default Disable Ads patch leaves behind. Opt-in / experimental; verify playback on-device."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "HBO Max - Disable Ads",
-                "description": "Suppresses nonlinear overlay ads (Bolt), SSAI linear ad timeline registration (GMSS/AdSparx), and live stream preroll ad timeline entry generation for all content types.",
-                "changes": [
-                  "versions: +1 version"
                 ]
               }
             ]

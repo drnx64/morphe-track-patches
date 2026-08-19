@@ -7783,14 +7783,23 @@
     "bundle": "flexboard",
     "channel": "dev",
     "repo_url": "https://github.com/JZ6/Flexboard",
-    "created_at": "2026-08-18T04:10:28",
-    "version": "v1.1.0-dev.2",
-    "description": "## 1.1.0-dev.2\n\n- chore: bump to 1.1.0-dev.2\n- fix: withhold Bigger Toolbar, which does not work on device\n- feat: default the swipe length to Gboard's own distance\n- chore: sync the gradle wrapper with the template",
+    "created_at": "2026-08-18T23:31:37",
+    "version": "v1.1.1-dev.2",
+    "description": "## 1.1.1-dev.2\n\n- chore: bump to 1.1.1-dev.2\n- feat: give a fold's two screens their own toolbar counts",
     "apps": [
       {
         "app_name": "Gboard",
         "package": "com.google.android.inputmethod.latin",
         "patches": [
+          {
+            "name": "Bigger Toolbar",
+            "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
           {
             "name": "Bypass Gboard Signature",
             "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
@@ -7819,6 +7828,15 @@
             ]
           },
           {
+            "name": "Select All Button",
+            "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
             "name": "Swipe Right to Undo",
             "description": "Swipe right after deleting to put the words back. Uses Gboard's own undo, which already records what a delete swipe removed.",
             "use": true,
@@ -7840,7 +7858,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       }
     ],
-    "fingerprint": "d7e9c4d6a081952106977639c84a111d65a73aebe729c9cf73f2fb2edcb23e1a"
+    "fingerprint": "a38c5576f7318d8458426b04df514904d594921075b02ebcb46d566d919ad87a"
   },
   "jl4ctuk:stable": {
     "bundle": "jl4ctuk",
@@ -13856,27 +13874,11 @@
   "maurogamervn:stable": {
     "bundle": "maurogamervn",
     "channel": "stable",
-    "repo_url": "https://github.com/MauroGamerVN/morphe-patches",
-    "created_at": "2026-08-18T13:40:07",
-    "version": "v1.5.0",
-    "description": "## 1.5.0\n\n### Changes\n\n* Removed **Inkaplay** patch\n* Remaining: Multi Run + Doramasia",
+    "repo_url": "https://github.com/MauroGamerVN/Morphe-Patches",
+    "created_at": "2026-08-18T21:54:37",
+    "version": "v1.6.0",
+    "description": "## 1.6.0\n\n### Changes\n\n* Removed **Doramasia** patch\n* Remaining: Multi Run only",
     "apps": [
-      {
-        "app_name": "Doramasia - Ver Doramas",
-        "package": "com.asiapp.doramasgo",
-        "patches": [
-          {
-            "name": "Disable ads",
-            "description": "Elimina anuncios interstitial, rewarded, app-open y de mediación (AdMob, Facebook Audience Network, Wortise).",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.5.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/oHbEuklvg-hlQ2ukYhcwplidxAZxCYHJHskcnvcJuepa2bAPwKoaCXOcYTEJNL4Xa94T6lwevuMc252rnHetcA8"
-      },
       {
         "app_name": "Multi Run - Parallel Dual App",
         "package": "com.dong.multirun",
@@ -13894,7 +13896,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/plWlZ_5Kj63uiWuSDraCzr3Xo6IPlPa1pujATsLMCoLGIoz32zg6dRrL4zrHj9UPsk6LgByQk4ZO20SkfrkwjRY"
       }
     ],
-    "fingerprint": "f47296a936dc4b48393002e4e529120bf9d1ff9bfb8df1751e5c3adb3b06b481"
+    "fingerprint": "84dfe145a146a709727a3989cc0a912de6fcfd267de1a3129ed4b14203d493e8"
   },
   "hu-liberator:stable": {
     "bundle": "hu-liberator",
@@ -25015,9 +25017,9 @@
     "bundle": "ftl",
     "channel": "stable",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-18T19:41:10",
-    "version": "v1.35.0",
-    "description": "## [1.35.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.34.0...v1.35.0) (2026-08-18)\r\n\r\n### ✨ New Features\r\n\r\n* Improved analytics and crash-reporting removal with broader ad/analytics SDK detection, safer string matching, Firebase auto-initialization cleanup, and improved SDK signature-check handling.\r\n* Expanded APK junk cleanup to remove additional feature-delivery, mobile-ads, version, and Kotlin tooling metadata.\r\n* Added Xender support for version 18.8.0.prime with Speed Up Splash Screen patch.",
+    "created_at": "2026-08-18T21:36:04",
+    "version": "v1.36.0",
+    "description": "## [1.36.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.35.0...v1.36.0) (2026-08-18)\n\n### ✨ New Features\n\n* up ([4be5d19](https://github.com/BlazeFTL/FTL-Patches/commit/4be5d192fd67ac5a5d156b0e45cf45d90414b366))\n",
     "apps": [
       {
         "app_name": "Xender",
@@ -25186,17 +25188,17 @@
     "bundle": "ftl",
     "channel": "dev",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-13T10:46:28",
-    "version": "v1.28.0-dev.7",
-    "description": "## [1.28.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.28.0-dev.6...v1.28.0-dev.7) (2026-08-13)\n\n### ✨ New Features\n\n* f es ([7abc8d6](https://github.com/BlazeFTL/FTL-Patches/commit/7abc8d657e51a2494ef87af098afe3a66985f67c))\n",
+    "created_at": "2026-08-18T22:05:03",
+    "version": "v1.37.0-dev.2",
+    "description": "## [1.37.0-dev.2](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.1...v1.37.0-dev.2) (2026-08-18)\n\n### ✨ New Features\n\n* up ([1bc3509](https://github.com/BlazeFTL/FTL-Patches/commit/1bc35099868e12c4ff2a129b46f8b1c3085a5082))\n",
     "apps": [
       {
         "app_name": "Xender",
         "package": "cn.xender",
         "patches": [
           {
-            "name": "Clean main UI",
-            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+            "name": "Clean up main UI",
+            "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -25205,7 +25207,7 @@
           },
           {
             "name": "Skip splash screen",
-            "description": "Jumps straight from SplashActivity.onCreate() to the main activity, skipping the splash/guide UI and its permission flow entirely.",
+            "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -25369,7 +25371,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
       }
     ],
-    "fingerprint": "6ea9056615110be6c6ebe4138f6b9361ea8505d235aef7d004c1964473729741"
+    "fingerprint": "5f5fa12e824a01e0362ffd6a2d6bd585c30d5bce4cd6541a4e498265ebd7e12c"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",

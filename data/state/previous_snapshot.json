@@ -1,29 +1,4 @@
 {
-  "babyhuehnchen:stable": {
-    "bundle": "babyhuehnchen",
-    "channel": "stable",
-    "repo_url": "https://github.com/babyhuehnchen/morphe-patches",
-    "created_at": "2026-07-13T13:59:29",
-    "version": "v1.0.2",
-    "description": "## [1.0.2](https://github.com/babyhuehnchen/morphe-patches/compare/v1.0.1...v1.0.2) (2026-07-13)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* show ESApp app name ([6d7cdb3](https://github.com/babyhuehnchen/morphe-patches/commit/6d7cdb3bc84744c5c7c505643806380e7bc6bdc6))\r\n",
-    "apps": [
-      {
-        "app_name": "ESApp",
-        "package": "at.notrufnoe.edi",
-        "patches": [
-          {
-            "name": "Force dark mode",
-            "description": "Enables hidden dark mode setting",
-            "use": false,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/ltYcBcvtbyRJf14SaFyIIc2vLk5wLP4YryH7z8nWM3tc5-5MYtJbPW8e0gpdl-D6Agcen_-2cUt5pXfVvKzbzw"
-      }
-    ],
-    "fingerprint": "078fd9d1962ccc2207563cdae46dc0ab24d6fdbc522c668639bbd30c9fc7cd66"
-  },
   "cricinfo-tweaks:stable": {
     "bundle": "cricinfo-tweaks",
     "channel": "stable",
@@ -3627,9 +3602,9 @@
     "bundle": "riky",
     "channel": "stable",
     "repo_url": "https://github.com/riky-dev/morphe-patches",
-    "created_at": "2026-08-18T17:28:44",
-    "version": "v1.3.1",
-    "description": "## [1.3.1](https://github.com/riky-dev/morphe-patches/compare/v1.3.0...v1.3.1) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **devcheck:** bypass PairIP protection on re-signed APKs ([65e6ece](https://github.com/riky-dev/morphe-patches/commit/65e6ecefd746b511c366d2b30d620192db26c7f5))\n",
+    "created_at": "2026-08-18T19:23:44",
+    "version": "v1.3.3",
+    "description": "## [1.3.3](https://github.com/riky-dev/morphe-patches/compare/v1.3.2...v1.3.3) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **devcheck:** remove unsupported DevCheck patches (PairIP native protection) ([2d5b744](https://github.com/riky-dev/morphe-patches/commit/2d5b744245a8e6294639159881b638f5ee8f54e8))\n",
     "apps": [
       {
         "app_name": "Electron: battery health info",
@@ -3662,34 +3637,9 @@
           }
         ],
         "icon_url": ""
-      },
-      {
-        "app_name": "DevCheck Device & System Info",
-        "package": "flar2.devcheck",
-        "patches": [
-          {
-            "name": "Bypass app protection",
-            "description": "Disables PairIP signature and startup integrity checks that block re-signed APKs.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "6.50"
-            ]
-          },
-          {
-            "name": "Unlock Pro",
-            "description": "Unlocks all paid DevCheck Pro features (tests, tools, widgets, floating monitors, color schemes) without purchasing.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "6.50"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/xS5MzTqoVxoGd_Zz852hz11aHT3KTzpHLplKHPsjpx59iyG2d-9T_WpfIw6Nm4VOF6lhEwSSy2pfyvyMs6mcbw"
       }
     ],
-    "fingerprint": "6f17075e21dca37c5d1ea80dc15f825b918d0f4d4dcc283805517fd52d74cee2"
+    "fingerprint": "763ed5a739685e1fc1e692d96b2e5d02efd30f33dbe7f122526aef55dd0fadd0"
   },
   "riky:dev": {
     "bundle": "riky",
@@ -11055,85 +11005,6 @@
     ],
     "fingerprint": "884246ae318455e0c5ece856ae3dd8917c347546787d93d49e6401fafbfadb45"
   },
-  "google-clock:stable": {
-    "bundle": "google-clock",
-    "channel": "stable",
-    "repo_url": "https://github.com/tadikwa/google-clock-morphe-patches",
-    "created_at": "2026-08-11T12:48:17",
-    "version": "v2.5.0",
-    "description": "Google Clock + Morphe YouTube Music alarm integration. v1.1 adds premium-entitlement status normalization for the external MediaBrowser integration.",
-    "apps": [
-      {
-        "app_name": "YT Music Morphe",
-        "package": "app.morphe.android.apps.youtube.music",
-        "patches": [
-          {
-            "name": "Google Clock alarm MediaBrowser bridge",
-            "description": "Short-circuits YT Music's MediaBrowser capability gate before it can publish PlaybackState ERROR(7), keeps browse entitlement metadata coherent, bypasses the DeskClock browse-consent detour, and enables background alarm playback.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "9.15.51"
-            ]
-          },
-          {
-            "name": "Google Clock alarm MediaBrowser bridge v2",
-            "description": "Adds the YT Music loadChildren gate fix that prevents the Premium PlaybackState error after Google Clock subscribes. Depends on the base Google Clock alarm MediaBrowser bridge.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "9.15.51"
-            ]
-          },
-          {
-            "name": "Google Clock MediaBrowser error stack diagnostic",
-            "description": "Temporary diagnostic that dumps the call stack from both known YT Music MediaBrowser error publishers (Llin.e and Lkzf.f). Depends on the full bridge.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "9.15.51"
-            ]
-          },
-          {
-            "name": "Google Clock MediaBrowser full bridge",
-            "description": "Full Google Clock/YT Music MediaBrowser chain: root/entitlement/consent fixes, upstream package identity/certificate compatibility, loadChildren capability and client allow-list bypasses, plus the cached browse-error fast-path bypass that was still returning empty children and the Music Premium PlaybackState ERROR(7).",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "9.15.51"
-            ]
-          },
-          {
-            "name": "Google Clock MediaBrowser upstream compatibility",
-            "description": "Isolated port of the upstream YT Music MediaBrowser unlock: bypasses the caller certificate gate and restores the original com.google.android.apps.youtube.music identity inside search_media_items.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "9.15.51"
-            ]
-          }
-        ],
-        "icon_url": ""
-      },
-      {
-        "app_name": "Clock",
-        "package": "com.google.android.deskclock",
-        "patches": [
-          {
-            "name": "Use Morphe YouTube Music for alarms",
-            "description": "Redirects Google Clock to the Morphe YouTube Music package.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "9.0 (943154005)"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/bMXVYcZZKB873HmUFhaqOOakT5ZETbOpzv1-YvZ6Qs-hPEXeYw3zzkPm38GAz6E3D7JpUFpiQy7RR4nkktSnf0E"
-      }
-    ],
-    "fingerprint": "424d7466b73c0ffe425723b1653d768d1e7113017d7caa29ed1c5c4f1e08d42d"
-  },
   "hellveticastandard:stable": {
     "bundle": "hellveticastandard",
     "channel": "stable",
@@ -13981,6 +13852,49 @@
       }
     ],
     "fingerprint": "682c82c1134c44558ce2546a535e314e67cbad93ddd3fdde115db19376159c5c"
+  },
+  "maurogamervn:stable": {
+    "bundle": "maurogamervn",
+    "channel": "stable",
+    "repo_url": "https://github.com/MauroGamerVN/morphe-patches",
+    "created_at": "2026-08-18T13:40:07",
+    "version": "v1.5.0",
+    "description": "## 1.5.0\n\n### Changes\n\n* Removed **Inkaplay** patch\n* Remaining: Multi Run + Doramasia",
+    "apps": [
+      {
+        "app_name": "Doramasia - Ver Doramas",
+        "package": "com.asiapp.doramasgo",
+        "patches": [
+          {
+            "name": "Disable ads",
+            "description": "Elimina anuncios interstitial, rewarded, app-open y de mediación (AdMob, Facebook Audience Network, Wortise).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.5.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/oHbEuklvg-hlQ2ukYhcwplidxAZxCYHJHskcnvcJuepa2bAPwKoaCXOcYTEJNL4Xa94T6lwevuMc252rnHetcA8"
+      },
+      {
+        "app_name": "Multi Run - Parallel Dual App",
+        "package": "com.dong.multirun",
+        "patches": [
+          {
+            "name": "Disable ads",
+            "description": "Elimina anuncios de banner, interstitial, rewarded y app-open (AdMob).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.0.50.20"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/plWlZ_5Kj63uiWuSDraCzr3Xo6IPlPa1pujATsLMCoLGIoz32zg6dRrL4zrHj9UPsk6LgByQk4ZO20SkfrkwjRY"
+      }
+    ],
+    "fingerprint": "f47296a936dc4b48393002e4e529120bf9d1ff9bfb8df1751e5c3adb3b06b481"
   },
   "hu-liberator:stable": {
     "bundle": "hu-liberator",
@@ -24866,86 +24780,75 @@
     ],
     "fingerprint": "528da264e79ef3c0b66a19af7f520757214a0b8f59a187ed079b4429c8569824"
   },
-  "morphe-nl:stable": {
-    "bundle": "morphe-nl",
+  "abhishek-bhujang:stable": {
+    "bundle": "abhishek-bhujang",
     "channel": "stable",
-    "repo_url": "https://github.com/claviola/morphe-patches-nl",
-    "created_at": "2026-07-30T23:17:00",
-    "version": "v1.1.2",
-    "description": "## [1.1.2](https://github.com/claviola/morphe-patches-nl/compare/v1.1.1...v1.1.2) (2026-07-30)\n\n### 🐛 Bug Fixes\n\n* No-op Pairip entry points and defang LicenseActivity ([4fb80f2](https://github.com/claviola/morphe-patches-nl/commit/4fb80f21d9e1689e8fec4c49a4bc0be68e391421))\n",
+    "repo_url": "https://github.com/theabhishekbhujang/morphe-patches",
+    "created_at": "2026-08-18T19:06:38",
+    "version": "v1.4.2",
+    "description": "## [1.4.2](https://github.com/theabhishekbhujang/morphe-patches/compare/v1.4.1...v1.4.2) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* update GitHub workflows to valid action versions and correct gradle tasks ([a69b3e3](https://github.com/theabhishekbhujang/morphe-patches/commit/a69b3e3d211c6048c956ab0cb6974f3cb4a921ef))\n",
     "apps": [
       {
-        "app_name": "Flitsmeister",
-        "package": "nl.flitsmeister",
+        "app_name": "Rhythm with Tabla & Tanpura",
+        "package": "com.psslabs.rhythm",
         "patches": [
           {
-            "name": "Bypass license check",
-            "description": "Bypasses the Google Play license and APK signature checks so the app starts without the \"Get this app from Google Play\" paywall.",
+            "name": "Unlock Pro",
+            "description": "Unlocks all Pro features, taals, variations, scales, and removes ads.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "14.11"
-            ]
-          },
-          {
-            "name": "Remove ads",
-            "description": "Disables general advertisements and keeps the ads setting turned off.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "14.11"
-            ]
-          },
-          {
-            "name": "Unlock PRO",
-            "description": "Unlocks Flitsmeister PRO status and enables all PRO features on the client.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "14.11"
+              "6.23"
             ]
           }
         ],
-        "icon_url": "https://play-lh.googleusercontent.com/GUxm2_NOmZCtsNZesNChK_eh2NnIe_6f5RCPWoW9u5dD4LPELw4SOaciGB2kPVdCWyi7yp0HEdfr-YBvIghi"
+        "icon_url": "https://play-lh.googleusercontent.com/wyXA3HUmmvpRQoY4mGX8dIyyRAF4zxTK7nVT8quFfjQmYdlGEcEWgwBKMtZvlUAlJqnIlbifDmwxL094biLpYQ"
+      },
+      {
+        "app_name": "Harmonium",
+        "package": "harmonium.music.gameg.real.harmoniumfree",
+        "patches": [
+          {
+            "name": "Remove Ads",
+            "description": "Removes all banner ads, interstitial ads, open app ads, and enables permanent ad-free status.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "29.0.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/MUyOxXiDlA0-dvb9k1oN7LBGWEAkDjnFygjyIqrMryqjtjm4zWeoAIAwMvwikqcr8-FdBvQXd-lBZT4yNjEH8w"
       }
     ],
-    "fingerprint": "56fd3064e89ee98c91ff3b49e9eb2e35c3afe40d206df0cb8d31acb1af1196f9"
+    "fingerprint": "a733cb820fd5b3f139e06b144e4d951f9aa78b522a2d60ea507a9a64e8517e72"
   },
-  "morphe-nl:dev": {
-    "bundle": "morphe-nl",
+  "abhishek-bhujang:dev": {
+    "bundle": "abhishek-bhujang",
     "channel": "dev",
-    "repo_url": "https://github.com/claviola/morphe-patches-nl",
-    "created_at": "2026-07-30T21:38:12",
-    "version": "v1.0.0-dev.1",
-    "description": "## 1.0.0-dev.1 (2026-07-30)\n\n### ✨ New Features\n\n* Add Flitsmeister PRO unlock and ad removal patches ([cc281e4](https://github.com/claviola/morphe-patches-nl/commit/cc281e4090088a9b1f5a53dbb995eba181930242))\n",
+    "repo_url": "https://github.com/theabhishekbhujang/morphe-patches",
+    "created_at": "2026-08-18T18:30:56",
+    "version": "v1.2.0-dev.2",
+    "description": "## [1.2.0-dev.2](https://github.com/theabhishekbhujang/morphe-patches/compare/v1.2.0-dev.1...v1.2.0-dev.2) (2026-08-18)\n\n### ✨ New Features\n\n* remove _More Taals? promo row injection ([7606907](https://github.com/theabhishekbhujang/morphe-patches/commit/7606907de2e6a7a5be04ad8360250159f72d2953))\n",
     "apps": [
       {
-        "app_name": "Flitsmeister",
-        "package": "nl.flitsmeister",
+        "app_name": "Rhythm Free",
+        "package": "com.psslabs.rhythm",
         "patches": [
           {
-            "name": "Remove ads",
-            "description": "Disables general advertisements and keeps the ads setting turned off.",
+            "name": "Unlock Pro",
+            "description": "Unlocks all Pro features, taals, variations, scales, and removes ads.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "14.11"
-            ]
-          },
-          {
-            "name": "Unlock PRO",
-            "description": "Unlocks Flitsmeister PRO status and enables all PRO features on the client.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "14.11"
+              "6.23"
             ]
           }
         ],
-        "icon_url": "https://play-lh.googleusercontent.com/GUxm2_NOmZCtsNZesNChK_eh2NnIe_6f5RCPWoW9u5dD4LPELw4SOaciGB2kPVdCWyi7yp0HEdfr-YBvIghi"
+        "icon_url": "https://play-lh.googleusercontent.com/wyXA3HUmmvpRQoY4mGX8dIyyRAF4zxTK7nVT8quFfjQmYdlGEcEWgwBKMtZvlUAlJqnIlbifDmwxL094biLpYQ"
       }
     ],
-    "fingerprint": "74c99f450b95d3c248681795af4948fd5792ef8eacfacb494dd625716a65d5f3"
+    "fingerprint": "b778d8cc26484a7462b453d7d965e854e40533f0990aa9f74828a811e73d5ad1"
   },
   "realme-link:stable": {
     "bundle": "realme-link",
@@ -25112,9 +25015,9 @@
     "bundle": "ftl",
     "channel": "stable",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-17T19:25:22",
-    "version": "v1.34.0",
-    "description": "## [1.34.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.33.0...v1.34.0) (2026-08-17)\r\n\r\n### ✨ New Features\r\n\r\n* Add Clean More Action Rs File ([831c4ec](https://github.com/BlazeFTL/FTL-Patches/commit/831c4ec183d202f33ca28109838e4754b61d18a3))\r\n* Add Hide BookMark,Tools In HomeScreen Rs ([f5cb31a](https://github.com/BlazeFTL/FTL-Patches/commit/f5cb31a2b885da1225ea4bd12167e1f8cbd7ccf5))\r\n* Add Rs File Explorer Skip Splash ([214e2e0](https://github.com/BlazeFTL/FTL-Patches/commit/214e2e07b10f0526ec5036d1479eceb400c2877d))",
+    "created_at": "2026-08-18T19:41:10",
+    "version": "v1.35.0",
+    "description": "## [1.35.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.34.0...v1.35.0) (2026-08-18)\r\n\r\n### ✨ New Features\r\n\r\n* Improved analytics and crash-reporting removal with broader ad/analytics SDK detection, safer string matching, Firebase auto-initialization cleanup, and improved SDK signature-check handling.\r\n* Expanded APK junk cleanup to remove additional feature-delivery, mobile-ads, version, and Kotlin tooling metadata.\r\n* Added Xender support for version 18.8.0.prime with Speed Up Splash Screen patch.",
     "apps": [
       {
         "app_name": "Xender",
@@ -25283,17 +25186,17 @@
     "bundle": "ftl",
     "channel": "dev",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-18T13:23:20",
-    "version": "v1.35.0-dev.19",
-    "description": "## [1.35.0-dev.19](https://github.com/BlazeFTL/FTL-Patches/compare/v1.35.0-dev.18...v1.35.0-dev.19) (2026-08-18)\n\n### ✨ New Features\n\n* up ([fadba56](https://github.com/BlazeFTL/FTL-Patches/commit/fadba5664e1e93c73c8d65388212290937345e08))\n* up ([38d542d](https://github.com/BlazeFTL/FTL-Patches/commit/38d542dc20010cec2045fcfa41a89d469d05e1ea))\n* up ([8d64546](https://github.com/BlazeFTL/FTL-Patches/commit/8d64546ef138cef7db630552755911d108667547))\n",
+    "created_at": "2026-08-13T10:46:28",
+    "version": "v1.28.0-dev.7",
+    "description": "## [1.28.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.28.0-dev.6...v1.28.0-dev.7) (2026-08-13)\n\n### ✨ New Features\n\n* f es ([7abc8d6](https://github.com/BlazeFTL/FTL-Patches/commit/7abc8d657e51a2494ef87af098afe3a66985f67c))\n",
     "apps": [
       {
         "app_name": "Xender",
         "package": "cn.xender",
         "patches": [
           {
-            "name": "Clean up main UI",
-            "description": "Hides the nav drawer's Guide/Rate/Help/About items and the bottom navigation view, and keeps the Connect/Create/Join buttons on top.",
+            "name": "Clean main UI",
+            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -25302,7 +25205,7 @@
           },
           {
             "name": "Skip splash screen",
-            "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
+            "description": "Jumps straight from SplashActivity.onCreate() to the main activity, skipping the splash/guide UI and its permission flow entirely.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -25466,7 +25369,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
       }
     ],
-    "fingerprint": "5f5fa12e824a01e0362ffd6a2d6bd585c30d5bce4cd6541a4e498265ebd7e12c"
+    "fingerprint": "6ea9056615110be6c6ebe4138f6b9361ea8505d235aef7d004c1964473729741"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
@@ -30270,9 +30173,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-08-18T10:02:17",
-    "version": "v1.18.4-dev.1",
-    "description": "## [1.18.4-dev.1](https://github.com/rushiranpise/morphe-patches/compare/v1.18.3...v1.18.4-dev.1) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **amazon:** price charts never showed and now sit under the price ([0fba126](https://github.com/rushiranpise/morphe-patches/commit/0fba126c32cad7cbf7eab5d71a4ae13b5f33e6d8))\n* bold voice ([5ceaa8a](https://github.com/rushiranpise/morphe-patches/commit/5ceaa8a12b3fd7ac4c7a6f0b6e2b4daae3cddc3b))\n* Drivvo ([54d58dd](https://github.com/rushiranpise/morphe-patches/commit/54d58ddb9b78c7192f177d76e899c1da81401ea4))\n* todays weather ([b1c55b7](https://github.com/rushiranpise/morphe-patches/commit/b1c55b70ce893ad35d7dac2aa43fa881bdacc89c))\n* update monet ([ca392e2](https://github.com/rushiranpise/morphe-patches/commit/ca392e248e6dd2bef7e1dd4e77bff9edd3e7dba5))\n* update word ([814a766](https://github.com/rushiranpise/morphe-patches/commit/814a76651dad8e827ddd12f2aa8f6bee0418941f))\n",
+    "created_at": "2026-08-18T20:46:34",
+    "version": "v1.19.0-dev.5",
+    "description": "## [1.19.0-dev.5](https://github.com/rushiranpise/morphe-patches/compare/v1.19.0-dev.4...v1.19.0-dev.5) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* **amazon:** fall back to link when price chart image fails ([ac61248](https://github.com/rushiranpise/morphe-patches/commit/ac61248ed37db5c3fd192027f82e62e822830c98))\n\n### ✨ New Features\n\n* **amazon:** harden price charts with placeholder gate and SPA re-injection ([2023973](https://github.com/rushiranpise/morphe-patches/commit/20239731406de72bb4c4c284791f35866e8c69e2))\n",
     "apps": [
       {
         "app_name": "OBD Android",
@@ -30337,6 +30240,38 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/Z10nyQkvnKpejvNvZ7LS3xXzZNRqq-nXAMiorVg8Ciyp87u2A8vIfgKbukMOZ-shf2i1OZUGkVJDmlhIDg8chg"
+      },
+      {
+        "app_name": "Inure App Manager (GitHub)",
+        "package": "app.simple.inure",
+        "patches": [
+          {
+            "name": "Inure — Unlock Full Version (GitHub)",
+            "description": "Bypasses the 15-day trial gate and unlocks all premium features in Inure App Manager (GitHub).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "build107.2.1"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "Inure App Manager",
+        "package": "app.simple.inure.play",
+        "patches": [
+          {
+            "name": "Unlock Full Version",
+            "description": "Bypasses the 15-day trial gate and unlocks all premium features in Inure App Manager.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "build107.2.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/QzH7SfWCbpmz5ze8hX85stc09ZfK1JGjkRgUw_DhAbRzQF1BxUo5Ma-lZJFDFpzopdnfy6FzTGt6RDp842zrbaY"
       },
       {
         "app_name": "Getcontact",
@@ -31275,6 +31210,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/-ZMalXCxOparPYfsp2AoG0xZhK7qKKBueIQfUdp8GgkMhHdEK0XV4PawkjqT7ZKcLHQ0zcAc-Xrb2CCcIBA4xw"
       },
       {
+        "app_name": "Zutobi",
+        "package": "com.driverlicenseapp",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Driver's Ed premium features by patching the Flutter subscription gate.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.5.78"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/pSj6PbRxSk3GnAsKavgmP2WZ08khY-SWmEpFwIs-jQLdBaacboM2nRCXYAdaW5Tr56AgZHUklUwdKuWig770"
+      },
+      {
         "app_name": "TeraBox",
         "package": "com.dubox.drive",
         "patches": [
@@ -31764,7 +31715,7 @@
         "patches": [
           {
             "name": "Bypass developer verification",
-            "description": "Forces all APK install verification sessions to be bypassed, preventing the verifier from blocking sideloaded or unsigned apps on Android 16+ devices.Important: Requires pushing the patched APK as a system app replacement (e.g. via Magisk module or ADB with root)since the original holds DEVELOPER_VERIFICATION_AGENT permission. ADB installs are exempt from verification regardless.",
+            "description": "Forces all APK install verification sessions to be bypassed, preventing the verifier from blocking sideloaded or unsigned apps on Android 16+ devices. Only available for root (mount) installations.Important: Requires pushing the patched APK as a system app replacement (e.g. via Magisk module or ADB with root)since the original holds DEVELOPER_VERIFICATION_AGENT permission. ADB installs are exempt from verification regardless.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35062,7 +35013,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/5zIWi1LMtVRPpffktQtKhPoJNRzorFE8ycINm3fl2i0-_8JQZI30qZN7vkla3b6HrOMLO-bo9OpzZohZSnay"
       }
     ],
-    "fingerprint": "fd7ed8a84aa6271ea7d566653f376e28d8d1f5265bec2d036f370ef8b6a08561"
+    "fingerprint": "dfcca45eb6516b6b74568418df5aa1d43869569cc0f6181761b4e5fa7626233f"
   },
   "ipusnas:stable": {
     "bundle": "ipusnas",
@@ -48959,87 +48910,6 @@
     ],
     "fingerprint": "f1875c107e92e1cd8c9d3477b707d1cb71b552abbee5d8eb328f9a5243c3520c"
   },
-  "modx:stable": {
-    "bundle": "modx",
-    "channel": "stable",
-    "repo_url": "https://github.com/Utsavrajputt/Modx-patches",
-    "created_at": "2026-07-16T05:38:06",
-    "version": "v1.5.16",
-    "description": "## [1.5.16](https://github.com/Utsavrajputt/Modx-patches/compare/v1.5.15...v1.5.16) (2026-07-16)\n\n### 🐛 Bug Fixes\n\n* Add dpF function for converting DP to pixels ([4fa7fb7](https://github.com/Utsavrajputt/Modx-patches/commit/4fa7fb7a9fabd4a0e44a974523333c3cd02c62d5))\n",
-    "apps": [
-      {
-        "app_name": "MX Player",
-        "package": "com.mxtech.videoplayer.ad",
-        "patches": [
-          {
-            "name": "Capture tab host for programmatic tab switching",
-            "description": "Lets extension Activities (Tools/About) trigger a real MX Player tab switch instead of just finishing back to whatever tab was last visible.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.14.1"
-            ]
-          },
-          {
-            "name": "Disable video ads",
-            "description": "Disables video ads by patching the native library.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.14.1"
-            ]
-          },
-          {
-            "name": "Hide Video/OTT tab",
-            "description": "Hides the Video/OTT download tab from the home screen by forcing its visibility flag to always report disabled.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.14.1"
-            ]
-          },
-          {
-            "name": "Register Modx extension activities",
-            "description": "Adds the ToolsActivity/AboutActivity/tool screens and FileProvider from the extensions/core module to the app's AndroidManifest.xml so they can actually be launched.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.14.1"
-            ]
-          },
-          {
-            "name": "Repurpose Search/Games tabs to Tools/About",
-            "description": "Redirects the Search tab to the Modx Tools screen and the Games tab to the Modx About screen.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.14.1"
-            ]
-          },
-          {
-            "name": "Restyle Search/Games tab icons to Tools/About",
-            "description": "Overrides the native Search/Games bottom-nav icons with the Modx Tools/About artwork.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.14.1"
-            ]
-          },
-          {
-            "name": "Restyle Search/Games tab labels to Tools/About",
-            "description": "Renames the native Search/Games tab labels to Tools/About.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2.14.1"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/kuU8L2zHfkE8rDQ8iUwMpYcV8TzUDBz7n_KYaEV4R5M7W5qHiZGqxWk9f1ysP2Lk72GmRTps3iaXUXfH-18pWw"
-      }
-    ],
-    "fingerprint": "5a1ec84edb7f0ea3bda3d14051364bf415173c8c477e086d61fbe2df3f96b635"
-  },
   "chirag127:stable": {
     "bundle": "chirag127",
     "channel": "stable",
@@ -55156,346 +55026,6 @@
     ],
     "fingerprint": "68ab3ff7085096787f0f0e9f9880f03dfc4b741b9e1e02fa9351f8957ec60fc7"
   },
-  "tiktok-lite:stable": {
-    "bundle": "tiktok-lite",
-    "channel": "stable",
-    "repo_url": "https://github.com/furkngld/tiktok-lite-patches-for-morphe",
-    "created_at": "2026-08-04T17:43:10",
-    "version": "v1.3.8",
-    "description": "## [1.3.8](https://github.com/furkngld/tiktok-lite-patches-for-morphe/compare/v1.3.7...v1.3.8) (2026-08-04)\n\n\n### Bug Fixes\n\n* **tiktok-lite:** bypass AG network governance condition check in 8cd.LCC ([b9fa1d1](https://github.com/furkngld/tiktok-lite-patches-for-morphe/commit/b9fa1d1314ce9cdf5b4004d1d07a51641362f92d))\n\n\n\n\n\n## 1.3.8",
-    "apps": [
-      {
-        "app_name": "TikTok",
-        "package": "com.zhiliaoapp.musically",
-        "patches": [
-          {
-            "name": "Always show publish date",
-            "description": "Always shows the publish date in video author information. Thanks to lyyako for the original implementation.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Copy comments without username",
-            "description": "Copies only the comment text without including the creator's username.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Custom offline videos limit",
-            "description": "Adds a custom entry to TikTok's offline videos menu with a configurable limit of up to 500 videos.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Disable login requirement",
-            "description": "Removes TikTok's mandatory login gate from supported flows.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Disable screen capture detection",
-            "description": "Prevents TikTok from detecting screenshots and screen recordings.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Downloads",
-            "description": "Adds watermark-free video and photo downloads, comment sticker saving, and configurable download-folder controls.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Enable Open Debug",
-            "description": "Uses TikTok's hidden Open Debug settings cell as the entry point for Morphe settings. Required for the Morphe settings menu to appear. Supports TikTok 43.8.3.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Feature Gate Lab",
-            "description": "Adds a menu for viewing and overriding supported TikTok feature flags and configuration values.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Feed filter",
-            "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, and videos outside configured view or like ranges.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Feed tab navigation",
-            "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Fix Google login",
-            "description": "Restores Google account sign-in after patching.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Hide CAPTCHA popups",
-            "description": "Prevents client-side verification puzzle dialogs from opening, including those shown while browsing LIVE. This does not bypass server-side checks.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Hide floating promotions",
-            "description": "Removes floating promotional badges, coin icons, and timer banners from the Home feed.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Hold-and-slide 2x lock",
-            "description": "Enables TikTok's native hold, slide down, and release gesture to lock 2x speed.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Open external links directly",
-            "description": "Opens profile and story website links in the system browser instead of TikTok's in-app browser. Thanks to lyyako for the original implementation.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Playback speed",
-            "description": "Enables playback-speed controls for all videos and remembers the selected speed between videos.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Remember clear display",
-            "description": "Remembers TikTok's clear-display state between videos.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Sanitize sharing links",
-            "description": "Removes tracking parameters from TikTok links before they are shared.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Settings",
-            "description": "Adds the Morphe settings screen inside TikTok.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Show seekbar",
-            "description": "Shows TikTok's native video seekbar where it would normally be hidden.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "SIM spoof",
-            "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          },
-          {
-            "name": "Translate comments",
-            "description": "Adds comment translation controls using TikTok's translation system, with selectable language exclusions.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "43.8.3"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/2o7iuqPe-0msP3DvNhzoOgNo4eZ6GkL_RtGVeKyBn5UBQAW5cw-GW5V3wDOHB1yTQuqWzrFLFOv2u4_5ea1uhg"
-      },
-      {
-        "app_name": "Go",
-        "package": "com.zhiliaoapp.musically.go",
-        "patches": [
-          {
-            "name": "Disable login requirement",
-            "description": "Removes TikTok's mandatory login gate from supported flows.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Disable screen capture detection",
-            "description": "Prevents TikTok from detecting screenshots and screen recordings.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Downloads",
-            "description": "Adds watermark-free video downloads and configurable download-folder controls.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Feature Gate Lab",
-            "description": "Adds a menu for viewing and overriding supported TikTok feature flags and configuration values.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Fix Google login",
-            "description": "Restores Google account sign-in after patching.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Hide CAPTCHA popups",
-            "description": "Prevents client-side verification puzzle dialogs from opening. This does not bypass server-side checks.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Hide floating promotions",
-            "description": "Removes floating promotional badges, coin icons, and timer banners from the Home feed.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Open external links directly",
-            "description": "Opens profile and story website links in the system browser instead of TikTok's in-app browser. Thanks to lyyako for the original implementation.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Playback speed",
-            "description": "Enables playback-speed controls for all videos and remembers the selected speed between videos.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Region bypass",
-            "description": "Spoofs the store country reported to TikTok across every region signal (cookie, store region, sys_region, carrier region, TTP JSON) and suppresses the TTP region alert, so the app is not detected as being used in an unsupported region.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Sanitize share URLs",
-            "description": "Removes tracking (campaign) parameters from shared links.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "Settings",
-            "description": "Adds a native 'Premium features' row to the stock 'Settings and privacy' popup, opening the Morphe settings screen.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          },
-          {
-            "name": "SIM spoof",
-            "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "44.9.2"
-            ]
-          }
-        ],
-        "icon_url": ""
-      }
-    ],
-    "fingerprint": "b6e88f9e2e5af764e496bb22ff8187397ea572816b7222fc01ad02c3e7df94f5"
-  },
   "rvx-morphed:stable": {
     "bundle": "rvx-morphed",
     "channel": "stable",
@@ -60227,6 +59757,33 @@
     ],
     "fingerprint": "82b4e9f2d5445a0c2c4cd5d84bd88cb2b30e2ecfecf4731b7a53e03141977b5c"
   },
+  "rabilrbl:stable": {
+    "bundle": "rabilrbl",
+    "channel": "stable",
+    "repo_url": "https://github.com/rabilrbl/fluffy-patches",
+    "created_at": "2026-08-18T17:43:57",
+    "version": "v1.0.0",
+    "description": "# 1.0.0 (2026-08-18)\r\n\r\nInitial Release with patches for Alarmy (`droom.sleepIfUCan`).\r\n\r\n\r\n\r\n",
+    "apps": [
+      {
+        "app_name": "Sleepifucan",
+        "package": "droom.sleepifucan",
+        "patches": [
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks premium features and disables ads by forcing both premium gates true.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.32.1"
+            ]
+          }
+        ],
+        "icon_url": ""
+      }
+    ],
+    "fingerprint": "38abfd932ad59d26c91e6d048fad051a0729f63a081bb5031746757e93b49819"
+  },
   "rabilrbl:dev": {
     "bundle": "rabilrbl",
     "channel": "dev",
@@ -64893,56 +64450,6 @@
     ],
     "fingerprint": "36a3ba4a1dd624d9077af3b38e4bab664679feac7ff28273191a677781e7a233"
   },
-  "dexnis:stable": {
-    "bundle": "dexnis",
-    "channel": "stable",
-    "repo_url": "https://github.com/dexnis-dev/morphe-patches",
-    "created_at": "2026-07-17T15:17:46",
-    "version": "v1.0.0",
-    "description": "## 1.0.0 (2026-07-17)\n\n### ✨ New Features\n\n* IDOS Premium Patch ([de99ab8](https://github.com/dexnis-dev/morphe-patches/commit/de99ab8604947f1ccc0bd31e1f467f20742347ac))\n",
-    "apps": [
-      {
-        "app_name": "IDOS",
-        "package": "cz.mafra.jizdnirady",
-        "patches": [
-          {
-            "name": "Unlock premium",
-            "description": "Spoofs the premium subscription check.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/o7vo7iZJg82nRkas3Snx6mDS95d3bX__PJfTfAKdjcofF-lYBL72_NAfMik1x7RBx-pKHqD5uL_e5UX9iTe9Gg"
-      }
-    ],
-    "fingerprint": "2c94af8f89d305d85206c26e5b16d9a12babe5a4e10b501bf7e95b7af1e951b5"
-  },
-  "dexnis:dev": {
-    "bundle": "dexnis",
-    "channel": "dev",
-    "repo_url": "https://github.com/dexnis-dev/morphe-patches",
-    "created_at": "2026-07-17T15:14:39",
-    "version": "v1.0.0-dev.1",
-    "description": "## 1.0.0-dev.1 (2026-07-17)\n\n### ✨ New Features\n\n* IDOS Premium Patch ([de99ab8](https://github.com/dexnis-dev/morphe-patches/commit/de99ab8604947f1ccc0bd31e1f467f20742347ac))\n",
-    "apps": [
-      {
-        "app_name": "IDOS",
-        "package": "cz.mafra.jizdnirady",
-        "patches": [
-          {
-            "name": "Unlock premium",
-            "description": "Spoofs the premium subscription check.",
-            "use": true,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/o7vo7iZJg82nRkas3Snx6mDS95d3bX__PJfTfAKdjcofF-lYBL72_NAfMik1x7RBx-pKHqD5uL_e5UX9iTe9Gg"
-      }
-    ],
-    "fingerprint": "5a3176d1dd0de4e66807ab2ef2b9f192b8c3face2e015ab7a0773250168ca6ad"
-  },
   "ImmortalZeus:stable": {
     "bundle": "ImmortalZeus",
     "channel": "stable",
@@ -65525,47 +65032,13 @@
     ],
     "fingerprint": "9b9db2b412bdf81efd31983f92e9b00d03b7a3037f74233dfa86f4946034af00"
   },
-  "lynx6319:stable": {
-    "bundle": "lynx6319",
-    "channel": "stable",
-    "repo_url": "https://github.com/Lynx6319/patch-youtube-scroll-block",
-    "created_at": "2026-05-05T14:52:24",
-    "version": "v1.0.8",
-    "description": "## [1.0.8](https://github.com/Lynx6319/patch-youtube-scroll-block/compare/v1.0.7...v1.0.8) (2026-05-05)\n\n\n### Bug Fixes\n\n* update fingerprints for YouTube 20.47.62 ReelRecyclerView architecture ([cf216ab](https://github.com/Lynx6319/patch-youtube-scroll-block/commit/cf216abecd9374d60044c4c09e773b7071dad52a))\n\n\n\n",
-    "apps": [
-      {
-        "app_name": "YouTube",
-        "package": "com.google.android.youtube",
-        "patches": [
-          {
-            "name": "Disable Shorts scroll",
-            "description": "Disables swiping up/down between Shorts while still allowing a single Short to be opened and watched normally.",
-            "use": true,
-            "options": [
-              {
-                "key": "morphe_disable_shorts_scroll",
-                "description": "Prevents swiping up or down to navigate to the next or previous Short."
-              }
-            ],
-            "compatible_versions": [
-              "19.16.39",
-              "19.25.37",
-              "20.47.62"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg"
-      }
-    ],
-    "fingerprint": "b88106f339cd1d453a06ac7fd37c4508393df13113ef4140164a795a8e27fc3f"
-  },
   "ajstrick81-androidtv:stable": {
     "bundle": "ajstrick81-androidtv",
     "channel": "stable",
     "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-    "created_at": "2026-08-17T22:44:10",
-    "version": "v1.28.0",
-    "description": "# [1.28.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.27.0...v1.28.0) (2026-08-17)\n\n\n### Features\n\n* **disney:** opt-in Suppress Household Prompt patch ([3abbba5](https://github.com/ajstrick81/morphe-androidtv-patches/commit/3abbba57422a196612d14418992102c52b143f85))\n\n\n\n",
+    "created_at": "2026-08-18T20:06:22",
+    "version": "v1.29.0",
+    "description": "# [1.29.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.28.0...v1.29.0) (2026-08-18)\n\n\n### Features\n\n* **hbomax:** 7.9.0.61 support + opt-in in-app SSAI ad-origin block ([80fbf0b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/80fbf0b1a657264fca2971b96f9bc7032085ec7d)), closes [#118](https://github.com/ajstrick81/morphe-androidtv-patches/issues/118)\n\n\n\n",
     "apps": [
       {
         "app_name": "Livingroom",
@@ -65864,11 +65337,24 @@
         "package": "com.wbd.hbomax",
         "patches": [
           {
+            "name": "HBO Max - Block SSAI Ad Origins",
+            "description": "Reproduces the AdGuard DNS ad-block inside the app: fails media3 segment requests to HBO's SSAI ad origins (amer-free/emea-free.prd.media.max.com, gmss, FreeWheel) so the player's resiliency layer falls back to the clean, ad-free manifest — removing the stitched ad VIDEO the default Disable Ads patch leaves behind. Opt-in / experimental; verify playback on-device.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.9.0.61",
+              "7.7.0.78",
+              "7.5.0.73",
+              "7.2.0.41"
+            ]
+          },
+          {
             "name": "HBO Max - Disable Ads",
             "description": "Suppresses nonlinear overlay ads (Bolt), SSAI linear ad timeline registration (GMSS/AdSparx), and live stream preroll ad timeline entry generation for all content types.",
             "use": true,
             "options": [],
             "compatible_versions": [
+              "7.9.0.61",
               "7.7.0.78",
               "7.5.0.73",
               "7.2.0.41"
@@ -65946,7 +65432,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/JHCM4AIyomRp6Lo2-5ugoznlGdsZmNnejVN8DLvtWFHShcz8YRgUE170f1CyOfrleYbtFL2g8tQ3VqlQNAgqoA"
       }
     ],
-    "fingerprint": "e26e9ac2b31553ae25c6d041451fcb0d8455a9eddfd38e5898fa4831aabf7ba3"
+    "fingerprint": "052257360c1e7b39870cdf63cf9fee4f6075c721d3e437ec49ef913e83eb0200"
   },
   "ajstrick81-androidtv:dev": {
     "bundle": "ajstrick81-androidtv",
