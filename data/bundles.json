@@ -25447,201 +25447,9 @@
     "bundle": "ftl",
     "channel": "stable",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-19T08:00:11",
-    "version": "v1.37.0",
-    "description": "## [1.37.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.36.0...v1.37.0) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Add Xender Skip Splash + Clean Ui Patch",
-    "apps": [
-      {
-        "app_name": "Xender",
-        "package": "cn.xender",
-        "patches": [
-          {
-            "name": "Clean main UI",
-            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "18.8.0.prime"
-            ]
-          },
-          {
-            "name": "Skip splash screen",
-            "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "18.8.0.prime"
-            ]
-          },
-          {
-            "name": "Speed up splash screen",
-            "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "18.8.0.prime"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/7Hf2rw_3DdwM5015tvel3IE_0S3fhHWK7iRYonCd66RI0y2tFB5w_qYxMjflRFNey37Uqnmgsh8XTIRM5sTu"
-      },
-      {
-        "app_name": "ES File Explorer",
-        "package": "com.estrongs.android.pop",
-        "patches": [
-          {
-            "name": "ES File Explorer Ui Cleanup",
-            "description": "Removes BookMark, New Files, Cleaner Row In HomePage, Cleans More menu actions",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "4.4.3.7"
-            ]
-          }
-        ],
-        "icon_url": ""
-      },
-      {
-        "app_name": "MX Player Pro",
-        "package": "com.mxtech.videoplayer.pro",
-        "patches": [
-          {
-            "name": "Hide File Transfer, Video Playlist, Private Folder tiles",
-            "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from the tools tile list.",
-            "use": false,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Hide local tiles banner",
-            "description": "Collapses the local device tiles banner.",
-            "use": false,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Hide Me tab promo items",
-            "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab.",
-            "use": false,
-            "options": [],
-            "compatible_versions": []
-          },
-          {
-            "name": "Skip welcome screen",
-            "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen.",
-            "use": false,
-            "options": [],
-            "compatible_versions": []
-          }
-        ],
-        "icon_url": ""
-      },
-      {
-        "app_name": "RS File Manager",
-        "package": "com.rs.explorer.filemanager",
-        "patches": [
-          {
-            "name": "Hide more actions",
-            "description": "Hides Hide, Add to desktop, Encrypt, Decrypt, Add bookmark, Web Search, Copy to, Move to, Transfer, and Playing from the \"More actions\" menu.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.3.0.4"
-            ]
-          },
-          {
-            "name": "Hide network, tools and bookmarks on home page",
-            "description": "Hides the Network, Tools and Bookmarks sections from the home page section list.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.3.0.4"
-            ]
-          },
-          {
-            "name": "Skip splash screen",
-            "description": "Moves the launcher intent filter to the main activity and calls the all-files-access permission request directly, instead of showing the splash activity and its full-screen 'grant storage access' dialog.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.3.0.4"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/qk5ZNXn_E2bAi_9JSHhMB_pn1b1NloWWCeMr16cJIAsv05Gy5Rm8nlmd5KjnLOIisgiMtNrG5LOjmdlF_ksQk8o"
-      },
-      {
-        "app_name": "SnapTube",
-        "package": "com.snaptube.premium",
-        "patches": [
-          {
-            "name": "Disable Notification Defaults",
-            "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "7.64.0.76450210"
-            ]
-          },
-          {
-            "name": "Hide Settings Items",
-            "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "7.64.0.76450210"
-            ]
-          },
-          {
-            "name": "Remove Watch Ad To Download",
-            "description": "Removes the requirement to watch a rewarded ad before a download starts.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "7.64.0.76450210"
-            ]
-          }
-        ],
-        "icon_url": ""
-      },
-      {
-        "app_name": "All Video Downloader & Ace Player",
-        "package": "videoplayer.videodownloader.downloader",
-        "patches": [
-          {
-            "name": "Disable ad dialog when reopening app",
-            "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "1.9.7"
-            ]
-          },
-          {
-            "name": "Skip splash and language screens",
-            "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "1.9.7"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
-      }
-    ],
-    "fingerprint": "44167da535ad0f69a0f15f89d511dd88bb253db52108ea9d409a46edd29e1dc7",
-    "release_notes": "## [1.37.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.36.0...v1.37.0) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Add Xender Skip Splash + Clean Ui Patch",
-    "release_tag": "v1.37.0",
-    "release_date": "2026-08-19T08:00:11Z"
-  },
-  "ftl:dev": {
-    "bundle": "ftl",
-    "channel": "dev",
-    "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-19T11:29:43",
-    "version": "v1.38.0-dev.2",
-    "description": "## [1.38.0-dev.2](https://github.com/BlazeFTL/FTL-Patches/compare/v1.38.0-dev.1...v1.38.0-dev.2) (2026-08-19)\n\n### ✨ New Features\n\n* Add All Video Downloader Remove DownloadMenu ([432f4d1](https://github.com/BlazeFTL/FTL-Patches/commit/432f4d1d52867d1f3cf96f3ab758adec3a6357ea))\n",
+    "created_at": "2026-08-19T12:10:35",
+    "version": "v1.38.0",
+    "description": "## [1.38.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0...v1.38.0) (2026-08-19)\n\n### ✨ New Features\n\n* Add All Video Downloader Remove DownloadMenu ([432f4d1](https://github.com/BlazeFTL/FTL-Patches/commit/432f4d1d52867d1f3cf96f3ab758adec3a6357ea))\n* Add Rs File Explorer Disable Download ([0c872cd](https://github.com/BlazeFTL/FTL-Patches/commit/0c872cd5a966b4a6692f1454ef63906339c0574a))\n",
     "apps": [
       {
         "app_name": "Xender",
@@ -25840,10 +25648,202 @@
         "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
       }
     ],
-    "fingerprint": "9a3b2b71ddfa1b6e0426a45163b7e8c3a05638456c51331b819b12ed90eb2e29",
+    "fingerprint": "55e06ea32b8bc77f6f63b9b1b5916488594d3242ef2c648da5d0ae0b931280cc",
     "release_notes": "## [1.38.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0...v1.38.0) (2026-08-19)\n\n### ✨ New Features\n\n* Add All Video Downloader Remove DownloadMenu ([432f4d1](https://github.com/BlazeFTL/FTL-Patches/commit/432f4d1d52867d1f3cf96f3ab758adec3a6357ea))\n* Add Rs File Explorer Disable Download ([0c872cd](https://github.com/BlazeFTL/FTL-Patches/commit/0c872cd5a966b4a6692f1454ef63906339c0574a))\n",
     "release_tag": "v1.38.0",
     "release_date": "2026-08-19T12:10:35Z"
+  },
+  "ftl:dev": {
+    "bundle": "ftl",
+    "channel": "dev",
+    "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
+    "created_at": "2026-08-19T06:35:14",
+    "version": "v1.37.0-dev.7",
+    "description": "## [1.37.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.6...v1.37.0-dev.7) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Clean+ Splash Merged",
+    "apps": [
+      {
+        "app_name": "Xender",
+        "package": "cn.xender",
+        "patches": [
+          {
+            "name": "Clean main UI",
+            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "18.8.0.prime"
+            ]
+          },
+          {
+            "name": "Skip splash screen",
+            "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "18.8.0.prime"
+            ]
+          },
+          {
+            "name": "Speed up splash screen",
+            "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "18.8.0.prime"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/7Hf2rw_3DdwM5015tvel3IE_0S3fhHWK7iRYonCd66RI0y2tFB5w_qYxMjflRFNey37Uqnmgsh8XTIRM5sTu"
+      },
+      {
+        "app_name": "ES File Explorer",
+        "package": "com.estrongs.android.pop",
+        "patches": [
+          {
+            "name": "ES File Explorer Ui Cleanup",
+            "description": "Removes BookMark, New Files, Cleaner Row In HomePage, Cleans More menu actions",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "4.4.3.7"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "MX Player Pro",
+        "package": "com.mxtech.videoplayer.pro",
+        "patches": [
+          {
+            "name": "Hide File Transfer, Video Playlist, Private Folder tiles",
+            "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from the tools tile list.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Hide local tiles banner",
+            "description": "Collapses the local device tiles banner.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Hide Me tab promo items",
+            "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Skip welcome screen",
+            "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen.",
+            "use": false,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "RS File Manager",
+        "package": "com.rs.explorer.filemanager",
+        "patches": [
+          {
+            "name": "Hide more actions",
+            "description": "Hides Hide, Add to desktop, Encrypt, Decrypt, Add bookmark, Web Search, Copy to, Move to, Transfer, and Playing from the \"More actions\" menu.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.3.0.4"
+            ]
+          },
+          {
+            "name": "Hide network, tools and bookmarks on home page",
+            "description": "Hides the Network, Tools and Bookmarks sections from the home page section list.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.3.0.4"
+            ]
+          },
+          {
+            "name": "Skip splash screen",
+            "description": "Moves the launcher intent filter to the main activity and calls the all-files-access permission request directly, instead of showing the splash activity and its full-screen 'grant storage access' dialog.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.3.0.4"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/qk5ZNXn_E2bAi_9JSHhMB_pn1b1NloWWCeMr16cJIAsv05Gy5Rm8nlmd5KjnLOIisgiMtNrG5LOjmdlF_ksQk8o"
+      },
+      {
+        "app_name": "SnapTube",
+        "package": "com.snaptube.premium",
+        "patches": [
+          {
+            "name": "Disable Notification Defaults",
+            "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.64.0.76450210"
+            ]
+          },
+          {
+            "name": "Hide Settings Items",
+            "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.64.0.76450210"
+            ]
+          },
+          {
+            "name": "Remove Watch Ad To Download",
+            "description": "Removes the requirement to watch a rewarded ad before a download starts.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "7.64.0.76450210"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "All Video Downloader & Ace Player",
+        "package": "videoplayer.videodownloader.downloader",
+        "patches": [
+          {
+            "name": "Disable ad dialog when reopening app",
+            "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.9.7"
+            ]
+          },
+          {
+            "name": "Skip splash and language screens",
+            "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.9.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
+      }
+    ],
+    "fingerprint": "cd18230f373ccc58a78b16d544d3b3cc82d3f356af678387a2cadc015fa736dd",
+    "release_notes": "## [1.37.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.6...v1.37.0-dev.7) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Clean+ Splash Merged",
+    "release_tag": "v1.37.0-dev.7",
+    "release_date": "2026-08-19T06:35:14Z"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
@@ -36675,10 +36675,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/V5evYzdmAVEFl9Gy9fh4-XTIb_mPnMPzNdV8rhDyZ31yftOncktYxWnI5xbX4QlAnoCd1fcBvGTzGJU_MxtY"
       }
     ],
-    "fingerprint": "e6430a35d6c2004ae214eabb9c42c4cd39fb430176c755dca4478f8a99cd647c",
-    "release_notes": "## 1.0.0 (2026-08-10)\n\n### ✨ New Features\n\n* Add Sofascore disable ads patch ([2e57b6f](https://github.com/heval99/morphe-patches/commit/2e57b6f7c60a9ea655651e28bfc533468fa14c9c))\n",
-    "release_tag": "v1.0.0",
-    "release_date": "2026-08-10T11:17:17Z"
+    "fingerprint": "e6430a35d6c2004ae214eabb9c42c4cd39fb430176c755dca4478f8a99cd647c"
   },
   "heval99:dev": {
     "bundle": "heval99",
@@ -36705,10 +36702,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/V5evYzdmAVEFl9Gy9fh4-XTIb_mPnMPzNdV8rhDyZ31yftOncktYxWnI5xbX4QlAnoCd1fcBvGTzGJU_MxtY"
       }
     ],
-    "fingerprint": "186fe5257b9a4be56607f8bb06fbc0d0c91dcf779b69f62e3903580947c78358",
-    "release_notes": "## 1.0.0-dev.1 (2026-08-10)\n\n### ✨ New Features\n\n* Add Sofascore disable ads patch ([2e57b6f](https://github.com/heval99/morphe-patches/commit/2e57b6f7c60a9ea655651e28bfc533468fa14c9c))\n",
-    "release_tag": "v1.0.0-dev.1",
-    "release_date": "2026-08-10T11:14:04Z"
+    "fingerprint": "186fe5257b9a4be56607f8bb06fbc0d0c91dcf779b69f62e3903580947c78358"
   },
   "bernardo7894:stable": {
     "bundle": "bernardo7894",
@@ -45976,9 +45970,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-08-19T09:08:13",
-    "version": "v1.40.0-dev.11",
-    "description": "## [1.40.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.10...v1.40.0-dev.11) (2026-08-19)\n\n### 🐛 Bug Fixes\n\n* **SponsorBlock:** Allow SB user id with curly brackets ([8df4e08](https://github.com/MorpheApp/morphe-patches/commit/8df4e085c0d01ad2d1a16ecedf0e9ff4d5206c3e))\n* **YouTube - Playback speed:** Separate playback speed observations from commands ([#2501](https://github.com/MorpheApp/morphe-patches/issues/2501)) ([a433b29](https://github.com/MorpheApp/morphe-patches/commit/a433b29bf86d6545fc106f4c7d5e8fed7e4e91e9))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add experimental support for `9.33.52` ([2e7fe4c](https://github.com/MorpheApp/morphe-patches/commit/2e7fe4cbf8ca42a07dce812c181cc8d1a1511014))\n",
+    "created_at": "2026-08-19T11:57:00",
+    "version": "v1.40.0-dev.12",
+    "description": "## [1.40.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.11...v1.40.0-dev.12) (2026-08-19)\n\n### 🐛 Bug Fixes\n\n* **Reddit - Hide Trending shelves:** Resolve fingerprint failure ([ea9c443](https://github.com/MorpheApp/morphe-patches/commit/ea9c443b0fd9f34d2a2f0c118564b8042901b9fe))\n\n### ✨ New Features\n\n* **Spoof video streams:** Default client maintenance ([#2479](https://github.com/MorpheApp/morphe-patches/issues/2479)) ([62c6a35](https://github.com/MorpheApp/morphe-patches/commit/62c6a351b5313ba9068c62306129ec0dfef29e5e))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -46301,7 +46295,7 @@
           {
             "name": "Network proxy",
             "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
-            "use": true,
+            "use": false,
             "options": [],
             "compatible_versions": [
               "9.33.52",
@@ -47209,7 +47203,7 @@
           {
             "name": "Network proxy",
             "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
-            "use": true,
+            "use": false,
             "options": [],
             "compatible_versions": [
               "21.33.321",
@@ -47886,10 +47880,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/8FVS0kvM60JwqZWRNzBIlwrZZxJa8vpli8IWaaTo8QXRe1PHmCNJ8UpWoXkGPV3jKEaTY2OVAeYoisOnGJXY"
       }
     ],
-    "fingerprint": "e5f7fddd4eef4e4e80360bbf8c1f1ff6318a51d61657b72d722210f877fab8f2",
-    "release_notes": "## [1.40.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.10...v1.40.0-dev.11) (2026-08-19)\n\n### 🐛 Bug Fixes\n\n* **SponsorBlock:** Allow SB user id with curly brackets ([8df4e08](https://github.com/MorpheApp/morphe-patches/commit/8df4e085c0d01ad2d1a16ecedf0e9ff4d5206c3e))\n* **YouTube - Playback speed:** Separate playback speed observations from commands ([#2501](https://github.com/MorpheApp/morphe-patches/issues/2501)) ([a433b29](https://github.com/MorpheApp/morphe-patches/commit/a433b29bf86d6545fc106f4c7d5e8fed7e4e91e9))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add experimental support for `9.33.52` ([2e7fe4c](https://github.com/MorpheApp/morphe-patches/commit/2e7fe4cbf8ca42a07dce812c181cc8d1a1511014))\n",
-    "release_tag": "v1.40.0-dev.11",
-    "release_date": "2026-08-19T09:08:13Z"
+    "fingerprint": "e24952b865bf0c076e524caaf196c7c6c916d165932be5742819d7d35de88f4f",
+    "release_notes": "## [1.40.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.11...v1.40.0-dev.12) (2026-08-19)\n\n### 🐛 Bug Fixes\n\n* **Reddit - Hide Trending shelves:** Resolve fingerprint failure ([ea9c443](https://github.com/MorpheApp/morphe-patches/commit/ea9c443b0fd9f34d2a2f0c118564b8042901b9fe))\n\n### ✨ New Features\n\n* **Spoof video streams:** Default client maintenance ([#2479](https://github.com/MorpheApp/morphe-patches/issues/2479)) ([62c6a35](https://github.com/MorpheApp/morphe-patches/commit/62c6a351b5313ba9068c62306129ec0dfef29e5e))\n",
+    "release_tag": "v1.40.0-dev.12",
+    "release_date": "2026-08-19T11:57:00Z"
   },
   "ee-morphe:stable": {
     "bundle": "ee-morphe",
@@ -52764,14 +52758,23 @@
     "bundle": "andersonlucasg3",
     "channel": "stable",
     "repo_url": "https://github.com/andersonlucasg3/PetalMaps-NonHuawei",
-    "created_at": "2026-08-19T02:27:51Z",
-    "version": "1.3.1",
-    "description": "Removed LSPosed module and logging code. Patches are now pure bytecode modifications with no runtime logging.\n\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate, allowing Petal Maps to run on any Android device.\n- **Huawei Login Fix**: forces the Account Picker sign-in flow with WebView fallback, fixing login on devices without HMS Core.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
+    "created_at": "2026-08-19T14:04:48Z",
+    "version": "1.3.3",
+    "description": "Auto-detect HMS Core: login now checks HMS Core availability at runtime and uses HMS sign-in when available, falling back to WebView when HMS Core is missing.\n\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate, allowing Petal Maps to run on any Android device.\n- **Huawei Login Fix**: forces the Account Picker sign-in flow with WebView fallback, fixing login on devices without HMS Core.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
     "apps": [
       {
         "app_name": "Petal Maps",
         "package": "com.huawei.maps.app",
         "patches": [
+          {
+            "name": "AccountPicker WebView force",
+            "description": "Forces AccountPickerSignInHubPresenter to always use the WebView H5 login path, bypassing HMS Core availability checks that fail on non-Huawei devices.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.7.0.322(001)"
+            ]
+          },
           {
             "name": "Anti-Repack Bypass",
             "description": "Neutralizes the native integrity check (SecurityDetect.irpj) that kills the process upon detecting APK re-signing.",
@@ -52805,7 +52808,7 @@
           },
           {
             "name": "Huawei login fix",
-            "description": "Forces the Account Picker sign-in flow with WebView fallback, fixing login on devices without HMS Core.",
+            "description": "Checks HMS Core availability at runtime: uses HMS sign-in when HMS Core is installed, falls back to AccountPicker WebView when HMS Core is missing.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -52825,10 +52828,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/WBHbeYq1QUHbdVEOwhCxqlMXJ0rUHlYGItTfpCwfiIUG32txrutVLn-LlfZW8tHCBPkrpbIti6wD0sobYYad"
       }
     ],
-    "fingerprint": "b19f7826d1263f3be636ebe5e65712c05c208ded1ab5b37e87f06ee691a79572",
-    "release_notes": "Removed LSPosed module and logging code. Patches are now pure bytecode modifications with no runtime logging.",
-    "release_tag": "v1.3.1",
-    "release_date": "2026-08-19T02:27:51Z"
+    "fingerprint": "677c1523f522bfe9de43919dc65a8ce374ada679046583a3170fb09eff6c87e3",
+    "release_notes": "Auto-detect HMS Core: login now checks HMS Core availability at runtime and uses HMS sign-in when available, falling back to WebView when HMS Core is missing.",
+    "release_tag": "v1.3.3",
+    "release_date": "2026-08-19T14:04:48Z"
   },
   "kondratjev:stable": {
     "bundle": "kondratjev",
@@ -53864,9 +53867,9 @@
     "bundle": "okish-morphe",
     "channel": "stable",
     "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-    "created_at": "2026-08-19T04:29:31",
-    "version": "v1.12.0",
-    "description": "## [1.12.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.11.0...v1.12.0) (2026-08-19)\n\n### ✨ New Features\n\n* add missiles patches (ad removal, billing bypass, Pairip license bypass) ([5511dbc](https://github.com/byehi98/okish-morphe-patches/commit/5511dbc42b0f91ba39fa78e43f1b8e19e8cbefde))\n* add moviebox patches (ad removal, premium unlock, download unlock, parallel downloads, update bypass) ([44f7424](https://github.com/byehi98/okish-morphe-patches/commit/44f742443ea5bf42bc9551e6272a722f6af76fd9))\n",
+    "created_at": "2026-08-19T14:25:50",
+    "version": "v1.13.0",
+    "description": "## [1.13.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.12.0...v1.13.0) (2026-08-19)\n\n### ✨ New Features\n\n* **vector:** add rewarded ad spoofing ([2c0c141](https://github.com/byehi98/okish-morphe-patches/commit/2c0c141736cdb8d461bedb8a1732b9cf01df502b))\n",
     "apps": [
       {
         "app_name": "Dr. Driving",
@@ -54121,6 +54124,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/ueP4ZNBXNdqNWIR23mdGnQuS-9c7dVvFp981Poc9ZEDkk6vddPGBxCYk3A_fWketiNpGO_GEHbmtDh8-qX-X"
       },
       {
+        "app_name": "Vector",
+        "package": "com.nekki.vector",
+        "patches": [
+          {
+            "name": "Vector Ad Spoof",
+            "description": "Spoofs rewarded ad callbacks to grant coins/rewards without showing ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.10.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/9FoG1-SqhzaFcaOckhyExPFI2_eUMENolN1xm2hnR2qnwOe7HVG-L6lncv3IXvMt4Z8JASROvxQxWecB9cwp"
+      },
+      {
         "app_name": "Earn to Die 2",
         "package": "com.notdoppler.earntodie2",
         "patches": [
@@ -54255,18 +54274,18 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "ea2a655afb9c1206868ec63e32cd3518d17089d65527acd5ec8e5910e6ad00a6",
-    "release_notes": "## [1.12.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.11.0...v1.12.0) (2026-08-19)\n\n### ✨ New Features\n\n* add missiles patches (ad removal, billing bypass, Pairip license bypass) ([5511dbc](https://github.com/byehi98/okish-morphe-patches/commit/5511dbc42b0f91ba39fa78e43f1b8e19e8cbefde))\n* add moviebox patches (ad removal, premium unlock, download unlock, parallel downloads, update bypass) ([44f7424](https://github.com/byehi98/okish-morphe-patches/commit/44f742443ea5bf42bc9551e6272a722f6af76fd9))\n",
-    "release_tag": "v1.12.0",
-    "release_date": "2026-08-19T04:29:31Z"
+    "fingerprint": "0bd5e714ec525c77e06e377d7b83b733ad879912bff1d20ec859f7824292ae89",
+    "release_notes": "## [1.13.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.12.0...v1.13.0) (2026-08-19)\n\n### ✨ New Features\n\n* **vector:** add rewarded ad spoofing ([2c0c141](https://github.com/byehi98/okish-morphe-patches/commit/2c0c141736cdb8d461bedb8a1732b9cf01df502b))\n",
+    "release_tag": "v1.13.0",
+    "release_date": "2026-08-19T14:25:50Z"
   },
   "okish-morphe:dev": {
     "bundle": "okish-morphe",
     "channel": "dev",
     "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-    "created_at": "2026-08-19T04:23:22",
-    "version": "v1.12.0-dev.2",
-    "description": "## [1.12.0-dev.2](https://github.com/byehi98/okish-morphe-patches/compare/v1.12.0-dev.1...v1.12.0-dev.2) (2026-08-19)\n\n### ✨ New Features\n\n* add moviebox patches (ad removal, premium unlock, download unlock, parallel downloads, update bypass) ([44f7424](https://github.com/byehi98/okish-morphe-patches/commit/44f742443ea5bf42bc9551e6272a722f6af76fd9))\n",
+    "created_at": "2026-08-19T14:15:33",
+    "version": "v1.13.0-dev.1",
+    "description": "## [1.13.0-dev.1](https://github.com/byehi98/okish-morphe-patches/compare/v1.12.0...v1.13.0-dev.1) (2026-08-19)\n\n### ✨ New Features\n\n* **vector:** add rewarded ad spoofing ([2c0c141](https://github.com/byehi98/okish-morphe-patches/commit/2c0c141736cdb8d461bedb8a1732b9cf01df502b))\n",
     "apps": [
       {
         "app_name": "Dr. Driving",
@@ -54521,6 +54540,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/ueP4ZNBXNdqNWIR23mdGnQuS-9c7dVvFp981Poc9ZEDkk6vddPGBxCYk3A_fWketiNpGO_GEHbmtDh8-qX-X"
       },
       {
+        "app_name": "Vector",
+        "package": "com.nekki.vector",
+        "patches": [
+          {
+            "name": "Vector Ad Spoof",
+            "description": "Spoofs rewarded ad callbacks to grant coins/rewards without showing ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.10.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/9FoG1-SqhzaFcaOckhyExPFI2_eUMENolN1xm2hnR2qnwOe7HVG-L6lncv3IXvMt4Z8JASROvxQxWecB9cwp"
+      },
+      {
         "app_name": "Earn to Die 2",
         "package": "com.notdoppler.earntodie2",
         "patches": [
@@ -54655,10 +54690,10 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "bd663570473e52080bdfd58e18d75d29a5f81a1b62579c669a17fa411e8570b9",
-    "release_notes": "## [1.12.0-dev.2](https://github.com/byehi98/okish-morphe-patches/compare/v1.12.0-dev.1...v1.12.0-dev.2) (2026-08-19)\n\n### ✨ New Features\n\n* add moviebox patches (ad removal, premium unlock, download unlock, parallel downloads, update bypass) ([44f7424](https://github.com/byehi98/okish-morphe-patches/commit/44f742443ea5bf42bc9551e6272a722f6af76fd9))\n",
-    "release_tag": "v1.12.0-dev.2",
-    "release_date": "2026-08-19T04:23:22Z"
+    "fingerprint": "48cbcb53b93e0ebb78ad53bc601eb6cfea349c9fd61f4eceb0f3875819a44c36",
+    "release_notes": "## [1.13.0-dev.1](https://github.com/byehi98/okish-morphe-patches/compare/v1.12.0...v1.13.0-dev.1) (2026-08-19)\n\n### ✨ New Features\n\n* **vector:** add rewarded ad spoofing ([2c0c141](https://github.com/byehi98/okish-morphe-patches/commit/2c0c141736cdb8d461bedb8a1732b9cf01df502b))\n",
+    "release_tag": "v1.13.0-dev.1",
+    "release_date": "2026-08-19T14:15:33Z"
   },
   "ftl-portal:stable": {
     "bundle": "ftl-portal",
@@ -61561,7 +61596,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/tvinmqPRqEdX_C3x319DHieZ6XDUL5PyLZa-8TDJe9gb4d05G9I5zaakv7MOWmXTMQi-Lq5W0yDfUeiHPk9d"
       }
     ],
-    "fingerprint": "c8bd76d8a36f01305d18944711ff08e2a17d1ff801c1f4e08cf2252f720d7bc2"
+    "fingerprint": "c8bd76d8a36f01305d18944711ff08e2a17d1ff801c1f4e08cf2252f720d7bc2",
+    "release_notes": "# [1.19.0](https://gitlab.com/Paresh-Maheshwari/paresh-patches/compare/v1.18.0...v1.19.0) (2026-07-07)\n\n\n### Bug Fixes\n\n* handle missing dev branch in CI backmerge ([6fd1f76](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/6fd1f764cf39688643b57e79054b3aa6bd9a3a85))\n* update Alarmo recommended version to 1.3.8 ([024e785](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/024e785a840b7d01df0b5dab15eedad46483d520))\n* update Proton VPN recommended version to 5.19.16.0 ([5f4994d](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/5f4994d909b1ec8457162fadbb8f388df7576ebc))\n* update Telegram recommended version to 12.8.3 ([2ace333](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/2ace333510d95ec80580ef8a31dfb8ac8f5f1653))\n\n\n### Features\n\n* add MX Player Pro license bypass patch ([0800707](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/0800707a0f4d97efbd86c51ee522969b24bb10e1))\n* add Task Manager pro patch ([2e50d4a](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/2e50d4af749db18f6412e28952624f6dace5112c))\n",
+    "release_tag": "v1.19.0",
+    "release_date": "2026-07-07T17:45:47.815Z"
   },
   "paresh-maheshwari:dev": {
     "bundle": "paresh-maheshwari",
@@ -62289,7 +62327,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/tvinmqPRqEdX_C3x319DHieZ6XDUL5PyLZa-8TDJe9gb4d05G9I5zaakv7MOWmXTMQi-Lq5W0yDfUeiHPk9d"
       }
     ],
-    "fingerprint": "0171a205f44db26ca30cc66e56fd0e0f05fbd35c779eb1ec8c2d7e4b56f8b8e7"
+    "fingerprint": "0171a205f44db26ca30cc66e56fd0e0f05fbd35c779eb1ec8c2d7e4b56f8b8e7",
+    "release_notes": "# [1.20.0-dev.2](https://gitlab.com/Paresh-Maheshwari/paresh-patches/compare/v1.20.0-dev.1...v1.20.0-dev.2) (2026-08-08)\n\n\n### Bug Fixes\n\n* restore TickTick push sync on re-signed app + support 8.1.3.3 ([0d2aaf4](https://gitlab.com/Paresh-Maheshwari/paresh-patches/commit/0d2aaf4da7b5ef8836ca0ff9b7236429718b3484))\n",
+    "release_tag": "v1.20.0-dev.2",
+    "release_date": "2026-08-08T04:55:25.025Z"
   },
   "amplerevanced:stable": {
     "bundle": "amplerevanced",
@@ -65808,14 +65849,23 @@
     "bundle": "petalmaps-androidauto",
     "channel": "stable",
     "repo_url": "https://github.com/andersonlucasg3/PetalMaps-NonHuawei",
-    "created_at": "2026-08-19T02:27:51",
-    "version": "v1.3.1",
-    "description": "Removed LSPosed module and logging code. Patches are now pure bytecode modifications with no runtime logging.",
+    "created_at": "2026-08-19T14:04:48",
+    "version": "v1.3.3",
+    "description": "Auto-detect HMS Core: login now checks HMS Core availability at runtime and uses HMS sign-in when available, falling back to WebView when HMS Core is missing.",
     "apps": [
       {
         "app_name": "Petal Maps",
         "package": "com.huawei.maps.app",
         "patches": [
+          {
+            "name": "AccountPicker WebView force",
+            "description": "Forces AccountPickerSignInHubPresenter to always use the WebView H5 login path, bypassing HMS Core availability checks that fail on non-Huawei devices.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.7.0.322(001)"
+            ]
+          },
           {
             "name": "Anti-Repack Bypass",
             "description": "Neutralizes the native integrity check (SecurityDetect.irpj) that kills the process upon detecting APK re-signing.",
@@ -65849,7 +65899,7 @@
           },
           {
             "name": "Huawei login fix",
-            "description": "Forces the Account Picker sign-in flow with WebView fallback, fixing login on devices without HMS Core.",
+            "description": "Checks HMS Core availability at runtime: uses HMS sign-in when HMS Core is installed, falls back to AccountPicker WebView when HMS Core is missing.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -65869,10 +65919,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/WBHbeYq1QUHbdVEOwhCxqlMXJ0rUHlYGItTfpCwfiIUG32txrutVLn-LlfZW8tHCBPkrpbIti6wD0sobYYad"
       }
     ],
-    "fingerprint": "c0af172b394b13316c4fb1532d4b397060e01d4a648eea067622aa6857c62ba8",
-    "release_notes": "Removed LSPosed module and logging code. Patches are now pure bytecode modifications with no runtime logging.",
-    "release_tag": "v1.3.1",
-    "release_date": "2026-08-19T02:27:51Z"
+    "fingerprint": "9b24806edabfcb49f4b410e2cb424db399632e7700ab6c9c5d2d339879d863c3",
+    "release_notes": "Auto-detect HMS Core: login now checks HMS Core availability at runtime and uses HMS sign-in when available, falling back to WebView when HMS Core is missing.",
+    "release_tag": "v1.3.3",
+    "release_date": "2026-08-19T14:04:48Z"
   },
   "gryphous-morphe:stable": {
     "bundle": "gryphous-morphe",
