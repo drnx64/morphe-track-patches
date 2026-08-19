@@ -1,38 +1,26 @@
 {
   "affected_bundles": [
     {
-      "bundle": "ftl",
+      "bundle": "abhishek-bhujang",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "RS File Manager",
-          "package": "com.rs.explorer.filemanager",
+          "app_name": "Harmonium",
+          "package": "harmonium.music.gameg.real.harmoniumfree",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Disable downloader from download menu",
-                "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
-              }
-            ],
+            "patches_added": [],
             "patches_removed": [],
-            "patches_modified": []
-          }
-        },
-        {
-          "app_name": "All Video Downloader & Ace Player",
-          "package": "videoplayer.videodownloader.downloader",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
+            "patches_modified": [
               {
-                "name": "Disable downloader from download menu",
-                "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+                "name": "Remove Ads",
+                "description": "Removes all banner ads, interstitial ads, open app ads, and enables permanent ad-free status.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
               }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
+            ]
           }
         }
       ]
@@ -52,7 +40,7 @@
             "patches_modified": [
               {
                 "name": "Clean main UI",
-                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
                 "changes": [
                   "description updated"
                 ]
@@ -65,13 +53,13 @@
           "package": "com.rs.explorer.filemanager",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
+            "patches_added": [
               {
                 "name": "Disable downloader from download menu",
                 "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
               }
             ],
+            "patches_removed": [],
             "patches_modified": []
           }
         },
@@ -80,58 +68,328 @@
           "package": "videoplayer.videodownloader.downloader",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
+            "patches_added": [
               {
                 "name": "Disable downloader from download menu",
                 "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
               }
             ],
+            "patches_removed": [],
             "patches_modified": []
           }
         }
       ]
     },
     {
-      "bundle": "morphe",
-      "channel": "dev",
+      "bundle": "hxreborn-tiktok",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "YouTube Music",
-          "package": "com.google.android.apps.youtube.music",
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Network proxy",
-                "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+                "name": "Feed filter",
+                "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, the playlist bar, the floating event badge, AI-generated posts, paid partnership and promotional content, the account, bulletin-board and other inserted cards, posts from verified accounts, and videos outside configured view or like ranges.",
                 "changes": [
-                  "disabled"
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "browzomje",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Pinterest",
+          "package": "com.pinterest",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Hide screenshot share menu",
+                "description": "Removes the panel Pinterest opens after you take a screenshot, and stops it from watching for screenshots in the first place on the screens where that is possible. Can be turned back off from the Morphe settings screen."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Copy direct link",
+                "description": "Adds a 'Copy direct link' option to the pin menu to copy a link under the direct CDN media format instead of the standard Pinterest web link.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable ads",
+                "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds. Also carries two more filters turned on from the Morphe settings screen: \"Hide product pins\", off by default, and \"Hide board modules in search\" (sponsored carousel and featured boards), on by default. They ride on the same three hooks because the search landing page is delivered by the very same feed responses.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable email confirmation dialog",
+                "description": "Immediately closes the \"confirm your email\" modal (and similar ones: connect Google, etc.) if enabled in Morphe settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Download board",
+                "description": "Adds an option to the board's \"…\" menu to bulk download images and videos from already loaded pins. Streaming-only videos are reported and skipped.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Download video",
+                "description": "Adds a 'Download video' option to the pin menu for video pins, saving the clip to the Downloads folder.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide Create nav button",
+                "description": "Hooks the '+' (create Pin) navigation bar button: hidden if enabled in Morphe settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide Notifications nav button",
+                "description": "Hooks the notifications button: hidden if enabled in Morphe settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide Search nav button",
+                "description": "Hooks the search button: hidden if enabled in Morphe settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide greeting header buttons",
+                "description": "Hooks the '+' (create) and inbox/notifications buttons in the home feed header: hidden if the matching Morphe settings are enabled.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide search history",
+                "description": "Hides the \"Recent searches\" section both on the search screen and in the carousel below the search bar. It does not prevent Pinterest from logging searches (server-side), but stops them from being shown anywhere in the app.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Morphe settings entry",
+                "description": "Adds the \"Morphe\" item to the Account Settings list to open the toggle screen.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Morphe settings screen (label)",
+                "description": "Renames the reused string resource for the \"Morphe\" entry in Settings, across all languages.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Morphe settings screen (manifest)",
+                "description": "Registers the Morphe settings Activity in the manifest, with an intent-filter for the morphe:// scheme.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Neutralize advertising ID",
+                "description": "Returns an empty Google Advertising ID and forces ‘limit ad tracking’, disabling ad tracking without causing the app to crash.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Set pin as wallpaper",
+                "description": "It adds the ‘Set as wallpaper’ option to the pin menu, which downloads uses the image and sets it as the device’s wallpaper.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "browzomje",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Pinterest",
+          "package": "com.pinterest",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Disable AppsFlyer tracking",
+                "description": "Neutralises the AppsFlyer attribution SDK: init() becomes a no-op and isStopped() always returns true, so no install, event or uninstall data is transmitted."
+              },
+              {
+                "name": "Disable Google Engage",
+                "description": "Removes the Google Engage broadcast receiver, so Pinterest cannot publish your content to Google (Discover, Assistant, Play Store)."
+              },
+              {
+                "name": "Disable Google Engage worker",
+                "description": "Makes the periodic Google Engage job fail, so no content recommendation is ever published to Google even when the job is scheduled from outside the manifest."
+              },
+              {
+                "name": "Disable third-party trackers",
+                "description": "Turns off the advertising and telemetry SDKs Pinterest embeds — Google Ads (AdMob), Bugsnag crash reporting, Firebase Analytics/Crashlytics/Performance and the Android Privacy Sandbox ad APIs — and strips the Advertising ID permission. Push notifications are unaffected."
+              },
+              {
+                "name": "Hide ad views",
+                "description": "Collapses Pinterest's ad-only views (text ad cards, promoted closeup action bars, sponsored board headers) so no ad chrome is drawn even if the app builds one. Follows the \"Disable ads\" switch in the Morphe settings screen."
+              },
+              {
+                "name": "Hide greeting header buttons",
+                "description": "Hooks the '+' (create) and inbox/notifications buttons in the home feed header: hidden if the matching Morphe settings are enabled."
+              },
+              {
+                "name": "Hide screenshot share menu",
+                "description": "Removes the panel Pinterest opens after you take a screenshot, and stops it from watching for screenshots in the first place on the screens where that is possible. Can be turned back off from the Morphe settings screen."
+              },
+              {
+                "name": "Sanitize copied links",
+                "description": "Resolves the pin.it short link that \"Copy link\" puts on the clipboard — its slug identifies who shared it — to the plain pin link, and strips tracking parameters. Can be turned off from the Morphe settings screen."
+              },
+              {
+                "name": "Sanitize shared links",
+                "description": "Strips UTM and click-ID tracking parameters from the link Pinterest puts on the Android share sheet, and resolves pin.it short links — whose slug identifies who shared it — to the plain pin link. Can be turned off from the Morphe settings screen."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Copy direct link",
+                "description": "Adds a 'Copy direct link' option to the pin menu to copy a link under the direct CDN media format instead of the standard Pinterest web link.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable ads",
+                "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds. Also carries two more filters turned on from the Morphe settings screen: \"Hide product pins\", off by default, and \"Hide board modules in search\" (sponsored carousel and featured boards), on by default. They ride on the same three hooks because the search landing page is delivered by the very same feed responses.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable email confirmation dialog",
+                "description": "Immediately closes the \"confirm your email\" modal (and similar ones: connect Google, etc.) if enabled in Morphe settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Download board",
+                "description": "Adds an option to the board's \"…\" menu to bulk download images and videos from already loaded pins. Streaming-only videos are reported and skipped.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Download video",
+                "description": "Adds a 'Download video' option to the pin menu for video pins, saving the clip to the Downloads folder.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide Create nav button",
+                "description": "Hooks the '+' (create Pin) navigation bar button: hidden if enabled in Morphe settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide Notifications nav button",
+                "description": "Hooks the notifications button: hidden if enabled in Morphe settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide Search nav button",
+                "description": "Hooks the search button: hidden if enabled in Morphe settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide search history",
+                "description": "Hides the \"Recent searches\" section both on the search screen and in the carousel below the search bar. It does not prevent Pinterest from logging searches (server-side), but stops them from being shown anywhere in the app.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Morphe settings entry",
+                "description": "Adds the \"Morphe\" item to the Account Settings list to open the toggle screen.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Morphe settings screen (label)",
+                "description": "Renames the reused string resource for the \"Morphe\" entry in Settings, across all languages.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Morphe settings screen (manifest)",
+                "description": "Registers the Morphe settings Activity in the manifest, with an intent-filter for the morphe:// scheme.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Neutralize advertising ID",
+                "description": "Returns an empty Google Advertising ID and forces ‘limit ad tracking’, disabling ad tracking without causing the app to crash.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Set pin as wallpaper",
+                "description": "It adds the ‘Set as wallpaper’ option to the pin menu, which downloads uses the image and sets it as the device’s wallpaper.",
+                "changes": [
+                  "versions: +1 version"
                 ]
               }
             ]
           }
         },
         {
-          "app_name": "YouTube",
-          "package": "com.google.android.youtube",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Network proxy",
-                "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
-                "changes": [
-                  "disabled"
-                ]
-              }
-            ]
-          }
+          "app_name": "Easy Sudoku",
+          "package": "easy.sudoku.puzzle.solver.free",
+          "badge_type": "NEW APP"
         }
       ]
     },
@@ -147,45 +405,21 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "AccountPicker WebView force",
-                "description": "Forces AccountPickerSignInHubPresenter to always use the WebView H5 login path, bypassing HMS Core availability checks that fail on non-Huawei devices."
+                "name": "Main activity orientation fix",
+                "description": "Changes PetalMapsActivity's screenOrientation from \"behind\" to \"unspecified\", allowing the app to rotate freely."
               }
             ],
             "patches_removed": [],
             "patches_modified": [
               {
                 "name": "Huawei login fix",
-                "description": "Checks HMS Core availability at runtime: uses HMS sign-in when HMS Core is installed, falls back to AccountPicker WebView when HMS Core is missing.",
+                "description": "Forces HMS Core sign-in path (a.g) in AccountFactory. Requires HMS Core installed. Disable if HMS Core is not available.",
                 "changes": [
                   "description updated"
                 ]
               }
             ]
           }
-        }
-      ]
-    },
-    {
-      "bundle": "okish-morphe",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Vector",
-          "package": "com.nekki.vector",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "okish-morphe",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Vector",
-          "package": "com.nekki.vector",
-          "badge_type": "NEW APP"
         }
       ]
     },
@@ -201,15 +435,15 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "AccountPicker WebView force",
-                "description": "Forces AccountPickerSignInHubPresenter to always use the WebView H5 login path, bypassing HMS Core availability checks that fail on non-Huawei devices."
+                "name": "Main activity orientation fix",
+                "description": "Changes PetalMapsActivity's screenOrientation from \"behind\" to \"unspecified\", allowing the app to rotate freely."
               }
             ],
             "patches_removed": [],
             "patches_modified": [
               {
                 "name": "Huawei login fix",
-                "description": "Checks HMS Core availability at runtime: uses HMS sign-in when HMS Core is installed, falls back to AccountPicker WebView when HMS Core is missing.",
+                "description": "Forces HMS Core sign-in path (a.g) in AccountFactory. Requires HMS Core installed. Disable if HMS Core is not available.",
                 "changes": [
                   "description updated"
                 ]
