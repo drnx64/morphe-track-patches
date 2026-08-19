@@ -24922,9 +24922,9 @@
     "bundle": "abhishek-bhujang",
     "channel": "stable",
     "repo_url": "https://github.com/theabhishekbhujang/morphe-patches",
-    "created_at": "2026-08-18T19:06:38",
-    "version": "v1.4.2",
-    "description": "## [1.4.2](https://github.com/theabhishekbhujang/morphe-patches/compare/v1.4.1...v1.4.2) (2026-08-18)\n\n### 🐛 Bug Fixes\n\n* update GitHub workflows to valid action versions and correct gradle tasks ([a69b3e3](https://github.com/theabhishekbhujang/morphe-patches/commit/a69b3e3d211c6048c956ab0cb6974f3cb4a921ef))\n",
+    "created_at": "2026-08-19T16:15:32",
+    "version": "v1.5.3",
+    "description": "## [1.5.3](https://github.com/theabhishekbhujang/morphe-patches/compare/v1.5.2...v1.5.3) (2026-08-19)\n\n### 🐛 Bug Fixes\n\n* **rhythm:** use addInstructions to force isPro false without breaking constructor field initialization ([d6fd8f3](https://github.com/theabhishekbhujang/morphe-patches/commit/d6fd8f35c7b5766a6b8736eec92b016fd6c8efd6))\n",
     "apps": [
       {
         "app_name": "Rhythm with Tabla & Tanpura",
@@ -24952,14 +24952,14 @@
             "use": true,
             "options": [],
             "compatible_versions": [
-              "29.0.1"
+              "harmony_29.0.1"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/MUyOxXiDlA0-dvb9k1oN7LBGWEAkDjnFygjyIqrMryqjtjm4zWeoAIAwMvwikqcr8-FdBvQXd-lBZT4yNjEH8w"
       }
     ],
-    "fingerprint": "a733cb820fd5b3f139e06b144e4d951f9aa78b522a2d60ea507a9a64e8517e72"
+    "fingerprint": "db769ff9cfb3772c7df6cc6a1050cf959a65edf0b361d73fb3ac80c4acfaa1d9"
   },
   "abhishek-bhujang:dev": {
     "bundle": "abhishek-bhujang",
@@ -25360,9 +25360,9 @@
     "bundle": "ftl",
     "channel": "dev",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-19T06:35:14",
-    "version": "v1.37.0-dev.7",
-    "description": "## [1.37.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.6...v1.37.0-dev.7) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Clean+ Splash Merged",
+    "created_at": "2026-08-19T17:06:48",
+    "version": "v1.39.0-dev.1",
+    "description": "## [1.39.0-dev.1](https://github.com/BlazeFTL/FTL-Patches/compare/v1.38.0...v1.39.0-dev.1) (2026-08-19)\n\n### ✨ New Features\n\n* update apk junk ([abb9ae0](https://github.com/BlazeFTL/FTL-Patches/commit/abb9ae031fe91bd2f21a96c721117f236221a601))\n",
     "apps": [
       {
         "app_name": "Xender",
@@ -25370,7 +25370,7 @@
         "patches": [
           {
             "name": "Clean main UI",
-            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -25454,6 +25454,15 @@
         "package": "com.rs.explorer.filemanager",
         "patches": [
           {
+            "name": "Disable downloader from download menu",
+            "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.3.0.4"
+            ]
+          },
+          {
             "name": "Hide more actions",
             "description": "Hides Hide, Add to desktop, Encrypt, Decrypt, Add bookmark, Web Search, Copy to, Move to, Transfer, and Playing from the \"More actions\" menu.",
             "use": false,
@@ -25531,6 +25540,15 @@
             ]
           },
           {
+            "name": "Disable downloader from download menu",
+            "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "1.9.7"
+            ]
+          },
+          {
             "name": "Skip splash and language screens",
             "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
             "use": false,
@@ -25543,7 +25561,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
       }
     ],
-    "fingerprint": "cd18230f373ccc58a78b16d544d3b3cc82d3f356af678387a2cadc015fa736dd"
+    "fingerprint": "9a3b2b71ddfa1b6e0426a45163b7e8c3a05638456c51331b819b12ed90eb2e29"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
@@ -42475,9 +42493,9 @@
     "bundle": "hxreborn-tiktok",
     "channel": "stable",
     "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
-    "created_at": "2026-08-16T15:57:51",
-    "version": "v0.11.1",
-    "description": "## What's Changed\n\n\n\n### Bug Fixes\n\n- **feedfilter:** Stop hiding posts that carry no paid-partnership label by @hxreborn ([`39d15ab`](https://github.com/hxreborn/tiktok-patches-for-morphe/commit/39d15ab20dd0385e0c16e4c219dd19d9083a0989))\n\n\n\n",
+    "created_at": "2026-08-19T16:35:00",
+    "version": "v0.11.4",
+    "description": "## What's Changed\n\n\n### Bug Fixes\n\n- **build:** Complete feed model stubs by @icysymmetra ([`053ce6c`](https://github.com/hxreborn/hxreborn-tiktok-patches/commit/053ce6cd064c16c1a06e87e10b76896da7c00a83))\n\n- **TikTok - Captcha:** Stop suppressing risk-control puzzles by default by @hxreborn ([`bb48b71`](https://github.com/hxreborn/hxreborn-tiktok-patches/commit/bb48b71b8aa09d6447528bb7cba26d8685e6e286))\n\n- **TikTok - Feed filter:** Filter cached feed insertions by @icysymmetra ([`d30a6dd`](https://github.com/hxreborn/hxreborn-tiktok-patches/commit/d30a6dd37f9eaa1c1faecdf2b30b047707170860))\n\n- **TikTok - Feed filter:** Hide every inserted feed card instead of only bulletin-board ones by @hxreborn ([`85d3a55`](https://github.com/hxreborn/hxreborn-tiktok-patches/commit/85d3a5579a8036ccf4c9bf514787ce97349860c9))\n\n",
     "apps": [
       {
         "app_name": "TikTok",
@@ -42602,7 +42620,7 @@
           },
           {
             "name": "Feed filter",
-            "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, the playlist bar, the floating event badge, AI-generated posts, paid partnership and promotional content, the account and bulletin-board suggestion cards, posts from verified accounts, and videos outside configured view or like ranges.",
+            "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, the playlist bar, the floating event badge, AI-generated posts, paid partnership and promotional content, the account, bulletin-board and other inserted cards, posts from verified accounts, and videos outside configured view or like ranges.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -42784,7 +42802,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/2o7iuqPe-0msP3DvNhzoOgNo4eZ6GkL_RtGVeKyBn5UBQAW5cw-GW5V3wDOHB1yTQuqWzrFLFOv2u4_5ea1uhg"
       }
     ],
-    "fingerprint": "f9f347856b4f04fbb9c3a6fc5bf8774b7e9339cd036e01797c634eddf0c90bd6"
+    "fingerprint": "3cf06af5adcbe2e1e5a064e8f83da47237cae84cc13b2430784e49bd39eb64b6"
   },
   "hxreborn-tiktok:dev": {
     "bundle": "hxreborn-tiktok",
@@ -50222,9 +50240,9 @@
     "bundle": "browzomje",
     "channel": "stable",
     "repo_url": "https://github.com/browzomje/browzomje-patches",
-    "created_at": "2026-08-12T22:23:22",
-    "version": "v1.6.0",
-    "description": "## [1.6.0](https://github.com/browzomje/browzomje-patches/compare/v1.5.2...v1.6.0) (2026-08-12)\n\n### 🐛 Bug Fixes\n\n* **pinterest:** stop hidePersistently from throwing on every call ([0df3ab2](https://github.com/browzomje/browzomje-patches/commit/0df3ab20ecc8c495f7e3990c30f1ecde5a2fa405))\n\n### ✨ New Features\n\n* **pinterest:** hide the create and inbox buttons in the feed header ([52bdc63](https://github.com/browzomje/browzomje-patches/commit/52bdc635c22360d777ea5427d393aee4ba80847a))\n",
+    "created_at": "2026-08-19T15:31:23",
+    "version": "v1.7.0",
+    "description": "## [1.7.0](https://github.com/browzomje/browzomje-patches/compare/v1.6.0...v1.7.0) (2026-08-19)\n\n### ✨ New Features\n\n* **pinterest:** add hide screenshot share patch and support 14.32.0 ([b212051](https://github.com/browzomje/browzomje-patches/commit/b2120514fb6ff4e6f3b5a6f69ad78f32c3fd8c53))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -50237,17 +50255,19 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
             "name": "Disable ads",
-            "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds. Also carries the optional \"Hide product pins\" filter, which is off by default and is turned on from the Morphe settings screen.",
+            "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds. Also carries two more filters turned on from the Morphe settings screen: \"Hide product pins\", off by default, and \"Hide board modules in search\" (sponsored carousel and featured boards), on by default. They ride on the same three hooks because the search landing page is delivered by the very same feed responses.",
             "use": true,
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50257,7 +50277,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50267,7 +50288,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50277,7 +50299,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50287,7 +50310,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50297,7 +50321,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50307,7 +50332,19 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Hide screenshot share menu",
+            "description": "Removes the panel Pinterest opens after you take a screenshot, and stops it from watching for screenshots in the first place on the screens where that is possible. Can be turned back off from the Morphe settings screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50317,7 +50354,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50327,7 +50365,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50337,7 +50376,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50347,7 +50387,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50357,7 +50398,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50367,7 +50409,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50377,7 +50420,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           }
         ],
@@ -50436,15 +50480,15 @@
         "icon_url": "https://play-lh.googleusercontent.com/5fwa6KT5cglDIrpPgr09W5IUz22dW8GIZ1fxHedRocpWFLMsWqXyCPTRPT3ezj8W2FIWdkzSiMvzGx3DHBTlkQ"
       }
     ],
-    "fingerprint": "c8cce7d0f0e7842fbeb9edb2f5cf12e9f817f7a8368a3dad5d6d702ac8c28cde"
+    "fingerprint": "de3132f60ccdd4bde932d885968c8cb67d97de4e09bc966dfb18655850d3b3bf"
   },
   "browzomje:dev": {
     "bundle": "browzomje",
     "channel": "dev",
     "repo_url": "https://github.com/browzomje/browzomje-patches",
-    "created_at": "2026-07-29T14:18:48",
-    "version": "v1.4.0-dev.3",
-    "description": "## [1.4.0-dev.3](https://github.com/browzomje/browzomje-patches/compare/v1.4.0-dev.2...v1.4.0-dev.3) (2026-07-29)\n\n### ✨ New Features\n\n* **pinterest:** translate patcher log and feedback messages to English ([1893e58](https://github.com/browzomje/browzomje-patches/commit/1893e582d3ed23fca3a429e8c22c02e1ac29a7a3))\n",
+    "created_at": "2026-08-19T17:14:45",
+    "version": "v1.8.0-dev.1",
+    "description": "## [1.8.0-dev.1](https://github.com/browzomje/browzomje-patches/compare/v1.7.0...v1.8.0-dev.1) (2026-08-19)\n\n### ✨ New Features\n\n* **pinterest:** privacy hardening, link sanitizer and board download fixes ([7da75bb](https://github.com/browzomje/browzomje-patches/commit/7da75bb26f8e81c228a73046578d7631f553b001))\n",
     "apps": [
       {
         "app_name": "Pinterest",
@@ -50457,17 +50501,30 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
             "name": "Disable ads",
-            "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds.",
+            "description": "Removes sponsored (promoted) pins from the home feed and from search/related/board feeds. Also carries two more filters turned on from the Morphe settings screen: \"Hide product pins\", off by default, and \"Hide board modules in search\" (sponsored carousel and featured boards), on by default. They ride on the same three hooks because the search landing page is delivered by the very same feed responses.",
             "use": true,
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Disable AppsFlyer tracking",
+            "description": "Neutralises the AppsFlyer attribution SDK: init() becomes a no-op and isStopped() always returns true, so no install, event or uninstall data is transmitted.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50477,7 +50534,41 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Disable Google Engage",
+            "description": "Removes the Google Engage broadcast receiver, so Pinterest cannot publish your content to Google (Discover, Assistant, Play Store).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Disable Google Engage worker",
+            "description": "Makes the periodic Google Engage job fail, so no content recommendation is ever published to Google even when the job is scheduled from outside the manifest.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Disable third-party trackers",
+            "description": "Turns off the advertising and telemetry SDKs Pinterest embeds — Google Ads (AdMob), Bugsnag crash reporting, Firebase Analytics/Crashlytics/Performance and the Android Privacy Sandbox ad APIs — and strips the Advertising ID permission. Push notifications are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50487,7 +50578,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50497,7 +50589,19 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Hide ad views",
+            "description": "Collapses Pinterest's ad-only views (text ad cards, promoted closeup action bars, sponsored board headers) so no ad chrome is drawn even if the app builds one. Follows the \"Disable ads\" switch in the Morphe settings screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50507,7 +50611,19 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Hide greeting header buttons",
+            "description": "Hooks the '+' (create) and inbox/notifications buttons in the home feed header: hidden if the matching Morphe settings are enabled.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50517,7 +50633,19 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Hide screenshot share menu",
+            "description": "Removes the panel Pinterest opens after you take a screenshot, and stops it from watching for screenshots in the first place on the screens where that is possible. Can be turned back off from the Morphe settings screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50527,7 +50655,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50537,7 +50666,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50547,7 +50677,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50557,7 +50688,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50567,7 +50699,8 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50577,7 +50710,30 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Sanitize copied links",
+            "description": "Resolves the pin.it short link that \"Copy link\" puts on the clipboard — its slug identifies who shared it — to the plain pin link, and strips tracking parameters. Can be turned off from the Morphe settings screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
+            ]
+          },
+          {
+            "name": "Sanitize shared links",
+            "description": "Strips UTM and click-ID tracking parameters from the link Pinterest puts on the Android share sheet, and resolves pin.it short links — whose slug identifies who shared it — to the plain pin link. Can be turned off from the Morphe settings screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.23.0",
+              "14.28.0",
+              "14.32.0"
             ]
           },
           {
@@ -50587,14 +50743,67 @@
             "options": [],
             "compatible_versions": [
               "14.23.0",
-              "14.28.0"
+              "14.28.0",
+              "14.32.0"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/VExMwhu9Fe5kz72YnPWP6mHrNA5WfgZ-PJMnBnQmXFpLncTAOaaHtK4b8w7b2xxGxtqycDatYslVyNSLucl9QA"
+      },
+      {
+        "app_name": "Easy Sudoku",
+        "package": "easy.sudoku.puzzle.solver.free",
+        "patches": [
+          {
+            "name": "Disable ad SDK",
+            "description": "Stops the AppLovin MAX mediation stack — and with it Pangle, Amazon APS, Chartboost, InMobi, Mintegral, Fyber, Bigo and the rest — from ever initialising. The game starts faster and makes no ad-network requests at all. Requires \"Remove ads\": on its own it would only make the app fail to find ads, not stop asking for them.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.70.0"
+            ]
+          },
+          {
+            "name": "Disable tracking",
+            "description": "Hands out an empty Google Advertising ID with \"limit ad tracking\" turned on, and stops AppsFlyer from sending install attribution and events. The game keeps working normally: nothing in it waits for attribution data.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.70.0"
+            ]
+          },
+          {
+            "name": "Instant rewards",
+            "description": "Grants the reward of every \"watch an ad\" button — hints, streak repairs, extra puzzles — immediately, without playing a video. This is what keeps those buttons working once \"Remove ads\" is enabled: without it the game believes no video is available and hands out nothing.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.70.0"
+            ]
+          },
+          {
+            "name": "Reclaim ad banner space",
+            "description": "Collapses the empty strip the banner used to occupy at the bottom of the board, so the puzzle gets the space back instead of staring at a blank rectangle. Only useful together with \"Remove ads\".",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.70.0"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Turns off every ad Easy Sudoku shows: the home banner, the interstitials between puzzles, the app-open ad and all the background preloading. It works by telling the game its own \"ads removed\" purchase is already active, which also unlocks the Fun, Ice and Killer Sudoku modes that are otherwise gated behind watching ads. Keep \"Instant rewards\" enabled too, or the \"watch an ad for a hint\" buttons stop giving anything.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.70.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/5fwa6KT5cglDIrpPgr09W5IUz22dW8GIZ1fxHedRocpWFLMsWqXyCPTRPT3ezj8W2FIWdkzSiMvzGx3DHBTlkQ"
       }
     ],
-    "fingerprint": "0308e3b907dc0d72d331b175c80145669ba7f120e7b8dc8efd738b405f4ce40d"
+    "fingerprint": "32254ce6ee4e796eafbb02e6041b22240fd2e240d964b9f05b1433391d0d2808"
   },
   "abhis1n:stable": {
     "bundle": "abhis1n",
@@ -52257,9 +52466,9 @@
     "bundle": "andersonlucasg3",
     "channel": "stable",
     "repo_url": "https://github.com/andersonlucasg3/PetalMaps-NonHuawei",
-    "created_at": "2026-08-19T14:04:48Z",
-    "version": "1.3.3",
-    "description": "Auto-detect HMS Core: login now checks HMS Core availability at runtime and uses HMS sign-in when available, falling back to WebView when HMS Core is missing.\n\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate, allowing Petal Maps to run on any Android device.\n- **Huawei Login Fix**: forces the Account Picker sign-in flow with WebView fallback, fixing login on devices without HMS Core.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
+    "created_at": "2026-08-19T15:49:31Z",
+    "version": "1.3.4",
+    "description": "Fixed login crash (register overflow), added main activity orientation fix (allows free rotation).\n\n- **Anti-Repack Bypass**: neutralises the native SecurityDetect.irpj() integrity check that kills the process on re-signed APKs.\n- **Manufacturer Check Bypass**: removes the Huawei/Honor-only device gate, allowing Petal Maps to run on any Android device.\n- **Huawei Login Fix**: forces the Account Picker sign-in flow with WebView fallback, fixing login on devices without HMS Core.\n- **Change package name**: install alongside the original app (default: morphe.huawei.petal.maps).",
     "apps": [
       {
         "app_name": "Petal Maps",
@@ -52307,7 +52516,16 @@
           },
           {
             "name": "Huawei login fix",
-            "description": "Checks HMS Core availability at runtime: uses HMS sign-in when HMS Core is installed, falls back to AccountPicker WebView when HMS Core is missing.",
+            "description": "Forces HMS Core sign-in path (a.g) in AccountFactory. Requires HMS Core installed. Disable if HMS Core is not available.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.7.0.322(001)"
+            ]
+          },
+          {
+            "name": "Main activity orientation fix",
+            "description": "Changes PetalMapsActivity's screenOrientation from \"behind\" to \"unspecified\", allowing the app to rotate freely.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -52327,7 +52545,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/WBHbeYq1QUHbdVEOwhCxqlMXJ0rUHlYGItTfpCwfiIUG32txrutVLn-LlfZW8tHCBPkrpbIti6wD0sobYYad"
       }
     ],
-    "fingerprint": "677c1523f522bfe9de43919dc65a8ce374ada679046583a3170fb09eff6c87e3"
+    "fingerprint": "aba48e4401f6ba202f1f81696a2bc8c4942edbd3faa634f975316b37b3847b02"
   },
   "kondratjev:stable": {
     "bundle": "kondratjev",
@@ -65189,9 +65407,9 @@
     "bundle": "petalmaps-androidauto",
     "channel": "stable",
     "repo_url": "https://github.com/andersonlucasg3/PetalMaps-NonHuawei",
-    "created_at": "2026-08-19T14:04:48",
-    "version": "v1.3.3",
-    "description": "Auto-detect HMS Core: login now checks HMS Core availability at runtime and uses HMS sign-in when available, falling back to WebView when HMS Core is missing.",
+    "created_at": "2026-08-19T15:49:31",
+    "version": "v1.3.4",
+    "description": "Fixed login crash (register overflow), added main activity orientation fix (allows free rotation).",
     "apps": [
       {
         "app_name": "Petal Maps",
@@ -65239,7 +65457,16 @@
           },
           {
             "name": "Huawei login fix",
-            "description": "Checks HMS Core availability at runtime: uses HMS sign-in when HMS Core is installed, falls back to AccountPicker WebView when HMS Core is missing.",
+            "description": "Forces HMS Core sign-in path (a.g) in AccountFactory. Requires HMS Core installed. Disable if HMS Core is not available.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.7.0.322(001)"
+            ]
+          },
+          {
+            "name": "Main activity orientation fix",
+            "description": "Changes PetalMapsActivity's screenOrientation from \"behind\" to \"unspecified\", allowing the app to rotate freely.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -65259,7 +65486,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/WBHbeYq1QUHbdVEOwhCxqlMXJ0rUHlYGItTfpCwfiIUG32txrutVLn-LlfZW8tHCBPkrpbIti6wD0sobYYad"
       }
     ],
-    "fingerprint": "9b24806edabfcb49f4b410e2cb424db399632e7700ab6c9c5d2d339879d863c3"
+    "fingerprint": "9a4a9b637cd54f28671b727b85ce9b6483559574eaafdab0e19613391375a915"
   },
   "gryphous-morphe:stable": {
     "bundle": "gryphous-morphe",
