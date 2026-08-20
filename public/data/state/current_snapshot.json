@@ -13529,216 +13529,9 @@
     "bundle": "andrewliang25",
     "channel": "stable",
     "repo_url": "https://github.com/andrewliang25/morphe-patches",
-    "created_at": "2026-08-12T15:20:41",
-    "version": "v1.6.0",
-    "description": "## [1.6.0](https://github.com/andrewliang25/morphe-patches/compare/v1.5.0...v1.6.0) (2026-08-12)\n\n### ✨ New Features\n\n* fix chat-history backup sign-in via GmsCore ([a6fba22](https://github.com/andrewliang25/morphe-patches/commit/a6fba224300610ed1498900875f34980382d202b))\n",
-    "apps": [
-      {
-        "app_name": "LINE",
-        "package": "jp.naver.line.android",
-        "patches": [
-          {
-            "name": "Disable LINE Premium",
-            "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsells, badges, the Premium settings page, and subscribe/manage flows. Doesn't unlock anything (premium is server-enforced).",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Disable VOOM",
-            "description": "Neutralizes VOOM entry points — deep links, shares, and notifications do nothing and the standalone VOOM feed closes on open. Messaging and other tabs are unaffected.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Fix chat backup sign-in via GmsCore",
-            "description": "Routes chat-history backup's Google account picker and Drive token through GmsCore, so backup and restore work on re-signed builds. Requires MicroG-RE. Doesn't affect Google account login. Root Mount install does not need this patch.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Fix push notifications",
-            "description": "Restores push notifications on re-signed builds when LINE is fully closed. Root Mount install does not need this patch.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide ad views",
-            "description": "Hides LINE display ad views — the LINE Ads SDK containers across the app, the chat-list Smart Channel banner, and Google AdManager ads.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide attach menu extra tools",
-            "description": "Removes all the server-provided extra tools from a chat room's + attach menu (Poll, Reservation, Schedule, Ladder shuffle, and any others). The built-in tiles (camera, gallery, files, contact, etc.) are unaffected.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide calendar buttons",
-            "description": "Removes every LINE Calendar button inside the messenger: the one in the Chats-tab header, and the four inside a chat room — the top toolbar, the + attach menu, the slide-out chat menu, and the message long-press menu.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide community button",
-            "description": "Removes the community (OpenChat) button from the top of the Chats tab header.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide Events button",
-            "description": "Removes the \"Events\" row from a chat room's slide-out menu. (Events is a separate feature from LINE Calendar — it opens a server-hosted page.)",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide Home modules",
-            "description": "Hides Home-tab clutter modules: the recommended stickers/content section, the real-time hot-topics (即時夯話題) block, and Home feed ads.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide LINE GIFT button",
-            "description": "Removes the LINE GIFT tile from a chat room's + attach menu.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide LINE TODAY tab",
-            "description": "Removes the LINE TODAY (News) tab from the main bottom navigation, in both the news-tab and news-row layouts.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide premium unsend upsells",
-            "description": "Removes the LYP premium-unsend upsells that survive \"Disable LINE Premium\": the \"Unsend discreetly\" button, the post-unsend promo link, and the expired-window unsend upsell. Ordinary unsend still works.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide Transfer button",
-            "description": "Removes the Transfer (LINE Pay) tile from a chat room's + attach menu.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide VOOM tab",
-            "description": "Removes the VOOM (formerly Timeline) tab from the main bottom navigation.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Hide Wallet tab",
-            "description": "Removes the Wallet (LINE Pay) tab from the main bottom navigation, in both the normal and mini-tab layouts.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Keep chats unread",
-            "description": "Opening a 1:1 or group chat no longer marks it read — it stays unread and no read receipt is sent. Manually using \"Mark as read\" / \"Mark all as read\" still marks the chat read and sends the receipt as normal.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Keep unsent messages",
-            "description": "Keeps messages that were unsent in 1:1 and group chats on your device instead of destroying them, and shows the usual \"unsent a message\" notice directly below the message it kept. Doesn't apply to OpenChat.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Open links in external browser",
-            "description": "Opens tapped web links (http/https) in your default browser instead of LINE's in-app browser. LIFF mini-apps and LINE deep links are unaffected.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Redirect LINE Pay",
-            "description": "Forwards LINE Pay flows to the standalone LINE Pay app instead of running them in-app, so the device-integrity check that fails on a re-signed build never runs. Messaging is unaffected.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          },
-          {
-            "name": "Remove banner ads",
-            "description": "Stops LINE from loading Smart Channel banner ads (neutralizes the getBanners and getPrefetchableBanners responses).",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "26.11.0"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
-      }
-    ],
-    "fingerprint": "d74e67b05412611b55d1301ee15a7e4f09524e2214b5abfb0ce2bf9dc4f39563"
-  },
-  "andrewliang25:dev": {
-    "bundle": "andrewliang25",
-    "channel": "dev",
-    "repo_url": "https://github.com/andrewliang25/morphe-patches",
-    "created_at": "2026-08-20T02:55:02",
-    "version": "v1.6.1-dev.1",
-    "description": "## [1.6.1-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.6.0...v1.6.1-dev.1) (2026-08-20)\n\n### 🐛 Bug Fixes\n\n* stop Settings ▸ Chats crashing under \"Disable LINE Premium\" ([8aaac97](https://github.com/andrewliang25/morphe-patches/commit/8aaac9702d54644aea42a98801eb1ca189c4006a))\n",
+    "created_at": "2026-08-20T13:38:06",
+    "version": "v1.7.0",
+    "description": "## [1.7.0](https://github.com/andrewliang25/morphe-patches/compare/v1.6.1...v1.7.0) (2026-08-20)\n\n### ✨ New Features\n\n* add \"Hide Shopping tab\" patch ([04b256b](https://github.com/andrewliang25/morphe-patches/commit/04b256b9fa446217997a16b5ab2c46e98ecab1ea)), closes [#59](https://github.com/andrewliang25/morphe-patches/issues/59)\n",
     "apps": [
       {
         "app_name": "LINE",
@@ -13862,6 +13655,15 @@
             ]
           },
           {
+            "name": "Hide Shopping tab",
+            "description": "Removes the Shopping tab from the main bottom navigation, covering both the Japan (Shopping / ショッピング) and Taiwan (Discover / 逛逛) variants.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
             "name": "Hide Transfer button",
             "description": "Removes the Transfer (LINE Pay) tile from a chat room's + attach menu.",
             "use": true,
@@ -13937,7 +13739,223 @@
         "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
       }
     ],
-    "fingerprint": "c9754a45bda9e48465d2c74771262967f5d25ea9cd55a289a8de2512e30c1c5c"
+    "fingerprint": "9713ed1131a1bba25d94c7cd21e974aed3f10d959d3ed99bf473d77a146b53d6"
+  },
+  "andrewliang25:dev": {
+    "bundle": "andrewliang25",
+    "channel": "dev",
+    "repo_url": "https://github.com/andrewliang25/morphe-patches",
+    "created_at": "2026-08-20T12:48:02",
+    "version": "v1.7.0-dev.1",
+    "description": "## [1.7.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.6.1...v1.7.0-dev.1) (2026-08-20)\n\n### ✨ New Features\n\n* add \"Hide Shopping tab\" patch ([04b256b](https://github.com/andrewliang25/morphe-patches/commit/04b256b9fa446217997a16b5ab2c46e98ecab1ea)), closes [#59](https://github.com/andrewliang25/morphe-patches/issues/59)\n",
+    "apps": [
+      {
+        "app_name": "LINE",
+        "package": "jp.naver.line.android",
+        "patches": [
+          {
+            "name": "Disable LINE Premium",
+            "description": "Hides all LINE Yahoo Premium (LYP) surfaces — upsells, badges, the Premium settings page, and subscribe/manage flows. Premium chat backup falls back to the ordinary chat-history backup. Doesn't unlock anything (premium is server-enforced).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Disable VOOM",
+            "description": "Neutralizes VOOM entry points — deep links, shares, and notifications do nothing and the standalone VOOM feed closes on open. Messaging and other tabs are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Fix chat backup sign-in via GmsCore",
+            "description": "Routes chat-history backup's Google account picker and Drive token through GmsCore, so backup and restore work on re-signed builds. Requires MicroG-RE. Doesn't affect Google account login. Root Mount install does not need this patch.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Fix push notifications",
+            "description": "Restores push notifications on re-signed builds when LINE is fully closed. Root Mount install does not need this patch.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide ad views",
+            "description": "Hides LINE display ad views — the LINE Ads SDK containers across the app, the chat-list Smart Channel banner, and Google AdManager ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide attach menu extra tools",
+            "description": "Removes all the server-provided extra tools from a chat room's + attach menu (Poll, Reservation, Schedule, Ladder shuffle, and any others). The built-in tiles (camera, gallery, files, contact, etc.) are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide calendar buttons",
+            "description": "Removes every LINE Calendar button inside the messenger: the one in the Chats-tab header, and the four inside a chat room — the top toolbar, the + attach menu, the slide-out chat menu, and the message long-press menu.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide community button",
+            "description": "Removes the community (OpenChat) button from the top of the Chats tab header.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Events button",
+            "description": "Removes the \"Events\" row from a chat room's slide-out menu. (Events is a separate feature from LINE Calendar — it opens a server-hosted page.)",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Home modules",
+            "description": "Hides Home-tab clutter modules: the recommended stickers/content section, the real-time hot-topics (即時夯話題) block, and Home feed ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide LINE GIFT button",
+            "description": "Removes the LINE GIFT tile from a chat room's + attach menu.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide LINE TODAY tab",
+            "description": "Removes the LINE TODAY (News) tab from the main bottom navigation, in both the news-tab and news-row layouts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide premium unsend upsells",
+            "description": "Removes the LYP premium-unsend upsells that survive \"Disable LINE Premium\": the \"Unsend discreetly\" button, the post-unsend promo link, and the expired-window unsend upsell. Ordinary unsend still works.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Shopping tab",
+            "description": "Removes the Shopping tab from the main bottom navigation, covering both the Japan (Shopping / ショッピング) and Taiwan (Discover / 逛逛) variants.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Transfer button",
+            "description": "Removes the Transfer (LINE Pay) tile from a chat room's + attach menu.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide VOOM tab",
+            "description": "Removes the VOOM (formerly Timeline) tab from the main bottom navigation.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Hide Wallet tab",
+            "description": "Removes the Wallet (LINE Pay) tab from the main bottom navigation, in both the normal and mini-tab layouts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Keep chats unread",
+            "description": "Opening a 1:1 or group chat no longer marks it read — it stays unread and no read receipt is sent. Manually using \"Mark as read\" / \"Mark all as read\" still marks the chat read and sends the receipt as normal.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Keep unsent messages",
+            "description": "Keeps messages that were unsent in 1:1 and group chats on your device instead of destroying them, and shows the usual \"unsent a message\" notice directly below the message it kept. Doesn't apply to OpenChat.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Open links in external browser",
+            "description": "Opens tapped web links (http/https) in your default browser instead of LINE's in-app browser. LIFF mini-apps and LINE deep links are unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Redirect LINE Pay",
+            "description": "Forwards LINE Pay flows to the standalone LINE Pay app instead of running them in-app, so the device-integrity check that fails on a re-signed build never runs. Messaging is unaffected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          },
+          {
+            "name": "Remove banner ads",
+            "description": "Stops LINE from loading Smart Channel banner ads (neutralizes the getBanners and getPrefetchableBanners responses).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "26.11.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/7PeaZXtTu7EuCuWzGpkXWAnT9pLs_Ly9MbVSeZUULlIc5H02wGWzvrbmqxj86UnkM9gjUaGSeAcKbYbfbegTJw"
+      }
+    ],
+    "fingerprint": "929a30bb4508710adc12a0669acd8cf99574c118808f6f14ed0119ddfd1d5b81"
   },
   "maurogamervn:stable": {
     "bundle": "maurogamervn",
@@ -17238,9 +17256,9 @@
     "bundle": "roundsalmon4",
     "channel": "stable",
     "repo_url": "https://github.com/RoundSalmon4/morphe-patches-template",
-    "created_at": "2026-08-14T14:22:40",
-    "version": "v1.0.2",
-    "description": "## [1.0.2](https://github.com/RoundSalmon4/morphe-patches-template/compare/v1.0.1...v1.0.2) (2026-08-14)\n\n### 🚀 Updated App Support\n\n* add SeriesGuide v2026.4.0 target ([360a5ff](https://github.com/RoundSalmon4/morphe-patches-template/commit/360a5ffb716779d00b7dc8138d8c607802e2defc))\n",
+    "created_at": "2026-08-20T13:12:38",
+    "version": "v1.1.0",
+    "description": "## [1.1.0](https://github.com/RoundSalmon4/morphe-patches-template/compare/v1.0.2...v1.1.0) (2026-08-20)\n\n### ✨ New Features\n\n* add Nuvio Unlock Supporter patch ([c3ca8b7](https://github.com/RoundSalmon4/morphe-patches-template/commit/c3ca8b7e94037acf65e072663a729d96b22f0825))\n",
     "apps": [
       {
         "app_name": "SeriesGuide",
@@ -17259,9 +17277,25 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/7p3hIuJGXPcZJiRZK1_UAm50-YvnevFh0fCheMnlbjVEYaxwxJ4JbAyGzNfTkpsPuOTGEMNUyosci09uJikgew"
+      },
+      {
+        "app_name": "Nuvio",
+        "package": "com.nuvio.app",
+        "patches": [
+          {
+            "name": "Unlock Supporter",
+            "description": "Unlocks all supporter perks (themes, profile backgrounds, and avatars).",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "0.4.7"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/hae5SIdkvlE-BRF3M3x0vHhKYuGY8wKjeVv575hYYu9rECVehlLCc7E0gqVvqmlgTUCW-eTXBFFlgyOinz2H-2w=s0-br30"
       }
     ],
-    "fingerprint": "1a930919b342f480fc20595db70999b72554eca7968f8ea407b6a2be9cf5f16c"
+    "fingerprint": "b18617de2ee51213c3203e8f5d2d6b653e394ba54bdc8d8c417f330e51f7b312"
   },
   "anddea:stable": {
     "bundle": "anddea",
@@ -25400,9 +25434,9 @@
     "bundle": "ftl",
     "channel": "dev",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-20T04:10:44",
-    "version": "v1.39.0-dev.2",
-    "description": "## [1.39.0-dev.2](https://github.com/BlazeFTL/FTL-Patches/compare/v1.39.0-dev.1...v1.39.0-dev.2) (2026-08-20)\n\n### ✨ New Features\n\n* up analytics ([9d40b74](https://github.com/BlazeFTL/FTL-Patches/commit/9d40b741c6405c222019f734817e1bd44ecc9cb4))\n",
+    "created_at": "2026-08-20T12:40:10",
+    "version": "v1.39.0-dev.3",
+    "description": "## [1.39.0-dev.3](https://github.com/BlazeFTL/FTL-Patches/compare/v1.39.0-dev.2...v1.39.0-dev.3) (2026-08-20)\n\n### ✨ New Features\n\n* ads up ([ff00438](https://github.com/BlazeFTL/FTL-Patches/commit/ff004387950c6cad0624b89e0e48ea7bda1cedfa))\n",
     "apps": [
       {
         "app_name": "Xender",
