@@ -1,13 +1,91 @@
 {
   "affected_bundles": [
     {
-      "bundle": "abhishek-bhujang",
+      "bundle": "flexboard",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Toolbar Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Adds six hotkey buttons too, each typing a string you set in Flexboard's settings — they only appear once you have filled one in."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Select All Button",
+                "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first."
+              }
+            ],
+            "patches_modified": []
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "flexboard",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Rhythm with Tabla & Tanpura",
-          "package": "com.psslabs.rhythm",
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Suggested Settings",
+                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Flick Keys for Symbols",
+                "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings."
+              }
+            ],
+            "patches_modified": []
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "petalmaps-nonhuawei",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "Petal Maps",
+          "package": "com.huawei.maps.app",
+          "badge_type": "NEW APP"
+        }
+      ]
+    },
+    {
+      "bundle": "rushiranpise",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Inure App Manager (GitHub)",
+          "package": "app.simple.inure",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev"
+        },
+        {
+          "app_name": "Inure App Manager",
+          "package": "app.simple.inure.play",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev"
+        },
+        {
+          "app_name": "Drivvo",
+          "package": "br.com.ctncardoso.ctncar",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
@@ -15,7 +93,49 @@
             "patches_modified": [
               {
                 "name": "Unlock Pro",
-                "description": "Unlocks all Pro features, taals, variations, scales, Manjeera, Tanpuras, removes purchase banners and ads.",
+                "description": "Unlocks Drivvo Pro by patching all four gateway methods in the y9 subscription class: isPremium() → true, getPlanType() → 'pro', checkVehicleLimit() → true (no vehicle cap), checkPremiumScreen() → true (no screen lock).",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Amazon Shopping",
+          "package": "com.amazon.mshop.android.shopping",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Price history charts",
+                "description": "Injects Keepa and CamelCamelCamel price history charts on Amazon product pages.",
+                "changes": [
+                  "options: +8 options"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Zutobi",
+          "package": "com.driverlicenseapp",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev"
+        },
+        {
+          "app_name": "Android Developer Verifier",
+          "package": "com.google.android.verifier",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Bypass developer verification",
+                "description": "Forces all APK install verification sessions to be bypassed, preventing the verifier from blocking sideloaded or unsigned apps on Android 16+ devices. Only available for root (mount) installations.Important: Requires pushing the patched APK as a system app replacement (e.g. via Magisk module or ADB with root)since the original holds DEVELOPER_VERIFICATION_AGENT permission. ADB installs are exempt from verification regardless.",
                 "changes": [
                   "description updated"
                 ]
@@ -24,9 +144,59 @@
           }
         },
         {
-          "app_name": "Harmonium",
-          "package": "harmonium.music.gameg.real.harmoniumfree",
-          "badge_type": "NEW APP"
+          "app_name": "Monet",
+          "package": "com.klevico.monet",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks all Monet Launcher premium features by forcing the billing cache to always report premium as active.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Word",
+          "package": "com.microsoft.office.word",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Word",
+                "description": "Removes login requirement, unlocks premium, blocks ads, bypasses signature and code transparency checks.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Amazon India",
+          "package": "in.amazon.mshop.android.shopping",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Price history charts",
+                "description": "Injects Keepa and CamelCamelCamel price history charts on Amazon product pages.",
+                "changes": [
+                  "options: +8 options"
+                ]
+              }
+            ]
+          }
         }
       ]
     },
@@ -36,386 +206,24 @@
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "BoxBox",
-          "package": "club.boxbox.android",
+          "app_name": "Livescore",
+          "package": "com.livescore",
           "badge_type": "NEW APP"
         },
         {
-          "app_name": "AnyDesk",
-          "package": "com.anydesk.anydeskandroid",
+          "app_name": "365Scores",
+          "package": "com.scores365",
           "badge_type": "NEW APP"
         },
         {
-          "app_name": "Brave Browser",
-          "package": "com.brave.browser",
+          "app_name": "FishBuddy",
+          "package": "no.fishbuddy_playground.app",
           "badge_type": "NEW APP"
         },
         {
-          "app_name": "FotMob",
-          "package": "com.mobilefootie.wc2010",
+          "app_name": "IPTV",
+          "package": "ru.iptvremote.android.iptv",
           "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "MyFitnessPal",
-          "package": "com.myfitnesspal.android",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "Sofascore",
-          "package": "com.sofascore.results",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Block marketing notifications",
-                "description": "Blocks promotional and marketing notification prompts and modals."
-              },
-              {
-                "name": "Disable Facebook SDK",
-                "description": "Disables Facebook SDK initialization, marketing, and ad network activity."
-              },
-              {
-                "name": "Disable Play Integrity",
-                "description": "Bypasses Google Play Integrity API checks."
-              },
-              {
-                "name": "Disable telemetry",
-                "description": "Disables AppsFlyer, Firebase Analytics, Crashlytics, and Adjust telemetry."
-              },
-              {
-                "name": "Enable Premium",
-                "description": "Unlocks AI insights and premium features locked behind subscription."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Disable ads",
-                "description": "Disables banner, interstitial, feed, native, preroll and rewarded ads.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "app_name": "Saphe Link",
-          "package": "my.saphelink",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "browzomje",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Pinterest",
-          "package": "com.pinterest",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Disable AppsFlyer tracking",
-                "description": "Neutralises the AppsFlyer attribution SDK, so no install, event or uninstall data leaves the device."
-              },
-              {
-                "name": "Disable Google Engage",
-                "description": "Stops Pinterest publishing your content to Google (Discover, Assistant, Play Store)."
-              },
-              {
-                "name": "Disable Google Engage worker",
-                "description": "Blocks the periodic Google Engage job, the other way content reaches Google."
-              },
-              {
-                "name": "Disable third-party trackers",
-                "description": "Turns off the embedded advertising and telemetry SDKs (AdMob, Bugsnag, Firebase, Privacy Sandbox) and strips the Advertising ID permission. Push notifications keep working."
-              },
-              {
-                "name": "Download pin from long press",
-                "description": "Adds a download button to the circular menu you get by long-pressing a pin, so the image can be saved without opening it."
-              },
-              {
-                "name": "Hide ad views",
-                "description": "Collapses Pinterest's ad-only views, so no ad chrome is drawn even if the app builds one. Follows the \"Disable ads\" switch."
-              },
-              {
-                "name": "Morphe runtime names",
-                "description": "Resolves the class Pinterest builds its toasts with, so Morphe's messages look like the app's own."
-              },
-              {
-                "name": "Sanitize copied links",
-                "description": "Turns the pin.it link that \"Copy link\" copies, whose slug identifies who shared it, into the plain pin link. Switchable from Morphe settings."
-              },
-              {
-                "name": "Sanitize shared links",
-                "description": "Strips tracking parameters from the link on the Android share sheet and resolves pin.it short links to the plain pin link. Switchable from Morphe settings."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Copy direct link",
-                "description": "Adds a \"Copy direct link\" option to the pin menu, copying the direct CDN media link instead of the Pinterest web link.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Disable ads",
-                "description": "Removes sponsored pins from the home, search, related and board feeds. Also carries the \"Hide product pins\" and \"Hide board modules in search\" filters, both switchable from the Morphe settings screen.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Disable email confirmation dialog",
-                "description": "Closes the \"confirm your email\" modal, and similar ones, when enabled in Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Download board",
-                "description": "Adds an option to the board's \"…\" menu to bulk download the images and videos of the loaded pins.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Download video",
-                "description": "Adds a \"Download video\" option to the pin menu, saving the clip to the Downloads folder.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide Create nav button",
-                "description": "Hides the \"+\" (create Pin) navigation button, when enabled in Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide Notifications nav button",
-                "description": "Hides the notifications navigation button, when enabled in Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide Search nav button",
-                "description": "Hides the search navigation button, when enabled in Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide greeting header buttons",
-                "description": "Hides the create and inbox buttons in the home feed header, when the matching Morphe settings are enabled.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide screenshot share menu",
-                "description": "Removes the panel Pinterest opens after a screenshot, and stops it watching for screenshots where possible.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide search history",
-                "description": "Hides the \"Recent searches\" section on the search screen and below the search bar. Pinterest still logs searches server-side.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Neutralize advertising ID",
-                "description": "Returns an empty Google Advertising ID and forces \"limit ad tracking\", without crashing the app.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Set pin as wallpaper",
-                "description": "Adds a \"Set as wallpaper\" option to the pin menu, which downloads the image and sets it as the device wallpaper.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "bundle": "browzomje",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Pinterest",
-          "package": "com.pinterest",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Download pin from long press",
-                "description": "Adds a download button to the circular menu you get by long-pressing a pin, so the image can be saved without opening it."
-              },
-              {
-                "name": "Morphe runtime names",
-                "description": "Resolves the class Pinterest builds its toasts with, so Morphe's messages look like the app's own."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Copy direct link",
-                "description": "Adds a \"Copy direct link\" option to the pin menu, copying the direct CDN media link instead of the Pinterest web link.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Disable AppsFlyer tracking",
-                "description": "Neutralises the AppsFlyer attribution SDK, so no install, event or uninstall data leaves the device.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Disable Google Engage",
-                "description": "Stops Pinterest publishing your content to Google (Discover, Assistant, Play Store).",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Disable Google Engage worker",
-                "description": "Blocks the periodic Google Engage job, the other way content reaches Google.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Disable ads",
-                "description": "Removes sponsored pins from the home, search, related and board feeds. Also carries the \"Hide product pins\" and \"Hide board modules in search\" filters, both switchable from the Morphe settings screen.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Disable email confirmation dialog",
-                "description": "Closes the \"confirm your email\" modal, and similar ones, when enabled in Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Disable third-party trackers",
-                "description": "Turns off the embedded advertising and telemetry SDKs (AdMob, Bugsnag, Firebase, Privacy Sandbox) and strips the Advertising ID permission. Push notifications keep working.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Download board",
-                "description": "Adds an option to the board's \"…\" menu to bulk download the images and videos of the loaded pins.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Download video",
-                "description": "Adds a \"Download video\" option to the pin menu, saving the clip to the Downloads folder.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide Create nav button",
-                "description": "Hides the \"+\" (create Pin) navigation button, when enabled in Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide Notifications nav button",
-                "description": "Hides the notifications navigation button, when enabled in Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide Search nav button",
-                "description": "Hides the search navigation button, when enabled in Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide ad views",
-                "description": "Collapses Pinterest's ad-only views, so no ad chrome is drawn even if the app builds one. Follows the \"Disable ads\" switch.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide greeting header buttons",
-                "description": "Hides the create and inbox buttons in the home feed header, when the matching Morphe settings are enabled.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide screenshot share menu",
-                "description": "Removes the panel Pinterest opens after a screenshot, and stops it watching for screenshots where possible.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Hide search history",
-                "description": "Hides the \"Recent searches\" section on the search screen and below the search bar. Pinterest still logs searches server-side.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Neutralize advertising ID",
-                "description": "Returns an empty Google Advertising ID and forces \"limit ad tracking\", without crashing the app.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Sanitize copied links",
-                "description": "Turns the pin.it link that \"Copy link\" copies, whose slug identifies who shared it, into the plain pin link. Switchable from Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Sanitize shared links",
-                "description": "Strips tracking parameters from the link on the Android share sheet and resolves pin.it short links to the plain pin link. Switchable from Morphe settings.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Set pin as wallpaper",
-                "description": "Adds a \"Set as wallpaper\" option to the pin menu, which downloads the image and sets it as the device wallpaper.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          }
         }
       ]
     }

@@ -1,5 +1,55 @@
 # Morphe Patch Tracker Changelog
 
+## [2026-08-19]
+- **UPDATED** Bundle **abhishek-bhujang**
+  - **NEW APP** Harmonium (`harmonium.music.gameg.real.harmoniumfree`) in abhishek-bhujang patches
+  - **UPDATED APP** Rhythm with Tabla & Tanpura (`com.psslabs.rhythm`) in abhishek-bhujang patches
+- **UPDATED** Bundle **andersonlucasg3**
+  - **UPDATED APP** Petal Maps (`com.huawei.maps.app`) in andersonlucasg3 patches
+- **UPDATED** Bundle **browzomje**
+  - **NEW APP** Easy Sudoku (`easy.sudoku.puzzle.solver.free`) in browzomje patches
+  - **UPDATED APP** Pinterest (`com.pinterest`) in browzomje patches
+- **UPDATED** Bundle **edge-morphe**
+  - **UPDATED APP** Microsoft Edge (`com.microsoft.emmx`) in edge-morphe patches
+- **UPDATED** Bundle **flexboard**
+  - **UPDATED APP** Gboard (`com.google.android.inputmethod.latin`) in flexboard patches
+- **UPDATED** Bundle **ftl**
+  - **UPDATED APP** All Video Downloader & Ace Player (`videoplayer.videodownloader.downloader`) in ftl patches
+  - **UPDATED APP** RS File Manager (`com.rs.explorer.filemanager`) in ftl patches
+  - **UPDATED APP** Xender (`cn.xender`) in ftl patches
+- **UPDATED** Bundle **heval99**
+  - **NEW APP** [PRE-RELEASE] AnyDesk (`com.anydesk.anydeskandroid`) in heval99 patches
+  - **NEW APP** [PRE-RELEASE] BoxBox (`club.boxbox.android`) in heval99 patches
+  - **NEW APP** [PRE-RELEASE] Brave Browser (`com.brave.browser`) in heval99 patches
+  - **NEW APP** [PRE-RELEASE] FotMob (`com.mobilefootie.wc2010`) in heval99 patches
+  - **NEW APP** [PRE-RELEASE] MyFitnessPal (`com.myfitnesspal.android`) in heval99 patches
+  - **NEW APP** [PRE-RELEASE] Saphe Link (`my.saphelink`) in heval99 patches
+  - **UPDATED APP** Sofascore (`com.sofascore.results`) in heval99 patches
+- **UPDATED** Bundle **hxreborn**
+  - **NEW APP** Kick (`com.kick.mobile`) in hxreborn patches
+- **UPDATED** Bundle **hxreborn-tiktok**
+  - **UPDATED APP** TikTok (`com.zhiliaoapp.musically`) in hxreborn-tiktok patches
+- **UPDATED** Bundle **imxeren**
+  - **NEW APP** RailOne (`org.cris.aikyam`) in imxeren patches
+- **UPDATED** Bundle **maurogamervn**
+  - **REMOVED APP** Doramasia - Ver Doramas (`com.asiapp.doramasgo`) in maurogamervn patches
+  - **NEW APP** MasterDex - Complete Pokedex (`com.lorenzogreco.pokedex_provider`) in maurogamervn patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+- **UPDATED** Bundle **nuviotv**
+  - **UPDATED APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
+- **UPDATED** Bundle **okish-morphe**
+  - **NEW APP** Missiles (`pl.macaque.missiles`) in okish-morphe patches
+  - **NEW APP** MovieBox (`com.community.oneroom`) in okish-morphe patches
+  - **NEW APP** Vector (`com.nekki.vector`) in okish-morphe patches
+- **UPDATED** Bundle **petalmaps-androidauto**
+  - **UPDATED APP** Petal Maps (`com.huawei.maps.app`) in petalmaps-androidauto patches
+- **UPDATED** Bundle **rushiranpise**
+  - **UPDATED APP** Amazon India (`in.amazon.mshop.android.shopping`) in rushiranpise patches
+  - **UPDATED APP** Amazon Shopping (`com.amazon.mshop.android.shopping`) in rushiranpise patches
+- **NEW BUNDLE** Bundle by **skywarp** (stable)
+  - **NEW APP** Facebook (`com.facebook.katana`) in skywarp patches
 ## [2026-08-18]
 - **NEW BUNDLE** Bundle by **abhishek-bhujang** (dev, stable)
   - **NEW APP** Harmonium (`harmonium.music.gameg.real.harmoniumfree`) in abhishek-bhujang patches
