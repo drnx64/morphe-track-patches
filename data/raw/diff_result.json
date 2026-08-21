@@ -1,6 +1,92 @@
 {
   "affected_bundles": [
     {
+      "bundle": "dh6k",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Brave Browser",
+          "package": "com.brave.browser",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Brave Origin",
+                "description": "Unlocks Brave Origin and enables feature toggle controls.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Quetta Browser",
+          "package": "net.quetta.browser",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Block Quetta bundled extension installation",
+                "description": "Blocks bundled extension installation/reinstallation on arm64-v8a APKs (the framework does not enforce ABI restrictions). Does not remove copies already present in existing profiles. Takes effect immediately on clean installs.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "app_name": "Quetta Browser Official",
+          "package": "net.quetta.browser.official",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Block Quetta bundled extension installation",
+                "description": "Blocks bundled extension installation/reinstallation on arm64-v8a APKs (the framework does not enforce ABI restrictions). Does not remove copies already present in existing profiles. Takes effect immediately on clean installs.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "dh6k",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Brave Browser",
+          "package": "com.brave.browser",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Brave Origin",
+                "description": "Unlocks Brave Origin and enables feature toggle controls.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "bundle": "flexboard",
       "channel": "dev",
       "badge_type": "UPDATED",
@@ -10,23 +96,15 @@
           "package": "com.google.android.inputmethod.latin",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Custom Hotkeys",
-                "description": "Add up to 12 custom buttons to the toolbar above the keyboard, each typing a string you write in Flexboard's settings. A slot stays invisible until you fill it in. Reorder them alongside Gboard's own buttons in its customise view."
-              },
-              {
-                "name": "Grammar Check Row",
-                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
-              }
-            ],
+            "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Toolbar Buttons",
-                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first.",
+                "name": "Custom Hotkeys",
+                "description": "Add up to 12 custom buttons to the toolbar above the keyboard, each typing a string you write in Flexboard's settings. A slot stays invisible until you fill it in. Reorder them alongside Gboard's own buttons in its customise view. Disabled by default while reorder bugs are worked out.",
                 "changes": [
-                  "description updated"
+                  "description updated",
+                  "disabled"
                 ]
               }
             ]
