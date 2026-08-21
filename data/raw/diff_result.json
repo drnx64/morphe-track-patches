@@ -1,48 +1,98 @@
 {
   "affected_bundles": [
     {
-      "bundle": "sofatime",
-      "channel": "stable",
+      "bundle": "anddea",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "SofaTime",
-          "package": "com.theclashsoft.sofatime",
+          "app_name": "YouTube Music",
+          "package": "com.google.android.apps.youtube.music",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
+            "patches_added": [
+              {
+                "name": "Custom branding for YouTube Music",
+                "description": "Adds in-app app-name, launcher-icon, header, splash, and settings-icon selection."
+              },
+              {
+                "name": "Spoof app version",
+                "description": "Adds options to spoof the YouTube Music client version. This can be used to restore old UI elements and features."
+              },
+              {
+                "name": "Theme",
+                "description": "Changes the app's dark theme to the values specified in patch options."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Custom branding icon for YouTube Music",
+                "description": "Changes the YouTube Music app icon to the icon specified in patch options."
+              },
+              {
+                "name": "Custom branding name for YouTube Music",
+                "description": "Changes the YouTube Music app name to the name specified in patch options."
+              },
+              {
+                "name": "Custom header for YouTube Music",
+                "description": "Applies a custom header in the top left corner within the app."
+              },
+              {
+                "name": "Dark theme",
+                "description": "Changes the app's dark theme to the values specified in patch options."
+              }
+            ],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Custom branding for YouTube",
+                "description": "Adds in-app app-name, launcher-icon, header, splash, and settings-icon selection."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Custom branding icon for YouTube",
+                "description": "Changes the YouTube app icon to the icon specified in patch options."
+              },
+              {
+                "name": "Custom branding name for YouTube",
+                "description": "Changes the YouTube app name to the name specified in patch options."
+              },
+              {
+                "name": "Custom header for YouTube",
+                "description": "Applies a custom header in the top left corner within the app."
+              }
+            ],
             "patches_modified": [
               {
-                "name": "Bypass Google Sign-In",
-                "description": "Bypasses SHA-1 check by using embedded WebView OAuth for Google Sign-In.",
+                "name": "Theme",
+                "description": "Adds options to change the app's themes and splash screen style.",
                 "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Bypass license check",
-                "description": "Bypasses PairIP license verification.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Disable telemetry",
-                "description": "Disables Firebase Crashlytics, Sessions, and Analytics.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Unlock premium features",
-                "description": "Unlocks all premium capabilities.",
-                "changes": [
-                  "versions: +1 version"
+                  "enabled",
+                  "options: -2 options"
                 ]
               }
             ]
           }
+        }
+      ]
+    },
+    {
+      "bundle": "rabilrbl",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Blocker",
+          "package": "io.funswitch.blocker",
+          "badge_type": "NEW APP"
         }
       ]
     }
