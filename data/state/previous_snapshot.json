@@ -31073,9 +31073,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-08-20T22:59:02",
-    "version": "v1.20.0-dev.5",
-    "description": "## [1.20.0-dev.5](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.4...v1.20.0-dev.5) (2026-08-20)\n\n### 🐛 Bug Fixes\n\n* build ([cc5ecc1](https://github.com/rushiranpise/morphe-patches/commit/cc5ecc1956175ce963f13dcbc999e6e4b9e4530e))\n* monet launcher ([5f75aa9](https://github.com/rushiranpise/morphe-patches/commit/5f75aa95976355b0de622fb5262a75178d8434cd)), closes [#719](https://github.com/rushiranpise/morphe-patches/issues/719)\n* myperm ([50c4c88](https://github.com/rushiranpise/morphe-patches/commit/50c4c882d2bcaeb40e18f74f219be5bbfdafbda8)), closes [#684](https://github.com/rushiranpise/morphe-patches/issues/684)\n\n### ✨ New Features\n\n* add picsart ([119e497](https://github.com/rushiranpise/morphe-patches/commit/119e4972d45724c71e5af2453aad77faf521e764))\n* tiktok lite add new patches ([3ee74de](https://github.com/rushiranpise/morphe-patches/commit/3ee74de75b3cf53598a38cd59dc482855daeef8b))\n",
+    "created_at": "2026-08-21T08:18:25",
+    "version": "v1.20.0-dev.7",
+    "description": "## [1.20.0-dev.7](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.6...v1.20.0-dev.7) (2026-08-21)\n\n### ✨ New Features\n\n* RedGifs ([7804878](https://github.com/rushiranpise/morphe-patches/commit/780487855121c5b306229f7def0a329a0408209e)), closes [#705](https://github.com/rushiranpise/morphe-patches/issues/705)\n",
     "apps": [
       {
         "app_name": "OBD Android",
@@ -33853,6 +33853,15 @@
             ]
           },
           {
+            "name": "Fix RedGifs Audio",
+            "description": "Routes RedGifs embeds through the WebView iframe path so videos play with audio instead of using the silent direct-stream URL.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.32.0"
+            ]
+          },
+          {
             "name": "Hide Ads",
             "description": "Removes promoted posts and comment ads without requiring Reddit Premium unlock.",
             "use": true,
@@ -35413,6 +35422,130 @@
         "icon_url": "https://play-lh.googleusercontent.com/qB0MqW9JALRW6P_nm4so9SMkSWoKe395SknZo0Uomqux4GOnX7AWKfdN1xEJwnFyftt0_pMUvjYv-_XGvhYk"
       },
       {
+        "app_name": "Telegram",
+        "package": "org.telegram.messenger",
+        "patches": [
+          {
+            "name": "Anti-delete messages",
+            "description": "Prevents messages deleted by other users from being removed locally.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Anti-disappearing media",
+            "description": "Keeps view-once photos, videos and voice messages viewable indefinitely.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Anti-screenshot notification",
+            "description": "Blocks screenshot notifications from being sent to the other user.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Bypass channel restrictions",
+            "description": "Allows opening, viewing, saving and forwarding content from restricted, sensitive, and copyright-restricted channels.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Bypass content restrictions",
+            "description": "Allows saving and forwarding content from restricted channels, chats, and users.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Bypass integrity check",
+            "description": "Spoofs certificate fingerprint and SafetyNet results so login works on patched APK.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Disable auto-update",
+            "description": "Disables automatic app update checks, the blocking update screen, and the proxy sponsor channel insertion. On Telegram Plus also disables the Plus-specific updater and update settings flag.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Disable channel switching",
+            "description": "Disables the pull-down gesture that switches to the next unread channel.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Download speed boost",
+            "description": "Increases download chunk size to 1 MB and max concurrent requests to 12.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Hide typing indicator",
+            "description": "Hides your typing indicator from other users in all chats. On Telegram Plus also silences the controller-level sendTyping dispatcher.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Remove ads",
+            "description": "Removes sponsored messages and video ads from all chats and channels. On Telegram Plus also blocks native banner and inline ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Unlock Premium",
+            "description": "Unlocks Telegram Premium features for the current account.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          },
+          {
+            "name": "Voice to music",
+            "description": "Plays voice notes in the full music player with seek bar and background playback.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "12.9.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/PyZ3akMGXPV0tKKirKNwfO--PSQW3FHR6rD_H9mAaukZ8LiHyYFuBLeU8UZ2ok6r5SP79-3prkfybWKh98AZAD0"
+      },
+      {
         "app_name": "Telegram Web",
         "package": "org.telegram.messenger.web",
         "patches": [
@@ -35463,7 +35596,7 @@
           },
           {
             "name": "Bypass integrity check",
-            "description": "Spoofs certificate fingerprint and SafetyNet results so login works on a patched APK.",
+            "description": "Spoofs certificate fingerprint and SafetyNet results so login works on patched APK.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35472,7 +35605,7 @@
           },
           {
             "name": "Disable auto-update",
-            "description": "Disables automatic app update checks, the blocking update screen, and the proxy sponsor channel insertion.",
+            "description": "Disables automatic app update checks, the blocking update screen, and the proxy sponsor channel insertion. On Telegram Plus also disables the Plus-specific updater and update settings flag.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35490,7 +35623,7 @@
           },
           {
             "name": "Download speed boost",
-            "description": "Increases download chunk size to 512 KB and max concurrent requests to 8.",
+            "description": "Increases download chunk size to 1 MB and max concurrent requests to 12.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35499,7 +35632,7 @@
           },
           {
             "name": "Hide typing indicator",
-            "description": "Hides your typing indicator from other users in all chats.",
+            "description": "Hides your typing indicator from other users in all chats. On Telegram Plus also silences the controller-level sendTyping dispatcher.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35508,7 +35641,7 @@
           },
           {
             "name": "Remove ads",
-            "description": "Removes sponsored messages and video ads from all chats and channels.",
+            "description": "Removes sponsored messages and video ads from all chats and channels. On Telegram Plus also blocks native banner and inline ads.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35587,7 +35720,7 @@
           },
           {
             "name": "Bypass integrity check",
-            "description": "Spoofs certificate fingerprint and SafetyNet results so login works on a patched APK.",
+            "description": "Spoofs certificate fingerprint and SafetyNet results so login works on patched APK.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35596,7 +35729,7 @@
           },
           {
             "name": "Disable analytics",
-            "description": "Blocks all Firebase analytics and event tracking in Telegram Plus.",
+            "description": "Blocks Firebase analytics and event tracking in Telegram Plus. FirebaseApp.initializeApp() is preserved so push notifications keep working.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35605,16 +35738,7 @@
           },
           {
             "name": "Disable auto-update",
-            "description": "Disables automatic app update checks, the blocking update screen, and the proxy sponsor channel insertion.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "12.9.2.0"
-            ]
-          },
-          {
-            "name": "Disable auto-update",
-            "description": "Disables automatic app update checks in Telegram Plus.",
+            "description": "Disables automatic app update checks, the blocking update screen, and the proxy sponsor channel insertion. On Telegram Plus also disables the Plus-specific updater and update settings flag.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35632,7 +35756,7 @@
           },
           {
             "name": "Download speed boost",
-            "description": "Increases download chunk size to 512 KB and max concurrent requests to 8.",
+            "description": "Increases download chunk size to 1 MB and max concurrent requests to 12.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35641,25 +35765,7 @@
           },
           {
             "name": "Hide typing indicator",
-            "description": "Hides your typing indicator from other users in all chats.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "12.9.2.0"
-            ]
-          },
-          {
-            "name": "Hide typing indicator",
-            "description": "Prevents typing status from being sent in Telegram Plus.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "12.9.2.0"
-            ]
-          },
-          {
-            "name": "Plus Premium",
-            "description": "Unlocks premium UI and suppresses premium nag dialogs. isPremiumUser returns true only for self to avoid showing premium badges on others.",
+            "description": "Hides your typing indicator from other users in all chats. On Telegram Plus also silences the controller-level sendTyping dispatcher.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35668,16 +35774,7 @@
           },
           {
             "name": "Remove ads",
-            "description": "Removes sponsored messages and video ads from all chats and channels.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "12.9.2.0"
-            ]
-          },
-          {
-            "name": "Remove ads",
-            "description": "Removes Plus banner ads, native ads, Telegram sponsored messages, and video ads.",
+            "description": "Removes sponsored messages and video ads from all chats and channels. On Telegram Plus also blocks native banner and inline ads.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -35923,7 +36020,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/5zIWi1LMtVRPpffktQtKhPoJNRzorFE8ycINm3fl2i0-_8JQZI30qZN7vkla3b6HrOMLO-bo9OpzZohZSnay"
       }
     ],
-    "fingerprint": "919189a4ed484e1aee01a819efa56d02be806a1acbf52e89871a3c1f85a434d0"
+    "fingerprint": "d3b06bb8199130a30fb1abbf9e742529307ed3718b35433d6e23b18dee49538f"
   },
   "ipusnas:stable": {
     "bundle": "ipusnas",
@@ -44129,9 +44226,9 @@
     "bundle": "hxreborn",
     "channel": "stable",
     "repo_url": "https://github.com/hxreborn/morphe-patches",
-    "created_at": "2026-08-20T04:31:29",
-    "version": "v1.9.2",
-    "description": "## [1.9.2](https://github.com/hxreborn/morphe-patches/compare/v1.9.1...v1.9.2) (2026-08-20)\n\n### Bug Fixes\n\n* **Perplexity - AMOLED dark theme:** keep the tinted surfaces at stock tone ([00d4af1](https://github.com/hxreborn/morphe-patches/commit/00d4af12851c31edc7e9b97658a7bec6567f319d))\n* **Proton Mail - AMOLED dark theme:** keep the sidebar selected row and separators ([98a511f](https://github.com/hxreborn/morphe-patches/commit/98a511ff290d5607c24271d5c35ad4f6b42eaa76))\n",
+    "created_at": "2026-08-21T06:33:33",
+    "version": "v1.10.0",
+    "description": "## [1.10.0](https://github.com/hxreborn/morphe-patches/compare/v1.9.2...v1.10.0) (2026-08-21)\n\n### New Features\n\n* **AlpineQuest - Bypass signature check:** restore search and auto-routing on re-signed builds ([db4dcc9](https://github.com/hxreborn/morphe-patches/commit/db4dcc94e128372c1f0a422db62b043187cc4651))\n* **AlpineQuest - Unlock full version:** unlock the Off-Road Explorer features ([03ab456](https://github.com/hxreborn/morphe-patches/commit/03ab456fd6791c19055d6df132b17d32b4a169f9))\n",
     "apps": [
       {
         "app_name": "Perplexity",
@@ -44381,9 +44478,30 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/IYYIJY9HttxtQhZjbsA7tzQRdMQ675qFtOJFiRbvJvRJarsBzvBn4tcjE2RbWgSQfhEJn4wpbUtEzq-4CXUorg"
+      },
+      {
+        "app_name": "AlpineQuest",
+        "package": "psyberia.alpinequest.free",
+        "patches": [
+          {
+            "name": "Bypass signature check",
+            "description": "Removes the modified-version warning and restores address search and auto-routing.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          },
+          {
+            "name": "Unlock full version",
+            "description": "Unlocks the Off-Road Explorer features gated behind activation.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/qR92EYxI-lnPzdxNGGvRZRMsr5pNUuIeGveHhpBnBM0F-HGvYAjgOrN1QgUtEj8Ud3S2r2oAOhI4gvOmZWYtjA=s0-br30"
       }
     ],
-    "fingerprint": "66fff3a40616aaf93565998c3dfddb62fa650c9a7c750c5a6be1f780cb9589f8"
+    "fingerprint": "48084a3920b60daeb88cd6ce6e4c01300616b1f84cf49f561fd0cf773363a32f"
   },
   "hxreborn:dev": {
     "bundle": "hxreborn",
