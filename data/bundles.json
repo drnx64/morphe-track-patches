@@ -7970,23 +7970,14 @@
     "bundle": "flexboard",
     "channel": "dev",
     "repo_url": "https://github.com/JZ6/Flexboard",
-    "created_at": "2026-08-18T21:39:23",
-    "version": "v1.1.0",
-    "description": "* **Gboard:** docs: record that Bigger Toolbar works on a device\n* **Gboard:** fix: make Bigger Toolbar move the count, not the capacity\n* **Gboard:** docs: correct what the signature bypass actually gates\n* **Gboard:** feat: add a Select all button to the toolbar\n* **Gboard:** fix: withhold Bigger Toolbar, which does not work on device\n* **Gboard:** feat: default the swipe length to Gboard's own distance\n* **Gboard:** chore: sync the gradle wrapper with the template\n* **Gboard:** feat: make the toolbar's icon count adjustable\n* **Gboard:** feat: keep Gboard's own behaviour for swipes from the backspace key\n* **Gboard:** docs: update the roadmap\n* **Gboard:** refactor: remove the master and undo switches\n",
+    "created_at": "2026-08-22T04:50:38",
+    "version": "v1.4.0-dev.1",
+    "description": "## 1.4.0-dev.1\n\n- docs: roadmap marks the native hotkey round-trip done\n- test: pin the hotkey seam in preflight and the constants checker\n- feat: hotkeys return — patch half\n- feat: hotkeys return — extension half\n- fix: writePatchResource name/target concatenates the directory twice\n- ci: skip build-provenance attestation on private repos\n- docs: record the native settings-hosting mechanism\n- test: pin the native-settings seam in preflight; checker lanes for the XML contract\n- feat: host the settings screen as a native Gboard fragment (patch half)\n- feat: host the settings screen as a native Gboard fragment (extension half)\n- fix: drop duplicated palette constants in settings activity\n- chore: drop an unused import\n- chore: harden native toolbar emission and its checkers\n- chore: remove Bigger Toolbar and Hotkeys — both are being rewritten natively",
     "apps": [
       {
         "app_name": "Gboard",
         "package": "com.google.android.inputmethod.latin",
         "patches": [
-          {
-            "name": "Bigger Toolbar",
-            "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
           {
             "name": "Bypass Gboard Signature",
             "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
@@ -7997,8 +7988,8 @@
             ]
           },
           {
-            "name": "Flick Keys for Symbols",
-            "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings.",
+            "name": "Grammar Check Row",
+            "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -8015,8 +8006,8 @@
             ]
           },
           {
-            "name": "Select All Button",
-            "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first.",
+            "name": "Suggested Settings",
+            "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -8040,15 +8031,42 @@
             "compatible_versions": [
               "18.0.3.954559732-release-arm64-v8a"
             ]
+          },
+          {
+            "name": "Toolbar Buttons",
+            "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Toolbar Hotkeys",
+            "description": "Adds up to twelve customisable hotkey buttons to Gboard's toolbar, each typing text the user sets in Flexboard's settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Toolbar Native Test",
+            "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       }
     ],
-    "fingerprint": "a38c5576f7318d8458426b04df514904d594921075b02ebcb46d566d919ad87a",
-    "release_notes": "* **Gboard:** docs: record that Bigger Toolbar works on a device\n* **Gboard:** fix: make Bigger Toolbar move the count, not the capacity\n* **Gboard:** docs: correct what the signature bypass actually gates\n* **Gboard:** feat: add a Select all button to the toolbar\n* **Gboard:** fix: withhold Bigger Toolbar, which does not work on device\n* **Gboard:** feat: default the swipe length to Gboard's own distance\n* **Gboard:** chore: sync the gradle wrapper with the template\n* **Gboard:** feat: make the toolbar's icon count adjustable\n* **Gboard:** feat: keep Gboard's own behaviour for swipes from the backspace key\n* **Gboard:** docs: update the roadmap\n* **Gboard:** refactor: remove the master and undo switches\n",
-    "release_tag": "v1.1.0",
-    "release_date": "2026-08-18T21:39:23Z"
+    "fingerprint": "ca575aad3722ea83c673a7190a3ea0e2ae168066d9e930d2cd38cdeea6dbcd3c",
+    "release_notes": "## 1.4.0-dev.1\n\n- docs: roadmap marks the native hotkey round-trip done\n- test: pin the hotkey seam in preflight and the constants checker\n- feat: hotkeys return — patch half\n- feat: hotkeys return — extension half\n- fix: writePatchResource name/target concatenates the directory twice\n- ci: skip build-provenance attestation on private repos\n- docs: record the native settings-hosting mechanism\n- test: pin the native-settings seam in preflight; checker lanes for the XML contract\n- feat: host the settings screen as a native Gboard fragment (patch half)\n- feat: host the settings screen as a native Gboard fragment (extension half)\n- fix: drop duplicated palette constants in settings activity\n- chore: drop an unused import\n- chore: harden native toolbar emission and its checkers\n- chore: remove Bigger Toolbar and Hotkeys — both are being rewritten natively",
+    "release_tag": "v1.4.0-dev.1",
+    "release_date": "2026-08-22T04:50:38Z"
   },
   "jl4ctuk:stable": {
     "bundle": "jl4ctuk",
@@ -31304,9 +31322,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-08-21T22:40:45",
-    "version": "v1.20.0-dev.9",
-    "description": "## [1.20.0-dev.9](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.8...v1.20.0-dev.9) (2026-08-21)\n\n### ✨ New Features\n\n* reddit add new patches ([6977636](https://github.com/rushiranpise/morphe-patches/commit/6977636bf5e9c002a86c20f98801ca70e59983e9))\n",
+    "created_at": "2026-08-22T03:55:45",
+    "version": "v1.20.0-dev.10",
+    "description": "## [1.20.0-dev.10](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.9...v1.20.0-dev.10) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* betamaniac ([7fb8f40](https://github.com/rushiranpise/morphe-patches/commit/7fb8f401248c28ebeffbafafc9ef5de9b51a18ce)), closes [#726](https://github.com/rushiranpise/morphe-patches/issues/726)\n* telegram login ([343b189](https://github.com/rushiranpise/morphe-patches/commit/343b189e3c4f769236ac32d4fa6f0735bc85dba9))\n\n### ✨ New Features\n\n* add Octopi Launcher ([dcd78fc](https://github.com/rushiranpise/morphe-patches/commit/dcd78fc1f44a559ffd0e37a0d83666c1e3de8460))\n",
     "apps": [
       {
         "app_name": "OBD Android",
@@ -33628,6 +33646,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/fnwwL9-i_oeJtExsO6JnPw-XV0ySX9vVEIWseeM9t0Dhy07WmsaB8FvuJhhx8Ia0nZtuNQsdehKcsizfuNl6"
       },
       {
+        "app_name": "Octopi Launcher",
+        "package": "com.otp.octopilauncher",
+        "patches": [
+          {
+            "name": "Unlock Pro",
+            "description": "Unlocks Octopi Launcher Pro by returning true from the isPro LiveData getter, bypassing all pro feature gates without modifying billing or database logic.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.88"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/RKGS5zmybeB22d-Pw587gRHe27sK3hXsg4WqP4jnHwyRK5TUjgRakwvdtYYxpBEkqRB3cJKFXHCAhFLW-qbz0Q=s0-br30"
+      },
+      {
         "app_name": "Battery Guru",
         "package": "com.paget96.batteryguru",
         "patches": [
@@ -35495,11 +35529,11 @@
         "patches": [
           {
             "name": "Unlock Premium",
-            "description": "Unlocks premium in Beta by Mirko.",
+            "description": "Unlocks premium in Beta by Mirko by disabling the ads gate and PairIP license checks.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "0.9.4"
+              "0.10.0"
             ]
           }
         ],
@@ -36328,10 +36362,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/5zIWi1LMtVRPpffktQtKhPoJNRzorFE8ycINm3fl2i0-_8JQZI30qZN7vkla3b6HrOMLO-bo9OpzZohZSnay"
       }
     ],
-    "fingerprint": "88697754d781ec1ac194e1be4810fbdbc1e5cee1800d53e86fc15acd7aa1a9ad",
-    "release_notes": "## [1.20.0-dev.9](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.8...v1.20.0-dev.9) (2026-08-21)\n\n### ✨ New Features\n\n* reddit add new patches ([6977636](https://github.com/rushiranpise/morphe-patches/commit/6977636bf5e9c002a86c20f98801ca70e59983e9))\n",
-    "release_tag": "v1.20.0-dev.9",
-    "release_date": "2026-08-21T22:40:45Z"
+    "fingerprint": "1e9627c900c3117a1f72d5773bbe12c3f3d72fe1ed17044aeffd670275ffac75",
+    "release_notes": "## [1.20.0-dev.10](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.9...v1.20.0-dev.10) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* betamaniac ([7fb8f40](https://github.com/rushiranpise/morphe-patches/commit/7fb8f401248c28ebeffbafafc9ef5de9b51a18ce)), closes [#726](https://github.com/rushiranpise/morphe-patches/issues/726)\n* telegram login ([343b189](https://github.com/rushiranpise/morphe-patches/commit/343b189e3c4f769236ac32d4fa6f0735bc85dba9))\n\n### ✨ New Features\n\n* add Octopi Launcher ([dcd78fc](https://github.com/rushiranpise/morphe-patches/commit/dcd78fc1f44a559ffd0e37a0d83666c1e3de8460))\n",
+    "release_tag": "v1.20.0-dev.10",
+    "release_date": "2026-08-22T03:55:45Z"
   },
   "ipusnas:stable": {
     "bundle": "ipusnas",

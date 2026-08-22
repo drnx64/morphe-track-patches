@@ -1,71 +1,83 @@
 {
   "affected_bundles": [
     {
-      "bundle": "kveld",
-      "channel": "stable",
+      "bundle": "flexboard",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Brave Private Web Browser, VPN",
-          "package": "com.brave.browser",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Locale PAK Slimmer",
-                "description": "Strips unselected language resource PAKs from assets/locales/."
-              },
-              {
-                "name": "Skip First Run",
-                "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Block Brave Telemetry",
-                "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Brave In-Product Notification Scheduler Optimization",
-                "description": "Eliminates periodic background wakeups and native library loading caused by Chromium in-product tips/promo scheduler (Job ID 105).",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Brave Origin",
-                "description": "Unlocks Brave Origin and enables local feature toggle controls.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Brave Startup Performance Optimization",
-                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
-          }
-        },
-        {
-          "app_name": "Gboard Lite",
+          "app_name": "Gboard",
           "package": "com.google.android.inputmethod.latin",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Resource Slimmer",
-                "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, and promotional GIFs using dynamic content heuristics."
+                "name": "Grammar Check Row",
+                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
+              },
+              {
+                "name": "Suggested Settings",
+                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings."
+              },
+              {
+                "name": "Toolbar Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
+              },
+              {
+                "name": "Toolbar Hotkeys",
+                "description": "Adds up to twelve customisable hotkey buttons to Gboard's toolbar, each typing text the user sets in Flexboard's settings."
+              },
+              {
+                "name": "Toolbar Native Test",
+                "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default."
               }
             ],
-            "patches_removed": [],
+            "patches_removed": [
+              {
+                "name": "Bigger Toolbar",
+                "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu."
+              },
+              {
+                "name": "Flick Keys for Symbols",
+                "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings."
+              },
+              {
+                "name": "Select All Button",
+                "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first."
+              }
+            ],
             "patches_modified": []
+          }
+        }
+      ]
+    },
+    {
+      "bundle": "rushiranpise",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Octopi Launcher",
+          "package": "com.otp.octopilauncher",
+          "badge_type": "NEW APP"
+        },
+        {
+          "app_name": "Beta Maniac",
+          "package": "it.mirko.beta",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks premium in Beta by Mirko by disabling the ads gate and PairIP license checks.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
           }
         }
       ]
