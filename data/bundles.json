@@ -26015,9 +26015,9 @@
     "bundle": "ftl",
     "channel": "stable",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-19T12:10:35",
-    "version": "v1.38.0",
-    "description": "## [1.38.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0...v1.38.0) (2026-08-19)\n\n### ✨ New Features\n\n* Add All Video Downloader Remove DownloadMenu ([432f4d1](https://github.com/BlazeFTL/FTL-Patches/commit/432f4d1d52867d1f3cf96f3ab758adec3a6357ea))\n* Add Rs File Explorer Disable Download ([0c872cd](https://github.com/BlazeFTL/FTL-Patches/commit/0c872cd5a966b4a6692f1454ef63906339c0574a))\n",
+    "created_at": "2026-08-22T12:23:33",
+    "version": "v1.39.0",
+    "description": "## [1.39.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.38.0...v1.39.0) (2026-08-22)\r\n\r\n### ✨ New Features\r\n\r\n* Add Remove Ads Lite (Adobo's Port) + Add Path Support In URL Parsing From Host And Integrated A Host File So User Doesn't Have To Configure Anything \r\n* Add Remove Ads Ultra Lite (For Apps Where There Are Checks For Ads Loaded Or Not) Early Stage May Miss A Few Ad SDK's\r\n* Update Analytics Patch \r\n* Update Apk Junk Patch",
     "apps": [
       {
         "app_name": "Xender",
@@ -26217,17 +26217,17 @@
       }
     ],
     "fingerprint": "55e06ea32b8bc77f6f63b9b1b5916488594d3242ef2c648da5d0ae0b931280cc",
-    "release_notes": "## [1.38.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0...v1.38.0) (2026-08-19)\n\n### ✨ New Features\n\n* Add All Video Downloader Remove DownloadMenu ([432f4d1](https://github.com/BlazeFTL/FTL-Patches/commit/432f4d1d52867d1f3cf96f3ab758adec3a6357ea))\n* Add Rs File Explorer Disable Download ([0c872cd](https://github.com/BlazeFTL/FTL-Patches/commit/0c872cd5a966b4a6692f1454ef63906339c0574a))\n",
-    "release_tag": "v1.38.0",
-    "release_date": "2026-08-19T12:10:35Z"
+    "release_notes": "## [1.39.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.38.0...v1.39.0) (2026-08-22)\r\n\r\n### ✨ New Features\r\n\r\n* Add Remove Ads Lite (Adobo's Port) + Add Path Support In URL Parsing From Host And Integrated A Host File So User Doesn't Have To Configure Anything \r\n* Add Remove Ads Ultra Lite (For Apps Where There Are Checks For Ads Loaded Or Not) Early Stage May Miss A Few Ad SDK's\r\n* Update Analytics Patch \r\n* Update Apk Junk Patch",
+    "release_tag": "v1.39.0",
+    "release_date": "2026-08-22T12:23:33Z"
   },
   "ftl:dev": {
     "bundle": "ftl",
     "channel": "dev",
     "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-    "created_at": "2026-08-22T07:55:08",
-    "version": "v1.39.0-dev.5",
-    "description": "## [1.39.0-dev.5](https://github.com/BlazeFTL/FTL-Patches/compare/v1.39.0-dev.4...v1.39.0-dev.5) (2026-08-22)\n\n### ✨ New Features\n\n* Ads 2 ([267c6ef](https://github.com/BlazeFTL/FTL-Patches/commit/267c6ef31f1cdba1468e2562e761fe43e5403314))\n",
+    "created_at": "2026-08-19T06:35:14",
+    "version": "v1.37.0-dev.7",
+    "description": "## [1.37.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.6...v1.37.0-dev.7) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Clean+ Splash Merged",
     "apps": [
       {
         "app_name": "Xender",
@@ -26235,7 +26235,7 @@
         "patches": [
           {
             "name": "Clean main UI",
-            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+            "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -26319,15 +26319,6 @@
         "package": "com.rs.explorer.filemanager",
         "patches": [
           {
-            "name": "Disable downloader from download menu",
-            "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.3.0.4"
-            ]
-          },
-          {
             "name": "Hide more actions",
             "description": "Hides Hide, Add to desktop, Encrypt, Decrypt, Add bookmark, Web Search, Copy to, Move to, Transfer, and Playing from the \"More actions\" menu.",
             "use": false,
@@ -26405,15 +26396,6 @@
             ]
           },
           {
-            "name": "Disable downloader from download menu",
-            "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "1.9.7"
-            ]
-          },
-          {
             "name": "Skip splash and language screens",
             "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
             "use": false,
@@ -26426,10 +26408,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/4v1gAVBRKoO9aUUOhYJLY-aa8FytPXj0LRNJbV8CT743B3sajF54fcEbvQjfE6kuJrS9ddaFkbo7PDcWZ-iQBcI"
       }
     ],
-    "fingerprint": "9a3b2b71ddfa1b6e0426a45163b7e8c3a05638456c51331b819b12ed90eb2e29",
-    "release_notes": "## [1.39.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.38.0...v1.39.0) (2026-08-22)\r\n\r\n### ✨ New Features\r\n\r\n* Add Remove Ads Lite (Adobo's Port)\r\nAdd Path Support In URL Parsing From Host And Integrated A Host File So User Doesn't Have To Configure Anything \r\n* Add Remove Ads Ultra Lite (For Apps Where There Are Checks For Ads Loaded Or Not) Early Stage May Miss A Few Ad SDK's\r\n* Update Analytics Patch \r\n* Update Apk Junk Patch",
-    "release_tag": "v1.39.0",
-    "release_date": "2026-08-22T12:23:33Z"
+    "fingerprint": "cd18230f373ccc58a78b16d544d3b3cc82d3f356af678387a2cadc015fa736dd",
+    "release_notes": "## [1.37.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.6...v1.37.0-dev.7) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Clean+ Splash Merged",
+    "release_tag": "v1.37.0-dev.7",
+    "release_date": "2026-08-19T06:35:14Z"
   },
   "rushiranpise:stable": {
     "bundle": "rushiranpise",
@@ -51840,9 +51822,9 @@
     "bundle": "rustore-privacy",
     "channel": "stable",
     "repo_url": "https://github.com/Freeman022026/rustore-privacy-patches",
-    "created_at": "2026-08-22T08:13:07",
-    "version": "v1.1.4",
-    "description": "## [1.1.4](https://github.com/Freeman022026/rustore-privacy-patches/compare/v1.1.3...v1.1.4) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* support RuStore 1.108.0.2 ([1bb0360](https://github.com/Freeman022026/rustore-privacy-patches/commit/1bb03601ffca589e03800fd69dffd94b9df5457f))\n\n### 🚀 Updated App Support\n\n* support RuStore 1.108.0.2 ([f59d23e](https://github.com/Freeman022026/rustore-privacy-patches/commit/f59d23e46af8c9d2aedfc023cf25291f8d6e0844))\n",
+    "created_at": "2026-08-22T14:49:33",
+    "version": "v1.1.6",
+    "description": "## [1.1.6](https://github.com/Freeman022026/rustore-privacy-patches/compare/v1.1.5...v1.1.6) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* **privacy:** keep background work update-only ([ada12e6](https://github.com/Freeman022026/rustore-privacy-patches/commit/ada12e651aa847b1241c32b962ed47d23b54b895))\n",
     "apps": [
       {
         "app_name": "RuStore",
@@ -51850,7 +51832,7 @@
         "patches": [
           {
             "name": "Disable advertisements",
-            "description": "Removes ad providers and ad identifiers, returns an empty ad list, and keeps advertising consent disabled.",
+            "description": "Removes ad providers, sanitizes ad identifiers, returns an empty ad list, and keeps advertising consent disabled.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -51859,7 +51841,7 @@
           },
           {
             "name": "Disable analytics and trackers",
-            "description": "Disables AppMetrica, MyTracker, AltCraft, Radar, install referrer, metrics, and audited logging transports.",
+            "description": "Disables audited analytics transports and replaces the stable request device identifier.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -51912,8 +51894,35 @@
             ]
           },
           {
+            "name": "Exclude Google Play apps from update checks",
+            "description": "Excludes only apps whose recorded Android installer is Google Play from update requests.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
             "name": "Hide gaming profile",
             "description": "Removes the gaming profile permission, hides both gaming buttons, and blocks navigation to the gaming profile.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
+            "name": "Restore secure-session compatibility",
+            "description": "Adapts secure-session requests to RuStore 1.108 API changes for re-signed APKs.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
+            "name": "Restrict background work to updates",
+            "description": "Keeps only the background workers required for automatic update checks, downloads, patch application, and installation, including charging-triggered checks.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -51933,10 +51942,10 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "187e0a9deda27204fc32fc80c1036eaf7cf3419a3b8ff76c8e944573c9eef0ff",
-    "release_notes": "## [1.1.4](https://github.com/Freeman022026/rustore-privacy-patches/compare/v1.1.3...v1.1.4) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* support RuStore 1.108.0.2 ([1bb0360](https://github.com/Freeman022026/rustore-privacy-patches/commit/1bb03601ffca589e03800fd69dffd94b9df5457f))\n\n### 🚀 Updated App Support\n\n* support RuStore 1.108.0.2 ([f59d23e](https://github.com/Freeman022026/rustore-privacy-patches/commit/f59d23e46af8c9d2aedfc023cf25291f8d6e0844))\n",
-    "release_tag": "v1.1.4",
-    "release_date": "2026-08-22T08:13:07Z"
+    "fingerprint": "2e076a90ce5340e97a21cc72a9c06357a2cd3e8eea8374fea18231b48bfc0082",
+    "release_notes": "## [1.1.6](https://github.com/Freeman022026/rustore-privacy-patches/compare/v1.1.5...v1.1.6) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* **privacy:** keep background work update-only ([ada12e6](https://github.com/Freeman022026/rustore-privacy-patches/commit/ada12e651aa847b1241c32b962ed47d23b54b895))\n",
+    "release_tag": "v1.1.6",
+    "release_date": "2026-08-22T14:49:33Z"
   },
   "browzomje:stable": {
     "bundle": "browzomje",
@@ -65356,9 +65365,9 @@
     "bundle": "amplerevanced",
     "channel": "dev",
     "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
-    "created_at": "2026-08-16T15:47:06",
-    "version": "v1.4.0-dev.11",
-    "description": "# [1.4.0-dev.11](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.10...v1.4.0-dev.11) (2026-08-16)\n\n\n### Bug Fixes\n\n* **samsung-keyboard:** restore keyboard preview in size settings ([dc4be94](https://github.com/AmpleReVanced/revanced-patches/commit/dc4be947ec14b306c3287636ae8b502369dd6d8b))\n\n\n\n",
+    "created_at": "2026-08-22T14:15:36",
+    "version": "v1.4.0-dev.12",
+    "description": "# [1.4.0-dev.12](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.11...v1.4.0-dev.12) (2026-08-22)\n\n\n### Bug Fixes\n\n* **kakaotalk:** address global-region ad review ([add04cb](https://github.com/AmpleReVanced/revanced-patches/commit/add04cb0c293d74404ebbfab31b00c515893d71a))\n\n\n### Features\n\n* **kakaotalk:** disable global-region list ads ([d891bb2](https://github.com/AmpleReVanced/revanced-patches/commit/d891bb2222ebeb8242b9e225c15046b207c5323d))\n\n\n\n",
     "apps": [
       {
         "app_name": "dcinside",
@@ -65879,7 +65888,7 @@
           },
           {
             "name": "Disable chat room list ad",
-            "description": "Disable the chat room list ad.",
+            "description": "Disables native and global-region ads in the chat room list.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -65924,7 +65933,7 @@
           },
           {
             "name": "Disable Friend Lists ad",
-            "description": "Disables the friend tab BizBoard ads in KakaoTalk.",
+            "description": "Disables the friend tab BizBoard and global-region ads in KakaoTalk.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -66488,10 +66497,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/kkYJ-GrCRS0WWNWjshvFCyqnYPdC7PY6UZ5NK5ju7OFnp0lmU7JlOLIfPvQnr4Y_LWhnab-Fqz9PkCrEwpPjLQ"
       }
     ],
-    "fingerprint": "9e696c3050e33751f6e9f6f439f723f98b4db21a9aa4be97d6527931a3284d40",
-    "release_notes": "# [1.4.0-dev.11](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.10...v1.4.0-dev.11) (2026-08-16)\n\n\n### Bug Fixes\n\n* **samsung-keyboard:** restore keyboard preview in size settings ([dc4be94](https://github.com/AmpleReVanced/revanced-patches/commit/dc4be947ec14b306c3287636ae8b502369dd6d8b))\n\n\n\n",
-    "release_tag": "v1.4.0-dev.11",
-    "release_date": "2026-08-16T15:47:06Z"
+    "fingerprint": "5ca1062c9e3dd0e9b06088f7ea403955ef149a765d8445f34a529da2a6ddb2cc",
+    "release_notes": "# [1.4.0-dev.12](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.11...v1.4.0-dev.12) (2026-08-22)\n\n\n### Bug Fixes\n\n* **kakaotalk:** address global-region ad review ([add04cb](https://github.com/AmpleReVanced/revanced-patches/commit/add04cb0c293d74404ebbfab31b00c515893d71a))\n\n\n### Features\n\n* **kakaotalk:** disable global-region list ads ([d891bb2](https://github.com/AmpleReVanced/revanced-patches/commit/d891bb2222ebeb8242b9e225c15046b207c5323d))\n\n\n\n",
+    "release_tag": "v1.4.0-dev.12",
+    "release_date": "2026-08-22T14:15:36Z"
   },
   "kareemlukitomo:stable": {
     "bundle": "kareemlukitomo",

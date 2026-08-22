@@ -627,76 +627,41 @@
           "package": "ru.vk.store",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
+            "patches_added": [
+              {
+                "name": "Exclude Google Play apps from update checks",
+                "description": "Excludes only apps whose recorded Android installer is Google Play from update requests."
+              },
+              {
+                "name": "Restore secure-session compatibility",
+                "description": "Adapts secure-session requests to RuStore 1.108 API changes for re-signed APKs."
+              },
+              {
+                "name": "Restrict background work to updates",
+                "description": "Keeps only the background workers required for automatic update checks, downloads, patch application, and installation, including charging-triggered checks."
+              }
+            ],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Disable Kaspersky background scan",
-                "description": "Disables periodic Kaspersky scheduling and reports disabled workers as successfully completed.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
                 "name": "Disable advertisements",
-                "description": "Removes ad providers and ad identifiers, returns an empty ad list, and keeps advertising consent disabled.",
+                "description": "Removes ad providers, sanitizes ad identifiers, returns an empty ad list, and keeps advertising consent disabled.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "description updated"
                 ]
               },
               {
                 "name": "Disable analytics and trackers",
-                "description": "Disables AppMetrica, MyTracker, AltCraft, Radar, install referrer, metrics, and audited logging transports.",
+                "description": "Disables audited analytics transports and replaces the stable request device identifier.",
                 "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable background hooks",
-                "description": "Disables audited boot, network-state, VPN, and Connect session hooks.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable invasive permissions",
-                "description": "Removes privileged install, location, storage, billing, USB, and vendor data access while preserving user-driven installs.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable push services",
-                "description": "Disables RuStore and VK push initialization, services, and audited push receivers.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable verification hooks",
-                "description": "Disables audited SMS, call, phone-state, SID, and Mail.ru verification hooks.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide gaming profile",
-                "description": "Removes the gaming profile permission, hides both gaming buttons, and blocks navigation to the gaming profile.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Skip update authentication",
-                "description": "Skips the update authentication suggestion and returns a valid completed result.",
-                "changes": [
-                  "versions: +1 version, -1 version"
+                  "description updated"
                 ]
               }
             ]
           },
           "scan_numbers": [
-            4
+            4,
+            6
           ]
         }
       ]
@@ -1286,6 +1251,105 @@
           },
           "scan_numbers": [
             5
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "ftl",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Xender",
+          "package": "cn.xender",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Clean main UI",
+                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [
+              {
+                "name": "Disable downloader from download menu",
+                "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            6
+          ]
+        },
+        {
+          "app_name": "All Video Downloader & Ace Player",
+          "package": "videoplayer.videodownloader.downloader",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [
+              {
+                "name": "Disable downloader from download menu",
+                "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "bundle": "amplerevanced",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Kakao Talk",
+          "package": "com.kakao.talk",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Disable Friend Lists ad",
+                "description": "Disables the friend tab BizBoard and global-region ads in KakaoTalk.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Disable chat room list ad",
+                "description": "Disables native and global-region ads in the chat room list.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            6
           ]
         }
       ]
