@@ -1,116 +1,52 @@
 {
   "affected_bundles": [
     {
-      "bundle": "flexboard",
+      "bundle": "kveld",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Gboard",
-          "package": "com.google.android.inputmethod.latin",
+          "app_name": "Brave Private Web Browser, VPN",
+          "package": "com.brave.browser",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Grammar Check Row",
-                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
+                "name": "Locale PAK Slimmer",
+                "description": "Strips unselected language resource PAKs from assets/locales/."
               },
               {
-                "name": "Suggested Settings",
-                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings."
-              },
-              {
-                "name": "Toolbar Native Test",
-                "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default."
+                "name": "Skip First Run",
+                "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs."
               }
             ],
-            "patches_removed": [
-              {
-                "name": "Flick Keys for Symbols",
-                "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings."
-              }
-            ],
-            "patches_modified": [
-              {
-                "name": "Bigger Toolbar",
-                "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu.",
-                "changes": [
-                  "disabled"
-                ]
-              },
-              {
-                "name": "Toolbar Buttons",
-                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "bundle": "flexboard",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Gboard",
-          "package": "com.google.android.inputmethod.latin",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Flick Keys for Symbols",
-                "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings."
-              },
-              {
-                "name": "Select All Button",
-                "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Custom Hotkeys",
-                "description": "Add up to 12 custom buttons to the toolbar above the keyboard, each typing a string you write in Flexboard's settings. A slot stays invisible until you fill it in. Reorder them alongside Gboard's own buttons in its customise view. Disabled by default while reorder bugs are worked out."
-              },
-              {
-                "name": "Grammar Check Row",
-                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
-              },
-              {
-                "name": "Suggested Settings",
-                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings."
-              },
-              {
-                "name": "Toolbar Buttons",
-                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first."
-              }
-            ],
-            "patches_modified": []
-          }
-        }
-      ]
-    },
-    {
-      "bundle": "rushiranpise",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "1Tap Cleaner",
-          "package": "com.a0soft.gphone.acc.free",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Unlock Pro",
-                "description": "Unlocks App Cache Cleaner Pro and removes ads by bypassing Pairip LVL, signature checks, self-destruct, and all upgrade dialogs.",
+                "name": "Block Brave Telemetry",
+                "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching.",
                 "changes": [
-                  "description updated",
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Brave In-Product Notification Scheduler Optimization",
+                "description": "Eliminates periodic background wakeups and native library loading caused by Chromium in-product tips/promo scheduler (Job ID 105).",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Brave Origin",
+                "description": "Unlocks Brave Origin and enables local feature toggle controls.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Brave Startup Performance Optimization",
+                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations.",
+                "changes": [
                   "versions: +1 version, -1 version"
                 ]
               }
@@ -118,90 +54,18 @@
           }
         },
         {
-          "app_name": "Reddit",
-          "package": "com.reddit.frontpage",
+          "app_name": "Gboard Lite",
+          "package": "com.google.android.inputmethod.latin",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Hide Answers Tab",
-                "description": "Removes the AI Answers tab from the bottom navigation bar."
-              },
-              {
-                "name": "Hide Chat Tab",
-                "description": "Removes the Chat button from the bottom navigation bar."
-              },
-              {
-                "name": "Hide Games Tab",
-                "description": "Removes the Games tab from the bottom navigation bar."
-              },
-              {
-                "name": "Show Comment Karma",
-                "description": "Ensures comment karma is surfaced alongside link karma on the profile header."
-              },
-              {
-                "name": "Username Hider",
-                "description": "Replaces the displayed username with 'u/hidden' for screen-sharing privacy."
+                "name": "Resource Slimmer",
+                "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, and promotional GIFs using dynamic content heuristics."
               }
             ],
             "patches_removed": [],
             "patches_modified": []
-          }
-        },
-        {
-          "app_name": "DramaBox",
-          "package": "com.storymatrix.drama",
-          "badge_type": "NEW APP"
-        },
-        {
-          "app_name": "MyAnimeList",
-          "package": "net.myanimelist.app",
-          "badge_type": "NEW APP"
-        }
-      ]
-    },
-    {
-      "bundle": "sofatime",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "SofaTime",
-          "package": "com.theclashsoft.sofatime",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Bypass Google Sign-In",
-                "description": "Bypasses SHA-1 check by using embedded WebView OAuth for Google Sign-In.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Bypass license check",
-                "description": "Bypasses PairIP license verification.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Disable telemetry",
-                "description": "Disables Firebase Crashlytics, Sessions, and Analytics.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Unlock premium features",
-                "description": "Unlocks all premium capabilities.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              }
-            ]
           }
         }
       ]
