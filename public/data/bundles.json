@@ -7868,9 +7868,9 @@
     "bundle": "flexboard",
     "channel": "stable",
     "repo_url": "https://github.com/JZ6/Flexboard",
-    "created_at": "2026-08-19T22:56:31",
-    "version": "v1.2.0",
-    "description": "## 1.2.0\n\n- chore: release v1.2.0",
+    "created_at": "2026-08-21T22:56:38",
+    "version": "v1.3.0",
+    "description": "NEW: Select all, copy and paste buttons on the toolbar!\r\n\r\nrefactor: toolbar buttons go native; drop the merge-splice architecture\r\nrefactor: generalize native toolbar registration into NativeToolbarButton + emitNativeToolbarButtons\r\nfeat: toolbar native test — register one button through Gboard's own AP registry\r\ndocs: capture toolbar reorder findings — next step is provider registration\r\nfix: simplify toolbar merge to always prepend — drag persistence lands later\r\nchore: default the toolbar count patch off while reorder is worked out\r\nchore: default custom hotkeys off while the reorder crash is being isolated\r\nfix: hotkeySlotOf was called without being declared\r\nfix: drop empty-slot smali labels — merge filters them in the extension\r\nfix: import emitToolbarMergeCall in BasePatch\r\nfix: collapse the two-merge composition into one merge driven by the base patch\r\nfeat: split hotkeys and text actions into separate patches\r\nfix: harden toolbar merge — never crash the keyboard over order placement\r\nfix: keep the conventional-commit type in release notes/' changelog\r\nfix: keep conventional-commit type in changelog bullets\r\nfix: Kotlin equality between Int and Long is always false\r\nfeat: force the grammar check row on\r\nfix: suggest settings missing basePatch, correct comment reference\r\npolish: neutral underline for hotkey text fields\r\npreflight: pin the toolbar order preference keys",
     "apps": [
       {
         "app_name": "Gboard",
@@ -7879,109 +7879,16 @@
           {
             "name": "Bigger Toolbar",
             "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
-          {
-            "name": "Bypass Gboard Signature",
-            "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
-          {
-            "name": "Flick Keys for Symbols",
-            "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
-          {
-            "name": "Install as Gboard Clone",
-            "description": "Rename the package to dev.jz6.com.google.android.inputmethod.latin so the patched build installs alongside the official Gboard instead of replacing it.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
-          {
-            "name": "Swipe Right to Undo",
-            "description": "Swipe right after deleting to put the words back. Uses Gboard's own undo, which already records what a delete swipe removed.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
-          {
-            "name": "Swipe to Delete",
-            "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
-          {
-            "name": "Toolbar Buttons",
-            "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Adds six hotkey buttons too, each typing a string you set in Flexboard's settings — they only appear once you have filled one in.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
-      }
-    ],
-    "fingerprint": "8c95246e9e1db948786a47e603c9c8fd4300ecc5cc351692053e6ca3b19a083e",
-    "release_notes": "## 1.2.0\n\n- chore: release v1.2.0",
-    "release_tag": "v1.2.0",
-    "release_date": "2026-08-19T22:56:31Z"
-  },
-  "flexboard:dev": {
-    "bundle": "flexboard",
-    "channel": "dev",
-    "repo_url": "https://github.com/JZ6/Flexboard",
-    "created_at": "2026-08-21T05:01:57",
-    "version": "v1.2.2-dev.4",
-    "description": "## 1.2.2-dev.4\n\n- chore: default custom hotkeys off while the reorder crash is being isolated",
-    "apps": [
-      {
-        "app_name": "Gboard",
-        "package": "com.google.android.inputmethod.latin",
-        "patches": [
-          {
-            "name": "Bigger Toolbar",
-            "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
-          {
-            "name": "Bypass Gboard Signature",
-            "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "18.0.3.954559732-release-arm64-v8a"
-            ]
-          },
-          {
-            "name": "Custom Hotkeys",
-            "description": "Add up to 12 custom buttons to the toolbar above the keyboard, each typing a string you write in Flexboard's settings. A slot stays invisible until you fill it in. Reorder them alongside Gboard's own buttons in its customise view. Disabled by default while reorder bugs are worked out.",
             "use": false,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Bypass Gboard Signature",
+            "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
+            "use": true,
             "options": [],
             "compatible_versions": [
               "18.0.3.954559732-release-arm64-v8a"
@@ -8034,7 +7941,100 @@
           },
           {
             "name": "Toolbar Buttons",
-            "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first.",
+            "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Toolbar Native Test",
+            "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
+      }
+    ],
+    "fingerprint": "0454511e61d2fdf88f2ec2fb8d208f5cb4cbee33df23197909ae1d6fbbece833",
+    "release_notes": "NEW: Select all, copy and paste buttons on the toolbar!\r\n\r\nrefactor: toolbar buttons go native; drop the merge-splice architecture\r\nrefactor: generalize native toolbar registration into NativeToolbarButton + emitNativeToolbarButtons\r\nfeat: toolbar native test — register one button through Gboard's own AP registry\r\ndocs: capture toolbar reorder findings — next step is provider registration\r\nfix: simplify toolbar merge to always prepend — drag persistence lands later\r\nchore: default the toolbar count patch off while reorder is worked out\r\nchore: default custom hotkeys off while the reorder crash is being isolated\r\nfix: hotkeySlotOf was called without being declared\r\nfix: drop empty-slot smali labels — merge filters them in the extension\r\nfix: import emitToolbarMergeCall in BasePatch\r\nfix: collapse the two-merge composition into one merge driven by the base patch\r\nfeat: split hotkeys and text actions into separate patches\r\nfix: harden toolbar merge — never crash the keyboard over order placement\r\nfix: keep the conventional-commit type in release notes/' changelog\r\nfix: keep conventional-commit type in changelog bullets\r\nfix: Kotlin equality between Int and Long is always false\r\nfeat: force the grammar check row on\r\nfix: suggest settings missing basePatch, correct comment reference\r\npolish: neutral underline for hotkey text fields\r\npreflight: pin the toolbar order preference keys",
+    "release_tag": "v1.3.0",
+    "release_date": "2026-08-21T22:56:38Z"
+  },
+  "flexboard:dev": {
+    "bundle": "flexboard",
+    "channel": "dev",
+    "repo_url": "https://github.com/JZ6/Flexboard",
+    "created_at": "2026-08-18T21:39:23",
+    "version": "v1.1.0",
+    "description": "* **Gboard:** docs: record that Bigger Toolbar works on a device\n* **Gboard:** fix: make Bigger Toolbar move the count, not the capacity\n* **Gboard:** docs: correct what the signature bypass actually gates\n* **Gboard:** feat: add a Select all button to the toolbar\n* **Gboard:** fix: withhold Bigger Toolbar, which does not work on device\n* **Gboard:** feat: default the swipe length to Gboard's own distance\n* **Gboard:** chore: sync the gradle wrapper with the template\n* **Gboard:** feat: make the toolbar's icon count adjustable\n* **Gboard:** feat: keep Gboard's own behaviour for swipes from the backspace key\n* **Gboard:** docs: update the roadmap\n* **Gboard:** refactor: remove the master and undo switches\n",
+    "apps": [
+      {
+        "app_name": "Gboard",
+        "package": "com.google.android.inputmethod.latin",
+        "patches": [
+          {
+            "name": "Bigger Toolbar",
+            "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Bypass Gboard Signature",
+            "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Flick Keys for Symbols",
+            "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Install as Gboard Clone",
+            "description": "Rename the package to dev.jz6.com.google.android.inputmethod.latin so the patched build installs alongside the official Gboard instead of replacing it.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Select All Button",
+            "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Swipe Right to Undo",
+            "description": "Swipe right after deleting to put the words back. Uses Gboard's own undo, which already records what a delete swipe removed.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
+            "name": "Swipe to Delete",
+            "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -8045,10 +8045,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       }
     ],
-    "fingerprint": "2d7a50df0b3ba8bc55b63394c4edbcb4a40a1cf4ea08a1270fefffe78c752a76",
-    "release_notes": "## 1.2.2-dev.4\n\n- chore: default custom hotkeys off while the reorder crash is being isolated",
-    "release_tag": "v1.2.2-dev.4",
-    "release_date": "2026-08-21T05:01:57Z"
+    "fingerprint": "a38c5576f7318d8458426b04df514904d594921075b02ebcb46d566d919ad87a",
+    "release_notes": "* **Gboard:** docs: record that Bigger Toolbar works on a device\n* **Gboard:** fix: make Bigger Toolbar move the count, not the capacity\n* **Gboard:** docs: correct what the signature bypass actually gates\n* **Gboard:** feat: add a Select all button to the toolbar\n* **Gboard:** fix: withhold Bigger Toolbar, which does not work on device\n* **Gboard:** feat: default the swipe length to Gboard's own distance\n* **Gboard:** chore: sync the gradle wrapper with the template\n* **Gboard:** feat: make the toolbar's icon count adjustable\n* **Gboard:** feat: keep Gboard's own behaviour for swipes from the backspace key\n* **Gboard:** docs: update the roadmap\n* **Gboard:** refactor: remove the master and undo switches\n",
+    "release_tag": "v1.1.0",
+    "release_date": "2026-08-18T21:39:23Z"
   },
   "jl4ctuk:stable": {
     "bundle": "jl4ctuk",
@@ -31304,9 +31304,9 @@
     "bundle": "rushiranpise",
     "channel": "dev",
     "repo_url": "https://github.com/rushiranpise/morphe-patches",
-    "created_at": "2026-08-21T08:18:25",
-    "version": "v1.20.0-dev.7",
-    "description": "## [1.20.0-dev.7](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.6...v1.20.0-dev.7) (2026-08-21)\n\n### ✨ New Features\n\n* RedGifs ([7804878](https://github.com/rushiranpise/morphe-patches/commit/780487855121c5b306229f7def0a329a0408209e)), closes [#705](https://github.com/rushiranpise/morphe-patches/issues/705)\n",
+    "created_at": "2026-08-21T22:40:45",
+    "version": "v1.20.0-dev.9",
+    "description": "## [1.20.0-dev.9](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.8...v1.20.0-dev.9) (2026-08-21)\n\n### ✨ New Features\n\n* reddit add new patches ([6977636](https://github.com/rushiranpise/morphe-patches/commit/6977636bf5e9c002a86c20f98801ca70e59983e9))\n",
     "apps": [
       {
         "app_name": "OBD Android",
@@ -31563,11 +31563,11 @@
         "patches": [
           {
             "name": "Unlock Pro",
-            "description": "Unlocks 1Tap Cleaner PRO features: history export, app-group filters, unlimited cache targets, and ad removal.",
+            "description": "Unlocks App Cache Cleaner Pro and removes ads by bypassing Pairip LVL, signature checks, self-destruct, and all upgrade dialogs.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "5.21"
+              "5.22"
             ]
           }
         ],
@@ -34102,8 +34102,35 @@
             ]
           },
           {
+            "name": "Hide Answers Tab",
+            "description": "Removes the AI Answers tab from the bottom navigation bar.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.32.0"
+            ]
+          },
+          {
+            "name": "Hide Chat Tab",
+            "description": "Removes the Chat button from the bottom navigation bar.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.32.0"
+            ]
+          },
+          {
             "name": "Hide Communities Shelf",
             "description": "Hides the related or suggested communities shelf in subreddits.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.32.0"
+            ]
+          },
+          {
+            "name": "Hide Games Tab",
+            "description": "Removes the Games tab from the bottom navigation bar.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -34165,9 +34192,27 @@
             ]
           },
           {
+            "name": "Show Comment Karma",
+            "description": "Ensures comment karma is surfaced alongside link karma on the profile header.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.32.0"
+            ]
+          },
+          {
             "name": "Unlock Premium",
             "description": "Unlocks Reddit Premium features and removes all ads client-side.",
             "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.32.0"
+            ]
+          },
+          {
+            "name": "Username Hider",
+            "description": "Replaces the displayed username with 'u/hidden' for screen-sharing privacy.",
+            "use": false,
             "options": [],
             "compatible_versions": [
               "2026.32.0"
@@ -34383,6 +34428,22 @@
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/KOncb6h5dBQC3GVZRrbX83WT34IUxjv2wJwGbbgdKpR5nj99sxVnmEDf6Wu5JKEWK_frSsYXdDXV1IT_L4uzlw=s0-br30"
+      },
+      {
+        "app_name": "DramaBox",
+        "package": "com.storymatrix.drama",
+        "patches": [
+          {
+            "name": "Unlock Membership",
+            "description": "Unlocks DramaBox VIP membership status locally by patching the DataStore VIP getter and setter, bypassing the Google Play Billing verification and server-side VIP flag propagation.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "5.8.1"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/GGi0g65ySR86svFuxny2J2FgfkTZuFlJcftmeAZ_bZ7sM86XfwUNL1h9omSyoRKha1c1-_BoFkUbyJz2VSXI=s0-br30"
       },
       {
         "app_name": "Strava",
@@ -35589,6 +35650,22 @@
         "icon_url": "https://play-lh.googleusercontent.com/zFBEG3LySRSOn0BrgmHF87oExCusVHOyTG1rLirsJzI0Ffv2sCtFTLpKnOFIdE4kLkd8LWiw9oc_HTFdRlGpQg"
       },
       {
+        "app_name": "MyAnimeList",
+        "package": "net.myanimelist.app",
+        "patches": [
+          {
+            "name": "Unlock Supporter",
+            "description": "Spoofs MAL supporter status to suppress all banner, list, and search ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2.3.16"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/4c9or3pCb89Th0EYmmYdKdb9bJHoLNTIM4IqiJZW_XNDtpyy5WtLie-UTDcbcxNQUUvW3ajnnHHpnexqr_WswIU=s0-br30"
+      },
+      {
         "app_name": "PodsLink",
         "package": "net.podslink",
         "patches": [
@@ -36251,10 +36328,10 @@
         "icon_url": "https://play-lh.googleusercontent.com/5zIWi1LMtVRPpffktQtKhPoJNRzorFE8ycINm3fl2i0-_8JQZI30qZN7vkla3b6HrOMLO-bo9OpzZohZSnay"
       }
     ],
-    "fingerprint": "d3b06bb8199130a30fb1abbf9e742529307ed3718b35433d6e23b18dee49538f",
-    "release_notes": "## [1.20.0-dev.7](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.6...v1.20.0-dev.7) (2026-08-21)\n\n### ✨ New Features\n\n* RedGifs ([7804878](https://github.com/rushiranpise/morphe-patches/commit/780487855121c5b306229f7def0a329a0408209e)), closes [#705](https://github.com/rushiranpise/morphe-patches/issues/705)\n",
-    "release_tag": "v1.20.0-dev.7",
-    "release_date": "2026-08-21T08:18:25Z"
+    "fingerprint": "88697754d781ec1ac194e1be4810fbdbc1e5cee1800d53e86fc15acd7aa1a9ad",
+    "release_notes": "## [1.20.0-dev.9](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0-dev.8...v1.20.0-dev.9) (2026-08-21)\n\n### ✨ New Features\n\n* reddit add new patches ([6977636](https://github.com/rushiranpise/morphe-patches/commit/6977636bf5e9c002a86c20f98801ca70e59983e9))\n",
+    "release_tag": "v1.20.0-dev.9",
+    "release_date": "2026-08-21T22:40:45Z"
   },
   "ipusnas:stable": {
     "bundle": "ipusnas",
@@ -47091,9 +47168,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-08-21T19:26:03",
-    "version": "v1.40.0-dev.15",
-    "description": "## [1.40.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.14...v1.40.0-dev.15) (2026-08-21)\n\n### ✨ New Features\n\n* **Spoof video streams:** Makes `TV Simply` available in signed-out or incognito mode by generating a PoToken ([#2533](https://github.com/MorpheApp/morphe-patches/issues/2533)) ([c9a1622](https://github.com/MorpheApp/morphe-patches/commit/c9a1622f047ea33b7cf18544bb88975d4bf0a796))\n* **Theme:** Change the app background color from the app settings ([#2524](https://github.com/MorpheApp/morphe-patches/issues/2524)) ([4d89ab2](https://github.com/MorpheApp/morphe-patches/commit/4d89ab2f7b456f05b79ec79c006da51535a35168))\n",
+    "created_at": "2026-08-21T21:17:02",
+    "version": "v1.40.0-dev.16",
+    "description": "## [1.40.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.15...v1.40.0-dev.16) (2026-08-21)\n\n### 🐛 Bug Fixes\n\n* **Theme:** Use only the color resources that the app version declares ([d1e1514](https://github.com/MorpheApp/morphe-patches/commit/d1e1514360649cd56776afb2ab7455d69826a9fd))\n* **YouTube - Add to queue:** \"Overridde 'Play next in queue' button\" not working  ([#2539](https://github.com/MorpheApp/morphe-patches/issues/2539)) ([235d3c6](https://github.com/MorpheApp/morphe-patches/commit/235d3c651fc9b01b80b26269c652b6344b073e8c))\n* **YouTube - Swipe controls:** Do not restore the brightness when the player returns from picture in picture ([2deb2a7](https://github.com/MorpheApp/morphe-patches/commit/2deb2a76fdcaa71da1622b7fa18f1f27d78b9a6b))\n* **YouTube - Wide search bar:** Use the background color selected in the settings ([abb7441](https://github.com/MorpheApp/morphe-patches/commit/abb7441fcabebc607b98a7fe0116abdc6fdce2b0))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -48988,9 +49065,9 @@
       }
     ],
     "fingerprint": "1fe605082c4fadcc3a213c3fd3127c22fdfb212877570068249c3992996c8a7a",
-    "release_notes": "## [1.40.0-dev.15](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.14...v1.40.0-dev.15) (2026-08-21)\n\n### ✨ New Features\n\n* **Spoof video streams:** Makes `TV Simply` available in signed-out or incognito mode by generating a PoToken ([#2533](https://github.com/MorpheApp/morphe-patches/issues/2533)) ([c9a1622](https://github.com/MorpheApp/morphe-patches/commit/c9a1622f047ea33b7cf18544bb88975d4bf0a796))\n* **Theme:** Change the app background color from the app settings ([#2524](https://github.com/MorpheApp/morphe-patches/issues/2524)) ([4d89ab2](https://github.com/MorpheApp/morphe-patches/commit/4d89ab2f7b456f05b79ec79c006da51535a35168))\n",
-    "release_tag": "v1.40.0-dev.15",
-    "release_date": "2026-08-21T19:26:03Z"
+    "release_notes": "## [1.40.0-dev.16](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.15...v1.40.0-dev.16) (2026-08-21)\n\n### 🐛 Bug Fixes\n\n* **Theme:** Use only the color resources that the app version declares ([d1e1514](https://github.com/MorpheApp/morphe-patches/commit/d1e1514360649cd56776afb2ab7455d69826a9fd))\n* **YouTube - Add to queue:** \"Overridde 'Play next in queue' button\" not working  ([#2539](https://github.com/MorpheApp/morphe-patches/issues/2539)) ([235d3c6](https://github.com/MorpheApp/morphe-patches/commit/235d3c651fc9b01b80b26269c652b6344b073e8c))\n* **YouTube - Swipe controls:** Do not restore the brightness when the player returns from picture in picture ([2deb2a7](https://github.com/MorpheApp/morphe-patches/commit/2deb2a76fdcaa71da1622b7fa18f1f27d78b9a6b))\n* **YouTube - Wide search bar:** Use the background color selected in the settings ([abb7441](https://github.com/MorpheApp/morphe-patches/commit/abb7441fcabebc607b98a7fe0116abdc6fdce2b0))\n",
+    "release_tag": "v1.40.0-dev.16",
+    "release_date": "2026-08-21T21:17:02Z"
   },
   "ee-morphe:stable": {
     "bundle": "ee-morphe",
@@ -57689,9 +57766,9 @@
     "bundle": "sofatime",
     "channel": "stable",
     "repo_url": "https://github.com/alan7383/sofatime-patches",
-    "created_at": "2026-08-21T11:58:56",
-    "version": "v1.4.5",
-    "description": "## [1.4.5](https://github.com/alan7383/sofatime-patches/compare/v1.4.4...v1.4.5) (2026-08-21)\n\n### 🐛 Bug Fixes\n\n* Support SofaTime v1.2.8 (Fixes [#6](https://github.com/alan7383/sofatime-patches/issues/6)) ([9dbc0e6](https://github.com/alan7383/sofatime-patches/commit/9dbc0e688371539741c129767bd84caef9bc9dfb))\n",
+    "created_at": "2026-08-21T22:45:15",
+    "version": "v1.4.6",
+    "description": "## [1.4.6](https://github.com/alan7383/sofatime-patches/compare/v1.4.5...v1.4.6) (2026-08-21)\n\n### 🐛 Bug Fixes\n\n* Support SofaTime v1.2.9 (Fixes [#7](https://github.com/alan7383/sofatime-patches/issues/7)) ([efba106](https://github.com/alan7383/sofatime-patches/commit/efba1062c780dbfb8a870a6c7f9d8b6df43496d0))\n",
     "apps": [
       {
         "app_name": "SofaTime",
@@ -57708,7 +57785,8 @@
               "1.2.4",
               "1.2.5",
               "1.2.7",
-              "1.2.8"
+              "1.2.8",
+              "1.2.9"
             ]
           },
           {
@@ -57722,7 +57800,8 @@
               "1.2.4",
               "1.2.5",
               "1.2.7",
-              "1.2.8"
+              "1.2.8",
+              "1.2.9"
             ]
           },
           {
@@ -57736,7 +57815,8 @@
               "1.2.4",
               "1.2.5",
               "1.2.7",
-              "1.2.8"
+              "1.2.8",
+              "1.2.9"
             ]
           },
           {
@@ -57750,17 +57830,18 @@
               "1.2.4",
               "1.2.5",
               "1.2.7",
-              "1.2.8"
+              "1.2.8",
+              "1.2.9"
             ]
           }
         ],
         "icon_url": "https://play-lh.googleusercontent.com/h-lFEq_K6xrQU2PdEccOtG_FQr_KxuzYilNCRO7ktYNOV55VdhuhtuT2SGLOBAUMWsAmAQrO8WrHDLyb9Zu5l0U"
       }
     ],
-    "fingerprint": "9de2ff926aee59b753d522456a42b2382e36d23d5b31ed9798d31193444c6299",
-    "release_notes": "## [1.4.5](https://github.com/alan7383/sofatime-patches/compare/v1.4.4...v1.4.5) (2026-08-21)\n\n### 🐛 Bug Fixes\n\n* Support SofaTime v1.2.8 (Fixes [#6](https://github.com/alan7383/sofatime-patches/issues/6)) ([9dbc0e6](https://github.com/alan7383/sofatime-patches/commit/9dbc0e688371539741c129767bd84caef9bc9dfb))\n",
-    "release_tag": "v1.4.5",
-    "release_date": "2026-08-21T11:58:56Z"
+    "fingerprint": "c55f90789f6328508880fc9ea965d77c41a91a36dbcc6c2796232ca7019575cd",
+    "release_notes": "## [1.4.6](https://github.com/alan7383/sofatime-patches/compare/v1.4.5...v1.4.6) (2026-08-21)\n\n### 🐛 Bug Fixes\n\n* Support SofaTime v1.2.9 (Fixes [#7](https://github.com/alan7383/sofatime-patches/issues/7)) ([efba106](https://github.com/alan7383/sofatime-patches/commit/efba1062c780dbfb8a870a6c7f9d8b6df43496d0))\n",
+    "release_tag": "v1.4.6",
+    "release_date": "2026-08-21T22:45:15Z"
   },
   "lablazer:stable": {
     "bundle": "lablazer",

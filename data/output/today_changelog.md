@@ -1,60 +1,43 @@
-## [2026-08-20]
-- **UPDATED** Bundle **abhishek-bhujang**
-  - **UPDATED APP** Rhythm with Tabla & Tanpura (`com.psslabs.rhythm`) in abhishek-bhujang patches
-- **UPDATED** Bundle **andrewliang25**
-  - **UPDATED APP** LINE (`jp.naver.line.android`) in andrewliang25 patches
-- **NEW BUNDLE** Bundle by **anime-witcher** (dev, stable)
-  - **NEW APP** Anime Witcher (`com.anime.witcher`) in anime-witcher patches
-- **NEW BUNDLE** Bundle by **anxy** (dev, stable)
-  - **NEW APP** Alight Motion Pro (`com.alightcreative.motion`) in anxy patches
-- **NEW BUNDLE** Bundle by **apos** (stable)
-  - **NEW APP** Boost for Lemmy (`com.rubenmayayo.lemmy`) in apos patches
-- **NEW BUNDLE** Bundle by **brave** (stable)
-  - **NEW APP** Brave Private Web Browser, VPN (`com.brave.browser`) in brave patches
+## [2026-08-21]
+- **UPDATED** Bundle **adobo**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
+- **UPDATED** Bundle **anddea**
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in anddea patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in anddea patches
+- **NEW BUNDLE** Bundle by **chicco** (dev, stable)
+  - **NEW APP** ProxMobo (`com.halliharp.proxmobo`) in chicco patches
+- **UPDATED** Bundle **chiggi**
+  - **UPDATED APP** JioHotstar (Android TV) (`in.startv.hotstar`) in chiggi patches
+  - **UPDATED APP** Jiotv+: LiveTV & OTT (Android TV) (`com.jio.media.jiotvplus`) in chiggi patches
+  - **UPDATED APP** SonyLIV (Android TV) (`com.sonyliv`) in chiggi patches
+  - **UPDATED APP** Vi Movies and TV (Android TV) (`com.vimtv`) in chiggi patches
+  - **NEW APP** ZEE5 (Android TV) (`com.graymatrix.did`) in chiggi patches
+- **UPDATED** Bundle **dh6k**
+  - **UPDATED APP** Brave Browser (`com.brave.browser`) in dh6k patches
+  - **UPDATED APP** Quetta Browser (`net.quetta.browser`) in dh6k patches
+  - **UPDATED APP** Quetta Browser Official (`net.quetta.browser.official`) in dh6k patches
 - **UPDATED** Bundle **flexboard**
   - **UPDATED APP** Gboard (`com.google.android.inputmethod.latin`) in flexboard patches
-- **UPDATED** Bundle **gmaps**
-  - **UPDATED APP** Google Maps (`com.google.android.apps.maps`) in gmaps patches
 - **UPDATED** Bundle **gryphous-morphe**
-  - **NEW APP** [PRE-RELEASE] De'Longhi Comfort (`com.ddsx_ayla_android`) in gryphous-morphe patches
-- **UPDATED** Bundle **heval99**
-  - **NEW APP** [PRE-RELEASE] 365Scores (`com.scores365`) in heval99 patches
-  - **NEW APP** [PRE-RELEASE] FishBuddy (`no.fishbuddy_playground.app`) in heval99 patches
-  - **NEW APP** [PRE-RELEASE] IPTV (`ru.iptvremote.android.iptv`) in heval99 patches
-  - **NEW APP** [PRE-RELEASE] Livescore (`com.livescore`) in heval99 patches
-- **NEW BUNDLE** Bundle by **hh** (stable)
-  - **NEW APP** Punge (`com.markatlarge.scrub`) in hh patches
-- **UPDATED** Bundle **icysymmetra-tiktok**
-  - **UPDATED APP** TikTok (`com.zhiliaoapp.musically`) in icysymmetra-tiktok patches
-- **NEW BUNDLE** Bundle by **kveld** (stable)
-  - **NEW APP** Brave Private Web Browser, VPN (`com.brave.browser`) in kveld patches
-  - **NEW APP** Gboard Lite (`com.google.android.inputmethod.latin`) in kveld patches
-- **UPDATED** Bundle **lain**
-  - **NEW APP** [PRE-RELEASE] pixiv (`jp.pxv.android`) in lain patches
-  - **UPDATED APP** Timestamp Camera Enterprise Free (`com.jeyluta.timestampcamerafreeent`) in lain patches
-  - **UPDATED APP** Timestamp Camera Free (`com.jeyluta.timestampcamerafree`) in lain patches
-  - **UPDATED APP** UDisc (`com.regasoftware.udisc`) in lain patches
-- **UPDATED** Bundle **okish-morphe**
-  - **NEW APP** Injustice: Gods Among Us (`com.wb.goog.injustice`) in okish-morphe patches
-- **NEW BUNDLE** Bundle by **petalmaps-nonhuawei** (stable)
-  - **NEW APP** Petal Maps (`com.huawei.maps.app`) in petalmaps-nonhuawei patches
+  - **UPDATED APP** De'Longhi Comfort (`com.ddsx_ayla_android`) in gryphous-morphe patches
+- **UPDATED** Bundle **hxreborn**
+  - **NEW APP** AlpineQuest (`psyberia.alpinequest.free`) in hxreborn patches
+- **UPDATED** Bundle **morphe**
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
+  - **UPDATED APP** YouTube (`com.google.android.youtube`) in morphe patches
+  - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in morphe patches
+- **UPDATED** Bundle **rabilrbl**
+  - **NEW APP** [PRE-RELEASE] Blocker (`io.funswitch.blocker`) in rabilrbl patches
 - **UPDATED** Bundle **roundsalmon4**
-  - **NEW APP** Nuvio (`com.nuvio.app`) in roundsalmon4 patches
+  - **REMOVED APP** Nuvio (`com.nuvio.app`) in roundsalmon4 patches
 - **UPDATED** Bundle **rushiranpise**
-  - **UPDATED APP** Amazon India (`in.amazon.mshop.android.shopping`) in rushiranpise patches
-  - **UPDATED APP** Amazon Shopping (`com.amazon.mshop.android.shopping`) in rushiranpise patches
-  - **UPDATED APP** Android Developer Verifier (`com.google.android.verifier`) in rushiranpise patches
-  - **UPDATED APP** Drivvo (`br.com.ctncardoso.ctncar`) in rushiranpise patches
-  - **UPDATED APP** ES File Explorer (`com.estrongs.android.pop`) in rushiranpise patches
-  - **UPDATED APP** Excel (`com.microsoft.office.excel`) in rushiranpise patches
-  - **UPDATED APP** Inure App Manager (`app.simple.inure.play`) in rushiranpise patches
-  - **UPDATED APP** Inure App Manager (GitHub) (`app.simple.inure`) in rushiranpise patches
   - **UPDATED APP** Monet (`com.klevico.monet`) in rushiranpise patches
-  - **REMOVED APP** Plank Workout (`fat.burnning.plank.fitness.loseweight`) in rushiranpise patches
-  - **NEW APP** [PRE-RELEASE] PortDroid (`com.stealthcopter.portdroid`) in rushiranpise patches
-  - **NEW APP** [PRE-RELEASE] Teams (`com.microsoft.teams`) in rushiranpise patches
-  - **REMOVED APP** Telegram (`org.telegram.messenger`) in rushiranpise patches
+  - **UPDATED APP** Permission Pilot (`eu.darken.myperm`) in rushiranpise patches
+  - **NEW APP** [PRE-RELEASE] PicsArt (`com.picsart.studio`) in rushiranpise patches
+  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in rushiranpise patches
+  - **NEW APP** Telegram (`org.telegram.messenger`) in rushiranpise patches
   - **UPDATED APP** Telegram Plus (`org.telegram.plus`) in rushiranpise patches
   - **UPDATED APP** Telegram Web (`org.telegram.messenger.web`) in rushiranpise patches
-  - **UPDATED APP** Word (`com.microsoft.office.word`) in rushiranpise patches
-  - **UPDATED APP** Zutobi (`com.driverlicenseapp`) in rushiranpise patches
+  - **UPDATED APP** TikTok Lite (`com.tiktok.lite.go`) in rushiranpise patches
+- **UPDATED** Bundle **sofatime**
+  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
