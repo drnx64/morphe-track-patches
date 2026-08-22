@@ -25656,9 +25656,9 @@
     "bundle": "yandex-vot",
     "channel": "stable",
     "repo_url": "https://github.com/MarcaDian/morphe-patches-yavot",
-    "created_at": "2026-08-09T10:08:59",
-    "version": "v1.0.4",
-    "description": "## [1.0.4](https://github.com/MarcaDian/morphe-patches-yavot/compare/v1.0.3...v1.0.4) (2026-08-09)\n\n### 🐛 Bug Fixes\n\n* Add missing Russian translation for the live-stream error message ([1caed27](https://github.com/MarcaDian/morphe-patches-yavot/commit/1caed27290a0724ab187a034a19f8a338de427e0))\n* Correct string keys for the button countdown timer text ([2473aec](https://github.com/MarcaDian/morphe-patches-yavot/commit/2473aecb72bec193a11e2943924119aebde13cb3))\n* Remove unused strings and show summaries for VoT/live voices switches ([0cd2c86](https://github.com/MarcaDian/morphe-patches-yavot/commit/0cd2c868083dadd69144bb48aaa3f9d532daa800))\n* Resolve IDE warnings ([f0a7b85](https://github.com/MarcaDian/morphe-patches-yavot/commit/f0a7b8564a50122e2a2e20241ac09d452962d00e))\n",
+    "created_at": "2026-08-22T09:49:27",
+    "version": "v1.1.0",
+    "description": "## [1.1.0](https://github.com/MarcaDian/morphe-patches-yavot/compare/v1.0.4...v1.1.0) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* Crash when opening the bottom sheet after the theme colors moved out of the library ([4067cd3](https://github.com/MarcaDian/morphe-patches-yavot/commit/4067cd396a4eb9ea6bee7374fd4f3b42008d7a17))\n* Drop the redundant clamp from the Yandex VoT poll delay ([0048d0d](https://github.com/MarcaDian/morphe-patches-yavot/commit/0048d0db0208dbe47a5eac45190a0af808026fb7))\n* Improve the Yandex VoT player button placement and countdown text ([af89a0d](https://github.com/MarcaDian/morphe-patches-yavot/commit/af89a0da676d54612b926ba1b32c79ac2a906373))\n* Register the add-on listeners only once ([505e0cc](https://github.com/MarcaDian/morphe-patches-yavot/commit/505e0ccd85c80b934f710168a9498d4ca6cb8bf0))\n* Resolve IDE warnings ([1e5256e](https://github.com/MarcaDian/morphe-patches-yavot/commit/1e5256e8392aaab876e548390e5b59c3012e3e82))\n* Rework Yandex VoT timing, stop handling and new-video invalidation ([cae71fa](https://github.com/MarcaDian/morphe-patches-yavot/commit/cae71fa6ce27a3d39c65e8853694feacf359772c))\n\n### ✨ New Features\n\n* Verify the Morphe Patches host API before patching ([c0d1546](https://github.com/MarcaDian/morphe-patches-yavot/commit/c0d1546f83ebcc0e435647783292bd7d44f491c4))\n",
     "apps": [
       {
         "app_name": "YouTube",
@@ -25676,6 +25676,31 @@
       }
     ],
     "fingerprint": "1e1f68cee66ca35b09c82242a0b66662e0858fdeb4806b70cac136db84ef6f0b"
+  },
+  "yandex-vot:dev": {
+    "bundle": "yandex-vot",
+    "channel": "dev",
+    "repo_url": "https://github.com/MarcaDian/morphe-patches-yavot",
+    "created_at": "2026-08-22T09:35:52",
+    "version": "v1.1.0-dev.1",
+    "description": "## [1.1.0-dev.1](https://github.com/MarcaDian/morphe-patches-yavot/compare/v1.0.5-dev.1...v1.1.0-dev.1) (2026-08-22)\n\n### 🐛 Bug Fixes\n\n* Drop the redundant clamp from the Yandex VoT poll delay ([0048d0d](https://github.com/MarcaDian/morphe-patches-yavot/commit/0048d0db0208dbe47a5eac45190a0af808026fb7))\n* Improve the Yandex VoT player button placement and countdown text ([af89a0d](https://github.com/MarcaDian/morphe-patches-yavot/commit/af89a0da676d54612b926ba1b32c79ac2a906373))\n* Register the add-on listeners only once ([505e0cc](https://github.com/MarcaDian/morphe-patches-yavot/commit/505e0ccd85c80b934f710168a9498d4ca6cb8bf0))\n* Resolve IDE warnings ([1e5256e](https://github.com/MarcaDian/morphe-patches-yavot/commit/1e5256e8392aaab876e548390e5b59c3012e3e82))\n* Rework Yandex VoT timing, stop handling and new-video invalidation ([cae71fa](https://github.com/MarcaDian/morphe-patches-yavot/commit/cae71fa6ce27a3d39c65e8853694feacf359772c))\n\n### ✨ New Features\n\n* Verify the Morphe Patches host API before patching ([c0d1546](https://github.com/MarcaDian/morphe-patches-yavot/commit/c0d1546f83ebcc0e435647783292bd7d44f491c4))\n",
+    "apps": [
+      {
+        "app_name": "YouTube",
+        "package": "com.google.android.youtube",
+        "patches": [
+          {
+            "name": "Voice Over Translation (Yandex)",
+            "description": "Adds an option to enable Yandex voice-over translation of video audio tracks. Requires a Morphe Patches version with add-on support.",
+            "use": true,
+            "options": [],
+            "compatible_versions": []
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/QNmuZQc9I6Zbe3mWnSr0hycnENqGFCI5p3yE29Hkxtf22T0IWS6zTrpxULLyyjWpB7ONAXDsDQXnXcVWokl3eg"
+      }
+    ],
+    "fingerprint": "6d551e57d74fb1fc19cf0f1f2091bd9249844521d4c819cd65b4992d5e781dac"
   },
   "ftl:stable": {
     "bundle": "ftl",
@@ -46734,9 +46759,9 @@
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-08-22T07:01:13",
-    "version": "v1.40.0-dev.17",
-    "description": "## [1.40.0-dev.17](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.16...v1.40.0-dev.17) (2026-08-22)\n\n### ✨ New Features\n\n* **YouTube - Theme:** Draw the splash screen with the selected background color ([#2543](https://github.com/MorpheApp/morphe-patches/issues/2543)) ([fb3302d](https://github.com/MorpheApp/morphe-patches/commit/fb3302d54724ca97e8e753ffdbae111a0c55beb7))\n",
+    "created_at": "2026-08-22T09:21:29",
+    "version": "v1.40.0-dev.18",
+    "description": "## [1.40.0-dev.18](https://github.com/MorpheApp/morphe-patches/compare/v1.40.0-dev.17...v1.40.0-dev.18) (2026-08-22)\n\n### 🚀 Updated App Support\n\n* **YouTube:** Add experimental support for `21.34.243` ([50ba5d6](https://github.com/MorpheApp/morphe-patches/commit/50ba5d6d4f0f1d5f72747d13740319ea5dca8eca))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -47237,8 +47262,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47252,8 +47277,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47267,8 +47292,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47282,8 +47307,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47297,8 +47322,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47312,8 +47337,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47327,8 +47352,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47347,8 +47372,8 @@
               }
             ],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47362,8 +47387,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47377,8 +47402,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47392,8 +47417,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47416,8 +47441,8 @@
               }
             ],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47431,8 +47456,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47446,8 +47471,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47461,8 +47486,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47476,8 +47501,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47491,8 +47516,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47506,8 +47531,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47521,8 +47546,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47536,8 +47561,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47551,8 +47576,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47566,8 +47591,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47581,8 +47606,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47596,8 +47621,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47611,8 +47636,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47626,8 +47651,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47641,8 +47666,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47656,8 +47681,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47671,8 +47696,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47686,8 +47711,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47701,8 +47726,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47716,8 +47741,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47731,8 +47756,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47746,8 +47771,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47761,8 +47786,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47776,8 +47801,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47791,8 +47816,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47806,8 +47831,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47821,8 +47846,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47836,8 +47861,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47860,8 +47885,8 @@
               }
             ],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47875,8 +47900,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47890,8 +47915,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47905,8 +47930,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47920,8 +47945,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47935,8 +47960,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47950,8 +47975,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47965,8 +47990,8 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47980,8 +48005,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -47995,8 +48020,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48010,8 +48035,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48025,8 +48050,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48040,8 +48065,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48055,8 +48080,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48070,8 +48095,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48085,8 +48110,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48100,8 +48125,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48115,8 +48140,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48130,8 +48155,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48145,8 +48170,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48160,8 +48185,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48175,8 +48200,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48190,8 +48215,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48205,8 +48230,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48220,8 +48245,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48235,8 +48260,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48250,8 +48275,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48265,8 +48290,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48280,8 +48305,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48295,8 +48320,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48310,8 +48335,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48325,8 +48350,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48340,8 +48365,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48355,8 +48380,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48370,8 +48395,8 @@
             "use": true,
             "options": [],
             "compatible_versions": [
+              "21.34.243",
               "21.33.321",
-              "21.32.2",
               "21.28.208",
               "21.04.223",
               "20.51.39",
@@ -48630,7 +48655,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/8FVS0kvM60JwqZWRNzBIlwrZZxJa8vpli8IWaaTo8QXRe1PHmCNJ8UpWoXkGPV3jKEaTY2OVAeYoisOnGJXY"
       }
     ],
-    "fingerprint": "1fe605082c4fadcc3a213c3fd3127c22fdfb212877570068249c3992996c8a7a"
+    "fingerprint": "b9282a67d48e0875a1907be90fc6794dd4ff9fa5d83bcc9320c23d827a832b20"
   },
   "ee-morphe:stable": {
     "bundle": "ee-morphe",
