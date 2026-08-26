@@ -1,5 +1,5 @@
 {
-    "version": "v1.0.0-dev.15",
+    "version": "v1.0.0-dev.29",
     "patches": [
         {
             "compatiblePackages": [
@@ -11,8 +11,11 @@
                     "targets": [
                         {
                             "isExperimental": false,
-                            "version": "0.8.2-beta"
+                            "version": "0.8.7-beta"
                         }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
                     ]
                 }
             ],
@@ -21,8 +24,8 @@
                 "BytecodePatch",
                 "ResourcePatch"
             ],
-            "description": "Adds Morphe > Playback control to open the source picker when no preferred binge-group stream is found.",
-            "name": "Binge Group Manual Fallback",
+            "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
+            "name": "Allow Importing Subs from Local Storage",
             "options": []
         },
         {
@@ -35,8 +38,35 @@
                     "targets": [
                         {
                             "isExperimental": false,
-                            "version": "0.8.2-beta"
+                            "version": "0.8.7-beta"
                         }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
+                    ]
+                }
+            ],
+            "default": false,
+            "dependencies": [],
+            "description": "Returns Library focus to the previously selected Saved or Cloud mode.",
+            "name": "Library Mode Focus Fix",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#111827",
+                    "name": "NuvioTV",
+                    "packageName": "com.nuvio.tv",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "0.8.7-beta"
+                        }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
                     ]
                 }
             ],
@@ -45,7 +75,61 @@
                 "BytecodePatch",
                 "ResourcePatch"
             ],
-            "description": "Marks detected English SDH tracks in embedded and addon subtitle lists.",
+            "description": "Downloads selected direct movie and episode sources to local storage for exact local playback.",
+            "name": "Local Downloads",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#111827",
+                    "name": "NuvioTV",
+                    "packageName": "com.nuvio.tv",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "0.8.7-beta"
+                        }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
+                    ]
+                }
+            ],
+            "default": false,
+            "dependencies": [
+                "BytecodePatch",
+                "ResourcePatch"
+            ],
+            "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files.",
+            "name": "Local Media",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#111827",
+                    "name": "NuvioTV",
+                    "packageName": "com.nuvio.tv",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "0.8.7-beta"
+                        }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
+                    ]
+                }
+            ],
+            "default": false,
+            "dependencies": [
+                "BytecodePatch",
+                "ResourcePatch"
+            ],
+            "description": "Marks explicitly labelled SDH tracks and detected English SDH subtitle files.",
             "name": "Mark SDH Subtitles",
             "options": []
         },
@@ -59,8 +143,11 @@
                     "targets": [
                         {
                             "isExperimental": false,
-                            "version": "0.8.2-beta"
+                            "version": "0.8.7-beta"
                         }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
                     ]
                 }
             ],
@@ -83,8 +170,11 @@
                     "targets": [
                         {
                             "isExperimental": false,
-                            "version": "0.8.2-beta"
+                            "version": "0.8.7-beta"
                         }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
                     ]
                 }
             ],
@@ -93,8 +183,8 @@
                 "BytecodePatch",
                 "ResourcePatch"
             ],
-            "description": "Adds Settings > Morphe > Ratings with independent overall and episode rating controls.",
-            "name": "Rating Visibility",
+            "description": "Adds Settings → Morphe → Subtitles to normalize music symbols and remove SDH annotations from Media3 subtitles.",
+            "name": "Remove SDH Annotations",
             "options": []
         },
         {
@@ -107,8 +197,11 @@
                     "targets": [
                         {
                             "isExperimental": false,
-                            "version": "0.8.2-beta"
+                            "version": "0.8.7-beta"
                         }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
                     ]
                 }
             ],
@@ -117,8 +210,32 @@
                 "BytecodePatch",
                 "ResourcePatch"
             ],
-            "description": "Adds Settings → Morphe → Subtitles and removes SDH annotations from Media3 subtitles when enabled.",
-            "name": "Remove SDH Annotations",
+            "description": "Returns the source picker to the source played before leaving the player.",
+            "name": "Restore Source Selection",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#111827",
+                    "name": "NuvioTV",
+                    "packageName": "com.nuvio.tv",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "0.8.7-beta"
+                        }
+                    ],
+                    "versions": [
+                        "0.8.7-beta"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Installs the patched app separately as Nuvio Morphe instead of replacing NuvioTV.",
+            "name": "Side-by-side installation",
             "options": []
         }
     ]

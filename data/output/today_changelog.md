@@ -1,33 +1,37 @@
-## [2026-08-06]
-- **UPDATED** Bundle **adobo**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in adobo patches
+## [2026-08-07]
+- **UPDATED** Bundle **ajstrick81-androidtv**
+  - **UPDATED APP** Ott (`com.cbs.ott`) in ajstrick81-androidtv patches
 - **UPDATED** Bundle **amplerevanced**
-  - **UPDATED APP** Flexcil (`com.flexcil.flexcilnote`) in amplerevanced patches
+  - **UPDATED APP** dcinside (`com.dcinside.app.android`) in amplerevanced patches
+  - **UPDATED APP** Kakao Talk (`com.kakao.talk`) in amplerevanced patches
 - **UPDATED** Bundle **anddea**
   - **UPDATED APP** YouTube (`com.google.android.youtube`) in anddea patches
   - **UPDATED APP** YouTube Music (`com.google.android.apps.youtube.music`) in anddea patches
-- **NEW BUNDLE** Bundle by **heinrich26** (stable)
-  - **NEW APP** MT Capsule (`com.pryshedko.mtisland`) in heinrich26 patches
-- **UPDATED** Bundle **hxreborn**
-  - **UPDATED APP** Proton Mail (`ch.protonmail.android`) in hxreborn patches
-- **NEW BUNDLE** Bundle by **jonnyvr1** (dev)
-  - **NEW APP** [PRE-RELEASE] Tantan (`com.tantantribe.tribe`) in jonnyvr1 patches
-- **NEW BUNDLE** Bundle by **logm1lo** (dev, stable)
-  - **NEW APP** Calistree (`com.calistree.calistree`) in logm1lo patches
-- **UPDATED** Bundle **morphe**
-  - **UPDATED APP** Reddit (`com.reddit.frontpage`) in morphe patches
+- **UPDATED** Bundle **dh6k**
+  - **NEW APP** [PRE-RELEASE] Helium Browser (`io.github.jqssun.helium`) in dh6k patches
+- **UPDATED** Bundle **franticg33k**
+  - **UPDATED APP** JellyWatch (`com.jellywatch.app`) in franticg33k patches
+  - **NEW APP** JellyWatch TV (`com.jellywatch.tv`) in franticg33k patches
+  - **UPDATED APP** Karobar (`com.bytecaretech.merokarobar`) in franticg33k patches
+  - **UPDATED APP** Native Camera (`com.rawcam.app`) in franticg33k patches
+- **UPDATED** Bundle **hoo-dles**
+  - **UPDATED APP** AdGuard (`com.adguard.android`) in hoo-dles patches
+  - **UPDATED APP** GitHub (`com.github.android`) in hoo-dles patches
+  - **UPDATED APP** Lightroom Mobile (`com.adobe.lrmobile`) in hoo-dles patches
+  - **UPDATED APP** Ling (`com.simyasolutions.ling.universal`) in hoo-dles patches
+  - **UPDATED APP** MacroFactor (`com.sbs.diet`) in hoo-dles patches
+  - **UPDATED APP** Nova Launcher (`com.teslacoilsw.launcher`) in hoo-dles patches
+  - **UPDATED APP** Proton VPN (`ch.protonvpn.android`) in hoo-dles patches
+  - **UPDATED APP** Smart Launcher (`ginlemon.flowerfree`) in hoo-dles patches
+  - **UPDATED APP** Solid Explorer (`pl.solidexplorer2`) in hoo-dles patches
+  - **REMOVED APP** Teuida (`net.teuida.teuida`) in hoo-dles patches
+  - **UPDATED APP** Xodo (`com.xodo.pdf.reader`) in hoo-dles patches
 - **UPDATED** Bundle **nuviotv**
   - **UPDATED APP** [PRE-RELEASE] NuvioTV (`com.nuvio.tv`) in nuviotv patches
-- **UPDATED** Bundle **okish-morphe**
-  - **NEW APP** Dr. Driving (`com.ansangha.drdriving`) in okish-morphe patches
-- **NEW BUNDLE** Bundle by **petalmaps-androidauto** (stable)
-  - **NEW APP** Petal Maps (`com.huawei.maps.app`) in petalmaps-androidauto patches
-- **UPDATED** Bundle **sofatime**
-  - **UPDATED APP** SofaTime (`com.theclashsoft.sofatime`) in sofatime patches
-- **NEW BUNDLE** Bundle by **spookyexe** (dev, stable)
-  - **NEW APP** Beeline (`co.beeline`) in spookyexe patches
+- **UPDATED** Bundle **paresh-maheshwari**
+  - **UPDATED APP** Lumina Walls (`com.lumina.wallpapers`) in paresh-maheshwari patches
+  - **UPDATED APP** Proton VPN (`ch.protonvpn.android`) in paresh-maheshwari patches
+  - **UPDATED APP** TaskManager (`com.rk.taskmanager`) in paresh-maheshwari patches
+  - **UPDATED APP** Telegram (`org.telegram.messenger.web`) in paresh-maheshwari patches
 - **UPDATED** Bundle **xob0t**
-  - **UPDATED APP** Avito (`com.avito.android`) in xob0t patches
   - **UPDATED APP** Ozon (`ru.ozon.app.android`) in xob0t patches
-  - **UPDATED APP** TBank (`com.idamob.tinkoff.android`) in xob0t patches
-  - **UPDATED APP** Wildberries (`com.wildberries.ru`) in xob0t patches

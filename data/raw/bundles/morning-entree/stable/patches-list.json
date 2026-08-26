@@ -1,5 +1,5 @@
 {
-    "version": "v1.8.0",
+    "version": "v1.18.0",
     "patches": [
         {
             "compatiblePackages": [
@@ -47,7 +47,7 @@
             "dependencies": [
                 "BytecodePatch"
             ],
-            "description": "Redirects Gboard's known tracking, analytics, and ad host literals to 0.0.0.0 using a built-in blocklist. Note: telemetry sent through Google Play Services is not affected; use the always-incognito patch for that.",
+            "description": "Redirects Gboard's known tracking, analytics, and ad host to 0.0.0.0. Note: telemetry sent through Google Play Services is not affected; use the always-incognito patch for that.",
             "name": "Block tracking and analytics",
             "options": [
                 {
@@ -56,6 +56,93 @@
                     "key": "isWildcard",
                     "required": false,
                     "title": "Wildcard blocking",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Redirects known tracking, analytics, and ad host literals to 0.0.0.0 using a built-in blocklist, optionally extended with your own hosts file. Only affects hosts that appear as literal strings in the app; telemetry sent through Google Play Services is not affected.",
+            "name": "Block tracking hosts",
+            "options": [
+                {
+                    "default": true,
+                    "description": "When enabled, an entry like \"example.com\" also blocks subdomains such as \"www.example.com\".",
+                    "key": "isWildcard",
+                    "required": false,
+                    "title": "Wildcard blocking",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": null,
+                    "description": "Optional absolute path to a hosts/blocklist file (hosts-file lines, bare domains, or URLs; one per line, \"#\" comments allowed). Its entries are added to the built-in blocklist. Leave empty to use the built-in list only.",
+                    "key": "userHostsFile",
+                    "required": false,
+                    "title": "Additional hosts file",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Makes apps believe they are already exempt from battery optimization so they stop prompting you to disable it. Only affects what the app sees, not the real system setting.",
+            "name": "Bypass battery optimization nag",
+            "options": []
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Renames the app (default: append \".entree\") so it installs as a clone next to the original. The name is configurable. Changing a package name can lead to unexpected issues.",
+            "name": "Change package name",
+            "options": [
+                {
+                    "default": ".entree",
+                    "description": "Pick a preset from the dropdown (e.g. \".clone\", \".clone2\", \".clone3\") to install several copies of the same app side by side, or type any word (e.g. \"clone\") to append it as \".clone\", a suffix starting with \".\", or a full replacement package name. Defaults to appending \".entree\".",
+                    "key": "packageName",
+                    "required": true,
+                    "title": "Package name",
+                    "type": "kotlin.String",
+                    "values": {
+                        "Append \".entree\"": ".entree",
+                        "Clone (append \".clone\")": ".clone",
+                        "Clone 2 (append \".clone2\")": ".clone2",
+                        "Clone 3 (append \".clone3\")": ".clone3"
+                    }
+                },
+                {
+                    "default": true,
+                    "description": "Update compatibility receiver permissions. Enabling this can fix installation errors, but can also break features in certain apps.",
+                    "key": "updatePermissions",
+                    "required": false,
+                    "title": "Update permissions",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": true,
+                    "description": "Update other permissions declared by the app. Enabling this can fix installation errors, but can also break features in certain apps.",
+                    "key": "updateOtherPermissions",
+                    "required": false,
+                    "title": "Update other permissions",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                },
+                {
+                    "default": true,
+                    "description": "Update content provider URI authorities. Enabling this can fix installation errors, but can also break features in certain apps.",
+                    "key": "updateProviders",
+                    "required": false,
+                    "title": "Update content providers",
                     "type": "kotlin.Boolean",
                     "values": null
                 }
@@ -134,6 +221,9 @@
                             "isExperimental": false,
                             "version": "88600 (8.8.6)"
                         }
+                    ],
+                    "versions": [
+                        "88600 (8.8.6)"
                     ]
                 }
             ],
@@ -141,6 +231,22 @@
             "dependencies": [],
             "description": "Turns off analytics, collection and removes the advertising-ID / ad-services permissions. Pair with \"Block Internet Patch\" to fully block trackers.",
             "name": "Disable Analytics & AD Tracking",
+            "options": []
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Turns off Firebase / Google Analytics collection and removes the advertising-ID and ad-services permissions. Blocks ad personalization and analytics opt-in without cutting off the app's legitimate network features. Pair with a host blocker to also stop the traffic.",
+            "name": "Disable analytics & ad tracking",
+            "options": []
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Blocks apps from clipboard access",
+            "name": "Disable clipboard access",
             "options": []
         },
         {
@@ -154,6 +260,9 @@
                             "isExperimental": false,
                             "version": "1.596"
                         }
+                    ],
+                    "versions": [
+                        "1.596"
                     ]
                 }
             ],
@@ -161,6 +270,77 @@
             "dependencies": [],
             "description": "Disable Signature Verification So The App Doesn't Crash When The APK Signature Changes After Patching",
             "name": "Disable Signature Verification",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "name": "Gboard",
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "default": false,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Forces Gboard's \"Improve Gboard\" / usage-statistics and federated-learning flags off at startup, regardless of the in-app settings, so your typing is not used for training or metrics. Best combined with the \"Network privacy\" patch.",
+            "name": "Disable telemetry & federated learning",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#EF5350",
+                    "name": "Smart AudioBook Player",
+                    "packageName": "ak.alizandro.smartaudiobookplayer",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "11.8.2"
+                        }
+                    ],
+                    "versions": [
+                        "11.8.2"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks the full version of Smart AudioBook Player",
+            "name": "Enable Full Version",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#FF5252",
+                    "name": "Arm Workout",
+                    "packageName": "armworkout.armworkoutformen.armexercises",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "2.4.3"
+                        }
+                    ],
+                    "versions": [
+                        "2.4.3"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Arm Workout Premium. Use with Spoof App Signature",
+            "name": "Enable Premium",
             "options": []
         },
         {
@@ -174,6 +354,9 @@
                             "isExperimental": false,
                             "version": "1.2.6"
                         }
+                    ],
+                    "versions": [
+                        "1.2.6"
                     ]
                 }
             ],
@@ -194,6 +377,9 @@
                             "isExperimental": false,
                             "version": "2.3.19"
                         }
+                    ],
+                    "versions": [
+                        "2.3.19"
                     ]
                 }
             ],
@@ -214,12 +400,89 @@
                             "isExperimental": false,
                             "version": "1.6.21"
                         }
+                    ],
+                    "versions": [
+                        "1.6.21"
                     ]
                 }
             ],
             "default": true,
             "dependencies": [],
             "description": "Unlocks Boosted Premium",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#2E7D6F",
+                    "name": "Does Not Commute",
+                    "packageName": "com.mediocre.commute",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.5.5"
+                        }
+                    ],
+                    "versions": [
+                        "1.5.5"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Does Not Commute Premium. Just Tap Get Premium and Restore Purchase When Prompted",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#1565C0",
+                    "name": "EOBD Facile",
+                    "packageName": "org.eobdfacile.android",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "3.87.1179"
+                        }
+                    ],
+                    "versions": [
+                        "3.87.1179"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks EOBD Facile Premium",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#5F7C8A",
+                    "name": "Fake GPS Location",
+                    "packageName": "com.hopefactory2021.fakegpslocation",
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false,
+                            "version": "125.0"
+                        }
+                    ],
+                    "versions": [
+                        "125.0"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Fake GPS Location Premium",
             "name": "Enable Premium",
             "options": []
         },
@@ -234,12 +497,64 @@
                             "isExperimental": false,
                             "version": "1.1.1"
                         }
+                    ],
+                    "versions": [
+                        "1.1.1"
                     ]
                 }
             ],
             "default": true,
             "dependencies": [],
             "description": "Unlocks Gradient Weather Premium. Use With Spoof Install Source",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#004AFF",
+                    "name": "Home Workout - No Equipment",
+                    "packageName": "homeworkout.homeworkouts.noequipment",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.7.6"
+                        }
+                    ],
+                    "versions": [
+                        "1.7.6"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Home Workout Premium. Use with Spoof Signature Verification",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#2196F3",
+                    "name": "Hydro Coach",
+                    "packageName": "com.codium.hydrocoach",
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false,
+                            "version": "5.1.9"
+                        }
+                    ],
+                    "versions": [
+                        "5.1.9"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Hydro Coach Pro",
             "name": "Enable Premium",
             "options": []
         },
@@ -254,12 +569,41 @@
                             "isExperimental": false,
                             "version": "20.8.0"
                         }
+                    ],
+                    "versions": [
+                        "20.8.0"
                     ]
                 }
             ],
             "default": true,
             "dependencies": [],
             "description": "Unlock Lifesum Premium",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#212121",
+                    "name": "Lightmeter",
+                    "packageName": "com.vodemn.lightmeter",
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false,
+                            "version": "2.5.0"
+                        }
+                    ],
+                    "versions": [
+                        "2.5.0"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Lightmeter Pro. Use With Spoof Install Source.",
             "name": "Enable Premium",
             "options": []
         },
@@ -274,6 +618,9 @@
                             "isExperimental": false,
                             "version": "8.4.4"
                         }
+                    ],
+                    "versions": [
+                        "8.4.4"
                     ]
                 }
             ],
@@ -296,12 +643,108 @@
                             "isExperimental": false,
                             "version": "1.3.4"
                         }
+                    ],
+                    "versions": [
+                        "1.3.4"
                     ]
                 }
             ],
             "default": true,
             "dependencies": [],
             "description": "Unlocks Listy Premium",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#0DA98D",
+                    "name": "Lose Weight App for Men",
+                    "packageName": "menloseweight.loseweightappformen.weightlossformen",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "2.4.37"
+                        }
+                    ],
+                    "versions": [
+                        "2.4.37"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Lose Weight App for Men Premium. Use with Spoof App Signature",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#20334D",
+                    "name": "MacroDroid",
+                    "packageName": "com.arlosoft.macrodroid",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "5.65.9"
+                        }
+                    ],
+                    "versions": [
+                        "5.65.9"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks MacroDroid Pro, Use With Spoof App Signature",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#17364C",
+                    "name": "Obd Mary",
+                    "packageName": "com.elm.elm327.obd2.eobd.obd.car.scanner.diagnostics.tool.dashboard.doctor.check.engine.torque.speed.trouble.codes.mary",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.318"
+                        }
+                    ],
+                    "versions": [
+                        "1.318"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Obd Mary's Paid Features, Including the Diagnostics Edition",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#009688",
+                    "name": "Paisa",
+                    "packageName": "dev.hemanths.paisa",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "2026.06.230"
+                        }
+                    ],
+                    "versions": [
+                        "2026.06.230"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Paisa Premium. Use With Spoof Install Source",
             "name": "Enable Premium",
             "options": []
         },
@@ -316,6 +759,9 @@
                             "isExperimental": false,
                             "version": "1.596"
                         }
+                    ],
+                    "versions": [
+                        "1.596"
                     ]
                 }
             ],
@@ -338,6 +784,9 @@
                             "isExperimental": false,
                             "version": "3.5.1"
                         }
+                    ],
+                    "versions": [
+                        "3.5.1"
                     ]
                 }
             ],
@@ -352,6 +801,29 @@
         {
             "compatiblePackages": [
                 {
+                    "appIconColor": "#252525",
+                    "name": "Photon Camera",
+                    "packageName": "com.hinnka.mycamera",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.25.1.1"
+                        }
+                    ],
+                    "versions": [
+                        "1.25.1.1"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Photon Camera Pro",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
                     "appIconColor": "#E0563F",
                     "name": "Pinnit",
                     "packageName": "dev.sasikanth.pinnit2",
@@ -360,12 +832,109 @@
                             "isExperimental": false,
                             "version": "1.13.0"
                         }
+                    ],
+                    "versions": [
+                        "1.13.0"
                     ]
                 }
             ],
             "default": true,
             "dependencies": [],
             "description": "Unlocks Pinnit Pro. Just Tap Restore Purchase When Prompted. Must be installed with either ADB/InstallerX Revived/Inure so it is not in Restricted Mode",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#E91E63",
+                    "name": "PinOut",
+                    "packageName": "com.mediocre.pinout",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.0.7"
+                        }
+                    ],
+                    "versions": [
+                        "1.0.7"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks PinOut Premium. Just Tap Get Premium and Restore Purchase When Prompted",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#FF6D00",
+                    "name": "Six Pack in 30 Days",
+                    "packageName": "sixpack.sixpackabs.absworkout",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.4.8"
+                        }
+                    ],
+                    "versions": [
+                        "1.4.8"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Premium",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#80C583",
+                    "name": "Sleep as Android",
+                    "packageName": "com.urbandroid.sleep",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "20260616"
+                        }
+                    ],
+                    "versions": [
+                        "20260616"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Sleep as Android Premium. Tap Wait I already Paid when Prompted",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#1E88E5",
+                    "name": "Smash Hit",
+                    "packageName": "com.mediocre.smashhit",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.5.14"
+                        }
+                    ],
+                    "versions": [
+                        "1.5.14"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Smash Hit. Just Tap Get Premium and Restore Purchase When Prompted",
             "name": "Enable Premium",
             "options": []
         },
@@ -380,6 +949,9 @@
                             "isExperimental": false,
                             "version": "2.8.0"
                         }
+                    ],
+                    "versions": [
+                        "2.8.0"
                     ]
                 }
             ],
@@ -400,12 +972,41 @@
                             "isExperimental": false,
                             "version": "2.13.0"
                         }
+                    ],
+                    "versions": [
+                        "2.13.0"
                     ]
                 }
             ],
             "default": true,
             "dependencies": [],
             "description": "Unlocks Super Status Bar Premium. Use with Spoof Install Source",
+            "name": "Enable Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#4CAF50",
+                    "name": "TheFor",
+                    "packageName": "xyz.thefor.habits.habits",
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false,
+                            "version": "1.4.6"
+                        }
+                    ],
+                    "versions": [
+                        "1.4.6"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks TheFor Pro",
             "name": "Enable Premium",
             "options": []
         },
@@ -420,6 +1021,9 @@
                             "isExperimental": false,
                             "version": "5.15.8"
                         }
+                    ],
+                    "versions": [
+                        "5.15.8"
                     ]
                 }
             ],
@@ -440,6 +1044,9 @@
                             "isExperimental": false,
                             "version": "1.17.6"
                         }
+                    ],
+                    "versions": [
+                        "1.17.6"
                     ]
                 }
             ],
@@ -460,6 +1067,9 @@
                             "isExperimental": false,
                             "version": "5.5.1"
                         }
+                    ],
+                    "versions": [
+                        "5.5.1"
                     ]
                 }
             ],
@@ -480,6 +1090,9 @@
                             "isExperimental": false,
                             "version": "5.2.1"
                         }
+                    ],
+                    "versions": [
+                        "5.2.1"
                     ]
                 }
             ],
@@ -500,6 +1113,9 @@
                             "isExperimental": false,
                             "version": "88600 (8.8.6)"
                         }
+                    ],
+                    "versions": [
+                        "88600 (8.8.6)"
                     ]
                 }
             ],
@@ -510,11 +1126,191 @@
             "options": []
         },
         {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#428BCA",
+                    "name": "AppSales",
+                    "packageName": "net.tsapps.appsales",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "12.3"
+                        }
+                    ],
+                    "versions": [
+                        "12.3"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Enables Appsales Premium.",
+            "name": "Enable Pro",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "name": "Gboard",
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "default": false,
+            "dependencies": [
+                "BytecodePatch",
+                "ResourcePatch"
+            ],
+            "description": "Controls what Gboard is allowed to talk to. Choose a network level: block only telemetry (keep all features), lock it down to GIFs and voice typing only, or block all internet access.",
+            "name": "Network privacy",
+            "options": [
+                {
+                    "default": "telemetry",
+                    "description": "How much of Gboard's network access to cut. \"Telemetry only\" keeps every feature working. \"Privacy lockdown\" keeps GIF search and cloud voice typing but blocks everything else. \"Block all internet\" removes network access entirely.",
+                    "key": "gboardNetworkLevel",
+                    "required": true,
+                    "title": "Network level",
+                    "type": "kotlin.String",
+                    "values": {
+                        "Block all internet": "block_all",
+                        "Block telemetry only (keep all features)": "telemetry",
+                        "Privacy lockdown (keep GIFs & voice typing)": "lockdown"
+                    }
+                },
+                {
+                    "default": true,
+                    "description": "When enabled, a blocked entry like \"example.com\" also covers subdomains such as \"sub.example.com\".",
+                    "key": "isWildcard",
+                    "required": false,
+                    "title": "Wildcard blocking",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Extracts and Base64-encodes the original app's signing certificate. Applied automatically by 'Spoof signature verification'; you normally do not need to touch it. Use 'Certificate source' to control where the certificate comes from.",
+            "name": "Provide original app certificate",
+            "options": [
+                {
+                    "default": "auto",
+                    "description": "Where to read the original signing certificate from.\n• Automatic: reads the APK you're patching (v1 META-INF), then an 'Original APK file' if set, then the installed app. Works for most apps with no extra input.\n• Simple / decoded APK only: v1 META-INF of the APK being patched (same as the basic extractor). Fails on v2/v3-only apps that have no v1 signature.\n• Original APK file: reads the certificate (incl. v2/v3) from the APK you point to below.\n• Installed app: reads it from the stock app installed on this device (on-device only).",
+                    "key": "certificateSource",
+                    "required": true,
+                    "title": "Certificate source",
+                    "type": "kotlin.String",
+                    "values": {
+                        "Automatic (recommended)": "auto",
+                        "Installed app": "installed",
+                        "Original APK file": "apkFile",
+                        "Simple / decoded APK only": "simple"
+                    }
+                },
+                {
+                    "default": null,
+                    "description": "The original, unmodified APK (or .apks/.xapk bundle) to read the certificate from. Select a file or paste the full file path. Required when 'Certificate source' is 'Original APK file'; also used as a fallback in 'Automatic'.",
+                    "key": "originalApkPath",
+                    "required": false,
+                    "title": "Original APK file",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APKS",
+                    "appIconColor": "#F16522",
+                    "name": "Flud",
+                    "packageName": "com.delphicoder.flud",
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false,
+                            "version": "2.0.13-beta02"
+                        }
+                    ],
+                    "versions": [
+                        "2.0.13-beta02"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Ad Free Flud",
+            "name": "Remove Ads",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APKS",
+                    "appIconColor": "#1565C0",
+                    "name": "Send Files To TV",
+                    "packageName": "com.yablio.sendfilestotv",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.4.22"
+                        }
+                    ],
+                    "versions": [
+                        "1.4.22"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Removes ads",
+            "name": "Remove Ads",
+            "options": []
+        },
+        {
             "compatiblePackages": null,
             "default": false,
             "dependencies": [],
             "description": "Removes the INTERNET permission so the app cannot access the network at all. Blocks all trackers, analytics and ads from phoning home, but also disables any legitimate online features. Only enable for apps you want fully offline.",
             "name": "Remove internet permission",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "name": "Gboard",
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "default": false,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Hides Gboard's in-keyboard promotional / \"try this feature\" banners by forcing their promo flags off. Does not disable the underlying features, only their nag banners.",
+            "name": "Remove promotional banners",
             "options": []
         },
         {
@@ -542,6 +1338,244 @@
             ]
         },
         {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [
+                "ResourcePatch",
+                "RawResourcePatch",
+                "ResourcePatch"
+            ],
+            "description": "Spoofs the signature verification",
+            "name": "Spoof signature verification",
+            "options": [
+                {
+                    "default": "Default",
+                    "description": "The package name of the app, if modified. This must match the package name defined when the 'Change package name' patch is selected or as defined in the AndroidManifest.xml.",
+                    "key": "packageName",
+                    "required": true,
+                    "title": "Package name",
+                    "type": "kotlin.String",
+                    "values": {
+                        "Default": "Default"
+                    }
+                },
+                {
+                    "default": "Default",
+                    "description": "The base64-encoded signature from the original, unmodified APK. Leave as \"Default\" to auto-extract the certificate from the APK. Otherwise, clear it and paste the full Base64 signature to override auto-extraction.",
+                    "key": "signature",
+                    "required": true,
+                    "title": "Base64-encoded signature",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Spoofs TelephonyManager SIM/network provider values.",
+            "name": "Spoof SIM provider",
+            "options": [
+                {
+                    "default": "us",
+                    "description": "Value returned for getSimCountryIso / getNetworkCountryIso.",
+                    "key": "universalSimCountryIso",
+                    "required": true,
+                    "title": "Country ISO",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "310260",
+                    "description": "MCC+MNC returned for getSimOperator / getNetworkOperator.",
+                    "key": "universalSimOperator",
+                    "required": true,
+                    "title": "Operator code",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "T-Mobile",
+                    "description": "Value returned for getSimOperatorName / getNetworkOperatorName.",
+                    "key": "universalSimOperatorName",
+                    "required": true,
+                    "title": "Operator name",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Spoofs IMEI, MEID, subscriber ID, SIM serial, and line number reads.",
+            "name": "Spoof telephony IDs",
+            "options": [
+                {
+                    "default": "356938035643809",
+                    "description": "Value returned for getDeviceId / getImei.",
+                    "key": "universalImei",
+                    "required": true,
+                    "title": "IMEI",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "A000004E4F4F50",
+                    "description": "Value returned for getMeid.",
+                    "key": "universalMeid",
+                    "required": true,
+                    "title": "MEID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "310260000000000",
+                    "description": "Value returned for getSubscriberId (IMSI).",
+                    "key": "universalSubscriberId",
+                    "required": true,
+                    "title": "Subscriber ID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "89014103211118510720",
+                    "description": "Value returned for getSimSerialNumber.",
+                    "key": "universalSimSerial",
+                    "required": true,
+                    "title": "SIM serial",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "+15551234567",
+                    "description": "Value returned for getLine1Number.",
+                    "key": "universalLineNumber",
+                    "required": true,
+                    "title": "Line number",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Spoof Wi-Fi connection",
+            "name": "Spoof Wi-Fi connection",
+            "options": []
+        },
+        {
+            "compatiblePackages": null,
+            "default": false,
+            "dependencies": [],
+            "description": "Spoofs Wi-Fi SSID, BSSID, and MAC address reads.",
+            "name": "Spoof Wi-Fi identifiers",
+            "options": [
+                {
+                    "default": "Pixel_WiFi",
+                    "description": "Value returned for WifiInfo.getSSID.",
+                    "key": "universalWifiSsid",
+                    "required": true,
+                    "title": "SSID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "02:00:00:12:34:56",
+                    "description": "Value returned for WifiInfo.getBSSID.",
+                    "key": "universalWifiBssid",
+                    "required": true,
+                    "title": "BSSID",
+                    "type": "kotlin.String",
+                    "values": null
+                },
+                {
+                    "default": "02:00:00:65:43:21",
+                    "description": "Value returned for WifiInfo.getMacAddress.",
+                    "key": "universalWifiMac",
+                    "required": true,
+                    "title": "MAC address",
+                    "type": "kotlin.String",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "name": "Gboard",
+                    "packageName": "com.google.android.inputmethod.latin",
+                    "signatures": [
+                        "7ce83c1b71f3d572fed04c8d40c5cb10ff75e6d87d9df6fbd53f0468c2905053",
+                        "f0fd6c5b410f25cb25c3b53346c8972fae30f8ee7411df910480ad6b2d60db83"
+                    ],
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        }
+                    ]
+                }
+            ],
+            "default": false,
+            "dependencies": [
+                "BytecodePatch"
+            ],
+            "description": "Toggles Gboard feature flags to enable or disable experimental or hidden features.",
+            "name": "Toggle feature flags",
+            "options": [
+                {
+                    "default": null,
+                    "description": "The Gboard feature flags to toggle, such as experimental or hidden features.",
+                    "key": "featureFlags",
+                    "required": true,
+                    "title": "Feature flags",
+                    "type": "kotlin.collections.List<kotlin.String>",
+                    "values": null
+                },
+                {
+                    "default": true,
+                    "description": "Enables or disables all specified feature flags.",
+                    "key": "enableFlags",
+                    "required": false,
+                    "title": "Enable feature flags",
+                    "type": "kotlin.Boolean",
+                    "values": null
+                }
+            ]
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#1565C0",
+                    "name": "nzb360",
+                    "packageName": "com.kevinforeman.nzb360",
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false,
+                            "version": "24.1"
+                        }
+                    ],
+                    "versions": [
+                        "24.1"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks nzb360",
+            "name": "Unlock All Access",
+            "options": []
+        },
+        {
             "compatiblePackages": [
                 {
                     "appIconColor": "#023C69",
@@ -552,6 +1586,9 @@
                             "isExperimental": false,
                             "version": "1.0.15"
                         }
+                    ],
+                    "versions": [
+                        "1.0.15"
                     ]
                 },
                 {
@@ -563,6 +1600,9 @@
                             "isExperimental": false,
                             "version": "1.0.10"
                         }
+                    ],
+                    "versions": [
+                        "1.0.10"
                     ]
                 },
                 {
@@ -574,6 +1614,9 @@
                             "isExperimental": false,
                             "version": "1.0.10"
                         }
+                    ],
+                    "versions": [
+                        "1.0.10"
                     ]
                 },
                 {
@@ -585,6 +1628,9 @@
                             "isExperimental": false,
                             "version": "1.0.18"
                         }
+                    ],
+                    "versions": [
+                        "1.0.18"
                     ]
                 },
                 {
@@ -596,6 +1642,9 @@
                             "isExperimental": false,
                             "version": "1.0.15"
                         }
+                    ],
+                    "versions": [
+                        "1.0.15"
                     ]
                 },
                 {
@@ -607,6 +1656,9 @@
                             "isExperimental": false,
                             "version": "1.0.16"
                         }
+                    ],
+                    "versions": [
+                        "1.0.16"
                     ]
                 },
                 {
@@ -618,6 +1670,9 @@
                             "isExperimental": false,
                             "version": "1.0.9"
                         }
+                    ],
+                    "versions": [
+                        "1.0.9"
                     ]
                 },
                 {
@@ -629,6 +1684,9 @@
                             "isExperimental": false,
                             "version": "1.0.11"
                         }
+                    ],
+                    "versions": [
+                        "1.0.11"
                     ]
                 },
                 {
@@ -640,6 +1698,9 @@
                             "isExperimental": false,
                             "version": "1.0.18"
                         }
+                    ],
+                    "versions": [
+                        "1.0.18"
                     ]
                 },
                 {
@@ -651,6 +1712,9 @@
                             "isExperimental": false,
                             "version": "1.0.2"
                         }
+                    ],
+                    "versions": [
+                        "1.0.2"
                     ]
                 },
                 {
@@ -662,6 +1726,9 @@
                             "isExperimental": false,
                             "version": "1.0.9"
                         }
+                    ],
+                    "versions": [
+                        "1.0.9"
                     ]
                 },
                 {
@@ -673,6 +1740,9 @@
                             "isExperimental": false,
                             "version": "1.0.14"
                         }
+                    ],
+                    "versions": [
+                        "1.0.14"
                     ]
                 },
                 {
@@ -684,6 +1754,9 @@
                             "isExperimental": false,
                             "version": "1.0.1"
                         }
+                    ],
+                    "versions": [
+                        "1.0.1"
                     ]
                 },
                 {
@@ -695,6 +1768,9 @@
                             "isExperimental": false,
                             "version": "1.0.16"
                         }
+                    ],
+                    "versions": [
+                        "1.0.16"
                     ]
                 },
                 {
@@ -706,6 +1782,9 @@
                             "isExperimental": false,
                             "version": "1.0.10"
                         }
+                    ],
+                    "versions": [
+                        "1.0.10"
                     ]
                 },
                 {
@@ -717,6 +1796,9 @@
                             "isExperimental": false,
                             "version": "1.0.8"
                         }
+                    ],
+                    "versions": [
+                        "1.0.8"
                     ]
                 },
                 {
@@ -728,6 +1810,9 @@
                             "isExperimental": false,
                             "version": "1.0.12"
                         }
+                    ],
+                    "versions": [
+                        "1.0.12"
                     ]
                 },
                 {
@@ -739,6 +1824,9 @@
                             "isExperimental": false,
                             "version": "1.0.23"
                         }
+                    ],
+                    "versions": [
+                        "1.0.23"
                     ]
                 },
                 {
@@ -750,6 +1838,9 @@
                             "isExperimental": false,
                             "version": "1.0.20"
                         }
+                    ],
+                    "versions": [
+                        "1.0.20"
                     ]
                 },
                 {
@@ -761,6 +1852,9 @@
                             "isExperimental": false,
                             "version": "1.0.20"
                         }
+                    ],
+                    "versions": [
+                        "1.0.20"
                     ]
                 },
                 {
@@ -772,6 +1866,9 @@
                             "isExperimental": false,
                             "version": "1.0.16"
                         }
+                    ],
+                    "versions": [
+                        "1.0.16"
                     ]
                 },
                 {
@@ -783,6 +1880,9 @@
                             "isExperimental": false,
                             "version": "1.0.10"
                         }
+                    ],
+                    "versions": [
+                        "1.0.10"
                     ]
                 },
                 {
@@ -794,6 +1894,9 @@
                             "isExperimental": false,
                             "version": "1.0.12"
                         }
+                    ],
+                    "versions": [
+                        "1.0.12"
                     ]
                 },
                 {
@@ -805,6 +1908,9 @@
                             "isExperimental": false,
                             "version": "1.0.8"
                         }
+                    ],
+                    "versions": [
+                        "1.0.8"
                     ]
                 },
                 {
@@ -816,6 +1922,9 @@
                             "isExperimental": false,
                             "version": "1.0.1"
                         }
+                    ],
+                    "versions": [
+                        "1.0.1"
                     ]
                 },
                 {
@@ -827,6 +1936,9 @@
                             "isExperimental": false,
                             "version": "1.0.1"
                         }
+                    ],
+                    "versions": [
+                        "1.0.1"
                     ]
                 },
                 {
@@ -838,6 +1950,9 @@
                             "isExperimental": false,
                             "version": "1.0.3"
                         }
+                    ],
+                    "versions": [
+                        "1.0.3"
                     ]
                 },
                 {
@@ -849,6 +1964,9 @@
                             "isExperimental": false,
                             "version": "1.0.9"
                         }
+                    ],
+                    "versions": [
+                        "1.0.9"
                     ]
                 },
                 {
@@ -860,6 +1978,9 @@
                             "isExperimental": false,
                             "version": "1.0.8"
                         }
+                    ],
+                    "versions": [
+                        "1.0.8"
                     ]
                 },
                 {
@@ -871,6 +1992,9 @@
                             "isExperimental": false,
                             "version": "1.0.8"
                         }
+                    ],
+                    "versions": [
+                        "1.0.8"
                     ]
                 },
                 {
@@ -882,6 +2006,9 @@
                             "isExperimental": false,
                             "version": "1.0.9"
                         }
+                    ],
+                    "versions": [
+                        "1.0.9"
                     ]
                 },
                 {
@@ -893,6 +2020,9 @@
                             "isExperimental": false,
                             "version": "1.0.1"
                         }
+                    ],
+                    "versions": [
+                        "1.0.1"
                     ]
                 },
                 {
@@ -904,6 +2034,9 @@
                             "isExperimental": false,
                             "version": "1.0.9"
                         }
+                    ],
+                    "versions": [
+                        "1.0.9"
                     ]
                 },
                 {
@@ -915,6 +2048,9 @@
                             "isExperimental": false,
                             "version": "1.0.6"
                         }
+                    ],
+                    "versions": [
+                        "1.0.6"
                     ]
                 },
                 {
@@ -926,6 +2062,9 @@
                             "isExperimental": false,
                             "version": "1.0.9"
                         }
+                    ],
+                    "versions": [
+                        "1.0.9"
                     ]
                 },
                 {
@@ -937,6 +2076,9 @@
                             "isExperimental": false,
                             "version": "1.0.1"
                         }
+                    ],
+                    "versions": [
+                        "1.0.1"
                     ]
                 },
                 {
@@ -948,6 +2090,9 @@
                             "isExperimental": false,
                             "version": "1.0.8"
                         }
+                    ],
+                    "versions": [
+                        "1.0.8"
                     ]
                 },
                 {
@@ -959,6 +2104,9 @@
                             "isExperimental": false,
                             "version": "1.0.8"
                         }
+                    ],
+                    "versions": [
+                        "1.0.8"
                     ]
                 },
                 {
@@ -970,6 +2118,9 @@
                             "isExperimental": false,
                             "version": "1.0.10"
                         }
+                    ],
+                    "versions": [
+                        "1.0.10"
                     ]
                 },
                 {
@@ -981,6 +2132,9 @@
                             "isExperimental": false,
                             "version": "1.0.2"
                         }
+                    ],
+                    "versions": [
+                        "1.0.2"
                     ]
                 },
                 {
@@ -992,6 +2146,9 @@
                             "isExperimental": false,
                             "version": "1.0.1"
                         }
+                    ],
+                    "versions": [
+                        "1.0.1"
                     ]
                 },
                 {
@@ -1003,6 +2160,9 @@
                             "isExperimental": false,
                             "version": "1.0.6"
                         }
+                    ],
+                    "versions": [
+                        "1.0.6"
                     ]
                 },
                 {
@@ -1014,6 +2174,9 @@
                             "isExperimental": false,
                             "version": "1.0.14"
                         }
+                    ],
+                    "versions": [
+                        "1.0.14"
                     ]
                 },
                 {
@@ -1025,6 +2188,9 @@
                             "isExperimental": false,
                             "version": "1.0.12"
                         }
+                    ],
+                    "versions": [
+                        "1.0.12"
                     ]
                 },
                 {
@@ -1036,6 +2202,9 @@
                             "isExperimental": false,
                             "version": "1.0.9"
                         }
+                    ],
+                    "versions": [
+                        "1.0.9"
                     ]
                 },
                 {
@@ -1047,6 +2216,9 @@
                             "isExperimental": false,
                             "version": "1.0.6"
                         }
+                    ],
+                    "versions": [
+                        "1.0.6"
                     ]
                 },
                 {
@@ -1058,6 +2230,9 @@
                             "isExperimental": false,
                             "version": "1.0.10"
                         }
+                    ],
+                    "versions": [
+                        "1.0.10"
                     ]
                 },
                 {
@@ -1069,6 +2244,9 @@
                             "isExperimental": false,
                             "version": "1.0.8"
                         }
+                    ],
+                    "versions": [
+                        "1.0.8"
                     ]
                 },
                 {
@@ -1080,6 +2258,9 @@
                             "isExperimental": false,
                             "version": "1.0.1"
                         }
+                    ],
+                    "versions": [
+                        "1.0.1"
                     ]
                 },
                 {
@@ -1091,6 +2272,9 @@
                             "isExperimental": false,
                             "version": "1.0.10"
                         }
+                    ],
+                    "versions": [
+                        "1.0.10"
                     ]
                 }
             ],
@@ -1098,6 +2282,215 @@
             "dependencies": [],
             "description": "Unlocks all exam questions",
             "name": "Unlock all questions",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#0B6FB8",
+                    "name": "JEFIT",
+                    "packageName": "je.fit",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "17.2.10"
+                        }
+                    ],
+                    "versions": [
+                        "17.2.10"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks JEFIT Elite",
+            "name": "Unlock Elite",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#000000",
+                    "name": "Athena",
+                    "packageName": "com.kin.athena",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "1.5.6"
+                        }
+                    ],
+                    "versions": [
+                        "1.5.6"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Ppremium",
+            "name": "Unlock Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#7CB342",
+                    "name": "Automate",
+                    "packageName": "com.llamalab.automate",
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false,
+                            "version": "1.51.1"
+                        }
+                    ],
+                    "versions": [
+                        "1.51.1"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Automate Premium",
+            "name": "Unlock Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#F2C200",
+                    "name": "ColorNote",
+                    "packageName": "com.socialnmobile.dictapps.notepad.color.note",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "4.8.6"
+                        }
+                    ],
+                    "versions": [
+                        "4.8.6"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [
+                "ResourcePatch"
+            ],
+            "description": "Unlocks Premium",
+            "name": "Unlock Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APKS",
+                    "appIconColor": "#E53935",
+                    "name": "OBD Android",
+                    "packageName": "ai.metaverselabs.obdandroid",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "4.9",
+                            "versionCodes": {
+                                "ARM64_V8A": 133,
+                                "ARMEABI_V7A": 133,
+                                "X86": 133,
+                                "X86_64": 133
+                            }
+                        }
+                    ],
+                    "versions": [
+                        "4.9"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlock Premium",
+            "name": "Unlock Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#F08029",
+                    "name": "Projectivy Launcher",
+                    "packageName": "com.spocky.projengmenu",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "4.71"
+                        }
+                    ],
+                    "versions": [
+                        "4.71"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Projectivy Launcher Premium",
+            "name": "Unlock Premium",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "apkFileType": "APK",
+                    "appIconColor": "#2196F3",
+                    "name": "Bluetooth Volume Manager",
+                    "packageName": "eu.darken.bluemusic",
+                    "targets": [
+                        {
+                            "isExperimental": false
+                        },
+                        {
+                            "isExperimental": false,
+                            "version": "3.4.3"
+                        }
+                    ],
+                    "versions": [
+                        "3.4.3"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks the Pro",
+            "name": "Unlock Pro",
+            "options": []
+        },
+        {
+            "compatiblePackages": [
+                {
+                    "appIconColor": "#2196F3",
+                    "name": "ML Manager",
+                    "packageName": "com.javiersantos.mlmanager",
+                    "targets": [
+                        {
+                            "isExperimental": false,
+                            "version": "5.0"
+                        }
+                    ],
+                    "versions": [
+                        "5.0"
+                    ]
+                }
+            ],
+            "default": true,
+            "dependencies": [],
+            "description": "Unlocks Pro Features",
+            "name": "Unlock Pro",
+            "options": []
+        },
+        {
+            "compatiblePackages": null,
+            "default": true,
+            "dependencies": [],
+            "description": "Premium patch for apps that use RevenueCat",
+            "name": "Unlock RevenueCat",
             "options": []
         }
     ]
