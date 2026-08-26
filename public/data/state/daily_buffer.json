@@ -1,7 +1,7 @@
 {
   "date": "2026-08-26",
-  "lastChecked": "2026-08-26T12:43:04Z",
-  "scan_counter": 2,
+  "lastChecked": "2026-08-26T16:17:34Z",
+  "scan_counter": 3,
   "affected_bundles": {
     "cricinfo-tweaks:stable": {
       "bundle": "cricinfo-tweaks",
@@ -4801,7 +4801,8 @@
             ]
           },
           "scan_numbers": [
-            1
+            1,
+            3
           ]
         }
       ]
@@ -6446,8 +6447,22 @@
           "package": "cn.xender",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
-          ]
+            1,
+            3
+          ],
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Clean main UI",
+                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          }
         },
         {
           "app_name": "ES File Explorer",
@@ -6470,23 +6485,85 @@
           "package": "com.rs.explorer.filemanager",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
-          ]
+            1,
+            3
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Disable downloader from download menu",
+                "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+              },
+              {
+                "name": "Disable rate us dialog",
+                "description": "Overrides show() on the in-app \"rate us\" dialog so it's still built but never displayed."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
         },
         {
           "app_name": "SnapTube",
           "package": "com.snaptube.premium",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
-          ]
+            1,
+            3
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Clean SnapTube Settings Page",
+                "description": "Removes the Download tools and Phone clean categories, and their sub-items, from Settings."
+              },
+              {
+                "name": "Disable Annoying Snaptube Notifications",
+                "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Disable Notification Defaults",
+                "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default."
+              },
+              {
+                "name": "Hide Settings Items",
+                "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings."
+              }
+            ],
+            "patches_modified": []
+          }
         },
         {
           "app_name": "All Video Downloader & Ace Player",
           "package": "videoplayer.videodownloader.downloader",
           "badge_type": "NEW APP",
           "scan_numbers": [
-            1
+            1,
+            3
+          ],
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Boost Splash Screen",
+                "description": "Fixes Remove Ads And Remove Ads Lite Gettings Stuck In Splash Screen Useless if you also select skip splash and language activity patchAlso stops the splash from hiding the on-screen navigation buttons."
+              },
+              {
+                "name": "Disable downloader from download menu",
+                "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          }
+        },
+        {
+          "app_name": "Calendar",
+          "package": "calendar.agenda.schedule.event.advance.calendar.planner",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            3
           ]
         }
       ]
@@ -21392,6 +21469,14 @@
           "scan_numbers": [
             1
           ]
+        },
+        {
+          "app_name": "apk-signer",
+          "package": "com.haibison.apksigner",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            3
+          ]
         }
       ]
     },
@@ -21430,6 +21515,14 @@
           "badge_type": "NEW APP",
           "scan_numbers": [
             1
+          ]
+        },
+        {
+          "app_name": "apk-signer",
+          "package": "com.haibison.apksigner",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            3
           ]
         }
       ]
@@ -21533,6 +21626,36 @@
           },
           "scan_numbers": [
             1
+          ]
+        }
+      ]
+    },
+    "liongalahad:stable": {
+      "bundle": "liongalahad",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "Stremio Android TV",
+          "package": "com.stremio.one",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            3
+          ]
+        }
+      ]
+    },
+    "liongalahad:dev": {
+      "bundle": "liongalahad",
+      "channel": "dev",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "Stremio Android TV",
+          "package": "com.stremio.one",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            3
           ]
         }
       ]
