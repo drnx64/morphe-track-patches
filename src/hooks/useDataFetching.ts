@@ -21,6 +21,7 @@ import {
 import { preloadIcons } from '../services/iconCache'
 import { notifyWatchedUpdates } from '../services/watchlist'
 import { CACHE_KEYS } from '../types/utils'
+import { limitChangelogDays } from '../utils/changelog'
 import type { ChangelogEntry } from '../types/changelog'
 
 let loadedOnce = false
@@ -51,7 +52,10 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     dispatch({ type: 'SET_BUNDLES', payload: cachedLive.bundles || {} })
     dispatch({ type: 'SET_ICON_CACHE', payload: cachedIcons })
     if (cachedNames) dispatch({ type: 'SET_NAME_CACHE', payload: cachedNames })
-    if (cachedChangelog) dispatch({ type: 'SET_CHANGELOG', payload: cachedChangelog })
+    if (cachedChangelog) {
+      dispatch({ type: 'SET_CHANGELOG', payload: limitChangelogDays(cachedChangelog) })
+      idbSet(CACHE_KEYS.CHANGELOG, limitChangelogDays(cachedChangelog))
+    }
     dispatch({ type: 'SET_STATS', payload: cachedLive.stats || null })
     dispatch({ type: 'SET_CHANGES', payload: cachedLive.changes || null })
     dispatch({
@@ -134,8 +138,9 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
 
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching changelog...' })
   dispatch({ type: 'SET_LOADING_LOG', payload: '[fetch] /data/changelog.json' })
-  const cl = (await fetchChangelog()) as ChangelogEntry[]
-  log(`changelog fetched: ${cl.length} entries`)
+  const rawCl = (await fetchChangelog()) as ChangelogEntry[]
+  const cl = limitChangelogDays(rawCl)
+  log(`changelog fetched: ${rawCl.length} entries (kept ${cl.length} after 5-day limit)`)
   dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ ${cl.length} changelog entries` })
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 82 })
 
@@ -152,6 +157,11 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   notifyWatchedUpdates(changes)
   dispatch({ type: 'SET_CHANGELOG', payload: cl })
   dispatch({ type: 'SET_METADATA', payload: { liveDataDate: core?.date || '', lastChecked } })
+
+  if (lastChecked) {
+    dispatch({ type: 'SET_LAST_VISIT_SCAN', payload: lastChecked })
+  }
+
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 95 })
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Finalizing...' })
 
@@ -197,13 +207,18 @@ export function useDataFetching() {
         dispatch({ type: 'SET_STATS', payload: d.stats || null })
         dispatch({ type: 'SET_CHANGES', payload: d.changes || null })
         notifyWatchedUpdates(d.changes)
-        dispatch({ type: 'SET_CHANGELOG', payload: (c as ChangelogEntry[]) || [] })
+        const limitedCl = limitChangelogDays((c as ChangelogEntry[]) || [])
+        dispatch({ type: 'SET_CHANGELOG', payload: limitedCl })
+        const lastChecked = l || d.lastChecked || ''
         dispatch({
           type: 'SET_METADATA',
-          payload: { liveDataDate: d.date || '', lastChecked: l || d.lastChecked || '' },
+          payload: { liveDataDate: d.date || '', lastChecked },
         })
+        if (lastChecked) {
+          dispatch({ type: 'SET_LAST_VISIT_SCAN', payload: lastChecked })
+        }
         idbSet(CACHE_KEYS.LIVE, d)
-        idbSet(CACHE_KEYS.CHANGELOG, c)
+        idbSet(CACHE_KEYS.CHANGELOG, limitedCl)
       })
     }
     navigator.serviceWorker?.addEventListener('message', (msg) => {

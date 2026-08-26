@@ -3,22 +3,10 @@ import { useAppContext } from '../../context/AppContext'
 import { formatFriendlyDate } from '../../utils/format'
 import { getAppIconUrl, groupAffectedBundles, resolveAppName } from '../../utils/misc'
 import { getCachedIconDataUrl, preloadIconsFromPackages } from '../../services/iconCache'
-import { getAuthorLink } from '../../utils/url'
-import { escHtml } from '../../utils/html'
+import { getRepoInfo } from '../../utils/url'
 import { FALLBACK_ICON } from '../../utils/svg'
-import { BADGE_CLASSES } from '../shared/Badge'
+import { Badge, BADGE_CLASSES } from '../shared/Badge'
 import { SkeletonUpdates } from '../shared/Skeleton'
-
-const APP_BADGE_MAP: Record<string, string> = {
-  'NEW APP': `<span class="badge ${BADGE_CLASSES.NEW_APP}">NEW APP</span>`,
-  'UPDATED APP': `<span class="badge ${BADGE_CLASSES.UPDATED_APP}">UPDATED APP</span>`,
-  'REMOVED APP': `<span class="badge ${BADGE_CLASSES.REMOVED_APP}">REMOVED APP</span>`,
-}
-
-const BUNDLE_BADGE_MAP: Record<string, string> = {
-  'NEW BUNDLE': `<span class="badge ${BADGE_CLASSES.NEW_BUNDLE}">NEW BUNDLE</span>`,
-  'UPDATED': `<span class="badge ${BADGE_CLASSES.UPDATED_BUNDLE}">UPDATED</span>`,
-}
 
 const SORT_ORDER: Record<string, number> = { 'NEW APP': 0, 'UPDATED APP': 1, 'REMOVED APP': 2 }
 
@@ -28,102 +16,150 @@ function getBundleRepoUrl(bundleName: string, bundles: Record<string, any>): str
   return bundles[stableKey]?.repo_url || bundles[devKey]?.repo_url || ''
 }
 
-function renderChanges(changes: { affected_bundles?: any[] } | null, bundles: Record<string, any>, iconCache: Record<string, string>, nameCache: Record<string, string>, liveDataDate: string, lastChecked: string): { html: string; hasChanges: boolean } {
-  const updateDate = liveDataDate || (lastChecked ? lastChecked.split('T')[0] : '')
-  const dateStr = updateDate ? formatFriendlyDate(updateDate) : '-'
+function AuthorLink({ repoUrl }: { repoUrl?: string }) {
+  if (!repoUrl) return <span className="author-link">unknown</span>
+  const { isGitLab, path } = getRepoInfo(repoUrl)
+  const author = path.split('/')[0]
+  const href = isGitLab ? `https://gitlab.com/${author}` : `https://github.com/${author}`
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="author-link">
+      @{author}
+    </a>
+  )
+}
 
-  if (!changes?.affected_bundles?.length) {
-    return {
-      html: `<div class="updates-header">
-        <h2 class="updates-title" id="updates-title-heading">Changelog</h2>
-        <span class="updates-date" id="updates-date-label">Updated: ${dateStr}</span>
-      </div>
-      <div class="no-updates-msg">No compatibility changes detected in the latest update scan. All active patches match the current catalog.</div>`,
-      hasChanges: false,
+function isNewScan(lastChecked: string, lastVisitScan: string): boolean {
+  if (!lastChecked || !lastVisitScan) return false
+  return lastChecked > lastVisitScan
+}
+
+interface AppRowProps {
+  app: any
+  bundleName: string
+  channels: string[]
+  bundles: Record<string, any>
+  iconCache: Record<string, string>
+  nameCache: Record<string, string>
+  iconsReady: boolean
+  onOpenApp: (pkg: string, bundleName: string, channels: string[]) => void
+}
+
+function AppRow({ app, bundleName, channels, bundles, iconCache, nameCache, iconsReady, onOpenApp }: AppRowProps) {
+  const [iconSrc, setIconSrc] = useState<string | null>(null)
+  const [iconError, setIconError] = useState(false)
+  const [iconLoading, setIconLoading] = useState(true)
+
+  const iconUrl = getAppIconUrl(app, iconCache)
+  const appName = resolveAppName(app, nameCache)
+
+  useEffect(() => {
+    if (!iconUrl || !iconsReady) {
+      setIconLoading(!!iconUrl && !iconsReady)
+      return
     }
-  }
-
-  const grouped = groupAffectedBundles(changes.affected_bundles)
-
-  let html = `<div class="updates-header">
-    <h2 class="updates-title" id="updates-title-heading">Changelog</h2>
-    <span class="updates-date" id="updates-date-label">Updated: ${dateStr}</span>
-  </div>`
-
-  const sortedNames = Object.keys(grouped).sort((a, b) => {
-    const aIsNew = grouped[a].badge_type === 'NEW BUNDLE'
-    const bIsNew = grouped[b].badge_type === 'NEW BUNDLE'
-    if (aIsNew && !bIsNew) return -1
-    if (!aIsNew && bIsNew) return 1
-    const aHasNew = grouped[a].apps.some((app) => app.badge_type === 'NEW APP')
-    const bHasNew = grouped[b].apps.some((app) => app.badge_type === 'NEW APP')
-    if (aHasNew && !bHasNew) return -1
-    if (!aHasNew && bHasNew) return 1
-    return a.localeCompare(b)
-  })
-
-  const newBundles: string[] = []
-  const updatedWithNewApps: string[] = []
-  const updatedBundles: string[] = []
-
-  for (const bName of sortedNames) {
-    const entry = grouped[bName]
-    if (entry.badge_type === 'NEW BUNDLE') {
-      newBundles.push(bName)
-    } else if (entry.apps.some((app) => app.badge_type === 'NEW APP')) {
-      updatedWithNewApps.push(bName)
+    setIconLoading(true)
+    setIconError(false)
+    const dataUrl = getCachedIconDataUrl(iconUrl)
+    if (dataUrl) {
+      setIconSrc(dataUrl)
+      setIconLoading(false)
     } else {
-      updatedBundles.push(bName)
+      const img = new Image()
+      img.onload = () => { setIconSrc(iconUrl); setIconLoading(false) }
+      img.onerror = () => { setIconError(true); setIconLoading(false) }
+      img.src = iconUrl
     }
-  }
+  }, [iconUrl, iconsReady])
 
-  const sections: { title: string; names: string[] }[] = []
-  if (newBundles.length > 0) sections.push({ title: 'New Bundles', names: newBundles })
-  if (updatedWithNewApps.length > 0) sections.push({ title: 'Updated with New Apps', names: updatedWithNewApps })
-  if (updatedBundles.length > 0) sections.push({ title: 'Updated Bundles', names: updatedBundles })
+  const badgeClass = app.badge_type === 'NEW APP' ? BADGE_CLASSES.NEW_APP
+    : app.badge_type === 'UPDATED APP' ? BADGE_CLASSES.UPDATED_APP
+    : app.badge_type === 'REMOVED APP' ? BADGE_CLASSES.REMOVED_APP
+    : ''
 
-  for (const section of sections) {
-    html += `<div class="updates-section-header">${escHtml(section.title)}</div>`
+  return (
+    <div
+      className="update-row update-app-row"
+      role="button"
+      tabIndex={0}
+      onClick={() => onOpenApp(app.package, bundleName, channels)}
+      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpenApp(app.package, bundleName, channels) } }}
+    >
+      <div className="update-app-left">
+        {app.badge_type && <Badge className={badgeClass}>{app.badge_type}</Badge>}
+        {app.promoted_from && <Badge className={BADGE_CLASSES.PROMOTED}>MOVED TO STABLE</Badge>}
+      </div>
+      <div className="update-app-icon-wrap">
+        {iconLoading && iconUrl ? (
+          <div className="update-icon-spinner" />
+        ) : iconSrc && !iconError ? (
+          <img className="app-icon" src={iconSrc} alt="" onError={(e) => { e.currentTarget.src = FALLBACK_ICON }} />
+        ) : (
+          <img className="app-icon" src={FALLBACK_ICON} alt="" />
+        )}
+      </div>
+      <strong className="cl-app-link">{appName}</strong>
+    </div>
+  )
+}
 
-    for (const bundleName of section.names) {
-      const entry = grouped[bundleName]
-      const repoUrl = getBundleRepoUrl(bundleName, bundles)
-      const bundleBadge = entry.badge_type ? (BUNDLE_BADGE_MAP[entry.badge_type] || '') : ''
-      const channelsJson = escHtml(JSON.stringify(entry.channels))
+interface BundleGroupProps {
+  bundleName: string
+  entry: any
+  bundles: Record<string, any>
+  iconCache: Record<string, string>
+  nameCache: Record<string, string>
+  iconsReady: boolean
+  onOpenBundle: (name: string, channels: string[]) => void
+  onOpenApp: (pkg: string, bundleName: string, channels: string[]) => void
+}
 
-      html += `<div class="update-bundle-group">`
-      html += `<div class="update-row update-bundle-header-row">
-        ${bundleBadge}
-        <strong class="cl-bundle-link" role="button" tabindex="0" data-bundle="${escHtml(bundleName)}" data-channels='${channelsJson}'>${escHtml(bundleName)}</strong>
-        ${getAuthorLink(repoUrl)}
-      </div>`
+function BundleGroup({ bundleName, entry, bundles, iconCache, nameCache, iconsReady, onOpenBundle, onOpenApp }: BundleGroupProps) {
+  const repoUrl = getBundleRepoUrl(bundleName, bundles)
 
-      html += `<div class="update-bundle-apps">`
-      const sortedApps = [...(entry.apps || [])].sort((a, b) => {
-        const aOrder = SORT_ORDER[a.badge_type!] ?? 99
-        const bOrder = SORT_ORDER[b.badge_type!] ?? 99
-        return aOrder - bOrder
-      })
+  const badgeClass = entry.badge_type === 'NEW BUNDLE' ? BADGE_CLASSES.NEW_BUNDLE
+    : entry.badge_type === 'UPDATED' ? BADGE_CLASSES.UPDATED_BUNDLE
+    : ''
 
-      for (const app of sortedApps) {
-        const appBadge = app.badge_type ? (APP_BADGE_MAP[app.badge_type] || '') : ''
-        const appName = resolveAppName(app, nameCache)
-        const iconUrl = getAppIconUrl(app, iconCache)
-        const dataUrl = iconUrl ? getCachedIconDataUrl(iconUrl) : null
-        const promotedBadge = app.promoted_from ? '<span class="badge badge-promoted">MOVED TO STABLE</span>' : ''
+  const sortedApps = useMemo(() => {
+    return [...(entry.apps || [])].sort((a, b) => {
+      const aOrder = SORT_ORDER[a.badge_type!] ?? 99
+      const bOrder = SORT_ORDER[b.badge_type!] ?? 99
+      return aOrder - bOrder
+    })
+  }, [entry.apps])
 
-        html += `<div class="update-row update-app-row">
-          ${appBadge}${promotedBadge}
-          ${iconUrl ? `<img class="app-icon" src="${dataUrl || iconUrl}" alt="" onerror="this.src='${FALLBACK_ICON}'">` : ''}
-          <strong class="cl-app-link" role="button" tabindex="0" data-package="${escHtml(app.package)}" data-bundle="${escHtml(bundleName)}" data-channels='${channelsJson}'>${escHtml(appName)}</strong>
-        </div>`
-      }
-
-      html += `</div></div>`
-    }
-  }
-
-  return { html, hasChanges: true }
+  return (
+    <div className="update-bundle-group">
+      <div className="update-row update-bundle-header-row">
+        {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
+        <strong
+          className="cl-bundle-link"
+          role="button"
+          tabIndex={0}
+          onClick={() => onOpenBundle(bundleName, entry.channels)}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpenBundle(bundleName, entry.channels) } }}
+        >
+          {bundleName}
+        </strong>
+        <AuthorLink repoUrl={repoUrl} />
+      </div>
+      <div className="update-bundle-apps">
+        {sortedApps.map((app) => (
+          <AppRow
+            key={app.package}
+            app={app}
+            bundleName={bundleName}
+            channels={entry.channels}
+            bundles={bundles}
+            iconCache={iconCache}
+            nameCache={nameCache}
+            iconsReady={iconsReady}
+            onOpenApp={onOpenApp}
+          />
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default function TodayUpdatesSection() {
@@ -146,40 +182,67 @@ export default function TodayUpdatesSection() {
     return () => { cancelled = true }
   }, [state.changes, state.iconCache])
 
-  const changesHtml = useMemo(() =>
-    renderChanges(state.changes, state.bundles, state.iconCache, state.nameCache, state.liveDataDate, state.lastChecked).html,
-    [state.changes, state.bundles, state.iconCache, state.nameCache, state.liveDataDate, state.lastChecked, iconTick]
-  )
+  const grouped = useMemo(() => {
+    if (!state.changes?.affected_bundles?.length) return null
+    return groupAffectedBundles(state.changes.affected_bundles)
+  }, [state.changes])
 
-  const handleClick = useCallback((e: React.MouseEvent) => {
-    const bundleLink = (e.target as HTMLElement).closest('.cl-bundle-link')
-    if (bundleLink && bundleLink instanceof HTMLElement) {
-      const bundleName = bundleLink.dataset.bundle
-      const channels = bundleLink.dataset.channels ? JSON.parse(bundleLink.dataset.channels) : []
-      if (bundleName) {
-        window.dispatchEvent(new CustomEvent('open-bundle', { detail: { bundleName, channels, version: '' } }))
+  const sortedSections = useMemo(() => {
+    if (!grouped) return []
+    const sortedNames = Object.keys(grouped).sort((a, b) => {
+      const aIsNew = grouped[a].badge_type === 'NEW BUNDLE'
+      const bIsNew = grouped[b].badge_type === 'NEW BUNDLE'
+      if (aIsNew && !bIsNew) return -1
+      if (!aIsNew && bIsNew) return 1
+      const aHasNew = grouped[a].apps.some((app) => app.badge_type === 'NEW APP')
+      const bHasNew = grouped[b].apps.some((app) => app.badge_type === 'NEW APP')
+      if (aHasNew && !bHasNew) return -1
+      if (!aHasNew && bHasNew) return 1
+      return a.localeCompare(b)
+    })
+
+    const newBundles: string[] = []
+    const updatedWithNewApps: string[] = []
+    const updatedBundles: string[] = []
+
+    for (const bName of sortedNames) {
+      const entry = grouped[bName]
+      if (entry.badge_type === 'NEW BUNDLE') {
+        newBundles.push(bName)
+      } else if (entry.apps.some((app) => app.badge_type === 'NEW APP')) {
+        updatedWithNewApps.push(bName)
+      } else {
+        updatedBundles.push(bName)
       }
-      return
     }
 
-    const appLink = (e.target as HTMLElement).closest('.cl-app-link')
-    if (appLink && appLink instanceof HTMLElement) {
-      const pkg = appLink.dataset.package
-      const bName = appLink.dataset.bundle
-      const channels = appLink.dataset.channels ? JSON.parse(appLink.dataset.channels) : []
-      if (pkg && bName) {
-        const stableKey = `${bName}:stable`
-        const devKey = `${bName}:dev`
-        let appData = state.bundles[stableKey]?.apps?.find((a: any) => a.package === pkg)
-        if (!appData) appData = state.bundles[devKey]?.apps?.find((a: any) => a.package === pkg)
-        if (appData) {
-          window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName: bName, channels } }))
-        }
-      }
-      return
+    const sections: { title: string; names: string[] }[] = []
+    if (newBundles.length > 0) sections.push({ title: 'New Bundles', names: newBundles })
+    if (updatedWithNewApps.length > 0) sections.push({ title: 'Updated with New Apps', names: updatedWithNewApps })
+    if (updatedBundles.length > 0) sections.push({ title: 'Updated Bundles', names: updatedBundles })
+    return sections
+  }, [grouped])
+
+  const handleOpenBundle = useCallback((bundleName: string, channels: string[]) => {
+    window.dispatchEvent(new CustomEvent('open-bundle', { detail: { bundleName, channels, version: '' } }))
+  }, [])
+
+  const handleOpenApp = useCallback((pkg: string, bundleName: string, channels: string[]) => {
+    const stableKey = `${bundleName}:stable`
+    const devKey = `${bundleName}:dev`
+    let appData = state.bundles[stableKey]?.apps?.find((a: any) => a.package === pkg)
+    if (!appData) appData = state.bundles[devKey]?.apps?.find((a: any) => a.package === pkg)
+    if (appData) {
+      window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName, channels } }))
     }
   }, [state.bundles])
 
+  const updateDate = state.liveDataDate || (state.lastChecked ? state.lastChecked.split('T')[0] : '')
+  const dateStr = updateDate ? formatFriendlyDate(updateDate) : '-'
+  const hasChanges = !!grouped && sortedSections.length > 0
+  const showNewScan = isNewScan(state.lastChecked, state.lastVisitScan)
+
+  // Loading state: data not fetched yet
   if (state.changes === null) {
     return (
       <section className="today-updates-section" aria-labelledby="updates-title-heading">
@@ -188,24 +251,90 @@ export default function TodayUpdatesSection() {
             <h2 className="updates-title">Changelog</h2>
             <span className="updates-date">Updated: -</span>
           </div>
-          <div className="updates-body" id="today-updates-container">
-            <div className="skeleton-checking" id="checking-message">Checking for updates...</div>
-            <div id="skeleton-updates"><SkeletonUpdates /></div>
+          <div className="updates-body">
+            <div className="updates-loading-state">
+              <div className="updates-spinner" />
+              <span className="updates-loading-text">Checking for updates...</span>
+            </div>
+            <SkeletonUpdates />
           </div>
         </div>
       </section>
     )
   }
 
+  // Empty state: data fetched but no changes
+  if (!hasChanges) {
+    return (
+      <section className="today-updates-section" aria-labelledby="updates-title-heading">
+        <div className="updates-card">
+          <div className="updates-header">
+            <div className="updates-header-left">
+              <h2 className="updates-title">Changelog</h2>
+              {showNewScan && (
+                <div className="updates-new-scan-badge">
+                  <div className="updates-new-scan-dot" />
+                  <span>NEW SCAN</span>
+                </div>
+              )}
+            </div>
+            <span className="updates-date">Updated: {dateStr}</span>
+          </div>
+          <div className="updates-body">
+            <div className="no-updates-msg">No compatibility changes detected in the latest update scan. All active patches match the current catalog.</div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Data loaded with changes
   return (
     <section className="today-updates-section" aria-labelledby="updates-title-heading">
       <div className="updates-card">
-        <div
-          className="updates-body"
-          id="today-updates-container"
-          dangerouslySetInnerHTML={{ __html: changesHtml }}
-          onClick={handleClick}
-        />
+        <div className="updates-header">
+          <div className="updates-header-left">
+            <div className="updates-title-row">
+              <h2 className="updates-title">Changelog</h2>
+              {showNewScan && (
+                <div className="updates-new-scan-badge">
+                  <div className="updates-new-scan-dot" />
+                  <span>NEW SCAN</span>
+                </div>
+              )}
+            </div>
+            {!state.iconsReady && (
+              <div className="updates-loading-badge">
+                <div className="updates-mini-spinner" />
+                <span>Loading icons...</span>
+              </div>
+            )}
+          </div>
+          <span className="updates-date">Updated: {dateStr}</span>
+        </div>
+        <div className="updates-body">
+          {sortedSections.map((section) => (
+            <div key={section.title} className="update-section">
+              <div className="updates-section-header">{section.title}</div>
+              {section.names.map((bundleName) => {
+                const entry = grouped![bundleName]
+                return (
+                  <BundleGroup
+                    key={bundleName}
+                    bundleName={bundleName}
+                    entry={entry}
+                    bundles={state.bundles}
+                    iconCache={state.iconCache}
+                    nameCache={state.nameCache}
+                    iconsReady={state.iconsReady}
+                    onOpenBundle={handleOpenBundle}
+                    onOpenApp={handleOpenApp}
+                  />
+                )
+              })}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

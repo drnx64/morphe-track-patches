@@ -21,6 +21,7 @@ interface AppState {
   filters: { search: string; channel: 'all' | 'stable' | 'dev' }
   viewMode: 'grid' | 'list'
   changelogViewMode: 'grid' | 'list'
+  lastVisitScan: string
 }
 
 export type AppAction =
@@ -40,6 +41,15 @@ export type AppAction =
   | { type: 'SET_FILTERS'; payload: Partial<AppState['filters']> }
   | { type: 'SET_VIEW_MODE'; payload: 'grid' | 'list' }
   | { type: 'SET_CHANGELOG_VIEW_MODE'; payload: 'grid' | 'list' }
+  | { type: 'SET_LAST_VISIT_SCAN'; payload: string }
+
+function getStoredLastVisitScan(): string {
+  try {
+    return localStorage.getItem('morphe_last_visit_scan') || ''
+  } catch {
+    return ''
+  }
+}
 
 const initialState: AppState = {
   bundles: {},
@@ -58,6 +68,7 @@ const initialState: AppState = {
   filters: { search: '', channel: 'all' },
   viewMode: (localStorage.getItem('morphe_view') as 'grid' | 'list') || 'grid',
   changelogViewMode: (localStorage.getItem('morphe_changelog_view') as 'grid' | 'list') || 'grid',
+  lastVisitScan: getStoredLastVisitScan(),
 }
 
 function appReducer(state: AppState, action: AppAction): AppState {
@@ -96,6 +107,9 @@ function appReducer(state: AppState, action: AppAction): AppState {
     case 'SET_CHANGELOG_VIEW_MODE':
       localStorage.setItem('morphe_changelog_view', action.payload)
       return { ...state, changelogViewMode: action.payload }
+    case 'SET_LAST_VISIT_SCAN':
+      try { localStorage.setItem('morphe_last_visit_scan', action.payload) } catch {}
+      return { ...state, lastVisitScan: action.payload }
     default:
       return state
   }

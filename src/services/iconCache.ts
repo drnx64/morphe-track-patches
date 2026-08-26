@@ -8,11 +8,10 @@ import { idbGet, idbGetMany, idbSetMany, idbKeys, idbDeleteMany } from './indexe
 
 const imageCache: Record<string, string> = {}
 
-// Hard cap on the number of images persisted in IndexedDB. Icons are stored as
-// base64 data URLs (~33% larger than raw bytes); without a cap this can grow to
-// hundreds of MB and start evicting other browser storage/quota. We keep only the
-// most recently loaded set and drop the overflow.
 const MAX_STORED_IMAGES = 600
+const MAX_CONCURRENT = 6
+const RETRY_BASE_MS = 800
+const MAX_RETRIES = 2
 
 function hashStr(s: string): string {
   let hash = 0
@@ -46,7 +45,11 @@ async function pruneStoredImages() {
   }
 }
 
-export async function loadIconImage(iconUrl: string): Promise<string | null> {
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+export async function loadIconImage(iconUrl: string, retries = MAX_RETRIES): Promise<string | null> {
   if (!iconUrl) return null
   if (imageCache[iconUrl]) return imageCache[iconUrl]
 
@@ -58,30 +61,86 @@ export async function loadIconImage(iconUrl: string): Promise<string | null> {
   }
 
   log(`fetching icon: ${iconUrl}`)
-  return new Promise((resolve) => {
-    const xhr = new XMLHttpRequest()
-    xhr.responseType = 'blob'
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        const reader = new FileReader()
-        reader.onloadend = () => {
-          const dataUrl = reader.result as string
-          imageCache[iconUrl] = dataUrl
-          idbSetMany([[cacheKey, dataUrl]])
-          resolve(dataUrl)
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const dataUrl = await new Promise<string | null>((resolve) => {
+        const xhr = new XMLHttpRequest()
+        xhr.responseType = 'blob'
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+              resolve(reader.result as string)
+            }
+            reader.readAsDataURL(xhr.response)
+          } else if (xhr.status === 429) {
+            log(`icon rate-limited (429): ${iconUrl}`)
+            resolve(null)
+          } else {
+            log(`icon fetch FAIL ${iconUrl}: ${xhr.status}`)
+            resolve(null)
+          }
         }
-        reader.readAsDataURL(xhr.response)
-      } else {
-        log(`icon fetch FAIL ${iconUrl}: ${xhr.status}`)
-        resolve(null)
+        xhr.onerror = () => {
+          log(`icon fetch ERROR ${iconUrl}`)
+          resolve(null)
+        }
+        xhr.open('GET', iconUrl, true)
+        xhr.send()
+      })
+
+      if (dataUrl) {
+        imageCache[iconUrl] = dataUrl
+        idbSetMany([[cacheKey, dataUrl]])
+        return dataUrl
+      }
+
+      if (attempt < retries) {
+        const delay = RETRY_BASE_MS * Math.pow(2, attempt)
+        log(`retrying icon ${attempt + 1}/${retries} after ${delay}ms: ${iconUrl}`)
+        await sleep(delay)
+      }
+    } catch {
+      if (attempt < retries) {
+        const delay = RETRY_BASE_MS * Math.pow(2, attempt)
+        await sleep(delay)
       }
     }
-    xhr.onerror = () => {
-      log(`icon fetch ERROR ${iconUrl}`)
-      resolve(null)
+  }
+  return null
+}
+
+function runWithConcurrency<T>(
+  items: T[],
+  limit: number,
+  fn: (item: T) => Promise<void>,
+): Promise<void> {
+  return new Promise((resolve) => {
+    let idx = 0
+    let active = 0
+    let done = false
+
+    function next() {
+      while (active < limit && idx < items.length) {
+        const i = idx++
+        active++
+        fn(items[i]).finally(() => {
+          active--
+          if (done) return
+          if (idx >= items.length && active === 0) {
+            done = true
+            resolve()
+          } else {
+            next()
+          }
+        })
+      }
+      if (idx >= items.length && active === 0 && !done) {
+        done = true
+        resolve()
+      }
     }
-    xhr.open('GET', iconUrl, true)
-    xhr.send()
+    next()
   })
 }
 
@@ -108,11 +167,7 @@ export async function preloadIcons(iconMap: Record<string, string>): Promise<voi
   }
   log(`preloadIcons: ${missing.length} missing after cache read`)
 
-  const BATCH_SIZE = 20
-  for (let i = 0; i < missing.length; i += BATCH_SIZE) {
-    const batch = missing.slice(i, i + BATCH_SIZE)
-    await Promise.all(batch.map(url => loadIconImage(url)))
-  }
+  await runWithConcurrency(missing, MAX_CONCURRENT, async (url) => { await loadIconImage(url) })
   log('preloadIcons done')
   await pruneStoredImages()
 }
@@ -141,11 +196,7 @@ export async function preloadIconsFromPackages(
     }
   }
 
-  const BATCH_SIZE = 20
-  for (let i = 0; i < missing.length; i += BATCH_SIZE) {
-    const batch = missing.slice(i, i + BATCH_SIZE)
-    await Promise.all(batch.map(url => loadIconImage(url)))
-  }
+  await runWithConcurrency(missing, MAX_CONCURRENT, async (url) => { await loadIconImage(url) })
   await pruneStoredImages()
 }
 
