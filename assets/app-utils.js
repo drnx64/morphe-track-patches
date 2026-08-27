@@ -300,7 +300,7 @@ function getRepoInfo(repoUrl) {
 
 function getAppIconUrl(app) {
     if (!app) return "";
-    const url = app.icon_url || iconCache[app.package] || "";
+    const url = iconCache[app.package] || app.icon_url || "";
     if (typeof url === "string") return url;
     return "";
 }

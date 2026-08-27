@@ -194,15 +194,6 @@ def enrich_parsed_bundles_with_icons(parsed_bundles):
 
         cache = load_json(CACHE_PATH, default={})
 
-    for record in parsed_bundles.values():
-        for app in record.get("apps", []):
-            pkg = app.get("package", "").lower().strip()
-            icon_data = cache.get(pkg, "")
-            if isinstance(icon_data, str) and icon_data:
-                app["icon_url"] = icon_data
-            else:
-                app["icon_url"] = ""
-
     return parsed_bundles
 
 
