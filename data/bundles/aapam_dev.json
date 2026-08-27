@@ -1,0 +1,56 @@
+{
+  "bundle": "aapam",
+  "channel": "dev",
+  "repo_url": "https://github.com/WZSE/aapam-patches",
+  "created_at": "2026-08-12T18:07:32",
+  "version": "v1.0.0-dev.1",
+  "description": "## 1.0.0-dev.1 (2026-08-12)\n\n### ✨ New Features\n\n* add ZEE5 patches (disable ads, analytics, CleverTap, Firebase) ([6f99518](https://github.com/WZSE/aapam-patches/commit/6f9951817554a499b770e6c7e246ac7507dabbef))\n",
+  "apps": [
+    {
+      "app_name": "ZEE5 Android TV",
+      "package": "com.graymatrix.did",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Removes Google IMA ad insertion (client-side and server-side DAI) from the ZEE5 player. The media source factory is returned DRM-configured but with ad-insertion components never attached, so content and DRM playback are unaffected.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.83.2"
+          ]
+        },
+        {
+          "name": "Disable analytics",
+          "description": "Disables all third-party analytics (CleverTap, Firebase, Mixpanel, videoanalytics) by short-circuiting the central analytics dispatch method. No tracking data is sent.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.83.2"
+          ]
+        },
+        {
+          "name": "Disable CleverTap",
+          "description": "Prevents the CleverTap analytics SDK from initializing, stopping behavioral tracking and advertising-id (GAID) collection.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.83.2"
+          ]
+        },
+        {
+          "name": "Disable Firebase analytics",
+          "description": "Prevents Firebase Analytics from initializing, stopping event and user-property reporting to Google.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.83.2"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "d9b738f5590e9d0def4d11ee6fa2551d22c362bf441abb843bc780fcf360f5f6",
+  "release_notes": "## 1.0.0-dev.1 (2026-08-12)\n\n### ✨ New Features\n\n* add ZEE5 patches (disable ads, analytics, CleverTap, Firebase) ([6f99518](https://github.com/WZSE/aapam-patches/commit/6f9951817554a499b770e6c7e246ac7507dabbef))\n",
+  "release_tag": "v1.0.0-dev.1",
+  "release_date": "2026-08-12T18:07:32Z"
+}

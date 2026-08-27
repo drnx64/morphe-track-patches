@@ -11,7 +11,7 @@ from state_manager import (
     save_core_json,
     save_stats_json,
     save_changes_json,
-    save_bundles_json,
+    save_bundles_split,
     load_core_json,
     load_stats_json,
     load_changes_json,
@@ -296,7 +296,7 @@ def finalize_buffer(buffer_data):
     save_core_json(core)
     save_stats_json(stats)
     save_changes_json(changes)
-    save_bundles_json(bundles)
+    save_bundles_split(bundles)
     print("[*] Finalization state files written successfully.")
 
 
@@ -350,7 +350,7 @@ def update_data_files(today_str, buffer_data, snapshot):
     save_core_json(core)
     save_stats_json(stats)
     save_changes_json(changes_to_save)
-    save_bundles_json(bundles)
+    save_bundles_split(bundles)
     print("[*] Live state files updated with the current snapshot.")
 
 
@@ -384,7 +384,7 @@ def write_data_files():
     save_core_json(core)
     save_stats_json(stats)
     save_changes_json(existing_changes if existing_changes and "affected_bundles" in existing_changes else {"affected_bundles": []})
-    save_bundles_json(bundles)
+    save_bundles_split(bundles)
     print(f"[*] Data files synced: {total_bundles} bundles, {total_apps} apps.")
 
 

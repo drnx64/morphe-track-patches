@@ -27,6 +27,46 @@ interface CoreResponse {
   lastChecked?: string
 }
 
+export interface BundleIndexEntry {
+  bundle: string
+  channel: string
+  version: string
+  repo_url: string
+  release_tag?: string
+  release_date?: string
+  app_count: number
+}
+
+export function fetchBundleIndex(): Promise<Record<string, BundleIndexEntry>> {
+  return fetchJson<Record<string, BundleIndexEntry>>('/data/bundles/_index.json', {})
+}
+
+export async function fetchBundleData(bundleKey: string): Promise<BundleData | null> {
+  const filename = bundleKey.replace(':', '_') + '.json'
+  return fetchJson<BundleData | null>(`/data/bundles/${filename}`, null)
+}
+
+export async function fetchAllBundlesFromIndex(): Promise<Record<string, BundleData>> {
+  const index = await fetchBundleIndex()
+  const keys = Object.keys(index)
+  if (keys.length === 0) return {}
+
+  log(`fetchAllBundlesFromIndex: loading ${keys.length} bundles...`)
+  const results = await Promise.all(
+    keys.map(async (key) => {
+      const data = await fetchBundleData(key)
+      return [key, data] as const
+    })
+  )
+
+  const bundles: Record<string, BundleData> = {}
+  for (const [key, data] of results) {
+    if (data) bundles[key] = data
+  }
+  log(`fetchAllBundlesFromIndex: loaded ${Object.keys(bundles).length} bundles`)
+  return bundles
+}
+
 export function fetchAllData() {
   const ts = Date.now()
   log('fetchAllData starting...')
@@ -34,7 +74,7 @@ export function fetchAllData() {
     fetchJson<CoreResponse>(`/data/core.json?_t=${ts}`, {}),
     fetchJson<StatsData>(`/data/stats.json?_t=${ts}`, {} as StatsData),
     fetchJson<{ affected_bundles?: AffectedBundle[] }>(`/data/changes.json?_t=${ts}`, {}),
-    fetchJson<Record<string, BundleData>>(`/data/bundles.json?_t=${ts}`, {}),
+    fetchAllBundlesFromIndex(),
   ]).then(([core, stats, changes, bundles]) => {
     log(`fetchAllData done: date=${core?.date}, bundles keys=${Object.keys(bundles).length}`)
     return {
@@ -61,7 +101,7 @@ export function fetchChanges() {
 }
 
 export function fetchBundles() {
-  return fetchJson<Record<string, BundleData>>(`/data/bundles.json?_t=${Date.now()}`, {})
+  return fetchAllBundlesFromIndex()
 }
 
 export function fetchLastChecked() {

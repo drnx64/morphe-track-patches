@@ -1,0 +1,67 @@
+{
+  "bundle": "loskutov",
+  "channel": "dev",
+  "repo_url": "https://github.com/loskutov/youtube-domain-fronting-patch",
+  "created_at": "2026-04-28T23:06:10",
+  "version": "v1.0.1-dev.1",
+  "description": "## [1.0.1-dev.1](https://github.com/loskutov/youtube-domain-fronting-patch/compare/v1.0.0...v1.0.1-dev.1) (2026-04-28)\n\n\n### Bug Fixes\n\n* bump README, enable patches by default ([8569ce0](https://github.com/loskutov/youtube-domain-fronting-patch/commit/8569ce06debb67c522dca9fe70feb7e45a5d07bf))\n\n\n\n",
+  "apps": [
+    {
+      "app_name": "YouTube Music",
+      "package": "com.google.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Force Cronet SNI (YouTube Music arm64)",
+          "description": "Patches bundled arm64 libcronet so TLS SNI is forced to a configurable hostname in the SSLClientSocket path. URL and HTTP Host remain unchanged.",
+          "use": true,
+          "options": [
+            {
+              "key": "forcedSniHost",
+              "description": "Hostname written into libcronet and used by the SSLClientSocket path for TLS SNI."
+            }
+          ],
+          "compatible_versions": [
+            "7.16.50",
+            "7.15.52",
+            "7.14.53",
+            "7.13.50",
+            "7.12.51",
+            "7.11.50",
+            "7.10.53"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "YouTube",
+      "package": "com.google.android.youtube",
+      "patches": [
+        {
+          "name": "Force Cronet SNI (YouTube arm64)",
+          "description": "Patches bundled arm64 libcronet so TLS SNI is forced to a configurable hostname in the SSLClientSocket path. URL and HTTP Host remain unchanged.",
+          "use": true,
+          "options": [
+            {
+              "key": "forcedSniHost",
+              "description": "Hostname written into libcronet and used by the SSLClientSocket path for TLS SNI."
+            }
+          ],
+          "compatible_versions": [
+            "21.16.240",
+            "21.15.282",
+            "21.14.482",
+            "21.05.265",
+            "20.47.62",
+            "20.45.36",
+            "20.31.42",
+            "20.21.37"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "807913b6b765ea2fa5376330bc3665c684d668daa686e69027c68d44f8883af0",
+  "release_notes": "## [1.0.1-dev.1](https://github.com/loskutov/youtube-domain-fronting-patch/compare/v1.0.0...v1.0.1-dev.1) (2026-04-28)\n\n\n### Bug Fixes\n\n* bump README, enable patches by default ([8569ce0](https://github.com/loskutov/youtube-domain-fronting-patch/commit/8569ce06debb67c522dca9fe70feb7e45a5d07bf))\n\n\n\n",
+  "release_tag": "v1.0.1-dev.1",
+  "release_date": "2026-04-28T23:06:10Z"
+}

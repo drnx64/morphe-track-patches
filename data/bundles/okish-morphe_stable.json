@@ -1,0 +1,572 @@
+{
+  "bundle": "okish-morphe",
+  "channel": "stable",
+  "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+  "created_at": "2026-08-26T11:20:55",
+  "version": "v1.19.0",
+  "description": "## [1.19.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.18.0...v1.19.0) (2026-08-26)\n\n### ✨ New Features\n\n* **haak-billing:** implement free purchases patch ([2a78af4](https://github.com/byehi98/okish-morphe-patches/commit/2a78af4690a48728833bd91d25d8102fcf085c47))\n",
+  "apps": [
+    {
+      "app_name": "Adda247",
+      "package": "com.adda247.app",
+      "patches": [
+        {
+          "name": "Adda247 Ad Removal",
+          "description": "Blocks all Google AdMob ads (banner, interstitial, rewarded, rewarded interstitial, native, app open and Ad Manager) by neutralizing the Flutter Google Mobile Ads plugin: no ad is ever requested and no ad can ever be shown.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.6.4"
+          ]
+        },
+        {
+          "name": "Adda247 MoEngage In-App Blocker",
+          "description": "Blocks the app's own MoEngage in-app promotions (the recurring \"recommended for you\" nudge with no close button, and full-screen standard in-app messages) by no-oping MoEngage's HTML render chokepoint, so no in-app WebView is ever built or attached. Separate from the Google AdMob block.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.6.4"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Dr. Driving",
+      "package": "com.ansangha.drdriving",
+      "patches": [
+        {
+          "name": "Dr. Driving Ad Removal",
+          "description": "Removes all Google AdMob ads (banner, interstitial, rewarded).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.73"
+          ]
+        },
+        {
+          "name": "Dr. Driving Unlimited Coins",
+          "description": "Coins inflated to 1,000,000,000 on save load; purchases, upgrades, rentals and repairs never cost coins.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.73"
+          ]
+        },
+        {
+          "name": "Dr. Driving Unlimited Gold",
+          "description": "Gold is inflated to 1,000,000,000 on save load; gold packs in the store also grant gold.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.73"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "HAAK",
+      "package": "com.blingame.haaktestb",
+      "patches": [
+        {
+          "name": "HAAK Free Purchases and Unlocked Paid Content",
+          "description": "Redirects purchase failure callbacks to their success twins: cancelling the Google Play dialog, a billing error, or an \"not purchased\" query result all grant the product instead.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.3"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "MovieBox",
+      "package": "com.community.oneroom",
+      "patches": [
+        {
+          "name": "MovieBox Ad Removal",
+          "description": "Removes splash, banner, native, interstitial and reward video ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.0.01.0813.02"
+          ]
+        },
+        {
+          "name": "MovieBox Download Unlock",
+          "description": "Bypasses the server-side download access check so any resolution (including 1080p) can be downloaded on a free account.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.0.01.0813.02"
+          ]
+        },
+        {
+          "name": "MovieBox Force Update Bypass",
+          "description": "Disables forced and nag update prompts in MovieBox.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.0.01.0813.02"
+          ]
+        },
+        {
+          "name": "MovieBox Parallel Downloads",
+          "description": "Allows up to 5 simultaneous downloads in MovieBox.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.0.01.0813.02"
+          ]
+        },
+        {
+          "name": "MovieBox Premium Unlock",
+          "description": "Unlocks MovieBox Premium (VIP) by forcing the member state active at Pro level.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.0.01.0813.02"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Tentacle Wars",
+      "package": "com.fdgentertainment.tentaclewars.gp.free",
+      "patches": [
+        {
+          "name": "Tentacle Wars Free Purchases",
+          "description": "Spoofs in-app purchases as instantly successful: tapping Buy grants the SKU directly through the game's own purchase callback — no Google Play dialog, no payment. For ad-free, just tap the Remove-Ads button on the main game screen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.1.27"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Hill Climb Racing",
+      "package": "com.fingersoft.hillclimb",
+      "patches": [
+        {
+          "name": "Hill Climb Racing Ad Removal",
+          "description": "Completely removes ads: banners and interstitials can never be displayed (CFirebaseAds.showBanners/showInterstitial become no-ops) and ad-free is granted once per app start — loadStore() seeds mAdFree = 1, the native engine's poll grants it and the store's own reset (inappPurchasesProcessed) zeroes the field, so no repeated purchase popups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.70.0"
+          ]
+        },
+        {
+          "name": "Hill Climb Racing Free Store",
+          "description": "Every store item is granted instantly and free: coins, gems, paints, ad-skips, ad-free and bundles, without launching Google Play billing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.70.0"
+          ]
+        },
+        {
+          "name": "Hill Climb Racing Instant Rewarded Video Rewards",
+          "description": "Rewarded video ads grant their reward instantly without playing the ad: the native engine receives onVideoStartedSuccess + onVideoCompletedSuccess on the GL thread, exactly as if the video had been watched and completed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.70.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "FreeJobAlert",
+      "package": "com.freejobalert",
+      "patches": [
+        {
+          "name": "FreeJobAlert Ad Removal",
+          "description": "Removes all Google AdMob ads (banner, interstitial, rewarded, app open, native).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.0"
+          ]
+        },
+        {
+          "name": "FreeJobAlert License Bypass",
+          "description": "Bypasses the Pairip Play Store installation check so the app launches normally.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "TrueCloud",
+      "package": "com.generalcomp.truecloud",
+      "patches": [
+        {
+          "name": "TrueCloud Ad Removal",
+          "description": "Consolidated patch to remove all ads, boot pages, cloud popups, and the help center robot.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.6.5.13"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Jetpack Joyride",
+      "package": "com.halfbrick.jetpackjoyride",
+      "patches": [
+        {
+          "name": "Jetpack Joyride Billing Bypass",
+          "description": "Intercepts all in-app purchases and reports instant success to the game engine.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.104.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Big Hunter",
+      "package": "com.kakarod.bighunter",
+      "patches": [
+        {
+          "name": "Big Hunter Fake Purchase",
+          "description": "Tapping any store item grants the product immediately (via the game's own confirmed-purchase path -> native applyProduct) without opening Google Play billing. Entitlements persist across restarts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.1"
+          ]
+        },
+        {
+          "name": "Big Hunter PairIP License Bypass",
+          "description": "Disables the PairIP license check (installer verification + Google Play licensing service validation + paywall/exit dialog). Required for patched APKs — the original check fails on any non-Play signature and force-closes the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.1"
+          ]
+        },
+        {
+          "name": "Big Hunter Remove Ads",
+          "description": "Interstitial ads are never shown (show() short-circuits via the ad-not-ready path on all three network bridges: AdMob, AppLovin, Unity Ads).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.1"
+          ]
+        },
+        {
+          "name": "Big Hunter Rewards Without Ads",
+          "description": "Rewarded video requests grant the reward immediately via the game's own native rewardCallback() without loading or showing any ad (AdMob, AppLovin, Unity Ads).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Doodle Jump",
+      "package": "com.lima.doodlejump",
+      "patches": [
+        {
+          "name": "Doodle Jump Billing Bypass",
+          "description": "Unlocks the full game by bypassing Google Play billing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.11.38"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Smash Hit",
+      "package": "com.mediocre.smashhit",
+      "patches": [
+        {
+          "name": "Smash Hit Premium Unlock",
+          "description": "Unlocks premium and all game modes without purchase.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.14"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Plague Inc.",
+      "package": "com.miniclip.plagueinc",
+      "patches": [
+        {
+          "name": "Plague Inc. Premium",
+          "description": "Unlocks all premium features and disables premium prompts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.25.2"
+          ]
+        },
+        {
+          "name": "Plague Inc. Remove Banner Ads",
+          "description": "Removes AppLovin banner ads and the Ndemic premium promo during gameplay.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.25.2"
+          ]
+        },
+        {
+          "name": "Plague Inc. Skip Rewarded Video Ads",
+          "description": "Grants rewarded video bonuses instantly without watching ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.25.2"
+          ]
+        },
+        {
+          "name": "Plague Inc. Sync Premium Entitlements",
+          "description": "Registers unlocked premium content with the native engine so premium modes run without trial banners.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.25.2"
+          ]
+        },
+        {
+          "name": "Plague Inc. Unlock Disease Types",
+          "description": "Unlocks all disease types including Neurax Worm, Necroa Virus, Simian Flu and Shadow Plague.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.25.2"
+          ]
+        },
+        {
+          "name": "Plague Inc. Unlock Expansions",
+          "description": "Unlocks Cure Mode, Plague Pack, custom scenarios and bypasses the Play Pass check.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.25.2"
+          ]
+        },
+        {
+          "name": "Plague Inc. Unlock Fast-Forward",
+          "description": "Removes the premium lock from the in-game fast-forward button.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.25.2"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Vector",
+      "package": "com.nekki.vector",
+      "patches": [
+        {
+          "name": "Vector Ad Spoof",
+          "description": "Spoofs rewarded ad callbacks to grant coins/rewards without showing ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.10.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Earn to Die 2",
+      "package": "com.notdoppler.earntodie2",
+      "patches": [
+        {
+          "name": "Earn to Die 2 Free IAP",
+          "description": "Intercepts all in-app purchases and reports instant success to the game engine, unlocking paid content (cash doubler) for free.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.58"
+          ]
+        },
+        {
+          "name": "Earn to Die 2 No Ads + Instant Rewards",
+          "description": "Removes interstitial and rewarded ads, and grants rewarded-video rewards instantly by firing the native callbacks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.58"
+          ]
+        },
+        {
+          "name": "Earn to Die 2 Remove Google Play Check",
+          "description": "Bypasses the native Google Play distribution checks (installer package + signing signature) so the app runs when sideloaded.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.58"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Only One",
+      "package": "com.rebelbinary.onlyone",
+      "patches": [
+        {
+          "name": "Only One Free Store",
+          "description": "Makes 'Restore Purchases' grant every store item for free (Ultimate Power, all classes, bundles and powers) — also removes ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.2983"
+          ]
+        },
+        {
+          "name": "Only One License Bypass",
+          "description": "Bypasses the PairIP Play Store license check so the app launches normally.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.2983"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Into the Dead",
+      "package": "com.sidheinteractive.sif.dr",
+      "patches": [
+        {
+          "name": "Into the Dead Ad Removal",
+          "description": "Removes all ads and grants rewarded-video rewards instantly: rewarded videos (legacy IronSource and LevelPlay), interstitials, launch, banner and AdMob App Open ads are all eliminated.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.9.3"
+          ]
+        },
+        {
+          "name": "Into the Dead Billing Bypass",
+          "description": "Unlocks all in-app purchases for free and bypasses SHA1withRSA receipt verification: every store item is granted instantly without launching the Google Play payment dialog, and any fabricated receipt is accepted.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.9.3"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Swordigo",
+      "package": "com.touchfoo.swordigo",
+      "patches": [
+        {
+          "name": "Swordigo Premium Unlock",
+          "description": "Enables ad-free, guiding compass, and coin doubler without purchase.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.12"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Injustice: Gods Among Us",
+      "package": "com.wb.goog.injustice",
+      "patches": [
+        {
+          "name": "Injustice Ads Removal",
+          "description": "Get stamina without watching ad Video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.5.1"
+          ]
+        },
+        {
+          "name": "Injustice Billing Bypass",
+          "description": "Bypass billing get the items in store for free.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.5.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Rodeo Stampede: Sky Zoo Safari",
+      "package": "com.yodo1.rodeo.safari",
+      "patches": [
+        {
+          "name": "Rodeo Stampede Ad-Free (Ads blocked + instant rewards)",
+          "description": "Blocks banner/app-open/native ads and turns rewarded + interstitial ads into instant no-ad events so the game never fetches or displays ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.23.0"
+          ]
+        },
+        {
+          "name": "Rodeo Stampede Free Purchase",
+          "description": "Spoofs in-app purchases as instantly successful at the Yodo1 purchase funnel.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.23.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Missiles",
+      "package": "pl.macaque.missiles",
+      "patches": [
+        {
+          "name": "Missiles Ads Removal",
+          "description": "Spoofs the Google Mobile Ads Unity bridge (AdMob): interstitial, rewarded, rewarded interstitial, app open and banner ads resolve instantly as loaded/showed/closed/rewarded without ever displaying an ad.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.41"
+          ]
+        },
+        {
+          "name": "Missiles Billing Bypass",
+          "description": "Spoofs the Google Play Billing 8.0.0 purchase flow: every buy is instantly granted (fake Purchase delivered through the registered listener), purchases/consumes complete instantly, and the product catalog is served with fake ProductDetails — no Google Play sheet, no real payment.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.41"
+          ]
+        },
+        {
+          "name": "Missiles License Bypass",
+          "description": "Bypasses the Pairip Play Store license check so the app launches normally.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.41"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "16d0bbde9ebe52e65162a413757bc5f11d5ee69007de126d3d706d5edbe0987f",
+  "release_notes": "## [1.19.0](https://github.com/byehi98/okish-morphe-patches/compare/v1.18.0...v1.19.0) (2026-08-26)\n\n### ✨ New Features\n\n* **haak-billing:** implement free purchases patch ([2a78af4](https://github.com/byehi98/okish-morphe-patches/commit/2a78af4690a48728833bd91d25d8102fcf085c47))\n",
+  "release_tag": "v1.19.0",
+  "release_date": "2026-08-26T11:20:55Z"
+}

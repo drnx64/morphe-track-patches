@@ -1,9 +1,10 @@
-const CACHE_NAME = "morphe-tracker-v5";
+const CACHE_NAME = "morphe-tracker-v6";
 const STATIC_ASSETS = [
   "/",
   "/index.html",
 ];
-const DATA_URLS = ["/data/core.json", "/data/stats.json", "/data/changes.json", "/data/bundles.json", "/data/changelog.json"];
+const DATA_URLS = ["/data/core.json", "/data/stats.json", "/data/changes.json", "/data/changelog.json"];
+const MAX_CACHE_SIZE = 50 * 1024 * 1024; // 50 MB
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -36,7 +37,13 @@ self.addEventListener("activate", (event) => {
 });
 
 function isDataUrl(url) {
-  return DATA_URLS.some((path) => url.pathname.endsWith(path));
+  if (DATA_URLS.some((path) => url.pathname.endsWith(path))) return true;
+  if (url.pathname.startsWith("/data/bundles/")) return true;
+  if (url.pathname.endsWith("/icon_cache.json")) return true;
+  if (url.pathname.endsWith("/name_cache.json")) return true;
+  if (url.pathname.endsWith("/last_run.json")) return true;
+  if (url.pathname.endsWith("/release_cache.json")) return true;
+  return false;
 }
 
 function isStaticAsset(url) {
@@ -50,6 +57,29 @@ function isStaticAsset(url) {
     url.origin === "https://fonts.googleapis.com" ||
     url.origin === "https://fonts.gstatic.com"
   );
+}
+
+async function enforceCacheLimit(cache) {
+  const keys = await cache.keys();
+  let totalSize = 0;
+  const entries = [];
+  for (const req of keys) {
+    const res = await cache.match(req);
+    if (res) {
+      const blob = await res.blob();
+      totalSize += blob.size;
+      entries.push({ req, size: blob.size });
+    }
+  }
+  if (totalSize > MAX_CACHE_SIZE) {
+    entries.sort((a, b) => a.size - b.size);
+    let freed = 0;
+    for (const entry of entries) {
+      if (totalSize - freed <= MAX_CACHE_SIZE * 0.8) break;
+      await cache.delete(entry.req);
+      freed += entry.size;
+    }
+  }
 }
 
 self.addEventListener("fetch", (event) => {
@@ -98,6 +128,7 @@ async function staleWhileRevalidate(request) {
           statusText: response.statusText,
           headers: headers
         }));
+        enforceCacheLimit(cache).catch(() => {});
         return new Response(body, {
           status: response.status,
           statusText: response.statusText,

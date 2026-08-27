@@ -1,0 +1,70 @@
+{
+  "bundle": "edge-morphe",
+  "channel": "stable",
+  "repo_url": "https://github.com/quantavil/edge-morphe-patches",
+  "created_at": "2026-08-19T05:57:27",
+  "version": "v1.35.0",
+  "description": "# [1.35.0](https://github.com/quantavil/edge-morphe-patches/compare/v1.34.0...v1.35.0) (2026-08-19)\n\n\n### Features\n\n* add Change package name patch with configurable target package ([108b812](https://github.com/quantavil/edge-morphe-patches/commit/108b812d1e42f0956660fe6edb5e3c5cb25895cf))\n\n\n\n",
+  "apps": [
+    {
+      "app_name": "Microsoft Edge",
+      "package": "com.microsoft.emmx",
+      "patches": [
+        {
+          "name": "Change package name",
+          "description": "Changes the application package name in AndroidManifest.xml (e.g. for media display whitelist compatibility or cloning).",
+          "use": false,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "New package name for Microsoft Edge (e.g. com.microsoft.emmx.morphe or a custom package name)"
+            }
+          ],
+          "compatible_versions": [
+            "151.0.4129.70"
+          ]
+        },
+        {
+          "name": "Copilot feature toggle",
+          "description": "Disables all Copilot and Bing Chat feature flags by forcing boolean feature evaluation methods to return false.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "151.0.4129.70"
+          ]
+        },
+        {
+          "name": "Disable news notifications",
+          "description": "Disables Bing news and weather push notifications by short-circuiting device push token registration and notification dispatch services.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "151.0.4129.70"
+          ]
+        },
+        {
+          "name": "Disable Play Store updates",
+          "description": "Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "151.0.4129.70"
+          ]
+        },
+        {
+          "name": "Telemetry elimination",
+          "description": "Eliminates Microsoft Edge telemetry and tracking by redirecting data collection endpoints (OneCollector, AppCenter, Adjust) to localhost and short-circuiting OneDS and Adjust tracking methods.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "151.0.4129.70"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "ebc325d33a50d4aabf7ffddaeb18539b54b99995af5f85e6eca718d0c9fb793a",
+  "release_notes": "# [1.35.0](https://github.com/quantavil/edge-morphe-patches/compare/v1.34.0...v1.35.0) (2026-08-19)\n\n\n### Features\n\n* add Change package name patch with configurable target package ([108b812](https://github.com/quantavil/edge-morphe-patches/commit/108b812d1e42f0956660fe6edb5e3c5cb25895cf))\n\n\n\n",
+  "release_tag": "v1.35.0",
+  "release_date": "2026-08-19T05:57:27Z"
+}

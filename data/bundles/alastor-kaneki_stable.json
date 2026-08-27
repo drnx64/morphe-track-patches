@@ -1,0 +1,142 @@
+{
+  "bundle": "alastor-kaneki",
+  "channel": "stable",
+  "repo_url": "https://github.com/Alastor-Kaneki/Morphe-Patches",
+  "created_at": "2026-08-24T09:13:05",
+  "version": "v1.14.1",
+  "description": "## [1.14.1](https://github.com/Alastor-Kaneki/Morphe-Patches/compare/v1.14.0...v1.14.1) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* **mcpe-center:** make package rename fingerprint order-independent ([02bc171](https://github.com/Alastor-Kaneki/Morphe-Patches/commit/02bc171c95718f07b043eccab385157446dd2738))\n* **release:** accept spaced Gradle version property ([b81f280](https://github.com/Alastor-Kaneki/Morphe-Patches/commit/b81f280d7818755496ea9fb06cc8dea174301817))\n* **release:** auto-update latest bundle metadata ([8277193](https://github.com/Alastor-Kaneki/Morphe-Patches/commit/8277193070025e922367de605cfe7e958bf7d43e))\n",
+  "apps": [
+    {
+      "app_name": "Google Chrome",
+      "package": "com.android.chrome",
+      "patches": [
+        {
+          "name": "MonkeyScript userscript manager",
+          "description": "Adds a Chrome 150 Material You userscript manager using a Violentmonkey-derived parser, native app-menu integration, guaranteed Fork-page installation, Greasy Fork/Sleazy Fork support, publishing, and configurable app/package cloning.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "Opera GX",
+      "package": "com.opera.gx",
+      "patches": [
+        {
+          "name": "Download GX mods as files",
+          "description": "Adds a visible Download Mod button in Opera GX, with URL auto-detection and a Share fallback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "GX icon pack",
+          "description": "Adds a separate native selector for all 56 Opera GX launcher icons. Open it from the GX Icon Pack long-press shortcut.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "Pixilart",
+      "package": "com.pixilart.app",
+      "patches": [
+        {
+          "name": "Remove ads",
+          "description": "Hard-disables Pixilart native/Cordova ads, drawing-editor web ads, and promoted/feed ad cards.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.9.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Suno",
+      "package": "com.suno.android",
+      "patches": [
+        {
+          "name": "Customize Suno branding",
+          "description": "Clones Suno to a different package name, with optional app-name and launcher-icon customization. Accepts Morphe's adaptive custom-icon folder layout or a simple icon.png folder.",
+          "use": false,
+          "options": [
+            {
+              "key": "customName",
+              "description": "Optional replacement name shown by Android for the patched Suno app."
+            },
+            {
+              "key": "customPackageName",
+              "description": "Android package ID for the patched Suno clone. It must differ from com.suno.android."
+            },
+            {
+              "key": "customIcon",
+              "description": "Optional folder containing the launcher icon.\n\nEasy layout:\n- icon.png\n\nMorphe adaptive layout:\n- mipmap-mdpi/morphe_adaptive_background_custom.png\n- mipmap-mdpi/morphe_adaptive_foreground_custom.png\n- mipmap-hdpi/morphe_adaptive_background_custom.png\n- mipmap-hdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xhdpi/morphe_adaptive_background_custom.png\n- mipmap-xhdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xxhdpi/morphe_adaptive_background_custom.png\n- mipmap-xxhdpi/morphe_adaptive_foreground_custom.png\n- mipmap-xxxhdpi/morphe_adaptive_background_custom.png\n- mipmap-xxxhdpi/morphe_adaptive_foreground_custom.png\n\nYou may provide only the density folders you need, but each provided density\nmust contain both the background and foreground image."
+            }
+          ],
+          "compatible_versions": []
+        },
+        {
+          "name": "Download timestamped lyrics",
+          "description": "Adds an in-app Lyrics button and share target that exports Suno timing data as LRC, enhanced LRC, SRT, WebVTT, or JSON.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "Mods AddOns for Minecraft PE",
+      "package": "com.ultimategamestudio.mcpecenter.mods",
+      "patches": [
+        {
+          "name": "Custom download folder",
+          "description": "Adds a native Android folder picker, a Download folder app shortcut and automatic saving of downloaded add-ons to the selected folder.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.5.0"
+          ]
+        },
+        {
+          "name": "Preserve premium entitlement",
+          "description": "Keeps an already-observed premium entitlement stable across local preference migrations without granting premium to a fresh install.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.5.0"
+          ]
+        },
+        {
+          "name": "Remove ads",
+          "description": "Disables app-open, banner, native, interstitial and rewarded ad loading while keeping the app UI flow intact.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.5.0"
+          ]
+        },
+        {
+          "name": "Rename package",
+          "description": "Changes the Android package ID and updates the app-specific provider/permission references used for Minecraft imports.",
+          "use": false,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "Android package ID for the patched app."
+            }
+          ],
+          "compatible_versions": [
+            "2.5.0"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "245e802e72afd9929ee26a2983decbcda95b084c0ce068e42bb95b161f4721e4",
+  "release_notes": "## [1.14.1](https://github.com/Alastor-Kaneki/Morphe-Patches/compare/v1.14.0...v1.14.1) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* **mcpe-center:** make package rename fingerprint order-independent ([02bc171](https://github.com/Alastor-Kaneki/Morphe-Patches/commit/02bc171c95718f07b043eccab385157446dd2738))\n* **release:** accept spaced Gradle version property ([b81f280](https://github.com/Alastor-Kaneki/Morphe-Patches/commit/b81f280d7818755496ea9fb06cc8dea174301817))\n* **release:** auto-update latest bundle metadata ([8277193](https://github.com/Alastor-Kaneki/Morphe-Patches/commit/8277193070025e922367de605cfe7e958bf7d43e))\n",
+  "release_tag": "v1.14.1",
+  "release_date": "2026-08-24T09:13:05Z"
+}

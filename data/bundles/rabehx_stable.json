@@ -1,0 +1,122 @@
+{
+  "bundle": "rabehx",
+  "channel": "stable",
+  "repo_url": "https://github.com/RabehX/rabehx-patches",
+  "created_at": "2026-08-13T21:50:17",
+  "version": "v0.0.1",
+  "description": "Initial release of RabehX Patches with support for My Ooredoo, Webetu, and BaridiMob.",
+  "apps": [
+    {
+      "app_name": "Webetu",
+      "package": "app.progres.webetu",
+      "patches": [
+        {
+          "name": "Allow screenshots",
+          "description": "Removes the screen capture block so screenshots and recordings work.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.4.0"
+          ]
+        },
+        {
+          "name": "Enable 30-day Resto reservations",
+          "description": "Allows reserving Resto meals up to 30 days in advance.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.4.0"
+          ]
+        },
+        {
+          "name": "Remove PairIP protection",
+          "description": "Removes Google Play's PairIP anti-tamper wrapper so the app runs without license checks. Restores the original Application class in the manifest, removes all injected com.pairip.* components, and neuters PairIP's license client.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.4.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "My Ooredoo",
+      "package": "com.algeria.selfcare.app.android",
+      "patches": [
+        {
+          "name": "Disable developer options detection",
+          "description": "Stops the app from detecting that Developer Options or USB debugging are enabled on the device, removing the blocking security dialog.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.13"
+          ]
+        },
+        {
+          "name": "Disable Play Integrity",
+          "description": "Short-circuits the Google Play Integrity attestation request with a \"DISABLED\" response, avoiding failures on modified or non-Play builds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.13"
+          ]
+        },
+        {
+          "name": "Disable root & emulator detection",
+          "description": "Forces every root, jailbreak, emulator and frida check in the app to report a clean device, so no blocking dialog is shown on modified/rooted environments.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.13"
+          ]
+        },
+        {
+          "name": "Remove CleverTap tracking",
+          "description": "Removes CleverTap analytics initialization, stopping the app from collecting the phone number as an identity key and from reporting usage data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.13"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "BaridiMob",
+      "package": "ru.bpc.mobilebank.bpc",
+      "patches": [
+        {
+          "name": "Bypass certificate checks",
+          "description": "Bypasses certificate pinning so intercepted TLS connections are accepted.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.29.1"
+          ]
+        },
+        {
+          "name": "Disable analytics and crash reporting",
+          "description": "Disables analytics and crash reporting while keeping push notifications.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.29.1"
+          ]
+        },
+        {
+          "name": "Disable root detection",
+          "description": "Disables the rooted-device check so the app runs on rooted devices.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.29.1"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "d89eeeea3a6d4ede8fccfcf8126c3d2a3aed6ab067dd67207862172800791ee4",
+  "release_notes": "Initial release of RabehX Patches with support for My Ooredoo, Webetu, and BaridiMob.",
+  "release_tag": "v0.0.1",
+  "release_date": "2026-08-13T21:50:17Z"
+}

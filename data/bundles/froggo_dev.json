@@ -1,0 +1,92 @@
+{
+  "bundle": "froggo",
+  "channel": "dev",
+  "repo_url": "https://github.com/SapitoSucio/FroggoMorphePatches",
+  "created_at": "2026-08-27T08:17:45",
+  "version": "v1.2.0-dev.4",
+  "description": "## [1.2.0-dev.4](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.3...v1.2.0-dev.4) (2026-08-27)\n\n### ✨ New Features\n\n* **facebook:** add ads diagnostic split ([779a453](https://github.com/SapitoSucio/FroggoMorphePatches/commit/779a45315a57e09e73e86c08f54769b163169712))\n",
+  "apps": [
+    {
+      "app_name": "Facebook",
+      "package": "com.facebook.katana",
+      "patches": [
+        {
+          "name": "[Diag A1] Facebook 573 ads - CSR tail-load",
+          "description": "DEV diagnostic: only disables MainFeedCSRDataLoaderImpl async-ad tail-load dispatch.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "573.0.0.37.74"
+          ]
+        },
+        {
+          "name": "[Diag A2] Facebook 573 ads - CSR converter",
+          "description": "DEV diagnostic: only nulls the bZU Feed CSR response converter.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "573.0.0.37.74"
+          ]
+        },
+        {
+          "name": "[Diag A3] Facebook 573 ads - Async controller",
+          "description": "DEV diagnostic: only replaces FeedAsyncAdsController output with an empty C6Ke.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "573.0.0.37.74"
+          ]
+        },
+        {
+          "name": "[Diag B] Facebook 573 ads - Final feed filter",
+          "description": "DEV diagnostic: only filters SPONSORED/PROMOTION feed edges and MultiAds sponsored data.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "573.0.0.37.74"
+          ]
+        },
+        {
+          "name": "[Diag C] Facebook 573 ads - Reels/video",
+          "description": "DEV diagnostic: only disables Reels/video and commercial-break ad fetch/success paths.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "573.0.0.37.74"
+          ]
+        },
+        {
+          "name": "Block Facebook ads (573)",
+          "description": "Stops feed, Reels/video, and commercial-break ads without modifying the Story viewer pipeline.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "573.0.0.37.74"
+          ]
+        },
+        {
+          "name": "Block Facebook automatic refresh (573)",
+          "description": "Suppresses lifecycle feed refresh while preserving explicit refresh paths.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "573.0.0.37.74"
+          ]
+        },
+        {
+          "name": "Block Facebook Story ads (573)",
+          "description": "Pre-release experiment: disables Facebook's native Story Ads eligibility gate.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "573.0.0.37.74"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "283d0e97994c2afb87e108a6359c4a97225408949730ed59375f97874fa8ead0",
+  "release_notes": "## [1.2.0-dev.4](https://github.com/SapitoSucio/FroggoMorphePatches/compare/v1.2.0-dev.3...v1.2.0-dev.4) (2026-08-27)\n\n### ✨ New Features\n\n* **facebook:** add ads diagnostic split ([779a453](https://github.com/SapitoSucio/FroggoMorphePatches/commit/779a45315a57e09e73e86c08f54769b163169712))\n",
+  "release_tag": "v1.2.0-dev.4",
+  "release_date": "2026-08-27T08:17:45Z"
+}

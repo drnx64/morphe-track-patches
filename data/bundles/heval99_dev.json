@@ -1,0 +1,256 @@
+{
+  "bundle": "heval99",
+  "channel": "dev",
+  "repo_url": "https://github.com/heval99/Heval-Morphe-Patches",
+  "created_at": "2026-08-19T23:22:46",
+  "version": "v1.1.0-dev.2",
+  "description": "## [1.1.0-dev.2](https://github.com/heval99/Heval-Morphe-Patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-08-19)\n\n### ✨ New Features\n\n* add 365Scores, Livescore, IPTV, and FishBuddy patches ([d62d2d3](https://github.com/heval99/Heval-Morphe-Patches/commit/d62d2d3623991b53323399708321a7e8ee24982f))\n",
+  "apps": [
+    {
+      "app_name": "BoxBox",
+      "package": "club.boxbox.android",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Prevents AppLovin interstitial ads from loading and showing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Disable telemetry",
+          "description": "Disables AppsFlyer, Firebase Analytics and Crashlytics event logging.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks premium features by bypassing RevenueCat subscription checks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "AnyDesk",
+      "package": "com.anydesk.anydeskandroid",
+      "patches": [
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks premium features by patching the Java license wrapper methods in JniAdExt: isFreeLicense returns false (app treats the license as paid), account registration and address book are allowed, and the remove-license option is available in settings. Note: the underlying license validation is native (libanydesk.so) and cannot be patched via bytecode — this patch only affects the Java-layer feature gates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.3.4"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Brave Browser",
+      "package": "com.brave.browser",
+      "patches": [
+        {
+          "name": "Brave Origin",
+          "description": "Unlocks Brave Origin and enables feature toggle controls.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.93.136"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Livescore",
+      "package": "com.livescore",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Forces AdsRemovalSettings.areAdsDisabled() to return true, disabling banner, interstitial, MPU, hero placement, coverage sponsorship and announcement ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.9.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "FotMob",
+      "package": "com.mobilefootie.wc2010",
+      "patches": [
+        {
+          "name": "Enable FotMob+",
+          "description": "Enables app features locked behind the subscription paywall.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "MyFitnessPal",
+      "package": "com.myfitnesspal.android",
+      "patches": [
+        {
+          "name": "Enable Premium+",
+          "description": "Enables app features locked behind the subscription paywall.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "365Scores",
+      "package": "com.scores365",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Disables Google Mobile Ads (AdMob) initialization, blocking banner, interstitial, rewarded, native and mediated ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.8.8"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Sofascore",
+      "package": "com.sofascore.results",
+      "patches": [
+        {
+          "name": "Block marketing notifications",
+          "description": "Blocks promotional and marketing notification prompts and modals.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.07.27",
+            "26.08.03"
+          ]
+        },
+        {
+          "name": "Disable ads",
+          "description": "Disables banner, interstitial, feed, native, preroll and rewarded ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.07.27",
+            "26.08.03"
+          ]
+        },
+        {
+          "name": "Disable Facebook SDK",
+          "description": "Disables Facebook SDK initialization, marketing, and ad network activity.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.07.27",
+            "26.08.03"
+          ]
+        },
+        {
+          "name": "Disable Play Integrity",
+          "description": "Bypasses Google Play Integrity API checks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.07.27",
+            "26.08.03"
+          ]
+        },
+        {
+          "name": "Disable telemetry",
+          "description": "Disables AppsFlyer, Firebase Analytics, Crashlytics, and Adjust telemetry.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.07.27",
+            "26.08.03"
+          ]
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks AI insights and premium features locked behind subscription.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.07.27",
+            "26.08.03"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Saphe Link",
+      "package": "my.saphelink",
+      "patches": [
+        {
+          "name": "Disable telemetry",
+          "description": "Disables Braze custom event tracking. Firebase Analytics/Crashlytics are covered by the universal \"Disable Firebase Analytics & Crashlytics\" patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.5.5"
+          ]
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks all features locked behind the Saphe subscription paywall (navigation, car integration, speed limits, voice alarms, roadwork detection, animal nearby, slow-moving traffic, emergency vehicle, etc.).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.5.5"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "FishBuddy",
+      "package": "no.fishbuddy_playground.app",
+      "patches": [
+        {
+          "name": "Enable Premium",
+          "description": "Forces User.hasPremium() to return true, unlocking premium features locked behind the RevenueCat subscription entitlement.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.0.84"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "IPTV",
+      "package": "ru.iptvremote.android.iptv",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Disables Wortise ad SDK initialization, blocking banner, interstitial, native and mediated ads (AppLovin, Yandex, Google Mobile Ads, etc.).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.1.25"
+          ]
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Forces IptvFreeApplication's pro/trial gate to return true, keeping pro features unlocked after the 20-minute trial expires and suppressing the in-app review / buy-pro upsell prompts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.1.25"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "12ea5ee37d7ce01d20dfab1ce2acdfd55656c8652c0c7eb9ab0865b0f0034f4e",
+  "release_notes": "## [1.1.0-dev.2](https://github.com/heval99/Heval-Morphe-Patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-08-19)\n\n### ✨ New Features\n\n* add 365Scores, Livescore, IPTV, and FishBuddy patches ([d62d2d3](https://github.com/heval99/Heval-Morphe-Patches/commit/d62d2d3623991b53323399708321a7e8ee24982f))\n",
+  "release_tag": "v1.1.0-dev.2",
+  "release_date": "2026-08-19T23:22:46Z"
+}

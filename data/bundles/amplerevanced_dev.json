@@ -1,0 +1,1135 @@
+{
+  "bundle": "amplerevanced",
+  "channel": "dev",
+  "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
+  "created_at": "2026-08-24T15:12:17",
+  "version": "v1.4.0-dev.13",
+  "description": "# [1.4.0-dev.13](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.12...v1.4.0-dev.13) (2026-08-24)\n\n\n### Features\n\n* **samsung-keyboard:** restore clipboard and GIF on non-One UI ROMs ([41d2db3](https://github.com/AmpleReVanced/revanced-patches/commit/41d2db3ae5208c89493521d73200719672d25da9))\n\n\n\n",
+  "apps": [
+    {
+      "app_name": "dcinside",
+      "package": "com.dcinside.app.android",
+      "patches": [
+        {
+          "name": "Add notification shortcut",
+          "description": "Adds a notification shortcut button above quick write in the post list.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Add settings",
+          "description": "Adds a Morphe settings entry to the DCInside settings screen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Add settings resources",
+          "description": "Adds Morphe settings resources to the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Adjust image download menu",
+          "description": "Moves the image download menu buttons upward by adding bottom padding.",
+          "use": false,
+          "options": [
+            {
+              "key": "bottomPadding",
+              "description": "Bottom padding in dp for the image download menu. The original value is 10dp."
+            }
+          ],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Bypass getText",
+          "description": "Bypasses the integrity check for getText.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Change package name",
+          "description": "Appends \".revanced\" to the package name by default. For DCinside only",
+          "use": false,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "The name of the package to rename the app to."
+            },
+            {
+              "key": "updatePermissions",
+              "description": "Update compatibility receiver permissions. Enabling this can fix installation errors, but this can also break features in certain apps."
+            },
+            {
+              "key": "updateProviders",
+              "description": "Update provider names declared by the app. Enabling this can fix installation errors, but this can also break features in certain apps."
+            }
+          ],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Custom branding",
+          "description": "Customize app branding (name and icon)",
+          "use": false,
+          "options": [
+            {
+              "key": "customName",
+              "description": "Custom app name"
+            },
+            {
+              "key": "customIcon",
+              "description": "            App icon source.\n\n            Special values:\n            - Original: Keep the original app icon.\n            - Bundled: Use the bundled icon from patches/src/main/resources/custom-branding.\n\n            Any other value is treated as a folder path with custom DCinside launcher icons.\n\n            A custom icon folder must contain one or more of the following directories:\n            - mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\n            Each icon directory must contain exactly one launcher icon file:\n            - ic_launcher.png\n- ic_launcher.webp\n\n            The expected launcher icon sizes are:\n            - mipmap-mdpi: 48x48 px\n- mipmap-hdpi: 72x72 px\n- mipmap-xhdpi: 96x96 px\n- mipmap-xxhdpi: 144x144 px\n- mipmap-xxxhdpi: 192x192 px\n\n            Optionally, you can provide a notification icon as either:\n            - drawable/ic_symbol.xml\n            - drawable-<dpi>/ic_symbol.png or ic_symbol.webp with sizes:\n            - drawable-mdpi: 24x24 px\n- drawable-hdpi: 36x36 px\n- drawable-xhdpi: 48x48 px\n- drawable-xxhdpi: 72x72 px\n- drawable-xxxhdpi: 96x96 px"
+            }
+          ],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Dimens Patch",
+          "description": "reassigns ad_minimum_height to 0dp to remove ads from the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Disable ad controller",
+          "description": "Disables the ad controller that manages ads in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Disable Comment Ad",
+          "description": "Disables the comment ad in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Disable DCCon loading",
+          "description": "Adds settings to block DCCon image loading in posts and replies.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Disable Image Ad",
+          "description": "Disables the image ad in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Disable update check",
+          "description": "Disables the app's update check.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Enable OneStore feature",
+          "description": "Enables the OneStore feature in DC Inside app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Filter recently viewed posts by gallery",
+          "description": "Adds a gallery filter below the recently viewed posts filters, which narrows the list down to the posts of a single gallery.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Gallery watch mode",
+          "description": "Keeps gallery auto-refresh active, highlights newly arrived posts, and optionally alerts with sound or vibration while the gallery is open.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Hide DC official notices",
+          "description": "Hides official DCInside operator notices from gallery notice lists.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Hide home components",
+          "description": "Adds settings to hide selected DCInside home screen components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Hide Main Ad",
+          "description": "Hides the main ad in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Hide mini gallery cover image",
+          "description": "Adds a setting to hide the mini gallery cover image above post lists.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Hide post list page indicators",
+          "description": "Adds a setting to hide the Page N indicators between pages in post lists.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Register settings activity",
+          "description": "Registers the Morphe settings activity in the app manifest.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Render big DCCon as normal size",
+          "description": "Adds a setting to render big DCCon at normal DCCon size.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Restore old post icons",
+          "description": "Adds a setting to restore DCInside 4.7.x post list and read footer icons.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Show author identifier",
+          "description": "Adds options to show the author identifier next to the nickname in posts, post lists, comments, and the recently-viewed posts list. The recently-viewed list only shows it for posts opened after this patch is installed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        },
+        {
+          "name": "Spoof Signature",
+          "description": "Spoofs the app signature to bypass integrity checks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.3.2"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Flexcil",
+      "package": "com.flexcil.flexcilnote",
+      "patches": [
+        {
+          "name": "Bypass login",
+          "description": "Skips the mandatory account sign-in on launch and opens the app directly.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.4.12",
+            "1.4.4.10",
+            "1.4.4.9"
+          ]
+        },
+        {
+          "name": "Unlock Premium features",
+          "description": "Enables app features locked behind the subscription paywall.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.4.12",
+            "1.4.4.10",
+            "1.4.4.9"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Kakao Talk",
+      "package": "com.kakao.talk",
+      "patches": [
+        {
+          "name": "Add Packet Handler",
+          "description": "Adding the Loco Packet Handler allows external applications to handle the app's packets, which may compromise security.\nConflicts may occur on some systems.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Add Pine Lib",
+          "description": "add libpine.so to the app's native libraries",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Add settings resources",
+          "description": "Adds Morphe settings layout resources to the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Add settings tab",
+          "description": "Adds a settings tab to the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Allow Hide on Any Chat",
+          "description": "Users with hiding privileges can hide any chat, including their own messages.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Allow invisible characters",
+          "description": "Stops zero width and other invisible characters from being stripped out of the chat input and out of the messages shown in a chat room.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Allow open chat media bundle",
+          "description": "Removes the open chat restriction that stops webp, gif and other media from being bundled into a single multi-photo message.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Allow profile media download",
+          "description": "Adds the save option of the profile media viewer to the profile pictures and background images of other people.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Allow reply to feed",
+          "description": "Adds a setting to allow swiping feed messages to reply, or to comment where chat room comments are enabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Always Show Kick Button",
+          "description": "Always shows the kick button in group member management.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Block reactions on deleted or hidden messages",
+          "description": "Stops reactions, including the double tap gesture, from being sent on messages that the server considers deleted or hidden and that are only still visible because they are kept by a patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Block replies on deleted or hidden messages",
+          "description": "Stops the swipe gesture, and any reply or comment send, from targeting messages that the server considers deleted or hidden and that are only still visible because they are kept by a patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Bypass input mention limit in non-multichat",
+          "description": "Bypass the limit of input mentions in non-multichat rooms",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Bypass Moat check",
+          "description": "Add a setting to bypass the KakaoPay Moat integrity check. It stops the native scan from running, so the tamper/root/hook verdict is never computed or reported and KakaoPay is not force-closed. Payments on a modified build are still risky.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Change model",
+          "description": "Changes the device model to supporting subdevice features",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Change package name",
+          "description": "Appends \".revanced\" to the package name by default. For KakaoTalk only",
+          "use": false,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "The name of the package to rename the app to."
+            },
+            {
+              "key": "updatePermissions",
+              "description": "Update compatibility receiver permissions. Enabling this can fix installation errors, but this can also break features in certain apps."
+            },
+            {
+              "key": "updateProviders",
+              "description": "Update provider names declared by the app. Enabling this can fix installation errors, but this can also break features in certain apps."
+            }
+          ],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Custom branding",
+          "description": "Customize app branding (name)",
+          "use": false,
+          "options": [
+            {
+              "key": "customName",
+              "description": "Custom app name"
+            }
+          ],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Default external browser",
+          "description": "Sets the default external browser for KakaoTalk to the system's default browser.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable 300+ unread limit",
+          "description": "Always show the real unread count instead of '300+' in chatroom list",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable 99 unread limit",
+          "description": "Skip the 99-cap so unread count shows full value",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable abuse detection report",
+          "description": "Answers the startup and login integrity challenge with an empty token and a benign Play Integrity failure code instead of a Google-signed token that would expose the re-signed certificate. The report itself is still sent, so the client does not go conspicuously silent on the server's nonce the way suppressing it entirely would.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable AdFit environment detection",
+          "description": "Stops the AdFit ad SDK from reporting a root or emulator verdict to its telemetry and ad request endpoints.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable chat room list ad",
+          "description": "Disables native and global-region ads in the chat room list.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable ChatRoomAdController",
+          "description": "Disables the open-link chat room BizBoard ad controller.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable Collapse Button",
+          "description": "Disable collapse button on OpenChatList",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable Community Tab",
+          "description": "Disables Community Tab",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable Friend Feed tab",
+          "description": "Disables the Friend Feed tab in KakaoTalk.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable Friend Lists ad",
+          "description": "Disables the friend tab BizBoard and global-region ads in KakaoTalk.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable open chat room comments",
+          "description": "Adds a setting to disable comments in open chat rooms.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable OpenChat feed ad",
+          "description": "Disables the OpenChat tab feed ad load and render paths.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable Pay banner ad",
+          "description": "Disables the KakaoPay banner ad load and render paths.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable S2Event",
+          "description": "Disables Tracker",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable SDK Tracker",
+          "description": "Disables the SDK Tracker in KakaoTalk.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable Sentry",
+          "description": "Disables Sentry error reporting in KakaoTalk.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable ShortForm ad",
+          "description": "Disables the shortform ad load and render paths.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable Talk Share Log",
+          "description": "Disable talk share log",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Disable verifying signature",
+          "description": "Disables the signature verification check that prevents the app from running.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Enable Markdown",
+          "description": "Render plain text messages with markdown-style formatting.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Enable send big text",
+          "description": "Allows sending big text messages in KakaoTalk.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Force enable debug mode",
+          "description": "Enables debug mode in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Force enable emoticon plus feature",
+          "description": "Force enable emoticon plus feature (Unpurchased emoticon can be sent once per day)",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Ghost Mode",
+          "description": "Don't expose your typing status to the other party.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Hide More tab components",
+          "description": "Adds options to hide components from the More tab.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Hide More tab Game tab",
+          "description": "Hides the Game tab from the More tab.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Hook Package Manager",
+          "description": "Hooks the Package Manager to bypass integrity checks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Ignore forward restriction",
+          "description": "Ignores the restrictions that stop messages such as KakaoLink from being forwarded to another chatroom.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Open profile from open chat feed",
+          "description": "Opens open chat member profiles from join and leave feed messages.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Override feature flag",
+          "description": "Overrides the feature flag to enable the feature.",
+          "use": true,
+          "options": [
+            {
+              "key": "featureFlags",
+              "description": "Enter feature flag overrides as semicolon-separated key=value pairs."
+            }
+          ],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Register settings activity",
+          "description": "Registers the Morphe settings activity in the app manifest.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Remove BizBoard ads",
+          "description": "Removes the BizBoard ad by forcing its dimensions to 0x0 and visibility to GONE in onMeasure.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Remove feed ad",
+          "description": "Removes the feed ad from the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Remove focus ad",
+          "description": "Removes the focus ad from the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Remove More tab ad",
+          "description": "Removes the ad from the More tab.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Remove native ad",
+          "description": "Removes the native ad from the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Remove OpenLink chat room list ad",
+          "description": "Removes the OpenLink chat room list ad.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Remove shop tab",
+          "description": "Removes the shop tab from the bottom navigation bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Remove Short-form Tab",
+          "description": "Removes the Short-form tab from the now fragment.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Restore keyword notification log",
+          "description": "Restores the removed keyword notification collection view along with its chat list entry.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Show chatroom channel ID",
+          "description": "Shows the channel ID in chatroom settings and copies it when tapping the chat side title.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Show deleted, hidden, or edited messages",
+          "description": "Allows you to see deleted, hidden, and edited message history in chat logs.",
+          "use": true,
+          "options": [
+            {
+              "key": "deletedColor",
+              "description": "32-bit ARGB. Accepts #RRGGBB, #AARRGGBB, 0xAARRGGBB, or signed decimal."
+            },
+            {
+              "key": "hiddenColor",
+              "description": "32-bit ARGB. Accepts #RRGGBB, #AARRGGBB, 0xAARRGGBB, or signed decimal."
+            }
+          ],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Show message read receipts",
+          "description": "Shows the members who have or have not read each chat message.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Show messages restricted to mobile",
+          "description": "Shows the content of AlimTalk, Leverage and Universal messages that are replaced with a placeholder asking to open them on mobile while signed in on a sub device.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Spoof apk checksums",
+          "description": "Spoofs the apk checksums to pass integrity checks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Spoof App ID",
+          "description": "Spoofs the App ID to bypass integrity checks. (to bypass biometric auth etc.)",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Spoof attestation package name",
+          "description": "Reports the original package name in the attestation report, which otherwise reveals a renamed install. Only the report is affected, so the app keeps using its real package name everywhere else.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Spoof installer package name",
+          "description": "Reports Google Play as the install source in the integrity report, which otherwise reveals a sideloaded install.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Spoof signature",
+          "description": "Spoofs the app signature to pass integrity checks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Strip image metadata",
+          "description": "Removes EXIF metadata, including the GPS capture location, from images sent in original quality, while keeping the picture and its orientation intact.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        },
+        {
+          "name": "Version info patch",
+          "description": "Patches the version info to include '(ReVanced)' in the version string.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.7.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Chzzk",
+      "package": "com.navercorp.game.android.community",
+      "patches": [
+        {
+          "name": "Auto claim TongPow",
+          "description": "Automatically claims CHZZK TongPow rewards when they become available while watching streams.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.10.0",
+            "3.9.0"
+          ]
+        },
+        {
+          "name": "Disable ads",
+          "description": "Disables CHZZK advertisements, including live stream pre-roll, mid-roll and post-roll ads and clip feed ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.10.0",
+            "3.9.0"
+          ]
+        },
+        {
+          "name": "Disable P2P",
+          "description": "Disables CHZZK peer-assisted grid streaming and forces CDN playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.10.0",
+            "3.9.0"
+          ]
+        },
+        {
+          "name": "Hide home banners",
+          "description": "Hides promotional banners on the CHZZK home recommend tab, including the top banner carousel and the in-feed event and image banners.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.10.0",
+            "3.9.0"
+          ]
+        },
+        {
+          "name": "Unlock cheat key",
+          "description": "Unlocks CHZZK cheat key subscription benefits without an active subscription.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.10.0",
+            "3.9.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Samsung Keyboard",
+      "package": "com.samsung.android.honeyboard",
+      "patches": [
+        {
+          "name": "Enable non-One UI ROM support",
+          "description": "Makes Samsung Keyboard installable and usable on non-One UI ROMs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.9.40.48"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "SOOP",
+      "package": "kr.co.nowcom.mobile.afreeca",
+      "patches": [
+        {
+          "name": "Disable P2P",
+          "description": "Disables SOOP peer-assisted grid streaming.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove banner ads",
+          "description": "Removes the VOD companion and search banner ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove Catch ads",
+          "description": "Removes the ads inserted between clips in the Catch feed by reporting no ad slots.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove exit dialog ad",
+          "description": "Removes the ad area shown in the app-exit confirmation dialog, keeping the dialog itself.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove intro ads",
+          "description": "Removes the image, video and cinema intro ad banners shown on launch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove list banner ads",
+          "description": "Removes the native banner ads under the live player and in feeds by stopping their ad request, so no banner is fetched or shown.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove live ads",
+          "description": "Removes the live pre-roll ad by routing every ad decision into the app's own no-video path so the stream starts immediately.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove live banner ads",
+          "description": "Removes the banner ads shown under the live player by stopping their driver from attaching the banner fragments.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove main board ads",
+          "description": "Removes the native \"main board\" banner ad shown in feeds and under the live player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        },
+        {
+          "name": "Remove VOD ads",
+          "description": "Removes VOD pre-roll ads by reporting every stream as QuickView Plus to the player's own ad-skip check.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.28.5"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "5ca1062c9e3dd0e9b06088f7ea403955ef149a765d8445f34a529da2a6ddb2cc",
+  "release_notes": "# [1.4.0-dev.13](https://github.com/AmpleReVanced/revanced-patches/compare/v1.4.0-dev.12...v1.4.0-dev.13) (2026-08-24)\n\n\n### Features\n\n* **samsung-keyboard:** restore clipboard and GIF on non-One UI ROMs ([41d2db3](https://github.com/AmpleReVanced/revanced-patches/commit/41d2db3ae5208c89493521d73200719672d25da9))\n\n\n\n",
+  "release_tag": "v1.4.0-dev.13",
+  "release_date": "2026-08-24T15:12:17Z"
+}

@@ -1,0 +1,181 @@
+{
+  "bundle": "ajstrick81-androidtv",
+  "channel": "dev",
+  "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
+  "created_at": "2026-06-26T16:45:34",
+  "version": "v1.5.7-dev.3",
+  "description": "## [1.5.7-dev.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.7-dev.2...v1.5.7-dev.3) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** re-add Layer 9 (NativeNetworkApi interceptor) only ([b14707e](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b14707e23290fa26597f3b2ddda9b3c39442efc2))\n\n\n\n",
+  "apps": [
+    {
+      "app_name": "Livingroom",
+      "package": "com.amazon.amazonvideo.livingroom",
+      "patches": [
+        {
+          "name": "Disable auto-updates",
+          "description": "Prevents Google Play Store from automatically replacing the patched APK with the official unpatched version.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a"
+          ]
+        },
+        {
+          "name": "Override certificate pinning",
+          "description": "Allows HTTPS traffic inspection tools like AdGuard Premium to intercept app connections. Enables consistent pre-roll suppression when used alongside AdGuard Premium.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a"
+          ]
+        },
+        {
+          "name": "Prime Video extension",
+          "description": "Integrates the Prime Video ATV extension for ad group skipping.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a"
+          ]
+        },
+        {
+          "name": "Skip ads",
+          "description": "Multi-layer ad suppression targeting the SSAI schedule, impression reporting, and the Volley network chokepoint.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Atbat",
+      "package": "com.bamnetworks.mobile.android.gameday.atbat",
+      "patches": [
+        {
+          "name": "MLB At Bat Android TV",
+          "description": "Removes VOD ads and shows a commercial-break overlay over live gambling ads while preserving live game playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.8.1.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Ott",
+      "package": "com.cbs.ott",
+      "patches": [
+        {
+          "name": "Paramount+ Android TV",
+          "description": "Removes VOD ads and pause ads while preserving live TV.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "16.12.0",
+            "16.8.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Disneyplus",
+      "package": "com.disney.disneyplus",
+      "patches": [
+        {
+          "name": "Disney+ Android TV",
+          "description": "Removes mid-roll / pre-roll ads and pause ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.6.0+rc5-2026.04.21",
+            "26.8.0+rc6-2026.05.20",
+            "26.9.2+rc1-2026.06.12"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Foxone",
+      "package": "com.fox.foxone",
+      "patches": [
+        {
+          "name": "Skip ads",
+          "description": "Suppresses all ad delivery systems in Fox One Android TV: Google IMA/DAI for VOD, Yospace SSAI for live content.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.9.2"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Peacockandroid",
+      "package": "com.peacocktv.peacockandroid",
+      "patches": [
+        {
+          "name": "Skip ads",
+          "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.5.102",
+            "7.6.100"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Tubitv",
+      "package": "com.tubitv",
+      "patches": [
+        {
+          "name": "Skip ads",
+          "description": "Suppresses all ad delivery systems in Tubi Android TV.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "10.20.5000"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Prendetv",
+      "package": "com.univision.prendetv",
+      "patches": [
+        {
+          "name": "Skip ads",
+          "description": "Suppresses ViX ad delivery by disabling the FreeWheel ad provider at the config level and preventing the Innovid SSAI overlay from mounting.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.46.0_tv"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Hbomax",
+      "package": "com.wbd.hbomax",
+      "patches": [
+        {
+          "name": "HBO Max - Disable Ads",
+          "description": "Suppresses nonlinear overlay ads (Bolt), SSAI linear ad timeline registration (GMSS/AdSparx), and live stream preroll ad timeline entry generation for all content types.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.5.0.73",
+            "7.2.0.41"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "39891b6ac6f1f7f159f321c8c5bf22b1124c6d2c2b51a3537171d0e0b2768321",
+  "release_notes": "# [1.30.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.29.4...v1.30.0) (2026-08-27)\n\n\n### Features\n\n* **hbomax:** prefer HBO's ad-free FALLBACK stream (clean SSAI fix, [#125](https://github.com/ajstrick81/morphe-androidtv-patches/issues/125)) ([#137](https://github.com/ajstrick81/morphe-androidtv-patches/issues/137)) ([70b6dd4](https://github.com/ajstrick81/morphe-androidtv-patches/commit/70b6dd40872f2835ec5b40809bed2180fae714e4))\n\n\n\n",
+  "release_tag": "v1.30.0",
+  "release_date": "2026-08-27T01:57:48Z"
+}

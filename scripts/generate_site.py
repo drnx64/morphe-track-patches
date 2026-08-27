@@ -136,30 +136,13 @@ def generate_static_files():
     else:
         save_json(changelog_dest, [])
 
-    # Sync all data files to public/data/ (used by Vite dev server)
-    os.makedirs(PUBLIC_DATA_DIR, exist_ok=True)
-    for filename in ["core.json", "stats.json", "changes.json", "bundles.json", "changelog.json", "repos_list.txt"]:
-        src = os.path.join(ROOT_DATA_DIR, filename)
-        dst = os.path.join(PUBLIC_DATA_DIR, filename)
-        if os.path.exists(src):
-            print(f"Syncing {src} -> {dst}...")
-            shutil.copy2(src, dst)
-
-    # Also sync state/ subdirectory
-    state_src = os.path.join(ROOT_DATA_DIR, "state")
-    state_dst = os.path.join(PUBLIC_DATA_DIR, "state")
-    if os.path.exists(state_src):
-        os.makedirs(state_dst, exist_ok=True)
-        for fname in os.listdir(state_src):
-            fsrc = os.path.join(state_src, fname)
-            fdst = os.path.join(state_dst, fname)
-            if os.path.isfile(fsrc):
-                shutil.copy2(fsrc, fdst)
+    # Vite serves data/ directly via server.fs.allow — no need to copy to public/data/
+    # Bundles are split into data/bundles/<name>.json + data/bundles/_index.json
 
     # Update README repos table
     update_readme_repos_table()
 
-    print("Static site files synced to data/ and public/data/.")
+    print("Static site files synced.")
 
 
 def update_readme_repos_table():

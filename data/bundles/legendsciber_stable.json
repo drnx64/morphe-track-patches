@@ -1,0 +1,86 @@
+{
+  "bundle": "legendsciber",
+  "channel": "stable",
+  "repo_url": "https://github.com/legendsciber/morphe-patches",
+  "created_at": "2026-08-26T22:24:14",
+  "version": "v1.8.1",
+  "description": "## [1.8.1](https://github.com/legendsciber/morphe-patches/compare/v1.8.0...v1.8.1) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* **blockblast:** correct AdSdkInitFingerprint method name to h(Context) ([1ffd2bb](https://github.com/legendsciber/morphe-patches/commit/1ffd2bb629c22c640897bf02c6833edb5eb50236))\n",
+  "apps": [
+    {
+      "app_name": "Block Blast",
+      "package": "com.block.juggle",
+      "patches": [
+        {
+          "name": "Ad Removal + Subscription",
+          "description": "Removes all ads and simulates an active subscription.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "10.4.5"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Hill Climb Racing",
+      "package": "com.fingersoft.hillclimb",
+      "patches": [
+        {
+          "name": "Hill Climb Racing Ad Removal",
+          "description": "Completely removes ads: banners and interstitials can never be displayed (CFirebaseAds.showBanners/showInterstitial become no-ops) and ad-free is granted once per app start — loadStore() seeds mAdFree = 1, the native engine's poll grants it and the store's own reset (inappPurchasesProcessed) zeroes the field, so no repeated purchase popups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.70.0"
+          ]
+        },
+        {
+          "name": "Hill Climb Racing Free Store",
+          "description": "Every store item is granted instantly and free: coins, gems, paints, ad-skips, ad-free and bundles, without launching Google Play billing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.70.0"
+          ]
+        },
+        {
+          "name": "Hill Climb Racing Instant Rewarded Video Rewards",
+          "description": "Rewarded video ads grant their reward instantly without playing the ad: the native engine receives onVideoStartedSuccess + onVideoCompletedSuccess on the GL thread, exactly as if the video had been watched and completed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.70.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Toolbox for Minecraft PE",
+      "package": "io.mrarm.mctoolbox",
+      "patches": [
+        {
+          "name": "Bypass Google Play Install Check",
+          "description": "App always behaves as if installed from Google Play, bypassing the install source check.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.4.58"
+          ]
+        },
+        {
+          "name": "Watch Ad Instant Reward",
+          "description": "Pressing \"Watch ad\" grants +15 min premium instantly without loading ads. (TESTING)",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "5.4.58"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "754c27f3719d4844a448ff0b3da993a96e6e822e173771bc80f34a7a047fa8d1",
+  "release_notes": "## [1.8.1](https://github.com/legendsciber/morphe-patches/compare/v1.8.0...v1.8.1) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* **blockblast:** correct AdSdkInitFingerprint method name to h(Context) ([1ffd2bb](https://github.com/legendsciber/morphe-patches/commit/1ffd2bb629c22c640897bf02c6833edb5eb50236))\n",
+  "release_tag": "v1.8.1",
+  "release_date": "2026-08-26T22:24:14Z"
+}

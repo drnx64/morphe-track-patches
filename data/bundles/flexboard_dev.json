@@ -1,0 +1,101 @@
+{
+  "bundle": "flexboard",
+  "channel": "dev",
+  "repo_url": "https://github.com/JZ6/Flexboard",
+  "created_at": "2026-08-27T04:41:45",
+  "version": "v2.0.1-dev.0",
+  "description": "## 2.0.1-dev.0\n\n- feat: add Cancel, rename Done to Save — autosave keeps dismissal\n- feat: hotkey editor autosaves — dismiss-anything commits",
+  "apps": [
+    {
+      "app_name": "Gboard",
+      "package": "com.google.android.inputmethod.latin",
+      "patches": [
+        {
+          "name": "Bypass Gboard Signature",
+          "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Grammar Check Row",
+          "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Install as Gboard Clone",
+          "description": "Rename the package to dev.jz6.com.google.android.inputmethod.latin so the patched build installs alongside the official Gboard instead of replacing it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Suggested Settings",
+          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Swipe Right to Undo",
+          "description": "Swipe right after deleting to put the words back. Uses Gboard's own undo, which already records what a delete swipe removed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Swipe to Delete",
+          "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Toolbar Buttons",
+          "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Toolbar Hotkeys",
+          "description": "Adds six configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Toolbar Native Test",
+          "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "c9140fa329d63f24b967e59f1c2394c4102ba7b2e8bd5a3b2450624df41c2815",
+  "release_notes": "## 2.0.1-dev.0\n\n- feat: add Cancel, rename Done to Save — autosave keeps dismissal\n- feat: hotkey editor autosaves — dismiss-anything commits",
+  "release_tag": "v2.0.1-dev.0",
+  "release_date": "2026-08-27T04:41:45Z"
+}

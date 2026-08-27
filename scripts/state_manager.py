@@ -27,6 +27,7 @@ IGNORE_REPO_PATH = os.path.join(ROOT_DATA_DIR, "ignore_repo.txt")
 # Split data files (kebab-case)
 CORE_JSON_PATH = os.path.join(ROOT_DATA_DIR, "core.json")
 BUNDLES_JSON_PATH = os.path.join(ROOT_DATA_DIR, "bundles.json")
+BUNDLES_DIR = os.path.join(ROOT_DATA_DIR, "bundles")
 CHANGES_JSON_PATH = os.path.join(ROOT_DATA_DIR, "changes.json")
 STATS_JSON_PATH = os.path.join(ROOT_DATA_DIR, "stats.json")
 
@@ -125,6 +126,30 @@ def _strip_icon_url(data):
 def save_bundles_json(data):
     data = _strip_icon_url(dict(data))
     return save_json(BUNDLES_JSON_PATH, data)
+
+
+def save_bundles_split(data):
+    """Save bundles as individual files: data/bundles/_index.json + data/bundles/<key>.json"""
+    data = _strip_icon_url(dict(data))
+    os.makedirs(BUNDLES_DIR, exist_ok=True)
+
+    index = {}
+    for key, record in data.items():
+        index[key] = {
+            "bundle": record.get("bundle", ""),
+            "channel": record.get("channel", ""),
+            "version": record.get("version", ""),
+            "repo_url": record.get("repo_url", ""),
+            "release_tag": record.get("release_tag", ""),
+            "release_date": record.get("release_date", ""),
+            "app_count": len(record.get("apps", [])),
+        }
+        filename = key.replace(":", "_") + ".json"
+        save_json(os.path.join(BUNDLES_DIR, filename), record)
+
+    save_json(os.path.join(BUNDLES_DIR, "_index.json"), index)
+    print(f"[bundles] Split {len(data)} bundles into {BUNDLES_DIR}")
+    return True
 
 def load_core_json():
     return load_json(CORE_JSON_PATH, default={})

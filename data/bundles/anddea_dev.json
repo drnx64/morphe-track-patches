@@ -1,0 +1,1514 @@
+{
+  "bundle": "anddea",
+  "channel": "dev",
+  "repo_url": "https://github.com/anddea/revanced-patches",
+  "created_at": "2026-08-21T16:24:32",
+  "version": "v4.3.0-dev.2",
+  "description": "# [4.3.0-dev.2](https://github.com/anddea/revanced-patches/compare/v4.3.0-dev.1...v4.3.0-dev.2) (2026-08-21)\n\n\n### Bug Fixes\n\n* **YouTube Music:** Multiline settings did not act like multiline ([e3f27fb](https://github.com/anddea/revanced-patches/commit/e3f27fb020b4039252100aeac4f78d2aa39da597))\n\n\n### Features\n\n* **YouTube - Navigation bar components:** Use a different method to `Disable translucent status bar` ([e5566e0](https://github.com/anddea/revanced-patches/commit/e5566e0e1abfc409184b16229d7cb35255a197f2))\n* **YouTube - Remove background playback restrictions:** Prevent paused videos from auto-resuming after returning to app ([e5a5858](https://github.com/anddea/revanced-patches/commit/e5a5858f4c7c61a66f468601029d45d25f5df95f))\n* **YouTube - Video playback:** Add `Default playback audio pitch` setting ([8db1c08](https://github.com/anddea/revanced-patches/commit/8db1c081fcd680157ea81ca8e1e75558a159db44))\n* **YouTube & YouTube Music - Theme:** Add in-app settings for `Theme` patch ([20817e7](https://github.com/anddea/revanced-patches/commit/20817e7544e08dc0db1b2d3812bde7e9e11cb9cf))\n* **YouTube & YouTube Music:** Replace old `Custom branding name`, `Custom branding icon`, and `Custom header` patches with `Custom branding` with in-app settings ([289be0b](https://github.com/anddea/revanced-patches/commit/289be0b8bead600d4182c1e7132cf05f6daf7e9e))\n* **YouTube Music - Spoof app version:** Prolong the life of the `v6.20+` app versions for just a little while longer ([4459eb1](https://github.com/anddea/revanced-patches/commit/4459eb193e95e13d420b7be05670098d7d0f97b6))\n* **YouTube:** Add \"Enable tablet layout in player\" setting ([395dea3](https://github.com/anddea/revanced-patches/commit/395dea319d4bb82e29bd455dd671cac91bd129f6))\n* **YouTube:** Add `Back press in feed` setting ([f77c687](https://github.com/anddea/revanced-patches/commit/f77c6872ba9174f12e91b16f5d2a0dbc72bec1a6))\n* **YouTube:** Enable `Theme` patch by default ([3115dfd](https://github.com/anddea/revanced-patches/commit/3115dfdd029866399ba93f6c93fdd07cddb1150e))\n",
+  "apps": [
+    {
+      "app_name": "YouTube Music",
+      "package": "com.google.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Bitrate default value",
+          "description": "Sets the audio quality to 'Always High' when you first install the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Bypass image region restrictions",
+          "description": "Adds an option to use a different host for static images, so that images blocked in some countries can be received.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Certificate spoof",
+          "description": "Enables YouTube Music to work with Android Auto by spoofing the YouTube Music certificate.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Change share sheet",
+          "description": "Adds an option to change the in-app share sheet to the system share sheet.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Change start page",
+          "description": "Adds an option to set which page the app opens in instead of the homepage.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Custom branding for YouTube Music",
+          "description": "Adds in-app app-name, launcher-icon, header, splash, and settings-icon selection.",
+          "use": true,
+          "options": [
+            {
+              "key": "customName",
+              "description": "Custom app name."
+            },
+            {
+              "key": "customIcon",
+              "description": "    Folder with images to use as a custom icon.\n\n    The folder must contain one or more of the following folders, depending on the DPI of the device:\n    - mipmap-xxxhdpi\n- mipmap-xxhdpi\n- mipmap-xhdpi\n- mipmap-hdpi\n- mipmap-mdpi\n\n    Each provided mipmap folder must contain all of the following files:\n    - morphe_adaptive_background_custom.png\n- morphe_adaptive_foreground_custom.png\n\n    Optionally, the path can contain a 'drawable' folder with:\n    - morphe_adaptive_monochrome_custom.xml\n    - morphe_notification_icon_custom.xml\n\n    A notification icon can instead be supplied as morphe_notification_icon_custom.xml with a\n    .png extension in one or more matching drawable-<dpi> folders."
+            }
+          ],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Disable Cairo splash animation",
+          "description": "Adds an option to disable Cairo splash animation.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Disable dislike redirection",
+          "description": "Adds an option to disable redirection to the next track when clicking the Dislike button.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Disable forced auto captions",
+          "description": "Adds an option to disable captions from being automatically enabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Disable music video in album",
+          "description": "Adds option to redirect music videos from albums for non-premium users.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Disable QUIC protocol",
+          "description": "Adds an option to disable CronetEngine's QUIC protocol.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Enable debug logging",
+          "description": "Adds an option for debugging.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Enable landscape mode",
+          "description": "Adds an option to enable landscape mode when rotating the screen on phones.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Flyout menu components",
+          "description": "Adds options to hide or change flyout menu components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Force original audio",
+          "description": "Adds an option to disable audio tracks from being automatically enabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "GmsCore support",
+          "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+          "use": true,
+          "options": [
+            {
+              "key": "gmsCoreVendorGroupId",
+              "description": "The vendor's group ID for GmsCore. Do not change this option, if you do not know what you are doing."
+            },
+            {
+              "key": "checkGmsCore",
+              "description": "Check if GmsCore is installed on the device and has battery optimizations disabled when the app starts. \n\nIf GmsCore is not installed the app will not work, so disabling this is not recommended."
+            },
+            {
+              "key": "disableCoreServices",
+              "description": "To reproduce the playback issue, several core services, including PoToken, are disabled.\n\nDo not enable this option unless you are testing at a low level."
+            },
+            {
+              "key": "packageNameYouTube",
+              "description": "The name of the package to use in GmsCore support."
+            },
+            {
+              "key": "packageNameYouTubeMusic",
+              "description": "The name of the package to use in GmsCore support."
+            },
+            {
+              "key": "patchAllManifest",
+              "description": "Patch all permissions, intents and content provider authorities supported by GmsCore."
+            }
+          ],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide account components",
+          "description": "Adds options to hide components related to the account menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide action bar components",
+          "description": "Adds options to hide action bar components and replace the offline download button with an external download button.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Adds options to hide ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide layout components",
+          "description": "Adds options to hide general layout components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide overlay filter",
+          "description": "Removes, at compile time, the dark overlay that appears when player flyout menus are open.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide player overlay filter",
+          "description": "Removes, at compile time, the dark overlay that appears when single-tapping in the player.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Navigation bar components",
+          "description": "Adds options to hide or change components related to the navigation bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Player components",
+          "description": "Adds options to hide or change components related to the player.",
+          "use": true,
+          "options": [
+            {
+              "key": "swipeToDismissMiniPlayer",
+              "description": "Adds an option to enable swipe to dismiss the miniplayer.\n\nIf this patch option is enabled, the empty miniplayer may not show when the miniplayer is dismissed."
+            }
+          ],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Remove background playback restrictions",
+          "description": "Removes restrictions on background playback, including for kids videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Remove viewer discretion dialog",
+          "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Restore old style library shelf",
+          "description": "Adds an option to return the Library tab to the old style.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Return YouTube Dislike",
+          "description": "Adds an option to show the dislike count of songs using the Return YouTube Dislike API.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Return YouTube Username",
+          "description": "Adds an option to replace YouTube handles with usernames in comments using YouTube Data API v3.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Settings for YouTube Music",
+          "description": "Applies mandatory patches to implement ReVanced Extended settings into the application.",
+          "use": true,
+          "options": [
+            {
+              "key": "insertPosition",
+              "description": "The settings menu name that the RVX settings menu should be above."
+            },
+            {
+              "key": "rvxSettingsLabel",
+              "description": "The name of the RVX settings menu."
+            }
+          ],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Settings menu filter",
+          "description": "Adds an option to hide items on the standard YouTube Music settings screen by their visible name.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "SponsorBlock",
+          "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments, such as non-music sections.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Spoof app version",
+          "description": "Adds options to spoof the YouTube Music client version. This can be used to restore old UI elements and features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Spoof app version for lyrics",
+          "description": "Adds options to spoof the YouTube Music client version. This can be used to restore old lyrics UI.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Spoof video streams",
+          "description": "Adds options to spoof the client video streams to fix playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Theme",
+          "description": "Changes the app's dark theme to the values specified in patch options.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Third-party lyrics",
+          "description": "Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Track crossfade",
+          "description": "Adds a true dual-player crossfade between consecutive tracks. Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Translations for YouTube Music",
+          "description": "Add translations or remove string resources.",
+          "use": true,
+          "options": [
+            {
+              "key": "customTranslations",
+              "description": "The path to the 'strings.xml' file.\nPlease note that applying the 'strings.xml' file will overwrite all existing translations."
+            },
+            {
+              "key": "selectedTranslations",
+              "description": "A list of translations to be added for the RVX settings, separated by commas."
+            },
+            {
+              "key": "selectedStringResources",
+              "description": "A list of string resources to be kept, separated by commas.\nString resources not in the list will be removed from the app.\n\nDefault string resource, English, is not removed."
+            }
+          ],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Video playback",
+          "description": "Adds options to customize settings related to video playback, such as default video quality and playback speed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Visual preferences icons for YouTube Music",
+          "description": "Adds icons to specific preferences in the settings.",
+          "use": true,
+          "options": [
+            {
+              "key": "settingsMenuIcon",
+              "description": "The icon for the RVX settings menu."
+            },
+            {
+              "key": "applyToAll",
+              "description": "Whether to apply Visual preferences icons to all settings menus.\n\nIf true: icons are applied to the parent PreferenceScreen of YouTube settings, the parent PreferenceScreen of RVX settings and the RVX sub-settings (if supported).\n\nIf false: icons are applied only to the parent PreferenceScreen of YouTube settings and RVX settings."
+            }
+          ],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Watch history",
+          "description": "Adds an option to change the domain of the watch history or check its status.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.12.54",
+            "8.28.54",
+            "8.30.54",
+            "9.15.51"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "YouTube",
+      "package": "com.google.android.youtube",
+      "patches": [
+        {
+          "name": "Alternative thumbnails",
+          "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Ambient mode control",
+          "description": "Adds options to disable Ambient mode and to bypass Ambient mode restrictions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Bypass image region restrictions",
+          "description": "Adds an option to use a different host for static images, so that images blocked in some countries can be received.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Bypass URL redirects",
+          "description": "Adds an option to bypass URL redirects and open the original URL directly.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Change form factor",
+          "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Change player flyout menu toggles",
+          "description": "Adds an option to use text toggles instead of switch toggles within the additional settings menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Change share sheet",
+          "description": "Adds an option to change the in-app share sheet to the system share sheet.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Change start page",
+          "description": "Adds an option to set which page the app opens in instead of the homepage.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Custom branding for YouTube",
+          "description": "Adds in-app app-name, launcher-icon, header, splash, and settings-icon selection.",
+          "use": true,
+          "options": [
+            {
+              "key": "customName",
+              "description": "Custom app name."
+            },
+            {
+              "key": "customIcon",
+              "description": "    Folder with images to use as a custom icon.\n\n    The folder must contain one or more of the following folders, depending on the DPI of the device:\n    - mipmap-xxxhdpi\n- mipmap-xxhdpi\n- mipmap-xhdpi\n- mipmap-hdpi\n- mipmap-mdpi\n\n    Each provided mipmap folder must contain all of the following files:\n    - morphe_adaptive_background_custom.png\n- morphe_adaptive_foreground_custom.png\n\n    Optionally, the path can contain a 'drawable' folder with:\n    - morphe_adaptive_monochrome_custom.xml\n    - morphe_notification_icon_custom.xml\n\n    A notification icon can instead be supplied as morphe_notification_icon_custom.xml with a\n    .png extension in one or more matching drawable-<dpi> folders."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Custom double tap length",
+          "description": "Adds Double-tap to seek values that are specified in patch options.",
+          "use": true,
+          "options": [
+            {
+              "key": "doubleTapLengthArrays",
+              "description": "A list of custom Double-tap to seek lengths to be added, separated by commas."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Custom DPI",
+          "description": "Forces a higher display density for this app only, so the whole UI scales up without changing system density.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Custom Shorts action buttons",
+          "description": "Changes, at compile time, the icon of the action buttons of the Shorts player.",
+          "use": true,
+          "options": [
+            {
+              "key": "iconType",
+              "description": "The style of the icons for the action buttons in the Shorts player."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Description components",
+          "description": "Adds options to hide and disable description components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Disable forced auto captions",
+          "description": "Adds an option to disable captions from being automatically enabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Disable haptic feedback",
+          "description": "Adds options to disable haptic feedback when swiping in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Disable layout updates",
+          "description": "Adds an option to disable layout updates by server.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Disable QUIC protocol",
+          "description": "Adds an option to disable CronetEngine's QUIC protocol.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Disable resuming Miniplayer on startup",
+          "description": "Adds an option to disable the Miniplayer 'Continue watching' from resuming on app startup.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Disable resuming Shorts on startup",
+          "description": "Adds an option to disable the Shorts player from resuming on app startup when Shorts were last being watched.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Disable sign in to TV popup",
+          "description": "Adds an option to disable the popup asking to sign into a TV on the same local network.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Enable debug logging",
+          "description": "Adds an option for debugging and exporting RVX logs to the clipboard.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Enable gradient loading screen",
+          "description": "Adds an option to enable the gradient loading screen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Force original audio",
+          "description": "Adds an option to disable audio tracks from being automatically enabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Force player buttons background",
+          "description": "Changes the dark background surrounding the video player controls at compile time.",
+          "use": true,
+          "options": [
+            {
+              "key": "BackgroundColor",
+              "description": "Specify a background color for player buttons using a hex color code. The first two symbols of the hex code represent the alpha channel, which is used to change the opacity."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Fullscreen components",
+          "description": "Adds options to hide or change components related to fullscreen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "GmsCore support",
+          "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+          "use": true,
+          "options": [
+            {
+              "key": "gmsCoreVendorGroupId",
+              "description": "The vendor's group ID for GmsCore. Do not change this option, if you do not know what you are doing."
+            },
+            {
+              "key": "checkGmsCore",
+              "description": "Check if GmsCore is installed on the device and has battery optimizations disabled when the app starts. \n\nIf GmsCore is not installed the app will not work, so disabling this is not recommended."
+            },
+            {
+              "key": "disableCoreServices",
+              "description": "To reproduce the playback issue, several core services, including PoToken, are disabled.\n\nDo not enable this option unless you are testing at a low level."
+            },
+            {
+              "key": "packageNameYouTube",
+              "description": "The name of the package to use in GmsCore support."
+            },
+            {
+              "key": "packageNameYouTubeMusic",
+              "description": "The name of the package to use in GmsCore support."
+            },
+            {
+              "key": "patchAllManifest",
+              "description": "Patch all permissions, intents and content provider authorities supported by GmsCore."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide accessibility controls dialog",
+          "description": "Removes, at compile time, accessibility controls dialog 'Turn on accessibility controls for the video player?'.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide action buttons",
+          "description": "Adds options to hide action buttons under videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Adds options to hide ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide comments components",
+          "description": "Adds options to hide components related to comments.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide feed components",
+          "description": "Adds options to hide components related to feeds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide feed flyout menu",
+          "description": "Adds the ability to hide feed flyout menu components using a custom filter.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide layout components",
+          "description": "Adds options to hide general layout components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide player buttons",
+          "description": "Adds options to hide buttons in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide player flyout menu",
+          "description": "Adds options to hide player flyout menu components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide shortcuts",
+          "description": "Remove, at compile time, the app shortcuts that appears when the app icon is long pressed.",
+          "use": false,
+          "options": [
+            {
+              "key": "explore",
+              "description": "Hide Explore from shortcuts."
+            },
+            {
+              "key": "subscriptions",
+              "description": "Hide Subscriptions from shortcuts."
+            },
+            {
+              "key": "search",
+              "description": "Hide Search from shortcuts."
+            },
+            {
+              "key": "shorts",
+              "description": "Hide Shorts from shortcuts."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hide Shorts dimming",
+          "description": "Removes, at compile time, the dimming effect at the top and bottom of Shorts videos.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Hook download actions",
+          "description": "Adds support to download videos with an external downloader app using the in-app download button.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "MaterialYou",
+          "description": "Applies the MaterialYou theme for Android 12+ devices.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Miniplayer",
+          "description": "Adds options to change the in-app minimized player, and if patching target 19.16+ adds options to use modern miniplayers.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Navigation bar components",
+          "description": "Adds options to hide or change components related to the navigation bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Open links externally",
+          "description": "Adds an option to always open links in your browser instead of the in-app browser.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Overlay buttons",
+          "description": "Adds options to display useful overlay buttons in the video player.",
+          "use": true,
+          "options": [
+            {
+              "key": "iconType",
+              "description": "The icon type."
+            },
+            {
+              "key": "bottomMargin",
+              "description": "The bottom margin for the overlay buttons and timestamp."
+            },
+            {
+              "key": "widerButtonsSpace",
+              "description": "Prevent adjacent button presses by increasing the horizontal spacing between buttons."
+            },
+            {
+              "key": "changeTopButtons",
+              "description": "Change the icons at the top of the player."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Override YouTube Music buttons",
+          "description": "Overrides YouTube Music buttons to open RVX Music or any compatible third-party client.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Playback in feeds",
+          "description": "Adds the 'Playback in feeds' setting of YouTube to the RVX settings, where it is always available even if YouTube hides it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Player components",
+          "description": "Adds options to hide or change components related to the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Reload video",
+          "description": "Adds an option to display a button in the video player to reload the current video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Remove background playback restrictions",
+          "description": "Removes restrictions on background playback, including for music and kids videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Remove viewer discretion dialog",
+          "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Return YouTube Dislike",
+          "description": "Adds an option to show the dislike count of videos using the Return YouTube Dislike API.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Return YouTube Username",
+          "description": "Adds an option to replace YouTube handles with usernames in comments using YouTube Data API v3.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Seekbar components",
+          "description": "Adds options to hide or change components related to the seekbar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Set transcript cookies",
+          "description": "Adds an option to set Cookies in YouTube Transcript API requests.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Settings for YouTube",
+          "description": "Applies mandatory patches to implement ReVanced Extended settings into the application.",
+          "use": true,
+          "options": [
+            {
+              "key": "rvxSettingsLabel",
+              "description": "The name of the RVX settings menu."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Settings menu filter",
+          "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Shorts components",
+          "description": "Adds options to hide or change components related to YouTube Shorts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Snack bar components",
+          "description": "Adds options to hide or change components related to the snack bar.",
+          "use": true,
+          "options": [
+            {
+              "key": "cornerRadius",
+              "description": "Specify a corner radius for the snack bar."
+            },
+            {
+              "key": "applyCornerRadiusToPlaylistBottomBar",
+              "description": "Whether to apply the same corner radius to the bottom bar of the playlist as the snack bar."
+            },
+            {
+              "key": "darkThemeBackgroundColor",
+              "description": "Specify a background color for the snack bar. You can specify hex color (#AARRGGBB) or color resource reference."
+            },
+            {
+              "key": "lightThemeBackgroundColor",
+              "description": "Specify a background color for the snack bar. You can specify hex color (#AARRGGBB) or color resource reference."
+            },
+            {
+              "key": "strokeColor",
+              "description": "Specify a stroke color for the snack bar. You can specify hex color."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "SponsorBlock",
+          "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments, such as sponsored content.",
+          "use": true,
+          "options": [
+            {
+              "key": "NewSegmentAlignment",
+              "description": "Align new segment window."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Spoof app version",
+          "description": "Adds options to spoof the YouTube client version. This can be used to restore old UI elements and features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Spoof video streams",
+          "description": "Adds options to spoof the client video streams to fix playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Spoof watch history",
+          "description": "Adds an option to change the domain of the watch history or check its status.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Swipe controls",
+          "description": "Adds options for controlling volume and brightness with swiping, and whether to enter fullscreen when swiping down below the player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Theme",
+          "description": "Adds options to change the app's themes and splash screen style.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Toolbar components",
+          "description": "Adds options to hide or change components located on the toolbar, such as the search bar, header, and toolbar buttons.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Translations for YouTube",
+          "description": "Add translations or remove string resources.",
+          "use": true,
+          "options": [
+            {
+              "key": "customTranslations",
+              "description": "The path to the 'strings.xml' file.\nPlease note that applying the 'strings.xml' file will overwrite all existing translations."
+            },
+            {
+              "key": "selectedTranslations",
+              "description": "A list of translations to be added for the RVX settings, separated by commas."
+            },
+            {
+              "key": "selectedStringResources",
+              "description": "A list of string resources to be kept, separated by commas.\nString resources not in the list will be removed from the app.\n\nDefault string resource, English, is not removed."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Video playback",
+          "description": "Adds options to customize settings related to video playback, such as default video quality and playback speed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Visual preferences icons for YouTube",
+          "description": "Adds icons to specific preferences in the settings.",
+          "use": true,
+          "options": [
+            {
+              "key": "settingsMenuIcon",
+              "description": "The icon for the RVX settings menu."
+            },
+            {
+              "key": "applyToAll",
+              "description": "Whether to apply Visual preferences icons to all settings menus.\n\nIf true: icons are applied to the parent PreferenceScreen of YouTube settings, the parent PreferenceScreen of RVX settings and the RVX sub-settings (if supported).\n\nIf false: icons are applied only to the parent PreferenceScreen of YouTube settings and RVX settings."
+            }
+          ],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Voice Over Translation",
+          "description": "Adds an option to enable Yandex voice-over translation of video audio tracks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        },
+        {
+          "name": "Wide search bar",
+          "description": "Adds a wide search bar to the top of the home and subscription feed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "19.43.41",
+            "20.05.46",
+            "20.51.39"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "ccf809759dd2b109aae94f2554d1a2b477ad47f229b2b8a84fd57ee385f35fe1",
+  "release_notes": "# [4.3.0-dev.2](https://github.com/anddea/revanced-patches/compare/v4.3.0-dev.1...v4.3.0-dev.2) (2026-08-21)\n\n\n### Bug Fixes\n\n* **YouTube Music:** Multiline settings did not act like multiline ([e3f27fb](https://github.com/anddea/revanced-patches/commit/e3f27fb020b4039252100aeac4f78d2aa39da597))\n\n\n### Features\n\n* **YouTube - Navigation bar components:** Use a different method to `Disable translucent status bar` ([e5566e0](https://github.com/anddea/revanced-patches/commit/e5566e0e1abfc409184b16229d7cb35255a197f2))\n* **YouTube - Remove background playback restrictions:** Prevent paused videos from auto-resuming after returning to app ([e5a5858](https://github.com/anddea/revanced-patches/commit/e5a5858f4c7c61a66f468601029d45d25f5df95f))\n* **YouTube - Video playback:** Add `Default playback audio pitch` setting ([8db1c08](https://github.com/anddea/revanced-patches/commit/8db1c081fcd680157ea81ca8e1e75558a159db44))\n* **YouTube & YouTube Music - Theme:** Add in-app settings for `Theme` patch ([20817e7](https://github.com/anddea/revanced-patches/commit/20817e7544e08dc0db1b2d3812bde7e9e11cb9cf))\n* **YouTube & YouTube Music:** Replace old `Custom branding name`, `Custom branding icon`, and `Custom header` patches with `Custom branding` with in-app settings ([289be0b](https://github.com/anddea/revanced-patches/commit/289be0b8bead600d4182c1e7132cf05f6daf7e9e))\n* **YouTube Music - Spoof app version:** Prolong the life of the `v6.20+` app versions for just a little while longer ([4459eb1](https://github.com/anddea/revanced-patches/commit/4459eb193e95e13d420b7be05670098d7d0f97b6))\n* **YouTube:** Add \"Enable tablet layout in player\" setting ([395dea3](https://github.com/anddea/revanced-patches/commit/395dea319d4bb82e29bd455dd671cac91bd129f6))\n* **YouTube:** Add `Back press in feed` setting ([f77c687](https://github.com/anddea/revanced-patches/commit/f77c6872ba9174f12e91b16f5d2a0dbc72bec1a6))\n* **YouTube:** Enable `Theme` patch by default ([3115dfd](https://github.com/anddea/revanced-patches/commit/3115dfdd029866399ba93f6c93fdd07cddb1150e))\n",
+  "release_tag": "v4.3.0-dev.2",
+  "release_date": "2026-08-21T16:24:32Z"
+}

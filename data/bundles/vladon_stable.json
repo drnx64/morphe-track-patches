@@ -1,0 +1,47 @@
+{
+  "bundle": "vladon",
+  "channel": "stable",
+  "repo_url": "https://github.com/vladon/morphe-patches-navi",
+  "created_at": "2026-04-20T14:53:42",
+  "version": "v1.0.6",
+  "description": "Morphe patches bundle. Add source: https://morphe.software/add-source?github=vladon/morphe-patches-navi&name=Yandex+Navigator+patches",
+  "apps": [
+    {
+      "app_name": "Yandexnavi",
+      "package": "ru.yandex.yandexnavi",
+      "patches": [
+        {
+          "name": "Bypass Passport signature mismatch crash",
+          "description": "Strips the IllegalStateException + PassportRuntime handler block in c0.releaseRuntimeChecks (smali-aligned).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "28.6.5"
+          ]
+        },
+        {
+          "name": "Debuggable application manifest",
+          "description": "Sets android:debuggable=true on <application> (Passport allows non-Play signature on that path).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "28.6.5"
+          ]
+        },
+        {
+          "name": "Enable debug panel",
+          "description": "Unlocks the internal Maps-shell debug panel gate (Yandexoid prefs + swipable experiment).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "28.6.5"
+          ]
+        }
+      ]
+    }
+  ],
+  "fingerprint": "e185def8398f40000eaf427ddba8f309bc312739fd95b5f58109668d32fbfae7",
+  "release_notes": "Morphe patches bundle. Add source: https://morphe.software/add-source?github=vladon/morphe-patches-navi&name=Yandex+Navigator+patches",
+  "release_tag": "v1.0.6",
+  "release_date": "2026-04-20T14:53:42Z"
+}
