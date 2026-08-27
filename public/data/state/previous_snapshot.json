@@ -3669,85 +3669,44 @@
     "bundle": "riky",
     "channel": "stable",
     "repo_url": "https://github.com/riky-dev/morphe-patches",
-    "created_at": "2026-08-25T20:25:44",
-    "version": "v1.0.0",
-    "description": "## 1.0.0 (2026-08-25)\n\nFresh public baseline for **riky's patches**.\n\nPersonal Morphe patch bundle (ad removal, unlocks, and experiments).\n\nCurrent apps: Electron, 3B Meteo, Komoot.",
-    "apps": [
-      {
-        "app_name": "Electron: battery health info",
-        "package": "com.mahersafadi.electron",
-        "patches": [
-          {
-            "name": "Hide ads",
-            "description": "Spoofs premium/unlocked state to disable ad-gated behavior.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "3.0.3"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/0t-xeeDB6UuldF-nGTXFlE1Yvzm1NVBx-bYdnVYCdMfIyyT0niQNLa9dYLketH9ESOpeF4YzuihgI_Mz6SnlgQ"
-      },
-      {
-        "app_name": "3BMeteo",
-        "package": "com.meteosolutions.meteo3b",
-        "patches": [
-          {
-            "name": "Hide ads",
-            "description": "Removes banner, native, cover and interstitial ads and unlocks premium features.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "4.9.15"
-            ]
-          }
-        ],
-        "icon_url": ""
-      },
-      {
-        "app_name": "Komoot",
-        "package": "de.komoot.android",
-        "patches": [
-          {
-            "name": "Unlock map regions",
-            "description": "Spoof Komoot Maps ownership client-side (world pack / owned regions in shop and offline UI). Server-side limits may still apply: offline tile download auth, sync overwriting local state, and Play receipt validation. Does not replace a real Play Store purchase.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2026.34.2"
-            ]
-          },
-          {
-            "name": "Unlock Premium features",
-            "description": "Unlock Premium features. Some features are not possible to patch (server sided), such as saving a multi-days hike.",
-            "use": true,
-            "options": [],
-            "compatible_versions": [
-              "2026.34.2"
-            ]
-          }
-        ],
-        "icon_url": "https://play-lh.googleusercontent.com/IyQKMI6etTvtjEv6pSzQ4TnTlfKWbwT39vQMO4vpBlzQJfGKdA9zZ38sOXtt0yuZbwJBdKoP_RNPZnQiTuaceg"
-      }
-    ],
-    "fingerprint": "22d23c60ebda4fbcf761a86ce0c4214626121e11311ebd62d37ebd497e85ecb5"
-  },
-  "riky:dev": {
-    "bundle": "riky",
-    "channel": "dev",
-    "repo_url": "https://github.com/riky-dev/morphe-patches",
-    "created_at": "2026-08-26T18:03:51",
-    "version": "v1.1.0-dev.2",
-    "description": "## [1.1.0-dev.2](https://github.com/riky-dev/morphe-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-08-26)\n\n### ✨ New Features\n\n* add CapCut patches and suppress PC marketing popups ([aa10484](https://github.com/riky-dev/morphe-patches/commit/aa104849d2dfa74beaae882d5613c6c1b78d1b66))\n",
+    "created_at": "2026-08-26T20:38:54",
+    "version": "v1.1.0",
+    "description": "## [1.1.0](https://github.com/riky-dev/morphe-patches/compare/v1.0.0...v1.1.0) (2026-08-26)\n\n### ✨ New Features\n\n* add CapCut patches and suppress PC marketing popups ([aa10484](https://github.com/riky-dev/morphe-patches/commit/aa104849d2dfa74beaae882d5613c6c1b78d1b66))\n* add local Morphe CLI patch + ADB device smoke harness ([659b561](https://github.com/riky-dev/morphe-patches/commit/659b5612b563efbea962876018faae054c8b0cdc))\n* **capcut:** add cosmetic VIP status, telemetry suppression, hide AI Lab, and hide false hopes features ([d794440](https://github.com/riky-dev/morphe-patches/commit/d794440f36bd86481c3de00010c7d8820ae7ce77))\n",
     "apps": [
       {
         "app_name": "CapCut",
         "package": "com.lemon.lvoverseas",
         "patches": [
           {
+            "name": "Hide AI Lab Tab",
+            "description": "Removes the third bottom navigation tab ('AI Lab' / 'Lab. IA') by forcing its visibility observer to always hide the tab.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.2.0"
+            ]
+          },
+          {
+            "name": "Hide False Hopes Features",
+            "description": "Hides 'IA ultra HD' (Export Super Resolution) and 'Flusso ottico' (Slow Motion Optical Flow) options since they are cloud-gated.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.2.0"
+            ]
+          },
+          {
             "name": "Remove security notice",
             "description": "Suppresses the modified-build security notice by disabling the risk SDK dialog entry point and the isCracking flag writer.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.2.0"
+            ]
+          },
+          {
+            "name": "Suppress Telemetry and Trackers",
+            "description": "Disables background monitoring and analytics frameworks including ByteDance Helios, AppLog, and AppsFlyer.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -3824,7 +3783,127 @@
         "icon_url": "https://play-lh.googleusercontent.com/IyQKMI6etTvtjEv6pSzQ4TnTlfKWbwT39vQMO4vpBlzQJfGKdA9zZ38sOXtt0yuZbwJBdKoP_RNPZnQiTuaceg"
       }
     ],
-    "fingerprint": "2d98ec365623d527483d0227c575ab8b5294d4dec67af126e6e3a469fad80e0a"
+    "fingerprint": "85491316a0dfb50560eaef3bd98688108ce46ef40947a69d3d65950794f71bd9"
+  },
+  "riky:dev": {
+    "bundle": "riky",
+    "channel": "dev",
+    "repo_url": "https://github.com/riky-dev/morphe-patches",
+    "created_at": "2026-08-26T20:32:48",
+    "version": "v1.1.0-dev.3",
+    "description": "## [1.1.0-dev.3](https://github.com/riky-dev/morphe-patches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-08-26)\n\n### ✨ New Features\n\n* **capcut:** add cosmetic VIP status, telemetry suppression, hide AI Lab, and hide false hopes features ([d794440](https://github.com/riky-dev/morphe-patches/commit/d794440f36bd86481c3de00010c7d8820ae7ce77))\n",
+    "apps": [
+      {
+        "app_name": "CapCut",
+        "package": "com.lemon.lvoverseas",
+        "patches": [
+          {
+            "name": "Hide AI Lab Tab",
+            "description": "Removes the third bottom navigation tab ('AI Lab' / 'Lab. IA') by forcing its visibility observer to always hide the tab.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.2.0"
+            ]
+          },
+          {
+            "name": "Hide False Hopes Features",
+            "description": "Hides 'IA ultra HD' (Export Super Resolution) and 'Flusso ottico' (Slow Motion Optical Flow) options since they are cloud-gated.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.2.0"
+            ]
+          },
+          {
+            "name": "Remove security notice",
+            "description": "Suppresses the modified-build security notice by disabling the risk SDK dialog entry point and the isCracking flag writer.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.2.0"
+            ]
+          },
+          {
+            "name": "Suppress Telemetry and Trackers",
+            "description": "Disables background monitoring and analytics frameworks including ByteDance Helios, AppLog, and AppsFlyer.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.2.0"
+            ]
+          },
+          {
+            "name": "Unlock Premium",
+            "description": "Forces the VIP flag to true so premium features are unlocked client-side. Server-validated assets (cloud effects/templates) are not affected.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.2.0"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/M78HyakHaxKrjoeqYx41E9DXfVYYtx67nvc7Ks4G4zFQeaAJdGCi8gzzGSrHIwlrmnJS6zD9S4fAXqdEwfuHQAQ=s0-br30"
+      },
+      {
+        "app_name": "Electron: battery health info",
+        "package": "com.mahersafadi.electron",
+        "patches": [
+          {
+            "name": "Hide ads",
+            "description": "Spoofs premium/unlocked state to disable ad-gated behavior.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.3"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/0t-xeeDB6UuldF-nGTXFlE1Yvzm1NVBx-bYdnVYCdMfIyyT0niQNLa9dYLketH9ESOpeF4YzuihgI_Mz6SnlgQ"
+      },
+      {
+        "app_name": "3BMeteo",
+        "package": "com.meteosolutions.meteo3b",
+        "patches": [
+          {
+            "name": "Hide ads",
+            "description": "Removes banner, native, cover and interstitial ads and unlocks premium features.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.9.15"
+            ]
+          }
+        ],
+        "icon_url": ""
+      },
+      {
+        "app_name": "Komoot",
+        "package": "de.komoot.android",
+        "patches": [
+          {
+            "name": "Unlock map regions",
+            "description": "Spoof Komoot Maps ownership client-side (world pack / owned regions in shop and offline UI). Server-side limits may still apply: offline tile download auth, sync overwriting local state, and Play receipt validation. Does not replace a real Play Store purchase.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.34.2"
+            ]
+          },
+          {
+            "name": "Unlock Premium features",
+            "description": "Unlock Premium features. Some features are not possible to patch (server sided), such as saving a multi-days hike.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "2026.34.2"
+            ]
+          }
+        ],
+        "icon_url": "https://play-lh.googleusercontent.com/IyQKMI6etTvtjEv6pSzQ4TnTlfKWbwT39vQMO4vpBlzQJfGKdA9zZ38sOXtt0yuZbwJBdKoP_RNPZnQiTuaceg"
+      }
+    ],
+    "fingerprint": "012017300b7c975667b148e3d77b669cec6cbc76d8edf4c253f5b26947b0f510"
   },
   "imxeren:stable": {
     "bundle": "imxeren",
@@ -8325,9 +8404,9 @@
     "bundle": "jl4ctuk",
     "channel": "stable",
     "repo_url": "https://github.com/Jl4cTuk/morphe-patches",
-    "created_at": "2026-08-24T06:32:07",
-    "version": "v1.3.0",
-    "description": "## [1.3.0](https://github.com/Jl4cTuk/morphe-patches/compare/v1.2.0...v1.3.0) (2026-08-24)\n\n### 🐛 Bug Fixes\n\n* disable remaining RuStore analytics paths ([d2a44cf](https://github.com/Jl4cTuk/morphe-patches/commit/d2a44cffbfb6a8779d5e75d8b42224c92fc5b2d5))\n* disable remaining RuStore loyalty and cashback paths ([cf8a9f9](https://github.com/Jl4cTuk/morphe-patches/commit/cf8a9f9ffcf1d35e7d9e3954535953069de0a26e))\n* disable unsolicited RuStore VK ID prompt ([9f42421](https://github.com/Jl4cTuk/morphe-patches/commit/9f42421f48f90c2ab280aa26c462e703da4c172e))\n* enable classic RuStore Mine layout by default ([3c00334](https://github.com/Jl4cTuk/morphe-patches/commit/3c00334527653a6ae12c960b9e018aadb77fb4f3))\n* hide RuStore Featured and Games tabs before rendering ([595bcb7](https://github.com/Jl4cTuk/morphe-patches/commit/595bcb734b68225ec69dc46ffedff919c4204873))\n* prevent RuStore gaming profile initialization ([2caf4a8](https://github.com/Jl4cTuk/morphe-patches/commit/2caf4a839faecf77cd072911bf3af03374d8cc16))\n* prevent RuStore notification button initialization ([5602122](https://github.com/Jl4cTuk/morphe-patches/commit/560212221d70b0174f23d0c8d49b0b79444ed4ab))\n* remove remaining RuStore promo and recommendation ads ([82782fc](https://github.com/Jl4cTuk/morphe-patches/commit/82782fc5c6a18c6f039be5bebff0b28aae3e7165))\n* restore Ozon Bank patch compatibility on 19.31.0 ([d73b980](https://github.com/Jl4cTuk/morphe-patches/commit/d73b980c18b3660726f49295d49804f31329b308))\n* restore Ozon patches on 19.31.0 ([0440e25](https://github.com/Jl4cTuk/morphe-patches/commit/0440e2589cf9cbf47d93b28736c983099770fd5a))\n* restore RuStore patches on 1.108.0.2 ([c952208](https://github.com/Jl4cTuk/morphe-patches/commit/c95220850b5957255cdda7a0b4083561310494f5))\n\n### ✨ New Features\n\n* add Ozon Bank cleanup patches ([e98d203](https://github.com/Jl4cTuk/morphe-patches/commit/e98d203b4657cae66b65bf809b72b2982603b504))\n* add RuStore loyalty, gaming, navigation, and notification cleanup options ([b1e1d9b](https://github.com/Jl4cTuk/morphe-patches/commit/b1e1d9b758567eadbbd75b1d4684cc2c4ece46d7))\n* exclude Google Play apps from RuStore updates ([34def52](https://github.com/Jl4cTuk/morphe-patches/commit/34def520dd463a027a7717706a21661fda2c35aa))\n",
+    "created_at": "2026-08-26T18:40:26",
+    "version": "v1.4.0",
+    "description": "## [1.4.0](https://github.com/Jl4cTuk/morphe-patches/compare/v1.3.0...v1.4.0) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* block remaining RuStore analytics channels ([880b2f9](https://github.com/Jl4cTuk/morphe-patches/commit/880b2f9b4c803569b262ddc9ce550cfa4ddfd349))\n* fully disable RuStore advertising tracking ([161a602](https://github.com/Jl4cTuk/morphe-patches/commit/161a60285f1eb0dc9108442a3cbabdb559712410))\n* fully disable RuStore background scanning ([3a5c506](https://github.com/Jl4cTuk/morphe-patches/commit/3a5c50605c60a38592d6c274817e0754968a42ed))\n* select RuStore secure-session compatibility by install mode ([0df233b](https://github.com/Jl4cTuk/morphe-patches/commit/0df233b05d66b3ab8912442af8d04a652bd400db))\n\n### ✨ New Features\n\n* disable RuStore and VK push services ([7c167b4](https://github.com/Jl4cTuk/morphe-patches/commit/7c167b4e664d16a5d89e294a8629807f60c44089))\n* disable RuStore boot, network, and VPN hooks ([af11af7](https://github.com/Jl4cTuk/morphe-patches/commit/af11af7311daf62f47b1446d93e73a0cd7163307))\n* disable RuStore SMS and call verification hooks ([7b3c193](https://github.com/Jl4cTuk/morphe-patches/commit/7b3c193227ffd99dcc108c1f279e915a2cea74b6))\n* disable the RuStore gaming profile ([0144249](https://github.com/Jl4cTuk/morphe-patches/commit/0144249e0b2d10a7f866b9e6ad19841a710be60f))\n* preserve RuStore secure sessions after re-signing ([67e64c6](https://github.com/Jl4cTuk/morphe-patches/commit/67e64c6156d36cc4b9c416873aedd23b1184a0d1))\n* restrict invasive RuStore permissions ([98b5046](https://github.com/Jl4cTuk/morphe-patches/commit/98b5046984cdb87b6289b65a43b2d5f2458c0a9c))\n* restrict RuStore background work to updates ([606b970](https://github.com/Jl4cTuk/morphe-patches/commit/606b970c20bea1349473ff1cc04c3037f5e0c2b1))\n* skip RuStore update authentication prompts ([7f5e2be](https://github.com/Jl4cTuk/morphe-patches/commit/7f5e2be3c7f1fe1736e4e97c806f45cf5b294f7e))\n* suppress Ozon tip notifications ([81a2107](https://github.com/Jl4cTuk/morphe-patches/commit/81a21072f2fb081210609d5797bb1489284b5ccc))\n",
     "apps": [
       {
         "app_name": "Ozon",
@@ -8354,6 +8433,15 @@
           {
             "name": "Disable telemetry",
             "description": "Disables Ozon analytics, attribution, crash reporting, and telemetry uploads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "19.31.0"
+            ]
+          },
+          {
+            "name": "Disable tip notifications",
+            "description": "Suppresses Ozon push notifications asking the user to leave a pickup-point tip.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -8470,13 +8558,9 @@
         "patches": [
           {
             "name": "Disable ads",
-            "description": "Removes advertisements, search recommendations, and the unsolicited VK ID prompt, with options for additional interface cleanup.",
+            "description": "Removes advertisements and search recommendations, clears advertising identifiers, keeps advertising consent disabled, and removes the unsolicited VK ID prompt, with options for additional interface cleanup.",
             "use": true,
             "options": [
-              {
-                "key": "disableGamingProfile",
-                "description": "Removes the Game Profile section and usage statistics screen."
-              },
               {
                 "key": "disableLoyaltyProgram",
                 "description": "Disables loyalty onboarding, points, notifications, links, and cashback banners."
@@ -8504,8 +8588,35 @@
             ]
           },
           {
+            "name": "Disable background hooks",
+            "description": "Disables RuStore network-state monitoring, built-in VPN sessions, and startup hooks.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
             "name": "Disable background scan",
             "description": "Disables the periodic Kaspersky background device scan.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
+            "name": "Disable gaming profile",
+            "description": "Removes the Game Profile and usage statistics access, hides both gaming cards, and blocks navigation to the profile.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
+            "name": "Disable invasive permissions",
+            "description": "Removes privileged, phone, SMS, location, storage, billing, USB, and vendor access.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -8522,8 +8633,44 @@
             ]
           },
           {
+            "name": "Disable push services",
+            "description": "Disables RuStore and VK remote push services and background tasks.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
             "name": "Exclude Google Play apps from updates",
             "description": "Excludes Google Play installs from RuStore update checks while keeping RuStore and sideloaded apps.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
+            "name": "Restore secure-session compatibility",
+            "description": "Preserves RuStore secure-session requests when the APK is re-signed.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
+            "name": "Restrict background work to updates",
+            "description": "Keeps background workers required for update checks, downloads, patching, and installation.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "1.108.0.2"
+            ]
+          },
+          {
+            "name": "Skip update authentication",
+            "description": "Skips the VK ID authorization suggestion shown during app installs and updates.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -8534,7 +8681,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "19bbe5b676885c9ff7d65c22759d0fe5c9cdeb29498a089e17a3fbfddaeac939"
+    "fingerprint": "4af496441bc42078d8839f1bd002396990ede2408ba23d430d9e37081c9869b1"
   },
   "jl4ctuk:dev": {
     "bundle": "jl4ctuk",
@@ -14274,9 +14421,9 @@
     "bundle": "jasonwu1994",
     "channel": "stable",
     "repo_url": "https://github.com/jasonwu1994/Gboard-patches",
-    "created_at": "2026-08-25T22:14:14",
-    "version": "v3.4.0",
-    "description": "### ✨ New Features\n\n* **Gboard:** add the `Rounded Keyboard Panel` patch, which lets you choose which corners of the keyboard panel are rounded and configure the top and bottom corner radii independently.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Rounded Keyboard Panel` Patch，可自訂鍵盤面板哪些角落呈現圓角，並可分別設定上方與下方半徑。\n",
+    "created_at": "2026-08-26T19:38:18",
+    "version": "v3.5.0",
+    "description": "### ✨ New Features\n\n* **Gboard:** add the `Top Toolbar Item Count` patch, which lets you customize how many items appear in the Gboard top toolbar.\n* **Gboard:** Want something even more powerful than the classic G Logo Search?<br>\n  🎉 **Yes, bring it on!**<br>\n  🚀 **No thanks, keep it lean!**\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Top Toolbar Item Count` Patch，可自訂 Gboard 頂端工具列顯示的項目數量。\n* **Gboard:** 想要比過去的 G Logo Search 更強大的功能嗎？<br>\n  🎉 **想要，快端上來！**<br>\n  🚀 **不想要，先維持簡約！**\n",
     "apps": [
       {
         "app_name": "Latin",
@@ -14558,6 +14705,15 @@
             ]
           },
           {
+            "name": "Top Toolbar Item Count",
+            "description": "自訂 Gboard 頂端工具列項目數量\nCustomize the Gboard top toolbar item count.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.0.3.954559732-release-arm64-v8a"
+            ]
+          },
+          {
             "name": "Use Bluetooth Microphone",
             "description": "啟用 語音輸入 -> 使用藍芽麥克風\nEnable Voice typing -> Use Bluetooth microphone.",
             "use": true,
@@ -14606,7 +14762,7 @@
         "icon_url": "https://play-lh.googleusercontent.com/J4vZ82VsZjnsRsI6ckQFXlO36_52QJerqG5-HfLgHffS34I4EfoAFfNdbf6s4wBAsUEf8DOJVEDEHh5tzWbrnA"
       }
     ],
-    "fingerprint": "54a57d098995ae3c2573b44238c4b995d74d876ee995d11850d523494dc66cab"
+    "fingerprint": "75a3003a627e17909303f91783ac57c90bb34f57653530f0f94abc9441526c87"
   },
   "jasonwu1994:dev": {
     "bundle": "jasonwu1994",
@@ -26574,9 +26730,9 @@
     "bundle": "nai64",
     "channel": "stable",
     "repo_url": "https://github.com/Nai64/Nai64Patches",
-    "created_at": "2026-08-26T17:21:52",
-    "version": "1.29.0",
-    "description": "## [1.29.0](https://github.com/Nai64/Nai64Patches/compare/1.28.0...1.29.0) (2026-08-26)\n\n### Bug Fixes\n\n* guard Spoof Developer Options against MinSdkVersionException during signing ([f4cb076](https://github.com/Nai64/Nai64Patches/commit/f4cb0768b5e81247c2c3af30a03083f8e079df3c))\n\n### New Features\n\n* add ANGLE graphics driver preference ([d166bc4](https://github.com/Nai64/Nai64Patches/commit/d166bc40cde8b55ec22bc5c08158f5f7800286cc))\n* add Change Package Name patch ([5564867](https://github.com/Nai64/Nai64Patches/commit/5564867774ca16240bf109dcd82beed22656906e))\n* add GmsCore support (MicroG) patch ([65cca26](https://github.com/Nai64/Nai64Patches/commit/65cca26bb7d42b39b172b11a62dbcfb12d1220d4))\n* add Huawei Ads Kit support ([f227219](https://github.com/Nai64/Nai64Patches/commit/f2272192c10d4369cdc6d120f91be2a762b86407))\n* add modern Android compatibility patches ([cec3ad1](https://github.com/Nai64/Nai64Patches/commit/cec3ad1dbe2f9902b4c6cb4f428193a6e3035cd6))\n* add new patches from PR [#47](https://github.com/Nai64/Nai64Patches/issues/47) (BypassForcedUpdates, GraphicsApiOverride, FrameRatePreference, DisableForcedOnlineChecks) and enhance Ads patches ([09fefa9](https://github.com/Nai64/Nai64Patches/commit/09fefa9c724b69a57b993d7bac2328eb8ed13b5c))\n* add Spoof App Signature patch ([ba86a3d](https://github.com/Nai64/Nai64Patches/commit/ba86a3dae57873552aa2b15b568477bac8ab29e4))\n* add storage permission compatibility patch ([29417ff](https://github.com/Nai64/Nai64Patches/commit/29417ffa255760dc8f977e7f7f6e225a7038232a))\n",
+    "created_at": "2026-08-26T19:56:05",
+    "version": "1.29.1",
+    "description": "## [1.29.1](https://github.com/Nai64/Nai64Patches/compare/1.29.0...1.29.1) (2026-08-26)\n\n### Bug Fixes\n\n* cover Genre.isSpokenWord fallback in Unlock Playback Speed for Bandcamp ([f40cf22](https://github.com/Nai64/Nai64Patches/commit/f40cf227f3c65848104dd940bc9225221e603619))\n* expand Disable Bandcamp Tracker to cover stats pipeline for Bandcamp ([cf69d3b](https://github.com/Nai64/Nai64Patches/commit/cf69d3bd3a6df3da947504f515d21c735f358f18))\n* harden Show Search Result Scores patch for Bandcamp ([3636b28](https://github.com/Nai64/Nai64Patches/commit/3636b2837d3ef424af45d5a5d4a390141db854ca))\n",
     "apps": [
       {
         "app_name": "Bandcamp",
@@ -71195,12 +71351,12 @@
     "bundle": "steamlink",
     "channel": "dev",
     "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-    "created_at": "2026-08-25T13:51:30",
-    "version": "v1.10.0-dev.18",
-    "description": "## [1.10.0-dev.18](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0-dev.17...v1.10.0-dev.18) (2026-08-25)\n\n### ✨ New Features\n\n* patches now targeting the latest 2.0.22-5002322 build with fixes from valve ([1548aec](https://github.com/AngelDark92/steamlink-patches/commit/1548aec8f7a1ab8e58fd5346dcf41f16165c5f3f))\n",
+    "created_at": "2026-08-26T19:00:43",
+    "version": "v1.10.1-dev.1",
+    "description": "## [1.10.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.0...v1.10.1-dev.1) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* more experiments with resolution ([c7f5401](https://github.com/AngelDark92/steamlink-patches/commit/c7f5401d297eb7025fdcf5e2937db0afe141fea3))\n",
     "apps": [
       {
-        "app_name": "Steam Link Experimental",
+        "app_name": "Steam Link",
         "package": "com.valvesoftware.steamlinkvr",
         "patches": [
           {
@@ -71616,6 +71772,204 @@
             ]
           },
           {
+            "name": "Experimental VRLink unmanaged full space",
+            "description": "5002322-only permission-free A/B. Adds Android XR's required unmanaged Full Space property directly to VRLink while forwarding OpenXR frames unchanged.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection quality settings",
+            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection quality settings",
+            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection quality settings",
+            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection quality settings",
+            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection quality settings",
+            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection quality settings",
+            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection quality settings",
+            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection settings stripped",
+            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection settings stripped",
+            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection settings stripped",
+            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection settings stripped",
+            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection settings stripped",
+            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection settings stripped",
+            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection settings stripped",
+            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection trace control",
+            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection trace control",
+            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection trace control",
+            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection trace control",
+            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection trace control",
+            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection trace control",
+            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
+            "name": "Experimental XR projection trace control",
+            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "2.0.22"
+            ]
+          },
+          {
             "name": "Force HMD initialization gates",
             "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5002244 and 5002313.",
             "use": false,
@@ -72545,195 +72899,6 @@
           {
             "name": "XR Manifest Capability Pack",
             "description": "Adds Android XR/OpenXR permissions, features, runtime queries, and app-level XR properties.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection quality settings",
-            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection quality settings",
-            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection quality settings",
-            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection quality settings",
-            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection quality settings",
-            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection quality settings",
-            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection quality settings",
-            "description": "Permission-free A/B. Requests quality supersampling and sharpening on Steam Link projection layers when the enabled runtime extension supports it.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection settings stripped",
-            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection settings stripped",
-            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection settings stripped",
-            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection settings stripped",
-            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection settings stripped",
-            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection settings stripped",
-            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection settings stripped",
-            "description": "Permission-free A/B. Removes only known FB projection-settings nodes while preserving all other layer metadata and failing open when unsafe.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection trace control",
-            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection trace control",
-            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection trace control",
-            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection trace control",
-            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection trace control",
-            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection trace control",
-            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
-            "use": false,
-            "options": [],
-            "compatible_versions": [
-              "2.0.22"
-            ]
-          },
-          {
-            "name": "XR projection trace control",
-            "description": "Read-only permission-free control. Forwards Steam Link frames unchanged while tracing its foveated projection composition.",
             "use": false,
             "options": [],
             "compatible_versions": [
@@ -72744,7 +72909,7 @@
         "icon_url": ""
       }
     ],
-    "fingerprint": "74b88b80aa9d4a73f181334b3d89ce976a8795f150ddbb9e160ad1fbdaa647d1"
+    "fingerprint": "f90bc48a583dcd36928596019c587c6acd3f3439ff673cab0c7fd97e53c2b1ac"
   },
   "ImmortalZeus:stable": {
     "bundle": "ImmortalZeus",
