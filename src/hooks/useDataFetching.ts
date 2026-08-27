@@ -82,12 +82,27 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ ${Object.keys(iconData).length} icons` })
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 22 })
 
-  log('preloading icons...')
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[icons] preloading icons in background...' })
-  preloadIcons(iconData).then(() => {
+  log('preloading icons from cache...')
+  dispatch({ type: 'SET_LOADING_LOG', payload: '[icons] loading icons...' })
+
+  const priorityPkgs: string[] = []
+  const changesData = cachedLive?.changes
+  if (changesData?.affected_bundles?.length) {
+    for (const ab of changesData.affected_bundles) {
+      for (const a of ab.apps || []) {
+        if (a.package) priorityPkgs.push(a.package)
+      }
+    }
+  }
+
+  preloadIcons(iconData, (loaded, total) => {
+    dispatch({ type: 'SET_LOADING_LOG', payload: `[icons] ${loaded}/${total} icons loaded` })
+  }, priorityPkgs.length ? priorityPkgs : undefined).then(() => {
     log('icon preloading done, marking icons ready')
+    dispatch({ type: 'SET_LOADING_LOG', payload: '[icons] all icons loaded' })
+  }).finally(() => {
     dispatch({ type: 'SET_ICONS_READY', payload: true })
-  }).catch(() => {})
+  })
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 26 })
 
   log('fetching name cache...')
@@ -158,10 +173,6 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   dispatch({ type: 'SET_CHANGELOG', payload: cl })
   dispatch({ type: 'SET_METADATA', payload: { liveDataDate: core?.date || '', lastChecked } })
 
-  if (lastChecked) {
-    dispatch({ type: 'SET_LAST_VISIT_SCAN', payload: lastChecked })
-  }
-
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 95 })
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Finalizing...' })
 
@@ -214,9 +225,6 @@ export function useDataFetching() {
           type: 'SET_METADATA',
           payload: { liveDataDate: d.date || '', lastChecked },
         })
-        if (lastChecked) {
-          dispatch({ type: 'SET_LAST_VISIT_SCAN', payload: lastChecked })
-        }
         idbSet(CACHE_KEYS.LIVE, d)
         idbSet(CACHE_KEYS.CHANGELOG, limitedCl)
       })

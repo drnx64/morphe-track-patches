@@ -4,14 +4,16 @@ function log(...args: unknown[]) {
   if (VERBOSE) console.log('[iconCache]', ...args)
 }
 
-import { idbGet, idbGetMany, idbSetMany, idbKeys, idbDeleteMany } from './indexedDB'
+import { idbGet, idbSetMany, idbKeys, idbDeleteMany } from './indexedDB'
 
 const imageCache: Record<string, string> = {}
+const urlToPkg: Record<string, string> = {}
 
 const MAX_STORED_IMAGES = 600
-const MAX_CONCURRENT = 6
-const RETRY_BASE_MS = 800
-const MAX_RETRIES = 2
+
+function pkgKey(pkg: string): string {
+  return `icon_${pkg}`
+}
 
 function hashStr(s: string): string {
   let hash = 0
@@ -21,15 +23,23 @@ function hashStr(s: string): string {
   return 'img_' + Math.abs(hash).toString(36)
 }
 
+function resolveIdbKey(iconUrl: string): string {
+  const pkg = urlToPkg[iconUrl]
+  if (pkg) return pkgKey(pkg)
+  return hashStr(iconUrl)
+}
+
 async function pruneStoredImages() {
   try {
-    const keys = await idbKeys('img_')
-    if (keys.length <= MAX_STORED_IMAGES) return
+    const keys = await idbKeys('icon_')
+    const hashKeys = await idbKeys('img_')
+    const allKeys = [...keys, ...hashKeys]
+    if (allKeys.length <= MAX_STORED_IMAGES) return
     const inUse = new Set<string>()
-    for (const url of Object.keys(imageCache)) inUse.add(hashStr(url))
-    let toDelete = keys.length - MAX_STORED_IMAGES
+    for (const url of Object.keys(imageCache)) inUse.add(resolveIdbKey(url))
+    let toDelete = allKeys.length - MAX_STORED_IMAGES
     const del: string[] = []
-    for (const k of keys) {
+    for (const k of allKeys) {
       if (toDelete <= 0) break
       if (!inUse.has(k)) {
         del.push(k)
@@ -41,102 +51,123 @@ async function pruneStoredImages() {
       await idbDeleteMany(del)
     }
   } catch {
-    /* ignore prune errors */
+    /* ignore */
   }
 }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+const ICON_MAX = 96
+
+function loadImage(url: string): Promise<string | null> {
+  return new Promise((resolve) => {
+    const img = new Image()
+    img.crossOrigin = 'anonymous'
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas')
+        let w = img.naturalWidth
+        let h = img.naturalHeight
+        if (w > ICON_MAX || h > ICON_MAX) {
+          const ratio = Math.min(ICON_MAX / w, ICON_MAX / h)
+          w = Math.round(w * ratio)
+          h = Math.round(h * ratio)
+        }
+        canvas.width = w
+        canvas.height = h
+        const ctx = canvas.getContext('2d')
+        if (!ctx) { resolve(null); return }
+        ctx.drawImage(img, 0, 0, w, h)
+        const webpUrl = canvas.toDataURL('image/webp', 0.8)
+        if (webpUrl.length > 23) {
+          resolve(webpUrl)
+        } else {
+          resolve(canvas.toDataURL('image/jpeg', 0.8))
+        }
+      } catch {
+        resolve(null)
+      }
+    }
+    img.onerror = () => resolve(null)
+    img.src = url
+  })
 }
 
-export async function loadIconImage(iconUrl: string, retries = MAX_RETRIES): Promise<string | null> {
+export async function loadIconImage(iconUrl: string): Promise<string | null> {
   if (!iconUrl) return null
+
+  if (iconUrl.startsWith('data:')) return iconUrl
+
   if (imageCache[iconUrl]) return imageCache[iconUrl]
 
-  const cacheKey = hashStr(iconUrl)
-  const cached = await idbGet<string>(cacheKey)
+  const idbKey = resolveIdbKey(iconUrl)
+  const cached = await idbGet<string>(idbKey)
   if (cached) {
     imageCache[iconUrl] = cached
     return cached
   }
 
-  log(`fetching icon: ${iconUrl}`)
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      const dataUrl = await new Promise<string | null>((resolve) => {
-        const xhr = new XMLHttpRequest()
-        xhr.responseType = 'blob'
-        xhr.onload = () => {
-          if (xhr.status === 200) {
-            const reader = new FileReader()
-            reader.onloadend = () => {
-              resolve(reader.result as string)
-            }
-            reader.readAsDataURL(xhr.response)
-          } else if (xhr.status === 429) {
-            log(`icon rate-limited (429): ${iconUrl}`)
-            resolve(null)
-          } else {
-            log(`icon fetch FAIL ${iconUrl}: ${xhr.status}`)
-            resolve(null)
-          }
-        }
-        xhr.onerror = () => {
-          log(`icon fetch ERROR ${iconUrl}`)
-          resolve(null)
-        }
-        xhr.open('GET', iconUrl, true)
-        xhr.send()
-      })
-
-      if (dataUrl) {
-        imageCache[iconUrl] = dataUrl
-        idbSetMany([[cacheKey, dataUrl]])
-        return dataUrl
-      }
-
-      if (attempt < retries) {
-        const delay = RETRY_BASE_MS * Math.pow(2, attempt)
-        log(`retrying icon ${attempt + 1}/${retries} after ${delay}ms: ${iconUrl}`)
-        await sleep(delay)
-      }
-    } catch {
-      if (attempt < retries) {
-        const delay = RETRY_BASE_MS * Math.pow(2, attempt)
-        await sleep(delay)
-      }
-    }
-  }
   return null
 }
 
-function runWithConcurrency<T>(
-  items: T[],
-  limit: number,
-  fn: (item: T) => Promise<void>,
-): Promise<void> {
-  return new Promise((resolve) => {
-    let idx = 0
-    let active = 0
-    let done = false
+export async function ensureIconLoaded(iconUrl: string): Promise<string | null> {
+  if (!iconUrl) return null
+  return loadIconImage(iconUrl)
+}
 
+export async function fetchAndCacheIcon(iconUrl: string): Promise<string | null> {
+  if (!iconUrl) return null
+
+  if (iconUrl.startsWith('data:')) return iconUrl
+
+  if (imageCache[iconUrl]) return imageCache[iconUrl]
+
+  const idbKey = resolveIdbKey(iconUrl)
+  const cached = await idbGet<string>(idbKey)
+  if (cached) {
+    imageCache[iconUrl] = cached
+    return cached
+  }
+
+  if (iconUrl.startsWith('http')) {
+    const dataUrl = await loadImage(iconUrl)
+    if (dataUrl) {
+      imageCache[iconUrl] = dataUrl
+      idbSetMany([[idbKey, dataUrl]])
+      return dataUrl
+    }
+  }
+
+  return null
+}
+
+async function batchFetchIcons(
+  urls: string[],
+  concurrency: number,
+  onProgress?: (loaded: number, total: number) => void,
+): Promise<void> {
+  let idx = 0
+  let active = 0
+  let loaded = 0
+
+  return new Promise((resolve) => {
     function next() {
-      while (active < limit && idx < items.length) {
+      while (active < concurrency && idx < urls.length) {
         const i = idx++
         active++
-        fn(items[i]).finally(() => {
+        fetchAndCacheIcon(urls[i]).finally(() => {
           active--
-          if (done) return
-          if (idx >= items.length && active === 0) {
-            done = true
+          loaded++
+          if (loaded % 10 === 0 || loaded === urls.length) {
+            log(`batchFetchIcons: ${loaded}/${urls.length}`)
+            onProgress?.(loaded, urls.length)
+          }
+          if (idx >= urls.length && active === 0) {
             resolve()
           } else {
             next()
           }
         })
       }
-      if (idx >= items.length && active === 0 && !done) {
-        done = true
+      if (idx >= urls.length && active === 0) {
         resolve()
       }
     }
@@ -144,62 +175,79 @@ function runWithConcurrency<T>(
   })
 }
 
-export async function preloadIcons(iconMap: Record<string, string>): Promise<void> {
-  const urls = new Set<string>()
-  for (const url of Object.values(iconMap)) {
-    if (url && typeof url === 'string' && url.startsWith('http')) {
-      urls.add(url)
+export async function preloadIcons(
+  iconMap: Record<string, string>,
+  onProgress?: (loaded: number, total: number) => void,
+  priorityPackages?: string[],
+): Promise<void> {
+  let dataUrlCount = 0
+  let httpCount = 0
+  const httpUrls: string[] = []
+  const priorityUrls: string[] = []
+
+  for (const [pkg, val] of Object.entries(iconMap)) {
+    if (!val || typeof val !== 'string') continue
+    if (val.startsWith('data:')) {
+      imageCache[val] = val
+      dataUrlCount++
+    } else if (val.startsWith('http')) {
+      urlToPkg[val] = pkg
+      httpCount++
+      if (priorityPackages?.includes(pkg)) {
+        priorityUrls.push(val)
+      } else {
+        httpUrls.push(val)
+      }
     }
   }
-  const unique = [...urls]
-  log(`preloadIcons: ${unique.length} unique icon URLs`)
-  if (!unique.length) return
 
-  const missing: string[] = []
-  const entries = await idbGetMany<string>(unique.map(hashStr))
-  for (const url of unique) {
-    const cached = entries.get(hashStr(url))
-    if (cached) {
-      imageCache[url] = cached
-    } else {
-      missing.push(url)
-    }
+  log(`preloadIcons: ${dataUrlCount} data URLs (instant), ${httpCount} HTTP URLs (${priorityUrls.length} priority)`)
+
+  const priorityToFetch = priorityUrls.filter((url) => !imageCache[url])
+  const restToFetch = httpUrls.filter((url) => !imageCache[url])
+
+  if (priorityToFetch.length) {
+    log(`fetching ${priorityToFetch.length} priority icons first...`)
+    await batchFetchIcons(priorityToFetch, 4, (loaded, total) => {
+      onProgress?.(loaded, total + restToFetch.length)
+    })
   }
-  log(`preloadIcons: ${missing.length} missing after cache read`)
 
-  await runWithConcurrency(missing, MAX_CONCURRENT, async (url) => { await loadIconImage(url) })
-  log('preloadIcons done')
+  if (restToFetch.length) {
+    log(`fetching ${restToFetch.length} remaining icons...`)
+    const offset = priorityToFetch.length
+    await batchFetchIcons(restToFetch, 4, (loaded, total) => {
+      onProgress?.(offset + loaded, offset + total)
+    })
+  }
+
   await pruneStoredImages()
+  log('preloadIcons done')
 }
 
 export async function preloadIconsFromPackages(
   packages: string[],
-  iconCache: Record<string, string>
+  iconMap: Record<string, string>,
 ): Promise<void> {
-  const urls: string[] = []
+  const httpUrls: string[] = []
   for (const pkg of packages) {
-    const url = iconCache[pkg]
-    if (url && url.startsWith('http')) {
-      urls.push(url)
+    const val = iconMap[pkg]
+    if (!val) continue
+    if (val.startsWith('data:')) {
+      imageCache[val] = val
+    } else if (val.startsWith('http')) {
+      urlToPkg[val] = pkg
+      httpUrls.push(val)
     }
   }
-  if (!urls.length) return
+  if (!httpUrls.length) return
 
-  const missing: string[] = []
-  const entries = await idbGetMany<string>(urls.map(hashStr))
-  for (const url of urls) {
-    const cached = entries.get(hashStr(url))
-    if (cached) {
-      imageCache[url] = cached
-    } else {
-      missing.push(url)
-    }
-  }
-
-  await runWithConcurrency(missing, MAX_CONCURRENT, async (url) => { await loadIconImage(url) })
+  const toFetch = httpUrls.filter((url) => !imageCache[url])
+  await batchFetchIcons(toFetch, 4)
   await pruneStoredImages()
 }
 
 export function getCachedIconDataUrl(iconUrl: string): string | undefined {
+  if (iconUrl && iconUrl.startsWith('data:')) return iconUrl
   return imageCache[iconUrl]
 }

@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { useDataFetching } from '../../hooks/useDataFetching'
 import { buildAppIndex, scoreAppSearch, type AppIndexEntry } from '../../utils/misc'
+import { getCachedIconDataUrl } from '../../services/iconCache'
 import { escHtml } from '../../utils/html'
 import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON, GRID_ICON } from '../../utils/svg'
 import PageShell from '../layout/PageShell'
@@ -186,7 +187,7 @@ export default function DiffPage() {
                       onClick={() => handleSelect(a.package)}
                     >
                       {a.iconUrl ? (
-                        <img className="diff-search-result-icon" src={a.iconUrl} alt="" loading="lazy" onError={(e) => { e.currentTarget.src = FALLBACK_ICON }} />
+                        <img className="diff-search-result-icon" src={getCachedIconDataUrl(a.iconUrl) || a.iconUrl} alt="" loading="lazy" onError={(e) => { if (e.currentTarget.src !== FALLBACK_ICON) e.currentTarget.src = FALLBACK_ICON }} />
                       ) : (
                         <span className="diff-search-result-icon diff-search-result-icon-letter">{a.name.charAt(0).toUpperCase()}</span>
                       )}

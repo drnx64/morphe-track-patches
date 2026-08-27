@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { FALLBACK_ICON } from '../../utils/svg'
-import { getCachedIconDataUrl } from '../../services/iconCache'
+import { getCachedIconDataUrl, fetchAndCacheIcon } from '../../services/iconCache'
 
 interface AppIconProps {
   iconUrl?: string
@@ -9,8 +9,8 @@ interface AppIconProps {
 }
 
 export default function AppIcon({ iconUrl, sizeClass = 'app-icon', alt = '' }: AppIconProps) {
-  const [errored, setErrored] = useState(false)
-  const [src, setSrc] = useState('')
+  const [src, setSrc] = useState<string>('')
+  const [loading, setLoading] = useState(false)
   const mountedRef = useRef(true)
 
   useEffect(() => {
@@ -18,40 +18,49 @@ export default function AppIcon({ iconUrl, sizeClass = 'app-icon', alt = '' }: A
   }, [])
 
   useEffect(() => {
-    if (!iconUrl) { setSrc(''); return }
+    if (!iconUrl) {
+      setSrc('')
+      setLoading(false)
+      return
+    }
+
     const cached = getCachedIconDataUrl(iconUrl)
     if (cached) {
       setSrc(cached)
-    } else {
-      setSrc(iconUrl)
-      const checkInterval = setInterval(() => {
-        const c = getCachedIconDataUrl(iconUrl)
-        if (c) {
-          if (mountedRef.current) setSrc(c)
-          clearInterval(checkInterval)
-        }
-      }, 300)
-      setTimeout(() => clearInterval(checkInterval), 10000)
+      setLoading(false)
+      return
     }
+
+    setLoading(true)
+    fetchAndCacheIcon(iconUrl).then((dataUrl) => {
+      if (!mountedRef.current) return
+      if (dataUrl) {
+        setSrc(dataUrl)
+      } else {
+        setSrc(FALLBACK_ICON)
+      }
+      setLoading(false)
+    }).catch(() => {
+      if (!mountedRef.current) return
+      setSrc(FALLBACK_ICON)
+      setLoading(false)
+    })
   }, [iconUrl])
 
-  const handleError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
-    if (!errored) {
-      setErrored(true)
-      e.currentTarget.src = FALLBACK_ICON
-    }
-  }, [errored])
-
   if (!iconUrl) return null
-  if (!src) return null
+  if (loading && !src) return null
 
   return (
     <img
       className={sizeClass}
-      src={src}
+      src={src || FALLBACK_ICON}
       alt={alt}
       loading="lazy"
-      onError={handleError}
+      onError={(e) => {
+        if (e.currentTarget.src !== FALLBACK_ICON) {
+          e.currentTarget.src = FALLBACK_ICON
+        }
+      }}
     />
   )
 }

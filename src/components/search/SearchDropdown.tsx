@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { fuzzySearchItems } from '../../services/fuzzySearch'
 import { getAppIconUrl, resolveAppName } from '../../utils/misc'
-import { escHtml } from '../../utils/html'
+import { getCachedIconDataUrl } from '../../services/iconCache'
 import { FALLBACK_ICON } from '../../utils/svg'
 import type { BundleEntry, AppData } from '../../types/bundles'
 
@@ -98,6 +98,7 @@ export default function SearchDropdown() {
         if (r.type === 'app' && r.app) {
           const name = resolveAppName(r.app, state.nameCache)
           const iconUrl = getAppIconUrl(r.app, state.iconCache)
+          const dataUrl = iconUrl ? getCachedIconDataUrl(iconUrl) : undefined
           const patchCount = r.app.patches?.length ?? 0
           return (
             <div
@@ -106,8 +107,10 @@ export default function SearchDropdown() {
               data-type="app"
               onClick={() => handleSelect(r)}
             >
-              {iconUrl ? (
-                <img className="search-result-icon" src={iconUrl} alt="" loading="lazy" onError={(e) => { e.currentTarget.src = FALLBACK_ICON }} />
+              {dataUrl ? (
+                <img className="search-result-icon" src={dataUrl} alt="" loading="lazy" onError={(e) => { if (e.currentTarget.src !== FALLBACK_ICON) e.currentTarget.src = FALLBACK_ICON }} />
+              ) : iconUrl ? (
+                <img className="search-result-icon" src={iconUrl} alt="" loading="lazy" onError={(e) => { if (e.currentTarget.src !== FALLBACK_ICON) e.currentTarget.src = FALLBACK_ICON }} />
               ) : (
                 <span className="search-result-icon search-result-icon-bundle">A</span>
               )}

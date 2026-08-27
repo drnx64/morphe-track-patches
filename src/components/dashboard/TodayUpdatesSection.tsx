@@ -1,8 +1,8 @@
-import { useMemo, useCallback, useEffect, useState } from 'react'
+import { useMemo, useCallback, useEffect, useState, useRef } from 'react'
 import { useAppContext } from '../../context/AppContext'
-import { formatFriendlyDate } from '../../utils/format'
+import { formatFriendlyDate, getTimeAgo } from '../../utils/format'
 import { getAppIconUrl, groupAffectedBundles, resolveAppName } from '../../utils/misc'
-import { getCachedIconDataUrl, preloadIconsFromPackages } from '../../services/iconCache'
+import { getCachedIconDataUrl, fetchAndCacheIcon, preloadIconsFromPackages } from '../../services/iconCache'
 import { getRepoInfo } from '../../utils/url'
 import { FALLBACK_ICON } from '../../utils/svg'
 import { Badge, BADGE_CLASSES } from '../shared/Badge'
@@ -37,39 +37,48 @@ interface AppRowProps {
   app: any
   bundleName: string
   channels: string[]
-  bundles: Record<string, any>
   iconCache: Record<string, string>
   nameCache: Record<string, string>
-  iconsReady: boolean
   onOpenApp: (pkg: string, bundleName: string, channels: string[]) => void
 }
 
-function AppRow({ app, bundleName, channels, bundles, iconCache, nameCache, iconsReady, onOpenApp }: AppRowProps) {
+function AppRow({ app, bundleName, channels, iconCache, nameCache, onOpenApp }: AppRowProps) {
   const [iconSrc, setIconSrc] = useState<string | null>(null)
-  const [iconError, setIconError] = useState(false)
   const [iconLoading, setIconLoading] = useState(true)
+  const mountedRef = useRef(true)
 
   const iconUrl = getAppIconUrl(app, iconCache)
   const appName = resolveAppName(app, nameCache)
 
   useEffect(() => {
-    if (!iconUrl || !iconsReady) {
-      setIconLoading(!!iconUrl && !iconsReady)
+    return () => { mountedRef.current = false }
+  }, [])
+
+  useEffect(() => {
+    if (!iconUrl) {
+      setIconSrc(null)
+      setIconLoading(false)
       return
     }
+
+    const cached = getCachedIconDataUrl(iconUrl)
+    if (cached) {
+      setIconSrc(cached)
+      setIconLoading(false)
+      return
+    }
+
     setIconLoading(true)
-    setIconError(false)
-    const dataUrl = getCachedIconDataUrl(iconUrl)
-    if (dataUrl) {
+    fetchAndCacheIcon(iconUrl).then((dataUrl) => {
+      if (!mountedRef.current) return
       setIconSrc(dataUrl)
       setIconLoading(false)
-    } else {
-      const img = new Image()
-      img.onload = () => { setIconSrc(iconUrl); setIconLoading(false) }
-      img.onerror = () => { setIconError(true); setIconLoading(false) }
-      img.src = iconUrl
-    }
-  }, [iconUrl, iconsReady])
+    }).catch(() => {
+      if (!mountedRef.current) return
+      setIconSrc(FALLBACK_ICON)
+      setIconLoading(false)
+    })
+  }, [iconUrl])
 
   const badgeClass = app.badge_type === 'NEW APP' ? BADGE_CLASSES.NEW_APP
     : app.badge_type === 'UPDATED APP' ? BADGE_CLASSES.UPDATED_APP
@@ -91,8 +100,8 @@ function AppRow({ app, bundleName, channels, bundles, iconCache, nameCache, icon
       <div className="update-app-icon-wrap">
         {iconLoading && iconUrl ? (
           <div className="update-icon-spinner" />
-        ) : iconSrc && !iconError ? (
-          <img className="app-icon" src={iconSrc} alt="" onError={(e) => { e.currentTarget.src = FALLBACK_ICON }} />
+        ) : iconSrc ? (
+          <img className="app-icon" src={iconSrc} alt="" onError={(e) => { if (e.currentTarget.src !== FALLBACK_ICON) e.currentTarget.src = FALLBACK_ICON }} />
         ) : (
           <img className="app-icon" src={FALLBACK_ICON} alt="" />
         )}
@@ -108,12 +117,11 @@ interface BundleGroupProps {
   bundles: Record<string, any>
   iconCache: Record<string, string>
   nameCache: Record<string, string>
-  iconsReady: boolean
   onOpenBundle: (name: string, channels: string[]) => void
   onOpenApp: (pkg: string, bundleName: string, channels: string[]) => void
 }
 
-function BundleGroup({ bundleName, entry, bundles, iconCache, nameCache, iconsReady, onOpenBundle, onOpenApp }: BundleGroupProps) {
+function BundleGroup({ bundleName, entry, bundles, iconCache, nameCache, onOpenBundle, onOpenApp }: BundleGroupProps) {
   const repoUrl = getBundleRepoUrl(bundleName, bundles)
 
   const badgeClass = entry.badge_type === 'NEW BUNDLE' ? BADGE_CLASSES.NEW_BUNDLE
@@ -150,10 +158,8 @@ function BundleGroup({ bundleName, entry, bundles, iconCache, nameCache, iconsRe
             app={app}
             bundleName={bundleName}
             channels={entry.channels}
-            bundles={bundles}
             iconCache={iconCache}
             nameCache={nameCache}
-            iconsReady={iconsReady}
             onOpenApp={onOpenApp}
           />
         ))}
@@ -163,8 +169,7 @@ function BundleGroup({ bundleName, entry, bundles, iconCache, nameCache, iconsRe
 }
 
 export default function TodayUpdatesSection() {
-  const { state } = useAppContext()
-  const [iconTick, setIconTick] = useState(0)
+  const { state, dispatch } = useAppContext()
 
   useEffect(() => {
     if (!state.changes?.affected_bundles?.length) return
@@ -175,11 +180,7 @@ export default function TodayUpdatesSection() {
       }
     }
     if (pkgs.size === 0) return
-    let cancelled = false
-    preloadIconsFromPackages([...pkgs], state.iconCache).then(() => {
-      if (!cancelled) setIconTick((n) => n + 1)
-    }).catch(() => {})
-    return () => { cancelled = true }
+    preloadIconsFromPackages([...pkgs], state.iconCache)
   }, [state.changes, state.iconCache])
 
   const grouped = useMemo(() => {
@@ -241,6 +242,13 @@ export default function TodayUpdatesSection() {
   const dateStr = updateDate ? formatFriendlyDate(updateDate) : '-'
   const hasChanges = !!grouped && sortedSections.length > 0
   const showNewScan = isNewScan(state.lastChecked, state.lastVisitScan)
+  const lastScanAgo = state.lastChecked ? getTimeAgo(state.lastChecked) : ''
+
+  const handleDismissNewScan = useCallback(() => {
+    if (state.lastChecked) {
+      dispatch({ type: 'SET_LAST_VISIT_SCAN', payload: state.lastChecked })
+    }
+  }, [state.lastChecked, dispatch])
 
   // Loading state: data not fetched yet
   if (state.changes === null) {
@@ -272,10 +280,11 @@ export default function TodayUpdatesSection() {
             <div className="updates-header-left">
               <h2 className="updates-title">Changelog</h2>
               {showNewScan && (
-                <div className="updates-new-scan-badge">
+                <button type="button" className="updates-new-scan-badge" onClick={handleDismissNewScan} title="Click to dismiss">
                   <div className="updates-new-scan-dot" />
                   <span>NEW SCAN</span>
-                </div>
+                  {lastScanAgo && <span className="updates-new-scan-ago">{lastScanAgo}</span>}
+                </button>
               )}
             </div>
             <span className="updates-date">Updated: {dateStr}</span>
@@ -297,10 +306,11 @@ export default function TodayUpdatesSection() {
             <div className="updates-title-row">
               <h2 className="updates-title">Changelog</h2>
               {showNewScan && (
-                <div className="updates-new-scan-badge">
+                <button type="button" className="updates-new-scan-badge" onClick={handleDismissNewScan} title="Click to dismiss">
                   <div className="updates-new-scan-dot" />
                   <span>NEW SCAN</span>
-                </div>
+                  {lastScanAgo && <span className="updates-new-scan-ago">{lastScanAgo}</span>}
+                </button>
               )}
             </div>
             {!state.iconsReady && (
@@ -326,7 +336,6 @@ export default function TodayUpdatesSection() {
                     bundles={state.bundles}
                     iconCache={state.iconCache}
                     nameCache={state.nameCache}
-                    iconsReady={state.iconsReady}
                     onOpenBundle={handleOpenBundle}
                     onOpenApp={handleOpenApp}
                   />

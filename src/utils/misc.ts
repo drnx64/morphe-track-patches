@@ -134,7 +134,8 @@ export function getAppIconUrl(
   iconCache: Record<string, string>,
 ): string {
   if (!app) return ''
-  const url = app.icon_url || (app.package ? iconCache[app.package] : '') || ''
+  const fromCache = app.package ? iconCache[app.package] : ''
+  const url = (fromCache && typeof fromCache === 'string' ? fromCache : '') || app.icon_url || ''
   return typeof url === 'string' ? url : ''
 }
 

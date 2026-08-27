@@ -45,7 +45,7 @@ export type AppAction =
 
 function getStoredLastVisitScan(): string {
   try {
-    return localStorage.getItem('morphe_last_visit_scan') || ''
+    return localStorage.getItem('MorpheTracker_LastVisitScan') || ''
   } catch {
     return ''
   }
@@ -108,7 +108,7 @@ function appReducer(state: AppState, action: AppAction): AppState {
       localStorage.setItem('morphe_changelog_view', action.payload)
       return { ...state, changelogViewMode: action.payload }
     case 'SET_LAST_VISIT_SCAN':
-      try { localStorage.setItem('morphe_last_visit_scan', action.payload) } catch {}
+      try { localStorage.setItem('MorpheTracker_LastVisitScan', action.payload) } catch {}
       return { ...state, lastVisitScan: action.payload }
     default:
       return state
