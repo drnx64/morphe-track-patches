@@ -130,13 +130,12 @@ export function scoreAppSearch(query: string, name: string, pkg: string): number
 }
 
 export function getAppIconUrl(
-  app: { icon_url?: string; package?: string },
+  app: { package?: string },
   iconCache: Record<string, string>,
 ): string {
   if (!app) return ''
   const fromCache = app.package ? iconCache[app.package] : ''
-  const url = (fromCache && typeof fromCache === 'string' ? fromCache : '') || app.icon_url || ''
-  return typeof url === 'string' ? url : ''
+  return fromCache && typeof fromCache === 'string' ? fromCache : ''
 }
 
 let versionsCache: Record<string, string> | null = null

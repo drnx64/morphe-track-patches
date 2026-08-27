@@ -16,7 +16,6 @@ export interface PatchData {
 export interface AppData {
   app_name: string
   package: string
-  icon_url?: string
   patches: PatchData[]
   badge_type?: AppBadgeType
   scan_numbers?: number[]

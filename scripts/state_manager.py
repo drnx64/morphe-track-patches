@@ -73,11 +73,12 @@ def save_new_snapshot(snapshot_data):
     Saves a new snapshot. Moves current snapshot to previous, then writes new data as current.
     """
     ensure_dirs()
-    
+    snapshot_data = _strip_icon_url(snapshot_data)
+
     # Move current snapshot to previous_snapshot.json (overwrites old previous)
     if os.path.exists(CURRENT_SNAPSHOT_PATH):
         os.replace(CURRENT_SNAPSHOT_PATH, PREVIOUS_SNAPSHOT_PATH)
-    
+
     # Save new data as current_snapshot.json
     return save_json(CURRENT_SNAPSHOT_PATH, snapshot_data)
 
@@ -113,7 +114,16 @@ def save_stats_json(data):
 def save_changes_json(data):
     return save_json(CHANGES_JSON_PATH, data)
 
+def _strip_icon_url(data):
+    """Remove icon_url from all app entries in bundle data."""
+    for record in data.values():
+        for app in record.get("apps", []):
+            app.pop("icon_url", None)
+    return data
+
+
 def save_bundles_json(data):
+    data = _strip_icon_url(dict(data))
     return save_json(BUNDLES_JSON_PATH, data)
 
 def load_core_json():
