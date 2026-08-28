@@ -2,17 +2,26 @@
   "bundle": "legendsciber",
   "channel": "stable",
   "repo_url": "https://github.com/legendsciber/morphe-patches",
-  "created_at": "2026-08-26T22:24:14",
-  "version": "v1.8.1",
-  "description": "## [1.8.1](https://github.com/legendsciber/morphe-patches/compare/v1.8.0...v1.8.1) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* **blockblast:** correct AdSdkInitFingerprint method name to h(Context) ([1ffd2bb](https://github.com/legendsciber/morphe-patches/commit/1ffd2bb629c22c640897bf02c6833edb5eb50236))\n",
+  "created_at": "2026-08-27T20:27:08",
+  "version": "v1.17.7",
+  "description": "## [1.17.7](https://github.com/legendsciber/morphe-patches/compare/v1.17.6...v1.17.7) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** patch ya0 only - skip F() to prevent data binding popup crash ([ffe4835](https://github.com/legendsciber/morphe-patches/commit/ffe4835e208e5c7e95e4e297dffd91e4d093d941))\n",
   "apps": [
     {
       "app_name": "Block Blast",
       "package": "com.block.juggle",
       "patches": [
         {
-          "name": "Ad Removal + Subscription",
-          "description": "Removes all ads and simulates an active subscription.",
+          "name": "Ad Removal",
+          "description": "Removes all ads (banner, interstitial, rewarded).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "10.4.5"
+          ]
+        },
+        {
+          "name": "Premium (Subscription Simulation)",
+          "description": "Simulates an active subscription to unlock premium features.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -31,7 +40,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.70.0"
+            "1.71.1"
           ]
         },
         {
@@ -40,7 +49,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.70.0"
+            "1.71.1"
           ]
         },
         {
@@ -49,7 +58,22 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.70.0"
+            "1.71.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Smash Hit",
+      "package": "com.mediocre.smashhit",
+      "patches": [
+        {
+          "name": "Smash Hit Premium Unlock",
+          "description": "Unlocks premium and all game modes without purchase.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.14"
           ]
         }
       ]
@@ -68,9 +92,9 @@
           ]
         },
         {
-          "name": "Watch Ad Instant Reward",
-          "description": "Pressing \"Watch ad\" grants +15 min premium instantly without loading ads. (TESTING)",
-          "use": false,
+          "name": "Premium",
+          "description": "Enables premium directly without watching ads.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "5.4.58"
@@ -79,8 +103,8 @@
       ]
     }
   ],
-  "fingerprint": "754c27f3719d4844a448ff0b3da993a96e6e822e173771bc80f34a7a047fa8d1",
-  "release_notes": "## [1.8.1](https://github.com/legendsciber/morphe-patches/compare/v1.8.0...v1.8.1) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* **blockblast:** correct AdSdkInitFingerprint method name to h(Context) ([1ffd2bb](https://github.com/legendsciber/morphe-patches/commit/1ffd2bb629c22c640897bf02c6833edb5eb50236))\n",
-  "release_tag": "v1.8.1",
-  "release_date": "2026-08-26T22:24:14Z"
+  "fingerprint": "378be940769101adfcc649460aace810997d07224d9f25bef54a6b09c04980c9",
+  "release_notes": "## [1.17.7](https://github.com/legendsciber/morphe-patches/compare/v1.17.6...v1.17.7) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **mctoolbox:** patch ya0 only - skip F() to prevent data binding popup crash ([ffe4835](https://github.com/legendsciber/morphe-patches/commit/ffe4835e208e5c7e95e4e297dffd91e4d093d941))\n",
+  "release_tag": "v1.17.7",
+  "release_date": "2026-08-27T20:27:08Z"
 }
