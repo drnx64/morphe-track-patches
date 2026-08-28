@@ -2,9 +2,9 @@
   "bundle": "hxreborn",
   "channel": "stable",
   "repo_url": "https://github.com/hxreborn/morphe-patches",
-  "created_at": "2026-08-26T10:40:59",
-  "version": "v1.12.0",
-  "description": "## [1.12.0](https://github.com/hxreborn/morphe-patches/compare/v1.11.1...v1.12.0) (2026-08-26)\n\n### Bug Fixes\n\n* **Kick - AMOLED dark theme:** support older builds that have no React Native bundle ([8f50e51](https://github.com/hxreborn/morphe-patches/commit/8f50e51a0486cf3548cd81a0bf478f216adfb62e))\n\n### New Features\n\n* **Photo Editor Pro:** add `Hide ads` patch ([e49c9bd](https://github.com/hxreborn/morphe-patches/commit/e49c9bd1d33c79462761a9f2a64aa544000a03ad))\n* **Photo Editor Pro:** add `Inspect AI requests` patch ([886bca1](https://github.com/hxreborn/morphe-patches/commit/886bca1e042e8b8aaf779323bbf0cb512b05cd0f))\n* **Photo Editor Pro:** add `Show AI progress` patch ([1e51b7a](https://github.com/hxreborn/morphe-patches/commit/1e51b7adaf2fdd1d5107d27b45bcb3a10bcab685))\n* **Photo Editor Pro:** add `Speed up AI tools` patch ([73c868b](https://github.com/hxreborn/morphe-patches/commit/73c868b2762e4767c233216716161a111cebb5b3))\n* **Photo Editor Pro:** add `Spoof signature` patch ([8dea264](https://github.com/hxreborn/morphe-patches/commit/8dea2642e5ff2ff5a4ec3167144c4bae21ec89d2))\n* **Photo Editor Pro:** add `Unlock premium` patch ([bbd30c9](https://github.com/hxreborn/morphe-patches/commit/bbd30c918833ffd11ee89137d48631e710f1c243))\n",
+  "created_at": "2026-08-27T18:43:01",
+  "version": "v1.13.0",
+  "description": "## [1.13.0](https://github.com/hxreborn/morphe-patches/compare/v1.12.0...v1.13.0) (2026-08-27)\n\n### Bug Fixes\n\n* **Photo Editor Pro - Inspect AI requests:** apply by default and let the runtime toggle decide ([c961e75](https://github.com/hxreborn/morphe-patches/commit/c961e75f18f5ed6ecce77d0b811ddaf3dd508d15))\n* **Photo Editor Pro:** align the panel summaries with the patch descriptions ([b489e8b](https://github.com/hxreborn/morphe-patches/commit/b489e8b52fda416856a93314d2776a117df40ca6))\n\n### New Features\n\n* **All-In-One Calculator:** add `Unlock premium` and `Remove pairip protection` ([6511bcc](https://github.com/hxreborn/morphe-patches/commit/6511bccd3693f23ad4fb617c6f377a9eef3f30e5))\n* **Kick - AMOLED dark theme:** support the Android TV app ([5e7b9bc](https://github.com/hxreborn/morphe-patches/commit/5e7b9bc08d0db3d3120ee3f44a9ab5163c5e4dea))\n* **Photo Editor Pro - Inspect AI requests:** log the response body of each AI request ([5fea9a7](https://github.com/hxreborn/morphe-patches/commit/5fea9a7d9d5d96b6c0f0dc0ec409570295ad9a69))\n* **Photo Editor Pro - Spoof iOS platform:** restore the AI tools on certified devices ([f973d5f](https://github.com/hxreborn/morphe-patches/commit/f973d5fec5c5ebabe5c1612a2793059d263d4f9b))\n* **Photo Editor Pro:** list the always-on patches in the settings panel ([92f1b0b](https://github.com/hxreborn/morphe-patches/commit/92f1b0bc138ec0aa5f49d6f8a2fa9f3deda96ae0))\n",
   "apps": [
     {
       "app_name": "Perplexity",
@@ -16,6 +16,30 @@
           "use": true,
           "options": [],
           "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "All-In-One Calculator",
+      "package": "all.in.one.calculator",
+      "patches": [
+        {
+          "name": "Remove pairip protection",
+          "description": "Removes the Play Integrity protection that crashes a patched install on startup and sends it to Google Play. Background receivers the protection virtualized stop running.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.4.0"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Grants the pro entitlement, which removes the ads and the paywalled tools.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.4.0"
+          ]
         }
       ]
     },
@@ -323,8 +347,8 @@
         },
         {
           "name": "Inspect AI requests",
-          "description": "Tails every AI request live and keeps the log, so you can watch your photo fly to China or the US.",
-          "use": false,
+          "description": "Shows the network calls an AI tool makes, such as HTTP requests and Firebase uploads, and keeps a log, so you can watch your photo fly to China or the US.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "1.791.265"
@@ -349,8 +373,17 @@
           ]
         },
         {
+          "name": "Spoof iOS platform",
+          "description": "Reports the AI requests as coming from the iOS app, so the server does not ask for a Play Integrity token. Required for the AI tools on any device that passes Play Integrity.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.791.265"
+          ]
+        },
+        {
           "name": "Spoof signature",
-          "description": "Restores the AI tools and stops the app killing itself by spoofing the original app signature.",
+          "description": "Spoofs the original app signature and disables the pairip client-side license check. Required: the app does not start without it.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -389,8 +422,8 @@
       ]
     }
   ],
-  "fingerprint": "89b9c4b4aff6791aeea8ceea9059668768b7f354cd5ea93ac61e3fd7db676735",
-  "release_notes": "## [1.12.0](https://github.com/hxreborn/morphe-patches/compare/v1.11.1...v1.12.0) (2026-08-26)\n\n### Bug Fixes\n\n* **Kick - AMOLED dark theme:** support older builds that have no React Native bundle ([8f50e51](https://github.com/hxreborn/morphe-patches/commit/8f50e51a0486cf3548cd81a0bf478f216adfb62e))\n\n### New Features\n\n* **Photo Editor Pro:** add `Hide ads` patch ([e49c9bd](https://github.com/hxreborn/morphe-patches/commit/e49c9bd1d33c79462761a9f2a64aa544000a03ad))\n* **Photo Editor Pro:** add `Inspect AI requests` patch ([886bca1](https://github.com/hxreborn/morphe-patches/commit/886bca1e042e8b8aaf779323bbf0cb512b05cd0f))\n* **Photo Editor Pro:** add `Show AI progress` patch ([1e51b7a](https://github.com/hxreborn/morphe-patches/commit/1e51b7adaf2fdd1d5107d27b45bcb3a10bcab685))\n* **Photo Editor Pro:** add `Speed up AI tools` patch ([73c868b](https://github.com/hxreborn/morphe-patches/commit/73c868b2762e4767c233216716161a111cebb5b3))\n* **Photo Editor Pro:** add `Spoof signature` patch ([8dea264](https://github.com/hxreborn/morphe-patches/commit/8dea2642e5ff2ff5a4ec3167144c4bae21ec89d2))\n* **Photo Editor Pro:** add `Unlock premium` patch ([bbd30c9](https://github.com/hxreborn/morphe-patches/commit/bbd30c918833ffd11ee89137d48631e710f1c243))\n",
-  "release_tag": "v1.12.0",
-  "release_date": "2026-08-26T10:40:59Z"
+  "fingerprint": "8eb9710a16cb05f176942419fa0da3cffbf23911e73bbebba2c0fa068cfa2758",
+  "release_notes": "## [1.13.0](https://github.com/hxreborn/morphe-patches/compare/v1.12.0...v1.13.0) (2026-08-27)\n\n### Bug Fixes\n\n* **Photo Editor Pro - Inspect AI requests:** apply by default and let the runtime toggle decide ([c961e75](https://github.com/hxreborn/morphe-patches/commit/c961e75f18f5ed6ecce77d0b811ddaf3dd508d15))\n* **Photo Editor Pro:** align the panel summaries with the patch descriptions ([b489e8b](https://github.com/hxreborn/morphe-patches/commit/b489e8b52fda416856a93314d2776a117df40ca6))\n\n### New Features\n\n* **All-In-One Calculator:** add `Unlock premium` and `Remove pairip protection` ([6511bcc](https://github.com/hxreborn/morphe-patches/commit/6511bccd3693f23ad4fb617c6f377a9eef3f30e5))\n* **Kick - AMOLED dark theme:** support the Android TV app ([5e7b9bc](https://github.com/hxreborn/morphe-patches/commit/5e7b9bc08d0db3d3120ee3f44a9ab5163c5e4dea))\n* **Photo Editor Pro - Inspect AI requests:** log the response body of each AI request ([5fea9a7](https://github.com/hxreborn/morphe-patches/commit/5fea9a7d9d5d96b6c0f0dc0ec409570295ad9a69))\n* **Photo Editor Pro - Spoof iOS platform:** restore the AI tools on certified devices ([f973d5f](https://github.com/hxreborn/morphe-patches/commit/f973d5fec5c5ebabe5c1612a2793059d263d4f9b))\n* **Photo Editor Pro:** list the always-on patches in the settings panel ([92f1b0b](https://github.com/hxreborn/morphe-patches/commit/92f1b0bc138ec0aa5f49d6f8a2fa9f3deda96ae0))\n",
+  "release_tag": "v1.13.0",
+  "release_date": "2026-08-27T18:43:01Z"
 }

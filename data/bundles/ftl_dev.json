@@ -2,9 +2,9 @@
   "bundle": "ftl",
   "channel": "dev",
   "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-  "created_at": "2026-08-27T05:50:39",
-  "version": "v1.42.0-dev.2",
-  "description": "## [1.42.0-dev.2](https://github.com/BlazeFTL/FTL-Patches/compare/v1.42.0-dev.1...v1.42.0-dev.2) (2026-08-27)\r\n\r\n### ✨ New Features\r\n\r\n* Add Skip Splash Screen Patch (Expert Only) ([d28a958](https://github.com/BlazeFTL/FTL-Patches/commit/d28a9582ace9881c5295931dbdb3832ea2b66a7e))\r\n* Add Ampere Material Colors Peach/Purple Upgrade\r\n",
+  "created_at": "2026-08-27T20:55:55",
+  "version": "v1.42.0-dev.10",
+  "description": "## [1.42.0-dev.10](https://github.com/BlazeFTL/FTL-Patches/compare/v1.42.0-dev.9...v1.42.0-dev.10) (2026-08-27)\n\n### ✨ New Features\n\n* up ([38464ed](https://github.com/BlazeFTL/FTL-Patches/commit/38464ed04503691c59e188bd01831509323dac6d))\n* up ([5d0c787](https://github.com/BlazeFTL/FTL-Patches/commit/5d0c787a8eb530f304a3ce0c3e98d53caf6869d2))\n",
   "apps": [
     {
       "app_name": "Calendar",
@@ -94,6 +94,19 @@
         {
           "name": "Material Colors Upgrade Peach And Purple",
           "description": "Updates Accent/Primary/CardBgDark to the newer Material color palette.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "MiXplorer",
+      "package": "com.mixplorer",
+      "patches": [
+        {
+          "name": "Disable From Download Menu Of Browsers",
+          "description": "Removes only the http/https <data> entries from MiXplorer's Explore/Download/Copy to/Extract to shell activities' VIEW intent filters, so the app stops showing up multiple times in browsers download link chooser.",
           "use": false,
           "options": [],
           "compatible_versions": []
@@ -208,6 +221,15 @@
           ]
         },
         {
+          "name": "Remove from default browser list",
+          "description": "Strips the data schemes from the LinkHandleActivity alias's unscoped http/https intent-filter (identified by its unique snaptube.intent.action.OPEN_WEBVIEW action, not by position) so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser. The other host-scoped deep-link filters on the same alias (facebook.com, tiktok.com, youtube.com, etc.) are untouched.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "7.64.0.76450210"
+          ]
+        },
+        {
           "name": "Remove Watch Ad To Download",
           "description": "Removes the requirement to watch a rewarded ad before a download starts.",
           "use": false,
@@ -215,6 +237,26 @@
           "compatible_versions": [
             "7.64.0.76450210"
           ]
+        }
+      ]
+    },
+    {
+      "app_name": "Video Downloader",
+      "package": "video.downloader.videodownloader",
+      "patches": [
+        {
+          "name": "Disable downloader from download menu",
+          "description": "Removes the unscoped http/https <data> entries from BrowserDownloaderActivity's mimeType-scoped intent-filter (identified by having mimeType children but no pathPattern children, not by position) so the app stops offering itself in the system \"Download file with\" chooser for ordinary web downloads. The ftp/sftp schemes and mimeType entries on the same filter, and the separate extension-pathPattern filter used for direct file-link downloads, are left in place.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Remove from default browser list",
+          "description": "Removes the unscoped http/https <data> entries from MainTabsActivity's mimeType-free intent-filter (identified by having no mimeType on any of its <data> children, not by position) so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser. The about/javascript schemes on the same filter, and the other mimeType-scoped filters used for the app's internal WebView, are left in place.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
         }
       ]
     },
@@ -255,6 +297,15 @@
           ]
         },
         {
+          "name": "Remove from default browser list",
+          "description": "Removes the unscoped http/https <data> entries from MainActivity's first intent-filter carrying them so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser. Other schemes and mimeTypes on the same and other filters (about, javascript, inline, file, text/html, etc., used for the app's internal WebView) are left in place.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.9.7"
+          ]
+        },
+        {
           "name": "Skip splash and language screens",
           "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
           "use": false,
@@ -266,8 +317,8 @@
       ]
     }
   ],
-  "fingerprint": "f34f39b99a4c8a7b8696154c17dad2da631cd5791f2a28e6e30ea6ea1fd45155",
-  "release_notes": "## [1.42.0-dev.2](https://github.com/BlazeFTL/FTL-Patches/compare/v1.42.0-dev.1...v1.42.0-dev.2) (2026-08-27)\r\n\r\n### ✨ New Features\r\n\r\n* Add Skip Splash Screen Patch (Expert Only) ([d28a958](https://github.com/BlazeFTL/FTL-Patches/commit/d28a9582ace9881c5295931dbdb3832ea2b66a7e))\r\n* Add Ampere Material Colors Peach/Purple Upgrade\r\n",
-  "release_tag": "v1.42.0-dev.2",
-  "release_date": "2026-08-27T05:50:39Z"
+  "fingerprint": "ec70826d5c7da57f9eb771611219d7e69e930673e298a0fdc126872eba480f91",
+  "release_notes": "## [1.42.0-dev.1](https://github.com/BlazeFTL/FTL-Patches/compare/v1.41.0...v1.42.0-dev.1) (2026-08-26)\r\n\r\n### ✨ New Features\r\n\r\n* Added 2 Useless Skip/Boost Patch For Calendar And AllVideoDownloader (Useless Because Similar Patch/Premium Patch Exist)",
+  "release_tag": "v1.42.0-dev.1",
+  "release_date": "2026-08-26T12:57:31Z"
 }

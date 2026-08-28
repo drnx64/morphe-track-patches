@@ -2,9 +2,9 @@
   "bundle": "hoo-dles",
   "channel": "stable",
   "repo_url": "https://github.com/hoo-dles/morphe-patches",
-  "created_at": "2026-08-18T04:15:22",
-  "version": "v1.41.0",
-  "description": "# [1.41.0](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0...v1.41.0) (2026-08-18)\n\n\n### Bug Fixes\n\n* **Duolingo:** Force max energy ([969359c](https://github.com/hoo-dles/morphe-patches/commit/969359c24d2d3ac6d75e06eb052c0f3cc7911b62))\n\n\n### Features\n\n* **Duolingo:** Update patches to support `6.92.5` ([dca61c3](https://github.com/hoo-dles/morphe-patches/commit/dca61c3c602aecb8c0b6fcc79a4368c4bb59cf67))\n* **MyFitnessPal:** Update patches to support `26.31.0` ([4d50bf9](https://github.com/hoo-dles/morphe-patches/commit/4d50bf9db7d4bd1ac32f393036683090429232c2))\n* **Smart Launcher:** Update patches to support `6.6 build 016` ([1218a1d](https://github.com/hoo-dles/morphe-patches/commit/1218a1d902fd28e90528765c8e6396df28d8981e))\n* **Windy:** Update patches to support `51.0.1` ([634ad8a](https://github.com/hoo-dles/morphe-patches/commit/634ad8aa627ce3f35ecc023d0e0df0f015b4c53c))\n\n\n\n",
+  "created_at": "2026-08-27T20:41:50",
+  "version": "v1.42.0",
+  "description": "# [1.42.0](https://github.com/hoo-dles/morphe-patches/compare/v1.41.0...v1.42.0) (2026-08-27)\n\n\n### Bug Fixes\n\n* **Bunpo:** Bump version to `3.21.0` and fix runtime crash for older Android versions ([ba10ba8](https://github.com/hoo-dles/morphe-patches/commit/ba10ba885da57799a71352a7f03b5a2ac5601694))\n\n\n### Features\n\n* **Bunpo:** Add `Enable Platinum` patch ([12609cd](https://github.com/hoo-dles/morphe-patches/commit/12609cd74699aba58fc82670529304ca3d6cf1ec))\n* **Fotmob:** Update patch to support `236.17398.20260827` ([24073e7](https://github.com/hoo-dles/morphe-patches/commit/24073e77c1800df7d8ba682adb6a87c593aaeac2))\n* **Lightroom:** Update patches to support `11.5.01` ([fdf6b2e](https://github.com/hoo-dles/morphe-patches/commit/fdf6b2e7fc5230934405816337bf84679a2d6e10))\n* **Lingodeer:** Add `Enable Premium` patch ([7b8f7c5](https://github.com/hoo-dles/morphe-patches/commit/7b8f7c5485b853f131de77970a903394e09fe4d0))\n* **Niagara Launcher:** Update patch to support `1.16.23` ([9928340](https://github.com/hoo-dles/morphe-patches/commit/99283403a6524f697ae2475a81e13ca8878e9c49))\n* **Soundcloud:** Update patches to support `2026.08.26-release` ([64b69a4](https://github.com/hoo-dles/morphe-patches/commit/64b69a468d636300a9b0f762d0c5a4b0005aa34c))\n\n\n\n",
   "apps": [
     {
       "app_name": "TTMIK Stories",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch.",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: strict apk version",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -32,7 +32,7 @@
           "options": [],
           "compatible_versions": [
             "1.16.7",
-            "1.16.15"
+            "1.16.23"
           ]
         }
       ]
@@ -128,7 +128,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "4.13.1"
+            "4.13.2"
           ]
         }
       ]
@@ -139,20 +139,20 @@
       "patches": [
         {
           "name": "Bypass login",
-          "description": "Allows app use without login. BUT breaks many features. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+          "description": "Allows app use without login. BUT breaks many features. Requirements: arm64-v8a, strict apk version",
           "use": false,
           "options": [],
           "compatible_versions": [
-            "11.4.5"
+            "11.5.01"
           ]
         },
         {
           "name": "Unlock premium features",
-          "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: arm64-v8a, strict apk version",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "11.4.5"
+            "11.5.01"
           ]
         }
       ]
@@ -240,6 +240,21 @@
           "options": [],
           "compatible_versions": [
             "2026.4"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Bunpo",
+      "package": "com.bunpoapp",
+      "patches": [
+        {
+          "name": "Enable Platinum",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: arm64-v8a, strict apk version",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.21.0"
           ]
         }
       ]
@@ -372,11 +387,11 @@
       "patches": [
         {
           "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall.",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: arm64-v8a",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "7.10.20"
+            "7.11.0"
           ]
         }
       ]
@@ -401,6 +416,21 @@
           "options": [],
           "compatible_versions": [
             "7.20.0.2606230000"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Lingodeer",
+      "package": "com.lingodeer",
+      "patches": [
+        {
+          "name": "Enable Premium (ROOT)",
+          "description": "Enables app features locked behind the subscription paywall.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.99.412"
           ]
         }
       ]
@@ -473,7 +503,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "226.16092.20260302"
+            "236.17398.20260827"
           ]
         }
       ]
@@ -548,8 +578,8 @@
       "package": "com.sbs.diet",
       "patches": [
         {
-          "name": "Enable Premium",
-          "description": "REQUIRES ROOT MOUNT INSTALL! Enables app features locked behind the subscription paywall.",
+          "name": "Enable Premium (ROOT)",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: root mount",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -563,8 +593,8 @@
       "package": "com.sbs.train",
       "patches": [
         {
-          "name": "Enable Premium",
-          "description": "REQUIRES ROOT MOUNT INSTALL! Enables app features locked behind the subscription paywall.",
+          "name": "Enable Premium (ROOT)",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: root mount",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -579,7 +609,7 @@
       "patches": [
         {
           "name": "Enable Pro",
-          "description": "Enables app features locked behind the subscription paywall.",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: strict apk version",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -628,7 +658,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.04.27-release"
+            "2026.08.26-release"
           ]
         },
         {
@@ -637,7 +667,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.04.27-release"
+            "2026.08.26-release"
           ]
         },
         {
@@ -646,7 +676,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.04.27-release"
+            "2026.08.26-release"
           ]
         }
       ]
@@ -801,11 +831,11 @@
       "patches": [
         {
           "name": "Enable Prime membership",
-          "description": "Enables app features locked behind the subscription paywall.",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: arm64-v8a",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "14.0.6"
+            "14.0.11"
           ]
         }
       ]
@@ -864,7 +894,7 @@
       "patches": [
         {
           "name": "Enable Plus",
-          "description": "Enable Plus membership (not all features are available). There is a strict version requirement for this patch.",
+          "description": "Enable Plus membership (not all features are available). Requirements: strict apk version",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -905,7 +935,7 @@
       "patches": [
         {
           "name": "Block Permissions Request",
-          "description": "Blocks the request of notification permissions on load of app.",
+          "description": "Blocks the request of notification permissions on load of app. Requirements: arm64-v8a, strict apk version",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -914,7 +944,7 @@
         },
         {
           "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall. There is a strict version requirement for this patch and only arm64-v8a devices are supported.",
+          "description": "Enables app features locked behind the subscription paywall. Requirements: arm64-v8a, strict apk version",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -948,7 +978,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.5.16"
+            "3.5.19"
           ]
         },
         {
@@ -957,7 +987,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.5.16"
+            "3.5.19"
           ]
         }
       ]
@@ -993,8 +1023,8 @@
       ]
     }
   ],
-  "fingerprint": "4a885a26b14201199f0cead0e3b2a03fbf71bfbdf1a25caa209ec1072b0dbf3d",
-  "release_notes": "# [1.41.0](https://github.com/hoo-dles/morphe-patches/compare/v1.40.0...v1.41.0) (2026-08-18)\n\n\n### Bug Fixes\n\n* **Duolingo:** Force max energy ([969359c](https://github.com/hoo-dles/morphe-patches/commit/969359c24d2d3ac6d75e06eb052c0f3cc7911b62))\n\n\n### Features\n\n* **Duolingo:** Update patches to support `6.92.5` ([dca61c3](https://github.com/hoo-dles/morphe-patches/commit/dca61c3c602aecb8c0b6fcc79a4368c4bb59cf67))\n* **MyFitnessPal:** Update patches to support `26.31.0` ([4d50bf9](https://github.com/hoo-dles/morphe-patches/commit/4d50bf9db7d4bd1ac32f393036683090429232c2))\n* **Smart Launcher:** Update patches to support `6.6 build 016` ([1218a1d](https://github.com/hoo-dles/morphe-patches/commit/1218a1d902fd28e90528765c8e6396df28d8981e))\n* **Windy:** Update patches to support `51.0.1` ([634ad8a](https://github.com/hoo-dles/morphe-patches/commit/634ad8aa627ce3f35ecc023d0e0df0f015b4c53c))\n\n\n\n",
-  "release_tag": "v1.41.0",
-  "release_date": "2026-08-18T04:15:22Z"
+  "fingerprint": "d20262a16e7eca0ccd7cf8f2cc1e4b6f26e5ae32d694f73c8f9e661a744c04d8",
+  "release_notes": "# [1.42.0](https://github.com/hoo-dles/morphe-patches/compare/v1.41.0...v1.42.0) (2026-08-27)\n\n\n### Bug Fixes\n\n* **Bunpo:** Bump version to `3.21.0` and fix runtime crash for older Android versions ([ba10ba8](https://github.com/hoo-dles/morphe-patches/commit/ba10ba885da57799a71352a7f03b5a2ac5601694))\n\n\n### Features\n\n* **Bunpo:** Add `Enable Platinum` patch ([12609cd](https://github.com/hoo-dles/morphe-patches/commit/12609cd74699aba58fc82670529304ca3d6cf1ec))\n* **Fotmob:** Update patch to support `236.17398.20260827` ([24073e7](https://github.com/hoo-dles/morphe-patches/commit/24073e77c1800df7d8ba682adb6a87c593aaeac2))\n* **Lightroom:** Update patches to support `11.5.01` ([fdf6b2e](https://github.com/hoo-dles/morphe-patches/commit/fdf6b2e7fc5230934405816337bf84679a2d6e10))\n* **Lingodeer:** Add `Enable Premium` patch ([7b8f7c5](https://github.com/hoo-dles/morphe-patches/commit/7b8f7c5485b853f131de77970a903394e09fe4d0))\n* **Niagara Launcher:** Update patch to support `1.16.23` ([9928340](https://github.com/hoo-dles/morphe-patches/commit/99283403a6524f697ae2475a81e13ca8878e9c49))\n* **Soundcloud:** Update patches to support `2026.08.26-release` ([64b69a4](https://github.com/hoo-dles/morphe-patches/commit/64b69a468d636300a9b0f762d0c5a4b0005aa34c))\n\n\n\n",
+  "release_tag": "v1.42.0",
+  "release_date": "2026-08-27T20:41:50Z"
 }
