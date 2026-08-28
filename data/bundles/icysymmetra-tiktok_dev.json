@@ -2,9 +2,9 @@
   "bundle": "icysymmetra-tiktok",
   "channel": "dev",
   "repo_url": "https://github.com/icysymmetra/tiktok-patches-for-morphe",
-  "created_at": "2026-08-22T21:54:11",
-  "version": "v0.7.0-dev.8",
-  "description": "# [0.7.0-dev.8](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.7.0-dev.7...v0.7.0-dev.8) (2026-08-22)\n\n\n### Bug Fixes\n\n* **tiktok:** preserve swipe-lock playback speed ([dfbe2a5](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/dfbe2a55aaced183f97a457b494893c31cebf596))\n\n\n\n\n\n## 0.7.0-dev.8",
+  "created_at": "2026-08-27T22:10:06",
+  "version": "v0.8.0-dev.1",
+  "description": "# [0.8.0-dev.1](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.7.0...v0.8.0-dev.1) (2026-08-27)\n\n\n### Features\n\n* add configurable regional restriction fallback ([9781ef2](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/9781ef2c18b1372764f590260e37d3df54fd6794))\n\n\n\n\n\n## 0.8.0-dev.1",
   "apps": [
     {
       "app_name": "TikTok",
@@ -15,6 +15,20 @@
           "description": "Always shows the publish date in video author information. Thanks to lyyako for the original implementation.",
           "use": true,
           "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Bypass regional restrictions",
+          "description": "Uses a selected default region to help bypass regional restrictions.",
+          "use": false,
+          "options": [
+            {
+              "key": "defaultRegion",
+              "description": "Region to use when applying this patch."
+            }
+          ],
           "compatible_versions": [
             "46.2.3"
           ]
@@ -200,6 +214,15 @@
           ]
         },
         {
+          "name": "Region spoof",
+          "description": "Adds in-app controls for changing the region TikTok reads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
           "name": "Remember clear display",
           "description": "Remembers TikTok's clear-display state between videos.",
           "use": true,
@@ -254,15 +277,6 @@
           ]
         },
         {
-          "name": "SIM spoof",
-          "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
           "name": "Stop video looping",
           "description": "Stops videos at the end instead of replaying them.",
           "use": true,
@@ -283,8 +297,8 @@
       ]
     }
   ],
-  "fingerprint": "751bd1947ac0009cfd762c71ef237de2889b5489187a32186bfc85d470cc621f",
-  "release_notes": "# [0.7.0-dev.8](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.7.0-dev.7...v0.7.0-dev.8) (2026-08-22)\n\n\n### Bug Fixes\n\n* **tiktok:** preserve swipe-lock playback speed ([dfbe2a5](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/dfbe2a55aaced183f97a457b494893c31cebf596))\n\n\n\n\n\n## 0.7.0-dev.8",
-  "release_tag": "v0.7.0-dev.8",
-  "release_date": "2026-08-22T21:54:11Z"
+  "fingerprint": "f594c9a60e0bbf1e14ab23fd18dec8176008a634fe69e0c2ec6f881cdc5851b8",
+  "release_notes": "# [0.8.0-dev.1](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.7.0...v0.8.0-dev.1) (2026-08-27)\n\n\n### Features\n\n* add configurable regional restriction fallback ([9781ef2](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/9781ef2c18b1372764f590260e37d3df54fd6794))\n\n\n\n\n\n## 0.8.0-dev.1",
+  "release_tag": "v0.8.0-dev.1",
+  "release_date": "2026-08-27T22:10:06Z"
 }
