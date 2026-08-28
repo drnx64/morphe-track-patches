@@ -2,14 +2,32 @@
   "bundle": "ftl",
   "channel": "stable",
   "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-  "created_at": "2026-08-25T05:58:46",
-  "version": "v1.41.0",
-  "description": "## [1.41.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.40.0...v1.41.0) (2026-08-25)\r\n\r\n### ✨ New Features\r\n\r\n* Add Calendar Premium Patch https://play.google.com/store/apps/details?id=calendar.agenda.schedule.event.advance.calendar.planner\r\n* Add Rs File Explorer Disable Rate Dialog Patch ([d183190](https://github.com/BlazeFTL/FTL-Patches/commit/d1831909be29bd155f94c28e1411d9cd1fb16ae6))\r\n* Update Drawable Clean Patch To Remove More Junk Dpi",
+  "created_at": "2026-08-28T05:49:19",
+  "version": "v1.42.0",
+  "description": "## [1.42.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.41.0...v1.42.0) (2026-08-28)\r\n\r\n### ✨ New Features\r\n\r\n* Add Skip Splash Screen Patch (Expert) ([d28a958](https://github.com/BlazeFTL/FTL-Patches/commit/d28a9582ace9881c5295931dbdb3832ea2b66a7e))\r\n* Add Video Downloader Pro Unlock Patch(Manually Kill Signature First Or Use Doom's Patch (Spoof App Signature) From Here https://github.com/rushiranpise/morphe-patches\r\n* Add Video Downloader Skip Splash, Remove From Download Menu, Remove From Browser List Patches\r\n* Add SnapTube Remove From Browser Menu\r\n* Add AllVideoDownloader Remove From Download Menu\r\n* Add MiXplorer Remove From Download Menu\r\n* Added 2 Useless Skip/Boost Patch For Calendar And AllVideoDownloader (Useless Because Similar Patch/Premium Patch Exist)\r\n* Add Ampere Material Colors Peach/Purple Upgrade\r\n* Update Apk Language Cleaner\r\n* Update Apk Junk Cleaner",
   "apps": [
     {
       "app_name": "Calendar",
       "package": "calendar.agenda.schedule.event.advance.calendar.planner",
       "patches": [
+        {
+          "name": "Skip/Boost splash screen",
+          "description": "By default, skips the splash screen entirely on launch. Turn on \"Boost splash\" to instead keep it briefly on screen (configurable delay) Useless To Boost Splash Screen If You Select Unlock Premium Patch Too Use If You Want To Skip Splash Screen Entirely",
+          "use": true,
+          "options": [
+            {
+              "key": "boostSplash",
+              "description": "Off: splash is skipped entirely. On: splash briefly shows, then proceeds after the configured delay."
+            },
+            {
+              "key": "boostDelayMs",
+              "description": "Only used when \"Boost splash\" is on. How long to show the splash before proceeding."
+            }
+          ],
+          "compatible_versions": [
+            "1.0.34"
+          ]
+        },
         {
           "name": "Unlock premium",
           "description": "Unlocks premium features and removes ads.",
@@ -27,7 +45,7 @@
       "patches": [
         {
           "name": "Clean main UI",
-          "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+          "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -36,7 +54,7 @@
         },
         {
           "name": "Skip splash screen",
-          "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
+          "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -45,7 +63,7 @@
         },
         {
           "name": "Speed up splash screen",
-          "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
+          "description": "Enters the main activity directly after the splash screen.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -70,33 +88,59 @@
       ]
     },
     {
+      "app_name": "Ampere",
+      "package": "com.gombosdev.ampere",
+      "patches": [
+        {
+          "name": "Material Colors Upgrade Peach And Purple",
+          "description": "Updates Accent/Primary/CardBgDark to the newer Material color palette.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "MiXplorer",
+      "package": "com.mixplorer",
+      "patches": [
+        {
+          "name": "Disable From Download Menu Of Browsers",
+          "description": "Removes only the http/https <data> entries from MiXplorer's Explore/Download/Copy to/Extract to shell activities' VIEW intent filters, so the app stops showing up multiple times in browsers download link chooser.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
       "app_name": "MX Player Pro",
       "package": "com.mxtech.videoplayer.pro",
       "patches": [
         {
           "name": "Hide File Transfer, Video Playlist, Private Folder tiles",
-          "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from the tools tile list.",
+          "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from settings Page.",
           "use": false,
           "options": [],
           "compatible_versions": []
         },
         {
-          "name": "Hide local tiles banner",
-          "description": "Collapses the local device tiles banner.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Hide Me tab promo items",
+          "name": "Hide Settings Page UseLess Buttons",
           "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab.",
           "use": false,
           "options": [],
           "compatible_versions": []
         },
         {
-          "name": "Skip welcome screen",
-          "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen.",
+          "name": "Hide top tiles",
+          "description": "Hides the top tiles.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Skip Splash Screen",
+          "description": "Skips Splash Screen so the app boots straight past the splash and update screen.",
           "use": false,
           "options": [],
           "compatible_versions": []
@@ -109,7 +153,7 @@
       "patches": [
         {
           "name": "Disable downloader from download menu",
-          "description": "Strips RsDownloadActivity's file-extension and scheme/mimeType intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
+          "description": "Strips RsDownloadActivity's intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -145,7 +189,7 @@
         },
         {
           "name": "Skip splash screen",
-          "description": "Moves the launcher intent filter to the main activity and calls the all-files-access permission request directly, instead of showing the splash activity and its full-screen 'grant storage access' dialog.",
+          "description": "Skips Splash Screen From 2nd App Opening",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -177,6 +221,15 @@
           ]
         },
         {
+          "name": "Remove from default browser list",
+          "description": "Strips the LinkHandleActivity alias's unscoped so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "7.64.0.76450210"
+          ]
+        },
+        {
           "name": "Remove Watch Ad To Download",
           "description": "Removes the requirement to watch a rewarded ad before a download starts.",
           "use": false,
@@ -188,9 +241,57 @@
       ]
     },
     {
+      "app_name": "Video Downloader",
+      "package": "video.downloader.videodownloader",
+      "patches": [
+        {
+          "name": "Disable downloader from download menu",
+          "description": "Removes the http/https <data> entries from BrowserDownloaderActivity's so the app stops offering itself in the system \"Download file with\" chooser for ordinary web downloads.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Remove from default browser list",
+          "description": "Removes http/https <data> entries from MainTabsActivity's so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Skip splash screen",
+          "description": "Skips splash screen so the app opens directly to the main screen.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Unlock Pro",
+          "description": "Manually Kill Signature First Or Use Doom's(rushiranpise) Patch (Spoof App Signature).",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
       "app_name": "All Video Downloader & Ace Player",
       "package": "videoplayer.videodownloader.downloader",
       "patches": [
+        {
+          "name": "Boost Splash Screen",
+          "description": "Fixes Remove Ads And Remove Ads Lite Gettings Stuck In Splash Screen Useless if you also select skip splash and language activity patch. Also stops the splash from hiding the on-screen navigation buttons.",
+          "use": false,
+          "options": [
+            {
+              "key": "boostDelayMs",
+              "description": "How long the splash screen stays visible before continuing."
+            }
+          ],
+          "compatible_versions": [
+            "1.9.7"
+          ]
+        },
         {
           "name": "Disable ad dialog when reopening app",
           "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
@@ -202,7 +303,16 @@
         },
         {
           "name": "Disable downloader from download menu",
-          "description": "Strips WebDownloadActivity's scheme/mimeType/host/pathPattern intent-filter data (action and category tags kept) so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
+          "description": "Strips WebDownloadActivity's intent-filter data so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.9.7"
+          ]
+        },
+        {
+          "name": "Remove from default browser list",
+          "description": "Removes the unscoped http/https <data> entries from MainActivity's first intent-filter carrying them so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -212,7 +322,7 @@
         {
           "name": "Skip splash and language screens",
           "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
-          "use": false,
+          "use": true,
           "options": [],
           "compatible_versions": [
             "1.9.7"
@@ -221,8 +331,8 @@
       ]
     }
   ],
-  "fingerprint": "a815274be9428f6aba8171e9b88070b55593705b29bd237aaddf2f35243d33ab",
-  "release_notes": "## [1.41.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.40.0...v1.41.0) (2026-08-25)\r\n\r\n### ✨ New Features\r\n\r\n* Add Calendar Premium Patch https://play.google.com/store/apps/details?id=calendar.agenda.schedule.event.advance.calendar.planner\r\n* Add Rs File Explorer Disable Rate Dialog Patch ([d183190](https://github.com/BlazeFTL/FTL-Patches/commit/d1831909be29bd155f94c28e1411d9cd1fb16ae6))\r\n* Update Drawable Clean Patch To Remove More Junk Dpi",
-  "release_tag": "v1.41.0",
-  "release_date": "2026-08-25T05:58:46Z"
+  "fingerprint": "ddc18f918e4316b6fdb2cc3692ee67caa0590977ccbe4296d63c81db63918691",
+  "release_notes": "## [1.42.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.41.0...v1.42.0) (2026-08-28)\r\n\r\n### ✨ New Features\r\n\r\n* Add Skip Splash Screen Patch (Expert) ([d28a958](https://github.com/BlazeFTL/FTL-Patches/commit/d28a9582ace9881c5295931dbdb3832ea2b66a7e))\r\n* Add Video Downloader Pro Unlock Patch(Manually Kill Signature First Or Use Doom's Patch (Spoof App Signature) From Here https://github.com/rushiranpise/morphe-patches\r\n* Add Video Downloader Skip Splash, Remove From Download Menu, Remove From Browser List Patches\r\n* Add SnapTube Remove From Browser Menu\r\n* Add AllVideoDownloader Remove From Download Menu\r\n* Add MiXplorer Remove From Download Menu\r\n* Added 2 Useless Skip/Boost Patch For Calendar And AllVideoDownloader (Useless Because Similar Patch/Premium Patch Exist)\r\n* Add Ampere Material Colors Peach/Purple Upgrade\r\n* Update Apk Language Cleaner\r\n* Update Apk Junk Cleaner",
+  "release_tag": "v1.42.0",
+  "release_date": "2026-08-28T05:49:19Z"
 }

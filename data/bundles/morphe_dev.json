@@ -2,9 +2,9 @@
   "bundle": "morphe",
   "channel": "dev",
   "repo_url": "https://github.com/MorpheApp/morphe-patches",
-  "created_at": "2026-08-27T09:19:52",
-  "version": "v1.41.0-dev.2",
-  "description": "## [1.41.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0-dev.1...v1.41.0-dev.2) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **Theme:** Prevent an endless activity relaunch loop ([212fc09](https://github.com/MorpheApp/morphe-patches/commit/212fc09a1e8b9048e736a57a9ca3e5c1511896bd))\n* **YouTube - Theme:** Some elements keeps the stock color after leaving picture in picture ([#2591](https://github.com/MorpheApp/morphe-patches/issues/2591)) ([a897f41](https://github.com/MorpheApp/morphe-patches/commit/a897f416f708fee55ca394b67fcb8db0160aac9c))\n\n### ✨ New Features\n\n* **YouTube - Wide search bar:** Replace the toggle with Disabled, Wide and Extra wide options ([#2608](https://github.com/MorpheApp/morphe-patches/issues/2608)) ([ce18f82](https://github.com/MorpheApp/morphe-patches/commit/ce18f821225e7c82da6832828e405d56394026fe))\n* **YouTube:** Add `Fullscreen video scale` patch ([#2616](https://github.com/MorpheApp/morphe-patches/issues/2616)) ([53815a9](https://github.com/MorpheApp/morphe-patches/commit/53815a9ab88c4595e9e070ce56605584cd7a34e7))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add experimental support for `9.34.52` ([fea25c2](https://github.com/MorpheApp/morphe-patches/commit/fea25c2c2fb7c20122ad5b9ac893a2733047a804))\n",
+  "created_at": "2026-08-28T11:36:48",
+  "version": "v1.41.0-dev.3",
+  "description": "## [1.41.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0-dev.2...v1.41.0-dev.3) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **YouTube Music - Theme:** Fade the page header into the background color ([#2636](https://github.com/MorpheApp/morphe-patches/issues/2636)) ([5f5a478](https://github.com/MorpheApp/morphe-patches/commit/5f5a478f7c8670958255b06eeabbfff2e9be4ff0))\n\n### ✨ New Features\n\n* Add `PoToken provider` patch ([#2618](https://github.com/MorpheApp/morphe-patches/issues/2618)) ([fb25ff1](https://github.com/MorpheApp/morphe-patches/commit/fb25ff1fe8270a8a8d003361e17c130c5d422237))\n* **YouTube - Disable fullscreen gestures:** Add option to disable pinch-to-zoom ([#2633](https://github.com/MorpheApp/morphe-patches/issues/2633)) ([7b05d2d](https://github.com/MorpheApp/morphe-patches/commit/7b05d2db985232b5dc3bd3a3bcde13e9b4875dbc))\n* **YouTube - Hide layout components:** Add \"Hide filter bar in channel page\" and \"Hide 'Members only' chip\" settings ([#2622](https://github.com/MorpheApp/morphe-patches/issues/2622)) ([5db5a77](https://github.com/MorpheApp/morphe-patches/commit/5db5a7799d3617b4d93d39ecc42c3d0af58308e8))\n* **YouTube:** Add `Mute button` patch ([#2624](https://github.com/MorpheApp/morphe-patches/issues/2624)) ([4c2b3c0](https://github.com/MorpheApp/morphe-patches/commit/4c2b3c040a404bd8661decc31398ca0a343a6768))\n\n### 🚀 Updated App Support\n\n* **Reddit:** Add experimental support for `2026.35.0` ([71f8a7f](https://github.com/MorpheApp/morphe-patches/commit/71f8a7fca74e3f008a9879a924f45aae7e5e4052))\n",
   "apps": [
     {
       "app_name": "YouTube Music",
@@ -328,6 +328,18 @@
           "name": "Network proxy",
           "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
           "use": false,
+          "options": [],
+          "compatible_versions": [
+            "9.34.52",
+            "9.33.52",
+            "9.32.51",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "PoToken provider",
+          "description": "Adds option to get PoToken using an external PoToken minter app.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "9.34.52",
@@ -744,7 +756,7 @@
         },
         {
           "name": "Disable fullscreen gestures",
-          "description": "Adds options to selectively disable gestures for entering and exiting fullscreen mode.",
+          "description": "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -1247,6 +1259,21 @@
           ]
         },
         {
+          "name": "Mute button",
+          "description": "Adds an option to show a player button that mutes the video audio.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.34.243",
+            "21.33.321",
+            "21.28.208",
+            "21.04.223",
+            "20.51.39",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
           "name": "Navigation bar",
           "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button)  and the upper navigation toolbar.",
           "use": true,
@@ -1399,6 +1426,21 @@
         {
           "name": "Playback speed",
           "description": "Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.34.243",
+            "21.33.321",
+            "21.28.208",
+            "21.04.223",
+            "20.51.39",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "PoToken provider",
+          "description": "Adds option to get PoToken using an external PoToken minter app.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -1707,8 +1749,8 @@
             }
           ],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1720,8 +1762,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1733,8 +1775,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1746,8 +1788,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1759,8 +1801,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1772,8 +1814,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1785,8 +1827,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1798,8 +1840,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1811,8 +1853,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1824,8 +1866,8 @@
           "use": false,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1837,8 +1879,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1850,8 +1892,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1863,8 +1905,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1876,8 +1918,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1889,8 +1931,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1902,8 +1944,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1915,8 +1957,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1928,8 +1970,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "2026.35.0",
             "2026.34.0",
-            "2026.32.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0",
@@ -1939,8 +1981,8 @@
       ]
     }
   ],
-  "fingerprint": "aeaf6b09f4a40e62e4307ace996516f950138c88a46b848cd3a5c7b2a6f675f2",
-  "release_notes": "## [1.41.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0-dev.1...v1.41.0-dev.2) (2026-08-27)\n\n### 🐛 Bug Fixes\n\n* **Theme:** Prevent an endless activity relaunch loop ([212fc09](https://github.com/MorpheApp/morphe-patches/commit/212fc09a1e8b9048e736a57a9ca3e5c1511896bd))\n* **YouTube - Theme:** Some elements keeps the stock color after leaving picture in picture ([#2591](https://github.com/MorpheApp/morphe-patches/issues/2591)) ([a897f41](https://github.com/MorpheApp/morphe-patches/commit/a897f416f708fee55ca394b67fcb8db0160aac9c))\n\n### ✨ New Features\n\n* **YouTube - Wide search bar:** Replace the toggle with Disabled, Wide and Extra wide options ([#2608](https://github.com/MorpheApp/morphe-patches/issues/2608)) ([ce18f82](https://github.com/MorpheApp/morphe-patches/commit/ce18f821225e7c82da6832828e405d56394026fe))\n* **YouTube:** Add `Fullscreen video scale` patch ([#2616](https://github.com/MorpheApp/morphe-patches/issues/2616)) ([53815a9](https://github.com/MorpheApp/morphe-patches/commit/53815a9ab88c4595e9e070ce56605584cd7a34e7))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add experimental support for `9.34.52` ([fea25c2](https://github.com/MorpheApp/morphe-patches/commit/fea25c2c2fb7c20122ad5b9ac893a2733047a804))\n",
-  "release_tag": "v1.41.0-dev.2",
-  "release_date": "2026-08-27T09:19:52Z"
+  "fingerprint": "28e6d4777cfb692eb3fb684e37b40d53bbc8161d396e5f4fa138cd43b04dcf24",
+  "release_notes": "## [1.41.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.41.0-dev.2...v1.41.0-dev.3) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **YouTube Music - Theme:** Fade the page header into the background color ([#2636](https://github.com/MorpheApp/morphe-patches/issues/2636)) ([5f5a478](https://github.com/MorpheApp/morphe-patches/commit/5f5a478f7c8670958255b06eeabbfff2e9be4ff0))\n\n### ✨ New Features\n\n* Add `PoToken provider` patch ([#2618](https://github.com/MorpheApp/morphe-patches/issues/2618)) ([fb25ff1](https://github.com/MorpheApp/morphe-patches/commit/fb25ff1fe8270a8a8d003361e17c130c5d422237))\n* **YouTube - Disable fullscreen gestures:** Add option to disable pinch-to-zoom ([#2633](https://github.com/MorpheApp/morphe-patches/issues/2633)) ([7b05d2d](https://github.com/MorpheApp/morphe-patches/commit/7b05d2db985232b5dc3bd3a3bcde13e9b4875dbc))\n* **YouTube - Hide layout components:** Add \"Hide filter bar in channel page\" and \"Hide 'Members only' chip\" settings ([#2622](https://github.com/MorpheApp/morphe-patches/issues/2622)) ([5db5a77](https://github.com/MorpheApp/morphe-patches/commit/5db5a7799d3617b4d93d39ecc42c3d0af58308e8))\n* **YouTube:** Add `Mute button` patch ([#2624](https://github.com/MorpheApp/morphe-patches/issues/2624)) ([4c2b3c0](https://github.com/MorpheApp/morphe-patches/commit/4c2b3c040a404bd8661decc31398ca0a343a6768))\n\n### 🚀 Updated App Support\n\n* **Reddit:** Add experimental support for `2026.35.0` ([71f8a7f](https://github.com/MorpheApp/morphe-patches/commit/71f8a7fca74e3f008a9879a924f45aae7e5e4052))\n",
+  "release_tag": "v1.41.0-dev.3",
+  "release_date": "2026-08-28T11:36:48Z"
 }
