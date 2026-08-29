@@ -6,7 +6,7 @@ function log(...args: unknown[]) {
 
 import { useEffect } from 'react'
 import { useAppContext, type AppAction } from '../context/AppContext'
-import { idbGet, idbSet } from '../services/indexedDB'
+import { idbGet, idbSet, idbDeleteMany } from '../services/indexedDB'
 import {
   fetchCore,
   fetchStats,
@@ -23,12 +23,23 @@ import {
 import type { BundleIndexEntry } from '../services/fetchData'
 import { preloadIcons } from '../services/iconCache'
 import { notifyWatchedUpdates } from '../services/watchlist'
-import { CACHE_KEYS } from '../types/utils'
+import { CACHE_KEYS, APP_VERSION, APP_VERSION_KEY } from '../types/utils'
 import { limitChangelogDays } from '../utils/changelog'
 import type { ChangelogEntry } from '../types/changelog'
 
 let loadedOnce = false
 let loadPromise: Promise<void> | null = null
+
+async function migrateIfNeeded(): Promise<boolean> {
+  const stored = localStorage.getItem(APP_VERSION_KEY)
+  if (stored === APP_VERSION) return false
+  log(`[migrate] version mismatch (stored=${stored}, current=${APP_VERSION}), clearing cache...`)
+  await idbDeleteMany([CACHE_KEYS.LIVE, CACHE_KEYS.ICONS, CACHE_KEYS.NAMES, CACHE_KEYS.CHANGELOG, CACHE_KEYS.BUNDLE_INDEX])
+  localStorage.removeItem('morphe_versions')
+  localStorage.setItem(APP_VERSION_KEY, APP_VERSION)
+  log('[migrate] cache cleared, version updated')
+  return true
+}
 
 async function fetchIconAndNameCaches(dispatch: React.Dispatch<AppAction>) {
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Loading icons...' })
@@ -73,6 +84,9 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 0 })
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Initializing...' })
   log('[init] starting data load...')
+
+  // Version migration: clear stale caches on first visit after deploy
+  const migrated = await migrateIfNeeded()
 
   log('checking IndexedDB cache...')
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Checking cache...' })

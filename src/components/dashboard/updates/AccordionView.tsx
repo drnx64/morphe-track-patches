@@ -101,9 +101,9 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
                       onClick={() => handleOpenApp(app.package, bundleName, entry.channels)}
                       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenApp(app.package, bundleName, entry.channels) } }}
                     >
+                      {app.badge_type && <Badge className={appBadgeClass}>{app.badge_type}</Badge>}
                       <AppIcon iconUrl={state.iconCache[app.package] || ''} pkg={app.package} size={26} />
                       <span className="acc-app-name">{resolveAppName(app, state.nameCache)}</span>
-                      {app.badge_type && <Badge className={appBadgeClass}>{app.badge_type}</Badge>}
                     </div>
                   )
                 })}

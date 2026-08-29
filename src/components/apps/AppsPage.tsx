@@ -221,7 +221,7 @@ export default function AppsPage() {
         </section>
       </PageShell>
 
-      <AppBundleChooser app={chooserApp} onClose={() => setChooserApp(null)} />
+      <AppBundleChooser app={chooserApp} bundles={state.bundles} onClose={() => setChooserApp(null)} />
 
       <AppDetailModal />
       <BundleDetailModal />
@@ -296,9 +296,43 @@ function AppCard({ app, onAdd, onOpen }: { app: AppIndexEntry; onAdd: () => void
   )
 }
 
-function AppBundleChooser({ app, onClose }: { app: AppIndexEntry | null; onClose: () => void }) {
+function AppBundleChooser({ app, bundles, onClose }: { app: AppIndexEntry | null; bundles: Record<string, any>; onClose: () => void }) {
+  const [expanded, setExpanded] = useState<Set<string>>(() => {
+    if (app && app.bundles.length === 1) return new Set([app.bundles[0].bundleName])
+    return new Set()
+  })
+
   if (!app) return null
   const hasMultiple = app.bundles.length >= 2
+
+  const toggle = (name: string) => {
+    setExpanded((prev) => {
+      const next = new Set(prev)
+      if (next.has(name)) next.delete(name)
+      else next.add(name)
+      return next
+    })
+  }
+
+  function getPatchesForBundle(bundleName: string, channels: string[]): { name: string; use?: boolean }[] {
+    for (const ch of channels) {
+      const key = `${bundleName}:${ch}`
+      const bundle = bundles[key]
+      if (!bundle) continue
+      const appData = (bundle.apps || []).find((a: any) => a.package === app!.package)
+      if (appData?.patches?.length) return appData.patches
+    }
+    return []
+  }
+
+  function getPatchesName(bundleName: string, channels: string[]): string {
+    for (const ch of channels) {
+      const key = `${bundleName}:${ch}`
+      const bundle = bundles[key]
+      if (bundle?.patches_name) return bundle.patches_name
+    }
+    return bundleName
+  }
 
   return (
     <Modal id="app-bundle-chooser" open={!!app} onClose={onClose} ariaLabel={`Add ${app.name} to Morphe`}>
@@ -329,25 +363,54 @@ function AppBundleChooser({ app, onClose }: { app: AppIndexEntry | null; onClose
           <span className="modal-patches-count" id="chooser-count">{app.bundles.length} available</span>
         </div>
         <div className="chooser-bundle-list" id="chooser-bundle-list">
-          {app.bundles.map((b) => (
-            <div key={`${b.bundleName}-${b.repoUrl}`} className="chooser-bundle-item">
-              <div className="chooser-bundle-info">
-                <span className="chooser-bundle-name">{b.bundleName}</span>
-                <div className="chooser-bundle-meta">
-                  {b.channels.map((ch) => <ChannelBadge key={ch} channel={ch} />)}
-                  {b.version && <span className="bundle-version-tag">{b.version}</span>}
+          {app.bundles.map((b) => {
+            const isOpen = expanded.has(b.bundleName)
+            const patches = getPatchesForBundle(b.bundleName, b.channels)
+            const patchesName = getPatchesName(b.bundleName, b.channels)
+            return (
+              <div key={`${b.bundleName}-${b.repoUrl}`} className={`chooser-bundle-item${isOpen ? ' is-open' : ''}`}>
+                <div
+                  className="chooser-bundle-header"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => toggle(b.bundleName)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(b.bundleName) } }}
+                >
+                  <div className="chooser-bundle-info">
+                    <span className="chooser-bundle-name">{patchesName}</span>
+                    <div className="chooser-bundle-meta">
+                      {b.channels.map((ch) => <ChannelBadge key={ch} channel={ch} />)}
+                      {b.version && <span className="bundle-version-tag">{b.version}</span>}
+                      {patches.length > 0 && <span className="chooser-patch-count">{patches.length} patch{patches.length !== 1 ? 'es' : ''}</span>}
+                    </div>
+                  </div>
+                  <span className={`chooser-bundle-chevron${isOpen ? ' open' : ''}`} aria-hidden="true">&#9662;</span>
                 </div>
+                {isOpen && (
+                  <div className="chooser-bundle-patches">
+                    {patches.length === 0 ? (
+                      <div className="chooser-no-patches">No patch details available.</div>
+                    ) : (
+                      patches.map((p, i) => (
+                        <div key={`${p.name}-${i}`} className="chooser-patch-item">
+                          <span className="chooser-patch-name">{p.name}</span>
+                          {p.use === false && <span className="patch-off-badge">Off by default</span>}
+                        </div>
+                      ))
+                    )}
+                    <a
+                      className="add-morphe-btn chooser-add-btn"
+                      href={getAddMorpheUrl(b.repoUrl)}
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Add to Morphe
+                    </a>
+                  </div>
+                )}
               </div>
-              <a
-                className="add-morphe-btn chooser-add-btn"
-                href={getAddMorpheUrl(b.repoUrl)}
-                target="_blank"
-                rel="noopener"
-              >
-                Add to Morphe
-              </a>
-            </div>
-          ))}
+            )
+          })}
         </div>
         {hasMultiple && (
           <div className="chooser-diff-hint" id="chooser-diff-hint">

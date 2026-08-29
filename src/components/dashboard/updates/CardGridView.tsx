@@ -58,12 +58,12 @@ export default function CardGridView({ grouped, sortedSections }: CardGridViewPr
                     onClick={() => handleOpenApp(app.package, bundleName, entry.channels)}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenApp(app.package, bundleName, entry.channels) } }}
                   >
+                    {app.badge_type && <Badge className={appBadgeClass}>{app.badge_type}</Badge>}
                     <AppIcon iconUrl={state.iconCache[app.package] || ''} pkg={app.package} size={32} />
                     <div className="grid-app-meta">
                       <span className="grid-app-name">{resolveAppName(app, state.nameCache)}</span>
                       <span className="grid-app-pkg">{app.package}</span>
                     </div>
-                    {app.badge_type && <Badge className={appBadgeClass}>{app.badge_type}</Badge>}
                   </div>
                 )
               })}

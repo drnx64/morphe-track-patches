@@ -3,7 +3,7 @@ export interface RepoInfo {
   path: string
 }
 
-export const APP_VERSION = '4'
+export const APP_VERSION = '5'
 export const APP_VERSION_KEY = 'morphe_app_version'
 
 export const CACHE_KEYS = {
