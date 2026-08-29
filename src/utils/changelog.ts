@@ -1,6 +1,6 @@
 import type { ChangelogEntry } from '../types/changelog'
 
-const MAX_CHANGELOG_DAYS = 5
+const MAX_CHANGELOG_DAYS = 7
 
 export function limitChangelogDays(entries: ChangelogEntry[]): ChangelogEntry[] {
   if (entries.length <= MAX_CHANGELOG_DAYS) return entries

@@ -241,6 +241,7 @@ def finalize_buffer(buffer_data):
     changelog_json = [entry for entry in changelog_json if entry.get("date") != date_str]
     new_entry = build_changelog_entry(date_str, affected_bundles_dict)
     changelog_json.insert(0, new_entry)
+    changelog_json = changelog_json[:7]
     save_json(changelog_json_path, changelog_json)
 
     # 2. Update changelog.md

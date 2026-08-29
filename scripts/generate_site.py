@@ -41,7 +41,7 @@ def _build_item_description(bundle_entry):
 
 def generate_rss_feed():
     """Generate RSS 2.0 and Atom feed from changelog data."""
-    changelog_path = os.path.join(OUTPUT_DIR, "changelog.json")
+    changelog_path = os.path.join(ROOT_DATA_DIR, "changelog.json")
     if not os.path.exists(changelog_path):
         print("No changelog.json found, skipping RSS generation.")
         return
