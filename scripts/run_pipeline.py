@@ -10,6 +10,7 @@ from fetch_patch_tree import fetch_bundle_tree
 from download_bundles import download_all_bundles
 from fetch_external_repos import fetch_external_repos
 from parse_bundles import parse_all_bundles
+from fetch_patches_names import fetch_patches_names
 from fingerprint_engine import generate_bundle_fingerprints
 from diff_engine import diff_snapshots
 from merge_daily_buffer import update_daily_buffer_run, write_data_files
@@ -37,6 +38,10 @@ def run():
     # Step 4: Parse bundles
     print("\n--- STEP 4: Parsing bundles and validating MPP compatibility ---")
     parse_all_bundles()
+    
+    # Step 4b: Fetch patches names from build.gradle.kts (cached monthly)
+    print("\n--- STEP 4b: Fetching patches names from build.gradle.kts ---")
+    fetch_patches_names()
     
     # Step 5: Fingerprint engine
     print("\n--- STEP 5: Generating fingerprints ---")

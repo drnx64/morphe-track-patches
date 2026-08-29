@@ -31,6 +31,7 @@ export interface BundleData {
   channel: 'stable' | 'dev'
   key?: string
   repo_url: string
+  patches_name?: string
   version: string
   release_tag?: string
   release_date?: string
@@ -44,6 +45,7 @@ export interface BundleEntry {
   bundle: string
   channels: string[]
   repo_url: string
+  patches_name?: string
   version: string
   created_at?: string
   apps: AppData[]

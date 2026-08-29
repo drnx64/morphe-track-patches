@@ -140,6 +140,7 @@ def save_bundles_split(data):
             "channel": record.get("channel", ""),
             "version": record.get("version", ""),
             "repo_url": record.get("repo_url", ""),
+            "patches_name": record.get("patches_name", ""),
             "release_tag": record.get("release_tag", ""),
             "release_date": record.get("release_date", ""),
             "app_count": len(record.get("apps", [])),

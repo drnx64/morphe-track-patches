@@ -147,12 +147,6 @@ export default function TodayUpdatesSection() {
                 </button>
               )}
             </div>
-            {!state.iconsReady && (
-              <div className="updates-loading-badge">
-                <div className="updates-mini-spinner" />
-                <span>Loading icons...</span>
-              </div>
-            )}
           </div>
           <span className="updates-date">Updated: {dateStr}</span>
         </div>

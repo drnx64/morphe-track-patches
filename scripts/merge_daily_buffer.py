@@ -75,7 +75,9 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                 "bundle": bundle_entry["bundle"],
                 "channel": bundle_entry["channel"],
                 "badge_type": bundle_entry["badge_type"],
-                "apps": apps
+                "apps": apps,
+                "repo_url": bundle_entry.get("repo_url", ""),
+                "patches_name": bundle_entry.get("patches_name", "")
             }
         else:
             existing = buffer_bundles[b_key]
@@ -358,6 +360,17 @@ def update_data_files(today_str, buffer_data, snapshot):
 
 def write_data_files():
     """Read current snapshot and write all 4 data files. Safe to call anytime."""
+    # Sync snapshot from parsed_bundles.json if it has newer data
+    parsed_path = os.path.join(RAW_DIR, "parsed_bundles.json")
+    parsed = load_json(parsed_path, default={})
+    if parsed:
+        current = load_current_snapshot()
+        # Sync if parsed has patches_name but current doesn't, or if fingerprints differ
+        parsed_has_names = any(r.get("patches_name") for r in parsed.values())
+        current_has_names = any(r.get("patches_name") for r in (current or {}).values())
+        if parsed_has_names and not current_has_names:
+            save_new_snapshot(parsed)
+            print("[*] Synced snapshot from parsed_bundles.json (patches_name)")
     snapshot = load_current_snapshot()
     if not snapshot:
         print("[*] No snapshot data to write.")

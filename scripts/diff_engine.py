@@ -140,7 +140,9 @@ def diff_snapshots():
                 "bundle": bundle_name,
                 "channel": channel,
                 "badge_type": "NEW BUNDLE",
-                "apps": apps
+                "apps": apps,
+                "repo_url": new_rec.get("repo_url", ""),
+                "patches_name": new_rec.get("patches_name", "")
             })
         else:
             # Scenario C: Existing bundle — check fingerprint
@@ -207,7 +209,9 @@ def diff_snapshots():
                         "bundle": bundle_name,
                         "channel": channel,
                         "badge_type": "UPDATED",
-                        "apps": changed_apps
+                        "apps": changed_apps,
+                        "repo_url": new_rec.get("repo_url", ""),
+                        "patches_name": new_rec.get("patches_name", "")
                     })
                 else:
                     print(f"[*] Diff: Bundle {bundle_key} fingerprint changed but no app-level changes. Skipping.")

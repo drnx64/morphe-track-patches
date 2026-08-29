@@ -1,19 +1,16 @@
-import { useMemo, useCallback, useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useAppContext } from '../../../context/AppContext'
 import { resolveAppName } from '../../../utils/misc'
-import { getRepoInfo } from '../../../utils/url'
 import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
-import type { BundleEntry } from '../../../types/bundles'
-
-const SORT_ORDER: Record<string, number> = { 'NEW APP': 0, 'UPDATED APP': 1, 'REMOVED APP': 2 }
+import { useEntries, useUpdateActions, sortApps, AuthorLink, type EntryItem } from './useEntries'
 
 interface AccordionViewProps {
-  grouped: Record<string, BundleEntry>
+  grouped: Record<string, import('../../../types/bundles').BundleEntry>
   sortedSections: { title: string; names: string[] }[]
 }
 
-function getSummaryLine(entry: BundleEntry): string {
+function getSummaryLine(entry: import('../../../types/bundles').BundleEntry): string {
   const counts = { new: 0, updated: 0, removed: 0 }
   for (const app of entry.apps) {
     if (app.badge_type === 'NEW APP') counts.new++
@@ -27,20 +24,10 @@ function getSummaryLine(entry: BundleEntry): string {
   return parts.join(', ') || `${entry.apps.length} changes`
 }
 
-function AuthorLink({ repoUrl }: { repoUrl?: string }) {
-  if (!repoUrl) return <span className="acc-author">unknown</span>
-  const { isGitLab, path } = getRepoInfo(repoUrl)
-  const author = path.split('/')[0]
-  const href = isGitLab ? `https://gitlab.com/${author}` : `https://github.com/${author}`
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="acc-author">
-      @{author}
-    </a>
-  )
-}
-
 export default function AccordionView({ grouped, sortedSections }: AccordionViewProps) {
   const { state } = useAppContext()
+  const allEntries = useEntries(grouped, sortedSections)
+  const { handleOpenBundle, handleOpenApp } = useUpdateActions()
   const [openItems, setOpenItems] = useState<Set<string>>(() => {
     const all = new Set<string>()
     for (const section of sortedSections) {
@@ -48,20 +35,6 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
     }
     return all
   })
-
-  const handleOpenBundle = useCallback((bundleName: string, channels: string[]) => {
-    window.dispatchEvent(new CustomEvent('open-bundle', { detail: { bundleName, channels, version: '' } }))
-  }, [])
-
-  const handleOpenApp = useCallback((pkg: string, bundleName: string, channels: string[]) => {
-    const stableKey = `${bundleName}:stable`
-    const devKey = `${bundleName}:dev`
-    let appData = state.bundles[stableKey]?.apps?.find((a) => a.package === pkg)
-    if (!appData) appData = state.bundles[devKey]?.apps?.find((a) => a.package === pkg)
-    if (appData) {
-      window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName, channels } }))
-    }
-  }, [state.bundles])
 
   const toggleItem = useCallback((name: string) => {
     setOpenItems((prev) => {
@@ -72,24 +45,12 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
     })
   }, [])
 
-  const allEntries = useMemo(() => {
-    const entries: { bundleName: string; entry: BundleEntry }[] = []
-    for (const section of sortedSections) {
-      for (const name of section.names) {
-        if (grouped[name]) entries.push({ bundleName: name, entry: grouped[name] })
-      }
-    }
-    return entries
-  }, [grouped, sortedSections])
-
   return (
     <div className="acc-list">
-      {allEntries.map(({ bundleName, entry }) => {
+      {allEntries.map(({ bundleName, entry }: EntryItem) => {
         const isOpen = openItems.has(bundleName)
         const badgeClass = entry.badge_type === 'NEW BUNDLE' ? BADGE_CLASSES.NEW_BUNDLE : BADGE_CLASSES.UPDATED_BUNDLE
-        const sortedApps = [...(entry.apps || [])].sort((a, b) => {
-          return (SORT_ORDER[a.badge_type!] ?? 99) - (SORT_ORDER[b.badge_type!] ?? 99)
-        })
+        const sortedApps = sortApps(entry.apps || [])
 
         return (
           <div key={bundleName} className={`acc-item${isOpen ? ' is-open' : ''}`}>
@@ -111,7 +72,7 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
                   {bundleName}
                 </span>
                 <span className="acc-summary">
-                  <AuthorLink repoUrl={entry.repo_url} />
+                  <AuthorLink repoUrl={entry.repo_url} patchesName={entry.patches_name} className="acc-author" />
                   {' · '}
                   {getSummaryLine(entry)}
                 </span>

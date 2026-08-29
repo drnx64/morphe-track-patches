@@ -10,6 +10,8 @@ export interface AffectedBundle {
   apps?: AppData[]
   channels?: string[]
   promoted_from?: boolean
+  repo_url?: string
+  patches_name?: string
 }
 
 export interface ChangeEntry {

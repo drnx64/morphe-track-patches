@@ -15,7 +15,6 @@ interface AppState {
   changes: { affected_bundles?: AffectedBundle[] } | null
   loading: boolean
   loadingProgress: number
-  loadingLog: string[]
   iconsReady: boolean
   loadingStatus: string
   filters: { search: string; channel: 'all' | 'stable' | 'dev' }
@@ -35,8 +34,6 @@ export type AppAction =
   | { type: 'SET_CHANGES'; payload: { affected_bundles?: AffectedBundle[] } | null }
   | { type: 'SET_LOADING'; payload: boolean }
   | { type: 'SET_LOADING_PROGRESS'; payload: number }
-  | { type: 'SET_LOADING_LOG'; payload: string }
-  | { type: 'CLEAR_LOADING_LOG' }
   | { type: 'SET_LOADING_STATUS'; payload: string }
   | { type: 'SET_ICONS_READY'; payload: boolean }
   | { type: 'SET_FILTERS'; payload: Partial<AppState['filters']> }
@@ -64,7 +61,6 @@ const initialState: AppState = {
   changes: null,
   loading: true,
   loadingProgress: 0,
-  loadingLog: [],
   iconsReady: false,
   loadingStatus: 'Initializing...',
   filters: { search: '', channel: 'all' },
@@ -94,10 +90,6 @@ function appReducer(state: AppState, action: AppAction): AppState {
       return { ...state, loading: action.payload }
     case 'SET_LOADING_PROGRESS':
       return { ...state, loadingProgress: action.payload }
-    case 'SET_LOADING_LOG':
-      return { ...state, loadingLog: [...state.loadingLog, action.payload] }
-    case 'CLEAR_LOADING_LOG':
-      return { ...state, loadingLog: [] }
     case 'SET_LOADING_STATUS':
       return { ...state, loadingStatus: action.payload }
     case 'SET_ICONS_READY':

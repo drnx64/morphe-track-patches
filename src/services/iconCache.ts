@@ -1,4 +1,4 @@
-const VERBOSE = true
+const VERBOSE = import.meta.env.DEV
 
 function log(...args: unknown[]) {
   if (VERBOSE) console.log('[iconCache]', ...args)

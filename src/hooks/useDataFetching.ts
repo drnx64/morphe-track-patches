@@ -1,4 +1,4 @@
-const VERBOSE = true
+const VERBOSE = import.meta.env.DEV
 
 function log(...args: unknown[]) {
   if (VERBOSE) console.log('[useDataFetching]', ...args)
@@ -11,7 +11,6 @@ import {
   fetchCore,
   fetchStats,
   fetchChanges,
-  fetchBundles,
   fetchChangelog,
   fetchAllData,
   fetchLastChecked,
@@ -33,22 +32,22 @@ let loadPromise: Promise<void> | null = null
 
 async function fetchIconAndNameCaches(dispatch: React.Dispatch<AppAction>) {
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Loading icons...' })
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[icons] fetching icon cache...' })
+  log('[icons] fetching icon cache...')
   const iconData = await fetchIconCache()
   log(`icon cache: ${Object.keys(iconData).length} entries`)
   dispatch({ type: 'SET_ICON_CACHE', payload: iconData })
   idbSet(CACHE_KEYS.ICONS, iconData)
-  dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ ${Object.keys(iconData).length} icons` })
+  log(`  ✓ ${Object.keys(iconData).length} icons`)
 
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Loading app names...' })
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[names] fetching name cache...' })
+  log('[names] fetching name cache...')
   const nameData = await fetchNameCache()
   if (nameData && Object.keys(nameData).length > 0) {
     dispatch({ type: 'SET_NAME_CACHE', payload: nameData })
     idbSet(CACHE_KEYS.NAMES, nameData)
-    dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ ${Object.keys(nameData).length} app names` })
+    log(`  ✓ ${Object.keys(nameData).length} app names`)
   } else {
-    dispatch({ type: 'SET_LOADING_LOG', payload: '  ✓ name cache empty' })
+    log('  ✓ name cache empty')
   }
   return iconData
 }
@@ -58,11 +57,11 @@ function startIconPreload(
   dispatch: React.Dispatch<AppAction>,
   priorityPkgs?: string[],
 ) {
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[icons] loading icons...' })
+  log('[icons] loading icons...')
   preloadIcons(iconData, (loaded, total) => {
-    dispatch({ type: 'SET_LOADING_LOG', payload: `[icons] ${loaded}/${total} icons loaded` })
+    log(`[icons] ${loaded}/${total} icons loaded`)
   }, priorityPkgs?.length ? priorityPkgs : undefined).then(() => {
-    dispatch({ type: 'SET_LOADING_LOG', payload: '[icons] all icons loaded' })
+    log('[icons] all icons loaded')
   }).finally(() => {
     dispatch({ type: 'SET_ICONS_READY', payload: true })
   })
@@ -70,15 +69,14 @@ function startIconPreload(
 
 async function runLoad(dispatch: React.Dispatch<AppAction>) {
   log('loadData started')
-  dispatch({ type: 'CLEAR_LOADING_LOG' })
   dispatch({ type: 'SET_LOADING', payload: true })
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 0 })
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Initializing...' })
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[init] starting data load...' })
+  log('[init] starting data load...')
 
   log('checking IndexedDB cache...')
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Checking cache...' })
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[cache] reading IndexedDB...' })
+  log('[cache] reading IndexedDB...')
   const [cachedLive, cachedIcons, cachedNames, cachedChangelog, cachedBundleIndex] = await Promise.all([
     idbGet<any>(CACHE_KEYS.LIVE),
     idbGet<Record<string, string>>(CACHE_KEYS.ICONS),
@@ -110,10 +108,9 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
         lastChecked: cachedLive.lastChecked || cachedLive.last_run || '',
       },
     })
-    dispatch({ type: 'SET_LOADING_LOG', payload: '[cache] loaded cached data from IndexedDB' })
+    log('[cache] loaded cached data from IndexedDB')
   } else {
     log('no IndexedDB cache available — first visit')
-    dispatch({ type: 'SET_LOADING_LOG', payload: '[cache] no cached data found — first visit' })
   }
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 15 })
 
@@ -130,17 +127,17 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
 
     // Phase 2: Core metadata
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching core data...' })
-    dispatch({ type: 'SET_LOADING_LOG', payload: '[fetch] /data/core.json' })
+    log('[fetch] /data/core.json')
     const core = await fetchCore()
     log(`core fetched: date=${core?.date}`)
-    dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ core metadata (date: ${core?.date || 'unknown'})` })
+    log(`  ✓ core metadata (date: ${core?.date || 'unknown'})`)
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 38 })
 
     // Phase 3: Stats + changes (small files)
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching statistics...' })
     const [stats, changes] = await Promise.all([fetchStats(), fetchChanges()])
     log(`stats fetched, changes: ${changes?.affected_bundles?.length ?? 0} affected`)
-    dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ stats + changes (${changes?.affected_bundles?.length ?? 0} affected)` })
+    log(`  ✓ stats + changes (${changes?.affected_bundles?.length ?? 0} affected)`)
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 45 })
 
     // Phase 4: Changelog + last_run (small files)
@@ -148,20 +145,20 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     const cl = limitChangelogDays(rawCl as ChangelogEntry[])
     const lastChecked = lc || core?.lastChecked || core?.last_run || ''
     dispatch({ type: 'SET_CHANGELOG', payload: cl })
-    dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ changelog (${cl.length} entries) + last_run` })
+    log(`  ✓ changelog (${cl.length} entries) + last_run`)
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 50 })
 
     // Phase 5: Bundles — batched with progress
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching bundles...' })
-    dispatch({ type: 'SET_LOADING_LOG', payload: '[fetch] loading bundles in batches...' })
+    log('[fetch] loading bundles in batches...')
     const bundles = await fetchBundlesBatched((loaded, total) => {
-      dispatch({ type: 'SET_LOADING_LOG', payload: `[bundles] ${loaded}/${total} loaded` })
+      log(`[bundles] ${loaded}/${total} loaded`)
       const pct = 50 + Math.round((loaded / total) * 40)
       dispatch({ type: 'SET_LOADING_PROGRESS', payload: pct })
     })
     const bundleCount = Object.keys(bundles).length
     log(`bundles fetched: ${bundleCount}`)
-    dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ ${bundleCount} bundles` })
+    log(`  ✓ ${bundleCount} bundles`)
 
     // Phase 6: Save everything
     dispatch({ type: 'SET_BUNDLES', payload: bundles })
@@ -182,8 +179,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     idbSet(CACHE_KEYS.LIVE, livePayload)
     idbSet(CACHE_KEYS.CHANGELOG, cl)
     idbSet(CACHE_KEYS.BUNDLE_INDEX, bundleIndex)
-    log('first visit load complete')
-    dispatch({ type: 'SET_LOADING_LOG', payload: `[done] first visit complete — ${bundleCount} bundles` })
+    log(`[done] first visit complete — ${bundleCount} bundles`)
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
     dispatch({ type: 'SET_LOADING', payload: false })
     return
@@ -200,12 +196,12 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
 
   // Phase 2: Check core.json to see if data changed
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Checking for updates...' })
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[check] fetching core.json to compare dates...' })
+  log('[check] fetching core.json to compare dates...')
   const core = await fetchCore()
   const cachedDate = cachedLive.date || ''
   const freshDate = core?.date || ''
   log(`cached date: "${cachedDate}", fresh date: "${freshDate}"`)
-  dispatch({ type: 'SET_LOADING_LOG', payload: `[check] cached=${cachedDate || 'none'}, fresh=${freshDate || 'none'}` })
+  log(`[check] cached=${cachedDate || 'none'}, fresh=${freshDate || 'none'}`)
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 35 })
 
   // Wait for icon/name caches to finish fetching
@@ -214,7 +210,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   if (freshDate && freshDate === cachedDate) {
     // ── Same data, nothing to update ──
     log('data is up to date, skipping fetch')
-    dispatch({ type: 'SET_LOADING_LOG', payload: '[check] ✓ data is current, no fetch needed' })
+    log('[check] ✓ data is current, no fetch needed')
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Up to date!' })
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
     dispatch({ type: 'SET_LOADING', payload: false })
@@ -223,14 +219,14 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
 
   // ── New data available — fetch diffs ──
   log('new data detected, fetching updates...')
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[update] new data detected, fetching diffs...' })
+  log('[update] new data detected, fetching diffs...')
 
   // Phase 3: Stats + changes (lightweight)
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching updates...' })
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[fetch] stats.json + changes.json' })
+  log('[fetch] stats.json + changes.json')
   const [stats, changes] = await Promise.all([fetchStats(), fetchChanges()])
   log(`stats fetched, changes: ${changes?.affected_bundles?.length ?? 0} affected`)
-  dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ changes (${changes?.affected_bundles?.length ?? 0} affected bundles)` })
+  log(`  ✓ changes (${changes?.affected_bundles?.length ?? 0} affected bundles)`)
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 50 })
 
   // Phase 4: Changelog + last_run
@@ -252,19 +248,19 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
 
   // Phase 5: Incremental bundle fetch — only changed versions
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Updating bundles...' })
-  dispatch({ type: 'SET_LOADING_LOG', payload: '[fetch] comparing bundle index...' })
+  log('[fetch] comparing bundle index...')
   const { bundles, index: newIndex } = await fetchBundlesIncremental(
     cachedLive.bundles || {},
     cachedBundleIndex,
     (loaded, total) => {
-      dispatch({ type: 'SET_LOADING_LOG', payload: `[bundles] ${loaded}/${total} updated` })
+      log(`[bundles] ${loaded}/${total} updated`)
       const pct = 50 + Math.round((loaded / total) * 40)
       dispatch({ type: 'SET_LOADING_PROGRESS', payload: pct })
     },
   )
   const bundleCount = Object.keys(bundles).length
   log(`bundles after incremental: ${bundleCount}`)
-  dispatch({ type: 'SET_LOADING_LOG', payload: `  ✓ ${bundleCount} bundles (incremental update)` })
+  log(`  ✓ ${bundleCount} bundles (incremental update)`)
 
   // Phase 6: Update state + IDB
   dispatch({ type: 'SET_BUNDLES', payload: bundles })
@@ -287,8 +283,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   idbSet(CACHE_KEYS.LIVE, livePayload)
   idbSet(CACHE_KEYS.CHANGELOG, cl)
   idbSet(CACHE_KEYS.BUNDLE_INDEX, newIndex)
-  log('returning visit update complete')
-  dispatch({ type: 'SET_LOADING_LOG', payload: `[done] update complete — ${bundleCount} bundles` })
+  log(`[done] update complete — ${bundleCount} bundles`)
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
   dispatch({ type: 'SET_LOADING', payload: false })
 }

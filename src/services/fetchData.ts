@@ -1,4 +1,4 @@
-const VERBOSE = true
+const VERBOSE = import.meta.env.DEV
 
 function log(...args: unknown[]) {
   if (VERBOSE) console.log('[fetchData]', ...args)
@@ -32,6 +32,7 @@ export interface BundleIndexEntry {
   channel: string
   version: string
   repo_url: string
+  patches_name?: string
   release_tag?: string
   release_date?: string
   app_count: number

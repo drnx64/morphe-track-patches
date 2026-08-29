@@ -1,65 +1,25 @@
-import { useMemo, useCallback } from 'react'
 import { useAppContext } from '../../../context/AppContext'
 import { resolveAppName } from '../../../utils/misc'
-import { getRepoInfo } from '../../../utils/url'
 import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
-import type { BundleEntry } from '../../../types/bundles'
-
-const SORT_ORDER: Record<string, number> = { 'NEW APP': 0, 'UPDATED APP': 1, 'REMOVED APP': 2 }
+import { useEntries, useUpdateActions, sortApps, AuthorLink } from './useEntries'
 
 interface TimelineViewProps {
-  grouped: Record<string, BundleEntry>
+  grouped: Record<string, import('../../../types/bundles').BundleEntry>
   sortedSections: { title: string; names: string[] }[]
 }
 
-function AuthorLink({ repoUrl }: { repoUrl?: string }) {
-  if (!repoUrl) return <span className="tl-author">unknown</span>
-  const { isGitLab, path } = getRepoInfo(repoUrl)
-  const author = path.split('/')[0]
-  const href = isGitLab ? `https://gitlab.com/${author}` : `https://github.com/${author}`
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="tl-author">
-      @{author}
-    </a>
-  )
-}
-
 export default function TimelineView({ grouped, sortedSections }: TimelineViewProps) {
-  const { state, dispatch } = useAppContext()
-
-  const handleOpenBundle = useCallback((bundleName: string, channels: string[]) => {
-    window.dispatchEvent(new CustomEvent('open-bundle', { detail: { bundleName, channels, version: '' } }))
-  }, [])
-
-  const handleOpenApp = useCallback((pkg: string, bundleName: string, channels: string[]) => {
-    const stableKey = `${bundleName}:stable`
-    const devKey = `${bundleName}:dev`
-    let appData = state.bundles[stableKey]?.apps?.find((a) => a.package === pkg)
-    if (!appData) appData = state.bundles[devKey]?.apps?.find((a) => a.package === pkg)
-    if (appData) {
-      window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName, channels } }))
-    }
-  }, [state.bundles])
-
-  const allEntries = useMemo(() => {
-    const entries: { bundleName: string; entry: BundleEntry }[] = []
-    for (const section of sortedSections) {
-      for (const name of section.names) {
-        if (grouped[name]) entries.push({ bundleName: name, entry: grouped[name] })
-      }
-    }
-    return entries
-  }, [grouped, sortedSections])
+  const { state } = useAppContext()
+  const allEntries = useEntries(grouped, sortedSections)
+  const { handleOpenBundle, handleOpenApp } = useUpdateActions()
 
   return (
     <div className="tl-track">
       {allEntries.map(({ bundleName, entry }) => {
         const dotColor = entry.badge_type === 'NEW BUNDLE' ? 'var(--color-rare)' : 'var(--color-normal)'
         const badgeClass = entry.badge_type === 'NEW BUNDLE' ? BADGE_CLASSES.NEW_BUNDLE : BADGE_CLASSES.UPDATED_BUNDLE
-        const sortedApps = [...(entry.apps || [])].sort((a, b) => {
-          return (SORT_ORDER[a.badge_type!] ?? 99) - (SORT_ORDER[b.badge_type!] ?? 99)
-        })
+        const sortedApps = sortApps(entry.apps || [])
 
         return (
           <div key={bundleName} className="tl-entry" style={{ '--dot-color': dotColor } as React.CSSProperties}>
@@ -74,7 +34,7 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
               >
                 {bundleName}
               </strong>
-              <AuthorLink repoUrl={entry.repo_url} />
+              <AuthorLink repoUrl={entry.repo_url} patchesName={entry.patches_name} className="tl-author" />
             </div>
             <div className="tl-apps">
               {sortedApps.map((app) => {
