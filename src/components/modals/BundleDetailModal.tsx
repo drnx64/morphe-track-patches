@@ -60,12 +60,14 @@ export default function BundleDetailModal() {
 
   const displayVersion = version || stableBundle?.version || devBundle?.version || ''
 
+  const patchesName = stableBundle?.patches_name || devBundle?.patches_name || bundleName
+
   return (
-    <Modal id="bundle-detail-modal" open={open} onClose={close} ariaLabel={bundleName}>
+    <Modal id="bundle-detail-modal" open={open} onClose={close} ariaLabel={patchesName}>
       <div className="modal-header">
         <div className="modal-header-top">
           <div className="modal-app-identity">
-            <h3 className="modal-app-name" id="bundle-modal-name">{bundleName}</h3>
+            <h3 className="modal-app-name" id="bundle-modal-name">{patchesName}</h3>
             <div className="modal-meta-row">
               <span className="modal-bundle-info" id="bundle-modal-channels">Channels: {allChannels.join(', ')}</span>
             </div>

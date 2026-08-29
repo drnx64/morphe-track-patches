@@ -65,14 +65,15 @@ export default function AppDetailModal() {
 
   const bundleOptions = useMemo(() => {
     if (!app) return []
-    const map = new Map<string, { bundleName: string; channels: string[] }>()
+    const map = new Map<string, { bundleName: string; channels: string[]; patchesName: string }>()
     for (const key of Object.keys(state.bundles)) {
       const bundle = state.bundles[key]
       if ((bundle.apps || []).some((a) => a.package === app.package)) {
         const name = key.replace(/:(stable|dev)$/, '')
         const ch = key.endsWith(':stable') ? 'stable' : 'dev'
-        const entry = map.get(name) || { bundleName: name, channels: [] }
+        const entry = map.get(name) || { bundleName: name, channels: [], patchesName: '' }
         if (!entry.channels.includes(ch)) entry.channels.push(ch)
+        if (!entry.patchesName && bundle.patches_name) entry.patchesName = bundle.patches_name
         map.set(name, entry)
       }
     }
@@ -195,7 +196,7 @@ export default function AppDetailModal() {
                   aria-label="Bundle"
                 >
                   {bundleOptions.map((b) => (
-                    <option key={b.bundleName} value={b.bundleName}>{b.bundleName}</option>
+                    <option key={b.bundleName} value={b.bundleName}>{b.patchesName || b.bundleName}</option>
                   ))}
                 </select>
               </span>
@@ -509,7 +510,7 @@ function AppHistoryItem({
           {entry.badgeType || 'UPDATED'}
         </span>
         {entry.version && <span className="badge badge-version">{entry.version}</span>}
-        <span className="app-history-bundle">{entry.bundleName}</span>
+        <span className="app-history-bundle">{bundles[`${entry.bundleName}:stable`]?.patches_name || bundles[`${entry.bundleName}:dev`]?.patches_name || entry.bundleName}</span>
       </div>
       {notesHtml ? (
         <div className="app-history-notes" dangerouslySetInnerHTML={{ __html: notesHtml }} />

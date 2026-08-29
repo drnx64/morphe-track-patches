@@ -140,12 +140,14 @@ export default function BundleHistoryModal() {
         : `https://github.com/${repoInfo.path}/releases`)
     : ''
 
+  const patchesName = currentBundle?.patches_name || bundleName
+
   return (
-    <Modal id="bundle-history-modal" open={open} onClose={close} wide ariaLabel={`${bundleName} history`}>
+    <Modal id="bundle-history-modal" open={open} onClose={close} wide ariaLabel={`${patchesName} history`}>
       <div className="modal-header">
         <div className="modal-header-top">
           <div className="modal-app-identity">
-            <h3 className="modal-app-name" id="bundle-history-title">{bundleName} patches</h3>
+            <h3 className="modal-app-name" id="bundle-history-title">{patchesName}</h3>
             <div className="modal-meta-row">
               <span className="modal-bundle-info" id="bundle-history-subtitle">Releases &amp; update history</span>
             </div>
