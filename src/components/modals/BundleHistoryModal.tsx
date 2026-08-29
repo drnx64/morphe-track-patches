@@ -6,6 +6,7 @@ import { stripVersionHeader, parseReleaseNotes, renderReleaseSections } from '..
 import { formatFriendlyDate, formatTime } from '../../utils/format'
 import { getRepoInfo } from '../../utils/url'
 import { escHtml } from '../../utils/html'
+import { CLOSE_ICON, ARROW_RIGHT } from '../../utils/svg'
 import { compareVersions, resolveAppName, getAppIconUrl } from '../../utils/misc'
 import { CACHE_KEYS } from '../../types/utils'
 import Modal from '../shared/Modal'
@@ -153,7 +154,7 @@ export default function BundleHistoryModal() {
             </div>
           </div>
           <div className="modal-header-actions">
-            <button className="modal-close" id="bundle-history-close-btn" aria-label="Close history modal" onClick={close}>&times;</button>
+            <button className="modal-close" id="bundle-history-close-btn" aria-label="Close history modal" onClick={close} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
           </div>
         </div>
       </div>
@@ -201,7 +202,7 @@ export default function BundleHistoryModal() {
 
               {releasesUrl && (
                 <a href={releasesUrl} target="_blank" rel="noopener" className="bundle-release-link">
-                  View all releases{repoInfo.isGitLab ? ' on GitLab' : ' on GitHub'} &rarr;
+                  View all releases{repoInfo.isGitLab ? ' on GitLab' : ' on GitHub'} <span dangerouslySetInnerHTML={{ __html: ARROW_RIGHT }} />
                 </a>
               )}
             </div>

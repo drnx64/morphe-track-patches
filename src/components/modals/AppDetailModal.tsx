@@ -9,6 +9,7 @@ import { formatFriendlyDate } from '../../utils/format'
 import { getPlayStoreUrl, getRepoInfo, getAddMorpheUrl } from '../../utils/url'
 import { escHtml } from '../../utils/html'
 import { CACHE_KEYS } from '../../types/utils'
+import { CLOSE_ICON } from '../../utils/svg'
 import { isWatched, toggleWatched, ensureNotificationPermission } from '../../services/watchlist'
 import Modal from '../shared/Modal'
 import AppIcon from '../shared/AppIcon'
@@ -230,9 +231,7 @@ export default function AppDetailModal() {
             >
               {watched ? 'Watching' : 'Watch'}
             </button>
-            <button className="modal-close" id="modal-close-btn" aria-label="Close modal" onClick={close}>
-              &times;
-            </button>
+            <button className="modal-close" id="modal-close-btn" aria-label="Close modal" onClick={close} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
           </div>
         </div>
         <div className="modal-versions-section">

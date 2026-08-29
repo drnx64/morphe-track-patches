@@ -71,6 +71,19 @@ export function SkeletonUpdates() {
   )
 }
 
+export function SkeletonStats() {
+  return (
+    <div className="stats-grid">
+      {[1, 2, 3, 4].map((i) => (
+        <div key={i} className="stat-card">
+          <SkeletonText width="70%" height="12px" style={{ marginBottom: '0.5rem' }} />
+          <SkeletonText width="40%" height="24px" />
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export function SkeletonChangelog() {
   const cardStyle: React.CSSProperties = {
     background: 'var(--bg-card)',

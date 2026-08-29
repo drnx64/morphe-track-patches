@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
+import { INFO_ICON, CLOSE_ICON } from '../../utils/svg'
 
 export default function ToastNotification() {
   const [message, setMessage] = useState('')
@@ -25,11 +26,9 @@ export default function ToastNotification() {
 
   return (
     <div className={`toast-notification${visible ? ' visible' : ''}`} id="toast-notification">
-      <span className="toast-icon">&#9670;</span>
+      <span className="toast-icon" dangerouslySetInnerHTML={{ __html: INFO_ICON }} />
       <span className="toast-message" id="toast-message">{message}</span>
-      <button className="toast-close" id="toast-close-btn" aria-label="Dismiss" onClick={hide}>
-        &times;
-      </button>
+      <button className="toast-close" id="toast-close-btn" aria-label="Dismiss" onClick={hide} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
     </div>
   )
 }

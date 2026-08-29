@@ -189,6 +189,7 @@ export interface AppBundleRef {
   repoUrl: string
   version: string
   channels: string[]
+  patchesName?: string
 }
 
 export interface AppIndexEntry {
@@ -196,6 +197,7 @@ export interface AppIndexEntry {
   name: string
   iconUrl: string
   bundles: AppBundleRef[]
+  patchesNames: string[]
 }
 
 export function buildAppIndex(
@@ -216,12 +218,16 @@ export function buildAppIndex(
           name: resolveAppName(app, nameCache),
           iconUrl: getAppIconUrl(app, iconCache),
           bundles: [],
+          patchesNames: [],
         }
         map.set(app.package, entry)
       }
+      if (bundle.patches_name && !entry.patchesNames.includes(bundle.patches_name)) {
+        entry.patchesNames.push(bundle.patches_name)
+      }
       let ref = entry.bundles.find((b) => b.bundleName === bundleName && b.repoUrl === repoUrl)
       if (!ref) {
-        ref = { bundleName, repoUrl, version: '', channels: [] }
+        ref = { bundleName, repoUrl, version: '', channels: [], patchesName: bundle.patches_name }
         entry.bundles.push(ref)
       }
       if (!ref.channels.includes(bundle.channel)) ref.channels.push(bundle.channel)

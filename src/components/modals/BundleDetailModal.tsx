@@ -3,7 +3,7 @@ import { useAppContext } from '../../context/AppContext'
 import { resolveAppName, isAppPreRelease, getStaleness } from '../../utils/misc'
 import { getRepoInfo, getAddMorpheUrl } from '../../utils/url'
 import { escHtml } from '../../utils/html'
-import { GITHUB_SVG, GITLAB_SVG, HISTORY_ICON, ARROW_ICON } from '../../utils/svg'
+import { GITHUB_SVG, GITLAB_SVG, HISTORY_ICON, ARROW_ICON, CLOSE_ICON } from '../../utils/svg'
 import Modal from '../shared/Modal'
 import ChannelBadge from '../shared/ChannelBadge'
 import AppIcon from '../shared/AppIcon'
@@ -79,7 +79,7 @@ export default function BundleDetailModal() {
           </div>
           <div className="modal-header-actions">
             <a className="modal-play-btn" id="bundle-modal-repo-link" href={repoUrl} target="_blank" rel="noopener" dangerouslySetInnerHTML={{ __html: iconSvg + ' Repository' }} />
-            <button className="modal-close" id="bundle-modal-close-btn" aria-label="Close bundle modal" onClick={close}>&times;</button>
+            <button className="modal-close" id="bundle-modal-close-btn" aria-label="Close bundle modal" onClick={close} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
           </div>
         </div>
         <div className="bundle-modal-meta">

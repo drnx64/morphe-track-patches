@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { AppProvider } from './context/AppContext'
 import App from './App'
+import LoadingBridge from './components/shared/LoadingBridge'
 import '../assets/style.css'
 
 if ('serviceWorker' in navigator) {
@@ -15,10 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
       <AppProvider>
+        <LoadingBridge />
         <App />
       </AppProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )
-
-document.getElementById('loading-screen')?.remove()

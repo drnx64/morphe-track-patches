@@ -5,7 +5,7 @@ import { useDataFetching } from '../../hooks/useDataFetching'
 import { buildAppIndex, scoreAppSearch, type AppIndexEntry } from '../../utils/misc'
 import { getCachedIconDataUrl } from '../../services/iconCache'
 import { escHtml } from '../../utils/html'
-import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON, GRID_ICON } from '../../utils/svg'
+import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON, GRID_ICON, ARROW_LEFT } from '../../utils/svg'
 import PageShell from '../layout/PageShell'
 import AppDetailModal from '../modals/AppDetailModal'
 import BundleDetailModal from '../modals/BundleDetailModal'
@@ -158,7 +158,7 @@ export default function DiffPage() {
                 className="diff-back-link"
                 aria-label="Back to apps"
               >
-                <span className="diff-back-arrow">&larr;</span>
+                <span className="diff-back-arrow" dangerouslySetInnerHTML={{ __html: ARROW_LEFT }} />
                 <span>Back to Apps</span>
               </Link>
             </div>

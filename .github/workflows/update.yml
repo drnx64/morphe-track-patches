@@ -56,7 +56,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/ public/msg.txt
           if ! git diff --cached --quiet; then
             git diff --cached --stat
             git commit -m "chore(data): auto-update Morphe patch tracking state [skip ci]"

@@ -26,6 +26,7 @@ interface AppState {
 
 export type AppAction =
   | { type: 'SET_BUNDLES'; payload: Record<string, BundleData> }
+  | { type: 'MERGE_BUNDLES'; payload: Record<string, BundleData> }
   | { type: 'SET_ICON_CACHE'; payload: Record<string, string> }
   | { type: 'SET_NAME_CACHE'; payload: Record<string, string> }
   | { type: 'SET_CHANGELOG'; payload: ChangelogEntry[] }
@@ -74,6 +75,8 @@ function appReducer(state: AppState, action: AppAction): AppState {
   switch (action.type) {
     case 'SET_BUNDLES':
       return { ...state, bundles: action.payload }
+    case 'MERGE_BUNDLES':
+      return { ...state, bundles: { ...state.bundles, ...action.payload } }
     case 'SET_ICON_CACHE':
       return { ...state, iconCache: action.payload }
     case 'SET_NAME_CACHE':

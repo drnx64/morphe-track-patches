@@ -4,6 +4,7 @@ import { useDataFetching } from '../../hooks/useDataFetching'
 import { formatFriendlyDate } from '../../utils/format'
 import { groupAffectedBundles, isAppPreRelease, resolveAppName, getAppIconUrl } from '../../utils/misc'
 import { escHtml } from '../../utils/html'
+import { ARROW_LEFT, ARROW_RIGHT } from '../../utils/svg'
 import PageShell from '../layout/PageShell'
 import ScanInfoSection from '../dashboard/ScanInfoSection'
 import AppDetailModal from '../modals/AppDetailModal'
@@ -117,7 +118,7 @@ export default function ChangelogPage() {
                 onClick={() => setPage((p) => Math.max(0, p - 1))}
                 disabled={safePage === 0}
               >
-                &larr; Previous
+                <span dangerouslySetInnerHTML={{ __html: ARROW_LEFT }} /> Previous
               </button>
               <span className="changelog-page-info">
                 Page {safePage + 1} of {totalPages}
@@ -128,7 +129,7 @@ export default function ChangelogPage() {
                 onClick={() => setPage((p) => Math.min(totalPages - 1, p + 1))}
                 disabled={safePage >= totalPages - 1}
               >
-                Next &rarr;
+                Next <span dangerouslySetInnerHTML={{ __html: ARROW_RIGHT }} />
               </button>
             </div>
           )}
@@ -263,7 +264,7 @@ function DayCard({ day, scanIndex, isNew }: { day: ChangelogEntry; scanIndex: nu
         <span className="changelog-batch-badge">Scan #{scanIndex}</span>
         <span>{formatFriendlyDate(day.date)}</span>
         {isNew && <span className="badge badge-new badge-changelog-new">NEW</span>}
-        <span className="changelog-date-arrow">&rarr;</span>
+        <span className="changelog-date-arrow" dangerouslySetInnerHTML={{ __html: ARROW_RIGHT }} />
       </div>
       <div
         dangerouslySetInnerHTML={{ __html: dayHtml }}

@@ -22,9 +22,10 @@ export default function SearchDropdown() {
   const grouped: Record<string, BundleEntry> = {}
   for (const b of Object.values(state.bundles)) {
     if (!grouped[b.bundle]) {
-      grouped[b.bundle] = { bundle: b.bundle, channels: [b.channel], repo_url: b.repo_url, version: b.version || '', apps: [...(b.apps || [])] }
+      grouped[b.bundle] = { bundle: b.bundle, channels: [b.channel], repo_url: b.repo_url, patches_name: b.patches_name, version: b.version || '', apps: [...(b.apps || [])] }
     } else {
       if (b.version && !grouped[b.bundle].version) grouped[b.bundle].version = b.version
+      if (b.patches_name && !grouped[b.bundle].patches_name) grouped[b.bundle].patches_name = b.patches_name
       if (!grouped[b.bundle].channels.includes(b.channel)) grouped[b.bundle].channels.push(b.channel)
       for (const a of b.apps || []) {
         if (!grouped[b.bundle].apps.find((x) => x.package === a.package)) {
@@ -66,7 +67,7 @@ export default function SearchDropdown() {
     }
 
     const matchedApps = fuzzySearchItems(q, allApps, (item) => resolveAppName(item.app, state.nameCache) + ' ' + item.app.package, 10)
-    const matchedBundles = fuzzySearchItems(q, allBundles, (item) => item.bundleName, 5)
+    const matchedBundles = fuzzySearchItems(q, allBundles, (item) => item.bundleName + ' ' + (item.entry.patches_name || ''), 5)
 
     const res: SearchResult[] = [
       ...matchedApps.map((m) => ({ type: 'app' as const, app: m.app, bundleName: m.bundleName })),
@@ -127,6 +128,7 @@ export default function SearchDropdown() {
         }
         if (r.type === 'bundle' && r.bundleName) {
           const appCount = grouped[r.bundleName]?.apps?.length ?? 0
+          const displayName = grouped[r.bundleName]?.patches_name || r.bundleName
           return (
             <div
               key={`bundle-${i}`}
@@ -136,8 +138,8 @@ export default function SearchDropdown() {
             >
               <span className="search-result-icon search-result-icon-bundle">B</span>
               <div className="search-result-info">
-                <span className="search-result-name">{r.bundleName}</span>
-                <span className="search-result-pkg">{appCount} app{appCount !== 1 ? 's' : ''}</span>
+                <span className="search-result-name">{displayName}</span>
+                <span className="search-result-pkg">{r.bundleName} · {appCount} app{appCount !== 1 ? 's' : ''}</span>
               </div>
             </div>
           )

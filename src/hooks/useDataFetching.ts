@@ -134,52 +134,47 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     // ═══════════════════════════════════════════
     log('=== FIRST VISIT: progressive load ===')
 
-    // Phase 1: Icons + names (big caches)
-    const iconData = await fetchIconAndNameCaches(dispatch)
-    startIconPreload(iconData, dispatch)
-    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 30 })
-
-    // Phase 2: Core metadata
-    dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching core data...' })
-    log('[fetch] /data/core.json')
-    const core = await fetchCore()
+    // Phase 1: Core + stats + changes (tiny files, show real content fast)
+    dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching data...' })
+    log('[fetch] core.json + stats.json + changes.json (parallel)')
+    const [core, stats, changes] = await Promise.all([fetchCore(), fetchStats(), fetchChanges()])
     log(`core fetched: date=${core?.date}`)
-    log(`  ✓ core metadata (date: ${core?.date || 'unknown'})`)
-    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 38 })
-
-    // Phase 3: Stats + changes (small files)
-    dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching statistics...' })
-    const [stats, changes] = await Promise.all([fetchStats(), fetchChanges()])
     log(`stats fetched, changes: ${changes?.affected_bundles?.length ?? 0} affected`)
-    log(`  ✓ stats + changes (${changes?.affected_bundles?.length ?? 0} affected)`)
-    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 45 })
+    dispatch({ type: 'SET_STATS', payload: stats || null })
+    dispatch({ type: 'SET_CHANGES', payload: changes || null })
+    notifyWatchedUpdates(changes)
+    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 20 })
 
-    // Phase 4: Changelog + last_run (small files)
+    // Phase 2: Changelog + last_run (small files)
     const [rawCl, lc] = await Promise.all([fetchChangelog(), fetchLastChecked()])
     const cl = limitChangelogDays(rawCl as ChangelogEntry[])
     const lastChecked = lc || core?.lastChecked || core?.last_run || ''
     dispatch({ type: 'SET_CHANGELOG', payload: cl })
+    dispatch({ type: 'SET_METADATA', payload: { liveDataDate: core?.date || '', lastChecked } })
     log(`  ✓ changelog (${cl.length} entries) + last_run`)
+    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 30 })
+
+    // Phase 3: Icons + names (big caches)
+    const iconData = await fetchIconAndNameCaches(dispatch)
+    startIconPreload(iconData, dispatch)
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 50 })
 
-    // Phase 5: Bundles — batched with progress
+    // Phase 4: Bundles — batched with streaming progress
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching bundles...' })
     log('[fetch] loading bundles in batches...')
-    const bundles = await fetchBundlesBatched((loaded, total) => {
+    const bundles = await fetchBundlesBatched((loaded, total, batchBundles) => {
       log(`[bundles] ${loaded}/${total} loaded`)
       const pct = 50 + Math.round((loaded / total) * 40)
       dispatch({ type: 'SET_LOADING_PROGRESS', payload: pct })
+      // Stream partial bundles to state so UI renders progressively
+      dispatch({ type: 'MERGE_BUNDLES', payload: batchBundles })
     })
     const bundleCount = Object.keys(bundles).length
-    log(`bundles fetched: ${bundleCount}`)
     log(`  ✓ ${bundleCount} bundles`)
 
-    // Phase 6: Save everything
+    // Phase 5: Final state update
     dispatch({ type: 'SET_BUNDLES', payload: bundles })
-    dispatch({ type: 'SET_STATS', payload: stats || null })
-    dispatch({ type: 'SET_CHANGES', payload: changes || null })
-    notifyWatchedUpdates(changes)
-    dispatch({ type: 'SET_METADATA', payload: { liveDataDate: core?.date || '', lastChecked } })
+    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
 
     const bundleIndex = await fetchBundleIndex()
     const livePayload = {
@@ -194,7 +189,6 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     idbSet(CACHE_KEYS.CHANGELOG, cl)
     idbSet(CACHE_KEYS.BUNDLE_INDEX, bundleIndex)
     log(`[done] first visit complete — ${bundleCount} bundles`)
-    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
     dispatch({ type: 'SET_LOADING', payload: false })
     return
   }

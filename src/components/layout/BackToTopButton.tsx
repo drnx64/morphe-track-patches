@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { ARROW_UP } from '../../utils/svg'
 
 export default function BackToTopButton() {
   const [visible, setVisible] = useState(false)
@@ -17,8 +18,7 @@ export default function BackToTopButton() {
       id="back-to-top-btn"
       aria-label="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-    >
-      &uarr;
-    </button>
+      dangerouslySetInnerHTML={{ __html: ARROW_UP }}
+    />
   )
 }

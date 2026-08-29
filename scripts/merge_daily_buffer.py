@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 import subprocess
 from datetime import datetime, timezone
 from state_manager import (
@@ -21,7 +22,8 @@ from state_manager import (
     RAW_DIR,
     STATE_DIR,
     OUTPUT_DIR,
-    ROOT_DATA_DIR
+    ROOT_DATA_DIR,
+    ROOT_DIR
 )
 
 RELEASE_CACHE_PATH = os.path.join(STATE_DIR, "release_cache.json")
@@ -360,16 +362,11 @@ def update_data_files(today_str, buffer_data, snapshot):
 
 def write_data_files():
     """Read current snapshot and write all 4 data files. Safe to call anytime."""
-    # Sync snapshot from parsed_bundles.json if it has newer data
+    # Always sync snapshot from parsed_bundles.json (source of truth)
     parsed_path = os.path.join(RAW_DIR, "parsed_bundles.json")
     parsed = load_json(parsed_path, default={})
     if parsed:
-        current = load_current_snapshot()
-        parsed_has_names = any(r.get("patches_name") for r in parsed.values())
-        current_has_names = any(r.get("patches_name") for r in (current or {}).values())
-        if parsed_has_names and not current_has_names:
-            save_new_snapshot(parsed)
-            print("[*] Synced snapshot from parsed_bundles.json (patches_name)")
+        save_new_snapshot(parsed)
     snapshot = load_current_snapshot()
     if not snapshot:
         print("[*] No snapshot data to write.")
@@ -380,6 +377,15 @@ def write_data_files():
     existing_core = load_core_json()
     existing_stats = load_stats_json()
     existing_changes = load_changes_json()
+
+    # Clean patches_name in historical changes entries
+    _clean_re = re.compile(r'\s+for use with\s+Morphe', re.IGNORECASE)
+    _clean_re2 = re.compile(r'\s+for\s+Morphe', re.IGNORECASE)
+    if existing_changes and "affected_bundles" in existing_changes:
+        for ab in existing_changes["affected_bundles"]:
+            if ab.get("patches_name"):
+                ab["patches_name"] = _clean_re.sub('', ab["patches_name"]).strip()
+                ab["patches_name"] = _clean_re2.sub('', ab["patches_name"]).strip()
 
     now = now_utc_iso()
     core = {
@@ -412,6 +418,14 @@ def update_daily_buffer_run():
         if buffer_data.get("affected_bundles"):
             finalize_buffer(buffer_data)
             finalized = True
+            # Clear public/msg.txt on day rollover
+            msg_path = os.path.join(ROOT_DIR, "public", "msg.txt")
+            try:
+                with open(msg_path, "w", encoding="utf-8") as f:
+                    f.write("[]")
+                print(f"[+] Cleared announcements: {msg_path}")
+            except Exception as e:
+                print(f"[!] Failed to clear announcements: {e}")
         else:
             print(f"[*] Older buffer found for {buffer_data['date']} but it was empty. Skipping finalization.")
 

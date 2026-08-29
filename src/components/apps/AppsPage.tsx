@@ -5,7 +5,7 @@ import { useDataFetching } from '../../hooks/useDataFetching'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import { buildAppIndex, scoreAppSearch, type AppIndexEntry } from '../../utils/misc'
 import { getAddMorpheUrl, getPlayStoreUrl } from '../../utils/url'
-import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON } from '../../utils/svg'
+import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON, CHEVRON_DOWN, CLOSE_ICON } from '../../utils/svg'
 import PageShell from '../layout/PageShell'
 import Modal from '../shared/Modal'
 import ChannelBadge from '../shared/ChannelBadge'
@@ -75,7 +75,10 @@ export default function AppsPage() {
 
     if (search.trim()) {
       list = list
-        .map((a) => ({ a, score: scoreAppSearch(search, a.name, a.package) }))
+        .map((a) => {
+          const patchesScore = a.patchesNames.some((pn) => pn.toLowerCase().includes(search.toLowerCase())) ? 500 : 0
+          return { a, score: scoreAppSearch(search, a.name, a.package) + patchesScore }
+        })
         .filter((x) => x.score > 0)
         .sort((x, y) => y.score - x.score || x.a.name.localeCompare(y.a.name))
         .map((x) => x.a)
@@ -353,9 +356,7 @@ function AppBundleChooser({ app, bundles, onClose }: { app: AppIndexEntry | null
               </a>
             </div>
           </div>
-          <button className="modal-close" id="chooser-close-btn" aria-label="Close" onClick={onClose}>
-            &times;
-          </button>
+          <button className="modal-close" id="chooser-close-btn" aria-label="Close" onClick={onClose} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
         </div>
       </div>
 
@@ -386,7 +387,7 @@ function AppBundleChooser({ app, bundles, onClose }: { app: AppIndexEntry | null
                       {patches.length > 0 && <span className="chooser-patch-count">{patches.length} patch{patches.length !== 1 ? 'es' : ''}</span>}
                     </div>
                   </div>
-                  <span className={`chooser-bundle-chevron${isOpen ? ' open' : ''}`} aria-hidden="true">&#9662;</span>
+                  <span className={`chooser-bundle-chevron${isOpen ? ' open' : ''}`} aria-hidden="true" dangerouslySetInnerHTML={{ __html: CHEVRON_DOWN }} />
                 </div>
                 {isOpen && (
                   <div className="chooser-bundle-patches">

@@ -4,6 +4,7 @@ import { resolveAppName } from '../../../utils/misc'
 import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
 import { useEntries, useUpdateActions, sortApps, AuthorLink, type EntryItem } from './useEntries'
+import { CHEVRON_DOWN, CHEVRON_RIGHT } from '../../../utils/svg'
 
 interface AccordionViewProps {
   grouped: Record<string, import('../../../types/bundles').BundleEntry>
@@ -66,7 +67,8 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
       {allEntries.length > 1 && (
         <div className="acc-expand-all">
           <button type="button" className="acc-expand-all-btn" onClick={toggleAll}>
-            {allOpen ? '▾ Collapse all' : '▸ Expand all'}
+            <span dangerouslySetInnerHTML={{ __html: allOpen ? CHEVRON_DOWN : CHEVRON_RIGHT }} />
+            {allOpen ? ' Collapse all' : ' Expand all'}
           </button>
         </div>
       )}
@@ -100,7 +102,7 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
                   {getSummaryLine(entry)}
                 </span>
               </div>
-              <span className="acc-chevron" aria-hidden="true">▾</span>
+              <span className="acc-chevron" aria-hidden="true" dangerouslySetInnerHTML={{ __html: CHEVRON_DOWN }} />
             </button>
             <div className="acc-panel">
               <div className="acc-panel-inner">

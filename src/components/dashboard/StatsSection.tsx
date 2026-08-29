@@ -1,9 +1,19 @@
 import { useMemo } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { formatTime, getTimeAgo } from '../../utils/format'
+import { SkeletonStats } from '../shared/Skeleton'
 
 export default function StatsSection() {
   const { state } = useAppContext()
+
+  if (state.loading && Object.keys(state.bundles).length === 0) {
+    return (
+      <section className="stats-section" aria-labelledby="stats-heading">
+        <h2 className="sr-only" id="stats-heading">Quick Statistics</h2>
+        <SkeletonStats />
+      </section>
+    )
+  }
 
   const lastChecked = state.lastChecked
   const data = state.bundles

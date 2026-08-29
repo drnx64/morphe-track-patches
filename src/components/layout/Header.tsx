@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import SearchBar from '../search/SearchBar'
 import SearchDropdown from '../search/SearchDropdown'
+import AnnouncementBell from '../shared/AnnouncementBell'
 
 const NAV_TABS: ReadonlyArray<{ to: string; label: string; end?: boolean }> = [
   { to: '/', label: 'Apps', end: true },
@@ -21,11 +22,14 @@ export default function Header() {
             <h1 id="main-title">Morphe Tracker</h1>
             <p className="subtitle">Patch monitoring &amp; changelog dashboard</p>
           </div>
-          {!isAppsPage && (
-            <div className="header-search-row">
-              <SearchBar />
-            </div>
-          )}
+          <div className="header-right-row">
+            <AnnouncementBell />
+            {!isAppsPage && (
+              <div className="header-search-row">
+                <SearchBar />
+              </div>
+            )}
+          </div>
         </div>
         <nav className="app-nav" aria-label="Main navigation">
           {NAV_TABS.map((tab) => {

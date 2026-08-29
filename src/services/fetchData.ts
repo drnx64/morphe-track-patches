@@ -179,7 +179,7 @@ export async function fetchBundlesIncremental(
 }
 
 export function fetchBundlesBatched(
-  onProgress?: (loaded: number, total: number) => void,
+  onProgress?: (loaded: number, total: number, batchBundles: Record<string, BundleData>) => void,
 ): Promise<Record<string, BundleData>> {
   return fetchBundleIndex().then(async (index) => {
     const keys = Object.keys(index)
@@ -194,10 +194,14 @@ export function fetchBundlesBatched(
         const data = await fetchBundleData(key)
         return [key, data] as const
       }))
+      const batchBundles: Record<string, BundleData> = {}
       for (const [key, data] of results) {
-        if (data) bundles[key] = data
+        if (data) {
+          bundles[key] = data
+          batchBundles[key] = data
+        }
       }
-      onProgress?.(Math.min(i + BATCH, keys.length), keys.length)
+      onProgress?.(Math.min(i + BATCH, keys.length), keys.length, batchBundles)
     }
     log(`fetchBundlesBatched: loaded ${Object.keys(bundles).length} bundles`)
     return bundles
