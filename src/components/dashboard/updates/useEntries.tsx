@@ -70,7 +70,6 @@ export function AuthorLink({ bundleName, channels, className }: AuthorLinkProps)
   const key = channels.find((ch) => state.bundles[`${bundleName}:${ch}`])
   const bundle = key ? state.bundles[`${bundleName}:${key}`] : null
   const repoUrl = bundle?.repo_url
-  const patchesName = bundle?.patches_name
 
   if (!repoUrl) return <span className={className}>{bundleName}</span>
   const { isGitLab, path } = getRepoInfo(repoUrl)
@@ -78,7 +77,7 @@ export function AuthorLink({ bundleName, channels, className }: AuthorLinkProps)
   const href = isGitLab ? `https://gitlab.com/${author}` : `https://github.com/${author}`
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
-      {patchesName || `@${author}`}
+      @{author}
     </a>
   )
 }
