@@ -1,171 +1,17 @@
-import { useMemo, useCallback, useEffect, useState, useRef } from 'react'
+import { useMemo, useCallback, useEffect } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { formatFriendlyDate, getTimeAgo } from '../../utils/format'
-import { getAppIconUrl, groupAffectedBundles, resolveAppName } from '../../utils/misc'
-import { getCachedIconDataUrl, fetchAndCacheIcon, preloadIconsFromPackages } from '../../services/iconCache'
-import { getRepoInfo } from '../../utils/url'
-import { FALLBACK_ICON } from '../../utils/svg'
-import { Badge, BADGE_CLASSES } from '../shared/Badge'
+import { groupAffectedBundles } from '../../utils/misc'
+import { preloadIconsFromPackages } from '../../services/iconCache'
 import { SkeletonUpdates } from '../shared/Skeleton'
-
-const SORT_ORDER: Record<string, number> = { 'NEW APP': 0, 'UPDATED APP': 1, 'REMOVED APP': 2 }
-
-function getBundleRepoUrl(bundleName: string, bundles: Record<string, any>): string {
-  const stableKey = `${bundleName}:stable`
-  const devKey = `${bundleName}:dev`
-  return bundles[stableKey]?.repo_url || bundles[devKey]?.repo_url || ''
-}
-
-function AuthorLink({ repoUrl }: { repoUrl?: string }) {
-  if (!repoUrl) return <span className="author-link">unknown</span>
-  const { isGitLab, path } = getRepoInfo(repoUrl)
-  const author = path.split('/')[0]
-  const href = isGitLab ? `https://gitlab.com/${author}` : `https://github.com/${author}`
-  return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="author-link">
-      @{author}
-    </a>
-  )
-}
+import ViewToggle from './updates/ViewToggle'
+import TimelineView from './updates/TimelineView'
+import AccordionView from './updates/AccordionView'
+import CardGridView from './updates/CardGridView'
 
 function isNewScan(lastChecked: string, lastVisitScan: string): boolean {
   if (!lastChecked || !lastVisitScan) return false
   return lastChecked > lastVisitScan
-}
-
-interface AppRowProps {
-  app: any
-  bundleName: string
-  channels: string[]
-  iconCache: Record<string, string>
-  nameCache: Record<string, string>
-  onOpenApp: (pkg: string, bundleName: string, channels: string[]) => void
-}
-
-function AppRow({ app, bundleName, channels, iconCache, nameCache, onOpenApp }: AppRowProps) {
-  const [iconSrc, setIconSrc] = useState<string | null>(null)
-  const [iconLoading, setIconLoading] = useState(true)
-  const mountedRef = useRef(true)
-
-  const iconUrl = getAppIconUrl(app, iconCache)
-  const appName = resolveAppName(app, nameCache)
-
-  useEffect(() => {
-    return () => { mountedRef.current = false }
-  }, [])
-
-  useEffect(() => {
-    if (!iconUrl) {
-      setIconSrc(null)
-      setIconLoading(false)
-      return
-    }
-
-    const cached = getCachedIconDataUrl(iconUrl)
-    if (cached) {
-      setIconSrc(cached)
-      setIconLoading(false)
-      return
-    }
-
-    setIconLoading(true)
-    fetchAndCacheIcon(iconUrl).then((dataUrl) => {
-      if (!mountedRef.current) return
-      setIconSrc(dataUrl)
-      setIconLoading(false)
-    }).catch(() => {
-      if (!mountedRef.current) return
-      setIconSrc(FALLBACK_ICON)
-      setIconLoading(false)
-    })
-  }, [iconUrl])
-
-  const badgeClass = app.badge_type === 'NEW APP' ? BADGE_CLASSES.NEW_APP
-    : app.badge_type === 'UPDATED APP' ? BADGE_CLASSES.UPDATED_APP
-    : app.badge_type === 'REMOVED APP' ? BADGE_CLASSES.REMOVED_APP
-    : ''
-
-  return (
-    <div
-      className="update-row update-app-row"
-      role="button"
-      tabIndex={0}
-      onClick={() => onOpenApp(app.package, bundleName, channels)}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpenApp(app.package, bundleName, channels) } }}
-    >
-      <div className="update-app-left">
-        {app.badge_type && <Badge className={badgeClass}>{app.badge_type}</Badge>}
-        {app.promoted_from && <Badge className={BADGE_CLASSES.PROMOTED}>MOVED TO STABLE</Badge>}
-      </div>
-      <div className="update-app-icon-wrap">
-        {iconLoading && iconUrl ? (
-          <div className="update-icon-spinner" />
-        ) : iconSrc ? (
-          <img className="app-icon" src={iconSrc} alt="" onError={(e) => { if (e.currentTarget.src !== FALLBACK_ICON) e.currentTarget.src = FALLBACK_ICON }} />
-        ) : (
-          <img className="app-icon" src={FALLBACK_ICON} alt="" />
-        )}
-      </div>
-      <strong className="cl-app-link">{appName}</strong>
-    </div>
-  )
-}
-
-interface BundleGroupProps {
-  bundleName: string
-  entry: any
-  bundles: Record<string, any>
-  iconCache: Record<string, string>
-  nameCache: Record<string, string>
-  onOpenBundle: (name: string, channels: string[]) => void
-  onOpenApp: (pkg: string, bundleName: string, channels: string[]) => void
-}
-
-function BundleGroup({ bundleName, entry, bundles, iconCache, nameCache, onOpenBundle, onOpenApp }: BundleGroupProps) {
-  const repoUrl = getBundleRepoUrl(bundleName, bundles)
-
-  const badgeClass = entry.badge_type === 'NEW BUNDLE' ? BADGE_CLASSES.NEW_BUNDLE
-    : entry.badge_type === 'UPDATED' ? BADGE_CLASSES.UPDATED_BUNDLE
-    : ''
-
-  const sortedApps = useMemo(() => {
-    return [...(entry.apps || [])].sort((a, b) => {
-      const aOrder = SORT_ORDER[a.badge_type!] ?? 99
-      const bOrder = SORT_ORDER[b.badge_type!] ?? 99
-      return aOrder - bOrder
-    })
-  }, [entry.apps])
-
-  return (
-    <div className="update-bundle-group">
-      <div className="update-row update-bundle-header-row">
-        {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
-        <strong
-          className="cl-bundle-link"
-          role="button"
-          tabIndex={0}
-          onClick={() => onOpenBundle(bundleName, entry.channels)}
-          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpenBundle(bundleName, entry.channels) } }}
-        >
-          {bundleName}
-        </strong>
-        <AuthorLink repoUrl={repoUrl} />
-      </div>
-      <div className="update-bundle-apps">
-        {sortedApps.map((app) => (
-          <AppRow
-            key={app.package}
-            app={app}
-            bundleName={bundleName}
-            channels={entry.channels}
-            iconCache={iconCache}
-            nameCache={nameCache}
-            onOpenApp={onOpenApp}
-          />
-        ))}
-      </div>
-    </div>
-  )
 }
 
 export default function TodayUpdatesSection() {
@@ -224,20 +70,6 @@ export default function TodayUpdatesSection() {
     return sections
   }, [grouped])
 
-  const handleOpenBundle = useCallback((bundleName: string, channels: string[]) => {
-    window.dispatchEvent(new CustomEvent('open-bundle', { detail: { bundleName, channels, version: '' } }))
-  }, [])
-
-  const handleOpenApp = useCallback((pkg: string, bundleName: string, channels: string[]) => {
-    const stableKey = `${bundleName}:stable`
-    const devKey = `${bundleName}:dev`
-    let appData = state.bundles[stableKey]?.apps?.find((a: any) => a.package === pkg)
-    if (!appData) appData = state.bundles[devKey]?.apps?.find((a: any) => a.package === pkg)
-    if (appData) {
-      window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName, channels } }))
-    }
-  }, [state.bundles])
-
   const updateDate = state.liveDataDate || (state.lastChecked ? state.lastChecked.split('T')[0] : '')
   const dateStr = updateDate ? formatFriendlyDate(updateDate) : '-'
   const hasChanges = !!grouped && sortedSections.length > 0
@@ -256,7 +88,7 @@ export default function TodayUpdatesSection() {
       <section className="today-updates-section" aria-labelledby="updates-title-heading">
         <div className="updates-card">
           <div className="updates-header">
-            <h2 className="updates-title">Changelog</h2>
+            <h2 className="updates-title">Today's Updates</h2>
             <span className="updates-date">Updated: -</span>
           </div>
           <div className="updates-body">
@@ -278,14 +110,16 @@ export default function TodayUpdatesSection() {
         <div className="updates-card">
           <div className="updates-header">
             <div className="updates-header-left">
-              <h2 className="updates-title">Changelog</h2>
-              {showNewScan && (
-                <button type="button" className="updates-new-scan-badge" onClick={handleDismissNewScan} title="Click to dismiss">
-                  <div className="updates-new-scan-dot" />
-                  <span>NEW SCAN</span>
-                  {lastScanAgo && <span className="updates-new-scan-ago">{lastScanAgo}</span>}
-                </button>
-              )}
+              <div className="updates-title-row">
+                <h2 className="updates-title">Today's Updates</h2>
+                {showNewScan && (
+                  <button type="button" className="updates-new-scan-badge" onClick={handleDismissNewScan} title="Click to dismiss">
+                    <div className="updates-new-scan-dot" />
+                    <span>NEW SCAN</span>
+                    {lastScanAgo && <span className="updates-new-scan-ago">{lastScanAgo}</span>}
+                  </button>
+                )}
+              </div>
             </div>
             <span className="updates-date">Updated: {dateStr}</span>
           </div>
@@ -304,7 +138,7 @@ export default function TodayUpdatesSection() {
         <div className="updates-header">
           <div className="updates-header-left">
             <div className="updates-title-row">
-              <h2 className="updates-title">Changelog</h2>
+              <h2 className="updates-title">Today's Updates</h2>
               {showNewScan && (
                 <button type="button" className="updates-new-scan-badge" onClick={handleDismissNewScan} title="Click to dismiss">
                   <div className="updates-new-scan-dot" />
@@ -322,27 +156,17 @@ export default function TodayUpdatesSection() {
           </div>
           <span className="updates-date">Updated: {dateStr}</span>
         </div>
+        <ViewToggle />
         <div className="updates-body">
-          {sortedSections.map((section) => (
-            <div key={section.title} className="update-section">
-              <div className="updates-section-header">{section.title}</div>
-              {section.names.map((bundleName) => {
-                const entry = grouped![bundleName]
-                return (
-                  <BundleGroup
-                    key={bundleName}
-                    bundleName={bundleName}
-                    entry={entry}
-                    bundles={state.bundles}
-                    iconCache={state.iconCache}
-                    nameCache={state.nameCache}
-                    onOpenBundle={handleOpenBundle}
-                    onOpenApp={handleOpenApp}
-                  />
-                )
-              })}
-            </div>
-          ))}
+          {state.updatesViewMode === 'timeline' && (
+            <TimelineView grouped={grouped} sortedSections={sortedSections} />
+          )}
+          {state.updatesViewMode === 'accordion' && (
+            <AccordionView grouped={grouped} sortedSections={sortedSections} />
+          )}
+          {state.updatesViewMode === 'grid' && (
+            <CardGridView grouped={grouped} sortedSections={sortedSections} />
+          )}
         </div>
       </div>
     </section>

@@ -25,7 +25,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
           cache: 'pip'
 
       - name: Install Dependencies
@@ -39,12 +39,26 @@ jobs:
         run: |
           python scripts/run_pipeline.py
 
+      - name: Verify Data Files
+        run: |
+          echo "Checking essential data files..."
+          for f in data/core.json data/stats.json data/changes.json data/changelog.json data/bundles/_index.json; do
+            if [ ! -f "$f" ]; then
+              echo "ERROR: Missing $f"
+              exit 1
+            fi
+            size=$(stat -c%s "$f" 2>/dev/null || stat -f%z "$f" 2>/dev/null)
+            echo "  $f: ${size} bytes"
+          done
+          echo "All essential files present."
+
       - name: Commit and Push State Changes to main
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add data/
           if ! git diff --cached --quiet; then
+            git diff --cached --stat
             git commit -m "chore(data): auto-update Morphe patch tracking state [skip ci]"
             git push origin main
           else

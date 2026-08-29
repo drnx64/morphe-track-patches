@@ -12,6 +12,7 @@ export const CACHE_KEYS = {
   RELEASE_CACHE: 'release_cache',
   ICONS: 'icons',
   NAMES: 'names',
+  BUNDLE_INDEX: 'bundle_index',
 } as const
 
 export type CacheKey = (typeof CACHE_KEYS)[keyof typeof CACHE_KEYS]

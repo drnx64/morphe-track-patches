@@ -130,6 +130,79 @@ export function fetchChangelog() {
   return fetchJson<unknown[]>('/data/changelog.json', [])
 }
 
+export async function fetchBundlesIncremental(
+  cachedBundles: Record<string, BundleData>,
+  cachedIndex: Record<string, BundleIndexEntry> | null,
+  onProgress?: (loaded: number, total: number) => void,
+): Promise<{ bundles: Record<string, BundleData>; index: Record<string, BundleIndexEntry> }> {
+  const newIndex = await fetchBundleIndex()
+  const newKeys = Object.keys(newIndex)
+
+  const keysToFetch: string[] = []
+  for (const key of newKeys) {
+    const cached = cachedIndex?.[key]
+    const fresh = newIndex[key]
+    if (!cached || cached.version !== fresh.version) {
+      keysToFetch.push(key)
+    }
+  }
+
+  log(`fetchBundlesIncremental: ${newKeys.length} total, ${keysToFetch.length} changed`)
+
+  if (keysToFetch.length === 0) {
+    log('no bundle changes detected, using cached bundles')
+    return { bundles: cachedBundles, index: newIndex }
+  }
+
+  const BATCH = 50
+  const bundles = { ...cachedBundles }
+  for (let i = 0; i < keysToFetch.length; i += BATCH) {
+    const batch = keysToFetch.slice(i, i + BATCH)
+    const results = await Promise.all(batch.map(async (key) => {
+      const data = await fetchBundleData(key)
+      return [key, data] as const
+    }))
+    for (const [key, data] of results) {
+      if (data) bundles[key] = data
+    }
+    onProgress?.(Math.min(i + BATCH, keysToFetch.length), keysToFetch.length)
+  }
+
+  // Remove bundles that no longer exist in the index
+  for (const key of Object.keys(bundles)) {
+    if (!newIndex[key]) delete bundles[key]
+  }
+
+  log(`fetchBundlesIncremental: loaded ${keysToFetch.length} new/changed bundles`)
+  return { bundles, index: newIndex }
+}
+
+export function fetchBundlesBatched(
+  onProgress?: (loaded: number, total: number) => void,
+): Promise<Record<string, BundleData>> {
+  return fetchBundleIndex().then(async (index) => {
+    const keys = Object.keys(index)
+    if (keys.length === 0) return {}
+
+    log(`fetchBundlesBatched: loading ${keys.length} bundles...`)
+    const BATCH = 50
+    const bundles: Record<string, BundleData> = {}
+    for (let i = 0; i < keys.length; i += BATCH) {
+      const batch = keys.slice(i, i + BATCH)
+      const results = await Promise.all(batch.map(async (key) => {
+        const data = await fetchBundleData(key)
+        return [key, data] as const
+      }))
+      for (const [key, data] of results) {
+        if (data) bundles[key] = data
+      }
+      onProgress?.(Math.min(i + BATCH, keys.length), keys.length)
+    }
+    log(`fetchBundlesBatched: loaded ${Object.keys(bundles).length} bundles`)
+    return bundles
+  })
+}
+
 import type { ReleaseCacheData, StatsData } from '../types/api'
 import type { BundleData } from '../types/bundles'
 import type { AffectedBundle } from '../types/changes'

@@ -133,12 +133,15 @@ def fetch_app_icon(package_name, skip_cache=False):
         cache = load_json(CACHE_PATH, default={})
         if pkg in cache:
             cached = cache[pkg]
-            if isinstance(cached, str) and cached and not cached.startswith("http"):
+            if isinstance(cached, str) and not cached.startswith("http"):
                 return cached
 
     url = PLAY_STORE_URL.format(pkg)
     resp = _fetch_page_with_retry(url)
     if not resp:
+        cache = load_json(CACHE_PATH, default={})
+        cache[pkg] = ""
+        save_json(CACHE_PATH, cache)
         return ""
 
     icon_url = ""
@@ -148,6 +151,9 @@ def fetch_app_icon(package_name, skip_cache=False):
         icon_url = str(og_image["content"]).strip()
 
     if not icon_url:
+        cache = load_json(CACHE_PATH, default={})
+        cache[pkg] = ""
+        save_json(CACHE_PATH, cache)
         return ""
 
     try:
@@ -169,6 +175,9 @@ def fetch_app_icon(package_name, skip_cache=False):
         save_json(CACHE_PATH, cache)
         return data_url
     except requests.RequestException:
+        cache = load_json(CACHE_PATH, default={})
+        cache[pkg] = ""
+        save_json(CACHE_PATH, cache)
         return ""
 
 
