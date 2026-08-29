@@ -20,7 +20,8 @@ from state_manager import (
     ensure_dirs,
     RAW_DIR,
     STATE_DIR,
-    OUTPUT_DIR
+    OUTPUT_DIR,
+    ROOT_DATA_DIR
 )
 
 RELEASE_CACHE_PATH = os.path.join(STATE_DIR, "release_cache.json")
@@ -233,8 +234,8 @@ def finalize_buffer(buffer_data):
 
     print(f"[*] Finalizing daily buffer for date: {date_str}...")
 
-    # 1. Update changelog.json
-    changelog_json_path = os.path.join(OUTPUT_DIR, "changelog.json")
+    # 1. Update changelog.json — write directly to data/changelog.json (tracked by git)
+    changelog_json_path = os.path.join(ROOT_DATA_DIR, "changelog.json")
     changelog_json = load_json(changelog_json_path, default=[])
 
     changelog_json = [entry for entry in changelog_json if entry.get("date") != date_str]

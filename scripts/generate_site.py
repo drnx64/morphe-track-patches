@@ -127,14 +127,8 @@ def generate_rss_feed():
 def generate_static_files():
     ensure_dirs()
 
-    # Copy changelog.json to data/changelog.json (for frontend access)
-    changelog_src = os.path.join(OUTPUT_DIR, "changelog.json")
-    changelog_dest = os.path.join(ROOT_DATA_DIR, "changelog.json")
-    if os.path.exists(changelog_src):
-        print(f"Copying {changelog_src} to {changelog_dest}...")
-        shutil.copy2(changelog_src, changelog_dest)
-    else:
-        save_json(changelog_dest, [])
+    # changelog.json is now maintained directly in data/changelog.json by merge_daily_buffer.py
+    # No longer copy from data/output/ (which is gitignored and ephemeral on CI)
 
     # Vite serves data/ directly via server.fs.allow — no need to copy to public/data/
     # Bundles are split into data/bundles/<name>.json + data/bundles/_index.json
