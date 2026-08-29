@@ -60,20 +60,25 @@ export function useUpdateActions() {
 }
 
 interface AuthorLinkProps {
-  repoUrl?: string
-  patchesName?: string
+  bundleName: string
+  channels: string[]
   className: string
 }
 
-export function AuthorLink({ repoUrl, patchesName, className }: AuthorLinkProps) {
-  if (!repoUrl) return <span className={className}>unknown</span>
+export function AuthorLink({ bundleName, channels, className }: AuthorLinkProps) {
+  const { state } = useAppContext()
+  const key = channels.find((ch) => state.bundles[`${bundleName}:${ch}`])
+  const bundle = key ? state.bundles[`${bundleName}:${key}`] : null
+  const repoUrl = bundle?.repo_url
+  const patchesName = bundle?.patches_name
+
+  if (!repoUrl) return <span className={className}>{bundleName}</span>
   const { isGitLab, path } = getRepoInfo(repoUrl)
   const author = path.split('/')[0]
   const href = isGitLab ? `https://gitlab.com/${author}` : `https://github.com/${author}`
-  const display = patchesName || `@${author}`
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
-      {patchesName ? display : `@${author}`}
+      {patchesName || `@${author}`}
     </a>
   )
 }

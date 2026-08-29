@@ -85,8 +85,8 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
       <div className="bundle-card-header">
         <div className="bundle-title-group">
           <div className="bundle-title-row">
-            <span className="bundle-name-title" title={bundle.bundle}>
-              {bundle.bundle}
+            <span className="bundle-name-title" title={bundle.patches_name || bundle.bundle}>
+              {bundle.patches_name || bundle.bundle}
             </span>
             <span dangerouslySetInnerHTML={{ __html: updatedBadge }} />
           </div>

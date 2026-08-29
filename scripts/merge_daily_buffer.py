@@ -365,7 +365,6 @@ def write_data_files():
     parsed = load_json(parsed_path, default={})
     if parsed:
         current = load_current_snapshot()
-        # Sync if parsed has patches_name but current doesn't, or if fingerprints differ
         parsed_has_names = any(r.get("patches_name") for r in parsed.values())
         current_has_names = any(r.get("patches_name") for r in (current or {}).values())
         if parsed_has_names and not current_has_names:

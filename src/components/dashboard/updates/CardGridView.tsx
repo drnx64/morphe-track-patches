@@ -14,6 +14,12 @@ export default function CardGridView({ grouped, sortedSections }: CardGridViewPr
   const allEntries = useEntries(grouped, sortedSections)
   const { handleOpenBundle, handleOpenApp } = useUpdateActions()
 
+  function getDisplayName(bundleName: string, channels: string[]): string {
+    const key = channels.find((ch) => state.bundles[`${bundleName}:${ch}`])
+    const bundle = key ? state.bundles[`${bundleName}:${key}`] : null
+    return bundle?.patches_name || bundleName
+  }
+
   return (
     <div className="grid-cards">
       {allEntries.map(({ bundleName, entry }) => {
@@ -31,9 +37,9 @@ export default function CardGridView({ grouped, sortedSections }: CardGridViewPr
                   onClick={() => handleOpenBundle(bundleName, entry.channels)}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenBundle(bundleName, entry.channels) } }}
                 >
-                  {bundleName}
+                  {getDisplayName(bundleName, entry.channels)}
                 </strong>
-                <AuthorLink repoUrl={entry.repo_url} patchesName={entry.patches_name} className="grid-author" />
+                <AuthorLink bundleName={bundleName} channels={entry.channels} className="grid-author" />
               </div>
               {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
             </div>

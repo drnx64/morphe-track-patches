@@ -22,6 +22,7 @@ export default function BundlesGrid({ loading }: BundlesGridProps) {
           bundle: b.bundle,
           channels: [b.channel],
           repo_url: b.repo_url,
+          patches_name: b.patches_name,
           version: b.version || '',
           created_at: b.created_at,
           apps: [...(b.apps || [])],
@@ -29,6 +30,7 @@ export default function BundlesGrid({ loading }: BundlesGridProps) {
       } else {
         if (b.version && !g[b.bundle].version) g[b.bundle].version = b.version
         if (!g[b.bundle].channels.includes(b.channel)) g[b.bundle].channels.push(b.channel)
+        if (!g[b.bundle].patches_name && b.patches_name) g[b.bundle].patches_name = b.patches_name
         const existingPkgs = new Set(g[b.bundle].apps.map((a) => a.package))
         for (const app of b.apps || []) {
           if (!existingPkgs.has(app.package)) {
@@ -43,10 +45,11 @@ export default function BundlesGrid({ loading }: BundlesGridProps) {
 
   const filtered = useMemo(() => {
     let list = Object.values(grouped)
-    if (state.filters.search) {
+      if (state.filters.search) {
       const q = state.filters.search
       list = list.filter((b) => {
         if (b.bundle.toLowerCase().includes(q)) return true
+        if (b.patches_name?.toLowerCase().includes(q)) return true
         return b.apps?.some(
           (app) =>
             resolveAppName(app, state.nameCache).toLowerCase().includes(q) ||

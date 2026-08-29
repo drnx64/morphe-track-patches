@@ -36,6 +36,12 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
     return all
   })
 
+  function getDisplayName(bundleName: string, channels: string[]): string {
+    const key = channels.find((ch) => state.bundles[`${bundleName}:${ch}`])
+    const bundle = key ? state.bundles[`${bundleName}:${key}`] : null
+    return bundle?.patches_name || bundleName
+  }
+
   const toggleItem = useCallback((name: string) => {
     setOpenItems((prev) => {
       const next = new Set(prev)
@@ -69,10 +75,10 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
                   onClick={(e) => { e.stopPropagation(); handleOpenBundle(bundleName, entry.channels) }}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); handleOpenBundle(bundleName, entry.channels) } }}
                 >
-                  {bundleName}
+                  {getDisplayName(bundleName, entry.channels)}
                 </span>
                 <span className="acc-summary">
-                  <AuthorLink repoUrl={entry.repo_url} patchesName={entry.patches_name} className="acc-author" />
+                  <AuthorLink bundleName={bundleName} channels={entry.channels} className="acc-author" />
                   {' · '}
                   {getSummaryLine(entry)}
                 </span>

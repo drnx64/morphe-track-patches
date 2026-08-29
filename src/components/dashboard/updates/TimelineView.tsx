@@ -14,6 +14,12 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
   const allEntries = useEntries(grouped, sortedSections)
   const { handleOpenBundle, handleOpenApp } = useUpdateActions()
 
+  function getDisplayName(bundleName: string, channels: string[]): string {
+    const key = channels.find((ch) => state.bundles[`${bundleName}:${ch}`])
+    const bundle = key ? state.bundles[`${bundleName}:${key}`] : null
+    return bundle?.patches_name || bundleName
+  }
+
   return (
     <div className="tl-track">
       {allEntries.map(({ bundleName, entry }) => {
@@ -32,9 +38,9 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
                 onClick={() => handleOpenBundle(bundleName, entry.channels)}
                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenBundle(bundleName, entry.channels) } }}
               >
-                {bundleName}
+                {getDisplayName(bundleName, entry.channels)}
               </strong>
-              <AuthorLink repoUrl={entry.repo_url} patchesName={entry.patches_name} className="tl-author" />
+              <AuthorLink bundleName={bundleName} channels={entry.channels} className="tl-author" />
             </div>
             <div className="tl-apps">
               {sortedApps.map((app) => {
