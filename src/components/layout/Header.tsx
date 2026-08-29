@@ -11,6 +11,7 @@ const NAV_TABS: ReadonlyArray<{ to: string; label: string; end?: boolean }> = [
 
 export default function Header() {
   const location = useLocation()
+  const isAppsPage = location.pathname === '/' || location.pathname === ''
 
   return (
     <header className="app-header">
@@ -20,9 +21,11 @@ export default function Header() {
             <h1 id="main-title">Morphe Tracker</h1>
             <p className="subtitle">Patch monitoring &amp; changelog dashboard</p>
           </div>
-          <div className="header-search-row">
-            <SearchBar />
-          </div>
+          {!isAppsPage && (
+            <div className="header-search-row">
+              <SearchBar />
+            </div>
+          )}
         </div>
         <nav className="app-nav" aria-label="Main navigation">
           {NAV_TABS.map((tab) => {

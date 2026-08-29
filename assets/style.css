@@ -1119,6 +1119,27 @@ h1 {
   gap: 0.5rem;
 }
 
+.acc-expand-all {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.acc-expand-all-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  transition: color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.acc-expand-all-btn:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 .acc-item {
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--border-radius);
@@ -1589,6 +1610,9 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .filters-row {
@@ -3216,7 +3240,7 @@ h1 {
 
 @media (max-width: 520px) {
   .back-to-top {
-    bottom: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
     right: 1rem;
     width: 40px;
     height: 40px;
@@ -5221,6 +5245,17 @@ h1 {
   gap: 1rem;
 }
 
+.apps-controls-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: var(--bg-primary);
+  padding: 0.5rem 0;
+}
+
 .apps-header {
   display: flex;
   align-items: flex-start;
@@ -5683,6 +5718,14 @@ h1 {
 
 .chooser-patch-name {
   color: var(--text-primary);
+}
+
+.chooser-patch-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+  line-height: 1.35;
 }
 
 .chooser-no-patches {

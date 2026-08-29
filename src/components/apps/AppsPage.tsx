@@ -145,58 +145,60 @@ export default function AppsPage() {
             <span className="apps-count">{apps.length} app{apps.length !== 1 ? 's' : ''}</span>
           </div>
 
-          <div className="apps-search-box">
-            <span className="apps-search-icon" dangerouslySetInnerHTML={{ __html: SEARCH_ICON }} />
-            <input
-              type="text"
-              className="apps-search-input"
-              placeholder="Search apps by name or package..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-            {search && (
-              <span
-                className="apps-search-clear"
-                onClick={() => setSearch('')}
-                dangerouslySetInnerHTML={{ __html: CLEAR_ICON }}
+          <div className="apps-controls-sticky">
+            <div className="apps-search-box">
+              <span className="apps-search-icon" dangerouslySetInnerHTML={{ __html: SEARCH_ICON }} />
+              <input
+                type="text"
+                className="apps-search-input"
+                placeholder="Search apps by name or package..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
-            )}
-          </div>
-
-          <div className="apps-filter-row">
-            <div className="apps-filter-group">
-              <span className="apps-filter-label">Bundles:</span>
-              <button
-                className={`apps-filter-btn${bundleFilter === 'all' ? ' active' : ''}`}
-                onClick={() => setBundleFilter('all')}
-              >
-                All
-              </button>
-              <button
-                className={`apps-filter-btn${bundleFilter === 'multi' ? ' active' : ''}`}
-                onClick={() => setBundleFilter('multi')}
-              >
-                Multi-bundle ({apps.filter((a) => a.bundles.length >= 2).length})
-              </button>
-              <button
-                className={`apps-filter-btn${bundleFilter === 'single' ? ' active' : ''}`}
-                onClick={() => setBundleFilter('single')}
-              >
-                Single-bundle ({apps.filter((a) => a.bundles.length === 1).length})
-              </button>
+              {search && (
+                <span
+                  className="apps-search-clear"
+                  onClick={() => setSearch('')}
+                  dangerouslySetInnerHTML={{ __html: CLEAR_ICON }}
+                />
+              )}
             </div>
-            <div className="apps-sort-group">
-              <label className="apps-filter-label" htmlFor="apps-sort">Sort:</label>
-              <select
-                id="apps-sort"
-                className="apps-sort-select"
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              >
-                <option value="name">Name (A–Z)</option>
-                <option value="bundles-desc">Most bundles</option>
-                <option value="bundles-asc">Fewest bundles</option>
-              </select>
+
+            <div className="apps-filter-row">
+              <div className="apps-filter-group">
+                <span className="apps-filter-label">Bundles:</span>
+                <button
+                  className={`apps-filter-btn${bundleFilter === 'all' ? ' active' : ''}`}
+                  onClick={() => setBundleFilter('all')}
+                >
+                  All
+                </button>
+                <button
+                  className={`apps-filter-btn${bundleFilter === 'multi' ? ' active' : ''}`}
+                  onClick={() => setBundleFilter('multi')}
+                >
+                  Multi-bundle ({apps.filter((a) => a.bundles.length >= 2).length})
+                </button>
+                <button
+                  className={`apps-filter-btn${bundleFilter === 'single' ? ' active' : ''}`}
+                  onClick={() => setBundleFilter('single')}
+                >
+                  Single-bundle ({apps.filter((a) => a.bundles.length === 1).length})
+                </button>
+              </div>
+              <div className="apps-sort-group">
+                <label className="apps-filter-label" htmlFor="apps-sort">Sort:</label>
+                <select
+                  id="apps-sort"
+                  className="apps-sort-select"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
+                >
+                  <option value="name">Name (A-Z)</option>
+                  <option value="bundles-desc">Most bundles</option>
+                  <option value="bundles-asc">Fewest bundles</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -314,7 +316,7 @@ function AppBundleChooser({ app, bundles, onClose }: { app: AppIndexEntry | null
     })
   }
 
-  function getPatchesForBundle(bundleName: string, channels: string[]): { name: string; use?: boolean }[] {
+  function getPatchesForBundle(bundleName: string, channels: string[]): { name: string; description?: string; use?: boolean }[] {
     for (const ch of channels) {
       const key = `${bundleName}:${ch}`
       const bundle = bundles[key]
@@ -379,7 +381,7 @@ function AppBundleChooser({ app, bundles, onClose }: { app: AppIndexEntry | null
                   <div className="chooser-bundle-info">
                     <span className="chooser-bundle-name">{patchesName}</span>
                     <div className="chooser-bundle-meta">
-                      {b.channels.map((ch) => <ChannelBadge key={ch} channel={ch} />)}
+                      {b.channels.length > 1 && b.channels.map((ch) => <ChannelBadge key={ch} channel={ch} />)}
                       {b.version && <span className="bundle-version-tag">{b.version}</span>}
                       {patches.length > 0 && <span className="chooser-patch-count">{patches.length} patch{patches.length !== 1 ? 'es' : ''}</span>}
                     </div>
@@ -393,7 +395,10 @@ function AppBundleChooser({ app, bundles, onClose }: { app: AppIndexEntry | null
                     ) : (
                       patches.map((p, i) => (
                         <div key={`${p.name}-${i}`} className="chooser-patch-item">
-                          <span className="chooser-patch-name">{p.name}</span>
+                          <div className="chooser-patch-text">
+                            <span className="chooser-patch-name">{p.name}</span>
+                            {p.description && <span className="chooser-patch-desc">{p.description}</span>}
+                          </div>
                           {p.use === false && <span className="patch-off-badge">Off by default</span>}
                         </div>
                       ))

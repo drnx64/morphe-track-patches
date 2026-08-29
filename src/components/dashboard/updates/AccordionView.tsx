@@ -51,8 +51,25 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
     })
   }, [])
 
+  const allOpen = openItems.size === allEntries.length
+
+  const toggleAll = useCallback(() => {
+    if (allOpen) {
+      setOpenItems(new Set())
+    } else {
+      setOpenItems(new Set(allEntries.map((e) => e.bundleName)))
+    }
+  }, [allOpen, allEntries])
+
   return (
     <div className="acc-list">
+      {allEntries.length > 1 && (
+        <div className="acc-expand-all">
+          <button type="button" className="acc-expand-all-btn" onClick={toggleAll}>
+            {allOpen ? '▾ Collapse all' : '▸ Expand all'}
+          </button>
+        </div>
+      )}
       {allEntries.map(({ bundleName, entry }: EntryItem) => {
         const isOpen = openItems.has(bundleName)
         const badgeClass = entry.badge_type === 'NEW BUNDLE' ? BADGE_CLASSES.NEW_BUNDLE : BADGE_CLASSES.UPDATED_BUNDLE
