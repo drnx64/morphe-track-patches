@@ -2,6 +2,7 @@ import { useAppContext } from '../../../context/AppContext'
 import { resolveAppName } from '../../../utils/misc'
 import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
+import PatchDiffInline from './PatchDiffInline'
 import { useEntries, useUpdateActions, sortApps, AuthorLink } from './useEntries'
 
 interface TimelineViewProps {
@@ -31,6 +32,7 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
           <div key={bundleName} className="tl-entry" style={{ '--dot-color': dotColor } as React.CSSProperties}>
             <div className="tl-bundle-line">
               {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
+              {entry.extra_badges?.includes('VERSION BUMP') && <Badge className={BADGE_CLASSES.VERSION_BUMP}>VERSION BUMP</Badge>}
               <strong
                 className="tl-bundle-link"
                 role="button"
@@ -47,6 +49,7 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
                 const appBadgeClass = app.badge_type === 'NEW APP' ? BADGE_CLASSES.NEW_APP
                   : app.badge_type === 'UPDATED APP' ? BADGE_CLASSES.UPDATED_APP
                   : app.badge_type === 'REMOVED APP' ? BADGE_CLASSES.REMOVED_APP
+                  : app.badge_type === 'MAJOR UPDATE' ? BADGE_CLASSES.MAJOR_UPDATE
                   : ''
                 return (
                   <div
@@ -54,12 +57,13 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
                     className="tl-app"
                     role="button"
                     tabIndex={0}
-                    onClick={() => handleOpenApp(app.package, bundleName, entry.channels)}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenApp(app.package, bundleName, entry.channels) } }}
+                    onClick={() => handleOpenApp(app.package, bundleName, entry.channels, app)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenApp(app.package, bundleName, entry.channels, app) } }}
                   >
                     {app.badge_type && <Badge className={appBadgeClass}>{app.badge_type}</Badge>}
                     <AppIcon iconUrl={state.iconCache[app.package] || ''} pkg={app.package} size={26} />
                     <span className="tl-app-name">{resolveAppName(app, state.nameCache)}</span>
+                    {app.patch_diff && <PatchDiffInline patchDiff={app.patch_diff} compact />}
                   </div>
                 )
               })}

@@ -24,7 +24,7 @@ export interface AppData {
   promoted_from?: boolean
 }
 
-export type AppBadgeType = 'NEW APP' | 'UPDATED APP' | 'REMOVED APP'
+export type AppBadgeType = 'NEW APP' | 'UPDATED APP' | 'REMOVED APP' | 'MAJOR UPDATE'
 
 export interface BundleData {
   bundle: string
@@ -50,6 +50,7 @@ export interface BundleEntry {
   created_at?: string
   apps: AppData[]
   badge_type?: string
+  extra_badges?: string[]
 }
 
 export interface PatchDiff {

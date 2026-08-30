@@ -438,6 +438,7 @@ function AppHistoryItem({
     'NEW APP': 'badge badge-new',
     'UPDATED APP': 'badge badge-updated',
     'REMOVED APP': 'badge badge-removed',
+    'MAJOR UPDATE': 'badge badge-major-update',
   }
 
   const [notesHtml, setNotesHtml] = useState<string | null>(null)

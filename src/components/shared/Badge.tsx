@@ -23,4 +23,8 @@ export const BADGE_CLASSES = {
   NEW_PATCH: 'badge-new-patch',
   DEV: 'badge-dev',
   SCAN: 'badge-scan',
+  MAJOR_UPDATE: 'badge-major-update',
+  VERSION_BUMP: 'badge-version-bump',
+  PATCHES_ADDED: 'badge-patches-added',
+  PATCHES_REMOVED: 'badge-patches-removed',
 } as const

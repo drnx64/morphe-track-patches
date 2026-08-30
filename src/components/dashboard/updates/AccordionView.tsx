@@ -3,6 +3,7 @@ import { useAppContext } from '../../../context/AppContext'
 import { resolveAppName } from '../../../utils/misc'
 import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
+import PatchDiffInline from './PatchDiffInline'
 import { useEntries, useUpdateActions, sortApps, AuthorLink, type EntryItem } from './useEntries'
 import { CHEVRON_DOWN, CHEVRON_RIGHT } from '../../../utils/svg'
 
@@ -86,6 +87,7 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
               onClick={() => toggleItem(bundleName)}
             >
               {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
+              {entry.extra_badges?.includes('VERSION BUMP') && <Badge className={BADGE_CLASSES.VERSION_BUMP}>VERSION BUMP</Badge>}
               <div className="acc-titles">
                 <span
                   className="acc-bundle-link"
@@ -110,6 +112,7 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
                   const appBadgeClass = app.badge_type === 'NEW APP' ? BADGE_CLASSES.NEW_APP
                     : app.badge_type === 'UPDATED APP' ? BADGE_CLASSES.UPDATED_APP
                     : app.badge_type === 'REMOVED APP' ? BADGE_CLASSES.REMOVED_APP
+                    : app.badge_type === 'MAJOR UPDATE' ? BADGE_CLASSES.MAJOR_UPDATE
                     : ''
                   return (
                     <div
@@ -117,12 +120,13 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
                       className="acc-app-row"
                       role="button"
                       tabIndex={0}
-                      onClick={() => handleOpenApp(app.package, bundleName, entry.channels)}
-                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenApp(app.package, bundleName, entry.channels) } }}
+                      onClick={() => handleOpenApp(app.package, bundleName, entry.channels, app)}
+                      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenApp(app.package, bundleName, entry.channels, app) } }}
                     >
                       {app.badge_type && <Badge className={appBadgeClass}>{app.badge_type}</Badge>}
                       <AppIcon iconUrl={state.iconCache[app.package] || ''} pkg={app.package} size={26} />
                       <span className="acc-app-name">{resolveAppName(app, state.nameCache)}</span>
+                      {app.patch_diff && <PatchDiffInline patchDiff={app.patch_diff} compact />}
                     </div>
                   )
                 })}

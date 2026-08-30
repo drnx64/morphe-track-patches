@@ -1,6 +1,7 @@
 import type { AppData, PatchDiff } from './bundles'
 
-export type BadgeType = 'NEW BUNDLE' | 'UPDATED' | 'NEW APP' | 'UPDATED APP' | 'REMOVED APP' | 'RELEASE'
+export type BadgeType = 'NEW BUNDLE' | 'UPDATED' | 'NEW APP' | 'UPDATED APP' | 'REMOVED APP' | 'RELEASE' | 'MAJOR UPDATE'
+export type AppBadgeType = 'NEW APP' | 'UPDATED APP' | 'REMOVED APP' | 'MAJOR UPDATE'
 
 export interface AffectedBundle {
   bundle: string
@@ -12,6 +13,7 @@ export interface AffectedBundle {
   promoted_from?: boolean
   repo_url?: string
   patches_name?: string
+  extra_badges?: string[]
 }
 
 export interface ChangeEntry {
@@ -20,6 +22,7 @@ export interface ChangeEntry {
   apps: AppData[]
   badge_type: string
   version?: string
+  extra_badges?: string[]
 }
 
 export { PatchDiff }

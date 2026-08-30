@@ -26,16 +26,24 @@ export function isAppPreRelease(
 }
 
 export function groupAffectedBundles(affectedBundles: AffectedBundle[]): Record<string, BundleEntry> {
-  const appPrecedence: Record<string, number> = { 'NEW APP': 0, 'UPDATED APP': 1, 'REMOVED APP': 2 }
+  const appPrecedence: Record<string, number> = { 'NEW APP': 0, 'MAJOR UPDATE': 1, 'UPDATED APP': 2, 'REMOVED APP': 3 }
   const grouped: Record<string, BundleEntry> = {}
 
   for (const b of affectedBundles) {
     const bName = b.bundle
     if (!grouped[bName]) {
-      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: '', repo_url: b.repo_url || '', patches_name: b.patches_name || '' }
+      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [] }
     }
     if (!grouped[bName].channels.includes(b.channel)) {
       grouped[bName].channels.push(b.channel)
+    }
+    // Merge extra_badges (e.g. VERSION BUMP)
+    if (b.extra_badges) {
+      for (const eb of b.extra_badges) {
+        if (!grouped[bName].extra_badges!.includes(eb)) {
+          grouped[bName].extra_badges!.push(eb)
+        }
+      }
     }
     for (const app of b.apps || []) {
       const existing = grouped[bName].apps.find((a) => a.package === app.package)
@@ -44,6 +52,9 @@ export function groupAffectedBundles(affectedBundles: AffectedBundle[]): Record<
       } else {
         if ((appPrecedence[app.badge_type!] ?? 99) < (appPrecedence[existing.badge_type!] ?? 99)) {
           existing.badge_type = app.badge_type
+        }
+        if (app.patch_diff) {
+          existing.patch_diff = app.patch_diff
         }
         if (app.scan_numbers) {
           for (const sn of app.scan_numbers) {

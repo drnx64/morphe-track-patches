@@ -842,13 +842,73 @@ h1 {
   width: 18px;
   height: 18px;
   padding: 0;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  text-transform: none;
-  letter-spacing: 0;
   line-height: 1;
+}
+.badge-major-update {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-dev);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.badge-version-bump {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+.badge-patches-added {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-stable);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.badge-patches-removed {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--color-critical);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+/* ── Inline patch diff (update views) ──────────────── */
+.patch-diff-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.35rem;
+  padding-left: 2.2rem;
+}
+.patch-diff-inline .badge {
+  font-size: 0.6rem;
+  padding: 1px 6px;
+}
+.patch-diff-names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.25rem;
+  padding-left: 2.2rem;
+}
+.patch-diff-name {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+.patch-diff-name.added {
+  color: var(--color-stable);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+.patch-diff-name.removed {
+  color: var(--color-critical);
+  border-color: rgba(244, 63, 94, 0.2);
+  text-decoration: line-through;
+}
+.patch-diff-name.modified {
+  color: var(--color-normal);
+  border-color: rgba(59, 130, 246, 0.2);
 }
 
 .update-bundle-group {

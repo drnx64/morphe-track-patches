@@ -246,6 +246,7 @@ export default function BundleHistoryModal() {
                                   'NEW APP': '<span class="badge badge-new">NEW APP</span>',
                                   'UPDATED APP': '<span class="badge badge-updated">UPDATED APP</span>',
                                   'REMOVED APP': '<span class="badge badge-removed">REMOVED APP</span>',
+                                  'MAJOR UPDATE': '<span class="badge badge-major-update">MAJOR UPDATE</span>',
                                 }
                                 return (
                                   <li key={ai} className="changelog-item">

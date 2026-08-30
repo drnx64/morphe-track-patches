@@ -2,6 +2,7 @@ import { useAppContext } from '../../../context/AppContext'
 import { resolveAppName } from '../../../utils/misc'
 import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
+import PatchDiffInline from './PatchDiffInline'
 import { useEntries, useUpdateActions, sortApps, AuthorLink } from './useEntries'
 
 interface CardGridViewProps {
@@ -42,12 +43,14 @@ export default function CardGridView({ grouped, sortedSections }: CardGridViewPr
                 <AuthorLink bundleName={bundleName} channels={entry.channels} className="grid-author" />
               </div>
               {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
+              {entry.extra_badges?.includes('VERSION BUMP') && <Badge className={BADGE_CLASSES.VERSION_BUMP}>VERSION BUMP</Badge>}
             </div>
             <div className="grid-app-list">
               {sortedApps.map((app) => {
                 const appBadgeClass = app.badge_type === 'NEW APP' ? BADGE_CLASSES.NEW_APP
                   : app.badge_type === 'UPDATED APP' ? BADGE_CLASSES.UPDATED_APP
                   : app.badge_type === 'REMOVED APP' ? BADGE_CLASSES.REMOVED_APP
+                  : app.badge_type === 'MAJOR UPDATE' ? BADGE_CLASSES.MAJOR_UPDATE
                   : ''
                 return (
                   <div
@@ -55,8 +58,8 @@ export default function CardGridView({ grouped, sortedSections }: CardGridViewPr
                     className="grid-app-item"
                     role="button"
                     tabIndex={0}
-                    onClick={() => handleOpenApp(app.package, bundleName, entry.channels)}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenApp(app.package, bundleName, entry.channels) } }}
+                    onClick={() => handleOpenApp(app.package, bundleName, entry.channels, app)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleOpenApp(app.package, bundleName, entry.channels, app) } }}
                   >
                     {app.badge_type && <Badge className={appBadgeClass}>{app.badge_type}</Badge>}
                     <AppIcon iconUrl={state.iconCache[app.package] || ''} pkg={app.package} size={32} />
@@ -64,6 +67,7 @@ export default function CardGridView({ grouped, sortedSections }: CardGridViewPr
                       <span className="grid-app-name">{resolveAppName(app, state.nameCache)}</span>
                       <span className="grid-app-pkg">{app.package}</span>
                     </div>
+                    {app.patch_diff && <PatchDiffInline patchDiff={app.patch_diff} compact />}
                   </div>
                 )
               })}
