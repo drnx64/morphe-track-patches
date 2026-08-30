@@ -293,7 +293,8 @@ def finalize_buffer(buffer_data):
     merge_release_notes(bundles)
     save_core_json(core)
     save_stats_json(stats)
-    save_changes_json(changes)
+    if not preserve_changes_json:
+        save_changes_json(changes_to_save)
     save_bundles_split(bundles)
     print("[*] Finalization state files written successfully.")
 
@@ -352,8 +353,12 @@ def update_data_files(today_str, buffer_data, snapshot):
     print("[*] Live state files updated with the current snapshot.")
 
 
-def write_data_files(has_changes=True):
-    """Read current snapshot and write all 4 data files. Safe to call anytime."""
+def write_data_files(has_changes=True, preserve_changes_json=False):
+    """Read current snapshot and write all 4 data files. Safe to call anytime.
+
+    If preserve_changes_json is True, changes.json is not overwritten.
+    Used on silent runs to keep the previously-written accumulated changes.
+    """
     # Load snapshot directly — do NOT rotate snapshots here
     # Snapshot rotation only happens in update_daily_buffer_run()
     snapshot = load_current_snapshot()
@@ -384,19 +389,22 @@ def write_data_files(has_changes=True):
     }
 
     # Write changes.json: empty when no changes, otherwise keep existing historical data
-    if has_changes:
-        existing_changes = load_changes_json()
-        # Clean patches_name in historical changes entries
-        if existing_changes and "affected_bundles" in existing_changes:
-            _clean_re = re.compile(r'\s+for use with\s+Morphe', re.IGNORECASE)
-            _clean_re2 = re.compile(r'\s+for\s+Morphe', re.IGNORECASE)
-            for ab in existing_changes["affected_bundles"]:
-                if ab.get("patches_name"):
-                    ab["patches_name"] = _clean_re.sub('', ab["patches_name"]).strip()
-                    ab["patches_name"] = _clean_re2.sub('', ab["patches_name"]).strip()
-        changes_to_save = existing_changes if existing_changes and "affected_bundles" in existing_changes else {"affected_bundles": []}
-    else:
-        changes_to_save = {"affected_bundles": []}
+    # If preserve_changes_json is True (silent run), skip writing changes.json entirely
+    changes_to_save = None
+    if not preserve_changes_json:
+        if has_changes:
+            existing_changes = load_changes_json()
+            # Clean patches_name in historical changes entries
+            if existing_changes and "affected_bundles" in existing_changes:
+                _clean_re = re.compile(r'\s+for use with\s+Morphe', re.IGNORECASE)
+                _clean_re2 = re.compile(r'\s+for\s+Morphe', re.IGNORECASE)
+                for ab in existing_changes["affected_bundles"]:
+                    if ab.get("patches_name"):
+                        ab["patches_name"] = _clean_re.sub('', ab["patches_name"]).strip()
+                        ab["patches_name"] = _clean_re2.sub('', ab["patches_name"]).strip()
+            changes_to_save = existing_changes if existing_changes and "affected_bundles" in existing_changes else {"affected_bundles": []}
+        else:
+            changes_to_save = {"affected_bundles": []}
 
     bundles = dict(snapshot)
     merge_release_notes(bundles)

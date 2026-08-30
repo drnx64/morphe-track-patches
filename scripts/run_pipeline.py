@@ -68,7 +68,7 @@ def run():
         # Silent run rule: if no changes and no rollover, sync data files and exit silently
         if not has_changes and not is_rollover:
             log.info("STEP 8: Syncing data files (silent run)")
-            write_data_files(has_changes=False)
+            write_data_files(has_changes=False, preserve_changes_json=True)
             # Save snapshot so next run compares against current state
             new_snapshot_path = os.path.join(RAW_DIR, "parsed_bundles.json")
             new_snapshot = load_json(new_snapshot_path, default={})
