@@ -1,11 +1,12 @@
 import os, re, json, sys, time, urllib.request, urllib.error, urllib.parse, html as html_mod
 from dotenv import load_dotenv
-from state_manager import load_json, save_json, ensure_dirs, STATE_DIR, RAW_DIR
+from state_manager import load_json, save_json, ensure_dirs, STATE_DIR, RAW_DIR, match_release_to_version
+from config import RELEASE_CACHE_TTL_HOURS
 
 load_dotenv()
 
 RELEASE_CACHE_PATH = os.path.join(STATE_DIR, "release_cache.json")
-CACHE_TTL_HOURS = 1
+CACHE_TTL_HOURS = RELEASE_CACHE_TTL_HOURS
 
 
 def fetch_github_releases(owner, repo, retry=3):
@@ -82,20 +83,6 @@ def fetch_gitlab_releases(project_path, retry=3):
             return []
     return []
 
-
-def match_release_to_version(version, releases):
-    if not version:
-        return None
-    v_clean = version.lower().lstrip("v")
-    for r in releases:
-        tag_clean = r["tag"].lower().lstrip("v")
-        if tag_clean == v_clean:
-            return r
-    for r in releases:
-        tag_clean = r["tag"].lower().lstrip("v")
-        if v_clean in tag_clean or tag_clean in v_clean:
-            return r
-    return None
 
 
 def _extract_repos_from_parsed_bundles(parsed_bundles):

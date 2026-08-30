@@ -2,30 +2,7 @@ import os
 import re
 import json
 from datetime import datetime
-from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR
-
-# Common package mapping helper
-COMMON_PACKAGES = {
-    "com.google.android.youtube": "YouTube",
-    "com.google.android.apps.youtube.music": "YouTube Music",
-    "com.reddit.frontpage": "Reddit",
-    "com.twitter.android": "Twitter",
-    "com.instagram.android": "Instagram",
-    "com.zhiliaoapp.musically": "TikTok",
-    "com.spotify.music": "Spotify",
-    "com.whatsapp": "WhatsApp",
-    "org.telegram.messenger": "Telegram",
-    "com.facebook.katana": "Facebook",
-    "com.facebook.orca": "Messenger",
-    "com.discord": "Discord",
-    "com.netflix.mediaclient": "Netflix",
-    "at.gv.oe.app": "OE App",
-    "com.snapchat.android": "Snapchat",
-    "com.pinsight.pinsight": "Pinsight",
-    "com.google.android.apps.photos": "Google Photos",
-    "com.google.android.apps.maps": "Google Maps",
-    "com.google.android.gm": "Gmail",
-}
+from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, load_last_run, save_last_run, COMMON_PACKAGES
 
 def get_app_name(package_name):
     """Normalize package names to a readable display name."""
@@ -308,9 +285,8 @@ def parse_all_bundles():
     parsed_bundles = {}
     errors = []
     
-    # Load last run data to append parsing errors
-    last_run_path = os.path.join(STATE_DIR, "last_run.json")
-    last_run_data = load_json(last_run_path, default={})
+    # Load last run data to append parsing errors (merged from download step)
+    last_run_data = load_last_run()
     if "parse_errors" not in last_run_data:
         last_run_data["parse_errors"] = []
         
@@ -356,10 +332,9 @@ def parse_all_bundles():
     # Save parsed bundles
     save_json(os.path.join(RAW_DIR, "parsed_bundles.json"), parsed_bundles)
     
-    # Update last_run.json with parse errors and status
+    # Merge parse results into last_run.json
     last_run_data["parse_errors"] = errors
-    last_run_data["timestamp"] = datetime.now().isoformat()
-    save_json(last_run_path, last_run_data)
+    save_last_run(last_run_data)
     
     print(f"Parsed {len(parsed_bundles)} valid bundles. Encountered {len(errors)} errors.")
 

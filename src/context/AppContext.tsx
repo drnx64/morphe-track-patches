@@ -22,6 +22,7 @@ interface AppState {
   changelogViewMode: 'grid' | 'list'
   updatesViewMode: 'timeline' | 'accordion' | 'grid'
   lastVisitScan: string
+  fetchErrors: string[]
 }
 
 export type AppAction =
@@ -42,6 +43,7 @@ export type AppAction =
   | { type: 'SET_CHANGELOG_VIEW_MODE'; payload: 'grid' | 'list' }
   | { type: 'SET_UPDATES_VIEW_MODE'; payload: 'timeline' | 'accordion' | 'grid' }
   | { type: 'SET_LAST_VISIT_SCAN'; payload: string }
+  | { type: 'SET_FETCH_ERRORS'; payload: string[] }
 
 function getStoredLastVisitScan(): string {
   try {
@@ -69,6 +71,7 @@ const initialState: AppState = {
   changelogViewMode: (localStorage.getItem('morphe_changelog_view') as 'grid' | 'list') || 'grid',
   updatesViewMode: (localStorage.getItem('morphe_updates_view') as 'timeline' | 'accordion' | 'grid') || 'timeline',
   lastVisitScan: getStoredLastVisitScan(),
+  fetchErrors: [],
 }
 
 function appReducer(state: AppState, action: AppAction): AppState {
@@ -111,6 +114,8 @@ function appReducer(state: AppState, action: AppAction): AppState {
     case 'SET_LAST_VISIT_SCAN':
       try { localStorage.setItem('MorpheTracker_LastVisitScan', action.payload) } catch {}
       return { ...state, lastVisitScan: action.payload }
+    case 'SET_FETCH_ERRORS':
+      return { ...state, fetchErrors: action.payload }
     default:
       return state
   }

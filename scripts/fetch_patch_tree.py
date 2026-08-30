@@ -1,5 +1,4 @@
 import os
-import sys
 import requests
 import time
 from dotenv import load_dotenv
@@ -53,7 +52,7 @@ def fetch_bundle_tree():
             time.sleep(2 ** attempt)
             
     print("Failed to fetch tree after 3 attempts.")
-    sys.exit(1)
+    raise RuntimeError("Failed to fetch repository tree after 3 attempts")
 
 if __name__ == "__main__":
     ensure_dirs()

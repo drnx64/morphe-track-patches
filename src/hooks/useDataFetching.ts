@@ -1,4 +1,4 @@
-const VERBOSE = import.meta.env.DEV
+const VERBOSE = import.meta.env.DEV || window.location.hostname === 'localhost'
 
 function log(...args: unknown[]) {
   if (VERBOSE) console.log('[useDataFetching]', ...args)
@@ -29,6 +29,8 @@ import type { ChangelogEntry } from '../types/changelog'
 
 let loadedOnce = false
 let loadPromise: Promise<void> | null = null
+let lastIconCacheSize = 0
+let lastNameCacheSize = 0
 
 async function migrateIfNeeded(): Promise<boolean> {
   const stored = localStorage.getItem(APP_VERSION_KEY)
@@ -45,18 +47,30 @@ async function fetchIconAndNameCaches(dispatch: React.Dispatch<AppAction>) {
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Loading icons...' })
   log('[icons] fetching icon cache...')
   const iconData = await fetchIconCache()
-  log(`icon cache: ${Object.keys(iconData).length} entries`)
+  const iconCount = Object.keys(iconData).length
+  log(`icon cache: ${iconCount} entries`)
   dispatch({ type: 'SET_ICON_CACHE', payload: iconData })
-  idbSet(CACHE_KEYS.ICONS, iconData)
-  log(`  ✓ ${Object.keys(iconData).length} icons`)
+  if (iconCount !== lastIconCacheSize) {
+    idbSet(CACHE_KEYS.ICONS, iconData)
+    lastIconCacheSize = iconCount
+    log(`  ✓ saved ${iconCount} icons to IDB`)
+  } else {
+    log(`  ✓ icon cache unchanged (${iconCount}), skipping IDB write`)
+  }
 
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Loading app names...' })
   log('[names] fetching name cache...')
   const nameData = await fetchNameCache()
-  if (nameData && Object.keys(nameData).length > 0) {
+  const nameCount = nameData ? Object.keys(nameData).length : 0
+  if (nameData && nameCount > 0) {
     dispatch({ type: 'SET_NAME_CACHE', payload: nameData })
-    idbSet(CACHE_KEYS.NAMES, nameData)
-    log(`  ✓ ${Object.keys(nameData).length} app names`)
+    if (nameCount !== lastNameCacheSize) {
+      idbSet(CACHE_KEYS.NAMES, nameData)
+      lastNameCacheSize = nameCount
+      log(`  ✓ saved ${nameCount} names to IDB`)
+    } else {
+      log(`  ✓ name cache unchanged (${nameCount}), skipping IDB write`)
+    }
   } else {
     log('  ✓ name cache empty')
   }
@@ -85,6 +99,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Initializing...' })
   log('[init] starting data load...')
 
+  try {
   // Version migration: clear stale caches on first visit after deploy
   const migrated = await migrateIfNeeded()
 
@@ -162,7 +177,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     // Phase 4: Bundles — batched with streaming progress
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching bundles...' })
     log('[fetch] loading bundles in batches...')
-    const bundles = await fetchBundlesBatched((loaded, total, batchBundles) => {
+    const { bundles, errors: bundleErrors } = await fetchBundlesBatched((loaded, total, batchBundles) => {
       log(`[bundles] ${loaded}/${total} loaded`)
       const pct = 50 + Math.round((loaded / total) * 40)
       dispatch({ type: 'SET_LOADING_PROGRESS', payload: pct })
@@ -175,6 +190,10 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     // Phase 5: Final state update
     dispatch({ type: 'SET_BUNDLES', payload: bundles })
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
+
+    // Collect fetch errors
+    const allErrors = [...bundleErrors]
+    dispatch({ type: 'SET_FETCH_ERRORS', payload: allErrors })
 
     const bundleIndex = await fetchBundleIndex()
     const livePayload = {
@@ -294,6 +313,13 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   log(`[done] update complete — ${bundleCount} bundles`)
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
   dispatch({ type: 'SET_LOADING', payload: false })
+  } catch (err) {
+    console.error('[useDataFetching] runLoad failed:', err)
+    log('loadData FAILED — clearing loading screen')
+    dispatch({ type: 'SET_LOADING_STATUS', payload: 'Error loading data' })
+    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
+    dispatch({ type: 'SET_LOADING', payload: false })
+  }
 }
 
 export function useDataFetching() {
@@ -329,6 +355,7 @@ export function useDataFetching() {
           type: 'SET_METADATA',
           payload: { liveDataDate: d.date || '', lastChecked },
         })
+        dispatch({ type: 'SET_FETCH_ERRORS', payload: d.errors || [] })
         idbSet(CACHE_KEYS.LIVE, d)
         idbSet(CACHE_KEYS.CHANGELOG, limitedCl)
       })

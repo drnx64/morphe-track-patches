@@ -1,4 +1,5 @@
 import { useState, useCallback, memo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { resolveAppName, getAppIconUrl, isAppPreRelease, getStaleness, getStoredVersions, setStoredVersion } from '../../utils/misc'
 import { getRepoInfo, getAddMorpheUrl } from '../../utils/url'
@@ -13,6 +14,7 @@ interface BundleCardProps {
 }
 
 const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
+  const navigate = useNavigate()
   const { state } = useAppContext()
   const [expanded, setExpanded] = useState(false)
 
@@ -52,19 +54,14 @@ const BundleCard = memo(function BundleCard({ bundle }: BundleCardProps) {
 
   const handleClick = useCallback(() => {
     if (state.viewMode === 'list') {
-      window.location.hash = `bundle=${encodeURIComponent(bundle.bundle)}`
-      window.dispatchEvent(
-        new CustomEvent('open-bundle', {
-          detail: { bundleName: bundle.bundle, channels: bundle.channels, version: bundle.version || '' },
-        }),
-      )
+      navigate(`/bundle/${encodeURIComponent(bundle.bundle)}`)
       return
     }
     setExpanded((prev) => !prev)
     if (bundle.version) {
       setStoredVersion(bundle.bundle, bundle.version)
     }
-  }, [bundle, state.viewMode])
+  }, [bundle, state.viewMode, navigate])
 
   const handleHistory = useCallback(
     (e: React.MouseEvent) => {

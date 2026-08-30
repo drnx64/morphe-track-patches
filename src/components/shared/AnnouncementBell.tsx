@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAnnouncements, type Announcement } from './useAnnouncements'
+import Modal from './Modal'
 import { INFO_ICON, WARNING_ICON, ARROW_RIGHT, CLOSE_ICON } from '../../utils/svg'
 
 const PRIORITY_ICON: Record<string, string> = {
@@ -42,32 +43,30 @@ export default function AnnouncementBell() {
         {ctx.unreadCount > 0 && <span className="announcement-bell-badge">{ctx.unreadCount}</span>}
       </button>
 
-      {modalOpen && (
-        <div className="announcement-modal-overlay" onClick={() => setModalOpen(false)}>
-          <div className="announcement-modal" onClick={(e) => e.stopPropagation()}>
-            <div className="announcement-modal-header">
-              <h3 className="announcement-modal-title">Announcements</h3>
-              <div className="announcement-modal-header-actions">
-                {ctx.unreadCount > 0 && (
-                  <button className="announcement-dismiss-all-btn" onClick={handleDismissAll}>Dismiss all</button>
-                )}
-                <button className="announcement-modal-close" aria-label="Close" onClick={() => setModalOpen(false)} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
-              </div>
-            </div>
-            <div className="announcement-modal-body">
-              {ctx.unread.map((msg) => (
-                <AnnouncementItem key={msg.id} msg={msg} isRead={false} onDismiss={handleDismiss} onCta={handleCtaClick} />
-              ))}
-              {ctx.read.length > 0 && ctx.unread.length > 0 && (
-                <div className="announcement-modal-divider"><span>Previously seen</span></div>
+      <Modal id="announcement-bell-modal" open={modalOpen} onClose={() => setModalOpen(false)} ariaLabel="Announcements">
+        <div className="announcement-modal">
+          <div className="announcement-modal-header">
+            <h3 className="announcement-modal-title">Announcements</h3>
+            <div className="announcement-modal-header-actions">
+              {ctx.unreadCount > 0 && (
+                <button className="announcement-dismiss-all-btn" onClick={handleDismissAll}>Dismiss all</button>
               )}
-              {ctx.read.map((msg) => (
-                <AnnouncementItem key={msg.id} msg={msg} isRead={true} onDismiss={handleDismiss} onCta={handleCtaClick} />
-              ))}
+              <button className="announcement-modal-close modal-close" aria-label="Close" onClick={() => setModalOpen(false)} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
             </div>
           </div>
+          <div className="announcement-modal-body">
+            {ctx.unread.map((msg) => (
+              <AnnouncementItem key={msg.id} msg={msg} isRead={false} onDismiss={handleDismiss} onCta={handleCtaClick} />
+            ))}
+            {ctx.read.length > 0 && ctx.unread.length > 0 && (
+              <div className="announcement-modal-divider"><span>Previously seen</span></div>
+            )}
+            {ctx.read.map((msg) => (
+              <AnnouncementItem key={msg.id} msg={msg} isRead={true} onDismiss={handleDismiss} onCta={handleCtaClick} />
+            ))}
+          </div>
         </div>
-      )}
+      </Modal>
     </>
   )
 }

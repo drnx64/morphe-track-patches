@@ -5,6 +5,7 @@ import { useDataFetching } from '../../hooks/useDataFetching'
 import { usePageMeta } from '../../hooks/usePageMeta'
 import { buildAppIndex, scoreAppSearch, type AppIndexEntry } from '../../utils/misc'
 import { getAddMorpheUrl, getPlayStoreUrl } from '../../utils/url'
+import { isNewScan } from '../../utils/lastVisit'
 import { FALLBACK_ICON, SEARCH_ICON, CLEAR_ICON, CHEVRON_DOWN, CLOSE_ICON } from '../../utils/svg'
 import PageShell from '../layout/PageShell'
 import Modal from '../shared/Modal'
@@ -35,7 +36,7 @@ function findAppData(
 }
 
 export default function AppsPage() {
-  const { state } = useAppContext()
+  const { state, dispatch } = useAppContext()
   const { loading } = useDataFetching()
   usePageMeta(
     'Apps',
@@ -46,6 +47,11 @@ export default function AppsPage() {
   const [bundleFilter, setBundleFilter] = useState<'all' | 'multi' | 'single'>('all')
   const [sortBy, setSortBy] = useState<'name' | 'bundles-desc' | 'bundles-asc'>('name')
   const [chooserApp, setChooserApp] = useState<AppIndexEntry | null>(null)
+
+  const showNewScan = isNewScan(state.lastChecked, state.lastVisitScan)
+  const dismissNewScan = useCallback(() => {
+    dispatch({ type: 'SET_LAST_VISIT_SCAN', payload: state.lastChecked })
+  }, [dispatch, state.lastChecked])
 
   const openAppParam = searchParams.get('open-app') || ''
 
@@ -136,6 +142,12 @@ export default function AppsPage() {
   return (
     <>
       <PageShell className="apps-page-shell">
+        {showNewScan && (
+          <div className="new-scan-banner" onClick={dismissNewScan}>
+            <span className="updates-new-scan-dot" />
+            <span>New data since your last visit</span>
+          </div>
+        )}
         <TodayUpdatesSection />
         <section className="apps-section" aria-labelledby="apps-heading">
           <div className="apps-header">

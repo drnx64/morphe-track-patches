@@ -1,10 +1,11 @@
 import os
+import shutil
 import requests
 import json
 import time
 from datetime import datetime
 from dotenv import load_dotenv
-from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, CUSTOM_REPO_PATH, IGNORE_REPO_PATH, load_repo_list
+from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, CUSTOM_REPO_PATH, IGNORE_REPO_PATH, load_repo_list, load_last_run, save_last_run
 
 load_dotenv()
 
@@ -142,11 +143,14 @@ def download_all_bundles():
         bundles = {k: v for k, v in bundles.items() if k.lower() not in skip_bundles}
         print(f"  Filtered from {before} to {len(bundles)} bundles (skipped {before - len(bundles)})")
     
-    # Clear raw bundles directory to ensure a clean state
+    # Download to a temp directory, then swap atomically.
+    # This prevents partial downloads from corrupting existing data.
     bundles_raw_dir = os.path.join(RAW_DIR, "bundles")
-    if os.path.exists(bundles_raw_dir):
-        import shutil
-        shutil.rmtree(bundles_raw_dir, ignore_errors=True)
+    temp_dir = bundles_raw_dir + "_downloading"
+    
+    # Clean up any leftover temp dir from a previous failed run
+    if os.path.exists(temp_dir):
+        shutil.rmtree(temp_dir, ignore_errors=True)
         
     # Track errors for last_run.json
     errors = []
@@ -195,8 +199,8 @@ def download_all_bundles():
                 # Silent skip, as this is just a regular (non-Morphe) bundle in the repository
                 continue
                 
-            # Create download dir now that we know it's a Morphe bundle
-            dest_dir = os.path.join(RAW_DIR, "bundles", bundle_name, channel)
+            # Create download dir now that we know it's a Morphe bundle (in temp dir)
+            dest_dir = os.path.join(temp_dir, bundle_name, channel)
             os.makedirs(dest_dir, exist_ok=True)
             
             # Download patches-list.json
@@ -211,7 +215,7 @@ def download_all_bundles():
                 })
                 continue
                 
-            # Save files
+            # Save files to temp directory
             with open(os.path.join(dest_dir, "patches-bundle.json"), "w", encoding="utf-8") as f:
                 f.write(bundle_content)
             with open(os.path.join(dest_dir, "patches-list.json"), "w", encoding="utf-8") as f:
@@ -221,13 +225,17 @@ def download_all_bundles():
             
     print(f"Successfully downloaded {downloaded_count} bundle+channel pairs.")
     
-    # Save partial run errors to last_run.json (or preserve it for fingerprint/diff steps)
-    last_run_data = {
-        "timestamp": datetime.now().isoformat(),
-        "download_errors": errors,
-        "downloaded_count": downloaded_count
-    }
-    save_json(os.path.join(STATE_DIR, "last_run.json"), last_run_data)
+    # Atomic swap: remove old dir, rename temp to final
+    if os.path.exists(bundles_raw_dir):
+        shutil.rmtree(bundles_raw_dir, ignore_errors=True)
+    if os.path.exists(temp_dir):
+        os.rename(temp_dir, bundles_raw_dir)
+    
+    # Merge download results into last_run.json (other steps will add their own data)
+    last_run_data = load_last_run()
+    last_run_data["download_errors"] = errors
+    last_run_data["downloaded_count"] = downloaded_count
+    save_last_run(last_run_data)
 
 if __name__ == "__main__":
     ensure_dirs()

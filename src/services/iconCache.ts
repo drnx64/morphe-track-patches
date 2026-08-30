@@ -1,4 +1,4 @@
-const VERBOSE = import.meta.env.DEV
+const VERBOSE = import.meta.env.DEV || window.location.hostname === 'localhost'
 
 function log(...args: unknown[]) {
   if (VERBOSE) console.log('[iconCache]', ...args)

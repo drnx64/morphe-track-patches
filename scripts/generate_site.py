@@ -97,10 +97,11 @@ def generate_rss_feed():
     # RSS 2.0
     rss_items = []
     for item in reversed(items):  # newest first
+        # description is already HTML with XML entities — do not double-escape
         rss_items.append(f"""    <item>
       <title>{xml_escape(item['title'])}</title>
       <link>{xml_escape(item['link'])}</link>
-      <description>{xml_escape(item['description'])}</description>
+      <description><![CDATA[{item['description']}]]></description>
       <pubDate>{item['pubDate']}</pubDate>
       <guid isPermaLink="false">{xml_escape(item['guid'])}</guid>
     </item>""")

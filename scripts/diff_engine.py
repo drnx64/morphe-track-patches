@@ -218,6 +218,32 @@ def diff_snapshots():
 
     has_changes = len(affected_bundles) > 0
 
+    # Detect removed bundles (in old snapshot but not in new)
+    for bundle_key in old_snapshot:
+        if bundle_key not in new_snapshot:
+            old_rec = old_snapshot[bundle_key]
+            bundle_name = old_rec.get("bundle") or bundle_key.split(":")[0]
+            channel = old_rec.get("channel") or (bundle_key.split(":")[1] if ":" in bundle_key else "stable")
+            old_apps_list = old_rec.get("apps", [])
+            print(f"[-] Diff: Found removed bundle {bundle_key}")
+            removed_apps = []
+            for app in old_apps_list:
+                removed_apps.append({
+                    "app_name": app.get("app_name", ""),
+                    "package": app.get("package", ""),
+                    "badge_type": "REMOVED APP"
+                })
+            affected_bundles.append({
+                "bundle": bundle_name,
+                "channel": channel,
+                "badge_type": "REMOVED BUNDLE",
+                "apps": removed_apps,
+                "repo_url": old_rec.get("repo_url", ""),
+                "patches_name": old_rec.get("patches_name", "")
+            })
+
+    has_changes = len(affected_bundles) > 0
+
     # Update last_run.json with metadata
     last_run_data = load_last_run()
     last_run_data["has_changes"] = has_changes

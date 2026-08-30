@@ -1,0 +1,24 @@
+"""Centralized configuration for MorpheTracker pipeline.
+
+All tuneable values in one place. Override via environment variables.
+"""
+import os
+
+# Pipeline schedule
+SCAN_INTERVAL_HOURS = int(os.environ.get("SCAN_INTERVAL_HOURS", "3"))
+
+# Changelog
+CHANGELOG_MAX_ENTRIES = int(os.environ.get("CHANGELOG_MAX_ENTRIES", "7"))
+
+# Release cache
+RELEASE_CACHE_TTL_HOURS = int(os.environ.get("RELEASE_CACHE_TTL_HOURS", "3"))
+
+# HTTP retries
+HTTP_MAX_RETRIES = int(os.environ.get("HTTP_MAX_RETRIES", "3"))
+HTTP_TIMEOUT_SECONDS = int(os.environ.get("HTTP_TIMEOUT_SECONDS", "30"))
+
+# Icon cache
+ICON_CACHE_MAX_ENTRIES = int(os.environ.get("ICON_CACHE_MAX_ENTRIES", "600"))
+
+# Announcement expiry (ms)
+ANNOUNCEMENT_EXPIRY_MS = int(os.environ.get("ANNOUNCEMENT_EXPIRY_MS", "86400000"))

@@ -21,3 +21,8 @@ export function isNewSinceLastVisit(date: string): boolean {
   if (!lastVisit || !date) return false
   return date > lastVisit
 }
+
+export function isNewScan(lastChecked: string, lastVisitScan: string): boolean {
+  if (!lastChecked || !lastVisitScan) return false
+  return lastChecked > lastVisitScan
+}

@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { fuzzySearchItems } from '../../services/fuzzySearch'
 import { getAppIconUrl, resolveAppName } from '../../utils/misc'
@@ -15,9 +16,12 @@ interface SearchResult {
 
 export default function SearchDropdown() {
   const { state } = useAppContext()
+  const navigate = useNavigate()
   const [visible, setVisible] = useState(false)
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchResult[]>([])
+  const [activeIndex, setActiveIndex] = useState(-1)
+  const listRef = useRef<HTMLDivElement>(null)
 
   const grouped: Record<string, BundleEntry> = {}
   for (const b of Object.values(state.bundles)) {
@@ -34,6 +38,19 @@ export default function SearchDropdown() {
       }
     }
   }
+
+  // Close on outside click
+  useEffect(() => {
+    if (!visible) return
+    const handler = (e: PointerEvent) => {
+      const target = e.target as HTMLElement
+      if (!target.closest('#search-dropdown') && !target.closest('#search-input')) {
+        setVisible(false)
+      }
+    }
+    document.addEventListener('pointerdown', handler)
+    return () => document.removeEventListener('pointerdown', handler)
+  }, [visible])
 
   useEffect(() => {
     const update = (e: Event) => {
@@ -53,6 +70,7 @@ export default function SearchDropdown() {
     if (!query || !query.trim()) {
       setVisible(false)
       setResults([])
+      setActiveIndex(-1)
       return
     }
     const q = query.trim()
@@ -75,6 +93,7 @@ export default function SearchDropdown() {
     ]
     setResults(res)
     setVisible(res.length > 0)
+    setActiveIndex(-1)
   }, [query, state.nameCache])
 
   const handleSelect = useCallback((result: SearchResult) => {
@@ -85,17 +104,56 @@ export default function SearchDropdown() {
         detail: { app: result.app, bundleName: result.bundleName, channels: grouped[result.bundleName]?.channels || [] }
       }))
     } else if (result.type === 'bundle' && result.bundleName) {
-      window.dispatchEvent(new CustomEvent('open-bundle', {
-        detail: { bundleName: result.bundleName, channels: grouped[result.bundleName]?.channels || [], version: grouped[result.bundleName]?.version || '' }
-      }))
+      navigate(`/bundle/${encodeURIComponent(result.bundleName)}`)
     }
-  }, [])
+  }, [navigate])
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (!visible || results.length === 0) return
+
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault()
+        setActiveIndex((i) => (i + 1) % results.length)
+        break
+      case 'ArrowUp':
+        e.preventDefault()
+        setActiveIndex((i) => (i - 1 + results.length) % results.length)
+        break
+      case 'Enter':
+        e.preventDefault()
+        if (activeIndex >= 0 && activeIndex < results.length) {
+          handleSelect(results[activeIndex])
+        }
+        break
+      case 'Escape':
+        e.preventDefault()
+        setVisible(false)
+        document.dispatchEvent(new CustomEvent('search-dropdown-close'))
+        break
+    }
+  }, [visible, results, activeIndex, handleSelect])
+
+  // Scroll active item into view
+  useEffect(() => {
+    if (activeIndex < 0 || !listRef.current) return
+    const item = listRef.current.children[activeIndex] as HTMLElement
+    if (item) item.scrollIntoView({ block: 'nearest' })
+  }, [activeIndex])
 
   if (!visible) return null
 
   return (
-    <div className="search-dropdown visible" id="search-dropdown">
+    <div
+      className="search-dropdown visible"
+      id="search-dropdown"
+      ref={listRef}
+      role="listbox"
+      aria-label="Search results"
+      onKeyDown={handleKeyDown}
+    >
       {results.map((r, i) => {
+        const isActive = i === activeIndex
         if (r.type === 'app' && r.app) {
           const name = resolveAppName(r.app, state.nameCache)
           const iconUrl = getAppIconUrl(r.app, state.iconCache)
@@ -104,8 +162,10 @@ export default function SearchDropdown() {
           return (
             <div
               key={`app-${i}`}
-              className="search-result"
+              className={`search-result${isActive ? ' active' : ''}`}
               data-type="app"
+              role="option"
+              aria-selected={isActive}
               onClick={() => handleSelect(r)}
             >
               {dataUrl ? (
@@ -132,8 +192,10 @@ export default function SearchDropdown() {
           return (
             <div
               key={`bundle-${i}`}
-              className="search-result search-result-bundle-row"
+              className={`search-result search-result-bundle-row${isActive ? ' active' : ''}`}
               data-type="bundle"
+              role="option"
+              aria-selected={isActive}
               onClick={() => handleSelect(r)}
             >
               <span className="search-result-icon search-result-icon-bundle">B</span>

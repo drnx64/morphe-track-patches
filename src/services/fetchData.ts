@@ -1,10 +1,10 @@
-const VERBOSE = import.meta.env.DEV
+const VERBOSE = import.meta.env.DEV || window.location.hostname === 'localhost'
 
 function log(...args: unknown[]) {
   if (VERBOSE) console.log('[fetchData]', ...args)
 }
 
-function fetchJson<T>(url: string, fallback: T): Promise<T> {
+function fetchJson<T>(url: string, fallback: T, errors?: string[]): Promise<T> {
   log(`fetching ${url}...`)
   return fetch(url)
     .then((r) => {
@@ -12,11 +12,15 @@ function fetchJson<T>(url: string, fallback: T): Promise<T> {
         log(`OK ${url} (${r.status})`)
         return r.json() as T
       }
-      log(`FAIL ${url} (${r.status} ${r.statusText}) — using fallback`)
+      const msg = `${url} returned ${r.status}`
+      log(`FAIL ${msg} — using fallback`)
+      if (errors) errors.push(msg)
       return fallback
     })
     .catch((err) => {
-      log(`ERROR ${url}: ${(err as Error).message} — using fallback`)
+      const msg = `${url}: ${(err as Error).message}`
+      log(`ERROR ${msg} — using fallback`)
+      if (errors) errors.push(msg)
       return fallback
     })
 }
@@ -47,7 +51,7 @@ export async function fetchBundleData(bundleKey: string): Promise<BundleData | n
   return fetchJson<BundleData | null>(`/data/bundles/${filename}`, null)
 }
 
-export async function fetchAllBundlesFromIndex(): Promise<Record<string, BundleData>> {
+export async function fetchAllBundlesFromIndex(errors?: string[]): Promise<Record<string, BundleData>> {
   const index = await fetchBundleIndex()
   const keys = Object.keys(index)
   if (keys.length === 0) return {}
@@ -70,12 +74,13 @@ export async function fetchAllBundlesFromIndex(): Promise<Record<string, BundleD
 
 export function fetchAllData() {
   const ts = Date.now()
+  const errors: string[] = []
   log('fetchAllData starting...')
   return Promise.all([
-    fetchJson<CoreResponse>(`/data/core.json?_t=${ts}`, {}),
-    fetchJson<StatsData>(`/data/stats.json?_t=${ts}`, {} as StatsData),
-    fetchJson<{ affected_bundles?: AffectedBundle[] }>(`/data/changes.json?_t=${ts}`, {}),
-    fetchAllBundlesFromIndex(),
+    fetchJson<CoreResponse>(`/data/core.json?_t=${ts}`, {}, errors),
+    fetchJson<StatsData>(`/data/stats.json?_t=${ts}`, {} as StatsData, errors),
+    fetchJson<{ affected_bundles?: AffectedBundle[] }>(`/data/changes.json?_t=${ts}`, {}, errors),
+    fetchAllBundlesFromIndex(errors),
   ]).then(([core, stats, changes, bundles]) => {
     log(`fetchAllData done: date=${core?.date}, bundles keys=${Object.keys(bundles).length}`)
     return {
@@ -85,6 +90,7 @@ export function fetchAllData() {
       stats,
       changes,
       bundles,
+      errors,
     }
   })
 }
@@ -180,10 +186,11 @@ export async function fetchBundlesIncremental(
 
 export function fetchBundlesBatched(
   onProgress?: (loaded: number, total: number, batchBundles: Record<string, BundleData>) => void,
-): Promise<Record<string, BundleData>> {
+): Promise<{ bundles: Record<string, BundleData>; errors: string[] }> {
+  const errors: string[] = []
   return fetchBundleIndex().then(async (index) => {
     const keys = Object.keys(index)
-    if (keys.length === 0) return {}
+    if (keys.length === 0) return { bundles: {}, errors }
 
     log(`fetchBundlesBatched: loading ${keys.length} bundles...`)
     const BATCH = 50
@@ -204,7 +211,7 @@ export function fetchBundlesBatched(
       onProgress?.(Math.min(i + BATCH, keys.length), keys.length, batchBundles)
     }
     log(`fetchBundlesBatched: loaded ${Object.keys(bundles).length} bundles`)
-    return bundles
+    return { bundles, errors }
   })
 }
 

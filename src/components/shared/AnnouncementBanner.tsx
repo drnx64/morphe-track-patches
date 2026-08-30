@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAnnouncements, type Announcement } from './useAnnouncements'
+import Modal from './Modal'
 import { INFO_ICON, WARNING_ICON, ARROW_RIGHT, CLOSE_ICON } from '../../utils/svg'
 
 function useIsMobile() {
@@ -76,12 +77,12 @@ export default function AnnouncementBanner() {
 
   if (isMobile) {
     return (
-      <div className="announcement-mobile-overlay" onClick={dismissAll}>
-        <div className="announcement-mobile-modal" onClick={(e) => e.stopPropagation()}>
+      <Modal id="announcement-mobile-modal" open={true} onClose={dismissAll} ariaLabel="Announcement">
+        <div className="announcement-mobile-modal">
           <div className="announcement-mobile-header">
             <span className={`announcement-mobile-icon priority-${msg.priority}`} aria-hidden="true" dangerouslySetInnerHTML={{ __html: icon }} />
             <strong className="announcement-mobile-title">{msg.title}</strong>
-            <button className="announcement-mobile-close" aria-label="Dismiss" onClick={dismiss} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
+            <button className="announcement-mobile-close modal-close" aria-label="Dismiss" onClick={dismiss} dangerouslySetInnerHTML={{ __html: CLOSE_ICON }} />
           </div>
           <div className="announcement-mobile-body">
             <span className={expanded ? '' : 'announcement-clamp'}>{msg.body}</span>
@@ -106,7 +107,7 @@ export default function AnnouncementBanner() {
             </div>
           )}
         </div>
-      </div>
+      </Modal>
     )
   }
 

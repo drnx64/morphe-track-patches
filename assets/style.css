@@ -440,6 +440,18 @@ body {
   gap: 0.6rem;
 }
 
+@media (min-width: 1440px) {
+  .header-content {
+    max-width: 1400px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .header-content {
+    max-width: 1600px;
+  }
+}
+
 .header-top-row {
   display: flex;
   align-items: center;
@@ -556,7 +568,37 @@ h1 {
   }
 }
 
+@media (min-width: 1440px) {
+  .dashboard-container {
+    max-width: 1400px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .dashboard-container {
+    max-width: 1600px;
+  }
+}
+
 /* ── Today's Updates ─────────────────────────────────── */
+.top-info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 1440px) {
+  .top-info-row {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  .top-info-row > * {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 .today-updates-section,
 .stats-section,
 .bundles-section,
@@ -639,6 +681,26 @@ h1 {
 .updates-new-scan-badge:active {
   transform: scale(0.97);
 }
+
+/* New scan banner (Bundles/Apps pages) */
+.new-scan-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(16, 185, 129, 0.1);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+  color: var(--color-stable);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.new-scan-banner:hover {
+  background: rgba(16, 185, 129, 0.18);
+}
+
 .updates-new-scan-ago {
   font-weight: 400;
   text-transform: none;
@@ -747,6 +809,12 @@ h1 {
   background: rgba(244, 63, 94, 0.15);
   color: var(--color-critical);
   border: 1px solid rgba(244, 63, 94, 0.3);
+}
+.badge-current {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-stable);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-size: 0.65rem;
 }
 .badge-pre-release {
   background: rgba(245, 158, 11, 0.15);
@@ -2833,6 +2901,13 @@ h1 {
   width: 85%;
 }
 
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 1.25rem;
+  max-width: 1600px;
+}
+
 .skeleton-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -3131,6 +3206,26 @@ h1 {
 .priority-warning { color: #fbbf24; }
 .priority-urgent { color: #ef4444; }
 
+/* Fetch Error Banner */
+.fetch-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(239, 68, 68, 0.15);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  font-size: 0.85rem;
+  text-align: center;
+  justify-content: center;
+}
+.fetch-error-banner-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  color: #ef4444;
+}
+
 /* Bell (mobile trigger) */
 .announcement-bell {
   position: relative;
@@ -3406,20 +3501,7 @@ h1 {
 }
 
 /* Mobile centered modal (banner replacement) */
-.announcement-mobile-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 500;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.25rem;
-  animation: announcement-backdrop-in 0.25s ease;
-}
-
+/* Mobile announcement — inside shared Modal */
 @keyframes announcement-backdrop-in {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -3429,13 +3511,6 @@ h1 {
   width: 100%;
   max-width: 380px;
   max-height: 80vh;
-  background: rgba(20, 29, 47, 0.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  border-radius: var(--border-radius);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   animation: announcement-modal-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -3499,35 +3574,13 @@ h1 {
   flex: 1;
 }
 
-/* Bell modal overlay (list of all announcements) */
-.announcement-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 500;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  animation: announcement-backdrop-in 0.25s ease;
-}
-
+/* Bell modal (list of all announcements) — inside shared Modal */
 .announcement-modal {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 380px;
   max-height: 80vh;
-  background: rgba(20, 29, 47, 0.97);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  border-radius: var(--border-radius);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  animation: announcement-modal-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .announcement-modal-header {
@@ -4877,6 +4930,147 @@ h1 {
 
 .bundle-modal-apps-list .app-mini-card:last-child {
   margin-bottom: 0;
+}
+
+/* ── Bundle Detail Page ─────────────────────────────── */
+.bundle-detail-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.bundle-detail-header {
+  margin-bottom: 1.5rem;
+}
+
+.bundle-detail-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0.5rem 0;
+}
+
+.bundle-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.bundle-detail-badges {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.bundle-detail-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.bundle-detail-apps-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.bundle-detail-apps-list .app-mini-card {
+  margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .bundle-detail-apps-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .bundle-detail-page {
+    max-width: none;
+    padding: 1.5rem 2rem;
+  }
+
+  .bundle-detail-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto;
+    gap: 0.25rem 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+  }
+
+  .back-link {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .bundle-detail-title {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    font-size: 1.75rem;
+    margin: 0;
+    align-self: center;
+  }
+
+  .bundle-detail-badges {
+    grid-column: 1;
+    grid-row: 2;
+    margin-bottom: 0;
+  }
+
+  .bundle-detail-meta {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    margin-bottom: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
+  .bundle-detail-actions {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .bundle-detail-apps {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.25rem 1.5rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .bundle-detail-apps-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+.back-link:hover {
+  color: var(--text-primary);
 }
 
 /* ── Modal pkg link (inline link in modal meta) ──────── */
@@ -6441,4 +6635,16 @@ h1 {
 .changelog-page-count {
   font-size: 0.7rem;
   opacity: 0.6;
+}
+
+/* ── Reduced motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

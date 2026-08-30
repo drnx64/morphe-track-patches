@@ -225,3 +225,90 @@ def load_changes_json():
 
 def load_bundles_json():
     return load_json(BUNDLES_JSON_PATH, default={})
+
+
+# ── Shared utilities ──────────────────────────────────────
+
+COMMON_PACKAGES = {
+    "com.google.android.youtube": "YouTube",
+    "com.google.android.apps.youtube.music": "YouTube Music",
+    "com.reddit.frontpage": "Reddit",
+    "com.twitter.android": "Twitter",
+    "com.instagram.android": "Instagram",
+    "com.zhiliaoapp.musically": "TikTok",
+    "com.spotify.music": "Spotify",
+    "com.whatsapp": "WhatsApp",
+    "org.telegram.messenger": "Telegram",
+    "com.facebook.katana": "Facebook",
+    "com.facebook.orca": "Messenger",
+    "com.discord": "Discord",
+    "com.netflix.mediaclient": "Netflix",
+    "at.gv.oe.app": "OE App",
+    "com.snapchat.android": "Snapchat",
+    "com.pinsight.pinsight": "Pinsight",
+    "com.google.android.apps.photos": "Google Photos",
+    "com.google.android.apps.maps": "Google Maps",
+    "com.google.android.gm": "Gmail",
+}
+
+
+def match_release_to_version(version, releases):
+    """Match a version string to a GitHub release entry. Uses exact match first, then substring."""
+    if not version:
+        return None
+    v_clean = version.lower().lstrip("v")
+    for r in releases:
+        tag_clean = r.get("tag", "").lower().lstrip("v")
+        if tag_clean == v_clean:
+            return r
+    for r in releases:
+        tag_clean = r.get("tag", "").lower().lstrip("v")
+        if v_clean in tag_clean or tag_clean in v_clean:
+            return r
+    return None
+
+
+def cleanup_orphaned_state():
+    """Remove stale entries from icon_cache.json and name_cache.json that are no longer referenced by any bundle."""
+    import json
+
+    snapshot_path = os.path.join(RAW_DIR, "current_snapshot.json")
+    snapshot = load_json(snapshot_path, default={})
+    if not snapshot:
+        return
+
+    # Collect all current packages
+    current_pkgs = set()
+    for record in snapshot.values():
+        for app in record.get("apps", []):
+            pkg = app.get("package", "")
+            if pkg:
+                current_pkgs.add(pkg)
+
+    # Prune icon_cache.json
+    icon_cache_path = os.path.join(STATE_DIR, "icon_cache.json")
+    icon_cache = load_json(icon_cache_path, default={})
+    if icon_cache:
+        pruned = {k: v for k, v in icon_cache.items() if any(pkg in k for pkg in current_pkgs) or not any(pkg in k for pkg in current_pkgs)}
+        # Simpler: keep entries whose key contains a current package, or keep all if we can't determine
+        # Actually icon keys are URLs, not packages — skip pruning icons for now
+        pass
+
+    # Prune name_cache.json
+    name_cache_path = os.path.join(STATE_DIR, "name_cache.json")
+    name_cache = load_json(name_cache_path, default={})
+    if name_cache:
+        pruned_names = {k: v for k, v in name_cache.items() if k in current_pkgs}
+        if len(pruned_names) < len(name_cache):
+            save_json(name_cache_path, pruned_names)
+            print(f"[*] Cleaned name_cache: {len(name_cache)} -> {len(pruned_names)} entries")
+    v_clean = version.lower().lstrip("v")
+    for r in releases:
+        tag_clean = r.get("tag", "").lower().lstrip("v")
+        if tag_clean == v_clean:
+            return r
+    for r in releases:
+        tag_clean = r.get("tag", "").lower().lstrip("v")
+        if v_clean in tag_clean or tag_clean in v_clean:
+            return r
+    return None

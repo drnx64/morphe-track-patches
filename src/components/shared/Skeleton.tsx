@@ -44,7 +44,7 @@ export function SkeletonCard() {
 
 export function SkeletonGrid() {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
+    <div className="skeleton-grid">
       <SkeletonCard />
       <SkeletonCard />
       <SkeletonCard />

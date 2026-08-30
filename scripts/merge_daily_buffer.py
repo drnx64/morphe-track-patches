@@ -3,6 +3,7 @@ import sys
 import re
 import subprocess
 from datetime import datetime, timezone
+from config import CHANGELOG_MAX_ENTRIES
 from state_manager import (
     load_daily_buffer,
     save_daily_buffer,
@@ -205,18 +206,8 @@ def merge_release_notes(bundles):
 
 
 def _match_release_to_version(version, releases):
-    if not version:
-        return None
-    v_clean = version.lower().lstrip("v")
-    for r in releases:
-        tag_clean = r.get("tag", "").lower().lstrip("v")
-        if tag_clean == v_clean:
-            return r
-    for r in releases:
-        tag_clean = r.get("tag", "").lower().lstrip("v")
-        if v_clean in tag_clean or tag_clean in v_clean:
-            return r
-    return None
+    from state_manager import match_release_to_version
+    return match_release_to_version(version, releases)
 
 
 def finalize_buffer(buffer_data):
@@ -245,7 +236,7 @@ def finalize_buffer(buffer_data):
     changelog_json = [entry for entry in changelog_json if entry.get("date") != date_str]
     new_entry = build_changelog_entry(date_str, affected_bundles_dict)
     changelog_json.insert(0, new_entry)
-    changelog_json = changelog_json[:7]
+    changelog_json = changelog_json[:CHANGELOG_MAX_ENTRIES]
     save_json(changelog_json_path, changelog_json)
 
     # 2. Update changelog.md

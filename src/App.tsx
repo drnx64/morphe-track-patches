@@ -4,6 +4,7 @@ import ErrorBoundary from './components/layout/ErrorBoundary'
 import Background from './components/background/Background'
 import AppsPage from './components/apps/AppsPage'
 import BundlesPage from './components/bundles/BundlesPage'
+import BundleDetailPage from './components/bundles/BundleDetailPage'
 import DiffPage from './components/diff/DiffPage'
 
 const ChangelogPage = lazy(() => import('./components/changelog/ChangelogPage'))
@@ -30,6 +31,11 @@ export default function App() {
           <Route path="/bundles" element={
             <ErrorBoundary>
               <BundlesPage />
+            </ErrorBoundary>
+          } />
+          <Route path="/bundle/:bundleName" element={
+            <ErrorBoundary>
+              <BundleDetailPage />
             </ErrorBoundary>
           } />
           <Route path="/changelog" element={

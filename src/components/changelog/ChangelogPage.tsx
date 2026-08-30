@@ -296,6 +296,32 @@ function DayCard({ day, scanIndex, isNew }: { day: ChangelogEntry; scanIndex: nu
             }
           }
         }}
+        onKeyDown={(e) => {
+          if (e.key !== 'Enter' && e.key !== ' ') return
+          const target = e.target as HTMLElement
+          if (target.classList.contains('changelog-app-link')) {
+            e.preventDefault()
+            const item = target.closest('.changelog-item') as HTMLElement
+            if (!item) return
+            const pkg = item.dataset.package
+            const bName = item.dataset.bundle
+            const channels = JSON.parse(item.dataset.channels || '[]')
+            if (!pkg || !bName) return
+            const stableKey = `${bName}:stable`
+            const devKey = `${bName}:dev`
+            let appData = state.bundles[stableKey]?.apps?.find((a) => a.package === pkg)
+            if (!appData) appData = state.bundles[devKey]?.apps?.find((a) => a.package === pkg)
+            if (appData) {
+              window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName: bName, channels } }))
+            }
+          } else if (target.classList.contains('changelog-bundle-link')) {
+            e.preventDefault()
+            const bundleName = target.querySelector('strong')?.textContent?.trim().replace(/ patches$/, '') || target.textContent?.trim().replace(/ patches$/, '') || ''
+            const found = grouped[bundleName]
+            const channels = found ? found.channels : []
+            window.dispatchEvent(new CustomEvent('open-bundle', { detail: { bundleName, channels, version: '' } }))
+          }
+        }}
       />
     </div>
   )

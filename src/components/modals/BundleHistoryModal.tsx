@@ -185,7 +185,7 @@ export default function BundleHistoryModal() {
               <div className="bundle-release-header">
                 <span className="bundle-release-version">
                   {currentBundle.version}
-                  <span className="badge" style={{ background: '#22c55e', color: '#fff', fontSize: '0.65rem', marginLeft: '0.5rem' }}>CURRENT</span>
+                  <span className="badge badge-current">CURRENT</span>
                 </span>
                 <span className="bundle-release-badges">
                   {(['stable', 'dev'] as const).filter((ch) => ch === 'stable' ? hasStable : hasDev).map((ch) => (
@@ -220,7 +220,7 @@ export default function BundleHistoryModal() {
                         <>
                           <div className="changelog-bundle-header">
                             {b.isCurrent ? (
-                              <span className="badge" style={{ background: '#22c55e', color: '#fff' }}>CURRENT</span>
+                              <span className="badge badge-current">CURRENT</span>
                             ) : (
                               <span className="badge badge-updated">RELEASE</span>
                             )}

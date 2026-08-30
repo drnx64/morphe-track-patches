@@ -2,17 +2,13 @@ import { useMemo, useCallback, useEffect } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { formatFriendlyDate, getTimeAgo } from '../../utils/format'
 import { groupAffectedBundles } from '../../utils/misc'
+import { isNewScan } from '../../utils/lastVisit'
 import { preloadIconsFromPackages } from '../../services/iconCache'
 import { SkeletonUpdates } from '../shared/Skeleton'
 import ViewToggle from './updates/ViewToggle'
 import TimelineView from './updates/TimelineView'
 import AccordionView from './updates/AccordionView'
 import CardGridView from './updates/CardGridView'
-
-function isNewScan(lastChecked: string, lastVisitScan: string): boolean {
-  if (!lastChecked || !lastVisitScan) return false
-  return lastChecked > lastVisitScan
-}
 
 export default function TodayUpdatesSection() {
   const { state, dispatch } = useAppContext()
