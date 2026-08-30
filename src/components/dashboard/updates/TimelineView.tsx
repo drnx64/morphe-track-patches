@@ -2,6 +2,7 @@ import { useAppContext } from '../../../context/AppContext'
 import { resolveAppName } from '../../../utils/misc'
 import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
+import AppChips from './AppChips'
 import PatchDiffInline from './PatchDiffInline'
 import { useEntries, useUpdateActions, sortApps, AuthorLink } from './useEntries'
 
@@ -63,6 +64,7 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
                     {app.badge_type && <Badge className={appBadgeClass}>{app.badge_type}</Badge>}
                     <AppIcon iconUrl={state.iconCache[app.package] || ''} pkg={app.package} size={26} />
                     <span className="tl-app-name">{resolveAppName(app, state.nameCache)}</span>
+                    <AppChips app={app} compact />
                     {app.patch_diff && <PatchDiffInline patchDiff={app.patch_diff} compact />}
                   </div>
                 )

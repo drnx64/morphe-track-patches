@@ -2,6 +2,7 @@ import { useAppContext } from '../../../context/AppContext'
 import { resolveAppName } from '../../../utils/misc'
 import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
+import AppChips from './AppChips'
 import PatchDiffInline from './PatchDiffInline'
 import { useEntries, useUpdateActions, sortApps, AuthorLink } from './useEntries'
 
@@ -65,6 +66,7 @@ export default function CardGridView({ grouped, sortedSections }: CardGridViewPr
                     <AppIcon iconUrl={state.iconCache[app.package] || ''} pkg={app.package} size={32} />
                     <div className="grid-app-meta">
                       <span className="grid-app-name">{resolveAppName(app, state.nameCache)}</span>
+                      <AppChips app={app} compact />
                       <span className="grid-app-pkg">{app.package}</span>
                     </div>
                     {app.patch_diff && <PatchDiffInline patchDiff={app.patch_diff} compact />}
