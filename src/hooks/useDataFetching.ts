@@ -149,6 +149,18 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     // ═══════════════════════════════════════════
     log('=== FIRST VISIT: progressive load ===')
 
+    // Fire-and-forget: icons + names (don't block loading screen)
+    const iconDataPromise = fetchIconAndNameCaches(dispatch)
+
+    // Fire-and-forget: changelog + lastChecked
+    const changelogPromise = fetchChangelog().then((rawCl) => {
+      const cl = limitChangelogDays(rawCl as ChangelogEntry[])
+      dispatch({ type: 'SET_CHANGELOG', payload: cl })
+      idbSet(CACHE_KEYS.CHANGELOG, cl)
+      log(`  ✓ changelog (${cl.length} entries)`)
+      return cl
+    })
+
     // Phase 1: Core + stats + changes (tiny files, show real content fast)
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching data...' })
     log('[fetch] core.json + stats.json + changes.json (parallel)')
@@ -158,28 +170,17 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     dispatch({ type: 'SET_STATS', payload: stats || null })
     dispatch({ type: 'SET_CHANGES', payload: changes || null })
     notifyWatchedUpdates(changes)
-    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 20 })
+    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 25 })
 
-    // Phase 2: Changelog + last_run (small files)
-    const [rawCl, lc] = await Promise.all([fetchChangelog(), fetchLastChecked()])
-    const cl = limitChangelogDays(rawCl as ChangelogEntry[])
-    const lastChecked = lc || core?.lastChecked || core?.last_run || ''
-    dispatch({ type: 'SET_CHANGELOG', payload: cl })
+    const lastChecked = core?.lastChecked || core?.last_run || ''
     dispatch({ type: 'SET_METADATA', payload: { liveDataDate: core?.date || '', lastChecked } })
-    log(`  ✓ changelog (${cl.length} entries) + last_run`)
-    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 30 })
 
-    // Phase 3: Icons + names (big caches)
-    const iconData = await fetchIconAndNameCaches(dispatch)
-    startIconPreload(iconData, dispatch)
-    dispatch({ type: 'SET_LOADING_PROGRESS', payload: 50 })
-
-    // Phase 4: Bundles — batched with streaming progress
+    // Phase 2: Bundles — batched with streaming progress
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching bundles...' })
     log('[fetch] loading bundles in batches...')
     const { bundles, errors: bundleErrors } = await fetchBundlesBatched((loaded, total, batchBundles) => {
       log(`[bundles] ${loaded}/${total} loaded`)
-      const pct = 50 + Math.round((loaded / total) * 40)
+      const pct = 25 + Math.round((loaded / total) * 65)
       dispatch({ type: 'SET_LOADING_PROGRESS', payload: pct })
       // Stream partial bundles to state so UI renders progressively
       dispatch({ type: 'MERGE_BUNDLES', payload: batchBundles })
@@ -187,14 +188,21 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     const bundleCount = Object.keys(bundles).length
     log(`  ✓ ${bundleCount} bundles`)
 
-    // Phase 5: Final state update
+    // Phase 3: Final state update + dismiss loading
     dispatch({ type: 'SET_BUNDLES', payload: bundles })
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
+    dispatch({ type: 'SET_LOADING_STATUS', payload: 'Loading complete!' })
 
     // Collect fetch errors
     const allErrors = [...bundleErrors]
     dispatch({ type: 'SET_FETCH_ERRORS', payload: allErrors })
 
+    // Dismiss loading screen — don't wait for icons/changelog
+    dispatch({ type: 'SET_LOADING', payload: false })
+
+    // Background: wait for fire-and-forget promises, then cache to IDB
+    const [iconData, rawCl] = await Promise.all([iconDataPromise, changelogPromise])
+    startIconPreload(iconData, dispatch)
     const bundleIndex = await fetchBundleIndex()
     const livePayload = {
       date: core?.date || '',
@@ -205,10 +213,9 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
       bundles,
     }
     idbSet(CACHE_KEYS.LIVE, livePayload)
-    idbSet(CACHE_KEYS.CHANGELOG, cl)
+    idbSet(CACHE_KEYS.CHANGELOG, rawCl ? limitChangelogDays(rawCl as ChangelogEntry[]) : [])
     idbSet(CACHE_KEYS.BUNDLE_INDEX, bundleIndex)
     log(`[done] first visit complete — ${bundleCount} bundles`)
-    dispatch({ type: 'SET_LOADING', payload: false })
     return
   }
 
@@ -217,11 +224,10 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   // ═══════════════════════════════════════════
   log('=== RETURNING VISIT: smart conditional fetch ===')
 
-  // Phase 1: Icons + names (parallel, non-blocking feel)
+  // Fire-and-forget: icons + names (don't block loading screen)
   const iconDataPromise = fetchIconAndNameCaches(dispatch)
-  dispatch({ type: 'SET_LOADING_PROGRESS', payload: 20 })
 
-  // Phase 2: Check core.json to see if data changed
+  // Phase 1: Check core.json to see if data changed
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Checking for updates...' })
   log('[check] fetching core.json to compare dates...')
   const core = await fetchCore()
@@ -229,10 +235,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   const freshDate = core?.date || ''
   log(`cached date: "${cachedDate}", fresh date: "${freshDate}"`)
   log(`[check] cached=${cachedDate || 'none'}, fresh=${freshDate || 'none'}`)
-  dispatch({ type: 'SET_LOADING_PROGRESS', payload: 35 })
-
-  // Wait for icon/name caches to finish fetching
-  const iconData = await iconDataPromise
+  dispatch({ type: 'SET_LOADING_PROGRESS', payload: 20 })
 
   if (freshDate && freshDate === cachedDate) {
     // ── Same data, nothing to update ──
@@ -241,6 +244,8 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     dispatch({ type: 'SET_LOADING_STATUS', payload: 'Up to date!' })
     dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
     dispatch({ type: 'SET_LOADING', payload: false })
+    // Still wait for icons in background
+    iconDataPromise.then((iconData) => startIconPreload(iconData, dispatch))
     return
   }
 
@@ -248,21 +253,58 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   log('new data detected, fetching updates...')
   log('[update] new data detected, fetching diffs...')
 
-  // Phase 3: Stats + changes (lightweight)
+  // Fire-and-forget: changelog
+  const changelogPromise = fetchChangelog().then((rawCl) => {
+    const cl = limitChangelogDays(rawCl as ChangelogEntry[])
+    dispatch({ type: 'SET_CHANGELOG', payload: cl })
+    idbSet(CACHE_KEYS.CHANGELOG, cl)
+    log(`  ✓ changelog (${cl.length} entries)`)
+    return cl
+  })
+
+  // Phase 2: Stats + changes (lightweight)
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Fetching updates...' })
   log('[fetch] stats.json + changes.json')
   const [stats, changes] = await Promise.all([fetchStats(), fetchChanges()])
   log(`stats fetched, changes: ${changes?.affected_bundles?.length ?? 0} affected`)
   log(`  ✓ changes (${changes?.affected_bundles?.length ?? 0} affected bundles)`)
-  dispatch({ type: 'SET_LOADING_PROGRESS', payload: 50 })
+  dispatch({ type: 'SET_LOADING_PROGRESS', payload: 40 })
 
-  // Phase 4: Changelog + last_run
-  const [rawCl, lc] = await Promise.all([fetchChangelog(), fetchLastChecked()])
-  const cl = limitChangelogDays(rawCl as ChangelogEntry[])
-  const lastChecked = lc || core?.lastChecked || core?.last_run || ''
-  dispatch({ type: 'SET_CHANGELOG', payload: cl })
+  const lastChecked = core?.lastChecked || core?.last_run || ''
 
-  // Start icon preloading with priority from fresh changes
+  // Phase 3: Incremental bundle fetch — only changed versions
+  dispatch({ type: 'SET_LOADING_STATUS', payload: 'Updating bundles...' })
+  log('[fetch] comparing bundle index...')
+  const { bundles, index: newIndex } = await fetchBundlesIncremental(
+    cachedLive.bundles || {},
+    cachedBundleIndex,
+    (loaded, total) => {
+      log(`[bundles] ${loaded}/${total} updated`)
+      const pct = 40 + Math.round((loaded / total) * 50)
+      dispatch({ type: 'SET_LOADING_PROGRESS', payload: pct })
+    },
+  )
+  const bundleCount = Object.keys(bundles).length
+  log(`bundles after incremental: ${bundleCount}`)
+  log(`  ✓ ${bundleCount} bundles (incremental update)`)
+
+  // Phase 4: Update state + dismiss loading
+  dispatch({ type: 'SET_BUNDLES', payload: bundles })
+  dispatch({ type: 'SET_STATS', payload: stats || null })
+  dispatch({ type: 'SET_CHANGES', payload: changes || null })
+  notifyWatchedUpdates(changes)
+  dispatch({
+    type: 'SET_METADATA',
+    payload: { liveDataDate: freshDate, lastChecked },
+  })
+  dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
+  dispatch({ type: 'SET_LOADING_STATUS', payload: 'Loading complete!' })
+
+  // Dismiss loading screen — don't wait for icons/changelog
+  dispatch({ type: 'SET_LOADING', payload: false })
+
+  // Background: wait for fire-and-forget promises, then cache to IDB
+  const [iconData] = await Promise.all([iconDataPromise, changelogPromise])
   const priorityPkgs: string[] = []
   if (changes?.affected_bundles?.length) {
     for (const ab of changes.affected_bundles) {
@@ -273,32 +315,6 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   }
   startIconPreload(iconData, dispatch, priorityPkgs)
 
-  // Phase 5: Incremental bundle fetch — only changed versions
-  dispatch({ type: 'SET_LOADING_STATUS', payload: 'Updating bundles...' })
-  log('[fetch] comparing bundle index...')
-  const { bundles, index: newIndex } = await fetchBundlesIncremental(
-    cachedLive.bundles || {},
-    cachedBundleIndex,
-    (loaded, total) => {
-      log(`[bundles] ${loaded}/${total} updated`)
-      const pct = 50 + Math.round((loaded / total) * 40)
-      dispatch({ type: 'SET_LOADING_PROGRESS', payload: pct })
-    },
-  )
-  const bundleCount = Object.keys(bundles).length
-  log(`bundles after incremental: ${bundleCount}`)
-  log(`  ✓ ${bundleCount} bundles (incremental update)`)
-
-  // Phase 6: Update state + IDB
-  dispatch({ type: 'SET_BUNDLES', payload: bundles })
-  dispatch({ type: 'SET_STATS', payload: stats || null })
-  dispatch({ type: 'SET_CHANGES', payload: changes || null })
-  notifyWatchedUpdates(changes)
-  dispatch({
-    type: 'SET_METADATA',
-    payload: { liveDataDate: freshDate, lastChecked },
-  })
-
   const livePayload = {
     date: freshDate,
     last_run: core?.last_run || '',
@@ -308,11 +324,8 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
     bundles,
   }
   idbSet(CACHE_KEYS.LIVE, livePayload)
-  idbSet(CACHE_KEYS.CHANGELOG, cl)
   idbSet(CACHE_KEYS.BUNDLE_INDEX, newIndex)
   log(`[done] update complete — ${bundleCount} bundles`)
-  dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
-  dispatch({ type: 'SET_LOADING', payload: false })
   } catch (err) {
     console.error('[useDataFetching] runLoad failed:', err)
     log('loadData FAILED — clearing loading screen')
