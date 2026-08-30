@@ -4,6 +4,8 @@ import type { StatsData } from '../types/api'
 import type { AffectedBundle } from '../types/changes'
 import type { ChangelogEntry } from '../types/changelog'
 
+type DeviceTier = 'low' | 'mid' | 'high'
+
 interface AppState {
   bundles: Record<string, BundleData>
   iconCache: Record<string, string>
@@ -23,6 +25,8 @@ interface AppState {
   updatesViewMode: 'timeline' | 'accordion' | 'grid'
   lastVisitScan: string
   fetchErrors: string[]
+  reducedMotion: boolean
+  deviceTier: DeviceTier
 }
 
 export type AppAction =
@@ -44,6 +48,7 @@ export type AppAction =
   | { type: 'SET_UPDATES_VIEW_MODE'; payload: 'timeline' | 'accordion' | 'grid' }
   | { type: 'SET_LAST_VISIT_SCAN'; payload: string }
   | { type: 'SET_FETCH_ERRORS'; payload: string[] }
+  | { type: 'SET_REDUCED_MOTION'; payload: boolean }
 
 function getStoredLastVisitScan(): string {
   try {
@@ -52,6 +57,34 @@ function getStoredLastVisitScan(): string {
     return ''
   }
 }
+
+function detectDeviceTier(): DeviceTier {
+  const cores = navigator.hardwareConcurrency || 2
+  if (cores <= 2) return 'low'
+  if (cores >= 8) return 'high'
+  return 'mid'
+}
+
+function getInitialReducedMotion(): { reducedMotion: boolean; deviceTier: DeviceTier } {
+  const stored = localStorage.getItem('morphe_reduced_motion')
+  if (stored !== null) {
+    return { reducedMotion: stored === 'true', deviceTier: detectDeviceTier() }
+  }
+  const deviceTier = detectDeviceTier()
+  const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+  let reduced: boolean
+  if (deviceTier === 'low') {
+    reduced = true
+  } else if (deviceTier === 'high') {
+    reduced = mq.matches
+  } else {
+    reduced = mq.matches
+  }
+  try { localStorage.setItem('morphe_reduced_motion', String(reduced)) } catch {}
+  return { reducedMotion: reduced, deviceTier }
+}
+
+const { reducedMotion: initialReducedMotion, deviceTier: initialDeviceTier } = getInitialReducedMotion()
 
 const initialState: AppState = {
   bundles: {},
@@ -72,6 +105,8 @@ const initialState: AppState = {
   updatesViewMode: (localStorage.getItem('morphe_updates_view') as 'timeline' | 'accordion' | 'grid') || 'timeline',
   lastVisitScan: getStoredLastVisitScan(),
   fetchErrors: [],
+  reducedMotion: initialReducedMotion,
+  deviceTier: initialDeviceTier,
 }
 
 function appReducer(state: AppState, action: AppAction): AppState {
@@ -116,6 +151,9 @@ function appReducer(state: AppState, action: AppAction): AppState {
       return { ...state, lastVisitScan: action.payload }
     case 'SET_FETCH_ERRORS':
       return { ...state, fetchErrors: action.payload }
+    case 'SET_REDUCED_MOTION':
+      try { localStorage.setItem('morphe_reduced_motion', String(action.payload)) } catch {}
+      return { ...state, reducedMotion: action.payload }
     default:
       return state
   }

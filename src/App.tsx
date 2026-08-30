@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
+import { useAppContext } from './context/AppContext'
 import ErrorBoundary from './components/layout/ErrorBoundary'
 import Background from './components/background/Background'
 import AppsPage from './components/apps/AppsPage'
@@ -10,12 +11,18 @@ import DiffPage from './components/diff/DiffPage'
 const ChangelogPage = lazy(() => import('./components/changelog/ChangelogPage'))
 
 export default function App() {
+  const { state } = useAppContext()
+
   useEffect(() => {
     const fallback = setTimeout(() => {
       void import('./components/changelog/ChangelogPage')
     }, 2000)
     return () => clearTimeout(fallback)
   }, [])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('reduced-motion', state.reducedMotion)
+  }, [state.reducedMotion])
 
   return (
     <ErrorBoundary>
