@@ -2,9 +2,9 @@
   "bundle": "dan1eltheman1el",
   "channel": "stable",
   "repo_url": "https://github.com/Dan1elTheMan1el/Morphe-Patches",
-  "created_at": "2026-08-28T22:37:31",
-  "version": "v1.3.0",
-  "description": "## [1.3.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.2.0...v1.3.0) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* DeFit tutorial patch error ([77d9c60](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/77d9c608d22471bbdf4a94619a3cbab5955f8898))\n\n### ✨ New Features\n\n* Add patch with tutorial to fix login in DeFit++ ([c45650b](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/c45650b9a4e139e560dd926730fc036b9f134a9c))\n* Auto claim daily coins via intent in PokeRaid ([d5d9046](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/d5d90460a9578009b99b23bcd62bde6e9c74fdf0))\n* Only show login tutorial when logged out ([3df0a5a](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/3df0a5a3a5044973de766534499253e0f6cd9aaf))\n",
+  "created_at": "2026-08-29T22:01:26",
+  "version": "v1.4.2",
+  "description": "## [1.4.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.4.1...v1.4.2) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **DeFit++:** Refresh update metadata ([9431be8](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/9431be8632e76956fa23d5770efd26c978d200b8))\n* **Keyboard Designer:** Refresh update metadata ([0fcbb72](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/0fcbb720b53f326d2e6527dd308f30de1cb0dd64))\n* **PokeRaid:** Refresh update metadata ([d61c756](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/d61c7564a3bacaf11530b767b7688c7aaba8a071))\n",
   "apps": [
     {
       "app_name": "DeFit",
@@ -35,7 +35,7 @@
         {
           "name": "Login Fix Tutorial",
           "description": "Adds an in-app Google Fit login setup guide and a button to copy the installed APK's signing SHA-1.",
-          "use": false,
+          "use": true,
           "options": [],
           "compatible_versions": [
             "0.8.2a"
@@ -75,6 +75,20 @@
       "package": "de.humbergsoftware.keyboarddesigner",
       "patches": [
         {
+          "name": "Change keyboard name",
+          "description": "Changes the name shown for Keyboard Designer in Android's keyboard/input-method switcher.",
+          "use": true,
+          "options": [
+            {
+              "key": "keyboardName",
+              "description": "The name shown by Android when switching input methods."
+            }
+          ],
+          "compatible_versions": [
+            "5.B8.8"
+          ]
+        },
+        {
           "name": "Start with PokeGenie keyboard",
           "description": "Adds my PokeGenie-inspired keyboard design on fresh setup and makes it the portrait text-input default.",
           "use": true,
@@ -108,7 +122,7 @@
           ]
         },
         {
-          "name": "Daily Reward Background Status & Auto-Claim",
+          "name": "Daily Reward Background Auto-Claim",
           "description": "Checks daily reward eligibility and automatically claims it (bypassing ads) if available. Invoke by sending intent as broadcast, with action app.danielthemaniel.pokeraid.CHECK_DAILY_REWARD, and package me.pokeraid.",
           "use": true,
           "options": [],
@@ -165,8 +179,8 @@
     }
   ],
   "patches_name": "DanielTheManiel's Morphe Patches",
-  "fingerprint": "e6f8508c9569735c32c671ddc1a74db08e0040150e866997b235ba8d69893883",
-  "release_notes": "## [1.3.0](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.2.0...v1.3.0) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* DeFit tutorial patch error ([77d9c60](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/77d9c608d22471bbdf4a94619a3cbab5955f8898))\n\n### ✨ New Features\n\n* Add patch with tutorial to fix login in DeFit++ ([c45650b](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/c45650b9a4e139e560dd926730fc036b9f134a9c))\n* Auto claim daily coins via intent in PokeRaid ([d5d9046](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/d5d90460a9578009b99b23bcd62bde6e9c74fdf0))\n* Only show login tutorial when logged out ([3df0a5a](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/3df0a5a3a5044973de766534499253e0f6cd9aaf))\n",
-  "release_tag": "v1.3.0",
-  "release_date": "2026-08-28T22:37:31Z"
+  "fingerprint": "a6a616e6241810d5f80ad0872aae207914cb0095edc9f003d6fea1ea57145781",
+  "release_notes": "## [1.4.2](https://github.com/Dan1elTheMan1el/Morphe-Patches/compare/v1.4.1...v1.4.2) (2026-08-29)\n\n### 🐛 Bug Fixes\n\n* **DeFit++:** Refresh update metadata ([9431be8](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/9431be8632e76956fa23d5770efd26c978d200b8))\n* **Keyboard Designer:** Refresh update metadata ([0fcbb72](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/0fcbb720b53f326d2e6527dd308f30de1cb0dd64))\n* **PokeRaid:** Refresh update metadata ([d61c756](https://github.com/Dan1elTheMan1el/Morphe-Patches/commit/d61c7564a3bacaf11530b767b7688c7aaba8a071))\n",
+  "release_tag": "v1.4.2",
+  "release_date": "2026-08-29T22:01:26Z"
 }
