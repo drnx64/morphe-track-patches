@@ -1,6 +1,7 @@
 # Morphe Patch Tracker
 
 <p align="center">
+    <img src="https://img.shields.io/github/actions/workflow/status/drnx64/morphe-track-patches/ci.yml?style=for-the-badge&logo=github&label=CI" alt="CI">
     <img src="https://img.shields.io/github/stars/drnx64/morphe-track-patches?style=for-the-badge&logo=github&color=6366f1" alt="GitHub stars">
 </p>
 
