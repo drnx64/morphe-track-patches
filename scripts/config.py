@@ -22,3 +22,7 @@ ICON_CACHE_MAX_ENTRIES = int(os.environ.get("ICON_CACHE_MAX_ENTRIES", "600"))
 
 # Announcement expiry (ms)
 ANNOUNCEMENT_EXPIRY_MS = int(os.environ.get("ANNOUNCEMENT_EXPIRY_MS", "86400000"))
+
+# Download skip cache — bundles skipped as incomplete/non-morphe are cached
+# and only retried after this many days.
+SKIP_CACHE_TTL_DAYS = int(os.environ.get("SKIP_CACHE_TTL_DAYS", "30"))

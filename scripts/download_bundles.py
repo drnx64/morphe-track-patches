@@ -3,9 +3,10 @@ import shutil
 import requests
 import json
 import time
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from dotenv import load_dotenv
 from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, CUSTOM_REPO_PATH, IGNORE_REPO_PATH, load_repo_list, load_last_run, save_last_run
+from config import SKIP_CACHE_TTL_DAYS
 
 load_dotenv()
 
@@ -124,6 +125,39 @@ def _load_skip_bundle_names():
     return skip
 
 
+def _load_skip_cache():
+    """Load skip cache from last_run.json's download_errors.
+
+    Returns a dict mapping bundle_key -> {error, last_attempted}.
+    Entries without last_attempted (legacy) are treated as stale (always retry).
+    """
+    last_run = load_last_run()
+    errors = last_run.get("download_errors", [])
+    cache = {}
+    for entry in errors:
+        key = entry.get("bundle", "")
+        if key:
+            cache[key] = {
+                "error": entry.get("error", ""),
+                "last_attempted": entry.get("last_attempted"),
+            }
+    return cache
+
+
+def _is_cache_fresh(entry):
+    """Check if a skip cache entry is still within the TTL window."""
+    ts = entry.get("last_attempted")
+    if not ts:
+        return False
+    try:
+        last_attempted = datetime.fromisoformat(ts)
+        if last_attempted.tzinfo is None:
+            last_attempted = last_attempted.replace(tzinfo=timezone.utc)
+        return (datetime.now(timezone.utc) - last_attempted) < timedelta(days=SKIP_CACHE_TTL_DAYS)
+    except (ValueError, TypeError):
+        return False
+
+
 def download_all_bundles():
     tree_json_path = os.path.join(RAW_DIR, "tree.json")
     tree_files = load_json(tree_json_path, default=[])
@@ -142,6 +176,12 @@ def download_all_bundles():
         before = len(bundles)
         bundles = {k: v for k, v in bundles.items() if k.lower() not in skip_bundles}
         print(f"  Filtered from {before} to {len(bundles)} bundles (skipped {before - len(bundles)})")
+
+    # Load skip cache — bundles previously skipped as incomplete or non-morphe
+    skip_cache = _load_skip_cache()
+    cached_skips = sum(1 for k in skip_cache if _is_cache_fresh(skip_cache[k]))
+    if cached_skips:
+        print(f"Skip cache: {cached_skips} bundles within TTL ({SKIP_CACHE_TTL_DAYS}d), will skip silently")
     
     # Download to a temp directory, then swap atomically.
     # This prevents partial downloads from corrupting existing data.
@@ -163,11 +203,17 @@ def download_all_bundles():
             
             # Skip if either is missing
             if not bundle_path or not list_path:
+                bundle_key = f"{bundle_name}:{channel}"
+                cached = skip_cache.get(bundle_key)
+                if cached and _is_cache_fresh(cached):
+                    # Recently skipped — skip silently, don't log or record
+                    continue
                 err_msg = f"Incomplete bundle+channel pair. Missing bundle_path or list_path."
-                print(f"[-] Skip {bundle_name}:{channel} - {err_msg}")
+                print(f"[-] Skip {bundle_key} - {err_msg}")
                 errors.append({
-                    "bundle": f"{bundle_name}:{channel}",
-                    "error": err_msg
+                    "bundle": bundle_key,
+                    "error": err_msg,
+                    "last_attempted": datetime.now(timezone.utc).isoformat(),
                 })
                 continue
                 
@@ -179,7 +225,8 @@ def download_all_bundles():
                 print(f"[-] {bundle_name}:{channel} error: {err_msg}")
                 errors.append({
                     "bundle": f"{bundle_name}:{channel}",
-                    "error": err_msg
+                    "error": err_msg,
+                    "last_attempted": datetime.now(timezone.utc).isoformat(),
                 })
                 continue
                 
@@ -191,12 +238,22 @@ def download_all_bundles():
                 print(f"[-] {bundle_name}:{channel} error: {err_msg}")
                 errors.append({
                     "bundle": f"{bundle_name}:{channel}",
-                    "error": err_msg
+                    "error": err_msg,
+                    "last_attempted": datetime.now(timezone.utc).isoformat(),
                 })
                 continue
                 
             if not is_morphe_bundle(bundle_json):
-                # Silent skip, as this is just a regular (non-Morphe) bundle in the repository
+                # Skip non-Morphe bundles, but track in cache so we don't retry monthly
+                bundle_key = f"{bundle_name}:{channel}"
+                cached = skip_cache.get(bundle_key)
+                if cached and _is_cache_fresh(cached):
+                    continue
+                errors.append({
+                    "bundle": bundle_key,
+                    "error": "Not a Morphe bundle",
+                    "last_attempted": datetime.now(timezone.utc).isoformat(),
+                })
                 continue
                 
             # Create download dir now that we know it's a Morphe bundle (in temp dir)
@@ -211,7 +268,8 @@ def download_all_bundles():
                 print(f"[-] {bundle_name}:{channel} error: {err_msg}")
                 errors.append({
                     "bundle": f"{bundle_name}:{channel}",
-                    "error": err_msg
+                    "error": err_msg,
+                    "last_attempted": datetime.now(timezone.utc).isoformat(),
                 })
                 continue
                 
