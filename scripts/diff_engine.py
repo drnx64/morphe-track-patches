@@ -3,6 +3,7 @@ import sys
 from datetime import datetime, timezone
 from state_manager import (
     load_current_snapshot,
+    rebuild_snapshot_from_bundles,
     load_json,
     save_json,
     save_last_run,
@@ -116,6 +117,15 @@ def diff_snapshots():
     new_snapshot = load_json(new_snapshot_path, default={})
     old_snapshot = load_current_snapshot()
 
+    # Rebuild from committed bundle files if snapshot is empty (e.g. CI fresh checkout)
+    if not old_snapshot:
+        print("[*] No current snapshot found — rebuilding from data/bundles/*.json")
+        old_snapshot = rebuild_snapshot_from_bundles()
+        # Persist the rebuilt snapshot so next local run is fast
+        from state_manager import save_new_snapshot
+        if old_snapshot:
+            save_new_snapshot(old_snapshot)
+
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     affected_bundles = []
@@ -166,7 +176,7 @@ def diff_snapshots():
                                 old_dev_apps = old_snapshot[dev_key].get("apps", [])
                                 if any(a["package"].lower().strip() == pkg for a in old_dev_apps):
                                     promoted = True
-                                    print(f"[→] Diff: App {app['app_name']} ({pkg}) promoted from dev to stable in {bundle_key}")
+                                    print(f"[->] Diff: App {app['app_name']} ({pkg}) promoted from dev to stable in {bundle_key}")
                         if promoted:
                             changed_apps.append({
                                 "app_name": app["app_name"],
@@ -184,10 +194,18 @@ def diff_snapshots():
                     elif apps_are_different(old_app_map[pkg], app):
                         print(f"[~] Diff: Found updated app {app['app_name']} ({pkg}) in {bundle_key}")
                         patch_diff = compute_patch_diff(old_app_map[pkg], app)
+                        app_badge = "UPDATED APP"
+                        total_changes = (
+                            len(patch_diff.get("patches_added", []))
+                            + len(patch_diff.get("patches_removed", []))
+                            + len(patch_diff.get("patches_modified", []))
+                        )
+                        if total_changes >= 5:
+                            app_badge = "MAJOR UPDATE"
                         changed_apps.append({
                             "app_name": app["app_name"],
                             "package": app["package"],
-                            "badge_type": "UPDATED APP",
+                            "badge_type": app_badge,
                             "patch_diff": patch_diff
                         })
 
@@ -205,13 +223,21 @@ def diff_snapshots():
                     old_fp_display = old_fp[:8] if old_fp else "None"
                     new_fp_display = new_fp[:8] if new_fp else "None"
                     print(f"[+] Diff: Bundle {bundle_key} fingerprint changed ({old_fp_display} -> {new_fp_display})")
+                    # Detect version bump
+                    old_ver = old_rec.get("version", "")
+                    new_ver = new_rec.get("version", "")
+                    extra_badges = []
+                    if old_ver and new_ver and old_ver != new_ver:
+                        extra_badges.append("VERSION BUMP")
+                        print(f"[^] Diff: Version bump in {bundle_key} ({old_ver} -> {new_ver})")
                     affected_bundles.append({
                         "bundle": bundle_name,
                         "channel": channel,
                         "badge_type": "UPDATED",
                         "apps": changed_apps,
                         "repo_url": new_rec.get("repo_url", ""),
-                        "patches_name": new_rec.get("patches_name", "")
+                        "patches_name": new_rec.get("patches_name", ""),
+                        "extra_badges": extra_badges
                     })
                 else:
                     print(f"[*] Diff: Bundle {bundle_key} fingerprint changed but no app-level changes. Skipping.")

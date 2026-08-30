@@ -86,6 +86,55 @@ def save_new_snapshot(snapshot_data):
 def load_current_snapshot():
     return load_json(CURRENT_SNAPSHOT_PATH, default={})
 
+def rebuild_snapshot_from_bundles():
+    """Rebuild snapshot from committed data/bundles/*.json files.
+
+    Used when current_snapshot.json is missing (e.g. CI fresh checkout).
+    Each bundle file already contains apps, version, and fingerprint fields
+    needed for diff comparison.
+    """
+    import glob as glob_mod
+
+    if not os.path.isdir(BUNDLES_DIR):
+        print("[snapshot] No data/bundles/ directory found, starting with empty snapshot")
+        return {}
+
+    # Fast path: use _index.json to get the correct key for each file
+    index = load_json(os.path.join(BUNDLES_DIR, "_index.json"), default={})
+
+    # Build reverse map: filename -> key from index
+    filename_to_key = {}
+    for key in index:
+        filename = key.replace(":", "_") + ".json"
+        filename_to_key[filename] = key
+
+    snapshot = {}
+    bundle_files = sorted(glob_mod.glob(os.path.join(BUNDLES_DIR, "*.json")))
+
+    for filepath in bundle_files:
+        filename = os.path.basename(filepath)
+        if filename == "_index.json":
+            continue
+        try:
+            record = load_json(filepath, default=None)
+            if not record:
+                continue
+            key = filename_to_key.get(filename)
+            if not key:
+                # Fallback: reconstruct from record fields
+                bundle_name = record.get("bundle", filename.removesuffix(".json"))
+                channel = record.get("channel", "stable")
+                key = f"{bundle_name}:{channel}"
+            # Strip icon_url to match snapshot format
+            for app in record.get("apps", []):
+                app.pop("icon_url", None)
+            snapshot[key] = record
+        except Exception as e:
+            print(f"[snapshot] Error reading {filepath}: {e}")
+
+    print(f"[snapshot] Rebuilt snapshot from {len(snapshot)} bundle files")
+    return snapshot
+
 def load_previous_snapshot():
     return load_json(PREVIOUS_SNAPSHOT_PATH, default={})
 
@@ -215,8 +264,6 @@ def save_repo_list(filepath, repos):
     except Exception as e:
         print(f"Error saving repo list to {filepath}: {e}")
 
-import re
-
 def load_stats_json():
     return load_json(STATS_JSON_PATH, default={})
 
@@ -302,13 +349,3 @@ def cleanup_orphaned_state():
         if len(pruned_names) < len(name_cache):
             save_json(name_cache_path, pruned_names)
             print(f"[*] Cleaned name_cache: {len(name_cache)} -> {len(pruned_names)} entries")
-    v_clean = version.lower().lstrip("v")
-    for r in releases:
-        tag_clean = r.get("tag", "").lower().lstrip("v")
-        if tag_clean == v_clean:
-            return r
-    for r in releases:
-        tag_clean = r.get("tag", "").lower().lstrip("v")
-        if v_clean in tag_clean or tag_clean in v_clean:
-            return r
-    return None

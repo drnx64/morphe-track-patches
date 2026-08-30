@@ -29,7 +29,7 @@ from state_manager import (
 
 RELEASE_CACHE_PATH = os.path.join(STATE_DIR, "release_cache.json")
 
-APP_PRECEDENCE = {"NEW APP": 0, "UPDATED APP": 1, "REMOVED APP": 2}
+APP_PRECEDENCE = {"NEW APP": 0, "MAJOR UPDATE": 1, "UPDATED APP": 2, "REMOVED APP": 3}
 BUNDLE_PRECEDENCE = {"NEW BUNDLE": 0, "UPDATED": 1}
 
 
@@ -80,7 +80,8 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                 "badge_type": bundle_entry["badge_type"],
                 "apps": apps,
                 "repo_url": bundle_entry.get("repo_url", ""),
-                "patches_name": bundle_entry.get("patches_name", "")
+                "patches_name": bundle_entry.get("patches_name", ""),
+                "extra_badges": bundle_entry.get("extra_badges", [])
             }
         else:
             existing = buffer_bundles[b_key]

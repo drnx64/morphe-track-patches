@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from log import log
-from state_manager import load_daily_buffer, ensure_dirs, load_last_run, save_last_run, save_json, STATE_DIR
+from state_manager import load_daily_buffer, ensure_dirs, load_last_run, save_last_run, save_json, load_json, save_new_snapshot, STATE_DIR, RAW_DIR
 from fetch_patch_tree import fetch_bundle_tree
 from download_bundles import download_all_bundles
 from fetch_external_repos import fetch_external_repos
@@ -69,6 +69,11 @@ def run():
         if not has_changes and not is_rollover:
             log.info("STEP 8: Syncing data files (silent run)")
             write_data_files(has_changes=False)
+            # Save snapshot so next run compares against current state
+            new_snapshot_path = os.path.join(RAW_DIR, "parsed_bundles.json")
+            new_snapshot = load_json(new_snapshot_path, default={})
+            if new_snapshot:
+                save_new_snapshot(new_snapshot)
             log.info("PIPELINE FINISHED SILENTLY (No changes and no day rollover)")
             run_silent()
             _update_last_run_success(start_time)
@@ -122,7 +127,6 @@ def _update_last_run_success(start_time: datetime):
         last_run_data["completed_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
         # Add summary report
-        from state_manager import load_json, RAW_DIR, STATE_DIR
         snapshot = load_json(os.path.join(RAW_DIR, "parsed_bundles.json"), default={})
         last_run_data["summary"] = {
             "total_bundles": len(snapshot),
