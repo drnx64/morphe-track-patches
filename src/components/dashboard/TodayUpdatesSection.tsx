@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useEffect, useState } from 'react'
+import { useMemo, useCallback, useEffect } from 'react'
 import { useAppContext } from '../../context/AppContext'
 import { formatFriendlyDate, getTimeAgo } from '../../utils/format'
 import { groupAffectedBundles } from '../../utils/misc'
@@ -72,8 +72,6 @@ export default function TodayUpdatesSection() {
   const hasChanges = !!grouped && sortedSections.length > 0
   const showNewScan = isNewScan(state.lastChecked, state.lastVisitScan)
   const lastScanAgo = state.lastChecked ? getTimeAgo(state.lastChecked) : ''
-
-  const [showLegend, setShowLegend] = useState(false)
 
   const handleDismissNewScan = useCallback(() => {
     if (state.lastChecked) {
@@ -151,19 +149,14 @@ export default function TodayUpdatesSection() {
         </div>
         <ViewToggle />
         <div className="updates-legend-row">
-          <button type="button" className="updates-legend-toggle" onClick={() => setShowLegend((v) => !v)}>
-            {showLegend ? 'Hide legend' : 'Show legend'}
-          </button>
-          {showLegend && (
-            <span className="updates-legend">
-              {CHIP_LEGEND.map((item) => (
-                <span key={item.symbol} className="updates-legend-item">
-                  <span className={`app-chip ${item.className}`}>{item.symbol}</span>
-                  <span className="updates-legend-label">{item.label}</span>
-                </span>
-              ))}
-            </span>
-          )}
+          <span className="updates-legend">
+            {CHIP_LEGEND.map((item) => (
+              <span key={item.symbol} className="updates-legend-item">
+                <span className={`app-chip ${item.className}`}>{item.symbol}</span>
+                <span className="updates-legend-label">{item.label}</span>
+              </span>
+            ))}
+          </span>
         </div>
         <div className="updates-body">
           {state.updatesViewMode === 'timeline' && (
