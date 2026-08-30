@@ -226,9 +226,25 @@ def download_all_bundles():
     print(f"Successfully downloaded {downloaded_count} bundle+channel pairs.")
     
     # Atomic swap: remove old dir, rename temp to final
+    # On Windows, rmtree can fail if files are locked (antivirus, indexer).
+    # Retry with delay, then fall back to shutil.move.
     if os.path.exists(bundles_raw_dir):
-        shutil.rmtree(bundles_raw_dir, ignore_errors=True)
-    if os.path.exists(temp_dir):
+        for attempt in range(3):
+            try:
+                shutil.rmtree(bundles_raw_dir)
+                break
+            except PermissionError:
+                if attempt < 2:
+                    print(f"[warn] rmtree locked, retrying in 1s (attempt {attempt + 1}/3)")
+                    time.sleep(1)
+                else:
+                    print("[warn] rmtree failed after 3 retries, using ignore_errors")
+                    shutil.rmtree(bundles_raw_dir, ignore_errors=True)
+
+    if os.path.exists(bundles_raw_dir):
+        # rmtree failed — can't rename over existing dir, so move into it
+        shutil.move(temp_dir, bundles_raw_dir)
+    elif os.path.exists(temp_dir):
         os.rename(temp_dir, bundles_raw_dir)
     
     # Merge download results into last_run.json (other steps will add their own data)
