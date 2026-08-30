@@ -62,7 +62,7 @@ def run():
     
     # Step 8: Always sync data files for frontend (reads current_snapshot.json)
     print("\n--- STEP 8: Syncing data files ---")
-    write_data_files()
+    write_data_files(has_changes=has_changes)
     
     # Step 9 & 10: Update daily buffer and store state
     # Silent run rule: if no changes and no rollover, exit silently before updating state/buffer/site

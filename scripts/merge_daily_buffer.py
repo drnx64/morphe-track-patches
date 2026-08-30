@@ -360,14 +360,15 @@ def update_data_files(today_str, buffer_data, snapshot):
     print("[*] Live state files updated with the current snapshot.")
 
 
-def write_data_files():
+def write_data_files(has_changes=True):
     """Read current snapshot and write all 4 data files. Safe to call anytime."""
-    # Always sync snapshot from parsed_bundles.json (source of truth)
-    parsed_path = os.path.join(RAW_DIR, "parsed_bundles.json")
-    parsed = load_json(parsed_path, default={})
-    if parsed:
-        save_new_snapshot(parsed)
+    # Load snapshot directly — do NOT rotate snapshots here
+    # Snapshot rotation only happens in update_daily_buffer_run()
     snapshot = load_current_snapshot()
+    if not snapshot:
+        # Fallback: try loading parsed_bundles.json if snapshot not yet written
+        parsed_path = os.path.join(RAW_DIR, "parsed_bundles.json")
+        snapshot = load_json(parsed_path, default={})
     if not snapshot:
         print("[*] No snapshot data to write.")
         return
@@ -376,16 +377,6 @@ def write_data_files():
 
     existing_core = load_core_json()
     existing_stats = load_stats_json()
-    existing_changes = load_changes_json()
-
-    # Clean patches_name in historical changes entries
-    _clean_re = re.compile(r'\s+for use with\s+Morphe', re.IGNORECASE)
-    _clean_re2 = re.compile(r'\s+for\s+Morphe', re.IGNORECASE)
-    if existing_changes and "affected_bundles" in existing_changes:
-        for ab in existing_changes["affected_bundles"]:
-            if ab.get("patches_name"):
-                ab["patches_name"] = _clean_re.sub('', ab["patches_name"]).strip()
-                ab["patches_name"] = _clean_re2.sub('', ab["patches_name"]).strip()
 
     now = now_utc_iso()
     core = {
@@ -399,11 +390,27 @@ def write_data_files():
         "new_apps_today": existing_stats.get("new_apps_today", 0),
         "new_bundles_today": existing_stats.get("new_bundles_today", 0)
     }
+
+    # Write changes.json: empty when no changes, otherwise keep existing historical data
+    if has_changes:
+        existing_changes = load_changes_json()
+        # Clean patches_name in historical changes entries
+        if existing_changes and "affected_bundles" in existing_changes:
+            _clean_re = re.compile(r'\s+for use with\s+Morphe', re.IGNORECASE)
+            _clean_re2 = re.compile(r'\s+for\s+Morphe', re.IGNORECASE)
+            for ab in existing_changes["affected_bundles"]:
+                if ab.get("patches_name"):
+                    ab["patches_name"] = _clean_re.sub('', ab["patches_name"]).strip()
+                    ab["patches_name"] = _clean_re2.sub('', ab["patches_name"]).strip()
+        changes_to_save = existing_changes if existing_changes and "affected_bundles" in existing_changes else {"affected_bundles": []}
+    else:
+        changes_to_save = {"affected_bundles": []}
+
     bundles = dict(snapshot)
     merge_release_notes(bundles)
     save_core_json(core)
     save_stats_json(stats)
-    save_changes_json(existing_changes if existing_changes and "affected_bundles" in existing_changes else {"affected_bundles": []})
+    save_changes_json(changes_to_save)
     save_bundles_split(bundles)
     print(f"[*] Data files synced: {total_bundles} bundles, {total_apps} apps.")
 
