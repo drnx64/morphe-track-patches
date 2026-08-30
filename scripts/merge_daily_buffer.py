@@ -293,8 +293,7 @@ def finalize_buffer(buffer_data):
     merge_release_notes(bundles)
     save_core_json(core)
     save_stats_json(stats)
-    if not preserve_changes_json:
-        save_changes_json(changes_to_save)
+    save_changes_json(changes)
     save_bundles_split(bundles)
     print("[*] Finalization state files written successfully.")
 
@@ -410,7 +409,8 @@ def write_data_files(has_changes=True, preserve_changes_json=False):
     merge_release_notes(bundles)
     save_core_json(core)
     save_stats_json(stats)
-    save_changes_json(changes_to_save)
+    if changes_to_save is not None:
+        save_changes_json(changes_to_save)
     save_bundles_split(bundles)
     print(f"[*] Data files synced: {total_bundles} bundles, {total_apps} apps.")
 
