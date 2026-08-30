@@ -96,7 +96,8 @@ def run():
         log.info("=== PIPELINE RUN COMPLETE ===")
 
     except Exception as e:
-        elapsed = (datetime.now() - start_time).total_seconds()
+        end_time = datetime.now()
+        elapsed = (end_time - start_time).total_seconds()
         error_msg = f"Pipeline failed after {elapsed:.1f}s: {e}"
         log.error(error_msg)
         traceback.print_exc()
@@ -106,7 +107,7 @@ def run():
             last_run_data = load_last_run()
             last_run_data["error"] = str(e)
             last_run_data["error_type"] = type(e).__name__
-            last_run_data["failed_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            last_run_data["failed_at"] = end_time.strftime("%Y-%m-%dT%H:%M:%SZ")
             last_run_data["elapsed_seconds"] = round(elapsed, 1)
             save_last_run(last_run_data)
         except Exception:
@@ -117,14 +118,15 @@ def run():
 
 def _update_last_run_success(start_time: datetime):
     """Mark pipeline run as successful in last_run.json with summary report."""
-    elapsed = (datetime.now() - start_time).total_seconds()
+    end_time = datetime.now()
+    elapsed = (end_time - start_time).total_seconds()
     try:
         last_run_data = load_last_run()
         last_run_data["error"] = None
         last_run_data["error_type"] = None
         last_run_data["failed_at"] = None
         last_run_data["elapsed_seconds"] = round(elapsed, 1)
-        last_run_data["completed_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        last_run_data["completed_at"] = end_time.strftime("%Y-%m-%dT%H:%M:%SZ")
 
         # Add summary report
         snapshot = load_json(os.path.join(RAW_DIR, "parsed_bundles.json"), default={})
