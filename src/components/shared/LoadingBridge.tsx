@@ -10,8 +10,11 @@ export default function LoadingBridge() {
 
     const textEl = document.getElementById('loading-progress-text')
     const barEl = document.getElementById('loading-progress-bar')
+    const pctEl = document.getElementById('loading-progress-pct')
+    const pct = Math.min(100, Math.max(0, state.loadingProgress))
     if (textEl) textEl.textContent = state.loadingStatus
-    if (barEl) barEl.style.width = `${Math.min(100, Math.max(0, state.loadingProgress))}%`
+    if (barEl) barEl.style.width = `${pct}%`
+    if (pctEl) pctEl.textContent = `${Math.round(pct)}%`
   }, [state.loadingProgress, state.loadingStatus])
 
   useEffect(() => {
