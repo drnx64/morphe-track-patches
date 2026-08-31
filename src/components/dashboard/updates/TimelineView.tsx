@@ -4,7 +4,7 @@ import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
 import AppChips from './AppChips'
 import PatchDiffInline from './PatchDiffInline'
-import { useEntries, useUpdateActions, sortApps, AuthorLink } from './useEntries'
+import { useEntries, useUpdateActions, sortApps, AuthorLink, VersionArrow } from './useEntries'
 
 interface TimelineViewProps {
   grouped: Record<string, import('../../../types/bundles').BundleEntry>
@@ -33,7 +33,6 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
           <div key={bundleName} className="tl-entry" style={{ '--dot-color': dotColor } as React.CSSProperties}>
             <div className="tl-bundle-line">
               {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
-              {entry.extra_badges?.includes('VERSION BUMP') && <Badge className={BADGE_CLASSES.VERSION_BUMP}>VERSION BUMP</Badge>}
               <strong
                 className="tl-bundle-link"
                 role="button"
@@ -44,6 +43,7 @@ export default function TimelineView({ grouped, sortedSections }: TimelineViewPr
                 {getDisplayName(bundleName, entry.channels)}
               </strong>
               <AuthorLink bundleName={bundleName} channels={entry.channels} className="tl-author" />
+              <VersionArrow bundleName={bundleName} channels={entry.channels} newVersion={entry.version} />
             </div>
             <div className="tl-apps">
               {sortedApps.map((app) => {

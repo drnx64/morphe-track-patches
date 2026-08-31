@@ -7,9 +7,8 @@ import { fetchChangelog, fetchReleaseCache } from '../../services/fetchData'
 import { stripVersionHeader, parseReleaseNotes, renderReleaseSections } from '../../services/releaseParser'
 import { formatFriendlyDate } from '../../utils/format'
 import { getPlayStoreUrl, getRepoInfo, getAddMorpheUrl } from '../../utils/url'
-import { escHtml } from '../../utils/html'
 import { CACHE_KEYS } from '../../types/utils'
-import { CLOSE_ICON } from '../../utils/svg'
+import { CLOSE_ICON, SHAPE_SQUARE, SHAPE_CIRCLE, SHAPE_CROSS } from '../../utils/svg'
 import { isWatched, toggleWatched, ensureNotificationPermission } from '../../services/watchlist'
 import Modal from '../shared/Modal'
 import AppIcon from '../shared/AppIcon'
@@ -58,6 +57,7 @@ export default function AppDetailModal() {
       setChannels(detail.channels || [])
       setCurrentChannel(detail.channels && detail.channels.length > 0 && !detail.channels.includes('stable') ? 'dev' : 'stable')
       setHistoryExpanded(false)
+      setPatchDiffExpanded(!!detail.fromUpdates && !!detail.app?.patch_diff)
       setOpen(true)
     }
     window.addEventListener('open-app', handler)
@@ -109,9 +109,10 @@ export default function AppDetailModal() {
       if (cachedCL) setAppHistory(filterAppHistory(cachedCL, pkg, bundleName))
       if (cachedRC) setReleaseCache(cachedRC)
 
+      const hasChanges = state.changes?.affected_bundles?.some(b => b.bundle === bundleName)
       const [freshCL, freshRC] = await Promise.all([
         fetchChangelog(),
-        fetchReleaseCache(),
+        hasChanges ? fetchReleaseCache() : Promise.resolve(cachedRC),
       ])
       if (freshCL) {
         setAppHistory(filterAppHistory(freshCL, pkg, bundleName))
@@ -286,9 +287,7 @@ export default function AppDetailModal() {
               </span>
             </div>
             {patchDiffExpanded && (
-              <div className="app-diff-body">
-                {renderPatchDiff(patchDiff)}
-              </div>
+              <PatchDiffSection diff={patchDiff} />
             )}
           </div>
         )}
@@ -521,33 +520,43 @@ function AppHistoryItem({
   )
 }
 
-function renderPatchDiff(diff: PatchDiff): string {
-  let html = ''
-  if (diff.patches_added?.length) {
-    html += '<div class="diff-group diff-added"><div class="diff-group-label">Added</div>'
-    for (const p of diff.patches_added) {
-      const name = typeof p === 'string' ? p : p.name
-      html += `<div class="diff-entry">+ ${escHtml(name)}</div>`
-    }
-    html += '</div>'
-  }
-  if (diff.patches_removed?.length) {
-    html += '<div class="diff-group diff-removed"><div class="diff-group-label">Removed</div>'
-    for (const p of diff.patches_removed) {
-      const name = typeof p === 'string' ? p : p.name
-      html += `<div class="diff-entry">- ${escHtml(name)}</div>`
-    }
-    html += '</div>'
-  }
-  if (diff.patches_modified?.length) {
-    html += '<div class="diff-group diff-modified"><div class="diff-group-label">Modified</div>'
-    for (const p of diff.patches_modified) {
-      const name = typeof p === 'string' ? p : p.name
-      html += `<div class="diff-entry">~ ${escHtml(name)}</div>`
-    }
-    html += '</div>'
-  }
-  return html || '<div class="diff-empty">No patch changes recorded.</div>'
+function getPatchName(entry: string | { name: string; description?: string; changes?: string[] }): string {
+  return typeof entry === 'string' ? entry : entry.name
+}
+
+function PatchDiffSection({ diff }: { diff: PatchDiff }) {
+  const added = diff.patches_added || []
+  const removed = diff.patches_removed || []
+  const modified = diff.patches_modified || []
+  const hasAny = added.length > 0 || removed.length > 0 || modified.length > 0
+  if (!hasAny) return <div className="diff-empty">No patch changes recorded.</div>
+
+  return (
+    <div className="app-diff-body">
+      {added.map((p, i) => (
+        <div key={`a-${i}`} className="diff-entry diff-added">
+          <span className="diff-icon" dangerouslySetInnerHTML={{ __html: SHAPE_SQUARE }} />
+          <span>{getPatchName(p)} was added</span>
+        </div>
+      ))}
+      {removed.map((p, i) => (
+        <div key={`r-${i}`} className="diff-entry diff-removed">
+          <span className="diff-icon" dangerouslySetInnerHTML={{ __html: SHAPE_CIRCLE }} />
+          <span>{getPatchName(p)} was removed</span>
+        </div>
+      ))}
+      {modified.map((p, i) => {
+        const detail = typeof p === 'object' ? (p.description || (p.changes?.length ? p.changes.join(', ') : '')) : ''
+        return (
+          <div key={`m-${i}`} className="diff-entry diff-modified">
+            <span className="diff-icon" dangerouslySetInnerHTML={{ __html: SHAPE_CROSS }} />
+            <span>{getPatchName(p)} was modified</span>
+            {detail && <span className="diff-detail">{detail}</span>}
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 function filterAppHistory(changelog: any[], pkg: string, bundleName?: string): HistoryEntry[] {

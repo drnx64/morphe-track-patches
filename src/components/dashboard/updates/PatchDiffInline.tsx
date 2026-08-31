@@ -1,4 +1,5 @@
 import type { PatchDiff } from '../../../types/bundles'
+import { SHAPE_SQUARE, SHAPE_CIRCLE, SHAPE_CROSS } from '../../../utils/svg'
 
 function getPatchName(entry: string | { name: string; description?: string }): string {
   return typeof entry === 'string' ? entry : entry.name
@@ -17,15 +18,16 @@ export default function PatchDiffInline({ patchDiff, compact = false }: PatchDif
   if (added.length === 0 && removed.length === 0 && modified.length === 0) return null
 
   if (compact) {
-    const parts: string[] = []
-    if (added.length) parts.push(`+${added.length}`)
-    if (removed.length) parts.push(`-${removed.length}`)
-    if (modified.length) parts.push(`~${modified.length}`)
+    const items: { count: number; shape: string; cls: string }[] = []
+    if (added.length) items.push({ count: added.length, shape: SHAPE_SQUARE, cls: 'diff-added' })
+    if (removed.length) items.push({ count: removed.length, shape: SHAPE_CIRCLE, cls: 'diff-removed' })
+    if (modified.length) items.push({ count: modified.length, shape: SHAPE_CROSS, cls: 'diff-modified' })
     return (
       <span className="patch-diff-inline">
-        {parts.map((p, i) => (
-          <span key={i} className={`badge ${p.startsWith('+') ? 'badge-patches-added' : p.startsWith('-') ? 'badge-patches-removed' : 'badge-updated'}`}>
-            {p} patch{p.slice(1) !== '1' ? 'es' : ''}
+        {items.map((item, i) => (
+          <span key={i} className={`patch-diff-chip ${item.cls}`}>
+            <span className="patch-diff-chip-icon" dangerouslySetInnerHTML={{ __html: item.shape }} />
+            <span className="patch-diff-chip-count">{item.count}</span>
           </span>
         ))}
       </span>
@@ -35,13 +37,22 @@ export default function PatchDiffInline({ patchDiff, compact = false }: PatchDif
   return (
     <div className="patch-diff-names">
       {added.map((p, i) => (
-        <span key={`a-${i}`} className="patch-diff-name added">+ {getPatchName(p)}</span>
+        <span key={`a-${i}`} className="patch-diff-name added">
+          <span className="patch-diff-name-icon" dangerouslySetInnerHTML={{ __html: SHAPE_SQUARE }} />
+          {getPatchName(p)}
+        </span>
       ))}
       {removed.map((p, i) => (
-        <span key={`r-${i}`} className="patch-diff-name removed">- {getPatchName(p)}</span>
+        <span key={`r-${i}`} className="patch-diff-name removed">
+          <span className="patch-diff-name-icon" dangerouslySetInnerHTML={{ __html: SHAPE_CIRCLE }} />
+          {getPatchName(p)}
+        </span>
       ))}
       {modified.map((p, i) => (
-        <span key={`m-${i}`} className="patch-diff-name modified">~ {getPatchName(p)}</span>
+        <span key={`m-${i}`} className="patch-diff-name modified">
+          <span className="patch-diff-name-icon" dangerouslySetInnerHTML={{ __html: SHAPE_CROSS }} />
+          {getPatchName(p)}
+        </span>
       ))}
     </div>
   )

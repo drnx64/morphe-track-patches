@@ -1,6 +1,7 @@
 import { useMemo, useCallback } from 'react'
 import { useAppContext } from '../../../context/AppContext'
 import { getRepoInfo } from '../../../utils/url'
+import { VERSION_ARROW } from '../../../utils/svg'
 import type { BundleEntry, AppData } from '../../../types/bundles'
 
 export const SORT_ORDER: Record<string, number> = { 'NEW APP': 0, 'MAJOR UPDATE': 1, 'UPDATED APP': 2, 'REMOVED APP': 3 }
@@ -53,7 +54,7 @@ export function useUpdateActions() {
     // Prefer app data from changes (has patch_diff), fallback to catalog lookup
     const appData = changesApp || appLookup.get(pkg)
     if (appData) {
-      window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName, channels } }))
+      window.dispatchEvent(new CustomEvent('open-app', { detail: { app: appData, bundleName, channels, fromUpdates: true } }))
     }
   }, [appLookup])
 
@@ -80,5 +81,21 @@ export function AuthorLink({ bundleName, channels, className }: AuthorLinkProps)
     <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
       @{author}
     </a>
+  )
+}
+
+export function VersionArrow({ bundleName, channels, newVersion }: { bundleName: string; channels: string[]; newVersion: string }) {
+  const { state } = useAppContext()
+  const key = channels.find((ch) => state.bundles[`${bundleName}:${ch}`])
+  const oldVersion = key ? state.bundles[`${bundleName}:${key}`]?.version : ''
+  if (!newVersion) return null
+  return (
+    <span className="version-arrow-wrap">
+      {oldVersion && oldVersion !== newVersion && (
+        <span className="version-arrow-old">{oldVersion}</span>
+      )}
+      <span className="version-arrow-icon" dangerouslySetInnerHTML={{ __html: VERSION_ARROW }} />
+      <span className="version-arrow-text">{newVersion}</span>
+    </span>
   )
 }

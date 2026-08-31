@@ -9,6 +9,7 @@ import AppIcon from '../shared/AppIcon'
 import VersionChip from '../shared/VersionChip'
 import { Badge, BADGE_CLASSES } from '../shared/Badge'
 import PageShell from '../layout/PageShell'
+import AppDetailModal from '../modals/AppDetailModal'
 
 export default function BundleDetailPage() {
   useDataFetching()
@@ -118,6 +119,7 @@ export default function BundleDetailPage() {
           </div>
         </div>
       </div>
+      <AppDetailModal />
     </PageShell>
   )
 }

@@ -4,7 +4,7 @@ import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
 import AppChips from './AppChips'
 import PatchDiffInline from './PatchDiffInline'
-import { useEntries, useUpdateActions, sortApps, AuthorLink } from './useEntries'
+import { useEntries, useUpdateActions, sortApps, AuthorLink, VersionArrow } from './useEntries'
 
 interface CardGridViewProps {
   grouped: Record<string, import('../../../types/bundles').BundleEntry>
@@ -42,9 +42,9 @@ export default function CardGridView({ grouped, sortedSections }: CardGridViewPr
                   {getDisplayName(bundleName, entry.channels)}
                 </strong>
                 <AuthorLink bundleName={bundleName} channels={entry.channels} className="grid-author" />
+                <VersionArrow bundleName={bundleName} channels={entry.channels} newVersion={entry.version} />
               </div>
               {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
-              {entry.extra_badges?.includes('VERSION BUMP') && <Badge className={BADGE_CLASSES.VERSION_BUMP}>VERSION BUMP</Badge>}
             </div>
             <div className="grid-app-list">
               {sortedApps.map((app) => {

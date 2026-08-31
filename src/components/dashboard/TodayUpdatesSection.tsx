@@ -150,9 +150,14 @@ export default function TodayUpdatesSection() {
         <ViewToggle />
         <div className="updates-legend-row">
           <span className="updates-legend">
-            {CHIP_LEGEND.map((item) => (
-              <span key={item.symbol} className="updates-legend-item">
-                <span className={`app-chip ${item.className}`}>{item.symbol}</span>
+            {CHIP_LEGEND.map((item, i) => (
+              <span key={i} className="updates-legend-item">
+                <span className={`app-chip ${item.className}`}>
+                  {item.shape
+                    ? <span className="app-chip-icon" dangerouslySetInnerHTML={{ __html: item.shape }} />
+                    : item.symbol
+                  }
+                </span>
                 <span className="updates-legend-label">{item.label}</span>
               </span>
             ))}

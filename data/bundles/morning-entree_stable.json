@@ -2,9 +2,9 @@
   "bundle": "morning-entree",
   "channel": "stable",
   "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-  "created_at": "2026-08-26T22:54:26",
-  "version": "v1.19.0",
-  "description": "## [1.19.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.18.0...v1.19.0) (2026-08-26)\n\n### ✨ New Features\n\n* Update ([43af144](https://github.com/Entree3k/Morning-Entree-Patches/commit/43af144dd0244bdc8f5f14ecab57317547f59512))\n",
+  "created_at": "2026-08-30T17:15:04",
+  "version": "v1.20.0",
+  "description": "## [1.20.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.19.0...v1.20.0) (2026-08-30)\n\n### ✨ New Features\n\n* update & fix ([8f8bd25](https://github.com/Entree3k/Morning-Entree-Patches/commit/8f8bd25bb89d786a6f1a7d3c7ac48c8ccc92743c))\n",
   "apps": [
     {
       "app_name": "OBD Android",
@@ -167,6 +167,35 @@
       ]
     },
     {
+      "app_name": "Google Recorder",
+      "package": "com.google.android.apps.recorder",
+      "patches": [
+        {
+          "name": "Remove device restrictions",
+          "description": "Removes restrictions from using the app on any device. Requires mounting patched app over original.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "Google Phone",
+      "package": "com.google.android.dialer",
+      "patches": [
+        {
+          "name": "Enable call recording",
+          "description": "Enables call recorder, check local laws before using it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "161.0.726587057",
+            "161.0.726587057-downloadable"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Gboard",
       "package": "com.google.android.inputmethod.latin",
       "patches": [
@@ -222,12 +251,12 @@
         },
         {
           "name": "Network privacy",
-          "description": "Controls what Gboard is allowed to talk to. Choose a network level: block only telemetry (keep all features), lock it down to GIFs and voice typing only, or block all internet access.",
+          "description": "Controls what Gboard is allowed to talk to. Choose a network level: block core telemetry, block ads & telemetry more aggressively (all typing features still work), or block all internet access.",
           "use": false,
           "options": [
             {
               "key": "gboardNetworkLevel",
-              "description": "How much of Gboard's network access to cut. \"Telemetry only\" keeps every feature working. \"Privacy lockdown\" keeps GIF search and cloud voice typing but blocks everything else. \"Block all internet\" removes network access entirely."
+              "description": "How much of Gboard's network access to cut. \"Telemetry only\" nulls the core analytics/logging hosts. \"Ads & telemetry\" is a wider deny-list of known ad, analytics, and federated-learning hosts — GIF search, cloud voice typing, stickers and translation keep working because their hosts are never touched. \"Block all internet\" removes network access entirely (which also disables GIFs and cloud voice typing)."
             },
             {
               "key": "isWildcard",
@@ -1705,8 +1734,8 @@
     }
   ],
   "patches_name": "Morning Entree Patches",
-  "fingerprint": "58e60fc70a0578c09fc43637431d2dbfaced7e7c03d825fc7011294c52d414fa",
-  "release_notes": "## [1.19.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.18.0...v1.19.0) (2026-08-26)\n\n### ✨ New Features\n\n* Update ([43af144](https://github.com/Entree3k/Morning-Entree-Patches/commit/43af144dd0244bdc8f5f14ecab57317547f59512))\n",
-  "release_tag": "v1.19.0",
-  "release_date": "2026-08-26T22:54:26Z"
+  "fingerprint": "b59cc617c1360096f2645e5da8a887800f7deb69fbe657cdcfd16334ed16e9e0",
+  "release_notes": "## [1.20.0](https://github.com/Entree3k/Morning-Entree-Patches/compare/v1.19.0...v1.20.0) (2026-08-30)\n\n### ✨ New Features\n\n* update & fix ([8f8bd25](https://github.com/Entree3k/Morning-Entree-Patches/commit/8f8bd25bb89d786a6f1a7d3c7ac48c8ccc92743c))\n",
+  "release_tag": "v1.20.0",
+  "release_date": "2026-08-30T17:15:04Z"
 }

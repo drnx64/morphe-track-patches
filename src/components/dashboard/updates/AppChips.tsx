@@ -1,4 +1,5 @@
 import type { AppData } from '../../../types/bundles'
+import { SHAPE_CIRCLE, SHAPE_CROSS, SHAPE_TRIANGLE } from '../../../utils/svg'
 
 interface AppChipsProps {
   app: AppData
@@ -6,7 +7,8 @@ interface AppChipsProps {
 }
 
 interface Chip {
-  symbol: string
+  shape?: string
+  symbol?: string
   label: string
   className: string
 }
@@ -25,38 +27,28 @@ function buildChips(app: AppData): Chip[] {
     })
   }
 
-  // @ — new patches added to this app
-  if (app.patch_diff?.patches_added && app.patch_diff.patches_added.length > 0) {
-    const count = app.patch_diff.patches_added.length
-    chips.push({
-      symbol: '@',
-      label: count === 1 ? '1 new patch' : `${count} new patches`,
-      className: 'app-chip-new-patch',
-    })
-  }
-
-  // # — major update (5+ patches changed)
+  // Triangle — major update (5+ patches changed)
   if (app.badge_type === 'MAJOR UPDATE') {
     chips.push({
-      symbol: '#',
+      shape: SHAPE_TRIANGLE,
       label: 'Major update',
       className: 'app-chip-major',
     })
   }
 
-  // $ — removed from bundle
+  // Circle — removed from bundle
   if (app.badge_type === 'REMOVED APP') {
     chips.push({
-      symbol: '$',
+      shape: SHAPE_CIRCLE,
       label: 'Removed',
       className: 'app-chip-removed',
     })
   }
 
-  // ~ — promoted from dev to stable
+  // Cross — promoted from dev to stable
   if (app.promoted_from) {
     chips.push({
-      symbol: '~',
+      shape: SHAPE_CROSS,
       label: 'Promoted from dev',
       className: 'app-chip-promoted',
     })
@@ -71,23 +63,25 @@ export default function AppChips({ app, compact }: AppChipsProps) {
 
   return (
     <span className={`app-chips${compact ? ' app-chips-compact' : ''}`}>
-      {chips.map((chip) => (
+      {chips.map((chip, i) => (
         <span
-          key={chip.symbol}
+          key={i}
           className={`app-chip ${chip.className}`}
           title={chip.label}
         >
-          {chip.symbol}
+          {chip.shape
+            ? <span className="app-chip-icon" dangerouslySetInnerHTML={{ __html: chip.shape }} />
+            : chip.symbol
+          }
         </span>
       ))}
     </span>
   )
 }
 
-export const CHIP_LEGEND: { symbol: string; label: string; className: string }[] = [
+export const CHIP_LEGEND: { shape?: string; symbol?: string; label: string; className: string }[] = [
   { symbol: '!', label: 'Scan updates (count = number of scans)', className: 'app-chip-scan-count' },
-  { symbol: '@', label: 'New patches added', className: 'app-chip-new-patch' },
-  { symbol: '#', label: 'Major update (5+ patches)', className: 'app-chip-major' },
-  { symbol: '$', label: 'Removed from bundle', className: 'app-chip-removed' },
-  { symbol: '~', label: 'Promoted from dev', className: 'app-chip-promoted' },
+  { shape: SHAPE_TRIANGLE, label: 'Major update (5+ patches)', className: 'app-chip-major' },
+  { shape: SHAPE_CIRCLE, label: 'Removed from bundle', className: 'app-chip-removed' },
+  { shape: SHAPE_CROSS, label: 'Promoted from dev', className: 'app-chip-promoted' },
 ]

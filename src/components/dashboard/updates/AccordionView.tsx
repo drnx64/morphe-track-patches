@@ -5,7 +5,7 @@ import { Badge, BADGE_CLASSES } from '../../shared/Badge'
 import AppIcon from './AppIcon'
 import AppChips from './AppChips'
 import PatchDiffInline from './PatchDiffInline'
-import { useEntries, useUpdateActions, sortApps, AuthorLink, type EntryItem } from './useEntries'
+import { useEntries, useUpdateActions, sortApps, AuthorLink, VersionArrow, type EntryItem } from './useEntries'
 import { CHEVRON_DOWN, CHEVRON_RIGHT } from '../../../utils/svg'
 
 interface AccordionViewProps {
@@ -88,7 +88,6 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
               onClick={() => toggleItem(bundleName)}
             >
               {entry.badge_type && <Badge className={badgeClass}>{entry.badge_type}</Badge>}
-              {entry.extra_badges?.includes('VERSION BUMP') && <Badge className={BADGE_CLASSES.VERSION_BUMP}>VERSION BUMP</Badge>}
               <div className="acc-titles">
                 <span
                   className="acc-bundle-link"
@@ -101,6 +100,7 @@ export default function AccordionView({ grouped, sortedSections }: AccordionView
                 </span>
                 <span className="acc-summary">
                   <AuthorLink bundleName={bundleName} channels={entry.channels} className="acc-author" />
+                  <VersionArrow bundleName={bundleName} channels={entry.channels} newVersion={entry.version} />
                   {' · '}
                   {getSummaryLine(entry)}
                 </span>

@@ -103,9 +103,23 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                     # Preserve promoted_from flag
                     if "promoted_from" in app:
                         extant["promoted_from"] = app["promoted_from"]
-                    # Preserve/update patch diff data
+                    # Preserve/update patch diff data (merge, don't overwrite)
                     if "patch_diff" in app:
-                        extant["patch_diff"] = app["patch_diff"]
+                        existing_diff = extant.get("patch_diff", {})
+                        new_diff = app["patch_diff"]
+                        for key in ("patches_added", "patches_removed", "patches_modified"):
+                            existing_list = existing_diff.get(key, [])
+                            incoming_list = new_diff.get(key, [])
+                            merged = {}
+                            for item in existing_list:
+                                name = item["name"] if isinstance(item, dict) else item
+                                merged[name] = item
+                            for item in incoming_list:
+                                name = item["name"] if isinstance(item, dict) else item
+                                if name not in merged:
+                                    merged[name] = item
+                            existing_diff[key] = list(merged.values())
+                        extant["patch_diff"] = existing_diff
 
 
 def generate_markdown_changelog(date_str, affected_bundles_dict):

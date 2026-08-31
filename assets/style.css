@@ -904,16 +904,6 @@ h1 {
   color: #a5b4fc;
   border: 1px solid rgba(99, 102, 241, 0.3);
 }
-.badge-patches-added {
-  background: rgba(16, 185, 129, 0.15);
-  color: var(--color-stable);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-.badge-patches-removed {
-  background: rgba(244, 63, 94, 0.15);
-  color: var(--color-critical);
-  border: 1px solid rgba(244, 63, 94, 0.3);
-}
 
 /* ── App chips (inline symbol indicators) ──────────────── */
 .app-chips {
@@ -940,25 +930,29 @@ h1 {
   cursor: default;
   letter-spacing: -0.5px;
 }
+.app-chip-icon {
+  display: inline-flex;
+  line-height: 1;
+}
 .app-chip-scan-count {
   background: rgba(251, 191, 36, 0.2);
   color: #fbbf24;
   border: 1px solid rgba(251, 191, 36, 0.3);
 }
 .app-chip-new-patch {
-  background: rgba(96, 165, 250, 0.2);
-  color: #60a5fa;
-  border: 1px solid rgba(96, 165, 250, 0.3);
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-stable);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 .app-chip-major {
-  background: rgba(244, 63, 94, 0.2);
-  color: #f43f5e;
-  border: 1px solid rgba(244, 63, 94, 0.3);
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.3);
 }
 .app-chip-removed {
-  background: rgba(148, 163, 184, 0.2);
-  color: #94a3b8;
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--color-critical);
+  border: 1px solid rgba(244, 63, 94, 0.3);
 }
 .app-chip-promoted {
   background: rgba(168, 85, 247, 0.2);
@@ -999,9 +993,36 @@ h1 {
   margin-top: 0.35rem;
   padding-left: 2.2rem;
 }
-.patch-diff-inline .badge {
+.patch-diff-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   font-size: 0.6rem;
   padding: 1px 6px;
+  border-radius: 4px;
+  line-height: 1.4;
+}
+.patch-diff-chip.diff-added {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--color-stable);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+.patch-diff-chip.diff-removed {
+  background: rgba(244, 63, 94, 0.12);
+  color: var(--color-critical);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+}
+.patch-diff-chip.diff-modified {
+  background: rgba(59, 130, 246, 0.12);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+.patch-diff-chip-icon {
+  display: inline-flex;
+  line-height: 1;
+}
+.patch-diff-chip-count {
+  font-weight: 600;
 }
 .patch-diff-names {
   display: flex;
@@ -1011,6 +1032,9 @@ h1 {
   padding-left: 2.2rem;
 }
 .patch-diff-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 0.68rem;
   color: var(--text-secondary);
   background: rgba(255, 255, 255, 0.04);
@@ -1019,18 +1043,49 @@ h1 {
   padding: 1px 6px;
   white-space: nowrap;
 }
+.patch-diff-name-icon {
+  display: inline-flex;
+  line-height: 1;
+}
 .patch-diff-name.added {
   color: var(--color-stable);
   border-color: rgba(16, 185, 129, 0.2);
 }
+.patch-diff-name.added .patch-diff-name-icon { color: var(--color-stable); }
 .patch-diff-name.removed {
   color: var(--color-critical);
   border-color: rgba(244, 63, 94, 0.2);
   text-decoration: line-through;
 }
+.patch-diff-name.removed .patch-diff-name-icon { color: var(--color-critical); }
 .patch-diff-name.modified {
   color: var(--color-normal);
   border-color: rgba(59, 130, 246, 0.2);
+}
+.patch-diff-name.modified .patch-diff-name-icon { color: var(--color-normal); }
+
+/* ── Version arrow (replaces VERSION BUMP badge) ────── */
+.version-arrow-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+.version-arrow-icon {
+  display: inline-flex;
+  color: var(--primary-accent);
+  line-height: 1;
+}
+.version-arrow-old {
+  color: var(--text-secondary);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+.version-arrow-text {
+  font-weight: 600;
+  color: #a5b4fc;
 }
 
 .update-bundle-group {
@@ -4558,6 +4613,42 @@ h1 {
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
 }
 
+/* ── Modal: narrow screen layout ──────────────────── */
+@media (max-width: 480px) {
+  .modal-header {
+    padding: 1rem 1rem 0;
+  }
+  .modal-header-top {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .modal-header-actions {
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  .modal-play-btn, .modal-watch-btn, .modal-compare-btn {
+    font-size: 0.72rem;
+    padding: 5px 8px;
+  }
+  .modal-meta-row {
+    gap: 0.4rem;
+  }
+  .modal-bundle-select {
+    max-width: 140px;
+    font-size: 0.75rem;
+  }
+  .modal-versions-section {
+    padding-bottom: 0.75rem;
+  }
+  .modal-channel-toggle {
+    padding: 0 1rem 0.7rem;
+  }
+  .modal-body {
+    padding: 0.75rem 1rem 1.25rem;
+  }
+}
+
 /* ── Modal body (patches) ────────────────────────────── */
 .modal-body {
   flex: 1;
@@ -4680,19 +4771,39 @@ h1 {
 }
 
 .diff-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
   font-size: 0.78rem;
-  font-family: "SF Mono", "Fira Code", monospace;
-  padding: 0.1rem 0.4rem;
+  padding: 0.25rem 0.4rem;
   border-radius: 4px;
+  line-height: 1.4;
 }
-.diff-added .diff-entry {
+.diff-entry.diff-added {
   color: var(--color-stable);
 }
-.diff-removed .diff-entry {
+.diff-entry.diff-removed {
   color: var(--color-critical);
 }
-.diff-modified .diff-entry {
+.diff-entry.diff-modified {
   color: var(--color-dev);
+}
+
+.diff-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  line-height: 1;
+}
+.diff-added .diff-icon { color: var(--color-stable); }
+.diff-removed .diff-icon { color: var(--color-critical); }
+.diff-modified .diff-icon { color: var(--color-dev); }
+
+.diff-detail {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-left: 1.35rem;
+  margin-top: -0.1rem;
 }
 
 .diff-empty {
@@ -5016,6 +5127,16 @@ h1 {
 
   .view-toggle-btn {
     padding: 5px 10px;
+  }
+
+  .patch-diff-inline {
+    padding-left: 0;
+    margin-top: 0.2rem;
+    gap: 0.2rem;
+  }
+  .patch-diff-inline .badge {
+    font-size: 0.55rem;
+    padding: 1px 4px;
   }
 
   .tl-track {

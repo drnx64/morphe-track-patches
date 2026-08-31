@@ -229,15 +229,15 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
 
   // Phase 1: Check core.json to see if data changed
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Checking for updates...' })
-  log('[check] fetching core.json to compare dates...')
+  log('[check] fetching core.json to compare timestamps...')
   const core = await fetchCore()
-  const cachedDate = cachedLive.date || ''
-  const freshDate = core?.date || ''
-  log(`cached date: "${cachedDate}", fresh date: "${freshDate}"`)
-  log(`[check] cached=${cachedDate || 'none'}, fresh=${freshDate || 'none'}`)
+  const cachedRun = cachedLive.last_run || ''
+  const freshRun = core?.last_run || ''
+  log(`cached last_run: "${cachedRun}", fresh last_run: "${freshRun}"`)
+  log(`[check] cached=${cachedRun || 'none'}, fresh=${freshRun || 'none'}`)
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 20 })
 
-  if (freshDate && freshDate === cachedDate) {
+  if (freshRun && freshRun === cachedRun) {
     // ── Same data, nothing to update ──
     log('data is up to date, skipping fetch')
     log('[check] ✓ data is current, no fetch needed')
@@ -295,7 +295,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   notifyWatchedUpdates(changes)
   dispatch({
     type: 'SET_METADATA',
-    payload: { liveDataDate: freshDate, lastChecked },
+    payload: { liveDataDate: core?.date || '', lastChecked },
   })
   dispatch({ type: 'SET_LOADING_PROGRESS', payload: 100 })
   dispatch({ type: 'SET_LOADING_STATUS', payload: 'Loading complete!' })
@@ -316,7 +316,7 @@ async function runLoad(dispatch: React.Dispatch<AppAction>) {
   startIconPreload(iconData, dispatch, priorityPkgs)
 
   const livePayload = {
-    date: freshDate,
+    date: core?.date || '',
     last_run: core?.last_run || '',
     lastChecked,
     stats,

@@ -32,7 +32,7 @@ export function groupAffectedBundles(affectedBundles: AffectedBundle[]): Record<
   for (const b of affectedBundles) {
     const bName = b.bundle
     if (!grouped[bName]) {
-      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [] }
+      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: b.version || '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [] }
     }
     if (!grouped[bName].channels.includes(b.channel)) {
       grouped[bName].channels.push(b.channel)

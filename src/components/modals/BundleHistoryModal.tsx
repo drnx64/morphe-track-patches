@@ -52,9 +52,10 @@ export default function BundleHistoryModal() {
       if (rc) releaseCacheRef.current = rc
     })
 
+    const hasChanges = state.changes?.affected_bundles?.some(b => b.bundle === bundleName)
     Promise.all([
       fetchChangelog(),
-      fetchReleaseCache(),
+      hasChanges ? fetchReleaseCache() : Promise.resolve(releaseCacheRef.current),
     ]).then(([cl, rc]) => {
       if (cl) {
         changelogRef.current = cl
