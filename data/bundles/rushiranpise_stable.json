@@ -2,9 +2,9 @@
   "bundle": "rushiranpise",
   "channel": "stable",
   "repo_url": "https://github.com/rushiranpise/morphe-patches",
-  "created_at": "2026-08-30T16:48:17",
-  "version": "v1.21.0",
-  "description": "## [1.21.0](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0...v1.21.0) (2026-08-30)\n\n### 🐛 Bug Fixes\n\n* avoid private API for Amazon dark mode ([90564f6](https://github.com/rushiranpise/morphe-patches/commit/90564f6867c9d67d2d12d4112b29c102bdd0cf19))\n* boldvoice ([299222b](https://github.com/rushiranpise/morphe-patches/commit/299222bec0912410b28f4fec18c082dc7f083345)), closes [#735](https://github.com/rushiranpise/morphe-patches/issues/735)\n* build ([485e7e8](https://github.com/rushiranpise/morphe-patches/commit/485e7e8588246f76291ee2f829a04d2f0476c19c))\n* bvm and capod ([178c325](https://github.com/rushiranpise/morphe-patches/commit/178c3252d4d5efbf85e490c36c9d3dce7474deb8))\n* clarify dramabox source ([e82f8a8](https://github.com/rushiranpise/morphe-patches/commit/e82f8a892e7608f5654010120bc8c48758d05895))\n* clickmate ([64a53ab](https://github.com/rushiranpise/morphe-patches/commit/64a53abecc739ebb809c661f0a7e8c6cc59ce02b))\n* dramabox version ([6d6b804](https://github.com/rushiranpise/morphe-patches/commit/6d6b804ac785685668b86d8e520f2b69806a8fe3)), closes [#824](https://github.com/rushiranpise/morphe-patches/issues/824)\n* harden Amazon WebView trust boundaries ([1b45a3e](https://github.com/rushiranpise/morphe-patches/commit/1b45a3e75edda531733f32cafe9175d4b16727a9))\n* **photos:** make Maps/Places initialize under MicroG-RE ([42d7ea7](https://github.com/rushiranpise/morphe-patches/commit/42d7ea79b672fcc5d90cbc96f860bdfb85b312e5))\n* remove duplicate Amazon autoplay patch ([8f399ca](https://github.com/rushiranpise/morphe-patches/commit/8f399ca2475ffa5de71d89376e3ce881178a2c47))\n* sai ([06e925d](https://github.com/rushiranpise/morphe-patches/commit/06e925dbb43aa935f02854d574882f5cbc33da39))\n* telegram web ([2af8a86](https://github.com/rushiranpise/morphe-patches/commit/2af8a864dfa284138160509b971c83a5e930164f)), closes [#729](https://github.com/rushiranpise/morphe-patches/issues/729)\n* update apps ([24eb69b](https://github.com/rushiranpise/morphe-patches/commit/24eb69b3ab8ab5462e32ca56e8defbf52ec4ceca))\n\n### ✨ New Features\n\n* add dooflix ([2df2c39](https://github.com/rushiranpise/morphe-patches/commit/2df2c39ef000cba85437c98ccd3d84a5758ac1da))\n* add moviebox ([09421e7](https://github.com/rushiranpise/morphe-patches/commit/09421e73f28a0c26c915b4e268489682ef5f10a7))\n* add nova launcher ([41fe418](https://github.com/rushiranpise/morphe-patches/commit/41fe418e78e9667982afb42f2919dd8e23ad3344))\n",
+  "created_at": "2026-08-31T03:18:35",
+  "version": "v1.21.1",
+  "description": "## [1.21.1](https://github.com/rushiranpise/morphe-patches/compare/v1.21.0...v1.21.1) (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* remove rich patch ([8dd213c](https://github.com/rushiranpise/morphe-patches/commit/8dd213c3be1225a5499f60e24e4847b4c461b288))\n* remove zee5 ([5498e4d](https://github.com/rushiranpise/morphe-patches/commit/5498e4dba2eea1d69b592e1eb8d06c692d6fb20c))\n",
   "apps": [
     {
       "app_name": "OBD Android",
@@ -1512,30 +1512,6 @@
           "options": [],
           "compatible_versions": [
             "1.0.958871038"
-          ]
-        }
-      ]
-    },
-    {
-      "app_name": "ZEE5",
-      "package": "com.graymatrix.did",
-      "patches": [
-        {
-          "name": "Hide ZEE5 display ads",
-          "description": "Disables selected client-side display-ad visibility flags.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "39.56.7"
-          ]
-        },
-        {
-          "name": "Remove Ads",
-          "description": "Disables the client-side ZEE5 mobile ad configuration path.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "39.56.7"
           ]
         }
       ]
@@ -4060,15 +4036,6 @@
           ]
         },
         {
-          "name": "Hide sender name",
-          "description": "Removes the forwarded channel attribution for Rich Messages while preserving the original message.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "12.10.0"
-          ]
-        },
-        {
           "name": "Hide typing indicator",
           "description": "Hides your typing indicator from other users in all chats. On Telegram Plus also silences the controller-level sendTyping dispatcher.",
           "use": true,
@@ -4194,15 +4161,6 @@
         {
           "name": "Download speed boost",
           "description": "Increases download chunk size to 1 MB and max concurrent requests to 12.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "12.10.0"
-          ]
-        },
-        {
-          "name": "Hide sender name",
-          "description": "Removes the forwarded channel attribution for Rich Messages while preserving the original message.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -4344,15 +4302,6 @@
         {
           "name": "Download speed boost",
           "description": "Increases download chunk size to 1 MB and max concurrent requests to 12.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "12.9.2.0"
-          ]
-        },
-        {
-          "name": "Hide sender name",
-          "description": "Removes the forwarded channel attribution for Rich Messages while preserving the original message.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -4612,8 +4561,8 @@
     }
   ],
   "patches_name": "Doom's Morphe Patches",
-  "fingerprint": "e4265513ec9b175f0e145ce412693933470bd5596e935b872b80de5dd1c24d52",
-  "release_notes": "## [1.21.0](https://github.com/rushiranpise/morphe-patches/compare/v1.20.0...v1.21.0) (2026-08-30)\n\n### 🐛 Bug Fixes\n\n* avoid private API for Amazon dark mode ([90564f6](https://github.com/rushiranpise/morphe-patches/commit/90564f6867c9d67d2d12d4112b29c102bdd0cf19))\n* boldvoice ([299222b](https://github.com/rushiranpise/morphe-patches/commit/299222bec0912410b28f4fec18c082dc7f083345)), closes [#735](https://github.com/rushiranpise/morphe-patches/issues/735)\n* build ([485e7e8](https://github.com/rushiranpise/morphe-patches/commit/485e7e8588246f76291ee2f829a04d2f0476c19c))\n* bvm and capod ([178c325](https://github.com/rushiranpise/morphe-patches/commit/178c3252d4d5efbf85e490c36c9d3dce7474deb8))\n* clarify dramabox source ([e82f8a8](https://github.com/rushiranpise/morphe-patches/commit/e82f8a892e7608f5654010120bc8c48758d05895))\n* clickmate ([64a53ab](https://github.com/rushiranpise/morphe-patches/commit/64a53abecc739ebb809c661f0a7e8c6cc59ce02b))\n* dramabox version ([6d6b804](https://github.com/rushiranpise/morphe-patches/commit/6d6b804ac785685668b86d8e520f2b69806a8fe3)), closes [#824](https://github.com/rushiranpise/morphe-patches/issues/824)\n* harden Amazon WebView trust boundaries ([1b45a3e](https://github.com/rushiranpise/morphe-patches/commit/1b45a3e75edda531733f32cafe9175d4b16727a9))\n* **photos:** make Maps/Places initialize under MicroG-RE ([42d7ea7](https://github.com/rushiranpise/morphe-patches/commit/42d7ea79b672fcc5d90cbc96f860bdfb85b312e5))\n* remove duplicate Amazon autoplay patch ([8f399ca](https://github.com/rushiranpise/morphe-patches/commit/8f399ca2475ffa5de71d89376e3ce881178a2c47))\n* sai ([06e925d](https://github.com/rushiranpise/morphe-patches/commit/06e925dbb43aa935f02854d574882f5cbc33da39))\n* telegram web ([2af8a86](https://github.com/rushiranpise/morphe-patches/commit/2af8a864dfa284138160509b971c83a5e930164f)), closes [#729](https://github.com/rushiranpise/morphe-patches/issues/729)\n* update apps ([24eb69b](https://github.com/rushiranpise/morphe-patches/commit/24eb69b3ab8ab5462e32ca56e8defbf52ec4ceca))\n\n### ✨ New Features\n\n* add dooflix ([2df2c39](https://github.com/rushiranpise/morphe-patches/commit/2df2c39ef000cba85437c98ccd3d84a5758ac1da))\n* add moviebox ([09421e7](https://github.com/rushiranpise/morphe-patches/commit/09421e73f28a0c26c915b4e268489682ef5f10a7))\n* add nova launcher ([41fe418](https://github.com/rushiranpise/morphe-patches/commit/41fe418e78e9667982afb42f2919dd8e23ad3344))\n",
-  "release_tag": "v1.21.0",
-  "release_date": "2026-08-30T16:48:17Z"
+  "fingerprint": "ce3083cc537fd9f39ecfd024d72d6e9effd4aec16a1b18c73745ec66b7232646",
+  "release_notes": "## [1.21.1](https://github.com/rushiranpise/morphe-patches/compare/v1.21.0...v1.21.1) (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* remove rich patch ([8dd213c](https://github.com/rushiranpise/morphe-patches/commit/8dd213c3be1225a5499f60e24e4847b4c461b288))\n* remove zee5 ([5498e4d](https://github.com/rushiranpise/morphe-patches/commit/5498e4dba2eea1d69b592e1eb8d06c692d6fb20c))\n",
+  "release_tag": "v1.21.1",
+  "release_date": "2026-08-31T03:18:35Z"
 }

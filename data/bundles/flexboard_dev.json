@@ -2,14 +2,23 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-08-27T04:41:45",
-  "version": "v2.0.1-dev.0",
-  "description": "## 2.0.1-dev.0\n\n- feat: add Cancel, rename Done to Save — autosave keeps dismissal\n- feat: hotkey editor autosaves — dismiss-anything commits",
+  "created_at": "2026-08-31T05:33:07",
+  "version": "v2.0.2-dev.1",
+  "description": "## 2.0.2-dev.1\n\n- fix: patch Flexboard setting into gboard legacy setting\n- fix: swipe review fallout — louder asserts, honest descriptions\n- feat: Bigger Toolbar — a slider for the bar's capacity",
   "apps": [
     {
       "app_name": "Gboard",
       "package": "com.google.android.inputmethod.latin",
       "patches": [
+        {
+          "name": "Bigger Toolbar",
+          "description": "Let Gboard's toolbar hold more buttons — a slider in Flexboard's settings (default 0 = stock capacity). Ordering and overflow stay Gboard's own.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
         {
           "name": "Bypass Gboard Signature",
           "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
@@ -48,7 +57,7 @@
         },
         {
           "name": "Swipe Right to Undo",
-          "description": "Swipe right after deleting to put the words back. Uses Gboard's own undo, which already records what a delete swipe removed.",
+          "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -95,8 +104,8 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "c9140fa329d63f24b967e59f1c2394c4102ba7b2e8bd5a3b2450624df41c2815",
-  "release_notes": "## 2.0.1-dev.0\n\n- feat: add Cancel, rename Done to Save — autosave keeps dismissal\n- feat: hotkey editor autosaves — dismiss-anything commits",
-  "release_tag": "v2.0.1-dev.0",
-  "release_date": "2026-08-27T04:41:45Z"
+  "fingerprint": "8f245c8f361bef57dded73576561b48114f1685c071102e28a5cfa8b259d0c2c",
+  "release_notes": "## 2.0.2-dev.1\n\n- fix: patch Flexboard setting into gboard legacy setting\n- fix: swipe review fallout — louder asserts, honest descriptions\n- feat: Bigger Toolbar — a slider for the bar's capacity",
+  "release_tag": "v2.0.2-dev.1",
+  "release_date": "2026-08-31T05:33:07Z"
 }
