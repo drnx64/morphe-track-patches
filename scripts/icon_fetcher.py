@@ -15,8 +15,8 @@ NAME_CACHE_PATH = os.path.join(STATE_DIR, "name_cache.json")
 
 PLAY_STORE_URL = "https://play.google.com/store/apps/details?id={}"
 
-MAX_RETRIES = 3
-BASE_DELAY = 2
+MAX_RETRIES = 2
+BASE_DELAY = 0.96
 
 HEADERS = {
     "User-Agent": (

@@ -28,24 +28,7 @@ def run():
         # Ensure all dirs are created
         ensure_dirs()
 
-        # Cooldown gate: skip full pipeline if last successful run was recent
-        # Manual dispatch (workflow_dispatch) always bypasses the cooldown.
-        trigger_type = os.environ.get("TRIGGER_TYPE", "")
-        if trigger_type != "workflow_dispatch":
-            last_run_data = load_last_run()
-            completed_at = last_run_data.get("completed_at")
-            if completed_at:
-                try:
-                    last_run = datetime.fromisoformat(completed_at)
-                    if last_run.tzinfo is None:
-                        last_run = last_run.replace(tzinfo=timezone.utc)
-                    elapsed_h = (datetime.now(timezone.utc) - last_run).total_seconds() / 3600
-                    if elapsed_h < SCANNER_COOLDOWN_HOURS:
-                        remaining = SCANNER_COOLDOWN_HOURS - elapsed_h
-                        log.info(f"Skipping full pipeline — last run was {elapsed_h:.1f}h ago (cooldown: {SCANNER_COOLDOWN_HOURS}h). Next check in {remaining:.1f}h.")
-                        return
-                except (ValueError, TypeError):
-                    pass  # Bad timestamp, proceed with full run
+       
 
         # Step 1 & 2: Fetch tree
         log.info("STEP 1 & 2: Fetching patch tree directory")

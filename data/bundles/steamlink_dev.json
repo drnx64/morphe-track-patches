@@ -2,9 +2,9 @@
   "bundle": "steamlink",
   "channel": "dev",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-08-30T19:17:02",
-  "version": "v1.10.1-dev.15",
-  "description": "## [1.10.1-dev.15](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.14...v1.10.1-dev.15) (2026-08-30)\n\n### 🐛 Bug Fixes\n\n* Experimental Native Single Projection Renderer Hook ([7326cfd](https://github.com/AngelDark92/steamlink-patches/commit/7326cfd83e5bcf33da8172785b8e68d3144a781f))\n",
+  "created_at": "2026-08-31T12:44:55",
+  "version": "v1.10.1-dev.17",
+  "description": "## [1.10.1-dev.17](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.16...v1.10.1-dev.17) (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* single projection with 10 bit try ([aa80c5c](https://github.com/AngelDark92/steamlink-patches/commit/aa80c5cc5dab9a87b4abf67388d4aa58d9dfbf36))\n",
   "apps": [
     {
       "app_name": "Steam Link",
@@ -499,8 +499,35 @@
           ]
         },
         {
+          "name": "Experimental Native Quad Zero-Copy CPU+GPU Optimized 8/10-bit",
+          "description": "5002322-only permission-free A/B. Auto-matches uniform sRGB8 or RGB10_A2 Valve sources and submits one 4-view projection without reconstruction GPU passes.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Experimental Native Quad-View Zero-Copy Projection",
+          "description": "5002322-only permission-free A/B. Uses a guarded native helper to submit Valve's outer and foveal images as one 4-view projection without reconstruction GPU passes.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Experimental Native Reconstruction CPU Optimized 8/10-bit",
+          "description": "5002322-only permission-free A/B. Auto-matches uniform sRGB8 or RGB10_A2 Valve sources and reconstructs one stereo projection with matching scratch and output formats.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
           "name": "Experimental Native Single Projection Renderer Hook",
-          "description": "5002322-only permission-free A/B. Routes Valve's streaming xrEndFrame call through an exact-build AArch64 hook and bundled native reconstruction helper instead of an implicit API layer.",
+          "description": "5002322-only permission-free A/B. Routes Valve's streaming xrEndFrame through an exact-build native helper with fixed-function GLES dithering disabled.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -509,7 +536,7 @@
         },
         {
           "name": "Experimental Single Projection Reconstruction Efficient",
-          "description": "5002322-only permission-free experiment. Reconstructs Steam Link into one stereo projection with reduced scratch memory and a sharper centered foveal sample.",
+          "description": "5002322-only permission-free experiment. Reconstructs Steam Link into one stereo projection with a centered foveal sample and fixed-function GLES dithering disabled.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -1614,8 +1641,8 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "a8cfbfd81f0eb0bfdb3597efbaf8a3fbfd00e89559b08b1b2a5f2b9aaeb9f8b5",
-  "release_notes": "## [1.10.1-dev.15](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.14...v1.10.1-dev.15) (2026-08-30)\n\n### 🐛 Bug Fixes\n\n* Experimental Native Single Projection Renderer Hook ([7326cfd](https://github.com/AngelDark92/steamlink-patches/commit/7326cfd83e5bcf33da8172785b8e68d3144a781f))\n",
-  "release_tag": "v1.10.1-dev.15",
-  "release_date": "2026-08-30T19:17:02Z"
+  "fingerprint": "3dbb428f21be60638365e0845e60b2120862595f7512d84252bb755cd603831f",
+  "release_notes": "## [1.10.1-dev.17](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.16...v1.10.1-dev.17) (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* single projection with 10 bit try ([aa80c5c](https://github.com/AngelDark92/steamlink-patches/commit/aa80c5cc5dab9a87b4abf67388d4aa58d9dfbf36))\n",
+  "release_tag": "v1.10.1-dev.17",
+  "release_date": "2026-08-31T12:44:55Z"
 }
