@@ -1,7 +1,7 @@
 import os
 import sys
 import traceback
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 # Import modules from scripts directory
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -17,6 +17,7 @@ from fingerprint_engine import generate_bundle_fingerprints
 from diff_engine import diff_snapshots
 from merge_daily_buffer import update_daily_buffer_run, write_data_files
 from update_release_cache import update_release_cache
+from config import SCANNER_COOLDOWN_HOURS
 
 def run():
     start_time = datetime.now()
@@ -26,6 +27,22 @@ def run():
     try:
         # Ensure all dirs are created
         ensure_dirs()
+
+        # Cooldown gate: skip full pipeline if last successful run was recent
+        last_run_data = load_last_run()
+        completed_at = last_run_data.get("completed_at")
+        if completed_at:
+            try:
+                last_run = datetime.fromisoformat(completed_at)
+                if last_run.tzinfo is None:
+                    last_run = last_run.replace(tzinfo=timezone.utc)
+                elapsed_h = (datetime.now(timezone.utc) - last_run).total_seconds() / 3600
+                if elapsed_h < SCANNER_COOLDOWN_HOURS:
+                    remaining = SCANNER_COOLDOWN_HOURS - elapsed_h
+                    log.info(f"Skipping full pipeline — last run was {elapsed_h:.1f}h ago (cooldown: {SCANNER_COOLDOWN_HOURS}h). Next check in {remaining:.1f}h.")
+                    return
+            except (ValueError, TypeError):
+                pass  # Bad timestamp, proceed with full run
 
         # Step 1 & 2: Fetch tree
         log.info("STEP 1 & 2: Fetching patch tree directory")
@@ -60,9 +77,18 @@ def run():
         buffer_data = load_daily_buffer()
         is_rollover = buffer_data.get("date") and buffer_data["date"] != today_str
 
-        # Step 7: Update release notes cache (always run to refresh stale cache)
+        # Step 7: Update release notes cache (diff-aware: only fetch for changed repos)
         log.info("STEP 7: Updating release notes cache")
-        update_release_cache()
+        changed_repo_urls = set()
+        diff_result_path = os.path.join(RAW_DIR, "diff_result.json")
+        diff_result = load_json(diff_result_path, default={})
+        for bundle in diff_result.get("affected_bundles", []):
+            repo_url = bundle.get("repo_url", "")
+            if repo_url:
+                changed_repo_urls.add(repo_url)
+        if changed_repo_urls:
+            log.info(f"  Diff-aware: refreshing releases for {len(changed_repo_urls)} changed repos")
+        update_release_cache(changed_repo_urls=changed_repo_urls or None)
 
         # Step 8 & 9: Update daily buffer and store state
         # Silent run rule: if no changes and no rollover, sync data files and exit silently

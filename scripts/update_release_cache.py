@@ -107,8 +107,22 @@ def _is_cache_stale(repo_cache):
         return True
 
 
-def update_release_cache():
+def _normalize_url(url):
+    return url.lower().rstrip("/")
+
+
+def update_release_cache(changed_repo_urls=None):
+    """Refresh release cache, optionally scoped to only changed repos.
+
+    Args:
+        changed_repo_urls: Optional set/list of repo URLs whose bundles changed
+            in the latest diff. When provided, only these repos (plus cold-cache
+            repos with no entry) are fetched. All other repos are skipped.
+            When None, fetch all stale repos (legacy behavior).
+    """
     ensure_dirs()
+    from datetime import datetime, timezone
+
     parsed_path = os.path.join(RAW_DIR, "parsed_bundles.json")
     parsed_bundles = load_json(parsed_path, default={})
     if not parsed_bundles:
@@ -119,11 +133,44 @@ def update_release_cache():
     repos = _extract_repos_from_parsed_bundles(parsed_bundles)
     print(f"Found {len(repos)} unique repo URLs across {len(parsed_bundles)} bundles")
 
+    # Normalize changed URLs for fast lookup
+    changed_set = None
+    if changed_repo_urls is not None:
+        changed_set = {_normalize_url(u) for u in changed_repo_urls}
+        print(f"Diff-aware mode: will refresh {len(changed_set)} changed repos + cold-cache repos")
+
+    fetched = 0
+    skipped = 0
+
     for repo_url, bundle_versions in repos.items():
+        norm_url = _normalize_url(repo_url)
         repo_cache = cache.get(repo_url, {})
-        if not _is_cache_stale(repo_cache):
-            print(f"  SKIP {repo_url} — cache fresh ({len(repo_cache.get('releases', []))} releases)")
-            continue
+
+        # Determine whether to fetch this repo
+        should_fetch = False
+        reason = ""
+
+        if changed_set is not None:
+            # Diff-aware mode
+            if norm_url in changed_set:
+                should_fetch = True
+                reason = "bundle changed"
+            elif not repo_cache or "fetched_at" not in repo_cache:
+                should_fetch = True
+                reason = "cold cache"
+            else:
+                skipped += 1
+                print(f"  SKIP {repo_url} — not in diff, cache has {len(repo_cache.get('releases', []))} releases")
+                continue
+        else:
+            # Legacy mode: fetch if stale
+            if _is_cache_stale(repo_cache):
+                should_fetch = True
+                reason = "cache stale"
+            else:
+                skipped += 1
+                print(f"  SKIP {repo_url} — cache fresh ({len(repo_cache.get('releases', []))} releases)")
+                continue
 
         github_match = re.search(r"github\.com/([^/]+)/([^/]+)", repo_url)
         gitlab_match = re.search(r"gitlab\.com/(.+)", repo_url)
@@ -131,32 +178,31 @@ def update_release_cache():
         if github_match:
             owner = github_match.group(1)
             repo_name = github_match.group(2)
-            print(f"  Fetching GitHub releases for {owner}/{repo_name}...")
+            print(f"  [{reason}] Fetching GitHub releases for {owner}/{repo_name}...")
             releases = fetch_github_releases(owner, repo_name)
         elif gitlab_match:
             project_path = gitlab_match.group(1).rstrip("/")
-            # Strip non-project-path suffixes (/-/..., /releases/...)
             project_path = re.sub(r"/-/(?:releases|issues|merge_requests|blob|tree|raw).*$", "", project_path)
             project_path = re.sub(r"/releases/.*$", "", project_path)
             api_m = re.match(r"api/v4/projects/([^/]+(?:%2F[^/]+)*)", project_path)
             if api_m:
                 project_path = api_m.group(1).replace("%2F", "/")
-            print(f"  Fetching GitLab releases for {project_path}...")
+            print(f"  [{reason}] Fetching GitLab releases for {project_path}...")
             releases = fetch_gitlab_releases(project_path)
         else:
             print(f"  SKIP {repo_url} — unsupported platform")
             continue
 
-        from datetime import datetime, timezone
         cache[repo_url] = {
             "fetched_at": datetime.now(timezone.utc).isoformat(),
             "releases": releases
         }
+        fetched += 1
         print(f"    -> Cached {len(releases)} releases")
         time.sleep(0.5)
 
     save_json(RELEASE_CACHE_PATH, cache)
-    print(f"\nRelease cache saved with {len(cache)} repos.")
+    print(f"\nRelease cache saved: {fetched} fetched, {skipped} skipped, {len(cache)} total.")
     return cache
 
 
