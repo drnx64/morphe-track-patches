@@ -37,6 +37,7 @@ jobs:
       - name: Run Pipeline
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TRIGGER_TYPE: ${{ github.event_name }}
         run: |
           python scripts/run_pipeline.py
 
