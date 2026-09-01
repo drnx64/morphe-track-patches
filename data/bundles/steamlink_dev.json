@@ -2,9 +2,9 @@
   "bundle": "steamlink",
   "channel": "dev",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-08-31T21:26:14",
-  "version": "v1.10.1-dev.18",
-  "description": "## [1.10.1-dev.18](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.17...v1.10.1-dev.18) (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* new experiment for higher res ([b0dc43e](https://github.com/AngelDark92/steamlink-patches/commit/b0dc43eb35e06e03c39c173257bb773f0b91d355))\n",
+  "created_at": "2026-09-01T10:07:56",
+  "version": "v1.10.1-dev.19",
+  "description": "## [1.10.1-dev.19](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.18...v1.10.1-dev.19) (2026-09-01)\n\n### 🐛 Bug Fixes\n\n* new diagnostics patched into apks ([1c476a9](https://github.com/AngelDark92/steamlink-patches/commit/1c476a9fedddfe33dae5a3b3effa3d61c112be1a))\n",
   "apps": [
     {
       "app_name": "Steam Link",
@@ -66,7 +66,7 @@
         },
         {
           "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window; build 5002322 also gets passive pass-through telemetry and shell-protected surface controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -75,7 +75,7 @@
         },
         {
           "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window; build 5002322 also gets passive pass-through telemetry and shell-protected surface controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -84,7 +84,7 @@
         },
         {
           "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window; build 5002322 also gets passive pass-through telemetry and shell-protected surface controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -93,7 +93,7 @@
         },
         {
           "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window; build 5002322 also gets passive pass-through telemetry and shell-protected surface controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -102,7 +102,7 @@
         },
         {
           "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window; build 5002322 also gets passive pass-through telemetry and shell-protected surface controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -111,7 +111,7 @@
         },
         {
           "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window; build 5002322 also gets passive pass-through telemetry and shell-protected surface controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -120,7 +120,7 @@
         },
         {
           "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window; build 5002322 also gets passive pass-through telemetry and shell-protected surface controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -129,7 +129,7 @@
         },
         {
           "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW to the manifest so GalaxyXRPermissionActivity can request overlay permission at startup.",
+          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window; build 5002322 also gets passive pass-through telemetry and shell-protected surface controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -494,24 +494,6 @@
               "description": "Native-XR builds: installs the full Galaxy transport identity or an explicit model spoof while preserving stock XR routing. Legacy builds retain their verified payloads."
             }
           ],
-          "compatible_versions": [
-            "2.0.22"
-          ]
-        },
-        {
-          "name": "Experimental Native Reconstruction CPU Optimized 8/10-bit",
-          "description": "5002322-only permission-free A/B. Auto-matches uniform sRGB8 or RGB10_A2 Valve sources and tries density-preserving, panel-native, then runtime-maximum output sizes.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2.0.22"
-          ]
-        },
-        {
-          "name": "Experimental Native Single Projection Renderer Hook",
-          "description": "5002322-only permission-free A/B. Routes Valve's streaming xrEndFrame through an exact-build native helper and tries density-preserving, panel-native, then runtime-maximum output sizes.",
-          "use": false,
-          "options": [],
           "compatible_versions": [
             "2.0.22"
           ]
@@ -519,15 +501,6 @@
         {
           "name": "Experimental Native Single-Projection Resolution + 10-bit Probe",
           "description": "5002322-only permission-free diagnostic. Submits density-preserving, panel-native, then runtime-maximum output tiers and traces the accepted tier, decoder/source/output precision, topology, and xrEndFrame.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2.0.22"
-          ]
-        },
-        {
-          "name": "Experimental Single Projection Reconstruction Efficient",
-          "description": "5002322-only permission-free experiment. Reconstructs one stereo projection and tries density-preserving, Galaxy XR panel-native, then runtime-maximum output sizes with guarded fallback.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -1632,8 +1605,8 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "5af476a45516facaa226b71e50c1ab80fca0abc4ba15c7ce7c7e26f53269746b",
-  "release_notes": "## [1.10.1-dev.18](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.17...v1.10.1-dev.18) (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* new experiment for higher res ([b0dc43e](https://github.com/AngelDark92/steamlink-patches/commit/b0dc43eb35e06e03c39c173257bb773f0b91d355))\n",
-  "release_tag": "v1.10.1-dev.18",
-  "release_date": "2026-08-31T21:26:14Z"
+  "fingerprint": "8c1b452f45b61704c7623fe43d769c691e946a78688b2c76d8f5275587cc2b8f",
+  "release_notes": "## [1.10.1-dev.19](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.18...v1.10.1-dev.19) (2026-09-01)\n\n### 🐛 Bug Fixes\n\n* new diagnostics patched into apks ([1c476a9](https://github.com/AngelDark92/steamlink-patches/commit/1c476a9fedddfe33dae5a3b3effa3d61c112be1a))\n",
+  "release_tag": "v1.10.1-dev.19",
+  "release_date": "2026-09-01T10:07:56Z"
 }
