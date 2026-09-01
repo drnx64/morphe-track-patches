@@ -2,9 +2,9 @@
   "bundle": "steamlink",
   "channel": "dev",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-09-01T17:28:42",
-  "version": "v1.11.0-dev.1",
-  "description": "## [1.11.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.19...v1.11.0-dev.1) (2026-09-01)\n\n### ✨ New Features\n\n* new 3 layers patch with Android-Surface Trigger ([0616d80](https://github.com/AngelDark92/steamlink-patches/commit/0616d8006d0bbeb8800f0b7b7b1ce88d080e9543))\n",
+  "created_at": "2026-09-01T22:27:06",
+  "version": "v1.11.0-dev.4",
+  "description": "## [1.11.0-dev.4](https://github.com/AngelDark92/steamlink-patches/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2026-09-01)\n\n### ✨ New Features\n\n* final resolution patch with no appear on top needed ([fcad02f](https://github.com/AngelDark92/steamlink-patches/commit/fcad02fb0c79f6069d8eb723706ff91172e4f917))\n",
   "apps": [
     {
       "app_name": "Steam Link",
@@ -65,72 +65,63 @@
           ]
         },
         {
-          "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
-          "use": true,
+          "name": "Appear on top (legacy)",
+          "description": "Legacy overlay-permission fallback retained for older Steam Link builds. Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "2.0.20"
           ]
         },
         {
-          "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
-          "use": true,
+          "name": "Appear on top (legacy)",
+          "description": "Legacy overlay-permission fallback retained for older Steam Link builds. Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "2.0.20"
           ]
         },
         {
-          "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
-          "use": true,
+          "name": "Appear on top (legacy)",
+          "description": "Legacy overlay-permission fallback retained for older Steam Link builds. Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "2.0.22"
           ]
         },
         {
-          "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
-          "use": true,
+          "name": "Appear on top (legacy)",
+          "description": "Legacy overlay-permission fallback retained for older Steam Link builds. Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "2.0.22"
           ]
         },
         {
-          "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
-          "use": true,
+          "name": "Appear on top (legacy)",
+          "description": "Legacy overlay-permission fallback retained for older Steam Link builds. Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "2.0.22"
           ]
         },
         {
-          "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
-          "use": true,
+          "name": "Appear on top (legacy)",
+          "description": "Legacy overlay-permission fallback retained for older Steam Link builds. Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "2.0.22"
           ]
         },
         {
-          "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2.0.22"
-          ]
-        },
-        {
-          "name": "Appear on top",
-          "description": "Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
-          "use": true,
+          "name": "Appear on top (legacy)",
+          "description": "Legacy overlay-permission fallback retained for older Steam Link builds. Adds SYSTEM_ALERT_WINDOW and the compositor signal window.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "2.0.22"
@@ -499,15 +490,6 @@
           ]
         },
         {
-          "name": "Experimental Android-Surface Trigger (3-Projection Passthrough)",
-          "description": "5002322-only permission-free experiment. Preserves Valve's 3 projection layers and appends a nearly invisible 2x2 Android-surface quad to test the Galaxy XR high-quality compositor path.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2.0.22"
-          ]
-        },
-        {
           "name": "Force HMD initialization gates",
           "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001740, 5002244, and 5002313.",
           "use": false,
@@ -664,6 +646,15 @@
           "name": "Force stream XR gates",
           "description": "Bypasses the three verified XR gates in builds 5001740 and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
           "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Galaxy XR high-resolution 3-projection fix",
+          "description": "Recommended 5002322-only permission-free resolution fix. Preserves Valve's native 3 projections and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "2.0.22"
@@ -1605,8 +1596,8 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "31070266627a5cb22bac44e806dd9e657add7bafb914b61d525e1cfd00916767",
-  "release_notes": "## [1.11.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.10.1-dev.19...v1.11.0-dev.1) (2026-09-01)\n\n### ✨ New Features\n\n* new 3 layers patch with Android-Surface Trigger ([0616d80](https://github.com/AngelDark92/steamlink-patches/commit/0616d8006d0bbeb8800f0b7b7b1ce88d080e9543))\n",
-  "release_tag": "v1.11.0-dev.1",
-  "release_date": "2026-09-01T17:28:42Z"
+  "fingerprint": "277987b04789423f328d852e7f3dbd38f3232adb7905c2426b4fc68b50b85fbc",
+  "release_notes": "## [1.11.0-dev.4](https://github.com/AngelDark92/steamlink-patches/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2026-09-01)\n\n### ✨ New Features\n\n* final resolution patch with no appear on top needed ([fcad02f](https://github.com/AngelDark92/steamlink-patches/commit/fcad02fb0c79f6069d8eb723706ff91172e4f917))\n",
+  "release_tag": "v1.11.0-dev.4",
+  "release_date": "2026-09-01T22:27:06Z"
 }
