@@ -2,9 +2,9 @@
   "bundle": "steamlink",
   "channel": "dev",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-09-01T22:27:06",
-  "version": "v1.11.0-dev.4",
-  "description": "## [1.11.0-dev.4](https://github.com/AngelDark92/steamlink-patches/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2026-09-01)\n\n### ✨ New Features\n\n* final resolution patch with no appear on top needed ([fcad02f](https://github.com/AngelDark92/steamlink-patches/commit/fcad02fb0c79f6069d8eb723706ff91172e4f917))\n",
+  "created_at": "2026-09-02T11:14:35",
+  "version": "v1.11.1-dev.2",
+  "description": "## [1.11.1-dev.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.11.1-dev.1...v1.11.1-dev.2) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* CPU optimization and GPU Experiment on resolution patch ([0de5a70](https://github.com/AngelDark92/steamlink-patches/commit/0de5a70e2bfb3ebc2f191cdd110fe8927b144f6a))\n",
   "apps": [
     {
       "app_name": "Steam Link",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Android XR native permission names",
-          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR.",
+          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR, including the verified Steam Link 5001712 layout.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -21,7 +21,7 @@
         },
         {
           "name": "Android XR native permission names",
-          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR.",
+          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR, including the verified Steam Link 5001712 layout.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -30,7 +30,7 @@
         },
         {
           "name": "Android XR native permission names",
-          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR.",
+          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR, including the verified Steam Link 5001712 layout.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -39,7 +39,7 @@
         },
         {
           "name": "Android XR native permission names",
-          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR.",
+          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR, including the verified Steam Link 5001712 layout.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -48,7 +48,7 @@
         },
         {
           "name": "Android XR native permission names",
-          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR.",
+          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR, including the verified Steam Link 5001712 layout.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -57,7 +57,7 @@
         },
         {
           "name": "Android XR native permission names",
-          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR.",
+          "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR, including the verified Steam Link 5001712 layout.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -490,26 +490,8 @@
           ]
         },
         {
-          "name": "Force HMD initialization gates",
-          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001740, 5002244, and 5002313.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2.0.20"
-          ]
-        },
-        {
-          "name": "Force HMD initialization gates",
-          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001740, 5002244, and 5002313.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2.0.20"
-          ]
-        },
-        {
-          "name": "Force HMD initialization gates",
-          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001740, 5002244, and 5002313.",
+          "name": "Experimental Galaxy XR surface warm-up/omit performance A/B",
+          "description": "Diagnostic-only exact 2.0.22/5002322 variant. It creates and queues the same 2x2 Android Surface, submits the fourth terminal quad for 7200 accepted frames, then retains every Surface resource while returning to Valve's original 3 projection layers. Use it only to determine whether the recurring fourth layer causes the extra compositor cost.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -518,7 +500,25 @@
         },
         {
           "name": "Force HMD initialization gates",
-          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.20"
+          ]
+        },
+        {
+          "name": "Force HMD initialization gates",
+          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.20"
+          ]
+        },
+        {
+          "name": "Force HMD initialization gates",
+          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -527,7 +527,7 @@
         },
         {
           "name": "Force HMD initialization gates",
-          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -536,7 +536,16 @@
         },
         {
           "name": "Force HMD initialization gates",
-          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Force HMD initialization gates",
+          "description": "Bypasses the two verified capability gates in QSVLDeviceHmd::Init for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -545,7 +554,7 @@
         },
         {
           "name": "Force lobby permission-state gate",
-          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -554,7 +563,7 @@
         },
         {
           "name": "Force lobby permission-state gate",
-          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -563,7 +572,7 @@
         },
         {
           "name": "Force lobby permission-state gate",
-          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -572,7 +581,7 @@
         },
         {
           "name": "Force lobby permission-state gate",
-          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -581,7 +590,7 @@
         },
         {
           "name": "Force lobby permission-state gate",
-          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -590,7 +599,7 @@
         },
         {
           "name": "Force lobby permission-state gate",
-          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001740, 5002244, and 5002313.",
+          "description": "Bypasses the verified permission-state gate in XrSceneLobby for Steam Link builds 5001712, 5001740, 5002244, and 5002313.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -599,7 +608,7 @@
         },
         {
           "name": "Force stream XR gates",
-          "description": "Bypasses the three verified XR gates in builds 5001740 and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
+          "description": "Bypasses the three verified XR gates in builds 5001712, 5001740, and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -608,7 +617,7 @@
         },
         {
           "name": "Force stream XR gates",
-          "description": "Bypasses the three verified XR gates in builds 5001740 and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
+          "description": "Bypasses the three verified XR gates in builds 5001712, 5001740, and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -617,7 +626,7 @@
         },
         {
           "name": "Force stream XR gates",
-          "description": "Bypasses the three verified XR gates in builds 5001740 and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
+          "description": "Bypasses the three verified XR gates in builds 5001712, 5001740, and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -626,7 +635,7 @@
         },
         {
           "name": "Force stream XR gates",
-          "description": "Bypasses the three verified XR gates in builds 5001740 and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
+          "description": "Bypasses the three verified XR gates in builds 5001712, 5001740, and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -635,7 +644,7 @@
         },
         {
           "name": "Force stream XR gates",
-          "description": "Bypasses the three verified XR gates in builds 5001740 and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
+          "description": "Bypasses the three verified XR gates in builds 5001712, 5001740, and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -644,7 +653,7 @@
         },
         {
           "name": "Force stream XR gates",
-          "description": "Bypasses the three verified XR gates in builds 5001740 and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
+          "description": "Bypasses the three verified XR gates in builds 5001712, 5001740, and 5002244. Build 5002313 rewrote XrSceneStream::Init and is intentionally left unchanged.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -653,7 +662,52 @@
         },
         {
           "name": "Galaxy XR high-resolution 3-projection fix",
-          "description": "Recommended 5002322-only permission-free resolution fix. Preserves Valve's native 3 projections and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves Valve's native 3 projections and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.0.20"
+          ]
+        },
+        {
+          "name": "Galaxy XR high-resolution 3-projection fix",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves Valve's native 3 projections and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Galaxy XR high-resolution 3-projection fix",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves Valve's native 3 projections and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Galaxy XR high-resolution 3-projection fix",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves Valve's native 3 projections and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Galaxy XR high-resolution 3-projection fix",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves Valve's native 3 projections and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Galaxy XR high-resolution 3-projection fix",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves Valve's native 3 projections and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -846,7 +900,7 @@
         },
         {
           "name": "OLED color calibration",
-          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001740, 5002244, 5002313, 5002318, and 5002322.",
+          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001712, 5001740, 5002244, 5002313, 5002318, and 5002322.",
           "use": true,
           "options": [
             {
@@ -872,7 +926,7 @@
         },
         {
           "name": "OLED color calibration",
-          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001740, 5002244, 5002313, 5002318, and 5002322.",
+          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001712, 5001740, 5002244, 5002313, 5002318, and 5002322.",
           "use": true,
           "options": [
             {
@@ -898,7 +952,7 @@
         },
         {
           "name": "OLED color calibration",
-          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001740, 5002244, 5002313, 5002318, and 5002322.",
+          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001712, 5001740, 5002244, 5002313, 5002318, and 5002322.",
           "use": true,
           "options": [
             {
@@ -924,7 +978,7 @@
         },
         {
           "name": "OLED color calibration",
-          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001740, 5002244, 5002313, 5002318, and 5002322.",
+          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001712, 5001740, 5002244, 5002313, 5002318, and 5002322.",
           "use": true,
           "options": [
             {
@@ -950,7 +1004,7 @@
         },
         {
           "name": "OLED color calibration",
-          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001740, 5002244, 5002313, 5002318, and 5002322.",
+          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001712, 5001740, 5002244, 5002313, 5002318, and 5002322.",
           "use": true,
           "options": [
             {
@@ -976,7 +1030,7 @@
         },
         {
           "name": "OLED color calibration",
-          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001740, 5002244, 5002313, 5002318, and 5002322.",
+          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001712, 5001740, 5002244, 5002313, 5002318, and 5002322.",
           "use": true,
           "options": [
             {
@@ -1002,7 +1056,7 @@
         },
         {
           "name": "OLED color calibration",
-          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001740, 5002244, 5002313, 5002318, and 5002322.",
+          "description": "Calibrates Galaxy XR OLED color and selects a guarded high-precision video output path for Steam Link builds 5001712, 5001740, 5002244, 5002313, 5002318, and 5002322.",
           "use": true,
           "options": [
             {
@@ -1596,8 +1650,8 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "277987b04789423f328d852e7f3dbd38f3232adb7905c2426b4fc68b50b85fbc",
-  "release_notes": "## [1.11.0-dev.4](https://github.com/AngelDark92/steamlink-patches/compare/v1.11.0-dev.3...v1.11.0-dev.4) (2026-09-01)\n\n### ✨ New Features\n\n* final resolution patch with no appear on top needed ([fcad02f](https://github.com/AngelDark92/steamlink-patches/commit/fcad02fb0c79f6069d8eb723706ff91172e4f917))\n",
-  "release_tag": "v1.11.0-dev.4",
-  "release_date": "2026-09-01T22:27:06Z"
+  "fingerprint": "a4353ab23f49fb9515eb04208902d2fd9b8c158bcf9de579f450f05e8c839a94",
+  "release_notes": "## [1.11.1-dev.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.11.1-dev.1...v1.11.1-dev.2) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* CPU optimization and GPU Experiment on resolution patch ([0de5a70](https://github.com/AngelDark92/steamlink-patches/commit/0de5a70e2bfb3ebc2f191cdd110fe8927b144f6a))\n",
+  "release_tag": "v1.11.1-dev.2",
+  "release_date": "2026-09-02T11:14:35Z"
 }
