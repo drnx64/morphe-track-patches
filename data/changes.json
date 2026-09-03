@@ -1,108 +1,6 @@
 {
   "affected_bundles": [
     {
-      "bundle": "gmaps",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Google Maps",
-          "package": "com.google.android.apps.maps",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Google Maps for ReVanced GmsCore",
-                "description": "Routes supported Google Maps builds through ReVanced GmsCore using the patched Maps package and known Google Maps certificate spoof metadata.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/fangkampanat/gmaps-patches",
-      "patches_name": "Maps Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "steamlink",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Steam Link",
-          "package": "com.valvesoftware.steamlinkvr",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Galaxy XR high-resolution 3-projection fix",
-                "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves each build's native projection layout (2 layers on 2.0.20/5001712; 3 layers on supported 2.0.22 builds) and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
-                "changes": [
-                  "description updated",
-                  "options: -1 option"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-      "patches_name": "Steam Link GalaxyXR Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "okish-morphe",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Into the Dead",
-          "package": "com.sidheinteractive.sif.dr",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Into the Dead 2 Ad Removal & Instant Boost Rewards",
-                "description": "Removes all ads (interstitials, banners, app-open) and grants rewarded-video perk boosts instantly on tap (no ad watch) using the correct reward name PERKS_BOOST, verified against a real rewarded event."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Into the Dead Ad Removal",
-                "description": "Removes all ads and grants rewarded-video rewards instantly: rewarded videos (legacy IronSource and LevelPlay), interstitials, launch, banner and AdMob App Open ads are all eliminated."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-      "patches_name": "byehi98 Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
       "bundle": "legendsciber",
       "channel": "stable",
       "badge_type": "UPDATED",
@@ -114,12 +12,12 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Shadow Fight 2 Unlimited Values",
-                "description": "Sets in-game values to unlimited."
+                "name": "Shadow Fight 2 Crash Log",
+                "description": "Saves crash info to a file if the game crashes."
               },
               {
-                "name": "Shadow Fight 2 Values Trigger",
-                "description": "Enables unlimited values."
+                "name": "Shadow Fight 2 Crash Trigger",
+                "description": "Enables crash logging."
               }
             ],
             "patches_removed": [],
@@ -132,6 +30,85 @@
       ],
       "repo_url": "https://github.com/legendsciber/morphe-patches",
       "patches_name": "legendsciber's Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "flexboard",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Bigger Toolbar",
+                "description": "Raises the toolbar from five icons to 12, so Flexboard's hotkeys and text action buttons can fit alongside Gboard's own. How many icons actually show stays yours, set by dragging them in Gboard's toolbar settings."
+              },
+              {
+                "name": "Swipe Left to Delete",
+                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
+              },
+              {
+                "name": "Text Action Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Swipe to Delete",
+                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
+              },
+              {
+                "name": "Toolbar Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
+              },
+              {
+                "name": "Toolbar Native Test",
+                "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Swipe Right to Undo",
+                "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe Left to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/JZ6/Flexboard",
+      "patches_name": "Flexboard",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "zpatches",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Undercover",
+          "package": "com.yanstarstudio.joss.undercover",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/cesbar/zpatches",
+      "patches_name": "zPatches",
       "extra_badges": [
         "VERSION BUMP"
       ]
