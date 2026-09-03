@@ -2,9 +2,9 @@
   "bundle": "steamlink",
   "channel": "dev",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-09-02T19:39:05",
-  "version": "v1.11.1-dev.8",
-  "description": "## [1.11.1-dev.8](https://github.com/AngelDark92/steamlink-patches/compare/v1.11.1-dev.7...v1.11.1-dev.8) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* legacy bundles now include device identity (quest pro) for DFR and Face Tracking ([9dde468](https://github.com/AngelDark92/steamlink-patches/commit/9dde468956d5ace82c2b0cd8da524b764f0d353e))\n",
+  "created_at": "2026-09-03T14:14:50",
+  "version": "v1.13.0-dev.1",
+  "description": "## [1.13.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.12.2-dev.1...v1.13.0-dev.1) (2026-09-03)\n\n### ✨ New Features\n\n* underside projection on XR_KHR_android_surface_swapchain experiment ([64d24d3](https://github.com/AngelDark92/steamlink-patches/commit/64d24d376aaa7c181cc2a1120e4e5674a552e0ef))\n",
   "apps": [
     {
       "app_name": "Steam Link",
@@ -653,54 +653,84 @@
         },
         {
           "name": "Galaxy XR high-resolution 3-projection fix",
-          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves each build's native projection layout (2 layers on 2.0.20/5001712; 3 layers on supported 2.0.22 builds) and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. The tested default preserves native projections and source formats, including future RGB10_A2, with a static 2x2 Android-surface quad. Optional 2.0.22/5002322 experiment replaces only the underside with a static black Surface-backed projection, keeping 3 total layers. No image copy or reconstruction. 2.0.20 remains unchanged.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "surfacePlacement",
+              "description": "On 2.0.22/5002322, the experiment replaces the underside with static black, keeping 3 projections and no extra quad. Resolution and speed are unverified. Every other build keeps the terminal quad, including 2.0.20."
+            }
+          ],
           "compatible_versions": [
             "2.0.20"
           ]
         },
         {
           "name": "Galaxy XR high-resolution 3-projection fix",
-          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves each build's native projection layout (2 layers on 2.0.20/5001712; 3 layers on supported 2.0.22 builds) and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. The tested default preserves native projections and source formats, including future RGB10_A2, with a static 2x2 Android-surface quad. Optional 2.0.22/5002322 experiment replaces only the underside with a static black Surface-backed projection, keeping 3 total layers. No image copy or reconstruction. 2.0.20 remains unchanged.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "surfacePlacement",
+              "description": "On 2.0.22/5002322, the experiment replaces the underside with static black, keeping 3 projections and no extra quad. Resolution and speed are unverified. Every other build keeps the terminal quad, including 2.0.20."
+            }
+          ],
           "compatible_versions": [
             "2.0.22"
           ]
         },
         {
           "name": "Galaxy XR high-resolution 3-projection fix",
-          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves each build's native projection layout (2 layers on 2.0.20/5001712; 3 layers on supported 2.0.22 builds) and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. The tested default preserves native projections and source formats, including future RGB10_A2, with a static 2x2 Android-surface quad. Optional 2.0.22/5002322 experiment replaces only the underside with a static black Surface-backed projection, keeping 3 total layers. No image copy or reconstruction. 2.0.20 remains unchanged.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "surfacePlacement",
+              "description": "On 2.0.22/5002322, the experiment replaces the underside with static black, keeping 3 projections and no extra quad. Resolution and speed are unverified. Every other build keeps the terminal quad, including 2.0.20."
+            }
+          ],
           "compatible_versions": [
             "2.0.22"
           ]
         },
         {
           "name": "Galaxy XR high-resolution 3-projection fix",
-          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves each build's native projection layout (2 layers on 2.0.20/5001712; 3 layers on supported 2.0.22 builds) and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. The tested default preserves native projections and source formats, including future RGB10_A2, with a static 2x2 Android-surface quad. Optional 2.0.22/5002322 experiment replaces only the underside with a static black Surface-backed projection, keeping 3 total layers. No image copy or reconstruction. 2.0.20 remains unchanged.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "surfacePlacement",
+              "description": "On 2.0.22/5002322, the experiment replaces the underside with static black, keeping 3 projections and no extra quad. Resolution and speed are unverified. Every other build keeps the terminal quad, including 2.0.20."
+            }
+          ],
           "compatible_versions": [
             "2.0.22"
           ]
         },
         {
           "name": "Galaxy XR high-resolution 3-projection fix",
-          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves each build's native projection layout (2 layers on 2.0.20/5001712; 3 layers on supported 2.0.22 builds) and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. The tested default preserves native projections and source formats, including future RGB10_A2, with a static 2x2 Android-surface quad. Optional 2.0.22/5002322 experiment replaces only the underside with a static black Surface-backed projection, keeping 3 total layers. No image copy or reconstruction. 2.0.20 remains unchanged.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "surfacePlacement",
+              "description": "On 2.0.22/5002322, the experiment replaces the underside with static black, keeping 3 projections and no extra quad. Resolution and speed are unverified. Every other build keeps the terminal quad, including 2.0.20."
+            }
+          ],
           "compatible_versions": [
             "2.0.22"
           ]
         },
         {
           "name": "Galaxy XR high-resolution 3-projection fix",
-          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. Preserves each build's native projection layout (2 layers on 2.0.20/5001712; 3 layers on supported 2.0.22 builds) and source formats, including future RGB10_A2, while appending a static 2x2 Android-surface compositor trigger with no image copy or reconstruction.",
+          "description": "Permission-free resolution fix for exact builds 5001712, 5002244, 5002296, 5002313, 5002318, and 5002322. The tested default preserves native projections and source formats, including future RGB10_A2, with a static 2x2 Android-surface quad. Optional 2.0.22/5002322 experiment replaces only the underside with a static black Surface-backed projection, keeping 3 total layers. No image copy or reconstruction. 2.0.20 remains unchanged.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "surfacePlacement",
+              "description": "On 2.0.22/5002322, the experiment replaces the underside with static black, keeping 3 projections and no extra quad. Resolution and speed are unverified. Every other build keeps the terminal quad, including 2.0.20."
+            }
+          ],
           "compatible_versions": [
             "2.0.22"
           ]
@@ -1618,8 +1648,8 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "2d7f6d3b9bda17acbb5dcce98e770112f1bca4669d2bec4e756f9f1f337c61b8",
-  "release_notes": "## [1.11.1-dev.8](https://github.com/AngelDark92/steamlink-patches/compare/v1.11.1-dev.7...v1.11.1-dev.8) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* legacy bundles now include device identity (quest pro) for DFR and Face Tracking ([9dde468](https://github.com/AngelDark92/steamlink-patches/commit/9dde468956d5ace82c2b0cd8da524b764f0d353e))\n",
-  "release_tag": "v1.11.1-dev.8",
-  "release_date": "2026-09-02T19:39:05Z"
+  "fingerprint": "a2f1b95fa99ca600f8ac05d9a9586c37e756325e914f71f671bf7ed765e29e24",
+  "release_notes": "## [1.13.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.12.2-dev.1...v1.13.0-dev.1) (2026-09-03)\n\n### ✨ New Features\n\n* underside projection on XR_KHR_android_surface_swapchain experiment ([64d24d3](https://github.com/AngelDark92/steamlink-patches/commit/64d24d376aaa7c181cc2a1120e4e5674a552e0ef))\n",
+  "release_tag": "v1.13.0-dev.1",
+  "release_date": "2026-09-03T14:14:50Z"
 }
