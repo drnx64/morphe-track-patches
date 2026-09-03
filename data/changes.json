@@ -8,61 +8,31 @@
         {
           "app_name": "Shadow Fight 2",
           "package": "com.nekki.shadowfight",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/legendsciber/morphe-patches",
-      "patches_name": "legendsciber's Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "flexboard",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Gboard",
-          "package": "com.google.android.inputmethod.latin",
           "badge_type": "MAJOR UPDATE",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Bigger Toolbar",
-                "description": "Raises the toolbar from five icons to 12, so Flexboard's hotkeys and text action buttons can fit alongside Gboard's own. How many icons actually show stays yours, set by dragging them in Gboard's toolbar settings."
-              },
-              {
-                "name": "Swipe Left to Delete",
-                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
-              },
-              {
-                "name": "Text Action Buttons",
-                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
-              }
-            ],
+            "patches_added": [],
             "patches_removed": [
               {
-                "name": "Swipe to Delete",
-                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
+                "name": "Shadow Fight 2 Debug Menu Restore",
+                "description": "Restores CheatsPanel 8 methods (ShowCheats/AddCurrency etc.) from RET to real logic. Makes debug menu functional."
               },
               {
-                "name": "Toolbar Buttons",
-                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
+                "name": "Shadow Fight 2 Hardcode 999999999",
+                "description": "Direct memory hardcode for BFBONKPKBNL/ECENNHNBAME ObscuredInt (Gems/Coins) to 999999999. No runtime scan."
               },
               {
-                "name": "Toolbar Native Test",
-                "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default."
+                "name": "Shadow Fight 2 Hardcode Trigger",
+                "description": "Triggers hardcode via UnityPlayerActivity.onCreate"
+              },
+              {
+                "name": "Shadow Fight 2 Show Cheats UI",
+                "description": "Forces CheatsPanel to be visible and adds floating Add Gems button. Works without root."
               }
             ],
             "patches_modified": [
               {
-                "name": "Swipe Right to Undo",
-                "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe Left to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
+                "name": "Shadow Fight 2 Runtime Dump",
+                "description": "Dumps all Unity classes/fields with ObscuredInt to logcat and files. Use logcat -s ShadowDump or cat shizuku-terminal/shadowdump-log.txt",
                 "changes": [
                   "description updated"
                 ]
@@ -74,141 +44,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/JZ6/Flexboard",
-      "patches_name": "Flexboard",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "froggo",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Facebook",
-          "package": "com.facebook.katana",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Download Facebook Media (573)",
-                "description": "Adds direct downloads for the visible Story, Reel, and video media through MediaStore."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/SapitoSucio/FroggoMorphePatches",
-      "patches_name": "Froggo Morphe Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "kveld",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Brave Private Web Browser, VPN",
-          "package": "com.brave.browser",
-          "badge_type": "MAJOR UPDATE",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Block Brave Telemetry",
-                "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Brave In-Product & Commercial Notification Optimizer",
-                "description": "Eliminates background wakeups and notifications from Chromium tips scheduler (Job ID 105), Brave Rewards onboarding promo, and retention marketing campaigns.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Brave Origin",
-                "description": "Unlocks Brave Origin and enables local feature toggle controls.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Brave Startup Performance Optimization",
-                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable Background Sync & Periodic Sync",
-                "description": "Eliminates background wakeups, radio modem activity, and battery drain by forcing GooglePlayServicesChecker.shouldDisableBackgroundSync() -> true and neutralizing wakeup tasks.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable Battery Status API & OS Listener",
-                "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable Pull To Refresh",
-                "description": "Completely disables the pull-to-refresh overscroll gesture and animation to prevent accidental page reloads.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Locale PAK Slimmer",
-                "description": "Strips unselected language resource PAKs from assets/locales/.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Native Bloat Slimmer",
-                "description": "Strips unused native companion binaries (Impress Vision AI, WireGuard VPN, and Android XR) to significantly reduce APK size.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "PNG Asset Optimizer",
-                "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Skip First Run",
-                "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-      "patches_name": "kveld9 Patches",
+      "repo_url": "https://github.com/legendsciber/morphe-patches",
+      "patches_name": "legendsciber's Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
