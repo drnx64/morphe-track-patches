@@ -1,4 +1,5 @@
 import os, re, json, sys, time, urllib.request, urllib.error, urllib.parse, html as html_mod
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dotenv import load_dotenv
 from state_manager import load_json, save_json, ensure_dirs, STATE_DIR, RAW_DIR, match_release_to_version
 from config import RELEASE_CACHE_TTL_HOURS
@@ -142,16 +143,16 @@ def update_release_cache(changed_repo_urls=None):
     fetched = 0
     skipped = 0
 
+    # Build work items for parallel fetching
+    work_items = []
     for repo_url, bundle_versions in repos.items():
         norm_url = _normalize_url(repo_url)
         repo_cache = cache.get(repo_url, {})
 
-        # Determine whether to fetch this repo
         should_fetch = False
         reason = ""
 
         if changed_set is not None:
-            # Diff-aware mode
             if norm_url in changed_set:
                 should_fetch = True
                 reason = "bundle changed"
@@ -160,25 +161,32 @@ def update_release_cache(changed_repo_urls=None):
                 reason = "cold cache"
             else:
                 skipped += 1
-                print(f"  SKIP {repo_url} — not in diff, cache has {len(repo_cache.get('releases', []))} releases")
                 continue
         else:
-            # Legacy mode: fetch if stale
             if _is_cache_stale(repo_cache):
                 should_fetch = True
                 reason = "cache stale"
             else:
                 skipped += 1
-                print(f"  SKIP {repo_url} — cache fresh ({len(repo_cache.get('releases', []))} releases)")
                 continue
 
+        work_items.append((repo_url, reason))
+
+    if not work_items:
+        print(f"No repos need fetching. Cache has {len(cache)} entries, all fresh.")
+        save_json(RELEASE_CACHE_PATH, cache)
+        return cache
+
+    print(f"Fetching releases for {len(work_items)} repos with 10 workers...")
+
+    def _fetch_one(item):
+        repo_url, reason = item
         github_match = re.search(r"github\.com/([^/]+)/([^/]+)", repo_url)
         gitlab_match = re.search(r"gitlab\.com/(.+)", repo_url)
         releases = []
         if github_match:
             owner = github_match.group(1)
             repo_name = github_match.group(2)
-            print(f"  [{reason}] Fetching GitHub releases for {owner}/{repo_name}...")
             releases = fetch_github_releases(owner, repo_name)
         elif gitlab_match:
             project_path = gitlab_match.group(1).rstrip("/")
@@ -187,19 +195,18 @@ def update_release_cache(changed_repo_urls=None):
             api_m = re.match(r"api/v4/projects/([^/]+(?:%2F[^/]+)*)", project_path)
             if api_m:
                 project_path = api_m.group(1).replace("%2F", "/")
-            print(f"  [{reason}] Fetching GitLab releases for {project_path}...")
             releases = fetch_gitlab_releases(project_path)
-        else:
-            print(f"  SKIP {repo_url} — unsupported platform")
-            continue
+        return (repo_url, reason, releases)
 
-        cache[repo_url] = {
-            "fetched_at": datetime.now(timezone.utc).isoformat(),
-            "releases": releases
-        }
-        fetched += 1
-        print(f"    -> Cached {len(releases)} releases")
-        time.sleep(0.5)
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = {executor.submit(_fetch_one, item): item for item in work_items}
+        for future in as_completed(futures):
+            repo_url, reason, releases = future.result()
+            cache[repo_url] = {
+                "fetched_at": datetime.now(timezone.utc).isoformat(),
+                "releases": releases
+            }
+            fetched += 1
 
     save_json(RELEASE_CACHE_PATH, cache)
     print(f"\nRelease cache saved: {fetched} fetched, {skipped} skipped, {len(cache)} total.")

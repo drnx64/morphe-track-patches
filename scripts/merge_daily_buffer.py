@@ -14,6 +14,7 @@ from state_manager import (
     save_stats_json,
     save_changes_json,
     save_bundles_split,
+    save_bundles_json,
     load_core_json,
     load_stats_json,
     load_changes_json,
@@ -228,7 +229,7 @@ def _match_release_to_version(version, releases):
 def finalize_buffer(buffer_data):
     """
     Finalizes the daily buffer:
-    1. Appends to data/output/changelog.json
+    1. Appends to data/changelog.json
     2. Prepends to data/output/changelog.md
     3. Writes the daily markdown changelog to data/output/today_changelog.md
     4. Generates data/core.json, data/stats.json, data/changes.json, data/bundles.json
@@ -244,72 +245,83 @@ def finalize_buffer(buffer_data):
 
     print(f"[*] Finalizing daily buffer for date: {date_str}...")
 
-    # 1. Update changelog.json — write directly to data/changelog.json (tracked by git)
-    changelog_json_path = os.path.join(ROOT_DATA_DIR, "changelog.json")
-    changelog_json = load_json(changelog_json_path, default=[])
+    try:
+        # 1. Update changelog.json — write directly to data/changelog.json (tracked by git)
+        changelog_json_path = os.path.join(ROOT_DATA_DIR, "changelog.json")
+        changelog_json = load_json(changelog_json_path, default=[])
 
-    changelog_json = [entry for entry in changelog_json if entry.get("date") != date_str]
-    new_entry = build_changelog_entry(date_str, affected_bundles_dict)
-    changelog_json.insert(0, new_entry)
-    changelog_json = changelog_json[:CHANGELOG_MAX_ENTRIES]
-    save_json(changelog_json_path, changelog_json)
+        changelog_json = [entry for entry in changelog_json if entry.get("date") != date_str]
+        new_entry = build_changelog_entry(date_str, affected_bundles_dict)
+        changelog_json.insert(0, new_entry)
+        changelog_json = changelog_json[:CHANGELOG_MAX_ENTRIES]
+        save_json(changelog_json_path, changelog_json)
+        print(f"[+] Changelog JSON written: {len(changelog_json)} entries")
+    except Exception as e:
+        print(f"[!] Failed to write changelog.json: {e}")
 
-    # 2. Update changelog.md
-    changelog_md_path = os.path.join(OUTPUT_DIR, "changelog.md")
-    daily_md = generate_markdown_changelog(date_str, affected_bundles_dict)
+    try:
+        # 2. Update changelog.md
+        changelog_md_path = os.path.join(OUTPUT_DIR, "changelog.md")
+        daily_md = generate_markdown_changelog(date_str, affected_bundles_dict)
 
-    today_changelog_path = os.path.join(OUTPUT_DIR, "today_changelog.md")
-    with open(today_changelog_path, "w", encoding="utf-8") as f:
-        f.write(daily_md)
+        today_changelog_path = os.path.join(OUTPUT_DIR, "today_changelog.md")
+        with open(today_changelog_path, "w", encoding="utf-8") as f:
+            f.write(daily_md)
 
-    existing_md = ""
-    if os.path.exists(changelog_md_path):
-        try:
-            with open(changelog_md_path, "r", encoding="utf-8") as f:
-                existing_md = f.read()
-        except Exception as e:
-            print(f"Error reading changelog.md: {e}")
+        existing_md = ""
+        if os.path.exists(changelog_md_path):
+            try:
+                with open(changelog_md_path, "r", encoding="utf-8") as f:
+                    existing_md = f.read()
+            except Exception as e:
+                print(f"Error reading changelog.md: {e}")
 
-    header = "# Morphe Patch Tracker Changelog\n\n"
-    if existing_md.startswith(header):
-        content_body = existing_md[len(header):]
-    else:
-        content_body = existing_md
+        header = "# Morphe Patch Tracker Changelog\n\n"
+        if existing_md.startswith(header):
+            content_body = existing_md[len(header):]
+        else:
+            content_body = existing_md
 
-    with open(changelog_md_path, "w", encoding="utf-8") as f:
-        f.write(header)
-        f.write(daily_md)
-        f.write(content_body)
+        with open(changelog_md_path, "w", encoding="utf-8") as f:
+            f.write(header)
+            f.write(daily_md)
+            f.write(content_body)
+    except Exception as e:
+        print(f"[!] Failed to write changelog.md: {e}")
 
-    # 3. Update data files (core.json, stats.json, changes.json, bundles.json)
-    snapshot = load_current_snapshot()
-    total_bundles, total_apps = _compute_snapshot_stats(snapshot)
+    try:
+        # 3. Update data files (core.json, stats.json, changes.json, bundles.json)
+        snapshot = load_current_snapshot()
+        total_bundles, total_apps = _compute_snapshot_stats(snapshot)
 
-    all_apps = []
-    for b_info in affected_bundles_dict.values():
-        all_apps.extend(b_info.get("apps", []))
+        all_apps = []
+        for b_info in affected_bundles_dict.values():
+            all_apps.extend(b_info.get("apps", []))
 
-    core = {
-        "date": date_str,
-        "last_run": now_utc_iso(),
-        "lastChecked": now_utc_iso()
-    }
-    stats = {
-        "total_bundles": total_bundles,
-        "total_apps": total_apps,
-        "new_apps_today": len(set(a["package"] for a in all_apps if a.get("badge_type") == "NEW APP")),
-        "new_bundles_today": len(set(b["bundle"] for b in affected_bundles_dict.values() if b.get("badge_type") == "NEW BUNDLE"))
-    }
-    changes = {
-        "affected_bundles": list(affected_bundles_dict.values())
-    }
-    bundles = dict(snapshot)
-    merge_release_notes(bundles)
-    save_core_json(core)
-    save_stats_json(stats)
-    save_changes_json(changes)
-    save_bundles_split(bundles)
-    print("[*] Finalization state files written successfully.")
+        core = {
+            "date": date_str,
+            "last_run": now_utc_iso(),
+            "lastChecked": now_utc_iso()
+        }
+        stats = {
+            "total_bundles": total_bundles,
+            "total_apps": total_apps,
+            "new_apps_today": len(set(a["package"] for a in all_apps if a.get("badge_type") == "NEW APP")),
+            "new_bundles_today": len(set(b["bundle"] for b in affected_bundles_dict.values() if b.get("badge_type") == "NEW BUNDLE"))
+        }
+        changes = {
+            "affected_bundles": list(affected_bundles_dict.values())
+        }
+        bundles = dict(snapshot)
+        merge_release_notes(bundles)
+        save_core_json(core)
+        save_stats_json(stats)
+        save_changes_json(changes)
+        save_bundles_split(bundles)
+        save_bundles_json(bundles)
+        print("[+] Finalization state files written successfully.")
+    except Exception as e:
+        print(f"[!] Failed to write state files: {e}")
 
 
 def update_data_files(today_str, buffer_data, snapshot):
@@ -363,6 +375,7 @@ def update_data_files(today_str, buffer_data, snapshot):
     save_stats_json(stats)
     save_changes_json(changes_to_save)
     save_bundles_split(bundles)
+    save_bundles_json(bundles)
     print("[*] Live state files updated with the current snapshot.")
 
 
@@ -426,6 +439,7 @@ def write_data_files(has_changes=True, preserve_changes_json=False):
     if changes_to_save is not None:
         save_changes_json(changes_to_save)
     save_bundles_split(bundles)
+    save_bundles_json(bundles)
     print(f"[*] Data files synced: {total_bundles} bundles, {total_apps} apps.")
 
 

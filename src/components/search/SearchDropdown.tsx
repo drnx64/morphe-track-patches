@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import { fuzzySearchItems } from '../../services/fuzzySearch'
@@ -23,21 +23,24 @@ export default function SearchDropdown() {
   const [activeIndex, setActiveIndex] = useState(-1)
   const listRef = useRef<HTMLDivElement>(null)
 
-  const grouped: Record<string, BundleEntry> = {}
-  for (const b of Object.values(state.bundles)) {
-    if (!grouped[b.bundle]) {
-      grouped[b.bundle] = { bundle: b.bundle, channels: [b.channel], repo_url: b.repo_url, patches_name: b.patches_name, version: b.version || '', apps: [...(b.apps || [])] }
-    } else {
-      if (b.version && !grouped[b.bundle].version) grouped[b.bundle].version = b.version
-      if (b.patches_name && !grouped[b.bundle].patches_name) grouped[b.bundle].patches_name = b.patches_name
-      if (!grouped[b.bundle].channels.includes(b.channel)) grouped[b.bundle].channels.push(b.channel)
-      for (const a of b.apps || []) {
-        if (!grouped[b.bundle].apps.find((x) => x.package === a.package)) {
-          grouped[b.bundle].apps.push(a)
+  const grouped = useMemo(() => {
+    const g: Record<string, BundleEntry> = {}
+    for (const b of Object.values(state.bundles)) {
+      if (!g[b.bundle]) {
+        g[b.bundle] = { bundle: b.bundle, channels: [b.channel], repo_url: b.repo_url, patches_name: b.patches_name, version: b.version || '', apps: [...(b.apps || [])] }
+      } else {
+        if (b.version && !g[b.bundle].version) g[b.bundle].version = b.version
+        if (b.patches_name && !g[b.bundle].patches_name) g[b.bundle].patches_name = b.patches_name
+        if (!g[b.bundle].channels.includes(b.channel)) g[b.bundle].channels.push(b.channel)
+        for (const a of b.apps || []) {
+          if (!g[b.bundle].apps.find((x) => x.package === a.package)) {
+            g[b.bundle].apps.push(a)
+          }
         }
       }
     }
-  }
+    return g
+  }, [state.bundles])
 
   // Close on outside click
   useEffect(() => {

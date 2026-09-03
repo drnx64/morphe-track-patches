@@ -1533,7 +1533,8 @@ h1 {
 }
 
 .acc-item.is-open .acc-panel {
-  max-height: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .acc-panel-inner {
@@ -1580,7 +1581,7 @@ h1 {
   border-radius: var(--border-radius);
   padding: 1rem;
   transition: border-color 0.15s ease;
-  overflow: hidden;
+  overflow: visible;
   min-width: 0;
 }
 
@@ -1637,6 +1638,7 @@ h1 {
 
 .grid-app-item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   background: rgba(255, 255, 255, 0.03);
@@ -1648,7 +1650,6 @@ h1 {
     background 0.15s ease,
     border-color 0.15s ease;
   min-width: 0;
-  overflow: hidden;
 }
 
 .grid-app-item:hover {
@@ -4800,6 +4801,8 @@ h1 {
 
 .diff-detail {
   display: block;
+  flex-basis: 100%;
+  width: 100%;
   font-size: 0.7rem;
   color: var(--text-secondary);
   margin-left: 1.35rem;

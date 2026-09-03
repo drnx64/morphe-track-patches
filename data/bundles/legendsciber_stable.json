@@ -2,9 +2,9 @@
   "bundle": "legendsciber",
   "channel": "stable",
   "repo_url": "https://github.com/legendsciber/morphe-patches",
-  "created_at": "2026-08-31T00:57:15",
-  "version": "v1.25.4",
-  "description": "## [1.25.4](https://github.com/legendsciber/morphe-patches/compare/v1.25.3...v1.25.4) (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* **extremecardriving:** embed .so as base64 in smali, no rawResourcePatch ([81c4d8b](https://github.com/legendsciber/morphe-patches/commit/81c4d8b05018092363c8f200bd0052621c883cee))\n",
+  "created_at": "2026-09-03T02:29:43",
+  "version": "v1.28.4",
+  "description": "## [1.28.4](https://github.com/legendsciber/morphe-patches/compare/v1.28.3...v1.28.4) (2026-09-03)\n\n### 🐛 Bug Fixes\n\n* **shadowfight:** fix dump file logging to shizuku-terminal ([b191999](https://github.com/legendsciber/morphe-patches/commit/b191999567ea7f5ccce29eeb154bf906023ed375))\n",
   "apps": [
     {
       "app_name": "Extreme Car Driving Simulator",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Extreme Car Driving Add Native Lib",
-          "description": "Adds libcurrencyhack.so to the APK lib directory.",
+          "description": "Adds libcurrencyhack.so to assets and helper dex.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -103,6 +103,30 @@
       ]
     },
     {
+      "app_name": "Shadow Fight 2",
+      "package": "com.nekki.shadowfight",
+      "patches": [
+        {
+          "name": "Shadow Fight 2 Dump Trigger",
+          "description": "Triggers ShadowDump via UnityPlayerActivity.onCreate",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.46.0"
+          ]
+        },
+        {
+          "name": "Shadow Fight 2 Runtime Dump",
+          "description": "Dumps all Unity classes/fields with ObscuredInt to logcat and files. Use logcat -s ShadowDump or cat shizuku-terminal/shadowdump-log.txt",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.46.0"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Toolbox for Minecraft PE",
       "package": "io.mrarm.mctoolbox",
       "patches": [
@@ -128,8 +152,8 @@
     }
   ],
   "patches_name": "legendsciber's Patches",
-  "fingerprint": "7df5cc9141725affa0c6cedabfed0e9233f8ec0f9bfed596017aad28545f2b3e",
-  "release_notes": "## [1.25.4](https://github.com/legendsciber/morphe-patches/compare/v1.25.3...v1.25.4) (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* **extremecardriving:** embed .so as base64 in smali, no rawResourcePatch ([81c4d8b](https://github.com/legendsciber/morphe-patches/commit/81c4d8b05018092363c8f200bd0052621c883cee))\n",
-  "release_tag": "v1.25.4",
-  "release_date": "2026-08-31T00:57:15Z"
+  "fingerprint": "e2847b1b94ca4b15cda891c74fb9d03e851f92e460ecd5caa57f55fb76c87eee",
+  "release_notes": "## [1.28.4](https://github.com/legendsciber/morphe-patches/compare/v1.28.3...v1.28.4) (2026-09-03)\n\n### 🐛 Bug Fixes\n\n* **shadowfight:** fix dump file logging to shizuku-terminal ([b191999](https://github.com/legendsciber/morphe-patches/commit/b191999567ea7f5ccce29eeb154bf906023ed375))\n",
+  "release_tag": "v1.28.4",
+  "release_date": "2026-09-03T02:29:43Z"
 }

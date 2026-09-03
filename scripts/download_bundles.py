@@ -3,6 +3,7 @@ import shutil
 import requests
 import json
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
 from dotenv import load_dotenv
 from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, CUSTOM_REPO_PATH, IGNORE_REPO_PATH, load_repo_list, load_last_run, save_last_run
@@ -184,7 +185,6 @@ def download_all_bundles():
         print(f"Skip cache: {cached_skips} bundles within TTL ({SKIP_CACHE_TTL_DAYS}d), will skip silently")
     
     # Download to a temp directory, then swap atomically.
-    # This prevents partial downloads from corrupting existing data.
     bundles_raw_dir = os.path.join(RAW_DIR, "bundles")
     temp_dir = bundles_raw_dir + "_downloading"
     
@@ -192,21 +192,19 @@ def download_all_bundles():
     if os.path.exists(temp_dir):
         shutil.rmtree(temp_dir, ignore_errors=True)
         
-    # Track errors for last_run.json
+    # Build work items: list of (bundle_key, bundle_path, list_path) to download
+    work_items = []
     errors = []
-    downloaded_count = 0
     
     for bundle_name, channels in bundles.items():
         for channel, paths in channels.items():
             bundle_path = paths.get("bundle_path")
             list_path = paths.get("list_path")
+            bundle_key = f"{bundle_name}:{channel}"
             
-            # Skip if either is missing
             if not bundle_path or not list_path:
-                bundle_key = f"{bundle_name}:{channel}"
                 cached = skip_cache.get(bundle_key)
                 if cached and _is_cache_fresh(cached):
-                    # Recently skipped — skip silently, don't log or record
                     continue
                 err_msg = f"Incomplete bundle+channel pair. Missing bundle_path or list_path."
                 print(f"[-] Skip {bundle_key} - {err_msg}")
@@ -217,75 +215,73 @@ def download_all_bundles():
                 })
                 continue
                 
-            # Download patches-bundle.json
-            print(f"[+] Fetching {bundle_name}:{channel} patches-bundle.json...")
-            bundle_content = download_file_with_retry(bundle_path)
-            if not bundle_content:
-                err_msg = "Failed to download patches-bundle.json"
-                print(f"[-] {bundle_name}:{channel} error: {err_msg}")
-                errors.append({
-                    "bundle": f"{bundle_name}:{channel}",
-                    "error": err_msg,
-                    "last_attempted": datetime.now(timezone.utc).isoformat(),
-                })
+            # Check skip cache for this bundle
+            cached = skip_cache.get(bundle_key)
+            if cached and _is_cache_fresh(cached):
                 continue
                 
-            # Parse and validate as Morphe bundle
-            try:
-                bundle_json = json.loads(bundle_content)
-            except Exception as e:
-                err_msg = f"Failed to parse patches-bundle.json as JSON: {e}"
-                print(f"[-] {bundle_name}:{channel} error: {err_msg}")
-                errors.append({
-                    "bundle": f"{bundle_name}:{channel}",
-                    "error": err_msg,
-                    "last_attempted": datetime.now(timezone.utc).isoformat(),
-                })
-                continue
-                
-            if not is_morphe_bundle(bundle_json):
-                # Skip non-Morphe bundles, but track in cache so we don't retry monthly
-                bundle_key = f"{bundle_name}:{channel}"
-                cached = skip_cache.get(bundle_key)
-                if cached and _is_cache_fresh(cached):
-                    continue
+            work_items.append((bundle_key, bundle_path, list_path))
+
+    print(f"Downloading {len(work_items)} bundle+channel pairs with 15 workers...")
+
+    def _download_one(item):
+        """Download a single bundle+channel pair. Returns (bundle_key, result_dict)."""
+        bundle_key, bundle_path, list_path = item
+        bundle_name, channel = bundle_key.split(":", 1)
+        
+        # Download patches-bundle.json
+        bundle_content = download_file_with_retry(bundle_path)
+        if not bundle_content:
+            return (bundle_key, {"error": "Failed to download patches-bundle.json"})
+            
+        # Parse and validate as Morphe bundle
+        try:
+            bundle_json = json.loads(bundle_content)
+        except Exception as e:
+            return (bundle_key, {"error": f"Failed to parse patches-bundle.json as JSON: {e}"})
+            
+        if not is_morphe_bundle(bundle_json):
+            return (bundle_key, {"error": "Not a Morphe bundle"})
+            
+        # Download patches-list.json
+        list_content = download_file_with_retry(list_path)
+        if not list_content:
+            return (bundle_key, {"error": "Failed to download patches-list.json"})
+            
+        return (bundle_key, {
+            "bundle_content": bundle_content,
+            "list_content": list_content,
+            "bundle_name": bundle_name,
+            "channel": channel,
+        })
+
+    downloaded_count = 0
+    
+    with ThreadPoolExecutor(max_workers=15) as executor:
+        futures = {executor.submit(_download_one, item): item for item in work_items}
+        for future in as_completed(futures):
+            bundle_key, result = future.result()
+            if "error" in result:
+                print(f"[-] {bundle_key} error: {result['error']}")
                 errors.append({
                     "bundle": bundle_key,
-                    "error": "Not a Morphe bundle",
+                    "error": result["error"],
                     "last_attempted": datetime.now(timezone.utc).isoformat(),
                 })
-                continue
-                
-            # Create download dir now that we know it's a Morphe bundle (in temp dir)
-            dest_dir = os.path.join(temp_dir, bundle_name, channel)
-            os.makedirs(dest_dir, exist_ok=True)
-            
-            # Download patches-list.json
-            print(f"[+] Downloading {bundle_name}:{channel} patches-list.json...")
-            list_content = download_file_with_retry(list_path)
-            if not list_content:
-                err_msg = "Failed to download patches-list.json"
-                print(f"[-] {bundle_name}:{channel} error: {err_msg}")
-                errors.append({
-                    "bundle": f"{bundle_name}:{channel}",
-                    "error": err_msg,
-                    "last_attempted": datetime.now(timezone.utc).isoformat(),
-                })
-                continue
-                
-            # Save files to temp directory
-            with open(os.path.join(dest_dir, "patches-bundle.json"), "w", encoding="utf-8") as f:
-                f.write(bundle_content)
-            with open(os.path.join(dest_dir, "patches-list.json"), "w", encoding="utf-8") as f:
-                f.write(list_content)
-                
-            downloaded_count += 1
+            else:
+                bundle_name = result["bundle_name"]
+                channel = result["channel"]
+                dest_dir = os.path.join(temp_dir, bundle_name, channel)
+                os.makedirs(dest_dir, exist_ok=True)
+                with open(os.path.join(dest_dir, "patches-bundle.json"), "w", encoding="utf-8") as f:
+                    f.write(result["bundle_content"])
+                with open(os.path.join(dest_dir, "patches-list.json"), "w", encoding="utf-8") as f:
+                    f.write(result["list_content"])
+                downloaded_count += 1
             
     print(f"Successfully downloaded {downloaded_count} bundle+channel pairs.")
     
     # Atomic swap: remove old dir, rename temp to final
-    # On Windows, rmtree can fail if files are locked (antivirus, indexer).
-    # Retry with delay, then fall back to shutil.move.
     if os.path.exists(bundles_raw_dir):
         for attempt in range(3):
             try:
@@ -300,12 +296,11 @@ def download_all_bundles():
                     shutil.rmtree(bundles_raw_dir, ignore_errors=True)
 
     if os.path.exists(bundles_raw_dir):
-        # rmtree failed — can't rename over existing dir, so move into it
         shutil.move(temp_dir, bundles_raw_dir)
     elif os.path.exists(temp_dir):
         os.rename(temp_dir, bundles_raw_dir)
     
-    # Merge download results into last_run.json (other steps will add their own data)
+    # Merge download results into last_run.json
     last_run_data = load_last_run()
     last_run_data["download_errors"] = errors
     last_run_data["downloaded_count"] = downloaded_count

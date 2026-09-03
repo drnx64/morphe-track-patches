@@ -51,12 +51,22 @@ export async function fetchBundleData(bundleKey: string): Promise<BundleData | n
   return fetchJson<BundleData | null>(`/data/bundles/${filename}`, null)
 }
 
+export async function fetchAllBundlesMerged(): Promise<Record<string, BundleData>> {
+  return fetchJson<Record<string, BundleData>>('/data/bundles.json', {})
+}
+
 export async function fetchAllBundlesFromIndex(errors?: string[]): Promise<Record<string, BundleData>> {
+  // Try single-file fetch first (faster, fewer requests)
+  const merged = await fetchAllBundlesMerged()
+  if (Object.keys(merged).length > 0) {
+    return merged
+  }
+  // Fallback to individual file fetch
   const index = await fetchBundleIndex()
   const keys = Object.keys(index)
   if (keys.length === 0) return {}
 
-  log(`fetchAllBundlesFromIndex: loading ${keys.length} bundles...`)
+  log(`fetchAllBundlesFromIndex: falling back to ${keys.length} individual fetches...`)
   const results = await Promise.all(
     keys.map(async (key) => {
       const data = await fetchBundleData(key)

@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-08-31T05:33:07",
-  "version": "v2.0.2-dev.1",
-  "description": "## 2.0.2-dev.1\n\n- fix: patch Flexboard setting into gboard legacy setting\n- fix: swipe review fallout — louder asserts, honest descriptions\n- feat: Bigger Toolbar — a slider for the bar's capacity",
+  "created_at": "2026-09-03T04:36:17",
+  "version": "v2.1.2-dev.1",
+  "description": "## 2.1.2-dev.1\n\n- fix: a dash in a comment took every Flexboard button off the toolbar",
   "apps": [
     {
       "app_name": "Gboard",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Bigger Toolbar",
-          "description": "Let Gboard's toolbar hold more buttons — a slider in Flexboard's settings (default 0 = stock capacity). Ordering and overflow stay Gboard's own.",
+          "description": "Raises the toolbar from five icons to 12, so Flexboard's hotkeys and text action buttons can fit alongside Gboard's own. How many icons actually show stays yours, set by dragging them in Gboard's toolbar settings.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -56,16 +56,7 @@
           ]
         },
         {
-          "name": "Swipe Right to Undo",
-          "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Swipe to Delete",
+          "name": "Swipe Left to Delete",
           "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere.",
           "use": true,
           "options": [],
@@ -74,7 +65,16 @@
           ]
         },
         {
-          "name": "Toolbar Buttons",
+          "name": "Swipe Right to Undo",
+          "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe Left to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Text Action Buttons",
           "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists.",
           "use": true,
           "options": [],
@@ -92,9 +92,9 @@
           ]
         },
         {
-          "name": "Toolbar Native Test",
-          "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default.",
-          "use": false,
+          "name": "Vibration slider everywhere",
+          "description": "Forces Gboard to show its own vibration strength slider on every device, rather than deferring to the system haptic settings page, so the strength is adjustable instead of being fixed by whichever rollout the device landed in.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "18.0.3.954559732-release-arm64-v8a"
@@ -104,8 +104,8 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "8f245c8f361bef57dded73576561b48114f1685c071102e28a5cfa8b259d0c2c",
-  "release_notes": "## 2.0.2-dev.1\n\n- fix: patch Flexboard setting into gboard legacy setting\n- fix: swipe review fallout — louder asserts, honest descriptions\n- feat: Bigger Toolbar — a slider for the bar's capacity",
-  "release_tag": "v2.0.2-dev.1",
-  "release_date": "2026-08-31T05:33:07Z"
+  "fingerprint": "c99e5ae87963910343d7a6ac89081f5b57dbec9887a291b6aa4ab61f5d072ef1",
+  "release_notes": "## 2.1.2-dev.1\n\n- fix: a dash in a comment took every Flexboard button off the toolbar",
+  "release_tag": "v2.1.2-dev.1",
+  "release_date": "2026-09-03T04:36:17Z"
 }

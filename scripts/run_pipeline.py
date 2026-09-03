@@ -63,18 +63,21 @@ def run():
         buffer_data = load_daily_buffer()
         is_rollover = buffer_data.get("date") and buffer_data["date"] != today_str
 
-        # Step 7: Update release notes cache (diff-aware: only fetch for changed repos)
-        log.info("STEP 7: Updating release notes cache")
-        changed_repo_urls = set()
-        diff_result_path = os.path.join(RAW_DIR, "diff_result.json")
-        diff_result = load_json(diff_result_path, default={})
-        for bundle in diff_result.get("affected_bundles", []):
-            repo_url = bundle.get("repo_url", "")
-            if repo_url:
-                changed_repo_urls.add(repo_url)
-        if changed_repo_urls:
-            log.info(f"  Diff-aware: refreshing releases for {len(changed_repo_urls)} changed repos")
-        update_release_cache(changed_repo_urls=changed_repo_urls or None)
+        # Step 7: Update release notes cache (skip entirely when nothing changed and no rollover)
+        if has_changes or is_rollover:
+            log.info("STEP 7: Updating release notes cache")
+            changed_repo_urls = set()
+            diff_result_path = os.path.join(RAW_DIR, "diff_result.json")
+            diff_result = load_json(diff_result_path, default={})
+            for bundle in diff_result.get("affected_bundles", []):
+                repo_url = bundle.get("repo_url", "")
+                if repo_url:
+                    changed_repo_urls.add(repo_url)
+            if changed_repo_urls:
+                log.info(f"  Diff-aware: refreshing releases for {len(changed_repo_urls)} changed repos")
+            update_release_cache(changed_repo_urls=changed_repo_urls or None)
+        else:
+            log.info("STEP 7: Skipping release cache (no changes, no rollover)")
 
         # Step 8 & 9: Update daily buffer and store state
         # Silent run rule: if no changes and no rollover, sync data files and exit silently
