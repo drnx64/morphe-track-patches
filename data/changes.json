@@ -1,26 +1,68 @@
 {
   "affected_bundles": [
     {
-      "bundle": "flexboard",
+      "bundle": "legendsciber",
       "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Shadow Fight 2",
+          "package": "com.nekki.shadowfight",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/legendsciber/morphe-patches",
+      "patches_name": "legendsciber's Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "flexboard",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
           "app_name": "Gboard",
           "package": "com.google.android.inputmethod.latin",
-          "badge_type": "UPDATED APP",
+          "badge_type": "MAJOR UPDATE",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Vibration slider everywhere",
-                "description": "Forces Gboard to show its own vibration strength slider on every device, rather than deferring to the system haptic settings page, so the strength is adjustable instead of being fixed by whichever rollout the device landed in."
+                "name": "Bigger Toolbar",
+                "description": "Raises the toolbar from five icons to 12, so Flexboard's hotkeys and text action buttons can fit alongside Gboard's own. How many icons actually show stays yours, set by dragging them in Gboard's toolbar settings."
+              },
+              {
+                "name": "Swipe Left to Delete",
+                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
+              },
+              {
+                "name": "Text Action Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
               }
             ],
-            "patches_removed": [],
+            "patches_removed": [
+              {
+                "name": "Swipe to Delete",
+                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
+              },
+              {
+                "name": "Toolbar Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
+              },
+              {
+                "name": "Toolbar Native Test",
+                "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default."
+              }
+            ],
             "patches_modified": [
               {
                 "name": "Swipe Right to Undo",
-                "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
+                "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe Left to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
                 "changes": [
                   "description updated"
                 ]
@@ -40,34 +82,18 @@
     },
     {
       "bundle": "froggo",
-      "channel": "dev",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
           "app_name": "Facebook",
           "package": "com.facebook.katana",
-          "badge_type": "MAJOR UPDATE",
+          "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Change Facebook app theme (573)",
-                "description": "Adds AMOLED Black and Material You palettes while preserving Facebook's light/dark mode selection."
-              },
-              {
-                "name": "Facebook 573 AI content diagnostics",
-                "description": "Logs Facebook GenAI structural flags for Feed stories without filtering them."
-              },
-              {
-                "name": "Facebook 573 AI filter + recommendation diagnostics",
-                "description": "Filters detected AI Feed stories and logs structural metadata for DiscoverFeedUnit recommendation candidates in one bytecode injection."
-              },
-              {
-                "name": "Facebook 573 Feed recommendation diagnostics",
-                "description": "Logs structural metadata for injected Feed stories without filtering them."
-              },
-              {
-                "name": "Hide Facebook AI content (573)",
-                "description": "Filters Feed posts carrying Facebook's GenAI transparency metadata (Contenido de IA)."
+                "name": "Download Facebook Media (573)",
+                "description": "Adds direct downloads for the visible Story, Reel, and video media through MediaStore."
               }
             ],
             "patches_removed": [],
@@ -85,145 +111,93 @@
       ]
     },
     {
-      "bundle": "hellveticastandard",
+      "bundle": "kveld",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Sankaku App",
-          "package": "com.sankakucomplex.channel.black",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Disable Infinite Upgrade Popup",
-                "description": "Disables the \"Want unlimited access? Get Sankaku Infinite!\" upsell popup that periodically appears while browsing the app.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/HellveticaStandard/HellveticaPatches",
-      "patches_name": "HellveticaStandard Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "hellveticastandard",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Sankaku App",
-          "package": "com.sankakucomplex.channel.black",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Disable Infinite Upgrade Popup",
-                "description": "Disables the \"Want unlimited access? Get Sankaku Infinite!\" upsell popup that periodically appears while browsing the app.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/HellveticaStandard/HellveticaPatches",
-      "patches_name": "HellveticaStandard Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "bruddaa",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "PrinterShare",
-          "package": "com.dynamixsoftware.printershare",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Unit Converter",
-          "package": "com.veewalabs.unitconverter",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/bruddaa/bruddas-morphe-patches",
-      "patches_name": "Bruddas Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "hxreborn",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Proton Mail",
-          "package": "ch.protonmail.android",
+          "app_name": "Brave Private Web Browser, VPN",
+          "package": "com.brave.browser",
           "badge_type": "MAJOR UPDATE",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "AMOLED dark theme",
-                "description": "Replaces the dark theme background with pure black.",
+                "name": "Block Brave Telemetry",
+                "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching.",
                 "changes": [
-                  "versions: -2 versions"
+                  "versions: +1 version, -1 version"
                 ]
               },
               {
-                "name": "Hide upgrade upselling",
-                "description": "Hides the top-bar upgrade button and promotional sidebar rows.",
+                "name": "Brave In-Product & Commercial Notification Optimizer",
+                "description": "Eliminates background wakeups and notifications from Chromium tips scheduler (Job ID 105), Brave Rewards onboarding promo, and retention marketing campaigns.",
                 "changes": [
-                  "versions: -2 versions"
+                  "versions: +1 version, -1 version"
                 ]
               },
               {
-                "name": "Remove 'Sent from' signature",
-                "description": "Removes the 'Sent from Proton Mail' signature from emails.",
+                "name": "Brave Origin",
+                "description": "Unlocks Brave Origin and enables local feature toggle controls.",
                 "changes": [
-                  "versions: -2 versions"
+                  "versions: +1 version, -1 version"
                 ]
               },
               {
-                "name": "Spoof signature",
-                "description": "Restores push notifications by spoofing the original app signature.",
+                "name": "Brave Startup Performance Optimization",
+                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations.",
                 "changes": [
-                  "versions: -2 versions"
+                  "versions: +1 version, -1 version"
                 ]
               },
               {
-                "name": "Unlock custom time picker",
-                "description": "Enables picking a custom date and time when snoozing conversations and scheduling messages.",
+                "name": "Disable Background Sync & Periodic Sync",
+                "description": "Eliminates background wakeups, radio modem activity, and battery drain by forcing GooglePlayServicesChecker.shouldDisableBackgroundSync() -> true and neutralizing wakeup tasks.",
                 "changes": [
-                  "versions: -2 versions"
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Battery Status API & OS Listener",
+                "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Pull To Refresh",
+                "description": "Completely disables the pull-to-refresh overscroll gesture and animation to prevent accidental page reloads.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Locale PAK Slimmer",
+                "description": "Strips unselected language resource PAKs from assets/locales/.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Native Bloat Slimmer",
+                "description": "Strips unused native companion binaries (Impress Vision AI, WireGuard VPN, and Android XR) to significantly reduce APK size.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "PNG Asset Optimizer",
+                "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Skip First Run",
+                "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
+                "changes": [
+                  "versions: +1 version, -1 version"
                 ]
               }
             ]
@@ -233,89 +207,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/hxreborn/morphe-patches",
-      "patches_name": "hxreborn Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "morning-entree",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Fylo — File Manager",
-          "package": "com.aeroloom.fylofilemanager",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Droplert",
-          "package": "com.shahzaman.pricetracker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/Entree3k/Morning-Entree-Patches",
-      "patches_name": "Morning Entree Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "steamlink",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Steam Link",
-          "package": "com.valvesoftware.steamlinkvr",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
-              {
-                "name": "Video dither",
-                "description": "Enables or disables VRLink video dithering, including the highp sRGB8 fallback and experimental RGB10_A2 shader variants."
-              }
-            ],
-            "patches_modified": [
-              {
-                "name": "Device identity",
-                "description": "Overrides the HMD identity reported to SteamVR. Recommended selects Meta Quest Pro for exact legacy bundle targets through 5002244, including 2.0.20/5001712; otherwise Galaxy XR. The Galaxy profile installs its complete transport identity while preserving stock controller/hand routing and extensions.",
-                "changes": [
-                  "description updated",
-                  "options: ~1 option"
-                ]
-              },
-              {
-                "name": "Galaxy XR legacy foundation (through 2.0.22/5002244)",
-                "description": "Selects the 16-patch Galaxy XR legacy set, including Meta Quest Pro identity, native gates, face bridge, OLED calibration, microphone, battery, Visual Delay, and XR foundation. High-resolution output is guarded to verified layouts; unavailable on 5001740, 5002172, and 5002206.",
-                "changes": [
-                  "description updated"
-                ]
-              },
-              {
-                "name": "Galaxy XR recommended set (2.0.20/5001712)",
-                "description": "Applies the 16-patch Galaxy XR legacy set for exact Steam Link 2.0.20 build 5001712, including Meta Quest Pro identity, permission-free high resolution, and the Final balanced tested OLED profile.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-      "patches_name": "Steam Link GalaxyXR Patches",
+      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
+      "patches_name": "kveld9 Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]

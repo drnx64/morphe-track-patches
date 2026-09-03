@@ -2,14 +2,23 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-09-02T05:33:59",
-  "version": "v2.1.0-dev.1",
-  "description": "## 2.1.0-dev.1\n\n- fix: the vibration patch was turning vibration off\n- fix: link only where a section exists, and make the parsers fail loudly\n- refactor: the foundation no longer imports a feature, and drops a dead pin\n- fix: one definition of an occupied slot, and an import that says what it destroyed\n- fix: recognise the obfuscated shapes this lane was walking past\n- fix: pin the hotkey row-key format instead of spelling it three times\n- fix: a stale Gboard resource id no longer crashes the keyboard at startup\n- fix: rotating mid-edit no longer overwrites the hotkey being edited",
+  "created_at": "2026-09-02T23:44:51",
+  "version": "v2.1.1-dev.0",
+  "description": "## 2.1.1-dev.0\n\n- feat: Bigger Toolbar — raise the ceiling, leave the count alone\n- docs: the capacity plan, and why owning the count was the mistake\n- refactor: one copy of the controller-constructor prologue\n- refactor: name the id-admission patch for what it admits\n- feat: text action buttons mint their own ids instead of squatting\n- feat: rename Toolbar Buttons to Text Action Buttons\n- feat: retire Toolbar Native Test, rename Swipe to Delete\n- refactor: move the toolbar engine into the toolbar feature\n- refactor: fold a single-consumer helper out of shared/, keep a redundant edge\n- refactor: split ToolbarRegistry along the seams it already had\n- refactor: remove the parked swipe-length scaling and everything holding it up\n- revert: drop the R6 lint rule, and correct what it was enforcing\n- fix: resolve Flexboard's resources by name even on a renamed package",
   "apps": [
     {
       "app_name": "Gboard",
       "package": "com.google.android.inputmethod.latin",
       "patches": [
+        {
+          "name": "Bigger Toolbar",
+          "description": "Raises the toolbar from five icons to 12, so Flexboard's hotkeys and text action buttons can fit alongside Gboard's own. How many icons actually show stays yours, set by dragging them in Gboard's toolbar settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
         {
           "name": "Bypass Gboard Signature",
           "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
@@ -47,16 +56,7 @@
           ]
         },
         {
-          "name": "Swipe Right to Undo",
-          "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Swipe to Delete",
+          "name": "Swipe Left to Delete",
           "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere.",
           "use": true,
           "options": [],
@@ -65,7 +65,16 @@
           ]
         },
         {
-          "name": "Toolbar Buttons",
+          "name": "Swipe Right to Undo",
+          "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe Left to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Text Action Buttons",
           "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists.",
           "use": true,
           "options": [],
@@ -77,15 +86,6 @@
           "name": "Toolbar Hotkeys",
           "description": "Adds six configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open.",
           "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Toolbar Native Test",
-          "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default.",
-          "use": false,
           "options": [],
           "compatible_versions": [
             "18.0.3.954559732-release-arm64-v8a"
@@ -104,8 +104,8 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "97ec75431dac4f128ad4e695b1931bb1893dff57f9d14b2025750644987f48b5",
-  "release_notes": "## 2.1.0-dev.1\n\n- fix: the vibration patch was turning vibration off\n- fix: link only where a section exists, and make the parsers fail loudly\n- refactor: the foundation no longer imports a feature, and drops a dead pin\n- fix: one definition of an occupied slot, and an import that says what it destroyed\n- fix: recognise the obfuscated shapes this lane was walking past\n- fix: pin the hotkey row-key format instead of spelling it three times\n- fix: a stale Gboard resource id no longer crashes the keyboard at startup\n- fix: rotating mid-edit no longer overwrites the hotkey being edited",
-  "release_tag": "v2.1.0-dev.1",
-  "release_date": "2026-09-02T05:33:59Z"
+  "fingerprint": "c99e5ae87963910343d7a6ac89081f5b57dbec9887a291b6aa4ab61f5d072ef1",
+  "release_notes": "## 2.1.1-dev.0\n\n- feat: Bigger Toolbar — raise the ceiling, leave the count alone\n- docs: the capacity plan, and why owning the count was the mistake\n- refactor: one copy of the controller-constructor prologue\n- refactor: name the id-admission patch for what it admits\n- feat: text action buttons mint their own ids instead of squatting\n- feat: rename Toolbar Buttons to Text Action Buttons\n- feat: retire Toolbar Native Test, rename Swipe to Delete\n- refactor: move the toolbar engine into the toolbar feature\n- refactor: fold a single-consumer helper out of shared/, keep a redundant edge\n- refactor: split ToolbarRegistry along the seams it already had\n- refactor: remove the parked swipe-length scaling and everything holding it up\n- revert: drop the R6 lint rule, and correct what it was enforcing\n- fix: resolve Flexboard's resources by name even on a renamed package",
+  "release_tag": "v2.1.1-dev.0",
+  "release_date": "2026-09-02T23:44:51Z"
 }
