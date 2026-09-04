@@ -2,9 +2,9 @@
   "bundle": "letterboxd",
   "channel": "dev",
   "repo_url": "https://github.com/mvaishak/letterboxd-morphe-patches",
-  "created_at": "2026-09-03T02:54:13",
-  "version": "v1.5.0-dev.1",
-  "description": "## [1.5.0-dev.1](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-09-03)\n\n### ✨ New Features\n\n* Add 'Hide ratings until watched' patch ([76e4984](https://github.com/mvaishak/letterboxd-morphe-patches/commit/76e49844bc02b413530092313077f6e062426ff2))\n",
+  "created_at": "2026-09-04T06:35:43",
+  "version": "v1.5.0-dev.4",
+  "description": "## [1.5.0-dev.4](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.5.0-dev.3...v1.5.0-dev.4) (2026-09-04)\n\n### 🐛 Bug Fixes\n\n* Stop rating stars peeking out under the spoiler overlay ([4746d8d](https://github.com/mvaishak/letterboxd-morphe-patches/commit/4746d8d9c49edccc32a873f970555b5723f8c160))\n",
   "apps": [
     {
       "app_name": "Letterboxd",
@@ -35,9 +35,14 @@
         },
         {
           "name": "Hide ratings until watched",
-          "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched. Only the film page is affected — ratings shown in lists, search and elsewhere are unchanged.",
+          "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched, covering it with a tap-to-reveal control. The reveal is per visit — leave the film and come back and it is hidden again. Only the film page is affected; ratings shown in lists, search and elsewhere are unchanged.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "revealStyle",
+              "description": "How the hidden rating is covered. 'Frosted panel' is an opaque panel with a label; 'Tap-to-show link' is a plain text link under the section title; 'Shimmer' is a continuously animating particle field; 'Tap to burst' is a static particle field that scatters when tapped."
+            }
+          ],
           "compatible_versions": [
             "3.5.4"
           ]
@@ -86,8 +91,8 @@
     }
   ],
   "patches_name": "mvaishak Letterboxd Patches",
-  "fingerprint": "adf0f74387e189a56b6c0f5cf055024ab7e8cbe607d995d06952966fd66d069c",
-  "release_notes": "## [1.5.0-dev.1](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-09-03)\n\n### ✨ New Features\n\n* Add 'Hide ratings until watched' patch ([76e4984](https://github.com/mvaishak/letterboxd-morphe-patches/commit/76e49844bc02b413530092313077f6e062426ff2))\n",
-  "release_tag": "v1.5.0-dev.1",
-  "release_date": "2026-09-03T02:54:13Z"
+  "fingerprint": "1ba0438cb4ee010ac64c0880e9c39eea2bf91b9cdc20ecd0672d05a56326088f",
+  "release_notes": "## [1.5.0-dev.4](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.5.0-dev.3...v1.5.0-dev.4) (2026-09-04)\n\n### 🐛 Bug Fixes\n\n* Stop rating stars peeking out under the spoiler overlay ([4746d8d](https://github.com/mvaishak/letterboxd-morphe-patches/commit/4746d8d9c49edccc32a873f970555b5723f8c160))\n",
+  "release_tag": "v1.5.0-dev.4",
+  "release_date": "2026-09-04T06:35:43Z"
 }

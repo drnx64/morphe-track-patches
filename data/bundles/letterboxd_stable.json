@@ -2,9 +2,9 @@
   "bundle": "letterboxd",
   "channel": "stable",
   "repo_url": "https://github.com/mvaishak/letterboxd-morphe-patches",
-  "created_at": "2026-09-02T20:10:29",
-  "version": "v1.4.0",
-  "description": "## [1.4.0](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.3.0...v1.4.0) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* Set Brighter Watched-by stars to default; drop Poster corner shape from README ([0bee2b6](https://github.com/mvaishak/letterboxd-morphe-patches/commit/0bee2b68dbed5725ab95b2c0e86e973b93d4d404))\n\n### ✨ New Features\n\n* Accent option becomes a colour picker (any hex) ([177e151](https://github.com/mvaishak/letterboxd-morphe-patches/commit/177e151208c5332a24e7087819edd6444dcacd57)), closes [#1FE86A](https://github.com/mvaishak/letterboxd-morphe-patches/issues/1FE86A)\n* Add Brighter Watched-by stars patch and bottom-nav selected-style option ([06a2773](https://github.com/mvaishak/letterboxd-morphe-patches/commit/06a27735185bb1132d7fc331872ec2dda20f6689))\n* Remove Poster corner shape patch; Brighter Watched-by stars on by default ([3e55637](https://github.com/mvaishak/letterboxd-morphe-patches/commit/3e55637f9c336b79f1730fc0a164452776e6c751))\n",
+  "created_at": "2026-09-04T07:58:41",
+  "version": "v1.5.0",
+  "description": "## [1.5.0](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.4.0...v1.5.0) (2026-09-04)\n\n### 🐛 Bug Fixes\n\n* Stop rating stars peeking out under the spoiler overlay ([4746d8d](https://github.com/mvaishak/letterboxd-morphe-patches/commit/4746d8d9c49edccc32a873f970555b5723f8c160))\n\n### ✨ New Features\n\n* Add 'Hide ratings until watched' patch ([76e4984](https://github.com/mvaishak/letterboxd-morphe-patches/commit/76e49844bc02b413530092313077f6e062426ff2))\n* Add reveal-style dropdown to 'Hide ratings until watched' ([141ac7c](https://github.com/mvaishak/letterboxd-morphe-patches/commit/141ac7c291538ad3d082632a288a50075014d634))\n* Add tap-to-reveal to 'Hide ratings until watched' ([50e9bc3](https://github.com/mvaishak/letterboxd-morphe-patches/commit/50e9bc3e1aadcdb45feb488c444213dd8ae9b275))\n",
   "apps": [
     {
       "app_name": "Letterboxd",
@@ -27,6 +27,20 @@
             {
               "key": "density",
               "description": "How tightly posters are packed."
+            }
+          ],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Hide ratings until watched",
+          "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched, covering it with a tap-to-reveal control. The reveal is per visit — leave the film and come back and it is hidden again. Only the film page is affected; ratings shown in lists, search and elsewhere are unchanged.",
+          "use": false,
+          "options": [
+            {
+              "key": "revealStyle",
+              "description": "How the hidden rating is covered. 'Frosted panel' is an opaque panel with a label; 'Tap-to-show link' is a plain text link under the section title; 'Shimmer' is a continuously animating particle field; 'Tap to burst' is a static particle field that scatters when tapped."
             }
           ],
           "compatible_versions": [
@@ -77,8 +91,8 @@
     }
   ],
   "patches_name": "mvaishak Letterboxd Patches",
-  "fingerprint": "0f32add35f79c2830195fd657aa44bc281e45c534c353a07b61818d716a1d6a9",
-  "release_notes": "## [1.4.0](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.3.0...v1.4.0) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* Set Brighter Watched-by stars to default; drop Poster corner shape from README ([0bee2b6](https://github.com/mvaishak/letterboxd-morphe-patches/commit/0bee2b68dbed5725ab95b2c0e86e973b93d4d404))\n\n### ✨ New Features\n\n* Accent option becomes a colour picker (any hex) ([177e151](https://github.com/mvaishak/letterboxd-morphe-patches/commit/177e151208c5332a24e7087819edd6444dcacd57)), closes [#1FE86A](https://github.com/mvaishak/letterboxd-morphe-patches/issues/1FE86A)\n* Add Brighter Watched-by stars patch and bottom-nav selected-style option ([06a2773](https://github.com/mvaishak/letterboxd-morphe-patches/commit/06a27735185bb1132d7fc331872ec2dda20f6689))\n* Remove Poster corner shape patch; Brighter Watched-by stars on by default ([3e55637](https://github.com/mvaishak/letterboxd-morphe-patches/commit/3e55637f9c336b79f1730fc0a164452776e6c751))\n",
-  "release_tag": "v1.4.0",
-  "release_date": "2026-09-02T20:10:29Z"
+  "fingerprint": "1ecc7a0ad3d265d0fafabd2f0d33cb1475a6c1007a5b25e9296e298191cf498f",
+  "release_notes": "## [1.5.0](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.4.0...v1.5.0) (2026-09-04)\n\n### 🐛 Bug Fixes\n\n* Stop rating stars peeking out under the spoiler overlay ([4746d8d](https://github.com/mvaishak/letterboxd-morphe-patches/commit/4746d8d9c49edccc32a873f970555b5723f8c160))\n\n### ✨ New Features\n\n* Add 'Hide ratings until watched' patch ([76e4984](https://github.com/mvaishak/letterboxd-morphe-patches/commit/76e49844bc02b413530092313077f6e062426ff2))\n* Add reveal-style dropdown to 'Hide ratings until watched' ([141ac7c](https://github.com/mvaishak/letterboxd-morphe-patches/commit/141ac7c291538ad3d082632a288a50075014d634))\n* Add tap-to-reveal to 'Hide ratings until watched' ([50e9bc3](https://github.com/mvaishak/letterboxd-morphe-patches/commit/50e9bc3e1aadcdb45feb488c444213dd8ae9b275))\n",
+  "release_tag": "v1.5.0",
+  "release_date": "2026-09-04T07:58:41Z"
 }

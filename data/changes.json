@@ -1,68 +1,53 @@
 {
   "affected_bundles": [
     {
-      "bundle": "flexboard",
-      "channel": "dev",
+      "bundle": "dan1eltheman1el",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Gboard",
-          "package": "com.google.android.inputmethod.latin",
+          "app_name": "DeFit",
+          "package": "com.fitness.debugger",
           "badge_type": "MAJOR UPDATE",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Grammar Check Row",
-                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
-              },
-              {
-                "name": "Suggested Settings",
-                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings."
-              },
-              {
-                "name": "Swipe Left to Delete",
-                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
-              },
-              {
-                "name": "Text Action Buttons",
-                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists. These three compete for the five icons Gboard's toolbar holds; Bigger Toolbar raises that ceiling if you run the hotkeys as well."
-              },
-              {
-                "name": "Toolbar Hotkeys",
-                "description": "Adds six configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open. Gboard's toolbar holds five icons in total, shared with its own, so apply Bigger Toolbar too if you want all six on the bar at once."
-              },
-              {
-                "name": "Vibration Slider Everywhere",
-                "description": "Forces Gboard to show its own vibration strength slider on every device, rather than deferring to the system haptic settings page, so the strength is adjustable instead of being fixed by whichever rollout the device landed in."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Flick Keys for Symbols",
-                "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings."
-              },
-              {
-                "name": "Select All Button",
-                "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first."
-              },
-              {
-                "name": "Swipe to Delete",
-                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
-              }
-            ],
+            "patches_added": [],
+            "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Bigger Toolbar",
-                "description": "Raises how many icons Gboard's toolbar can hold — five on a stock build — to 12, so Flexboard's hotkeys and text action buttons fit alongside Gboard's own. How many actually show stays yours, set by dragging them in Gboard's toolbar settings. Force-stop Gboard afterwards: a cached keyboard view can go on showing the old capacity.",
+                "name": "Custom Branding",
+                "description": "Changes DeFit's app name, header title, and displayed version.",
                 "changes": [
-                  "description updated"
+                  "options: ~1 option",
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Swipe Right to Undo",
-                "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe Left to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
+                "name": "Login Fix Tutorial",
+                "description": "Adds an in-app Google Fit login setup guide and a button to copy the installed APK's signing SHA-1.",
                 "changes": [
-                  "description updated"
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Material You Theme",
+                "description": "Uses Android 12+ wallpaper-derived colors and enables safe system Force Dark without changing DeFit's AppCompat theme parent.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Remove Bottom Banner Ad",
+                "description": "Removes DeFit's bottom banner-ad container from the main layout.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Unlimited Time Bypass",
+                "description": "Removes the ad requirement and grants the target DeFit version's maximum active time when the button is pressed.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version"
                 ]
               }
             ]
@@ -72,8 +57,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/JZ6/Flexboard",
-      "patches_name": "Flexboard",
+      "repo_url": "https://github.com/Dan1elTheMan1el/Morphe-Patches",
+      "patches_name": "DanielTheManiel's Morphe Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
@@ -95,7 +80,7 @@
                 "name": "Bring back twitter",
                 "description": "Bring back old twitter logo and name",
                 "changes": [
-                  "versions: +4 versions"
+                  "versions: -4 versions"
                 ]
               }
             ]
@@ -112,27 +97,56 @@
       ]
     },
     {
-      "bundle": "okish-morphe",
+      "bundle": "letterboxd",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Letterboxd",
+          "package": "com.letterboxd.letterboxd",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Hide ratings until watched",
+                "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched, covering it with a tap-to-reveal control. The reveal is per visit — leave the film and come back and it is hidden again. Only the film page is affected; ratings shown in lists, search and elsewhere are unchanged.",
+                "changes": [
+                  "description updated",
+                  "options: +1 option"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/mvaishak/letterboxd-morphe-patches",
+      "patches_name": "mvaishak Letterboxd Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "letterboxd",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Into the Dead",
-          "package": "com.sidheinteractive.sif.dr",
+          "app_name": "Letterboxd",
+          "package": "com.letterboxd.letterboxd",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Into the Dead 2 Ad Removal & Instant Boost Rewards",
-                "description": "Removes all ads (interstitials, banners, app-open) and grants rewarded-video perk boosts instantly on tap (no ad watch) using the correct reward name PERKS_BOOST, verified against a real rewarded event."
+                "name": "Hide ratings until watched",
+                "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched, covering it with a tap-to-reveal control. The reveal is per visit — leave the film and come back and it is hidden again. Only the film page is affected; ratings shown in lists, search and elsewhere are unchanged."
               }
             ],
-            "patches_removed": [
-              {
-                "name": "Into the Dead Ad Removal",
-                "description": "Removes all ads and grants rewarded-video rewards instantly: rewarded videos (legacy IronSource and LevelPlay), interstitials, launch, banner and AdMob App Open ads are all eliminated."
-              }
-            ],
+            "patches_removed": [],
             "patches_modified": []
           },
           "scan_numbers": [
@@ -140,122 +154,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-      "patches_name": "byehi98 Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "smartlauncher",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Smart Launcher 6",
-          "package": "smart launcher 6",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Smart Launcher 6",
-          "package": "ginlemon.flowerfree",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/thejaustin/smartlauncher-morphe-patches",
-      "patches_name": "Smart Launcher 6 Morphe Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "franticg33k",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Native Camera",
-          "package": "com.rawcam.app",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Premium",
-                "description": "Forces the premium entitlement in Native Camera. Premium status is a local 'is_premium' SharedPreferences flag (in the 'rawcam_prefs' file) read on cold start into a StateFlow. Unlocks RAW DNG, 10-bit/HLG/UHDR video, custom boosted modes and the sub-40-Mbps bitrate cap. It also neutralizes PairIP's Play Store licensing (fired from both Application.attachBaseContext and LicenseContentProvider.onCreate, so a repacked copy no longer gets bounced to the Play Store paywall at launch).",
-                "changes": [
-                  "description updated",
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/franticg33k/morphe-patches",
-      "patches_name": "franticg33k's Morphe Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "franticg33k",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Bolpatra Nepal",
-          "package": "com.bolpatranepal.axios",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Native Camera",
-          "package": "com.rawcam.app",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Premium",
-                "description": "Forces the premium entitlement in Native Camera. Premium status is a local 'is_premium' SharedPreferences flag (in the 'rawcam_prefs' file) read on cold start into a StateFlow. Unlocks RAW DNG, 10-bit/HLG/UHDR video, custom boosted modes and the sub-40-Mbps bitrate cap. It also neutralizes PairIP's Play Store licensing (fired from both Application.attachBaseContext and LicenseContentProvider.onCreate, so a repacked copy no longer gets bounced to the Play Store paywall at launch).",
-                "changes": [
-                  "description updated",
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Fricam",
-          "package": "com.tgezginis.fricam",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/franticg33k/morphe-patches",
-      "patches_name": "franticg33k's Morphe Patches",
+      "repo_url": "https://github.com/mvaishak/letterboxd-morphe-patches",
+      "patches_name": "mvaishak Letterboxd Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
