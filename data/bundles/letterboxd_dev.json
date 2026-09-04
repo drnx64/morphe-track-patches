@@ -1,0 +1,93 @@
+{
+  "bundle": "letterboxd",
+  "channel": "dev",
+  "repo_url": "https://github.com/mvaishak/letterboxd-morphe-patches",
+  "created_at": "2026-09-03T02:53:29",
+  "version": "v1.5.0-dev.1",
+  "description": "## [1.5.0-dev.1](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-09-03)\n\n### ✨ New Features\n\n* Add 'Hide ratings until watched' patch ([76e4984](https://github.com/mvaishak/letterboxd-morphe-patches/commit/76e49844bc02b413530092313077f6e062426ff2))",
+  "apps": [
+    {
+      "app_name": "Letterboxd",
+      "package": "com.letterboxd.letterboxd",
+      "patches": [
+        {
+          "name": "Brighter Watched-by stars",
+          "description": "Other people's star ratings in a film's \"Watched by\" row use a very dark grey (#445566) that is hard to read, especially on a black theme. This switches them to the lighter grey (#99AABB) the rest of the app already uses for other people's ratings. A small legibility fix, on by default.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Denser poster grid",
+          "description": "Tightens the spacing around posters in grids so they render larger and closer together. Does not change the number of columns.",
+          "use": false,
+          "options": [
+            {
+              "key": "density",
+              "description": "How tightly posters are packed."
+            }
+          ],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Hide ratings until watched",
+          "description": "Hides the community rating (average + histogram) on a film's page until you have marked that film as watched. Only the film page is affected — ratings shown in lists, search and elsewhere are unchanged.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Hide Video Store on home",
+          "description": "Removes the \"Letterboxd Video Store\" promo row from the Films tab. The Video Store itself, its settings and every other entry point are left untouched.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Match bottom nav to top bar color",
+          "description": "Sets Letterboxd's bottom navigation bar background to the same color as the top bar (@color/black100), so it blends into the app's dark chrome instead of showing the default slate bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Material You theme",
+          "description": "Repaints Letterboxd's dark chrome — window background, surfaces, cards, the top bar, tab strip and bottom nav. 'Wallpaper tint' follows the device's Material You palette on Android 12+ (no effect below). 'Pure black (OLED)' forces true black on any version. Optional accent colour recolours Letterboxd's green; optional bottom-nav selected style replaces the grey pill. No effect on Jetpack Compose screens. Overlaps \"Match bottom nav to top bar color\" — enable one, not both.",
+          "use": false,
+          "options": [
+            {
+              "key": "surfaceStyle",
+              "description": "How the dark chrome is recoloured."
+            },
+            {
+              "key": "accent",
+              "description": "Recolours Letterboxd's green (stars, rating indicators, primary buttons). Pick a preset swatch or any custom colour. Letterboxd green is left untouched, except in OLED mode where it is brightened for contrast; lighter and darker shades for gradients and pressed states are derived automatically."
+            },
+            {
+              "key": "bottomNavIndicator",
+              "description": "How the selected tab in the bottom navigation bar is shown. The green + button is never affected."
+            }
+          ],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "mvaishak Letterboxd Patches",
+  "fingerprint": "adf0f74387e189a56b6c0f5cf055024ab7e8cbe607d995d06952966fd66d069c",
+  "release_notes": "## [1.5.0-dev.1](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-09-03)\n\n### ✨ New Features\n\n* Add 'Hide ratings until watched' patch ([76e4984](https://github.com/mvaishak/letterboxd-morphe-patches/commit/76e49844bc02b413530092313077f6e062426ff2))\n",
+  "release_tag": "v1.5.0-dev.1",
+  "release_date": "2026-09-03T02:54:13Z"
+}

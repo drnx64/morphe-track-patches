@@ -1,0 +1,84 @@
+{
+  "bundle": "letterboxd",
+  "channel": "stable",
+  "repo_url": "https://github.com/mvaishak/letterboxd-morphe-patches",
+  "created_at": "2026-09-02T20:09:46",
+  "version": "v1.4.0",
+  "description": "## [1.4.0](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.3.0...v1.4.0) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* Set Brighter Watched-by stars to default; drop Poster corner shape from README ([0bee2b6](https://github.com/mvaishak/letterboxd-morphe-patches/commit/0bee2b68dbed5725ab95b2c0e86e973b93d4d404))\n\n### ✨ New Features\n\n* Accent option becomes a colour picker (any hex) ([177e151](https://github.com/mvaishak/letterboxd-morphe-patches/commit/177e151208c5332a24e7087819edd6444dcacd57)), closes [#1FE86A](https://github.com/mvaishak/letterboxd-morphe-patches/issues/1FE86A)\n* Add Brighter Watched-by stars patch and bottom-nav selected-style option ([06a2773](https://github.com/mvaishak/letterboxd-morphe-patches/commit/06a27735185bb1132d7fc331872ec2dda20f6689))\n* Remove Poster corner shape patch; Brighter Watched-by stars on by default ([3e55637](https://github.com/mvaishak/letterboxd-morphe-patches/commit/3e55637f9c336b79f1730fc0a164452776e6c751))",
+  "apps": [
+    {
+      "app_name": "Letterboxd",
+      "package": "com.letterboxd.letterboxd",
+      "patches": [
+        {
+          "name": "Brighter Watched-by stars",
+          "description": "Other people's star ratings in a film's \"Watched by\" row use a very dark grey (#445566) that is hard to read, especially on a black theme. This switches them to the lighter grey (#99AABB) the rest of the app already uses for other people's ratings. A small legibility fix, on by default.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Denser poster grid",
+          "description": "Tightens the spacing around posters in grids so they render larger and closer together. Does not change the number of columns.",
+          "use": false,
+          "options": [
+            {
+              "key": "density",
+              "description": "How tightly posters are packed."
+            }
+          ],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Hide Video Store on home",
+          "description": "Removes the \"Letterboxd Video Store\" promo row from the Films tab. The Video Store itself, its settings and every other entry point are left untouched.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Match bottom nav to top bar color",
+          "description": "Sets Letterboxd's bottom navigation bar background to the same color as the top bar (@color/black100), so it blends into the app's dark chrome instead of showing the default slate bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        },
+        {
+          "name": "Material You theme",
+          "description": "Repaints Letterboxd's dark chrome — window background, surfaces, cards, the top bar, tab strip and bottom nav. 'Wallpaper tint' follows the device's Material You palette on Android 12+ (no effect below). 'Pure black (OLED)' forces true black on any version. Optional accent colour recolours Letterboxd's green; optional bottom-nav selected style replaces the grey pill. No effect on Jetpack Compose screens. Overlaps \"Match bottom nav to top bar color\" — enable one, not both.",
+          "use": false,
+          "options": [
+            {
+              "key": "surfaceStyle",
+              "description": "How the dark chrome is recoloured."
+            },
+            {
+              "key": "accent",
+              "description": "Recolours Letterboxd's green (stars, rating indicators, primary buttons). Pick a preset swatch or any custom colour. Letterboxd green is left untouched, except in OLED mode where it is brightened for contrast; lighter and darker shades for gradients and pressed states are derived automatically."
+            },
+            {
+              "key": "bottomNavIndicator",
+              "description": "How the selected tab in the bottom navigation bar is shown. The green + button is never affected."
+            }
+          ],
+          "compatible_versions": [
+            "3.5.4"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "mvaishak Letterboxd Patches",
+  "fingerprint": "0f32add35f79c2830195fd657aa44bc281e45c534c353a07b61818d716a1d6a9",
+  "release_notes": "## [1.4.0](https://github.com/mvaishak/letterboxd-morphe-patches/compare/v1.3.0...v1.4.0) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* Set Brighter Watched-by stars to default; drop Poster corner shape from README ([0bee2b6](https://github.com/mvaishak/letterboxd-morphe-patches/commit/0bee2b68dbed5725ab95b2c0e86e973b93d4d404))\n\n### ✨ New Features\n\n* Accent option becomes a colour picker (any hex) ([177e151](https://github.com/mvaishak/letterboxd-morphe-patches/commit/177e151208c5332a24e7087819edd6444dcacd57)), closes [#1FE86A](https://github.com/mvaishak/letterboxd-morphe-patches/issues/1FE86A)\n* Add Brighter Watched-by stars patch and bottom-nav selected-style option ([06a2773](https://github.com/mvaishak/letterboxd-morphe-patches/commit/06a27735185bb1132d7fc331872ec2dda20f6689))\n* Remove Poster corner shape patch; Brighter Watched-by stars on by default ([3e55637](https://github.com/mvaishak/letterboxd-morphe-patches/commit/3e55637f9c336b79f1730fc0a164452776e6c751))\n",
+  "release_tag": "v1.4.0",
+  "release_date": "2026-09-02T20:10:29Z"
+}

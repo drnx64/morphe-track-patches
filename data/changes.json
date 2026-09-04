@@ -1,42 +1,8 @@
 {
   "affected_bundles": [
     {
-      "bundle": "legendsciber",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Shadow Fight 2",
-          "package": "com.nekki.shadowfight",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Shadow Fight 2 Crash Log",
-                "description": "Saves crash info to a file if the game crashes."
-              },
-              {
-                "name": "Shadow Fight 2 Crash Trigger",
-                "description": "Enables crash logging."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/legendsciber/morphe-patches",
-      "patches_name": "legendsciber's Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
       "bundle": "flexboard",
-      "channel": "stable",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
@@ -46,8 +12,26 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Bigger Toolbar",
-                "description": "Raises the toolbar from five icons to 12, so Flexboard's hotkeys and text action buttons can fit alongside Gboard's own. How many icons actually show stays yours, set by dragging them in Gboard's toolbar settings."
+                "name": "Flick Keys for Symbols",
+                "description": "Turn on Gboard's \"Flick keys to enter symbols\" — pull down on a key to enter the symbol hinted in its corner. Written once as a default, so it can still be turned off in Gboard's own settings."
+              },
+              {
+                "name": "Select All Button",
+                "description": "Add a Select all button to the toolbar above the keyboard. One tap selects everything in the text field, without opening Gboard's text editing panel first."
+              },
+              {
+                "name": "Swipe to Delete",
+                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Grammar Check Row",
+                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
+              },
+              {
+                "name": "Suggested Settings",
+                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings."
               },
               {
                 "name": "Swipe Left to Delete",
@@ -56,26 +40,27 @@
               {
                 "name": "Text Action Buttons",
                 "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Swipe to Delete",
-                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
               },
               {
-                "name": "Toolbar Buttons",
-                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
+                "name": "Toolbar Hotkeys",
+                "description": "Adds six configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open."
               },
               {
-                "name": "Toolbar Native Test",
-                "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default."
+                "name": "Vibration slider everywhere",
+                "description": "Forces Gboard to show its own vibration strength slider on every device, rather than deferring to the system haptic settings page, so the strength is adjustable instead of being fixed by whichever rollout the device landed in."
               }
             ],
             "patches_modified": [
               {
+                "name": "Bigger Toolbar",
+                "description": "Makes the number of icons on the toolbar above the keyboard adjustable, from Gboard's own settings. Anything past the limit stays in the overflow menu.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
                 "name": "Swipe Right to Undo",
-                "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe Left to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
+                "description": "Swipe right after deleting to put the words back. Uses Gboard's own undo, which already records what a delete swipe removed.",
                 "changes": [
                   "description updated"
                 ]
@@ -94,21 +79,190 @@
       ]
     },
     {
-      "bundle": "zpatches",
+      "bundle": "letterboxd",
       "channel": "stable",
-      "badge_type": "UPDATED",
+      "badge_type": "NEW BUNDLE",
       "apps": [
         {
-          "app_name": "Undercover",
-          "package": "com.yanstarstudio.joss.undercover",
+          "app_name": "Letterboxd",
+          "package": "com.letterboxd.letterboxd",
           "badge_type": "NEW APP",
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/cesbar/zpatches",
-      "patches_name": "zPatches",
+      "repo_url": "https://github.com/mvaishak/letterboxd-morphe-patches",
+      "patches_name": "mvaishak Letterboxd Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "letterboxd",
+      "channel": "dev",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "Letterboxd",
+          "package": "com.letterboxd.letterboxd",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/mvaishak/letterboxd-morphe-patches",
+      "patches_name": "mvaishak Letterboxd Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "youtube-studio",
+      "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "YouTube Studio",
+          "package": "com.google.android.apps.youtube.creator",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/HelioFloxZ/YouTube-Studio-Patches",
+      "patches_name": "UserXYZ Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "youtube-studio",
+      "channel": "dev",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "YouTube Studio",
+          "package": "com.google.android.apps.youtube.creator",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/HelioFloxZ/YouTube-Studio-Patches",
+      "patches_name": "UserXYZ Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "kveld",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Vivaldi Browser Snapshot",
+          "package": "com.vivaldi.browser.snapshot",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Block Vivaldi Sync",
+                "description": "Redirects bifrost.vivaldi.com to 0.0.0.0 in libchrome.so to completely disable Vivaldi account synchronization for an air-gapped experience.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Block Vivaldi Telemetry",
+                "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, and DirectMatch suggestions.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Clean Speed Dial Bookmarks",
+                "description": "Removes sponsored commercial affiliate bookmarks, hides the 3-dot customize button, and disables phantom touch actions on the blank Start Page.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Close Tabs on Exit",
+                "description": "Prevents tab restoration on startup, ensuring Vivaldi always opens with a clean Start Page session regardless of how the app was terminated.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Background Sync & Periodic Sync",
+                "description": "Eliminates background wakeups, radio modem activity, and battery drain by neutralizing periodic and one-shot background sync tasks.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Battery Status API & OS Listener",
+                "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Chromium Tips & Notification Scheduler",
+                "description": "Eliminates periodic background wakeups, native library loading, and in-product promotional tips from Chromium tips scheduler.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Vivaldi Prompts & In-App Popups",
+                "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, and default browser promotional handlers.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Locale PAK Slimmer",
+                "description": "Strips unselected language resource PAKs from assets/locales/.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "PNG Asset Optimizer",
+                "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Resource Slimmer",
+                "description": "Strips bundled stock wallpapers and sponsored Speed Dial thumbnails to reduce APK size.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Skip First Run",
+                "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Vivaldi Startup Performance Optimization",
+                "description": "Optimizes cold startup time, eliminates background CPU/disk overhead, and guards against early CompositorView LayoutStateObserver crashes.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
+      "patches_name": "kveld9 Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
