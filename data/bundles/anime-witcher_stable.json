@@ -2,17 +2,44 @@
   "bundle": "anime-witcher",
   "channel": "stable",
   "repo_url": "https://github.com/catsmoker/anime-witcher-patches",
-  "created_at": "2026-08-20T01:05:23",
-  "version": "v1.0.0",
-  "description": "## 1.0.0 (2026-08-20)\n\n### 🐛 Bug Fixes\n\n* Add PATCHES_START/END markers to README.md ([a838a31](https://github.com/catsmoker/anime-witcher-patches/commit/a838a3151713496b241d4ca5bfe6b2f6c40cf1af))\n\n### ✨ New Features\n\n* Add Anime Witcher patches (disable ads, remove AppLovin, replace AWPlayer with VLC) ([a74afcc](https://github.com/catsmoker/anime-witcher-patches/commit/a74afcc0294574270f3e8fdde4bcbecf0d7df80b))\n",
+  "created_at": "2026-09-04T19:29:12",
+  "version": "v1.1.0",
+  "description": "## [1.1.0](https://github.com/catsmoker/anime-witcher-patches/compare/v1.0.0...v1.1.0) (2026-09-04)\n\n### New Features\n\n* **TV D-pad navigation** - fully navigable with a TV / Fire TV remote ([1823891](https://github.com/catsmoker/anime-witcher-patches/commit/1823891dd91fdc5b52012e8c33d7c0de868f71a9))\n  * Content rows are made focusable so the remote can select and click them\n  * D-pad presses move focus out of the top bar into the first content row (only consumed when focus actually moved)\n  * All WitcherDialog dialogs are TV-focusable and install the window-callback wrapper\n  * List containers watch for late-added rows\n* **Android TV / Fire TV support** - manifest declarations + leanback launcher entry for HomeActivity\n* **Disable VPN detection** - skip the VPN alert dialogs\n* **Remove startup popup** - no more update/changelog dialog on launch\n* **Play with an external player** - replaced AWPlayer with the external player option\n* **Project housekeeping** - added AGENTS.md and updated .gitignore",
   "apps": [
     {
       "app_name": "Anime Witcher",
       "package": "com.anime.witcher",
       "patches": [
         {
+          "name": "Android TV support",
+          "description": "Adds Android TV / Fire TV support (manifest declarations + TV launcher entry).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.8"
+          ]
+        },
+        {
           "name": "Disable ads",
           "description": "Disables all ad display logic in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.8"
+          ]
+        },
+        {
+          "name": "Disable VPN detection and alerts",
+          "description": "Removes VPN/DNS detection and the VPN alert dialogs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.8"
+          ]
+        },
+        {
+          "name": "Play with external player",
+          "description": "Opens episodes in a system intent chooser so the user can pick their favorite video player (VLC, MX Player, etc.).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -29,8 +56,17 @@
           ]
         },
         {
-          "name": "Replace AWPlayer with VLC",
-          "description": "Replaces the AWPlayer video player with VLC via system intent chooser.",
+          "name": "Remove startup popup",
+          "description": "Removes the update/changelog popup that appears when the app starts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.8"
+          ]
+        },
+        {
+          "name": "TV D-pad navigation",
+          "description": "Makes the app fully navigable with a TV / Fire TV remote (focusable content rows, D-pad focus out of the top bar, dialog focus).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -41,8 +77,8 @@
     }
   ],
   "patches_name": "Anime Witcher Patches",
-  "fingerprint": "479bb6c11c4ddc1d6f811e8fb59122f8b4f222f8ec8312c299485c7ad1050977",
-  "release_notes": "## 1.0.0 (2026-08-20)\n\n### 🐛 Bug Fixes\n\n* Add PATCHES_START/END markers to README.md ([a838a31](https://github.com/catsmoker/anime-witcher-patches/commit/a838a3151713496b241d4ca5bfe6b2f6c40cf1af))\n\n### ✨ New Features\n\n* Add Anime Witcher patches (disable ads, remove AppLovin, replace AWPlayer with VLC) ([a74afcc](https://github.com/catsmoker/anime-witcher-patches/commit/a74afcc0294574270f3e8fdde4bcbecf0d7df80b))\n",
-  "release_tag": "v1.0.0",
-  "release_date": "2026-08-20T01:05:23Z"
+  "fingerprint": "ce32606a40ba0fb6cd5e41bb2cfa81ff281f662d8ec0156ecce6b811be75ab00",
+  "release_notes": "## [1.1.0](https://github.com/catsmoker/anime-witcher-patches/compare/v1.0.0...v1.1.0) (2026-09-04)\n\n### New Features\n\n* **TV D-pad navigation** - fully navigable with a TV / Fire TV remote ([1823891](https://github.com/catsmoker/anime-witcher-patches/commit/1823891dd91fdc5b52012e8c33d7c0de868f71a9))\n  * Content rows are made focusable so the remote can select and click them\n  * D-pad presses move focus out of the top bar into the first content row (only consumed when focus actually moved)\n  * All WitcherDialog dialogs are TV-focusable and install the window-callback wrapper\n  * List containers watch for late-added rows\n* **Android TV / Fire TV support** - manifest declarations + leanback launcher entry for HomeActivity\n* **Disable VPN detection** - skip the VPN alert dialogs\n* **Remove startup popup** - no more update/changelog dialog on launch\n* **Play with an external player** - replaced AWPlayer with the external player option\n* **Project housekeeping** - added AGENTS.md and updated .gitignore",
+  "release_tag": "v1.1.0",
+  "release_date": "2026-09-04T19:29:12Z"
 }

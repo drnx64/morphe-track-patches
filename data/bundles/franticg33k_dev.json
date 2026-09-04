@@ -2,9 +2,9 @@
   "bundle": "franticg33k",
   "channel": "dev",
   "repo_url": "https://github.com/franticg33k/morphe-patches",
-  "created_at": "2026-09-04T17:00:28",
-  "version": "v1.3.10-dev.1",
-  "description": "## [1.3.10-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.9...v1.3.10-dev.1) (2026-09-04)\n\n### 🚀 Updated App Support\n\n* update Fricam patches for 1.4.0.1 (R8-resilient fingerprints) ([8870548](https://github.com/franticg33k/morphe-patches/commit/8870548d24310b824c7d3e5bef199ae7ccbc856b))\n",
+  "created_at": "2026-09-04T18:55:25",
+  "version": "v1.3.10-dev.2",
+  "description": "## [1.3.10-dev.2](https://github.com/franticg33k/morphe-patches/compare/v1.3.10-dev.1...v1.3.10-dev.2) (2026-09-04)\n\n### 🚀 Updated App Support\n\n* add Fricam Edge unlock (self-hosted sidecar support) ([d33b327](https://github.com/franticg33k/morphe-patches/commit/d33b327d3e40ece1cf515c90ceb6e0b8a89dc984))\n",
   "apps": [
     {
       "app_name": "Bolpatra Nepal",
@@ -224,6 +224,16 @@
           ]
         },
         {
+          "name": "Unlock Edge",
+          "description": "Unlocks the Fricam Edge feature for free. Edge is a self-hosted companion sidecar that runs beside your Frigate NVR and streams low-latency + AI-detection frames into the app over WebRTC. Unlike Pro there is no local persistence for Edge: on every RevenueCat sync the app recomputes the \"fricam_edge\" entitlement and publishes it into an in-memory StateFlow that drives the pairing/settings/diagnostics UI. The patch forces that published flag true so the Edge UI and the self-hosted (edge-local / Frigate-direct) routes open without a subscription. Note: Fricam's managed Cloudflare relay (edge-remote, monthly allowance) is authenticated server-side and is not bypassed - run the open-source sidecar yourself to get the full value.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4.0.1",
+            "1.3.7"
+          ]
+        },
+        {
           "name": "Unlock Premium",
           "description": "Unlocks all Fricam Pro features for free. Fricam's Pro state terminates in a plain SharedPreferences boolean (pro_unlocked in fricam_billing) written by a single PurchaseManager writer; every UI feature gate re-reads it via the static master ProGate. Fingerprints anchor on the stable prefs keys + signatures, so they survive the R8 class/method renames between 1.3.x and 1.4.0.1. The patch forces the RevenueCat entitlement check and the master gate to always return true (layered P1+P2), hardens the persist path so no refresh can downgrade, and neutralizes the PairIP Play Store license check that gates the app on launch.",
           "use": true,
@@ -250,8 +260,8 @@
     }
   ],
   "patches_name": "franticg33k's Morphe Patches",
-  "fingerprint": "4c7da615d69066d88893701c49da5b3a7dd97a294b60ed5e1577fbcd0747921e",
-  "release_notes": "## [1.3.10-dev.1](https://github.com/franticg33k/morphe-patches/compare/v1.3.9...v1.3.10-dev.1) (2026-09-04)\n\n### 🚀 Updated App Support\n\n* update Fricam patches for 1.4.0.1 (R8-resilient fingerprints) ([8870548](https://github.com/franticg33k/morphe-patches/commit/8870548d24310b824c7d3e5bef199ae7ccbc856b))\n",
-  "release_tag": "v1.3.10-dev.1",
-  "release_date": "2026-09-04T17:00:28Z"
+  "fingerprint": "effe8b2a2d83278ed503477040d3878111f430e55b9da68955caa271fe1fe38d",
+  "release_notes": "## [1.3.10-dev.2](https://github.com/franticg33k/morphe-patches/compare/v1.3.10-dev.1...v1.3.10-dev.2) (2026-09-04)\n\n### 🚀 Updated App Support\n\n* add Fricam Edge unlock (self-hosted sidecar support) ([d33b327](https://github.com/franticg33k/morphe-patches/commit/d33b327d3e40ece1cf515c90ceb6e0b8a89dc984))\n",
+  "release_tag": "v1.3.10-dev.2",
+  "release_date": "2026-09-04T18:55:25Z"
 }
