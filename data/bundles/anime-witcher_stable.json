@@ -2,18 +2,27 @@
   "bundle": "anime-witcher",
   "channel": "stable",
   "repo_url": "https://github.com/catsmoker/anime-witcher-patches",
-  "created_at": "2026-09-04T19:29:12",
-  "version": "v1.1.0",
-  "description": "## [1.1.0](https://github.com/catsmoker/anime-witcher-patches/compare/v1.0.0...v1.1.0) (2026-09-04)\n\n### New Features\n\n* **TV D-pad navigation** - fully navigable with a TV / Fire TV remote ([1823891](https://github.com/catsmoker/anime-witcher-patches/commit/1823891dd91fdc5b52012e8c33d7c0de868f71a9))\n  * Content rows are made focusable so the remote can select and click them\n  * D-pad presses move focus out of the top bar into the first content row (only consumed when focus actually moved)\n  * All WitcherDialog dialogs are TV-focusable and install the window-callback wrapper\n  * List containers watch for late-added rows\n* **Android TV / Fire TV support** - manifest declarations + leanback launcher entry for HomeActivity\n* **Disable VPN detection** - skip the VPN alert dialogs\n* **Remove startup popup** - no more update/changelog dialog on launch\n* **Play with an external player** - replaced AWPlayer with the external player option\n* **Project housekeeping** - added AGENTS.md and updated .gitignore",
+  "created_at": "2026-09-05T18:16:11",
+  "version": "v1.3.0",
+  "description": "## What's new\n\n- **Configurable \"Rebranding: Telegram & About\" options.** You can now pick your own values instead of the built-in ones:\n  - **Telegram handle** (default `CATSM0KER`) — every support/contact link in the app points to this handle.\n  - **About credit** (default `Patched by Catsmoker`) — the bold credit line appended to the About screen.\n- Options are visible as toggles/inputs in the **Morphe GUI** (select *Rebranding*) or via CLI: `-o telegramHandle=CATSM0KER -o aboutCredit=\"Your name\"`.\n- Regenerated patch list in the README — **9 patches**, including the new Options column.\n\nNo behavior change for existing builds: both options default to the previous hardcoded values.",
   "apps": [
     {
       "app_name": "Anime Witcher",
       "package": "com.anime.witcher",
       "patches": [
         {
-          "name": "Android TV support",
-          "description": "Adds Android TV / Fire TV support (manifest declarations + TV launcher entry).",
-          "use": true,
+          "name": "Android TV",
+          "description": "Adds full Android TV / Fire TV support: manifest declarations, TV launcher entry and D-pad remote navigation (focusable content rows, focus out of the top bar, dialog focus). Original APK: https://www.animewitcher.com/",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.4.8"
+          ]
+        },
+        {
+          "name": "Android TV: D-pad navigation",
+          "description": "Part of Android TV: makes the app fully navigable with a TV / Fire TV remote (focusable content rows, D-pad focus out of the top bar, dialog focus). Original APK: https://www.animewitcher.com/",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "1.4.8"
@@ -21,7 +30,7 @@
         },
         {
           "name": "Disable ads",
-          "description": "Disables all ad display logic in the app.",
+          "description": "Disables all ad display logic in the app. Original APK: https://www.animewitcher.com/",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -30,7 +39,7 @@
         },
         {
           "name": "Disable VPN detection and alerts",
-          "description": "Removes VPN/DNS detection and the VPN alert dialogs.",
+          "description": "Removes VPN/DNS detection and the VPN alert dialogs. Original APK: https://www.animewitcher.com/",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -39,7 +48,7 @@
         },
         {
           "name": "Play with external player",
-          "description": "Opens episodes in a system intent chooser so the user can pick their favorite video player (VLC, MX Player, etc.).",
+          "description": "Opens episodes in a system intent chooser so the user can pick their favorite video player (VLC, MX Player, etc.). Original APK: https://www.animewitcher.com/",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -47,8 +56,35 @@
           ]
         },
         {
+          "name": "Rebranding",
+          "description": "Renames the app to 'Anime Witcher +', changes the package id to app.catsmoker.anime.witcher, badges the icon with a red +, points Telegram links to https://t.me/CATSM0KER and credits the About screen. Original APK: https://www.animewitcher.com/",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.4.8"
+          ]
+        },
+        {
+          "name": "Rebranding: Telegram & About",
+          "description": "Part of Rebranding: points Telegram links to the configured handle (default https://t.me/CATSM0KER) and adds a bold credit line to the About screen. Original APK: https://www.animewitcher.com/",
+          "use": false,
+          "options": [
+            {
+              "key": "telegramHandle",
+              "description": "Telegram username used for every support/contact link in the app."
+            },
+            {
+              "key": "aboutCredit",
+              "description": "Extra bold credit line appended to the About screen."
+            }
+          ],
+          "compatible_versions": [
+            "1.4.8"
+          ]
+        },
+        {
           "name": "Remove AppLovin initialization",
-          "description": "Removes AppLovin SDK initialization from the Application class.",
+          "description": "Removes AppLovin SDK initialization from the Application class. Original APK: https://www.animewitcher.com/",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -57,16 +93,7 @@
         },
         {
           "name": "Remove startup popup",
-          "description": "Removes the update/changelog popup that appears when the app starts.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.4.8"
-          ]
-        },
-        {
-          "name": "TV D-pad navigation",
-          "description": "Makes the app fully navigable with a TV / Fire TV remote (focusable content rows, D-pad focus out of the top bar, dialog focus).",
+          "description": "Removes the update/changelog and appearance popups that appear when the app starts. Original APK: https://www.animewitcher.com/",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -77,8 +104,8 @@
     }
   ],
   "patches_name": "Anime Witcher Patches",
-  "fingerprint": "ce32606a40ba0fb6cd5e41bb2cfa81ff281f662d8ec0156ecce6b811be75ab00",
-  "release_notes": "## [1.1.0](https://github.com/catsmoker/anime-witcher-patches/compare/v1.0.0...v1.1.0) (2026-09-04)\n\n### New Features\n\n* **TV D-pad navigation** - fully navigable with a TV / Fire TV remote ([1823891](https://github.com/catsmoker/anime-witcher-patches/commit/1823891dd91fdc5b52012e8c33d7c0de868f71a9))\n  * Content rows are made focusable so the remote can select and click them\n  * D-pad presses move focus out of the top bar into the first content row (only consumed when focus actually moved)\n  * All WitcherDialog dialogs are TV-focusable and install the window-callback wrapper\n  * List containers watch for late-added rows\n* **Android TV / Fire TV support** - manifest declarations + leanback launcher entry for HomeActivity\n* **Disable VPN detection** - skip the VPN alert dialogs\n* **Remove startup popup** - no more update/changelog dialog on launch\n* **Play with an external player** - replaced AWPlayer with the external player option\n* **Project housekeeping** - added AGENTS.md and updated .gitignore",
-  "release_tag": "v1.1.0",
-  "release_date": "2026-09-04T19:29:12Z"
+  "fingerprint": "786b0dde56b4666289c542def22a095169294eacb060673f54848771f5d9b53a",
+  "release_notes": "## What's new\n\n- **Configurable \"Rebranding: Telegram & About\" options.** You can now pick your own values instead of the built-in ones:\n  - **Telegram handle** (default `CATSM0KER`) — every support/contact link in the app points to this handle.\n  - **About credit** (default `Patched by Catsmoker`) — the bold credit line appended to the About screen.\n- Options are visible as toggles/inputs in the **Morphe GUI** (select *Rebranding*) or via CLI: `-o telegramHandle=CATSM0KER -o aboutCredit=\"Your name\"`.\n- Regenerated patch list in the README — **9 patches**, including the new Options column.\n\nNo behavior change for existing builds: both options default to the previous hardcoded values.",
+  "release_tag": "v1.3.0",
+  "release_date": "2026-09-05T18:16:11Z"
 }

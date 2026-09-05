@@ -2,10 +2,25 @@
   "bundle": "ftl",
   "channel": "stable",
   "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-  "created_at": "2026-08-28T05:49:19",
-  "version": "v1.42.0",
-  "description": "## [1.42.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.41.0...v1.42.0) (2026-08-28)\r\n\r\n### ✨ New Features\r\n\r\n* Add Skip Splash Screen Patch (Expert) ([d28a958](https://github.com/BlazeFTL/FTL-Patches/commit/d28a9582ace9881c5295931dbdb3832ea2b66a7e))\r\n* Add Video Downloader Pro Unlock Patch(Manually Kill Signature First Or Use Doom's Patch (Spoof App Signature) From Here https://github.com/rushiranpise/morphe-patches\r\n* Add Video Downloader Skip Splash, Remove From Download Menu, Remove From Browser List Patches\r\n* Add SnapTube Remove From Browser Menu\r\n* Add AllVideoDownloader Remove From Download Menu\r\n* Add MiXplorer Remove From Download Menu\r\n* Added 2 Useless Skip/Boost Patch For Calendar And AllVideoDownloader (Useless Because Similar Patch/Premium Patch Exist)\r\n* Add Ampere Material Colors Peach/Purple Upgrade\r\n* Update Apk Language Cleaner\r\n* Update Apk Junk Cleaner",
+  "created_at": "2026-09-05T17:24:03",
+  "version": "v1.43.0",
+  "description": "## [1.43.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.42.0...v1.43.0) (2026-09-05)\r\n\r\n### 📱 App-Specific Patches\r\n* **MX Player**\r\n  * ✨ Added Remove Bottom Bar And Add Me Tab To Top.\r\n  * 🐛 Added Clean Me Tab\r\n  * 🐛 Added Add NetWork Stream To Me Tab Patch.\r\n* **XFolder (File Manager)**\r\n  * ✨ Added Unlock Pro patch.\r\n  * ✨ Added Disable Rate Dialog patch (turns off cleaner by default).\r\n* **WPS Suite**\r\n  * ✨ Added **WpsApp Pro** Bypass License Check patch.\r\n  * ✨ Added **WPS WPA Tester Pro** patch.\r\n* **WiFi Analyzer**\r\n  * ✨ Added WiFi Analyzer Pro patch.\r\n  * ✨ Added Disable Rate Dialog patch. *(Recovered from dev cycle)*\r\n* **RS File Explorer**\r\n  * ✨ Added Clean Sidebar patch.\r\n  * **ES File Explorer**\r\n  * ✨ Made patch significantly more robust against R8 obfuscation.\r\n* **Video Downloader / All Video Downloader**\r\n  * ✨ Restricted patch compatibility to version `2.7.2`.\r\n  * ✨ Added Signature patch, Skip Splash, and Language patches.\r\n* **Bangla Dictionary Pro**\r\n  * ✨ Added new Pro unlock patch.\r\n* **Save Data Tools**\r\n  * ✨ Added Add Save Data Patch\r\n\r\n### 🌐 Universal & General Patches\r\n* **APK Junk Cleaner**\r\n  * ✨ Prepared patch for new API integration.\r\n  * 🐛 Cleaned up, restored, and stabilized patch logic after testing.\r\n* **Analytics Remover**\r\n  * ✨ Added new universal Analytics removal patch.\r\n  * 🐛 Removed specific analytics components that were causing app crashes.\r\n  * 🐛 Improved R8 obfuscation compatibility for analytics removal.\r\n* **Universal Ad Removal**\r\n  * ✨ Updated \"Remove Ads Lite (Adobo)\" configurations to cover more ad SDKs.\r\n* **Splash Screen**\r\n  * ✨ Added universal \"Skip Splash Expert\" patch.\r\n* **Certificate & Security**\r\n  * ✨ Hide APK Cert\" patch.\r\n* **Toast Notifications**\r\n  * ✨ Updated Toast patch; removed junk toast notifications.\r\n\r\n### 🛠️ Build & Infrastructure\r\n* 🐛 Restored `gradlew` executable bit (resolved multiple build permission issues).\r\n* 🐛 Applied general stability fixes for Morphe Dev compatibility.",
   "apps": [
+    {
+      "app_name": "WiFi Analyzer",
+      "package": "abdelrahman.wifianalyzerpro",
+      "patches": [
+        {
+          "name": "Unlock Pro & Disable Rate Dialog",
+          "description": "Forces the premium check to always return true, unlocking every Pro feature, and stops the in-app \"rate us\" dialog from ever triggering.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.4"
+          ]
+        }
+      ]
+    },
     {
       "app_name": "Calendar",
       "package": "calendar.agenda.schedule.event.advance.calendar.planner",
@@ -101,6 +116,21 @@
       ]
     },
     {
+      "app_name": "Bangla Dictionary",
+      "package": "com.hdictionary.bn",
+      "patches": [
+        {
+          "name": "Unlock Pro",
+          "description": "Forces the purchase check to always return true, unlocking Pro.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.5.1"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "MiXplorer",
       "package": "com.mixplorer",
       "patches": [
@@ -110,6 +140,39 @@
           "use": false,
           "options": [],
           "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "MX Player",
+      "package": "com.mxtech.videoplayer.ad",
+      "patches": [
+        {
+          "name": "Add Network Stream To Me Tab",
+          "description": "WARNING MX PLAYER HAS INTEGRITY CHECK. Mod By Youarefinished Also Has Their Own Integrity Check. So Download From Play Store Use URV Manager With Signing Turned Off, Patch And Then Kill Signature Verification With MT Manager Enhanced (VIP Only) Or Modded Build.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.1.4"
+          ]
+        },
+        {
+          "name": "Clean Me Tab",
+          "description": "Removes promo rows and unused tiles from the Me tab: WhatsApp Status Saver, Legal/Help, the local-tiles pager, Local Network, Music Player, Cloud Drive, MX Share, and Private Folder.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.1.4"
+          ]
+        },
+        {
+          "name": "Disable Bottom Bar And Add Me Tab To Top",
+          "description": "Hides the bottom navigation bar and adds a Me tab button to the toolbar.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.1.4"
+          ]
         }
       ]
     },
@@ -151,6 +214,15 @@
       "app_name": "RS File Manager",
       "package": "com.rs.explorer.filemanager",
       "patches": [
+        {
+          "name": "Clean sidebar",
+          "description": "Hides the Bookmarks, remote-connection and Category sections from the navigation sidebar, and hides Encrypt and Downloader from the Storage section.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.3.0.4"
+          ]
+        },
         {
           "name": "Disable downloader from download menu",
           "description": "Strips RsDownloadActivity's intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
@@ -241,6 +313,69 @@
       ]
     },
     {
+      "app_name": "WIFI WPS WPA TESTER",
+      "package": "com.tester.wpswpatester",
+      "patches": [
+        {
+          "name": "Unlock Pro",
+          "description": "Forces the Pro flag true at every read and write site in the dex, unlocking Pro.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "rc-5.164"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "WPSApp Pro",
+      "package": "com.themausoft.wpsapppro",
+      "patches": [
+        {
+          "name": "Remove License Verification",
+          "description": "Spoofs every PackageManager.getInstallerPackageName() check to report \"com.android.vending\", so Pro features unlock regardless of install source.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.7.05"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "File Manager - XFolder",
+      "package": "files.fileexplorer.filemanager",
+      "patches": [
+        {
+          "name": "Change Cleaner & Media Tab Defaults",
+          "description": "Changes first-run defaults: hides the Image, Video, Audio and Cleaner tabs, and shows hidden files by default. Only affects users who have never changed the setting themselves - the preference override still takes priority.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.5.7"
+          ]
+        },
+        {
+          "name": "Disable Rate Us Dialog",
+          "description": "Prevents the in-app rate-us dialog from ever being shown.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.5.7"
+          ]
+        },
+        {
+          "name": "Unlock Pro & Skip Splash Screen",
+          "description": "Forces the ad-removed/Pro check to always return true, and renames the launcher activity from SplashActivity to MainActivity so the splash screen is skipped.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.5.7"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Video Downloader",
       "package": "video.downloader.videodownloader",
       "patches": [
@@ -267,10 +402,12 @@
         },
         {
           "name": "Unlock Pro",
-          "description": "Manually Kill Signature First Or Use Doom's(rushiranpise) Patch (Spoof App Signature).",
+          "description": "Only Use In V2.7.2. Signature verification is spoofed automatically so the purchase check passes without manually applying Spoof app signature.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "2.7.2"
+          ]
         }
       ]
     },
@@ -332,8 +469,8 @@
     }
   ],
   "patches_name": "BlazeFTL Patches",
-  "fingerprint": "ddc18f918e4316b6fdb2cc3692ee67caa0590977ccbe4296d63c81db63918691",
-  "release_notes": "## [1.43.0-dev.57](https://github.com/BlazeFTL/FTL-Patches/compare/v1.43.0-dev.56...v1.43.0-dev.57) (2026-09-05)\n\n### 🐛 Bug Fixes\n\n* Mx ([9aab4a4](https://github.com/BlazeFTL/FTL-Patches/commit/9aab4a462a57d217e02c723a31241876b3dbefe2))\n",
-  "release_tag": "v1.43.0-dev.57",
-  "release_date": "2026-09-05T15:15:55Z"
+  "fingerprint": "7263e259e42ea2b7b630532abb1aa3d8b4dc037cae8b694509290d2d95942630",
+  "release_notes": "## [1.43.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.42.0...v1.43.0) (2026-09-05)\r\n\r\n### 📱 App-Specific Patches\r\n* **MX Player**\r\n  * ✨ Added Remove Bottom Bar And Add Me Tab To Top.\r\n  * 🐛 Added Clean Me Tab\r\n  * 🐛 Added Add NetWork Stream To Me Tab Patch.\r\n* **XFolder (File Manager)**\r\n  * ✨ Added Unlock Pro patch.\r\n  * ✨ Added Disable Rate Dialog patch (turns off cleaner by default).\r\n* **WPS Suite**\r\n  * ✨ Added **WpsApp Pro** Bypass License Check patch.\r\n  * ✨ Added **WPS WPA Tester Pro** patch.\r\n* **WiFi Analyzer**\r\n  * ✨ Added WiFi Analyzer Pro patch.\r\n  * ✨ Added Disable Rate Dialog patch. *(Recovered from dev cycle)*\r\n* **RS File Explorer**\r\n  * ✨ Added Clean Sidebar patch.\r\n  * **ES File Explorer**\r\n  * ✨ Made patch significantly more robust against R8 obfuscation.\r\n* **Video Downloader / All Video Downloader**\r\n  * ✨ Restricted patch compatibility to version `2.7.2`.\r\n  * ✨ Added Signature patch, Skip Splash, and Language patches.\r\n* **Bangla Dictionary Pro**\r\n  * ✨ Added new Pro unlock patch.\r\n* **Save Data Tools**\r\n  * ✨ Added Add Save Data Patch\r\n\r\n### 🌐 Universal & General Patches\r\n* **APK Junk Cleaner**\r\n  * ✨ Prepared patch for new API integration.\r\n  * 🐛 Cleaned up, restored, and stabilized patch logic after testing.\r\n* **Analytics Remover**\r\n  * ✨ Added new universal Analytics removal patch.\r\n  * 🐛 Removed specific analytics components that were causing app crashes.\r\n  * 🐛 Improved R8 obfuscation compatibility for analytics removal.\r\n* **Universal Ad Removal**\r\n  * ✨ Updated \"Remove Ads Lite (Adobo)\" configurations to cover more ad SDKs.\r\n* **Splash Screen**\r\n  * ✨ Added universal \"Skip Splash Expert\" patch.\r\n* **Certificate & Security**\r\n  * ✨ Hide APK Cert\" patch.\r\n* **Toast Notifications**\r\n  * ✨ Updated Toast patch; removed junk toast notifications.\r\n\r\n### 🛠️ Build & Infrastructure\r\n* 🐛 Restored `gradlew` executable bit (resolved multiple build permission issues).\r\n* 🐛 Applied general stability fixes for Morphe Dev compatibility.",
+  "release_tag": "v1.43.0",
+  "release_date": "2026-09-05T17:24:03Z"
 }

@@ -1,21 +1,513 @@
 {
   "affected_bundles": [
     {
-      "bundle": "ajstrick81-androidtv",
+      "bundle": "anime-witcher",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Score Center",
-          "package": "com.espn.score_center",
-          "badge_type": "NEW APP",
+          "app_name": "Anime Witcher",
+          "package": "com.anime.witcher",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Android TV",
+                "description": "Adds full Android TV / Fire TV support: manifest declarations, TV launcher entry and D-pad remote navigation (focusable content rows, focus out of the top bar, dialog focus). Original APK: https://www.animewitcher.com/"
+              },
+              {
+                "name": "Android TV: D-pad navigation",
+                "description": "Part of Android TV: makes the app fully navigable with a TV / Fire TV remote (focusable content rows, D-pad focus out of the top bar, dialog focus). Original APK: https://www.animewitcher.com/"
+              },
+              {
+                "name": "Rebranding",
+                "description": "Renames the app to 'Anime Witcher +', changes the package id to app.catsmoker.anime.witcher, badges the icon with a red +, points Telegram links to https://t.me/CATSM0KER and credits the About screen. Original APK: https://www.animewitcher.com/"
+              },
+              {
+                "name": "Rebranding: Telegram & About",
+                "description": "Part of Rebranding: points Telegram links to the configured handle (default https://t.me/CATSM0KER) and adds a bold credit line to the About screen. Original APK: https://www.animewitcher.com/"
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Android TV support",
+                "description": "Adds Android TV / Fire TV support (manifest declarations + TV launcher entry)."
+              },
+              {
+                "name": "TV D-pad navigation",
+                "description": "Makes the app fully navigable with a TV / Fire TV remote (focusable content rows, D-pad focus out of the top bar, dialog focus)."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Disable VPN detection and alerts",
+                "description": "Removes VPN/DNS detection and the VPN alert dialogs. Original APK: https://www.animewitcher.com/",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Disable ads",
+                "description": "Disables all ad display logic in the app. Original APK: https://www.animewitcher.com/",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Play with external player",
+                "description": "Opens episodes in a system intent chooser so the user can pick their favorite video player (VLC, MX Player, etc.). Original APK: https://www.animewitcher.com/",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Remove AppLovin initialization",
+                "description": "Removes AppLovin SDK initialization from the Application class. Original APK: https://www.animewitcher.com/",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Remove startup popup",
+                "description": "Removes the update/changelog and appearance popups that appear when the app starts. Original APK: https://www.animewitcher.com/",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-      "patches_name": "ajstrick81 Patches",
+      "repo_url": "https://github.com/catsmoker/anime-witcher-patches",
+      "patches_name": "Anime Witcher Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "ftl",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Xender",
+          "package": "cn.xender",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Clean main UI",
+                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Skip splash screen",
+                "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Speed up splash screen",
+                "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MX Player Pro",
+          "package": "com.mxtech.videoplayer.pro",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Hide Me tab promo items",
+                "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab."
+              },
+              {
+                "name": "Hide local tiles banner",
+                "description": "Collapses the local device tiles banner."
+              },
+              {
+                "name": "Skip welcome screen",
+                "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Hide Settings Page UseLess Buttons",
+                "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab."
+              },
+              {
+                "name": "Hide top tiles",
+                "description": "Hides the top tiles."
+              },
+              {
+                "name": "Skip Splash Screen",
+                "description": "Skips Splash Screen so the app boots straight past the splash and update screen."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Hide File Transfer, Video Playlist, Private Folder tiles",
+                "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from the tools tile list.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [
+              {
+                "name": "Clean sidebar",
+                "description": "Hides the Bookmarks, remote-connection and Category sections from the navigation sidebar, and hides Encrypt and Downloader from the Storage section."
+              },
+              {
+                "name": "Disable downloader from download menu",
+                "description": "Strips RsDownloadActivity's intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+              },
+              {
+                "name": "Disable rate us dialog",
+                "description": "Overrides show() on the in-app \"rate us\" dialog so it's still built but never displayed."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Skip splash screen",
+                "description": "Moves the launcher intent filter to the main activity and calls the all-files-access permission request directly, instead of showing the splash activity and its full-screen 'grant storage access' dialog.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "SnapTube",
+          "package": "com.snaptube.premium",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Disable Notification Defaults",
+                "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default."
+              },
+              {
+                "name": "Hide Settings Items",
+                "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Clean SnapTube Settings Page",
+                "description": "Removes the Download tools and Phone clean categories, and their sub-items, from Settings."
+              },
+              {
+                "name": "Disable Annoying Snaptube Notifications",
+                "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default."
+              },
+              {
+                "name": "Remove from default browser list",
+                "description": "Strips the LinkHandleActivity alias's unscoped so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "All Video Downloader & Ace Player",
+          "package": "videoplayer.videodownloader.downloader",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [
+              {
+                "name": "Boost Splash Screen",
+                "description": "Fixes Remove Ads And Remove Ads Lite Gettings Stuck In Splash Screen Useless if you also select skip splash and language activity patch. Also stops the splash from hiding the on-screen navigation buttons."
+              },
+              {
+                "name": "Disable downloader from download menu",
+                "description": "Strips WebDownloadActivity's intent-filter data so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+              },
+              {
+                "name": "Remove from default browser list",
+                "description": "Removes the unscoped http/https <data> entries from MainActivity's first intent-filter carrying them so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Skip splash and language screens",
+                "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
+                "changes": [
+                  "disabled"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "WiFi Analyzer",
+          "package": "abdelrahman.wifianalyzerpro",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Calendar",
+          "package": "calendar.agenda.schedule.event.advance.calendar.planner",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Ampere",
+          "package": "com.gombosdev.ampere",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Bangla Dictionary",
+          "package": "com.hdictionary.bn",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MiXplorer",
+          "package": "com.mixplorer",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "WIFI WPS WPA TESTER",
+          "package": "com.tester.wpswpatester",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "WPSApp Pro",
+          "package": "com.themausoft.wpsapppro",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "File Manager - XFolder",
+          "package": "files.fileexplorer.filemanager",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Video Downloader",
+          "package": "video.downloader.videodownloader",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
+      "patches_name": "BlazeFTL Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "ftl",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "WiFi Analyzer",
+          "package": "abdelrahman.wifianalyzerpro",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Bangla Dictionary",
+          "package": "com.hdictionary.bn",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Clean sidebar",
+                "description": "Hides the Bookmarks, remote-connection and Category sections from the navigation sidebar, and hides Encrypt and Downloader from the Storage section."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "WIFI WPS WPA TESTER",
+          "package": "com.tester.wpswpatester",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "WPSApp Pro",
+          "package": "com.themausoft.wpsapppro",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "File Manager - XFolder",
+          "package": "files.fileexplorer.filemanager",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Video Downloader",
+          "package": "video.downloader.videodownloader",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Pro",
+                "description": "Only Use In V2.7.2. Signature verification is spoofed automatically so the purchase check passes without manually applying Spoof app signature.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
+      "patches_name": "BlazeFTL Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "icysymmetra-tiktok",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Hide feed LIVE button",
+                "description": "Adds an option to hide the LIVE button at the top left of video feeds."
+              },
+              {
+                "name": "Hide feed follow button",
+                "description": "Adds an option to hide the + follow button below creator avatars in video feeds."
+              },
+              {
+                "name": "Hide feed save button",
+                "description": "Adds an option to hide the save/favourites button from video feeds."
+              },
+              {
+                "name": "Hide feed search button",
+                "description": "Adds an option to hide the search button at the top right of video feeds."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/icysymmetra/tiktok-patches-for-morphe",
+      "patches_name": "Metra TikTok Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]

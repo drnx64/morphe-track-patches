@@ -2,65 +2,17 @@
   "bundle": "ftl",
   "channel": "dev",
   "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-  "created_at": "2026-09-05T15:15:55",
-  "version": "v1.43.0-dev.57",
-  "description": "## [1.43.0-dev.57](https://github.com/BlazeFTL/FTL-Patches/compare/v1.43.0-dev.56...v1.43.0-dev.57) (2026-09-05)\n\n### 🐛 Bug Fixes\n\n* Mx ([9aab4a4](https://github.com/BlazeFTL/FTL-Patches/commit/9aab4a462a57d217e02c723a31241876b3dbefe2))\n",
+  "created_at": "2026-08-19T06:35:14",
+  "version": "v1.37.0-dev.7",
+  "description": "## [1.37.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.6...v1.37.0-dev.7) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Clean+ Splash Merged",
   "apps": [
-    {
-      "app_name": "WiFi Analyzer",
-      "package": "abdelrahman.wifianalyzerpro",
-      "patches": [
-        {
-          "name": "Unlock Pro & Disable Rate Dialog",
-          "description": "Forces the premium check to always return true, unlocking every Pro feature, and stops the in-app \"rate us\" dialog from ever triggering.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.4"
-          ]
-        }
-      ]
-    },
-    {
-      "app_name": "Calendar",
-      "package": "calendar.agenda.schedule.event.advance.calendar.planner",
-      "patches": [
-        {
-          "name": "Skip/Boost splash screen",
-          "description": "By default, skips the splash screen entirely on launch. Turn on \"Boost splash\" to instead keep it briefly on screen (configurable delay) Useless To Boost Splash Screen If You Select Unlock Premium Patch Too Use If You Want To Skip Splash Screen Entirely",
-          "use": true,
-          "options": [
-            {
-              "key": "boostSplash",
-              "description": "Off: splash is skipped entirely. On: splash briefly shows, then proceeds after the configured delay."
-            },
-            {
-              "key": "boostDelayMs",
-              "description": "Only used when \"Boost splash\" is on. How long to show the splash before proceeding."
-            }
-          ],
-          "compatible_versions": [
-            "1.0.34"
-          ]
-        },
-        {
-          "name": "Unlock premium",
-          "description": "Unlocks premium features and removes ads.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.0.34"
-          ]
-        }
-      ]
-    },
     {
       "app_name": "Xender",
       "package": "cn.xender",
       "patches": [
         {
           "name": "Clean main UI",
-          "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden.",
+          "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, and brings the connect/create/join buttons to front. Reapplied on create, resume, and drawer open (and retried for ~1.8s after each) since some of these views are inflated lazily.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -69,7 +21,7 @@
         },
         {
           "name": "Skip splash screen",
-          "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely.",
+          "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely. Also restores the storage-permission request and local media scan that the splash screen normally performs, so the Apps/Photo/Video tabs still load.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -78,7 +30,7 @@
         },
         {
           "name": "Speed up splash screen",
-          "description": "Enters the main activity directly after the splash screen.",
+          "description": "Enters the main activity directly after the splash permission check instead of delaying for the additional external-storage check.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -103,101 +55,33 @@
       ]
     },
     {
-      "app_name": "Ampere",
-      "package": "com.gombosdev.ampere",
-      "patches": [
-        {
-          "name": "Material Colors Upgrade Peach And Purple",
-          "description": "Updates Accent/Primary/CardBgDark to the newer Material color palette.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        }
-      ]
-    },
-    {
-      "app_name": "Bangla Dictionary",
-      "package": "com.hdictionary.bn",
-      "patches": [
-        {
-          "name": "Unlock Pro",
-          "description": "Forces the purchase check to always return true, unlocking Pro.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "11.5.1"
-          ]
-        }
-      ]
-    },
-    {
-      "app_name": "MiXplorer",
-      "package": "com.mixplorer",
-      "patches": [
-        {
-          "name": "Disable From Download Menu Of Browsers",
-          "description": "Removes only the http/https <data> entries from MiXplorer's Explore/Download/Copy to/Extract to shell activities' VIEW intent filters, so the app stops showing up multiple times in browsers download link chooser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        }
-      ]
-    },
-    {
-      "app_name": "MX Player",
-      "package": "com.mxtech.videoplayer.ad",
-      "patches": [
-        {
-          "name": "Add Network Stream To Me Tab",
-          "description": "Repurposes the Video Playlists tile on the Me tab into a Network Stream tile.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Clean Me Tab",
-          "description": "Removes promo rows and unused tiles from the Me tab: WhatsApp Status Saver, Legal/Help, the local-tiles pager, Local Network, Music Player, Cloud Drive, MX Share, and Private Folder.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Disable Bottom Bar And Add Me Tab To Top",
-          "description": "Hides the bottom navigation bar and adds a Me tab button to the toolbar.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        }
-      ]
-    },
-    {
       "app_name": "MX Player Pro",
       "package": "com.mxtech.videoplayer.pro",
       "patches": [
         {
           "name": "Hide File Transfer, Video Playlist, Private Folder tiles",
-          "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from settings Page.",
+          "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from the tools tile list.",
           "use": false,
           "options": [],
           "compatible_versions": []
         },
         {
-          "name": "Hide Settings Page UseLess Buttons",
+          "name": "Hide local tiles banner",
+          "description": "Collapses the local device tiles banner.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Hide Me tab promo items",
           "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab.",
           "use": false,
           "options": [],
           "compatible_versions": []
         },
         {
-          "name": "Hide top tiles",
-          "description": "Hides the top tiles.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Skip Splash Screen",
-          "description": "Skips Splash Screen so the app boots straight past the splash and update screen.",
+          "name": "Skip welcome screen",
+          "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen.",
           "use": false,
           "options": [],
           "compatible_versions": []
@@ -208,33 +92,6 @@
       "app_name": "RS File Manager",
       "package": "com.rs.explorer.filemanager",
       "patches": [
-        {
-          "name": "Clean sidebar",
-          "description": "Hides the Bookmarks, remote-connection and Category sections from the navigation sidebar, and hides Encrypt and Downloader from the Storage section.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2.3.0.4"
-          ]
-        },
-        {
-          "name": "Disable downloader from download menu",
-          "description": "Strips RsDownloadActivity's intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2.3.0.4"
-          ]
-        },
-        {
-          "name": "Disable rate us dialog",
-          "description": "Overrides show() on the in-app \"rate us\" dialog so it's still built but never displayed.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2.3.0.4"
-          ]
-        },
         {
           "name": "Hide more actions",
           "description": "Hides Hide, Add to desktop, Encrypt, Decrypt, Add bookmark, Web Search, Copy to, Move to, Transfer, and Playing from the \"More actions\" menu.",
@@ -255,7 +112,7 @@
         },
         {
           "name": "Skip splash screen",
-          "description": "Skips Splash Screen From 2nd App Opening",
+          "description": "Moves the launcher intent filter to the main activity and calls the all-files-access permission request directly, instead of showing the splash activity and its full-screen 'grant storage access' dialog.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -269,16 +126,7 @@
       "package": "com.snaptube.premium",
       "patches": [
         {
-          "name": "Clean SnapTube Settings Page",
-          "description": "Removes the Download tools and Phone clean categories, and their sub-items, from Settings.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "7.64.0.76450210"
-          ]
-        },
-        {
-          "name": "Disable Annoying Snaptube Notifications",
+          "name": "Disable Notification Defaults",
           "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default.",
           "use": false,
           "options": [],
@@ -287,8 +135,8 @@
           ]
         },
         {
-          "name": "Remove from default browser list",
-          "description": "Strips the LinkHandleActivity alias's unscoped so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser.",
+          "name": "Hide Settings Items",
+          "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -307,122 +155,9 @@
       ]
     },
     {
-      "app_name": "WIFI WPS WPA TESTER",
-      "package": "com.tester.wpswpatester",
-      "patches": [
-        {
-          "name": "Unlock Pro",
-          "description": "Forces the Pro flag true at every read and write site in the dex, unlocking Pro.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "rc-5.164"
-          ]
-        }
-      ]
-    },
-    {
-      "app_name": "WPSApp Pro",
-      "package": "com.themausoft.wpsapppro",
-      "patches": [
-        {
-          "name": "Remove License Verification",
-          "description": "Spoofs every PackageManager.getInstallerPackageName() check to report \"com.android.vending\", so Pro features unlock regardless of install source.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.7.05"
-          ]
-        }
-      ]
-    },
-    {
-      "app_name": "File Manager - XFolder",
-      "package": "files.fileexplorer.filemanager",
-      "patches": [
-        {
-          "name": "Change Cleaner & Media Tab Defaults",
-          "description": "Changes first-run defaults: hides the Image, Video, Audio and Cleaner tabs, and shows hidden files by default. Only affects users who have never changed the setting themselves - the preference override still takes priority.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.5.5.7"
-          ]
-        },
-        {
-          "name": "Disable Rate Us Dialog",
-          "description": "Prevents the in-app rate-us dialog from ever being shown.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.5.5.7"
-          ]
-        },
-        {
-          "name": "Unlock Pro & Skip Splash Screen",
-          "description": "Forces the ad-removed/Pro check to always return true, and renames the launcher activity from SplashActivity to MainActivity so the splash screen is skipped.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.5.5.7"
-          ]
-        }
-      ]
-    },
-    {
-      "app_name": "Video Downloader",
-      "package": "video.downloader.videodownloader",
-      "patches": [
-        {
-          "name": "Disable downloader from download menu",
-          "description": "Removes the http/https <data> entries from BrowserDownloaderActivity's so the app stops offering itself in the system \"Download file with\" chooser for ordinary web downloads.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Remove from default browser list",
-          "description": "Removes http/https <data> entries from MainTabsActivity's so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Skip splash screen",
-          "description": "Skips splash screen so the app opens directly to the main screen.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Unlock Pro",
-          "description": "Only Use In V2.7.2. Signature verification is spoofed automatically so the purchase check passes without manually applying Spoof app signature.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2.7.2"
-          ]
-        }
-      ]
-    },
-    {
       "app_name": "All Video Downloader & Ace Player",
       "package": "videoplayer.videodownloader.downloader",
       "patches": [
-        {
-          "name": "Boost Splash Screen",
-          "description": "Fixes Remove Ads And Remove Ads Lite Gettings Stuck In Splash Screen Useless if you also select skip splash and language activity patch. Also stops the splash from hiding the on-screen navigation buttons.",
-          "use": false,
-          "options": [
-            {
-              "key": "boostDelayMs",
-              "description": "How long the splash screen stays visible before continuing."
-            }
-          ],
-          "compatible_versions": [
-            "1.9.7"
-          ]
-        },
         {
           "name": "Disable ad dialog when reopening app",
           "description": "Prevents the full-screen \"loading ad\" dialog from appearing when the app is reopened after being minimized.",
@@ -433,27 +168,9 @@
           ]
         },
         {
-          "name": "Disable downloader from download menu",
-          "description": "Strips WebDownloadActivity's intent-filter data so it no longer offers itself as a handler in the system download/\"complete action using\" chooser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "1.9.7"
-          ]
-        },
-        {
-          "name": "Remove from default browser list",
-          "description": "Removes the unscoped http/https <data> entries from MainActivity's first intent-filter carrying them so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "1.9.7"
-          ]
-        },
-        {
           "name": "Skip splash and language screens",
           "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "1.9.7"
@@ -463,8 +180,8 @@
     }
   ],
   "patches_name": "BlazeFTL Patches",
-  "fingerprint": "659b936f8604ed3ebe62ad43d208543acba48b3b8e588811416ccd8d319f6634",
-  "release_notes": "## [1.43.0-dev.57](https://github.com/BlazeFTL/FTL-Patches/compare/v1.43.0-dev.56...v1.43.0-dev.57) (2026-09-05)\n\n### 🐛 Bug Fixes\n\n* Mx ([9aab4a4](https://github.com/BlazeFTL/FTL-Patches/commit/9aab4a462a57d217e02c723a31241876b3dbefe2))\n",
-  "release_tag": "v1.43.0-dev.57",
-  "release_date": "2026-09-05T15:15:55Z"
+  "fingerprint": "cd18230f373ccc58a78b16d544d3b3cc82d3f356af678387a2cadc015fa736dd",
+  "release_notes": "## [1.37.0-dev.7](https://github.com/BlazeFTL/FTL-Patches/compare/v1.37.0-dev.6...v1.37.0-dev.7) (2026-08-19)\r\n\r\n### ✨ New Features\r\n\r\n* Clean+ Splash Merged",
+  "release_tag": "v1.37.0-dev.7",
+  "release_date": "2026-08-19T06:35:14Z"
 }
