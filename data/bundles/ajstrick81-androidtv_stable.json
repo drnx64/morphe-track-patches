@@ -2,9 +2,9 @@
   "bundle": "ajstrick81-androidtv",
   "channel": "stable",
   "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-  "created_at": "2026-09-04T02:38:52",
-  "version": "v1.30.4",
-  "description": "## [1.30.4](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.30.3...v1.30.4) (2026-09-04)\n\n\n### Bug Fixes\n\n* **pluto:** detect VOD ads positively so un-DRM'd-content titles don't break ([870e4f1](https://github.com/ajstrick81/morphe-androidtv-patches/commit/870e4f19892aff5f393f01bb6faa2777f8cf7149)), closes [#144](https://github.com/ajstrick81/morphe-androidtv-patches/issues/144)\n\n\n\n",
+  "created_at": "2026-09-05T14:21:18",
+  "version": "v1.31.0",
+  "description": "# [1.31.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.30.4...v1.31.0) (2026-09-05)\n\n\n### Features\n\n* **espn:** mask live commercial breaks with a slate + mute; suppress VOD ads ([#150](https://github.com/ajstrick81/morphe-androidtv-patches/issues/150)) ([670afa2](https://github.com/ajstrick81/morphe-androidtv-patches/commit/670afa2ae98745d38653d05b190a76e0df44f45d))\n\n\n\n",
   "apps": [
     {
       "app_name": "Livingroom",
@@ -134,6 +134,21 @@
             "26.8.0+rc6-2026.05.20",
             "26.9.2+rc1-2026.06.12",
             "26.12.1+rc1-2026.07.15"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Score Center",
+      "package": "com.espn.score_center",
+      "patches": [
+        {
+          "name": "ESPN Android TV",
+          "description": "Suppresses ESPN VOD/scheduled ads (DMP SGAI isAdDisabled) and masks LIVE passthrough-SSAI commercial breaks with a full-screen \"Commercial Break\" slate + mute (the live ad can't be removed, only covered). Optional slate media is user-supplied local files; disable the live slate with a `slate_off` marker file. No DNS dependency.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.11.1"
           ]
         }
       ]
@@ -391,8 +406,8 @@
     }
   ],
   "patches_name": "ajstrick81 Patches",
-  "fingerprint": "665fd42551d9b6a99da5e7d8ce1186f5c9b8053bdea6113ab2722008f05640b9",
-  "release_notes": "## [1.30.4](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.30.3...v1.30.4) (2026-09-04)\n\n\n### Bug Fixes\n\n* **pluto:** detect VOD ads positively so un-DRM'd-content titles don't break ([870e4f1](https://github.com/ajstrick81/morphe-androidtv-patches/commit/870e4f19892aff5f393f01bb6faa2777f8cf7149)), closes [#144](https://github.com/ajstrick81/morphe-androidtv-patches/issues/144)\n\n\n\n",
-  "release_tag": "v1.30.4",
-  "release_date": "2026-09-04T02:38:52Z"
+  "fingerprint": "8196552ed0dc1ec0dbd0ee4fdafebfdf572c0c3424a7474b5c6c2ba04c61fe4a",
+  "release_notes": "# [1.31.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.30.4...v1.31.0) (2026-09-05)\n\n\n### Features\n\n* **espn:** mask live commercial breaks with a slate + mute; suppress VOD ads ([#150](https://github.com/ajstrick81/morphe-androidtv-patches/issues/150)) ([670afa2](https://github.com/ajstrick81/morphe-androidtv-patches/commit/670afa2ae98745d38653d05b190a76e0df44f45d))\n\n\n\n",
+  "release_tag": "v1.31.0",
+  "release_date": "2026-09-05T14:21:18Z"
 }
