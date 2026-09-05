@@ -1,204 +1,96 @@
 {
   "affected_bundles": [
     {
-      "bundle": "liongalahad-nuviotv-patches",
-      "channel": "dev",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "NuvioTV",
-          "package": "com.nuvio.tv",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/liongalahad/liongalahad-nuviotv-morphe-patches",
-      "patches_name": "UserXYZ Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "liongalahad-nuviotv-patches",
+      "bundle": "steamlink",
       "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "NuvioTV",
-          "package": "com.nuvio.tv",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/liongalahad/liongalahad-nuviotv-morphe-patches",
-      "patches_name": "UserXYZ Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "nuviotv",
-      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "NuvioTV",
-          "package": "com.nuvio.tv",
-          "badge_type": "MAJOR UPDATE",
+          "app_name": "Steam Link",
+          "package": "com.valvesoftware.steamlinkvr",
+          "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
+            "patches_added": [
               {
-                "name": "Allow Importing Subs from Local Storage",
-                "description": "Imports device subtitle files into Nuvio's ExoPlayer subtitle menu without rebuilding active playback.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
+                "name": "GXR face bridge (version 5002318 and below)",
+                "description": "For exact older Steam Link builds only. Installs libgxr_face_bridge.so (XR_FB_face_tracking2 → XR_ANDROID_face_tracking API layer) and adds android.permission.FACE_TRACKING to the manifest. See the [GXR Face Bridge source](https://github.com/compdoge/gxr-face-bridge) and matching [Galaxy XR VRCFT module](https://github.com/compdoge/LinkFT)."
               },
               {
-                "name": "Local Downloads",
-                "description": "Downloads selected direct movie and episode sources to local storage for exact local playback.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Local Media",
-                "description": "Adds Library > Storage playback, folder selection, and same-basename sidecar subtitles for local video files.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Mark SDH Subtitles",
-                "description": "Marks explicitly labelled SDH tracks and detected English SDH subtitle files.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Random Episode",
-                "description": "Adds persistent per-show random playback with All or Unwatched episode pools.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Remove SDH Annotations",
-                "description": "Adds Settings → Morphe → Subtitles to normalize music symbols and remove SDH annotations from Media3 subtitles.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Side-by-side installation",
-                "description": "Installs the patched app separately as Nuvio Morphe instead of replacing NuvioTV.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
+                "name": "GXR tongue bridge (version 5002322 and above)",
+                "description": "For modern Steam Link builds with Valve's native Android XR face mapping. Currently verified and enabled only for exact build 5002322; newer builds require a separately verified native layout. Preserves Valve's face expressions and standard TongueOut while exposing Galaxy XR tongue out/left/right/up/down to the matching Galaxy XR VRCFT module."
               }
-            ]
+            ],
+            "patches_removed": [
+              {
+                "name": "GXR face bridge",
+                "description": "Installs libgxr_face_bridge.so (XR_FB_face_tracking2 → XR_ANDROID_face_tracking API layer) and adds android.permission.FACE_TRACKING to the manifest. See the [GXR Face Bridge source](https://github.com/compdoge/gxr-face-bridge) and matching [Galaxy XR VRCFT module](https://github.com/compdoge/LinkFT)."
+              }
+            ],
+            "patches_modified": []
           },
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/liongalahad/liongalahad-nuviotv-morphe-patches",
-      "patches_name": "UserXYZ Patches",
+      "repo_url": "https://github.com/AngelDark92/steamlink-patches",
+      "patches_name": "Steam Link GalaxyXR Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "liongalahad-stremio-androidtv-morphe-patches",
-      "channel": "dev",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Stremio Android TV",
-          "package": "com.stremio.one",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/liongalahad/liongalahad-stremio-morphe-patches",
-      "patches_name": "Stremio Morphe Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "liongalahad-stremio-androidtv-morphe-patches",
+      "bundle": "aapam",
       "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Stremio Android TV",
-          "package": "com.stremio.one",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/liongalahad/stremio-androidTV-morphe-patches",
-      "patches_name": "Stremio Morphe Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "liongalahad",
-      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "NuvioTV",
-          "package": "com.nuvio.tv",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Stremio Android TV",
-          "package": "com.stremio.one",
-          "badge_type": "REMOVED APP",
+          "app_name": "Prime Video Android TV",
+          "package": "com.amazon.amazonvideo.livingroom",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/liongalahad/liongalahad-nuviotv-morphe-patches",
-      "patches_name": "UserXYZ Patches",
+      "repo_url": "https://github.com/WZSE/aapam-patches",
+      "patches_name": "aapam Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "liongalahad",
+      "bundle": "hxreborn-tiktok",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "NuvioTV",
-          "package": "com.nuvio.tv",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Stremio Android TV",
-          "package": "com.stremio.one",
-          "badge_type": "REMOVED APP",
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Region spoof",
+                "description": "Adds in-app controls for changing the region TikTok reads."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "SIM spoof",
+                "description": "Spoofs SIM country and operator information retrieved by TikTok, with country presets for easier setup."
+              }
+            ],
+            "patches_modified": []
+          },
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/liongalahad/liongalahad-nuviotv-morphe-patches",
-      "patches_name": "UserXYZ Patches",
+      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
+      "patches_name": "hxreborn TikTok Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]

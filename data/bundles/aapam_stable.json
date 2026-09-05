@@ -2,10 +2,101 @@
   "bundle": "aapam",
   "channel": "stable",
   "repo_url": "https://github.com/WZSE/aapam-patches",
-  "created_at": "2026-08-13T06:32:53",
-  "version": "v1.0.0",
-  "description": "## 1.0.0 (2026-08-13)\n\n### ✨ New Features\n\n* add ZEE5 patches (disable ads, analytics, CleverTap, Firebase) ([6f99518](https://github.com/WZSE/aapam-patches/commit/6f9951817554a499b770e6c7e246ac7507dabbef))\n",
+  "created_at": "2026-09-05T09:34:19",
+  "version": "v1.1.0",
+  "description": "## [1.1.0](https://github.com/WZSE/aapam-patches/compare/v1.0.0...v1.1.0) (2026-09-05)\n\n### 🐛 Bug Fixes\n\n* block Prime Video ads without breaking playback ([00416bd](https://github.com/WZSE/aapam-patches/commit/00416bdf0196cb65bb25526149315432c4efd505))\n\n### ✨ New Features\n\n* 6.24 support. untested for arm64-v8a ([f40b9ce](https://github.com/WZSE/aapam-patches/commit/f40b9cef107c052a0a7e4092579a2eb2b65ce718))\n* ajstrick81 baseline for prime is ingested ([80b53d6](https://github.com/WZSE/aapam-patches/commit/80b53d634eb2abdc4e44b883b73f3dfe0eda9d6e))\n",
   "apps": [
+    {
+      "app_name": "Prime Video Android TV",
+      "package": "com.amazon.amazonvideo.livingroom",
+      "patches": [
+        {
+          "name": "Bundle native ad-strip hook",
+          "description": "Packages the Prime Video libignite interception library for this APK's ABIs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a"
+          ]
+        },
+        {
+          "name": "Bundle native ad-strip hook",
+          "description": "Packages the Prime Video libignite interception library for this APK's ABIs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.24.5+v16.0.0.231-allAbis"
+          ]
+        },
+        {
+          "name": "Clone Prime Video",
+          "description": "Renames the package to <original>.mod (and its provider authorities / custom permissions) so the patched app installs side-by-side with a non-removable system Prime Video. Opt-in.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a",
+            "6.24.5+v16.0.0.231-allAbis"
+          ]
+        },
+        {
+          "name": "Disable auto-updates",
+          "description": "Prevents Google Play Store from automatically replacing the patched APK with the official unpatched version.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a",
+            "6.24.5+v16.0.0.231-allAbis"
+          ]
+        },
+        {
+          "name": "Load native ad-strip hook",
+          "description": "Loads libpvhook.so at startup before Prime Video constructs its media pipeline.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a"
+          ]
+        },
+        {
+          "name": "Load native ad-strip hook",
+          "description": "Loads libpvhook.so at startup before Prime Video constructs its media pipeline.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.24.5+v16.0.0.231-allAbis"
+          ]
+        },
+        {
+          "name": "Override certificate pinning",
+          "description": "Adds a network_security_config trusting user CAs (no pin sets) so AdGuard Premium can inspect the app's platform-stack HTTPS. Optional adjunct: Prime Video's ad plane is largely native libcurl, so DNS blocking is the primary tool.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a",
+            "6.24.5+v16.0.0.231-allAbis"
+          ]
+        },
+        {
+          "name": "Prime Video extension",
+          "description": "Integrates the Prime Video ATV extension for ad group skipping.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a",
+            "6.24.5+v16.0.0.231-allAbis"
+          ]
+        },
+        {
+          "name": "Skip ads",
+          "description": "Multi-layer ad suppression targeting the SSAI schedule, impression reporting, and the Volley network chokepoint.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.23.23+v15.5.0.70-armv7a"
+          ]
+        }
+      ]
+    },
     {
       "app_name": "ZEE5 Android TV",
       "package": "com.graymatrix.did",
@@ -50,8 +141,8 @@
     }
   ],
   "patches_name": "aapam Patches",
-  "fingerprint": "ea8e56cd3e471095f44939a03ce0e3ef08c4baf08b38a1ddd55fbf2b5c781afd",
-  "release_notes": "## 1.0.0 (2026-08-13)\n\n### ✨ New Features\n\n* add ZEE5 patches (disable ads, analytics, CleverTap, Firebase) ([6f99518](https://github.com/WZSE/aapam-patches/commit/6f9951817554a499b770e6c7e246ac7507dabbef))\n",
-  "release_tag": "v1.0.0",
-  "release_date": "2026-08-13T06:32:53Z"
+  "fingerprint": "cb36bc2a9a57649c95d39a37d173bef2abb44995de40abcdad097d15a3f822f0",
+  "release_notes": "## [1.1.0](https://github.com/WZSE/aapam-patches/compare/v1.0.0...v1.1.0) (2026-09-05)\n\n### 🐛 Bug Fixes\n\n* block Prime Video ads without breaking playback ([00416bd](https://github.com/WZSE/aapam-patches/commit/00416bdf0196cb65bb25526149315432c4efd505))\n\n### ✨ New Features\n\n* 6.24 support. untested for arm64-v8a ([f40b9ce](https://github.com/WZSE/aapam-patches/commit/f40b9cef107c052a0a7e4092579a2eb2b65ce718))\n* ajstrick81 baseline for prime is ingested ([80b53d6](https://github.com/WZSE/aapam-patches/commit/80b53d634eb2abdc4e44b883b73f3dfe0eda9d6e))\n",
+  "release_tag": "v1.1.0",
+  "release_date": "2026-09-05T09:34:19Z"
 }
