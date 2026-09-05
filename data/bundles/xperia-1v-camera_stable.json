@@ -1,0 +1,66 @@
+{
+  "bundle": "xperia-1v-camera",
+  "channel": "stable",
+  "repo_url": "https://github.com/alalloush/xperia-1v-camera-patches",
+  "created_at": "2026-09-05T11:25:07",
+  "version": "v1.0.0",
+  "description": "## 1.0.0 (2026-09-05)\n\n### ✨ New Features\n\n* Xperia 1 V camera patches ([824a9e3](https://github.com/alalloush/xperia-1v-camera-patches/commit/824a9e3acb02d345415be120a3fd65b04424f2d8))\n",
+  "apps": [
+    {
+      "app_name": "Photography Pro",
+      "package": "com.sonymobile.photopro",
+      "patches": [
+        {
+          "name": "Storage fallback",
+          "description": "Fixes \"Memory unavailable\" on ROMs that cannot create Android/data/<pkg>/files (LineageOS on the Xperia 1 V): the storage probe falls back to the app's internal storage. Photos still go to DCIM through MediaStore.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.7.2.A.0.9"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Sony Camera",
+      "package": "jp.co.sony.mc.cameraapp",
+      "patches": [
+        {
+          "name": "Camera common visibility",
+          "description": "Lets the camera app see and use com.sonymobile.cameracommon (camera status provider, gyro calibration) when both are sideloaded: adds the <queries> entry and declares the CAMERA_STATUS_PROVIDER and CAMERA_ADDON permissions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.2.A.0.8",
+            "1.0.2.A.0.6"
+          ]
+        },
+        {
+          "name": "Storage fallback",
+          "description": "Fixes \"Memory unavailable\" on ROMs that cannot create Android/data/<pkg>/files (LineageOS on the Xperia 1 V): the storage probe falls back to the app's internal storage. Photos still go to DCIM through MediaStore.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.2.A.0.8",
+            "1.0.2.A.0.6"
+          ]
+        },
+        {
+          "name": "Xperia 1 V camera HAL compatibility",
+          "description": "Makes the Xperia 1 VI camera app work on the Xperia 1 V camera HAL: truncates objectSelectTriggerArea to the 4 ints the 1 V HAL defines and sends conditionDetectMode alongside sceneDetectMode, which the 1 V HAL validates together.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.2.A.0.8",
+            "1.0.2.A.0.6"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "alalloush Xperia 1 V camera patches",
+  "fingerprint": "600767f0fc62aa2c89b7408b4608f9d873f067760c407c3af87055e6a13ef1f0",
+  "release_notes": "## 1.0.0 (2026-09-05)\n\n### ✨ New Features\n\n* Xperia 1 V camera patches ([824a9e3](https://github.com/alalloush/xperia-1v-camera-patches/commit/824a9e3acb02d345415be120a3fd65b04424f2d8))\n",
+  "release_tag": "v1.0.0",
+  "release_date": "2026-09-05T11:25:07Z"
+}

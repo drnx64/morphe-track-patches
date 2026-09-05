@@ -1,0 +1,54 @@
+{
+  "bundle": "discord",
+  "channel": "stable",
+  "repo_url": "https://github.com/jrddupont/discord-patches",
+  "created_at": "2026-09-05T18:07:48",
+  "version": "v1.2.0",
+  "description": "Keeps the Hermes patches alive: pins the app to its built-in bundle.\n\n- New: Pin app to built-in bundle — forces Discord to always run the APK's Hermes bundle and ignore downloaded (OTA) updates. Without it, an OTA silently undoes all Hermes patches (observed on device: banner returned, composer gift never left). Smali edit to DCDReactNativeHost.getJSBundleFile(), verified by re-decode.\n- Both patches cover 343.12 / 342.16 / 341.13 Stable.\n- Verified: official Morphe CLI applies the bundle to all three stable APKs (Hermes edits exact, no strays); classes.dex confirmed present.\n- Note: official JS updates stop arriving until the APK itself is updated.",
+  "apps": [
+    {
+      "app_name": "Discord",
+      "package": "com.discord",
+      "patches": [
+        {
+          "name": "Hide gift button",
+          "description": "Hides the gift button in the chat message composer.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "343.12 - Stable",
+            "342.16 - Stable",
+            "341.13 - Stable"
+          ]
+        },
+        {
+          "name": "Hide quest promo banner",
+          "description": "Hides the quest promo banner at the top of the server channel list.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "343.12 - Stable",
+            "342.16 - Stable",
+            "341.13 - Stable"
+          ]
+        },
+        {
+          "name": "Pin app to built-in bundle",
+          "description": "Forces Discord to always run the bundle inside the APK and ignore downloaded (OTA) updates, which would otherwise silently undo the other patches. Turn this off (or update the APK) to receive official updates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "343.12 - Stable",
+            "342.16 - Stable",
+            "341.13 - Stable"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Discord Patches",
+  "fingerprint": "46a706b7717e8544fa6e76cb4f7287a51099f022bdba2346fe0fe35656d3a091",
+  "release_notes": "Keeps the Hermes patches alive: pins the app to its built-in bundle.\n\n- New: Pin app to built-in bundle — forces Discord to always run the APK's Hermes bundle and ignore downloaded (OTA) updates. Without it, an OTA silently undoes all Hermes patches (observed on device: banner returned, composer gift never left). Smali edit to DCDReactNativeHost.getJSBundleFile(), verified by re-decode.\n- Both patches cover 343.12 / 342.16 / 341.13 Stable.\n- Verified: official Morphe CLI applies the bundle to all three stable APKs (Hermes edits exact, no strays); classes.dex confirmed present.\n- Note: official JS updates stop arriving until the APK itself is updated.",
+  "release_tag": "v1.2.0",
+  "release_date": "2026-09-05T18:07:48Z"
+}
