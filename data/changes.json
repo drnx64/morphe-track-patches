@@ -1,6 +1,168 @@
 {
   "affected_bundles": [
     {
+      "bundle": "flexboard",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Hidden: Emoji Kitchen browse",
+                "description": "Turns on one finished Gboard feature that a resigned build can never receive: browsing Emoji Kitchen rather than only being offered its suggestions. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which."
+              },
+              {
+                "name": "Hidden: custom sticker tab",
+                "description": "Turns on one finished Gboard feature that a resigned build can never receive: a tab for stickers you added yourself. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which."
+              },
+              {
+                "name": "Hidden: dismissable chips",
+                "description": "Turns on one finished Gboard feature that a resigned build can never receive: a close control on the chips Gboard offers unprompted. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which."
+              },
+              {
+                "name": "Hidden: grammar check",
+                "description": "Turns on one finished Gboard feature that a resigned build can never receive: grammar mistakes underlined as you type, and the settings row that switches them on. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which."
+              },
+              {
+                "name": "Hidden: offline translate",
+                "description": "Turns on one finished Gboard feature that a resigned build can never receive: translation without a network round trip. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which."
+              },
+              {
+                "name": "Hidden: proofread",
+                "description": "Turns on one finished Gboard feature that a resigned build can never receive: on-device proofreading, the grammar checker's sibling. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which."
+              },
+              {
+                "name": "Hidden: settings search",
+                "description": "Turns on one finished Gboard feature that a resigned build can never receive: search within Gboard's own settings. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Grammar Check Row",
+                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Suggested Settings",
+                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if the Hidden: grammar check patch is applied too.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Text Action Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists. These three share the toolbar with Gboard's own icons and with Toolbar Hotkeys. Bigger Toolbar, which is applied unless you deselect it, raises the ceiling from five to twelve; without it, five is all the bar can hold.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Toolbar Hotkeys",
+                "description": "Adds eight configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open. The slots share the toolbar with Gboard's own icons: Bigger Toolbar, which is applied unless you deselect it, makes room for twelve, but on a stock ceiling of five not all eight fit.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/JZ6/Flexboard",
+      "patches_name": "Flexboard",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "braydog2010",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Venabox Hub",
+          "package": "com.dubani.dub",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Premium",
+                "description": "Unlocks premium",
+                "changes": [
+                  "versions: +4 versions"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/BrayDog2010/morphe-patches",
+      "patches_name": "BrayDog2010 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+      "patches_name": "byehi98 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+      "patches_name": "byehi98 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
       "bundle": "legendsciber",
       "channel": "stable",
       "badge_type": "UPDATED",
@@ -8,42 +170,332 @@
         {
           "app_name": "Shadow Fight 2",
           "package": "com.nekki.shadowfight",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Shadow Fight 2 IAP Bypass",
+                "description": "Bypasses Google Play billing. Intercepts Purchase and triggers OnPurchaseSucceeded directly.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/legendsciber/morphe-patches",
+      "patches_name": "legendsciber's Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "ftl",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "WiFi Analyzer",
+          "package": "abdelrahman.wifianalyzerpro",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Calendar",
+          "package": "calendar.agenda.schedule.event.advance.calendar.planner",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Xender",
+          "package": "cn.xender",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Clean main UI",
+                "description": "Hides the bottom navigation bar, the top-right guide icon, and the Rate/Help/About drawer items, keeps the connect/create/join buttons on top, and stops them from being auto-hidden.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Skip splash screen",
+                "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation entirely.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Speed up splash screen",
+                "description": "Enters the main activity directly after the splash screen.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Ampere",
+          "package": "com.gombosdev.ampere",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Bangla Dictionary",
+          "package": "com.hdictionary.bn",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MiXplorer",
+          "package": "com.mixplorer",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MX Player Pro",
+          "package": "com.mxtech.videoplayer.pro",
           "badge_type": "MAJOR UPDATE",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Shadow Fight 2 IAP Bypass",
-                "description": "Bypasses Google Play billing. Real-money purchases use Gold instead. Currency set to 999999."
+                "name": "Hide Settings Page UseLess Buttons",
+                "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab."
               },
               {
-                "name": "Shadow Fight 2 IAP Bypass Trigger",
-                "description": "Loads IAP bypass native library."
+                "name": "Hide top tiles",
+                "description": "Hides the top tiles."
+              },
+              {
+                "name": "Skip Splash Screen",
+                "description": "Skips Splash Screen so the app boots straight past the splash and update screen."
               }
             ],
             "patches_removed": [
               {
-                "name": "Shadow Fight 2 Crash Log",
-                "description": "Saves crash info to a file if the game crashes."
+                "name": "Hide Me tab promo items",
+                "description": "Collapses the WhatsApp, Legal, and Help entries on the Me tab."
               },
               {
-                "name": "Shadow Fight 2 Crash Trigger",
-                "description": "Enables crash logging."
+                "name": "Hide local tiles banner",
+                "description": "Collapses the local device tiles banner."
               },
               {
-                "name": "Shadow Fight 2 Dump Trigger",
-                "description": "Triggers ShadowDump via UnityPlayerActivity.onCreate"
+                "name": "Skip welcome screen",
+                "description": "Moves the launcher intent filters and app shortcuts from the welcome/splash activity to the main activity, so the app boots straight past the splash and update screen."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Hide File Transfer, Video Playlist, Private Folder tiles",
+                "description": "Removes the File Transfer, Video Playlist, and Private Folder tiles from settings Page.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "RS File Manager",
+          "package": "com.rs.explorer.filemanager",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Clean sidebar",
+                "description": "Hides the Bookmarks, remote-connection and Category sections from the navigation sidebar, and hides Encrypt and Downloader from the Storage section."
               },
               {
-                "name": "Shadow Fight 2 Runtime Dump",
-                "description": "Dumps all Unity classes/fields with ObscuredInt to logcat and files. Use logcat -s ShadowDump or cat shizuku-terminal/shadowdump-log.txt"
+                "name": "Disable downloader from download menu",
+                "description": "Strips RsDownloadActivity's intent filters so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
               },
               {
-                "name": "Shadow Fight 2 Unlimited Values",
-                "description": "Sets in-game values to unlimited."
+                "name": "Disable rate us dialog",
+                "description": "Overrides show() on the in-app \"rate us\" dialog so it's still built but never displayed."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Skip splash screen",
+                "description": "Skips Splash Screen From 2nd App Opening",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "SnapTube",
+          "package": "com.snaptube.premium",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Clean SnapTube Settings Page",
+                "description": "Removes the Download tools and Phone clean categories, and their sub-items, from Settings."
               },
               {
-                "name": "Shadow Fight 2 Values Trigger",
-                "description": "Enables unlimited values."
+                "name": "Disable Annoying Snaptube Notifications",
+                "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default."
+              },
+              {
+                "name": "Remove from default browser list",
+                "description": "Strips the LinkHandleActivity alias's unscoped so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Disable Notification Defaults",
+                "description": "Turns off the Toolbar, Recommended contents, and Tool notifications channels by default."
+              },
+              {
+                "name": "Hide Settings Items",
+                "description": "Hides the Download tools and Phone clean categories, and their sub-items, from Settings."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "WIFI WPS WPA TESTER",
+          "package": "com.tester.wpswpatester",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "WPSApp Pro",
+          "package": "com.themausoft.wpsapppro",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "File Manager - XFolder",
+          "package": "files.fileexplorer.filemanager",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Video Downloader",
+          "package": "video.downloader.videodownloader",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "All Video Downloader & Ace Player",
+          "package": "videoplayer.videodownloader.downloader",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Boost Splash Screen",
+                "description": "Fixes Remove Ads And Remove Ads Lite Gettings Stuck In Splash Screen Useless if you also select skip splash and language activity patch. Also stops the splash from hiding the on-screen navigation buttons."
+              },
+              {
+                "name": "Disable downloader from download menu",
+                "description": "Strips WebDownloadActivity's intent-filter data so it no longer offers itself as a handler in the system download/\"complete action using\" chooser."
+              },
+              {
+                "name": "Remove from default browser list",
+                "description": "Removes the unscoped http/https <data> entries from MainActivity's first intent-filter carrying them so the app stops appearing as a candidate in the system's default browser / \"open with\" chooser."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Skip splash and language screens",
+                "description": "Jumps straight to the main activity from the splash screen, skipping the splash animation, the language-selection screen, and any ad/app-open dialog normally shown first.",
+                "changes": [
+                  "enabled"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
+      "patches_name": "BlazeFTL Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "dh6k",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Titanium Browser for Android",
+          "package": "io.github.jqssun.helium",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Force highest refresh rate",
+                "description": "Experimental version-unpinned patch: forces Chromium to pick the highest-refresh display mode by requesting Float.MAX_VALUE through WindowAndroid. Works on any panel (60/90/120/144/165Hz+) without knowing the max at patch time. May increase battery usage; ambiguous targets fail closed."
+              },
+              {
+                "name": "Keep Titanium Extensions Child Processes Alive",
+                "description": "Experimental version-unpinned structural/data-flow patch: starts one main-process foreground service with persistent low-priority notification and forces child STRONG binding plus IMPORTANT/STRONG priority updates. Tolerates routine signature, register, and helper-name changes; ambiguous targets fail closed. May increase RAM, battery, and process pressure; mitigates LMK kills only. To hide the notification, use Android Settings > Apps > Titanium > Notifications (the keep-alive service stays active either way)."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Keep Helium Child Processes Alive",
+                "description": "Experimental version-unpinned structural/data-flow patch: starts one main-process foreground service with persistent low-priority notification and forces child STRONG binding plus IMPORTANT/STRONG priority updates. Tolerates routine signature, register, and helper-name changes; ambiguous targets fail closed. May increase RAM, battery, and process pressure; mitigates LMK kills only."
               }
             ],
             "patches_modified": []
@@ -53,8 +505,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/legendsciber/morphe-patches",
-      "patches_name": "legendsciber's Patches",
+      "repo_url": "https://github.com/dh6k/morphe-patches",
+      "patches_name": "Brave and universal patches",
       "extra_badges": [
         "VERSION BUMP"
       ]

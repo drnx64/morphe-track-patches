@@ -2,9 +2,9 @@
   "bundle": "dh6k",
   "channel": "dev",
   "repo_url": "https://github.com/dh6k/morphe-patches",
-  "created_at": "2026-09-04T09:26:29",
-  "version": "v1.5.0-dev.5",
-  "description": "## [1.5.0-dev.5](https://github.com/dh6k/morphe-patches/compare/v1.5.0-dev.4...v1.5.0-dev.5) (2026-09-04)\n\n### 🐛 Bug Fixes\n\n* **brave:** tolerate Origin log-literal drift on 1.97.x ([86755f2](https://github.com/dh6k/morphe-patches/commit/86755f20a37a75546af646cd7c0f3acd684ca674)), closes [#1](https://github.com/dh6k/morphe-patches/issues/1) [#5](https://github.com/dh6k/morphe-patches/issues/5)\n",
+  "created_at": "2026-09-06T05:21:07",
+  "version": "v1.6.0-dev.6",
+  "description": "## [1.6.0-dev.6](https://github.com/dh6k/morphe-patches/compare/v1.6.0-dev.5...v1.6.0-dev.6) (2026-09-06)\n\n### 🐛 Bug Fixes\n\n* **titanium:** replace crashing D() tail hook with nearest-mode head const ([1432277](https://github.com/dh6k/morphe-patches/commit/1432277e053edbdddd417e529917153ee4c9ddc6))\n",
   "apps": [
     {
       "app_name": "Brave Browser",
@@ -46,14 +46,30 @@
       ]
     },
     {
-      "app_name": "Helium Browser",
+      "app_name": "Titanium Browser for Android",
       "package": "io.github.jqssun.helium",
       "patches": [
         {
-          "name": "Keep Helium Child Processes Alive",
-          "description": "Experimental version-unpinned structural/data-flow patch: starts one main-process foreground service with persistent low-priority notification and forces child STRONG binding plus IMPORTANT/STRONG priority updates. Tolerates routine signature, register, and helper-name changes; ambiguous targets fail closed. May increase RAM, battery, and process pressure; mitigates LMK kills only.",
+          "name": "Force highest refresh rate",
+          "description": "Experimental version-unpinned patch: forces Chromium to pick the highest-refresh display mode by requesting Float.MAX_VALUE through WindowAndroid. Works on any panel (60/90/120/144/165Hz+) without knowing the max at patch time. May increase battery usage; ambiguous targets fail closed.",
           "use": false,
           "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Keep Titanium Extensions Child Processes Alive",
+          "description": "Experimental version-unpinned structural/data-flow patch: starts one main-process foreground service with persistent low-priority notification and forces child STRONG binding plus IMPORTANT/STRONG priority updates. Tolerates routine signature, register, and helper-name changes; ambiguous targets fail closed. May increase RAM, battery, and process pressure; mitigates LMK kills only. To hide the notification, use Android Settings > Apps > Titanium > Notifications (the keep-alive service stays active either way).",
+          "use": false,
+          "options": [
+            {
+              "key": "notificationTitle",
+              "description": "First line of the keep-alive notification. Blank falls back to default."
+            },
+            {
+              "key": "notificationText",
+              "description": "Second line of the keep-alive notification. Blank falls back to default."
+            }
+          ],
           "compatible_versions": []
         }
       ]
@@ -86,8 +102,8 @@
     }
   ],
   "patches_name": "Brave and universal patches",
-  "fingerprint": "71b10603e60028ecb3c8e410b3bafb84b55854b79f82cef29e37c5f74769e9e2",
-  "release_notes": "## [1.5.0-dev.5](https://github.com/dh6k/morphe-patches/compare/v1.5.0-dev.4...v1.5.0-dev.5) (2026-09-04)\n\n### 🐛 Bug Fixes\n\n* **brave:** tolerate Origin log-literal drift on 1.97.x ([86755f2](https://github.com/dh6k/morphe-patches/commit/86755f20a37a75546af646cd7c0f3acd684ca674)), closes [#1](https://github.com/dh6k/morphe-patches/issues/1) [#5](https://github.com/dh6k/morphe-patches/issues/5)\n",
-  "release_tag": "v1.5.0-dev.5",
-  "release_date": "2026-09-04T09:26:29Z"
+  "fingerprint": "30c5abd71652dc7528416f4182d5677d5ca1d910fcbb8521d15990397c4e1938",
+  "release_notes": "## [1.6.0-dev.6](https://github.com/dh6k/morphe-patches/compare/v1.6.0-dev.5...v1.6.0-dev.6) (2026-09-06)\n\n### 🐛 Bug Fixes\n\n* **titanium:** replace crashing D() tail hook with nearest-mode head const ([1432277](https://github.com/dh6k/morphe-patches/commit/1432277e053edbdddd417e529917153ee4c9ddc6))\n",
+  "release_tag": "v1.6.0-dev.6",
+  "release_date": "2026-09-06T05:21:07Z"
 }

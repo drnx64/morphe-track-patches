@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-09-04T05:09:07",
-  "version": "v2.2.1-dev.1",
-  "description": "## 2.2.1-dev.1\n\n- feat: a scratch text box in Settings, so a change can be tried where it was made",
+  "created_at": "2026-09-06T04:19:15",
+  "version": "v2.3.0-dev.2",
+  "description": "## 2.3.0-dev.2\n\n- fix: split Hidden Features into one patch per flag, all opt-in",
   "apps": [
     {
       "app_name": "Gboard",
@@ -29,9 +29,63 @@
           ]
         },
         {
-          "name": "Grammar Check Row",
-          "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks.",
-          "use": true,
+          "name": "Hidden: custom sticker tab",
+          "description": "Turns on one finished Gboard feature that a resigned build can never receive: a tab for stickers you added yourself. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Hidden: dismissable chips",
+          "description": "Turns on one finished Gboard feature that a resigned build can never receive: a close control on the chips Gboard offers unprompted. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Hidden: Emoji Kitchen browse",
+          "description": "Turns on one finished Gboard feature that a resigned build can never receive: browsing Emoji Kitchen rather than only being offered its suggestions. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Hidden: grammar check",
+          "description": "Turns on one finished Gboard feature that a resigned build can never receive: grammar mistakes underlined as you type, and the settings row that switches them on. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Hidden: offline translate",
+          "description": "Turns on one finished Gboard feature that a resigned build can never receive: translation without a network round trip. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Hidden: proofread",
+          "description": "Turns on one finished Gboard feature that a resigned build can never receive: on-device proofreading, the grammar checker's sibling. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Hidden: settings search",
+          "description": "Turns on one finished Gboard feature that a resigned build can never receive: search within Gboard's own settings. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "18.0.3.954559732-release-arm64-v8a"
@@ -48,7 +102,7 @@
         },
         {
           "name": "Suggested Settings",
-          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings.",
+          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if the Hidden: grammar check patch is applied too.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -75,7 +129,7 @@
         },
         {
           "name": "Text Action Buttons",
-          "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists. These three compete for the five icons Gboard's toolbar holds; Bigger Toolbar raises that ceiling if you run the hotkeys as well.",
+          "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists. These three share the toolbar with Gboard's own icons and with Toolbar Hotkeys. Bigger Toolbar, which is applied unless you deselect it, raises the ceiling from five to twelve; without it, five is all the bar can hold.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -84,7 +138,7 @@
         },
         {
           "name": "Toolbar Hotkeys",
-          "description": "Adds six configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open. Gboard's toolbar holds five icons in total, shared with its own, so apply Bigger Toolbar too if you want all six on the bar at once.",
+          "description": "Adds eight configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open. The slots share the toolbar with Gboard's own icons: Bigger Toolbar, which is applied unless you deselect it, makes room for twelve, but on a stock ceiling of five not all eight fit.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -104,8 +158,8 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "ebdaa5224e64e0c82ca193c69cca1e1f590774f8981a2dda8349304134fd1286",
-  "release_notes": "## 2.2.1-dev.1\n\n- feat: a scratch text box in Settings, so a change can be tried where it was made",
-  "release_tag": "v2.2.1-dev.1",
-  "release_date": "2026-09-04T05:09:07Z"
+  "fingerprint": "d5f920826f94a4c0427a6c7b7f6b63470920f395f6a8ffe6af54ecec8fd28541",
+  "release_notes": "## 2.3.0-dev.2\n\n- fix: split Hidden Features into one patch per flag, all opt-in",
+  "release_tag": "v2.3.0-dev.2",
+  "release_date": "2026-09-06T04:19:15Z"
 }
