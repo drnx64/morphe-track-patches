@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-09-06T04:19:15",
-  "version": "v2.3.0-dev.2",
-  "description": "## 2.3.0-dev.2\n\n- fix: split Hidden Features into one patch per flag, all opt-in",
+  "created_at": "2026-09-06T17:05:41",
+  "version": "v2.3.0-dev.4",
+  "description": "## 2.3.0-dev.4\n\n- feat: default-on the two flags that were watched working",
   "apps": [
     {
       "app_name": "Gboard",
@@ -29,62 +29,17 @@
           ]
         },
         {
-          "name": "Hidden: custom sticker tab",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: a tab for stickers you added yourself. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
-          "use": false,
+          "name": "Hidden Features",
+          "description": "Turns on two finished Gboard features that a resigned build can never receive: grammar check, and a close control on the chips Gboard offers unprompted. Their flags are delivered per app signature, so resigning the APK means they never arrive and stay off. Both are confirmed working on a device; five other flags were tried and dropped.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "18.0.3.954559732-release-arm64-v8a"
           ]
         },
         {
-          "name": "Hidden: dismissable chips",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: a close control on the chips Gboard offers unprompted. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Hidden: Emoji Kitchen browse",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: browsing Emoji Kitchen rather than only being offered its suggestions. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Hidden: grammar check",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: grammar mistakes underlined as you type, and the settings row that switches them on. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Hidden: offline translate",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: translation without a network round trip. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Hidden: proofread",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: on-device proofreading, the grammar checker's sibling. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Hidden: settings search",
-          "description": "Turns on one finished Gboard feature that a resigned build can never receive: search within Gboard's own settings. Phenotype delivers flags per app signature, so a patched APK never receives them and the feature stays off. Opt-in: one of these seven stops Gboard starting and it is not yet known which.",
+          "name": "Hidden Features (unconfirmed)",
+          "description": "Turns on four finished Gboard features that a resigned build can never receive: Emoji Kitchen browse, the custom sticker tab, offline translation, and search in Gboard's settings. Off by default because none of the four has been seen working on a device — the flags flip, but each also depends on data Google only sends to an unpatched install. Safe to try: none of them crashes.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -102,7 +57,7 @@
         },
         {
           "name": "Suggested Settings",
-          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if the Hidden: grammar check patch is applied too.",
+          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if Hidden Features is applied too.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -158,8 +113,8 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "d5f920826f94a4c0427a6c7b7f6b63470920f395f6a8ffe6af54ecec8fd28541",
-  "release_notes": "## 2.3.0-dev.2\n\n- fix: split Hidden Features into one patch per flag, all opt-in",
-  "release_tag": "v2.3.0-dev.2",
-  "release_date": "2026-09-06T04:19:15Z"
+  "fingerprint": "9ef7077e0ddd30331d7adc37260c1220691f5d59f986c134f4969babf5f86b71",
+  "release_notes": "## 2.3.0-dev.4\n\n- feat: default-on the two flags that were watched working",
+  "release_tag": "v2.3.0-dev.4",
+  "release_date": "2026-09-06T17:05:41Z"
 }
