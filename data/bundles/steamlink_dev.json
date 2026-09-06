@@ -2,9 +2,9 @@
   "bundle": "steamlink",
   "channel": "dev",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-09-04T21:22:01",
-  "version": "v1.14.0-dev.1",
-  "description": "## [1.14.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.13.0...v1.14.0-dev.1) (2026-09-04)\n\n### ✨ New Features\n\n* add modern tongue bridge for build 5002322 ([3d5912c](https://github.com/AngelDark92/steamlink-patches/commit/3d5912c57626d5b40fe08fe796736efedf9cd948))\n",
+  "created_at": "2026-09-06T11:57:46",
+  "version": "v1.14.1-dev.1",
+  "description": "## [1.14.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.14.0...v1.14.1-dev.1) (2026-09-06)\n\n### 🐛 Bug Fixes\n\n* RGB10_A2 now default ([5375d2b](https://github.com/AngelDark92/steamlink-patches/commit/5375d2bb683fbf3d4a55a92561db1171a1cf2076))\n",
   "apps": [
     {
       "app_name": "Steam Link",
@@ -971,7 +971,7 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Safe control retains GL_SRGB8_ALPHA8. Experimental mode requests linear GL_RGB10_A2 and applies an explicit sRGB EOTF. Galaxy XR runtime support is unverified."
+              "description": "Recommended output requests linear GL_RGB10_A2 with an explicit sRGB EOTF on every guarded layout. RGB10 projection submission was observed on Galaxy XR with 2.0.20/5001712; other builds and full panel precision remain unverified. Select 8-bit sRGB as a fallback."
             }
           ],
           "compatible_versions": [
@@ -997,7 +997,7 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Safe control retains GL_SRGB8_ALPHA8. Experimental mode requests linear GL_RGB10_A2 and applies an explicit sRGB EOTF. Galaxy XR runtime support is unverified."
+              "description": "Recommended output requests linear GL_RGB10_A2 with an explicit sRGB EOTF on every guarded layout. RGB10 projection submission was observed on Galaxy XR with 2.0.20/5001712; other builds and full panel precision remain unverified. Select 8-bit sRGB as a fallback."
             }
           ],
           "compatible_versions": [
@@ -1023,7 +1023,7 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Safe control retains GL_SRGB8_ALPHA8. Experimental mode requests linear GL_RGB10_A2 and applies an explicit sRGB EOTF. Galaxy XR runtime support is unverified."
+              "description": "Recommended output requests linear GL_RGB10_A2 with an explicit sRGB EOTF on every guarded layout. RGB10 projection submission was observed on Galaxy XR with 2.0.20/5001712; other builds and full panel precision remain unverified. Select 8-bit sRGB as a fallback."
             }
           ],
           "compatible_versions": [
@@ -1049,7 +1049,7 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Safe control retains GL_SRGB8_ALPHA8. Experimental mode requests linear GL_RGB10_A2 and applies an explicit sRGB EOTF. Galaxy XR runtime support is unverified."
+              "description": "Recommended output requests linear GL_RGB10_A2 with an explicit sRGB EOTF on every guarded layout. RGB10 projection submission was observed on Galaxy XR with 2.0.20/5001712; other builds and full panel precision remain unverified. Select 8-bit sRGB as a fallback."
             }
           ],
           "compatible_versions": [
@@ -1075,7 +1075,7 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Safe control retains GL_SRGB8_ALPHA8. Experimental mode requests linear GL_RGB10_A2 and applies an explicit sRGB EOTF. Galaxy XR runtime support is unverified."
+              "description": "Recommended output requests linear GL_RGB10_A2 with an explicit sRGB EOTF on every guarded layout. RGB10 projection submission was observed on Galaxy XR with 2.0.20/5001712; other builds and full panel precision remain unverified. Select 8-bit sRGB as a fallback."
             }
           ],
           "compatible_versions": [
@@ -1101,7 +1101,7 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Safe control retains GL_SRGB8_ALPHA8. Experimental mode requests linear GL_RGB10_A2 and applies an explicit sRGB EOTF. Galaxy XR runtime support is unverified."
+              "description": "Recommended output requests linear GL_RGB10_A2 with an explicit sRGB EOTF on every guarded layout. RGB10 projection submission was observed on Galaxy XR with 2.0.20/5001712; other builds and full panel precision remain unverified. Select 8-bit sRGB as a fallback."
             }
           ],
           "compatible_versions": [
@@ -1127,7 +1127,7 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Safe control retains GL_SRGB8_ALPHA8. Experimental mode requests linear GL_RGB10_A2 and applies an explicit sRGB EOTF. Galaxy XR runtime support is unverified."
+              "description": "Recommended output requests linear GL_RGB10_A2 with an explicit sRGB EOTF on every guarded layout. RGB10 projection submission was observed on Galaxy XR with 2.0.20/5001712; other builds and full panel precision remain unverified. Select 8-bit sRGB as a fallback."
             }
           ],
           "compatible_versions": [
@@ -1153,7 +1153,7 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Safe control retains GL_SRGB8_ALPHA8. Experimental mode requests linear GL_RGB10_A2 and applies an explicit sRGB EOTF. Galaxy XR runtime support is unverified."
+              "description": "Recommended output requests linear GL_RGB10_A2 with an explicit sRGB EOTF on every guarded layout. RGB10 projection submission was observed on Galaxy XR with 2.0.20/5001712; other builds and full panel precision remain unverified. Select 8-bit sRGB as a fallback."
             }
           ],
           "compatible_versions": [
@@ -1618,8 +1618,8 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "48491f9f299255d817797cad87167933e359d2fc99288cc8ac6b6e5511d80947",
-  "release_notes": "## [1.14.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.13.0...v1.14.0-dev.1) (2026-09-04)\n\n### ✨ New Features\n\n* add modern tongue bridge for build 5002322 ([3d5912c](https://github.com/AngelDark92/steamlink-patches/commit/3d5912c57626d5b40fe08fe796736efedf9cd948))\n",
-  "release_tag": "v1.14.0-dev.1",
-  "release_date": "2026-09-04T21:22:01Z"
+  "fingerprint": "b63d0f0cfdfb272a5a3ab512c364e1c9946792d135fa3f9d81bfd3449d8d753b",
+  "release_notes": "## [1.14.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.14.0...v1.14.1-dev.1) (2026-09-06)\n\n### 🐛 Bug Fixes\n\n* RGB10_A2 now default ([5375d2b](https://github.com/AngelDark92/steamlink-patches/commit/5375d2bb683fbf3d4a55a92561db1171a1cf2076))\n",
+  "release_tag": "v1.14.1-dev.1",
+  "release_date": "2026-09-06T11:57:46Z"
 }
