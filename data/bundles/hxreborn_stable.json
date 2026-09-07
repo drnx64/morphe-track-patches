@@ -2,9 +2,9 @@
   "bundle": "hxreborn",
   "channel": "stable",
   "repo_url": "https://github.com/hxreborn/morphe-patches",
-  "created_at": "2026-09-02T18:49:14",
-  "version": "v1.14.1",
-  "description": "## [1.14.1](https://github.com/hxreborn/morphe-patches/compare/v1.14.0...v1.14.1) (2026-09-02)\n\n### Bug Fixes\n\n* **Proton Mail:** apply the patches on any app version ([a30d68d](https://github.com/hxreborn/morphe-patches/commit/a30d68d47da5356b4c0d4f76dcf6137aa60dbe98))\n",
+  "created_at": "2026-09-07T20:15:58",
+  "version": "v1.15.0",
+  "description": "## [1.15.0](https://github.com/hxreborn/morphe-patches/compare/v1.14.1...v1.15.0) (2026-09-07)\n\n### Bug Fixes\n\n* **Proton Mail - Hide upgrade upselling:** hide special offer sidebar row ([3642fbd](https://github.com/hxreborn/morphe-patches/commit/3642fbd241656adbf04c916a0b042815b258eea4))\n* **Remove pairip protection:** return early from initializeLicenseCheck ([4677d7f](https://github.com/hxreborn/morphe-patches/commit/4677d7f778f4a419e456b1c99058c73ede820f24))\n\n### New Features\n\n* **Photo Editor Pro:** warn on an APK that is not the stock build ([e3f3a18](https://github.com/hxreborn/morphe-patches/commit/e3f3a18e2505fa1f6cc91a8891e2f78c0870ea6b))\n* **Proton Mail - Remove free accounts limit:** apply on 7.11.5 ([5e39b74](https://github.com/hxreborn/morphe-patches/commit/5e39b74a08693a928b278cbac9e0ea5008299797))\n* **Proton Mail:** support 7.11.5 ([528d9a7](https://github.com/hxreborn/morphe-patches/commit/528d9a7b751cb3ff14992256d7d00cf91638c466))\n* **Proton Mail:** warn on an APK that is not the stock build ([1d030a6](https://github.com/hxreborn/morphe-patches/commit/1d030a61439ca37eb91b33b0925b89410cd2473b))\n* **Quranify - Bypass integrity check:** load reciters without a Google Play check ([8a89e66](https://github.com/hxreborn/morphe-patches/commit/8a89e66e26ce3135b56b69cac053902cb786f980))\n* **Quranify - Unlock premium:** unlock the premium surah downloads and insights ([2c0aa72](https://github.com/hxreborn/morphe-patches/commit/2c0aa72c01ddc02cf3e40dd4a4408f0cee4d70fe))\n* **Spoof signature:** read the certificate from the APK being patched ([b20cf21](https://github.com/hxreborn/morphe-patches/commit/b20cf21025568d67efb51d2e92c8260abacc117d))\n",
   "apps": [
     {
       "app_name": "Perplexity",
@@ -91,21 +91,30 @@
           "description": "Replaces the dark theme background with pure black.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
         },
         {
           "name": "Hide upgrade upselling",
           "description": "Hides the top-bar upgrade button and promotional sidebar rows.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
         },
         {
           "name": "Remove 'Sent from' signature",
           "description": "Removes the 'Sent from Proton Mail' signature from emails.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
         },
         {
           "name": "Remove free accounts limit",
@@ -113,6 +122,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.5",
             "7.10.4"
           ]
         },
@@ -121,14 +131,20 @@
           "description": "Restores push notifications by spoofing the original app signature.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
         },
         {
           "name": "Unlock custom time picker",
           "description": "Enables picking a custom date and time when snoozing conversations and scheduling messages.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
         }
       ]
     },
@@ -229,6 +245,39 @@
       ]
     },
     {
+      "app_name": "Quranify",
+      "package": "com.mchutov.quranify",
+      "patches": [
+        {
+          "name": "Bypass integrity check",
+          "description": "Loads the reciter catalogue on a patched install.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.8"
+          ]
+        },
+        {
+          "name": "Remove pairip protection",
+          "description": "Removes the Play licensing check that sends a patched install to Google Play.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.8"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks downloading every surah, lyrics and tafsir, Android Auto, background playback controls, and insights.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.8"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Showly",
       "package": "com.michaldrabik.showly2",
       "patches": [
@@ -289,7 +338,7 @@
       "patches": [
         {
           "name": "Remove pairip protection",
-          "description": "Removes the Play Integrity license check.",
+          "description": "Removes the Play licensing check that sends a patched install to Google Play.",
           "use": true,
           "options": [],
           "compatible_versions": []
@@ -437,8 +486,8 @@
     }
   ],
   "patches_name": "hxreborn Patches",
-  "fingerprint": "55617036fa6470d6d9a1a6dde9761be0da584d824d2394b777402aee8c9f0082",
-  "release_notes": "## [1.14.1](https://github.com/hxreborn/morphe-patches/compare/v1.14.0...v1.14.1) (2026-09-02)\n\n### Bug Fixes\n\n* **Proton Mail:** apply the patches on any app version ([a30d68d](https://github.com/hxreborn/morphe-patches/commit/a30d68d47da5356b4c0d4f76dcf6137aa60dbe98))\n",
-  "release_tag": "v1.14.1",
-  "release_date": "2026-09-02T18:49:14Z"
+  "fingerprint": "6d5401ce8de4e359cd6ccac3ff6f1bca6951a8146990de6032eee3841f3b9bd5",
+  "release_notes": "## [1.15.0](https://github.com/hxreborn/morphe-patches/compare/v1.14.1...v1.15.0) (2026-09-07)\n\n### Bug Fixes\n\n* **Proton Mail - Hide upgrade upselling:** hide special offer sidebar row ([3642fbd](https://github.com/hxreborn/morphe-patches/commit/3642fbd241656adbf04c916a0b042815b258eea4))\n* **Remove pairip protection:** return early from initializeLicenseCheck ([4677d7f](https://github.com/hxreborn/morphe-patches/commit/4677d7f778f4a419e456b1c99058c73ede820f24))\n\n### New Features\n\n* **Photo Editor Pro:** warn on an APK that is not the stock build ([e3f3a18](https://github.com/hxreborn/morphe-patches/commit/e3f3a18e2505fa1f6cc91a8891e2f78c0870ea6b))\n* **Proton Mail - Remove free accounts limit:** apply on 7.11.5 ([5e39b74](https://github.com/hxreborn/morphe-patches/commit/5e39b74a08693a928b278cbac9e0ea5008299797))\n* **Proton Mail:** support 7.11.5 ([528d9a7](https://github.com/hxreborn/morphe-patches/commit/528d9a7b751cb3ff14992256d7d00cf91638c466))\n* **Proton Mail:** warn on an APK that is not the stock build ([1d030a6](https://github.com/hxreborn/morphe-patches/commit/1d030a61439ca37eb91b33b0925b89410cd2473b))\n* **Quranify - Bypass integrity check:** load reciters without a Google Play check ([8a89e66](https://github.com/hxreborn/morphe-patches/commit/8a89e66e26ce3135b56b69cac053902cb786f980))\n* **Quranify - Unlock premium:** unlock the premium surah downloads and insights ([2c0aa72](https://github.com/hxreborn/morphe-patches/commit/2c0aa72c01ddc02cf3e40dd4a4408f0cee4d70fe))\n* **Spoof signature:** read the certificate from the APK being patched ([b20cf21](https://github.com/hxreborn/morphe-patches/commit/b20cf21025568d67efb51d2e92c8260abacc117d))\n",
+  "release_tag": "v1.15.0",
+  "release_date": "2026-09-07T20:15:58Z"
 }

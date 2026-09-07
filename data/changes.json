@@ -1,47 +1,120 @@
 {
   "affected_bundles": [
     {
-      "bundle": "miguel",
-      "channel": "dev",
+      "bundle": "hxreborn",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Lara Croft: Guardian of Light",
-          "package": "com.feralinteractive.laracroftgol_android",
+          "app_name": "Proton Mail",
+          "package": "ch.protonmail.android",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "AMOLED dark theme",
+                "description": "Replaces the dark theme background with pure black.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              },
+              {
+                "name": "Hide upgrade upselling",
+                "description": "Hides the top-bar upgrade button and promotional sidebar rows.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              },
+              {
+                "name": "Remove 'Sent from' signature",
+                "description": "Removes the 'Sent from Proton Mail' signature from emails.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              },
+              {
+                "name": "Remove free accounts limit",
+                "description": "Removes the limit for maximum free accounts logged in.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Spoof signature",
+                "description": "Restores push notifications by spoofing the original app signature.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              },
+              {
+                "name": "Unlock custom time picker",
+                "description": "Enables picking a custom date and time when snoozing conversations and scheduling messages.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Quranify",
+          "package": "com.mchutov.quranify",
           "badge_type": "NEW APP",
           "scan_numbers": [
             1
           ]
         },
         {
-          "app_name": "Duck Life 6: Space",
-          "package": "com.mad.ducklifespace",
-          "badge_type": "NEW APP",
+          "app_name": "RateGlance",
+          "package": "com.sry.rateglance",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove pairip protection",
+                "description": "Removes the Play licensing check that sends a patched install to Google Play.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-      "patches_name": "Miguel's Patches",
+      "repo_url": "https://github.com/hxreborn/morphe-patches",
+      "patches_name": "hxreborn Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "andrewliang25",
+      "bundle": "gryphous-morphe",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "LINE",
-          "package": "jp.naver.line.android",
+          "app_name": "De'Longhi Comfort",
+          "package": "com.ddsx_ayla_android",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Fix location maps via GmsCore",
-                "description": "Shows a map again on the location screens of a re-signed build. This covers the location picker, the location messages in a chat, and the location posts. The tiles come from OpenFreeMap and do not look like Google Maps. This patch needs MicroG-RE 7.0.0 or later. A Root Mount install does not need this patch."
+                "name": "Disable review request dialog",
+                "description": "Prevents De'Longhi Comfort from asking to rate the app."
+              },
+              {
+                "name": "Restore AC controls on return",
+                "description": "Restores the selected air conditioner and reloads its controls when returning to De'Longhi Comfort."
               }
             ],
             "patches_removed": [],
@@ -52,26 +125,30 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/andrewliang25/morphe-patches",
-      "patches_name": "Andrew's Patches",
+      "repo_url": "https://github.com/NekoGryphou/gryphous-morphe-patches",
+      "patches_name": "Gryphou's Morphe Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "andrewliang25",
+      "bundle": "xperia-1v-camera",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "LINE",
-          "package": "jp.naver.line.android",
+          "app_name": "Sony Camera",
+          "package": "jp.co.sony.mc.cameraapp",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Fix location maps via GmsCore",
-                "description": "Shows a map again on the location screens of a re-signed build. This covers the location picker, the location messages in a chat, and the location posts. The tiles come from OpenFreeMap and do not look like Google Maps. This patch needs MicroG-RE 7.0.0 or later. A Root Mount install does not need this patch."
+                "name": "Raw H.264 stream",
+                "description": "Low-latency transport for Live streaming: the encoded H.264 is sent to the PC as a plain TCP stream instead of RTMP (~0.2 s glass-to-glass with Standard stabilization). Receive with gst-launch-1.0 tcpserversrc port=6970 ! h264parse ! avdec_h264 ! ... Video only."
+              },
+              {
+                "name": "Raw stream connect modes",
+                "description": "Adds \"PC via USB\" and \"PC via Wi-Fi\" entries to Live streaming's Connect to list for the raw H.264 transport. USB needs no settings (adb reverse tcp:6970 tcp:6970 on the PC); Wi-Fi takes the PC from the RTMP stream URL field (rtmp://pc-ip)."
               }
             ],
             "patches_removed": [],
@@ -82,8 +159,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/andrewliang25/morphe-patches",
-      "patches_name": "Andrew's Patches",
+      "repo_url": "https://github.com/alalloush/xperia-1v-camera-patches",
+      "patches_name": "alalloush Xperia 1 V camera patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
