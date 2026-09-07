@@ -1,124 +1,35 @@
 {
   "affected_bundles": [
     {
-      "bundle": "ajstrick81-androidtv",
+      "bundle": "aimal",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Score Center",
-          "package": "com.espn.score_center",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "ESPN Android TV",
-                "description": "Suppresses ESPN Android TV VOD/scheduled ads (DMP SGAI isAdDisabled) and masks LIVE passthrough-SSAI commercial breaks with a full-screen \"Commercial Break\" slate + mute (the live ad can't be removed, only covered). Optional slate media is user-supplied local files; disable the live slate with a `slate_off` marker file. No DNS dependency.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Peacockandroid",
-          "package": "com.peacocktv.peacockandroid",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Clone Peacock",
-                "description": "Installs the patched Peacock as a separate app alongside the stock one, instead of replacing it. Enable this when Peacock is a preinstalled system app that can't be uninstalled — most commonly on Amazon Fire TV, and on some Android TV boxes and Onn devices. The clone gets its own package (suffix .mod), so it shows up as a second Peacock icon and keeps its own login. Leave OFF if you were able to uninstall the original Peacock first (a normal in-place install is cleaner). Opt-in.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Disable auto-updates",
-                "description": "Stops the Google Play Store from silently updating Peacock back to the official version and wiping out the patch (which would bring the ads back). Works by setting the patched build's version number far ahead of anything on the Store, so it's treated as already up to date. You can still update deliberately by re-patching a newer APK in Morphe. Recommended to leave ON. Does not apply to mount-installed apps.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Skip ads",
-                "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102, v7.6.100 and v7.8.100.",
-                "changes": [
-                  "description updated",
-                  "versions: +1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-      "patches_name": "ajstrick81 Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "variablenine",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Reddit",
-          "package": "com.reddit.frontpage",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "NSFW mode",
-                "description": "Adds an NSFW row to the navigation drawer that reduces the home feed to its 18+ posts. Turned off until it is switched on. Reddit only sends 18+ posts to accounts that have 'Show NSFW content' enabled, so the feed is empty without that account setting.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/variablenine/morphe-patches",
-      "patches_name": "variablenine Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "dan1eltheman1el",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "DeFit",
-          "package": "com.fitness.debugger",
+          "app_name": "Crunchyroll",
+          "package": "com.crunchyroll.crunchyroid",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Session Distance Notification",
-                "description": "Shows the total distance added during the current sync session in the persistent notification."
+                "name": "Playback speed",
+                "description": "Unhides the player's speed menu and fills it out to 0.5x-2.0x."
+              },
+              {
+                "name": "Subtitle styling",
+                "description": "Adds subtitle size, font and outline controls to the player."
               }
             ],
-            "patches_removed": [],
+            "patches_removed": [
+              {
+                "name": "Add fast playback speeds",
+                "description": "Adds 1.25x, 1.5x, 1.75x, and 2.0x playback speed options."
+              },
+              {
+                "name": "Enable speed control",
+                "description": "Enables playback speed options (0.5x-2.0x) in the video player."
+              }
+            ],
             "patches_modified": []
           },
           "scan_numbers": [
@@ -126,36 +37,50 @@
           ]
         },
         {
-          "app_name": "Counter",
-          "package": "com.izorg.munchkin",
-          "badge_type": "NEW APP",
+          "app_name": "Viki",
+          "package": "com.viki.android",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/Dan1elTheMan1el/Morphe-Patches",
-      "patches_name": "DanielTheManiel's Morphe Patches",
+      "repo_url": "https://github.com/hashtagbasit/aimal-patches",
+      "patches_name": "Aimal Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "legendsciber",
-      "channel": "stable",
+      "bundle": "icysymmetra-tiktok",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Shadow Fight 2",
-          "package": "com.nekki.shadowfight",
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
           "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
+            "patches_added": [
+              {
+                "name": "Download stories",
+                "description": "Adds TikTok's native save action to each story's share menu. The current story item is preserved so profiles with several stories download the intended media."
+              },
+              {
+                "name": "Enable voice comments",
+                "description": "Enables TikTok's native voice-comment recording and publishing entry points."
+              },
+              {
+                "name": "Hide suggested accounts",
+                "description": "Removes suggested-account cards from profile and inbox surfaces. Thanks to tymmesyde for the original implementation."
+              }
+            ],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Shadow Fight 2 IAP Bypass",
-                "description": "Bypasses in-app purchases.",
+                "name": "Downloads",
+                "description": "Adds watermark-free downloads, video quality selection, comment sticker saving, configurable folders, and filename templates.",
                 "changes": [
                   "description updated"
                 ]
@@ -167,8 +92,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/legendsciber/morphe-patches",
-      "patches_name": "legendsciber's Patches",
+      "repo_url": "https://github.com/icysymmetra/tiktok-patches-for-morphe",
+      "patches_name": "Metra TikTok Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
