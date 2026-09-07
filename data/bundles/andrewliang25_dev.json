@@ -2,9 +2,9 @@
   "bundle": "andrewliang25",
   "channel": "dev",
   "repo_url": "https://github.com/andrewliang25/morphe-patches",
-  "created_at": "2026-09-04T14:55:02",
-  "version": "v2.0.0-dev.1",
-  "description": "## [2.0.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.8.0...v2.0.0-dev.1) (2026-09-04)\r\n\r\n### ⚠ BREAKING CHANGES\r\n\r\n* The patch fingerprints use the obfuscated class and method\r\nnames of 26.14.0. These names do not exist in 26.11.0. Update LINE to 26.14.0\r\nbefore you patch.\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* hide the Friends sub-tab Calendar block ([60cabac](https://github.com/andrewliang25/morphe-patches/commit/60cabacab96f98786d95274b96c6759eec22a5fb))\r\n\r\n### ✨ New Features\r\n\r\n* hide new item badges ([d1bccdb](https://github.com/andrewliang25/morphe-patches/commit/d1bccdbff51f45f1e724d7dcce8a807924640de5))\r\n\r\n### 🚀 Updated App Support\r\n\r\n* drop support for LINE 26.11.0 ([ec5d7d5](https://github.com/andrewliang25/morphe-patches/commit/ec5d7d57d0dbc878291d0c7c15a70869097ae3dd))\r\n* re-anchor all LINE patches for 26.14.0 ([48ba2e1](https://github.com/andrewliang25/morphe-patches/commit/48ba2e1922263d8e082864ed1a0442756db8fdb0))\r\n",
+  "created_at": "2026-09-07T13:38:03",
+  "version": "v2.1.0-dev.1",
+  "description": "## [2.1.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v2.0.0...v2.1.0-dev.1) (2026-09-07)\n\n### ✨ New Features\n\n* draw the location maps through GmsCore (issue [#92](https://github.com/andrewliang25/morphe-patches/issues/92)) ([e0a69fe](https://github.com/andrewliang25/morphe-patches/commit/e0a69fe31cb861811f92f8e4d2b8bd546acab212))\n",
   "apps": [
     {
       "app_name": "LINE",
@@ -31,6 +31,15 @@
         {
           "name": "Fix chat backup sign-in via GmsCore",
           "description": "Sends the Google account picker and the Drive token of chat-history backup through GmsCore. Backup and restore then work on a re-signed build. This patch needs MicroG-RE. It does not change how you sign in to a Google account. A Root Mount install does not need this patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "Fix location maps via GmsCore",
+          "description": "Shows a map again on the location screens of a re-signed build. This covers the location picker, the location messages in a chat, and the location posts. The tiles come from OpenFreeMap and do not look like Google Maps. This patch needs MicroG-RE 7.0.0 or later. A Root Mount install does not need this patch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -230,8 +239,8 @@
     }
   ],
   "patches_name": "Andrew's Patches",
-  "fingerprint": "c395990b05fb757b7da12396984af1ccd2d3a3b8fe39989b0fbd4890a7ce3651",
-  "release_notes": "## [2.0.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v1.8.0...v2.0.0-dev.1) (2026-09-04)\r\n\r\n### ⚠ BREAKING CHANGES\r\n\r\n* The patch fingerprints use the obfuscated class and method\r\nnames of 26.14.0. These names do not exist in 26.11.0. Update LINE to 26.14.0\r\nbefore you patch.\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* hide the Friends sub-tab Calendar block ([60cabac](https://github.com/andrewliang25/morphe-patches/commit/60cabacab96f98786d95274b96c6759eec22a5fb))\r\n\r\n### ✨ New Features\r\n\r\n* hide new item badges ([d1bccdb](https://github.com/andrewliang25/morphe-patches/commit/d1bccdbff51f45f1e724d7dcce8a807924640de5))\r\n\r\n### 🚀 Updated App Support\r\n\r\n* drop support for LINE 26.11.0 ([ec5d7d5](https://github.com/andrewliang25/morphe-patches/commit/ec5d7d57d0dbc878291d0c7c15a70869097ae3dd))\r\n* re-anchor all LINE patches for 26.14.0 ([48ba2e1](https://github.com/andrewliang25/morphe-patches/commit/48ba2e1922263d8e082864ed1a0442756db8fdb0))\r\n",
-  "release_tag": "v2.0.0-dev.1",
-  "release_date": "2026-09-04T14:55:02Z"
+  "fingerprint": "f524f0f9176a27c1b01149a4053644819ddcff29f9577c1a522ce7e2cdd7ddf4",
+  "release_notes": "## [2.1.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v2.0.0...v2.1.0-dev.1) (2026-09-07)\n\n### ✨ New Features\n\n* draw the location maps through GmsCore (issue [#92](https://github.com/andrewliang25/morphe-patches/issues/92)) ([e0a69fe](https://github.com/andrewliang25/morphe-patches/commit/e0a69fe31cb861811f92f8e4d2b8bd546acab212))\n",
+  "release_tag": "v2.1.0-dev.1",
+  "release_date": "2026-09-07T13:38:03Z"
 }
