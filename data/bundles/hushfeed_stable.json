@@ -2,9 +2,9 @@
   "bundle": "hushfeed",
   "channel": "stable",
   "repo_url": "https://github.com/SysAdminDoc/hushfeed",
-  "created_at": "2026-09-06T03:04:11",
-  "version": "v0.16.0",
-  "description": "https://morphe.software/add-source?github=SysAdminDoc/hushfeed\r\n\r\nHushfeed v0.16.0 gives every settings page a shared layout with AMOLED backgrounds, grouped controls and larger headings. Feature Gate Lab and its editors use the same styling. Light mode and larger text remain supported.\r\n\r\n- Page-specific menu icons and active setting counts.\r\n- Native switches and pickers keep their existing behavior and saved values.\r\n- Updated English/German labels and screenshots for every page.\r\n- 156 runtime tests passed locally. The release bundle verified 61 patches and all three DEX payloads.\r\n\r\nTarget: global TikTok 46.2.3 (com.zhiliaoapp.musically). Load patches-0.16.0.mpp in Morphe Manager and keep its existing signing key. This delivery was checked with offscreen Android views; phone installation has not been verified.\r\n\r\n",
+  "created_at": "2026-09-07T03:48:53",
+  "version": "v0.19.0",
+  "description": "Hushfeed v0.19.0 targets TikTok 46.2.3 and ships 68 Morphe patches.\r\n\r\nThis bundle includes the latest feed, settings, comment, download and playback fixes from main. The publication-age filter is disabled at zero and keeps posts with missing, zero, future or overflowing timestamps visible. Local creator hiding stores stable creator identifiers on the device and includes a searchable editor.\r\n\r\nValidation completed locally: 397 runtime tests passed, and the bundle verifier checked all 68 patches and all three DEX payloads. The release asset is accompanied by SHA256SUMS.txt.\r\n\r\nInstall the .mpp with Morphe Manager after preparing the supported TikTok APK. Keep the existing signing key when patching.\r\n",
   "apps": [
     {
       "app_name": "TikTok",
@@ -12,7 +12,16 @@
       "patches": [
         {
           "name": "Advanced downloads",
-          "description": "Adds download quality choices and saves Photo Mode images directly from their source URLs.",
+          "description": "Adds download quality choices, saves Photo Mode images directly from their source URLs, keeps a video's sound as its own audio file, and saves a profile picture or a story from a long press.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Allow Duet and Stitch",
+          "description": "Ignores the creator's Duet and Stitch setting so the entries appear for videos that closed them. Everything else the app checks still applies: a photo post, a private video or one with music it may not reuse is still refused, and whether the upload is accepted is the server's decision, not the app's. Supports TikTok 46.2.3.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -39,7 +48,7 @@
         },
         {
           "name": "AMOLED dark theme",
-          "description": "Replaces TikTok's dark background palette with black or a chosen color. The light theme keeps its colors. Choose this patch to enable it.",
+          "description": "Replaces TikTok's dark background palette with black or a chosen color. The light theme keeps its colors. Choose this patch to enable it. It is the one patch that rewrites resources, so patching with it on needs the memory limit raised to 768 MB.",
           "use": false,
           "options": [
             {
@@ -71,7 +80,7 @@
         },
         {
           "name": "Comment tools",
-          "description": "Hides comments that contain chosen words or come from chosen accounts, and turns the thumbs down on each comment into a block button. Supports TikTok 46.2.3.",
+          "description": "Hides comments that contain chosen words or come from chosen accounts, turns the thumbs down on each comment into a block button, hides comments made of an image or a sticker rather than words, and adds a box above the comments that narrows them by what they say or who said it. Supports TikTok 46.2.3.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -224,7 +233,7 @@
         },
         {
           "name": "Feed filter",
-          "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, and videos outside configured view or like ranges.",
+          "description": "Hides feed ads, TikTok Shop items, livestreams, LIVE replays, stories, photo posts, paid partnerships, AI labelled videos, verified accounts, series, playlists, the playlist bar, the floating event badge and inserted cards. Videos can also be filtered by your own caption words, creator handles or patterns, sound names, length, the country they were posted from and their view, like, comment, favourite and share counts. Sponsored cards are dropped from the profile video viewer, the search grids and the Friends tab as well as the feed. Supports TikTok 46.2.3.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -235,6 +244,15 @@
           "name": "Feed tab navigation",
           "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Fit video to the screen",
+          "description": "Puts the whole of a vertical video on screen instead of cropping it to the window. On a 9:16 phone nothing changes, because the video already fills it. On a Fold opened up, a squarer phone or a split view the sides or the ends stop being cut off. Supports TikTok 46.2.3.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "46.2.3"
@@ -253,6 +271,15 @@
           "name": "Foldable split comment view",
           "description": "Shows comments beside the video on windows wider than a configurable threshold. Off by default.",
           "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Follow diagnostics",
+          "description": "Reads what the server said about a follow. A follow TikTok turns down comes back looking like a success, so this reports the refusal and its reason once per session and, with diagnostic logging on, writes the whole exchange to the report. Supports TikTok 46.2.3.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "46.2.3"
@@ -278,7 +305,7 @@
         },
         {
           "name": "Hide BdTuring CAPTCHA popups",
-          "description": "Hides TikTok's risk control CAPTCHA dialog, which the browsing CAPTCHA patch does not cover. Answers the Hide CAPTCHA popups setting and never touches SMS or two factor verification. A suppressed check can make the action behind it fail silently, so this is off by default. Supports TikTok 46.2.3.",
+          "description": "Hides TikTok's risk control CAPTCHA dialog, which the browsing CAPTCHA patch does not cover. Answers the Hide CAPTCHA popups setting, never touches SMS or two factor verification, and never hides a check the server raised over a follow, like, comment or repost. Off by default. Supports TikTok 46.2.3.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -287,8 +314,17 @@
         },
         {
           "name": "Hide CAPTCHA popups",
-          "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs while preserving login and account verification.",
+          "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs. Login and account verification stay visible, and so does any puzzle the server raised over a follow, like, comment or repost, because hiding one of those makes the action fail with no message.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Hide comment popup ads",
+          "description": "Stops the brand animation that plays over the comment sheet when a comment matches an advertiser's trigger word or emoji. Supports TikTok 46.2.3.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "46.2.3"
@@ -376,6 +412,15 @@
           ]
         },
         {
+          "name": "Hide search suggestions",
+          "description": "Hides the suggested searches TikTok offers on the search page before you type, and stops the page asking for them. Your own search history is left alone. Supports TikTok 46.2.3.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
           "name": "Hide suggested accounts",
           "description": "Stops the suggested accounts list from being built on the Activity, New followers and Inbox pages. Shares its switch with Hide inbox items. Supports TikTok 46.2.3.",
           "use": false,
@@ -404,7 +449,7 @@
         },
         {
           "name": "Long-press controls",
-          "description": "Lets a long press on a video keep TikTok's own action, do nothing, or open the video's comments. Brings Double-tap controls with it, which supplies the comment control. Supports TikTok 46.2.3.",
+          "description": "Lets a long press on a video keep TikTok's own action, do nothing, or open the video's comments, and can turn a press on the left or right third of the screen into a jump back or forward. Brings Double-tap controls with it, which supplies the comment control. Supports TikTok 46.2.3.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -414,6 +459,15 @@
         {
           "name": "Not interested button",
           "description": "Adds a button beside the block control to tell TikTok you aren't interested in the current video. Off by default.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Notification controls",
+          "description": "Adds a switch for the notification saying somebody new followed you, and one for message streaks, neither of which TikTok lets you turn off. The follower switch drops the notification before Android is asked to post it, so nothing else in the drawer is affected. Supports TikTok 46.2.3.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -431,7 +485,7 @@
         },
         {
           "name": "Playback quality",
-          "description": "Selects the lowest, highest or target video quality for playback, including adaptive streams.",
+          "description": "Selects the lowest, highest or a target video quality for playback, adaptive streams included. A second choice caps quality on mobile data and only ever lowers it. Download quality has its own setting. Supports TikTok 46.2.3.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -476,7 +530,7 @@
         },
         {
           "name": "Sanitize sharing links",
-          "description": "Removes tracking parameters from TikTok links before they are shared.",
+          "description": "Removes tracking parameters from TikTok links before they are shared, and can put a host of your choosing in place of tiktok.com.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -563,13 +617,22 @@
           "compatible_versions": [
             "46.2.3"
           ]
+        },
+        {
+          "name": "Uncap the refresh rate",
+          "description": "Stops TikTok asking the screen to run slower than it can, which it does by asking for the frame rate of the video it is playing. On a 90 or 120 Hz phone that ask takes the whole app down to that rate, scrolling included. A request that is not slower than the screen is left alone. Supports TikTok 46.2.3.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
         }
       ]
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "978ab3ebef56e0b18025f4bdcbe9aca94b9e4b2dadeb8e48ae61ec45c57f08ab",
-  "release_notes": "https://morphe.software/add-source?github=SysAdminDoc/hushfeed\r\n\r\nHushfeed v0.16.0 gives every settings page a shared layout with AMOLED backgrounds, grouped controls and larger headings. Feature Gate Lab and its editors use the same styling. Light mode and larger text remain supported.\r\n\r\n- Page-specific menu icons and active setting counts.\r\n- Native switches and pickers keep their existing behavior and saved values.\r\n- Updated English/German labels and screenshots for every page.\r\n- 156 runtime tests passed locally. The release bundle verified 61 patches and all three DEX payloads.\r\n\r\nTarget: global TikTok 46.2.3 (com.zhiliaoapp.musically). Load patches-0.16.0.mpp in Morphe Manager and keep its existing signing key. This delivery was checked with offscreen Android views; phone installation has not been verified.\r\n\r\n",
-  "release_tag": "v0.16.0",
-  "release_date": "2026-09-06T03:04:11Z"
+  "fingerprint": "513de462fc4047a11ad73e25c66ff6cb9e168bfbddcd1e652b3398c41a754d42",
+  "release_notes": "Hushfeed v0.19.0 targets TikTok 46.2.3 and ships 68 Morphe patches.\r\n\r\nThis bundle includes the latest feed, settings, comment, download and playback fixes from main. The publication-age filter is disabled at zero and keeps posts with missing, zero, future or overflowing timestamps visible. Local creator hiding stores stable creator identifiers on the device and includes a searchable editor.\r\n\r\nValidation completed locally: 397 runtime tests passed, and the bundle verifier checked all 68 patches and all three DEX payloads. The release asset is accompanied by SHA256SUMS.txt.\r\n\r\nInstall the .mpp with Morphe Manager after preparing the supported TikTok APK. Keep the existing signing key when patching.\r\n",
+  "release_tag": "v0.19.0",
+  "release_date": "2026-09-07T03:48:53Z"
 }
