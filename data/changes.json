@@ -1,49 +1,246 @@
 {
   "affected_bundles": [
     {
-      "bundle": "flexboard",
-      "channel": "stable",
+      "bundle": "rushiranpise",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Gboard",
-          "package": "com.google.android.inputmethod.latin",
-          "badge_type": "MAJOR UPDATE",
+          "app_name": "HD UHD Live Wallpapers",
+          "package": "hd.uhd.live.wallpapers.topwallpapers",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock Premium",
+                "description": "Unlocks all premium wallpapers and removes interstitial ads permanently.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "AAAD",
+          "package": "sksa.aa.customapps",
+          "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Hidden Features",
-                "description": "Turns on two finished Gboard features that a resigned build can never receive: grammar check, and a close control on the chips Gboard offers unprompted. Their flags are delivered per app signature, so resigning the APK means they never arrive and stay off. Both are confirmed working on a device; five other flags were tried and dropped."
+                "name": "AAAD Premium",
+                "description": "Unlocks AAAD Pro subscription features by bypassing Stripe and Firebase subscription checks."
               },
               {
-                "name": "Hidden Features (unconfirmed)",
-                "description": "Turns on four finished Gboard features that a resigned build can never receive: Emoji Kitchen browse, the custom sticker tab, offline translation, and search in Gboard's settings. Off by default because none of the four has been seen working on a device — the flags flip, but each also depends on data Google only sends to an unpatched install. Safe to try: none of them crashes."
+                "name": "AAAD Security Bypass",
+                "description": "Disables AAAD's anti-tamper, anti-debug, and integrity checks to allow running on patched installations."
               }
             ],
             "patches_removed": [
               {
-                "name": "Grammar Check Row",
-                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
+                "name": "Security Bypass",
+                "description": "Disables AAAD's anti-tamper, anti-debug, and integrity checks to allow running on patched installations."
+              },
+              {
+                "name": "Unlock Pro",
+                "description": "Unlocks AAAD Pro subscription features by bypassing Stripe and Firebase subscription checks."
               }
             ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MovieBox India",
+          "package": "com.community.mbox.in",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MovieBox TV",
+          "package": "com.community.mbox.tv",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/rushiranpise/morphe-patches",
+      "patches_name": "Doom's Morphe Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "rushiranpise",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "HD UHD Live Wallpapers",
+          "package": "hd.uhd.live.wallpapers.topwallpapers",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Suggested Settings",
-                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if Hidden Features is applied too.",
+                "name": "Unlock Premium",
+                "description": "Unlocks all premium wallpapers and removes interstitial ads permanently.",
                 "changes": [
-                  "description updated"
+                  "description updated",
+                  "versions: +1 version, -1 version"
                 ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "AAAD",
+          "package": "sksa.aa.customapps",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "AAAD Premium",
+                "description": "Unlocks AAAD Pro subscription features by bypassing Stripe and Firebase subscription checks."
               },
               {
-                "name": "Text Action Buttons",
-                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists. These three share the toolbar with Gboard's own icons and with Toolbar Hotkeys. Bigger Toolbar, which is applied unless you deselect it, raises the ceiling from five to twelve; without it, five is all the bar can hold.",
-                "changes": [
-                  "description updated"
-                ]
+                "name": "AAAD Security Bypass",
+                "description": "Disables AAAD's anti-tamper, anti-debug, and integrity checks to allow running on patched installations."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Security Bypass",
+                "description": "Disables AAAD's anti-tamper, anti-debug, and integrity checks to allow running on patched installations."
               },
               {
-                "name": "Toolbar Hotkeys",
-                "description": "Adds eight configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open. The slots share the toolbar with Gboard's own icons: Bigger Toolbar, which is applied unless you deselect it, makes room for twelve, but on a stock ceiling of five not all eight fit.",
+                "name": "Unlock Pro",
+                "description": "Unlocks AAAD Pro subscription features by bypassing Stripe and Firebase subscription checks."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MovieBox India",
+          "package": "com.community.mbox.in",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MovieBox TV",
+          "package": "com.community.mbox.tv",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/rushiranpise/morphe-patches",
+      "patches_name": "Doom's Morphe Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "amplerevanced",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "NAVER Map",
+          "package": "com.nhn.android.nmap",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "KakaoMap",
+          "package": "net.daum.android.map",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Enable navigation live updates",
+                "description": "Shows navigation progress and stop-by-stop transit guidance with Android Live Updates.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
+      "patches_name": "Ample Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "imxeren",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Sync for Reddit",
+          "package": "com.laurencedawson.reddit_sync",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Merge profile feeds",
+                "description": "Merges profile submissions from Arctic Shift and Reddit."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Fix Other discussions",
+                "description": "Uses Reddit search for Other discussions and applies the selected sort.",
                 "changes": [
                   "description updated"
                 ]
@@ -55,26 +252,44 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/JZ6/Flexboard",
-      "patches_name": "Flexboard",
+      "repo_url": "https://gitlab.com/IMXEren/mix-patches",
+      "patches_name": "Mix Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "ajstrick81-androidtv",
+      "bundle": "picarica",
       "channel": "stable",
+      "badge_type": "NEW BUNDLE",
+      "apps": [
+        {
+          "app_name": "AFFiNE",
+          "package": "app.affine.pro",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/picarica/My-moprhe-patches",
+      "patches_name": "AFFiNE No-GMS Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "ftl",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Pluto",
-          "package": "tv.pluto.android",
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Mask live ad breaks (black screen + mute)",
-                "description": "Masks Pluto TV LIVE/linear commercial breaks, which are real broadcast time stitched into the live feed and cannot be removed (unlike VOD ads, which \"Skip ads\" deletes outright). During a live break it covers the player with a black screen and mutes the audio, then restores both the instant the show returns — so gambling, drinking, or any other live ad is blanked and silenced. Detection is driven by Pluto's own ID3 ad-state flow (ID3AdsBeaconTracker), which fires only while an ad plays, so it needs no polling and keeps working alongside \"Skip ads\". Opt-out: leave it OFF to watch live ads normally; runtime controls are marker files in the app's external files dir — `slate_off` disables it, and `pluto_slate_mode` set to `black` or `mute` picks cover-only or mute-only instead of both. Validated on-device, 5.66.0-leanback."
+                "name": "Clean sidebar shortcuts",
+                "description": "Independently hide Bookmark, Favourite, Add to Playlist, Tutorial, and/or Playing Queue from the player's shortcut sidebar."
               }
             ],
             "patches_removed": [],
@@ -85,2367 +300,11 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-      "patches_name": "ajstrick81 Patches",
+      "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
+      "patches_name": "BlazeFTL Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
-    },
-    {
-      "bundle": "dariodkm",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "RingConn",
-          "package": "com.gdjztech.ringconn",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/DarioDKM/ringconn-patches",
-      "patches_name": "DarioDKM",
-      "extra_badges": []
-    },
-    {
-      "bundle": "zeldrisho",
-      "channel": "dev",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Threads",
-          "package": "com.instagram.barcelona",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/zeldrisho/morphe-patches",
-      "patches_name": "Zeldris Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "zeldrisho",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Threads",
-          "package": "com.instagram.barcelona",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/zeldrisho/morphe-patches",
-      "patches_name": "Zeldris Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "braydog2010",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "TikTok",
-          "package": "com.zhiliaoapp.musically",
-          "badge_type": "MAJOR UPDATE",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Comment sort controls",
-                "description": "Exposes TikTok's native full comment-sort sheet, including its hot, time, media, and creator modes, instead of relying on rollout gates."
-              },
-              {
-                "name": "Download stories",
-                "description": "Adds TikTok's native save action to each story's share menu. The current story item is preserved so profiles with several stories download the intended media."
-              },
-              {
-                "name": "Enable voice comments",
-                "description": "Enables TikTok's native voice-comment recording and publishing entry points."
-              },
-              {
-                "name": "Foldable split comment view",
-                "description": "Forces TikTok's tablet-style split layout (video beside comments instead of a bottom sheet) once the screen is at least as wide as a configurable threshold, for foldables TikTok doesn't already recognize as tablet-class."
-              },
-              {
-                "name": "Force show Auto scroll",
-                "description": "Adds a setting that bypasses TikTok's rollout gates for its native Auto scroll action on supported videos."
-              },
-              {
-                "name": "Hide suggested accounts",
-                "description": "Removes suggested-account cards from profile and inbox surfaces. Thanks to tymmesyde for the original implementation."
-              },
-              {
-                "name": "Share sheet modification",
-                "description": "Adds toggles and allow-lists for the video share sheet's \"Send to\", \"Share via app\", and \"Video Actions\" sections."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Always show publish date",
-                "description": "Always shows the publish date in video author information. Thanks to lyyako for the original implementation.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Copy comments without username",
-                "description": "Copies only the comment text without including the creator's username.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Custom offline videos limit",
-                "description": "Adds a custom entry to TikTok's offline videos menu with a configurable limit from 1 to 1000 videos.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Diagnostic tools",
-                "description": "Adds optional Morphe diagnostic logging, filtered reports, and local TikTok crash capture.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable login requirement",
-                "description": "Removes TikTok's mandatory login gate from supported flows.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable long-press quick share",
-                "description": "Keeps long-pressing Share from opening TikTok's quick-share interaction.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable long-press repost",
-                "description": "Keeps holding Like from opening TikTok's repost action.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Disable screen capture detection",
-                "description": "Prevents TikTok from reacting to screenshots and screen recordings.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Downloads",
-                "description": "Adds watermark-free downloads, video quality selection, comment sticker saving, configurable folders, and filename templates.",
-                "changes": [
-                  "description updated",
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Enable Live search",
-                "description": "Shows TikTok's search entry in the Live drawer where supported.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Enable non-personalized search",
-                "description": "Uses TikTok's non-personalized search mode instead of its saved account choice.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Feature Gate Lab",
-                "description": "Adds a menu for viewing and overriding supported TikTok feature flags and configuration values.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Feed filter",
-                "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, and videos outside configured view or like ranges.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Feed tab navigation",
-                "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Fix Google login",
-                "description": "Restores Google account sign-in after patching.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide CAPTCHA popups",
-                "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs while preserving login and account verification.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide feed LIVE button",
-                "description": "Adds an option to hide the LIVE button at the top left of video feeds.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide feed follow button",
-                "description": "Adds an option to hide the + follow button below creator avatars in video feeds.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide feed save button",
-                "description": "Adds an option to hide the save/favourites button from video feeds.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide feed search button",
-                "description": "Adds an option to hide the search button at the top right of video feeds.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide floating promotions",
-                "description": "Removes floating promotional badges, coin icons, and timer banners from the Home feed.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hide quick comment reactions",
-                "description": "Hides TikTok's exposed quick emoji row in supported comment inputs.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Hold-and-slide 2x lock",
-                "description": "Enables TikTok's native hold, slide down, and release gesture to lock 2x speed.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Open external links directly",
-                "description": "Opens profile and story website links in the system browser instead of TikTok's in-app browser. Thanks to lyyako for the original implementation.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Playback speed",
-                "description": "Enables playback-speed controls for all videos and remembers the selected speed between videos.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Region spoof",
-                "description": "Adds in-app controls for changing the region TikTok reads.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Remember clear display",
-                "description": "Remembers TikTok's clear-display state between videos.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Resume videos after scrolling",
-                "description": "Continues supported videos from where playback stopped when returning after a scroll.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Sanitize sharing links",
-                "description": "Removes tracking parameters from TikTok links before they are shared.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Settings",
-                "description": "Adds the Metra patches settings menu to TikTok. Supports TikTok 46.2.3.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Show seekbar",
-                "description": "Shows TikTok's native video seekbar where it would normally be hidden.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Show seekbar thumbnail",
-                "description": "Shows TikTok's video preview thumbnail while dragging the seekbar.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Stop video looping",
-                "description": "Stops videos at the end instead of replaying them.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              },
-              {
-                "name": "Translate comments",
-                "description": "Adds comment translation controls using TikTok's translation system, with selectable language exclusions.",
-                "changes": [
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/BrayDog2010/morphe-patches",
-      "patches_name": "BrayDog2010 Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "miketweaver",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "FriendsTurner",
-          "package": "com.peter890331.friendsturner.app",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/miketweaver/friendsturner-patches",
-      "patches_name": "FriendsTurner Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "vomw",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "OBD Android",
-          "package": "ai.metaverselabs.obdandroid",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Snipd",
-          "package": "ai.topicfinder.podcastdiscovery",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "All Reader",
-          "package": "alldocumentreader.office.viewer.filereader.pdfviewer",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Ninja VPN",
-          "package": "app.ninjavpn.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Inure App Manager (GitHub)",
-          "package": "app.simple.inure",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Inure App Manager",
-          "package": "app.simple.inure.play",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Getcontact",
-          "package": "app.source.getcontact",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "BlurWall",
-          "package": "apps.automan.blurwallpaper",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Casts",
-          "package": "au.com.shiftyjelly.pocketcasts",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Drivvo",
-          "package": "br.com.ctncardoso.ctncar",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Cast to TV",
-          "package": "cast.video.screenmirroring.casttotv",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Proton Mail",
-          "package": "ch.protonmail.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Proton VPN",
-          "package": "ch.protonvpn.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Box Box",
-          "package": "club.boxbox.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "PictureThis",
-          "package": "cn.danatech.xingseus",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "1Tap Cleaner",
-          "package": "com.a0soft.gphone.acc.free",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AAEnabler",
-          "package": "com.aaenabler.app",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AccuWeather",
-          "package": "com.accuweather.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Ace Ex File Manager",
-          "package": "com.ace.ex.file.manager",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MyRadar",
-          "package": "com.acmeaom.android.myradar",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AdGuard",
-          "package": "com.adguard.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Adobe Acrobat",
-          "package": "com.adobe.reader",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Adobe Scan",
-          "package": "com.adobe.scan.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Historical Calendar",
-          "package": "com.alexandrucene.dayhistory",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "File Manager",
-          "package": "com.alphainventor.filemanager",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Amazon Shopping",
-          "package": "com.amazon.mshop.android.shopping",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AmoledPix",
-          "package": "com.androholic.amoledpix",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "HTTP Sniffer",
-          "package": "com.anetcapture.mock",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "APKMirror Installer",
-          "package": "com.apkmirror.helper.prod",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Social Gamebox",
-          "package": "com.app.social_gamebox",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Tracker Detect",
-          "package": "com.apple.trackerdetect",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "SCRL",
-          "package": "com.appostrophe.scrl",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Oxygen Updater",
-          "package": "com.arjanvlek.oxygenupdater",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MacroDroid",
-          "package": "com.arlosoft.macrodroid",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Block Blast!",
-          "package": "com.block.juggle",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "BlockerHero",
-          "package": "com.blockerhero",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Blocking Sites",
-          "package": "com.blocking.sites",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "qBitConnect",
-          "package": "com.bluematter.qbitconnect",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Blurams",
-          "package": "com.blurams.ipc",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Parcels — Package Tracker",
-          "package": "com.brightstripe.parcels",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "BubbleUPnP",
-          "package": "com.bubblesoft.android.bubbleupnp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Cashew",
-          "package": "com.budget.tracker_app",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "calimoto",
-          "package": "com.calimoto.calimoto",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Calm",
-          "package": "com.calm.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Canva",
-          "package": "com.canva.editor",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Cube ACR",
-          "package": "com.catalinagroup.callrecorder",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Inmigreat",
-          "package": "com.changayaf.inmigreat",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Citymapper",
-          "package": "com.citymapper.app.release",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "1.1.1.1",
-          "package": "com.cloudflare.onedotonedotonedotone",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Clue Period & Cycle Tracker",
-          "package": "com.clue.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Hydro Coach",
-          "package": "com.codium.hydrocoach",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MovieBox TV",
-          "package": "com.community.mbox.tv",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Slopes",
-          "package": "com.consumedbycode.slopes",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "CPU-Z",
-          "package": "com.cpuid.cpu_z",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "re-Link",
-          "package": "com.curiouscompany.relink",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Flud",
-          "package": "com.delphicoder.flud",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AccuBattery",
-          "package": "com.digibites.accubattery",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AppLock Watcher",
-          "package": "com.domobile.applockwatcher",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Zutobi",
-          "package": "com.driverlicenseapp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TeraBox",
-          "package": "com.dubox.drive",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Duolingo",
-          "package": "com.duolingo",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Lark Player",
-          "package": "com.dywx.larkplayer",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "ES File Explorer",
-          "package": "com.estrongs.android.pop",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Super File",
-          "package": "com.esuper.file.explorer",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Dailyhunt",
-          "package": "com.eterno",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Messenger",
-          "package": "com.facebook.orca",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Feem",
-          "package": "com.feeperfect.airsend.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AIDA64",
-          "package": "com.finalwire.aida64",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Fitbod",
-          "package": "com.fitbod.fitbod",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "FlightAware",
-          "package": "com.flightaware.android.liveflighttracker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Flightradar24",
-          "package": "com.flightradar24free",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Calory",
-          "package": "com.funnmedia.calory",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Money Manager",
-          "package": "com.glgjing.money.manager.bookkeeping.meow",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Picture Mushroom",
-          "package": "com.glority.picturemushroom",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Ampere",
-          "package": "com.gombosdev.ampere",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Google Photos",
-          "package": "com.google.android.apps.photos",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Android Developer Verifier",
-          "package": "com.google.android.verifier",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "BuzzCast",
-          "package": "com.guochao.faceshow",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "VRadio",
-          "package": "com.ilv.vradio",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Clickmate",
-          "package": "com.inscode.autoclicker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "CamScanner",
-          "package": "com.intsig.camscanner",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Photo Editor",
-          "package": "com.iudesk.android.photo.editor",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "ML Manager",
-          "package": "com.javiersantos.mlmanager",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Cube Solver",
-          "package": "com.jeffprod.cubesolver",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Anime Depth Wallpapers",
-          "package": "com.jndapp.anime.depth.live.wallpaper",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Depth Live Wallpaper",
-          "package": "com.jndapp.depth.live.wallpaper",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Minimal Widgets",
-          "package": "com.jndapp.minimal.widgets",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Carbon",
-          "package": "com.joincarbon.nutrition",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Fuelio",
-          "package": "com.kajda.fuelio",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "nzb360",
-          "package": "com.kevinforeman.nzb360",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Athena",
-          "package": "com.kin.athena",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Monet",
-          "package": "com.klevico.monet",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Lawfully",
-          "package": "com.lawfully.lawfully_ai_tracker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Life360",
-          "package": "com.life360.android.safetymapd",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Flightsky",
-          "package": "com.live.flight.tracker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "LiveScore",
-          "package": "com.livescore",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Automate",
-          "package": "com.llamalab.automate",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Scoopz",
-          "package": "com.localaiapp.scoops",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Electron",
-          "package": "com.mahersafadi.electron",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Tag Tracker",
-          "package": "com.makeevapps.tagtracker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Sticker Maker",
-          "package": "com.marsvard.stickermakerforwhatsapp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TrackChecker Mobile",
-          "package": "com.metalsoft.trackchecker_mobile",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "meteoblue Weather",
-          "package": "com.meteoblue.droid",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Excel",
-          "package": "com.microsoft.office.excel",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Word",
-          "package": "com.microsoft.office.word",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Toxly",
-          "package": "com.mindful.code.studio.toxly.scanner",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Awake",
-          "package": "com.mk.awake",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MobiOffice",
-          "package": "com.mobisystems.office",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "m-Indicator",
-          "package": "com.mobond.mindicator",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Bard",
-          "package": "com.mojofiltermediallc.rpgsoundsystem",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "PC Remote",
-          "package": "com.monect.portable",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "SAI",
-          "package": "com.mtv.sai",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "SPIN",
-          "package": "com.nationaledtech.spinbrowser",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "NAVITIME",
-          "package": "com.navitime.inbound.walk",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Crime Radar",
-          "package": "com.newsbreak.crimeradar",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "KineMaster",
-          "package": "com.nexstreaming.app.kinemasterfree",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Fitia",
-          "package": "com.nutrition.technologies.fitia",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "NYT Games",
-          "package": "com.nytimes.crossword",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Greenify",
-          "package": "com.oasisfeng.greenify",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AiScore",
-          "package": "com.onesports.score",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Opera News",
-          "package": "com.opera.app.news",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Battery Guru",
-          "package": "com.paget96.batteryguru",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Network Guru",
-          "package": "com.paget96.netspeedindicator",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Parallel Space Pro",
-          "package": "com.parallel.space.pro",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "NewsBreak",
-          "package": "com.particlenews.newsbreak",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "NewsBreak Lite",
-          "package": "com.particlenews.newsbreaklite",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TurboScan",
-          "package": "com.piksoft.turboscan.free",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pixel Habit Tracker",
-          "package": "com.pixel.al.pixelhabittracker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "PLAYit",
-          "package": "com.playit.videoplayer",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep Skilled Trades",
-          "package": "com.pocketprep.android.automotive",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep Behavioral Health",
-          "package": "com.pocketprep.android.behavioralhealth",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep EMS",
-          "package": "com.pocketprep.android.ems",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep Essentials",
-          "package": "com.pocketprep.android.essentials",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep Fitness",
-          "package": "com.pocketprep.android.fitness",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep IT Cybersecurity",
-          "package": "com.pocketprep.android.itcybersecurity",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep Medical",
-          "package": "com.pocketprep.android.medical",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep Nursing",
-          "package": "com.pocketprep.android.nursing",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep Nursing School",
-          "package": "com.pocketprep.android.nursingschool",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep",
-          "package": "com.pocketprep.android.pocketprep",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pocket Prep Professional",
-          "package": "com.pocketprep.android.professional",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Proxyman",
-          "package": "com.proxyman.proxymanandroid",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MaterialPods",
-          "package": "com.pryshedko.materialpods",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Psiphon Pro",
-          "package": "com.psiphon3.subscription",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Rainbow Weather",
-          "package": "com.rainbowmeteo.weather.rainbow.ai",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "RAR",
-          "package": "com.rarlab.rar",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "RecipeBro",
-          "package": "com.recipebro.cookingbuddy",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Reddit",
-          "package": "com.reddit.frontpage",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "UDisc",
-          "package": "com.regasoftware.udisc",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Widget 2026",
-          "package": "com.remi.widget",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "RS File Manager",
-          "package": "com.rs.explorer.filemanager",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Case Tracker",
-          "package": "com.saldous.casetracker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Server Auditor",
-          "package": "com.server.auditor.ssh.client",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "App Permission Manager",
-          "package": "com.shexa.permissionmanager",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Snow-Forecast.com",
-          "package": "com.snow_forecast.snowforecast",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Sticker.ly",
-          "package": "com.snowcorp.stickerly.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "SocialLite",
-          "package": "com.sociallite.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "ColorNote",
-          "package": "com.socialnmobile.dictapps.notepad.color.note",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Splitwise",
-          "package": "com.splitwise.splitwisemobile",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "SpotAngels",
-          "package": "com.spotangels.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Strava",
-          "package": "com.strava",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "BatteryPods",
-          "package": "com.sumyapplications.bluetooth.earphone",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Hibernator",
-          "package": "com.tafayor.hibernator",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "KillApps",
-          "package": "com.tafayor.killall",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MigraConnect",
-          "package": "com.tecso.migraconnect",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "The Athletic",
-          "package": "com.theathletic",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Genius Scan",
-          "package": "com.thegrizzlylabs.geniusscan.free",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Transit",
-          "package": "com.thetransitapp.droid",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TikTok Lite",
-          "package": "com.tiktok.lite.go",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TomTom GO",
-          "package": "com.tomtom.gplay.navapp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Toomics",
-          "package": "com.toomics.global.google",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TradingView",
-          "package": "com.tradingview.tradingviewapp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Moovit",
-          "package": "com.tranzmate",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Rocket Money",
-          "package": "com.truebill",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Stargazing Hub",
-          "package": "com.twtapp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Uptodown App Store",
-          "package": "com.uptodown",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "KineStop",
-          "package": "com.urbandroid.kinestop",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "VIZ Manga",
-          "package": "com.vizmanga.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Vyxel Apps",
-          "package": "com.vythera.vyxelapps",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Wallverse",
-          "package": "com.wallverse.wallpapers",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Wavve Boating",
-          "package": "com.wavve.boating.gps",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "The Weather Channel",
-          "package": "com.weather.weather",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Weawow",
-          "package": "com.weawow",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "BoldVoice",
-          "package": "com.wellocution.androidapp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Windscribe VPN",
-          "package": "com.windscribe.vpn",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Windy",
-          "package": "com.windyty.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "WolframAlpha",
-          "package": "com.wolfram.android.alphapro",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Send Files To TV",
-          "package": "com.yablio.sendfilestotv",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Yatri",
-          "package": "com.yatrirailways.yatri",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "NetMonster",
-          "package": "cz.mroczis.netmonster",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Mapy.com",
-          "package": "cz.seznam.mapy",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "komoot",
-          "package": "de.komoot.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AnExplorer",
-          "package": "dev.dworks.apps.anexplorer",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Charge Meter",
-          "package": "dev.km.android.chargemeter",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Bluetooth Volume Manager",
-          "package": "eu.darken.bluemusic",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "CAPod",
-          "package": "eu.darken.capod",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Permission Pilot",
-          "package": "eu.darken.myperm",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Octi",
-          "package": "eu.darken.octi",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "SD Maid SE",
-          "package": "eu.darken.sdmse",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Image & Video Date Fixer",
-          "package": "eu.duong.imagedatefixer",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Rename & Organize",
-          "package": "eu.duong.picturemanager",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "NetGuard",
-          "package": "eu.faircode.netguard",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Auto Cursor",
-          "package": "eu.toneiv.cursor",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "UbikiTouch",
-          "package": "eu.toneiv.ubktouch",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Plank Workout",
-          "package": "fat.burnning.plank.fitness.loseweight",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Park4Night",
-          "package": "fr.tramb.park4night",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Block Puzzle",
-          "package": "game.puzzle.blockpuzzle",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "HD UHD Live Wallpapers",
-          "package": "hd.uhd.live.wallpapers.topwallpapers",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Home Workout",
-          "package": "homeworkout.homeworkouts.noequipment",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Amazon India",
-          "package": "in.amazon.mshop.android.shopping",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Height Increase",
-          "package": "increaseheightworkout.heightincreaseexercise.tallerexercise",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TorrDroid",
-          "package": "intelligems.torrdroid",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Bluetooth Keyboard & Mouse",
-          "package": "io.appground.blek",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Subway Now",
-          "package": "io.goodservice.theweekendest",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Beta Maniac",
-          "package": "it.mirko.beta",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "JEFIT",
-          "package": "je.fit",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MANGA Plus by SHUEISHA",
-          "package": "jp.co.shueisha.mangaplus",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MikroTik Network Tools",
-          "package": "kha.prog.mikrotik",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "USB Hotspot",
-          "package": "kha.prog.usbhotspot",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Lose Weight App for Women",
-          "package": "loseweightapp.loseweightappforwomen.womenworkoutathome",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Countdown Widget",
-          "package": "me.gira.widget.countdown",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Aviate",
-          "package": "me.highest.aviate",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "MEGA",
-          "package": "mega.privacy.android.app",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Today Weather",
-          "package": "mobi.lockdown.weather",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "PodsLink",
-          "package": "net.podslink",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Kahoot!",
-          "package": "no.mobitroll.kahoot.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Hola VPN Proxy Plus",
-          "package": "org.hola.play",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Malwarebytes Mobile Security",
-          "package": "org.malwarebytes.antimalware",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Telegram",
-          "package": "org.telegram.messenger",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Telegram Web",
-          "package": "org.telegram.messenger.web",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Telegram Plus",
-          "package": "org.telegram.plus",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Speedtest",
-          "package": "org.zwanoo.android.speedtest",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Police Scanner",
-          "package": "police.scanner.radio.broadcastify.citizen",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AndroPods",
-          "package": "pro.vitalii.andropods",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Proton Pass",
-          "package": "proton.android.pass",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Unimote",
-          "package": "sensustech.universal.tv.remote.control",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "SHAREit Premium",
-          "package": "shareit.premium",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "AAAD",
-          "package": "sksa.aa.customapps",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Citizen",
-          "package": "sp0n.citizen",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Torrent Search Revolution V2",
-          "package": "torrent.search.revolutionv2",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Pialytic",
-          "package": "verbosus.pialytic",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Women Workout",
-          "package": "women.workout.female.fitness",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Relane VPN",
-          "package": "xorsand.relane",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "pillo",
-          "package": "xyz.rtrvr.pillo",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/rushiranpise/morphe-patches",
-      "patches_name": "Doom's Morphe Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "lootdev78",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "SoundCloud",
-          "package": "com.soundcloud.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/lootdev78/psylos-morphe-patches",
-      "patches_name": "Psylos Morphe Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "yann-soliman",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Keepcool",
-          "package": "fr.keepcool.memberapp",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/yann-soliman/morphe-patches",
-      "patches_name": "Yann's patches",
-      "extra_badges": []
     },
     {
       "bundle": "heval99",
@@ -2481,6 +340,24 @@
       ],
       "repo_url": "https://github.com/Zanuaimi/UniPatches",
       "patches_name": "UserXYZ Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "zeldrisho",
+      "channel": "dev",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Threads",
+          "package": "com.instagram.barcelona",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/zeldrisho/morphe-patches",
+      "patches_name": "Zeldris Patches",
       "extra_badges": []
     }
   ]
