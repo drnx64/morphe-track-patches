@@ -2,9 +2,9 @@
   "bundle": "miguel",
   "channel": "dev",
   "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-  "created_at": "2026-09-07T16:31:33",
-  "version": "v1.14.0-dev.11",
-  "description": "## [1.14.0-dev.11](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.10...v1.14.0-dev.11) (2026-09-07)\n\n### ✨ New Features\n\n* **Duck Life 6: Space:** add unlock full game patch (billing entitlements) ([51c22ef](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/51c22ef7ce33fa4f3292da8dbaa8d41f1bd8b4f2))\n",
+  "created_at": "2026-09-08T17:42:36",
+  "version": "v1.14.0-dev.12",
+  "description": "## [1.14.0-dev.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.11...v1.14.0-dev.12) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **Duck Life 6: Space:** repair broken inline smali in unlock full game patch ([96cfcb4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/96cfcb4f67fe262452139bceb7d5d5786ee9f392))\n\n### ✨ New Features\n\n* **Duck Life 4:** add bypass PairIP + unlock full game patches ([fde6289](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fde6289d672cd990725c2a7ca5d4be070725f4dd))\n",
   "apps": [
     {
       "app_name": "The Battle of Polytopia",
@@ -101,6 +101,38 @@
           "compatible_versions": [
             "6.0.6",
             "6.0.5"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Duck Life 4",
+      "package": "com.mad.ducklife",
+      "patches": [
+        {
+          "name": "Bypass PairIP license check",
+          "description": "No-ops LicenseClient.checkLicense(Context) and LicenseClient.initializeLicenseCheck() so the PairIP license verification never runs. Duck Life 4 ships the PairIP V2 client (Java only, no libpairipcore.so VM): the LicenseContentProvider starts the check before the Application class and shows a paywall / closes the app when it fails. Required for the app to start when installed via Morphe/SAI (not from the Play Store).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.5.12",
+            "2026.4.30",
+            "2026.1.6",
+            "2025.3.21",
+            "2025.2.24"
+          ]
+        },
+        {
+          "name": "Unlock full game (IAP entitlements)",
+          "description": "Unlocks everything the paid/legacy version and the in-app purchases give in Duck Life 4: injects the four store product ids (full_game, ad_block, super_ad_block, upgrade_ad_block) as already-purchased into the Google Play Billing queryPurchases response, so the game's own entitlement pipeline marks the full version as bought and ads as blocked without contacting Google Play. Receipts are accepted because the game performs no signature validation. Requires the 'Bypass PairIP license check' patch to be enabled so the license screen doesn't block the app when installed outside the Play Store.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.5.12",
+            "2026.4.30",
+            "2026.1.6",
+            "2025.3.21",
+            "2025.2.24"
           ]
         }
       ]
@@ -259,8 +291,8 @@
     }
   ],
   "patches_name": "Miguel's Patches",
-  "fingerprint": "307c7c239e2788da28f11e18dbed8488e77c6ac34452b5175cc0cc870c84b470",
-  "release_notes": "## [1.14.0-dev.11](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.10...v1.14.0-dev.11) (2026-09-07)\n\n### ✨ New Features\n\n* **Duck Life 6: Space:** add unlock full game patch (billing entitlements) ([51c22ef](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/51c22ef7ce33fa4f3292da8dbaa8d41f1bd8b4f2))\n",
-  "release_tag": "v1.14.0-dev.11",
-  "release_date": "2026-09-07T16:31:33Z"
+  "fingerprint": "00f2dc48af179701b4af11b68a197986f4c4574aa1bc98b141e97675a99cff99",
+  "release_notes": "## [1.14.0-dev.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.11...v1.14.0-dev.12) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **Duck Life 6: Space:** repair broken inline smali in unlock full game patch ([96cfcb4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/96cfcb4f67fe262452139bceb7d5d5786ee9f392))\n\n### ✨ New Features\n\n* **Duck Life 4:** add bypass PairIP + unlock full game patches ([fde6289](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fde6289d672cd990725c2a7ca5d4be070725f4dd))\n",
+  "release_tag": "v1.14.0-dev.12",
+  "release_date": "2026-09-08T17:42:36Z"
 }

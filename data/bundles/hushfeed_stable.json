@@ -2,9 +2,9 @@
   "bundle": "hushfeed",
   "channel": "stable",
   "repo_url": "https://github.com/SysAdminDoc/hushfeed",
-  "created_at": "2026-09-08T00:29:21",
-  "version": "v0.22.0",
-  "description": "Hushfeed 0.22.0 for global TikTok 46.2.3 (com.zhiliaoapp.musically). 68 patches.\n\nInstall: add the source in Morphe Manager, or download patches-0.22.0.mpp below and load it as a local bundle. Keep the manager existing signing key.\n\n## What changed\n\n* The block button, the sound and Not interested buttons, the undo banner and the daily budget hold come back after TikTok rebuilds its main screen. The extension kept the first activity it was handed for the life of the process, so anything drawn over the feed went to a window that was no longer on screen, and nothing noticed because a rebuilt screen is destroyed rather than finishing.\n\n* An AAC sound is saved as AAC. It shares its frame sync with MP3, so the reader that tells containers apart called it an MP3, which left a file the gallery would not play. The two layer bits separate them.\n\n* Saving the original sound on Android 6 to 9 says what is wrong. Those versions write a real file, and without storage permission the save failed only after the sound had already been fetched, with nothing to act on. It is asked before anything is downloaded now, the way every other save here asks it.\n\n* The original sound and animated stickers are fetched over TLS only. Both read their addresses straight out of a server response and took whatever scheme was in them, while every other saver here already required https. A cleartext mirror is a body anyone on the network can choose, and the sticker one is handed to a decoder written in C.\n\n* Leaving the Feature Gate Lab while a reset, an undo or an import is still running no longer breaks it. The change finishes on the main thread and put the switch back without checking the screen was still there, so it crashed, and because that happened before the busy flag was released, every later Lab change was refused with a message about one already running until TikTok was restarted.\n\n* A settings backup can no longer take the app down when it is restored. A Lab rule holds its structured value as a string, and the depth check on the file around it said nothing about what that string contained, so a deeply nested one overflowed the stack. That is an Error rather than an exception, so it walked past every catch on the restore path and killed the process. The value now goes through the same bounded reader the rest of the file does and is refused as invalid instead.\n\n* Saving the original sound works at all. The fetch only ever accepted an MP4 container, and TikTok hands back an MP3 for many sound addresses, so every one of those was refused as an unsupported format and the long press said the sound could not be saved. What arrived is now read from its own header, and the file is named and typed to match, so an MP3 lands as .mp3 and plays. Ogg, WAV and FLAC are recognised too.\n\n## Checksum\n\nsha256 of patches-0.22.0.mpp is in SHA256SUMS.txt beside it.\n",
+  "created_at": "2026-09-08T17:38:13",
+  "version": "v0.24.0",
+  "description": "Hushfeed v0.24.0 targets global TikTok 46.2.3 (com.zhiliaoapp.musically).\n\nNew here: the daily hold works with a screen reader. It used to stop touches and nothing else, so it went up without being announced, its way out was read as ordinary text rather than as a button, and the feed behind it could still be swiped to. Translators can work in Weblate now, and the Save button on a sticker is in your language rather than always in English.\n\nFixed here: saving an animated sticker can be given up on, where a stalled encode used to hold one of the three background workers until the app was killed, and two more stickers after that stopped saving altogether with nothing said. A sticker save no longer keeps the screen it started from in memory. The Feature Gate Lab does its saving in the background, so turning overrides on, or saving a gate, no longer freezes the screen behind a settings restore. Comment translation stops rebuilding one of TikTok's own services for every comment in view. Every row in a settings dialog list keeps its check mark, including the ones you scroll to.\n\nAlso here: the patches keep applying when TikTok's own methods grow. Thirty five injected calls could only name sixteen registers, which a large enough method pushes its arguments past, and the failure said nothing about registers.\n\nValidation: 706 runtime tests passed locally. The bundle carries 70 patches, passed checks for all three DEX payloads, and applied cleanly to the vendor APK. It is byte reproducible: two builds of this commit produce the same file. Needs Morphe Manager 1.29.0 or newer.\n\nThe downloadable .mpp is the patch bundle. Patch on the device with Morphe Manager and keep its existing signing key.",
   "apps": [
     {
       "app_name": "TikTok",
@@ -62,7 +62,7 @@
         },
         {
           "name": "Automatic video advance",
-          "description": "Keeps TikTok's automatic advance enabled while preserving its pause, dialog and gesture checks.",
+          "description": "Keeps TikTok's automatic advance enabled while preserving its pause, dialog and gesture checks, and shows TikTok's own Auto scroll action in the video panel for accounts outside its rollout.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -72,6 +72,15 @@
         {
           "name": "Block author button",
           "description": "Adds a block button to the video player that blocks the account that posted the current video in one tap, with an undo action. Supports TikTok 46.2.3.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Comment sort controls",
+          "description": "Shows TikTok's own comment sort sheet on every post, with its hot, newest, media and creator options, instead of the cut-down row an account outside the rollout is given. Supports TikTok 46.2.3.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -199,6 +208,15 @@
           "name": "Enable non-personalized search",
           "description": "Uses TikTok's non-personalized search mode instead of its saved account choice.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Enable voice comments",
+          "description": "Turns on TikTok's own voice comment recording and publishing entry points for accounts that do not have them. Supports TikTok 46.2.3.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "46.2.3"
@@ -449,7 +467,7 @@
         },
         {
           "name": "Long-press controls",
-          "description": "Lets a long press on a video keep TikTok's own action, do nothing, or open the video's comments, and can turn a press on the left or right third of the screen into a jump back or forward. Brings Double-tap controls with it, which supplies the comment control. Supports TikTok 46.2.3.",
+          "description": "Lets a long press on a video keep TikTok's own action, do nothing, open the video's comments, save the original sound, or copy the link to the video or its sound, and can turn a press on the left or right third of the screen into a jump back or forward. Brings Double-tap controls with it, which supplies the comment control. Supports TikTok 46.2.3.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -631,8 +649,8 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "513de462fc4047a11ad73e25c66ff6cb9e168bfbddcd1e652b3398c41a754d42",
-  "release_notes": "Hushfeed 0.22.0 for global TikTok 46.2.3 (com.zhiliaoapp.musically). 68 patches.\n\nInstall: add the source in Morphe Manager, or download patches-0.22.0.mpp below and load it as a local bundle. Keep the manager existing signing key.\n\n## What changed\n\n* The block button, the sound and Not interested buttons, the undo banner and the daily budget hold come back after TikTok rebuilds its main screen. The extension kept the first activity it was handed for the life of the process, so anything drawn over the feed went to a window that was no longer on screen, and nothing noticed because a rebuilt screen is destroyed rather than finishing.\n\n* An AAC sound is saved as AAC. It shares its frame sync with MP3, so the reader that tells containers apart called it an MP3, which left a file the gallery would not play. The two layer bits separate them.\n\n* Saving the original sound on Android 6 to 9 says what is wrong. Those versions write a real file, and without storage permission the save failed only after the sound had already been fetched, with nothing to act on. It is asked before anything is downloaded now, the way every other save here asks it.\n\n* The original sound and animated stickers are fetched over TLS only. Both read their addresses straight out of a server response and took whatever scheme was in them, while every other saver here already required https. A cleartext mirror is a body anyone on the network can choose, and the sticker one is handed to a decoder written in C.\n\n* Leaving the Feature Gate Lab while a reset, an undo or an import is still running no longer breaks it. The change finishes on the main thread and put the switch back without checking the screen was still there, so it crashed, and because that happened before the busy flag was released, every later Lab change was refused with a message about one already running until TikTok was restarted.\n\n* A settings backup can no longer take the app down when it is restored. A Lab rule holds its structured value as a string, and the depth check on the file around it said nothing about what that string contained, so a deeply nested one overflowed the stack. That is an Error rather than an exception, so it walked past every catch on the restore path and killed the process. The value now goes through the same bounded reader the rest of the file does and is refused as invalid instead.\n\n* Saving the original sound works at all. The fetch only ever accepted an MP4 container, and TikTok hands back an MP3 for many sound addresses, so every one of those was refused as an unsupported format and the long press said the sound could not be saved. What arrived is now read from its own header, and the file is named and typed to match, so an MP3 lands as .mp3 and plays. Ogg, WAV and FLAC are recognised too.\n\n## Checksum\n\nsha256 of patches-0.22.0.mpp is in SHA256SUMS.txt beside it.\n",
-  "release_tag": "v0.22.0",
-  "release_date": "2026-09-08T00:29:21Z"
+  "fingerprint": "adcda9c61abf24b239fbfc64d44795f289ef621afe79df536618190cf495b975",
+  "release_notes": "Hushfeed v0.24.0 targets global TikTok 46.2.3 (com.zhiliaoapp.musically).\n\nNew here: the daily hold works with a screen reader. It used to stop touches and nothing else, so it went up without being announced, its way out was read as ordinary text rather than as a button, and the feed behind it could still be swiped to. Translators can work in Weblate now, and the Save button on a sticker is in your language rather than always in English.\n\nFixed here: saving an animated sticker can be given up on, where a stalled encode used to hold one of the three background workers until the app was killed, and two more stickers after that stopped saving altogether with nothing said. A sticker save no longer keeps the screen it started from in memory. The Feature Gate Lab does its saving in the background, so turning overrides on, or saving a gate, no longer freezes the screen behind a settings restore. Comment translation stops rebuilding one of TikTok's own services for every comment in view. Every row in a settings dialog list keeps its check mark, including the ones you scroll to.\n\nAlso here: the patches keep applying when TikTok's own methods grow. Thirty five injected calls could only name sixteen registers, which a large enough method pushes its arguments past, and the failure said nothing about registers.\n\nValidation: 706 runtime tests passed locally. The bundle carries 70 patches, passed checks for all three DEX payloads, and applied cleanly to the vendor APK. It is byte reproducible: two builds of this commit produce the same file. Needs Morphe Manager 1.29.0 or newer.\n\nThe downloadable .mpp is the patch bundle. Patch on the device with Morphe Manager and keep its existing signing key.",
+  "release_tag": "v0.24.0",
+  "release_date": "2026-09-08T17:38:13Z"
 }
