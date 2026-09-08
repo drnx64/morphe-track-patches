@@ -2,9 +2,9 @@
   "bundle": "ftl",
   "channel": "dev",
   "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-  "created_at": "2026-09-08T13:07:30",
-  "version": "v1.44.0-dev.14",
-  "description": "## [1.44.0-dev.14](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.13...v1.44.0-dev.14) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* Up ([bfa7995](https://github.com/BlazeFTL/FTL-Patches/commit/bfa7995aa23a474f9603d4bef70f972efa5148bc))\n",
+  "created_at": "2026-09-08T19:47:34",
+  "version": "v1.44.0-dev.18",
+  "description": "## [1.44.0-dev.18](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.17...v1.44.0-dev.18) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* Up ([b4cf111](https://github.com/BlazeFTL/FTL-Patches/commit/b4cf111ddc655493f40afb76139a34cc5920677e))\n",
   "apps": [
     {
       "app_name": "WiFi Analyzer",
@@ -148,17 +148,8 @@
       "package": "com.mxtech.videoplayer.ad",
       "patches": [
         {
-          "name": "Add Network Stream To Me Tab",
-          "description": "WARNING MX PLAYER HAS INTEGRITY CHECK. Mod By Youarefinished Also Has Their Own Integrity Check. So Download From Play Store, Use URV Manager With Signing Turned Off, Patch And Then Kill Signature Verification With MT Manager Enhanced (VIP Only) Or Modded Build.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "3.1.4"
-          ]
-        },
-        {
           "name": "Clean Me Tab",
-          "description": "Removes promo rows and unused tiles from the Me tab: WhatsApp Status Saver, Legal/Help, the local-tiles pager, Local Network, Music Player, Cloud Drive, MX Share, and Private Folder.",
+          "description": "Removes promo rows and unused tiles from the Me tab. Optionally adds a Network Stream tile.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -166,47 +157,8 @@
           ]
         },
         {
-          "name": "Clean sidebar More menu",
-          "description": "Hides the \"Help\" section (What's New, Features, FAQ, Check for Update, Bug Report, About) from the sidebar's More menu.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "3.1.4"
-          ]
-        },
-        {
-          "name": "Clean sidebar shortcuts",
-          "description": "Independently hide Video Display, Bookmark, Favourite, Add to Playlist, Tutorial, and/or Playing Queue from the player's shortcut sidebar.",
-          "use": true,
-          "options": [
-            {
-              "key": "hideBookmark",
-              "description": ""
-            },
-            {
-              "key": "hideFavourite",
-              "description": ""
-            },
-            {
-              "key": "hideAddToPlaylist",
-              "description": ""
-            },
-            {
-              "key": "hideTutorial",
-              "description": ""
-            },
-            {
-              "key": "hidePlayingQueue",
-              "description": ""
-            }
-          ],
-          "compatible_versions": [
-            "3.1.4"
-          ]
-        },
-        {
-          "name": "Configure Smart Enhance toast",
-          "description": "Always skips the Smart Enhance popup animation and always drops the disable-side toast. \"Show toast\" on: fires a toast when Smart Enhance is enabled. Off: enabling is silent too.",
+          "name": "Configure Smart Enhance",
+          "description": "Configures the Smart Enhance intro popup and enable/disable toast.",
           "use": true,
           "options": [
             {
@@ -233,20 +185,6 @@
           ]
         },
         {
-          "name": "Default Shortcuts",
-          "description": "Changes which player long-press/gesture shortcuts are enabled out of the box, for installs that have never customized them (Settings > Player > Customize Shortcuts still works normally and always wins once touched). Default keeps screen rotation, playback speed, background play, loop, customize items, screenshot, mirror mode and vertical flip; drops mute, shuffle, equalizer, sleep timer, repeat A-B, night mode and audio effect.",
-          "use": false,
-          "options": [
-            {
-              "key": "defaultShortcutsMask",
-              "description": "Bit sum of enabled shortcuts, decimal or 0x-prefixed hex. Bits: 0x1 rotation, 0x2 speed, 0x4 background play, 0x8 loop, 0x10 mute, 0x20 shuffle, 0x40 equalizer, 0x100 sleep timer, 0x200 repeat A-B, 0x400 night mode, 0x800 customise items, 0x1000 screenshot, 0x2000 mirror mode, 0x4000 vertical flip, 0x8000 audio effect. Default 0x780F."
-            }
-          ],
-          "compatible_versions": [
-            "3.1.4"
-          ]
-        },
-        {
           "name": "Disable Bottom Bar And Add Me Tab To Top",
           "description": "Hides the bottom navigation bar and adds a Me tab button to the toolbar.",
           "use": false,
@@ -256,42 +194,31 @@
           ]
         },
         {
-          "name": "Disable Smart Enhance popup",
-          "description": "Skips the \"Smart Enhance\" intro dialog on the player menu - tapping the menu item toggles Smart Enhance directly instead of showing the popup first.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "3.1.4"
-          ]
-        },
-        {
-          "name": "Fix SpeedUp tip string",
-          "description": "Shortens the SpeedUp long-press tip from \"%1$s Speed Playing\" to \"%1$s\".",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "3.1.4"
-          ]
-        },
-        {
-          "name": "Hide Video Display",
-          "description": "",
+          "name": "Sidebar & Player Defaults",
+          "description": "Cleans the player sidebar and More menu; sets default shortcuts and subtitle view.",
           "use": true,
           "options": [
             {
-              "key": "hideVideoDisplay",
+              "key": "hideBookmark",
+              "description": ""
+            },
+            {
+              "key": "hideFavourite",
+              "description": ""
+            },
+            {
+              "key": "hideAddToPlaylist",
+              "description": ""
+            },
+            {
+              "key": "hideTutorial",
+              "description": ""
+            },
+            {
+              "key": "hidePlayingQueue",
               "description": ""
             }
           ],
-          "compatible_versions": [
-            "3.1.4"
-          ]
-        },
-        {
-          "name": "Open subtitle settings by default",
-          "description": "Expands the Sync/Speed/Panel/Customization settings block in the subtitle menu by default instead of it being collapsed.",
-          "use": true,
-          "options": [],
           "compatible_versions": [
             "3.1.4"
           ]
@@ -591,8 +518,8 @@
     }
   ],
   "patches_name": "BlazeFTL Patches",
-  "fingerprint": "afd372b0a34df9825ee969c7774ccd7305aa0cb9b793ff38260f53aae0f85e5e",
-  "release_notes": "## [1.44.0-dev.14](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.13...v1.44.0-dev.14) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* Up ([bfa7995](https://github.com/BlazeFTL/FTL-Patches/commit/bfa7995aa23a474f9603d4bef70f972efa5148bc))\n",
-  "release_tag": "v1.44.0-dev.14",
-  "release_date": "2026-09-08T13:07:30Z"
+  "fingerprint": "9ecd7e487e4a6d8fa5514db5747653875f05cc2604eead959258a734b68d113c",
+  "release_notes": "## [1.44.0-dev.18](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.17...v1.44.0-dev.18) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* Up ([b4cf111](https://github.com/BlazeFTL/FTL-Patches/commit/b4cf111ddc655493f40afb76139a34cc5920677e))\n",
+  "release_tag": "v1.44.0-dev.18",
+  "release_date": "2026-09-08T19:47:34Z"
 }
