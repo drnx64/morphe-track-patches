@@ -1,0 +1,67 @@
+{
+  "bundle": "zeldrisho",
+  "channel": "dev",
+  "repo_url": "https://github.com/zeldrisho/morphe-patches",
+  "created_at": "2026-09-08T05:32:44Z",
+  "version": "1.1.0-dev.1",
+  "description": "## 1.0.0 (2026-09-07)\n\n### 🐛 Bug Fixes\n\n* apply CodeRabbit auto-fixes ([d807ae7](https://github.com/zeldrisho/morphe-patches/commit/d807ae746c9d08f74352dffc89f31a680797292b))\n* Apply CodeRabbit auto-fixes ([0fd14fa](https://github.com/zeldrisho/morphe-patches/commit/0fd14fa53caedeeafc31b7b96542056464cd2a2d)), closes [#1](https://github.com/zeldrisho/morphe-patches/issues/1)\n* **ci:** Set least-privilege permissions on Check workflow ([e178d56](https://github.com/zeldrisho/morphe-patches/commit/e178d5622d5872316a4b641d73fa4ec871c74aef))\n* **scripts:** Repair repatch CLI options and signing overrides ([ca923f9](https://github.com/zeldrisho/morphe-patches/commit/ca923f9b1220e64cd9740d639ea0836fd5fd4c60))\n\n### ✨ New Features\n\n* Drop template bundle, harden extension wiring, opt-in rename ([bb3899a](https://github.com/zeldrisho/morphe-patches/commit/bb3899a46e082b9f954a0e8dd83fd670ea8d558b))\n* **threads:** Add Threads patch module with feed ad removal ([3ee90c9](https://github.com/zeldrisho/morphe-patches/commit/3ee90c91adad9665e6d0b9fc27bcd80f84b107c3)), closes [durgesh0505/chiggi_morphe_patches#5](https://github.com/durgesh0505/chiggi_morphe_patches/issues/5)\n* **threads:** Add Threads patch module with feed ad removal ([bc162bd](https://github.com/zeldrisho/morphe-patches/commit/bc162bd86b9f768727c836c70d68e31f4e6605f1)), closes [durgesh0505/chiggi_morphe_patches#5](https://github.com/durgesh0505/chiggi_morphe_patches/issues/5)",
+  "apps": [
+    {
+      "app_name": "Threads",
+      "package": "com.instagram.barcelona",
+      "patches": [
+        {
+          "name": "Change app name",
+          "description": "Changes the app name shown under the launcher icon. Set the desired name in the patch options.",
+          "use": true,
+          "options": [
+            {
+              "key": "appName",
+              "description": "The name shown under the app icon."
+            }
+          ],
+          "compatible_versions": [
+            "434.0.0.41.74"
+          ]
+        },
+        {
+          "name": "Change package name",
+          "description": "Changes the app package name so the patched app installs alongside the original Threads. Set the desired package name in the patch options. WARNING: Meta apps hardcode many component/provider references — renaming the package can break Facebook login (SSO), content providers, or push. Disable this patch if you hit such issues.",
+          "use": false,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "The new application package name (e.g. com.instagram.barcelona.morphe)."
+            }
+          ],
+          "compatible_versions": [
+            "434.0.0.41.74"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Removes sponsored posts from the Threads feed by filtering ad feed units (detected via Media.DED) out of the list merged into the feed cache, before they can render. Feed-scoped; other surfaces (clips/reels) are not affected.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "434.0.0.41.74"
+          ]
+        },
+        {
+          "name": "Remove AD_ID permission",
+          "description": "Removes the advertising-id (AD_ID) permissions so the device advertising id cannot be read for ad tracking. Does not disable Meta's core analytics.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "434.0.0.41.74"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Zeldris Patches",
+  "fingerprint": "b38a5bf6d5628d526d1e989ca2bee52c28b0396dfe51ef56b383851b00f5edab",
+  "release_notes": "## [1.1.0-dev.1](https://github.com/zeldrisho/morphe-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **ads:** Validate feed targets before injecting the filter ([4a6d272](https://github.com/zeldrisho/morphe-patches/commit/4a6d272ff7026b4686929f22e1600260b806867c))\n* **clone:** Rewrite provider authority prefixes independently ([78abaaf](https://github.com/zeldrisho/morphe-patches/commit/78abaaf6eabe7cd6acdbad85c521c76942f33791))\n* **extension:** Avoid repeated reflection lookups in FeedAdFilter ([3019d2e](https://github.com/zeldrisho/morphe-patches/commit/3019d2ea81c803c2e4493f4dd2d68a7523e480d5))\n\n### ✨ New Features\n\n* **ads:** Harden feed hook with encoding fixes and injection tests ([01c0455](https://github.com/zeldrisho/morphe-patches/commit/01c0455d226ed33cc21da2f5a98ec9f8ba79f5d9)), closes [#5](https://github.com/zeldrisho/morphe-patches/issues/5)\n* **shared:** Port doom-patches toolkit for Threads patches ([847b007](https://github.com/zeldrisho/morphe-patches/commit/847b0070861e70037b44d26c6093eb1eab4604e0))\n",
+  "release_tag": "v1.1.0-dev.1",
+  "release_date": "2026-09-08T05:32:44Z"
+}

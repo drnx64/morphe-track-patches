@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "stable",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-09-04T23:30:38",
-  "version": "v2.2.1",
-  "description": "## 2.2.1\n\n- feat: a scratch text box in Settings, so a change can be tried where it was made\n- docs: the removal case is observed now, not argued\n- docs: Bigger Toolbar confirmed on a device, and why twelve\n- feat: an About section that says where this came from\n- feat: patch descriptions that mention the ceiling they run into\n- feat: the settings row says who wrote it\n- feat: teaching an old keyboard new tricks\n- feat: say what Flexboard is in Gboard's settings, not what it was\n- docs: verify the channel model against morphe-manager, and name the gap\n- build: make the gate one command, and stop the scanner lying\n- docs: record the green gate that was not a gate",
+  "created_at": "2026-09-08T01:51:43",
+  "version": "v2.3.0",
+  "description": "## 2.3.0\r\n\r\n- docs: write down what forcing a Phenotype flag actually does",
   "apps": [
     {
       "app_name": "Gboard",
@@ -29,9 +29,18 @@
           ]
         },
         {
-          "name": "Grammar Check Row",
-          "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks.",
+          "name": "Hidden Features",
+          "description": "Turns on two finished Gboard features that a resigned build can never receive: grammar check, and a close control on the chips Gboard offers unprompted. Their flags are delivered per app signature, so resigning the APK means they never arrive and stay off. Both are confirmed working on a device; five other flags were tried and dropped.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Hidden Features (unconfirmed)",
+          "description": "Turns on four finished Gboard features that a resigned build can never receive: Emoji Kitchen browse, the custom sticker tab, offline translation, and search in Gboard's settings. Off by default because none of the four has been seen working on a device — the flags flip, but each also depends on data Google only sends to an unpatched install. Safe to try: none of them crashes.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "18.0.3.954559732-release-arm64-v8a"
@@ -48,7 +57,7 @@
         },
         {
           "name": "Suggested Settings",
-          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings.",
+          "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if Hidden Features is applied too.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -75,7 +84,7 @@
         },
         {
           "name": "Text Action Buttons",
-          "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists. These three compete for the five icons Gboard's toolbar holds; Bigger Toolbar raises that ceiling if you run the hotkeys as well.",
+          "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists. These three share the toolbar with Gboard's own icons and with Toolbar Hotkeys. Bigger Toolbar, which is applied unless you deselect it, raises the ceiling from five to twelve; without it, five is all the bar can hold.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -84,7 +93,7 @@
         },
         {
           "name": "Toolbar Hotkeys",
-          "description": "Adds six configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open. Gboard's toolbar holds five icons in total, shared with its own, so apply Bigger Toolbar too if you want all six on the bar at once.",
+          "description": "Adds eight configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open. The slots share the toolbar with Gboard's own icons: Bigger Toolbar, which is applied unless you deselect it, makes room for twelve, but on a stock ceiling of five not all eight fit.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -104,8 +113,8 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "2ab131c8633f4e619ab2667e156f281d98a3e0c232cb5b10b5cd719053fe44b3",
-  "release_notes": "## 2.2.1\n\n- feat: a scratch text box in Settings, so a change can be tried where it was made\n- docs: the removal case is observed now, not argued\n- docs: Bigger Toolbar confirmed on a device, and why twelve\n- feat: an About section that says where this came from\n- feat: patch descriptions that mention the ceiling they run into\n- feat: the settings row says who wrote it\n- feat: teaching an old keyboard new tricks\n- feat: say what Flexboard is in Gboard's settings, not what it was\n- docs: verify the channel model against morphe-manager, and name the gap\n- build: make the gate one command, and stop the scanner lying\n- docs: record the green gate that was not a gate",
-  "release_tag": "v2.2.1",
-  "release_date": "2026-09-04T23:30:38Z"
+  "fingerprint": "080054fbc797fc22952d85b4e3edc35778a66b81b0af832c7614fd85e6afd264",
+  "release_notes": "## 2.3.0\r\n\r\n- docs: write down what forcing a Phenotype flag actually does",
+  "release_tag": "v2.3.0",
+  "release_date": "2026-09-08T01:51:43Z"
 }
