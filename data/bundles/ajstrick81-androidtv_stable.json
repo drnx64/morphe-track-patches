@@ -2,9 +2,9 @@
   "bundle": "ajstrick81-androidtv",
   "channel": "stable",
   "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-  "created_at": "2026-09-07T19:49:26",
-  "version": "v1.33.0",
-  "description": "# [1.33.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.32.0...v1.33.0) (2026-09-07)\n\n\n### Features\n\n* **espn:** animated Be Right Back overlay slate, live-score strip fixes & slate picker ([#156](https://github.com/ajstrick81/morphe-androidtv-patches/issues/156)) ([d085d7b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/d085d7b08c04cf3b2decbee6391bef53795496cf)), closes [hi#performance](https://github.com/hi/issues/performance)\n\n\n\n",
+  "created_at": "2026-09-07T22:50:57",
+  "version": "v1.34.1",
+  "description": "## [1.34.1](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.34.0...v1.34.1) (2026-09-07)\n\n\n### Bug Fixes\n\n* **pluto:** re-map resume bookmark into ad-stripped timeline ([#147](https://github.com/ajstrick81/morphe-androidtv-patches/issues/147)) ([65efe05](https://github.com/ajstrick81/morphe-androidtv-patches/commit/65efe05b1b2dc04265e46d1737287b6a3afe4d6c)), closes [#2](https://github.com/ajstrick81/morphe-androidtv-patches/issues/2)\n\n\n\n",
   "apps": [
     {
       "app_name": "Livingroom",
@@ -143,8 +143,35 @@
       "package": "com.espn.score_center",
       "patches": [
         {
+          "name": "Clone ESPN",
+          "description": "Installs the patched ESPN as a separate app alongside the stock one, instead of replacing it. Enable this when ESPN is a preinstalled system app that can't be uninstalled — most commonly on Amazon Fire TV, and on some Android TV boxes and Onn devices. The clone gets its own package (suffix .mod), so it shows up as a second ESPN icon and keeps its own settings. Leave OFF if you were able to uninstall the original ESPN first (a normal in-place install is cleaner). Opt-in.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "6.11.1"
+          ]
+        },
+        {
+          "name": "Disable auto-updates",
+          "description": "Stops the Google Play Store from silently updating ESPN back to the official version and wiping out the patch (which would bring the ads back). Works by setting the patched build's version number far ahead of anything on the Store, so it's treated as already up to date. You can still update deliberately by re-patching a newer APK in Morphe. Recommended to leave ON. Does not apply to mount-installed apps.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.11.1"
+          ]
+        },
+        {
           "name": "ESPN Android TV",
-          "description": "Suppresses ESPN Android TV VOD/scheduled ads (DMP SGAI isAdDisabled) and masks LIVE passthrough-SSAI commercial breaks with a full-screen \"Commercial Break\" slate + mute (the live ad can't be removed, only covered). Optional slate media is user-supplied local files; disable the live slate with a `slate_off` marker file. No DNS dependency.",
+          "description": "Suppresses ESPN Android TV VOD/scheduled ads by forcing DMP SGAI isAdDisabled = true (that one boolean gates all six ad-scheduling sites). Live passthrough-SSAI commercial breaks can't be removed — to MASK them with a slate + mute, also select the \"ESPN live commercial-break slate\" patch. No DNS dependency.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.11.1"
+          ]
+        },
+        {
+          "name": "ESPN live commercial-break slate",
+          "description": "Masks LIVE ESPN commercial breaks (which are passthrough SSAI and can't be removed) with a full-screen slate + mute: your own video/image clips, or the animated \"Be Right Back\" overlay with a live countdown. Includes an on-screen D-pad picker to switch styles. Leave OFF if you only want the VOD ad suppression and no on-screen slate during live breaks. Runtime opt-out: a `slate_off` marker file.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -383,7 +410,7 @@
         },
         {
           "name": "Skip ads",
-          "description": "Removes Pluto TV's on-demand (VOD) ads entirely — ad video, markers, overlays, and beacons. Two layers: (1) drops the ad <Period>s from the stitched DASH manifest at media3's parser and re-bases the content periods contiguous, so the ad VIDEO is never played (verified on-device: 2:49:58 -> 2:18:41, mid-rolls gone); (2) empties the client-side ad-break timeline (StitcherSession.adBreaks — the same data AdGuard strips via jsonprune) and no-ops pause ads and clickable-ad overlays, removing the markers/UI/beacons. Fail-open: a manifest it can't rewrite is passed through unchanged (ads remain, playback never breaks). LIVE TV ads are real broadcast time in the linear feed and are not removable. Validated on-device, 5.66.0-leanback.",
+          "description": "Removes Pluto TV's on-demand (VOD) ads entirely — ad video, markers, overlays, and beacons. Two layers: (1) drops the ad <Period>s from the stitched DASH manifest at media3's parser and re-bases the content periods contiguous, so the ad VIDEO is never played (verified on-device: 2:49:58 -> 2:18:41, mid-rolls gone); (2) empties the client-side ad-break timeline (StitcherSession.adBreaks — the same data AdGuard strips via jsonprune) and no-ops pause ads and clickable-ad overlays, removing the markers/UI/beacons. Fail-open: a manifest it can't rewrite is passed through unchanged (ads remain, playback never breaks). A resume bookmark saved in the original (ad-inclusive) timeline is re-mapped into the shortened timeline so resuming a partially-watched episode no longer overshoots the end and autoplay-skips (issue #147). LIVE TV ads are real broadcast time in the linear feed and are not removable. Validated on-device, 5.66.0-leanback.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -409,8 +436,8 @@
     }
   ],
   "patches_name": "ajstrick81 Patches",
-  "fingerprint": "d16f194e308e6249722c01bc1f5e82ea8684d986c63ec8200f42b9077a20d50a",
-  "release_notes": "# [1.33.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.32.0...v1.33.0) (2026-09-07)\n\n\n### Features\n\n* **espn:** animated Be Right Back overlay slate, live-score strip fixes & slate picker ([#156](https://github.com/ajstrick81/morphe-androidtv-patches/issues/156)) ([d085d7b](https://github.com/ajstrick81/morphe-androidtv-patches/commit/d085d7b08c04cf3b2decbee6391bef53795496cf)), closes [hi#performance](https://github.com/hi/issues/performance)\n\n\n\n",
-  "release_tag": "v1.33.0",
-  "release_date": "2026-09-07T19:49:26Z"
+  "fingerprint": "0efe8cc219cfdcf1ae134d3b94a96472f26e01073661188f48f3f6c74cf98203",
+  "release_notes": "## [1.34.1](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.34.0...v1.34.1) (2026-09-07)\n\n\n### Bug Fixes\n\n* **pluto:** re-map resume bookmark into ad-stripped timeline ([#147](https://github.com/ajstrick81/morphe-androidtv-patches/issues/147)) ([65efe05](https://github.com/ajstrick81/morphe-androidtv-patches/commit/65efe05b1b2dc04265e46d1737287b6a3afe4d6c)), closes [#2](https://github.com/ajstrick81/morphe-androidtv-patches/issues/2)\n\n\n\n",
+  "release_tag": "v1.34.1",
+  "release_date": "2026-09-07T22:50:57Z"
 }

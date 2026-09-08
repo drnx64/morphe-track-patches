@@ -2,9 +2,9 @@
   "bundle": "xperia-1v-camera",
   "channel": "stable",
   "repo_url": "https://github.com/alalloush/xperia-1v-camera-patches",
-  "created_at": "2026-09-07T21:23:51",
-  "version": "v1.2.0",
-  "description": "## [1.2.0](https://github.com/alalloush/xperia-1v-camera-patches/compare/v1.1.4...v1.2.0) (2026-09-07)\n\n### 🐛 Bug Fixes\n\n* Build connect-mode constants without growing register counts ([3be446d](https://github.com/alalloush/xperia-1v-camera-patches/commit/3be446dcbd17dc273d7ce1731cf4b18bb2f630d1))\n\n### ✨ New Features\n\n* Add PC via USB / PC via Wi-Fi connect modes for the raw stream; drop latency diagnostics ([a6c821e](https://github.com/alalloush/xperia-1v-camera-patches/commit/a6c821ef199b09bcf10d148de236e0241f60c4a5))\n",
+  "created_at": "2026-09-07T21:39:33",
+  "version": "v1.3.0",
+  "description": "## [1.3.0](https://github.com/alalloush/xperia-1v-camera-patches/compare/v1.2.0...v1.3.0) (2026-09-07)\n\n### ✨ New Features\n\n* Streaming presets patch (1080p60/120, 4K30/60, bitrate and GOP options); shorter connect-mode labels ([dead495](https://github.com/alalloush/xperia-1v-camera-patches/commit/dead495533f5d49b168e2bf175b4d4b3ba1d8305))\n",
   "apps": [
     {
       "app_name": "Photography Pro",
@@ -66,6 +66,25 @@
           ]
         },
         {
+          "name": "Streaming presets",
+          "description": "Unlocks 1080p60/120 and 4K30/60 in Live streaming (camera-capability filtered) and sets the streaming encoder bitrate and keyframe interval.",
+          "use": true,
+          "options": [
+            {
+              "key": "streamingBitrateKbps",
+              "description": "0 = automatic: 0.1 bit per pixel per frame (1080p30 6 Mbit/s, 1080p60 12, 4K30 25, 4K60 50)."
+            },
+            {
+              "key": "streamingKeyframeSeconds",
+              "description": "Seconds between keyframes. 1 keeps recovery from a lost packet short; Sony uses 2."
+            }
+          ],
+          "compatible_versions": [
+            "1.0.2.A.0.8",
+            "1.0.2.A.0.6"
+          ]
+        },
+        {
           "name": "Xperia 1 V camera HAL compatibility",
           "description": "Makes the Xperia 1 VI camera app work on the Xperia 1 V camera HAL: truncates objectSelectTriggerArea to the 4 ints the 1 V HAL defines and sends conditionDetectMode alongside sceneDetectMode, which the 1 V HAL validates together.",
           "use": true,
@@ -79,8 +98,8 @@
     }
   ],
   "patches_name": "alalloush Xperia 1 V camera patches",
-  "fingerprint": "9e00a094f6fe914273775565ec23d38a18fd698021568e5c473cf55126b5be11",
-  "release_notes": "## [1.2.0](https://github.com/alalloush/xperia-1v-camera-patches/compare/v1.1.4...v1.2.0) (2026-09-07)\n\n### 🐛 Bug Fixes\n\n* Build connect-mode constants without growing register counts ([3be446d](https://github.com/alalloush/xperia-1v-camera-patches/commit/3be446dcbd17dc273d7ce1731cf4b18bb2f630d1))\n\n### ✨ New Features\n\n* Add PC via USB / PC via Wi-Fi connect modes for the raw stream; drop latency diagnostics ([a6c821e](https://github.com/alalloush/xperia-1v-camera-patches/commit/a6c821ef199b09bcf10d148de236e0241f60c4a5))\n",
-  "release_tag": "v1.2.0",
-  "release_date": "2026-09-07T21:23:51Z"
+  "fingerprint": "4c825359706208ba476696b6145c7a009c7a7f2d13b009d332dcfda53ab135d6",
+  "release_notes": "## [1.3.0](https://github.com/alalloush/xperia-1v-camera-patches/compare/v1.2.0...v1.3.0) (2026-09-07)\n\n### ✨ New Features\n\n* Streaming presets patch (1080p60/120, 4K30/60, bitrate and GOP options); shorter connect-mode labels ([dead495](https://github.com/alalloush/xperia-1v-camera-patches/commit/dead495533f5d49b168e2bf175b4d4b3ba1d8305))\n",
+  "release_tag": "v1.3.0",
+  "release_date": "2026-09-07T21:39:33Z"
 }
