@@ -1,0 +1,58 @@
+{
+  "bundle": "vantage",
+  "channel": "stable",
+  "repo_url": "https://github.com/pmaxhogan/vantage-patches",
+  "created_at": "2026-09-08T21:09:58Z",
+  "version": "v0.1.1",
+  "description": "Vantage-only morphe patches 0.1.1 built from 07652d3. Stacked on top of the anddea bundle by pmaxhogan/vantage scripts/build.sh. Built 2026-09-08T21:09:56Z.",
+  "apps": [
+    {
+      "app_name": "Claude by Anthropic",
+      "package": "com.anthropic.claude",
+      "patches": [
+        {
+          "name": "Clone with badge",
+          "description": "Installable copy of the app under a new package name, with its own label, a recolored and numbered icon, and a corner pill showing the number in-app.",
+          "use": true,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "Package name of the copy. Must differ from the original and from every other copy."
+            },
+            {
+              "key": "appLabel",
+              "description": "Launcher name of the copy."
+            },
+            {
+              "key": "badgeNumber",
+              "description": "Number shown in the corner pill and stamped on the icon (1-9)."
+            },
+            {
+              "key": "iconColor",
+              "description": "Launcher icon background color (#RRGGBB), also used for the digit on the icon."
+            }
+          ],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "YouTube Music",
+      "package": "com.google.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Keep playback on activity destroy",
+          "description": "Keeps background playback and its media foreground service alive when the system destroys MusicActivity to reclaim memory. A user-initiated close (back press or swipe from recents) still stops playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    }
+  ],
+  "patches_name": "Vantage",
+  "fingerprint": "2e86053a8d2fa19c346c3b142160fdfd43541946fda540c21a83c45ef6243e4a",
+  "release_notes": "Vantage-only morphe patches 0.1.1 built from 07652d3. Stacked on top of the anddea bundle by pmaxhogan/vantage scripts/build.sh. Built 2026-09-08T21:09:56Z.",
+  "release_tag": "v0.1.1",
+  "release_date": "2026-09-08T21:09:58Z"
+}
