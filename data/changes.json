@@ -1,118 +1,219 @@
 {
   "affected_bundles": [
     {
-      "bundle": "crimeradar",
+      "bundle": "kveld",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Vivaldi Browser Snapshot",
+          "package": "com.vivaldi.browser.snapshot",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Block Vivaldi Sync",
+                "description": "Redirects bifrost.vivaldi.com to 0.0.0.0 in libchrome.so to completely disable Vivaldi account synchronization for an air-gapped experience.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Block Vivaldi Telemetry",
+                "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, and DirectMatch suggestions.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Clean Speed Dial Bookmarks",
+                "description": "Removes sponsored commercial affiliate bookmarks, hides the 3-dot customize button, and disables phantom touch actions on the blank Start Page.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Close Tabs on Exit",
+                "description": "Prevents tab restoration on startup, ensuring Vivaldi always opens with a clean Start Page session regardless of how the app was terminated.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Background Sync & Periodic Sync",
+                "description": "Eliminates background wakeups, radio modem activity, and battery drain by neutralizing periodic and one-shot background sync tasks.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Battery Status API & OS Listener",
+                "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Chromium Tips & Notification Scheduler",
+                "description": "Eliminates periodic background wakeups, native library loading, and in-product promotional tips from Chromium tips scheduler.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Vivaldi Prompts & In-App Popups",
+                "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, and default browser promotional handlers.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Locale PAK Slimmer",
+                "description": "Strips unselected language resource PAKs from assets/locales/.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "PNG Asset Optimizer",
+                "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Resource Slimmer",
+                "description": "Strips bundled stock wallpapers and sponsored Speed Dial thumbnails to reduce APK size.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Skip First Run",
+                "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Vivaldi Startup Performance Optimization",
+                "description": "Optimizes cold startup time, eliminates background CPU/disk overhead, and guards against early CompositorView LayoutStateObserver crashes.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
+      "patches_name": "kveld9 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "legendsciber",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Shadow Fight 2",
+          "package": "com.nekki.shadowfight",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Shadow Fight 2 IAP Bypass (Smali)",
+                "description": "Bypasses in-app purchases via smali patching. Intercepts zzbm callbacks to inject fake purchase data into C++ layer.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/legendsciber/morphe-patches",
+      "patches_name": "legendsciber's Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "ftl",
       "channel": "dev",
-      "badge_type": "NEW BUNDLE",
+      "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "CrimeRadar",
-          "package": "com.newsbreak.crimeradar",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Scanner Radio",
-          "package": "com.scannerradio",
-          "badge_type": "NEW APP",
+          "app_name": "MX Player",
+          "package": "com.mxtech.videoplayer.ad",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Clean Me Tab",
+                "description": "WARNING: MX Player has an integrity check, and some mods add their own on top. Use a Play Store build, patch with signing off, then strip signature verification (MT Manager Enhanced or a modded build) - or the app may refuse to start.Removes promo rows and unused tiles from the Me tab. Optional Add Network Stream tile.",
+                "changes": [
+                  "description updated",
+                  "options: +1 option",
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Configure Smart Enhance",
+                "description": "Configures the Smart Enhance intro popup and enable/disable toast.",
+                "changes": [
+                  "options: +1 option",
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Configure SpeedUp overlay",
+                "description": "\"2x UI\": keeps the long-press SpeedUp overlay/animation, with the stock leftover-visible-view bug fixed. \"No UI\": the overlay never shows at all - the speed change itself still applies, since that's handled elsewhere.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable Bottom Bar And Add Me Tab To Top",
+                "description": "Hides the bottom navigation bar and adds a Me tab button to the toolbar.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Sidebar & Player Defaults",
+                "description": "Cleans the player sidebar and More menu; sets default shortcuts and subtitle view.",
+                "changes": [
+                  "options: +5 options",
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/JacobPlaysGames/CrimeRadar-Morphe-Patches",
-      "patches_name": "CrimeRadar Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "crimeradar",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "CrimeRadar",
-          "package": "com.newsbreak.crimeradar",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Scanner Radio",
-          "package": "com.scannerradio",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/JacobPlaysGames/CrimeRadar-Morphe-Patches",
-      "patches_name": "CrimeRadar Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "ringconn",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "RingConn",
-          "package": "com.gdjztech.ringconn",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/DarioDKM/ringconn-patches",
-      "patches_name": "DarioDKM",
-      "extra_badges": []
-    },
-    {
-      "bundle": "psylos",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "SoundCloud",
-          "package": "com.soundcloud.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/lootdev78/psylos-morphe-patches",
-      "patches_name": "Psylos Morphe Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "vantage",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Claude by Anthropic",
-          "package": "com.anthropic.claude",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "YouTube Music",
-          "package": "com.google.android.apps.youtube.music",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/pmaxhogan/vantage-patches",
-      "patches_name": "Vantage",
-      "extra_badges": []
+      "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
+      "patches_name": "BlazeFTL Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
     },
     {
       "bundle": "dariodkm",

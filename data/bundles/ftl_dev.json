@@ -2,9 +2,9 @@
   "bundle": "ftl",
   "channel": "dev",
   "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-  "created_at": "2026-09-08T19:47:34",
-  "version": "v1.44.0-dev.18",
-  "description": "## [1.44.0-dev.18](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.17...v1.44.0-dev.18) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* Up ([b4cf111](https://github.com/BlazeFTL/FTL-Patches/commit/b4cf111ddc655493f40afb76139a34cc5920677e))\n",
+  "created_at": "2026-09-09T04:31:08",
+  "version": "v1.44.0-dev.21",
+  "description": "## [1.44.0-dev.21](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.20...v1.44.0-dev.21) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* Up ([a0f9d6d](https://github.com/BlazeFTL/FTL-Patches/commit/a0f9d6d3718113e61de7dffdaa697cae5c59bddd))\n",
   "apps": [
     {
       "app_name": "WiFi Analyzer",
@@ -149,11 +149,17 @@
       "patches": [
         {
           "name": "Clean Me Tab",
-          "description": "Removes promo rows and unused tiles from the Me tab. Optionally adds a Network Stream tile.",
+          "description": "WARNING: MX Player has an integrity check, and some mods add their own on top. Use a Play Store build, patch with signing off, then strip signature verification (MT Manager Enhanced or a modded build) - or the app may refuse to start.Removes promo rows and unused tiles from the Me tab. Optional Add Network Stream tile.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "addNetworkStream",
+              "description": "Add back network stream to me tab"
+            }
+          ],
           "compatible_versions": [
-            "3.1.4"
+            "3.1.4",
+            "3.2.1"
           ]
         },
         {
@@ -162,12 +168,17 @@
           "use": true,
           "options": [
             {
+              "key": "skipPopup",
+              "description": "Tapping the menu item toggles Smart Enhance directly instead of showing the popup first and animation."
+            },
+            {
               "key": "showToast",
               "description": "On: toast when Smart Enhance turns on. Off: fully silent toggle."
             }
           ],
           "compatible_versions": [
-            "3.1.4"
+            "3.1.4",
+            "3.2.1"
           ]
         },
         {
@@ -181,7 +192,8 @@
             }
           ],
           "compatible_versions": [
-            "3.1.4"
+            "3.1.4",
+            "3.2.1"
           ]
         },
         {
@@ -190,7 +202,8 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "3.1.4"
+            "3.1.4",
+            "3.2.1"
           ]
         },
         {
@@ -198,6 +211,26 @@
           "description": "Cleans the player sidebar and More menu; sets default shortcuts and subtitle view.",
           "use": true,
           "options": [
+            {
+              "key": "hideVideoDisplay",
+              "description": ""
+            },
+            {
+              "key": "hideMoreMenuHelp",
+              "description": "Hides What's New, Features, FAQ, Check for Update, Bug Report, and About."
+            },
+            {
+              "key": "enableDefaultShortcuts",
+              "description": "Settings > Player > Customize Shortcuts still works and always wins once touched."
+            },
+            {
+              "key": "defaultShortcutsMask",
+              "description": "Bit sum of enabled shortcuts, decimal or 0x-prefixed hex. Bits: 0x1 rotation, 0x2 speed, 0x4 background play, 0x8 loop, 0x10 mute, 0x20 shuffle, 0x40 equalizer, 0x100 sleep timer, 0x200 repeat A-B, 0x400 night mode, 0x800 customise items, 0x1000 screenshot, 0x2000 mirror mode, 0x4000 vertical flip, 0x8000 audio effect. Default 0x780F."
+            },
+            {
+              "key": "openSubtitleSettings",
+              "description": "Expands Sync/Speed/Panel/Customization in the subtitle menu instead of collapsed."
+            },
             {
               "key": "hideBookmark",
               "description": ""
@@ -220,7 +253,8 @@
             }
           ],
           "compatible_versions": [
-            "3.1.4"
+            "3.1.4",
+            "3.2.1"
           ]
         }
       ]
@@ -518,8 +552,8 @@
     }
   ],
   "patches_name": "BlazeFTL Patches",
-  "fingerprint": "9ecd7e487e4a6d8fa5514db5747653875f05cc2604eead959258a734b68d113c",
-  "release_notes": "## [1.44.0-dev.1](https://github.com/BlazeFTL/FTL-Patches/compare/v1.43.0...v1.44.0-dev.1) (2026-09-06)\n\n### ✨ New Features\n\n* Analytics New Up ([ef7988c](https://github.com/BlazeFTL/FTL-Patches/commit/ef7988c8933a93b76f9fe6ccaec891cf8533a01a))\n",
-  "release_tag": "v1.44.0-dev.1",
-  "release_date": "2026-09-06T05:38:56Z"
+  "fingerprint": "16af6bf96b20af2cd5a6c5ecaeb5e867acc6733cd9a33d4f8eb6e1d6e65df3d4",
+  "release_notes": "## [1.43.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.42.0...v1.43.0) (2026-09-05)\r\n\r\n### 📱 App-Specific Patches\r\n* **MX Player**\r\n  * ✨ Added Remove Bottom Bar And Add Me Tab To Top.\r\n  * 🐛 Added Clean Me Tab\r\n  * 🐛 Added Add NetWork Stream To Me Tab Patch.\r\n* **XFolder (File Manager)**\r\n  * ✨ Added Unlock Pro patch.\r\n  * ✨ Added Disable Rate Dialog patch (turns off cleaner by default).\r\n* **WPS Suite**\r\n  * ✨ Added **WpsApp Pro** Bypass License Check patch.\r\n  * ✨ Added **WPS WPA Tester Pro** patch.\r\n* **WiFi Analyzer**\r\n  * ✨ Added WiFi Analyzer Pro patch.\r\n  * ✨ Added Disable Rate Dialog patch. *(Recovered from dev cycle)*\r\n* **RS File Explorer**\r\n  * ✨ Added Clean Sidebar patch.\r\n  * **ES File Explorer**\r\n  * ✨ Made patch significantly more robust against R8 obfuscation.\r\n* **Video Downloader / All Video Downloader**\r\n  * ✨ Restricted patch compatibility to version `2.7.2`.\r\n  * ✨ Added Signature patch, Skip Splash, and Language patches.\r\n* **Bangla Dictionary Pro**\r\n  * ✨ Added new Pro unlock patch.\r\n* **Save Data Tools**\r\n  * ✨ Added Add Save Data Patch\r\n\r\n### 🌐 Universal & General Patches\r\n* **APK Junk Cleaner**\r\n  * ✨ Prepared patch for new API integration.\r\n  * 🐛 Cleaned up, restored, and stabilized patch logic after testing.\r\n* **Analytics Remover**\r\n  * ✨ Added new universal Analytics removal patch.\r\n  * 🐛 Removed specific analytics components that were causing app crashes.\r\n  * 🐛 Improved R8 obfuscation compatibility for analytics removal.\r\n* **Universal Ad Removal**\r\n  * ✨ Updated \"Remove Ads Lite (Adobo)\" configurations to cover more ad SDKs.\r\n* **Splash Screen**\r\n  * ✨ Added universal \"Skip Splash Expert\" patch.\r\n* **Certificate & Security**\r\n  * ✨ Hide APK Cert\" patch.\r\n* **Toast Notifications**\r\n  * ✨ Updated Toast patch; removed junk toast notifications.\r\n\r\n### 🛠️ Build & Infrastructure\r\n* 🐛 Restored `gradlew` executable bit (resolved multiple build permission issues).\r\n* 🐛 Applied general stability fixes for Morphe Dev compatibility.",
+  "release_tag": "v1.43.0",
+  "release_date": "2026-09-05T17:24:03Z"
 }
