@@ -2,9 +2,9 @@
   "bundle": "steamlink",
   "channel": "stable",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-09-06T18:04:43",
-  "version": "v1.14.2",
-  "description": "## [1.14.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.14.1...v1.14.2) (2026-09-06)\n\n### 🐛 Bug Fixes\n\n* fix for device identity on 2.0.22 ([f53650b](https://github.com/AngelDark92/steamlink-patches/commit/f53650b80886661a1693c92c68e02eb437d26aff))\n* Implement startup boundary validation and battery settings integration ([7220432](https://github.com/AngelDark92/steamlink-patches/commit/722043271d27d987180e7c1c02d5a24e920d050e))\n* Merge pull request [#55](https://github.com/AngelDark92/steamlink-patches/issues/55) from AngelDark92/dev ([488eaf9](https://github.com/AngelDark92/steamlink-patches/commit/488eaf94f5803fb809107d82d600b5ebfb5e4d1a))\n* removed unexistent builds and added a few more patches for dithering and 10-bit support ([ff1c452](https://github.com/AngelDark92/steamlink-patches/commit/ff1c45241b8a46f06cbeddbb8bc29f30ec26b037))\n",
+  "created_at": "2026-09-09T17:22:39",
+  "version": "v1.15.0",
+  "description": "## [1.15.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.14.2...v1.15.0) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* Merge pull request [#56](https://github.com/AngelDark92/steamlink-patches/issues/56) from AngelDark92/dev ([462d8e7](https://github.com/AngelDark92/steamlink-patches/commit/462d8e7eb3efc64375f984bbed7e8fdb6b615938))\n* retired experiment with fovea ([9476757](https://github.com/AngelDark92/steamlink-patches/commit/9476757f626c66e67866b1a5284fbb7b3cd6bed5))\n* rgb 8-bit made default because of banding on 10-bit patch ([81e941b](https://github.com/AngelDark92/steamlink-patches/commit/81e941b1333adbf65f0ae79a5b43e53ec6cdaa22))\n\n### ✨ New Features\n\n* new fovea layer experiment ([6e6719f](https://github.com/AngelDark92/steamlink-patches/commit/6e6719ff4d57d616ff2497f652ed3c1a14f0732d))\n",
   "apps": [
     {
       "app_name": "Steam Link",
@@ -715,11 +715,15 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Compare sRGB8, RGB10_A2, and FP16 projection storage. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not force compositor or panel depth. Use Neutral calibration for comparisons."
+              "description": "8-bit sRGB is the default after a Galaxy XR comparison showed less banding than RGB10 linear. RGB10 can have coarser near-black steps despite its higher bit count. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not change decoder depth or force compositor/panel depth."
             },
             {
               "key": "dithering",
-              "description": "Adds fine noise after calibration, before linear conversion. Preserves exact black/white and fades noise near endpoints. Compare gradients, grain and shimmer. This is app-side noise, not final compositor dithering or proof of extra panel bits."
+              "description": "Adds fine noise after calibration, before linear conversion, at any output precision. sRGB8 codes describe noise strength, not required input or output depth. Preserves exact black/white and fades noise near endpoints. This is app-side noise, not final compositor dithering."
+            },
+            {
+              "key": "use8BitOutputWhenDithering",
+              "description": "With Low or Standard dithering: checked submits 8-bit sRGB projection output; unchecked keeps Video output precision (8-bit sRGB by default). Select RGB10 or FP16 and leave unchecked to dither at that output precision. Ignored when dithering is Off. Does not change decoder input depth or force compositor/panel depth."
             }
           ],
           "compatible_versions": [
@@ -745,11 +749,15 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Compare sRGB8, RGB10_A2, and FP16 projection storage. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not force compositor or panel depth. Use Neutral calibration for comparisons."
+              "description": "8-bit sRGB is the default after a Galaxy XR comparison showed less banding than RGB10 linear. RGB10 can have coarser near-black steps despite its higher bit count. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not change decoder depth or force compositor/panel depth."
             },
             {
               "key": "dithering",
-              "description": "Adds fine noise after calibration, before linear conversion. Preserves exact black/white and fades noise near endpoints. Compare gradients, grain and shimmer. This is app-side noise, not final compositor dithering or proof of extra panel bits."
+              "description": "Adds fine noise after calibration, before linear conversion, at any output precision. sRGB8 codes describe noise strength, not required input or output depth. Preserves exact black/white and fades noise near endpoints. This is app-side noise, not final compositor dithering."
+            },
+            {
+              "key": "use8BitOutputWhenDithering",
+              "description": "With Low or Standard dithering: checked submits 8-bit sRGB projection output; unchecked keeps Video output precision (8-bit sRGB by default). Select RGB10 or FP16 and leave unchecked to dither at that output precision. Ignored when dithering is Off. Does not change decoder input depth or force compositor/panel depth."
             }
           ],
           "compatible_versions": [
@@ -775,11 +783,15 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Compare sRGB8, RGB10_A2, and FP16 projection storage. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not force compositor or panel depth. Use Neutral calibration for comparisons."
+              "description": "8-bit sRGB is the default after a Galaxy XR comparison showed less banding than RGB10 linear. RGB10 can have coarser near-black steps despite its higher bit count. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not change decoder depth or force compositor/panel depth."
             },
             {
               "key": "dithering",
-              "description": "Adds fine noise after calibration, before linear conversion. Preserves exact black/white and fades noise near endpoints. Compare gradients, grain and shimmer. This is app-side noise, not final compositor dithering or proof of extra panel bits."
+              "description": "Adds fine noise after calibration, before linear conversion, at any output precision. sRGB8 codes describe noise strength, not required input or output depth. Preserves exact black/white and fades noise near endpoints. This is app-side noise, not final compositor dithering."
+            },
+            {
+              "key": "use8BitOutputWhenDithering",
+              "description": "With Low or Standard dithering: checked submits 8-bit sRGB projection output; unchecked keeps Video output precision (8-bit sRGB by default). Select RGB10 or FP16 and leave unchecked to dither at that output precision. Ignored when dithering is Off. Does not change decoder input depth or force compositor/panel depth."
             }
           ],
           "compatible_versions": [
@@ -805,11 +817,15 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Compare sRGB8, RGB10_A2, and FP16 projection storage. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not force compositor or panel depth. Use Neutral calibration for comparisons."
+              "description": "8-bit sRGB is the default after a Galaxy XR comparison showed less banding than RGB10 linear. RGB10 can have coarser near-black steps despite its higher bit count. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not change decoder depth or force compositor/panel depth."
             },
             {
               "key": "dithering",
-              "description": "Adds fine noise after calibration, before linear conversion. Preserves exact black/white and fades noise near endpoints. Compare gradients, grain and shimmer. This is app-side noise, not final compositor dithering or proof of extra panel bits."
+              "description": "Adds fine noise after calibration, before linear conversion, at any output precision. sRGB8 codes describe noise strength, not required input or output depth. Preserves exact black/white and fades noise near endpoints. This is app-side noise, not final compositor dithering."
+            },
+            {
+              "key": "use8BitOutputWhenDithering",
+              "description": "With Low or Standard dithering: checked submits 8-bit sRGB projection output; unchecked keeps Video output precision (8-bit sRGB by default). Select RGB10 or FP16 and leave unchecked to dither at that output precision. Ignored when dithering is Off. Does not change decoder input depth or force compositor/panel depth."
             }
           ],
           "compatible_versions": [
@@ -835,11 +851,15 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Compare sRGB8, RGB10_A2, and FP16 projection storage. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not force compositor or panel depth. Use Neutral calibration for comparisons."
+              "description": "8-bit sRGB is the default after a Galaxy XR comparison showed less banding than RGB10 linear. RGB10 can have coarser near-black steps despite its higher bit count. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not change decoder depth or force compositor/panel depth."
             },
             {
               "key": "dithering",
-              "description": "Adds fine noise after calibration, before linear conversion. Preserves exact black/white and fades noise near endpoints. Compare gradients, grain and shimmer. This is app-side noise, not final compositor dithering or proof of extra panel bits."
+              "description": "Adds fine noise after calibration, before linear conversion, at any output precision. sRGB8 codes describe noise strength, not required input or output depth. Preserves exact black/white and fades noise near endpoints. This is app-side noise, not final compositor dithering."
+            },
+            {
+              "key": "use8BitOutputWhenDithering",
+              "description": "With Low or Standard dithering: checked submits 8-bit sRGB projection output; unchecked keeps Video output precision (8-bit sRGB by default). Select RGB10 or FP16 and leave unchecked to dither at that output precision. Ignored when dithering is Off. Does not change decoder input depth or force compositor/panel depth."
             }
           ],
           "compatible_versions": [
@@ -865,11 +885,15 @@
             },
             {
               "key": "outputPrecision",
-              "description": "Compare sRGB8, RGB10_A2, and FP16 projection storage. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not force compositor or panel depth. Use Neutral calibration for comparisons."
+              "description": "8-bit sRGB is the default after a Galaxy XR comparison showed less banding than RGB10 linear. RGB10 can have coarser near-black steps despite its higher bit count. Linear formats include sRGB conversion. FP16 support and performance are unverified; unsupported formats may prevent streaming. These choices do not change decoder depth or force compositor/panel depth."
             },
             {
               "key": "dithering",
-              "description": "Adds fine noise after calibration, before linear conversion. Preserves exact black/white and fades noise near endpoints. Compare gradients, grain and shimmer. This is app-side noise, not final compositor dithering or proof of extra panel bits."
+              "description": "Adds fine noise after calibration, before linear conversion, at any output precision. sRGB8 codes describe noise strength, not required input or output depth. Preserves exact black/white and fades noise near endpoints. This is app-side noise, not final compositor dithering."
+            },
+            {
+              "key": "use8BitOutputWhenDithering",
+              "description": "With Low or Standard dithering: checked submits 8-bit sRGB projection output; unchecked keeps Video output precision (8-bit sRGB by default). Select RGB10 or FP16 and leave unchecked to dither at that output precision. Ignored when dithering is Off. Does not change decoder input depth or force compositor/panel depth."
             }
           ],
           "compatible_versions": [
@@ -1270,8 +1294,8 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "ec48f0abb6eeaedb1c9c1bb0977dedd9c411e433e8c31218e9e2b8d02b8e95a9",
-  "release_notes": "## [1.14.2](https://github.com/AngelDark92/steamlink-patches/compare/v1.14.1...v1.14.2) (2026-09-06)\n\n### 🐛 Bug Fixes\n\n* fix for device identity on 2.0.22 ([f53650b](https://github.com/AngelDark92/steamlink-patches/commit/f53650b80886661a1693c92c68e02eb437d26aff))\n* Implement startup boundary validation and battery settings integration ([7220432](https://github.com/AngelDark92/steamlink-patches/commit/722043271d27d987180e7c1c02d5a24e920d050e))\n* Merge pull request [#55](https://github.com/AngelDark92/steamlink-patches/issues/55) from AngelDark92/dev ([488eaf9](https://github.com/AngelDark92/steamlink-patches/commit/488eaf94f5803fb809107d82d600b5ebfb5e4d1a))\n* removed unexistent builds and added a few more patches for dithering and 10-bit support ([ff1c452](https://github.com/AngelDark92/steamlink-patches/commit/ff1c45241b8a46f06cbeddbb8bc29f30ec26b037))\n",
-  "release_tag": "v1.14.2",
-  "release_date": "2026-09-06T18:04:43Z"
+  "fingerprint": "56f634d7836bebe64efc55af3d87252dd06b85adf940475df9e59100197dd262",
+  "release_notes": "## [1.15.0](https://github.com/AngelDark92/steamlink-patches/compare/v1.14.2...v1.15.0) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* Merge pull request [#56](https://github.com/AngelDark92/steamlink-patches/issues/56) from AngelDark92/dev ([462d8e7](https://github.com/AngelDark92/steamlink-patches/commit/462d8e7eb3efc64375f984bbed7e8fdb6b615938))\n* retired experiment with fovea ([9476757](https://github.com/AngelDark92/steamlink-patches/commit/9476757f626c66e67866b1a5284fbb7b3cd6bed5))\n* rgb 8-bit made default because of banding on 10-bit patch ([81e941b](https://github.com/AngelDark92/steamlink-patches/commit/81e941b1333adbf65f0ae79a5b43e53ec6cdaa22))\n\n### ✨ New Features\n\n* new fovea layer experiment ([6e6719f](https://github.com/AngelDark92/steamlink-patches/commit/6e6719ff4d57d616ff2497f652ed3c1a14f0732d))\n",
+  "release_tag": "v1.15.0",
+  "release_date": "2026-09-09T17:22:39Z"
 }
