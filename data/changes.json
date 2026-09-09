@@ -1,107 +1,590 @@
 {
   "affected_bundles": [
     {
-      "bundle": "kveld",
-      "channel": "stable",
+      "bundle": "morphe",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Vivaldi Browser Snapshot",
-          "package": "com.vivaldi.browser.snapshot",
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
           "badge_type": "MAJOR UPDATE",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Block Vivaldi Sync",
-                "description": "Redirects bifrost.vivaldi.com to 0.0.0.0 in libchrome.so to completely disable Vivaldi account synchronization for an air-gapped experience.",
+                "name": "Add to queue",
+                "description": "Overrides the feed flyout 'Play next in queue' with the Morphe video queue.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Block Vivaldi Telemetry",
-                "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, and DirectMatch suggestions.",
+                "name": "Alternative thumbnails",
+                "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Clean Speed Dial Bookmarks",
-                "description": "Removes sponsored commercial affiliate bookmarks, hides the 3-dot customize button, and disables phantom touch actions on the blank Start Page.",
+                "name": "Ambient mode",
+                "description": "Adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Close Tabs on Exit",
-                "description": "Prevents tab restoration on startup, ensuring Vivaldi always opens with a clean Start Page session regardless of how the app was terminated.",
+                "name": "App refresh rate",
+                "description": "Adds an option to change the app refresh rate.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable Background Sync & Periodic Sync",
-                "description": "Eliminates background wakeups, radio modem activity, and battery drain by neutralizing periodic and one-shot background sync tasks.",
+                "name": "Bypass image region restrictions",
+                "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable Battery Status API & OS Listener",
-                "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
+                "name": "Bypass link redirects",
+                "description": "Adds an option to bypass redirects and open the original link directly.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable Chromium Tips & Notification Scheduler",
-                "description": "Eliminates periodic background wakeups, native library loading, and in-product promotional tips from Chromium tips scheduler.",
+                "name": "Captions",
+                "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Disable Vivaldi Prompts & In-App Popups",
-                "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, and default browser promotional handlers.",
+                "name": "Change form factor",
+                "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Locale PAK Slimmer",
-                "description": "Strips unselected language resource PAKs from assets/locales/.",
+                "name": "Change header",
+                "description": "Adds an option to change the header logo in the top left corner of the app.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "PNG Asset Optimizer",
-                "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
+                "name": "Change start page",
+                "description": "Adds an option to set which page the app opens in instead of the homepage.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Resource Slimmer",
-                "description": "Strips bundled stock wallpapers and sponsored Speed Dial thumbnails to reduce APK size.",
+                "name": "Check watch history domain name resolution",
+                "description": "Checks if the device DNS server is preventing user watch history from being saved.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Skip First Run",
-                "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
+                "name": "Copy video link",
+                "description": "Adds options to display buttons in the video player to copy video links.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
                 ]
               },
               {
-                "name": "Vivaldi Startup Performance Optimization",
-                "description": "Optimizes cold startup time, eliminates background CPU/disk overhead, and guards against early CompositorView LayoutStateObserver crashes.",
+                "name": "Custom branding",
+                "description": "Adds options to change the app icon and app name. Branding cannot be changed for mounted (root) installations.",
                 "changes": [
-                  "versions: +1 version, -1 version"
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Custom player overlay opacity",
+                "description": "Adds an option to change the opacity of the video player background when player controls are visible.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable DRC audio",
+                "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable QUIC protocol",
+                "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable Shorts resuming on startup",
+                "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable double tap actions",
+                "description": "Adds an option to disable player double tap gestures.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable fullscreen gestures",
+                "description": "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable haptic feedback",
+                "description": "Adds an option to disable haptic feedback in the player for various actions.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable layout updates",
+                "description": "Adds an option to disable server side layout updates and use an older UI.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable player popup panels",
+                "description": "Adds an option to disable panels (such as live chat) from opening automatically.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable playlist autoplay",
+                "description": "Adds an option to stop a playlist from automatically advancing to the next video.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable rolling number animations",
+                "description": "Adds an option to disable rolling number animations of video view count, user likes, and upload time.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable scrolling speed limit",
+                "description": "Adds an option to remove limits of how fast the home and subscription feed can be scrolled.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable sign in to TV popup",
+                "description": "Adds options to disable the popups asking to sign into or connect to a TV on the same local network.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable video codecs",
+                "description": "Adds options to disable or force HDR, and to disable VP9 codecs.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Double tap to seek",
+                "description": "Adds additional double-tap to seek values to the YouTube settings menu.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Downloads",
+                "description": "Adds support to download videos with an external downloader app using the in-app download button or a video player action button.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Enable debugging",
+                "description": "Adds options for debugging and exporting Morphe logs to the clipboard.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Exit fullscreen mode",
+                "description": "Adds options to automatically exit fullscreen mode when a video reaches the end.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Force original audio",
+                "description": "Adds an option to always use the original audio track.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Fullscreen video scale",
+                "description": "Adds options to stretch or zoom videos to fill the screen in fullscreen mode.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "GmsCore support",
+                "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide Shorts components",
+                "description": "Adds options to hide components related to Shorts.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide ads",
+                "description": "Adds options to hide general ads, Premium promotions and video ads.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide autoplay preview",
+                "description": "Adds an option to hide the autoplay preview at the end of videos.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide end screen cards",
+                "description": "Adds an option to hide suggested video cards at the end of videos.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide end screen suggested video",
+                "description": "Adds an option to hide the suggested video at the end of videos.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide info cards",
+                "description": "Adds an option to hide info cards that creators add in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide layout components",
+                "description": "Adds options to hide general layout components.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide player flyout menu components",
+                "description": "Adds options to hide menu components that appear when pressing the gear icon in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide player overlay buttons",
+                "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide related video overlay",
+                "description": "Adds an option to hide the related video overlay shown when swiping up in fullscreen.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide related videos",
+                "description": "Adds options to hide related videos.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide timestamp",
+                "description": "Adds an option to hide the timestamp in the bottom left of the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide video action buttons",
+                "description": "Adds options to hide video action buttons in fullscreen and portrait modes.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Loop video",
+                "description": "Adds an option to loop videos and display loop video button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Media notification controls",
+                "description": "Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Miniplayer",
+                "description": "Adds options to change the in-app minimized player. Patching 21.28.206 and lower has more miniplayer types to choose from.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Mute button",
+                "description": "Adds an option to show a player button that mutes the video audio.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Navigation bar",
+                "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button)  and the upper navigation toolbar.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Network proxy",
+                "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open Shorts in regular player",
+                "description": "Adds options to open Shorts in the regular video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open channel of live avatar",
+                "description": "Adds an option to prevent a channel's current live video from opening when tapping its avatar.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open links externally",
+                "description": "Adds an option to always open links in your browser instead of with the in-app browser.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open system share sheet",
+                "description": "Adds an option to always open the system share sheet instead of the in-app share sheet.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open videos fullscreen",
+                "description": "Adds options to automatically open videos in fullscreen portrait or landscape mode.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Override YouTube Music buttons",
+                "description": "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Play all",
+                "description": "Adds an option to play all the videos from a channel and to display play all button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Playback in feeds",
+                "description": "Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Playback speed",
+                "description": "Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "PoToken provider",
+                "description": "Adds option to get PoToken using an external PoToken minter app.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Reload video",
+                "description": "Adds an option to display reload video button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Remember livestream playback position",
+                "description": "Adds an option to remember the playback position of ongoing livestreams and resume from there when reopening a livestream.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Remove background playback restrictions",
+                "description": "Removes restrictions on background playback, including playing kids videos in the background.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Remove viewer discretion dialog",
+                "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Return YouTube Dislike",
+                "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Sanitize sharing links",
+                "description": "Removes the tracking query parameters from shared links.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Save to Watch later",
+                "description": "Adds an option to display save to Watch later button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Seekbar",
+                "description": "Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in livestreams, and expanding the livestream DVR duration.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Settings menu filter",
+                "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Shorts autoplay",
+                "description": "Adds options to automatically play the next Short.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "SponsorBlock",
+                "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Spoof app version",
+                "description": "Adds an option to trick the app into thinking you are running an older version.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Spoof device dimensions",
+                "description": "Adds an option to spoof the device dimensions which can unlock higher video qualities.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Spoof video streams",
+                "description": "Adds options to spoof the client video streams to fix playback.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Swipe controls",
+                "description": "Adds options to enable and configure volume and brightness swipe controls.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Theme",
+                "description": "Adds options for theming, and settings to change the app foreground and background colors.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Video quality",
+                "description": "Adds options to set default video qualities and always use the advanced video quality menu.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Voice over translation",
+                "description": "Adds additional voice over languages using text-to-speech synchronized to the video playback.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Wide search bar",
+                "description": "Adds a wide search bar to the top of the home and subscription feed.",
+                "changes": [
+                  "versions: +1 version"
                 ]
               }
             ]
@@ -111,8 +594,107 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-      "patches_name": "kveld9 Patches",
+      "repo_url": "https://github.com/MorpheApp/morphe-patches",
+      "patches_name": "Morphe Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "rafag00",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Sony | Sound Connect",
+          "package": "com.sony.songpal.mdr",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Use patched YouTube Music in Scene",
+                "description": "Redirects the YouTube Music Scene integration to the patched YouTube Music package.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/rafag00/morphe-patches",
+      "patches_name": "Rafag00 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "rafag00",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Sony | Sound Connect",
+          "package": "com.sony.songpal.mdr",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Use patched YouTube Music in Scene",
+                "description": "Redirects the YouTube Music Scene integration to the patched YouTube Music package.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/rafag00/morphe-patches",
+      "patches_name": "Rafag00 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "xob0t",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Wildberries",
+          "package": "com.wildberries.ru",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove Wildberries ads",
+                "description": "Removes Wildberries home banners, grid banners, profile banners, promo headers, product recommendations, and lottery popups.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/xob0t/morphe-patches",
+      "patches_name": "xob0t Morphe Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
@@ -132,7 +714,7 @@
             "patches_modified": [
               {
                 "name": "Shadow Fight 2 IAP Bypass (Smali)",
-                "description": "Bypasses in-app purchases via smali patching. Intercepts zzbm callbacks to inject fake purchase data into C++ layer.",
+                "description": "Bypasses in-app purchases via smali patching.",
                 "changes": [
                   "description updated"
                 ]
@@ -151,6 +733,66 @@
       ]
     },
     {
+      "bundle": "yann-soliman",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Keepcool",
+          "package": "fr.keepcool.memberapp",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [
+              {
+                "name": "Keepcool: 30-day booking calendar",
+                "description": "Show and allow booking from today through J+30. Keepcool 1.8.21 only."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/yann-soliman/morphe-patches",
+      "patches_name": "Yann's patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "yann-soliman",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Keepcool",
+          "package": "fr.keepcool.memberapp",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [
+              {
+                "name": "Keepcool: 30-day booking calendar",
+                "description": "Show and allow booking from today through J+30. Keepcool 1.8.21 only."
+              }
+            ],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/yann-soliman/morphe-patches",
+      "patches_name": "Yann's patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
       "bundle": "ftl",
       "channel": "dev",
       "badge_type": "UPDATED",
@@ -158,49 +800,27 @@
         {
           "app_name": "MX Player",
           "package": "com.mxtech.videoplayer.ad",
-          "badge_type": "MAJOR UPDATE",
+          "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [],
+            "patches_added": [
+              {
+                "name": "Boost Splash Screen Time",
+                "description": "Disables MX Player's welcome/splash ad so playback starts immediately."
+              }
+            ],
             "patches_removed": [],
             "patches_modified": [
               {
                 "name": "Clean Me Tab",
-                "description": "WARNING: MX Player has an integrity check, and some mods add their own on top. Use a Play Store build, patch with signing off, then strip signature verification (MT Manager Enhanced or a modded build) - or the app may refuse to start.Removes promo rows and unused tiles from the Me tab. Optional Add Network Stream tile.",
+                "description": "WARNING: MX Player has an integrity check, and some mods add their own on top. Use a Play Store build, Use URV Manager, patch with signing off, then use MT Manager Enhanced Signature Kill or the app may refuse to start.Removes promo rows and unused tiles from the Me tab. Optional Add Network Stream tile.",
                 "changes": [
-                  "description updated",
-                  "options: +1 option",
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Configure Smart Enhance",
-                "description": "Configures the Smart Enhance intro popup and enable/disable toast.",
-                "changes": [
-                  "options: +1 option",
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Configure SpeedUp overlay",
-                "description": "\"2x UI\": keeps the long-press SpeedUp overlay/animation, with the stock leftover-visible-view bug fixed. \"No UI\": the overlay never shows at all - the speed change itself still applies, since that's handled elsewhere.",
-                "changes": [
-                  "versions: +1 version"
-                ]
-              },
-              {
-                "name": "Disable Bottom Bar And Add Me Tab To Top",
-                "description": "Hides the bottom navigation bar and adds a Me tab button to the toolbar.",
-                "changes": [
-                  "versions: +1 version"
+                  "description updated"
                 ]
               },
               {
                 "name": "Sidebar & Player Defaults",
                 "description": "Cleans the player sidebar and More menu; sets default shortcuts and subtitle view.",
-                "changes": [
-                  "options: +5 options",
-                  "versions: +1 version"
-                ]
+                "changes": []
               }
             ]
           },
@@ -211,6 +831,641 @@
       ],
       "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
       "patches_name": "BlazeFTL Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "dual-vot",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Add to queue",
+                "description": "Overrides the feed flyout 'Play next in queue' with the Morphe video queue.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Alternative thumbnails",
+                "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Ambient mode",
+                "description": "Adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "App refresh rate",
+                "description": "Adds an option to change the app refresh rate.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Bypass image region restrictions",
+                "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Bypass link redirects",
+                "description": "Adds an option to bypass redirects and open the original link directly.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Captions",
+                "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Change form factor",
+                "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Change header",
+                "description": "Adds an option to change the header logo in the top left corner of the app.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Change start page",
+                "description": "Adds an option to set which page the app opens in instead of the homepage.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Check watch history domain name resolution",
+                "description": "Checks if the device DNS server is preventing user watch history from being saved.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Copy video link",
+                "description": "Adds options to display buttons in the video player to copy video links.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Custom branding",
+                "description": "Adds options to change the app icon and app name. Branding cannot be changed for mounted (root) installations.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Custom player overlay opacity",
+                "description": "Adds an option to change the opacity of the video player background when player controls are visible.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable DRC audio",
+                "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable QUIC protocol",
+                "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable Shorts resuming on startup",
+                "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable double tap actions",
+                "description": "Adds an option to disable player double tap gestures.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable fullscreen gestures",
+                "description": "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable haptic feedback",
+                "description": "Adds an option to disable haptic feedback in the player for various actions.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable layout updates",
+                "description": "Adds an option to disable server side layout updates and use an older UI.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable player popup panels",
+                "description": "Adds an option to disable panels (such as live chat) from opening automatically.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable playlist autoplay",
+                "description": "Adds an option to stop a playlist from automatically advancing to the next video.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable rolling number animations",
+                "description": "Adds an option to disable rolling number animations of video view count, user likes, and upload time.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable scrolling speed limit",
+                "description": "Adds an option to remove limits of how fast the home and subscription feed can be scrolled.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable sign in to TV popup",
+                "description": "Adds options to disable the popups asking to sign into or connect to a TV on the same local network.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Disable video codecs",
+                "description": "Adds options to disable or force HDR, and to disable VP9 codecs.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Double tap to seek",
+                "description": "Adds additional double-tap to seek values to the YouTube settings menu.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Downloads",
+                "description": "Adds support to download videos with an external downloader app using the in-app download button or a video player action button.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Enable debugging",
+                "description": "Adds options for debugging and exporting Morphe logs to the clipboard.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Exit fullscreen mode",
+                "description": "Adds options to automatically exit fullscreen mode when a video reaches the end.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Force original audio",
+                "description": "Adds an option to always use the original audio track.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Fullscreen video scale",
+                "description": "Adds options to stretch or zoom videos to fill the screen in fullscreen mode.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "GmsCore support",
+                "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide Shorts components",
+                "description": "Adds options to hide components related to Shorts.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide ads",
+                "description": "Adds options to hide general ads, Premium promotions and video ads.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide autoplay preview",
+                "description": "Adds an option to hide the autoplay preview at the end of videos.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide end screen cards",
+                "description": "Adds an option to hide suggested video cards at the end of videos.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide end screen suggested video",
+                "description": "Adds an option to hide the suggested video at the end of videos.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide info cards",
+                "description": "Adds an option to hide info cards that creators add in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide layout components",
+                "description": "Adds options to hide general layout components.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide player flyout menu components",
+                "description": "Adds options to hide menu components that appear when pressing the gear icon in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide player overlay buttons",
+                "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide related video overlay",
+                "description": "Adds an option to hide the related video overlay shown when swiping up in fullscreen.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide related videos",
+                "description": "Adds options to hide related videos.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide timestamp",
+                "description": "Adds an option to hide the timestamp in the bottom left of the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Hide video action buttons",
+                "description": "Adds options to hide video action buttons in fullscreen and portrait modes.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Loop video",
+                "description": "Adds an option to loop videos and display loop video button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Media notification controls",
+                "description": "Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Miniplayer",
+                "description": "Adds options to change the in-app minimized player. Patching 21.28.206 and lower has more miniplayer types to choose from.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Mute button",
+                "description": "Adds an option to show a player button that mutes the video audio.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Navigation bar",
+                "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button)  and the upper navigation toolbar.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Network proxy",
+                "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open Shorts in regular player",
+                "description": "Adds options to open Shorts in the regular video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open channel of live avatar",
+                "description": "Adds an option to prevent a channel's current live video from opening when tapping its avatar.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open links externally",
+                "description": "Adds an option to always open links in your browser instead of with the in-app browser.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open system share sheet",
+                "description": "Adds an option to always open the system share sheet instead of the in-app share sheet.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open videos fullscreen",
+                "description": "Adds options to automatically open videos in fullscreen portrait or landscape mode.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Override YouTube Music buttons",
+                "description": "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Play all",
+                "description": "Adds an option to play all the videos from a channel and to display play all button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Playback in feeds",
+                "description": "Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Playback speed",
+                "description": "Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "PoToken provider",
+                "description": "Adds option to get PoToken using an external PoToken minter app.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Reload video",
+                "description": "Adds an option to display reload video button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Remember livestream playback position",
+                "description": "Adds an option to remember the playback position of ongoing livestreams and resume from there when reopening a livestream.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Remove background playback restrictions",
+                "description": "Removes restrictions on background playback, including playing kids videos in the background.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Remove viewer discretion dialog",
+                "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Return YouTube Dislike",
+                "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Sanitize sharing links",
+                "description": "Removes the tracking query parameters from shared links.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Save to Watch later",
+                "description": "Adds an option to display save to Watch later button in the video player.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Seekbar",
+                "description": "Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in livestreams, and expanding the livestream DVR duration.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Settings menu filter",
+                "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Shorts autoplay",
+                "description": "Adds options to automatically play the next Short.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "SponsorBlock",
+                "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Spoof app version",
+                "description": "Adds an option to trick the app into thinking you are running an older version.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Spoof device dimensions",
+                "description": "Adds an option to spoof the device dimensions which can unlock higher video qualities.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Spoof video streams",
+                "description": "Adds options to spoof the client video streams to fix playback.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Swipe controls",
+                "description": "Adds options to enable and configure volume and brightness swipe controls.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Theme",
+                "description": "Adds options for theming, and settings to change the app foreground and background colors.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Video quality",
+                "description": "Adds options to set default video qualities and always use the advanced video quality menu.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Voice over translation",
+                "description": "Adds additional voice over languages using text-to-speech synchronized to the video playback.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Wide search bar",
+                "description": "Adds a wide search bar to the top of the home and subscription feed.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Yandex voice-over translation",
+                "description": "Adds a separate Yandex translation button alongside Morphe voice-over translation.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/sashade8-ship-it/dual-vot-patches",
+      "patches_name": "Dual VoT Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "unipatches",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Hill Climb Racing",
+          "package": "com.fingersoft.hillclimb",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "XYZ app",
+          "package": "com.example.app",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/Zanuaimi/UniPatches",
+      "patches_name": "UserXYZ Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
@@ -285,24 +1540,6 @@
       ],
       "repo_url": "https://github.com/miketweaver/friendsturner-patches",
       "patches_name": "FriendsTurner Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "unipatches",
-      "channel": "stable",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "XYZ app",
-          "package": "com.example.app",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/Zanuaimi/UniPatches",
-      "patches_name": "UserXYZ Patches",
       "extra_badges": []
     },
     {

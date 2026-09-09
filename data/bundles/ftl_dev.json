@@ -2,9 +2,9 @@
   "bundle": "ftl",
   "channel": "dev",
   "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-  "created_at": "2026-09-09T04:31:08",
-  "version": "v1.44.0-dev.21",
-  "description": "## [1.44.0-dev.21](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.20...v1.44.0-dev.21) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* Up ([a0f9d6d](https://github.com/BlazeFTL/FTL-Patches/commit/a0f9d6d3718113e61de7dffdaa697cae5c59bddd))\n",
+  "created_at": "2026-09-09T09:50:43",
+  "version": "v1.44.0-dev.25",
+  "description": "## [1.44.0-dev.25](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.24...v1.44.0-dev.25) (2026-09-09)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* Make Drawable Clean Patch More Aggressive ([feb4e9d](https://github.com/BlazeFTL/FTL-Patches/commit/feb4e9d8bd190151d5292ac609f16c75b990e1ba))\r\n",
   "apps": [
     {
       "app_name": "WiFi Analyzer",
@@ -148,8 +148,18 @@
       "package": "com.mxtech.videoplayer.ad",
       "patches": [
         {
+          "name": "Boost Splash Screen Time",
+          "description": "Disables MX Player's welcome/splash ad so playback starts immediately.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.4",
+            "3.2.1"
+          ]
+        },
+        {
           "name": "Clean Me Tab",
-          "description": "WARNING: MX Player has an integrity check, and some mods add their own on top. Use a Play Store build, patch with signing off, then strip signature verification (MT Manager Enhanced or a modded build) - or the app may refuse to start.Removes promo rows and unused tiles from the Me tab. Optional Add Network Stream tile.",
+          "description": "WARNING: MX Player has an integrity check, and some mods add their own on top. Use a Play Store build, Use URV Manager, patch with signing off, then use MT Manager Enhanced Signature Kill or the app may refuse to start.Removes promo rows and unused tiles from the Me tab. Optional Add Network Stream tile.",
           "use": false,
           "options": [
             {
@@ -212,26 +222,6 @@
           "use": true,
           "options": [
             {
-              "key": "hideVideoDisplay",
-              "description": ""
-            },
-            {
-              "key": "hideMoreMenuHelp",
-              "description": "Hides What's New, Features, FAQ, Check for Update, Bug Report, and About."
-            },
-            {
-              "key": "enableDefaultShortcuts",
-              "description": "Settings > Player > Customize Shortcuts still works and always wins once touched."
-            },
-            {
-              "key": "defaultShortcutsMask",
-              "description": "Bit sum of enabled shortcuts, decimal or 0x-prefixed hex. Bits: 0x1 rotation, 0x2 speed, 0x4 background play, 0x8 loop, 0x10 mute, 0x20 shuffle, 0x40 equalizer, 0x100 sleep timer, 0x200 repeat A-B, 0x400 night mode, 0x800 customise items, 0x1000 screenshot, 0x2000 mirror mode, 0x4000 vertical flip, 0x8000 audio effect. Default 0x780F."
-            },
-            {
-              "key": "openSubtitleSettings",
-              "description": "Expands Sync/Speed/Panel/Customization in the subtitle menu instead of collapsed."
-            },
-            {
               "key": "hideBookmark",
               "description": ""
             },
@@ -250,6 +240,26 @@
             {
               "key": "hidePlayingQueue",
               "description": ""
+            },
+            {
+              "key": "hideVideoDisplay",
+              "description": ""
+            },
+            {
+              "key": "hideMoreMenuHelp",
+              "description": "Hides What's New, Features, FAQ, Check for Update, Bug Report, and About."
+            },
+            {
+              "key": "enableDefaultShortcuts",
+              "description": "Settings > Player > Customize Shortcuts still works and always wins once touched."
+            },
+            {
+              "key": "defaultShortcutsMask",
+              "description": "Bit sum of enabled shortcuts, decimal or 0x-prefixed hex. Bits: 0x1 rotation, 0x2 speed, 0x4 background play, 0x8 loop, 0x10 mute, 0x20 shuffle, 0x40 equalizer, 0x100 sleep timer, 0x200 repeat A-B, 0x400 night mode, 0x800 customise items, 0x1000 screenshot, 0x2000 mirror mode, 0x4000 vertical flip, 0x8000 audio effect. Default 0x780F."
+            },
+            {
+              "key": "openSubtitleSettings",
+              "description": "Expands Sync/Speed/Panel/Customization in the subtitle menu instead of collapsed."
             }
           ],
           "compatible_versions": [
@@ -552,8 +562,8 @@
     }
   ],
   "patches_name": "BlazeFTL Patches",
-  "fingerprint": "16af6bf96b20af2cd5a6c5ecaeb5e867acc6733cd9a33d4f8eb6e1d6e65df3d4",
-  "release_notes": "## [1.43.0](https://github.com/BlazeFTL/FTL-Patches/compare/v1.42.0...v1.43.0) (2026-09-05)\r\n\r\n### 📱 App-Specific Patches\r\n* **MX Player**\r\n  * ✨ Added Remove Bottom Bar And Add Me Tab To Top.\r\n  * 🐛 Added Clean Me Tab\r\n  * 🐛 Added Add NetWork Stream To Me Tab Patch.\r\n* **XFolder (File Manager)**\r\n  * ✨ Added Unlock Pro patch.\r\n  * ✨ Added Disable Rate Dialog patch (turns off cleaner by default).\r\n* **WPS Suite**\r\n  * ✨ Added **WpsApp Pro** Bypass License Check patch.\r\n  * ✨ Added **WPS WPA Tester Pro** patch.\r\n* **WiFi Analyzer**\r\n  * ✨ Added WiFi Analyzer Pro patch.\r\n  * ✨ Added Disable Rate Dialog patch. *(Recovered from dev cycle)*\r\n* **RS File Explorer**\r\n  * ✨ Added Clean Sidebar patch.\r\n  * **ES File Explorer**\r\n  * ✨ Made patch significantly more robust against R8 obfuscation.\r\n* **Video Downloader / All Video Downloader**\r\n  * ✨ Restricted patch compatibility to version `2.7.2`.\r\n  * ✨ Added Signature patch, Skip Splash, and Language patches.\r\n* **Bangla Dictionary Pro**\r\n  * ✨ Added new Pro unlock patch.\r\n* **Save Data Tools**\r\n  * ✨ Added Add Save Data Patch\r\n\r\n### 🌐 Universal & General Patches\r\n* **APK Junk Cleaner**\r\n  * ✨ Prepared patch for new API integration.\r\n  * 🐛 Cleaned up, restored, and stabilized patch logic after testing.\r\n* **Analytics Remover**\r\n  * ✨ Added new universal Analytics removal patch.\r\n  * 🐛 Removed specific analytics components that were causing app crashes.\r\n  * 🐛 Improved R8 obfuscation compatibility for analytics removal.\r\n* **Universal Ad Removal**\r\n  * ✨ Updated \"Remove Ads Lite (Adobo)\" configurations to cover more ad SDKs.\r\n* **Splash Screen**\r\n  * ✨ Added universal \"Skip Splash Expert\" patch.\r\n* **Certificate & Security**\r\n  * ✨ Hide APK Cert\" patch.\r\n* **Toast Notifications**\r\n  * ✨ Updated Toast patch; removed junk toast notifications.\r\n\r\n### 🛠️ Build & Infrastructure\r\n* 🐛 Restored `gradlew` executable bit (resolved multiple build permission issues).\r\n* 🐛 Applied general stability fixes for Morphe Dev compatibility.",
-  "release_tag": "v1.43.0",
-  "release_date": "2026-09-05T17:24:03Z"
+  "fingerprint": "fb30ed3ac9469d58cab3d12e66bf5bd7f454da84ecab3363a6ed0425807e048f",
+  "release_notes": "## [1.44.0-dev.25](https://github.com/BlazeFTL/FTL-Patches/compare/v1.44.0-dev.24...v1.44.0-dev.25) (2026-09-09)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* Make Drawable Clean Patch More Aggressive ([feb4e9d](https://github.com/BlazeFTL/FTL-Patches/commit/feb4e9d8bd190151d5292ac609f16c75b990e1ba))\r\n",
+  "release_tag": "v1.44.0-dev.25",
+  "release_date": "2026-09-09T09:50:43Z"
 }
