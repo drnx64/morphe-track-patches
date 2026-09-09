@@ -2,9 +2,9 @@
   "bundle": "miguel",
   "channel": "dev",
   "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
-  "created_at": "2026-09-08T17:42:36",
-  "version": "v1.14.0-dev.12",
-  "description": "## [1.14.0-dev.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.11...v1.14.0-dev.12) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **Duck Life 6: Space:** repair broken inline smali in unlock full game patch ([96cfcb4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/96cfcb4f67fe262452139bceb7d5d5786ee9f392))\n\n### ✨ New Features\n\n* **Duck Life 4:** add bypass PairIP + unlock full game patches ([fde6289](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fde6289d672cd990725c2a7ca5d4be070725f4dd))\n",
+  "created_at": "2026-09-08T21:41:44",
+  "version": "v1.14.0-dev.13",
+  "description": "## [1.14.0-dev.13](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.12...v1.14.0-dev.13) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **Lara Croft: Guardian of Light:** repair force FDR patch compilation (mutable class lookup) ([2580d45](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/2580d456aa23d194d822c6914a8d5f597984de38))\n\n### ✨ New Features\n\n* **Lara Croft: Guardian of Light:** add force FDR download patch (fix Play asset delivery block) ([44ee6f9](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/44ee6f9da40a836428a2acd1ffd5a05541d18dfd)), closes [#4](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/4)\n",
   "apps": [
     {
       "app_name": "The Battle of Polytopia",
@@ -67,6 +67,16 @@
       "app_name": "Lara Croft: Guardian of Light",
       "package": "com.feralinteractive.laracroftgol_android",
       "patches": [
+        {
+          "name": "Force FDR data download (bypass Play asset delivery)",
+          "description": "Fixes the 'Download Failed - Failed to download data from Google Play Store' dialog that blocks re-signed APKs at the splash screen. The game's 1.3 GB data pack is normally fetched through Play Asset Delivery, which only works for Play-Store-installed apps. This patch makes the Java layer report no available Play asset packs and skip the Play Core fetch, so the native game uses its built-in FDR downloader (Feral's own servers, fdr.feralinteractive.com) instead - the same fallback every Feral port has. Use together with 'Unlock full game (TBYB bypass + license)'. EXPERIMENTAL: if the FDR servers refuse the Android pack, the game will stay on the download screen (check logcat for 'DetermineDownloadType' / 'FDR' lines and report them).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.2.6RC1",
+            "1.2.7RC2"
+          ]
+        },
         {
           "name": "Unlock full game (TBYB bypass + license)",
           "description": "Unlocks the full game (all levels + DLC) of the try-before-you-buy version and bypasses the Google Play Licensing (LVL) startup check that blocks re-signed APKs. Injects 'Demo.FullGame' and 'Demo.FullGamePlusDLC' as already purchased into the Feral billing bridge, so the native game marks the full game as owned without contacting Google Play. Also patches every LVL Policy.allowAccess() to return true and the LicenseCheckerCallback failure callbacks to behave as licensed. Note: this game does NOT use PairIP (verified against the manifest and all split APKs).",
@@ -291,8 +301,8 @@
     }
   ],
   "patches_name": "Miguel's Patches",
-  "fingerprint": "00f2dc48af179701b4af11b68a197986f4c4574aa1bc98b141e97675a99cff99",
-  "release_notes": "## [1.14.0-dev.12](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.11...v1.14.0-dev.12) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **Duck Life 6: Space:** repair broken inline smali in unlock full game patch ([96cfcb4](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/96cfcb4f67fe262452139bceb7d5d5786ee9f392))\n\n### ✨ New Features\n\n* **Duck Life 4:** add bypass PairIP + unlock full game patches ([fde6289](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/fde6289d672cd990725c2a7ca5d4be070725f4dd))\n",
-  "release_tag": "v1.14.0-dev.12",
-  "release_date": "2026-09-08T17:42:36Z"
+  "fingerprint": "5b68a3e1972ebb572dff391d6bd172d1c557523756322b3428502020be640aae",
+  "release_notes": "## [1.14.0-dev.13](https://github.com/MiguelNinja19/miguel-morphe-patches/compare/v1.14.0-dev.12...v1.14.0-dev.13) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **Lara Croft: Guardian of Light:** repair force FDR patch compilation (mutable class lookup) ([2580d45](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/2580d456aa23d194d822c6914a8d5f597984de38))\n\n### ✨ New Features\n\n* **Lara Croft: Guardian of Light:** add force FDR download patch (fix Play asset delivery block) ([44ee6f9](https://github.com/MiguelNinja19/miguel-morphe-patches/commit/44ee6f9da40a836428a2acd1ffd5a05541d18dfd)), closes [#4](https://github.com/MiguelNinja19/miguel-morphe-patches/issues/4)\n",
+  "release_tag": "v1.14.0-dev.13",
+  "release_date": "2026-09-08T21:41:44Z"
 }

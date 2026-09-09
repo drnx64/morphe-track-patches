@@ -1,31 +1,22 @@
 {
   "affected_bundles": [
     {
-      "bundle": "legendsciber",
-      "channel": "stable",
+      "bundle": "miguel",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Shadow Fight 2",
-          "package": "com.nekki.shadowfight",
+          "app_name": "Lara Croft: Guardian of Light",
+          "package": "com.feralinteractive.laracroftgol_android",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Shadow Fight 2 IAP Bypass (Smali)",
-                "description": "Bypasses in-app purchases via smali patching. Intercepts launchBillingFlow and triggers fake purchase callback."
+                "name": "Force FDR data download (bypass Play asset delivery)",
+                "description": "Fixes the 'Download Failed - Failed to download data from Google Play Store' dialog that blocks re-signed APKs at the splash screen. The game's 1.3 GB data pack is normally fetched through Play Asset Delivery, which only works for Play-Store-installed apps. This patch makes the Java layer report no available Play asset packs and skip the Play Core fetch, so the native game uses its built-in FDR downloader (Feral's own servers, fdr.feralinteractive.com) instead - the same fallback every Feral port has. Use together with 'Unlock full game (TBYB bypass + license)'. EXPERIMENTAL: if the FDR servers refuse the Android pack, the game will stay on the download screen (check logcat for 'DetermineDownloadType' / 'FDR' lines and report them)."
               }
             ],
-            "patches_removed": [
-              {
-                "name": "Shadow Fight 2 IAP Bypass",
-                "description": "Bypasses in-app purchases."
-              },
-              {
-                "name": "Shadow Fight 2 IAP Bypass Trigger",
-                "description": "Loads IAP bypass native library."
-              }
-            ],
+            "patches_removed": [],
             "patches_modified": []
           },
           "scan_numbers": [
@@ -33,74 +24,28 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/legendsciber/morphe-patches",
-      "patches_name": "legendsciber's Patches",
+      "repo_url": "https://github.com/MiguelNinja19/miguel-morphe-patches",
+      "patches_name": "Miguel's Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "ftl",
-      "channel": "dev",
+      "bundle": "hushfeed",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "MX Player",
-          "package": "com.mxtech.videoplayer.ad",
-          "badge_type": "MAJOR UPDATE",
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "UPDATED APP",
           "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Configure Smart Enhance",
-                "description": "Configures the Smart Enhance intro popup and enable/disable toast."
-              },
-              {
-                "name": "Sidebar & Player Defaults",
-                "description": "Cleans the player sidebar and More menu; sets default shortcuts and subtitle view."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Add Network Stream To Me Tab",
-                "description": "WARNING MX PLAYER HAS INTEGRITY CHECK. Mod By Youarefinished Also Has Their Own Integrity Check. So Download From Play Store, Use URV Manager With Signing Turned Off, Patch And Then Kill Signature Verification With MT Manager Enhanced (VIP Only) Or Modded Build."
-              },
-              {
-                "name": "Clean sidebar More menu",
-                "description": "Hides the \"Help\" section (What's New, Features, FAQ, Check for Update, Bug Report, About) from the sidebar's More menu."
-              },
-              {
-                "name": "Clean sidebar shortcuts",
-                "description": "Independently hide Video Display, Bookmark, Favourite, Add to Playlist, Tutorial, and/or Playing Queue from the player's shortcut sidebar."
-              },
-              {
-                "name": "Configure Smart Enhance toast",
-                "description": "Always skips the Smart Enhance popup animation and always drops the disable-side toast. \"Show toast\" on: fires a toast when Smart Enhance is enabled. Off: enabling is silent too."
-              },
-              {
-                "name": "Default Shortcuts",
-                "description": "Changes which player long-press/gesture shortcuts are enabled out of the box, for installs that have never customized them (Settings > Player > Customize Shortcuts still works normally and always wins once touched). Default keeps screen rotation, playback speed, background play, loop, customize items, screenshot, mirror mode and vertical flip; drops mute, shuffle, equalizer, sleep timer, repeat A-B, night mode and audio effect."
-              },
-              {
-                "name": "Disable Smart Enhance popup",
-                "description": "Skips the \"Smart Enhance\" intro dialog on the player menu - tapping the menu item toggles Smart Enhance directly instead of showing the popup first."
-              },
-              {
-                "name": "Fix SpeedUp tip string",
-                "description": "Shortens the SpeedUp long-press tip from \"%1$s Speed Playing\" to \"%1$s\"."
-              },
-              {
-                "name": "Hide Video Display",
-                "description": ""
-              },
-              {
-                "name": "Open subtitle settings by default",
-                "description": "Expands the Sync/Speed/Panel/Customization settings block in the subtitle menu by default instead of it being collapsed."
-              }
-            ],
+            "patches_added": [],
+            "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Clean Me Tab",
-                "description": "Removes promo rows and unused tiles from the Me tab. Optionally adds a Network Stream tile.",
+                "name": "Disable telemetry",
+                "description": "Adds an App behavior toggle that stops ByteDance AppLog analytics, AppsFlyer attribution, explicit Firebase screen reports and crash reporting. TikTok's own diagnostics go quiet with them. Off by default. Supports TikTok 46.2.3.",
                 "changes": [
                   "description updated"
                 ]
@@ -112,8 +57,109 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/BlazeFTL/FTL-Patches",
-      "patches_name": "BlazeFTL Patches",
+      "repo_url": "https://github.com/SysAdminDoc/hushfeed",
+      "patches_name": "Hushfeed",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "imxeren",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Sync for Reddit",
+          "package": "com.laurencedawson.reddit_sync",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Merge profile feeds",
+                "description": "Merges profile submissions and comments from Arctic Shift and Reddit.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://gitlab.com/IMXEren/mix-patches",
+      "patches_name": "Mix Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "imxeren",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "iPay Sri Lanka",
+          "package": "com.ipay.mobile",
+          "badge_type": "UPDATED APP",
+          "promoted_from": "dev",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Sync for Reddit",
+          "package": "com.laurencedawson.reddit_sync",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Merge profile feeds",
+                "description": "Merges profile submissions and comments from Arctic Shift and Reddit."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Fix Other discussions",
+                "description": "Uses Reddit search for Other discussions and applies the selected sort.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Trakt",
+          "package": "tv.trakt.trakt",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock pro",
+                "description": "Remove ads, add VIP badge and allow to view 'Your Month in Review'.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://gitlab.com/IMXEren/mix-patches",
+      "patches_name": "Mix Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
@@ -126,7 +172,7 @@
         {
           "app_name": "Phone by Google",
           "package": "com.google.android.dialer",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
