@@ -2,14 +2,42 @@
   "bundle": "steamlink",
   "channel": "dev",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-09-09T15:21:42",
-  "version": "v1.15.0-dev.3",
-  "description": "## [1.15.0-dev.3](https://github.com/AngelDark92/steamlink-patches/compare/v1.15.0-dev.2...v1.15.0-dev.3) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* rgb 8-bit made default because of banding on 10-bit patch ([81e941b](https://github.com/AngelDark92/steamlink-patches/commit/81e941b1333adbf65f0ae79a5b43e53ec6cdaa22))\n",
+  "created_at": "2026-09-10T12:48:27",
+  "version": "v1.16.0-dev.1",
+  "description": "## [1.16.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.15.0...v1.16.0-dev.1) (2026-09-10)\n\n### ✨ New Features\n\n* new experiment redirecting all video to XR_KHR_android_surface_swapchain for 10-bit and hdr test ([57ea984](https://github.com/AngelDark92/steamlink-patches/commit/57ea98493b4837a3e0e959e8ba5ad345e5bbfd58))\n",
   "apps": [
     {
       "app_name": "Steam Link",
       "package": "com.valvesoftware.steamlinkvr",
       "patches": [
+        {
+          "name": "Android Surface actual video (experimental)",
+          "description": "Copies every rendered video projection, including foveal alpha, into XR_KHR_android_surface_swapchain on exact 2.0.20/5001712 and 2.0.22/5002322. Separate 8-bit sRGB and FP16 linear Surface choices. GPU copy, not direct decoder output; headset acceptance, latency and HDR/panel depth are unverified. Conflicts with the high-resolution trigger and recommended bundles. No kernel changes.",
+          "use": false,
+          "options": [
+            {
+              "key": "surfacePrecision",
+              "description": "Start with 8-bit to test the presentation path. FP16 requires matching EGL/window support and keeps alpha precision. Match OLED source output separately; FP16 cannot recover an 8-bit source. Neither option enables HDR or forces panel depth. Unsupported Surface setup passes through the original video."
+            }
+          ],
+          "compatible_versions": [
+            "2.0.20"
+          ]
+        },
+        {
+          "name": "Android Surface actual video (experimental)",
+          "description": "Copies every rendered video projection, including foveal alpha, into XR_KHR_android_surface_swapchain on exact 2.0.20/5001712 and 2.0.22/5002322. Separate 8-bit sRGB and FP16 linear Surface choices. GPU copy, not direct decoder output; headset acceptance, latency and HDR/panel depth are unverified. Conflicts with the high-resolution trigger and recommended bundles. No kernel changes.",
+          "use": false,
+          "options": [
+            {
+              "key": "surfacePrecision",
+              "description": "Start with 8-bit to test the presentation path. FP16 requires matching EGL/window support and keeps alpha precision. Match OLED source output separately; FP16 cannot recover an 8-bit source. Neither option enables HDR or forces panel depth. Unsupported Surface setup passes through the original video."
+            }
+          ],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
         {
           "name": "Android XR native permission names",
           "description": "Replaces native Oculus face/eye permission checks with the Android XR permission names used by Galaxy XR, including the verified Steam Link 5001712 layout.",
@@ -1294,8 +1322,8 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "740d955059de93022638f5997f8fa55f1a3aed4d00b14dbe2c8b7db59c3171af",
-  "release_notes": "## [1.15.0-dev.3](https://github.com/AngelDark92/steamlink-patches/compare/v1.15.0-dev.2...v1.15.0-dev.3) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* rgb 8-bit made default because of banding on 10-bit patch ([81e941b](https://github.com/AngelDark92/steamlink-patches/commit/81e941b1333adbf65f0ae79a5b43e53ec6cdaa22))\n",
-  "release_tag": "v1.15.0-dev.3",
-  "release_date": "2026-09-09T15:21:42Z"
+  "fingerprint": "8962c023dc31aa2de8105460e46a8fd6347d72184faf2f0b69b25d4cf217c122",
+  "release_notes": "## [1.16.0-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.15.0...v1.16.0-dev.1) (2026-09-10)\n\n### ✨ New Features\n\n* new experiment redirecting all video to XR_KHR_android_surface_swapchain for 10-bit and hdr test ([57ea984](https://github.com/AngelDark92/steamlink-patches/commit/57ea98493b4837a3e0e959e8ba5ad345e5bbfd58))\n",
+  "release_tag": "v1.16.0-dev.1",
+  "release_date": "2026-09-10T12:48:27Z"
 }
