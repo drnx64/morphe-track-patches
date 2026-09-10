@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-09-09T23:49:07",
-  "version": "v2.3.1-dev.0",
-  "description": "## 2.3.1-dev.0\n\n- fix: the gate step had no GitHub Packages credentials\n- fix: four ways CI could be green while guarding nothing\n- fix: guard the extension paths that can take the keyboard down\n- fix: the resource lane was rehearsing a different row and a shorter array\n- fix: assert invoke kinds and one unguarded scratch register\n- fix: two emission lint rules were checking nothing\n- fix: live_free was blind to range invokes, wide pairs and switches\n- fix: Hidden Features was turning on four flags and saying two\n- fix: checkFieldExists rejected every static field\n- docs: README section for the undo-autocorrect patch, and two namings\n- fix: UndoEmitter checked its scratch registers by hand\n- refactor: one sole() for the twenty-six single-match searches\n- test: pin the invoke kinds and the one anchor R8 cannot move\n- fix: live_free over-reported dead registers\n- feat: swipe up to undo an autocorrect\n- docs: settle the scrub contention and write the plan down\n- docs: research for swipe-up-to-undo-autocorrect, and the gesture layer\n- docs: record that the rebuilt default-on ship was verified",
+  "created_at": "2026-09-10T04:16:05",
+  "version": "v2.3.1-dev.2",
+  "description": "## 2.3.1-dev.2\n\n- test: a diagnostic build for the swipe-up gesture\n- docs: why Rambler cannot be enabled",
   "apps": [
     {
       "app_name": "Gboard",
@@ -83,6 +83,15 @@
           ]
         },
         {
+          "name": "Swipe up diagnostic (temporary)",
+          "description": "Diagnostic build only. Swipe up on a key to delete a character, which proves whether the swipe gesture is being detected at all. Do not enable this at the same time as \"Swipe up to undo autocorrect\" — they attach to the same place and you would get both effects. Off by default, and this patch will be removed once it has answered its question.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
           "name": "Swipe up to undo autocorrect",
           "description": "Swipe up on the keyboard to put back the word an autocorrect replaced. Gboard has the same undo on backspace, behind a setting; this adds a gesture for it and works whether or not that setting is on. A swipe with nothing to undo does nothing. Off by default until it has been confirmed on a device.",
           "use": false,
@@ -122,8 +131,8 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "97182572e0432ebc0131feaaa465283992fa6bd08c18a0ebbd7e14d3493e27f3",
-  "release_notes": "## 2.3.1-dev.0\n\n- fix: the gate step had no GitHub Packages credentials\n- fix: four ways CI could be green while guarding nothing\n- fix: guard the extension paths that can take the keyboard down\n- fix: the resource lane was rehearsing a different row and a shorter array\n- fix: assert invoke kinds and one unguarded scratch register\n- fix: two emission lint rules were checking nothing\n- fix: live_free was blind to range invokes, wide pairs and switches\n- fix: Hidden Features was turning on four flags and saying two\n- fix: checkFieldExists rejected every static field\n- docs: README section for the undo-autocorrect patch, and two namings\n- fix: UndoEmitter checked its scratch registers by hand\n- refactor: one sole() for the twenty-six single-match searches\n- test: pin the invoke kinds and the one anchor R8 cannot move\n- fix: live_free over-reported dead registers\n- feat: swipe up to undo an autocorrect\n- docs: settle the scrub contention and write the plan down\n- docs: research for swipe-up-to-undo-autocorrect, and the gesture layer\n- docs: record that the rebuilt default-on ship was verified",
-  "release_tag": "v2.3.1-dev.0",
-  "release_date": "2026-09-09T23:49:07Z"
+  "fingerprint": "74c724a7cc942d6c7a40e3bbf3be4620c5e3dfc0776fc4972eb3244716ef2c2e",
+  "release_notes": "## 2.3.1-dev.2\n\n- test: a diagnostic build for the swipe-up gesture\n- docs: why Rambler cannot be enabled",
+  "release_tag": "v2.3.1-dev.2",
+  "release_date": "2026-09-10T04:16:05Z"
 }

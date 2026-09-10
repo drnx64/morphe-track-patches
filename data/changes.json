@@ -12,8 +12,8 @@
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Swipe up to undo autocorrect",
-                "description": "Swipe up on the keyboard to put back the word an autocorrect replaced. Gboard has the same undo on backspace, behind a setting; this adds a gesture for it and works whether or not that setting is on. A swipe with nothing to undo does nothing. Off by default until it has been confirmed on a device."
+                "name": "Swipe up diagnostic (temporary)",
+                "description": "Diagnostic build only. Swipe up on a key to delete a character, which proves whether the swipe gesture is being detected at all. Do not enable this at the same time as \"Swipe up to undo autocorrect\" — they attach to the same place and you would get both effects. Off by default, and this patch will be removed once it has answered its question."
               }
             ],
             "patches_removed": [],
@@ -26,6 +26,46 @@
       ],
       "repo_url": "https://github.com/JZ6/Flexboard",
       "patches_name": "Flexboard",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "d0nj",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Niagara Launcher",
+          "package": "bitpit.launcher",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove analytics",
+                "description": "Disables all telemetry in Niagara Launcher: the weekly usage-report upload (app launches, notification metadata, survey responses), retention milestone events, GDPR consent sync, Singular attribution sessions and events (advertising ID, app set ID, install referrer, FCM token) and the runtime Firebase Analytics opt-in.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              },
+              {
+                "name": "Unlock Pro",
+                "description": "Makes the entitlement holder always report Pro in Niagara Launcher. Unlocks all Pro features and bypasses the 7-day trial prompt. Server-backed features (account sync, Stripe checkout) are not affected.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/d0nj/morphe-patches",
+      "patches_name": "d0nj Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
