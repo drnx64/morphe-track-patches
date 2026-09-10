@@ -2,10 +2,214 @@
   "bundle": "logm1lo",
   "channel": "dev",
   "repo_url": "https://github.com/logm1lo/logm1lo-patches",
-  "created_at": "2026-08-08T00:09:02",
-  "version": "v1.1.0-dev.1",
-  "description": "## [1.1.0-dev.1](https://github.com/logm1lo/logm1lo-patches/compare/v1.0.10...v1.1.0-dev.1) (2026-08-08)\n\n### New Features\n\n* add Cube Solver patches, fix Calistree Dart unlock ([a0d978a](https://github.com/logm1lo/logm1lo-patches/commit/a0d978a743dd6701077d45d264c1cab038bec4ea))\n",
+  "created_at": "2026-09-10T06:29:40",
+  "version": "v1.2.0-dev.1",
+  "description": "## [1.2.0-dev.1](https://github.com/logm1lo/logm1lo-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-09-10)\n\n### Bug Fixes\n\n* default empty feed paths to /storage/emulated/0 in MtTools extension ([fc30463](https://github.com/logm1lo/logm1lo-patches/commit/fc30463132eeb987caad3da4f0ae127d39005240))\n* file browser now functional - real rows + working clicks ([ad7d7b4](https://github.com/logm1lo/logm1lo-patches/commit/ad7d7b4efe7864b6455215e634bae7963b23031b))\n* force User Agreement flag to true so EULA never re-shows ([7dddc01](https://github.com/logm1lo/logm1lo-patches/commit/7dddc01ffef443a448a48344d1b7109968b16e79))\n* make file-browser feed patch apply standalone with splice ([5a166e9](https://github.com/logm1lo/logm1lo-patches/commit/5a166e953ed39a71aa13db7b2663eb7f94d59838))\n* make MT Manager tool reimplementation work on-device ([08d634a](https://github.com/logm1lo/logm1lo-patches/commit/08d634acb3d46ec9c2325b6fa96cda421e96ac2a)), closes [PKCS#12](https://github.com/logm1lo/PKCS/issues/12)\n* prevent Purchase-VIP / account screen NPE from null native Map getter ([185642e](https://github.com/logm1lo/logm1lo-patches/commit/185642e2a45bb20d5a35858c336e252f67e5bf2d))\n* remove stub-native dependencies + clear native flags on patched getters ([f4c154f](https://github.com/logm1lo/logm1lo-patches/commit/f4c154fad7800a8cfa0d243e53c80fa98306d991))\n* status-counter feed now fires + diagnostic logging (warm-state shortcut removed) ([ef98b9a](https://github.com/logm1lo/logm1lo-patches/commit/ef98b9a5405711b149ba18c80fd5720fe5a173fd))\n* synchronous file-list feed + flat-browser adapter notify ([9ea6815](https://github.com/logm1lo/logm1lo-patches/commit/9ea6815bc21709a6271ca90a299d72123bad8fa0))\n\n### New Features\n\n* add feedFlatIndex helper + flat-browser feed patch (diagnostic) ([28e6e22](https://github.com/logm1lo/logm1lo-patches/commit/28e6e2233038ae7a6f34b62d7355123086c6b7c6))\n* add Locket Gold unlock patch (Hermes bytecode override) ([4270412](https://github.com/logm1lo/logm1lo-patches/commit/4270412d5190a1eaf3781055a6ba81dc0efc89b8))\n* add MT Manager Morphe patches - native stubbing, key patching, anti-tamper, VIP unlock ([758659c](https://github.com/logm1lo/logm1lo-patches/commit/758659c56a4bf0dcb687c5a4741bc0c476ac8301))\n* add MT Manager tool reimplementation extension (.mpe) ([1603c12](https://github.com/logm1lo/logm1lo-patches/commit/1603c127f3376471eface3153a84b4ff9105c27b)), closes [PKCS#12](https://github.com/logm1lo/PKCS/issues/12)\n* add splice-safe VIP wrapper patch (default=false, blocked by resource crash) ([5a6a6e1](https://github.com/logm1lo/logm1lo-patches/commit/5a6a6e1c5ec16e6c0036749429377a0fbb6d06eb)), closes [#0xffffffff](https://github.com/logm1lo/logm1lo-patches/issues/0xffffffff)\n* **calistree:** support 5.9.1 - versioned Dart hex tables + stdlib reshift ([21d3ac5](https://github.com/logm1lo/logm1lo-patches/commit/21d3ac584bc1020e50a1aa6c2b5efdbf9141a72b))\n* fix MT Manager file-listing data pipeline (loader returns real entries) ([c68376b](https://github.com/logm1lo/logm1lo-patches/commit/c68376b0e8ce03bb7b9bc45cde63afdbeef8242b))\n* fix MT Manager white page (feed file browser list + force row drawing) ([2324999](https://github.com/logm1lo/logm1lo-patches/commit/23249993f7a1965769ae599e1b8fc7fa8197ff08))\n* unlock all 7 MT Manager VIP getters including ۘ() via list-variant fix ([14174e9](https://github.com/logm1lo/logm1lo-patches/commit/14174e99a04c04f54c7d2d0adaf0bc858641a7f8))",
   "apps": [
+    {
+      "app_name": "MT Manager",
+      "package": "bin.mt.plus",
+      "patches": [
+        {
+          "name": "Feed file browser data (extension)",
+          "description": "Self-heals the empty file browser by listing the real filesystem into the active file source on first access.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Feed slide-panel file list (extension)",
+          "description": "Seeds the visible file browser's tab getters with the real directory listing via the MtTools extension, so the slide panel renders all files instead of only the breadcrumb.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Fix account map getter",
+          "description": "Makes l.ۨ᩸ܰ.۟()Ljava/util/Map; return an empty HashMap instead of null to prevent Purchase-VIP / account screen crashes.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Fix file listing (direct FileSource)",
+          "description": "Forces the node-factory mount check and node validation to pass so folders and file pickers populate.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Fix file-browser click (fed list)",
+          "description": "Makes the file-browser onItemClick read the fed file list (l/ۤۚܳ.᩷()) instead of the stale warm-state list, fixing IndexOutOfBounds on row clicks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Fix file-browser pane geometry (full height + no shift)",
+          "description": "Makes l.ۗ᩺ܰ measure the pane at full available height and never translate it down, so all file rows render and scroll.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Fix file-browser pane visibility",
+          "description": "Forces l.ۗ᩺ܰ.addView to keep pane children VISIBLE so the file list renders.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Fix file-browser status counter (self-feeding)",
+          "description": "Rebuilds l.ۤۚܳ.᩷() to return the real file list (native warm state) or feed real items via the MtTools extension on fresh installs, never NPEing the browser.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Fix two-pane row text width (expanded rows)",
+          "description": "Forces l.۠᩺ܳ rows to stay in the complex measure branch so file names and sub-text render instead of being 0-width.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Fix VIP list variant",
+          "description": "Makes l.᩷ۛܰ.ܿ() (VIP file-list variant) delegate to the working normal variant so ۘ()=true keeps file listing intact.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Force file-browser ListView to draw rows (real target)",
+          "description": "Replaces l.ܳۚܰ.draw with a plain super call so the file browser's ListView always paints its rows.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Force file-browser ListView to layout rows",
+          "description": "Replaces l.ܳۚܰ.layoutChildren with a plain super call so the file browser's ListView lays out all its rows.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Force file-browser pane to draw rows",
+          "description": "Replaces l.֡ۚܰ.dispatchDraw with a plain super call so the visible file list always paints its rows.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Force User Agreement accepted",
+          "description": "Makes l.۬۟᩶.getBoolean return true for the user_agreement key so the EULA never re-shows.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Login removal / bypass",
+          "description": "Makes the app think you are logged into an MT account.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Neutralize anti-tamper",
+          "description": "Removes the RuntimeException self-verification throws in Main.<init>/onCreate.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Patch native keys",
+          "description": "Stubs K2M7 <clinit> canaries and patches the 39 native XOR keys / 12 bool flags to constants.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Reimplement native tools (extension)",
+          "description": "Reroutes Dex2Smali / Dex2Jar / Sign to pure-Java reimplementations bundled in the mtmanager extension.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Stub native methods",
+          "description": "Replaces all l.* native methods with safe Java defaults so the app no longer depends on native registration.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Unlock VIP",
+          "description": "Unlocks VIP features (FTP/SFTP/SMB/WebDav, MT_Protector, themes).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Unlock VIP (methods)",
+          "description": "Replaces all seven VIP getter methods on l.ۨ᩸ܰ to always return true.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        },
+        {
+          "name": "Unlock VIP (wrappers)",
+          "description": "Forces the four pure-Java VIP wrapper methods (l/ܽۜ.᩷ۢ᩶, l/ᩴ᩶.۫ۨۢ, l/᩵᩶.۠֫ۧ, l/᩸ۗ.᩹֡۫) to return true — splice-safe (no native methods touched).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.26.8"
+          ]
+        }
+      ]
+    },
     {
       "app_name": "Calistree",
       "package": "com.calistree.calistree",
@@ -16,7 +220,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "5.8.5"
+            "5.8.5",
+            "5.9.1"
           ]
         },
         {
@@ -25,7 +230,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "5.8.5"
+            "5.8.5",
+            "5.9.1"
           ]
         }
       ]
@@ -53,11 +259,26 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "Locket",
+      "package": "com.locket.locket",
+      "patches": [
+        {
+          "name": "Unlock Locket Gold",
+          "description": "Unlocks Locket Gold by forcing the internal android_gold_subscription_override flag to true.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.235.0"
+          ]
+        }
+      ]
     }
   ],
   "patches_name": "Logm1lo Patches",
-  "fingerprint": "7a546d220402f3727e63189252dd26492fee357c0960cb67d14fb1c7a508b02d",
-  "release_notes": "## [1.1.0-dev.1](https://github.com/logm1lo/logm1lo-patches/compare/v1.0.10...v1.1.0-dev.1) (2026-08-08)\n\n### New Features\n\n* add Cube Solver patches, fix Calistree Dart unlock ([a0d978a](https://github.com/logm1lo/logm1lo-patches/commit/a0d978a743dd6701077d45d264c1cab038bec4ea))\n",
-  "release_tag": "v1.1.0-dev.1",
-  "release_date": "2026-08-08T00:09:02Z"
+  "fingerprint": "1485b5a082f95b0f8cca5fde686a4654c3c298a30b48c8ba82f4718777bb6013",
+  "release_notes": "## [1.2.0-dev.1](https://github.com/logm1lo/logm1lo-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-09-10)\n\n### Bug Fixes\n\n* default empty feed paths to /storage/emulated/0 in MtTools extension ([fc30463](https://github.com/logm1lo/logm1lo-patches/commit/fc30463132eeb987caad3da4f0ae127d39005240))\n* file browser now functional - real rows + working clicks ([ad7d7b4](https://github.com/logm1lo/logm1lo-patches/commit/ad7d7b4efe7864b6455215e634bae7963b23031b))\n* force User Agreement flag to true so EULA never re-shows ([7dddc01](https://github.com/logm1lo/logm1lo-patches/commit/7dddc01ffef443a448a48344d1b7109968b16e79))\n* make file-browser feed patch apply standalone with splice ([5a166e9](https://github.com/logm1lo/logm1lo-patches/commit/5a166e953ed39a71aa13db7b2663eb7f94d59838))\n* make MT Manager tool reimplementation work on-device ([08d634a](https://github.com/logm1lo/logm1lo-patches/commit/08d634acb3d46ec9c2325b6fa96cda421e96ac2a)), closes [PKCS#12](https://github.com/logm1lo/PKCS/issues/12)\n* prevent Purchase-VIP / account screen NPE from null native Map getter ([185642e](https://github.com/logm1lo/logm1lo-patches/commit/185642e2a45bb20d5a35858c336e252f67e5bf2d))\n* remove stub-native dependencies + clear native flags on patched getters ([f4c154f](https://github.com/logm1lo/logm1lo-patches/commit/f4c154fad7800a8cfa0d243e53c80fa98306d991))\n* status-counter feed now fires + diagnostic logging (warm-state shortcut removed) ([ef98b9a](https://github.com/logm1lo/logm1lo-patches/commit/ef98b9a5405711b149ba18c80fd5720fe5a173fd))\n* synchronous file-list feed + flat-browser adapter notify ([9ea6815](https://github.com/logm1lo/logm1lo-patches/commit/9ea6815bc21709a6271ca90a299d72123bad8fa0))\n\n### New Features\n\n* add feedFlatIndex helper + flat-browser feed patch (diagnostic) ([28e6e22](https://github.com/logm1lo/logm1lo-patches/commit/28e6e2233038ae7a6f34b62d7355123086c6b7c6))\n* add Locket Gold unlock patch (Hermes bytecode override) ([4270412](https://github.com/logm1lo/logm1lo-patches/commit/4270412d5190a1eaf3781055a6ba81dc0efc89b8))\n* add MT Manager Morphe patches - native stubbing, key patching, anti-tamper, VIP unlock ([758659c](https://github.com/logm1lo/logm1lo-patches/commit/758659c56a4bf0dcb687c5a4741bc0c476ac8301))\n* add MT Manager tool reimplementation extension (.mpe) ([1603c12](https://github.com/logm1lo/logm1lo-patches/commit/1603c127f3376471eface3153a84b4ff9105c27b)), closes [PKCS#12](https://github.com/logm1lo/PKCS/issues/12)\n* add splice-safe VIP wrapper patch (default=false, blocked by resource crash) ([5a6a6e1](https://github.com/logm1lo/logm1lo-patches/commit/5a6a6e1c5ec16e6c0036749429377a0fbb6d06eb)), closes [#0xffffffff](https://github.com/logm1lo/logm1lo-patches/issues/0xffffffff)\n* **calistree:** support 5.9.1 - versioned Dart hex tables + stdlib reshift ([21d3ac5](https://github.com/logm1lo/logm1lo-patches/commit/21d3ac584bc1020e50a1aa6c2b5efdbf9141a72b))\n* fix MT Manager file-listing data pipeline (loader returns real entries) ([c68376b](https://github.com/logm1lo/logm1lo-patches/commit/c68376b0e8ce03bb7b9bc45cde63afdbeef8242b))\n* fix MT Manager white page (feed file browser list + force row drawing) ([2324999](https://github.com/logm1lo/logm1lo-patches/commit/23249993f7a1965769ae599e1b8fc7fa8197ff08))\n* unlock all 7 MT Manager VIP getters including ۘ() via list-variant fix ([14174e9](https://github.com/logm1lo/logm1lo-patches/commit/14174e99a04c04f54c7d2d0adaf0bc858641a7f8))",
+  "release_tag": "v1.2.0-dev.1",
+  "release_date": "2026-09-10T06:29:40Z"
 }
