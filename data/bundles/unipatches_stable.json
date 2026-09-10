@@ -2,42 +2,42 @@
   "bundle": "unipatches",
   "channel": "stable",
   "repo_url": "https://github.com/Zanuaimi/UniPatches",
-  "created_at": "2026-09-10T09:09:38",
-  "version": "v1.13.0",
-  "description": "## [1.13.0](https://github.com/Zanuaimi/UniPatches/compare/v1.12.0...v1.13.0) (2026-09-10)\n\n### ✨ New Features\n\n* **overlay:** extend runtime configuration and icon parsing ([2ac99b5](https://github.com/Zanuaimi/UniPatches/commit/2ac99b5a8d343bf4f0046e8da504e73cb80d1985))\n* **overlay:** refine built-in preset visuals ([cb1cf3f](https://github.com/Zanuaimi/UniPatches/commit/cb1cf3f453e36db18239444d1a687842ae1b698d))\n",
+  "created_at": "2026-09-10T17:44:19",
+  "version": "v1.14.3",
+  "description": "## [1.14.3](https://github.com/Zanuaimi/UniPatches/compare/v1.14.2...v1.14.3) (2026-09-10)\n\n### 🐛 Bug Fixes\n\n* trigger semantic release attestation ([8d49411](https://github.com/Zanuaimi/UniPatches/commit/8d494112b44059ffa7a6e43eaebff5b3e18f7505))\n\n### 🔧 Improvements\n\n* **ads:** reduce fallback patch heap usage ([eda705d](https://github.com/Zanuaimi/UniPatches/commit/eda705df61e647ac83151f09e34ab8fb9be1c0a8))\n* **bytecode:** avoid redundant instruction snapshots ([5dc2068](https://github.com/Zanuaimi/UniPatches/commit/5dc206858bce09b4d5e91b89be41cd5b9d061428))\n* **pairip:** narrow external VMRunner scan ([bdda520](https://github.com/Zanuaimi/UniPatches/commit/bdda52091cee752c4b6cecf698c75c81f80a15b7))\n",
   "apps": [
     {
       "app_name": "Hill Climb Racing",
       "package": "com.fingersoft.hillclimb",
       "patches": [
         {
-          "name": "Hill Climb Racing Overlay Example (Experimental)",
-          "description": "Safe app-specific overlay example for Hill Climb Racing (com.fingersoft.hillclimb). Select one or more preview modules, patch, then use their Settings and Preview controls in the shared overlay UI. Values are session-only and reset when the app process restarts. This contributor example demonstrates explicit launcher injection, styled settings popups, checkbox lists, and one-shot actions; it never alters currencies, unlocks, purchases, saves, or game bytecode. Do not combine with Universal Overlay Patch, because both patches install the same shared overlay runtime.",
+          "name": "Hill Climb Racing Example Overlay Addon",
+          "description": "Example overlay addon for Hill Climb Racing (com.fingersoft.hillclimb), used together with UniPatches Universal Overlay.\n        It adds six safe, mock-only app-specific preview modules to the shared overlay: A\n        - Add Coins\n        - Add Gems\n        - Add Paints \n        - Vehicle Selection\n        - Stage Selection\n        - Garage Selection. \n        All these six module options are enabled by default and can be disabled independently. \n        \n        Module settings and Preview actions are session-only; this example addon never reads or changes currencies, vehicles, stages, garage state, purchases, save files, or game bytecode.",
           "use": false,
           "options": [
             {
               "key": "hcrDemoAddCoins",
-              "description": "After patching, show a mock signed 32-bit value editor and Preview button in the overlay. Set a value, then preview it; the value is session-only and never reads or changes Hill Climb Racing coins."
+              "description": "Expose the mock Add Coins preview module in the shared Universal Overlay."
             },
             {
               "key": "hcrDemoAddGems",
-              "description": "After patching, show a mock signed 32-bit value editor and Preview button in the overlay. Set a value, then preview it; the value is session-only and never reads or changes Hill Climb Racing gems."
+              "description": "Expose the mock Add Gems preview module in the shared Universal Overlay."
             },
             {
               "key": "hcrDemoAddPaints",
-              "description": "After patching, show a mock signed 32-bit value editor and Preview button in the overlay. Set a value, then preview it; the value is session-only and never reads or changes Hill Climb Racing paints."
+              "description": "Expose the mock Add Paints preview module in the shared Universal Overlay."
             },
             {
               "key": "hcrDemoVehicles",
-              "description": "After patching, show a mock scrollable vehicle checkbox list and Preview action. It demonstrates the shared settings popup but never unlocks, locks, or inspects vehicles."
+              "description": "Expose the mock vehicle selection preview module in the shared Universal Overlay."
             },
             {
               "key": "hcrDemoStages",
-              "description": "After patching, show a mock scrollable stage checkbox list and Preview action. It demonstrates the shared settings popup but never unlocks, locks, or inspects stages."
+              "description": "Expose the mock stage selection preview module in the shared Universal Overlay."
             },
             {
               "key": "hcrDemoGarage",
-              "description": "After patching, show a mock Lock/Unlock checkbox and Preview action. It demonstrates the shared settings popup but never changes or inspects the garage."
+              "description": "Expose the mock garage selection preview module in the shared Universal Overlay."
             }
           ],
           "compatible_versions": []
@@ -46,8 +46,8 @@
     }
   ],
   "patches_name": "UserXYZ Patches",
-  "fingerprint": "d6ab26e442f0fd0c61e4f8a5d79e57c94076749eb62a4835acaa4e336c0fe2b1",
-  "release_notes": "## [1.13.0](https://github.com/Zanuaimi/UniPatches/compare/v1.12.0...v1.13.0) (2026-09-10)\n\n### ✨ New Features\n\n* **overlay:** extend runtime configuration and icon parsing ([2ac99b5](https://github.com/Zanuaimi/UniPatches/commit/2ac99b5a8d343bf4f0046e8da504e73cb80d1985))\n* **overlay:** refine built-in preset visuals ([cb1cf3f](https://github.com/Zanuaimi/UniPatches/commit/cb1cf3f453e36db18239444d1a687842ae1b698d))\n",
-  "release_tag": "v1.13.0",
-  "release_date": "2026-09-10T09:09:38Z"
+  "fingerprint": "dbb8dc19ba7e71927a6dca9649d9d4d696fbc7fd610c072b93f807eeca7cd632",
+  "release_notes": "## [1.14.3](https://github.com/Zanuaimi/UniPatches/compare/v1.14.2...v1.14.3) (2026-09-10)\n\n### 🐛 Bug Fixes\n\n* trigger semantic release attestation ([8d49411](https://github.com/Zanuaimi/UniPatches/commit/8d494112b44059ffa7a6e43eaebff5b3e18f7505))\n\n### 🔧 Improvements\n\n* **ads:** reduce fallback patch heap usage ([eda705d](https://github.com/Zanuaimi/UniPatches/commit/eda705df61e647ac83151f09e34ab8fb9be1c0a8))\n* **bytecode:** avoid redundant instruction snapshots ([5dc2068](https://github.com/Zanuaimi/UniPatches/commit/5dc206858bce09b4d5e91b89be41cd5b9d061428))\n* **pairip:** narrow external VMRunner scan ([bdda520](https://github.com/Zanuaimi/UniPatches/commit/bdda52091cee752c4b6cecf698c75c81f80a15b7))\n",
+  "release_tag": "v1.14.3",
+  "release_date": "2026-09-10T17:44:19Z"
 }
