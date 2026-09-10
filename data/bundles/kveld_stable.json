@@ -2,9 +2,9 @@
   "bundle": "kveld",
   "channel": "stable",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-09-10T16:26:43",
-  "version": "v1.17.0",
-  "description": "## [1.17.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.16.0...v1.17.0) (2026-09-10)\n\n### ✨ New Features\n\n* **gboard:** update compatibility to Gboard Lite v18.2.4 ([7d52471](https://github.com/kveld9/kveld-morphe-patches/commit/7d52471f94bb918b7522231501280c67e86b84ce))\n",
+  "created_at": "2026-09-10T21:36:32",
+  "version": "v1.18.0",
+  "description": "## [1.18.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.17.0...v1.18.0) (2026-09-10)\n\n### ✨ New Features\n\n* **vivaldi:** add support for Vivaldi Browser Stable v8.2.4147.58 ([b81c003](https://github.com/kveld9/kveld-morphe-patches/commit/b81c003c07840789313aa6a66399bd025572a0ef))\n",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -57,7 +57,7 @@
         },
         {
           "name": "Disable Battery Status API & OS Listener",
-          "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
+          "description": "Neutralizes the Battery Status API (navigator.getBattery) to prevent cross-site device fingerprinting and drops OS battery change broadcasts.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -342,8 +342,8 @@
       ]
     },
     {
-      "app_name": "Vivaldi Browser Snapshot",
-      "package": "com.vivaldi.browser.snapshot",
+      "app_name": "Vivaldi Browser - Fast & Safe",
+      "package": "com.vivaldi.browser",
       "patches": [
         {
           "name": "Block Vivaldi Sync",
@@ -351,7 +351,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -360,7 +360,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -369,7 +369,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -378,25 +378,25 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
           "name": "Disable Background Sync & Periodic Sync",
-          "description": "Eliminates background wakeups, radio modem activity, and battery drain by neutralizing periodic and one-shot background sync tasks.",
+          "description": "Prevents Web Background Sync and Periodic Sync APIs from scheduling wakeups and background tasks in Android JobScheduler.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
           "name": "Disable Battery Status API & OS Listener",
-          "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
+          "description": "Neutralizes the Battery Status API (navigator.getBattery) to prevent cross-site device fingerprinting and drops OS battery change broadcasts.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -405,7 +405,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -414,7 +414,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -428,7 +428,7 @@
             }
           ],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -442,7 +442,7 @@
             }
           ],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -451,7 +451,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -460,7 +460,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
@@ -469,24 +469,24 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         },
         {
           "name": "Vivaldi Startup Performance Optimization",
-          "description": "Optimizes cold startup time, eliminates background CPU/disk overhead, and guards against early CompositorView LayoutStateObserver crashes.",
+          "description": "Guards against fatal CompositorView NullPointerException crashes on cold startup and bypasses carrier partner customizations.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.50"
+            "8.2.4147.58"
           ]
         }
       ]
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "5ea2facae2ae28e4167eaddbfc337059d004d14bfbf277bec482321e2221751d",
-  "release_notes": "## [1.17.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.16.0...v1.17.0) (2026-09-10)\n\n### ✨ New Features\n\n* **gboard:** update compatibility to Gboard Lite v18.2.4 ([7d52471](https://github.com/kveld9/kveld-morphe-patches/commit/7d52471f94bb918b7522231501280c67e86b84ce))\n",
-  "release_tag": "v1.17.0",
-  "release_date": "2026-09-10T16:26:43Z"
+  "fingerprint": "cb1a5bb5735e7b88fd9aba6284513f2f566cb9bee58a77ad1c288bd96ef68a93",
+  "release_notes": "## [1.18.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.17.0...v1.18.0) (2026-09-10)\n\n### ✨ New Features\n\n* **vivaldi:** add support for Vivaldi Browser Stable v8.2.4147.58 ([b81c003](https://github.com/kveld9/kveld-morphe-patches/commit/b81c003c07840789313aa6a66399bd025572a0ef))\n",
+  "release_tag": "v1.18.0",
+  "release_date": "2026-09-10T21:36:32Z"
 }
