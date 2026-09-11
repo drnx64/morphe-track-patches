@@ -2,9 +2,9 @@
   "bundle": "aapam",
   "channel": "stable",
   "repo_url": "https://github.com/WZSE/aapam-patches",
-  "created_at": "2026-09-05T19:46:11",
-  "version": "v1.2.0",
-  "description": "## [1.2.0](https://github.com/WZSE/aapam-patches/compare/v1.1.0...v1.2.0) (2026-09-05)\n\n### ✨ New Features\n\n* Telegram anti expiry media, but unlike other Paresh patch this shows expired to sender ([9b8156b](https://github.com/WZSE/aapam-patches/commit/9b8156b81f01c606877328bc80e191192a6649e9))\n",
+  "created_at": "2026-09-11T11:20:05",
+  "version": "v1.3.0",
+  "description": "## [1.3.0](https://github.com/WZSE/aapam-patches/compare/v1.2.0...v1.3.0) (2026-09-11)\n\n### ✨ New Features\n\n* Coloring & Learn adblock & premium ([1ab6536](https://github.com/WZSE/aapam-patches/commit/1ab653640027974e819ba2f495589673345d5c63))\n",
   "apps": [
     {
       "app_name": "Prime Video Android TV",
@@ -140,6 +140,30 @@
       ]
     },
     {
+      "app_name": "Coloring and Learn",
+      "package": "com.orange.coloring.learn.kids",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Removes all AdMob ads (banner, interstitial, rewarded, rewarded interstitial, app open) by intercepting the Corona SDK AdMob plugin bridge before any ad is initialised, loaded, or shown.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.28"
+          ]
+        },
+        {
+          "name": "Unlock ad-free",
+          "description": "Hooks CoronaRuntime.onWillLoadMain() to execute a Lua bootstrap script that stubs in-app purchases (Tienda.ProductoComprado returning 'S'), hides promo/ad UI buttons, and stubs libads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.28"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Telegram",
       "package": "org.telegram.messenger.web",
       "patches": [
@@ -157,8 +181,8 @@
     }
   ],
   "patches_name": "aapam Patches",
-  "fingerprint": "0d9f63f682543a67c3a1659162b5920cb586a66db3aa967c75f035c1b325a735",
-  "release_notes": "## [1.2.0](https://github.com/WZSE/aapam-patches/compare/v1.1.0...v1.2.0) (2026-09-05)\n\n### ✨ New Features\n\n* Telegram anti expiry media, but unlike other Paresh patch this shows expired to sender ([9b8156b](https://github.com/WZSE/aapam-patches/commit/9b8156b81f01c606877328bc80e191192a6649e9))\n",
-  "release_tag": "v1.2.0",
-  "release_date": "2026-09-05T19:46:11Z"
+  "fingerprint": "b4c5dc989275fa1e5a968cefab104820581cb04fed4774780d39157c7e008b1b",
+  "release_notes": "## [1.3.0](https://github.com/WZSE/aapam-patches/compare/v1.2.0...v1.3.0) (2026-09-11)\n\n### ✨ New Features\n\n* Coloring & Learn adblock & premium ([1ab6536](https://github.com/WZSE/aapam-patches/commit/1ab653640027974e819ba2f495589673345d5c63))\n",
+  "release_tag": "v1.3.0",
+  "release_date": "2026-09-11T11:20:05Z"
 }

@@ -1,71 +1,136 @@
 {
   "affected_bundles": [
     {
-      "bundle": "flexboard",
+      "bundle": "aapam",
       "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Gboard",
-          "package": "com.google.android.inputmethod.latin",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Modern keypress haptics",
-                "description": "Uses Android's haptic primitives for keypresses — the crisp tick the rest of the system uses — instead of a plain buzz. Gboard has the code and disables it with an impossible minimum Android version; this removes that. Devices whose vibrator cannot do primitives are unaffected, because Gboard's own hardware check still runs. Note that it changes what the vibration strength slider means, from milliseconds to intensity. Off by default and not yet confirmed on a device."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          },
+          "app_name": "Coloring and Learn",
+          "package": "com.orange.coloring.learn.kids",
+          "badge_type": "NEW APP",
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/JZ6/Flexboard",
-      "patches_name": "Flexboard",
+      "repo_url": "https://github.com/WZSE/aapam-patches",
+      "patches_name": "aapam Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "d0nj",
+      "bundle": "aapam",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Niagara Launcher",
-          "package": "bitpit.launcher",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Fix home screen numbers tile",
-                "description": "Niagara's Channels feature registers a diagnostic tip whose message is a giant fingerprint of concatenated hashCode() integers of up to 30 channel items (~850 digits). Because the provider accepts every tip request, this shows up as a tile of giant numbers on the home feed whenever the channel list refreshes, which happens when apps are installed, updated or removed (for example through ADB). Makes the provider decline tip requests so the diagnostic tip is never shown."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          },
+          "app_name": "Coloring and Learn",
+          "package": "com.orange.coloring.learn.kids",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/WZSE/aapam-patches",
+      "patches_name": "aapam Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "epxec",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "FreeReels",
+          "package": "com.freereels.app",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/Epxec/android-patches",
+      "patches_name": "Epxec Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "epxec",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "FreeReels",
+          "package": "com.freereels.app",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/Epxec/android-patches",
+      "patches_name": "Epxec Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "hxreborn",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "MovieBox",
+          "package": "com.community.oneroom",
+          "badge_type": "NEW APP",
           "scan_numbers": [
             1
           ]
         },
         {
-          "app_name": "AI Audio Novel Reader",
-          "package": "com.thien.novelreader",
+          "app_name": "DWG FastView",
+          "package": "com.gstarmc.android",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/hxreborn/morphe-patches",
+      "patches_name": "hxreborn Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "icysymmetra-tiktok",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
-            "patches_removed": [],
+            "patches_removed": [
+              {
+                "name": "Download stories",
+                "description": "Adds TikTok's native save action to each story's share menu. The current story item is preserved so profiles with several stories download the intended media."
+              }
+            ],
             "patches_modified": [
               {
-                "name": "Unlock premium",
-                "description": "Makes isPremium() always return true in AI Audio Novel Reader. Unlocks all premium features and disables the 10-hour trial countdown.",
+                "name": "Disable screen capture detection",
+                "description": "Disables capture detection and secure-window screenshot protection, including Circle to Search blocking.",
                 "changes": [
-                  "versions: -1 version"
+                  "description updated"
                 ]
               }
             ]
@@ -75,182 +140,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/d0nj/morphe-patches",
-      "patches_name": "d0nj Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "epxec",
-      "channel": "dev",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Decompile",
-          "package": "com.apktools.app.decompile",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Halo Reels Pro",
-          "package": "com.halo.reels.movie.fast.pro",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Touch The Notch",
-          "package": "com.notch.touch",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Remindio",
-          "package": "dmytro.palamarchuk.dailyreminder",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/Epxec/android-patches",
-      "patches_name": "Epxec Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "epxec",
-      "channel": "stable",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "Decompile",
-          "package": "com.apktools.app.decompile",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Halo Reels Pro",
-          "package": "com.halo.reels.movie.fast.pro",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Touch The Notch",
-          "package": "com.notch.touch",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Remindio",
-          "package": "dmytro.palamarchuk.dailyreminder",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/Epxec/android-patches",
-      "patches_name": "Epxec Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "kveld",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Brave Private Web Browser, VPN",
-          "package": "com.brave.browser",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
-              {
-                "name": "DPI Resource Slimmer",
-                "description": "Strips unselected screen density resource directories from res/ (e.g. drawable-mdpi, drawable-hdpi, mipmap-xhdpi). Density-independent resources (nodpi, anydpi) and orphan resources are safely preserved."
-              },
-              {
-                "name": "PNG Asset Optimizer",
-                "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Gboard Lite",
-          "package": "com.google.android.inputmethod.latin",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
-              {
-                "name": "DPI Resource Slimmer",
-                "description": "Strips unselected screen density resource directories from res/ (e.g. drawable-mdpi, drawable-hdpi, mipmap-xhdpi). Density-independent resources (nodpi, anydpi) and orphan resources are safely preserved."
-              },
-              {
-                "name": "Locale Resource Slimmer",
-                "description": "Strips unselected language translation directories from res/ (e.g. values-*, raw-*, xml-*). Base fallback resources with no language qualifiers are always preserved."
-              },
-              {
-                "name": "PNG Asset Optimizer",
-                "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Hevy - Gym Log Workout Tracker",
-          "package": "com.hevy",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Vivaldi Browser - Fast & Safe",
-          "package": "com.vivaldi.browser",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
-              {
-                "name": "DPI Resource Slimmer",
-                "description": "Strips unselected screen density resource directories from res/ (e.g. drawable-mdpi, drawable-hdpi, mipmap-xhdpi). Density-independent resources (nodpi, anydpi) and orphan resources are safely preserved."
-              },
-              {
-                "name": "PNG Asset Optimizer",
-                "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-      "patches_name": "kveld9 Patches",
+      "repo_url": "https://github.com/icysymmetra/tiktok-patches-for-morphe",
+      "patches_name": "Metra TikTok Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
