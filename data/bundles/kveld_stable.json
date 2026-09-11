@@ -2,9 +2,9 @@
   "bundle": "kveld",
   "channel": "stable",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-09-10T21:36:32",
-  "version": "v1.18.0",
-  "description": "## [1.18.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.17.0...v1.18.0) (2026-09-10)\n\n### ✨ New Features\n\n* **vivaldi:** add support for Vivaldi Browser Stable v8.2.4147.58 ([b81c003](https://github.com/kveld9/kveld-morphe-patches/commit/b81c003c07840789313aa6a66399bd025572a0ef))\n",
+  "created_at": "2026-09-11T03:53:49",
+  "version": "v1.20.0",
+  "description": "## [1.20.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.19.0...v1.20.0) (2026-09-11)\n\n### ✨ New Features\n\n* **hevy:** enhance pro unlocking, neutralize play billing, and add auth guide ([bace76c](https://github.com/kveld9/kveld-morphe-patches/commit/bace76cf8204ee0244a8e8fbed820c0e5c1c65f5))\n",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -74,20 +74,6 @@
           ]
         },
         {
-          "name": "DPI Resource Slimmer",
-          "description": "Strips unselected screen density resource directories from res/ (e.g. drawable-mdpi, drawable-hdpi, mipmap-xhdpi). Density-independent resources (nodpi, anydpi) and orphan resources are safely preserved.",
-          "use": false,
-          "options": [
-            {
-              "key": "dpis",
-              "description": "Comma-separated screen densities to preserve (e.g. 'xxhdpi', 'xhdpi, xxhdpi', 'xxxhdpi'). Density-independent resources (nodpi, anydpi) and unquantified base directories are always preserved."
-            }
-          ],
-          "compatible_versions": [
-            "1.94.121"
-          ]
-        },
-        {
           "name": "Locale PAK Slimmer",
           "description": "Strips unselected language resource PAKs from assets/locales/.",
           "use": false,
@@ -104,15 +90,6 @@
         {
           "name": "Native Bloat Slimmer",
           "description": "Strips unused native companion binaries (Impress Vision AI, WireGuard VPN, and Android XR) to significantly reduce APK size.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "1.94.121"
-          ]
-        },
-        {
-          "name": "PNG Asset Optimizer",
-          "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -250,21 +227,6 @@
           ]
         },
         {
-          "name": "DPI Resource Slimmer",
-          "description": "Strips unselected screen density resource directories from res/ (e.g. drawable-mdpi, drawable-hdpi, mipmap-xhdpi). Density-independent resources (nodpi, anydpi) and orphan resources are safely preserved.",
-          "use": false,
-          "options": [
-            {
-              "key": "dpis",
-              "description": "Comma-separated screen densities to preserve (e.g. 'xxhdpi', 'xhdpi, xxhdpi', 'xxxhdpi'). Density-independent resources (nodpi, anydpi) and unquantified base directories are always preserved."
-            }
-          ],
-          "compatible_versions": [
-            "18.2.4.969776716-lite_beta-arm64-v8a",
-            "18.2.4.969776716-lite_beta-armeabi-v7a"
-          ]
-        },
-        {
           "name": "Enable Access Points Menu Redesign",
           "description": "Enables the redesigned access points menu bar and customization panel (Panel V2).",
           "use": true,
@@ -305,31 +267,6 @@
           ]
         },
         {
-          "name": "Locale Resource Slimmer",
-          "description": "Strips unselected language translation directories from res/ (e.g. values-*, raw-*, xml-*). Base fallback resources with no language qualifiers are always preserved.",
-          "use": true,
-          "options": [
-            {
-              "key": "locales",
-              "description": "Comma-separated language codes to preserve (e.g. 'en, es, pt, fr, de'). English fallback is always retained."
-            }
-          ],
-          "compatible_versions": [
-            "18.2.4.969776716-lite_beta-arm64-v8a",
-            "18.2.4.969776716-lite_beta-armeabi-v7a"
-          ]
-        },
-        {
-          "name": "PNG Asset Optimizer",
-          "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "18.2.4.969776716-lite_beta-arm64-v8a",
-            "18.2.4.969776716-lite_beta-armeabi-v7a"
-          ]
-        },
-        {
           "name": "Resource Slimmer",
           "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, promotional GIFs, and APK root metadata/junk files.",
           "use": true,
@@ -337,6 +274,48 @@
           "compatible_versions": [
             "18.2.4.969776716-lite_beta-arm64-v8a",
             "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Hevy - Gym Log Workout Tracker",
+      "package": "com.hevy",
+      "patches": [
+        {
+          "name": "Block Hevy Telemetry & Trackers",
+          "description": "Neutralizes Sentry crash reporting, Adjust attribution, Facebook AppEvents, Branch referral tracking, and WearOS background sync.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.13"
+          ]
+        },
+        {
+          "name": "Hevy Battery Optimization & Background Sync Killer",
+          "description": "Disables background WorkManager alarms, periodic job schedulers, Google Play Billing IPC (~89 MB RAM), and removes largeHeap to force aggressive Garbage Collection.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.13"
+          ]
+        },
+        {
+          "name": "Hevy Resource Slimmer",
+          "description": "Strips embedded onboarding MP4 tutorial video, heavy IMG.LY photo editor stickers/textures, and compiler junk metadata.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.13"
+          ]
+        },
+        {
+          "name": "Unlock Pro",
+          "description": "Unlocks local Hevy Pro capabilities (unlimited workout routines, routine folders, advanced graphs, and local analytics) by dynamically enabling Pro getters in Hermes Bytecode (HBC96).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.1.13"
           ]
         }
       ]
@@ -418,20 +397,6 @@
           ]
         },
         {
-          "name": "DPI Resource Slimmer",
-          "description": "Strips unselected screen density resource directories from res/ (e.g. drawable-mdpi, drawable-hdpi, mipmap-xhdpi). Density-independent resources (nodpi, anydpi) and orphan resources are safely preserved.",
-          "use": false,
-          "options": [
-            {
-              "key": "dpis",
-              "description": "Comma-separated screen densities to preserve (e.g. 'xxhdpi', 'xhdpi, xxhdpi', 'xxxhdpi'). Density-independent resources (nodpi, anydpi) and unquantified base directories are always preserved."
-            }
-          ],
-          "compatible_versions": [
-            "8.2.4147.58"
-          ]
-        },
-        {
           "name": "Locale PAK Slimmer",
           "description": "Strips unselected language resource PAKs from assets/locales/.",
           "use": false,
@@ -441,15 +406,6 @@
               "description": "Comma-separated locale codes to keep (e.g. 'es, es-419, en-US, pt-BR, fr, de'). English (en-US) is always kept as a safe fallback."
             }
           ],
-          "compatible_versions": [
-            "8.2.4147.58"
-          ]
-        },
-        {
-          "name": "PNG Asset Optimizer",
-          "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
-          "use": false,
-          "options": [],
           "compatible_versions": [
             "8.2.4147.58"
           ]
@@ -485,8 +441,8 @@
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "cb1a5bb5735e7b88fd9aba6284513f2f566cb9bee58a77ad1c288bd96ef68a93",
-  "release_notes": "## [1.18.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.17.0...v1.18.0) (2026-09-10)\n\n### ✨ New Features\n\n* **vivaldi:** add support for Vivaldi Browser Stable v8.2.4147.58 ([b81c003](https://github.com/kveld9/kveld-morphe-patches/commit/b81c003c07840789313aa6a66399bd025572a0ef))\n",
-  "release_tag": "v1.18.0",
-  "release_date": "2026-09-10T21:36:32Z"
+  "fingerprint": "90fe0220c9e616a9af3f6e9a5cb3ceb600e2f14beef420d7a0c283bb7b98bf20",
+  "release_notes": "## [1.20.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.19.0...v1.20.0) (2026-09-11)\n\n### ✨ New Features\n\n* **hevy:** enhance pro unlocking, neutralize play billing, and add auth guide ([bace76c](https://github.com/kveld9/kveld-morphe-patches/commit/bace76cf8204ee0244a8e8fbed820c0e5c1c65f5))\n",
+  "release_tag": "v1.20.0",
+  "release_date": "2026-09-11T03:53:49Z"
 }
