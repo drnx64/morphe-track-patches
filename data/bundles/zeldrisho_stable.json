@@ -2,9 +2,9 @@
   "bundle": "zeldrisho",
   "channel": "stable",
   "repo_url": "https://github.com/zeldrisho/morphe-patches",
-  "created_at": "2026-09-09T16:11:27",
-  "version": "v1.1.0",
-  "description": "### 🚀 Updated App Support\n* **Threads:** Add support for `445.0.0.46.83`.\n",
+  "created_at": "2026-09-11T12:15:04",
+  "version": "v1.2.0",
+  "description": "### ✨ New Features\n* **Zalo - microG Drive support:** Adds provider-backed Google Drive account selection and backup/restore support for `26.08.01`.\n* **Zalo - Bypass native startup tamper check:** Initial patch for `26.08.01` — preserves native initialization while disabling the verified re-signing exit dispatch on arm64.\n* **Zalo - Disable ads:** Initial patch for `26.08.01` — forces the Adtima offline gates closed, always drops admob/dfp/ima from the supported-network map, and reports limit-ad-tracking opted-out without calling the Play API.\n* **Zalo - Disable sponsored placements:** Initial patch for `26.08.01` — forces the Story/community ad-enable flags off at their config reads (normal content path kept; server-stitched or OA-message promos may remain).\n* **Zalo - Remove AD_ID permission:** Initial patch for `26.08.01` — strips the advertising-id manifest entries (in-app readers fall back to \"unknown\"); pairs with the limit-ad-tracking opt-out now in Disable Zalo ads.\n* **Zalo - Filter promo notifications:** Initial patch for `26.08.01` — drops Timeline/Stories and Zalo Video pushes in the push dispatcher; message, call, friend-request and birthday notifications are untouched.\n",
   "apps": [
     {
       "app_name": "Threads",
@@ -27,7 +27,7 @@
         },
         {
           "name": "Change package name",
-          "description": "Changes the app package name so the patched app installs alongside the original Threads. Set the desired package name in the patch options. WARNING: Meta apps hardcode many component/provider references — renaming the package can break Facebook login (SSO), content providers, or push. Disable this patch if you hit such issues.",
+          "description": "Changes the app package name so the patched app installs alongside the original. Set the desired name in the patch options. WARNING: hardcoded component/provider references can break login, content providers, or push. Disable this patch if needed.",
           "use": false,
           "options": [
             {
@@ -61,11 +61,71 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "Zalo",
+      "package": "com.zing.zalo",
+      "patches": [
+        {
+          "name": "Bypass native startup tamper check",
+          "description": "Preserves native key initialization and NOPs only the JNI System.exit dispatch in the pinned arm64 26.08.01 build.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        },
+        {
+          "name": "Disable ads",
+          "description": "Disables Zalo offline/Google ad networks (forces the Adtima offline gates closed, always drops admob/dfp/ima, and reports limit-ad-tracking opted-out). Sponsored Story/community placements need the companion patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        },
+        {
+          "name": "Disable sponsored placements",
+          "description": "Forces Zalo Story/community ad-enable flags to off at their config reads (normal content path kept). Server-stitched or OA-message promos may remain.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        },
+        {
+          "name": "Filter promo notifications",
+          "description": "Skips Zalo Timeline/Stories and Zalo Video push notifications (like/comment digests, new feeds/stories, video reminders) in the push dispatcher. Message, call, friend-request and birthday notifications are untouched; reaction/activity pushes on other channels may remain.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        },
+        {
+          "name": "microG Drive support",
+          "description": "Redirects Zalo Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). WARNING: requires the matching microG-RE configuration and only covers Zalo's Drive restore flow.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        },
+        {
+          "name": "Remove AD_ID permission",
+          "description": "Removes the advertising-id (AD_ID) permissions from Zalo so the device advertising id cannot be read for ad tracking. In-app readers fall back to \"unknown\"; core messaging is unaffected.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        }
+      ]
     }
   ],
   "patches_name": "Zeldris Patches",
-  "fingerprint": "83b7cd0e77a67b721e0b0c850aac09c159350f1d87a20fad132c227f5096abfb",
-  "release_notes": "### 🚀 Updated App Support\n* **Threads:** Add support for `445.0.0.46.83`.\n",
-  "release_tag": "v1.1.0",
-  "release_date": "2026-09-09T16:11:27Z"
+  "fingerprint": "2b47ec076e52669d3f34080430876f47629501d9bae8777cee32a4fd7bc84f06",
+  "release_notes": "### ✨ New Features\n* **Zalo - microG Drive support:** Adds provider-backed Google Drive account selection and backup/restore support for `26.08.01`.\n* **Zalo - Bypass native startup tamper check:** Initial patch for `26.08.01` — preserves native initialization while disabling the verified re-signing exit dispatch on arm64.\n* **Zalo - Disable ads:** Initial patch for `26.08.01` — forces the Adtima offline gates closed, always drops admob/dfp/ima from the supported-network map, and reports limit-ad-tracking opted-out without calling the Play API.\n* **Zalo - Disable sponsored placements:** Initial patch for `26.08.01` — forces the Story/community ad-enable flags off at their config reads (normal content path kept; server-stitched or OA-message promos may remain).\n* **Zalo - Remove AD_ID permission:** Initial patch for `26.08.01` — strips the advertising-id manifest entries (in-app readers fall back to \"unknown\"); pairs with the limit-ad-tracking opt-out now in Disable Zalo ads.\n* **Zalo - Filter promo notifications:** Initial patch for `26.08.01` — drops Timeline/Stories and Zalo Video pushes in the push dispatcher; message, call, friend-request and birthday notifications are untouched.\n",
+  "release_tag": "v1.2.0",
+  "release_date": "2026-09-11T12:15:04Z"
 }
