@@ -1,53 +1,44 @@
 {
   "affected_bundles": [
     {
-      "bundle": "steamlink",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Steam Link",
-          "package": "com.valvesoftware.steamlinkvr",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
-              {
-                "name": "Android Surface actual video (experimental)",
-                "description": "Copies every rendered video projection, including foveal alpha, into XR_KHR_android_surface_swapchain on exact 2.0.20/5001712 and 2.0.22/5002322. Separate 8-bit sRGB and FP16 linear Surface choices. GPU copy, not direct decoder output; headset acceptance, latency and HDR/panel depth are unverified. Conflicts with the high-resolution trigger and recommended bundles. No kernel changes."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-      "patches_name": "Steam Link GalaxyXR Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "zeldrisho",
+      "bundle": "rookieenough",
       "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Threads",
-          "package": "com.instagram.barcelona",
+          "app_name": "Google Photos",
+          "package": "com.google.android.apps.photos",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Change package name",
-                "description": "Changes the app package name so the patched app installs alongside the original. Set the desired name in the patch options. WARNING: hardcoded component/provider references can break login, content providers, or push. Disable this patch if needed.",
+                "name": "Enable DCIM folders backup control",
+                "description": "Disables always on backup for the Camera and other DCIM folders, allowing you to control backup for each folder individually. This will make the app default to having no folders backed up.",
                 "changes": [
-                  "description updated"
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Fix selected account persistence",
+                "description": "Prevents Google Photos from clearing the selected account after cold start when using MicroG.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "GmsCore support",
+                "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof features",
+                "description": "Spoofs the device to enable Google Pixel exclusive features, including unlimited storage.",
+                "changes": [
+                  "versions: +1 version, -1 version"
                 ]
               }
             ]
@@ -57,16 +48,1039 @@
           ]
         },
         {
-          "app_name": "Zalo",
-          "package": "com.zing.zalo",
+          "app_name": "Pixiv",
+          "package": "jp.pxv.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Hide ads",
+                "description": "",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove popular search time limit",
+                "description": "Removes the 7-day trial countdown on popular search results so the free popular-search preview (30 works) never expires.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/RookieEnough/De-Vanced",
+      "patches_name": "De-Vanced Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "anddea",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "YouTube Music",
+          "package": "com.google.android.apps.youtube.music",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "App refresh rate",
+                "description": "Adds an option to change the app refresh rate."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "App refresh rate",
+                "description": "Adds an option to change the app refresh rate."
+              },
+              {
+                "name": "Disable scrolling speed limit",
+                "description": "Adds an option to remove limits of how fast the home and subscription feed can be scrolled."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Force player buttons background",
+                "description": "Changes the dark background surrounding the video player controls at compile time."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Alternative thumbnails",
+                "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Ambient mode control",
+                "description": "Adds options to disable Ambient mode and to bypass Ambient mode restrictions.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Bypass URL redirects",
+                "description": "Adds an option to bypass URL redirects and open the original URL directly.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Bypass image region restrictions",
+                "description": "Adds an option to use a different host for static images, so that images blocked in some countries can be received.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Change form factor",
+                "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Change player flyout menu toggles",
+                "description": "Adds an option to use text toggles instead of switch toggles within the additional settings menu.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Change share sheet",
+                "description": "Adds an option to change the in-app share sheet to the system share sheet.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Change start page",
+                "description": "Adds an option to set which page the app opens in instead of the homepage.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Custom DPI",
+                "description": "Forces a higher display density for this app only, so the whole UI scales up without changing system density.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Custom Shorts action buttons",
+                "description": "Changes, at compile time, the icon of the action buttons of the Shorts player.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Custom branding for YouTube",
+                "description": "Adds in-app app-name, launcher-icon, header, splash, and settings-icon selection.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Custom double tap length",
+                "description": "Adds Double-tap to seek values that are specified in patch options.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Description components",
+                "description": "Adds options to hide and disable description components.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Disable QUIC protocol",
+                "description": "Adds an option to disable CronetEngine's QUIC protocol.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Disable forced auto captions",
+                "description": "Adds an option to disable captions from being automatically enabled.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Disable haptic feedback",
+                "description": "Adds options to disable haptic feedback when swiping in the video player.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Disable layout updates",
+                "description": "Adds an option to disable layout updates by server.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Disable playlist autoplay",
+                "description": "Adds an option to stop a playlist from automatically advancing to the next video.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Disable resuming Miniplayer on startup",
+                "description": "Adds an option to disable the Miniplayer 'Continue watching' from resuming on app startup.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Disable resuming Shorts on startup",
+                "description": "Adds an option to disable the Shorts player from resuming on app startup when Shorts were last being watched.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Disable sign in to TV popup",
+                "description": "Adds an option to disable the popup asking to sign into a TV on the same local network.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Enable debug logging",
+                "description": "Adds an option for debugging and exporting RVX logs to the clipboard.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Enable gradient loading screen",
+                "description": "Adds an option to enable the gradient loading screen.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Force original audio",
+                "description": "Adds an option to disable audio tracks from being automatically enabled.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Fullscreen components",
+                "description": "Adds options to hide or change components related to fullscreen.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Fullscreen video scale",
+                "description": "Adds options to stretch or zoom videos to fill the screen in fullscreen mode.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Gemini",
+                "description": "Adds options to use Gemini for video summaries, transcription, and settings search.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "GmsCore support",
+                "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide Shorts dimming",
+                "description": "Removes, at compile time, the dimming effect at the top and bottom of Shorts videos.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide accessibility controls dialog",
+                "description": "Removes, at compile time, accessibility controls dialog 'Turn on accessibility controls for the video player?'.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide action buttons",
+                "description": "Adds options to hide action buttons under videos.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide ads",
+                "description": "Adds options to hide ads.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide comments components",
+                "description": "Adds options to hide components related to comments.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide feed components",
+                "description": "Adds options to hide components related to feeds.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide feed flyout menu",
+                "description": "Adds the ability to hide feed flyout menu components using a custom filter.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide layout components",
+                "description": "Adds options to hide general layout components.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide player buttons",
+                "description": "Adds options to hide buttons in the video player, and to hide or change the opacity of the player control buttons background.",
+                "changes": [
+                  "description updated",
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide player flyout menu",
+                "description": "Adds options to hide player flyout menu components.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hide shortcuts",
+                "description": "Remove, at compile time, the app shortcuts that appears when the app icon is long pressed.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Hook download actions",
+                "description": "Adds support to download videos with an external downloader app using the in-app download button.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Miniplayer",
+                "description": "Adds options to change the in-app minimized player, and if patching target 19.16+ adds options to use modern miniplayers.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Navigation bar components",
+                "description": "Adds options to hide or change components related to the navigation bar.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Open channel of live avatar",
+                "description": "Adds an option to prevent a channel's current live video from opening when tapping its avatar.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Open links externally",
+                "description": "Adds an option to always open links in your browser instead of the in-app browser.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Overlay buttons",
+                "description": "Adds options to display useful overlay buttons in the video player.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Override YouTube Music buttons",
+                "description": "Overrides YouTube Music buttons to open RVX Music or any compatible third-party client.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Playback in feeds",
+                "description": "Adds the 'Playback in feeds' setting of YouTube to the RVX settings, where it is always available even if YouTube hides it.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Player components",
+                "description": "Adds options to hide or change components related to the video player.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "PoToken provider",
+                "description": "Adds option to get PoToken using the built-in PoToken provider.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Reload video",
+                "description": "Adds an option to display a button in the video player to reload the current video.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Remove background playback restrictions",
+                "description": "Removes restrictions on background playback, including for music and kids videos.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Remove viewer discretion dialog",
+                "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Return YouTube Dislike",
+                "description": "Adds an option to show the dislike count of videos using the Return YouTube Dislike API.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Return YouTube Username",
+                "description": "Adds an option to replace YouTube handles with usernames in comments using YouTube Data API v3.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Sanitize sharing links",
+                "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Save to Watch later",
+                "description": "Adds options to save videos to Watch later from the video player or feed flyout menu.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Seekbar components",
+                "description": "Adds options to hide or change components related to the seekbar.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Set transcript cookies",
+                "description": "Adds an option to set Cookies in YouTube Transcript API requests.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Settings for YouTube",
+                "description": "Applies mandatory patches to implement ReVanced Extended settings into the application.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Settings menu filter",
+                "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Shorts components",
+                "description": "Adds options to hide or change components related to YouTube Shorts.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Snack bar components",
+                "description": "Adds options to hide or change components related to the snack bar.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "SponsorBlock",
+                "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments, such as sponsored content.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Spoof app version",
+                "description": "Adds options to spoof the YouTube client version. This can be used to restore old UI elements and features.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Spoof video streams",
+                "description": "Adds options to spoof the client video streams to fix playback.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Spoof watch history",
+                "description": "Adds an option to change the domain of the watch history or check its status.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Swipe controls",
+                "description": "Adds options for controlling volume and brightness with swiping, and whether to enter fullscreen when swiping down below the player.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Theme",
+                "description": "Adds options to change the app's themes and splash screen style.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Toolbar components",
+                "description": "Adds options to hide or change components located on the toolbar, such as the search bar, header, and toolbar buttons.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Translations for YouTube",
+                "description": "Add translations or remove string resources.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Video playback",
+                "description": "Adds options to customize settings related to video playback, such as default video quality and playback speed.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Visual preferences icons for YouTube",
+                "description": "Adds icons to specific preferences in the settings.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Voice Over Translation",
+                "description": "Adds an option to enable Yandex voice-over translation of video audio tracks.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              },
+              {
+                "name": "Wide search bar",
+                "description": "Adds a wide search bar to the top of the home and subscription feed.",
+                "changes": [
+                  "versions: -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/anddea/revanced-patches",
+      "patches_name": "RVX Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "shuhaibnc",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Reverso Context",
+          "package": "com.softissimo.reverso.context",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Mvideo",
+          "package": "music.videomaker.slideshow",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Beat.ly",
+          "package": "vinkle.video.editor",
           "badge_type": "NEW APP",
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/zeldrisho/morphe-patches",
-      "patches_name": "Zeldris Patches",
+      "repo_url": "https://github.com/ShuhaibNC/morphe-patches",
+      "patches_name": "Shuhaib's Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "shuhaibnc",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Reverso Context",
+          "package": "com.softissimo.reverso.context",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Mvideo",
+          "package": "music.videomaker.slideshow",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Beat.ly",
+          "package": "vinkle.video.editor",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/ShuhaibNC/morphe-patches",
+      "patches_name": "Shuhaib's Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "kveld",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Brave Private Web Browser, VPN",
+          "package": "com.brave.browser",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Block Brave Telemetry",
+                "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Brave In-Product & Commercial Notification Optimizer",
+                "description": "Eliminates background wakeups and notifications from Chromium tips scheduler (Job ID 105), Brave Rewards onboarding promo, and retention marketing campaigns.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Brave Origin",
+                "description": "Unlocks Brave Origin and enables local feature toggle controls.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Brave Startup Performance Optimization",
+                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Background Sync & Periodic Sync",
+                "description": "Eliminates background wakeups, radio modem activity, and battery drain by forcing GooglePlayServicesChecker.shouldDisableBackgroundSync() -> true and neutralizing wakeup tasks.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Battery Status API & OS Listener",
+                "description": "Neutralizes the Battery Status API (navigator.getBattery) to prevent cross-site device fingerprinting and drops OS battery change broadcasts.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Disable Pull To Refresh",
+                "description": "Completely disables the pull-to-refresh overscroll gesture and animation to prevent accidental page reloads.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Locale PAK Slimmer",
+                "description": "Strips unselected language resource PAKs from assets/locales/.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Native Bloat Slimmer",
+                "description": "Strips unused native companion binaries (Impress Vision AI, WireGuard VPN, and Android XR) to significantly reduce APK size.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Skip First Run",
+                "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
+      "patches_name": "kveld9 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "hxreborn",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Perplexity",
+          "package": "ai.perplexity.app.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "AMOLED dark theme",
+                "description": "Replaces the dark theme background with pure black.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Rubber Bands",
+          "package": "app.rubberbands.fit",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks running and logging workouts, progress tracking and personal records (AI workout generation is not included).",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Symfonium",
+          "package": "app.symfonik.music.player",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium features.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Audible",
+          "package": "com.audible.application",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Hide membership upselling",
+                "description": "Hides the membership promotion on the Home screen and the free trial bottom sheet.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Open Library on launch",
+                "description": "Opens the Library tab instead of Home on launch. Applies only while signed in.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Showly",
+          "package": "com.michaldrabik.showly2",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "AMOLED dark theme",
+                "description": "Replaces the dark theme background with pure black.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "ForusApp",
+          "package": "com.myvitale.forus",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium features.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "RISE Sleep Tracker",
+          "package": "com.risesci.nyx",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Disable telemetry",
+                "description": "Stops crash and error reports from reaching Sentry."
+              },
+              {
+                "name": "Disable usage tracking",
+                "description": "Stops app usage events from being uploaded. Local usage tracking remains enabled."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Projectivy Launcher",
+          "package": "com.spocky.projengmenu",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Disable tracking",
+                "description": "Disables analytics and crash reporting.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              },
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium features.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "RateGlance",
+          "package": "com.sry.rateglance",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium features.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Notesnook",
+          "package": "com.streetwriters.notesnook",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock pro",
+                "description": "Unlocks task lists, callouts, app lock, and the notebook, tag, colour and reminder limits. Requires a signed-in account. The server still enforces storage, attachment size, monographs and SMS 2FA.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "AlpineQuest",
+          "package": "psyberia.alpinequest.free",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock full version",
+                "description": "Unlocks the Off-Road Explorer features gated behind activation.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/hxreborn/morphe-patches",
+      "patches_name": "hxreborn Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
