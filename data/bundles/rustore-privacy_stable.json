@@ -2,9 +2,9 @@
   "bundle": "rustore-privacy",
   "channel": "stable",
   "repo_url": "https://github.com/Freeman022026/rustore-privacy-patches",
-  "created_at": "2026-09-11T13:39:03",
-  "version": "v1.1.11",
-  "description": "## [1.1.11](https://github.com/Freeman022026/rustore-privacy-patches/compare/v1.1.10...v1.1.11) (2026-09-11)\n\n### 🐛 Bug Fixes\n\n* **RuStore:** block direct telemetry and persisted push services ([c49e4e5](https://github.com/Freeman022026/rustore-privacy-patches/commit/c49e4e5dd6e6b8ebe2d52adb83e1cad56a4e4888))\n",
+  "created_at": "2026-09-11T22:51:00",
+  "version": "v1.1.12",
+  "description": "## [1.1.12](https://github.com/Freeman022026/rustore-privacy-patches/compare/v1.1.11...v1.1.12) (2026-09-11)\n\n### 🐛 Bug Fixes\n\n* **RuStore:** replace SDK device identifiers ([91ff20e](https://github.com/Freeman022026/rustore-privacy-patches/commit/91ff20e7f9116501c13233cbbfdf65765f5de055))\n",
   "apps": [
     {
       "app_name": "RuStore",
@@ -92,6 +92,24 @@
           ]
         },
         {
+          "name": "Replace RuStore SDK device identifier",
+          "description": "Replaces the RuStore SDK device identifier sent with payment and session requests with the zero UUID.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.109.1.0"
+          ]
+        },
+        {
+          "name": "Replace VK SDK device identifier",
+          "description": "Replaces the VK SDK device fingerprint sent by VK ID and VK Pay request paths with the zero UUID.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.109.1.0"
+          ]
+        },
+        {
           "name": "Restore secure-session compatibility",
           "description": "Adapts secure-session requests to RuStore 1.108 API changes for re-signed APKs.",
           "use": true,
@@ -122,8 +140,8 @@
     }
   ],
   "patches_name": "RuStore Privacy Patches",
-  "fingerprint": "e2476aa26ab36db1f6bc23fa2d735c337501c6421ecb9cea22fd5ffee8b36627",
-  "release_notes": "## [1.1.11](https://github.com/Freeman022026/rustore-privacy-patches/compare/v1.1.10...v1.1.11) (2026-09-11)\n\n### 🐛 Bug Fixes\n\n* **RuStore:** block direct telemetry and persisted push services ([c49e4e5](https://github.com/Freeman022026/rustore-privacy-patches/commit/c49e4e5dd6e6b8ebe2d52adb83e1cad56a4e4888))\n",
-  "release_tag": "v1.1.11",
-  "release_date": "2026-09-11T13:39:03Z"
+  "fingerprint": "4257bc542d3acf04a56fc0527e28cd54894f8e0f2f688571866463269118f62c",
+  "release_notes": "## [1.1.12](https://github.com/Freeman022026/rustore-privacy-patches/compare/v1.1.11...v1.1.12) (2026-09-11)\n\n### 🐛 Bug Fixes\n\n* **RuStore:** replace SDK device identifiers ([91ff20e](https://github.com/Freeman022026/rustore-privacy-patches/commit/91ff20e7f9116501c13233cbbfdf65765f5de055))\n",
+  "release_tag": "v1.1.12",
+  "release_date": "2026-09-11T22:51:00Z"
 }

@@ -1,0 +1,94 @@
+{
+  "bundle": "youtube-vr",
+  "channel": "dev",
+  "repo_url": "https://github.com/WalkTheEarth/morphe-ytvr-patches",
+  "created_at": "2026-09-09T12:27:27",
+  "version": "v1.1.0-dev.1",
+  "description": "## [1.1.0-dev.1](https://github.com/WalkTheEarth/morphe-ytvr-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* Close the authorities set and import the GmsCore constants ([8f5394c](https://github.com/WalkTheEarth/morphe-ytvr-patches/commit/8f5394c4b6257b8f502bf7788f4e880dc0004b12))\n\n### ✨ New Features\n\n* Add GmsCore support patch and strengthen viewer discretion fix ([b0f0462](https://github.com/WalkTheEarth/morphe-ytvr-patches/commit/b0f0462beb2c1afd4d21e309343a556a12316884))\n",
+  "apps": [
+    {
+      "app_name": "YouTube VR",
+      "package": "com.google.android.apps.youtube.vr.oculus",
+      "patches": [
+        {
+          "name": "Disable DRC audio",
+          "description": "Disables DRC (Dynamic Range Compression) audio.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.61.48"
+          ]
+        },
+        {
+          "name": "Disable QUIC protocol",
+          "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
+          "use": false,
+          "options": [
+            {
+              "key": "disableQuic",
+              "description": ""
+            }
+          ],
+          "compatible_versions": [
+            "1.61.48"
+          ]
+        },
+        {
+          "name": "GmsCore support",
+          "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.61.48"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Hides video ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.61.48"
+          ]
+        },
+        {
+          "name": "Open links externally",
+          "description": "Opens links in an external app instead of the in-app browser.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.61.48"
+          ]
+        },
+        {
+          "name": "Remove viewer discretion dialog",
+          "description": "Removes the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.61.48"
+          ]
+        },
+        {
+          "name": "Spoof app version",
+          "description": "Adds an option to trick the app into thinking you are running a different version.",
+          "use": true,
+          "options": [
+            {
+              "key": "spoofedVersionName",
+              "description": ""
+            }
+          ],
+          "compatible_versions": [
+            "1.61.48"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "YouTube VR Patches",
+  "fingerprint": "0fc98b4b0dc96b3ed5f0a5555a2d6389a4143a3d6087e818b050117a8ba8160a",
+  "release_notes": "## [1.1.0-dev.1](https://github.com/WalkTheEarth/morphe-ytvr-patches/compare/v1.0.0...v1.1.0-dev.1) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* Close the authorities set and import the GmsCore constants ([8f5394c](https://github.com/WalkTheEarth/morphe-ytvr-patches/commit/8f5394c4b6257b8f502bf7788f4e880dc0004b12))\n\n### ✨ New Features\n\n* Add GmsCore support patch and strengthen viewer discretion fix ([b0f0462](https://github.com/WalkTheEarth/morphe-ytvr-patches/commit/b0f0462beb2c1afd4d21e309343a556a12316884))\n",
+  "release_tag": "v1.1.0-dev.1",
+  "release_date": "2026-09-09T12:27:27Z"
+}
