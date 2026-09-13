@@ -1,24 +1,72 @@
 {
   "affected_bundles": [
     {
-      "bundle": "kveld",
-      "channel": "stable",
+      "bundle": "rookieenough",
+      "channel": "dev",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "Gboard Lite",
-          "package": "com.google.android.inputmethod.latin",
+          "app_name": "Google Photos",
+          "package": "com.google.android.apps.photos",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Clone Gboard",
-                "description": "Changes the package name by appending a dot and custom suffix (defaults to 'clone') to allow installing Gboard alongside the original application.",
+                "name": "Enable DCIM folders backup control",
+                "description": "Disables always on backup for the Camera and other DCIM folders, allowing you to control backup for each folder individually. This will make the app default to having no folders backed up.",
                 "changes": [
-                  "description updated",
-                  "options: ~1 option"
+                  "versions: +2 versions, -1 version"
+                ]
+              },
+              {
+                "name": "Fix selected account persistence",
+                "description": "Prevents Google Photos from clearing the selected account after cold start when using MicroG.",
+                "changes": [
+                  "versions: +2 versions, -1 version"
+                ]
+              },
+              {
+                "name": "GmsCore support",
+                "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+                "changes": [
+                  "versions: +2 versions, -1 version"
+                ]
+              },
+              {
+                "name": "Spoof features",
+                "description": "Spoofs the device to enable Google Pixel exclusive features, including unlimited storage.",
+                "changes": [
+                  "versions: +2 versions, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Pixiv",
+          "package": "jp.pxv.android",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Hide ads",
+                "description": "",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Remove popular search time limit",
+                "description": "Removes the 7-day trial countdown on popular search results so the free popular-search preview (30 works) never expires.",
+                "changes": [
+                  "versions: +1 version"
                 ]
               }
             ]
@@ -28,28 +76,8 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-      "patches_name": "kveld9 Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "legendsciber",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Shadow Fight 2",
-          "package": "com.nekki.shadowfight",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/legendsciber/morphe-patches",
-      "patches_name": "legendsciber's Patches",
+      "repo_url": "https://github.com/RookieEnough/De-Vanced",
+      "patches_name": "De-Vanced Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
