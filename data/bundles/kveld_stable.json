@@ -2,9 +2,9 @@
   "bundle": "kveld",
   "channel": "stable",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-09-12T21:20:10",
-  "version": "v1.21.2",
-  "description": "## [1.21.2](https://github.com/kveld9/kveld-morphe-patches/compare/v1.21.1...v1.21.2) (2026-09-12)\n\n### ♻️ Code Refactoring\n\n* **brave:** resolve boolean field dynamically in startup performance patch ([858068e](https://github.com/kveld9/kveld-morphe-patches/commit/858068e7fb1176786ce32be9e5055a685ee782c9))\n",
+  "created_at": "2026-09-12T22:59:56",
+  "version": "v1.22.0",
+  "description": "## [1.22.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.21.2...v1.22.0) (2026-09-12)\n\n### ✨ New Features\n\n* **tiktok:** integrate TikLite patch suite and validation harness ([f3006d1](https://github.com/kveld9/kveld-morphe-patches/commit/f3006d1730ed4b685e9d71d5ce7fb3e524d3010d))\n",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -429,11 +429,85 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "TikTok",
+      "package": "com.zhiliaoapp.musically",
+      "patches": [
+        {
+          "name": "Core Asset De-bloat",
+          "description": "Strips embedded Microblink credit card OCR models, C2PA AI content origin verification libraries, and unused non-Latin fonts to save APK space.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Instant Launch & Splash Blocker",
+          "description": "Eliminates cold startup delays, real-time splash advertisements, and background TopView preloading (<0.4s launch).",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Language Pack Purger",
+          "description": "Strips unselected language string bundles from assets/strings#lang_* to save APK space.",
+          "use": true,
+          "options": [
+            {
+              "key": "locales",
+              "description": "Comma-separated language codes to keep (e.g. 'en, es, pt, fr, de'). English ('en') is always preserved as safe fallback."
+            }
+          ],
+          "compatible_versions": []
+        },
+        {
+          "name": "Live Stream Suite Optimizer",
+          "description": "Strips Live link mic SDK (liblink_mic_sdk.so) and live stream interactive minigames, and disables 3D gift particle animation preloading.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Network & Background Traffic Governor",
+          "description": "Throttles aggressive video preloading buffer and disables background push polling alarms to save cellular data and battery.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Runtime Memory Governor",
+          "description": "Optimizes Fresco bitmap memory pool retention and suppresses aggressive animated frame allocations to reduce memory pressure.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Studio & Creation De-bloat",
+          "description": "Strips heavy video creation, CapCut-like video editor SDK (libttvesdk_plugin.so), and AR camera face models to save over 22MB.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Unified Telemetry & Tracker Silencer",
+          "description": "Neutralizes ByteDance AppLog user tracking, APM/Npth/Heimdallr crash monitors, AppsFlyer attribution, and Firebase analytics.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Update Prompt Suppressor",
+          "description": "Neutralizes background update polling tasks and device ID check routines to prevent forced update popups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "aabacc8929e2f5956e43d74dfc28816bbc99de4c5eb3999b60190ce0968db8ea",
-  "release_notes": "## [1.21.2](https://github.com/kveld9/kveld-morphe-patches/compare/v1.21.1...v1.21.2) (2026-09-12)\n\n### ♻️ Code Refactoring\n\n* **brave:** resolve boolean field dynamically in startup performance patch ([858068e](https://github.com/kveld9/kveld-morphe-patches/commit/858068e7fb1176786ce32be9e5055a685ee782c9))\n",
-  "release_tag": "v1.21.2",
-  "release_date": "2026-09-12T21:20:10Z"
+  "fingerprint": "73d9266215f9fb7e3b8763f264827aba51a310a397e4a5495709886c69c46dd9",
+  "release_notes": "## [1.22.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.21.2...v1.22.0) (2026-09-12)\n\n### ✨ New Features\n\n* **tiktok:** integrate TikLite patch suite and validation harness ([f3006d1](https://github.com/kveld9/kveld-morphe-patches/commit/f3006d1730ed4b685e9d71d5ce7fb3e524d3010d))\n",
+  "release_tag": "v1.22.0",
+  "release_date": "2026-09-12T22:59:56Z"
 }
