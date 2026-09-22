@@ -14,17 +14,22 @@ let activeModal = null
  * @param {string} [options.className]
  * @param {number} [options.maxWidth]
  */
-export function openModal({ title, content, className = '', maxWidth = 700 }) {
+export function openModal({ title, content, className = '', maxWidth = 700, hideHeader = false }) {
   closeModal()
 
   const overlay = el('div', { class: `modal-overlay ${className}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': title })
 
   const modalBox = el('div', { class: 'modal-box', style: { maxWidth: maxWidth + 'px' } })
 
-  const header = el('div', { class: 'modal-header' }, [
-    el('h2', { class: 'modal-title' }, [title]),
-    el('button', { class: 'modal-close', 'aria-label': 'Close modal', dangerouslySetInnerHTML: CLOSE_ICON }),
-  ])
+  if (!hideHeader) {
+    const header = el('div', { class: 'modal-header' }, [
+      el('h2', { class: 'modal-title' }, [title]),
+      el('button', { class: 'modal-close', 'aria-label': 'Close modal', dangerouslySetInnerHTML: CLOSE_ICON }),
+    ])
+    const closeBtn = header.querySelector('.modal-close')
+    closeBtn.addEventListener('click', closeModal)
+    modalBox.appendChild(header)
+  }
 
   const body = el('div', { class: 'modal-body' })
   if (typeof content === 'string') {
@@ -33,13 +38,10 @@ export function openModal({ title, content, className = '', maxWidth = 700 }) {
     body.appendChild(content)
   }
 
-  modalBox.appendChild(header)
   modalBox.appendChild(body)
   overlay.appendChild(modalBox)
 
-  // Close handlers
-  const closeBtn = header.querySelector('.modal-close')
-  closeBtn.addEventListener('click', closeModal)
+  // Overlay click to close
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeModal()
   })

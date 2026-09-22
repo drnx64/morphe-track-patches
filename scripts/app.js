@@ -40,6 +40,7 @@ import { el, mount } from './ui.js'
 import { openAppDetailModal } from './components/appDetailModal.js'
 import { openBundleHistoryModal } from './components/bundleHistoryModal.js'
 import { openBundleModal } from './components/bundleModal.js'
+import { renderGlobalSearch } from './components/globalSearch.js'
 import { preloadIcons } from './services/iconCache.js'
 
 const SITE_URL = 'https://drnx64.github.io/morphe-tracker'
@@ -94,7 +95,10 @@ function renderShell() {
     el('div', { class: 'header-content' }, [
       el('div', { class: 'header-top-row' }, [
         el('div', { class: 'header-title-group' }, [
-          el('h1', { id: 'main-title', class: 'header-title-clickable', title: 'Double-click to toggle reduced motion' }, ['MorpheTracker']),
+          el('div', { class: 'header-title-row' }, [
+            el('img', { class: 'header-logo', src: 'public/tracker_logo.jpg', alt: '', width: '28', height: '28' }),
+            el('h1', { id: 'main-title', class: 'header-title-clickable', title: 'Double-click to toggle reduced motion' }, ['MorpheTracker']),
+          ]),
           el('span', { class: 'subtitle' }, ['Patch monitoring & changelog dashboard']),
         ]),
         el('div', { class: 'header-right-row', id: 'header-actions' }),
@@ -117,6 +121,10 @@ function renderShell() {
     store.set('reducedMotion', next)
     localStorage.setItem('morphe_reduced_motion', String(next))
   })
+
+  // Global search bar
+  const globalSearch = renderGlobalSearch()
+  header.querySelector('#header-actions').prepend(globalSearch)
 
   // Theme toggle button
   const themeBtn = el('button', {

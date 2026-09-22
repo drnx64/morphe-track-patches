@@ -6,6 +6,7 @@ import { openModal } from './modal.js'
 import * as store from '../store.js'
 import { renderAppIcon } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
+import { VERSION_ARROW } from '../utils/svg.js'
 
 export function openBundleHistoryModal(bundleName) {
   if (!bundleName) return
@@ -85,7 +86,7 @@ export function openBundleHistoryModal(bundleName) {
         if (affected.previous_version && affected.new_version) {
           bundleRow.appendChild(el('span', { class: 'bundle-history-version-change' }, [
             `v${affected.previous_version}`,
-            el('span', { class: 'bundle-history-arrow' }, [' → ']),
+            el('span', { class: 'bundle-history-arrow', dangerouslySetInnerHTML: VERSION_ARROW }),
             `v${affected.new_version}`,
           ]))
         } else if (affected.new_version) {

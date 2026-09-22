@@ -1,226 +1,378 @@
 /**
- * Diff page — cross-bundle comparison with searchable dropdowns and patch-level diff.
+ * Diff page — app-centric: search for an app, see all patches across bundles.
+ * Cross-bundle patch highlighting for same-name patches.
  */
 import { el, mount } from '../ui.js'
 import * as store from '../store.js'
-import { resolveAppName, renderAppIcon, scoreAppSearch } from '../utils/misc.js'
+import { buildAppIndex, resolveAppName, renderAppIcon, suggestFuzzy, copyToClipboard } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
+import { SEARCH_ICON, REFRESH_ICON } from '../utils/svg.js'
+
+const HIGHLIGHT_COLORS = [
+  { bg: 'rgba(74, 127, 200, 0.15)', border: 'rgba(74, 127, 200, 0.4)', text: 'var(--state-info)' },
+  { bg: 'rgba(127, 168, 118, 0.15)', border: 'rgba(127, 168, 118, 0.4)', text: 'var(--state-stable)' },
+  { bg: 'rgba(201, 138, 95, 0.15)', border: 'rgba(201, 138, 95, 0.4)', text: 'var(--state-dev)' },
+  { bg: 'rgba(162, 129, 173, 0.15)', border: 'rgba(162, 129, 173, 0.4)', text: 'var(--state-plum)' },
+  { bg: 'rgba(181, 83, 63, 0.15)', border: 'rgba(181, 83, 63, 0.4)', text: 'var(--state-critical)' },
+]
 
 export function renderDiff(container) {
   const page = el('div', { class: 'diff-page' })
-  page.appendChild(el('h2', { class: 'section-title' }, ['Bundle Diff']))
+  page.appendChild(el('h2', { class: 'section-title' }, ['Patch Explorer']))
+
+  const subtitle = el('p', { class: 'section-helper' }, ['Search for an app to see all patches across bundles.'])
+  page.appendChild(subtitle)
+
+  const searchWrapper = el('div', { class: 'diff-app-search' })
+  const searchInput = el('input', {
+    type: 'text',
+    class: 'diff-app-search-input',
+    placeholder: 'Search for an app (e.g. YouTube, TikTok)...',
+    'aria-label': 'Search app for patch comparison',
+  })
+  const searchIcon = el('span', { class: 'diff-app-search-icon', dangerouslySetInnerHTML: SEARCH_ICON })
+  const clearBtn = el('button', { class: 'global-search-clear', 'aria-label': 'Clear' }, ['✕'])
+  const searchDropdown = el('div', { class: 'diff-app-search-dropdown' })
+
+  searchWrapper.appendChild(searchIcon)
+  searchWrapper.appendChild(searchInput)
+  searchWrapper.appendChild(clearBtn)
+  searchWrapper.appendChild(searchDropdown)
+
+  const resultArea = el('div', { class: 'diff-result' })
+  const suggestionsArea = el('div', { class: 'diff-suggestions' })
+
+  page.appendChild(searchWrapper)
+  page.appendChild(suggestionsArea)
+  page.appendChild(resultArea)
+  mount(container, page)
 
   const bundles = store.get('bundles') || {}
   const nameCache = store.get('nameCache') || {}
   const iconCache = store.get('iconCache') || {}
+  const appIndex = buildAppIndex(bundles, nameCache, iconCache)
 
-  const bundleNames = [...new Set(Object.keys(bundles).map((k) => k.replace(/:(stable|dev)$/, '')))]
+  // Filter apps with 2+ distinct bundles for suggestions
+  const multiBundleApps = appIndex.filter((app) => {
+    const uniqueBundles = new Set(app.bundles.map((b) => b.bundleName))
+    return uniqueBundles.size >= 2
+  })
 
-  const selector = el('div', { class: 'diff-selector' })
-  selector.innerHTML = '<label class="diff-label">Select two bundles to compare:</label>'
+  function getRandomSuggestions(count = 8) {
+    const shuffled = [...multiBundleApps].sort(() => Math.random() - 0.5)
+    return shuffled.slice(0, count)
+  }
 
-  const select1 = createSearchableSelect(bundleNames, 'First bundle...')
-  const select2 = createSearchableSelect(bundleNames, 'Second bundle...')
-  if (bundleNames.length > 1) select2.selectValue = bundleNames[1]
+  function renderSuggestions() {
+    suggestionsArea.replaceChildren()
+    const suggestions = getRandomSuggestions(8)
+    if (suggestions.length === 0) return
 
-  const compareBtn = el('button', { class: 'btn btn--primary' }, ['Compare'])
-  selector.appendChild(select1.element)
-  selector.appendChild(select2.element)
-  selector.appendChild(compareBtn)
+    const header = el('div', { class: 'diff-suggestions-header' })
+    header.innerHTML = `<span class="diff-suggestions-title">Suggested Apps</span>`
+    const refreshBtn = el('button', { class: 'diff-suggestions-refresh', 'aria-label': 'Refresh suggestions', dangerouslySetInnerHTML: REFRESH_ICON })
+    refreshBtn.addEventListener('click', renderSuggestions)
+    header.appendChild(refreshBtn)
+    suggestionsArea.appendChild(header)
 
-  const resultArea = el('div', { class: 'diff-result' })
+    const grid = el('div', { class: 'diff-suggestions-grid' })
+    for (const app of suggestions) {
+      const card = el('div', { class: 'diff-suggestion-card', role: 'button', tabindex: '0' })
+      const iconHtml = renderAppIcon({ package: app.package, app_name: app.name }, iconCache)
+      const bundleCount = app.bundles.length
+      card.innerHTML = `
+        ${iconHtml}
+        <div class="diff-suggestion-info">
+          <span class="diff-suggestion-name">${escHtml(app.name)}</span>
+          <span class="diff-suggestion-meta">${bundleCount} bundle${bundleCount !== 1 ? 's' : ''}</span>
+        </div>
+      `
+      card.addEventListener('click', () => {
+        searchInput.value = app.name
+        clearBtn.classList.add('visible')
+        selectApp(app.package)
+      })
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          searchInput.value = app.name
+          clearBtn.classList.add('visible')
+          selectApp(app.package)
+        }
+      })
+      grid.appendChild(card)
+    }
+    suggestionsArea.appendChild(grid)
+  }
 
-  page.appendChild(selector)
-  page.appendChild(resultArea)
-  mount(container, page)
+  renderSuggestions()
 
-  compareBtn.addEventListener('click', () => {
-    const name1 = select1.selectValue
-    const name2 = select2.selectValue
-    if (!name1 || !name2) {
-      resultArea.replaceChildren(el('div', { class: 'loading-state' }, ['Please select two bundles.']))
+  let debounceTimer
+  let selectedPkg = null
+
+  searchInput.addEventListener('input', () => {
+    clearTimeout(debounceTimer)
+    const q = searchInput.value.trim()
+    clearBtn.classList.toggle('visible', q.length > 0)
+
+    if (!q) {
+      searchDropdown.classList.remove('open')
+      searchDropdown.replaceChildren()
+      selectedPkg = null
       return
     }
-    if (name1 === name2) {
-      resultArea.replaceChildren(el('div', { class: 'loading-state' }, ['Please select two different bundles.']))
-      return
-    }
 
-    const apps1 = new Map()
-    const apps2 = new Map()
-    for (const [key, bundle] of Object.entries(bundles)) {
-      const bundleName = key.replace(/:(stable|dev)$/, '')
-      if (bundleName === name1) {
-        for (const app of bundle.apps || []) {
-          if (!apps1.has(app.package)) apps1.set(app.package, app)
+    debounceTimer = setTimeout(() => {
+      const ql = q.toLowerCase()
+      const matches = appIndex.filter((app) =>
+        app.name.toLowerCase().includes(ql) || app.package.toLowerCase().includes(ql)
+      ).slice(0, 8)
+
+      searchDropdown.replaceChildren()
+
+      if (matches.length === 0) {
+        const suggestions = suggestFuzzy(q, appIndex)
+        if (suggestions.length > 0) {
+          const sugEl = el('div', { class: 'diff-app-search-suggestion' })
+          sugEl.innerHTML = `Did you mean: `
+          for (let i = 0; i < suggestions.length; i++) {
+            const link = el('button', { class: 'global-search-suggestion-link' }, [suggestions[i].name])
+            link.addEventListener('click', () => {
+              searchInput.value = suggestions[i].name
+              clearBtn.classList.add('visible')
+              selectApp(suggestions[i].package)
+            })
+            sugEl.appendChild(link)
+            if (i < suggestions.length - 1) sugEl.appendChild(document.createTextNode(', '))
+          }
+          searchDropdown.appendChild(sugEl)
+        } else {
+          searchDropdown.appendChild(el('div', { class: 'global-search-empty' }, ['No apps found.']))
+        }
+      } else {
+        for (const app of matches) {
+          const item = el('div', { class: 'diff-app-search-item' })
+          const iconUrl = iconCache[app.package] || ''
+          item.innerHTML = `
+            ${iconUrl
+              ? `<img class="app-icon" src="${escHtml(iconUrl)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+              : ''
+            }
+            <div class="app-icon app-icon--fallback" ${iconUrl ? 'style="display:none"' : ''}>${app.name.charAt(0).toUpperCase()}</div>
+            <div class="global-search-item-info">
+              <span class="global-search-item-name">${escHtml(app.name)}</span>
+              <span class="global-search-item-meta">${escHtml(app.package)}</span>
+            </div>
+          `
+          item.addEventListener('click', () => selectApp(app.package))
+          searchDropdown.appendChild(item)
         }
       }
-      if (bundleName === name2) {
-        for (const app of bundle.apps || []) {
-          if (!apps2.has(app.package)) apps2.set(app.package, app)
-        }
-      }
+      searchDropdown.classList.add('open')
+    }, 150)
+  })
+
+  searchInput.addEventListener('focus', () => {
+    if (searchInput.value.trim()) {
+      searchInput.dispatchEvent(new Event('input'))
     }
+  })
 
-    const only1 = [...apps1.keys()].filter((p) => !apps2.has(p))
-    const only2 = [...apps2.keys()].filter((p) => !apps1.has(p))
-    const both = [...apps1.keys()].filter((p) => apps2.has(p))
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      searchInput.blur()
+      searchDropdown.classList.remove('open')
+    }
+  })
 
+  clearBtn.addEventListener('click', () => {
+    searchInput.value = ''
+    clearBtn.classList.remove('visible')
+    searchDropdown.classList.remove('open')
+    searchDropdown.replaceChildren()
+    selectedPkg = null
+    resultArea.replaceChildren()
+    suggestionsArea.style.display = ''
+    renderSuggestions()
+    searchInput.focus()
+  })
+
+  document.addEventListener('click', (e) => {
+    if (!searchWrapper.contains(e.target)) {
+      searchDropdown.classList.remove('open')
+    }
+  })
+
+  function selectApp(pkg) {
+    selectedPkg = pkg
+    searchDropdown.classList.remove('open')
+    searchDropdown.replaceChildren()
+    suggestionsArea.style.display = 'none'
+    renderAppBundles(pkg)
+  }
+
+  function renderAppBundles(pkg) {
     resultArea.replaceChildren()
 
-    const headerEl = el('div', { class: 'diff-header' })
+    const appEntry = appIndex.find((a) => a.package === pkg)
+    if (!appEntry) {
+      resultArea.innerHTML = '<div class="empty-state">App not found.</div>'
+      return
+    }
+
+    const appName = resolveAppName(appEntry, nameCache)
+    const iconHtml = renderAppIcon({ package: pkg, app_name: appName }, iconCache)
+
+    const headerEl = el('div', { class: 'diff-app-header' })
     headerEl.innerHTML = `
-      <h3 class="diff-title">${escHtml(name1)} vs ${escHtml(name2)}</h3>
-      <div class="diff-summary-bar">
-        <span class="diff-stat diff-stat--shared">${both.length} shared</span>
-        <span class="diff-stat diff-stat--only1">${only1.length} only in ${escHtml(name1)}</span>
-        <span class="diff-stat diff-stat--only2">${only2.length} only in ${escHtml(name2)}</span>
+      ${iconHtml}
+      <div class="diff-app-header-info">
+        <h3 class="diff-app-header-name">${escHtml(appName)}</h3>
+        <span class="diff-app-header-pkg">${escHtml(pkg)}</span>
       </div>
     `
     resultArea.appendChild(headerEl)
 
-    if (only1.length > 0) {
-      const section = el('div', { class: 'diff-section' })
-      section.appendChild(el('h4', { class: 'diff-section-title' }, [`Only in ${escHtml(name1)}`]))
-      const list = el('div', { class: 'diff-apps-list' })
-      for (const pkg of only1) {
-        const app = apps1.get(pkg)
-        const appName = resolveAppName(app, nameCache)
-        const iconHtml = renderAppIcon(app, iconCache, 'sm')
-        const row = el('div', { class: 'diff-app-row' })
-        row.innerHTML = `${iconHtml} <span class="diff-app-name">${escHtml(appName)}</span> <span class="diff-app-pkg">${escHtml(pkg)}</span>`
-        list.appendChild(row)
-      }
-      section.appendChild(list)
-      resultArea.appendChild(section)
-    }
+    const patchBundleMap = new Map()
+    const allPatchNames = new Set()
 
-    if (only2.length > 0) {
-      const section = el('div', { class: 'diff-section' })
-      section.appendChild(el('h4', { class: 'diff-section-title' }, [`Only in ${escHtml(name2)}`]))
-      const list = el('div', { class: 'diff-apps-list' })
-      for (const pkg of only2) {
-        const app = apps2.get(pkg)
-        const appName = resolveAppName(app, nameCache)
-        const iconHtml = renderAppIcon(app, iconCache, 'sm')
-        const row = el('div', { class: 'diff-app-row' })
-        row.innerHTML = `${iconHtml} <span class="diff-app-name">${escHtml(appName)}</span> <span class="diff-app-pkg">${escHtml(pkg)}</span>`
-        list.appendChild(row)
-      }
-      section.appendChild(list)
-      resultArea.appendChild(section)
-    }
+    for (const [key, bundle] of Object.entries(bundles)) {
+      const bName = key.replace(/:(stable|dev)$/, '')
+      const channel = key.endsWith(':dev') ? 'dev' : 'stable'
+      const appData = bundle.apps?.find((a) => a.package === pkg)
+      if (!appData) continue
 
-    if (both.length > 0) {
-      const sharedSection = el('div', { class: 'diff-section' })
-      sharedSection.appendChild(el('h4', { class: 'diff-section-title' }, ['Shared apps — patch differences']))
+      const patches = appData.patches || []
+      if (patches.length === 0) continue
 
-      const patchDiffs = []
-      for (const pkg of both) {
-        const app1 = apps1.get(pkg)
-        const app2 = apps2.get(pkg)
-        const patches1 = new Set((app1.patches || []).map((p) => p.name))
-        const patches2 = new Set((app2.patches || []).map((p) => p.name))
-        const onlyP1 = [...patches1].filter((p) => !patches2.has(p))
-        const onlyP2 = [...patches2].filter((p) => !patches1.has(p))
-        if (onlyP1.length > 0 || onlyP2.length > 0) {
-          patchDiffs.push({ package: pkg, app: app1, onlyIn1: onlyP1, onlyIn2: onlyP2 })
-        }
-      }
-
-      if (patchDiffs.length > 0) {
-        for (const diff of patchDiffs) {
-          const appName = resolveAppName(diff.app, nameCache)
-          const iconHtml = renderAppIcon(diff.app, iconCache, 'sm')
-          const card = el('div', { class: 'diff-patch-card' })
-          card.innerHTML = `
-            <div class="diff-patch-card-header">
-              ${iconHtml}
-              <span class="diff-patch-app-name">${escHtml(appName)}</span>
-            </div>
-          `
-          if (diff.onlyIn1.length > 0) {
-            const list = el('div', { class: 'diff-patch-list diff-patch-list--only1' })
-            list.innerHTML = `<span class="diff-patch-list-label">Only in ${escHtml(name1)}:</span>`
-            for (const p of diff.onlyIn1) {
-              list.appendChild(el('span', { class: 'diff-patch-item diff-patch-item--only1' }, [p]))
-            }
-            card.appendChild(list)
-          }
-          if (diff.onlyIn2.length > 0) {
-            const list = el('div', { class: 'diff-patch-list diff-patch-list--only2' })
-            list.innerHTML = `<span class="diff-patch-list-label">Only in ${escHtml(name2)}:</span>`
-            for (const p of diff.onlyIn2) {
-              list.appendChild(el('span', { class: 'diff-patch-item diff-patch-item--only2' }, [p]))
-            }
-            card.appendChild(list)
-          }
-          sharedSection.appendChild(card)
-        }
+      const bKey = `${bName}:${channel}`
+      if (!patchBundleMap.has(bKey)) {
+        patchBundleMap.set(bKey, {
+          name: bundle.patches_name || bName,
+          bundle: bName,
+          channel,
+          version: bundle.version || '',
+          avatarUrl: bundle.avatarUrl || '',
+          patches,
+        })
       } else {
-        sharedSection.appendChild(el('div', { class: 'diff-empty' }, ['All shared apps have identical patches.']))
+        const existing = patchBundleMap.get(bKey)
+        if (bundle.version && !existing.version) existing.version = bundle.version
       }
-      resultArea.appendChild(sharedSection)
+
+      for (const p of patches) {
+        allPatchNames.add(p.name.toLowerCase())
+      }
     }
-  })
-}
 
-function createSearchableSelect(options, placeholder) {
-  let _selectValue = ''
-  const wrapper = el('div', { class: 'diff-searchable-select' })
-  const input = el('input', {
-    type: 'text', class: 'diff-search-input', placeholder, 'aria-label': placeholder,
-  })
-  const dropdown = el('div', { class: 'diff-dropdown' })
-  wrapper.appendChild(input)
-  wrapper.appendChild(dropdown)
-
-  let isOpen = false
-
-  function renderOptions(filter = '') {
-    dropdown.replaceChildren()
-    const q = filter.toLowerCase()
-    const filtered = options.filter((o) => o.toLowerCase().includes(q))
-    for (const opt of filtered) {
-      const item = el('div', { class: 'diff-dropdown-item', role: 'option' }, [opt])
-      item.addEventListener('click', () => {
-        _selectValue = opt
-        input.value = opt
-        isOpen = false
-        dropdown.classList.remove('open')
-      })
-      dropdown.appendChild(item)
+    if (patchBundleMap.size === 0) {
+      resultArea.appendChild(el('div', { class: 'empty-state' }, ['No patch data found for this app.']))
+      return
     }
-    if (filtered.length === 0) {
-      dropdown.appendChild(el('div', { class: 'diff-dropdown-empty' }, ['No matches']))
+
+    const crossBundlePatches = new Map()
+    for (const patchName of allPatchNames) {
+      const containingBundles = new Set()
+      for (const [, bundleInfo] of patchBundleMap) {
+        if (bundleInfo.patches.some((p) => p.name.toLowerCase() === patchName)) {
+          containingBundles.add(bundleInfo.bundle)
+        }
+      }
+      if (containingBundles.size > 1) {
+        crossBundlePatches.set(patchName, [...containingBundles])
+      }
     }
-  }
 
-  input.addEventListener('focus', () => {
-    isOpen = true
-    dropdown.classList.add('open')
-    renderOptions(input.value)
-  })
-
-  input.addEventListener('input', () => {
-    if (isOpen) renderOptions(input.value)
-  })
-
-  input.addEventListener('blur', () => {
-    setTimeout(() => { isOpen = false; dropdown.classList.remove('open') }, 150)
-  })
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      input.blur()
-      isOpen = false
-      dropdown.classList.remove('open')
+    const patchColorMap = new Map()
+    let colorIdx = 0
+    for (const [patchName] of crossBundlePatches) {
+      patchColorMap.set(patchName, HIGHLIGHT_COLORS[colorIdx % HIGHLIGHT_COLORS.length])
+      colorIdx++
     }
-  })
 
-  return {
-    element: wrapper,
-    get selectValue() { return _selectValue },
-    set selectValue(v) { _selectValue = v; input.value = v },
+    const sortedBundles = [...patchBundleMap.values()].sort((a, b) => a.name.localeCompare(b.name))
+
+    for (const bundleInfo of sortedBundles) {
+      const bundleSection = el('div', { class: 'diff-bundle-section' })
+
+      const channelBadges = `<span class="channel-badge ${bundleInfo.channel}">${bundleInfo.channel}</span>`
+      const titleRow = el('div', { class: 'diff-bundle-section-header' })
+      titleRow.innerHTML = `
+        <div class="diff-bundle-section-info">
+          ${bundleInfo.avatarUrl
+            ? `<img class="diff-bundle-section-avatar" src="${escHtml(bundleInfo.avatarUrl)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+            : ''
+          }
+          <div class="diff-bundle-section-avatar diff-bundle-section-avatar--fallback" ${bundleInfo.avatarUrl ? 'style="display:none"' : ''}>${(bundleInfo.name || '?').charAt(0).toUpperCase()}</div>
+          <span class="diff-bundle-section-name">${escHtml(bundleInfo.name)}</span>
+          ${channelBadges}
+          ${bundleInfo.version ? `<span class="bundle-version-tag">v${escHtml(bundleInfo.version)}</span>` : ''}
+        </div>
+        <span class="diff-bundle-section-count">${bundleInfo.patches.length} patches</span>
+      `
+      bundleSection.appendChild(titleRow)
+
+      const patchesList = el('div', { class: 'diff-bundle-patches' })
+      const sorted = [...bundleInfo.patches].sort((a, b) => a.name.localeCompare(b.name))
+
+      for (const patch of sorted) {
+        const patchEl = el('div', { class: 'diff-patch-row' })
+        const patchLower = patch.name.toLowerCase()
+        const isShared = crossBundlePatches.has(patchLower)
+        const color = patchColorMap.get(patchLower)
+
+        if (isShared && color) {
+          patchEl.style.background = color.bg
+          patchEl.style.borderLeft = `3px solid ${color.border}`
+        }
+
+        const onBadge = patch.use
+          ? '<span class="badge badge--default-on">ON</span>'
+          : ''
+
+        const versionsHtml = patch.compatible_versions?.length
+          ? `<span class="diff-patch-versions">${escHtml(patch.compatible_versions.join(', '))}</span>`
+          : ''
+
+        patchEl.innerHTML = `
+          <div class="diff-patch-row-header">
+            <span class="diff-patch-row-name copyable" title="Click to copy">${escHtml(patch.name)}</span>
+            ${onBadge}
+            ${isShared ? '<span class="diff-patch-shared-badge" title="This patch exists in multiple bundles">shared</span>' : ''}
+          </div>
+          ${patch.description ? `<p class="diff-patch-row-desc">${escHtml(patch.description)}</p>` : ''}
+          ${versionsHtml ? `<div class="diff-patch-row-meta">${versionsHtml}</div>` : ''}
+        `
+
+        const nameEl = patchEl.querySelector('.diff-patch-row-name')
+        if (nameEl) {
+          nameEl.addEventListener('click', (e) => {
+            e.stopPropagation()
+            copyToClipboard(patch.name, nameEl)
+          })
+        }
+
+        patchesList.appendChild(patchEl)
+      }
+
+      bundleSection.appendChild(patchesList)
+      resultArea.appendChild(bundleSection)
+    }
+
+    if (crossBundlePatches.size > 0) {
+      const legend = el('div', { class: 'diff-highlight-legend' })
+      legend.innerHTML = `<span class="diff-highlight-legend-title">Cross-bundle patches (${crossBundlePatches.size}):</span> `
+      let first = true
+      for (const [patchName, color] of patchColorMap) {
+        if (!first) legend.appendChild(document.createTextNode(' · '))
+        first = false
+        const dot = el('span', {
+          class: 'diff-highlight-legend-item',
+          style: { background: color.bg, borderLeft: `3px solid ${color.border}`, color: color.text },
+        }, [patchName])
+        legend.appendChild(dot)
+      }
+      resultArea.insertBefore(legend, resultArea.children[1])
+    }
   }
 }
