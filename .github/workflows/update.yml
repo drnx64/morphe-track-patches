@@ -38,8 +38,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TRIGGER_TYPE: ${{ github.event_name }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
         run: |
           python scripts/run_pipeline.py
+
+      - name: Send Telegram Notification
+        if: success()
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: |
+          python scripts/telegram.py
 
       - name: Verify Data Files
         run: |

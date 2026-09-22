@@ -4,43 +4,72 @@
 
 | Task | Command | Notes |
 |------|---------|-------|
-| Dev server | `npm run dev` | Vite; serves `data/` via custom plugin. Never use `file://`. |
-| Typecheck | `npm run typecheck` | `tsc --noEmit`. No linter or formatter configured. |
-| Build | `npm run build` | `tsc -b && vite build && node scripts/copy-data-to-dist.js` |
-| Run pipeline | `python scripts/run_pipeline.py` | Requires `GITHUB_TOKEN` env var. Installs via `pip install -r requirements.txt`. |
+| Dev server | `npm run dev` | `npx serve .` on port 3000. Never use `file://`. |
+| Build | `npm run build` | `node scripts/build.js` — copies to `docs/` for GitHub Pages. |
+| Preview | `npm run preview` | `npx serve docs` — preview production build locally. |
+| Python tests | `python -m pytest tests/ -v` | Requires `pip install -r requirements.txt`. |
+| Run pipeline | `python scripts/run_pipeline.py` | Requires `GITHUB_TOKEN` env var. |
 | Manual finalization | `python scripts/merge_daily_buffer.py --finalize` | Force-flush daily buffer to changelog. |
+
+### Verification order
+
+`python -m pytest tests/ -v` → `npm run build`
+
+CI runs both on every push/PR to `main`.
 
 ## Architecture
 
-- **Frontend:** React 18 + TypeScript + Vite (`src/`). Single-page app routed by `react-router-dom`.
-- **Pipeline:** Python 3.11 scripts (`scripts/`). Crawls GitHub for `.mpp` patch bundles, parses, fingerprints, diffs, writes JSON to `data/`.
-- **Data layer:** Pipeline outputs static JSON files (`data/core.json`, `data/changes.json`, `data/bundles/`, etc.). Vite serves them in dev; `copy-data-to-dist.js` copies to `dist/` for production.
-- **Hosting:** Vercel serves `dist/` with SPA fallback (`vercel.json`). CI (GitHub Actions) runs pipeline every 3 hours, commits data changes to `main`.
+- **Frontend:** Vanilla ES Modules (`scripts/`). No build step, no framework. Hash-based SPA routing (`/#/`, `/#/bundles`).
+- **Pipeline:** Python 3.11 scripts (`scripts/`). Crawls GitHub for `.mpp` patch bundles, parses, fingerprints, diffs, writes JSON to `data/`. Zero pip dependencies (stdlib `urllib` only; `Pillow` for image processing, `pytest` for tests).
+- **Data layer:** Pipeline outputs static JSON files (`data/core.json`, `data/changes.json`, `data/bundles/`, etc.). Build script copies to `docs/` for GitHub Pages.
+- **Hosting:** GitHub Pages serves `docs/` directory. CI (GitHub Actions) runs pipeline every hour, commits data changes to `main`, deploys to Pages.
 
 ### Data flow
 
 ```
-GitHub API → download → parse → fingerprint → diff → daily buffer → JSON files → frontend
+FETCH → PARSE → DIFF → ACCUMULATE → PUBLISH
 ```
 
-`diff_engine.py` compares `current_snapshot.json` vs new parse. If no changes and no day rollover, pipeline exits silently. `write_data_files(has_changes=...)` controls what `changes.json` contains — empty when no changes.
+1. **FETCH**: `fetch_patch_tree.py` + `download_bundles.py` + `fetch_external_repos.py`
+2. **PARSE**: `parse_bundles.py` + `fetch_patches_names.py`
+3. **DIFF**: `diff_engine.py` (fingerprints + diff) — compares `current_snapshot.json` vs new parse
+4. **ACCUMULATE**: `merge_daily_buffer.py` — daily changelog accumulation
+5. **PUBLISH**: `generate_site.py` + `telegram.py` — static files, RSS, Telegram notifications
+
+If no changes and no day rollover, pipeline exits silently after step 3. `write_data_files(has_changes=...)` controls what `changes.json` contains — empty when no changes.
 
 ## Key gotchas
 
-- **No tests, no linter, no formatter.** Only verification is `tsc --noEmit`. Run it before committing TS changes.
-- **`dist/` is gitignored.** Vercel builds from source. Do not commit dist/.
-- **`data/state/` and `data/raw/` are gitignored** (large generated files). `data/bundles/`, `data/core.json`, `data/changes.json` etc. are tracked.
-- **`public/msg.txt`** contains announcements (JSON array). CI includes it in `git add`.
-- **CSS is one monolithic file** (`assets/style.css`, ~6000+ lines). No CSS modules.
-- **SVG icons** are inline strings exported from `src/utils/svg.ts`. No icon font or library.
+- **`docs/` is the build output.** `npm run build` generates it. Do not edit manually.
+- **`data/raw/` and `data/output/` are gitignored.** Large generated files.
+- **`data/state/` is partially gitignored.** `current_snapshot.json`, `previous_snapshot.json`, `daily_buffer.json`, `external_repos.json`, `last_tg_msg.json` are gitignored. Caches (`app_cache.json`, `last_run.json`, `patches_names_cache.json`, `release_cache.json`) are tracked.
+- **CSS is one monolithic file** (`assets/style.css`, ~7000 lines). No CSS modules.
+- **SVG icons** are inline strings exported from `scripts/utils/svg.js`. No icon font or library.
 - **Python imports** use `sys.path.append` — scripts must run from repo root.
-- **`ARCHITECTURE.md` is partially stale** — references old file structure. Trust actual files over it.
-- **`snapshots` double-rotation bug was fixed** — `write_data_files()` no longer rotates snapshots; only `update_daily_buffer_run()` does.
+- **No node_modules.** Zero npm dependencies. `npx serve` used for dev/preview only.
+
+## File structure
+
+```
+index.html                    — Entry point (vanilla HTML shell)
+assets/style.css              — Monolithic CSS (dark theme)
+scripts/
+  app.js                      — Entry point: boot, router, data loading
+  router.js                   — Hash-based SPA router
+  store.js                    — Reactive pub/sub state
+  ui.js                       — DOM helpers (el, html, mount)
+  services/                   — Data fetching, icon cache, IndexedDB
+  pages/                      — Page renderers (dashboard, apps, changelog, diff)
+  components/                 — Reusable UI (header, footer, modal, skeleton)
+  utils/                      — SVG icons, formatting, URL helpers, misc
+data/                         — Pipeline output (JSON files)
+scripts/ (Python)             — Pipeline scripts (crawl, parse, diff, publish)
+```
 
 ## Conventions
 
 - Commit messages: conventional commits (`feat`, `fix`, `refactor`, `chore`, etc.) with scopes like `logic`, `ui`, `data`, `pipeline`.
-- React components: functional with hooks, no class components.
-- State management: `useReducer` + context (`src/context/AppContext.tsx`).
-- Data types: defined in `src/types/` (bundles, api, changes, changelog).
+- Vanilla JS: ES modules (`type="module"`), no framework, no build step.
+- State management: `store.js` pub/sub pattern (get/set/subscribe).
+- Routing: hash-based (`/#/path`), route matching with `:param` support.
 - Dark theme only. Color vars in `:root` in `assets/style.css`.

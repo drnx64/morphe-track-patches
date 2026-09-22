@@ -2,10 +2,34 @@
   "bundle": "braintropy",
   "channel": "stable",
   "repo_url": "https://github.com/braiNtropy/braintropy-patches",
-  "created_at": "2026-08-14T21:22:37",
-  "version": "v2.0.0",
-  "description": "## Why was the MyoAdapt patch removed?\r\n\r\nMyoAdapt's core feature, its adaptive training engine, which plans your next workout based on your completed sessions, runs entirely on MyoAdapt's servers and is fed only by server-side workout history. For accounts without an active subscription, the server hard-blocks (HTTP 402) every action that records or updates a workout.\r\n\r\nA client-side patch can fake the workout flow (start, log, finish a session), but the server never learns about any of it: no history, no stats, and the proposed next workout never changes. The patch could therefore never deliver the one thing MyoAdapt is actually worth using for. So rather than shipping something that promises premium but can't deliver it, it has been removed.\r\n\r\n---\r\n\r\n## [2.0.0](https://github.com/braiNtropy/braintropy-patches/compare/v1.1.0...v2.0.0) (2026-08-14)\r\n\r\n### ⚠ BREAKING CHANGES\r\n\r\n* The MyoAdapt patch is removed and no longer ships in the patches bundle.\r\n\r\n### ✨ New Features\r\n\r\n* Remove MyoAdapt \"Unlock Premium\" patch ([3886626](https://github.com/braiNtropy/braintropy-patches/commit/388662616750583e26394b3fbeec07858988057b))",
+  "created_at": "2026-09-15T12:16:53Z",
+  "version": "2.2.0",
+  "description": "## [2.2.0](https://github.com/braiNtropy/braintropy-patches/compare/v2.1.0...v2.2.0) (2026-09-15)\n\n### ✨ New Features\n\n* Add category declarations to patches ([b5790a7](https://github.com/braiNtropy/braintropy-patches/commit/b5790a7bdb0b2bd032e54dab5954780403332e52))",
   "apps": [
+    {
+      "app_name": "Tracearr",
+      "package": "com.tracearr.mobile",
+      "patches": [
+        {
+          "name": "Disable OTA updates",
+          "description": "Disables expo-updates: the app no longer contacts the Expo update server (u.expo.dev) on launch and can never download or run over-the-air JavaScript updates published by the developer.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.0"
+          ]
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Disables the Google Play license check (Pairip) that redirects installs not purchased through the Play Store to the buy page.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.0"
+          ]
+        }
+      ]
+    },
     {
       "app_name": "Waking Up",
       "package": "org.wakingup.android",
@@ -23,8 +47,9 @@
     }
   ],
   "patches_name": "braiNtropy Patches",
-  "fingerprint": "286c8827943c6c39c3b8532b2c86a26111d61b1e4a475d9501211dfd1dbb0fbf",
-  "release_notes": "## Why was the MyoAdapt patch removed?\r\n\r\nMyoAdapt's core feature, its adaptive training engine, which plans your next workout based on your completed sessions, runs entirely on MyoAdapt's servers and is fed only by server-side workout history. For accounts without an active subscription, the server hard-blocks (HTTP 402) every action that records or updates a workout.\r\n\r\nA client-side patch can fake the workout flow (start, log, finish a session), but the server never learns about any of it: no history, no stats, and the proposed next workout never changes. The patch could therefore never deliver the one thing MyoAdapt is actually worth using for. So rather than shipping something that promises premium but can't deliver it, it has been removed.\r\n\r\n---\r\n\r\n## [2.0.0](https://github.com/braiNtropy/braintropy-patches/compare/v1.1.0...v2.0.0) (2026-08-14)\r\n\r\n### ⚠ BREAKING CHANGES\r\n\r\n* The MyoAdapt patch is removed and no longer ships in the patches bundle.\r\n\r\n### ✨ New Features\r\n\r\n* Remove MyoAdapt \"Unlock Premium\" patch ([3886626](https://github.com/braiNtropy/braintropy-patches/commit/388662616750583e26394b3fbeec07858988057b))",
-  "release_tag": "v2.0.0",
-  "release_date": "2026-08-14T21:22:37Z"
+  "fingerprint": "6b1c4eb504d55610cd0205a88778f1fbc9c6fa261923b8c1b9093b62375782cb",
+  "release_notes": "## [2.2.0](https://github.com/braiNtropy/braintropy-patches/compare/v2.1.0...v2.2.0) (2026-09-15)\n\n### ✨ New Features\n\n* Add category declarations to patches ([b5790a7](https://github.com/braiNtropy/braintropy-patches/commit/b5790a7bdb0b2bd032e54dab5954780403332e52))\n",
+  "release_tag": "v2.2.0",
+  "release_date": "2026-09-15T12:16:53Z",
+  "isPreRelease": false
 }

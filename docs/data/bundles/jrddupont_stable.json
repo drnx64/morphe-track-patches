@@ -1,0 +1,57 @@
+{
+  "bundle": "jrddupont",
+  "channel": "stable",
+  "repo_url": "https://github.com/jrddupont/discord-patches",
+  "created_at": "2026-09-15T18:01:44Z",
+  "version": "1.3.0",
+  "description": "Hides the Discord quest promo banner (QuestBar) and the gift button in the chat composer, pinned to the built-in bundle.",
+  "apps": [
+    {
+      "app_name": "Discord",
+      "package": "com.discord",
+      "patches": [
+        {
+          "name": "Hide gift button",
+          "description": "Hides the gift button in the chat message composer.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "344.13 - Stable",
+            "343.12 - Stable",
+            "342.16 - Stable",
+            "341.13 - Stable"
+          ]
+        },
+        {
+          "name": "Hide quest promo banner",
+          "description": "Hides the quest promo banner at the top of the server channel list.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "344.13 - Stable",
+            "343.12 - Stable",
+            "342.16 - Stable",
+            "341.13 - Stable"
+          ]
+        },
+        {
+          "name": "Pin app to built-in bundle",
+          "description": "Forces Discord to always run the bundle inside the APK and ignore downloaded (OTA) updates, which would otherwise silently undo the other patches. Turn this off (or update the APK) to receive official updates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "344.13 - Stable",
+            "343.12 - Stable",
+            "342.16 - Stable",
+            "341.13 - Stable"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Discord Patches",
+  "fingerprint": "9da9eef5c80286206ef00734edd670cf6686ed3c88a0ffcd30560a1b7c780db1",
+  "release_notes": "Stable. Confirmed working on-device via the dev prerelease.\n\n- 344.13 Stable support across all three patches (QuestBar gate fn 60429, gift-bar flag fn 53139; 344 attach-sheet has no gift entry so the sheet-push site is skipped there).\n- CLI-proven on 341/342/343/344 base APKs: exact bundle diffs, no strays; DCDReactNativeHost.getJSBundleFile() verified returning null.\n- README now carries AI-generated-code and disabled-updates warnings.",
+  "release_tag": "v1.3.0",
+  "release_date": "2026-09-15T18:01:44Z"
+}

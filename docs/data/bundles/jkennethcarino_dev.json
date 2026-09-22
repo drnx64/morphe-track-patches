@@ -1,0 +1,447 @@
+{
+  "bundle": "jkennethcarino",
+  "channel": "dev",
+  "repo_url": "https://github.com/jkennethcarino/adobo",
+  "created_at": "2026-09-06T15:04:24Z",
+  "version": "1.5.0-dev.2",
+  "description": "## [1.4.0](https://github.com/jkennethcarino/adobo/compare/v1.3.0...v1.4.0) (2026-08-31)\n\n### Bug Fixes\n\n* **Disable mobile ads:** Block AdMob's app open ad and mediation ([63cf9ca](https://github.com/jkennethcarino/adobo/commit/63cf9ca17253621dd16ed0971b7e9598be8e79a3))\n* **Disable mobile ads:** Block Bytedance Pangle's ad entry points ([c3bde04](https://github.com/jkennethcarino/adobo/commit/c3bde042f5bc260bf644eec94ebb9becf43ac161))\n* **Reddit - Hide Ask button from search bar:** Remove new Ask pill ([3cf0852](https://github.com/jkennethcarino/adobo/commit/3cf0852b3413952b6eaf435b57938fa2799c6256))\n\n### Features\n\n* Add `Remove screenshot detection` patch ([02a62c0](https://github.com/jkennethcarino/adobo/commit/02a62c093f93202f340da698dccf0ce4d843e1bb))\n* **Gboard:** Add `Enable extended clipboard history` patch ([de234b7](https://github.com/jkennethcarino/adobo/commit/de234b7de9e77a2c88e496c7d1f8b2adcdad422e))\n* **Reddit:** Add `Disable home feed refresh on back to exit` patch ([9cf2579](https://github.com/jkennethcarino/adobo/commit/9cf2579ed7c0442b346b580a7ecc3c1b8557521e))\n\n### Updated App Support\n\n* **Reddit:** Add support for `2026.32.0` ([b6bde3a](https://github.com/jkennethcarino/adobo/commit/b6bde3aa67a440538870073b2b7ef836eb4b25b6))\n* **Reddit:** Add support for `2026.33.1` ([26da26a](https://github.com/jkennethcarino/adobo/commit/26da26a3b915268fa2e39fde3e157a92d33a537e))\n* **Reddit:** Add support for `2026.33.2` ([12a3efc](https://github.com/jkennethcarino/adobo/commit/12a3efc0fa0a00b27f4379b9e8203b20ec6558d4))\n* **Reddit:** Add support for `2026.34.0` ([6db6319](https://github.com/jkennethcarino/adobo/commit/6db6319aa138d6589fb89c5fd224548fb652024e))\n* **Reddit:** Add support for `2026.35.0` ([965fd7d](https://github.com/jkennethcarino/adobo/commit/965fd7d92e01b9b93d104efd29f6ce1af422cc72))",
+  "apps": [
+    {
+      "app_name": "Gboard",
+      "package": "com.google.android.inputmethod.latin",
+      "patches": [
+        {
+          "name": "Always-incognito mode",
+          "description": "Always opens Gboard in incognito mode to disable typing history collection and personalization.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Enable OCR feature",
+          "description": "Enables the Scan Text feature to extract text from images and insert them into text fields.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Enable Undo feature",
+          "description": "Enables the undo feature to quickly undo or correct typing mistakes.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Enable access points menu redesign",
+          "description": "Enables the redesign of the additional actions menu.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Enable clipboard in incognito",
+          "description": "Enables clipboard support in incognito mode.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Enable extended clipboard history",
+          "description": "Enables extending the clipboard history expiration time.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Enable key shape selection",
+          "description": "Enables an option to select a key shape from the theme.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Enable voice typing in incognito",
+          "description": "Enables voice typing in incognito mode.",
+          "use": false,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Toggle feature flags",
+          "description": "Toggles Gboard feature flags to enable or disable experimental or hidden features.",
+          "use": false,
+          "options": [
+            {
+              "key": "featureFlags",
+              "description": "The Gboard feature flags to toggle, such as experimental or hidden features."
+            },
+            {
+              "key": "enableFlags",
+              "description": "Enables or disables all specified feature flags."
+            }
+          ],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "IMDb",
+      "package": "com.imdb.mobile",
+      "patches": [
+        {
+          "name": "Remove IMDb's ads, trackers, and analytics",
+          "description": "Removes ads, trackers, and analytics in the IMDb app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "9GAG",
+      "package": "com.ninegag.android.app",
+      "patches": [
+        {
+          "name": "Remove 9GAG's ads, trackers, and analytics",
+          "description": "Removes ads, trackers, and analytics in the 9GAG app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.17.5",
+            "8.17.4"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Reddit",
+      "package": "com.reddit.frontpage",
+      "patches": [
+        {
+          "name": "Colorize comment indent lines",
+          "description": "Replaces the default gray comment indent lines with color-coded lines.",
+          "use": true,
+          "options": [
+            {
+              "key": "isCurrentLevelOnly",
+              "description": ""
+            },
+            {
+              "key": "indentLineColors1",
+              "description": "The hex color (#RRGGBB or #AARRGGBB) for comment indent line at depth 1."
+            },
+            {
+              "key": "indentLineColors2",
+              "description": "The hex color (#RRGGBB or #AARRGGBB) for comment indent line at depth 2."
+            },
+            {
+              "key": "indentLineColors3",
+              "description": "The hex color (#RRGGBB or #AARRGGBB) for comment indent line at depth 3."
+            },
+            {
+              "key": "indentLineColors4",
+              "description": "The hex color (#RRGGBB or #AARRGGBB) for comment indent line at depth 4."
+            },
+            {
+              "key": "indentLineColors5",
+              "description": "The hex color (#RRGGBB or #AARRGGBB) for comment indent line at depth 5."
+            },
+            {
+              "key": "indentLineColors6",
+              "description": "The hex color (#RRGGBB or #AARRGGBB) for comment indent line at depth 6."
+            },
+            {
+              "key": "indentLineColors7",
+              "description": "The hex color (#RRGGBB or #AARRGGBB) for comment indent line at depth 7."
+            },
+            {
+              "key": "indentLineColors8",
+              "description": "The hex color (#RRGGBB or #AARRGGBB) for comment indent line at depth 8."
+            }
+          ],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Disable bottom navigation bar auto-hide",
+          "description": "Prevents the bottom navigation bar from hiding when scrolling down.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Disable home feed auto-refresh",
+          "description": "Disables the automatic refresh of the home feed after viewing a post or after being away from the app.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Disable home feed refresh on back to exit",
+          "description": "Disables the back-to-top scroll and home feed refresh on back navigation to exit.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Disable home feed swipe",
+          "description": "Disables the horizontal page swipe gesture used to switch feeds.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Disable home screen redirect",
+          "description": "Disables the automatic redirect to the home screen after being away from the app or returning from the background.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Disable post detail swipe",
+          "description": "Disables the horizontal swipe gesture used to navigate between posts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Disable screenshot banner",
+          "description": "Disables the banner that shows up after taking a screenshot.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide Ask button from search bar",
+          "description": "Hides the Ask button (Reddit Answers) from the search bar.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide awards",
+          "description": "Hides the awards on Reddit posts and comments.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide community highlights",
+          "description": "Hides the community highlights section.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide community menu badge",
+          "description": "Hides the red notification badge on the community menu (hamburger menu).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide post view counts",
+          "description": "Removes the \"views\" indicator from the post metadata.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide prominent search bar",
+          "description": "Hides the new prominent search bar on the main screen. Applicable only to version 2026.24.0 and earlier.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide share count",
+          "description": "Hides the share count on Reddit posts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide upvote scores",
+          "description": "Hides the scores on Reddit posts and comments.",
+          "use": false,
+          "options": [
+            {
+              "key": "hidePostScores",
+              "description": "Removes scores from posts in feeds and search results."
+            },
+            {
+              "key": "hideCommentScores",
+              "description": "Removes scores from comments in threads and search results."
+            }
+          ],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide user community badges",
+          "description": "Hides the user community badges on Reddit comments.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide user flairs",
+          "description": "Hides the user flairs on Reddit comments.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Open external links directly",
+          "description": "Opens external links directly without going through out.reddit.com.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Remove ads and telemetry",
+          "description": "Removes ads and telemetry everywhere.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Sanitize share links",
+          "description": "Unshortens and removes the tracking query parameters from shared links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.35.0",
+            "2026.34.0",
+            "2026.33.2",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Adobo",
+  "fingerprint": "44b030f0da306890f0c1fc459528b5c8ee6955e53213ec60d998490c8c3608f1",
+  "release_notes": "## [1.5.0-dev.2](https://github.com/jkennethcarino/adobo/compare/v1.5.0-dev.1...v1.5.0-dev.2) (2026-09-06)\n\n### Features\n\n* **Reddit:** Add `Make system navigation bar transparent` patch ([72cd773](https://github.com/jkennethcarino/adobo/commit/72cd77318c3ac29bbb5b8f38b55b06723960b4f8))\n",
+  "release_tag": "v1.5.0-dev.2",
+  "release_date": "2026-09-06T15:04:24Z"
+}

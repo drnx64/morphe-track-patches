@@ -1,9 +1,9 @@
-"""Tests for fingerprint_engine.py — pure function tests."""
+"""Tests for diff_engine.compute_fingerprint — pure function tests."""
 import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'scripts'))
 
-from fingerprint_engine import compute_fingerprint
+from diff_engine import compute_fingerprint
 
 
 def test_empty_apps():
