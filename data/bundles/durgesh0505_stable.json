@@ -2,9 +2,9 @@
   "bundle": "durgesh0505",
   "channel": "stable",
   "repo_url": "https://github.com/durgesh0505/chiggi_morphe_patches",
-  "created_at": "2026-09-08T21:12:07Z",
-  "version": "1.21.2",
-  "description": "## [1.21.2](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.21.1...v1.21.2) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **googlephone:** remove Google Phone patches ([c692732](https://github.com/durgesh0505/chiggi_morphe_patches/commit/c6927326968dcc10bc36c4e2652b59905cb0907d))",
+  "created_at": "2026-09-22T01:01:04Z",
+  "version": "1.23.1",
+  "description": "## [1.23.1](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.23.0...v1.23.1) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* **bighunter:** drive full purchase flow for free IAP (process lock) ([6831196](https://github.com/durgesh0505/chiggi_morphe_patches/commit/6831196e7154dcc41441331b867442ba57bdaf4b))",
   "apps": [
     {
       "app_name": "CrazyGames",
@@ -325,6 +325,39 @@
           "options": [],
           "compatible_versions": [
             "2.6.4_2076"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Big Hunter",
+      "package": "com.kakarod.bighunter",
+      "patches": [
+        {
+          "name": "Bypass license check",
+          "description": "Stops the PairIP (Google Play) license check from redirecting a re-signed build to the Play Store (\"get this game from Play\") and killing the app. Forces LicenseClient.initializeLicenseCheck() to a no-op (no Play bind, no paywall) and neuters startPaywallActivity()/startErrorDialogActivity() as defense. Nothing outside com.pairip.* reads the license state, so gameplay is unaffected. Required for the re-signed offline build to launch at all.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.1"
+          ]
+        },
+        {
+          "name": "Free in-app purchases",
+          "description": "Makes every in-app purchase free and unlimited. KKJPaymentGoogle.startPurchase(key) normally opens the Google Play billing flow; this redirects it straight to the native grant applyProduct(key), skipping payment. There is no client receipt check (verifyDeveloperPayload returns true) and no server validation, so the product is granted for real — consumables (coins) can be re-bought unlimitedly. NOTE: no money changes hands and nothing is sent to Google; this only works because the grant is client-side.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.1"
+          ]
+        },
+        {
+          "name": "Remove ads",
+          "description": "Suppresses AppLovin MAX / AdMob / Unity ads. Interstitial show() becomes a no-op (only releases the native processing lock via stopProcess). Rewarded showWithReward() skips the ad but still fires the native rewardCallback() so reward-gated features (revive, bonus coins, etc.) keep working, then releases the lock. getIsReadyReward() is forced true so the reward button stays available without a preloaded ad. Unity's reward is not wired to a Java callback, so its showWithReward only skips the ad.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.1"
           ]
         }
       ]
@@ -757,9 +790,9 @@
     }
   ],
   "patches_name": "Chiggi Patches",
-  "fingerprint": "8773d9f67a29eb0cfcd47777b6914e9e943b4f58c553768679635dfec8a9e589",
-  "release_notes": "## [1.21.2](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.21.1...v1.21.2) (2026-09-08)\n\n### 🐛 Bug Fixes\n\n* **googlephone:** remove Google Phone patches ([c692732](https://github.com/durgesh0505/chiggi_morphe_patches/commit/c6927326968dcc10bc36c4e2652b59905cb0907d))\n",
-  "release_tag": "v1.21.2",
-  "release_date": "2026-09-08T21:12:07Z",
+  "fingerprint": "f2faa3dea69b8767089998348052d846b2bc021b9f1a50d2c3cda816e0c29b05",
+  "release_notes": "## [1.23.1](https://github.com/durgesh0505/chiggi_morphe_patches/compare/v1.23.0...v1.23.1) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* **bighunter:** drive full purchase flow for free IAP (process lock) ([6831196](https://github.com/durgesh0505/chiggi_morphe_patches/commit/6831196e7154dcc41441331b867442ba57bdaf4b))\n",
+  "release_tag": "v1.23.1",
+  "release_date": "2026-09-22T01:01:04Z",
   "isPreRelease": false
 }

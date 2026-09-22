@@ -24,6 +24,8 @@ class Logger:
     def warn(self, msg: str):
         print(f"[{self._ts()}] [WARN] {msg}", file=sys.stderr, flush=True)
 
+    warning = warn
+
     def error(self, msg: str):
         print(f"[{self._ts()}] [ERROR] {msg}", file=sys.stderr, flush=True)
 

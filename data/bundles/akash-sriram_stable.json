@@ -1,80 +1,132 @@
 {
   "bundle": "akash-sriram",
   "channel": "stable",
-  "repo_url": "https://github.com/Akash-Sriram/De-Vanced",
-  "created_at": "2026-09-16T04:37:04Z",
-  "version": "1.3.1",
-  "description": "## [1.3.1](https://github.com/Akash-Sriram/De-Vanced/compare/v1.3.0...v1.3.1) (2026-09-16)\n\n\n### Bug Fixes\n\n* **photos:** bypass GmsCore battery optimization and background check dialogs ([24e3a1e](https://github.com/Akash-Sriram/De-Vanced/commit/24e3a1ebc1def251d36abfa856e23cd1ebbe5c96))",
+  "repo_url": "https://github.com/Akash-Sriram/morphe-google-photos",
+  "created_at": "2026-09-22T09:07:10Z",
+  "version": "1.9.0",
+  "description": "## [1.9.0](https://github.com/Akash-Sriram/morphe-google-photos/compare/v1.8.0...v1.9.0) (2026-09-22)\n\n### ✨ New Features\n\n* **Google Photos - Branding:** add Custom Morphe branding patch and 46 assets ([38f188e](https://github.com/Akash-Sriram/morphe-google-photos/commit/38f188e795db2525aed643eb3df6111d6469091c))",
   "apps": [
     {
       "app_name": "Google Photos",
       "package": "com.google.android.apps.photos",
       "patches": [
         {
+          "name": "AMOLED dark theme",
+          "description": "Makes Google Photos dark surfaces true black while keeping light mode untouched.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
+        },
+        {
           "name": "Account avatar",
           "description": "Loads and displays account profile avatars across the top toolbar, Bento menu, and account switcher.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
         },
         {
-          "name": "Bake memory style flags",
-          "description": "Hard-codes the Styles in Memories feature flags into the DEX.",
-          "use": true,
+          "name": "Change to official package name",
+          "description": "Keeps the official package name (com.google.android.apps.photos) instead of renaming to app.morphe.android.apps.photos. Enable this only if Google Photos is uninstalled via ADB or installed as a system app with root. When selecting this, also select 'Disable Play Store updates'.",
+          "use": false,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
+        },
+        {
+          "name": "Custom Morphe branding",
+          "description": "Replaces the Google Photos icon and in-app logos with Morphe branding (violet / teal / indigo / slate pinwheel, hand-drawn style).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
+        },
+        {
+          "name": "Disable Play Store updates",
+          "description": "[Experimental] Disables Play Store updates by setting the version code to the maximum allowed. This patch may cause unexpected issues with some apps and does not work if the app is installed by root mounting",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
         },
         {
           "name": "Enable DCIM folders backup control",
           "description": "Disables always on backup for the Camera and other DCIM folders, allowing you to control backup for each folder individually. This will make the app default to having no folders backed up.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
         },
         {
           "name": "Enable Phenotype flag manager",
-          "description": "Enables an in-app flag manager in Photos Settings to customize experimental UI redesigns and feature flags.",
+          "description": "Enables an in-app flag manager in Photos Settings to toggle curated experimental UI redesigns, video editor tools, and feature flags.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
+        },
+        {
+          "name": "Fix memory style font loading",
+          "description": "Redirects font loading across Stories and UI to authentic Google Fonts with local caching and CDN downloading, fixing fallback fonts and blank text in Memories.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
         },
         {
           "name": "GmsCore support",
           "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
         },
         {
           "name": "Model Readiness Gates",
           "description": "Bypasses the 0MB Mobile Data Download check for AI models and reports them as loaded.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
         },
         {
           "name": "Spoof features",
-          "description": "Spoofs the device to enable Google Pixel exclusive features, including unlimited storage and modern UI.",
+          "description": "Spoofs the device to enable Google Pixel exclusive features, including unlimited storage.",
           "use": true,
-          "options": [
-            {
-              "key": "featuresToEnable",
-              "description": "Google Pixel exclusive features to enable."
-            },
-            {
-              "key": "featuresToDisable",
-              "description": "Google Pixel exclusive features to disable."
-            }
-          ],
-          "compatible_versions": []
+          "options": [],
+          "compatible_versions": [
+            "7.92.0.977185651",
+            "7.93.0.982110057"
+          ]
         }
       ]
     }
   ],
-  "patches_name": "Morphe Photo Patches",
-  "fingerprint": "f1a9a54c6c11c8a4c1157e01c30a7085129cf8770f7b2d07771fa7487bafccd6",
-  "release_notes": "## [1.3.1](https://github.com/Akash-Sriram/De-Vanced/compare/v1.3.0...v1.3.1) (2026-09-16)\n\n\n### Bug Fixes\n\n* **photos:** bypass GmsCore battery optimization and background check dialogs ([24e3a1e](https://github.com/Akash-Sriram/De-Vanced/commit/24e3a1ebc1def251d36abfa856e23cd1ebbe5c96))\n\n\n\n\n\n### Bug Fixes\n\n* **photos:** bypass GmsCore battery optimization and background check dialogs ([24e3a1e](https://github.com/Akash-Sriram/De-Vanced/commit/24e3a1ebc1def251d36abfa856e23cd1ebbe5c96))\n\n# [1.3.0](https://github.com/Akash-Sriram/De-Vanced/compare/v1.2.3...v1.3.0) (2026-09-15)\n\n\n### Features\n\n* **photos:** dynamic ML model discovery and download from MDD manifests ([e39c700](https://github.com/Akash-Sriram/De-Vanced/commit/e39c700c7a19173fcf5c2a848afbdd3c8cddc389))",
-  "release_tag": "v1.3.1",
-  "release_date": "2026-09-16T04:37:04Z",
+  "patches_name": "Morphe Google Photos Patches",
+  "fingerprint": "7c29e47db981261ffe4715a71e6f8459ff6facda0423c8eba3c220e3a17405fe",
+  "release_notes": "## [1.9.0](https://github.com/Akash-Sriram/morphe-google-photos/compare/v1.8.0...v1.9.0) (2026-09-22)\n\n### ✨ New Features\n\n* **branding:** add Custom Morphe branding patch and 46 assets ([38f188e](https://github.com/Akash-Sriram/morphe-google-photos/commit/38f188e795db2525aed643eb3df6111d6469091c))\n",
+  "release_tag": "v1.9.0",
+  "release_date": "2026-09-22T09:07:10Z",
   "isPreRelease": false
 }

@@ -2,9 +2,9 @@
   "bundle": "kveld9",
   "channel": "stable",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-09-17T03:18:28Z",
-  "version": "1.35.0",
-  "description": "## [1.35.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.34.0...v1.35.0) (2026-09-17)\n\n### New Features\n\n* **tiktok:** bypass mandatory login and skip first-launch onboarding ([31ed012](https://github.com/kveld9/kveld-morphe-patches/commit/31ed0122fb4c4b81a14e1005b8d5938dc66609f2))\n* **tiktok:** default SIM region selector spoof target to CH ([b44a749](https://github.com/kveld9/kveld-morphe-patches/commit/b44a74951fd89cd4f22e0cf9ab48faa4e4bb7178))",
+  "created_at": "2026-09-21T02:29:42Z",
+  "version": "1.42.2",
+  "description": "## [1.42.2](https://github.com/kveld9/kveld-morphe-patches/compare/v1.42.1...v1.42.2) (2026-09-21)\n\n### Bug Fixes\n\n* **tiktok:** restore fresco animation frame cache to fix animated sticker lag in comments ([8cc4534](https://github.com/kveld9/kveld-morphe-patches/commit/8cc45347e6b26dcc15fb67f329520894b45f9b2f))",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -12,11 +12,11 @@
       "patches": [
         {
           "name": "Block Brave Telemetry",
-          "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching.",
+          "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, Chromium UMA metrics, and Variations seed fetching.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
           ]
         },
         {
@@ -25,7 +25,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
           ]
         },
         {
@@ -34,7 +34,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
           ]
         },
         {
@@ -43,7 +43,25 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
+          ]
+        },
+        {
+          "name": "Clean New Tab Page",
+          "description": "Removes sponsored wallpaper images, Brave News/Today feeds, marketing widgets, and promo cards from the New Tab Page.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.95.104"
+          ]
+        },
+        {
+          "name": "Clean Share URL",
+          "description": "Strips tracking parameters (utm_*, fbclid, gclid, igshid, si, msclkid) when sharing or copying links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.95.104"
           ]
         },
         {
@@ -52,7 +70,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
           ]
         },
         {
@@ -61,7 +79,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
           ]
         },
         {
@@ -75,7 +93,7 @@
             }
           ],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
           ]
         },
         {
@@ -84,7 +102,16 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
+          ]
+        },
+        {
+          "name": "Sensor Privacy Guard",
+          "description": "Neutralizes motion, ambient, and orientation sensor providers to prevent hardware fingerprinting and tracking via Generic Sensor APIs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.95.104"
           ]
         },
         {
@@ -93,7 +120,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.95.101"
+            "1.95.104"
           ]
         }
       ]
@@ -302,8 +329,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.1.14",
-            "3.1.13"
+            "3.1.14"
           ]
         },
         {
@@ -312,8 +338,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.1.14",
-            "3.1.13"
+            "3.1.14"
           ]
         },
         {
@@ -322,8 +347,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.1.14",
-            "3.1.13"
+            "3.1.14"
           ]
         },
         {
@@ -332,8 +356,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "3.1.14",
-            "3.1.13"
+            "3.1.14"
           ]
         }
       ]
@@ -343,12 +366,21 @@
       "package": "com.ss.android.ugc.trill",
       "patches": [
         {
+          "name": "Always show publish date",
+          "description": "Forces video publish/upload date to remain visible in video author information across all feed types.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
           "name": "Bypass Mandatory Login",
           "description": "Neutralizes mandatory login walls, dynamic regional forced login gates, and guest browsing restrictions.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -357,7 +389,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -366,7 +398,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Copy comments without username",
+          "description": "Copies only the comment text without prepending the author username.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -375,7 +416,21 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Custom Offline Videos Limit",
+          "description": "Customizes the maximum number of videos available for offline download caching.",
+          "use": true,
+          "options": [
+            {
+              "key": "customLimit",
+              "description": "Maximum number of offline videos that can be cached for offline playback (default: 200)."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -384,7 +439,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -393,7 +448,21 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Display Refresh Rate Governor",
+          "description": "Forces TikTok to run at peak display refresh rate (120Hz/90Hz/60Hz) and neutralizes video playback framerate downclocking routines.",
+          "use": false,
+          "options": [
+            {
+              "key": "targetRate",
+              "description": "Select target display refresh rate: max (display peak rate), 120 (120 Hz), 90 (90 Hz), or 60 (60 Hz). Clamped automatically to display maximum."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -402,7 +471,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -411,7 +480,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -420,7 +489,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Fix Google login",
+          "description": "Restores Google account sign-in after patching by forcing fallback to Web-based OAuth when Google Play Services rejects the modified APK signature.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -429,7 +507,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -438,7 +516,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -447,7 +525,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -461,7 +539,7 @@
             }
           ],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -470,7 +548,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -479,16 +557,16 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
           "name": "Media Usability & Watermark-Free Downloader",
-          "description": "Enables progress seekbar scrubbing on all videos, unblocks the download button on creator-restricted videos, and routes downloads to clean unwatermarked media streams.",
+          "description": "Unblocks the download button on creator-restricted videos inside the Share panel, and routes downloads to clean unwatermarked media streams.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -497,7 +575,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -506,16 +584,16 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
           "name": "Resource & Battery Governor",
-          "description": "Throttles background sensor polling (gyroscope/accelerometer 3D ads), prevents aggressive video buffer preloading, and caps Fresco animated image memory retention to conserve battery and RAM.",
+          "description": "Throttles background sensor polling (gyroscope/accelerometer 3D ads) and prevents aggressive video buffer preloading to conserve battery and CPU resources.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -529,7 +607,16 @@
             }
           ],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Show seekbar",
+          "description": "Restores TikTok's native video seekbar and scrubbing controls where normally hidden or disabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -538,7 +625,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -547,7 +634,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -556,7 +643,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -565,21 +652,25 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
           "name": "Video Quality Governor",
-          "description": "Caps maximum video playback resolution (1080p, 720p, 540p, 480p, 360p) to reduce GPU/MediaCodec load, lower memory retention, and prevent playback buffering.",
+          "description": "Caps video playback and download resolutions (1080p, 720p, 540p, 480p, 360p) independently to conserve battery, GPU/MediaCodec load, and mobile data.",
           "use": false,
           "options": [
             {
               "key": "maxQuality",
-              "description": "Select maximum resolution ceiling: 1080 (1080p ExtremelyHigh), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+              "description": "Select maximum video playback resolution ceiling: 1080 (1080p ExtremelyHigh), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+            },
+            {
+              "key": "maxDownloadQuality",
+              "description": "Select maximum video download resolution ceiling: 1080 (1080p Maximum Quality), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
             }
           ],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         }
       ]
@@ -594,16 +685,25 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Block Vivaldi Telemetry",
-          "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, and DirectMatch suggestions.",
+          "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, DirectMatch suggestions, install referrer transmission, and background wallpaper polling.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
+          ]
+        },
+        {
+          "name": "Clean Share URL",
+          "description": "Strips tracking parameters (utm_*, fbclid, gclid, igshid, si, msclkid) when sharing or copying links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.2.4147.93"
           ]
         },
         {
@@ -612,7 +712,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         },
         {
@@ -621,7 +721,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         },
         {
@@ -630,7 +730,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         },
         {
@@ -639,7 +739,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         },
         {
@@ -648,16 +748,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Disable Vivaldi Prompts & In-App Popups",
-          "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, and default browser promotional handlers.",
+          "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, default browser promo handlers, and hides the Vivaldia game from the main menu.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         },
         {
@@ -671,16 +771,25 @@
             }
           ],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Resource Slimmer",
-          "description": "Strips bundled stock wallpapers and sponsored Speed Dial thumbnails to reduce APK size.",
+          "description": "Strips bundled stock wallpapers, sponsored Speed Dial thumbnails, partner favicons, Privacy Sandbox attestations, and hardens declarative preference defaults.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
+          ]
+        },
+        {
+          "name": "Sensor Privacy Guard",
+          "description": "Neutralizes motion, ambient, and orientation sensor providers to prevent hardware fingerprinting and tracking via Generic Sensor APIs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.2.4147.93"
           ]
         },
         {
@@ -689,7 +798,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
+          ]
+        },
+        {
+          "name": "Split Bundle Compatibility",
+          "description": "Removes split APK constraints (isSplitRequired, isolatedSplits) and split metadata from AndroidManifest.xml for standalone APK installation.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.2.4147.93"
           ]
         },
         {
@@ -698,7 +816,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4147.77"
+            "8.2.4147.93"
           ]
         }
       ]
@@ -708,12 +826,21 @@
       "package": "com.zhiliaoapp.musically",
       "patches": [
         {
+          "name": "Always show publish date",
+          "description": "Forces video publish/upload date to remain visible in video author information across all feed types.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
           "name": "Bypass Mandatory Login",
           "description": "Neutralizes mandatory login walls, dynamic regional forced login gates, and guest browsing restrictions.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -722,7 +849,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -731,7 +858,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Copy comments without username",
+          "description": "Copies only the comment text without prepending the author username.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -740,7 +876,21 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Custom Offline Videos Limit",
+          "description": "Customizes the maximum number of videos available for offline download caching.",
+          "use": true,
+          "options": [
+            {
+              "key": "customLimit",
+              "description": "Maximum number of offline videos that can be cached for offline playback (default: 200)."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -749,7 +899,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -758,7 +908,21 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Display Refresh Rate Governor",
+          "description": "Forces TikTok to run at peak display refresh rate (120Hz/90Hz/60Hz) and neutralizes video playback framerate downclocking routines.",
+          "use": false,
+          "options": [
+            {
+              "key": "targetRate",
+              "description": "Select target display refresh rate: max (display peak rate), 120 (120 Hz), 90 (90 Hz), or 60 (60 Hz). Clamped automatically to display maximum."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -767,7 +931,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -776,7 +940,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -785,7 +949,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Fix Google login",
+          "description": "Restores Google account sign-in after patching by forcing fallback to Web-based OAuth when Google Play Services rejects the modified APK signature.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -794,7 +967,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -803,7 +976,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -812,7 +985,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -826,7 +999,7 @@
             }
           ],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -835,7 +1008,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -844,16 +1017,16 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
           "name": "Media Usability & Watermark-Free Downloader",
-          "description": "Enables progress seekbar scrubbing on all videos, unblocks the download button on creator-restricted videos, and routes downloads to clean unwatermarked media streams.",
+          "description": "Unblocks the download button on creator-restricted videos inside the Share panel, and routes downloads to clean unwatermarked media streams.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -862,7 +1035,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -871,16 +1044,16 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
           "name": "Resource & Battery Governor",
-          "description": "Throttles background sensor polling (gyroscope/accelerometer 3D ads), prevents aggressive video buffer preloading, and caps Fresco animated image memory retention to conserve battery and RAM.",
+          "description": "Throttles background sensor polling (gyroscope/accelerometer 3D ads) and prevents aggressive video buffer preloading to conserve battery and CPU resources.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -894,7 +1067,16 @@
             }
           ],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Show seekbar",
+          "description": "Restores TikTok's native video seekbar and scrubbing controls where normally hidden or disabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
           ]
         },
         {
@@ -903,7 +1085,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -912,7 +1094,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -921,7 +1103,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
@@ -930,30 +1112,34 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         },
         {
           "name": "Video Quality Governor",
-          "description": "Caps maximum video playback resolution (1080p, 720p, 540p, 480p, 360p) to reduce GPU/MediaCodec load, lower memory retention, and prevent playback buffering.",
+          "description": "Caps video playback and download resolutions (1080p, 720p, 540p, 480p, 360p) independently to conserve battery, GPU/MediaCodec load, and mobile data.",
           "use": false,
           "options": [
             {
               "key": "maxQuality",
-              "description": "Select maximum resolution ceiling: 1080 (1080p ExtremelyHigh), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+              "description": "Select maximum video playback resolution ceiling: 1080 (1080p ExtremelyHigh), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+            },
+            {
+              "key": "maxDownloadQuality",
+              "description": "Select maximum video download resolution ceiling: 1080 (1080p Maximum Quality), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
             }
           ],
           "compatible_versions": [
-            "46.9.3"
+            "47.0.3"
           ]
         }
       ]
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "b8e0917dda4fb15b404ebef20717e621f227785880cc357fec738faa8c390885",
-  "release_notes": "## [1.35.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.34.0...v1.35.0) (2026-09-17)\n\n### New Features\n\n* **tiktok:** bypass mandatory login and skip first-launch onboarding ([31ed012](https://github.com/kveld9/kveld-morphe-patches/commit/31ed0122fb4c4b81a14e1005b8d5938dc66609f2))\n* **tiktok:** default SIM region selector spoof target to CH ([b44a749](https://github.com/kveld9/kveld-morphe-patches/commit/b44a74951fd89cd4f22e0cf9ab48faa4e4bb7178))\n",
-  "release_tag": "v1.35.0",
-  "release_date": "2026-09-17T03:18:28Z",
+  "fingerprint": "5d09f4e056ae0b2ac8c512b70ae3a5fd1de913980d509406111f2bdaff66f146",
+  "release_notes": "## [1.42.2](https://github.com/kveld9/kveld-morphe-patches/compare/v1.42.1...v1.42.2) (2026-09-21)\n\n### Bug Fixes\n\n* **tiktok:** restore fresco animation frame cache to fix animated sticker lag in comments ([8cc4534](https://github.com/kveld9/kveld-morphe-patches/commit/8cc45347e6b26dcc15fb67f329520894b45f9b2f))\n",
+  "release_tag": "v1.42.2",
+  "release_date": "2026-09-21T02:29:42Z",
   "isPreRelease": false
 }

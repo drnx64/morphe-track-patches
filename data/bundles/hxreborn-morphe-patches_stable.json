@@ -2,9 +2,9 @@
   "bundle": "hxreborn-morphe-patches",
   "channel": "stable",
   "repo_url": "https://github.com/hxreborn/morphe-patches",
-  "created_at": "2026-09-15T05:51:29Z",
-  "version": "1.23.0",
-  "description": "## [1.23.0](https://github.com/hxreborn/morphe-patches/compare/v1.22.0...v1.23.0) (2026-09-15)\n\n### New Features\n\n* **Proton Mail - AMOLED dark theme:** add a runtime toggle ([9a821a4](https://github.com/hxreborn/morphe-patches/commit/9a821a4c27ec5bba5eee69aa3080327152892f68))\n* **Proton Mail - Hide upgrade promotions:** add a runtime toggle for the hidden promotions ([5161d22](https://github.com/hxreborn/morphe-patches/commit/5161d22b56207236cc395090f4cbfa0cd00c10c2))\n* **Proton Mail - Hide upgrade upselling:** hide auto-delete upgrade banner in Trash and Spam ([7fd220a](https://github.com/hxreborn/morphe-patches/commit/7fd220ad9854ef14167de6db6f1bed74c48f40f0))\n* **Proton Mail - Scheduled Trash and Spam deletion:** delete Trash and Spam on a schedule ([5020e22](https://github.com/hxreborn/morphe-patches/commit/5020e22e70591eefefd2bfe9482360a645d1e1bb))\n* **Proton Mail:** add an in-app patches menu listing applied patches and their settings ([560fa12](https://github.com/hxreborn/morphe-patches/commit/560fa12e3303d7ef254732bc8b0ff12ee6d4710a))",
+  "created_at": "2026-09-21T18:30:18Z",
+  "version": "1.27.1",
+  "description": "## [1.27.1](https://github.com/hxreborn/morphe-patches/compare/v1.27.0...v1.27.1) (2026-09-21)\n\n### Bug Fixes\n\n* **MovieBox - All-In-One:** play streams signed with Edge-Cache cookies ([8ea4012](https://github.com/hxreborn/morphe-patches/commit/8ea401294a2f472eb7a9745789ed0aab866ce7e4))\n* **Realme Link - AMOLED dark theme:** recolour icons without the desktop JDK so Manager can apply it ([c33150a](https://github.com/hxreborn/morphe-patches/commit/c33150ae96eec90be0c0c221a92acae285f5d94c))",
   "apps": [
     {
       "app_name": "Perplexity",
@@ -93,6 +93,16 @@
           ]
         },
         {
+          "name": "Custom accent color",
+          "description": "Changes the accent color. Choose a color in the patches menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
+        },
+        {
           "name": "Hide upgrade promotions",
           "description": "Hides the top-bar upgrade button, promotional sidebar rows and the auto-delete upgrade banner in Trash and Spam. Keeps the Empty trash and Empty spam buttons.",
           "use": true,
@@ -124,7 +134,7 @@
         },
         {
           "name": "Scheduled Trash and Spam deletion",
-          "description": "Deletes all messages in Trash and Spam on a configurable schedule. Deleted messages cannot be recovered.",
+          "description": "Deletes all messages in Trash and Spam on separate configurable schedules. Deleted messages cannot be recovered.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -239,7 +249,7 @@
       "patches": [
         {
           "name": "Unlock premium",
-          "description": "Unlocks premium servers and removes ads, upgrade banners and the launch paywall.",
+          "description": "Unlocks premium servers and removes ads, upgrade banners, the launch paywall and the Android TV sign-in screen.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -419,6 +429,30 @@
       ]
     },
     {
+      "app_name": "Realme Link",
+      "package": "com.realme.link",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the light theme with a pure black dark theme. Requires Android 13 or later.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.5.514.11421"
+          ]
+        },
+        {
+          "name": "Bypass session expiry",
+          "description": "Stops the security prompt that signs the account out.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.5.514.11421"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "RISE Sleep Tracker",
       "package": "com.risesci.nyx",
       "patches": [
@@ -450,6 +484,30 @@
           "compatible_versions": [
             "Android V1.78.49",
             "Android V1.78.47"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "MyMoveset",
+      "package": "com.soulbreakers.mymoveset",
+      "patches": [
+        {
+          "name": "Disable tracking",
+          "description": "Stops the install identifier from reaching Expo and usage events from reaching Google. Disables OTA updates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.3.1"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks unlimited move views, goals and move cards, manual sync, earlier library updates and card customization. Disables OTA updates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.3.1"
           ]
         }
       ]
@@ -521,6 +579,62 @@
           "options": [],
           "compatible_versions": [
             "407.0.0.178994"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "vpnify",
+      "package": "com.vpn.free.hotspot.secure.vpnify",
+      "patches": [
+        {
+          "name": "Disable rating prompt",
+          "description": "Stops the Google Play rating prompt from appearing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.9.9",
+            "2.3.0"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium, removes ads and the free session time limit.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.9.9",
+            "2.3.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Klassik Radio+",
+      "package": "de.klassikradio.app",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks the premium music channels, on-demand playback and track skipping. Requires a signed-in account.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "p5.11.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "atvTools",
+      "package": "dev.vodik7.atvtools",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all features and removes the ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.3.2"
           ]
         }
       ]
@@ -620,12 +734,48 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "Ringtone Maker",
+      "package": "ringtonemaker.musiccutter.customringtones.freeringtonemaker",
+      "patches": [
+        {
+          "name": "Remove rating prompts",
+          "description": "Removes the prompts asking for a rating.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.01.99.0909",
+            "1.01.98.0831",
+            "1.01.98.0824",
+            "1.01.97.0818",
+            "1.01.96.0716",
+            "1.01.94.0602",
+            "1.01.90.0421"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium, removes ads and skips the upgrade screens.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.01.99.0909",
+            "1.01.98.0831",
+            "1.01.98.0824",
+            "1.01.97.0818",
+            "1.01.96.0716",
+            "1.01.94.0602",
+            "1.01.90.0421"
+          ]
+        }
+      ]
     }
   ],
   "patches_name": "hxreborn Patches",
-  "fingerprint": "0f3653ba318a785a319112eca401245f5876ebf0f75b92454911fa5802c3189a",
-  "release_notes": "## [1.23.0](https://github.com/hxreborn/morphe-patches/compare/v1.22.0...v1.23.0) (2026-09-15)\n\n### New Features\n\n* **Proton Mail - AMOLED dark theme:** add a runtime toggle ([9a821a4](https://github.com/hxreborn/morphe-patches/commit/9a821a4c27ec5bba5eee69aa3080327152892f68))\n* **Proton Mail - Hide upgrade promotions:** add a runtime toggle for the hidden promotions ([5161d22](https://github.com/hxreborn/morphe-patches/commit/5161d22b56207236cc395090f4cbfa0cd00c10c2))\n* **Proton Mail - Hide upgrade upselling:** hide auto-delete upgrade banner in Trash and Spam ([7fd220a](https://github.com/hxreborn/morphe-patches/commit/7fd220ad9854ef14167de6db6f1bed74c48f40f0))\n* **Proton Mail - Scheduled Trash and Spam deletion:** delete Trash and Spam on a schedule ([5020e22](https://github.com/hxreborn/morphe-patches/commit/5020e22e70591eefefd2bfe9482360a645d1e1bb))\n* **Proton Mail:** add an in-app patches menu listing applied patches and their settings ([560fa12](https://github.com/hxreborn/morphe-patches/commit/560fa12e3303d7ef254732bc8b0ff12ee6d4710a))\n",
-  "release_tag": "v1.23.0",
-  "release_date": "2026-09-15T05:51:29Z",
+  "fingerprint": "3daadb6b493589b3781c4a018c57cf5ae19c8575e1bd7451ef9b1d4af78d7a86",
+  "release_notes": "## [1.27.1](https://github.com/hxreborn/morphe-patches/compare/v1.27.0...v1.27.1) (2026-09-21)\n\n### Bug Fixes\n\n* **MovieBox - All-In-One:** play streams signed with Edge-Cache cookies ([8ea4012](https://github.com/hxreborn/morphe-patches/commit/8ea401294a2f472eb7a9745789ed0aab866ce7e4))\n* **Realme Link - AMOLED dark theme:** recolour icons without the desktop JDK so Manager can apply it ([c33150a](https://github.com/hxreborn/morphe-patches/commit/c33150ae96eec90be0c0c221a92acae285f5d94c))\n",
+  "release_tag": "v1.27.1",
+  "release_date": "2026-09-21T18:30:18Z",
   "isPreRelease": false
 }

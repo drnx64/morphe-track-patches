@@ -2,9 +2,9 @@
   "bundle": "amitaisela",
   "channel": "stable",
   "repo_url": "https://github.com/Amitaisela/travian-morphe-patches",
-  "created_at": "2026-09-16T13:39:27Z",
-  "version": "1.1.1",
-  "description": "## [1.1.1](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.1.0...v1.1.1) (2026-09-16)\n\n### 🐛 Bug Fixes\n\n* set real patch metadata (name, author, source) ([8e1e756](https://github.com/Amitaisela/travian-morphe-patches/commit/8e1e756051d99585a398b830c2fe45beec253b26))",
+  "created_at": "2026-09-21T12:26:01Z",
+  "version": "1.9.0",
+  "description": "## [1.12.1](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.12.0...v1.12.1) (2026-09-21)\n\n### 🐛 Bug Fixes\n\n* **Travian: Legends:** don't report arrivals when the game leaves out the movement lists ([4444a3c](https://github.com/Amitaisela/travian-morphe-patches/commit/4444a3c5c448d83a427f9e5ae01d8ba702a34cfd))",
   "apps": [
     {
       "app_name": "Travian: Legends",
@@ -12,30 +12,33 @@
       "patches": [
         {
           "name": "Build/troop queue notifications",
-          "description": "Notifies you when a building upgrade or troop training queue finishes, by independently polling the game's own API on a background timer.",
+          "description": "Notifies you when a building upgrade or troop training queue finishes, with the building/unit name, level, and village, and warns you about incoming attacks and raids (who, from where, and when they arrive) with a second warning about a minute before they land, tells you when an attack was called off, warns you when a warehouse or granary is about to fill up, tells you when your hero has a new adventure, is back home, died or is low on health, and tells you when reinforcements or your own returning troops arrive. Tapping a notification opens the game, and a second \"Travian Tools\" icon opens a home screen where you switch each type of notification on or off, see what is building and training, and see your recent ones. Uses the session you're already logged in with in the game — no separate login, no password ever handled by this patch. Checks run quietly in the background: one is scheduled for just after each build/training is due to finish, plus a regular check every 5 minutes (Android may delay background work slightly). Nothing is shown unless something actually finished. The first time you open the app it asks once for notification permission and to exempt the app from battery optimization, so the background checks aren't killed by the system.",
           "use": true,
-          "options": [
-            {
-              "key": "email",
-              "description": "The Travian: Legends account this notifier logs into."
-            },
-            {
-              "key": "password",
-              "description": "Password for the account above."
-            }
-          ],
+          "options": [],
           "compatible_versions": [
             "4.0.0",
-            "4.0.1"
+            "4.0.1",
+            "4.0.2"
+          ]
+        },
+        {
+          "name": "Travian notifier manifest entry",
+          "description": "Adds the permission needed to ask for a battery optimization exemption, and the Travian Tools screens.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.0.0",
+            "4.0.1",
+            "4.0.2"
           ]
         }
       ]
     }
   ],
   "patches_name": "Travian Notifier Patches",
-  "fingerprint": "f5f1659749869f5b5fdc145d9ce41653d1d9f0881cbfb6450db3f3c404ff2f77",
-  "release_notes": "## [1.1.1](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.1.0...v1.1.1) (2026-09-16)\n\n### 🐛 Bug Fixes\n\n* set real patch metadata (name, author, source) ([8e1e756](https://github.com/Amitaisela/travian-morphe-patches/commit/8e1e756051d99585a398b830c2fe45beec253b26))\n",
-  "release_tag": "v1.1.1",
-  "release_date": "2026-09-16T13:39:27Z",
+  "fingerprint": "d46dcdb923c406f3948908ba917c6c1b95c129f7732813ec37ab05f87d106d1b",
+  "release_notes": "## [1.9.0](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.8.0...v1.9.0) (2026-09-21)\n\n### ✨ New Features\n\n* **Travian: Legends:** give the Travian Tools screens a cleaner look with cards, light and dark colours ([3ef665d](https://github.com/Amitaisela/travian-morphe-patches/commit/3ef665d59a054e5db6955ce0434f59d45643e184))\n",
+  "release_tag": "v1.9.0",
+  "release_date": "2026-09-21T12:26:01Z",
   "isPreRelease": false
 }

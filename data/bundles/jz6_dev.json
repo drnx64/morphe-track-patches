@@ -2,9 +2,9 @@
   "bundle": "jz6",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-09-16T21:41:13Z",
-  "version": "2.5.0-dev.1",
-  "description": "## 2.4.1\n\n- feat: Rambler on by default, confirmed on a device\n- feat: modern keypress haptics on by default\n- test: the gesture probe types a marker instead of deleting",
+  "created_at": "2026-09-21T21:51:35Z",
+  "version": "2.5.1-dev.3",
+  "description": "## 2.4.2\n\n- fix: a flag scan that failed on another bundle's merged extension\n- docs: draft option B against the dex, and verify the claim it rests on\n- docs: read out the handler registry's consumer, and reverse the recommendation\n- docs: Gboard does not instantiate motion event handlers by reflection\n- fix: act on an independent review of the four unpushed commits\n- refactor: the resolution helpers take a class lookup, not the patcher\n- test: cover the register helpers, which is where the crashes came from\n- test: lock in the mutual exclusion, and ask whether the bundle is current\n- fix: the driver applied a combination no install can produce\n- test: cover the patch helpers, document the output tools, assert the Python floor\n- ci: catch drift in the generated inventory and README table\n- feat: check extension references, and admit the general case needs the SDK\n- test: run the extension's logic, not just compile it\n- feat: verify invoke arguments and catch-handler merges\n- docs: correct development.md, which was three beliefs out of date\n- feat: verify every method the patch changed, automatically\n- ci: upload the bundle on every push, so a patch can be tested before it ships\n- feat: a type-merge check for the bug ART rejects at class load\n- docs: what the driver covers, and what it does not\n- feat: run the patches locally — :driver:run was never blocked\n- docs: the dev.1 crash, diagnosed by reading the output\n- feat: read the patched APK, not just the stock one\n- docs: improve the replan — the cause is unknown and the tooling is the gap\n- docs: replan swipe up to undo autocorrect\n- revert: drop the consume branch, it ships a keyboard that will not open\n- fix: the consume branch shipped a keyboard that would not open\n- fix: swipe up consumes the gesture and lowers the slide threshold",
   "apps": [
     {
       "app_name": "Gboard",
@@ -102,7 +102,7 @@
         },
         {
           "name": "Swipe up diagnostic (temporary)",
-          "description": "Diagnostic build only. Swipe up on a key to delete a character, which proves whether the swipe gesture is being detected at all. Do not enable this at the same time as \"Swipe up to undo autocorrect\" — they attach to the same place and you would get both effects. Off by default, and this patch will be removed once it has answered its question.",
+          "description": "Diagnostic build only. Swipe up on a key to type a marker character, which proves whether the swipe gesture is being detected at all without eating any text. Cannot be used alongside \"Swipe up to undo autocorrect\" — they attach to the same instruction, and selecting both fails the patch rather than giving you both effects. Off by default, and this patch will be removed once it has answered its question.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -111,7 +111,7 @@
         },
         {
           "name": "Swipe up to undo autocorrect",
-          "description": "Swipe up on the keyboard to put back the word an autocorrect replaced. Gboard has the same undo on backspace, behind a setting; this adds a gesture for it and works whether or not that setting is on. A swipe with nothing to undo does nothing. Off by default until it has been confirmed on a device.",
+          "description": "Swipe up on the keyboard to put back the word an autocorrect replaced. Gboard has the same undo on backspace, behind a setting; this adds a gesture for it and works whether or not that setting is on. A swipe with nothing to undo does nothing. Cannot be used alongside \"Swipe up diagnostic (temporary)\", which attaches to the same instruction. Off by default until it has been confirmed on a device.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -149,9 +149,9 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "9550270dd83d995fc9c249a3fcc95f5917c018f7710a02eb1ece2f83791ad7de",
-  "release_notes": "## 2.4.1\r\n\r\nRambler and Modern vibrations!\r\n\r\n- feat: Rambler on by default, confirmed on a device\r\n- feat: modern keypress haptics on by default\r\n- test: the gesture probe types a marker instead of deleting",
-  "release_tag": "v2.4.1",
-  "release_date": "2026-09-13T18:11:08Z",
-  "isPreRelease": false
+  "fingerprint": "610af733388c58ea795a1894e87dbd2fe096e7933497217ac5f2954a36f86d70",
+  "release_notes": "## 2.5.1-dev.3\n\n- feat: recognise the up-flick by its journey, not by where the finger lifted\n- feat: restore inline autofill suggestions, which a clone install loses\n- docs: the intermittency is the detection mechanism, not the threshold",
+  "release_tag": "v2.5.1-dev.3",
+  "release_date": "2026-09-21T21:51:35Z",
+  "isPreRelease": true
 }

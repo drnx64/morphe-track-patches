@@ -2,9 +2,9 @@
   "bundle": "andrewliang25",
   "channel": "dev",
   "repo_url": "https://github.com/andrewliang25/morphe-patches",
-  "created_at": "2026-09-15T15:38:30Z",
-  "version": "3.0.0-dev.1",
-  "description": "## [3.0.0](https://github.com/andrewliang25/morphe-patches/compare/v2.1.0...v3.0.0) (2026-09-15)\n\n### ⚠ BREAKING CHANGES\n\n* Check your patch selection before you patch an app. This\nrelease renames every patch. Morphe Manager and the Morphe CLI both store a\nselection by patch name, so your saved selection no longer matches. Every patch\ngoes back to its default, which is enabled. A patch that you turned off is on\nagain. The Manager also reports the renamed patches as new.\n\n### ✨ New Features\n\n* add Facebook ad patches ([e7040ec](https://github.com/andrewliang25/morphe-patches/commit/e7040ec16df13d0334462df77443203d2c5b4fac))\n* group patch names by category, and rename the MicroG-RE patches ([22c756e](https://github.com/andrewliang25/morphe-patches/commit/22c756ebd02166f040d570c3f9d9a451ae82e110))",
+  "created_at": "2026-09-19T05:09:57Z",
+  "version": "3.1.0-dev.2",
+  "description": "## [3.1.0](https://github.com/andrewliang25/morphe-patches/compare/v3.0.0...v3.1.0) (2026-09-19)\n\n### 🐛 Bug Fixes\n\n* block the on-demand ad inserts in Reels and Stories ([92db9d8](https://github.com/andrewliang25/morphe-patches/commit/92db9d8b33e16faa4e1a52534c681e5cdb775509))\n* remove the server-inlined ads from the Reels page ([8ad2d13](https://github.com/andrewliang25/morphe-patches/commit/8ad2d137d91261c1dbc25d368f1689652ac4cb74))\n\n### ✨ New Features\n\n* open Facebook links in the external browser ([07bf98a](https://github.com/andrewliang25/morphe-patches/commit/07bf98a91fa64644b022cb7f1fb503644d2a5922))\n* unlock Facebook's save option for any story ([ea17778](https://github.com/andrewliang25/morphe-patches/commit/ea17778afa7dbcbb4aea7edacdd7034fd215c7f1))",
   "apps": [
     {
       "app_name": "Facebook",
@@ -56,8 +56,26 @@
           ]
         },
         {
+          "name": "[General] Open links in external browser",
+          "description": "A web link that you tap opens in your default browser, and not in the in-app browser of Facebook. The pages of Facebook still open in the app. Thus login and checkout still work.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
           "name": "[Reels] Hide sponsored reels",
-          "description": "Stops ads being inserted into Reels and Watch, so scrolling only shows videos from creators. Ads that play inside a video, such as mid-rolls, are not covered.",
+          "description": "Removes ads from Reels and Watch, so scrolling only shows videos from creators. Ads that play inside a video, such as mid-rolls, are not covered.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Stories] Download any story",
+          "description": "Adds Facebook's own save option to the menu of any story, and not only to the stories that you posted. It saves the picture or the video that the story shows, with Facebook's own save code.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -66,7 +84,7 @@
         },
         {
           "name": "[Stories] Hide sponsored stories",
-          "description": "Removes ad cards from the Stories tray and from the story viewer, so swiping through stories only shows stories people posted.",
+          "description": "Removes ad cards from the story viewer, so swiping through stories only shows stories people posted.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -308,9 +326,9 @@
     }
   ],
   "patches_name": "Andrew's Patches",
-  "fingerprint": "f989c2921f2871e27aa489f0c673d190a9cdd8956ece4c90a2ab8f74a4e39277",
-  "release_notes": "## [3.0.0-dev.1](https://github.com/andrewliang25/morphe-patches/compare/v2.1.0...v3.0.0-dev.1) (2026-09-15)\n\n### ⚠ BREAKING CHANGES\n\n* Check your patch selection before you patch an app. This\nrelease renames every patch. Morphe Manager and the Morphe CLI both store a\nselection by patch name, so your saved selection no longer matches. Every patch\ngoes back to its default, which is enabled. A patch that you turned off is on\nagain. The Manager also reports the renamed patches as new.\n\n### ✨ New Features\n\n* add Facebook ad patches ([e7040ec](https://github.com/andrewliang25/morphe-patches/commit/e7040ec16df13d0334462df77443203d2c5b4fac))\n* group patch names by category, and rename the MicroG-RE patches ([22c756e](https://github.com/andrewliang25/morphe-patches/commit/22c756ebd02166f040d570c3f9d9a451ae82e110))\n",
-  "release_tag": "v3.0.0-dev.1",
-  "release_date": "2026-09-15T15:38:30Z",
+  "fingerprint": "fb94d138c7d68a00be758007fbda43e7fba2bc2527ed0caa79dd4a433482062d",
+  "release_notes": "## [3.1.0-dev.2](https://github.com/andrewliang25/morphe-patches/compare/v3.1.0-dev.1...v3.1.0-dev.2) (2026-09-19)\n\n### ✨ New Features\n\n* unlock Facebook's save option for any story ([ea17778](https://github.com/andrewliang25/morphe-patches/commit/ea17778afa7dbcbb4aea7edacdd7034fd215c7f1))\n",
+  "release_tag": "v3.1.0-dev.2",
+  "release_date": "2026-09-19T05:09:57Z",
   "isPreRelease": true
 }

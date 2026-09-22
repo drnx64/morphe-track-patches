@@ -92,7 +92,7 @@ def run():
 
                 fresh_urls = {url for url, entry in repo_cache.items()
                               if now_ts - entry.get("fetched_at", 0) < CACHE_TTL}
-                stale_entries = [e for e in bundle_index
+                stale_entries = [e for e in bundle_index.values()
                                  if e.get("repo_url", "") and e["repo_url"] not in fresh_urls]
 
                 if stale_entries:
