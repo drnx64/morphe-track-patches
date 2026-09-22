@@ -14,7 +14,6 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 sys.path.insert(0, os.path.dirname(__file__))
 
 from state_manager import ROOT_DATA_DIR, load_json, save_json
-from http_utils import fetch_with_retry
 
 BUNDLES_DIR = os.path.join(ROOT_DATA_DIR, "bundles")
 CONCURRENCY = 5
