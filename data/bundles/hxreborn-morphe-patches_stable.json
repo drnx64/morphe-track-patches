@@ -2,9 +2,9 @@
   "bundle": "hxreborn-morphe-patches",
   "channel": "stable",
   "repo_url": "https://github.com/hxreborn/morphe-patches",
-  "created_at": "2026-09-21T18:30:18Z",
-  "version": "1.27.1",
-  "description": "## [1.27.1](https://github.com/hxreborn/morphe-patches/compare/v1.27.0...v1.27.1) (2026-09-21)\n\n### Bug Fixes\n\n* **MovieBox - All-In-One:** play streams signed with Edge-Cache cookies ([8ea4012](https://github.com/hxreborn/morphe-patches/commit/8ea401294a2f472eb7a9745789ed0aab866ce7e4))\n* **Realme Link - AMOLED dark theme:** recolour icons without the desktop JDK so Manager can apply it ([c33150a](https://github.com/hxreborn/morphe-patches/commit/c33150ae96eec90be0c0c221a92acae285f5d94c))",
+  "created_at": "2026-09-22T14:40:50Z",
+  "version": "1.28.0",
+  "description": "## [1.28.0](https://github.com/hxreborn/morphe-patches/compare/v1.27.1...v1.28.0) (2026-09-22)\n\n### Bug Fixes\n\n* **iJiami:** stop patched MovieBox 4.0.03 dying at launch on the ffdfe477 packer build ([2f5f048](https://github.com/hxreborn/morphe-patches/commit/2f5f048909c3da55ea8ca38bc4c3f39d1e300155))\n* **MovieBox - All-In-One:** keep unlocking premium when the app renames its member methods ([8d5b441](https://github.com/hxreborn/morphe-patches/commit/8d5b4416e5731ad9b180a78977bc36835306e16a))\n\n### New Features\n\n* **AtloMaps - Unlock premium:** unlock custom map sources, navigation settings and backup restore ([65f7f98](https://github.com/hxreborn/morphe-patches/commit/65f7f9812145f2f6f85e50e3e17955872a82013c))\n* **iJiami:** select payload methods by the strings they load and the methods they call ([1330bac](https://github.com/hxreborn/morphe-patches/commit/1330bac70685b3f827caac9e887422f8bb95dd47))\n* **MovieBox:** support 4.0.03.0918.03 ([ed6f660](https://github.com/hxreborn/morphe-patches/commit/ed6f660a9038d5a3336f04ac319797f25227e3ad))\n* **Proton Pass - AMOLED dark theme:** replace dark theme background with pure black ([29d9835](https://github.com/hxreborn/morphe-patches/commit/29d98352c2293fdc9143623f25fa6bee2ff10f06))\n* **Proton Pass - Hide promotional messages:** hide promotional banners, offers and pop-up messages ([7bf244a](https://github.com/hxreborn/morphe-patches/commit/7bf244a44b3c7168ae6421a7c4aec004e44d8eea))\n* **Proton Pass - Hide upgrade promotions:** hide Upgrade buttons and welcome offer after sign-in ([4a98d01](https://github.com/hxreborn/morphe-patches/commit/4a98d0130ffef0f725e67beb895e7f28280f5ca1))",
   "apps": [
     {
       "app_name": "Perplexity",
@@ -155,6 +155,21 @@
       ]
     },
     {
+      "app_name": "AtloMaps",
+      "package": "com.atlogis.atlomaps",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks the custom map sources, navigation settings and backup restore. Premium map packages are not included.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.6"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Audible",
       "package": "com.audible.application",
       "patches": [
@@ -190,7 +205,8 @@
           "compatible_versions": [
             "4.0.02.0828.03",
             "4.0.02.0831.03",
-            "4.0.02.0903.02"
+            "4.0.02.0903.02",
+            "4.0.03.0918.03"
           ]
         }
       ]
@@ -721,6 +737,39 @@
       ]
     },
     {
+      "app_name": "Proton Pass",
+      "package": "proton.android.pass",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the dark theme background with pure black.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.40.3"
+          ]
+        },
+        {
+          "name": "Hide promotional messages",
+          "description": "Hides promotional banners, offers and pop-up messages.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.40.3"
+          ]
+        },
+        {
+          "name": "Hide upgrade promotions",
+          "description": "Hides the Upgrade buttons, upgrade prompts and the welcome offer after signing in. Plan limits still apply.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.40.3"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "AlpineQuest",
       "package": "psyberia.alpinequest.free",
       "patches": [
@@ -773,9 +822,9 @@
     }
   ],
   "patches_name": "hxreborn Patches",
-  "fingerprint": "3daadb6b493589b3781c4a018c57cf5ae19c8575e1bd7451ef9b1d4af78d7a86",
-  "release_notes": "## [1.27.1](https://github.com/hxreborn/morphe-patches/compare/v1.27.0...v1.27.1) (2026-09-21)\n\n### Bug Fixes\n\n* **MovieBox - All-In-One:** play streams signed with Edge-Cache cookies ([8ea4012](https://github.com/hxreborn/morphe-patches/commit/8ea401294a2f472eb7a9745789ed0aab866ce7e4))\n* **Realme Link - AMOLED dark theme:** recolour icons without the desktop JDK so Manager can apply it ([c33150a](https://github.com/hxreborn/morphe-patches/commit/c33150ae96eec90be0c0c221a92acae285f5d94c))\n",
-  "release_tag": "v1.27.1",
-  "release_date": "2026-09-21T18:30:18Z",
+  "fingerprint": "c25807012a80239ffd418b13bf79286094c3485030c1a873638e198314e9aa26",
+  "release_notes": "## [1.28.0](https://github.com/hxreborn/morphe-patches/compare/v1.27.1...v1.28.0) (2026-09-22)\n\n### Bug Fixes\n\n* **iJiami:** stop patched MovieBox 4.0.03 dying at launch on the ffdfe477 packer build ([2f5f048](https://github.com/hxreborn/morphe-patches/commit/2f5f048909c3da55ea8ca38bc4c3f39d1e300155))\n* **MovieBox - All-In-One:** keep unlocking premium when the app renames its member methods ([8d5b441](https://github.com/hxreborn/morphe-patches/commit/8d5b4416e5731ad9b180a78977bc36835306e16a))\n\n### New Features\n\n* **AtloMaps - Unlock premium:** unlock custom map sources, navigation settings and backup restore ([65f7f98](https://github.com/hxreborn/morphe-patches/commit/65f7f9812145f2f6f85e50e3e17955872a82013c))\n* **iJiami:** select payload methods by the strings they load and the methods they call ([1330bac](https://github.com/hxreborn/morphe-patches/commit/1330bac70685b3f827caac9e887422f8bb95dd47))\n* **MovieBox:** support 4.0.03.0918.03 ([ed6f660](https://github.com/hxreborn/morphe-patches/commit/ed6f660a9038d5a3336f04ac319797f25227e3ad))\n* **Proton Pass - AMOLED dark theme:** replace dark theme background with pure black ([29d9835](https://github.com/hxreborn/morphe-patches/commit/29d98352c2293fdc9143623f25fa6bee2ff10f06))\n* **Proton Pass - Hide promotional messages:** hide promotional banners, offers and pop-up messages ([7bf244a](https://github.com/hxreborn/morphe-patches/commit/7bf244a44b3c7168ae6421a7c4aec004e44d8eea))\n* **Proton Pass - Hide upgrade promotions:** hide Upgrade buttons and welcome offer after sign-in ([4a98d01](https://github.com/hxreborn/morphe-patches/commit/4a98d0130ffef0f725e67beb895e7f28280f5ca1))\n",
+  "release_tag": "v1.28.0",
+  "release_date": "2026-09-22T14:40:50Z",
   "isPreRelease": false
 }
