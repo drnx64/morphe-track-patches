@@ -154,16 +154,16 @@ def main():
     filepath = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "temp", "whats-new.json")
 
     if not os.path.exists(filepath):
-        print(f"[-] No file to send: {filepath}")
-        return 1
+        print(f"[*] No file to send (no changes): {filepath}")
+        return 0
 
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     chunks = data.get("chunks", []) if isinstance(data, dict) else []
     if not chunks:
-        print("[-] No chunks found in file")
-        return 1
+        print("[*] No chunks found in file (no changes to notify)")
+        return 0
 
     success = send_or_edit(chunks)
     return 0 if success else 1
