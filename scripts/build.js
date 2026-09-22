@@ -2,7 +2,7 @@
  * Build script — copies all needed files to docs/ for GitHub Pages.
  * Run: node scripts/build.js
  */
-import { cpSync, mkdirSync, existsSync, readdirSync, rmSync } from 'fs'
+import { cpSync, mkdirSync, existsSync, readdirSync, rmSync, writeFileSync } from 'fs'
 import { join, dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -18,6 +18,11 @@ if (existsSync(DOCS)) {
   console.log('[build] Cleaned docs/')
 }
 mkdirSync(DOCS, { recursive: true })
+
+// .nojekyll — prevents GitHub Pages Jekyll from excluding underscore-prefixed
+// files (e.g. data/bundles/_index.json)
+writeFileSync(join(DOCS, '.nojekyll'), '')
+console.log('[build] .nojekyll')
 
 // 1. Copy index.html
 cpSync(join(ROOT, 'index.html'), join(DOCS, 'index.html'))

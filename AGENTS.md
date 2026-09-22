@@ -5,7 +5,7 @@
 | Task | Command | Notes |
 |------|---------|-------|
 | Dev server | `npm run dev` | `npx serve .` on port 3000. Never use `file://`. |
-| Build | `npm run build` | `node scripts/build.js` — copies to `docs/` for GitHub Pages. |
+| Build | `npm run build` | `node scripts/build.js` — copies to `docs/` (gitignored build output, pushed to `gh-pages` by CI). |
 | Preview | `npm run preview` | `npx serve docs` — preview production build locally. |
 | Python tests | `python -m pytest tests/ -v` | Requires `pip install -r requirements.txt`. |
 | Run pipeline | `python scripts/run_pipeline.py` | Requires `GITHUB_TOKEN` env var. |
@@ -15,14 +15,14 @@
 
 `python -m pytest tests/ -v` → `npm run build`
 
-CI runs both on every push/PR to `main`.
+CI runs both on every push/PR to `main`. Data updates (hourly) use `[skip ci]` and deploy to `gh-pages` directly from `update.yml`.
 
 ## Architecture
 
 - **Frontend:** Vanilla ES Modules (`scripts/`). No build step, no framework. Hash-based SPA routing (`/#/`, `/#/bundles`).
 - **Pipeline:** Python 3.11 scripts (`scripts/`). Crawls GitHub for `.mpp` patch bundles, parses, fingerprints, diffs, writes JSON to `data/`. Zero pip dependencies (stdlib `urllib` only; `Pillow` for image processing, `pytest` for tests).
-- **Data layer:** Pipeline outputs static JSON files (`data/core.json`, `data/changes.json`, `data/bundles/`, etc.). Build script copies to `docs/` for GitHub Pages.
-- **Hosting:** GitHub Pages serves `docs/` directory. CI (GitHub Actions) runs pipeline every hour, commits data changes to `main`, deploys to Pages.
+- **Data layer:** Pipeline outputs static JSON files (`data/core.json`, `data/changes.json`, `data/bundles/`, etc.). Build script copies them to `docs/`, which is pushed to the `gh-pages` branch for GitHub Pages.
+- **Hosting:** GitHub Pages serves the `gh-pages` branch (root). CI (GitHub Actions) runs pipeline every hour, commits data changes to `main`, then builds and force-pushes the site to `gh-pages`. Code pushes to `main` trigger the same build+push via `deploy.yml`. The `gh-pages` branch is fully automated — never edit it manually.
 
 ### Data flow
 
@@ -40,7 +40,7 @@ If no changes and no day rollover, pipeline exits silently after step 3. `write_
 
 ## Key gotchas
 
-- **`docs/` is the build output.** `npm run build` generates it. Do not edit manually.
+- **`docs/` is the build output and is gitignored.** `npm run build` generates it. Never edit manually, never commit it. CI pushes it to the `gh-pages` branch.
 - **`data/raw/` and `data/output/` are gitignored.** Large generated files.
 - **`data/state/` is partially gitignored.** `current_snapshot.json`, `previous_snapshot.json`, `daily_buffer.json`, `external_repos.json`, `last_tg_msg.json` are gitignored. Caches (`app_cache.json`, `last_run.json`, `patches_names_cache.json`, `release_cache.json`) are tracked.
 - **CSS is one monolithic file** (`assets/style.css`, ~7000 lines). No CSS modules.
