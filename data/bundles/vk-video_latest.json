@@ -1,0 +1,67 @@
+{
+  "bundle": "vk-video",
+  "channel": "latest",
+  "repo_url": "https://github.com/Solvo37/vk-video-morphe-patches",
+  "created_at": "2026-09-22T08:25:17",
+  "version": "patches-v0.2.0",
+  "description": "Standalone Morphe patch bundle for VK Video.\n\nIncludes the stock-VK coexistence fix, ARM64 native signature-check bypass and user-selectable VK Video patches.\n\nPatch-only releases are marked as prereleases so the latest stable GitHub release remains the installable VK Video APK.",
+  "apps": [
+    {
+      "app_name": "VK Video",
+      "package": "com.vk.vkvideo",
+      "patches": [
+        {
+          "name": "Disable ad pixel tracking",
+          "description": "Stops PixelStatsTrackerImpl from sending individual and batch ad pixels.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        },
+        {
+          "name": "Disable in-app update",
+          "description": "Disables the VK Video in-app update check and update prompt.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        },
+        {
+          "name": "Fix install conflict with stock VK",
+          "description": "Allows the re-signed VK Video build to coexist with the official VK app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        },
+        {
+          "name": "Hide promoted banner content",
+          "description": "Forces VideoDiscoverAdsDto.canShowAdBanner to false.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        },
+        {
+          "name": "Remove video ads",
+          "description": "Disables instream video ads and player overlay/motion ad features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "VK Video Patches",
+  "fingerprint": "3f62a1210be9a14caf7f80c61499a82b5eb5d86ebe9abe9cae95ff540bb167b2",
+  "release_notes": "Standalone Morphe patch bundle for VK Video.\n\nIncludes the stock-VK coexistence fix, ARM64 native signature-check bypass and user-selectable VK Video patches.\n\nPatch-only releases are marked as prereleases so the latest stable GitHub release remains the installable VK Video APK.",
+  "release_tag": "patches-v0.2.0",
+  "release_date": "2026-09-22T08:25:17Z",
+  "isPreRelease": true
+}
