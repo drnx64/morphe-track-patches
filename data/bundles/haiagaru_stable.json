@@ -2,9 +2,9 @@
   "bundle": "haiagaru",
   "channel": "stable",
   "repo_url": "https://github.com/areteruhiro/Haiagaru-Morphe",
-  "created_at": "2026-09-22T13:53:56",
-  "version": "1.3.8",
-  "description": "## Haiagaru 1.3.8\n\nChMate 0.8.10.191 devのTalk板一覧と記者ID編集UIを復旧し、Talk投稿直後の履歴保持を実機確認した正式版です。\n\n### 主な変更\n\n- ChMate `0.8.10.191 dev`で、Talk板一覧のURLから`/boards/`が失われ、板一覧を取得できなくなる回帰を修正しました。\n- ChMate `0.8.10.191 dev`のNGThread編集画面へ「記者IDだけをNG」を復旧しました。\n- Talk投稿直後に読み取りAPIが一世代古い場合、画面遷移後に投稿レスが消えないよう、新しいローカルDATを保持します。\n- 読み取りAPIが追いついた後は、通常どおり新しいDATへ更新されることを実機で確認しました。\n- 1.3.7までのTalk投稿セッション・キー生成修正を引き続き収録しています。\n\n### 対応バージョン\n\n- ChMate `0.8.10.191 dev`\n- ChMate `0.8.10.226 dev`\n- ChMate `0.8.10.241`\n- ChMate `0.8.10.243 dev`\n\n4対応版すべてでMPPの適用、APK再構築、署名を確認しています。191 devではDAT保持処理を実機で確認しています。\n\nよろしければStarだけでもお願いします。励みになります。\n\n### 寄付\n\n- [Amazon Gift Card](https://www.amazon.co.jp/gp/product/B004N3APGO) — Send to `areteruhiro@gmail.com`\n- [PayPay](https://qr.paypay.ne.jp/p2p01_RsY3yQavNdvx74da)\n",
+  "created_at": "2026-09-22T16:33:46",
+  "version": "1.3.9",
+  "description": "## Haiagaru 1.3.9\n\nTalkへの書き込み状態を、アプリデータを消さずに安全に更新できるよう修正した正式版です。\n\n### 主な変更\n\n- `1.3.7`／`1.3.8`からパッチ済みAPKを上書きした際、以前のTalk書き込みキーが残って`divide by zero`になる問題を修正しました。\n- ChMate本体のversionNameではなくAPKの更新時刻を使い、APK更新後の最初の投稿時だけTalk書き込みセッションを再生成します。\n- Talk SIDやHaiagaruの他の設定は保持し、同じAPKで2回目以降に投稿する際は新しい書き込みキーを削除しません。\n- Talkスレの更新時にDAT全体とIDXを作り直さず、不足したレスだけを追記します。\n- `.idx`に保存される「自分の書き込み」状態を保持するため、別画面へ移動してスレを開き直しても書き込み印が消えません。\n\n### 実機確認\n\n- 公開済み`1.3.8`から、設定と古いTalk書き込みキーを残したまま`1.3.9`へ上書きし、古いキーだけが一度削除されることを確認しました。\n- Talkのテストスレへ実際に投稿し、別画面へ移動後に同じスレを開き直しても投稿レスと自分の書き込み印が残ることを確認しました。\n- Talk読取APIの反映前はローカルDATとIDXを保持し、反映後は不足した1レスだけを追記することを確認しました。\n- `divide by zero`、クラッシュは発生していません。\n\n### 対応バージョン\n\n- ChMate `0.8.10.191 dev`\n- ChMate `0.8.10.226 dev`\n- ChMate `0.8.10.241`\n- ChMate `0.8.10.243 dev`\n\n4対応版すべてでMPPの適用、APK再構築、署名まで成功することを確認しています。配布MPPはAndroid拡張を内包しています。\n\nよろしければStarだけでもお願いします。励みになります。\n\n### 寄付\n\n- [Amazon Gift Card](https://www.amazon.co.jp/gp/product/B004N3APGO) — Send to `areteruhiro@gmail.com`\n- [PayPay](https://qr.paypay.ne.jp/p2p01_RsY3yQavNdvx74da)\n",
   "apps": [
     {
       "app_name": "ChMate",
@@ -27,8 +27,8 @@
   ],
   "patches_name": "Haiagaru",
   "fingerprint": "724427478307a60b58f2164fc01ebed04701571563059ff3127f4d094f4e0627",
-  "release_notes": "## Haiagaru 1.3.8\n\nChMate 0.8.10.191 devのTalk板一覧と記者ID編集UIを復旧し、Talk投稿直後の履歴保持を実機確認した正式版です。\n\n### 主な変更\n\n- ChMate `0.8.10.191 dev`で、Talk板一覧のURLから`/boards/`が失われ、板一覧を取得できなくなる回帰を修正しました。\n- ChMate `0.8.10.191 dev`のNGThread編集画面へ「記者IDだけをNG」を復旧しました。\n- Talk投稿直後に読み取りAPIが一世代古い場合、画面遷移後に投稿レスが消えないよう、新しいローカルDATを保持します。\n- 読み取りAPIが追いついた後は、通常どおり新しいDATへ更新されることを実機で確認しました。\n- 1.3.7までのTalk投稿セッション・キー生成修正を引き続き収録しています。\n\n### 対応バージョン\n\n- ChMate `0.8.10.191 dev`\n- ChMate `0.8.10.226 dev`\n- ChMate `0.8.10.241`\n- ChMate `0.8.10.243 dev`\n\n4対応版すべてでMPPの適用、APK再構築、署名を確認しています。191 devではDAT保持処理を実機で確認しています。\n\nよろしければStarだけでもお願いします。励みになります。\n\n### 寄付\n\n- [Amazon Gift Card](https://www.amazon.co.jp/gp/product/B004N3APGO) — Send to `areteruhiro@gmail.com`\n- [PayPay](https://qr.paypay.ne.jp/p2p01_RsY3yQavNdvx74da)\n",
-  "release_tag": "1.3.8",
-  "release_date": "2026-09-22T13:53:56Z",
+  "release_notes": "## Haiagaru 1.3.9\n\nTalkへの書き込み状態を、アプリデータを消さずに安全に更新できるよう修正した正式版です。\n\n### 主な変更\n\n- `1.3.7`／`1.3.8`からパッチ済みAPKを上書きした際、以前のTalk書き込みキーが残って`divide by zero`になる問題を修正しました。\n- ChMate本体のversionNameではなくAPKの更新時刻を使い、APK更新後の最初の投稿時だけTalk書き込みセッションを再生成します。\n- Talk SIDやHaiagaruの他の設定は保持し、同じAPKで2回目以降に投稿する際は新しい書き込みキーを削除しません。\n- Talkスレの更新時にDAT全体とIDXを作り直さず、不足したレスだけを追記します。\n- `.idx`に保存される「自分の書き込み」状態を保持するため、別画面へ移動してスレを開き直しても書き込み印が消えません。\n\n### 実機確認\n\n- 公開済み`1.3.8`から、設定と古いTalk書き込みキーを残したまま`1.3.9`へ上書きし、古いキーだけが一度削除されることを確認しました。\n- Talkのテストスレへ実際に投稿し、別画面へ移動後に同じスレを開き直しても投稿レスと自分の書き込み印が残ることを確認しました。\n- Talk読取APIの反映前はローカルDATとIDXを保持し、反映後は不足した1レスだけを追記することを確認しました。\n- `divide by zero`、クラッシュは発生していません。\n\n### 対応バージョン\n\n- ChMate `0.8.10.191 dev`\n- ChMate `0.8.10.226 dev`\n- ChMate `0.8.10.241`\n- ChMate `0.8.10.243 dev`\n\n4対応版すべてでMPPの適用、APK再構築、署名まで成功することを確認しています。配布MPPはAndroid拡張を内包しています。\n\nよろしければStarだけでもお願いします。励みになります。\n\n### 寄付\n\n- [Amazon Gift Card](https://www.amazon.co.jp/gp/product/B004N3APGO) — Send to `areteruhiro@gmail.com`\n- [PayPay](https://qr.paypay.ne.jp/p2p01_RsY3yQavNdvx74da)\n",
+  "release_tag": "1.3.9",
+  "release_date": "2026-09-22T16:33:46Z",
   "isPreRelease": false
 }
