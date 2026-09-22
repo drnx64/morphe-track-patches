@@ -3,7 +3,7 @@
  */
 import { el, mount } from '../ui.js'
 import * as store from '../store.js'
-import { buildAppIndex, resolveAppName, getAppIconUrl, renderAppIcon } from '../utils/misc.js'
+import { buildAppIndex, resolveAppName, getAppIconUrl, renderAppIcon, suggestFuzzy } from '../utils/misc.js'
 import { getPlayStoreUrl } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { renderTodayUpdates } from './todayUpdates.js'
@@ -58,7 +58,34 @@ export function renderApps(container) {
     }
 
     if (list.length === 0) {
-      grid.appendChild(el('div', { class: 'loading-state' }, ['No apps found.']))
+      const suggestionEl = el('div', { class: 'search-no-results' })
+      if (query) {
+        const suggestions = suggestFuzzy(query, appIndex)
+        if (suggestions.length > 0) {
+          suggestionEl.innerHTML = `<span class="search-no-results-text">No apps found for "${escHtml(query)}".</span>`
+          const didYouMean = el('div', { class: 'search-suggestion' })
+          didYouMean.innerHTML = `Did you mean: `
+          for (let i = 0; i < suggestions.length; i++) {
+            const sug = suggestions[i]
+            const link = el('button', { class: 'search-suggestion-link' }, [sug.name])
+            link.addEventListener('click', () => {
+              searchInput.value = sug.name
+              clearBtn.style.display = ''
+              renderAppsList(sug.name)
+            })
+            didYouMean.appendChild(link)
+            if (i < suggestions.length - 1) {
+              didYouMean.appendChild(document.createTextNode(', '))
+            }
+          }
+          suggestionEl.appendChild(didYouMean)
+        } else {
+          suggestionEl.innerHTML = `<span class="search-no-results-text">No apps found for "${escHtml(query)}".</span>`
+        }
+      } else {
+        suggestionEl.innerHTML = '<span class="search-no-results-text">No apps found.</span>'
+      }
+      grid.appendChild(suggestionEl)
       return
     }
 
@@ -72,15 +99,15 @@ export function renderApps(container) {
         const iconCache = store.get('iconCache') || {}
         const iconHtml = renderAppIcon({ package: app.package, app_name: app.name }, iconCache)
 
-        const bundleNames = app.bundles.map((b) => b.patchesName || b.bundleName).join(', ')
+        const bundleCount = app.bundles.length
         card.innerHTML = `
           <div class="app-card-main">
             ${iconHtml}
             <div class="app-card-info">
               <span class="app-card-name">${escHtml(app.name)}</span>
               <span class="app-card-pkg">${escHtml(app.package)}</span>
-              <span class="app-card-bundles">Bundles: ${escHtml(bundleNames)}</span>
             </div>
+            <span class="app-card-bundle-count">${bundleCount} bundle${bundleCount !== 1 ? 's' : ''}</span>
           </div>
         `
         card.style.cursor = 'pointer'

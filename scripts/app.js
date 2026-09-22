@@ -39,6 +39,7 @@ import * as router from './router.js'
 import { el, mount } from './ui.js'
 import { openAppDetailModal } from './components/appDetailModal.js'
 import { openBundleHistoryModal } from './components/bundleHistoryModal.js'
+import { openBundleModal } from './components/bundleModal.js'
 import { preloadIcons } from './services/iconCache.js'
 
 const SITE_URL = 'https://drnx64.github.io/morphe-tracker'
@@ -314,6 +315,10 @@ window.addEventListener('open-app', (e) => {
 
 window.addEventListener('open-bundle-history', (e) => {
   openBundleHistoryModal(e.detail.bundleName)
+})
+
+window.addEventListener('open-bundle', (e) => {
+  openBundleModal(e.detail)
 })
 
 // ── URL Parameter Deep Linking ──

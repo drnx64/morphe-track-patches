@@ -32,7 +32,7 @@ export function groupAffectedBundles(affectedBundles) {
   for (const b of affectedBundles) {
     const bName = b.bundle
     if (!grouped[bName]) {
-      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: b.version || '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [], previous_version: b.previous_version || '', new_version: b.new_version || '' }
+      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: b.version || '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [], previous_version: b.previous_version || '', new_version: b.new_version || '', avatarUrl: b.avatarUrl || '' }
     }
     if (!grouped[bName].channels.includes(b.channel)) {
       grouped[bName].channels.push(b.channel)
@@ -153,6 +153,39 @@ export function renderAppIcon(app, iconCache, size = 'default') {
   }
   const name = app.app_name || app.package || '?'
   return `<div class="app-icon app-icon--fallback${sizeClass}">${name.charAt(0).toUpperCase()}</div>`
+}
+
+export function levenshteinDistance(a, b) {
+  const m = a.length
+  const n = b.length
+  const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0))
+  for (let i = 0; i <= m; i++) dp[i][0] = i
+  for (let j = 0; j <= n; j++) dp[0][j] = j
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1
+      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost)
+    }
+  }
+  return dp[m][n]
+}
+
+export function suggestFuzzy(query, appList, maxSuggestions = 3) {
+  if (!query || appList.length === 0) return []
+  const q = query.toLowerCase()
+  const scored = appList.map((app) => {
+    const name = app.name.toLowerCase()
+    const pkg = app.package.toLowerCase()
+    let distance = levenshteinDistance(q, name)
+    if (distance > q.length) distance = levenshteinDistance(q, pkg)
+    return { app, distance }
+  })
+  scored.sort((a, b) => a.distance - b.distance)
+  const threshold = Math.max(2, Math.floor(q.length * 0.4))
+  return scored
+    .filter((s) => s.distance <= threshold)
+    .slice(0, maxSuggestions)
+    .map((s) => s.app)
 }
 
 let versionsCache = null

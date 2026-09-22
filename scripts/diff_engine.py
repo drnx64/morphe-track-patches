@@ -220,6 +220,7 @@ def diff_snapshots():
                 "patches_name": new_rec.get("patches_name", ""),
                 "previous_version": "",
                 "new_version": new_rec.get("version", ""),
+                "avatarUrl": new_rec.get("avatarUrl", ""),
             })
         else:
             # Scenario C: Existing bundle — check fingerprint
@@ -307,6 +308,7 @@ def diff_snapshots():
                         "extra_badges": extra_badges,
                         "previous_version": old_ver,
                         "new_version": new_ver,
+                        "avatarUrl": new_rec.get("avatarUrl", ""),
                     })
                 else:
                     print(f"[*] Diff: Bundle {bundle_key} fingerprint changed but no app-level changes. Skipping.")
@@ -334,7 +336,8 @@ def diff_snapshots():
                 "badge_type": "REMOVED BUNDLE",
                 "apps": removed_apps,
                 "repo_url": old_rec.get("repo_url", ""),
-                "patches_name": old_rec.get("patches_name", "")
+                "patches_name": old_rec.get("patches_name", ""),
+                "avatarUrl": old_rec.get("avatarUrl", ""),
             })
 
     has_changes = len(affected_bundles) > 0

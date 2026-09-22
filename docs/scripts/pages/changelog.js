@@ -10,6 +10,21 @@ export function renderChangelog(container) {
   const page = el('div', { class: 'changelog-page' })
   page.appendChild(el('h2', { class: 'section-title' }, ['Changelog']))
 
+  const telegramBanner = el('div', { class: 'changelog-telegram' })
+  telegramBanner.innerHTML = `
+    <div class="changelog-telegram-content">
+      <span class="changelog-telegram-icon">📢</span>
+      <div class="changelog-telegram-text">
+        <span class="changelog-telegram-title">Stay updated!</span>
+        Join our Telegram channel for real-time changelog updates.
+      </div>
+      <a href="https://t.me/morphepatchtracker" target="_blank" rel="noopener" class="changelog-telegram-link">
+        Open Telegram →
+      </a>
+    </div>
+  `
+  page.appendChild(telegramBanner)
+
   const changelog = store.get('changelog') || []
 
   if (changelog.length === 0) {

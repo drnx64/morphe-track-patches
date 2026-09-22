@@ -1,5 +1,5 @@
 /**
- * AppDetailModal — shows app info, bundles, patches, and Add to Morphe link.
+ * AppDetailModal — tabbed layout: Bundles | Patches | Changes.
  */
 import { el } from '../ui.js'
 import { openModal } from './modal.js'
@@ -8,13 +8,6 @@ import { resolveAppName, getAppIconUrl } from '../utils/misc.js'
 import { getPlayStoreUrl, getAddMorpheUrl } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 
-/**
- * Open the app detail modal.
- * @param {Object} options
- * @param {Object} options.app - { package, app_name, badge_type, patch_diff }
- * @param {string} options.bundleName
- * @param {string[]} options.channels
- */
 export function openAppDetailModal({ app, bundleName, channels = [] }) {
   if (!app) return
 
@@ -26,7 +19,6 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
   const appName = resolveAppName(app, nameCache)
   const iconUrl = getAppIconUrl({ package: pkg }, iconCache)
 
-  // Find all bundles this app belongs to
   const appBundles = []
   for (const [key, bundle] of Object.entries(bundles)) {
     const bName = key.replace(/:(stable|dev)$/, '')
@@ -42,12 +34,12 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
           patchesName: bundle.patches_name || bName,
           version: bundle.version || '',
           channels: [channel],
+          avatarUrl: bundle.avatarUrl || '',
         })
       }
     }
   }
 
-  // Collect patches from the target bundle (or first bundle found)
   const targetBundle = appBundles.find((b) => b.bundleName === bundleName) || appBundles[0]
   let patches = []
   if (targetBundle) {
@@ -61,10 +53,8 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
     }
   }
 
-  // Build content
   const content = el('div', { class: 'app-detail-content' })
 
-  // App header
   const iconHtml = iconUrl
     ? `<img class="app-detail-icon" src="${escHtml(iconUrl)}" alt="" loading="lazy" onerror="this.style.display='none'">`
     : `<div class="app-detail-icon app-detail-icon--fallback">${appName.charAt(0).toUpperCase()}</div>`
@@ -82,27 +72,49 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
   `
   content.appendChild(headerEl)
 
-  // Bundles section
-  if (appBundles.length > 0) {
-    const bundlesSection = el('div', { class: 'app-detail-section' })
-    bundlesSection.innerHTML = `<h4 class="app-detail-section-title">Bundles</h4>`
-    const bundlesList = el('div', { class: 'app-detail-bundles' })
+  const hasChanges = !!(app.patch_diff && (
+    (app.patch_diff.patches_added || []).length > 0 ||
+    (app.patch_diff.patches_removed || []).length > 0 ||
+    (app.patch_diff.patches_modified || []).length > 0
+  ))
 
+  const tabNames = ['Bundles', 'Patches']
+  if (hasChanges) tabNames.push('Changes')
+
+  const tabsEl = el('div', { class: 'modal-tabs' })
+  const tabContents = {}
+
+  for (const tabName of tabNames) {
+    const tabBtn = el('button', { class: `modal-tab${tabName === 'Bundles' ? ' active' : ''}` }, [tabName])
+    tabsEl.appendChild(tabBtn)
+
+    const tabContent = el('div', { class: `modal-tab-content${tabName === 'Bundles' ? ' active' : ''}` })
+    tabContents[tabName] = tabContent
+
+    tabBtn.addEventListener('click', () => {
+      tabsEl.querySelectorAll('.modal-tab').forEach((t) => t.classList.remove('active'))
+      Object.values(tabContents).forEach((c) => c.classList.remove('active'))
+      tabBtn.classList.add('active')
+      tabContent.classList.add('active')
+    })
+  }
+
+  const bundlesTab = tabContents['Bundles']
+  if (appBundles.length > 0) {
+    const bundlesList = el('div', { class: 'app-detail-bundles' })
     for (const b of appBundles) {
       const channelBadges = b.channels.map((ch) =>
         `<span class="channel-badge ${ch}">${ch}</span>`
       ).join(' ')
-
-      const bundleRow = el('div', { class: 'app-detail-bundle-row' })
-      bundleRow.innerHTML = `
+      const row = el('div', { class: 'app-detail-bundle-row' })
+      row.innerHTML = `
         <div class="app-detail-bundle-info">
+          ${b.avatarUrl ? `<img class="app-detail-bundle-avatar" src="${escHtml(b.avatarUrl)}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
           <span class="app-detail-bundle-name">${escHtml(b.patchesName)}</span>
           ${channelBadges}
           ${b.version ? `<span class="app-detail-bundle-version">v${escHtml(b.version)}</span>` : ''}
         </div>
       `
-
-      // Add to Morphe link
       if (b.repoUrl) {
         const addBtn = el('a', {
           class: 'btn btn--primary btn--sm',
@@ -110,33 +122,24 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
           target: '_blank',
           rel: 'noopener',
         }, ['Add to Morphe'])
-        bundleRow.appendChild(addBtn)
+        row.appendChild(addBtn)
       }
-
-      bundlesList.appendChild(bundleRow)
+      bundlesList.appendChild(row)
     }
-
-    bundlesSection.appendChild(bundlesList)
-    content.appendChild(bundlesSection)
+    bundlesTab.appendChild(bundlesList)
+  } else {
+    bundlesTab.innerHTML = '<div class="empty-state">No bundles found for this app.</div>'
   }
 
-  // Patches section
+  const patchesTab = tabContents['Patches']
   if (patches.length > 0) {
-    const patchesSection = el('div', { class: 'app-detail-section' })
-    patchesSection.innerHTML = `<h4 class="app-detail-section-title">Patches (${patches.length})</h4>`
     const patchesList = el('div', { class: 'app-detail-patches' })
-
     for (const patch of patches) {
       const patchEl = el('div', { class: 'app-detail-patch' })
-
-      const defaultBadge = patch.use
-        ? '<span class="badge badge--default-on">ON</span>'
-        : ''
-
+      const defaultBadge = patch.use ? '<span class="badge badge--default-on">ON</span>' : ''
       const versionsHtml = patch.compatible_versions?.length
         ? `<span class="app-detail-patch-versions">${escHtml(patch.compatible_versions.join(', '))}</span>`
         : '<span class="app-detail-patch-versions app-detail-patch-versions--any">Any version</span>'
-
       patchEl.innerHTML = `
         <div class="app-detail-patch-header">
           <span class="app-detail-patch-name">${escHtml(patch.name)}</span>
@@ -147,17 +150,14 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
       `
       patchesList.appendChild(patchEl)
     }
-
-    patchesSection.appendChild(patchesList)
-    content.appendChild(patchesSection)
+    patchesTab.appendChild(patchesList)
+  } else {
+    patchesTab.innerHTML = '<div class="empty-state">No patch information available.</div>'
   }
 
-  // Patch diff (if this is an UPDATED APP with patch_diff data)
-  if (app.patch_diff) {
-    const diffSection = el('div', { class: 'app-detail-section' })
-    diffSection.innerHTML = `<h4 class="app-detail-section-title">Changes</h4>`
+  if (hasChanges) {
+    const changesTab = tabContents['Changes']
     const diffList = el('div', { class: 'app-detail-diff' })
-
     for (const added of app.patch_diff.patches_added || []) {
       const row = el('div', { class: 'app-detail-diff-row app-detail-diff-row--added' })
       row.innerHTML = `<span class="app-detail-diff-icon">+</span><span>${escHtml(added.name)}</span>`
@@ -174,9 +174,12 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
       row.innerHTML = `<span class="app-detail-diff-icon">~</span><span>${escHtml(modified.name)}<span class="app-detail-diff-changes">${changes}</span></span>`
       diffList.appendChild(row)
     }
+    changesTab.appendChild(diffList)
+  }
 
-    diffSection.appendChild(diffList)
-    content.appendChild(diffSection)
+  content.appendChild(tabsEl)
+  for (const tabContent of Object.values(tabContents)) {
+    content.appendChild(tabContent)
   }
 
   openModal({
