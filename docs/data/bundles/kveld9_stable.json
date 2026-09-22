@@ -2,9 +2,9 @@
   "bundle": "kveld9",
   "channel": "stable",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-09-16T04:23:24Z",
-  "version": "1.31.0",
-  "description": "## [1.31.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.30.1...v1.31.0) (2026-09-16)\n\n### New Features\n\n* **tiktok:** add privacy guards, block floating ad pendants, and harden live stream filtering ([eaba502](https://github.com/kveld9/kveld-morphe-patches/commit/eaba502c52bbc83c9df556b0af2e0a8d1060a1a1)), closes [#33](https://github.com/kveld9/kveld-morphe-patches/issues/33) [#33](https://github.com/kveld9/kveld-morphe-patches/issues/33)",
+  "created_at": "2026-09-17T03:18:28Z",
+  "version": "1.35.0",
+  "description": "## [1.35.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.34.0...v1.35.0) (2026-09-17)\n\n### New Features\n\n* **tiktok:** bypass mandatory login and skip first-launch onboarding ([31ed012](https://github.com/kveld9/kveld-morphe-patches/commit/31ed0122fb4c4b81a14e1005b8d5938dc66609f2))\n* **tiktok:** default SIM region selector spoof target to CH ([b44a749](https://github.com/kveld9/kveld-morphe-patches/commit/b44a74951fd89cd4f22e0cf9ab48faa4e4bb7178))",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -343,6 +343,15 @@
       "package": "com.ss.android.ugc.trill",
       "patches": [
         {
+          "name": "Bypass Mandatory Login",
+          "description": "Neutralizes mandatory login walls, dynamic regional forced login gates, and guest browsing restrictions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.9.3"
+          ]
+        },
+        {
           "name": "Clean Share URL",
           "description": "Strips tracking parameters, user IDs, device fingerprints, and marketing tokens from shared TikTok links.",
           "use": true,
@@ -353,7 +362,7 @@
         },
         {
           "name": "Client-Side AI & Behavioral Profiling Governor",
-          "description": "Neutralizes on-device machine learning inference, Pitaya behavioral profiling tasks, and on-device ad re-ranking.",
+          "description": "Neutralizes on-device machine learning inference (Pitaya), Tako AI chatbot entry points and icons, and AI smart search suggestion clutter.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -425,7 +434,7 @@
         },
         {
           "name": "In-App Browser Privacy Guard",
-          "description": "Neutralizes inline JavaScript tracking injection, DOM monitoring, and AJAX hooking when opening external links inside the in-app WebView.",
+          "description": "Redirects external and third-party web links to the default system browser and neutralizes inline JavaScript tracking, DOM monitoring, and AJAX hooking in residual in-app WebViews.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -516,9 +525,18 @@
           "options": [
             {
               "key": "region",
-              "description": "Two-letter ISO country code for SIM and network country spoofing (e.g. 'US', 'JP', 'GB', 'DE')."
+              "description": "Two-letter ISO country code for SIM and network country spoofing (e.g. 'CH', 'US', 'JP', 'GB')."
             }
           ],
+          "compatible_versions": [
+            "46.9.3"
+          ]
+        },
+        {
+          "name": "Skip First-Launch Onboarding",
+          "description": "Bypasses the entire first-run introduction funnel (interest pickers, swipe tutorials, language prompts, and consent sheets) directly to the feed.",
+          "use": true,
+          "options": [],
           "compatible_versions": [
             "46.9.3"
           ]
@@ -546,6 +564,20 @@
           "description": "Neutralizes background update polling tasks and device ID check routines to prevent forced update popups.",
           "use": true,
           "options": [],
+          "compatible_versions": [
+            "46.9.3"
+          ]
+        },
+        {
+          "name": "Video Quality Governor",
+          "description": "Caps maximum video playback resolution (1080p, 720p, 540p, 480p, 360p) to reduce GPU/MediaCodec load, lower memory retention, and prevent playback buffering.",
+          "use": false,
+          "options": [
+            {
+              "key": "maxQuality",
+              "description": "Select maximum resolution ceiling: 1080 (1080p ExtremelyHigh), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+            }
+          ],
           "compatible_versions": [
             "46.9.3"
           ]
@@ -676,6 +708,15 @@
       "package": "com.zhiliaoapp.musically",
       "patches": [
         {
+          "name": "Bypass Mandatory Login",
+          "description": "Neutralizes mandatory login walls, dynamic regional forced login gates, and guest browsing restrictions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.9.3"
+          ]
+        },
+        {
           "name": "Clean Share URL",
           "description": "Strips tracking parameters, user IDs, device fingerprints, and marketing tokens from shared TikTok links.",
           "use": true,
@@ -686,7 +727,7 @@
         },
         {
           "name": "Client-Side AI & Behavioral Profiling Governor",
-          "description": "Neutralizes on-device machine learning inference, Pitaya behavioral profiling tasks, and on-device ad re-ranking.",
+          "description": "Neutralizes on-device machine learning inference (Pitaya), Tako AI chatbot entry points and icons, and AI smart search suggestion clutter.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -758,7 +799,7 @@
         },
         {
           "name": "In-App Browser Privacy Guard",
-          "description": "Neutralizes inline JavaScript tracking injection, DOM monitoring, and AJAX hooking when opening external links inside the in-app WebView.",
+          "description": "Redirects external and third-party web links to the default system browser and neutralizes inline JavaScript tracking, DOM monitoring, and AJAX hooking in residual in-app WebViews.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -849,9 +890,18 @@
           "options": [
             {
               "key": "region",
-              "description": "Two-letter ISO country code for SIM and network country spoofing (e.g. 'US', 'JP', 'GB', 'DE')."
+              "description": "Two-letter ISO country code for SIM and network country spoofing (e.g. 'CH', 'US', 'JP', 'GB')."
             }
           ],
+          "compatible_versions": [
+            "46.9.3"
+          ]
+        },
+        {
+          "name": "Skip First-Launch Onboarding",
+          "description": "Bypasses the entire first-run introduction funnel (interest pickers, swipe tutorials, language prompts, and consent sheets) directly to the feed.",
+          "use": true,
+          "options": [],
           "compatible_versions": [
             "46.9.3"
           ]
@@ -882,13 +932,28 @@
           "compatible_versions": [
             "46.9.3"
           ]
+        },
+        {
+          "name": "Video Quality Governor",
+          "description": "Caps maximum video playback resolution (1080p, 720p, 540p, 480p, 360p) to reduce GPU/MediaCodec load, lower memory retention, and prevent playback buffering.",
+          "use": false,
+          "options": [
+            {
+              "key": "maxQuality",
+              "description": "Select maximum resolution ceiling: 1080 (1080p ExtremelyHigh), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+            }
+          ],
+          "compatible_versions": [
+            "46.9.3"
+          ]
         }
       ]
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "57e0bd20d5b48bf52d2584deeed1d47b5c876ddab6a9c5cf7adf6033b30faf49",
-  "release_notes": "## [1.31.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.30.1...v1.31.0) (2026-09-16)\n\n### New Features\n\n* **tiktok:** add privacy guards, block floating ad pendants, and harden live stream filtering ([eaba502](https://github.com/kveld9/kveld-morphe-patches/commit/eaba502c52bbc83c9df556b0af2e0a8d1060a1a1)), closes [#33](https://github.com/kveld9/kveld-morphe-patches/issues/33)",
-  "release_tag": "v1.31.0",
-  "release_date": "2026-09-16T04:23:24Z"
+  "fingerprint": "b8e0917dda4fb15b404ebef20717e621f227785880cc357fec738faa8c390885",
+  "release_notes": "## [1.35.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.34.0...v1.35.0) (2026-09-17)\n\n### New Features\n\n* **tiktok:** bypass mandatory login and skip first-launch onboarding ([31ed012](https://github.com/kveld9/kveld-morphe-patches/commit/31ed0122fb4c4b81a14e1005b8d5938dc66609f2))\n* **tiktok:** default SIM region selector spoof target to CH ([b44a749](https://github.com/kveld9/kveld-morphe-patches/commit/b44a74951fd89cd4f22e0cf9ab48faa4e4bb7178))\n",
+  "release_tag": "v1.35.0",
+  "release_date": "2026-09-17T03:18:28Z",
+  "isPreRelease": false
 }

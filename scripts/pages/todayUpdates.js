@@ -213,14 +213,14 @@ function applyCollapsed(section, body, summaryEl, isCollapsed) {
     section.classList.add('collapsed')
     body.style.maxHeight = '0'
     body.style.overflow = 'hidden'
+    summaryEl.classList.remove('today-updates-summary--hidden')
     summaryEl.style.maxHeight = summaryEl.scrollHeight + 'px'
     summaryEl.style.overflow = ''
   } else {
     section.classList.remove('collapsed')
     body.style.maxHeight = ''
     body.style.overflow = ''
-    summaryEl.style.maxHeight = '0'
-    summaryEl.style.overflow = 'hidden'
+    summaryEl.classList.add('today-updates-summary--hidden')
   }
 }
 
@@ -237,7 +237,8 @@ function setupToggle(section, body, summaryEl, toggleBtn) {
         body.style.maxHeight = '0'
         body.style.overflow = 'hidden'
       })
-      // Expand summary
+      // Show summary
+      summaryEl.classList.remove('today-updates-summary--hidden')
       summaryEl.style.maxHeight = summaryEl.scrollHeight + 'px'
       summaryEl.style.overflow = ''
     } else {
@@ -247,12 +248,8 @@ function setupToggle(section, body, summaryEl, toggleBtn) {
       setTimeout(() => {
         body.style.maxHeight = ''
       }, 300)
-      // Collapse summary
-      summaryEl.style.maxHeight = summaryEl.scrollHeight + 'px'
-      requestAnimationFrame(() => {
-        summaryEl.style.maxHeight = '0'
-        summaryEl.style.overflow = 'hidden'
-      })
+      // Hide summary
+      summaryEl.classList.add('today-updates-summary--hidden')
     }
   })
 }

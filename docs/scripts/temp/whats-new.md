@@ -1,39 +1,42 @@
 📣 <b>Today's Updates</b>
-📅 September 16, 2026
+📅 September 17, 2026
 
 🟩 <b>NEW BUNDLES</b> 🟩
 
-💠 <b>Ahmed Yarub's Patches</b>
-    ▪️ <b>Instagram</b>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.instagram.android&patch=Bypass%20signature%20check">Bypass signature check</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.instagram.android&patch=Disable%20analytics">Disable analytics</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.instagram.android&patch=Disable%20screenshot%20detection">Disable screenshot detection</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.instagram.android&patch=Download%20media">Download media</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.instagram.android&patch=Download%20voice%20message">Download voice message</a>
-        💡 +10 more
-    ▪️ <b>Reddit</b>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.reddit.frontpage&patch=Remove%20Reddit%20Pro%20section">Remove Reddit Pro section</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.reddit.frontpage&patch=Remove%20Resources%20and%20Games%20on%20Reddit%20sections">Remove Resources and Games on Reddit sections</a>
-
-💠 <b>ajstrick81 Patches</b>
-    ▪️ <b>Prime Video</b>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.amazon.amazonvideo.livingroom&patch=Bundle%20native%20ad-strip%20hook">Bundle native ad-strip hook</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.amazon.amazonvideo.livingroom&patch=Clone%20Prime%20Video">Clone Prime Video</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.amazon.amazonvideo.livingroom&patch=Disable%20auto-updates">Disable auto-updates</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.amazon.amazonvideo.livingroom&patch=Load%20native%20ad-strip%20hook">Load native ad-strip hook</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.amazon.amazonvideo.livingroom&patch=Override%20certificate%20pinning">Override certificate pinning</a>
+💠 <b>Morphe Photo Patches</b>
+    ▪️ <b>Google Photos</b>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=com.google.android.apps.photos&patch=Account%20avatar">Account avatar</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=com.google.android.apps.photos&patch=Bake%20memory%20style%20flags">Bake memory style flags</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=com.google.android.apps.photos&patch=Enable%20DCIM%20folders%20backup%20control">Enable DCIM folders backup control</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=com.google.android.apps.photos&patch=Enable%20Phenotype%20flag%20manager">Enable Phenotype flag manager</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=com.google.android.apps.photos&patch=GmsCore%20support">GmsCore support</a>
         💡 +2 more
-    ▪️ <b>MLB</b>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.bamnetworks.mobile.android.gameday.atbat&patch=MLB%20At%20Bat%20Android%20TV">MLB At Bat Android TV</a>
-    ▪️ <b>Paramount+</b>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.cbs.ott&patch=Paramount%2B%20Android%20TV">Paramount+ Android TV</a>
-    ▪️ <b>Disney+</b>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.disney.disneyplus&patch=Disney%2B%20Android%20TV">Disney+ Android TV</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.disney.disneyplus&patch=Suppress%20Household%20Prompt">Suppress Household Prompt</a>
-    ▪️ <b>ESPN</b>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.espn.score_center&patch=Clone%20ESPN">Clone ESPN</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.espn.score_center&patch=Disable%20auto-updates">Disable auto-updates</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.espn.score_center&patch=ESPN%20Android%20TV">ESPN Android TV</a>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.espn.score_center&patch=ESPN%20live%20commercial-break%20slate">ESPN live commercial-break slate</a>
-    ▪️ <b>FOX One: Live News, Sports, TV</b>
-        🆕 <a href="https://morphe-patches-drnx64.vercel.app/?open-app=com.fox.foxone&patch=Skip%20ads">Skip ads</a>
+
+💠 <b>Travian Notifier Patches</b>
+    ▪️ <b>Travian: Legends Strategy MMO</b>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=com.traviangames.travianlegendsmobile&patch=Build%2Ftroop%20queue%20notifications">Build/troop queue notifications</a>
+
+💠 <b>Telegram Patches</b>
+    ▪️ <b>Telegram</b>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger&patch=Access%20banned%20channels">Access banned channels</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger&patch=Allow%20forwarding%2Fsaving%20restricted%20media">Allow forwarding/saving restricted media</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger&patch=Bypass%20isRestrictedMessage">Bypass isRestrictedMessage</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger&patch=Delete%20Account%20dialog">Delete Account dialog</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger&patch=Disable%20marking%20stories%20as%20read">Disable marking stories as read</a>
+        💡 +15 more
+    ▪️ <b>org.telegram.messenger.beta</b>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.beta&patch=Access%20banned%20channels">Access banned channels</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.beta&patch=Allow%20forwarding%2Fsaving%20restricted%20media">Allow forwarding/saving restricted media</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.beta&patch=Bypass%20isRestrictedMessage">Bypass isRestrictedMessage</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.beta&patch=Delete%20Account%20dialog">Delete Account dialog</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.beta&patch=Disable%20marking%20stories%20as%20read">Disable marking stories as read</a>
+        💡 +15 more
+    ▪️ <b>org.telegram.messenger.web</b>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.web&patch=Access%20banned%20channels">Access banned channels</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.web&patch=Allow%20forwarding%2Fsaving%20restricted%20media">Allow forwarding/saving restricted media</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.web&patch=Bypass%20isRestrictedMessage">Bypass isRestrictedMessage</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.web&patch=Delete%20Account%20dialog">Delete Account dialog</a>
+        🆕 <a href="https://drnx64.github.io/morphe-tracker/?open-app=org.telegram.messenger.web&patch=Disable%20marking%20stories%20as%20read">Disable marking stories as read</a>
+        💡 +15 more
+
+🟦 <b>UPDATED BUNDLES : NEW APPS</b> 🟦

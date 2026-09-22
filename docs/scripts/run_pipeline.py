@@ -4,6 +4,7 @@ FETCH → PARSE → DIFF → ACCUMULATE → PUBLISH
 """
 import os
 import sys
+import time
 import traceback
 from datetime import datetime, timezone
 
@@ -29,6 +30,7 @@ from fetch_patches_names import fetch_patches_names
 from diff_engine import generate_bundle_fingerprints, diff_snapshots
 from merge_daily_buffer import update_daily_buffer_run, write_data_files
 from update_release_cache import update_release_cache
+import repoInfo
 
 
 def _update_last_run_success(start_time: datetime):
@@ -76,6 +78,34 @@ def run():
 
         log.info("STEP 3b: Fetching patches names")
         fetch_patches_names()
+
+        # ── REPO INFO (avatars, stars, descriptions) ──
+        log.info("STEP 3c: Fetching repo metadata (avatars, stars)")
+        try:
+            index_path = os.path.join(STATE_DIR, "..", "bundles", "_index.json")
+            bundle_index = load_json(index_path, default=[])
+            if bundle_index:
+                cache_path = os.path.join(STATE_DIR, "repo_cache.json")
+                repo_cache = load_json(cache_path, default={})
+                now_ts = time.time()
+                CACHE_TTL = 30 * 24 * 3600  # 30 days
+
+                fresh_urls = {url for url, entry in repo_cache.items()
+                              if now_ts - entry.get("fetched_at", 0) < CACHE_TTL}
+                stale_entries = [e for e in bundle_index
+                                 if e.get("repo_url", "") and e["repo_url"] not in fresh_urls]
+
+                if stale_entries:
+                    log.info(f"  Fetching {len(stale_entries)} repos (cache miss)")
+                    fresh_results = repoInfo.process(stale_entries)
+                    for url, meta in fresh_results.items():
+                        repo_cache[url] = {**meta, "fetched_at": now_ts}
+                    save_json(cache_path, repo_cache)
+                    repoInfo.update_bundle_files(fresh_results)
+                else:
+                    log.info("  All repos fresh in cache, skipping API calls")
+        except Exception as e:
+            log.warning(f"  Repo info fetch failed (non-fatal): {e}")
 
         # ── DIFF ──
         log.info("STEP 4: Fingerprinting + diffing")

@@ -5,6 +5,7 @@ import { el, mount } from '../ui.js'
 import * as store from '../store.js'
 import { renderAppIcon } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
+import { TELEGRAM_ICON, ARROW_LEFT, ARROW_RIGHT } from '../utils/svg.js'
 
 export function renderChangelog(container) {
   const page = el('div', { class: 'changelog-page' })
@@ -12,16 +13,19 @@ export function renderChangelog(container) {
 
   const telegramBanner = el('div', { class: 'changelog-telegram' })
   telegramBanner.innerHTML = `
-    <div class="changelog-telegram-content">
-      <span class="changelog-telegram-icon">📢</span>
-      <div class="changelog-telegram-text">
-        <span class="changelog-telegram-title">Stay updated!</span>
-        Join our Telegram channel for real-time changelog updates.
+    <div class="changelog-telegram-inner">
+      <div class="changelog-telegram-icon-wrap">
+        ${TELEGRAM_ICON}
       </div>
-      <a href="https://t.me/morphepatchtracker" target="_blank" rel="noopener" class="changelog-telegram-link">
-        Open Telegram →
+      <div class="changelog-telegram-body">
+        <span class="changelog-telegram-title">Stay updated!</span>
+        <span class="changelog-telegram-subtitle">Get real-time patch changelog updates in your pocket.</span>
+      </div>
+      <a href="https://t.me/morphepatchtracker" target="_blank" rel="noopener" class="changelog-telegram-cta">
+        Join
       </a>
     </div>
+    <span class="changelog-telegram-hint">Free · No spam · Leave anytime</span>
   `
   page.appendChild(telegramBanner)
 
@@ -61,7 +65,7 @@ export function renderChangelog(container) {
         bundleEl.appendChild(el('span', { class: 'changelog-bundle-name' }, [bundle.patches_name || bundle.bundle]))
 
         for (const app of bundle.apps || []) {
-          const appEl = el('div', { class: 'changelog-app' })
+          const appEl = el('div', { class: 'changelog-app changelog-app--clickable' })
           const badgeClass = app.badge_type ? `badge--${app.badge_type.toLowerCase().replace(/\s+/g, '-')}` : ''
           const iconHtml = renderAppIcon(app, iconCache, 'sm')
           appEl.innerHTML = `
@@ -69,6 +73,21 @@ export function renderChangelog(container) {
             ${iconHtml}
             <span class="changelog-app-name">${escHtml(app.app_name || app.package)}</span>
           `
+          appEl.style.cursor = 'pointer'
+          appEl.setAttribute('role', 'button')
+          appEl.setAttribute('tabindex', '0')
+          const openApp = () => {
+            window.dispatchEvent(new CustomEvent('open-app', {
+              detail: {
+                app: { package: app.package, app_name: app.app_name },
+                bundleName: bundle.bundle || '',
+              },
+            }))
+          }
+          appEl.addEventListener('click', openApp)
+          appEl.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openApp() }
+          })
           bundleEl.appendChild(appEl)
         }
         dayEl.appendChild(bundleEl)
@@ -79,13 +98,15 @@ export function renderChangelog(container) {
     // Pagination
     if (totalPages > 1) {
       if (currentPage > 0) {
-        const prevBtn = el('button', { class: 'pagination-btn' }, ['← Previous'])
+        const prevBtn = el('button', { class: 'pagination-btn pagination-btn--prev' })
+        prevBtn.innerHTML = `${ARROW_LEFT} Previous`
         prevBtn.addEventListener('click', () => { currentPage--; renderPage() })
         pagination.appendChild(prevBtn)
       }
       pagination.appendChild(el('span', { class: 'pagination-info' }, [`Page ${currentPage + 1} of ${totalPages}`]))
       if (currentPage < totalPages - 1) {
-        const nextBtn = el('button', { class: 'pagination-btn' }, ['Next →'])
+        const nextBtn = el('button', { class: 'pagination-btn pagination-btn--next' })
+        nextBtn.innerHTML = `Next ${ARROW_RIGHT}`
         nextBtn.addEventListener('click', () => { currentPage++; renderPage() })
         pagination.appendChild(nextBtn)
       }

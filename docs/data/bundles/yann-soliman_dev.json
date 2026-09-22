@@ -2,10 +2,34 @@
   "bundle": "yann-soliman",
   "channel": "dev",
   "repo_url": "https://github.com/yann-soliman/morphe-patches",
-  "created_at": "2026-09-16T07:50:53Z",
-  "version": "1.3.0-dev.7",
-  "description": "## [1.2.1](https://github.com/yann-soliman/morphe-patches/compare/v1.2.0...v1.2.1) (2026-09-09)\n\n### 🐛 Bug Fixes\n\n* clear release artifacts without Gradle ([f385b95](https://github.com/yann-soliman/morphe-patches/commit/f385b955af2bdc1964048e073c91b184ce60e40a))\n* publish only the current release artifact ([7eacab0](https://github.com/yann-soliman/morphe-patches/commit/7eacab05d4a5aeca22db23a7c7a839cb941f2d0e))\n* separate personal calendar patch from public bundle ([5e9aa91](https://github.com/yann-soliman/morphe-patches/commit/5e9aa917b14cfb149f1f6e17566407f91bc224ad))\n* verify release publication and handle promotion fallback ([287aeb5](https://github.com/yann-soliman/morphe-patches/commit/287aeb574a1a92eee8327bf45857fa3480ad7bad))",
+  "created_at": "2026-09-16T21:20:06Z",
+  "version": "1.5.0-dev.1",
+  "description": "## [1.4.0](https://github.com/yann-soliman/morphe-patches/compare/v1.3.0...v1.4.0) (2026-09-16)\n\n### ✨ New Features\n\n* **leboncoin:** add ad removal patch ([#28](https://github.com/yann-soliman/morphe-patches/issues/28)) ([3f710bf](https://github.com/yann-soliman/morphe-patches/commit/3f710bf46912f2f0635161f9341b80df42fb82e5))",
   "apps": [
+    {
+      "app_name": "Meteo Consult",
+      "package": "com.meteoconsult.androidapp",
+      "patches": [
+        {
+          "name": "Meteo Consult: disable video autoplay",
+          "description": "Open weather videos paused; manual play still works. Ad videos are handled by the cleanup patch. Meteo Consult 1.1.4 only.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.1.4"
+          ]
+        },
+        {
+          "name": "Meteo Consult: remove ads and subscription prompts",
+          "description": "Remove advertisements and automatic subscription prompts, including the end-of-forecast screen. Also bypass the Play installation check for locally signed builds. Meteo Consult 1.1.4 only. Does not unlock or extend forecasts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.1.4"
+          ]
+        }
+      ]
+    },
     {
       "app_name": "Keepcool",
       "package": "fr.keepcool.memberapp",
@@ -29,11 +53,28 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "Leboncoin",
+      "package": "fr.leboncoin",
+      "patches": [
+        {
+          "name": "Leboncoin: remove ads",
+          "description": "Use Leboncoin's built-in ad-free paths to suppress banners, native ads and interstitials. Supports Leboncoin 100.124.1 and 100.125.0.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "100.124.1",
+            "100.125.0"
+          ]
+        }
+      ]
     }
   ],
   "patches_name": "yann-soliman",
-  "fingerprint": "e02263242d35c4dbc89bcb81ee7e335b10734ad8e092a572df7d3e35e7d1084f",
-  "release_notes": "## [1.3.0-dev.7](https://github.com/yann-soliman/morphe-patches/compare/v1.3.0-dev.6...v1.3.0-dev.7) (2026-09-16)\n\n### 🐛 Bug Fixes\n\n* **meteoconsult:** set autoplay flag at call site ([31dd6b6](https://github.com/yann-soliman/morphe-patches/commit/31dd6b6a0ee53882a3304d891e034813862bb1c0))\n",
-  "release_tag": "v1.3.0-dev.7",
-  "release_date": "2026-09-16T07:50:53Z"
+  "fingerprint": "fbbaab6ba62fea24776dbfc6a589a30a1bf861c94f4c3c88f3e752c4c140c301",
+  "release_notes": "## [1.5.0-dev.1](https://github.com/yann-soliman/morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-09-16)\n\n### 🐛 Bug Fixes\n\n* **marine:** remove ineffective forecast patch ([08c54e6](https://github.com/yann-soliman/morphe-patches/commit/08c54e6e3458ffd7cd5b205b2b505a091644f58a))\n* **meteoconsult:** consolidate cleanup into one patch ([b01e7ba](https://github.com/yann-soliman/morphe-patches/commit/b01e7ba4381d2f9a2a5418f9fc868a7cf17de4e5))\n* **meteoconsult:** consolidate cleanup into one patch ([#19](https://github.com/yann-soliman/morphe-patches/issues/19)) ([e471ed7](https://github.com/yann-soliman/morphe-patches/commit/e471ed7574104752a51d27cf4d6a8ff29904a34b))\n* **meteoconsult:** preserve required SDK startup ([4ef9264](https://github.com/yann-soliman/morphe-patches/commit/4ef9264bc0211d36a8f30cbcf11dbd41f94d3924))\n* **meteoconsult:** prevent Play redirect on local startup ([8194186](https://github.com/yann-soliman/morphe-patches/commit/819418658293e87c1a608beb165589aa6390bbfc))\n* **meteoconsult:** remove obsolete duplicate source directory ([8b75b40](https://github.com/yann-soliman/morphe-patches/commit/8b75b405827524d816c6b549049402762fe482ae))\n* **meteoconsult:** set autoplay flag at call site ([31dd6b6](https://github.com/yann-soliman/morphe-patches/commit/31dd6b6a0ee53882a3304d891e034813862bb1c0))\n* **meteoconsult:** suppress launch offer popup ([a1ebc8b](https://github.com/yann-soliman/morphe-patches/commit/a1ebc8bd1f8ac523afab9da2c4b460c922612800))\n\n### ✨ New Features\n\n* **leboncoin:** add ad removal patch ([40edf2d](https://github.com/yann-soliman/morphe-patches/commit/40edf2d2ba116e3b5092879b9c298c0a37331cbc))\n* **leboncoin:** add privacy mode ([#29](https://github.com/yann-soliman/morphe-patches/issues/29)) ([e618509](https://github.com/yann-soliman/morphe-patches/commit/e618509d60b31172d6d97bcf945da7750a3385fe))\n* **leboncoin:** support version 100.125.0 ([#27](https://github.com/yann-soliman/morphe-patches/issues/27)) ([7725b0e](https://github.com/yann-soliman/morphe-patches/commit/7725b0e344b0733f5f676c9f70b95df568440e80))\n* **marine:** remove local hourly forecast subscription screen ([ab53cf1](https://github.com/yann-soliman/morphe-patches/commit/ab53cf18a95ffcde5db0e1b841a3b6a3f69dc825))\n* **meteoconsult:** add privacy and video controls ([22dea9f](https://github.com/yann-soliman/morphe-patches/commit/22dea9f24143f356fd2882f685e87f3cc6b9b715))\n* **meteoconsult:** remove ads and subscription promotions ([363a84c](https://github.com/yann-soliman/morphe-patches/commit/363a84cab77bc5a38e610c19c08e1d9e50f96217))\n* **meteoconsult:** remove ads and subscription promotions ([#18](https://github.com/yann-soliman/morphe-patches/issues/18)) ([1ea23f4](https://github.com/yann-soliman/morphe-patches/commit/1ea23f44750753e0a0996cbb34e161a9a3a7b357))\n* **meteoconsult:** suppress automatic forecast end subscription prompt ([a3dc07e](https://github.com/yann-soliman/morphe-patches/commit/a3dc07ee7d860a7ce8fbe2286ee0e12b750ef0aa))\n",
+  "release_tag": "v1.5.0-dev.1",
+  "release_date": "2026-09-16T21:20:06Z",
+  "isPreRelease": true
 }

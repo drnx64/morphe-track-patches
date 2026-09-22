@@ -8,7 +8,7 @@ import * as store from '../store.js'
 import { resolveAppName, getAppIconUrl, copyToClipboard } from '../utils/misc.js'
 import { getPlayStoreUrl, getAddMorpheUrl } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
-import { CLOSE_ICON, CHEVRON_DOWN } from '../utils/svg.js'
+import { CLOSE_ICON, CHEVRON_DOWN, CHEVRON_RIGHT } from '../utils/svg.js'
 
 const PLAY_STORE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M.859 11.981V1.741c0-.672.79-1.098 1.434-.771L12.37 6.09c.662.336.662 1.207 0 1.543l-10.077 5.12c-.644.327-1.434-.099-1.434-.772M9.23 9.23l-8.1-8.101m8.1 3.364l-8.1 8.1"/></svg>'
 
@@ -251,25 +251,78 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
   }
 
   if (appBundles.length > 0) {
-    const bundleSelect = el('select', { class: 'app-detail-patches-select', 'aria-label': 'Select bundle' })
-    for (const b of appBundles) {
-      const channelStr = b.channels.join(', ')
-      const label = `${b.patchesName} (${channelStr})${b.version ? ` v${b.version}` : ''}`
-      const option = el('option', { value: b.bundleName }, [label])
-      if (targetBundle && b.bundleName === targetBundle.bundleName) {
-        option.selected = true
-      }
-      bundleSelect.appendChild(option)
+    let currentBundle = targetBundle || appBundles[0]
+
+    function getBundleLabel(b) {
+      return `${escHtml(b.patchesName)}${b.version ? ` v${escHtml(b.version)}` : ''}`
     }
 
-    bundleSelect.addEventListener('change', () => {
-      const selectedName = bundleSelect.value
-      const selectedBundle = appBundles.find((b) => b.bundleName === selectedName)
-      if (selectedBundle) renderPatchesForBundle(selectedBundle)
+    const dropdownWrapper = el('div', { class: 'app-detail-bundle-dropdown' })
+    const trigger = el('button', { class: 'app-detail-bundle-dropdown-trigger', type: 'button', 'aria-haspopup': 'listbox', 'aria-expanded': 'false' })
+    const triggerLabel = el('span', { class: 'app-detail-bundle-dropdown-label' })
+    const triggerChevron = el('span', { class: 'app-detail-bundle-dropdown-chevron', dangerouslySetInnerHTML: CHEVRON_DOWN })
+    trigger.appendChild(triggerLabel)
+    trigger.appendChild(triggerChevron)
+
+    const menu = el('div', { class: 'app-detail-bundle-dropdown-menu', role: 'listbox' })
+
+    function updateTrigger() {
+      const chBadges = currentBundle.channels.map((ch) =>
+        `<span class="channel-badge channel-badge--sm ${ch}">${ch}</span>`
+      ).join('')
+      triggerLabel.innerHTML = `${getBundleLabel(currentBundle)} ${chBadges}`
+    }
+
+    function renderMenu() {
+      menu.replaceChildren()
+      for (const b of appBundles) {
+        const isActive = b.bundleName === currentBundle.bundleName
+        const option = el('div', {
+          class: `app-detail-bundle-dropdown-option${isActive ? ' active' : ''}`,
+          role: 'option',
+          'aria-selected': String(isActive),
+        })
+        const chBadges = b.channels.map((ch) =>
+          `<span class="channel-badge channel-badge--sm ${ch}">${ch}</span>`
+        ).join(' ')
+        option.innerHTML = `
+          <span class="app-detail-bundle-dropdown-option-name">${escHtml(b.patchesName)}</span>
+          <span class="app-detail-bundle-dropdown-option-meta">${chBadges}${b.version ? ` v${escHtml(b.version)}` : ''}</span>
+        `
+        option.addEventListener('click', () => {
+          currentBundle = b
+          updateTrigger()
+          renderMenu()
+          renderPatchesForBundle(b)
+          closeDropdown()
+        })
+        menu.appendChild(option)
+      }
+    }
+
+    function openDropdown() {
+      renderMenu()
+      menu.classList.add('open')
+      trigger.setAttribute('aria-expanded', 'true')
+    }
+    function closeDropdown() {
+      menu.classList.remove('open')
+      trigger.setAttribute('aria-expanded', 'false')
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation()
+      menu.classList.contains('open') ? closeDropdown() : openDropdown()
+    })
+    document.addEventListener('click', (e) => {
+      if (!dropdownWrapper.contains(e.target)) closeDropdown()
     })
 
-    patchesTab.appendChild(bundleSelect)
-    renderPatchesForBundle(targetBundle || appBundles[0])
+    updateTrigger()
+    dropdownWrapper.appendChild(trigger)
+    dropdownWrapper.appendChild(menu)
+    patchesTab.appendChild(dropdownWrapper)
+    renderPatchesForBundle(currentBundle)
     patchesTab.appendChild(patchesList)
   } else {
     patchesTab.innerHTML = '<div class="empty-state">No patch information available.</div>'

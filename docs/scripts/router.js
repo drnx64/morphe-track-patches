@@ -74,6 +74,7 @@ function handleHashChange() {
       } catch (e) {
         console.error(`[router] Error in handler for ${route.name}:`, e)
       }
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       return
     }
   }
@@ -83,6 +84,8 @@ function handleHashChange() {
   } else {
     console.warn(`[router] No route matched: ${path}`)
   }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 /**

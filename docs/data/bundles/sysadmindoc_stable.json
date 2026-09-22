@@ -2,9 +2,9 @@
   "bundle": "sysadmindoc",
   "channel": "stable",
   "repo_url": "https://github.com/SysAdminDoc/hushfeed",
-  "created_at": "2026-09-16T06:13:06Z",
-  "version": "0.36.0",
-  "description": "Hushfeed v0.36.0 targets global TikTok 46.2.3 (com.zhiliaoapp.musically).\n\nPlayback quality now reaches the player. The setting picked a gear out of the video model's own list and reported it, but TikTok's player builds its models from a different list the patch left alone, so every video still played at whatever quality the player chose. The choice is now made where the player reads its list, and the diagnostic report names that spot. Every patch applies on TikTok 46.9.3 as well: fourteen used to fail there because that build marks methods final and stops merging small lambdas into shared classes, and the patches now find their targets by what the code does. The gate report dialog keeps its report open after Copy, saved reports are named by date under Download/Hushfeed, a session hold stops its timer while the app is in the background, and settings rows keep their drawables when the list rebinds them.\n\nValidation: 1372 runtime tests passed locally, plus 215 in the patches module. The bundle carries 81 patches and all three DEX payloads are non-empty. Both Android API checks passed. All patches applied with zero failures to the 46.2.3, 46.7.3, 46.8.3 and 46.9.3 fixtures. Needs Morphe Manager 1.30.0 or newer.\n\nThe downloadable .mpp is the patch bundle. Patch on the device with Morphe Manager and keep its existing signing key.",
+  "created_at": "2026-09-16T17:40:08Z",
+  "version": "0.39.0",
+  "description": "Hushfeed v0.39.0 targets global TikTok 46.2.3 (com.zhiliaoapp.musically).\n\nTwo tracker fixes. Ads no longer appear while paging through a creator's videos from their profile: TikTok's mid-roll ad component was swapping an ad into the pager in place of the video on screen after every list had loaded, and Remove feed ads now refuses that swap. Hide Tako AI now also hides the Ask strip under a video's caption, which a different component draws from the floating button the switch already covered. Both are checked on the four retained builds and named in the diagnostic export.\n\nValidation: 1374 runtime tests passed locally, plus the patches module suite. The bundle carries 81 patches and all three DEX payloads are non-empty. All patches applied with zero failures to the 46.2.3, 46.7.3, 46.8.3 and 46.9.3 fixtures. Needs Morphe Manager 1.30.0 or newer.\n\nThe downloadable .mpp is the patch bundle. Patch on the device with Morphe Manager and keep its existing signing key.",
   "apps": [
     {
       "app_name": "TikTok",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "AMOLED dark theme",
-          "description": "Replaces TikTok's dark background palette with black or a chosen color. The light theme keeps its colors. Choose this patch to enable it. It is the one patch that rewrites resources, so patching with it on needs the memory limit raised to 768 MB.",
+          "description": "Replaces TikTok's dark background palette with black or a chosen color. The light theme keeps its colors. It is the one patch that rewrites resources, so patching with it on needs the memory limit raised to 768 MB.",
           "use": false,
           "options": [
             {
@@ -70,8 +70,44 @@
           ]
         },
         {
+          "name": "Block P2P video relay",
+          "description": "Strips TikTok's peer-to-peer CDN libraries so your phone is not used as a relay node for other people's video traffic. Saves battery and mobile data.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
           "name": "Block author button",
-          "description": "Adds one-tap controls for blocking the uploader, hiding the uploader locally and blocking the current sound. The local-hide and sound controls have separate switches. Long press any visible control to move it, and all of them hide while comments are open.",
+          "description": "Adds one-tap controls for blocking the creator, hiding them locally and blocking the current sound. The local-hide and sound controls have separate switches. Long press any visible control to move it, and all of them hide while comments are open.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Block contact list access",
+          "description": "Stops TikTok from reading your phone contacts. Find Friends and People you may know lose access to your contact list.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Block installed app scanning",
+          "description": "Stops TikTok from reading the list of apps installed on your phone. TikTok uses this for device fingerprinting and ad targeting.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Camera and microphone indicator",
+          "description": "Shows a small colored dot when TikTok accesses the camera or microphone. Green for camera, orange for microphone. Stays visible until the access ends.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -98,7 +134,7 @@
         },
         {
           "name": "Comment tools",
-          "description": "Hides comments that contain chosen words or come from chosen accounts, turns the thumbs down on each comment into a block button, hides comment media and polls, and adds a box above the comments that narrows them by what they say or who said it.",
+          "description": "Hides comments that contain chosen words or come from chosen accounts, turns the thumbs down on each comment into a block button that shows the block symbol, makes a web address in a comment tappable, hides comment media and polls, and adds a box above the comments that narrows them by what they say or who said it.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -124,18 +160,18 @@
           ]
         },
         {
-          "name": "Core Asset De-bloat",
-          "description": "Empties TikTok's bundled C2PA native libraries and Microblink payment-card OCR assets. Content credentials and card scanning may stop. Choose this patch to enable it.",
-          "use": false,
+          "name": "Custom offline videos limit",
+          "description": "Adds a custom entry to TikTok's offline videos menu with a configurable limit from 1 to 1000 videos.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "46.2.3"
           ]
         },
         {
-          "name": "Custom offline videos limit",
-          "description": "Adds a custom entry to TikTok's offline videos menu with a configurable limit from 1 to 1000 videos.",
-          "use": true,
+          "name": "Device privacy guard",
+          "description": "Blocks TikTok from reading your clipboard contents and scanning devices on your local network. Clipboard writes (copying links you asked for) are not affected.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "46.2.3"
@@ -214,6 +250,15 @@
           ]
         },
         {
+          "name": "Drop the animated image cache",
+          "description": "Makes TikTok's reviewed Fresco animated-frame cache lookups return no cached frame. This can increase decoding work or change animation playback.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
           "name": "Enable voice comments",
           "description": "Turns on TikTok's own voice comment recording and publishing entry points for accounts that do not have them.",
           "use": false,
@@ -251,7 +296,7 @@
         },
         {
           "name": "Feed filter",
-          "description": "Hides feed ads, including videos with creator commission disclosures, TikTok Shop items, livestreams, LIVE replays, stories, photo posts, paid partnerships, AI labelled videos, verified accounts, series, playlists, the playlist bar, the floating event badge and inserted cards. Videos can also be filtered by your own caption words, creator handles or patterns, sound names, length, the country they were posted from and their view, like, comment, favourite and share counts. Sponsored cards are dropped from the profile video viewer, the search grids and the Friends tab as well as the feed.",
+          "description": "Hides feed ads, including videos with creator commission disclosures, TikTok Shop items, livestreams, LIVE replays, stories, photo posts, paid partnerships, AI labeled videos, verified accounts, series, playlists, the playlist bar, the floating event badge and inserted cards. Videos can also be filtered by your own caption words, creator handles or patterns, sound names, length, the country they were posted from and their view, like, comment, favorite and share counts. Sponsored cards are dropped from the profile video viewer, the search grids and the Friends tab as well as the feed, and so are the mid-roll ads TikTok splices into a video pager after the list has loaded. The share prompt that appears after a like can also be hidden.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -359,7 +404,7 @@
         },
         {
           "name": "Hide feed save button",
-          "description": "Adds an option to hide the save/favourites button from video feeds.",
+          "description": "Adds an option to hide the save button from video feeds.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -466,8 +511,8 @@
           ]
         },
         {
-          "name": "Instant Launch & Splash Blocker",
-          "description": "Stops TikTok's splash-ad preload tasks and returns false from its reviewed splash and TopView gates. Other startup behavior is left in place. Choose this patch to enable it.",
+          "name": "In-app browser privacy guard",
+          "description": "Stops TikTok from injecting JavaScript tracking interfaces into the in-app browser's WebView. Links redirected to the system browser by Open external links directly are not affected.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -493,22 +538,17 @@
           ]
         },
         {
-          "name": "Language Pack Purger",
-          "description": "Empties unselected TikTok language bundles while always keeping English. Selected language codes are checked before any file changes. Choose this patch to enable it.",
+          "name": "Limit background traffic",
+          "description": "Turns off TikTok's buffer-preload gate and skips its push initialization task. Videos may start buffering later, and TikTok push notifications may stop.",
           "use": false,
-          "options": [
-            {
-              "key": "locales",
-              "description": "Comma-separated language codes such as en, es, pt, fr or de. English is always kept."
-            }
-          ],
+          "options": [],
           "compatible_versions": [
             "46.2.3"
           ]
         },
         {
-          "name": "Live Stream Suite Optimizer",
-          "description": "Empties TikTok's link-mic and LIVE match or minigame assets, then skips its gift-effect widget setup. Co-hosting, games and animated gifts may stop. Choose this patch to enable it.",
+          "name": "Location access governor",
+          "description": "Blocks TikTok from reading your real GPS location. Location requests return null. Goes beyond the SIM and region spoof, which changes the locale and timezone but not the coordinates.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -518,15 +558,6 @@
         {
           "name": "Long-press controls",
           "description": "Lets a long press on a video keep TikTok's own action, do nothing, open the video's comments, save the original sound, or copy the link to the video or its sound, and can turn a press on the left or right third of the screen into a jump back or forward. Brings Double-tap controls with it, which supplies the comment control.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Network & Background Traffic Governor",
-          "description": "Turns off TikTok's buffer-preload gate and skips its push initialization task. Videos may start buffering later, and TikTok push notifications may stop. Choose this patch to enable it.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -597,18 +628,59 @@
           ]
         },
         {
-          "name": "Resume videos after scrolling",
-          "description": "Continues supported videos from where playback stopped when returning after a scroll.",
-          "use": true,
+          "name": "Remove LIVE extras",
+          "description": "Empties TikTok's link-mic and LIVE match or minigame assets, then skips its gift-effect widget setup. Co-hosting, games and animated gifts may stop.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "46.2.3"
           ]
         },
         {
-          "name": "Runtime Memory Governor",
-          "description": "Makes TikTok's reviewed Fresco animated-frame cache lookups return no cached frame. This can increase decoding work or change animation playback. Choose this patch to enable it.",
+          "name": "Remove content credential and card scanner assets",
+          "description": "Empties TikTok's bundled C2PA and Microblink card-scanning assets, Pitaya AI engine libraries, the live-cast dynamic feature, and runtime monitoring probes.",
           "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Remove creation tools",
+          "description": "Empties TikTok's reviewed editor, camera-effect and face-model assets. Recording, editing, effects and creator tools may stop working.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Remove unused language packs",
+          "description": "Empties unselected TikTok language bundles while always keeping English. Selected language codes are checked before any file changes.",
+          "use": false,
+          "options": [
+            {
+              "key": "locales",
+              "description": "Comma-separated language codes such as en, es, pt, fr or de. English is always kept."
+            }
+          ],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Resource and battery governor",
+          "description": "Blocks TikTok from polling device sensors for fingerprinting and throttles background buffer preloading. Reduces battery drain from motion tracking and prefetch.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Resume videos after scrolling",
+          "description": "Continues supported videos from where playback stopped when returning after a scroll.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "46.2.3"
@@ -696,18 +768,36 @@
           ]
         },
         {
-          "name": "Stop video looping",
-          "description": "Stops videos at the end instead of replaying them.",
-          "use": true,
+          "name": "Skip the splash ad",
+          "description": "Stops TikTok's splash-ad preload tasks and returns false from its reviewed splash and TopView gates. Other startup behavior is left in place.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "46.2.3"
           ]
         },
         {
-          "name": "Studio & Creation De-bloat",
-          "description": "Empties TikTok's reviewed editor, camera-effect and face-model assets. Recording, editing, effects and creator tools may stop working. Choose this patch to enable it.",
+          "name": "Skip update checks",
+          "description": "Skips TikTok's background and boot-finished device-ID update-check tasks. This may suppress some in-app update checks. Play Store updates are unaffected.",
           "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Stop on-device AI profiling",
+          "description": "Kills the Pitaya on-device ML inference engine at startup so it cannot build a behavioral profile. The AI asset strip in the core de-bloat patch removes the native libraries; this stops the initialization code that would download replacements.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Stop video looping",
+          "description": "Stops videos at the end instead of replaying them.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "46.2.3"
@@ -732,15 +822,6 @@
           ]
         },
         {
-          "name": "Update Prompt Suppressor",
-          "description": "Skips TikTok's background and boot-finished device-ID update-check tasks. This may suppress some in-app update checks. Play Store updates are unaffected. Choose this patch to enable it.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
           "name": "Use non-personalized search",
           "description": "Uses TikTok's non-personalized search mode instead of its saved account choice.",
           "use": true,
@@ -753,8 +834,9 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "ba0bb691182d4909989f80ea3b5577cf58f564b2d26b8fac4b938c31e2e81086",
-  "release_notes": "## What changed\n\nPlayback quality now reaches the player. The setting picked a gear out of the video model's own list and the diagnostic report said so, but TikTok's player builds its models from a different list that the patch left alone, so every video still played at whatever quality the player chose. That is what issue #3 saw on a Galaxy A56. The choice is now made at the one door into the player's list, on all four retained builds, and the report names it: a line like \"picked lowest_540_1 540p of 5 gears from SimVideoUrlModel#setBitRate\" is the player's list. The hook status row also stops counting a non-adaptive video's empty model as a missing hook, which is what turned \"2 missing\" into a false alarm.\n\nEvery patch applies on TikTok 46.9.3, the build after the three the bundle is checked against. Fourteen patches used to fail there for one reason: 46.9.3's build of TikTok marks methods final and stops merging small lambdas into shared classes, so targets that had not moved stopped matching. Feed filter, Hide already seen videos, Hide CAPTCHA popups, Hide the risk control CAPTCHA, Comment sort controls, Comment tools, Advanced downloads, Subtitle tools, Share sheet tools, Translate comments and Disable the long press quick share now find their targets by what the code does rather than by how the compiler shaped it, and the three resource optimizers carry a reviewed profile for the new build. The declared target stays 46.2.3.\n\nSmaller changes. The feature gate recorder's report dialog puts Save JSON last with the accent, Copy report no longer closes it, a stop with nothing read says so in a sentence, a fresh install's row no longer reports a recording of zero gates, and once a report exists the row offers Start recording or Show last report. Saved gate reports are named by date under Download/Hushfeed, and a refused background pool says the export could not start. A session hold stops its once-a-second timer while TikTok is in the background. Settings rows keep their drawables when the list rebinds the same view. A settings backup without a schema number reads as the first schema, and one newer than this build reads is refused with the schema reason.\n\n## Validation\n\n1,372 runtime tests and 215 patch tests passed locally with no failures, errors or skips, and both Android API level checks passed. The bundle carries 81 patches with all three DEX payloads non-empty, and every patch applied with zero failures to the 46.2.3, 46.7.3, 46.8.3 and 46.9.3 fixtures; the receipt beside this release records each verdict. Needs Morphe Manager 1.30.0 or newer.\n\nOn a Galaxy S22 with this build, the playback quality setting on lowest picked the 540p gear and on highest the 1080p gear out of the same lists at the player's own setter, with the hook status row reading 4 found, 0 missing.\n",
-  "release_tag": "v0.36.0",
-  "release_date": "2026-09-16T06:13:06Z"
+  "fingerprint": "dd46008156638328e8364282a51d87ff266ffa22b394a605471049a5f52921ed",
+  "release_notes": "## What changed\n\nTwo reports from the tracker, both about something the bundle was not looking at.\n\n**Ads while paging through a creator's videos (issue 2).** TikTok has a mid-roll ad component that waits for the pager to load, then takes the video on screen and an ad, finds the video in the pager and puts the ad in its place. That happens after every list the feed filter reads, which is why the exports on that issue showed a profile list of 184 organic videos with nothing removed while the reporter was looking at an ad. The ad was never in the list. Remove feed ads now refuses that swap on all four retained builds. The video the ad would have replaced stays where it was, and the diagnostic export carries a `mid-roll ads` row and a `MidAdInsert` line, so the next report can say whether the route ran and what it kept out.\n\n**The \"Ask\" strip under a video (issue 6).** Hide Tako AI covered the floating Tako button and left the \"Ask a question about this video\" strip under the caption standing, because a different component draws it. With the switch on, that strip is now hidden before it is filled.\n\nNeither could be provoked on the test phone, so both fixes are proven on the four builds the bundle is checked against and on the phone's own export, and the reporters have the final word.\n\n## Install\n\nAdd this repository as a source in Morphe Manager, or download `patches-0.39.0.mpp` and load it as a local bundle. You need Morphe Manager 1.30.0 or newer.\n\n## What it was built and checked against\n\n81 patches, all applying on TikTok 46.2.3 (the declared target), 46.7.3, 46.8.3 and 46.9.3. `release-receipt-0.39.0.json` records the commit, the bundle's hash, each fixture it was proved against and what patching did to the manifest. `SHA256SUMS.txt` covers both files.\n",
+  "release_tag": "v0.39.0",
+  "release_date": "2026-09-16T17:40:08Z",
+  "isPreRelease": false
 }

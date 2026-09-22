@@ -290,9 +290,15 @@ export function renderDiff(container) {
       colorIdx++
     }
 
-    const sortedBundles = [...patchBundleMap.values()].sort((a, b) => a.name.localeCompare(b.name))
+    const allBundles = [...patchBundleMap.values()]
+    const stableBundles = allBundles.filter((b) => b.channel === 'stable').sort((a, b) => a.name.localeCompare(b.name))
+    const devBundles = allBundles.filter((b) => b.channel === 'dev').sort((a, b) => a.name.localeCompare(b.name))
 
-    for (const bundleInfo of sortedBundles) {
+    const renderBundleGroup = (bundles, label) => {
+      if (bundles.length === 0) return
+      const groupEl = el('div', { class: 'diff-bundle-group' })
+      groupEl.appendChild(el('h4', { class: 'diff-bundle-group-title' }, [label]))
+      for (const bundleInfo of bundles) {
       const bundleSection = el('div', { class: 'diff-bundle-section' })
 
       const channelBadges = `<span class="channel-badge ${bundleInfo.channel}">${bundleInfo.channel}</span>`
@@ -356,23 +362,12 @@ export function renderDiff(container) {
       }
 
       bundleSection.appendChild(patchesList)
-      resultArea.appendChild(bundleSection)
+      groupEl.appendChild(bundleSection)
+      }
+      resultArea.appendChild(groupEl)
     }
 
-    if (crossBundlePatches.size > 0) {
-      const legend = el('div', { class: 'diff-highlight-legend' })
-      legend.innerHTML = `<span class="diff-highlight-legend-title">Cross-bundle patches (${crossBundlePatches.size}):</span> `
-      let first = true
-      for (const [patchName, color] of patchColorMap) {
-        if (!first) legend.appendChild(document.createTextNode(' · '))
-        first = false
-        const dot = el('span', {
-          class: 'diff-highlight-legend-item',
-          style: { background: color.bg, borderLeft: `3px solid ${color.border}`, color: color.text },
-        }, [patchName])
-        legend.appendChild(dot)
-      }
-      resultArea.insertBefore(legend, resultArea.children[1])
-    }
+    renderBundleGroup(stableBundles, 'Stable')
+    renderBundleGroup(devBundles, 'Dev')
   }
 }

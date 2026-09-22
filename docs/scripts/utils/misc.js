@@ -261,4 +261,32 @@ export function buildAppIndex(bundlesData, nameCache, iconCache) {
   return [...map.values()].sort((a, b) => a.name.localeCompare(b.name))
 }
 
+/**
+ * Copy text to clipboard and briefly flash the element.
+ * @param {string} text
+ * @param {HTMLElement} [el]
+ */
+export async function copyToClipboard(text, el) {
+  try {
+    await navigator.clipboard.writeText(text)
+    if (el) {
+      el.classList.add('copied-flash')
+      setTimeout(() => el.classList.remove('copied-flash'), 600)
+    }
+  } catch {
+    // Fallback for older browsers
+    const ta = document.createElement('textarea')
+    ta.value = text
+    ta.style.position = 'fixed'
+    ta.style.opacity = '0'
+    document.body.appendChild(ta)
+    ta.select()
+    document.execCommand('copy')
+    document.body.removeChild(ta)
+    if (el) {
+      el.classList.add('copied-flash')
+      setTimeout(() => el.classList.remove('copied-flash'), 600)
+    }
+  }
+}
 
