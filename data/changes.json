@@ -1,34 +1,6 @@
 {
   "affected_bundles": [
     {
-      "bundle": "shuhaibnc",
-      "channel": "latest",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "GoCut",
-          "package": "com.videoedit.gocut",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "OviCut",
-          "package": "video.editor.videoeditor.musicvideoeditor",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/ShuhaibNC/morphe-patches",
-      "patches_name": "Shuhaib's Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
       "bundle": "legendsciber",
       "channel": "latest",
       "badge_type": "UPDATED",
@@ -36,7 +8,35 @@
         {
           "app_name": "Soccer Star",
           "package": "com.soccer.score.star",
-          "badge_type": "NEW APP",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Soccer Star Ad Removal",
+                "description": "Disables ads completely: EnableAD always returns false, interstitials and banners are no-ops, Adjust purchase verification is skipped.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Soccer Star Instant Rewarded",
+                "description": "Rewarded and interstitial ad flows always report loaded and grant the success callback immediately without playing an ad, including offline.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Soccer Star VIP Unlock",
+                "description": "Unlocks VIP subscription permanently: ownership keys always report active and unsubscribe can never clear the flag.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
           "scan_numbers": [
             1
           ]
@@ -49,122 +49,36 @@
       ]
     },
     {
-      "bundle": "riky",
-      "channel": "latest",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "VN",
-          "package": "com.frontrow.vlog",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "CapCut",
-          "package": "com.lemon.lvoverseas",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Electron: battery health info",
-          "package": "com.mahersafadi.electron",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "3BMeteo",
-          "package": "com.meteosolutions.meteo3b",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Komoot",
-          "package": "de.komoot.android",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/riky-dev/morphe-patches",
-      "patches_name": "riky's patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "riky",
-      "channel": "dev",
+      "bundle": "legendsciber",
+      "channel": "stable",
       "badge_type": "UPDATED",
       "apps": [
         {
-          "app_name": "VN",
-          "package": "com.frontrow.vlog",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "CapCut",
-          "package": "com.lemon.lvoverseas",
-          "badge_type": "MAJOR UPDATE",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [
-              {
-                "name": "Hide Promotional UI",
-                "description": "Suppresses home banners, export promos, subscription paywalls, Pro badges, Lynx promo modals, and PC diversion popups."
-              },
-              {
-                "name": "Hide Unavailable Features",
-                "description": "Hides cloud-gated editor options that won't work offline: AI sounds, super resolution, optical flow, and smart frame interpolation."
-              },
-              {
-                "name": "Remove Security Notice",
-                "description": "Suppresses the modified-build security notice by disabling the risk SDK dialog entry point and the isCracking flag writer."
-              },
-              {
-                "name": "Simplify Navigation",
-                "description": "Removes the Templates, Inbox, and AI Lab bottom navigation tabs."
-              },
-              {
-                "name": "Suppress Telemetry",
-                "description": "Disables background monitoring and analytics frameworks including ByteDance Helios, AppLog, and AppsFlyer."
-              }
-            ],
-            "patches_modified": [
-              {
-                "name": "Unlock Premium",
-                "description": "Forces CapCut 9.0 VIP gates to true (VipSubscribeManager, SubscribeImpl, UserVipInfo, benefits). Cloud-gated assets may still fail.",
-                "changes": [
-                  "description updated",
-                  "versions: +1 version, -1 version"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "3BMeteo",
-          "package": "com.meteosolutions.meteo3b",
+          "app_name": "Soccer Star",
+          "package": "com.soccer.score.star",
           "badge_type": "UPDATED APP",
           "patch_diff": {
             "patches_added": [],
             "patches_removed": [],
             "patches_modified": [
               {
-                "name": "Hide ads",
-                "description": "Removes banner, native, cover and interstitial ads and unlocks premium features.",
+                "name": "Soccer Star Ad Removal",
+                "description": "Disables ads completely: EnableAD always returns false, interstitials and banners are no-ops, Adjust purchase verification is skipped.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Soccer Star Instant Rewarded",
+                "description": "Rewarded and interstitial ad flows always report loaded and grant the success callback immediately without playing an ad, including offline.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version, -1 version"
+                ]
+              },
+              {
+                "name": "Soccer Star VIP Unlock",
+                "description": "Unlocks VIP subscription permanently: ownership keys always report active and unsubscribe can never clear the flag.",
                 "changes": [
                   "versions: +1 version, -1 version"
                 ]
@@ -176,66 +90,121 @@
           ]
         }
       ],
-      "repo_url": "https://github.com/riky-dev/morphe-patches",
-      "patches_name": "riky's patches",
+      "repo_url": "https://github.com/legendsciber/morphe-patches",
+      "patches_name": "legendsciber's Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
     },
     {
-      "bundle": "kveld9",
-      "channel": "stable",
-      "badge_type": "UPDATED",
+      "bundle": "flexboard",
+      "channel": "latest",
+      "badge_type": "NEW BUNDLE",
       "apps": [
         {
-          "app_name": "Hevy - Gym Log Workout Tracker",
-          "package": "com.hevy",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Unlock Pro",
-                "description": "Unlocks local Hevy Pro capabilities (unlimited workout routines, routine folders, advanced graphs, and local analytics) by dynamically enabling Pro getters and suppressing grace period payment warnings in Hermes Bytecode (HBC96).",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "NEW APP",
           "scan_numbers": [
             1
           ]
-        },
+        }
+      ],
+      "repo_url": "https://github.com/JZ6/Flexboard",
+      "patches_name": "Flexboard",
+      "extra_badges": []
+    },
+    {
+      "bundle": "flexboard",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
         {
-          "app_name": "TikTok",
-          "package": "com.ss.android.ugc.trill",
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
           "badge_type": "MAJOR UPDATE",
           "patch_diff": {
             "patches_added": [
               {
-                "name": "Disable Profile Photo LIVE Status",
-                "description": "Removes the pulsing LIVE ring and badge from creator avatars in the feed and ensures clicking navigates strictly to the user profile instead of launching the live stream."
+                "name": "Enable Rambler",
+                "description": "Exposes Google Rambler — Gboard's agentic dictation, which rewrites what you say into composed text — as a choice in Voice settings. It is not switched on for you: the feature uses a Google server, has its own quota and asks for consent, so picking it is left to you."
               },
               {
-                "name": "Hide Profile Photo Follow Button",
-                "description": "Hides the plus (+) follow badge on creator profile avatars in the feed and disables its touch interaction."
+                "name": "Hidden Features",
+                "description": "Turns on two finished Gboard features that a resigned build can never receive: grammar check, and a close control on the chips Gboard offers unprompted. Their flags are delivered per app signature, so resigning the APK means they never arrive and stay off. Both are confirmed working on a device; five other flags were tried and dropped."
               },
               {
-                "name": "Hide STEM and Community Tabs",
-                "description": "Removes the STEM and Comunidad (Explore / Topics) tabs from the top navigation feed strip."
+                "name": "Hidden Features (unconfirmed)",
+                "description": "Turns on four finished Gboard features that a resigned build can never receive: Emoji Kitchen browse, the custom sticker tab, offline translation, and search in Gboard's settings. Off by default because none of the four has been seen working on a device — the flags flip, but each also depends on data Google only sends to an unpatched install. Safe to try: none of them crashes."
               },
               {
-                "name": "Hide Top-Left LIVE Button",
-                "description": "Removes the top-left LIVE broadcast button and tab entry point from the top navigation bar."
+                "name": "Modern keypress haptics",
+                "description": "Uses Android's haptic primitives for keypresses — the crisp tick the rest of the system uses — instead of a plain buzz. Gboard has the code and disables it with an impossible minimum Android version; this removes that. Devices whose vibrator cannot do primitives are unaffected, because Gboard's own hardware check still runs. Note that it changes what the vibration strength slider means, from milliseconds to intensity."
+              },
+              {
+                "name": "Swipe Left to Delete",
+                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
+              },
+              {
+                "name": "Swipe up diagnostic (temporary)",
+                "description": "Diagnostic build only. Types a digit after every swipe that moved, saying what the up-flick detector made of it: 1 means it never saw the gesture, 2 means the travel was too short, 3 means the motion was too diagonal, and 6 means it would have fired. It does not undo anything and does not stop the key being typed — it only reports. Cannot be used alongside \"Swipe up to undo autocorrect\", which records the same gesture. Off by default, and this patch will be removed once it has answered its question."
+              },
+              {
+                "name": "Swipe up to undo autocorrect",
+                "description": "Swipe up on the keyboard to put back the word an autocorrect replaced. Gboard has the same undo on backspace, behind a setting; this adds a gesture for it and works whether or not that setting is on. A swipe with nothing to undo does nothing. Cannot be used alongside \"Swipe up diagnostic (temporary)\", which attaches to the same instruction. Off by default until it has been confirmed on a device."
+              },
+              {
+                "name": "Text Action Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists. These three share the toolbar with Gboard's own icons and with Toolbar Hotkeys. Bigger Toolbar, which is applied unless you deselect it, raises the ceiling from five to twelve; without it, five is all the bar can hold."
+              },
+              {
+                "name": "Vibration Slider Everywhere",
+                "description": "Forces Gboard to show its own vibration strength slider on every device, rather than deferring to the system haptic settings page, so the strength is adjustable instead of being fixed by whichever rollout the device landed in."
               }
             ],
-            "patches_removed": [],
+            "patches_removed": [
+              {
+                "name": "Grammar Check Row",
+                "description": "Force the grammar check settings row to appear. The Phenotype flag that governs it never syncs on a patched build, so its compiled-in default (off) sticks."
+              },
+              {
+                "name": "Swipe to Delete",
+                "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere."
+              },
+              {
+                "name": "Toolbar Buttons",
+                "description": "Add Select all, Copy and Paste buttons to the toolbar above the keyboard, so each is one tap instead of opening Gboard's text editing panel first. Registered natively, so drag-to-reorder through the toolbar customize page persists."
+              },
+              {
+                "name": "Toolbar Native Test",
+                "description": "Add a 'Test' button to the toolbar through Gboard's own access-point registry so drag reorder and persistence work natively. Writes 'test' at the cursor on tap. Architectural proof-of-concept; off by default."
+              }
+            ],
             "patches_modified": [
               {
-                "name": "Device Privacy Guard",
-                "description": "Neutralizes invasive runtime permissions (contacts sync, location tracking, nearby devices), advertising ID profiling, background clipboard snooping routines, motion sensor profiling, and screenshot/recording detection to protect user data.",
+                "name": "Bigger Toolbar",
+                "description": "Raises how many icons Gboard's toolbar can hold — five on a stock build — to 12, so Flexboard's hotkeys and text action buttons fit alongside Gboard's own. How many actually show stays yours, set by dragging them in Gboard's toolbar settings. Force-stop Gboard afterwards: a cached keyboard view can go on showing the old capacity.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Suggested Settings",
+                "description": "Turns on flick keys for symbols, touch & hold keys for numbers, suggestion strip, grammar check and smart replies, and turns off block offensive words and word suggestions. Written once as defaults, so each can still be changed in Gboard's own settings. Grammar check is the switch, not the feature: the row only exists on a resigned build if Hidden Features is applied too.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Swipe Right to Undo",
+                "description": "Swipe right after deleting to put the words back — the swipe starts on the Delete key, or anywhere when Swipe Left to Delete is also applied. Uses Gboard's own undo, which already records what a delete swipe removed.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Toolbar Hotkeys",
+                "description": "Adds eight configurable hotkey slots to Gboard's toolbar — each commits a text of your choice on tap. A slot appears when its text is set; when cleared it hides at the next toolbar rebuild (rotate, switch IME, or restart — there's no mid-session un-register). Text and icon edits apply on the next keyboard open. The slots share the toolbar with Gboard's own icons: Bigger Toolbar, which is applied unless you deselect it, makes room for twelve, but on a stock ceiling of five not all eight fit.",
                 "changes": [
                   "description updated"
                 ]
@@ -245,1308 +214,32 @@
           "scan_numbers": [
             1
           ]
-        },
+        }
+      ],
+      "repo_url": "https://github.com/JZ6/Flexboard",
+      "patches_name": "Flexboard",
+      "extra_badges": [
+        "VERSION BUMP"
+      ]
+    },
+    {
+      "bundle": "hxreborn",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
         {
           "app_name": "TikTok",
           "package": "com.zhiliaoapp.musically",
-          "badge_type": "MAJOR UPDATE",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Disable Profile Photo LIVE Status",
-                "description": "Removes the pulsing LIVE ring and badge from creator avatars in the feed and ensures clicking navigates strictly to the user profile instead of launching the live stream."
-              },
-              {
-                "name": "Hide Profile Photo Follow Button",
-                "description": "Hides the plus (+) follow badge on creator profile avatars in the feed and disables its touch interaction."
-              },
-              {
-                "name": "Hide STEM and Community Tabs",
-                "description": "Removes the STEM and Comunidad (Explore / Topics) tabs from the top navigation feed strip."
-              },
-              {
-                "name": "Hide Top-Left LIVE Button",
-                "description": "Removes the top-left LIVE broadcast button and tab entry point from the top navigation bar."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Device Privacy Guard",
-                "description": "Neutralizes invasive runtime permissions (contacts sync, location tracking, nearby devices), advertising ID profiling, background clipboard snooping routines, motion sensor profiling, and screenshot/recording detection to protect user data.",
-                "changes": [
-                  "description updated"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-      "patches_name": "kveld9 Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "okish-morphe",
-      "channel": "latest",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Crossy Road",
-          "package": "com.yodo1.crossyroad",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-      "patches_name": "byehi98 Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "okish-morphe",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Crossy Road",
-          "package": "com.yodo1.crossyroad",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-      "patches_name": "byehi98 Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "okish-morphe",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Crossy Road",
-          "package": "com.yodo1.crossyroad",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-      "patches_name": "byehi98 Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "rabehx",
-      "channel": "latest",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "My Ooredoo",
-          "package": "com.algeria.selfcare.app.android",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Disable Frida Detection",
-                "description": "Improves compatibility with debugging tools."
-              },
-              {
-                "name": "Disable SSL Pinning",
-                "description": "Improves compatibility with custom certificates."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/RabehX/rabehx-patches",
-      "patches_name": "RabehX Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "channel-blacklist",
-      "channel": "latest",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "YouTube",
-          "package": "com.google.android.youtube",
-          "badge_type": "MAJOR UPDATE",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Add to queue",
-                "description": "Overrides the feed flyout 'Play next in queue' with the Morphe video queue."
-              },
-              {
-                "name": "Alternative thumbnails",
-                "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video."
-              },
-              {
-                "name": "Ambient mode",
-                "description": "Adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen."
-              },
-              {
-                "name": "App refresh rate",
-                "description": "Adds an option to change the app refresh rate."
-              },
-              {
-                "name": "Bypass image region restrictions",
-                "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries."
-              },
-              {
-                "name": "Bypass link redirects",
-                "description": "Adds an option to bypass redirects and open the original link directly."
-              },
-              {
-                "name": "Captions",
-                "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies."
-              },
-              {
-                "name": "Change form factor",
-                "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device."
-              },
-              {
-                "name": "Change header",
-                "description": "Adds an option to change the header logo in the top left corner of the app."
-              },
-              {
-                "name": "Change start page",
-                "description": "Adds an option to set which page the app opens in instead of the homepage."
-              },
-              {
-                "name": "Channel search",
-                "description": "Adds an option to search inside the channel that is currently open instead of searching all of YouTube."
-              },
-              {
-                "name": "Check watch history domain name resolution",
-                "description": "Checks if the device DNS server is preventing user watch history from being saved."
-              },
-              {
-                "name": "Copy video link",
-                "description": "Adds options to display buttons in the video player to copy video links."
-              },
-              {
-                "name": "Custom branding",
-                "description": "Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings."
-              },
-              {
-                "name": "Custom player overlay opacity",
-                "description": "Adds an option to change the opacity of the video player background when player controls are visible."
-              },
-              {
-                "name": "Disable DRC audio",
-                "description": "Adds an option to disable DRC (Dynamic Range Compression) audio."
-              },
-              {
-                "name": "Disable QUIC protocol",
-                "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol."
-              },
-              {
-                "name": "Disable Shorts resuming on startup",
-                "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched."
-              },
-              {
-                "name": "Disable double tap actions",
-                "description": "Adds an option to disable player double tap gestures."
-              },
-              {
-                "name": "Disable fullscreen gestures",
-                "description": "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom."
-              },
-              {
-                "name": "Disable haptic feedback",
-                "description": "Adds an option to disable haptic feedback in the player for various actions."
-              },
-              {
-                "name": "Disable layout updates",
-                "description": "Adds an option to disable server side layout updates and use an older UI."
-              },
-              {
-                "name": "Disable player popup panels",
-                "description": "Adds an option to disable panels (such as live chat) from opening automatically."
-              },
-              {
-                "name": "Disable playlist autoplay",
-                "description": "Adds an option to stop a playlist from automatically advancing to the next video."
-              },
-              {
-                "name": "Disable rolling number animations",
-                "description": "Adds an option to disable rolling number animations of video view count, user likes, and upload time."
-              },
-              {
-                "name": "Disable scrolling speed limit",
-                "description": "Adds an option to remove limits of how fast the home and subscription feed can be scrolled."
-              },
-              {
-                "name": "Disable sign in to TV popup",
-                "description": "Adds options to disable the popups asking to sign into or connect to a TV on the same local network."
-              },
-              {
-                "name": "Disable video codecs",
-                "description": "Adds options to disable or force HDR, and to disable VP9 codecs."
-              },
-              {
-                "name": "Double tap to seek",
-                "description": "Adds additional double-tap to seek values to the YouTube settings menu."
-              },
-              {
-                "name": "Downloads",
-                "description": "Adds support to download videos with an external downloader app using the in-app download button or a video player action button."
-              },
-              {
-                "name": "Enable debugging",
-                "description": "Adds options for debugging and exporting Morphe logs to the clipboard."
-              },
-              {
-                "name": "Exit fullscreen mode",
-                "description": "Adds options to automatically exit fullscreen mode when a video reaches the end."
-              },
-              {
-                "name": "Force fullscreen landscape",
-                "description": "Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices."
-              },
-              {
-                "name": "Force original audio",
-                "description": "Adds an option to always use the original audio track."
-              },
-              {
-                "name": "Fullscreen video scale",
-                "description": "Adds options to stretch or zoom videos to fill the screen in fullscreen mode."
-              },
-              {
-                "name": "GmsCore support",
-                "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services."
-              },
-              {
-                "name": "Hide Shorts components",
-                "description": "Adds options to hide components related to Shorts."
-              },
-              {
-                "name": "Hide ads",
-                "description": "Adds options to hide general ads, Premium promotions and video ads."
-              },
-              {
-                "name": "Hide autoplay preview",
-                "description": "Adds an option to hide the autoplay preview at the end of videos."
-              },
-              {
-                "name": "Hide end screen cards",
-                "description": "Adds an option to hide suggested video cards at the end of videos."
-              },
-              {
-                "name": "Hide end screen suggested video",
-                "description": "Adds an option to hide the suggested video at the end of videos."
-              },
-              {
-                "name": "Hide info cards",
-                "description": "Adds an option to hide info cards that creators add in the video player."
-              },
-              {
-                "name": "Hide layout components",
-                "description": "Adds options to hide general layout components."
-              },
-              {
-                "name": "Hide player flyout menu components",
-                "description": "Adds options to hide menu components that appear when pressing the gear icon in the video player."
-              },
-              {
-                "name": "Hide player overlay buttons",
-                "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background."
-              },
-              {
-                "name": "Hide related video overlay",
-                "description": "Adds an option to hide the related video overlay shown when swiping up in fullscreen."
-              },
-              {
-                "name": "Hide related videos",
-                "description": "Adds options to hide related videos."
-              },
-              {
-                "name": "Hide timestamp",
-                "description": "Adds an option to hide the timestamp in the bottom left of the video player."
-              },
-              {
-                "name": "Hide video action buttons",
-                "description": "Adds options to hide video action buttons in fullscreen and portrait modes."
-              },
-              {
-                "name": "Loop video",
-                "description": "Adds an option to loop videos and display loop video button in the video player."
-              },
-              {
-                "name": "Media notification controls",
-                "description": "Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls."
-              },
-              {
-                "name": "Miniplayer",
-                "description": "Adds options to change the in-app minimized player. Patching 21.28.206 and lower has more miniplayer types to choose from."
-              },
-              {
-                "name": "Mute button",
-                "description": "Adds an option to show a player button that mutes the video audio."
-              },
-              {
-                "name": "Navigation bar",
-                "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button) and the upper navigation toolbar."
-              },
-              {
-                "name": "Network proxy",
-                "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices"
-              },
-              {
-                "name": "Open Shorts in regular player",
-                "description": "Adds options to open Shorts in the regular video player."
-              },
-              {
-                "name": "Open channel of live avatar",
-                "description": "Adds an option to prevent a channel's current live video from opening when tapping its avatar."
-              },
-              {
-                "name": "Open links externally",
-                "description": "Adds an option to always open links in your browser instead of with the in-app browser."
-              },
-              {
-                "name": "Open system share sheet",
-                "description": "Adds an option to always open the system share sheet instead of the in-app share sheet."
-              },
-              {
-                "name": "Open videos fullscreen",
-                "description": "Adds options to automatically open videos in fullscreen portrait or landscape mode."
-              },
-              {
-                "name": "Override YouTube Music buttons",
-                "description": "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client."
-              },
-              {
-                "name": "Play all",
-                "description": "Adds an option to play all the videos from a channel and to display play all button in the video player."
-              },
-              {
-                "name": "Playback in feeds",
-                "description": "Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it."
-              },
-              {
-                "name": "Playback speed",
-                "description": "Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player."
-              },
-              {
-                "name": "PoToken provider",
-                "description": "Adds option to get PoToken using an external PoToken minter app."
-              },
-              {
-                "name": "Reload video",
-                "description": "Adds an option to display reload video button in the video player."
-              },
-              {
-                "name": "Remember live stream playback position",
-                "description": "Adds an option to remember the playback position of an ongoing live stream and resume from there when reopening that live stream."
-              },
-              {
-                "name": "Remove background playback restrictions",
-                "description": "Removes restrictions on background playback, including playing kids videos in the background."
-              },
-              {
-                "name": "Remove viewer discretion dialog",
-                "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction."
-              },
-              {
-                "name": "Return YouTube Dislike",
-                "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike."
-              },
-              {
-                "name": "Sanitize sharing links",
-                "description": "Removes the tracking query parameters from shared links."
-              },
-              {
-                "name": "Save to Watch later",
-                "description": "Adds an option to display save to Watch later button in the video player."
-              },
-              {
-                "name": "Seekbar",
-                "description": "Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in live streams, and expanding the live stream DVR duration."
-              },
-              {
-                "name": "Settings menu filter",
-                "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name."
-              },
-              {
-                "name": "Shorts autoplay",
-                "description": "Adds options to automatically play the next Short."
-              },
-              {
-                "name": "SponsorBlock",
-                "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content."
-              },
-              {
-                "name": "Spoof app version",
-                "description": "Adds an option to trick the app into thinking you are running an older version."
-              },
-              {
-                "name": "Spoof device dimensions",
-                "description": "Adds an option to spoof the device dimensions which can unlock higher video qualities."
-              },
-              {
-                "name": "Spoof video streams",
-                "description": "Adds options to spoof the client video streams to fix playback."
-              },
-              {
-                "name": "Swipe controls",
-                "description": "Adds options to enable and configure volume and brightness swipe controls."
-              },
-              {
-                "name": "Theme",
-                "description": "Adds options for theming, and settings to change the app foreground and background colors."
-              },
-              {
-                "name": "Video quality",
-                "description": "Adds options to set default video qualities and always use the advanced video quality menu."
-              },
-              {
-                "name": "Voice over translation",
-                "description": "Adds additional voice over languages using text-to-speech synchronized to the video playback."
-              },
-              {
-                "name": "Wide search bar",
-                "description": "Adds a wide search bar to the top of the home and subscription feed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Channel blacklist",
-                "description": "Filter and hide videos from blacklisted channels across YouTube feeds, search results, subscriptions, and comments.",
-                "changes": [
-                  "versions: +3 versions, -2 versions"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/0-BlackSpectrum-0/channel-blacklist-patch",
-      "patches_name": "Spectre Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "channel-blacklist",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "YouTube",
-          "package": "com.google.android.youtube",
-          "badge_type": "MAJOR UPDATE",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Add to queue",
-                "description": "Overrides the feed flyout 'Play next in queue' with the Morphe video queue."
-              },
-              {
-                "name": "Alternative thumbnails",
-                "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video."
-              },
-              {
-                "name": "Ambient mode",
-                "description": "Adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen."
-              },
-              {
-                "name": "App refresh rate",
-                "description": "Adds an option to change the app refresh rate."
-              },
-              {
-                "name": "Bypass image region restrictions",
-                "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries."
-              },
-              {
-                "name": "Bypass link redirects",
-                "description": "Adds an option to bypass redirects and open the original link directly."
-              },
-              {
-                "name": "Captions",
-                "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies."
-              },
-              {
-                "name": "Change form factor",
-                "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device."
-              },
-              {
-                "name": "Change header",
-                "description": "Adds an option to change the header logo in the top left corner of the app."
-              },
-              {
-                "name": "Change start page",
-                "description": "Adds an option to set which page the app opens in instead of the homepage."
-              },
-              {
-                "name": "Channel search",
-                "description": "Adds an option to search inside the channel that is currently open instead of searching all of YouTube."
-              },
-              {
-                "name": "Check watch history domain name resolution",
-                "description": "Checks if the device DNS server is preventing user watch history from being saved."
-              },
-              {
-                "name": "Copy video link",
-                "description": "Adds options to display buttons in the video player to copy video links."
-              },
-              {
-                "name": "Custom branding",
-                "description": "Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings."
-              },
-              {
-                "name": "Custom player overlay opacity",
-                "description": "Adds an option to change the opacity of the video player background when player controls are visible."
-              },
-              {
-                "name": "Disable DRC audio",
-                "description": "Adds an option to disable DRC (Dynamic Range Compression) audio."
-              },
-              {
-                "name": "Disable QUIC protocol",
-                "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol."
-              },
-              {
-                "name": "Disable Shorts resuming on startup",
-                "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched."
-              },
-              {
-                "name": "Disable double tap actions",
-                "description": "Adds an option to disable player double tap gestures."
-              },
-              {
-                "name": "Disable fullscreen gestures",
-                "description": "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom."
-              },
-              {
-                "name": "Disable haptic feedback",
-                "description": "Adds an option to disable haptic feedback in the player for various actions."
-              },
-              {
-                "name": "Disable layout updates",
-                "description": "Adds an option to disable server side layout updates and use an older UI."
-              },
-              {
-                "name": "Disable player popup panels",
-                "description": "Adds an option to disable panels (such as live chat) from opening automatically."
-              },
-              {
-                "name": "Disable playlist autoplay",
-                "description": "Adds an option to stop a playlist from automatically advancing to the next video."
-              },
-              {
-                "name": "Disable rolling number animations",
-                "description": "Adds an option to disable rolling number animations of video view count, user likes, and upload time."
-              },
-              {
-                "name": "Disable scrolling speed limit",
-                "description": "Adds an option to remove limits of how fast the home and subscription feed can be scrolled."
-              },
-              {
-                "name": "Disable sign in to TV popup",
-                "description": "Adds options to disable the popups asking to sign into or connect to a TV on the same local network."
-              },
-              {
-                "name": "Disable video codecs",
-                "description": "Adds options to disable or force HDR, and to disable VP9 codecs."
-              },
-              {
-                "name": "Double tap to seek",
-                "description": "Adds additional double-tap to seek values to the YouTube settings menu."
-              },
-              {
-                "name": "Downloads",
-                "description": "Adds support to download videos with an external downloader app using the in-app download button or a video player action button."
-              },
-              {
-                "name": "Enable debugging",
-                "description": "Adds options for debugging and exporting Morphe logs to the clipboard."
-              },
-              {
-                "name": "Exit fullscreen mode",
-                "description": "Adds options to automatically exit fullscreen mode when a video reaches the end."
-              },
-              {
-                "name": "Force fullscreen landscape",
-                "description": "Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices."
-              },
-              {
-                "name": "Force original audio",
-                "description": "Adds an option to always use the original audio track."
-              },
-              {
-                "name": "Fullscreen video scale",
-                "description": "Adds options to stretch or zoom videos to fill the screen in fullscreen mode."
-              },
-              {
-                "name": "GmsCore support",
-                "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services."
-              },
-              {
-                "name": "Hide Shorts components",
-                "description": "Adds options to hide components related to Shorts."
-              },
-              {
-                "name": "Hide ads",
-                "description": "Adds options to hide general ads, Premium promotions and video ads."
-              },
-              {
-                "name": "Hide autoplay preview",
-                "description": "Adds an option to hide the autoplay preview at the end of videos."
-              },
-              {
-                "name": "Hide end screen cards",
-                "description": "Adds an option to hide suggested video cards at the end of videos."
-              },
-              {
-                "name": "Hide end screen suggested video",
-                "description": "Adds an option to hide the suggested video at the end of videos."
-              },
-              {
-                "name": "Hide info cards",
-                "description": "Adds an option to hide info cards that creators add in the video player."
-              },
-              {
-                "name": "Hide layout components",
-                "description": "Adds options to hide general layout components."
-              },
-              {
-                "name": "Hide player flyout menu components",
-                "description": "Adds options to hide menu components that appear when pressing the gear icon in the video player."
-              },
-              {
-                "name": "Hide player overlay buttons",
-                "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background."
-              },
-              {
-                "name": "Hide related video overlay",
-                "description": "Adds an option to hide the related video overlay shown when swiping up in fullscreen."
-              },
-              {
-                "name": "Hide related videos",
-                "description": "Adds options to hide related videos."
-              },
-              {
-                "name": "Hide timestamp",
-                "description": "Adds an option to hide the timestamp in the bottom left of the video player."
-              },
-              {
-                "name": "Hide video action buttons",
-                "description": "Adds options to hide video action buttons in fullscreen and portrait modes."
-              },
-              {
-                "name": "Loop video",
-                "description": "Adds an option to loop videos and display loop video button in the video player."
-              },
-              {
-                "name": "Media notification controls",
-                "description": "Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls."
-              },
-              {
-                "name": "Miniplayer",
-                "description": "Adds options to change the in-app minimized player. Patching 21.28.206 and lower has more miniplayer types to choose from."
-              },
-              {
-                "name": "Mute button",
-                "description": "Adds an option to show a player button that mutes the video audio."
-              },
-              {
-                "name": "Navigation bar",
-                "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button) and the upper navigation toolbar."
-              },
-              {
-                "name": "Network proxy",
-                "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices"
-              },
-              {
-                "name": "Open Shorts in regular player",
-                "description": "Adds options to open Shorts in the regular video player."
-              },
-              {
-                "name": "Open channel of live avatar",
-                "description": "Adds an option to prevent a channel's current live video from opening when tapping its avatar."
-              },
-              {
-                "name": "Open links externally",
-                "description": "Adds an option to always open links in your browser instead of with the in-app browser."
-              },
-              {
-                "name": "Open system share sheet",
-                "description": "Adds an option to always open the system share sheet instead of the in-app share sheet."
-              },
-              {
-                "name": "Open videos fullscreen",
-                "description": "Adds options to automatically open videos in fullscreen portrait or landscape mode."
-              },
-              {
-                "name": "Override YouTube Music buttons",
-                "description": "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client."
-              },
-              {
-                "name": "Play all",
-                "description": "Adds an option to play all the videos from a channel and to display play all button in the video player."
-              },
-              {
-                "name": "Playback in feeds",
-                "description": "Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it."
-              },
-              {
-                "name": "Playback speed",
-                "description": "Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player."
-              },
-              {
-                "name": "PoToken provider",
-                "description": "Adds option to get PoToken using an external PoToken minter app."
-              },
-              {
-                "name": "Reload video",
-                "description": "Adds an option to display reload video button in the video player."
-              },
-              {
-                "name": "Remember live stream playback position",
-                "description": "Adds an option to remember the playback position of an ongoing live stream and resume from there when reopening that live stream."
-              },
-              {
-                "name": "Remove background playback restrictions",
-                "description": "Removes restrictions on background playback, including playing kids videos in the background."
-              },
-              {
-                "name": "Remove viewer discretion dialog",
-                "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction."
-              },
-              {
-                "name": "Return YouTube Dislike",
-                "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike."
-              },
-              {
-                "name": "Sanitize sharing links",
-                "description": "Removes the tracking query parameters from shared links."
-              },
-              {
-                "name": "Save to Watch later",
-                "description": "Adds an option to display save to Watch later button in the video player."
-              },
-              {
-                "name": "Seekbar",
-                "description": "Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in live streams, and expanding the live stream DVR duration."
-              },
-              {
-                "name": "Settings menu filter",
-                "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name."
-              },
-              {
-                "name": "Shorts autoplay",
-                "description": "Adds options to automatically play the next Short."
-              },
-              {
-                "name": "SponsorBlock",
-                "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content."
-              },
-              {
-                "name": "Spoof app version",
-                "description": "Adds an option to trick the app into thinking you are running an older version."
-              },
-              {
-                "name": "Spoof device dimensions",
-                "description": "Adds an option to spoof the device dimensions which can unlock higher video qualities."
-              },
-              {
-                "name": "Spoof video streams",
-                "description": "Adds options to spoof the client video streams to fix playback."
-              },
-              {
-                "name": "Swipe controls",
-                "description": "Adds options to enable and configure volume and brightness swipe controls."
-              },
-              {
-                "name": "Theme",
-                "description": "Adds options for theming, and settings to change the app foreground and background colors."
-              },
-              {
-                "name": "Video quality",
-                "description": "Adds options to set default video qualities and always use the advanced video quality menu."
-              },
-              {
-                "name": "Voice over translation",
-                "description": "Adds additional voice over languages using text-to-speech synchronized to the video playback."
-              },
-              {
-                "name": "Wide search bar",
-                "description": "Adds a wide search bar to the top of the home and subscription feed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Channel blacklist",
-                "description": "Filter and hide videos from blacklisted channels across YouTube feeds, search results, subscriptions, and comments.",
-                "changes": [
-                  "versions: +3 versions, -2 versions"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/0-BlackSpectrum-0/channel-blacklist-patch",
-      "patches_name": "Spectre Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "roundsalmon4",
-      "channel": "latest",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "SeriesGuide",
-          "package": "com.battlelancer.seriesguide",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/RoundSalmon4/morphe-patches-template",
-      "patches_name": "RoundSalmon4 Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "dh6k",
-      "channel": "latest",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Brave Browser",
-          "package": "com.brave.browser",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Brave Startup Performance Optimization",
-                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations. Marks PartnerBrowserCustomizations initialized without SharedPreferences/ContentResolver/ThreadPool/timeout work, drains init callbacks immediately, and forces partner homepage and incognito lockdown gates closed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Custom NTP wallpaper",
-                "description": "Alpha experimental version-unpinned patch (issue #13): forces the Brave new-tab background to a custom PNG chosen at patch time. Rewrites the Java ambient wallpaper catalog (BackgroundImage drawable resource id) and makes wallpaper callbacks use it instead of native branded/URL images. IMPORTANT: crop the image to your current screen resolution first, then select that file in the patch options. Brave's New tab page settings only toggle \"Show background images\". Default off.",
-                "changes": [
-                  "description updated",
-                  "options: ~1 option"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Brave Beta",
-          "package": "com.brave.browser_beta",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Brave Startup Performance Optimization",
-                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations. Marks PartnerBrowserCustomizations initialized without SharedPreferences/ContentResolver/ThreadPool/timeout work, drains init callbacks immediately, and forces partner homepage and incognito lockdown gates closed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Custom NTP wallpaper",
-                "description": "Alpha experimental version-unpinned patch (issue #13): forces the Brave new-tab background to a custom PNG chosen at patch time. Rewrites the Java ambient wallpaper catalog (BackgroundImage drawable resource id) and makes wallpaper callbacks use it instead of native branded/URL images. IMPORTANT: crop the image to your current screen resolution first, then select that file in the patch options. Brave's New tab page settings only toggle \"Show background images\". Default off.",
-                "changes": [
-                  "description updated",
-                  "options: ~1 option"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Brave Nightly",
-          "package": "com.brave.browser_nightly",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Brave Startup Performance Optimization",
-                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations. Marks PartnerBrowserCustomizations initialized without SharedPreferences/ContentResolver/ThreadPool/timeout work, drains init callbacks immediately, and forces partner homepage and incognito lockdown gates closed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Custom NTP wallpaper",
-                "description": "Alpha experimental version-unpinned patch (issue #13): forces the Brave new-tab background to a custom PNG chosen at patch time. Rewrites the Java ambient wallpaper catalog (BackgroundImage drawable resource id) and makes wallpaper callbacks use it instead of native branded/URL images. IMPORTANT: crop the image to your current screen resolution first, then select that file in the patch options. Brave's New tab page settings only toggle \"Show background images\". Default off.",
-                "changes": [
-                  "description updated",
-                  "options: ~1 option"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/dh6k/morphe-patches",
-      "patches_name": "Brave and universal patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "dh6k",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Brave Browser",
-          "package": "com.brave.browser",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Brave Startup Performance Optimization",
-                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations. Marks PartnerBrowserCustomizations initialized without SharedPreferences/ContentResolver/ThreadPool/timeout work, drains init callbacks immediately, and forces partner homepage and incognito lockdown gates closed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Custom NTP wallpaper",
-                "description": "Alpha experimental version-unpinned patch (issue #13): forces the Brave new-tab background to a custom PNG chosen at patch time. Rewrites the Java ambient wallpaper catalog (BackgroundImage drawable resource id) and makes wallpaper callbacks use it instead of native branded/URL images. IMPORTANT: crop the image to your current screen resolution first, then select that file in the patch options. Brave's New tab page settings only toggle \"Show background images\". Default off.",
-                "changes": [
-                  "description updated",
-                  "options: ~1 option"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Brave Beta",
-          "package": "com.brave.browser_beta",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Brave Startup Performance Optimization",
-                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations. Marks PartnerBrowserCustomizations initialized without SharedPreferences/ContentResolver/ThreadPool/timeout work, drains init callbacks immediately, and forces partner homepage and incognito lockdown gates closed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Custom NTP wallpaper",
-                "description": "Alpha experimental version-unpinned patch (issue #13): forces the Brave new-tab background to a custom PNG chosen at patch time. Rewrites the Java ambient wallpaper catalog (BackgroundImage drawable resource id) and makes wallpaper callbacks use it instead of native branded/URL images. IMPORTANT: crop the image to your current screen resolution first, then select that file in the patch options. Brave's New tab page settings only toggle \"Show background images\". Default off.",
-                "changes": [
-                  "description updated",
-                  "options: ~1 option"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Brave Nightly",
-          "package": "com.brave.browser_nightly",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Brave Startup Performance Optimization",
-                "description": "Optimizes startup time and eliminates background CPU/disk overhead by disabling unused OEM carrier partner customizations. Marks PartnerBrowserCustomizations initialized without SharedPreferences/ContentResolver/ThreadPool/timeout work, drains init callbacks immediately, and forces partner homepage and incognito lockdown gates closed."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": [
-              {
-                "name": "Custom NTP wallpaper",
-                "description": "Alpha experimental version-unpinned patch (issue #13): forces the Brave new-tab background to a custom PNG chosen at patch time. Rewrites the Java ambient wallpaper catalog (BackgroundImage drawable resource id) and makes wallpaper callbacks use it instead of native branded/URL images. IMPORTANT: crop the image to your current screen resolution first, then select that file in the patch options. Brave's New tab page settings only toggle \"Show background images\". Default off.",
-                "changes": [
-                  "description updated",
-                  "options: ~1 option"
-                ]
-              }
-            ]
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/dh6k/morphe-patches",
-      "patches_name": "Brave and universal patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "media",
-      "channel": "latest",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Chorki",
-          "package": "com.prothomalo",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Free content",
-                "description": "Stream movies and series for free."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Stream paid content",
-                "description": "Stream movies and series for free."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/HellLord77/media-patches",
-      "patches_name": "Media Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "media",
-      "channel": "dev",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Chorki",
-          "package": "com.prothomalo",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Free content",
-                "description": "Stream movies and series for free."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Stream paid content",
-                "description": "Stream movies and series for free."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/HellLord77/media-patches",
-      "patches_name": "Media Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "media",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Bongobd",
-          "package": "com.bongo.bongobd",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Free content",
-                "description": "Use alternative api to get content details."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Free paid content",
-                "description": "Make paid shows and movies free."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Bongobdandroidtv",
-          "package": "com.bongo.bongobdandroidtv",
           "badge_type": "UPDATED APP",
           "promoted_from": "dev",
           "scan_numbers": [
             1
           ]
         },
-        {
-          "app_name": "Shadhin",
-          "package": "com.gm.shadhin",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Stream content",
-                "description": "Stream content as song."
-              }
-            ],
-            "patches_removed": [
-              {
-                "name": "Stream paid content",
-                "description": "Stream podcasts and audiobooks for free."
-              }
-            ],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Kabbik",
-          "package": "com.kabbik.app",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Chorki",
-          "package": "com.prothomalo",
-          "badge_type": "UPDATED APP",
-          "promoted_from": "dev",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/HellLord77/media-patches",
-      "patches_name": "Media Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "rhubarbshoelaces",
-      "channel": "latest",
-      "badge_type": "NEW BUNDLE",
-      "apps": [
-        {
-          "app_name": "theScore",
-          "package": "com.fivemobile.thescore",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Boost for Reddit",
-          "package": "com.rubenmayayo.reddit",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/rhubarbshoelaces/morphe-patches",
-      "patches_name": "Rhubarb Shoelaces Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "hxreborn",
-      "channel": "latest",
-      "badge_type": "UPDATED",
-      "apps": [
-        {
-          "app_name": "Photo Editor Pro",
-          "package": "photo.editor.photoeditor.photoeditorpro",
-          "badge_type": "UPDATED APP",
-          "patch_diff": {
-            "patches_added": [
-              {
-                "name": "Hide share options",
-                "description": "Adds an option to hide the share buttons on the save screen and center the saved photo."
-              }
-            ],
-            "patches_removed": [],
-            "patches_modified": []
-          },
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/hxreborn/morphe-patches",
-      "patches_name": "hxreborn Patches",
-      "extra_badges": [
-        "VERSION BUMP"
-      ]
-    },
-    {
-      "bundle": "hxreborn",
-      "channel": "stable",
-      "badge_type": "UPDATED",
-      "apps": [
         {
           "app_name": "Perplexity",
           "package": "ai.perplexity.app.android",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1554,7 +247,7 @@
         {
           "app_name": "All-In-One Calculator",
           "package": "all.in.one.calculator",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1562,7 +255,7 @@
         {
           "app_name": "Rubber Bands",
           "package": "app.rubberbands.fit",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1570,7 +263,7 @@
         {
           "app_name": "Symfonium",
           "package": "app.symfonik.music.player",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1578,7 +271,7 @@
         {
           "app_name": "Proton Mail",
           "package": "ch.protonmail.android",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1586,7 +279,7 @@
         {
           "app_name": "AtloMaps",
           "package": "com.atlogis.atlomaps",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1594,7 +287,7 @@
         {
           "app_name": "Audible",
           "package": "com.audible.application",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1602,7 +295,7 @@
         {
           "app_name": "MovieBox",
           "package": "com.community.oneroom",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1610,7 +303,7 @@
         {
           "app_name": "Cx File Explorer",
           "package": "com.cxinventor.file.explorer",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1618,7 +311,7 @@
         {
           "app_name": "Etsy",
           "package": "com.etsy.android",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1626,7 +319,7 @@
         {
           "app_name": "VPN Super Unlimited Proxy",
           "package": "com.free.vpn.super.hotspot.open",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1634,7 +327,7 @@
         {
           "app_name": "QR & Barcode Scanner",
           "package": "com.gamma.scan",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1642,7 +335,7 @@
         {
           "app_name": "DWG FastView",
           "package": "com.gstarmc.android",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1650,7 +343,7 @@
         {
           "app_name": "1Weather",
           "package": "com.handmark.expressweather",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1658,7 +351,7 @@
         {
           "app_name": "Kick",
           "package": "com.kick.mobile",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1666,7 +359,7 @@
         {
           "app_name": "Quranify",
           "package": "com.mchutov.quranify",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1674,7 +367,7 @@
         {
           "app_name": "Showly",
           "package": "com.michaldrabik.showly2",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1682,7 +375,7 @@
         {
           "app_name": "ForusApp",
           "package": "com.myvitale.forus",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1690,7 +383,7 @@
         {
           "app_name": "Realme Link",
           "package": "com.realme.link",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1698,7 +391,7 @@
         {
           "app_name": "RISE Sleep Tracker",
           "package": "com.risesci.nyx",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1706,7 +399,7 @@
         {
           "app_name": "MyMoveset",
           "package": "com.soulbreakers.mymoveset",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1714,7 +407,7 @@
         {
           "app_name": "Projectivy Launcher",
           "package": "com.spocky.projengmenu",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1722,7 +415,7 @@
         {
           "app_name": "RateGlance",
           "package": "com.sry.rateglance",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1730,7 +423,7 @@
         {
           "app_name": "Notesnook",
           "package": "com.streetwriters.notesnook",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1738,7 +431,7 @@
         {
           "app_name": "Trainline",
           "package": "com.thetrainline",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1746,7 +439,7 @@
         {
           "app_name": "vpnify",
           "package": "com.vpn.free.hotspot.secure.vpnify",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1754,7 +447,7 @@
         {
           "app_name": "Klassik Radio+",
           "package": "de.klassikradio.app",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1762,7 +455,7 @@
         {
           "app_name": "atvTools",
           "package": "dev.vodik7.atvtools",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1770,7 +463,7 @@
         {
           "app_name": "BetterSleep",
           "package": "ipnossoft.rma.free",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1778,7 +471,7 @@
         {
           "app_name": "ReadEra",
           "package": "org.readera",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1786,7 +479,7 @@
         {
           "app_name": "Photo Editor Pro",
           "package": "photo.editor.photoeditor.photoeditorpro",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1794,7 +487,7 @@
         {
           "app_name": "Proton Pass",
           "package": "proton.android.pass",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1802,7 +495,7 @@
         {
           "app_name": "AlpineQuest",
           "package": "psyberia.alpinequest.free",
-          "badge_type": "NEW APP",
+          "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
@@ -1810,22 +503,14 @@
         {
           "app_name": "Ringtone Maker",
           "package": "ringtonemaker.musiccutter.customringtones.freeringtonemaker",
-          "badge_type": "NEW APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TikTok",
-          "package": "com.zhiliaoapp.musically",
           "badge_type": "REMOVED APP",
           "scan_numbers": [
             1
           ]
         }
       ],
-      "repo_url": "https://github.com/hxreborn/morphe-patches",
-      "patches_name": "hxreborn Patches",
+      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
+      "patches_name": "hxreborn TikTok Patches",
       "extra_badges": [
         "VERSION BUMP"
       ]
@@ -2645,6 +1330,24 @@
       "extra_badges": []
     },
     {
+      "bundle": "amitaisela",
+      "channel": "stable",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Travian: Legends",
+          "package": "com.traviangames.travianlegendsmobile",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/Amitaisela/travian-morphe-patches",
+      "patches_name": "Travian Notifier Patches",
+      "extra_badges": []
+    },
+    {
       "bundle": "amplerevanced",
       "channel": "latest",
       "badge_type": "REMOVED BUNDLE",
@@ -3132,522 +1835,6 @@
       ],
       "repo_url": "https://github.com/Trimpsuz/morphe-busuu",
       "patches_name": "Busuu Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "byehi98",
-      "channel": "dev",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "Adda247",
-          "package": "com.adda247.app",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Dr. Driving",
-          "package": "com.ansangha.drdriving",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "HAAK",
-          "package": "com.blingame.haaktestb",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Tentacle Wars",
-          "package": "com.fdgentertainment.tentaclewars.gp.free",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Hill Climb Racing",
-          "package": "com.fingersoft.hillclimb",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "FreeJobAlert",
-          "package": "com.freejobalert",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TrueCloud",
-          "package": "com.generalcomp.truecloud",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Dan the Man",
-          "package": "com.halfbrick.dantheman",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Jetpack Joyride",
-          "package": "com.halfbrick.jetpackjoyride",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Big Hunter",
-          "package": "com.kakarod.bighunter",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Burrito Bison: Launcha Libre",
-          "package": "com.kongregate.mobile.burritobison3.google",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Doodle Jump",
-          "package": "com.lima.doodlejump",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Smash Hit",
-          "package": "com.mediocre.smashhit",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Plague Inc.",
-          "package": "com.miniclip.plagueinc",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Vector",
-          "package": "com.nekki.vector",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Alto's Adventure",
-          "package": "com.noodlecake.altosadventure",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Alto's Odyssey",
-          "package": "com.noodlecake.altosodyssey",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Earn to Die 2",
-          "package": "com.notdoppler.earntodie2",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Fancy Pants Adventures",
-          "package": "com.overthetopgames.fancypants",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Into the Dead 2",
-          "package": "com.pikpok.dr2.play",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Only One",
-          "package": "com.rebelbinary.onlyone",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Aliens Drive Me Crazy",
-          "package": "com.rebeltwins.aliensdrivemecrazy",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Into the Dead",
-          "package": "com.sidheinteractive.sif.dr",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Traffic Rider",
-          "package": "com.skgames.trafficrider",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Swordigo",
-          "package": "com.touchfoo.swordigo",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Prince of Persia: The Lost Crown",
-          "package": "com.ubisoft.princeofpersia.thelostcrown.mobile.action.adventure.platform",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Injustice: Gods Among Us",
-          "package": "com.wb.goog.injustice",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Crossy Road",
-          "package": "com.yodo1.crossyroad",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Rodeo Stampede: Sky Zoo Safari",
-          "package": "com.yodo1.rodeo.safari",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Swift Backup",
-          "package": "org.swiftapps.swiftbackup",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Missiles",
-          "package": "pl.macaque.missiles",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-      "patches_name": "byehi98 Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "byehi98",
-      "channel": "stable",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "Adda247",
-          "package": "com.adda247.app",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Dr. Driving",
-          "package": "com.ansangha.drdriving",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "HAAK",
-          "package": "com.blingame.haaktestb",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Tentacle Wars",
-          "package": "com.fdgentertainment.tentaclewars.gp.free",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Hill Climb Racing",
-          "package": "com.fingersoft.hillclimb",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "FreeJobAlert",
-          "package": "com.freejobalert",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "TrueCloud",
-          "package": "com.generalcomp.truecloud",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Dan the Man",
-          "package": "com.halfbrick.dantheman",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Jetpack Joyride",
-          "package": "com.halfbrick.jetpackjoyride",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Big Hunter",
-          "package": "com.kakarod.bighunter",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Burrito Bison: Launcha Libre",
-          "package": "com.kongregate.mobile.burritobison3.google",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Doodle Jump",
-          "package": "com.lima.doodlejump",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Smash Hit",
-          "package": "com.mediocre.smashhit",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Plague Inc.",
-          "package": "com.miniclip.plagueinc",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Vector",
-          "package": "com.nekki.vector",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Alto's Adventure",
-          "package": "com.noodlecake.altosadventure",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Alto's Odyssey",
-          "package": "com.noodlecake.altosodyssey",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Earn to Die 2",
-          "package": "com.notdoppler.earntodie2",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Fancy Pants Adventures",
-          "package": "com.overthetopgames.fancypants",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Into the Dead 2",
-          "package": "com.pikpok.dr2.play",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Only One",
-          "package": "com.rebelbinary.onlyone",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Aliens Drive Me Crazy",
-          "package": "com.rebeltwins.aliensdrivemecrazy",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Into the Dead",
-          "package": "com.sidheinteractive.sif.dr",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Traffic Rider",
-          "package": "com.skgames.trafficrider",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Swordigo",
-          "package": "com.touchfoo.swordigo",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Prince of Persia: The Lost Crown",
-          "package": "com.ubisoft.princeofpersia.thelostcrown.mobile.action.adventure.platform",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Injustice: Gods Among Us",
-          "package": "com.wb.goog.injustice",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Crossy Road",
-          "package": "com.yodo1.crossyroad",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Rodeo Stampede: Sky Zoo Safari",
-          "package": "com.yodo1.rodeo.safari",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Swift Backup",
-          "package": "org.swiftapps.swiftbackup",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        },
-        {
-          "app_name": "Missiles",
-          "package": "pl.macaque.missiles",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
-      "patches_name": "byehi98 Patches",
       "extra_badges": []
     },
     {
@@ -4454,7 +2641,7 @@
     },
     {
       "bundle": "epxec",
-      "channel": "stable",
+      "channel": "latest",
       "badge_type": "REMOVED BUNDLE",
       "apps": [
         {
@@ -4574,24 +2761,6 @@
       ],
       "repo_url": "https://github.com/eyalm2000/tidal-debug-menu",
       "patches_name": "eyalm2000",
-      "extra_badges": []
-    },
-    {
-      "bundle": "flexboard",
-      "channel": "dev",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "Gboard",
-          "package": "com.google.android.inputmethod.latin",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/JZ6/Flexboard",
-      "patches_name": "Flexboard",
       "extra_badges": []
     },
     {
@@ -5128,6 +3297,24 @@
       ],
       "repo_url": "https://github.com/hackingguy/morphe-patches",
       "patches_name": "hackingguy patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "haiagaru",
+      "channel": "stable",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "ChMate",
+          "package": "jp.co.airfront.android.a2chmate",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/areteruhiro/Haiagaru-Morphe",
+      "patches_name": "Haiagaru",
       "extra_badges": []
     },
     {
@@ -6025,8 +4212,80 @@
       "extra_badges": []
     },
     {
-      "bundle": "hxreborn-morphe-patches",
+      "bundle": "hxreborn-hxreborn-tiktok-patches",
+      "channel": "dev",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
+      "patches_name": "hxreborn TikTok Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "hxreborn-hxreborn-tiktok-patches",
       "channel": "stable",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
+      "patches_name": "hxreborn TikTok Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "hxreborn-tiktok",
+      "channel": "dev",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
+      "patches_name": "hxreborn TikTok Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "hxreborn-tiktok",
+      "channel": "stable",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
+      "patches_name": "hxreborn TikTok Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "hxreborn",
+      "channel": "latest",
       "badge_type": "REMOVED BUNDLE",
       "apps": [
         {
@@ -6304,60 +4563,6 @@
       ],
       "repo_url": "https://github.com/hxreborn/morphe-patches",
       "patches_name": "hxreborn Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "hxreborn-tiktok",
-      "channel": "dev",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "TikTok",
-          "package": "com.zhiliaoapp.musically",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
-      "patches_name": "hxreborn TikTok Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "hxreborn-tiktok",
-      "channel": "stable",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "TikTok",
-          "package": "com.zhiliaoapp.musically",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
-      "patches_name": "hxreborn TikTok Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "hxreborn",
-      "channel": "dev",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "TikTok",
-          "package": "com.zhiliaoapp.musically",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
-      "patches_name": "hxreborn TikTok Patches",
       "extra_badges": []
     },
     {
@@ -6984,6 +5189,42 @@
       ],
       "repo_url": "https://github.com/Joussflls10/Jouss-Patches",
       "patches_name": "Joussflls10",
+      "extra_badges": []
+    },
+    {
+      "bundle": "jz6",
+      "channel": "dev",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/JZ6/Flexboard",
+      "patches_name": "Flexboard",
+      "extra_badges": []
+    },
+    {
+      "bundle": "jz6",
+      "channel": "stable",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Gboard",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/JZ6/Flexboard",
+      "patches_name": "Flexboard",
       "extra_badges": []
     },
     {
@@ -7814,6 +6055,156 @@
       ],
       "repo_url": "https://github.com/MauroGamerVN/Morphe-Patches",
       "patches_name": "MauroGamerVN",
+      "extra_badges": []
+    },
+    {
+      "bundle": "media",
+      "channel": "dev",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Bongobd",
+          "package": "com.bongo.bongobd",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Bongobdandroidtv",
+          "package": "com.bongo.bongobdandroidtv",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Shadhin",
+          "package": "com.gm.shadhin",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Kabbik",
+          "package": "com.kabbik.app",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Chorki",
+          "package": "com.prothomalo",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/HellLord77/media-patches",
+      "patches_name": "Media Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "media",
+      "channel": "latest",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Bongobd",
+          "package": "com.bongo.bongobd",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Bongobdandroidtv",
+          "package": "com.bongo.bongobdandroidtv",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Shadhin",
+          "package": "com.gm.shadhin",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Kabbik",
+          "package": "com.kabbik.app",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Chorki",
+          "package": "com.prothomalo",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/HellLord77/media-patches",
+      "patches_name": "Media Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "media",
+      "channel": "stable",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Bongobd",
+          "package": "com.bongo.bongobd",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Bongobdandroidtv",
+          "package": "com.bongo.bongobdandroidtv",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Shadhin",
+          "package": "com.gm.shadhin",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Kabbik",
+          "package": "com.kabbik.app",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Chorki",
+          "package": "com.prothomalo",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/HellLord77/media-patches",
+      "patches_name": "Media Patches",
       "extra_badges": []
     },
     {
@@ -9094,6 +7485,780 @@
       ],
       "repo_url": "https://github.com/liongalahad/liongalahad-nuviotv-morphe-patches",
       "patches_name": "UserXYZ Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "dev",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Adda247",
+          "package": "com.adda247.app",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Dr. Driving",
+          "package": "com.ansangha.drdriving",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "HAAK",
+          "package": "com.blingame.haaktestb",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Tentacle Wars",
+          "package": "com.fdgentertainment.tentaclewars.gp.free",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Hill Climb Racing",
+          "package": "com.fingersoft.hillclimb",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "FreeJobAlert",
+          "package": "com.freejobalert",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "TrueCloud",
+          "package": "com.generalcomp.truecloud",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Dan the Man",
+          "package": "com.halfbrick.dantheman",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Jetpack Joyride",
+          "package": "com.halfbrick.jetpackjoyride",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Big Hunter",
+          "package": "com.kakarod.bighunter",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Burrito Bison: Launcha Libre",
+          "package": "com.kongregate.mobile.burritobison3.google",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Doodle Jump",
+          "package": "com.lima.doodlejump",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Smash Hit",
+          "package": "com.mediocre.smashhit",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Plague Inc.",
+          "package": "com.miniclip.plagueinc",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Vector",
+          "package": "com.nekki.vector",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Alto's Adventure",
+          "package": "com.noodlecake.altosadventure",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Alto's Odyssey",
+          "package": "com.noodlecake.altosodyssey",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Earn to Die 2",
+          "package": "com.notdoppler.earntodie2",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Fancy Pants Adventures",
+          "package": "com.overthetopgames.fancypants",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Into the Dead 2",
+          "package": "com.pikpok.dr2.play",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Only One",
+          "package": "com.rebelbinary.onlyone",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Aliens Drive Me Crazy",
+          "package": "com.rebeltwins.aliensdrivemecrazy",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Into the Dead",
+          "package": "com.sidheinteractive.sif.dr",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Traffic Rider",
+          "package": "com.skgames.trafficrider",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Swordigo",
+          "package": "com.touchfoo.swordigo",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Prince of Persia: The Lost Crown",
+          "package": "com.ubisoft.princeofpersia.thelostcrown.mobile.action.adventure.platform",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Injustice: Gods Among Us",
+          "package": "com.wb.goog.injustice",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Crossy Road",
+          "package": "com.yodo1.crossyroad",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Rodeo Stampede: Sky Zoo Safari",
+          "package": "com.yodo1.rodeo.safari",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Swift Backup",
+          "package": "org.swiftapps.swiftbackup",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Missiles",
+          "package": "pl.macaque.missiles",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+      "patches_name": "byehi98 Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "latest",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Adda247",
+          "package": "com.adda247.app",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Dr. Driving",
+          "package": "com.ansangha.drdriving",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "HAAK",
+          "package": "com.blingame.haaktestb",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Tentacle Wars",
+          "package": "com.fdgentertainment.tentaclewars.gp.free",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Hill Climb Racing",
+          "package": "com.fingersoft.hillclimb",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "FreeJobAlert",
+          "package": "com.freejobalert",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "TrueCloud",
+          "package": "com.generalcomp.truecloud",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Dan the Man",
+          "package": "com.halfbrick.dantheman",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Jetpack Joyride",
+          "package": "com.halfbrick.jetpackjoyride",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Big Hunter",
+          "package": "com.kakarod.bighunter",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Burrito Bison: Launcha Libre",
+          "package": "com.kongregate.mobile.burritobison3.google",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Doodle Jump",
+          "package": "com.lima.doodlejump",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Smash Hit",
+          "package": "com.mediocre.smashhit",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Plague Inc.",
+          "package": "com.miniclip.plagueinc",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Vector",
+          "package": "com.nekki.vector",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Alto's Adventure",
+          "package": "com.noodlecake.altosadventure",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Alto's Odyssey",
+          "package": "com.noodlecake.altosodyssey",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Earn to Die 2",
+          "package": "com.notdoppler.earntodie2",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Fancy Pants Adventures",
+          "package": "com.overthetopgames.fancypants",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Into the Dead 2",
+          "package": "com.pikpok.dr2.play",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Only One",
+          "package": "com.rebelbinary.onlyone",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Aliens Drive Me Crazy",
+          "package": "com.rebeltwins.aliensdrivemecrazy",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Into the Dead",
+          "package": "com.sidheinteractive.sif.dr",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Traffic Rider",
+          "package": "com.skgames.trafficrider",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Swordigo",
+          "package": "com.touchfoo.swordigo",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Prince of Persia: The Lost Crown",
+          "package": "com.ubisoft.princeofpersia.thelostcrown.mobile.action.adventure.platform",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Injustice: Gods Among Us",
+          "package": "com.wb.goog.injustice",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Crossy Road",
+          "package": "com.yodo1.crossyroad",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Rodeo Stampede: Sky Zoo Safari",
+          "package": "com.yodo1.rodeo.safari",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Swift Backup",
+          "package": "org.swiftapps.swiftbackup",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Missiles",
+          "package": "pl.macaque.missiles",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+      "patches_name": "byehi98 Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "stable",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Adda247",
+          "package": "com.adda247.app",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Dr. Driving",
+          "package": "com.ansangha.drdriving",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "HAAK",
+          "package": "com.blingame.haaktestb",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Tentacle Wars",
+          "package": "com.fdgentertainment.tentaclewars.gp.free",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Hill Climb Racing",
+          "package": "com.fingersoft.hillclimb",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "FreeJobAlert",
+          "package": "com.freejobalert",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "TrueCloud",
+          "package": "com.generalcomp.truecloud",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Dan the Man",
+          "package": "com.halfbrick.dantheman",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Jetpack Joyride",
+          "package": "com.halfbrick.jetpackjoyride",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Big Hunter",
+          "package": "com.kakarod.bighunter",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Burrito Bison: Launcha Libre",
+          "package": "com.kongregate.mobile.burritobison3.google",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Doodle Jump",
+          "package": "com.lima.doodlejump",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Smash Hit",
+          "package": "com.mediocre.smashhit",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Plague Inc.",
+          "package": "com.miniclip.plagueinc",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Vector",
+          "package": "com.nekki.vector",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Alto's Adventure",
+          "package": "com.noodlecake.altosadventure",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Alto's Odyssey",
+          "package": "com.noodlecake.altosodyssey",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Earn to Die 2",
+          "package": "com.notdoppler.earntodie2",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Fancy Pants Adventures",
+          "package": "com.overthetopgames.fancypants",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Into the Dead 2",
+          "package": "com.pikpok.dr2.play",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Only One",
+          "package": "com.rebelbinary.onlyone",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Aliens Drive Me Crazy",
+          "package": "com.rebeltwins.aliensdrivemecrazy",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Into the Dead",
+          "package": "com.sidheinteractive.sif.dr",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Traffic Rider",
+          "package": "com.skgames.trafficrider",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Swordigo",
+          "package": "com.touchfoo.swordigo",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Prince of Persia: The Lost Crown",
+          "package": "com.ubisoft.princeofpersia.thelostcrown.mobile.action.adventure.platform",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Injustice: Gods Among Us",
+          "package": "com.wb.goog.injustice",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Crossy Road",
+          "package": "com.yodo1.crossyroad",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Rodeo Stampede: Sky Zoo Safari",
+          "package": "com.yodo1.rodeo.safari",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Swift Backup",
+          "package": "org.swiftapps.swiftbackup",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Missiles",
+          "package": "pl.macaque.missiles",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+      "patches_name": "byehi98 Patches",
       "extra_badges": []
     },
     {
@@ -10473,6 +9638,40 @@
       "extra_badges": []
     },
     {
+      "bundle": "rabehx",
+      "channel": "latest",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "Webetu",
+          "package": "app.progres.webetu",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "My Ooredoo",
+          "package": "com.algeria.selfcare.app.android",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "BaridiMob",
+          "package": "ru.bpc.mobilebank.bpc",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/RabehX/rabehx-patches",
+      "patches_name": "RabehX Patches",
+      "extra_badges": []
+    },
+    {
       "bundle": "rabilrbl",
       "channel": "dev",
       "badge_type": "REMOVED BUNDLE",
@@ -10587,10 +9786,44 @@
       "extra_badges": []
     },
     {
-      "bundle": "riky-dev",
+      "bundle": "rhubarbshoelaces",
+      "channel": "latest",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "theScore",
+          "package": "com.fivemobile.thescore",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Boost for Reddit",
+          "package": "com.rubenmayayo.reddit",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/rhubarbshoelaces/morphe-patches",
+      "patches_name": "Rhubarb Shoelaces Patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "riky",
       "channel": "dev",
       "badge_type": "REMOVED BUNDLE",
       "apps": [
+        {
+          "app_name": "VN",
+          "package": "com.frontrow.vlog",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
         {
           "app_name": "CapCut",
           "package": "com.lemon.lvoverseas",
@@ -10629,10 +9862,18 @@
       "extra_badges": []
     },
     {
-      "bundle": "riky-dev",
-      "channel": "stable",
+      "bundle": "riky",
+      "channel": "latest",
       "badge_type": "REMOVED BUNDLE",
       "apps": [
+        {
+          "app_name": "VN",
+          "package": "com.frontrow.vlog",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
         {
           "app_name": "CapCut",
           "package": "com.lemon.lvoverseas",
@@ -10800,6 +10041,24 @@
       ],
       "repo_url": "https://github.com/subenoeva/roadsync-patches",
       "patches_name": "subenoeva Morphe patches",
+      "extra_badges": []
+    },
+    {
+      "bundle": "roundsalmon4",
+      "channel": "latest",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "SeriesGuide",
+          "package": "com.battlelancer.seriesguide",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/RoundSalmon4/morphe-patches-template",
+      "patches_name": "RoundSalmon4 Patches",
       "extra_badges": []
     },
     {
@@ -14957,6 +14216,128 @@
       "extra_badges": []
     },
     {
+      "bundle": "shuhaibnc",
+      "channel": "latest",
+      "badge_type": "REMOVED BUNDLE",
+      "apps": [
+        {
+          "app_name": "CandyLink VPN",
+          "package": "com.candylink.openvpn",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Manglish Keyboard",
+          "package": "com.clusterdev.malayalamkeyboard",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Footej Camera",
+          "package": "com.footej.camera",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "apk-signer",
+          "package": "com.haibison.apksigner",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Sticker Maker",
+          "package": "com.marsvard.stickermakerforwhatsapp",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "FFmpeg Media Encoder",
+          "package": "com.silentlexx.ffmpeggui",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Reverso Context",
+          "package": "com.softissimo.reverso.context",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "GoCut",
+          "package": "com.videoedit.gocut",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Melon VPN",
+          "package": "com.vpnbottle.melon.free.unblock.fast.vpn",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Video to MP3",
+          "package": "mp3videoconverter.videotomp3.videotomp3converter",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Mvideo",
+          "package": "music.videomaker.slideshow",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "OviCut",
+          "package": "video.editor.videoeditor.musicvideoeditor",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Vidma",
+          "package": "vidma.video.editor.videomaker",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        },
+        {
+          "app_name": "Beat.ly",
+          "package": "vinkle.video.editor",
+          "badge_type": "REMOVED APP",
+          "scan_numbers": [
+            1
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/ShuhaibNC/morphe-patches",
+      "patches_name": "Shuhaib's Patches",
+      "extra_badges": []
+    },
+    {
       "bundle": "slight",
       "channel": "dev",
       "badge_type": "REMOVED BUNDLE",
@@ -15398,42 +14779,6 @@
       ],
       "repo_url": "https://github.com/chukfinley/tidal-patches",
       "patches_name": "chukfinley TIDAL Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "travian",
-      "channel": "latest",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "Travian: Legends",
-          "package": "com.traviangames.travianlegendsmobile",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/Amitaisela/travian-morphe-patches",
-      "patches_name": "Travian Notifier Patches",
-      "extra_badges": []
-    },
-    {
-      "bundle": "travian",
-      "channel": "stable",
-      "badge_type": "REMOVED BUNDLE",
-      "apps": [
-        {
-          "app_name": "Travian: Legends",
-          "package": "com.traviangames.travianlegendsmobile",
-          "badge_type": "REMOVED APP",
-          "scan_numbers": [
-            1
-          ]
-        }
-      ],
-      "repo_url": "https://github.com/Amitaisela/travian-morphe-patches",
-      "patches_name": "Travian Notifier Patches",
       "extra_badges": []
     },
     {
