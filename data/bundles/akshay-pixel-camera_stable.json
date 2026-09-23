@@ -1,0 +1,67 @@
+{
+  "bundle": "akshay-pixel-camera",
+  "channel": "stable",
+  "repo_url": "https://github.com/Akshayykadam/Pixel-Camera",
+  "created_at": "2026-09-20T08:19:33",
+  "version": "1.0.1",
+  "description": "## What's New in v1.0.1\r\n\r\n### 1. Pixel 10 Crash Fix\r\n\r\nFixed a major issue causing **Pixel Camera to crash on Pixel 10 devices**.\r\n\r\n* Improved camera initialization and feature compatibility.\r\n* Resolved crashes occurring during camera startup and usage.\r\n* Pixel 10 users should now be able to use the backported features normally.\r\n\r\n### 2. Pixel 10 Pro Fold — Image Saving Fix\r\n\r\nFixed the issue where photos captured on the **Pixel 10 Pro Fold** would appear briefly in the thumbnail but fail to save correctly.\r\n\r\n* Fixed photo saving and media-store handling.\r\n* Captured images should now be properly written to the device gallery.\r\n* Improved thumbnail behavior after capturing photos.\r\n\r\n### 3. Portrait Mode Crash Fix\r\n\r\nFixed crashes affecting **Portrait Mode** on supported Pixel devices.\r\n\r\n* Improved Portrait Mode initialization.\r\n* Fixed device-specific camera pipeline issues.\r\n* Improved stability when switching into and out of Portrait Mode.\r\n\r\n### 4. 5x Portrait Mode Removed\r\n\r\nThe experimental **5x Portrait Mode** has been removed from Portrait Mode in v1.0.1.\r\n\r\nThis change was made to improve stability and prevent device-specific crashes associated with the 5x Portrait pipeline.\r\n\r\n**5x zoom remains available through the regular camera/zoom experience where supported.**\r\n\r\n---\r\n\r\n## Credits & Acknowledgments\r\n\r\n* **Reverse Engineering & Development:** Akshay Kadam ([[@Akshayykadam](https://github.com/Akshayykadam)](https://github.com/Akshayykadam))\r\n* **Patching Engine:** Morphe & Smali dexlib2\r\n* **Base Application:** Google LLC — Pixel Camera 11.0.073\r\n\r\nThank you to everyone who tested **v1.0.0**, reported issues, shared logs, and helped identify device-specific problems.\r\n\r\n**Pixel Camera v1.0.1 is primarily a stability release, and your feedback directly helped make it possible.**",
+  "apps": [
+    {
+      "app_name": "Pixel Camera",
+      "package": "com.google.android.googlecamera",
+      "patches": [
+        {
+          "name": "Camera Looks Backport",
+          "description": "Enables Google Pixel 11's 10 signature Camera Looks (Sauce & Tomte) on Pixel 6 through Pixel 10.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.0.073.972752740.32"
+          ]
+        },
+        {
+          "name": "Viewfinder Quick Access Controls",
+          "description": "Enables customizable Left/Right viewfinder quick-access shortcut slots and interactive 10-tick slider.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.0.073.972752740.32"
+          ]
+        },
+        {
+          "name": "10x Viewfinder Quick Zoom",
+          "description": "Unlocks the discrete 10x quick zoom button on viewfinder in Photo mode.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.0.073.972752740.32"
+          ]
+        },
+        {
+          "name": "Pixel Camera Creator Suite",
+          "description": "Enables Teleprompter HUD (Biotite), Live Audio VU Meter (Mica), and Social Framing Guides (Slate).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.0.073.972752740.32"
+          ]
+        },
+        {
+          "name": "Pixel Camera Clone (Non-Root)",
+          "description": "Changes package identifier to com.google.android.GoogleCameraEng to allow side-by-side installation alongside stock Camera.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.0.073.972752740.32"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Akshayykadam",
+  "fingerprint": "3bb4931a3741160b77a780f03ff92421e3adb11885697cc25a94e5d142e1a471",
+  "release_notes": "## What's New in v1.0.1\r\n\r\n### 1. Pixel 10 Crash Fix\r\n\r\nFixed a major issue causing **Pixel Camera to crash on Pixel 10 devices**.\r\n\r\n* Improved camera initialization and feature compatibility.\r\n* Resolved crashes occurring during camera startup and usage.\r\n* Pixel 10 users should now be able to use the backported features normally.\r\n\r\n### 2. Pixel 10 Pro Fold — Image Saving Fix\r\n\r\nFixed the issue where photos captured on the **Pixel 10 Pro Fold** would appear briefly in the thumbnail but fail to save correctly.\r\n\r\n* Fixed photo saving and media-store handling.\r\n* Captured images should now be properly written to the device gallery.\r\n* Improved thumbnail behavior after capturing photos.\r\n\r\n### 3. Portrait Mode Crash Fix\r\n\r\nFixed crashes affecting **Portrait Mode** on supported Pixel devices.\r\n\r\n* Improved Portrait Mode initialization.\r\n* Fixed device-specific camera pipeline issues.\r\n* Improved stability when switching into and out of Portrait Mode.\r\n\r\n### 4. 5x Portrait Mode Removed\r\n\r\nThe experimental **5x Portrait Mode** has been removed from Portrait Mode in v1.0.1.\r\n\r\nThis change was made to improve stability and prevent device-specific crashes associated with the 5x Portrait pipeline.\r\n\r\n**5x zoom remains available through the regular camera/zoom experience where supported.**\r\n\r\n---\r\n\r\n## Credits & Acknowledgments\r\n\r\n* **Reverse Engineering & Development:** Akshay Kadam ([[@Akshayykadam](https://github.com/Akshayykadam)](https://github.com/Akshayykadam))\r\n* **Patching Engine:** Morphe & Smali dexlib2\r\n* **Base Application:** Google LLC — Pixel Camera 11.0.073\r\n\r\nThank you to everyone who tested **v1.0.0**, reported issues, shared logs, and helped identify device-specific problems.\r\n\r\n**Pixel Camera v1.0.1 is primarily a stability release, and your feedback directly helped make it possible.**",
+  "release_tag": "1.0.1",
+  "release_date": "2026-09-20T08:19:33Z",
+  "isPreRelease": false
+}
