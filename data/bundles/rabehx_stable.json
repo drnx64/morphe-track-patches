@@ -2,9 +2,9 @@
   "bundle": "rabehx",
   "channel": "stable",
   "repo_url": "https://github.com/RabehX/rabehx-patches",
-  "created_at": "2026-09-22T18:59:47Z",
-  "version": "0.0.2",
-  "description": "## [0.0.2](https://github.com/RabehX/rabehx-patches/compare/v0.0.1...v0.0.2) (2026-09-22)\n\n### Bug Fixes\n\n* **webetu:** resolve screen freeze after resume ([0244e27](https://github.com/RabehX/rabehx-patches/commit/0244e2722dd4d22ca61735ec6a55b74482267e6d))\n\n### Updated App Support\n\n* **myooredoo:** update patches for v1.5.15 ([e03b4c0](https://github.com/RabehX/rabehx-patches/commit/e03b4c0042219a20d74bdcbcfbe68da13c303cd0))",
+  "created_at": "2026-09-23T14:58:20Z",
+  "version": "0.0.3",
+  "description": "## [0.0.3](https://github.com/RabehX/rabehx-patches/compare/v0.0.2...v0.0.3) (2026-09-23)\n\n### Features\n\n* **myooredoo:** add SSL pinning & frida compatibility patches ([d1f3719](https://github.com/RabehX/rabehx-patches/commit/d1f37194137f432bd8e785720d320e84d35f70f7))",
   "apps": [
     {
       "app_name": "Webetu",
@@ -53,8 +53,26 @@
       "package": "com.algeria.selfcare.app.android",
       "patches": [
         {
+          "name": "Disable Frida Detection",
+          "description": "Improves compatibility with debugging tools.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.15"
+          ]
+        },
+        {
           "name": "Disable Play Integrity",
           "description": "Short-circuits the Google Play Integrity attestation request with a \"DISABLED\" response, avoiding failures on modified or non-Play builds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.15"
+          ]
+        },
+        {
+          "name": "Disable SSL Pinning",
+          "description": "Improves compatibility with custom certificates.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -125,9 +143,9 @@
     }
   ],
   "patches_name": "RabehX Patches",
-  "fingerprint": "ac2e544fe8b5019cebf2b77501fcd9632c955e6e9639f6d6905295208101ea89",
-  "release_notes": "## [0.0.2](https://github.com/RabehX/rabehx-patches/compare/v0.0.1...v0.0.2) (2026-09-22)\n\n### Bug Fixes\n\n* **webetu:** resolve screen freeze after resume ([0244e27](https://github.com/RabehX/rabehx-patches/commit/0244e2722dd4d22ca61735ec6a55b74482267e6d))\n\n### Updated App Support\n\n* **myooredoo:** update patches for v1.5.15 ([e03b4c0](https://github.com/RabehX/rabehx-patches/commit/e03b4c0042219a20d74bdcbcfbe68da13c303cd0))\n",
-  "release_tag": "v0.0.2",
-  "release_date": "2026-09-22T18:59:47Z",
+  "fingerprint": "a49d3c57367a3a38e0224f8d52833e2cc935db0664cd8b992d7434d7e7b28286",
+  "release_notes": "## [0.0.3](https://github.com/RabehX/rabehx-patches/compare/v0.0.2...v0.0.3) (2026-09-23)\n\n### Features\n\n* **myooredoo:** add SSL pinning & frida compatibility patches ([d1f3719](https://github.com/RabehX/rabehx-patches/commit/d1f37194137f432bd8e785720d320e84d35f70f7))\n",
+  "release_tag": "v0.0.3",
+  "release_date": "2026-09-23T14:58:20Z",
   "isPreRelease": false
 }

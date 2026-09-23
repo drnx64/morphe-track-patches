@@ -2,543 +2,10 @@
   "bundle": "0-blackspectrum-0",
   "channel": "stable",
   "repo_url": "https://github.com/0-BlackSpectrum-0/channel-blacklist-patch",
-  "created_at": "2026-09-22T15:46:51Z",
-  "version": "1.3.4",
-  "description": "## [1.3.4](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/compare/v1.3.3...v1.3.4) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* remove addToQueuePatch dependency to resolve multi-source fingerprint conflicts ([c3c012b](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/commit/c3c012b9fc6242724fdbd82a03d9f565bee2653f))",
+  "created_at": "2026-09-23T15:02:18Z",
+  "version": "2.1.0",
+  "description": "## [2.1.0](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/compare/v2.0.0...v2.1.0) (2026-09-23)\n\n### ✨ New Features\n\n* trim bundle to YouTube only and integrate Channel Blacklist ([e8a0372](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/commit/e8a03720d211090b5979693a7201bc181a3410a9))",
   "apps": [
-    {
-      "app_name": "YouTube Music",
-      "package": "com.google.android.apps.youtube.music",
-      "patches": [
-        {
-          "name": "App refresh rate",
-          "description": "Adds an option to change the app refresh rate.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Bypass certificate checks",
-          "description": "Bypasses certificate checks which prevent YouTube Music from working on Android Auto.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Change header",
-          "description": "Adds an option to change the header logo in the top left corner of the app.",
-          "use": true,
-          "options": [
-            {
-              "key": "custom",
-              "description": "\n            Folder with images to use as a custom header logo.\n\n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\n            Each of the folders must contain the following file(s):\n            - morphe_header_custom_dark.png\n\n            Required dimensions:\n            - drawable-hdpi: 121x36 px\n- drawable-xhdpi: 160x48 px\n- drawable-xxhdpi: 240x72 px\n- drawable-xxxhdpi: 320x96 px\n        "
-            }
-          ],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Change miniplayer color",
-          "description": "Adds an option to change the miniplayer background color to match the fullscreen player.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Change start page",
-          "description": "Adds an option to set which page the app opens in instead of the homepage.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Check watch history domain name resolution",
-          "description": "Checks if the device DNS server is preventing user watch history from being saved.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Crossfade",
-          "description": "Adds a true dual-player crossfade between consecutive tracks. Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Custom branding",
-          "description": "Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings.",
-          "use": true,
-          "options": [
-            {
-              "key": "customName",
-              "description": "Custom app name."
-            },
-            {
-              "key": "customIcon",
-              "description": "\n            Folder with images to use as a custom icon.\n            \n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n            \n            Each of the folders must contain all of the following files:\n            morphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n            \n            The image dimensions must be as follows:\n            - mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\n            Optionally, the path contains a 'drawable' folder with a monochrome icon file:\n            morphe_adaptive_monochrome_custom.xml\n\n            Optionally, the path contains a notification icon in one of the following formats:\n            - XML vector drawable placed in 'drawable':\n              morphe_notification_icon_custom.xml\n            - PNG raster images placed in the matching 'drawable-<dpi>' folders:\n              - drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)\n        "
-            },
-            {
-              "key": "appIcon",
-              "description": "\n            The app icon to use, including the notification icon.\n\n            'Automatic' uses the custom icon if one is provided, and otherwise 'Black'.\n            Select 'Original' to keep the icon of the unpatched app.\n\n            The icon can be changed later in the app settings, but only for the launcher.\n            Android Auto, the app list of the system settings and the apk file always show\n            the icon chosen here, and a mounted (root) installation can only change it by\n            patching again.\n        "
-            }
-          ],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Disable DRC audio",
-          "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Disable QUIC protocol",
-          "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Disable dislike redirection",
-          "description": "Adds an option to prevent skipping to the next track when the dislike button is pressed.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Downloads",
-          "description": "Adds support to download songs using the in-app download button, either with an external downloader app or inside YouTube Music.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Enable debugging",
-          "description": "Adds options for debugging and exporting Morphe logs to the clipboard.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Enable exclusive audio playback",
-          "description": "Enables the option to play audio without video.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Enable forced miniplayer",
-          "description": "Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Enable swipe to dismiss miniplayer",
-          "description": "Adds an option to enable dismissing the miniplayer by swiping down on it.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Force original audio",
-          "description": "Adds an option to always use the original audio track.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "GmsCore support",
-          "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Hide ads",
-          "description": "Adds options to hide fullscreen ads, Premium promotions and video ads.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Hide buttons",
-          "description": "Adds options to hide the cast, history, notification, and search buttons.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Hide filter bar",
-          "description": "Adds an option to hide the filter bar at the top of the homepage.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Hide flyout menu components",
-          "description": "Adds options to hide individual items from the player and queue flyout menus.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Hide layout components",
-          "description": "Adds options to hide general layout components.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Hide music action buttons",
-          "description": "Adds options to hide action buttons under the player.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Miniplayer previous and next buttons",
-          "description": "Adds options to show previous and next track buttons in the miniplayer.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Navigation bar",
-          "description": "Adds options to hide navigation bar, labels and buttons.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Network proxy",
-          "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Play albums songs",
-          "description": "Adds an option to play the song version of album tracks instead of music videos.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "PoToken provider",
-          "description": "Adds option to get PoToken using an external PoToken minter app.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Remember repeat state",
-          "description": "Adds an option to remember the repeat state when playing a new track or playlist.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Remember shuffle state",
-          "description": "Adds an option to remember the shuffle state when playing a new track or playlist.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Remove background playback restrictions",
-          "description": "Removes restrictions on background playback, including playing kids videos in the background.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Remove viewer discretion dialog",
-          "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Return YouTube Dislike",
-          "description": "Adds an option to show the dislike count of tracks with Return YouTube Dislike.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Sanitize sharing links",
-          "description": "Removes the tracking query parameters from shared links.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Scrobbling",
-          "description": "Adds options to add played tracks to Last.fm and ListenBrainz.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Settings menu filter",
-          "description": "Adds an option to hide items on the standard YouTube Music settings screen by their visible name.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "SponsorBlock",
-          "description": "Adds options to enable and configure SponsorBlock, which can skip non-music segments.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Spoof app version",
-          "description": "Adds an option to trick the app into thinking you are running an older version.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Spoof video streams",
-          "description": "Adds options to spoof the client video streams to fix playback.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Theme",
-          "description": "Adds options for theming, and settings to change the app foreground and background colors.",
-          "use": true,
-          "options": [
-            {
-              "key": "darkThemeColor",
-              "description": "Can be a hex color (#RRGGBB) or a color resource reference. Setting a color of either theme applies both while patching and removes the in-app theme color settings."
-            }
-          ],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        },
-        {
-          "name": "Third-party lyrics",
-          "description": "Adds an option to show synced lyrics with experience enhancement from 15+ providers in the lyrics panel.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.37.54",
-            "9.36.50",
-            "9.35.54",
-            "9.15.51"
-          ]
-        }
-      ]
-    },
     {
       "app_name": "YouTube",
       "package": "com.google.android.youtube",
@@ -552,6 +19,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -567,6 +35,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -582,6 +51,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -597,6 +67,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -612,6 +83,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -627,6 +99,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -642,6 +115,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -657,6 +131,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -677,6 +152,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -692,6 +168,23 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Channel blacklist",
+          "description": "Filter and hide videos from blacklisted channels across YouTube feeds, search results, subscriptions, and comments.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.38.123",
+            "21.37.42",
+            "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -707,6 +200,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -722,6 +216,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -737,6 +232,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -765,6 +261,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -780,6 +277,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -795,6 +293,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -810,6 +309,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -825,6 +325,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -840,6 +341,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -855,6 +357,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -870,6 +373,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -885,6 +389,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -900,6 +405,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -915,6 +421,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -930,6 +437,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -945,6 +453,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -960,6 +469,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -975,6 +485,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -990,6 +501,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1005,6 +517,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1020,6 +533,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1035,6 +549,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1050,6 +565,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1065,6 +581,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1080,6 +597,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1095,6 +613,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1119,6 +638,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1134,6 +654,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1149,6 +670,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1164,6 +686,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1179,6 +702,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1194,6 +718,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1209,6 +734,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1224,6 +750,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1239,6 +766,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1254,6 +782,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1269,6 +798,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1284,6 +814,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1299,6 +830,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1314,6 +846,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1329,6 +862,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1344,6 +878,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1359,6 +894,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1374,6 +910,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1389,6 +926,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1404,6 +942,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1419,6 +958,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1434,6 +974,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1449,6 +990,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1464,6 +1006,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1479,6 +1022,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1494,6 +1038,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1509,6 +1054,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1524,6 +1070,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1539,6 +1086,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1554,6 +1102,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1569,6 +1118,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1584,6 +1134,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1599,6 +1150,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1614,6 +1166,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1629,6 +1182,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1644,6 +1198,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1659,6 +1214,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1674,6 +1230,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1689,6 +1246,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1704,6 +1262,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1719,6 +1278,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1734,6 +1294,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1749,6 +1310,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1764,6 +1326,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1788,6 +1351,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1803,6 +1367,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1818,6 +1383,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1833,6 +1399,7 @@
             "21.38.123",
             "21.37.42",
             "21.28.208",
+            "21.23.492",
             "21.16.256",
             "21.13.164",
             "20.31.42",
@@ -1840,284 +1407,12 @@
           ]
         }
       ]
-    },
-    {
-      "app_name": "Reddit",
-      "package": "com.reddit.frontpage",
-      "patches": [
-        {
-          "name": "App icon",
-          "description": "Adds an option to select from the Reddit app icons available in the manifest.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Custom branding name for Reddit",
-          "description": "Changes the Reddit app name to the name specified in patch options.",
-          "use": false,
-          "options": [
-            {
-              "key": "appName",
-              "description": "The name of the app."
-            }
-          ],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Custom font",
-          "description": "Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Disable modern home",
-          "description": "Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Disable screenshot popup",
-          "description": "Adds an option to disable the popup that appears when taking a screenshot.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Force system font",
-          "description": "Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Hide Ask button",
-          "description": "Adds an option to hide Ask button in the search bar.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Hide Reddit search",
-          "description": "Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Hide Trending shelves",
-          "description": "Adds an option to hide the Trending shelves from feed and search suggestions.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Hide ads",
-          "description": "Adds options to hide ads.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Hide communities shelf",
-          "description": "Adds an option to hide the related or suggested communities shelf in subreddits.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Hide navigation buttons",
-          "description": "Adds options to hide buttons in the navigation bar.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Hide sidebar components",
-          "description": "Adds options to hide the sidebar components.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Open links directly",
-          "description": "Adds an option to skip over redirection URLs in external links.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Open links externally",
-          "description": "Adds an option to always open links in your browser instead of with the in-app-browser.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Remove subreddit dialog",
-          "description": "Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Sanitize sharing links",
-          "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Show view count",
-          "description": "Adds an option to show the view count of Posts.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        },
-        {
-          "name": "Spoof signature",
-          "description": "Spoofs the signature of the app to fix notification issues.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0",
-            "2024.02.0"
-          ]
-        },
-        {
-          "name": "Start as guest",
-          "description": "Skips the forced startup login screen using Reddit's native guest browsing mode.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "2026.38.0",
-            "2026.37.0",
-            "2026.24.0",
-            "2026.14.0",
-            "2026.04.0"
-          ]
-        }
-      ]
     }
   ],
   "patches_name": "Spectre Patches",
-  "fingerprint": "cfd33dcb87e2015bf5ee56b056853fac8d99a163f5a7b5b3db4ccece78dbb85a",
-  "release_notes": "## [1.3.4](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/compare/v1.3.3...v1.3.4) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* remove addToQueuePatch dependency to resolve multi-source fingerprint conflicts ([c3c012b](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/commit/c3c012b9fc6242724fdbd82a03d9f565bee2653f))\n",
-  "release_tag": "v1.3.4",
-  "release_date": "2026-09-22T15:46:51Z",
+  "fingerprint": "166abef58efb3d77d3ba9d9aea23dc8759db8320d026b29f8a91453c68f2f3a7",
+  "release_notes": "## [2.1.0](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/compare/v2.0.0...v2.1.0) (2026-09-23)\n\n### ✨ New Features\n\n* trim bundle to YouTube only and integrate Channel Blacklist ([e8a0372](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/commit/e8a03720d211090b5979693a7201bc181a3410a9))\n",
+  "release_tag": "v2.1.0",
+  "release_date": "2026-09-23T15:02:18Z",
   "isPreRelease": false
 }

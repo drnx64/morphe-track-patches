@@ -822,6 +822,15 @@
           ]
         },
         {
+          "name": "Swipe-left controls",
+          "description": "Lets a left swipe on a feed video do nothing or open its comments instead of opening the creator's profile. Switch: Hushfeed settings > Feed screen.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
           "name": "Translate comments",
           "description": "Adds comment translation controls using TikTok's translation system, with selectable language exclusions. Switch: Hushfeed settings > Comments.",
           "use": true,
@@ -852,7 +861,7 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "299c9089a1b58e11e8fce0af7d9d9cc52a10bf16c4d4b665faf237b1697c17a5",
+  "fingerprint": "b80dd5f73a378bdaf2c4d6aa595b8add712d17561ac91b7c24db06b09d7af93f",
   "release_notes": "Hushfeed v0.58.0 targets global TikTok 47.0.3 (`com.zhiliaoapp.musically`).\n\nThis one is mostly fixes from your bug reports, plus two requested switches and Turkish.\n\n* Hide series no longer empties creator profiles. TikTok 47.0.3 tags every ordinary profile video as episode 0, and Hushfeed took that for a series. Only a real episode number counts now. (#20)\n* Hide the Tako bubble now also removes the Ask Tako button floating over the search page, including the version paired with a Voice button. (#22)\n* The Save media button is back on comment stickers. TikTok renames its button class with every build, so the button had quietly gone missing since 46.7.3. Hushfeed finds the sheet's buttons by their layout now. (#23)\n* Cut the in-app browser off from TikTok now says plainly that it also stops Activity center and Watch history from responding. If Watch history ignores your taps, turn that switch off under Privacy. (#16)\n* Feed screen adds Hide the Report button on videos, for the flag button some regions get above the creator's picture. App adds Hide search rewards, for the points banner under the search box and the coin counter floating over results. Both are off by default. (#21)\n* Hushfeed's settings now come in Turkish. It's a first pass, and corrections from Turkish speakers are very welcome. (#13)\n\n## Checked\n\n1584 runtime tests passed locally, along with all 269 patch tests and both Android lint checks. All 91 patches applied to TikTok 47.0.3 and to the retained 46.2.3, 46.7.3, 46.8.3 and 46.9.3 fixtures with no manifest changes. The receipt attached here records each run. Older fixtures are compatibility checks. Use 47.0.3 when patching.\n\nThe APK built from this exact bundle was tested on a Galaxy S22 with the same signing key and its app data kept. The series and Tako bugs were reproduced on v0.57.0 first, and all three fixes were checked again on this build. Save media wrote a sticker to the phone.\n\nThe two regional switches were turned on and the feed and search were used without a crash. TikTok doesn't show the Report button or search rewards to our test account, so we couldn't watch them disappear. If you have them, tell us how the switches behave. The shopping block at the top of some search results isn't covered yet.\n\n## Updating\n\nNeeds Morphe Manager 1.30.0 or newer. Refresh the Hushfeed source, then patch and install again, keeping the manager's existing signing key. The `.mpp` is a patch bundle, not a TikTok APK.\n",
   "release_tag": "v0.58.0",
   "release_date": "2026-09-21T12:50:34Z",
