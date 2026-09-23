@@ -2,9 +2,9 @@
   "bundle": "andrewliang25",
   "channel": "dev",
   "repo_url": "https://github.com/andrewliang25/morphe-patches",
-  "created_at": "2026-09-22T16:39:01",
-  "version": "v3.2.0-dev.2",
-  "description": "## [3.2.0-dev.2](https://github.com/andrewliang25/morphe-patches/compare/v3.2.0-dev.1...v3.2.0-dev.2) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* make the borrowed registers a check, not a comment ([033d4ed](https://github.com/andrewliang25/morphe-patches/commit/033d4ed87f5b1c81f85e378dede35ce9c0777c52))\n* read the rendition Facebook states, not the word it happens to carry ([50f3252](https://github.com/andrewliang25/morphe-patches/commit/50f3252e4aa1d80790d68b88ccd3dfa986d3d4dc))\n* save stories with our own downloader, not Facebook's ([4f229a1](https://github.com/andrewliang25/morphe-patches/commit/4f229a1e6ac4fe5246a7582585cd1bde78bd1e2b)), closes [#110](https://github.com/andrewliang25/morphe-patches/issues/110)\n\n### ✨ New Features\n\n* add a download button beside every reel ([e0007d8](https://github.com/andrewliang25/morphe-patches/commit/e0007d8dca083ce50c4c81f38dfd6d21f45bbda8))\n",
+  "created_at": "2026-09-22T16:39:01Z",
+  "version": "3.2.0-dev.2",
+  "description": "## [3.1.0](https://github.com/andrewliang25/morphe-patches/compare/v3.0.0...v3.1.0) (2026-09-19)\n\n### 🐛 Bug Fixes\n\n* block the on-demand ad inserts in Reels and Stories ([92db9d8](https://github.com/andrewliang25/morphe-patches/commit/92db9d8b33e16faa4e1a52534c681e5cdb775509))\n* remove the server-inlined ads from the Reels page ([8ad2d13](https://github.com/andrewliang25/morphe-patches/commit/8ad2d137d91261c1dbc25d368f1689652ac4cb74))\n\n### ✨ New Features\n\n* open Facebook links in the external browser ([07bf98a](https://github.com/andrewliang25/morphe-patches/commit/07bf98a91fa64644b022cb7f1fb503644d2a5922))\n* unlock Facebook's save option for any story ([ea17778](https://github.com/andrewliang25/morphe-patches/commit/ea17778afa7dbcbb4aea7edacdd7034fd215c7f1))",
   "apps": [
     {
       "app_name": "Facebook",
@@ -56,27 +56,9 @@
           ]
         },
         {
-          "name": "[General] AMOLED black theme",
-          "description": "Makes the dark mode of Facebook black instead of dark grey, which saves power on an OLED screen. Turn on dark mode in Facebook first. Dividers, borders, text, icons and the coloured banners do not change.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "577.0.0.50.72"
-          ]
-        },
-        {
           "name": "[General] Open links in external browser",
           "description": "A web link that you tap opens in your default browser, and not in the in-app browser of Facebook. The pages of Facebook still open in the app. Thus login and checkout still work.",
           "use": true,
-          "options": [],
-          "compatible_versions": [
-            "577.0.0.50.72"
-          ]
-        },
-        {
-          "name": "[Reels] Download any reel",
-          "description": "Adds a Download button beside every reel, and not only the reels that you posted. It saves the video the player is streaming, at the best quality the player holds, to Movies/Facebook.",
-          "use": false,
           "options": [],
           "compatible_versions": [
             "577.0.0.50.72"
@@ -93,7 +75,7 @@
         },
         {
           "name": "[Stories] Download any story",
-          "description": "Adds a save option to the menu of any story, and not only to the stories that you posted. It saves the picture or the video that the story shows, including a story with music, which Facebook's own save refuses. Files go to Pictures/Facebook or Movies/Facebook.",
+          "description": "Adds Facebook's own save option to the menu of any story, and not only to the stories that you posted. It saves the picture or the video that the story shows, with Facebook's own save code.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -134,33 +116,6 @@
           ]
         },
         {
-          "name": "[Chat] Hide attach menu extra tools",
-          "description": "Removes all the server-provided extra tools from the + attach menu in a chat room (Poll, Reservation, Schedule, Ladder shuffle, and more). The built-in tiles (camera, gallery, files, and contact) do not change.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.14.0"
-          ]
-        },
-        {
-          "name": "[Chat] Hide calendar buttons",
-          "description": "Removes every LINE Calendar surface inside the messenger. One is in the Chats-tab header. Four are in a chat room: the top toolbar, the + attach menu, the slide-out chat menu, and the message long-press menu. The last is the Calendar block in the Friends sub-tab of the Home tab.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.14.0"
-          ]
-        },
-        {
-          "name": "[Chat] Hide community button",
-          "description": "Removes the community (OpenChat) button from the top of the Chats tab header.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.14.0"
-          ]
-        },
-        {
           "name": "[Chat] Hide Events button",
           "description": "Removes the \"Events\" row from the slide-out menu in a chat room. Events is a different feature from LINE Calendar, and it opens a server-hosted page.",
           "use": true,
@@ -181,6 +136,33 @@
         {
           "name": "[Chat] Hide Transfer button",
           "description": "Removes the Transfer (LINE Pay) tile from the + attach menu in a chat room.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide attach menu extra tools",
+          "description": "Removes all the server-provided extra tools from the + attach menu in a chat room (Poll, Reservation, Schedule, Ladder shuffle, and more). The built-in tiles (camera, gallery, files, and contact) do not change.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide calendar buttons",
+          "description": "Removes every LINE Calendar surface inside the messenger. One is in the Chats-tab header. Four are in a chat room: the top toolbar, the + attach menu, the slide-out chat menu, and the message long-press menu. The last is the Calendar block in the Friends sub-tab of the Home tab.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide community button",
+          "description": "Removes the community (OpenChat) button from the top of the Chats tab header.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -344,7 +326,7 @@
     }
   ],
   "patches_name": "Andrew's Patches",
-  "fingerprint": "12cb79bff97ec024fa4b88dc463505fff099166f587a8c5509a5fd7875060225",
+  "fingerprint": "fb94d138c7d68a00be758007fbda43e7fba2bc2527ed0caa79dd4a433482062d",
   "release_notes": "## [3.2.0-dev.2](https://github.com/andrewliang25/morphe-patches/compare/v3.2.0-dev.1...v3.2.0-dev.2) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* make the borrowed registers a check, not a comment ([033d4ed](https://github.com/andrewliang25/morphe-patches/commit/033d4ed87f5b1c81f85e378dede35ce9c0777c52))\n* read the rendition Facebook states, not the word it happens to carry ([50f3252](https://github.com/andrewliang25/morphe-patches/commit/50f3252e4aa1d80790d68b88ccd3dfa986d3d4dc))\n* save stories with our own downloader, not Facebook's ([4f229a1](https://github.com/andrewliang25/morphe-patches/commit/4f229a1e6ac4fe5246a7582585cd1bde78bd1e2b)), closes [#110](https://github.com/andrewliang25/morphe-patches/issues/110)\n\n### ✨ New Features\n\n* add a download button beside every reel ([e0007d8](https://github.com/andrewliang25/morphe-patches/commit/e0007d8dca083ce50c4c81f38dfd6d21f45bbda8))\n",
   "release_tag": "v3.2.0-dev.2",
   "release_date": "2026-09-22T16:39:01Z",
