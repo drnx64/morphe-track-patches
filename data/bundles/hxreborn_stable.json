@@ -1,382 +1,839 @@
 {
   "bundle": "hxreborn",
   "channel": "stable",
-  "repo_url": "https://github.com/hxreborn/hxreborn-tiktok-patches",
-  "created_at": "2026-09-07T08:52:16Z",
-  "version": "1.3.0",
-  "description": "# [1.3.0](https://github.com/hxreborn/hxreborn-tiktok-patches/compare/v1.2.0...v1.3.0) (2026-09-07)\n\n\n### Features\n\n* **TikTok - Settings:** add a support row linking to icysymmetra's Ko-fi ([257fad6](https://github.com/hxreborn/hxreborn-tiktok-patches/commit/257fad68f6100a41af6556334ddff35e61b8ce02))",
+  "repo_url": "https://github.com/hxreborn/morphe-patches",
+  "created_at": "2026-09-23T14:32:11",
+  "version": "v1.29.0",
+  "description": "## [1.29.0](https://github.com/hxreborn/morphe-patches/compare/v1.28.0...v1.29.0) (2026-09-23)\n\n### Bug Fixes\n\n* **Realme Link - AMOLED dark theme:** apply the black theme to the earbuds screens too ([5231e4c](https://github.com/hxreborn/morphe-patches/commit/5231e4c52bd63a5753899a1924b7a15f19f66c7a))\n* **Realme Link - AMOLED dark theme:** cover the earbuds screens the theme missed ([69b11db](https://github.com/hxreborn/morphe-patches/commit/69b11db1bb4f8772a7e626139c0bc1323d9a7260))\n* **Realme Link - AMOLED dark theme:** keep pinned night colours on page backgrounds ([2279e5f](https://github.com/hxreborn/morphe-patches/commit/2279e5fe1c9a2637951c47e2476a738adbdf32b6))\n\n### New Features\n\n* **Override certificate pinning:** allow inspecting app traffic via proxy ([392ff3e](https://github.com/hxreborn/morphe-patches/commit/392ff3e9a122e6e21d5cee5ef4cd19840127fb18))\n* **Photo Editor Pro - Hide share options:** hide share buttons and center saved photo ([2d0b293](https://github.com/hxreborn/morphe-patches/commit/2d0b29323151cc964f72dbc9c79c40c14701860c))\n",
   "apps": [
     {
-      "app_name": "TikTok",
-      "package": "com.zhiliaoapp.musically",
+      "app_name": "Perplexity",
+      "package": "ai.perplexity.app.android",
       "patches": [
         {
-          "name": "Always show publish date",
-          "description": "Always shows the publish date in video author information. Thanks to lyyako for the original implementation.",
+          "name": "AMOLED dark theme",
+          "description": "Replaces the dark theme background with pure black.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "2.95.0"
           ]
-        },
+        }
+      ]
+    },
+    {
+      "app_name": "All-In-One Calculator",
+      "package": "all.in.one.calculator",
+      "patches": [
         {
-          "name": "Copy comments without username",
-          "description": "Copies only the comment text without including the creator's username.",
+          "name": "GmsCore support",
+          "description": "Signs in through GmsCore instead of Google Play Services. Requires GmsCore to be installed.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "3.4.0"
           ]
         },
         {
-          "name": "Custom offline videos limit",
-          "description": "Adds a custom entry to TikTok's offline videos menu with a configurable limit from 1 to 1000 videos.",
+          "name": "Unlock premium",
+          "description": "Grants the pro entitlement, which removes the ads and the paywalled tools.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "3.4.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Rubber Bands",
+      "package": "app.rubberbands.fit",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks running and logging workouts, progress tracking and personal records (AI workout generation is not included).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.9"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Symfonium",
+      "package": "app.symfonik.music.player",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all premium features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.0.0",
+            "14.1.0",
+            "15.0.1",
+            "14.0.0 TV"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Proton Mail",
+      "package": "ch.protonmail.android",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the dark theme background with pure black.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
           ]
         },
         {
-          "name": "Diagnostic tools",
-          "description": "Adds optional Morphe diagnostic logging, filtered reports, and local TikTok crash capture.",
+          "name": "Custom accent color",
+          "description": "Changes the accent color. Choose a color in the patches menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
+        },
+        {
+          "name": "Hide upgrade promotions",
+          "description": "Hides the top-bar upgrade button, promotional sidebar rows and the auto-delete upgrade banner in Trash and Spam. Keeps the Empty trash and Empty spam buttons.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
+        },
+        {
+          "name": "Remove 'Sent from' signature",
+          "description": "Removes the 'Sent from Proton Mail' signature from emails.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
+        },
+        {
+          "name": "Remove free accounts limit",
+          "description": "Removes the limit for maximum free accounts logged in.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.11.5",
+            "7.10.4"
+          ]
+        },
+        {
+          "name": "Scheduled Trash and Spam deletion",
+          "description": "Deletes all messages in Trash and Spam on separate configurable schedules. Deleted messages cannot be recovered.",
           "use": false,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "7.11.5",
+            "7.10.4"
           ]
         },
         {
-          "name": "Disable login requirement",
-          "description": "Removes TikTok's mandatory login gate from supported flows.",
+          "name": "Unlock custom time picker",
+          "description": "Enables picking a custom date and time when snoozing conversations and scheduling messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "7.11.5",
+            "7.10.4"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "AtloMaps",
+      "package": "com.atlogis.atlomaps",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks the custom map sources, navigation settings and backup restore. Premium map packages are not included.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.6"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Audible",
+      "package": "com.audible.application",
+      "patches": [
+        {
+          "name": "Hide membership upselling",
+          "description": "Hides the membership promotion on the Home screen and the free trial bottom sheet.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.30.05"
           ]
         },
         {
-          "name": "Disable long-press quick share",
-          "description": "Keeps long-pressing Share from opening TikTok's quick-share interaction.",
+          "name": "Open Library on launch",
+          "description": "Opens the Library tab instead of Home on launch. Applies only while signed in.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "26.30.05"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "MovieBox",
+      "package": "com.community.oneroom",
+      "patches": [
+        {
+          "name": "All-In-One",
+          "description": "Enables video playback and downloads, removes ads and upsell prompts, bypasses the region block, and unlocks the hidden Laboratory menu. Requires Android 10 or later.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.0.02.0828.03",
+            "4.0.02.0831.03",
+            "4.0.02.0903.02",
+            "4.0.03.0918.03"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Cx File Explorer",
+      "package": "com.cxinventor.file.explorer",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Adds a pure black option to the dark theme.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.7.8"
           ]
         },
         {
-          "name": "Disable long-press repost",
-          "description": "Keeps holding Like from opening TikTok's repost action.",
+          "name": "Dark theme",
+          "description": "Renders the app's dark theme and adds it to the settings.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "2.7.8"
           ]
         },
         {
-          "name": "Disable screen capture detection",
-          "description": "Prevents TikTok from reacting to screenshots and screen recordings.",
+          "name": "Unlock premium",
+          "description": "Unlocks premium and removes ads.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "2.7.8"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Etsy",
+      "package": "com.etsy.android",
+      "patches": [
+        {
+          "name": "Hide ads",
+          "description": "Removes promoted listings and the \"with Ads\" label from search results.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.90.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "VPN Super Unlimited Proxy",
+      "package": "com.free.vpn.super.hotspot.open",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium servers and removes ads, upgrade banners, the launch paywall and the Android TV sign-in screen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.32.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "QR & Barcode Scanner",
+      "package": "com.gamma.scan",
+      "patches": [
+        {
+          "name": "Hide ads",
+          "description": "Disables banner, interstitial, and native ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.221"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "DWG FastView",
+      "package": "com.gstarmc.android",
+      "patches": [
+        {
+          "name": "Block telemetry",
+          "description": "Blocks the Umeng, ByteDance and ad network analytics endpoints.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.19.4",
+            "5.19.6",
+            "5.20.0",
+            "5.21.0"
           ]
         },
+        {
+          "name": "Hide rating dialog",
+          "description": "Removes the prompt asking for a store review.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.19.4",
+            "5.19.6",
+            "5.20.0",
+            "5.21.0"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks the paid drawing, annotation and measurement tools, and removes ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.19.4",
+            "5.19.6",
+            "5.20.0",
+            "5.21.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "1Weather",
+      "package": "com.handmark.expressweather",
+      "patches": [
+        {
+          "name": "Disable tracking",
+          "description": "Stops installs, sessions and in-app events from reaching AppsFlyer.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "13.1.0",
+            "12.9.3"
+          ]
+        },
+        {
+          "name": "Hide Shorts",
+          "description": "Hides the 1Weather Shorts card from the Today screen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "13.1.0",
+            "12.9.3"
+          ]
+        },
+        {
+          "name": "Hide Skyla",
+          "description": "Hides the Skyla AI assistant, its prompts and the Summarize buttons.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "13.1.0",
+            "12.9.3"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium and removes ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "13.1.0",
+            "12.9.3"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Kick",
+      "package": "com.kick.mobile",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the dark theme background with pure black. Disables over-the-air updates that would restore the original background.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "Quranify",
+      "package": "com.mchutov.quranify",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks downloading every surah, lyrics and tafsir, Android Auto, background playback controls, and insights.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.8"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Showly",
+      "package": "com.michaldrabik.showly2",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the dark theme background with pure black.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.70.0"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks ad removal, light theme, custom images, list view types, quick ratings, and transparent widgets. The News feed is not included.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.70.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "ForusApp",
+      "package": "com.myvitale.forus",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all premium features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.0.15"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Realme Link",
+      "package": "com.realme.link",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the light theme with a pure black dark theme. Requires Android 13 or later.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.5.514.11421"
+          ]
+        },
+        {
+          "name": "Bypass session expiry",
+          "description": "Stops the security prompt that signs the account out.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.5.514.11421"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "RISE Sleep Tracker",
+      "package": "com.risesci.nyx",
+      "patches": [
         {
           "name": "Disable telemetry",
-          "description": "Adds a Miscellaneous toggle that disables ByteDance AppLog analytics, AppsFlyer attribution tracking, BDLocation background uploads, Firebase Analytics, and crash reporting. Off by default.",
+          "description": "Stops crash and error reports from reaching Sentry.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "Android V1.78.49",
+            "Android V1.78.47"
           ]
         },
         {
-          "name": "Downloads",
-          "description": "Adds watermark-free downloads, comment sticker saving, configurable folders, and filename templates.",
+          "name": "Disable usage tracking",
+          "description": "Stops app usage events from being uploaded. Local usage tracking remains enabled.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "Android V1.78.49",
+            "Android V1.78.47"
           ]
         },
         {
-          "name": "Enable Live search",
-          "description": "Shows TikTok's search entry in the Live drawer where supported.",
+          "name": "Unlock premium",
+          "description": "Unlocks the energy schedule, habit tools, smart alarm and progress insights. Requires a RISE account.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "Android V1.78.49",
+            "Android V1.78.47"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "MyMoveset",
+      "package": "com.soulbreakers.mymoveset",
+      "patches": [
+        {
+          "name": "Disable tracking",
+          "description": "Stops the install identifier from reaching Expo and usage events from reaching Google. Disables OTA updates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.3.1"
           ]
         },
         {
-          "name": "Enable non-personalized search",
-          "description": "Uses TikTok's non-personalized search mode instead of its saved account choice.",
+          "name": "Unlock premium",
+          "description": "Unlocks unlimited move views, goals and move cards, manual sync, earlier library updates and card customization. Disables OTA updates.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "1.3.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Projectivy Launcher",
+      "package": "com.spocky.projengmenu",
+      "patches": [
+        {
+          "name": "Disable tracking",
+          "description": "Disables analytics and crash reporting.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.71",
+            "4.70"
           ]
         },
         {
-          "name": "Expand activity list",
-          "description": "Shows the full Activity and New followers lists instead of collapsing them behind a View all button.",
+          "name": "Unlock premium",
+          "description": "Unlocks all premium features.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "4.71",
+            "4.70"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "RateGlance",
+      "package": "com.sry.rateglance",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all premium features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.14.8"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Notesnook",
+      "package": "com.streetwriters.notesnook",
+      "patches": [
+        {
+          "name": "Unlock pro",
+          "description": "Unlocks task lists, callouts, app lock, and the notebook, tag, colour and reminder limits. Requires a signed-in account. The server still enforces storage, attachment size, monographs and SMS 2FA.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.4.12"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Trainline",
+      "package": "com.thetrainline",
+      "patches": [
+        {
+          "name": "Hide ads",
+          "description": "Removes the adverts shown between search results.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "407.0.0.178994"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "vpnify",
+      "package": "com.vpn.free.hotspot.secure.vpnify",
+      "patches": [
+        {
+          "name": "Disable rating prompt",
+          "description": "Stops the Google Play rating prompt from appearing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.2.9.9",
+            "2.3.0"
           ]
         },
         {
-          "name": "Feature Gate Lab",
-          "description": "Adds a menu for viewing and overriding supported TikTok feature flags and configuration values.",
+          "name": "Unlock premium",
+          "description": "Unlocks premium, removes ads and the free session time limit.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "2.2.9.9",
+            "2.3.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Klassik Radio+",
+      "package": "de.klassikradio.app",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks the premium music channels, on-demand playback and track skipping. Requires a signed-in account.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "p5.11.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "atvTools",
+      "package": "dev.vodik7.atvtools",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all features and removes the ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.3.2"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "BetterSleep",
+      "package": "ipnossoft.rma.free",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all premium content and skips the free trial screen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.15"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "ReadEra",
+      "package": "org.readera",
+      "patches": [
+        {
+          "name": "Remove nags",
+          "description": "Removes the rate this app dialog and the promotional dialogs shown on startup.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.05.20+2300"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Photo Editor Pro",
+      "package": "photo.editor.photoeditor.photoeditorpro",
+      "patches": [
+        {
+          "name": "Hide ads",
+          "description": "Adds an option to hide banner, interstitial, app-open and rewarded ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.791.265"
           ]
         },
         {
-          "name": "Feed filter",
-          "description": "Hides feed ads, TikTok Shop items, livestreams, stories, photo posts, the playlist bar, the floating event badge, AI-generated posts, paid partnership and promotional content, posts from verified accounts, videos outside configured view or like ranges, and the countdown lock on short-drama ads.",
+          "name": "Hide share options",
+          "description": "Adds an option to hide the share buttons on the save screen and center the saved photo.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "1.791.265"
           ]
         },
         {
-          "name": "Feed tab navigation",
-          "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble.",
+          "name": "Inspect AI requests",
+          "description": "Shows the network calls an AI tool makes, such as HTTP requests and Firebase uploads, and keeps a log, so you can watch your photo fly to China or the US.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "1.791.265"
           ]
         },
         {
-          "name": "Fix Google login",
-          "description": "Restores Google account sign-in after patching.",
+          "name": "Show AI progress",
+          "description": "Reads the current stage off the real network activity instead of the fake progress bar InShot ships.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "1.791.265"
           ]
         },
         {
-          "name": "Foldable split comment view",
-          "description": "Forces TikTok's tablet-style split layout (video beside comments instead of a bottom sheet) once the screen is at least as wide as a configurable threshold, for foldables TikTok doesn't already recognize as tablet-class.",
+          "name": "Speed up AI tools",
+          "description": "Shortens the AI tool wait by polling for the result more often and uploading the photo in larger chunks.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "1.791.265"
           ]
         },
         {
-          "name": "Hide BdTuring CAPTCHA popups",
-          "description": "Hides the BdTuring risk-control CAPTCHA dialog, gated by the Hide CAPTCHA popups setting.",
+          "name": "Unlock premium",
+          "description": "Adds an option to unlock the pro tools, remove the export watermark and hide the upgrade prompts.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "1.791.265"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Proton Pass",
+      "package": "proton.android.pass",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the dark theme background with pure black.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.40.3"
           ]
         },
         {
-          "name": "Hide CAPTCHA popups",
-          "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs while preserving login and account verification.",
+          "name": "Hide promotional messages",
+          "description": "Hides promotional banners, offers and pop-up messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "1.40.3"
           ]
         },
         {
-          "name": "Hide feed LIVE button",
-          "description": "Adds an option to hide the LIVE button at the top left of video feeds.",
+          "name": "Hide upgrade promotions",
+          "description": "Hides the Upgrade buttons, upgrade prompts and the welcome offer after signing in. Plan limits still apply.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
+            "1.40.3"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "AlpineQuest",
+      "package": "psyberia.alpinequest.free",
+      "patches": [
+        {
+          "name": "Unlock full version",
+          "description": "Unlocks the Off-Road Explorer features gated behind activation.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.4.0e"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Ringtone Maker",
+      "package": "ringtonemaker.musiccutter.customringtones.freeringtonemaker",
+      "patches": [
+        {
+          "name": "Remove rating prompts",
+          "description": "Removes the prompts asking for a rating.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.01.99.0909",
+            "1.01.98.0831",
+            "1.01.98.0824",
+            "1.01.97.0818",
+            "1.01.96.0716",
+            "1.01.94.0602",
+            "1.01.90.0421"
           ]
         },
         {
-          "name": "Hide feed follow button",
-          "description": "Adds an option to hide the + follow button below creator avatars in video feeds.",
+          "name": "Unlock premium",
+          "description": "Unlocks premium, removes ads and skips the upgrade screens.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Hide feed save button",
-          "description": "Adds an option to hide the save/favourites button from video feeds.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Hide feed search button",
-          "description": "Adds an option to hide the search button at the top right of video feeds.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Hide inbox stories",
-          "description": "Hides the Stories row at the top of the Inbox page.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Hide quick comment reactions",
-          "description": "Hides TikTok's exposed quick emoji row in supported comment inputs.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Hide suggested accounts",
-          "description": "Hides the Suggested accounts list on the Activity, New followers and Inbox pages.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Hold-and-slide 2x lock",
-          "description": "Enables TikTok's native hold, slide down, and release gesture to lock 2x speed.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Open external links directly",
-          "description": "Opens profile and story website links in the system browser instead of TikTok's in-app browser. Thanks to lyyako for the original implementation.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Playback speed",
-          "description": "Enables playback-speed controls for all videos and remembers the selected speed between videos.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Region spoof",
-          "description": "Adds in-app controls for changing the region TikTok reads.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Remember clear display",
-          "description": "Remembers TikTok's clear-display state between videos.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Resume videos after scrolling",
-          "description": "Continues supported videos from where playback stopped when returning after a scroll.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Sanitize sharing links",
-          "description": "Removes tracking parameters from TikTok links before they are shared.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Settings",
-          "description": "Adds the Morphe patches settings menu to TikTok.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Share sheet modification",
-          "description": "Adds toggles and allow-lists for the video share sheet's \"Send to\", \"Share via app\", and \"Video Actions\" sections.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Show seekbar",
-          "description": "Shows TikTok's native video seekbar where it would normally be hidden.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Show seekbar thumbnail",
-          "description": "Shows TikTok's video preview thumbnail while dragging the seekbar.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Stop video looping",
-          "description": "Stops videos at the end instead of replaying them.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
-          ]
-        },
-        {
-          "name": "Translate comments",
-          "description": "Adds comment translation controls using TikTok's translation system, with selectable language exclusions.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "46.2.3"
+            "1.01.99.0909",
+            "1.01.98.0831",
+            "1.01.98.0824",
+            "1.01.97.0818",
+            "1.01.96.0716",
+            "1.01.94.0602",
+            "1.01.90.0421"
           ]
         }
       ]
     }
   ],
-  "patches_name": "hxreborn TikTok Patches",
-  "fingerprint": "ab3db0d1b52c5de36b7813c5fd26fe07bacf28a2218a7043819def388eb4d801",
-  "release_notes": "## What's Changed\n\n\n\n### Features\n\n- **TikTok - Settings:** Add a support row linking to icysymmetra's Ko-fi by @hxreborn ([`257fad6`](https://github.com/hxreborn/hxreborn-tiktok-patches/commit/257fad68f6100a41af6556334ddff35e61b8ce02))\n\n\n\n",
-  "release_tag": "v1.3.0",
-  "release_date": "2026-09-07T08:52:16Z",
+  "patches_name": "hxreborn Patches",
+  "fingerprint": "4c950cd977446c5427983945dbe01db4dad170fe891d3b1e1ce71a41a4048a55",
+  "release_notes": "## [1.29.0](https://github.com/hxreborn/morphe-patches/compare/v1.28.0...v1.29.0) (2026-09-23)\n\n### Bug Fixes\n\n* **Realme Link - AMOLED dark theme:** apply the black theme to the earbuds screens too ([5231e4c](https://github.com/hxreborn/morphe-patches/commit/5231e4c52bd63a5753899a1924b7a15f19f66c7a))\n* **Realme Link - AMOLED dark theme:** cover the earbuds screens the theme missed ([69b11db](https://github.com/hxreborn/morphe-patches/commit/69b11db1bb4f8772a7e626139c0bc1323d9a7260))\n* **Realme Link - AMOLED dark theme:** keep pinned night colours on page backgrounds ([2279e5f](https://github.com/hxreborn/morphe-patches/commit/2279e5fe1c9a2637951c47e2476a738adbdf32b6))\n\n### New Features\n\n* **Override certificate pinning:** allow inspecting app traffic via proxy ([392ff3e](https://github.com/hxreborn/morphe-patches/commit/392ff3e9a122e6e21d5cee5ef4cd19840127fb18))\n* **Photo Editor Pro - Hide share options:** hide share buttons and center saved photo ([2d0b293](https://github.com/hxreborn/morphe-patches/commit/2d0b29323151cc964f72dbc9c79c40c14701860c))\n",
+  "release_tag": "v1.29.0",
+  "release_date": "2026-09-23T14:32:11Z",
   "isPreRelease": false
 }
