@@ -2,6 +2,8 @@
  * Miscellaneous utilities — version comparison, bundle grouping, sorting, etc.
  */
 import { escHtml } from './html.js'
+import { resolveAvatarUrl } from './url.js'
+import { getCachedAvatarDataUrl } from '../services/iconCache.js'
 
 export function compareVersions(a, b) {
   const pa = a.split('.').map(Number)
@@ -30,7 +32,7 @@ export function groupAffectedBundles(affectedBundles) {
   for (const b of affectedBundles) {
     const bName = b.bundle
     if (!grouped[bName]) {
-      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: b.version || '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [], previous_version: b.previous_version || '', new_version: b.new_version || '', avatarUrl: b.avatarUrl || '' }
+      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: b.version || '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [], previous_version: b.previous_version || '', new_version: b.new_version || '', avatarUrl: getDisplayAvatar(b.repo_url || '', b.avatarUrl || '') }
     }
     if (!grouped[bName].channels.includes(b.channel)) {
       grouped[bName].channels.push(b.channel)
@@ -148,6 +150,19 @@ export function getAppIconUrl(app, iconCache) {
   if (!app) return ''
   const fromCache = app.package ? iconCache[app.package] : ''
   return fromCache && typeof fromCache === 'string' ? fromCache : ''
+}
+
+/**
+ * Avatar URL for display: repo_cache map → bundle field → IndexedDB data URL.
+ * Prefers warm base64/WebP cache; falls back to remote URL.
+ * @param {string} repoUrl
+ * @param {string} [fallback]
+ * @returns {string}
+ */
+export function getDisplayAvatar(repoUrl, fallback = '') {
+  const url = resolveAvatarUrl(repoUrl, fallback)
+  if (!url) return ''
+  return getCachedAvatarDataUrl(url) || url
 }
 
 export function renderAppIcon(app, iconCache, size = 'default') {

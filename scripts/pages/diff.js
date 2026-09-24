@@ -4,7 +4,7 @@
  */
 import { el, mount } from '../ui.js'
 import * as store from '../store.js'
-import { buildAppIndex, resolveAppName, renderAppIcon, suggestFuzzy, copyToClipboard } from '../utils/misc.js'
+import { buildAppIndex, resolveAppName, renderAppIcon, suggestFuzzy, copyToClipboard, getDisplayAvatar } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
 import { SEARCH_ICON, REFRESH_ICON } from '../utils/svg.js'
 
@@ -252,7 +252,7 @@ export function renderDiff(container) {
           bundle: bName,
           channel,
           version: bundle.version || '',
-          avatarUrl: bundle.avatarUrl || '',
+          avatarUrl: getDisplayAvatar(bundle.repo_url, bundle.avatarUrl),
           patches,
         })
       } else {

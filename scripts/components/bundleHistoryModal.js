@@ -4,7 +4,7 @@
 import { el } from '../ui.js'
 import { openModal } from './modal.js'
 import * as store from '../store.js'
-import { renderAppIcon } from '../utils/misc.js'
+import { renderAppIcon, getDisplayAvatar } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
 import { VERSION_ARROW } from '../utils/svg.js'
 
@@ -20,7 +20,7 @@ export function openBundleHistoryModal(bundleName) {
   const devKey = `${bundleName}:dev`
   const bundleData = bundles[stableKey] || bundles[devKey]
   const displayName = bundleData?.patches_name || bundleName
-  const avatarUrl = bundleData?.avatarUrl || ''
+  const avatarUrl = getDisplayAvatar(bundleData?.repo_url || '', bundleData?.avatarUrl || '')
 
   const entries = []
   for (const day of changelog) {

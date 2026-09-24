@@ -5,7 +5,7 @@
 import { el } from '../ui.js'
 import { openModal } from './modal.js'
 import * as store from '../store.js'
-import { resolveAppName, renderAppIcon } from '../utils/misc.js'
+import { resolveAppName, renderAppIcon, getDisplayAvatar } from '../utils/misc.js'
 import { getAddMorpheUrl, getAuthorLink, getRepoInfo } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { GITHUB_SVG, GITLAB_SVG } from '../utils/svg.js'
@@ -34,7 +34,7 @@ export function openBundleModal({ bundleName, channels = [] }) {
   const authorHtml = getAuthorLink(bundleData.repo_url)
   const iconSvg = repoInfo.isGitLab ? GITLAB_SVG : GITHUB_SVG
 
-  const avatarUrl = bundleData.avatarUrl || ''
+  const avatarUrl = getDisplayAvatar(bundleData.repo_url, bundleData.avatarUrl)
 
   const content = el('div', { class: 'bundle-modal-content' })
 

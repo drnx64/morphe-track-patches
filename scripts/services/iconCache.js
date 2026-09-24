@@ -1,16 +1,20 @@
 /**
- * Icon cache — IndexedDB + canvas resize to WebP.
+ * Icon / avatar cache — IndexedDB + canvas resize to WebP data URLs.
  */
 
-import { idbGet, idbSetMany, idbKeys, idbDeleteMany } from './indexedDB.js'
+import { idbGet, idbGetMany, idbSetMany, idbKeys, idbDeleteMany } from './indexedDB.js'
 
 /** @type {Object<string, string>} */
 const imageCache = {}
 /** @type {Object<string, string>} */
 const urlToPkg = {}
+/** @type {Object<string, string>} URL -> dataUrl (repo/author avatars) */
+const avatarCache = {}
 
 const MAX_STORED_IMAGES = 600
+const MAX_STORED_AVATARS = 256
 const ICON_MAX = 96
+const AVATAR_MAX = 96
 
 function pkgKey(pkg) {
   return `icon_${pkg}`
@@ -28,6 +32,10 @@ function resolveIdbKey(iconUrl) {
   const pkg = urlToPkg[iconUrl]
   if (pkg) return pkgKey(pkg)
   return hashStr(iconUrl)
+}
+
+function avatarKey(url) {
+  return 'avatar_' + hashStr(url)
 }
 
 async function pruneStoredImages() {
@@ -55,7 +63,29 @@ async function pruneStoredImages() {
   }
 }
 
-function loadImage(url) {
+async function pruneStoredAvatars() {
+  try {
+    const keys = await idbKeys('avatar_')
+    if (keys.length <= MAX_STORED_AVATARS) return
+    const inUse = new Set(Object.keys(avatarCache).map(avatarKey))
+    let toDelete = keys.length - MAX_STORED_AVATARS
+    const del = []
+    for (const k of keys) {
+      if (toDelete <= 0) break
+      if (!inUse.has(k)) {
+        del.push(k)
+        toDelete--
+      }
+    }
+    if (del.length) {
+      await idbDeleteMany(del)
+    }
+  } catch {
+    /* ignore */
+  }
+}
+
+function loadImage(url, maxDim = ICON_MAX) {
   return new Promise((resolve) => {
     const img = new Image()
     img.crossOrigin = 'anonymous'
@@ -64,8 +94,8 @@ function loadImage(url) {
         const canvas = document.createElement('canvas')
         let w = img.naturalWidth
         let h = img.naturalHeight
-        if (w > ICON_MAX || h > ICON_MAX) {
-          const ratio = Math.min(ICON_MAX / w, ICON_MAX / h)
+        if (w > maxDim || h > maxDim) {
+          const ratio = Math.min(maxDim / w, maxDim / h)
           w = Math.round(w * ratio)
           h = Math.round(h * ratio)
         }
@@ -217,4 +247,91 @@ export function getCachedIconDataUrl(iconUrl) {
   if (!iconUrl || typeof iconUrl !== 'string') return undefined
   if (iconUrl.startsWith('data:')) return iconUrl
   return imageCache[iconUrl]
+}
+
+/** Sync memory lookup for avatar data URL (undefined if not warm). */
+export function getCachedAvatarDataUrl(url) {
+  if (!url || typeof url !== 'string') return undefined
+  if (url.startsWith('data:')) return url
+  return avatarCache[url]
+}
+
+/** Load avatar from memory or IndexedDB (no network). */
+export async function loadAvatarImage(url) {
+  if (!url || typeof url !== 'string') return null
+  if (url.startsWith('data:')) return url
+  if (avatarCache[url]) return avatarCache[url]
+  const cached = await idbGet(avatarKey(url))
+  if (cached) {
+    avatarCache[url] = cached
+    return cached
+  }
+  return null
+}
+
+/** Fetch avatar, resize to WebP data URL, store in IndexedDB. */
+export async function fetchAndCacheAvatar(url) {
+  if (!url || typeof url !== 'string') return null
+  if (url.startsWith('data:')) return url
+  if (avatarCache[url]) return avatarCache[url]
+  const key = avatarKey(url)
+  const cached = await idbGet(key)
+  if (cached) {
+    avatarCache[url] = cached
+    return cached
+  }
+  if (url.startsWith('http')) {
+    const dataUrl = await loadImage(url, AVATAR_MAX)
+    if (dataUrl) {
+      avatarCache[url] = dataUrl
+      idbSetMany([[key, dataUrl]])
+      await pruneStoredAvatars()
+      return dataUrl
+    }
+  }
+  return null
+}
+
+/**
+ * Warm avatar cache: hydrate from IndexedDB, then network-fetch misses.
+ * @param {string[]} urls
+ */
+export async function preloadAvatars(urls) {
+  const unique = [...new Set(urls.filter((u) => u && typeof u === 'string' && !u.startsWith('data:')))]
+  if (!unique.length) return
+
+  const cold = unique.filter((u) => !avatarCache[u])
+  if (cold.length) {
+    try {
+      const found = await idbGetMany(cold.map(avatarKey))
+      for (const url of cold) {
+        const val = found.get(avatarKey(url))
+        if (val) avatarCache[url] = val
+      }
+    } catch {
+      /* ignore */
+    }
+  }
+
+  const missing = unique.filter((u) => !avatarCache[u])
+  let idx = 0
+  let active = 0
+  const CONCURRENCY = 4
+
+  await new Promise((resolve) => {
+    if (!missing.length) { resolve(); return }
+    function next() {
+      while (active < CONCURRENCY && idx < missing.length) {
+        const i = idx++
+        active++
+        fetchAndCacheAvatar(missing[i]).finally(() => {
+          active--
+          if (idx >= missing.length && active === 0) resolve()
+          else next()
+        })
+      }
+      if (idx >= missing.length && active === 0) resolve()
+    }
+    next()
+  })
 }

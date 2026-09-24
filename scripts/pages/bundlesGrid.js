@@ -4,7 +4,7 @@
  */
 import { el } from '../ui.js'
 import * as store from '../store.js'
-import { resolveAppName, sortBundleNames } from '../utils/misc.js'
+import { resolveAppName, sortBundleNames, getDisplayAvatar } from '../utils/misc.js'
 import { renderBundleCard } from './bundleCard.js'
 
 const SORT_OPTIONS = [
@@ -54,7 +54,7 @@ export function renderBundlesGrid() {
           created_at: b.created_at,
           apps: [...(b.apps || [])],
           stars: b.stars || 0,
-          avatarUrl: b.avatarUrl || '',
+          avatarUrl: getDisplayAvatar(b.repo_url, b.avatarUrl),
           repoDescription: b.repoDescription || '',
           isArchived: b.isArchived || false,
           isPreRelease: b.isPreRelease || false,
@@ -65,7 +65,8 @@ export function renderBundlesGrid() {
         if (!g.channels.includes(b.channel)) g.channels.push(b.channel)
         if (!g.patches_name && b.patches_name) g.patches_name = b.patches_name
         if ((b.stars || 0) > (g.stars || 0)) g.stars = b.stars
-        if (b.avatarUrl && !g.avatarUrl) g.avatarUrl = b.avatarUrl
+        const bAv = getDisplayAvatar(b.repo_url, b.avatarUrl)
+        if (bAv && !g.avatarUrl) g.avatarUrl = bAv
         if (b.repoDescription && !g.repoDescription) g.repoDescription = b.repoDescription
         if (b.isArchived) g.isArchived = true
         if (b.isPreRelease) g.isPreRelease = true

@@ -1,6 +1,7 @@
 /**
  * URL utilities — site constants, repo info, author links, Play Store URLs.
  */
+import * as store from '../store.js'
 
 export const SITE_URL = 'https://drnx64.github.io/morphe-track-patches'
 export const GITHUB_REPO_URL = 'https://github.com/drnx64/morphe-track-patches'
@@ -32,6 +33,21 @@ export function getAuthorLink(repoUrl) {
     return `<a href="https://github.com/${author}" target="_blank" class="author-link">@${author}</a>`
   }
   return 'unknown'
+}
+
+/**
+ * Resolve owner/repo avatar URL from repoAvatarMap (repo_cache) or bundle field.
+ * @param {string} repoUrl
+ * @param {string} [fallback] - bundle.avatarUrl when map has no entry
+ * @returns {string}
+ */
+export function resolveAvatarUrl(repoUrl, fallback = '') {
+  if (repoUrl) {
+    const map = store.get('repoAvatarMap') || {}
+    const fromMap = map[repoUrl]
+    if (fromMap) return fromMap
+  }
+  return fallback || ''
 }
 
 export function getAddMorpheUrl(repoUrl) {

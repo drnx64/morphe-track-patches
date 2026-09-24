@@ -3,7 +3,7 @@
  */
 import { el } from '../ui.js'
 import * as store from '../store.js'
-import { resolveAppName, getStaleness, getStoredVersions, renderAppIcon } from '../utils/misc.js'
+import { resolveAppName, getStaleness, getStoredVersions, renderAppIcon, getDisplayAvatar } from '../utils/misc.js'
 import { getRepoInfo, getAddMorpheUrl, getAuthorLink } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { GITHUB_SVG, GITLAB_SVG, HISTORY_ICON, CHEVRON_DOWN } from '../utils/svg.js'
@@ -62,7 +62,7 @@ export function renderBundleCard(bundle) {
     `<span class="channel-badge ${ch}">${ch}</span>`
   ).join('')
 
-  const avatarUrl = bundle.avatarUrl || ''
+  const avatarUrl = getDisplayAvatar(bundle.repo_url, bundle.avatarUrl)
   const isNewBundle = bundle.badge_type === 'NEW BUNDLE'
 
   const card = el('div', {

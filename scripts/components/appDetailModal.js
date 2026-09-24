@@ -5,7 +5,7 @@
 import { el } from '../ui.js'
 import { openModal, closeModal } from './modal.js'
 import * as store from '../store.js'
-import { resolveAppName, getAppIconUrl, copyToClipboard } from '../utils/misc.js'
+import { resolveAppName, getAppIconUrl, copyToClipboard, getDisplayAvatar } from '../utils/misc.js'
 import { getPlayStoreUrl, getAddMorpheUrl } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { CLOSE_ICON, CHEVRON_DOWN, CHEVRON_RIGHT } from '../utils/svg.js'
@@ -40,7 +40,7 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
           patchesName: bundle.patches_name || bName,
           version: bundle.version || '',
           channels: [channel],
-          avatarUrl: bundle.avatarUrl || '',
+          avatarUrl: getDisplayAvatar(bundle.repo_url, bundle.avatarUrl),
         })
       }
     }

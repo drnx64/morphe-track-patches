@@ -41,7 +41,7 @@ import { openAppDetailModal } from './components/appDetailModal.js'
 import { openBundleHistoryModal } from './components/bundleHistoryModal.js'
 import { openBundleModal } from './components/bundleModal.js'
 import { renderGlobalSearch } from './components/globalSearch.js'
-import { preloadIcons } from './services/iconCache.js'
+import { preloadIcons, preloadAvatars } from './services/iconCache.js'
 import { SITE_URL, GITHUB_REPO_URL } from './utils/url.js'
 
 // ── Default State ──
@@ -49,6 +49,7 @@ store.init({
   bundles: {},
   iconCache: {},
   nameCache: {},
+  repoAvatarMap: {},
   changelog: [],
   liveDataDate: '',
   lastChecked: '',
@@ -225,8 +226,21 @@ async function loadData() {
     }
     store.merge({ iconCache, nameCache })
 
-    // Background-warm icon cache (fetch, resize, store in IndexedDB)
+    // Repo owner avatars (repo_cache.json → repo_url → avatarUrl)
+    const repoCacheRes = await fetchJson('data/state/repo_cache.json', {})
+    const repoAvatarMap = {}
+    if (repoCacheRes && typeof repoCacheRes === 'object') {
+      for (const [repoUrl, entry] of Object.entries(repoCacheRes)) {
+        if (entry && typeof entry === 'object' && entry.avatarUrl) {
+          repoAvatarMap[repoUrl] = entry.avatarUrl
+        }
+      }
+    }
+    store.merge({ repoAvatarMap })
+
+    // Background-warm icon + avatar caches (fetch, resize, store in IndexedDB)
     preloadIcons(iconCache).catch(() => {})
+    preloadAvatars(Object.values(repoAvatarMap)).catch(() => {})
 
     // Load bundle index
     const index = await fetchJson('data/bundles/_index.json')
