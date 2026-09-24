@@ -1,0 +1,67 @@
+{
+  "bundle": "vk-video",
+  "channel": "latest",
+  "repo_url": "https://github.com/Solvo37/vk-video-morphe-patches",
+  "created_at": "2026-09-23T01:22:18",
+  "version": "1.163.4",
+  "description": "## VK Video 1.163 (51920) — home/player ad removal r4\n\nBuilt after real-account screenshots from 1.163.3 confirmed that VK Clips ads were gone, while two other surfaces remained: a native MyTarget showcase card on Home / «Для вас» and a skippable instream ad inside ordinary long videos.\n\nNew blockers:\n- **Hide home showcase ads** intercepts the catalog factory before AdShowCaseBannerVh is created and returns VK's own EmptyVh instead.\n- **Disable video ad repository** replaces VideoAdvertisementsComponentImpl.Q6() with VK's built-in no-op VideoAdvertisementsComponent.STUB repository, which reports no ads and starts no repository-driven ad sessions.\n\nThe APK remains Android version 1.163 / 51920 and uses the same project signing certificate as 1.163.3, so it can be installed as an update over the previous project build.\n\nAutomated gates passed for Morphe application, ZIP/alignment, package/version, manifest coexistence, DEX application class, ARM64 native signature bypass, and final v3-only signature.\n",
+  "apps": [
+    {
+      "app_name": "VK Video",
+      "package": "com.vk.vkvideo",
+      "patches": [
+        {
+          "name": "Disable ad pixel tracking",
+          "description": "Stops PixelStatsTrackerImpl from sending individual and batch ad pixels.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        },
+        {
+          "name": "Disable in-app update",
+          "description": "Disables the VK Video in-app update check and update prompt.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        },
+        {
+          "name": "Fix install conflict with stock VK",
+          "description": "Allows the re-signed VK Video build to coexist with the official VK app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        },
+        {
+          "name": "Hide promoted banner content",
+          "description": "Forces VideoDiscoverAdsDto.canShowAdBanner to false.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        },
+        {
+          "name": "Remove video ads",
+          "description": "Disables instream video ads and player overlay/motion ad features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.163"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "VK Video Patches",
+  "fingerprint": "3f62a1210be9a14caf7f80c61499a82b5eb5d86ebe9abe9cae95ff540bb167b2",
+  "release_notes": "## VK Video 1.163 patched\n\nСтабильная ARM64-сборка текущего patch profile.\n\n### Что включено\n\n- совместная установка с обычным VK (`com.vkontakte.android`);\n- native `libvkcore.so` signature-check bypass;\n- отключение встроенного update prompt;\n- отключение client-side instream / overlay / motion video ads;\n- скрытие promoted banner в Discover;\n- отключение отдельного ad pixel tracker.\n\n### Проверка\n\nПолный профиль патчей проверен запуском на реальном ARM64 Android-устройстве. Точный APK asset этого Release дополнительно проходит автоматические 0.2 static gates: package/version, project certificate, zipalign, отсутствие v1/JAR signature, manifest coexistence, реальный DEX class definition `VkVideoApplication` и native binary pattern.\n\n### Сборка\n\n- VK Video: **1.163 / 51920**\n- patch bundle: **0.2.0**\n- Morphe: **STRIP_FAST**\n- ABI: **ARM64 / arm64-v8a**\n- APK signing: **v3 only**\n\nПеред первой установкой удалите только официальный **VK Видео**. Обычный **VK** удалять не нужно.\n\n`upstream.json`, `build-metadata.json` и `release-verification.json` содержат machine-readable provenance и результаты проверки.\n",
+  "release_tag": "1.163",
+  "release_date": "2026-09-19T14:48:05Z",
+  "isPreRelease": false
+}

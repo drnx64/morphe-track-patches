@@ -2,9 +2,9 @@
   "bundle": "kveld9",
   "channel": "stable",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-09-21T02:29:42Z",
-  "version": "1.42.2",
-  "description": "## [1.42.2](https://github.com/kveld9/kveld-morphe-patches/compare/v1.42.1...v1.42.2) (2026-09-21)\n\n### Bug Fixes\n\n* **tiktok:** restore fresco animation frame cache to fix animated sticker lag in comments ([8cc4534](https://github.com/kveld9/kveld-morphe-patches/commit/8cc45347e6b26dcc15fb67f329520894b45f9b2f))",
+  "created_at": "2026-09-23T04:55:12Z",
+  "version": "1.44.0",
+  "description": "## [1.44.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.43.0...v1.44.0) (2026-09-23)\n\n### Bug Fixes\n\n* **gboard:** retain ACCESS_NETWORK_STATE to prevent Cronet startup crash ([d0e8c11](https://github.com/kveld9/kveld-morphe-patches/commit/d0e8c11ed8fda7dc6a6d3826491c40103ea67004))\n\n### New Features\n\n* **gboard:** add enable bluetooth microphone patch ([3591653](https://github.com/kveld9/kveld-morphe-patches/commit/359165313891f0b87d0d33db1be22d3848eafe97))\n* **gboard:** add enable cursor trackpad patch ([ea459c4](https://github.com/kveld9/kveld-morphe-patches/commit/ea459c442a13ada17903fd7c00a4672a4121446a))\n* **gboard:** add enable dismiss suggestions button patch ([8af2bc8](https://github.com/kveld9/kveld-morphe-patches/commit/8af2bc8a318bfe0ab169de624ce7ce74f18030dc))\n* **gboard:** add enable emoji scale setting patch ([92dd78a](https://github.com/kveld9/kveld-morphe-patches/commit/92dd78a3a91dd05235b8c682124501509e41a075))\n* **gboard:** add enable grammar checker patch ([c350226](https://github.com/kveld9/kveld-morphe-patches/commit/c3502268dfd6836f1a15d8149e4ba3e0e373e643))\n* **gboard:** add phenotype flag resilience patch ([cf3e824](https://github.com/kveld9/kveld-morphe-patches/commit/cf3e824d8d3aa46433f9dec94604e913b320fe84))\n* **gboard:** add top toolbar item count patch ([393d1f7](https://github.com/kveld9/kveld-morphe-patches/commit/393d1f7db8a10019192b44ff71be65299f185ae3))\n* **patches:** add background sync and jobscheduler purge patch ([639415e](https://github.com/kveld9/kveld-morphe-patches/commit/639415e1570270139be4702370c9597fa8f680f2))\n* **patches:** add universal native binary trimmer patch ([a5be255](https://github.com/kveld9/kveld-morphe-patches/commit/a5be255613fc5415da85d6b691981405822a8e04))\n* **patches:** add universal telemetry neutralizer patch ([7688f2c](https://github.com/kveld9/kveld-morphe-patches/commit/7688f2cb64ce2e28197679d8339fb59af812dd55))\n* **patches:** add universal webp asset optimizer patch ([7f45964](https://github.com/kveld9/kveld-morphe-patches/commit/7f4596415708c9d66b52548dad302f39d3de6f8e))",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -22,6 +22,15 @@
         {
           "name": "Brave In-Product & Commercial Notification Optimizer",
           "description": "Eliminates background wakeups and notifications from Chromium tips scheduler (Job ID 105), Brave Rewards onboarding promo, and retention marketing campaigns.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.95.104"
+          ]
+        },
+        {
+          "name": "Brave Native Library Extraction Compatibility",
+          "description": "Enforces native library extraction in AndroidManifest.xml to ensure 16 KB page and BTI compatibility across modern ARM64 devices.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -278,6 +287,56 @@
           ]
         },
         {
+          "name": "Enable Bluetooth Microphone",
+          "description": "Unlocks the 'Use Bluetooth microphone' setting under Voice typing preferences.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Cursor Trackpad",
+          "description": "Enables 2D trackpad cursor navigation and cursor lock mode by holding the spacebar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Dismiss Suggestions Button",
+          "description": "Adds a close button (X) to dismiss proactive suggestions on the suggestion bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Emoji Scale Setting",
+          "description": "Unlocks the emoji size scaling setting in Gboard preferences.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Grammar Checker",
+          "description": "Unlocks Grammar check and Smart Compose / inline suggestions settings under Text correction preferences.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
           "name": "Enable Key Shape Selection",
           "description": "Enables the key border shape selection UI (Default, Semi-rounded, Round) in theme customization.",
           "use": true,
@@ -308,10 +367,50 @@
           ]
         },
         {
+          "name": "Offline Only",
+          "description": "Completely isolates Gboard from the network by revoking network permissions, neutralizing HTTP clients (Cronet, OkHttp, Superpacks), and spoofing offline status.",
+          "use": false,
+          "options": [
+            {
+              "key": "stripContacts",
+              "description": "Revokes READ_CONTACTS permission from AndroidManifest.xml for maximum isolation."
+            }
+          ],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Phenotype Flag Resilience",
+          "description": "Neutralizes Phenotype flag registration conflicts to allow runtime flag overrides without crashes.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
           "name": "Resource Slimmer",
           "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, promotional GIFs, and APK root metadata/junk files.",
           "use": true,
           "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Top Toolbar Item Count",
+          "description": "Customizes the maximum number of access point icons displayed on the top toolbar.",
+          "use": true,
+          "options": [
+            {
+              "key": "itemCount",
+              "description": "Maximum number of access point icons displayed on the top toolbar (default: 5, range: 4..8)."
+            }
+          ],
           "compatible_versions": [
             "18.2.4.969776716-lite_beta-arm64-v8a",
             "18.2.4.969776716-lite_beta-armeabi-v7a"
@@ -352,11 +451,194 @@
         },
         {
           "name": "Unlock Pro",
-          "description": "Unlocks local Hevy Pro capabilities (unlimited workout routines, routine folders, advanced graphs, and local analytics) by dynamically enabling Pro getters in Hermes Bytecode (HBC96).",
+          "description": "Unlocks local Hevy Pro capabilities (unlimited workout routines, routine folders, advanced graphs, and local analytics) by dynamically enabling Pro getters and suppressing grace period payment warnings in Hermes Bytecode (HBC96).",
           "use": false,
           "options": [],
           "compatible_versions": [
             "3.1.14"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Xiaomi Earbuds",
+      "package": "com.mi.earphone",
+      "patches": [
+        {
+          "name": "Xiaomi Earbuds Anti-Tamper Bypass",
+          "description": "Bypasses Xposed and hook detection, neutralizes VPN and ADB security checks, bypasses root and emulator detection, and hardens WebView JavaScript bridges.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Background Optimizer",
+          "description": "Neutralizes KeepAliveForegroundService, background BLE observation, companion device manager, and MIUI Nearby discovery to eliminate persistent notifications, wakelocks, and background battery drain.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Block Telemetry & Trackers",
+          "description": "Neutralizes Firebase Analytics, Xiaomi OneTrack, AutoReportHelper, and GlobalReport telemetry and event dispatching.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Device Privacy Guard",
+          "description": "Blinds hardware device IDs, anonymizes device identifiers, neutralizes environment info leakage, and bypasses location checks for Bluetooth scanning.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Disable Promos & Nags",
+          "description": "Bypasses startup privacy agreements, onboarding guides, region selector prompts, and Bluetooth permission nags, and disables in-app promotional banners, marketing activities, and store review nag dialogs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Guest OTA Unlock",
+          "description": "Bypasses mandatory Xiaomi account login checks for firmware update queries, allowing guest users to check and perform device OTA updates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Model Catalog Unlock",
+          "description": "Forces DeviceInfoListCache.isShowProduct to return true, bypassing version-gating and distribution restrictions so that all device models are always displayed and discoverable.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Network Security & TLS Inspection",
+          "description": "Disables cleartext traffic, trusts user-installed certificates, and bypasses OkHttp certificate pinning.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Offline Only",
+          "description": "Completely isolates the app from the network by revoking internet permissions and spoofing offline status to prevent background socket failures.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Sound Features Unlock",
+          "description": "Unblocks Spatial Audio, hearing enhancement, and voice wake-up restrictions, unbans Spatial Audio on 96kHz aptX Adaptive connections, and bypasses XPAN requirements.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Surgical OEM Unlock",
+          "description": "Bypasses Xiaomi OEM hardware gating for SuperAivs (function 5009) and suppresses MIUI-specific spatial audio system dialog nags.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "NokoPrint - WiFi, Bluetooth, USB",
+      "package": "com.nokoprint",
+      "patches": [
+        {
+          "name": "NokoPrint Ad Activities Slimmer",
+          "description": "Disables over 40 third-party ad mediation activities, internal web browsers, and debuggers registered in AndroidManifest.xml.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Ad Dispatch Governor",
+          "description": "Neutralizes in-app banner, interstitial, and rewarded ad loaders, preloading schedulers, and refresh handlers.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Asset De-bloat",
+          "description": "Strips embedded secondary Meta Audience Network DEX and redundant web ad-viewer HTML/JS assets to save APK space.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Background Sync Optimizer",
+          "description": "Neutralizes background WorkManager constraint tasks and diagnostic wakelocks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Block Telemetry & Trackers",
+          "description": "Neutralizes Firebase Analytics and Google Measurement tracking and event dispatching.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Multi-Store Debridger",
+          "description": "Disables orphan billing activities, background services, and permissions for alternative OEM stores (Huawei HMS, Xiaomi, Samsung, CafeBazaar, OneStore).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Network Security Hardening",
+          "description": "Enforces HTTPS encryption for driver downloads and backend communications with nokoprint.com while preserving local cleartext traffic for LAN network printers.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Startup Performance Optimizer",
+          "description": "Disables non-essential ad mediation and tracker ContentProviders that auto-initialize before Application.onCreate, accelerating cold startup.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
           ]
         }
       ]
@@ -368,6 +650,15 @@
         {
           "name": "Always show publish date",
           "description": "Forces video publish/upload date to remain visible in video author information across all feed types.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Auto-translate comments",
+          "description": "Automatically translates comments into your preferred language using TikTok's native translation engine.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -435,7 +726,16 @@
         },
         {
           "name": "Device Privacy Guard",
-          "description": "Neutralizes background clipboard snooping routines, local network scanning permissions, and screenshot/recording detection and telemetry listeners to protect user data.",
+          "description": "Neutralizes invasive runtime permissions (contacts sync, location tracking, nearby devices), advertising ID profiling, background clipboard snooping routines, motion sensor profiling, and screenshot/recording detection to protect user data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Disable Profile Photo LIVE Status",
+          "description": "Removes the pulsing LIVE ring and badge from creator avatars in the feed and ensures clicking navigates strictly to the user profile instead of launching the live stream.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -502,8 +802,35 @@
           ]
         },
         {
+          "name": "Hide Profile Photo Follow Button",
+          "description": "Hides the plus (+) follow badge on creator profile avatars in the feed and disables its touch interaction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Hide STEM and Community Tabs",
+          "description": "Removes the STEM and Comunidad (Explore / Topics) tabs from the top navigation feed strip.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
           "name": "Hide TikTok Shop & Mall",
           "description": "Removes product showcase badges, shopping cart tags, and the TikTok Shop / Mall tab from navigation bars and video posts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Hide Top-Left LIVE Button",
+          "description": "Removes the top-left LIVE broadcast button and tab entry point from the top navigation bar.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -835,6 +1162,15 @@
           ]
         },
         {
+          "name": "Auto-translate comments",
+          "description": "Automatically translates comments into your preferred language using TikTok's native translation engine.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
           "name": "Bypass Mandatory Login",
           "description": "Neutralizes mandatory login walls, dynamic regional forced login gates, and guest browsing restrictions.",
           "use": true,
@@ -895,7 +1231,16 @@
         },
         {
           "name": "Device Privacy Guard",
-          "description": "Neutralizes background clipboard snooping routines, local network scanning permissions, and screenshot/recording detection and telemetry listeners to protect user data.",
+          "description": "Neutralizes invasive runtime permissions (contacts sync, location tracking, nearby devices), advertising ID profiling, background clipboard snooping routines, motion sensor profiling, and screenshot/recording detection to protect user data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Disable Profile Photo LIVE Status",
+          "description": "Removes the pulsing LIVE ring and badge from creator avatars in the feed and ensures clicking navigates strictly to the user profile instead of launching the live stream.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -962,8 +1307,35 @@
           ]
         },
         {
+          "name": "Hide Profile Photo Follow Button",
+          "description": "Hides the plus (+) follow badge on creator profile avatars in the feed and disables its touch interaction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Hide STEM and Community Tabs",
+          "description": "Removes the STEM and Comunidad (Explore / Topics) tabs from the top navigation feed strip.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
           "name": "Hide TikTok Shop & Mall",
           "description": "Removes product showcase badges, shopping cart tags, and the TikTok Shop / Mall tab from navigation bars and video posts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Hide Top-Left LIVE Button",
+          "description": "Removes the top-left LIVE broadcast button and tab entry point from the top navigation bar.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -1137,9 +1509,9 @@
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "5d09f4e056ae0b2ac8c512b70ae3a5fd1de913980d509406111f2bdaff66f146",
-  "release_notes": "## [1.42.2](https://github.com/kveld9/kveld-morphe-patches/compare/v1.42.1...v1.42.2) (2026-09-21)\n\n### Bug Fixes\n\n* **tiktok:** restore fresco animation frame cache to fix animated sticker lag in comments ([8cc4534](https://github.com/kveld9/kveld-morphe-patches/commit/8cc45347e6b26dcc15fb67f329520894b45f9b2f))\n",
-  "release_tag": "v1.42.2",
-  "release_date": "2026-09-21T02:29:42Z",
+  "fingerprint": "5bdc993f012c13aad4b22c5ba54dd8e9639942c03b53ce0c6467d8efa47e90fd",
+  "release_notes": "## [1.44.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.43.0...v1.44.0) (2026-09-23)\n\n### Bug Fixes\n\n* **gboard:** retain ACCESS_NETWORK_STATE to prevent Cronet startup crash ([d0e8c11](https://github.com/kveld9/kveld-morphe-patches/commit/d0e8c11ed8fda7dc6a6d3826491c40103ea67004))\n\n### New Features\n\n* **gboard:** add enable bluetooth microphone patch ([3591653](https://github.com/kveld9/kveld-morphe-patches/commit/359165313891f0b87d0d33db1be22d3848eafe97))\n* **gboard:** add enable cursor trackpad patch ([ea459c4](https://github.com/kveld9/kveld-morphe-patches/commit/ea459c442a13ada17903fd7c00a4672a4121446a))\n* **gboard:** add enable dismiss suggestions button patch ([8af2bc8](https://github.com/kveld9/kveld-morphe-patches/commit/8af2bc8a318bfe0ab169de624ce7ce74f18030dc))\n* **gboard:** add enable emoji scale setting patch ([92dd78a](https://github.com/kveld9/kveld-morphe-patches/commit/92dd78a3a91dd05235b8c682124501509e41a075))\n* **gboard:** add enable grammar checker patch ([c350226](https://github.com/kveld9/kveld-morphe-patches/commit/c3502268dfd6836f1a15d8149e4ba3e0e373e643))\n* **gboard:** add phenotype flag resilience patch ([cf3e824](https://github.com/kveld9/kveld-morphe-patches/commit/cf3e824d8d3aa46433f9dec94604e913b320fe84))\n* **gboard:** add top toolbar item count patch ([393d1f7](https://github.com/kveld9/kveld-morphe-patches/commit/393d1f7db8a10019192b44ff71be65299f185ae3))\n* **patches:** add background sync and jobscheduler purge patch ([639415e](https://github.com/kveld9/kveld-morphe-patches/commit/639415e1570270139be4702370c9597fa8f680f2))\n* **patches:** add universal native binary trimmer patch ([a5be255](https://github.com/kveld9/kveld-morphe-patches/commit/a5be255613fc5415da85d6b691981405822a8e04))\n* **patches:** add universal telemetry neutralizer patch ([7688f2c](https://github.com/kveld9/kveld-morphe-patches/commit/7688f2cb64ce2e28197679d8339fb59af812dd55))\n* **patches:** add universal webp asset optimizer patch ([7f45964](https://github.com/kveld9/kveld-morphe-patches/commit/7f4596415708c9d66b52548dad302f39d3de6f8e))\n",
+  "release_tag": "v1.44.0",
+  "release_date": "2026-09-23T04:55:12Z",
   "isPreRelease": false
 }

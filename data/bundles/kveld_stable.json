@@ -2,9 +2,9 @@
   "bundle": "kveld",
   "channel": "stable",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-08-30T21:18:59",
-  "version": "v1.10.1",
-  "description": "## [1.10.1](https://github.com/kveld9/kveld-morphe-patches/compare/v1.10.0...v1.10.1) (2026-08-30)\n\n### 🐛 Bug Fixes\n\n* **brave:** disable native bloat and locale slimmers by default ([9874434](https://github.com/kveld9/kveld-morphe-patches/commit/98744343ba53641e30dedbc3bc7de34c08a64606))\n",
+  "created_at": "2026-09-23T04:55:12",
+  "version": "v1.44.0",
+  "description": "## [1.44.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.43.0...v1.44.0) (2026-09-23)\n\n### Bug Fixes\n\n* **gboard:** retain ACCESS_NETWORK_STATE to prevent Cronet startup crash ([d0e8c11](https://github.com/kveld9/kveld-morphe-patches/commit/d0e8c11ed8fda7dc6a6d3826491c40103ea67004))\n\n### New Features\n\n* **gboard:** add enable bluetooth microphone patch ([3591653](https://github.com/kveld9/kveld-morphe-patches/commit/359165313891f0b87d0d33db1be22d3848eafe97))\n* **gboard:** add enable cursor trackpad patch ([ea459c4](https://github.com/kveld9/kveld-morphe-patches/commit/ea459c442a13ada17903fd7c00a4672a4121446a))\n* **gboard:** add enable dismiss suggestions button patch ([8af2bc8](https://github.com/kveld9/kveld-morphe-patches/commit/8af2bc8a318bfe0ab169de624ce7ce74f18030dc))\n* **gboard:** add enable emoji scale setting patch ([92dd78a](https://github.com/kveld9/kveld-morphe-patches/commit/92dd78a3a91dd05235b8c682124501509e41a075))\n* **gboard:** add enable grammar checker patch ([c350226](https://github.com/kveld9/kveld-morphe-patches/commit/c3502268dfd6836f1a15d8149e4ba3e0e373e643))\n* **gboard:** add phenotype flag resilience patch ([cf3e824](https://github.com/kveld9/kveld-morphe-patches/commit/cf3e824d8d3aa46433f9dec94604e913b320fe84))\n* **gboard:** add top toolbar item count patch ([393d1f7](https://github.com/kveld9/kveld-morphe-patches/commit/393d1f7db8a10019192b44ff71be65299f185ae3))\n* **patches:** add background sync and jobscheduler purge patch ([639415e](https://github.com/kveld9/kveld-morphe-patches/commit/639415e1570270139be4702370c9597fa8f680f2))\n* **patches:** add universal native binary trimmer patch ([a5be255](https://github.com/kveld9/kveld-morphe-patches/commit/a5be255613fc5415da85d6b691981405822a8e04))\n* **patches:** add universal telemetry neutralizer patch ([7688f2c](https://github.com/kveld9/kveld-morphe-patches/commit/7688f2cb64ce2e28197679d8339fb59af812dd55))\n* **patches:** add universal webp asset optimizer patch ([7f45964](https://github.com/kveld9/kveld-morphe-patches/commit/7f4596415708c9d66b52548dad302f39d3de6f8e))\n",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -12,11 +12,11 @@
       "patches": [
         {
           "name": "Block Brave Telemetry",
-          "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, and Variations seed fetching.",
+          "description": "Blocks P3A product analytics, Brave Stats usage pings, crash dump uploads, WDP, Chromium UMA metrics, and Variations seed fetching.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
           ]
         },
         {
@@ -25,7 +25,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
+          ]
+        },
+        {
+          "name": "Brave Native Library Extraction Compatibility",
+          "description": "Enforces native library extraction in AndroidManifest.xml to ensure 16 KB page and BTI compatibility across modern ARM64 devices.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.95.104"
           ]
         },
         {
@@ -34,7 +43,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
           ]
         },
         {
@@ -43,7 +52,25 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
+          ]
+        },
+        {
+          "name": "Clean New Tab Page",
+          "description": "Removes sponsored wallpaper images, Brave News/Today feeds, marketing widgets, and promo cards from the New Tab Page.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.95.104"
+          ]
+        },
+        {
+          "name": "Clean Share URL",
+          "description": "Strips tracking parameters (utm_*, fbclid, gclid, igshid, si, msclkid) when sharing or copying links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.95.104"
           ]
         },
         {
@@ -52,25 +79,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
           ]
         },
         {
           "name": "Disable Battery Status API & OS Listener",
-          "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
+          "description": "Neutralizes the Battery Status API (navigator.getBattery) to prevent cross-site device fingerprinting and drops OS battery change broadcasts.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
-          ]
-        },
-        {
-          "name": "Disable Pull To Refresh",
-          "description": "Completely disables the pull-to-refresh overscroll gesture and animation to prevent accidental page reloads.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
           ]
         },
         {
@@ -84,7 +102,7 @@
             }
           ],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
           ]
         },
         {
@@ -93,16 +111,16 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
           ]
         },
         {
-          "name": "PNG Asset Optimizer",
-          "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
-          "use": false,
+          "name": "Sensor Privacy Guard",
+          "description": "Neutralizes motion, ambient, and orientation sensor providers to prevent hardware fingerprinting and tracking via Generic Sensor APIs.",
+          "use": true,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
           ]
         },
         {
@@ -111,7 +129,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.94.117"
+            "1.95.104"
           ]
         }
       ]
@@ -126,7 +144,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -135,7 +154,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -144,21 +164,46 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Clipboard Enhancements",
+          "description": "Extends unpinned clipboard history retention duration, raises the maximum number of displayed unpinned clips, and allows customizing keyboard grid columns.",
+          "use": true,
+          "options": [
+            {
+              "key": "unpinnedClipLimit",
+              "description": "Maximum number of unpinned clipboard history items to display in the UI (default: 50, range: 5..100)."
+            },
+            {
+              "key": "retentionHours",
+              "description": "Number of hours to retain unpinned clips in history before automatic cleanup (e.g. 12, 24 for 1 day, 48 for 2 days, 168 for 7 days. Default: 24)."
+            },
+            {
+              "key": "gridColumns",
+              "description": "Number of columns in the clipboard keyboard layout (1, 2, or 3. Default: 2)."
+            }
+          ],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
           "name": "Clone Gboard",
-          "description": "Changes the package name by appending a dot and custom suffix (defaults to 'kveld') to allow installing Gboard alongside the original application.",
+          "description": "Changes the package name by appending a dot and custom suffix (defaults to 'clone') to allow installing Gboard alongside the original application.",
           "use": true,
           "options": [
             {
               "key": "packageSuffix",
-              "description": "Suffix appended after the original package name and a dot (e.g. 'kveld' -> 'com.google.android.inputmethod.latin.kveld')."
+              "description": "Suffix appended after the original package name and a dot (e.g. 'clone' -> 'com.google.android.inputmethod.latin.clone')."
             }
           ],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -167,7 +212,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -176,7 +222,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -185,7 +232,8 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -194,7 +242,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -203,7 +252,8 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -212,7 +262,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -221,7 +272,8 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -230,7 +282,58 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Bluetooth Microphone",
+          "description": "Unlocks the 'Use Bluetooth microphone' setting under Voice typing preferences.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Cursor Trackpad",
+          "description": "Enables 2D trackpad cursor navigation and cursor lock mode by holding the spacebar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Dismiss Suggestions Button",
+          "description": "Adds a close button (X) to dismiss proactive suggestions on the suggestion bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Emoji Scale Setting",
+          "description": "Unlocks the emoji size scaling setting in Gboard preferences.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Enable Grammar Checker",
+          "description": "Unlocks Grammar check and Smart Compose / inline suggestions settings under Text correction preferences.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -239,7 +342,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -248,7 +352,8 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -257,30 +362,33 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
-          "name": "Locale Resource Slimmer",
-          "description": "Strips unselected language translation directories from res/ (e.g. values-*, raw-*, xml-*). Base fallback resources with no language qualifiers are always preserved.",
-          "use": true,
+          "name": "Offline Only",
+          "description": "Completely isolates Gboard from the network by revoking network permissions, neutralizing HTTP clients (Cronet, OkHttp, Superpacks), and spoofing offline status.",
+          "use": false,
           "options": [
             {
-              "key": "locales",
-              "description": "Comma-separated language codes to preserve (e.g. 'en, es, pt, fr, de'). English fallback is always retained."
+              "key": "stripContacts",
+              "description": "Revokes READ_CONTACTS permission from AndroidManifest.xml for maximum isolation."
             }
           ],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
-          "name": "PNG Asset Optimizer",
-          "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
-          "use": false,
+          "name": "Phenotype Flag Resilience",
+          "description": "Neutralizes Phenotype flag registration conflicts to allow runtime flag overrides without crashes.",
+          "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         },
         {
@@ -289,14 +397,578 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.1.3.962075747-lite_beta-arm64-v8a"
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Top Toolbar Item Count",
+          "description": "Customizes the maximum number of access point icons displayed on the top toolbar.",
+          "use": true,
+          "options": [
+            {
+              "key": "itemCount",
+              "description": "Maximum number of access point icons displayed on the top toolbar (default: 5, range: 4..8)."
+            }
+          ],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
           ]
         }
       ]
     },
     {
-      "app_name": "Vivaldi Browser Snapshot",
-      "package": "com.vivaldi.browser.snapshot",
+      "app_name": "Hevy - Gym Log Workout Tracker",
+      "package": "com.hevy",
+      "patches": [
+        {
+          "name": "Block Hevy Telemetry & Trackers",
+          "description": "Neutralizes Sentry crash reporting, Adjust attribution, Facebook AppEvents, Branch referral tracking, and WearOS background sync.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.14"
+          ]
+        },
+        {
+          "name": "Hevy Battery Optimization & Background Sync Killer",
+          "description": "Disables background WorkManager alarms, periodic job schedulers, Google Play Billing IPC (~89 MB RAM), and removes largeHeap to force aggressive Garbage Collection.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.14"
+          ]
+        },
+        {
+          "name": "Hevy Resource Slimmer",
+          "description": "Strips embedded onboarding MP4 tutorial video, heavy IMG.LY photo editor stickers/textures, and compiler junk metadata.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.14"
+          ]
+        },
+        {
+          "name": "Unlock Pro",
+          "description": "Unlocks local Hevy Pro capabilities (unlimited workout routines, routine folders, advanced graphs, and local analytics) by dynamically enabling Pro getters in Hermes Bytecode (HBC96).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.1.14"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Xiaomi Earbuds",
+      "package": "com.mi.earphone",
+      "patches": [
+        {
+          "name": "Xiaomi Earbuds Anti-Tamper Bypass",
+          "description": "Bypasses Xposed and hook detection, neutralizes VPN and ADB security checks, bypasses root and emulator detection, and hardens WebView JavaScript bridges.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Background Optimizer",
+          "description": "Neutralizes KeepAliveForegroundService, background BLE observation, companion device manager, and MIUI Nearby discovery to eliminate persistent notifications, wakelocks, and background battery drain.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Block Telemetry & Trackers",
+          "description": "Neutralizes Firebase Analytics, Xiaomi OneTrack, AutoReportHelper, and GlobalReport telemetry and event dispatching.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Device Privacy Guard",
+          "description": "Blinds hardware device IDs, anonymizes device identifiers, neutralizes environment info leakage, and bypasses location checks for Bluetooth scanning.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Disable Promos & Nags",
+          "description": "Bypasses startup privacy agreements, onboarding guides, region selector prompts, and Bluetooth permission nags, and disables in-app promotional banners, marketing activities, and store review nag dialogs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Guest OTA Unlock",
+          "description": "Bypasses mandatory Xiaomi account login checks for firmware update queries, allowing guest users to check and perform device OTA updates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Model Catalog Unlock",
+          "description": "Forces DeviceInfoListCache.isShowProduct to return true, bypassing version-gating and distribution restrictions so that all device models are always displayed and discoverable.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Network Security & TLS Inspection",
+          "description": "Disables cleartext traffic, trusts user-installed certificates, and bypasses OkHttp certificate pinning.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Offline Only",
+          "description": "Completely isolates the app from the network by revoking internet permissions and spoofing offline status to prevent background socket failures.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Sound Features Unlock",
+          "description": "Unblocks Spatial Audio, hearing enhancement, and voice wake-up restrictions, unbans Spatial Audio on 96kHz aptX Adaptive connections, and bypasses XPAN requirements.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        },
+        {
+          "name": "Xiaomi Earbuds Surgical OEM Unlock",
+          "description": "Bypasses Xiaomi OEM hardware gating for SuperAivs (function 5009) and suppresses MIUI-specific spatial audio system dialog nags.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.38.0i"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "NokoPrint - WiFi, Bluetooth, USB",
+      "package": "com.nokoprint",
+      "patches": [
+        {
+          "name": "NokoPrint Ad Activities Slimmer",
+          "description": "Disables over 40 third-party ad mediation activities, internal web browsers, and debuggers registered in AndroidManifest.xml.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Ad Dispatch Governor",
+          "description": "Neutralizes in-app banner, interstitial, and rewarded ad loaders, preloading schedulers, and refresh handlers.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Asset De-bloat",
+          "description": "Strips embedded secondary Meta Audience Network DEX and redundant web ad-viewer HTML/JS assets to save APK space.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Background Sync Optimizer",
+          "description": "Neutralizes background WorkManager constraint tasks and diagnostic wakelocks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Block Telemetry & Trackers",
+          "description": "Neutralizes Firebase Analytics and Google Measurement tracking and event dispatching.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Multi-Store Debridger",
+          "description": "Disables orphan billing activities, background services, and permissions for alternative OEM stores (Huawei HMS, Xiaomi, Samsung, CafeBazaar, OneStore).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Network Security Hardening",
+          "description": "Enforces HTTPS encryption for driver downloads and backend communications with nokoprint.com while preserving local cleartext traffic for LAN network printers.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        },
+        {
+          "name": "NokoPrint Startup Performance Optimizer",
+          "description": "Disables non-essential ad mediation and tracker ContentProviders that auto-initialize before Application.onCreate, accelerating cold startup.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.10.8"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "TikTok",
+      "package": "com.ss.android.ugc.trill",
+      "patches": [
+        {
+          "name": "Always show publish date",
+          "description": "Forces video publish/upload date to remain visible in video author information across all feed types.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Auto-translate comments",
+          "description": "Automatically translates comments into your preferred language using TikTok's native translation engine.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Bypass Mandatory Login",
+          "description": "Neutralizes mandatory login walls, dynamic regional forced login gates, and guest browsing restrictions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Clean Share URL",
+          "description": "Strips tracking parameters, user IDs, device fingerprints, and marketing tokens from shared TikTok links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Client-Side AI & Behavioral Profiling Governor",
+          "description": "Neutralizes on-device machine learning inference (Pitaya), Tako AI chatbot entry points and icons, and AI smart search suggestion clutter.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Copy comments without username",
+          "description": "Copies only the comment text without prepending the author username.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Core Asset De-bloat",
+          "description": "Strips embedded Microblink/FinTech card scanner models, Pitaya AI & ByteNN LLM engines, C2PA origin verification, DLNA cast scanners, and redundant non-Latin fonts to save APK space.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Custom Offline Videos Limit",
+          "description": "Customizes the maximum number of videos available for offline download caching.",
+          "use": true,
+          "options": [
+            {
+              "key": "customLimit",
+              "description": "Maximum number of offline videos that can be cached for offline playback (default: 200)."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Device Privacy Guard",
+          "description": "Neutralizes background clipboard snooping routines, motion sensor profiling, and screenshot/recording detection and telemetry listeners to protect user data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Disable Push Notifications",
+          "description": "Neutralizes background push notification tasks and persistent socket wake locks to eliminate background battery drain.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Display Refresh Rate Governor",
+          "description": "Forces TikTok to run at peak display refresh rate (120Hz/90Hz/60Hz) and neutralizes video playback framerate downclocking routines.",
+          "use": false,
+          "options": [
+            {
+              "key": "targetRate",
+              "description": "Select target display refresh rate: max (display peak rate), 120 (120 Hz), 90 (90 Hz), or 60 (60 Hz). Clamped automatically to display maximum."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Feed Ad Blocker",
+          "description": "Removes sponsored advertisements, brand promotions, and promotional audio from the For You and Following feeds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Feed Bloat & Distraction Blocker",
+          "description": "Removes non-video clutter and floating ad widgets from the For You and Following feeds, including Touchpoint Rewards pendants, floating ad stickers, suggested friend cards, mini-games, CapCut/template creation prompts, memories ('On This Day'), surveys, and mini-drama paywalls.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Feed Live Stream Blocker",
+          "description": "Removes live stream broadcast cards and live recommendations from the For You and Following feeds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Fix Google login",
+          "description": "Restores Google account sign-in after patching by forcing fallback to Web-based OAuth when Google Play Services rejects the modified APK signature.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Hide TikTok Shop & Mall",
+          "description": "Removes product showcase badges, shopping cart tags, and the TikTok Shop / Mall tab from navigation bars and video posts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "In-App Browser Privacy Guard",
+          "description": "Redirects external and third-party web links to the default system browser and neutralizes inline JavaScript tracking, DOM monitoring, and AJAX hooking in residual in-app WebViews.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Instant Launch & Splash Blocker",
+          "description": "Eliminates cold startup delays, real-time splash advertisements, and background TopView preloading (<0.4s launch).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Language Pack Purger",
+          "description": "Strips unselected language string bundles from assets/strings#lang_* to save APK space.",
+          "use": true,
+          "options": [
+            {
+              "key": "locales",
+              "description": "Comma-separated language codes to keep (e.g. 'en, es, pt, fr, de'). English ('en') is always preserved as safe fallback."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Live Stream 3D Gift Optimizer",
+          "description": "Disables Live 3D gift particle effect engine and widget rendering lifecycle to eliminate frame drops during live streams.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Live Stream SDK & Minigame De-bloat",
+          "description": "Strips Live link mic SDK (liblink_mic_sdk.so), Lyrax RTC broadcasting engines (liblyrax.so), and live stream interactive minigames to reduce APK size and memory footprint.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Media Usability & Watermark-Free Downloader",
+          "description": "Unblocks the download button on creator-restricted videos inside the Share panel, and routes downloads to clean unwatermarked media streams.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "P2P Video Relay & Mesh CDN Blocker",
+          "description": "Strips background Peer-to-Peer CDN distribution binaries (libavmdlp2pv2.so and libp2plivevdp.so) to prevent battery drain, background data upload, and mesh relay.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Playback Speed Persistence",
+          "description": "Persists selected video playback speed across all feed videos and application restarts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Resource & Battery Governor",
+          "description": "Throttles background sensor polling (gyroscope/accelerometer 3D ads) and prevents aggressive video buffer preloading to conserve battery and CPU resources.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Show seekbar",
+          "description": "Restores TikTok's native video seekbar and scrubbing controls where normally hidden or disabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "SIM Region Selector",
+          "description": "Spoofs the detected SIM and network country ISO code to bypass regional feed restrictions and catalog blocks.",
+          "use": false,
+          "options": [
+            {
+              "key": "region",
+              "description": "Two-letter ISO country code for SIM and network country spoofing (e.g. 'CH', 'US', 'JP', 'GB')."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Skip First-Launch Onboarding",
+          "description": "Bypasses the entire first-run introduction funnel (interest pickers, swipe tutorials, language prompts, and consent sheets) directly to the feed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Studio & Creation De-bloat",
+          "description": "Strips heavy video creation plugins, CapCut NLE editor SDKs, effect plugins, and AR camera face models to significantly reduce APK size.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Unified Telemetry & Tracker Silencer",
+          "description": "Neutralizes ByteDance AppLog user tracking, APM/Npth/Heimdallr crash monitors, AppsFlyer attribution, and Firebase analytics.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Update Prompt Suppressor",
+          "description": "Neutralizes background update polling tasks and device ID check routines to prevent forced update popups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Video Quality Governor",
+          "description": "Caps video playback and download resolutions (1080p, 720p, 540p, 480p, 360p) independently to conserve battery, GPU/MediaCodec load, and mobile data.",
+          "use": false,
+          "options": [
+            {
+              "key": "maxQuality",
+              "description": "Select maximum video playback resolution ceiling: 1080 (1080p ExtremelyHigh), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+            },
+            {
+              "key": "maxDownloadQuality",
+              "description": "Select maximum video download resolution ceiling: 1080 (1080p Maximum Quality), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Vivaldi Browser - Fast & Safe",
+      "package": "com.vivaldi.browser",
       "patches": [
         {
           "name": "Block Vivaldi Sync",
@@ -304,16 +976,25 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Block Vivaldi Telemetry",
-          "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, and DirectMatch suggestions.",
+          "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, DirectMatch suggestions, install referrer transmission, and background wallpaper polling.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
+          ]
+        },
+        {
+          "name": "Clean Share URL",
+          "description": "Strips tracking parameters (utm_*, fbclid, gclid, igshid, si, msclkid) when sharing or copying links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.2.4147.93"
           ]
         },
         {
@@ -322,7 +1003,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
           ]
         },
         {
@@ -331,25 +1012,25 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Disable Background Sync & Periodic Sync",
-          "description": "Eliminates background wakeups, radio modem activity, and battery drain by neutralizing periodic and one-shot background sync tasks.",
+          "description": "Prevents Web Background Sync and Periodic Sync APIs from scheduling wakeups and background tasks in Android JobScheduler.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Disable Battery Status API & OS Listener",
-          "description": "Neutralizes the Android BatteryStatusManager broadcast listener to prevent continuous OS battery wakeups.",
+          "description": "Neutralizes the Battery Status API (navigator.getBattery) to prevent cross-site device fingerprinting and drops OS battery change broadcasts.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
           ]
         },
         {
@@ -358,16 +1039,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Disable Vivaldi Prompts & In-App Popups",
-          "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, and default browser promotional handlers.",
+          "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, default browser promo handlers, and hides the Vivaldia game from the main menu.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
           ]
         },
         {
@@ -381,25 +1062,25 @@
             }
           ],
           "compatible_versions": [
-            "8.2.4145.4"
-          ]
-        },
-        {
-          "name": "PNG Asset Optimizer",
-          "description": "Losslessly recompresses PNG assets with maximum zlib compression and strips non-rendering metadata chunks (pHYs, tEXt, tIME) while preserving 9-patch structures and pixel accuracy.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Resource Slimmer",
-          "description": "Strips bundled stock wallpapers and sponsored Speed Dial thumbnails to reduce APK size.",
+          "description": "Strips bundled stock wallpapers, sponsored Speed Dial thumbnails, partner favicons, Privacy Sandbox attestations, and hardens declarative preference defaults.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
+          ]
+        },
+        {
+          "name": "Sensor Privacy Guard",
+          "description": "Neutralizes motion, ambient, and orientation sensor providers to prevent hardware fingerprinting and tracking via Generic Sensor APIs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.2.4147.93"
           ]
         },
         {
@@ -408,24 +1089,357 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
+          ]
+        },
+        {
+          "name": "Split Bundle Compatibility",
+          "description": "Removes split APK constraints (isSplitRequired, isolatedSplits) and split metadata from AndroidManifest.xml for standalone APK installation.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.2.4147.93"
           ]
         },
         {
           "name": "Vivaldi Startup Performance Optimization",
-          "description": "Optimizes cold startup time, eliminates background CPU/disk overhead, and guards against early CompositorView LayoutStateObserver crashes.",
+          "description": "Guards against fatal CompositorView NullPointerException crashes on cold startup and bypasses carrier partner customizations.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.2.4145.4"
+            "8.2.4147.93"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "TikTok",
+      "package": "com.zhiliaoapp.musically",
+      "patches": [
+        {
+          "name": "Always show publish date",
+          "description": "Forces video publish/upload date to remain visible in video author information across all feed types.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Auto-translate comments",
+          "description": "Automatically translates comments into your preferred language using TikTok's native translation engine.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Bypass Mandatory Login",
+          "description": "Neutralizes mandatory login walls, dynamic regional forced login gates, and guest browsing restrictions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Clean Share URL",
+          "description": "Strips tracking parameters, user IDs, device fingerprints, and marketing tokens from shared TikTok links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Client-Side AI & Behavioral Profiling Governor",
+          "description": "Neutralizes on-device machine learning inference (Pitaya), Tako AI chatbot entry points and icons, and AI smart search suggestion clutter.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Copy comments without username",
+          "description": "Copies only the comment text without prepending the author username.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Core Asset De-bloat",
+          "description": "Strips embedded Microblink/FinTech card scanner models, Pitaya AI & ByteNN LLM engines, C2PA origin verification, DLNA cast scanners, and redundant non-Latin fonts to save APK space.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Custom Offline Videos Limit",
+          "description": "Customizes the maximum number of videos available for offline download caching.",
+          "use": true,
+          "options": [
+            {
+              "key": "customLimit",
+              "description": "Maximum number of offline videos that can be cached for offline playback (default: 200)."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Device Privacy Guard",
+          "description": "Neutralizes background clipboard snooping routines, motion sensor profiling, and screenshot/recording detection and telemetry listeners to protect user data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Disable Push Notifications",
+          "description": "Neutralizes background push notification tasks and persistent socket wake locks to eliminate background battery drain.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Display Refresh Rate Governor",
+          "description": "Forces TikTok to run at peak display refresh rate (120Hz/90Hz/60Hz) and neutralizes video playback framerate downclocking routines.",
+          "use": false,
+          "options": [
+            {
+              "key": "targetRate",
+              "description": "Select target display refresh rate: max (display peak rate), 120 (120 Hz), 90 (90 Hz), or 60 (60 Hz). Clamped automatically to display maximum."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Feed Ad Blocker",
+          "description": "Removes sponsored advertisements, brand promotions, and promotional audio from the For You and Following feeds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Feed Bloat & Distraction Blocker",
+          "description": "Removes non-video clutter and floating ad widgets from the For You and Following feeds, including Touchpoint Rewards pendants, floating ad stickers, suggested friend cards, mini-games, CapCut/template creation prompts, memories ('On This Day'), surveys, and mini-drama paywalls.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Feed Live Stream Blocker",
+          "description": "Removes live stream broadcast cards and live recommendations from the For You and Following feeds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Fix Google login",
+          "description": "Restores Google account sign-in after patching by forcing fallback to Web-based OAuth when Google Play Services rejects the modified APK signature.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Hide TikTok Shop & Mall",
+          "description": "Removes product showcase badges, shopping cart tags, and the TikTok Shop / Mall tab from navigation bars and video posts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "In-App Browser Privacy Guard",
+          "description": "Redirects external and third-party web links to the default system browser and neutralizes inline JavaScript tracking, DOM monitoring, and AJAX hooking in residual in-app WebViews.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Instant Launch & Splash Blocker",
+          "description": "Eliminates cold startup delays, real-time splash advertisements, and background TopView preloading (<0.4s launch).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Language Pack Purger",
+          "description": "Strips unselected language string bundles from assets/strings#lang_* to save APK space.",
+          "use": true,
+          "options": [
+            {
+              "key": "locales",
+              "description": "Comma-separated language codes to keep (e.g. 'en, es, pt, fr, de'). English ('en') is always preserved as safe fallback."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Live Stream 3D Gift Optimizer",
+          "description": "Disables Live 3D gift particle effect engine and widget rendering lifecycle to eliminate frame drops during live streams.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Live Stream SDK & Minigame De-bloat",
+          "description": "Strips Live link mic SDK (liblink_mic_sdk.so), Lyrax RTC broadcasting engines (liblyrax.so), and live stream interactive minigames to reduce APK size and memory footprint.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Media Usability & Watermark-Free Downloader",
+          "description": "Unblocks the download button on creator-restricted videos inside the Share panel, and routes downloads to clean unwatermarked media streams.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "P2P Video Relay & Mesh CDN Blocker",
+          "description": "Strips background Peer-to-Peer CDN distribution binaries (libavmdlp2pv2.so and libp2plivevdp.so) to prevent battery drain, background data upload, and mesh relay.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Playback Speed Persistence",
+          "description": "Persists selected video playback speed across all feed videos and application restarts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Resource & Battery Governor",
+          "description": "Throttles background sensor polling (gyroscope/accelerometer 3D ads) and prevents aggressive video buffer preloading to conserve battery and CPU resources.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Show seekbar",
+          "description": "Restores TikTok's native video seekbar and scrubbing controls where normally hidden or disabled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "SIM Region Selector",
+          "description": "Spoofs the detected SIM and network country ISO code to bypass regional feed restrictions and catalog blocks.",
+          "use": false,
+          "options": [
+            {
+              "key": "region",
+              "description": "Two-letter ISO country code for SIM and network country spoofing (e.g. 'CH', 'US', 'JP', 'GB')."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Skip First-Launch Onboarding",
+          "description": "Bypasses the entire first-run introduction funnel (interest pickers, swipe tutorials, language prompts, and consent sheets) directly to the feed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Studio & Creation De-bloat",
+          "description": "Strips heavy video creation plugins, CapCut NLE editor SDKs, effect plugins, and AR camera face models to significantly reduce APK size.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Unified Telemetry & Tracker Silencer",
+          "description": "Neutralizes ByteDance AppLog user tracking, APM/Npth/Heimdallr crash monitors, AppsFlyer attribution, and Firebase analytics.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Update Prompt Suppressor",
+          "description": "Neutralizes background update polling tasks and device ID check routines to prevent forced update popups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Video Quality Governor",
+          "description": "Caps video playback and download resolutions (1080p, 720p, 540p, 480p, 360p) independently to conserve battery, GPU/MediaCodec load, and mobile data.",
+          "use": false,
+          "options": [
+            {
+              "key": "maxQuality",
+              "description": "Select maximum video playback resolution ceiling: 1080 (1080p ExtremelyHigh), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+            },
+            {
+              "key": "maxDownloadQuality",
+              "description": "Select maximum video download resolution ceiling: 1080 (1080p Maximum Quality), 720 (720p SuperHigh), 540 (540p H_High), 480 (480p High), or 360 (360p Standard)."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3"
           ]
         }
       ]
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "d4e1e2d9d44b73a12bb085c80356fd4e68bf89480a8e5f03c0b5de373bc2df0b",
-  "release_notes": "## [1.31.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.30.1...v1.31.0) (2026-09-16)\n\n### New Features\n\n* **tiktok:** add privacy guards, block floating ad pendants, and harden live stream filtering ([eaba502](https://github.com/kveld9/kveld-morphe-patches/commit/eaba502c52bbc83c9df556b0af2e0a8d1060a1a1)), closes [#33](https://github.com/kveld9/kveld-morphe-patches/issues/33)",
-  "release_tag": "v1.31.0",
-  "release_date": "2026-09-16T04:23:24Z"
+  "fingerprint": "6787e90436b681817d998433ee8a1ad4f98b48baa7b1b0af42d828cba8ae9b22",
+  "release_notes": "## [1.44.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.43.0...v1.44.0) (2026-09-23)\n\n### Bug Fixes\n\n* **gboard:** retain ACCESS_NETWORK_STATE to prevent Cronet startup crash ([d0e8c11](https://github.com/kveld9/kveld-morphe-patches/commit/d0e8c11ed8fda7dc6a6d3826491c40103ea67004))\n\n### New Features\n\n* **gboard:** add enable bluetooth microphone patch ([3591653](https://github.com/kveld9/kveld-morphe-patches/commit/359165313891f0b87d0d33db1be22d3848eafe97))\n* **gboard:** add enable cursor trackpad patch ([ea459c4](https://github.com/kveld9/kveld-morphe-patches/commit/ea459c442a13ada17903fd7c00a4672a4121446a))\n* **gboard:** add enable dismiss suggestions button patch ([8af2bc8](https://github.com/kveld9/kveld-morphe-patches/commit/8af2bc8a318bfe0ab169de624ce7ce74f18030dc))\n* **gboard:** add enable emoji scale setting patch ([92dd78a](https://github.com/kveld9/kveld-morphe-patches/commit/92dd78a3a91dd05235b8c682124501509e41a075))\n* **gboard:** add enable grammar checker patch ([c350226](https://github.com/kveld9/kveld-morphe-patches/commit/c3502268dfd6836f1a15d8149e4ba3e0e373e643))\n* **gboard:** add phenotype flag resilience patch ([cf3e824](https://github.com/kveld9/kveld-morphe-patches/commit/cf3e824d8d3aa46433f9dec94604e913b320fe84))\n* **gboard:** add top toolbar item count patch ([393d1f7](https://github.com/kveld9/kveld-morphe-patches/commit/393d1f7db8a10019192b44ff71be65299f185ae3))\n* **patches:** add background sync and jobscheduler purge patch ([639415e](https://github.com/kveld9/kveld-morphe-patches/commit/639415e1570270139be4702370c9597fa8f680f2))\n* **patches:** add universal native binary trimmer patch ([a5be255](https://github.com/kveld9/kveld-morphe-patches/commit/a5be255613fc5415da85d6b691981405822a8e04))\n* **patches:** add universal telemetry neutralizer patch ([7688f2c](https://github.com/kveld9/kveld-morphe-patches/commit/7688f2cb64ce2e28197679d8339fb59af812dd55))\n* **patches:** add universal webp asset optimizer patch ([7f45964](https://github.com/kveld9/kveld-morphe-patches/commit/7f4596415708c9d66b52548dad302f39d3de6f8e))\n",
+  "release_tag": "v1.44.0",
+  "release_date": "2026-09-23T04:55:12Z",
+  "isPreRelease": false
 }

@@ -2,9 +2,9 @@
   "bundle": "dual-vot",
   "channel": "dev",
   "repo_url": "https://github.com/sashade8-ship-it/dual-vot-patches",
-  "created_at": "2026-09-01T11:48:57",
-  "version": "v1.41.0-dev.12-dualvot.8.3",
-  "description": "## Dual VoT Patches 1.41.0-dev.12-dualvot.8.3\n\nPre-release automated update based on Morphe Patches 1.41.0-dev.12.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.",
+  "created_at": "2026-09-23T21:53:50",
+  "version": "v1.45.0-dev.7-dualvot.8.5.3",
+  "description": "## Dual VoT Patches 1.45.0-dev.7-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.7.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
   "apps": [
     {
       "app_name": "YouTube Music",
@@ -16,9 +16,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -28,9 +28,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -45,9 +45,9 @@
             }
           ],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -57,9 +57,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -69,9 +69,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -81,9 +81,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -93,15 +93,15 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
         {
           "name": "Custom branding",
-          "description": "Adds options to change the app icon and app name. Branding cannot be changed for mounted (root) installations.",
+          "description": "Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings.",
           "use": true,
           "options": [
             {
@@ -111,12 +111,16 @@
             {
               "key": "customIcon",
               "description": "\n            Folder with images to use as a custom icon.\n            \n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n            \n            Each of the folders must contain all of the following files:\n            morphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n            \n            The image dimensions must be as follows:\n            - mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\n            Optionally, the path contains a 'drawable' folder with a monochrome icon file:\n            morphe_adaptive_monochrome_custom.xml\n\n            Optionally, the path contains a notification icon in one of the following formats:\n            - XML vector drawable placed in 'drawable':\n              morphe_notification_icon_custom.xml\n            - PNG raster images placed in the matching 'drawable-<dpi>' folders:\n              - drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)\n        "
+            },
+            {
+              "key": "appIcon",
+              "description": "\n            The app icon to use, including the notification icon.\n\n            'Automatic' uses the custom icon if one is provided, and otherwise 'Black'.\n            Select 'Original' to keep the icon of the unpatched app.\n\n            The icon can be changed later in the app settings, but only for the launcher.\n            Android Auto, the app list of the system settings and the apk file always show\n            the icon chosen here, and a mounted (root) installation can only change it by\n            patching again.\n        "
             }
           ],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -126,9 +130,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -138,9 +142,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -150,21 +154,21 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
         {
           "name": "Downloads",
-          "description": "Adds support to download songs with an external downloader app using the in-app download button.",
+          "description": "Adds support to download songs using the in-app download button, either with an external downloader app or inside YouTube Music.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -174,9 +178,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -186,9 +190,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -198,9 +202,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -210,9 +214,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -222,9 +226,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -234,9 +238,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -246,9 +250,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -258,9 +262,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -270,9 +274,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -282,9 +286,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -294,9 +298,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -306,9 +310,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -318,9 +322,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -330,21 +334,21 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
         {
           "name": "Network proxy",
-          "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+          "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices",
           "use": false,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -354,9 +358,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -366,9 +370,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -378,9 +382,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -390,9 +394,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -402,9 +406,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -414,9 +418,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -426,9 +430,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -438,9 +442,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -450,9 +454,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -462,9 +466,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -474,9 +478,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -486,9 +490,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -498,9 +502,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
@@ -515,21 +519,21 @@
             }
           ],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         },
         {
           "name": "Third-party lyrics",
-          "description": "Adds an option to show synced lyrics from LRCLIB or KuGou in the lyrics panel.",
+          "description": "Adds an option to show synced lyrics with experience enhancement from 15+ providers in the lyrics panel.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.34.52",
-            "9.33.52",
-            "9.32.51",
+            "9.37.54",
+            "9.36.50",
+            "9.35.54",
             "9.15.51"
           ]
         }
@@ -545,12 +549,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -561,12 +565,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -577,12 +581,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -593,12 +597,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -609,12 +613,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -625,12 +629,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -641,12 +645,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -657,12 +661,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -678,12 +682,12 @@
             }
           ],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -694,12 +698,28 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Channel search",
+          "description": "Adds an option to search inside the channel that is currently open instead of searching all of YouTube.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.38.123",
+            "21.37.42",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -710,12 +730,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -726,19 +746,19 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
         },
         {
           "name": "Custom branding",
-          "description": "Adds options to change the app icon and app name. Branding cannot be changed for mounted (root) installations.",
+          "description": "Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings.",
           "use": true,
           "options": [
             {
@@ -748,15 +768,19 @@
             {
               "key": "customIcon",
               "description": "\n            Folder with images to use as a custom icon.\n            \n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n            \n            Each of the folders must contain all of the following files:\n            morphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n            \n            The image dimensions must be as follows:\n            - mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\n            Optionally, the path contains a 'drawable' folder with a monochrome icon file:\n            morphe_adaptive_monochrome_custom.xml\n\n            Optionally, the path contains a notification icon in one of the following formats:\n            - XML vector drawable placed in 'drawable':\n              morphe_notification_icon_custom.xml\n            - PNG raster images placed in the matching 'drawable-<dpi>' folders:\n              - drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)\n        "
+            },
+            {
+              "key": "appIcon",
+              "description": "\n            The app icon to use, including the notification icon.\n\n            'Automatic' uses the custom icon if one is provided, and otherwise 'Black'.\n            Select 'Original' to keep the icon of the unpatched app.\n\n            The icon can be changed later in the app settings, but only for the launcher.\n            Android Auto, the app list of the system settings and the apk file always show\n            the icon chosen here, and a mounted (root) installation can only change it by\n            patching again.\n        "
             }
           ],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -767,12 +791,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -783,12 +807,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -799,12 +823,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -815,12 +839,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -831,12 +855,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -847,12 +871,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -863,12 +887,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -879,12 +903,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -895,12 +919,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -911,12 +935,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -927,12 +951,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -943,12 +967,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -959,12 +983,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -975,12 +999,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -991,12 +1015,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1007,12 +1031,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1023,12 +1047,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1039,12 +1063,28 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Force fullscreen landscape",
+          "description": "Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.38.123",
+            "21.37.42",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1055,12 +1095,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1071,12 +1111,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1087,12 +1127,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1103,12 +1143,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1119,12 +1159,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1135,12 +1175,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1151,12 +1191,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1167,12 +1207,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1183,12 +1223,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1199,28 +1239,28 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
         },
         {
           "name": "Hide player overlay buttons",
-          "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and the player control buttons background.",
+          "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1231,12 +1271,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1247,12 +1287,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1272,12 +1312,12 @@
             }
           ],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1288,12 +1328,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1304,12 +1344,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1320,12 +1360,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1336,12 +1376,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1352,12 +1392,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1368,44 +1408,44 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
         },
         {
           "name": "Navigation bar",
-          "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button)  and the upper navigation toolbar.",
+          "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button) and the upper navigation toolbar.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
         },
         {
           "name": "Network proxy",
-          "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy.",
+          "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices",
           "use": false,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1416,12 +1456,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1432,12 +1472,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1448,12 +1488,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1464,12 +1504,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1480,12 +1520,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1496,12 +1536,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1512,12 +1552,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1528,12 +1568,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1544,12 +1584,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1560,12 +1600,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1576,12 +1616,28 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Remember live stream playback position",
+          "description": "Adds an option to remember the playback position of an ongoing live stream and resume from there when reopening that live stream.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.38.123",
+            "21.37.42",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1592,12 +1648,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1608,12 +1664,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1624,12 +1680,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1640,12 +1696,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1656,28 +1712,28 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
         },
         {
           "name": "Seekbar",
-          "description": "Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in livestreams, and expanding the livestream DVR duration.",
+          "description": "Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in live streams, and expanding the live stream DVR duration.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1688,12 +1744,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1704,12 +1760,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1720,12 +1776,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1736,12 +1792,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1752,12 +1808,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1768,12 +1824,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1784,12 +1840,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1809,12 +1865,12 @@
             }
           ],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1825,12 +1881,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1841,12 +1897,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1857,12 +1913,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1873,12 +1929,12 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "21.35.442",
-            "21.34.243",
+            "21.38.123",
+            "21.37.42",
             "21.28.208",
-            "21.07.247",
-            "21.04.223",
-            "20.51.39",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
             "20.31.42",
             "20.21.37"
           ]
@@ -1890,6 +1946,19 @@
       "package": "com.reddit.frontpage",
       "patches": [
         {
+          "name": "App icon",
+          "description": "Adds an option to select from the Reddit app icons available in the manifest.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.04.0"
+          ]
+        },
+        {
           "name": "Custom branding name for Reddit",
           "description": "Changes the Reddit app name to the name specified in patch options.",
           "use": false,
@@ -1900,8 +1969,8 @@
             }
           ],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1913,8 +1982,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1926,8 +1995,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1939,8 +2008,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1952,8 +2021,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1965,8 +2034,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1978,8 +2047,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -1991,8 +2060,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2004,8 +2073,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2017,8 +2086,8 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2030,8 +2099,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2043,8 +2112,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2056,8 +2125,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2069,8 +2138,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2082,8 +2151,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2095,8 +2164,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2108,8 +2177,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0"
@@ -2121,20 +2190,34 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
+            "2026.38.0",
+            "2026.37.0",
             "2026.24.0",
             "2026.14.0",
             "2026.04.0",
             "2024.02.0"
+          ]
+        },
+        {
+          "name": "Start as guest",
+          "description": "Skips the forced startup login screen using Reddit's native guest browsing mode.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.04.0"
           ]
         }
       ]
     }
   ],
   "patches_name": "Dual VoT Patches",
-  "fingerprint": "2e7a8aa6592860e1f65f0db621cc01f6225a162948179f8ad9c483520151e480",
-  "release_notes": "## Dual VoT Patches 1.41.0-dev.12-dualvot.8.3\n\nPre-release automated update based on Morphe Patches 1.41.0-dev.12.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
-  "release_tag": "v1.41.0-dev.12-dualvot.8.3",
-  "release_date": "2026-09-01T11:51:53Z"
+  "fingerprint": "6749674248e96be6be20fad0ade35f18f068c3ed42e3581ecc4742a3112e9a8d",
+  "release_notes": "## Dual VoT Patches 1.45.0-dev.7-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.7.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+  "release_tag": "v1.45.0-dev.7-dualvot.8.5.3",
+  "release_date": "2026-09-23T21:53:50Z",
+  "isPreRelease": true
 }
