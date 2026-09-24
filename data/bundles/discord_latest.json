@@ -2,9 +2,9 @@
   "bundle": "discord",
   "channel": "latest",
   "repo_url": "https://github.com/jrddupont/discord-patches",
-  "created_at": "2026-09-24T00:50:51",
-  "version": "v1.4.0",
-  "description": "\n- New support: 346.13 Stable (all three patches). QuestBar gate\n  grew eligibility hooks and a CreateFunctionEnvironment in its head\n  (fn 62203, own 17-byte anchor; same 6-byte return-null edit over\n  GPE + CFE); gift-bar flag in ChatInputRightActions (fn 56000, own\n  anchor); the attach-sheet still has no gift entry in 346 (actions\n  row fn 55293, only dead NITRO_GIFT renderer refs), so the sheet-push\n  site is skipped there as in 344. Anchor spec extended to 11 checks,\n  ALL OK; patch simulation shows exact diffs, no strays.\n  Pin-to-builtin-bundle needs no change (DCDReactNativeHost.\n  getJSBundleFile() still present in 346). (stable)",
+  "created_at": "2026-09-24T01:29:59",
+  "version": "v1.5.0",
+  "description": "\n- Self-locating patches: the QuestBar gate and gift-bar flag are now\n  discovered in the bundle at patch time (string co-occurrence + head\n  shape + flag write/test validation) instead of baked-in byte anchors,\n  and compat is a NULL version (any com.discord build). New Discord\n  versions need no patch update as long as discovery holds; anything\n  unrecognized fails loudly with the update point named. Only the\n  attach-sheet push keeps legacy anchors (frozen facts about old\n  bundles) with skip-or-fail reasoning. Proven: discovery reproduces\n  every v1.4.0 site exactly on all five known bundles, CLI bytes\n  identical. (stable)",
   "apps": [
     {
       "app_name": "Discord",
@@ -15,47 +15,29 @@
           "description": "Hides the gift button in the chat message composer.",
           "use": true,
           "options": [],
-          "compatible_versions": [
-            "346.13 - Stable",
-            "344.13 - Stable",
-            "343.12 - Stable",
-            "342.16 - Stable",
-            "341.13 - Stable"
-          ]
+          "compatible_versions": []
         },
         {
           "name": "Hide quest promo banner",
           "description": "Hides the quest promo banner at the top of the server channel list.",
           "use": true,
           "options": [],
-          "compatible_versions": [
-            "346.13 - Stable",
-            "344.13 - Stable",
-            "343.12 - Stable",
-            "342.16 - Stable",
-            "341.13 - Stable"
-          ]
+          "compatible_versions": []
         },
         {
           "name": "Pin app to built-in bundle",
           "description": "Forces Discord to always run the bundle inside the APK and ignore downloaded (OTA) updates, which would otherwise silently undo the other patches. Turn this off (or update the APK) to receive official updates.",
           "use": true,
           "options": [],
-          "compatible_versions": [
-            "346.13 - Stable",
-            "344.13 - Stable",
-            "343.12 - Stable",
-            "342.16 - Stable",
-            "341.13 - Stable"
-          ]
+          "compatible_versions": []
         }
       ]
     }
   ],
   "patches_name": "Discord Patches",
-  "fingerprint": "32c28b932e19af6c1fc4ee76a0bde0962715e7f3ef6e2047995addd24ed0c7d3",
-  "release_notes": "\n- New support: 346.13 Stable (all three patches). QuestBar gate\n  grew eligibility hooks and a CreateFunctionEnvironment in its head\n  (fn 62203, own 17-byte anchor; same 6-byte return-null edit over\n  GPE + CFE); gift-bar flag in ChatInputRightActions (fn 56000, own\n  anchor); the attach-sheet still has no gift entry in 346 (actions\n  row fn 55293, only dead NITRO_GIFT renderer refs), so the sheet-push\n  site is skipped there as in 344. Anchor spec extended to 11 checks,\n  ALL OK; patch simulation shows exact diffs, no strays.\n  Pin-to-builtin-bundle needs no change (DCDReactNativeHost.\n  getJSBundleFile() still present in 346). (stable)",
-  "release_tag": "v1.4.0",
-  "release_date": "2026-09-24T00:50:51Z",
+  "fingerprint": "881e2ac236eb36aaac4be7ea5a5857fb9e4cf6e778cac4691b637309334cba2f",
+  "release_notes": "\n- Self-locating patches: the QuestBar gate and gift-bar flag are now\n  discovered in the bundle at patch time (string co-occurrence + head\n  shape + flag write/test validation) instead of baked-in byte anchors,\n  and compat is a NULL version (any com.discord build). New Discord\n  versions need no patch update as long as discovery holds; anything\n  unrecognized fails loudly with the update point named. Only the\n  attach-sheet push keeps legacy anchors (frozen facts about old\n  bundles) with skip-or-fail reasoning. Proven: discovery reproduces\n  every v1.4.0 site exactly on all five known bundles, CLI bytes\n  identical. (stable)",
+  "release_tag": "v1.5.0",
+  "release_date": "2026-09-24T01:29:59Z",
   "isPreRelease": false
 }
