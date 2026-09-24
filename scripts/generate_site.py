@@ -51,7 +51,7 @@ def generate_rss_feed():
         print("Changelog is empty, skipping RSS generation.")
         return
 
-    site_url = os.environ.get("SITE_URL", "https://drnx64.github.io/morphe-tracker")
+    site_url = os.environ.get("SITE_URL", "https://drnx64.github.io/morphe-track-patches")
     feed_url = f"{site_url}/feed.xml"
     now_rfc = datetime.now(timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
 

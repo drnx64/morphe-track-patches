@@ -2,7 +2,7 @@ name: Update Morphe Patch Data
 
 on:
   schedule:
-    - cron: '1 * * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 concurrency:
@@ -42,14 +42,6 @@ jobs:
           TG_CHAT: ${{ secrets.TG_CHAT }}
         run: |
           python scripts/run_pipeline.py
-
-      - name: Send Telegram Notification
-        if: success()
-        env:
-          TG_TOKEN: ${{ secrets.TG_TOKEN }}
-          TG_CHAT: ${{ secrets.TG_CHAT }}
-        run: |
-          python scripts/telegram.py
 
       - name: Verify Data Files
         run: |

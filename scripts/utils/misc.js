@@ -3,7 +3,7 @@
  */
 import { escHtml } from './html.js'
 
-const SITE_URL = 'https://drnx64.github.io/morphe-tracker'
+const SITE_URL = 'https://drnx64.github.io/morphe-track-patches'
 
 export function compareVersions(a, b) {
   const pa = a.split('.').map(Number)
@@ -67,6 +67,13 @@ export function groupAffectedBundles(affectedBundles) {
     }
     if (b.badge_type === 'NEW BUNDLE') {
       grouped[bName].badge_type = 'NEW BUNDLE'
+    } else if (b.badge_type === 'REMOVED BUNDLE' && grouped[bName].badge_type === 'REMOVED BUNDLE') {
+      // all channels removed — keep as removed
+    } else if (b.badge_type === 'REMOVED BUNDLE') {
+      // mixed: some channel removed, another active — don't override active badge
+    } else if (grouped[bName].badge_type === 'REMOVED BUNDLE') {
+      // active channel update overrides removed badge
+      grouped[bName].badge_type = b.badge_type
     }
   }
 

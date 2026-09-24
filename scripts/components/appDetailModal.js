@@ -12,7 +12,7 @@ import { CLOSE_ICON, CHEVRON_DOWN, CHEVRON_RIGHT } from '../utils/svg.js'
 
 const PLAY_STORE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M.859 11.981V1.741c0-.672.79-1.098 1.434-.771L12.37 6.09c.662.336.662 1.207 0 1.543l-10.077 5.12c-.644.327-1.434-.099-1.434-.772M9.23 9.23l-8.1-8.101m8.1 3.364l-8.1 8.1"/></svg>'
 
-export function openAppDetailModal({ app, bundleName, channels = [] }) {
+export function openAppDetailModal({ app, bundleName, channels = [], patchName = null }) {
   if (!app) return
   if (app.badge_type === 'REMOVED APP') return
 
@@ -324,6 +324,23 @@ export function openAppDetailModal({ app, bundleName, channels = [] }) {
     patchesTab.appendChild(dropdownWrapper)
     renderPatchesForBundle(currentBundle)
     patchesTab.appendChild(patchesList)
+
+    // Deep-link: switch to Patches tab and highlight the target patch
+    if (patchName) {
+      const activateTab = (name) => {
+        tabsEl.querySelectorAll('.modal-tab').forEach((t) => t.classList.toggle('active', t.textContent === name))
+        Object.entries(tabContents).forEach(([k, c]) => c.classList.toggle('active', k === name))
+      }
+      activateTab('Patches')
+      const target = [...patchesList.querySelectorAll('.app-detail-patch')].find(
+        (n) => n.querySelector('.app-detail-patch-name')?.textContent === patchName
+      )
+      if (target) {
+        target.classList.add('app-detail-patch--highlight')
+        target.scrollIntoView({ block: 'center', behavior: 'smooth' })
+        setTimeout(() => target.classList.remove('app-detail-patch--highlight'), 2500)
+      }
+    }
   } else {
     patchesTab.innerHTML = '<div class="empty-state">No patch information available.</div>'
   }

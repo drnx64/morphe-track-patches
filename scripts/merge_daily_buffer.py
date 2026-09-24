@@ -31,7 +31,7 @@ from state_manager import (
 RELEASE_CACHE_PATH = os.path.join(STATE_DIR, "release_cache.json")
 
 APP_PRECEDENCE = {"NEW APP": 0, "MAJOR UPDATE": 1, "UPDATED APP": 2, "REMOVED APP": 3}
-BUNDLE_PRECEDENCE = {"NEW BUNDLE": 0, "UPDATED": 1}
+BUNDLE_PRECEDENCE = {"NEW BUNDLE": 0, "UPDATED": 1, "REMOVED BUNDLE": 2}
 
 
 def now_utc_iso():
@@ -174,6 +174,8 @@ def generate_markdown_changelog(date_str, affected_bundles_dict):
         if is_new_bundle:
             channels_str = ", ".join(sorted(info["channels"]))
             lines.append(f"- **NEW BUNDLE** Bundle by **{b_name}** ({channels_str})")
+        elif info["badge_type"] == "REMOVED BUNDLE":
+            lines.append(f"- **REMOVED** Bundle **{b_name}**")
         else:
             lines.append(f"- **UPDATED** Bundle **{b_name}**")
 

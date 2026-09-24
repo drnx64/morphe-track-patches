@@ -12,7 +12,7 @@ import { getAuthorLink } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { CHEVRON_DOWN, VERSION_ARROW, CHEVRON_RIGHT } from '../utils/svg.js'
 
-const HIERARCHY_ORDER = { 'NEW BUNDLE': 0, 'UPDATED': 1 }
+const HIERARCHY_ORDER = { 'NEW BUNDLE': 0, 'UPDATED': 1, 'REMOVED BUNDLE': 2 }
 const STORAGE_KEY = 'morphe_updates_collapsed'
 
 export function renderTodayUpdates() {
@@ -44,10 +44,10 @@ export function renderTodayUpdates() {
   // Summary peek row — visible when collapsed, hidden when expanded
   const summaryEl = el('div', { class: 'today-updates-summary', 'aria-hidden': 'true' })
   if (affectedBundles && affectedBundles.length > 0) {
-    const entries = Object.values(grouped)
+    const entries = Object.values(grouped).filter((e) => e.badge_type !== 'REMOVED BUNDLE')
     const newBundleCount = entries.filter((e) => e.badge_type === 'NEW BUNDLE').length
-    const updatedBundleCount = entries.filter((e) => e.badge_type !== 'NEW BUNDLE').length
-    const totalApps = entries.reduce((sum, e) => sum + (e.apps?.length || 0), 0)
+    const updatedBundleCount = entries.filter((e) => e.badge_type === 'UPDATED').length
+    const totalApps = entries.reduce((sum, e) => sum + (e.apps?.filter((a) => a.badge_type !== 'REMOVED APP').length || 0), 0)
 
     const parts = []
     if (newBundleCount > 0) parts.push(`${newBundleCount} new bundle${newBundleCount !== 1 ? 's' : ''}`)
@@ -79,7 +79,9 @@ export function renderTodayUpdates() {
     return section
   }
 
-  const sortedEntries = Object.entries(grouped).sort(([, a], [, b]) => {
+  const sortedEntries = Object.entries(grouped)
+    .filter(([, entry]) => entry.badge_type !== 'REMOVED BUNDLE')
+    .sort(([, a], [, b]) => {
     const aPriority = HIERARCHY_ORDER[a.badge_type] ?? 99
     const bPriority = HIERARCHY_ORDER[b.badge_type] ?? 99
     if (aPriority !== bPriority) return aPriority - bPriority

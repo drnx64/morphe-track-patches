@@ -42,7 +42,7 @@ If no changes and no day rollover, pipeline exits silently after step 3. `write_
 
 - **`docs/` is the build output and is gitignored.** `npm run build` generates it. Never edit manually, never commit it. CI pushes it to the `gh-pages` branch.
 - **`data/raw/` and `data/output/` are gitignored.** Large generated files.
-- **`data/state/` is partially gitignored.** `current_snapshot.json`, `previous_snapshot.json`, `daily_buffer.json`, `external_repos.json`, `last_tg_msg.json` are gitignored. Caches (`app_cache.json`, `last_run.json`, `patches_names_cache.json`, `release_cache.json`) are tracked.
+- **`data/state/` is partially gitignored.** `current_snapshot.json`, `previous_snapshot.json`, `external_repos.json`, `last_tg_msg.json` are gitignored. Caches (`app_cache.json`, `daily_buffer.json`, `last_run.json`, `patches_names_cache.json`, `release_cache.json`) are tracked.
 - **CSS is one monolithic file** (`assets/style.css`, ~7000 lines). No CSS modules.
 - **SVG icons** are inline strings exported from `scripts/utils/svg.js`. No icon font or library.
 - **Python imports** use `sys.path.append` — scripts must run from repo root.
