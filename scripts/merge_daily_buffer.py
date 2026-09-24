@@ -82,12 +82,25 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                 "apps": apps,
                 "repo_url": bundle_entry.get("repo_url", ""),
                 "patches_name": bundle_entry.get("patches_name", ""),
-                "extra_badges": bundle_entry.get("extra_badges", [])
+                "extra_badges": bundle_entry.get("extra_badges", []),
+                "previous_version": bundle_entry.get("previous_version", ""),
+                "new_version": bundle_entry.get("new_version", ""),
+                "avatarUrl": bundle_entry.get("avatarUrl", ""),
             }
         else:
             existing = buffer_bundles[b_key]
             if BUNDLE_PRECEDENCE.get(bundle_entry["badge_type"], 99) < BUNDLE_PRECEDENCE.get(existing["badge_type"], 99):
                 existing["badge_type"] = bundle_entry["badge_type"]
+
+            for eb in bundle_entry.get("extra_badges", []):
+                if eb not in existing.get("extra_badges", []):
+                    existing.setdefault("extra_badges", []).append(eb)
+            if not existing.get("previous_version") and bundle_entry.get("previous_version"):
+                existing["previous_version"] = bundle_entry["previous_version"]
+            if bundle_entry.get("new_version"):
+                existing["new_version"] = bundle_entry["new_version"]
+            if not existing.get("avatarUrl") and bundle_entry.get("avatarUrl"):
+                existing["avatarUrl"] = bundle_entry["avatarUrl"]
 
             existing_app_map = {a["package"]: a for a in existing["apps"]}
             for app in bundle_entry.get("apps", []):

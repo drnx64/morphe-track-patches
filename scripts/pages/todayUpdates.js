@@ -103,6 +103,7 @@ export function renderTodayUpdates() {
       el('span', { class: 'bundle-author', dangerouslySetInnerHTML: getAuthorLink(entry.repo_url) }),
     ]
 
+    const hasVersionTag = entry.previous_version && entry.new_version && entry.previous_version !== entry.new_version
     if (entry.previous_version && entry.new_version && entry.previous_version !== entry.new_version) {
       headerParts.push(el('span', { class: 'today-version-tag' }, [
         `v${entry.previous_version}`,
@@ -113,7 +114,7 @@ export function renderTodayUpdates() {
       headerParts.push(el('span', { class: 'today-version-tag' }, [`v${entry.new_version}`]))
     }
 
-    if (entry.extra_badges?.includes('VERSION BUMP')) {
+    if (entry.extra_badges?.includes('VERSION BUMP') && !hasVersionTag && !entry.new_version) {
       headerParts.push(el('span', { class: 'badge badge--version-bump' }, ['VERSION BUMP']))
     }
 
