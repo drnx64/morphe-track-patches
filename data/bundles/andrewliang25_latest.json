@@ -2,9 +2,9 @@
   "bundle": "andrewliang25",
   "channel": "latest",
   "repo_url": "https://github.com/andrewliang25/morphe-patches",
-  "created_at": "2026-09-22T16:39:01",
-  "version": "v3.2.0-dev.2",
-  "description": "## [3.2.0-dev.2](https://github.com/andrewliang25/morphe-patches/compare/v3.2.0-dev.1...v3.2.0-dev.2) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* make the borrowed registers a check, not a comment ([033d4ed](https://github.com/andrewliang25/morphe-patches/commit/033d4ed87f5b1c81f85e378dede35ce9c0777c52))\n* read the rendition Facebook states, not the word it happens to carry ([50f3252](https://github.com/andrewliang25/morphe-patches/commit/50f3252e4aa1d80790d68b88ccd3dfa986d3d4dc))\n* save stories with our own downloader, not Facebook's ([4f229a1](https://github.com/andrewliang25/morphe-patches/commit/4f229a1e6ac4fe5246a7582585cd1bde78bd1e2b)), closes [#110](https://github.com/andrewliang25/morphe-patches/issues/110)\n\n### ✨ New Features\n\n* add a download button beside every reel ([e0007d8](https://github.com/andrewliang25/morphe-patches/commit/e0007d8dca083ce50c4c81f38dfd6d21f45bbda8))\n",
+  "created_at": "2026-09-24T16:45:22",
+  "version": "v3.2.0-dev.5",
+  "description": "## [3.2.0-dev.5](https://github.com/andrewliang25/morphe-patches/compare/v3.2.0-dev.4...v3.2.0-dev.5) (2026-09-24)\n\n### 🐛 Bug Fixes\n\n* make the profile and Settings black in the AMOLED theme ([9a64a3d](https://github.com/andrewliang25/morphe-patches/commit/9a64a3db74e2fea9d1d1015b8191089457fd53d8)), closes [#252728](https://github.com/andrewliang25/morphe-patches/issues/252728) [#108](https://github.com/andrewliang25/morphe-patches/issues/108)\n* open profiles and settings on re-signed Facebook builds ([69a2f20](https://github.com/andrewliang25/morphe-patches/commit/69a2f20cbea21ffe49b3421c3ab56b0ec62cdf57)), closes [#117](https://github.com/andrewliang25/morphe-patches/issues/117) [#99](https://github.com/andrewliang25/morphe-patches/issues/99)\n",
   "apps": [
     {
       "app_name": "Facebook",
@@ -56,6 +56,15 @@
           ]
         },
         {
+          "name": "[Fix] Restore screens on re-signed builds",
+          "description": "On a build that is not signed by Facebook, taps open profiles and Settings pages such as Media, Dark mode and Active status again. Facebook checks its own signing certificate before it opens these screens, and a re-signed build fails that check without a message. A Root Mount install does not need this patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
           "name": "[General] AMOLED black theme",
           "description": "Makes the dark mode of Facebook black instead of dark grey, which saves power on an OLED screen. Turn on dark mode in Facebook first. Dividers, borders, text, icons and the coloured banners do not change.",
           "use": false,
@@ -84,7 +93,7 @@
         },
         {
           "name": "[Reels] Hide sponsored reels",
-          "description": "Removes ads from Reels and Watch, so scrolling only shows videos from creators. Ads that play inside a video, such as mid-rolls, are not covered.",
+          "description": "Removes ads from Reels and Watch, so scrolling only shows videos from creators. Also removes the sponsored product banners over a reel and the ads inside a video, such as mid-rolls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -93,7 +102,7 @@
         },
         {
           "name": "[Stories] Download any story",
-          "description": "Adds a save option to the menu of any story, and not only to the stories that you posted. It saves the picture or the video that the story shows, including a story with music, which Facebook's own save refuses. Files go to Pictures/Facebook or Movies/Facebook.",
+          "description": "Adds a save option to the menu of any story, and not only to the stories that you posted. It saves the picture or the video that the story shows, including a story with music, which Facebook's own save refuses. A video is saved at the best quality the player can stream. Files go to Pictures/Facebook or Movies/Facebook.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -344,9 +353,9 @@
     }
   ],
   "patches_name": "Andrew's Patches",
-  "fingerprint": "0ab6b2e0ad40160a3f64d86cfb8f41ae974b93d2af3a704a853bad6727b6e7ff",
-  "release_notes": "## [3.2.0-dev.2](https://github.com/andrewliang25/morphe-patches/compare/v3.2.0-dev.1...v3.2.0-dev.2) (2026-09-22)\n\n### 🐛 Bug Fixes\n\n* make the borrowed registers a check, not a comment ([033d4ed](https://github.com/andrewliang25/morphe-patches/commit/033d4ed87f5b1c81f85e378dede35ce9c0777c52))\n* read the rendition Facebook states, not the word it happens to carry ([50f3252](https://github.com/andrewliang25/morphe-patches/commit/50f3252e4aa1d80790d68b88ccd3dfa986d3d4dc))\n* save stories with our own downloader, not Facebook's ([4f229a1](https://github.com/andrewliang25/morphe-patches/commit/4f229a1e6ac4fe5246a7582585cd1bde78bd1e2b)), closes [#110](https://github.com/andrewliang25/morphe-patches/issues/110)\n\n### ✨ New Features\n\n* add a download button beside every reel ([e0007d8](https://github.com/andrewliang25/morphe-patches/commit/e0007d8dca083ce50c4c81f38dfd6d21f45bbda8))\n",
-  "release_tag": "v3.2.0-dev.2",
-  "release_date": "2026-09-22T16:39:01Z",
+  "fingerprint": "912d65c219413bb6c55d2ec0e04e99ea863eaab3e09c70e0ca368c21fbce5b6a",
+  "release_notes": "## [3.2.0-dev.5](https://github.com/andrewliang25/morphe-patches/compare/v3.2.0-dev.4...v3.2.0-dev.5) (2026-09-24)\n\n### 🐛 Bug Fixes\n\n* make the profile and Settings black in the AMOLED theme ([9a64a3d](https://github.com/andrewliang25/morphe-patches/commit/9a64a3db74e2fea9d1d1015b8191089457fd53d8)), closes [#252728](https://github.com/andrewliang25/morphe-patches/issues/252728) [#108](https://github.com/andrewliang25/morphe-patches/issues/108)\n* open profiles and settings on re-signed Facebook builds ([69a2f20](https://github.com/andrewliang25/morphe-patches/commit/69a2f20cbea21ffe49b3421c3ab56b0ec62cdf57)), closes [#117](https://github.com/andrewliang25/morphe-patches/issues/117) [#99](https://github.com/andrewliang25/morphe-patches/issues/99)\n",
+  "release_tag": "v3.2.0-dev.5",
+  "release_date": "2026-09-24T16:45:22Z",
   "isPreRelease": true
 }
