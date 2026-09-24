@@ -1,6 +1,9 @@
 /**
- * URL utilities — repo info, author links, Play Store URLs.
+ * URL utilities — site constants, repo info, author links, Play Store URLs.
  */
+
+export const SITE_URL = 'https://drnx64.github.io/morphe-track-patches'
+export const GITHUB_REPO_URL = 'https://github.com/drnx64/morphe-track-patches'
 
 export function getRepoInfo(repoUrl) {
   if (!repoUrl) return { isGitLab: false, path: '' }

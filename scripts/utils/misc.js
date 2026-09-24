@@ -3,8 +3,6 @@
  */
 import { escHtml } from './html.js'
 
-const SITE_URL = 'https://drnx64.github.io/morphe-track-patches'
-
 export function compareVersions(a, b) {
   const pa = a.split('.').map(Number)
   const pb = b.split('.').map(Number)

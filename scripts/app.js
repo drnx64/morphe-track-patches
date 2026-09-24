@@ -42,8 +42,7 @@ import { openBundleHistoryModal } from './components/bundleHistoryModal.js'
 import { openBundleModal } from './components/bundleModal.js'
 import { renderGlobalSearch } from './components/globalSearch.js'
 import { preloadIcons } from './services/iconCache.js'
-
-const SITE_URL = 'https://drnx64.github.io/morphe-track-patches'
+import { SITE_URL, GITHUB_REPO_URL } from './utils/url.js'
 
 // ── Default State ──
 store.init({
@@ -143,7 +142,7 @@ function renderShell() {
       el('div', { class: 'footer-links' }, [
         el('a', { href: `${SITE_URL}/feed.xml`, target: '_blank', rel: 'noopener' }, ['RSS Feed']),
         el('span', { class: 'footer-sep' }, ['|']),
-        el('a', { href: 'https://github.com/drnx64/morphe-track-patches', target: '_blank', rel: 'noopener' }, ['GitHub']),
+        el('a', { href: GITHUB_REPO_URL, target: '_blank', rel: 'noopener' }, ['GitHub']),
       ]),
       el('p', { class: 'footer-disclaimer' }, [
         'MorpheTracker is not affiliated with or endorsed by any app developers.',
