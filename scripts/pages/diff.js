@@ -7,7 +7,8 @@ import * as store from '../store.js'
 import { buildAppIndex, resolveAppName, renderAppIcon, suggestFuzzy, copyToClipboard, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
 import { formatVersion } from '../utils/format.js'
-import { SEARCH_ICON, REFRESH_ICON } from '../utils/svg.js'
+import { SEARCH_ICON, REFRESH_ICON, CHEVRON_DOWN } from '../utils/svg.js'
+import { buildCompareMatrix } from '../components/compareMatrixTable.js'
 
 const HIGHLIGHT_COLORS = [
   { bg: 'rgba(74, 127, 200, 0.15)', border: 'rgba(74, 127, 200, 0.4)', text: 'var(--state-info)' },
@@ -16,6 +17,10 @@ const HIGHLIGHT_COLORS = [
   { bg: 'rgba(162, 129, 173, 0.15)', border: 'rgba(162, 129, 173, 0.4)', text: 'var(--state-plum)' },
   { bg: 'rgba(181, 83, 63, 0.15)', border: 'rgba(181, 83, 63, 0.4)', text: 'var(--state-critical)' },
 ]
+
+// Attach-once document listener: re-added per visit but always removes
+// the previous instance so handlers don't accumulate.
+let docClickHandler = null
 
 export function renderDiff(container) {
   const page = el('div', { class: 'diff-page' })
@@ -198,11 +203,18 @@ export function renderDiff(container) {
     searchInput.focus()
   })
 
-  document.addEventListener('click', (e) => {
+  if (docClickHandler) document.removeEventListener('click', docClickHandler)
+  docClickHandler = (e) => {
+    if (!searchWrapper.isConnected) {
+      document.removeEventListener('click', docClickHandler)
+      docClickHandler = null
+      return
+    }
     if (!searchWrapper.contains(e.target)) {
       searchDropdown.classList.remove('open')
     }
-  })
+  }
+  document.addEventListener('click', docClickHandler)
 
   function selectApp(pkg) {
     selectedPkg = pkg
@@ -314,18 +326,48 @@ export function renderDiff(container) {
       resultArea.appendChild(pickerEl)
     }
 
+    // ── View toggle: presence matrix (default) or grouped bundle sections ──
+    let activeView = 'matrix'
+    // Survives rebuilds so filter + expanded rows don't reset on pill toggles
+    const matrixState = {}
+
+    const viewRow = el('div', { class: 'diff-view-toggle', role: 'group', 'aria-label': 'Comparison view' })
+    const matrixBtn = el('button', { type: 'button', class: 'diff-view-btn active' }, ['Matrix'])
+    const sectionsBtn = el('button', { type: 'button', class: 'diff-view-btn' }, ['Sections'])
+
+    function setView(view) {
+      activeView = view
+      matrixBtn.classList.toggle('active', view === 'matrix')
+      sectionsBtn.classList.toggle('active', view === 'sections')
+      renderGroups()
+    }
+    matrixBtn.addEventListener('click', () => setView('matrix'))
+    sectionsBtn.addEventListener('click', () => setView('sections'))
+    viewRow.appendChild(matrixBtn)
+    viewRow.appendChild(sectionsBtn)
+    resultArea.appendChild(viewRow)
+
     const groupsEl = el('div', { class: 'diff-bundle-groups' })
     resultArea.appendChild(groupsEl)
+
+    // Collapse state persists across renderGroups() (pill toggles, All/None)
+    const collapsedKeys = new Set()
 
     const renderBundleGroup = (bundles, label, crossBundlePatches, patchColorMap) => {
       if (bundles.length === 0) return
       const groupEl = el('div', { class: 'diff-bundle-group' })
       groupEl.appendChild(el('h4', { class: 'diff-bundle-group-title' }, [label]))
       for (const bundleInfo of bundles) {
-      const bundleSection = el('div', { class: 'diff-bundle-section' })
+      const sectionKey = `${bundleInfo.bundle}:${bundleInfo.channel}`
+      const bundleSection = el('div', { class: `diff-bundle-section${collapsedKeys.has(sectionKey) ? ' collapsed' : ''}` })
 
       const channelBadges = `<span class="channel-badge ${bundleInfo.channel}">${bundleInfo.channel}</span>`
-      const titleRow = el('div', { class: 'diff-bundle-section-header' })
+      const titleRow = el('div', {
+        class: 'diff-bundle-section-header',
+        role: 'button',
+        tabindex: '0',
+        'aria-expanded': collapsedKeys.has(sectionKey) ? 'false' : 'true',
+      })
       titleRow.innerHTML = `
         <div class="diff-bundle-section-info">
           ${avatarStackHtml(
@@ -339,8 +381,24 @@ export function renderDiff(container) {
           ${channelBadges}
           ${bundleInfo.version ? `<span class="bundle-version-tag">${escHtml(formatVersion(bundleInfo.version))}</span>` : ''}
         </div>
-        <span class="diff-bundle-section-count">${bundleInfo.patches.length} patches</span>
+        <div class="diff-bundle-section-side">
+          <span class="diff-bundle-section-count">${bundleInfo.patches.length} patches</span>
+          <span class="diff-bundle-section-toggle">${CHEVRON_DOWN}</span>
+        </div>
       `
+      const toggleSection = () => {
+        const nowCollapsed = bundleSection.classList.toggle('collapsed')
+        if (nowCollapsed) collapsedKeys.add(sectionKey)
+        else collapsedKeys.delete(sectionKey)
+        titleRow.setAttribute('aria-expanded', nowCollapsed ? 'false' : 'true')
+      }
+      titleRow.addEventListener('click', toggleSection)
+      titleRow.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          toggleSection()
+        }
+      })
       bundleSection.appendChild(titleRow)
 
       const patchesList = el('div', { class: 'diff-bundle-patches' })
@@ -349,10 +407,10 @@ export function renderDiff(container) {
       for (const patch of sorted) {
         const patchEl = el('div', { class: 'diff-patch-row' })
         const patchLower = patch.name.toLowerCase()
-        const isShared = crossBundlePatches.has(patchLower)
+        const sharedWith = crossBundlePatches.get(patchLower)
         const color = patchColorMap.get(patchLower)
 
-        if (isShared && color) {
+        if (sharedWith && color) {
           patchEl.style.background = color.bg
           patchEl.style.borderLeft = `3px solid ${color.border}`
         }
@@ -365,11 +423,26 @@ export function renderDiff(container) {
           ? `<span class="diff-patch-versions">${escHtml(patch.compatible_versions.join(', '))}</span>`
           : ''
 
+        let sharedBadgesHtml = ''
+        if (sharedWith) {
+          const others = sharedWith.filter((b) => b !== bundleInfo.name)
+          if (others.length > 0) {
+            const shown = others.slice(0, 3)
+            const rest = others.slice(3)
+            sharedBadgesHtml = shown
+              .map((b) => `<span class="diff-patch-shared-badge" title="Also in ${escHtml(b)}">${escHtml(b)}</span>`)
+              .join('')
+            if (rest.length > 0) {
+              sharedBadgesHtml += `<span class="diff-patch-shared-badge" title="${escHtml(rest.join(', '))}">+${rest.length}</span>`
+            }
+          }
+        }
+
         patchEl.innerHTML = `
           <div class="diff-patch-row-header">
             <span class="diff-patch-row-name copyable" title="Click to copy">${escHtml(patch.name)}</span>
             ${onBadge}
-            ${isShared ? '<span class="diff-patch-shared-badge" title="This patch exists in multiple bundles">shared</span>' : ''}
+            ${sharedBadgesHtml}
           </div>
           ${patch.description ? `<p class="diff-patch-row-desc">${escHtml(patch.description)}</p>` : ''}
           ${versionsHtml ? `<div class="diff-patch-row-meta">${versionsHtml}</div>` : ''}
@@ -395,29 +468,46 @@ export function renderDiff(container) {
     function renderGroups() {
       groupsEl.replaceChildren()
 
-      const selectedInfos = [...patchBundleMap.entries()]
-        .filter(([k]) => selectedKeys.has(k))
-        .map(([, v]) => v)
+      const selectedInfos = sortedKeys
+        .filter((k) => selectedKeys.has(k))
+        .map((k) => patchBundleMap.get(k))
 
       if (selectedInfos.length === 0) {
         groupsEl.appendChild(el('div', { class: 'empty-state' }, ['No bundles selected. Use the pills above to add bundles.']))
         return
       }
 
-      const crossBundlePatches = new Map()
-      const selPatchNames = new Set()
-      for (const info of selectedInfos) {
-        for (const p of info.patches) selPatchNames.add(p.name.toLowerCase())
+      if (activeView === 'matrix') {
+        const cols = selectedInfos.map((info) => ({
+          label: info.name,
+          avatarUrl: info.bundleImageUrl || info.avatarUrl,
+          version: info.version,
+          channel: info.channel,
+          patches: info.patches,
+        }))
+        groupsEl.appendChild(buildCompareMatrix(cols, matrixState))
+        return
       }
-      for (const patchName of selPatchNames) {
-        const containingBundles = new Set()
-        for (const info of selectedInfos) {
-          if (info.patches.some((p) => p.name.toLowerCase() === patchName)) {
-            containingBundles.add(info.bundle)
+
+      // Single pass: patchLower → Set of bundle keys containing it
+      const patchBundlesMap = new Map()
+      const bundleKeyToName = new Map()
+      for (const info of selectedInfos) {
+        bundleKeyToName.set(info.bundle, info.name)
+        for (const p of info.patches) {
+          const lower = p.name.toLowerCase()
+          let set = patchBundlesMap.get(lower)
+          if (!set) {
+            set = new Set()
+            patchBundlesMap.set(lower, set)
           }
+          set.add(info.bundle)
         }
-        if (containingBundles.size > 1) {
-          crossBundlePatches.set(patchName, [...containingBundles])
+      }
+      const crossBundlePatches = new Map()
+      for (const [lower, keys] of patchBundlesMap) {
+        if (keys.size > 1) {
+          crossBundlePatches.set(lower, [...keys].map((k) => bundleKeyToName.get(k) || k))
         }
       }
 
