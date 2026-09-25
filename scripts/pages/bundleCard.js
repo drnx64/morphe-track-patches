@@ -3,7 +3,8 @@
  */
 import { el } from '../ui.js'
 import * as store from '../store.js'
-import { resolveAppName, getStaleness, getStoredVersions, renderAppIcon, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
+import { getStaleness, getStoredVersions, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
+import { mountAppRows, sortAppsByName } from '../utils/appList.js'
 import { getRepoInfo, getAddMorpheUrl, getAuthorLink } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { formatVersion } from '../utils/format.js'
@@ -17,9 +18,7 @@ export function renderBundleCard(bundle) {
   const addMorpheUrl = getAddMorpheUrl(bundle.repo_url)
   const iconSvg = repoInfo.isGitLab ? GITLAB_SVG : GITHUB_SVG
 
-  const apps = [...(bundle.apps || [])].sort((x, y) =>
-    resolveAppName(x, nameCache).localeCompare(resolveAppName(y, nameCache)),
-  )
+  const apps = sortAppsByName(bundle.apps || [], nameCache)
   const count = apps.length
 
   let updatedBadge = ''
@@ -135,22 +134,17 @@ function toggleExpand(card, apps, nameCache, iconCache) {
   let appsContainer = card.querySelector('.bundle-card-apps')
   if (!appsContainer) {
     appsContainer = el('div', { class: 'bundle-card-apps' })
-    for (const app of apps) {
-      const appName = resolveAppName(app, nameCache)
-      const iconHtml = renderAppIcon(app, iconCache, 'sm')
-      const patchCount = (app.patches || []).length
-
-      const appRow = el('div', { class: 'bundle-card-app-row', role: 'button', tabindex: '0' })
-      appRow.innerHTML = `
-        ${iconHtml}
-        <div class="bundle-card-app-info">
-          <span class="bundle-card-app-name">${escHtml(appName)}</span>
-          <span class="bundle-card-app-pkg">${escHtml(app.package)}</span>
-        </div>
-        <span class="bundle-card-app-patches">${patchCount} patch${patchCount !== 1 ? 'es' : ''}</span>
-      `
-      appRow.addEventListener('click', (e) => {
-        e.stopPropagation()
+    card.appendChild(appsContainer)
+    mountAppRows(appsContainer, apps, {
+      prefix: 'bundle-card-app',
+      nameCache,
+      iconCache,
+      onBatch: () => {
+        if (card.classList.contains('expanded')) {
+          appsContainer.style.maxHeight = appsContainer.scrollHeight + 'px'
+        }
+      },
+      onOpen: (app) => {
         window.dispatchEvent(new CustomEvent('open-app', {
           detail: {
             app: { package: app.package, app_name: app.app_name, patches: app.patches },
@@ -158,23 +152,8 @@ function toggleExpand(card, apps, nameCache, iconCache) {
             channels: [],
           },
         }))
-      })
-      appRow.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault()
-          e.stopPropagation()
-          window.dispatchEvent(new CustomEvent('open-app', {
-            detail: {
-              app: { package: app.package, app_name: app.app_name, patches: app.patches },
-              bundleName: '',
-              channels: [],
-            },
-          }))
-        }
-      })
-      appsContainer.appendChild(appRow)
-    }
-    card.appendChild(appsContainer)
+      },
+    })
   }
 
   if (!isExpanded) {

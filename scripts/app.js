@@ -184,7 +184,10 @@ function setupRoutes() {
 
   router.addRoute('/changelog', async () => {
     const { renderChangelog } = await pages.changelog()
-    renderChangelog(document.getElementById('page-container'))
+    const container = document.getElementById('page-container')
+    mount(container, el('div', { class: 'loading-state' }, ['Loading changelog...']))
+    await ensureChangelog()
+    renderChangelog(container)
   }, 'changelog')
 
   router.addRoute('/diff', async () => {
@@ -198,6 +201,24 @@ function setupRoutes() {
 }
 
 // ── Data Loading ──
+let deferredPreloads = null
+
+// Lazily fetch the 2.75 MB changelog (only /changelog + history modal need it)
+let changelogPromise = null
+function ensureChangelog() {
+  if (!changelogPromise) {
+    changelogPromise = fetchJson('data/changelog.json')
+      .then((data) => {
+        store.set('changelog', Array.isArray(data) ? data : [])
+      })
+      .catch((err) => {
+        console.error('[app] Changelog load failed:', err)
+        changelogPromise = null
+      })
+  }
+  return changelogPromise
+}
+
 async function loadData() {
   try {
     // Fetch core + stats + changes in parallel
@@ -243,9 +264,13 @@ async function loadData() {
     }
     store.merge({ repoAvatarMap, repoBundleImageMap })
 
-    // Background-warm icon + avatar caches (fetch, resize, store in IndexedDB)
-    preloadIcons(iconCache).catch(() => {})
-    preloadAvatars([...Object.values(repoAvatarMap), ...Object.values(repoBundleImageMap)]).catch(() => {})
+    // Background-warm icon + avatar caches (fetch, resize, store in IndexedDB).
+    // Deferred until after bundles load so they don't compete with the
+    // 359-file bundle fetch for connections.
+    deferredPreloads = () => {
+      preloadIcons(iconCache).catch(() => {})
+      preloadAvatars([...Object.values(repoAvatarMap), ...Object.values(repoBundleImageMap)]).catch(() => {})
+    }
 
     // Load bundle index
     const index = await fetchJson('data/bundles/_index.json')
@@ -274,9 +299,14 @@ async function loadData() {
 
     store.set('bundles', bundles)
 
-    // Load changelog
-    const changelog = await fetchJson('data/changelog.json')
-    store.set('changelog', Array.isArray(changelog) ? changelog : [])
+    // Icon/avatar preloads now that the bundle fetch is done
+    if (deferredPreloads) {
+      deferredPreloads()
+      deferredPreloads = null
+    }
+
+    // Changelog (2.75 MB) is loaded lazily by the /changelog route and
+    // bundle history modal via ensureChangelog()
 
     store.set('loading', false)
 
@@ -339,7 +369,8 @@ window.addEventListener('open-app', (e) => {
   openAppDetailModal(e.detail)
 })
 
-window.addEventListener('open-bundle-history', (e) => {
+window.addEventListener('open-bundle-history', async (e) => {
+  await ensureChangelog()
   openBundleHistoryModal(e.detail.bundleName)
 })
 

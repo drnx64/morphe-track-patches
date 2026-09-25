@@ -5,7 +5,8 @@
 import { el } from '../ui.js'
 import { openModal } from './modal.js'
 import * as store from '../store.js'
-import { resolveAppName, renderAppIcon, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
+import { getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
+import { mountAppRows, sortAppsByName } from '../utils/appList.js'
 import { getAddMorpheUrl, getAuthorLink, getRepoInfo } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { formatVersion } from '../utils/format.js'
@@ -69,42 +70,11 @@ export function openBundleModal({ bundleName, channels = [] }) {
     content.appendChild(descEl)
   }
 
-  const apps = [...(bundleData.apps || [])].sort((a, b) =>
-    resolveAppName(a, nameCache).localeCompare(resolveAppName(b, nameCache)),
-  )
+  const apps = sortAppsByName(bundleData.apps || [], nameCache)
 
   const appsSection = el('div', { class: 'bundle-modal-apps-section' })
   appsSection.innerHTML = `<h4 class="bundle-modal-section-title">Apps (${apps.length})</h4>`
   const appsList = el('div', { class: 'bundle-modal-apps-list' })
-
-  for (const app of apps) {
-    const appName = resolveAppName(app, nameCache)
-    const iconHtml = renderAppIcon(app, iconCache, 'sm')
-    const patchCount = (app.patches || []).length
-
-    const row = el('div', { class: 'bundle-modal-app-row', role: 'button', tabindex: '0' })
-    row.innerHTML = `
-      ${iconHtml}
-      <div class="bundle-modal-app-info">
-        <span class="bundle-modal-app-name">${escHtml(appName)}</span>
-        <span class="bundle-modal-app-pkg">${escHtml(app.package)}</span>
-      </div>
-      <span class="bundle-modal-app-patches">${patchCount} patch${patchCount !== 1 ? 'es' : ''}</span>
-    `
-
-    const openApp = (e) => {
-      e.stopPropagation()
-      window.dispatchEvent(new CustomEvent('open-app', {
-        detail: { app, bundleName, channels: bundleData.channels || channels },
-      }))
-    }
-    row.addEventListener('click', openApp)
-    row.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openApp(e) }
-    })
-    appsList.appendChild(row)
-  }
-
   appsSection.appendChild(appsList)
   content.appendChild(appsSection)
 
@@ -119,10 +89,22 @@ export function openBundleModal({ bundleName, channels = [] }) {
   `
   content.appendChild(actionsEl)
 
+  // Shell first — modal paints before rows are batched in
   openModal({
     title: displayName,
     content,
     className: 'bundle-modal',
     maxWidth: 600,
+  })
+
+  mountAppRows(appsList, apps, {
+    prefix: 'bundle-modal-app',
+    nameCache,
+    iconCache,
+    onOpen: (app) => {
+      window.dispatchEvent(new CustomEvent('open-app', {
+        detail: { app, bundleName, channels: bundleData.channels || channels },
+      }))
+    },
   })
 }

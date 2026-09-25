@@ -284,7 +284,18 @@ export function getStaleness(dateStr) {
   return { days: d, level: 'stale', label: `${d}d` }
 }
 
+// Cache keyed on the bundles/nameCache/iconCache object identities — all are
+// set once per session, so Apps/Diff/GlobalSearch visits reuse one index.
+let appIndexCache = { bundles: null, nameCache: null, iconCache: null, value: null }
+
 export function buildAppIndex(bundlesData, nameCache, iconCache) {
+  if (
+    appIndexCache.bundles === bundlesData &&
+    appIndexCache.nameCache === nameCache &&
+    appIndexCache.iconCache === iconCache
+  ) {
+    return appIndexCache.value
+  }
   const map = new Map()
   for (const key of Object.keys(bundlesData)) {
     const bundle = bundlesData[key]
@@ -314,7 +325,9 @@ export function buildAppIndex(bundlesData, nameCache, iconCache) {
       if (bundle.version && !ref.version) ref.version = bundle.version
     }
   }
-  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name))
+  const value = [...map.values()].sort((a, b) => a.name.localeCompare(b.name))
+  appIndexCache = { bundles: bundlesData, nameCache, iconCache, value }
+  return value
 }
 
 /**

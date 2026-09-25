@@ -7,6 +7,16 @@ import { renderStatsSection } from './statsSection.js'
 import { renderControls } from './controls.js'
 import { renderBundlesGrid } from './bundlesGrid.js'
 
+let unsubscribe = null
+
+function rerenderGrid(page) {
+  const gridContainer = page.querySelector('#bundles-grid-container')
+  if (gridContainer) {
+    gridContainer.replaceChildren()
+    gridContainer.appendChild(renderBundlesGrid().firstChild || el('div', {}, ['No bundles found.']))
+  }
+}
+
 export function renderDashboard(container) {
   const page = el('div', { class: 'dashboard-page' })
 
@@ -16,12 +26,12 @@ export function renderDashboard(container) {
 
   mount(container, page)
 
-  // Subscribe to state changes to re-render bundles
-  store.subscribe('bundles', () => {
-    const gridContainer = page.querySelector('#bundles-grid-container')
-    if (gridContainer) {
-      gridContainer.replaceChildren()
-      gridContainer.appendChild(renderBundlesGrid().firstChild || el('div', {}, ['No bundles found.']))
-    }
-  })
+  // Re-subscribe on each visit; drop the previous page's subscriptions first
+  if (unsubscribe) unsubscribe()
+  const unsubBundles = store.subscribe('bundles', () => rerenderGrid(page))
+  const unsubFilters = store.subscribe('filters', () => rerenderGrid(page))
+  unsubscribe = () => {
+    unsubBundles()
+    unsubFilters()
+  }
 }
