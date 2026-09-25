@@ -171,6 +171,11 @@ def compute_patch_diff(old_app, new_app):
             {
                 "name": n,
                 "description": new_patches.get(n, {}).get("description", ""),
+                **(
+                    {"previous_description": old_patches[n].get("description", "")}
+                    if old_patches[n].get("description") != new_patches[n].get("description")
+                    else {}
+                ),
                 "changes": patch_diff_details(old_patches[n], new_patches[n])
             }
             for n in modified_names
