@@ -10,10 +10,16 @@ import * as store from '../store.js'
 import { groupAffectedBundles, resolveAppName, getAppIconUrl, renderAppIcon } from '../utils/misc.js'
 import { getAuthorLink } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
+import { formatFriendlyDate, formatVersion } from '../utils/format.js'
 import { CHEVRON_DOWN, VERSION_ARROW, CHEVRON_RIGHT } from '../utils/svg.js'
 
 const HIERARCHY_ORDER = { 'NEW BUNDLE': 0, 'UPDATED': 1, 'REMOVED BUNDLE': 2 }
 const STORAGE_KEY = 'morphe_updates_collapsed'
+const HIDE_DEV_KEY = 'morphe_hide_dev'
+
+function isHideDev() {
+  return localStorage.getItem(HIDE_DEV_KEY) === 'true'
+}
 
 export function renderTodayUpdates() {
   const section = el('section', { class: 'today-updates-section', 'aria-labelledby': 'today-heading' })
@@ -21,7 +27,24 @@ export function renderTodayUpdates() {
   const isCollapsed = localStorage.getItem(STORAGE_KEY) !== 'false'
 
   const headingRow = el('div', { class: 'today-updates-heading-row' })
-  headingRow.appendChild(el('h2', { class: 'section-title', id: 'today-heading' }, ["Today's Updates"]))
+  const headingLeft = el('div', { class: 'today-updates-heading-left' })
+  headingLeft.appendChild(el('h2', { class: 'section-title', id: 'today-heading' }, ["Today's Updates"]))
+
+  const liveDate = store.get('liveDataDate') || ''
+  if (liveDate) {
+    headingLeft.appendChild(el('span', { class: 'today-updates-date' }, [formatFriendlyDate(liveDate)]))
+  }
+  headingRow.appendChild(headingLeft)
+
+  const headingRight = el('div', { class: 'today-updates-heading-right' })
+  const hideDev = isHideDev()
+  const hideDevBtn = el('button', {
+    class: `today-hide-dev-btn${hideDev ? ' active' : ''}`,
+    type: 'button',
+    title: 'Hide dev-channel changes',
+    'aria-pressed': String(hideDev),
+  }, [hideDev ? 'Dev hidden' : 'Dev'])
+  headingRight.appendChild(hideDevBtn)
 
   const toggleBtn = el('button', {
     class: 'today-updates-toggle',
@@ -29,17 +52,30 @@ export function renderTodayUpdates() {
     'aria-expanded': String(!isCollapsed),
   })
   toggleBtn.innerHTML = `<span class="today-updates-toggle-icon">${CHEVRON_DOWN}</span>`
-  headingRow.appendChild(toggleBtn)
+  headingRight.appendChild(toggleBtn)
+  headingRow.appendChild(headingRight)
   section.appendChild(headingRow)
 
   const body = el('div', { class: 'today-updates-body' })
 
   const changes = store.get('changes')
-  const affectedBundles = changes?.affected_bundles
+  let affectedBundles = changes?.affected_bundles
+  if (affectedBundles && isHideDev()) {
+    affectedBundles = affectedBundles.filter((b) => b.channel !== 'dev')
+  }
 
   const grouped = affectedBundles && affectedBundles.length > 0 ? groupAffectedBundles(affectedBundles) : {}
   const nameCache = store.get('nameCache') || {}
   const iconCache = store.get('iconCache') || {}
+
+  hideDevBtn.addEventListener('click', () => {
+    const next = !isHideDev()
+    if (next) localStorage.setItem(HIDE_DEV_KEY, 'true')
+    else localStorage.removeItem(HIDE_DEV_KEY)
+    const parent = section.parentElement
+    const fresh = renderTodayUpdates()
+    if (parent) parent.replaceChild(fresh, section)
+  })
 
   // Summary peek row — visible when collapsed, hidden when expanded
   const summaryEl = el('div', { class: 'today-updates-summary', 'aria-hidden': 'true' })
@@ -99,19 +135,39 @@ export function renderTodayUpdates() {
 
     const headerParts = [
       el('span', { class: `badge badge--${(entry.badge_type || 'updated').toLowerCase().replace(/\s+/g, '-')}` }, [entry.badge_type || 'UPDATED']),
-      el('span', { class: 'today-bundle-name' }, [entry.patches_name || bundleName]),
-      el('span', { class: 'bundle-author', dangerouslySetInnerHTML: getAuthorLink(entry.repo_url) }),
     ]
+
+    const nameEl = el('span', {
+      class: 'today-bundle-name',
+      role: 'button',
+      tabindex: '0',
+      title: 'View bundle details',
+    }, [entry.patches_name || bundleName])
+    nameEl.addEventListener('click', () => {
+      window.dispatchEvent(new CustomEvent('open-bundle', {
+        detail: { bundleName, channels: entry.channels },
+      }))
+    })
+    nameEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        window.dispatchEvent(new CustomEvent('open-bundle', {
+          detail: { bundleName, channels: entry.channels },
+        }))
+      }
+    })
+    headerParts.push(nameEl)
+    headerParts.push(el('span', { class: 'bundle-author', dangerouslySetInnerHTML: getAuthorLink(entry.repo_url) }))
 
     const hasVersionTag = entry.previous_version && entry.new_version && entry.previous_version !== entry.new_version
     if (entry.previous_version && entry.new_version && entry.previous_version !== entry.new_version) {
       headerParts.push(el('span', { class: 'today-version-tag' }, [
-        `v${entry.previous_version}`,
+        formatVersion(entry.previous_version),
         el('span', { class: 'today-version-arrow', dangerouslySetInnerHTML: VERSION_ARROW }),
-        `v${entry.new_version}`,
+        formatVersion(entry.new_version),
       ]))
     } else if (entry.new_version) {
-      headerParts.push(el('span', { class: 'today-version-tag' }, [`v${entry.new_version}`]))
+      headerParts.push(el('span', { class: 'today-version-tag' }, [formatVersion(entry.new_version)]))
     }
 
     if (entry.extra_badges?.includes('VERSION BUMP') && !hasVersionTag && !entry.new_version) {
@@ -134,9 +190,9 @@ export function renderTodayUpdates() {
       const appName = resolveAppName(app, nameCache)
       let versionHtml = ''
       if (app.previous_version && app.new_version && app.previous_version !== app.new_version) {
-        versionHtml = `<span class="today-app-version-diff">v${escHtml(app.previous_version)} ${VERSION_ARROW} v${escHtml(app.new_version)}</span>`
+        versionHtml = `<span class="today-app-version-diff">${escHtml(formatVersion(app.previous_version))} ${VERSION_ARROW} ${escHtml(formatVersion(app.new_version))}</span>`
       } else if (app.new_version) {
-        versionHtml = `<span class="today-app-version-diff">v${escHtml(app.new_version)}</span>`
+        versionHtml = `<span class="today-app-version-diff">${escHtml(formatVersion(app.new_version))}</span>`
       }
 
       appEl.innerHTML = `

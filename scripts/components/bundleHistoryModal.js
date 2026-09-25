@@ -4,8 +4,9 @@
 import { el } from '../ui.js'
 import { openModal } from './modal.js'
 import * as store from '../store.js'
-import { renderAppIcon, getDisplayAvatar } from '../utils/misc.js'
+import { renderAppIcon, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
+import { formatVersion } from '../utils/format.js'
 import { VERSION_ARROW } from '../utils/svg.js'
 
 export function openBundleHistoryModal(bundleName) {
@@ -21,6 +22,7 @@ export function openBundleHistoryModal(bundleName) {
   const bundleData = bundles[stableKey] || bundles[devKey]
   const displayName = bundleData?.patches_name || bundleName
   const avatarUrl = getDisplayAvatar(bundleData?.repo_url || '', bundleData?.avatarUrl || '')
+  const bundleImageUrl = getDisplayBundleImage(bundleData?.repo_url || '', bundleData?.bundleImageUrl || '')
 
   const entries = []
   for (const day of changelog) {
@@ -40,17 +42,17 @@ export function openBundleHistoryModal(bundleName) {
     const headerRow = el('div', { class: 'bundle-history-header' })
     headerRow.innerHTML = `
       <div class="bundle-history-avatar-area">
-        ${avatarUrl
-          ? `<img class="bundle-history-avatar" src="${escHtml(avatarUrl)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-          : ''
-        }
-        <div class="bundle-history-avatar-placeholder" ${avatarUrl ? 'style="display:none"' : ''}>
-          <span>${displayName.charAt(0).toUpperCase()}</span>
-        </div>
+        ${avatarStackHtml(
+          bundleImageUrl,
+          avatarUrl,
+          `<span>${displayName.charAt(0).toUpperCase()}</span>`,
+          'bundle-history-avatar',
+          'bundle-history-avatar-placeholder',
+        )}
       </div>
       <div class="bundle-history-header-info">
         <span class="bundle-history-label">History</span>
-        ${bundleData?.version ? `<span class="bundle-history-version">v${bundleData.version}</span>` : ''}
+        ${bundleData?.version ? `<span class="bundle-history-version">${formatVersion(bundleData.version)}</span>` : ''}
       </div>
     `
     content.appendChild(headerRow)
@@ -85,12 +87,12 @@ export function openBundleHistoryModal(bundleName) {
 
         if (affected.previous_version && affected.new_version) {
           bundleRow.appendChild(el('span', { class: 'bundle-history-version-change' }, [
-            `v${affected.previous_version}`,
+            formatVersion(affected.previous_version),
             el('span', { class: 'bundle-history-arrow', dangerouslySetInnerHTML: VERSION_ARROW }),
-            `v${affected.new_version}`,
+            formatVersion(affected.new_version),
           ]))
         } else if (affected.new_version) {
-          bundleRow.appendChild(el('span', { class: 'bundle-history-version-change' }, [`v${affected.new_version}`]))
+          bundleRow.appendChild(el('span', { class: 'bundle-history-version-change' }, [formatVersion(affected.new_version)]))
         }
 
         if (affected.apps?.length > 0) {

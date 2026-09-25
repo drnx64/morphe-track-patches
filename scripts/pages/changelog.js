@@ -3,13 +3,31 @@
  */
 import { el, mount } from '../ui.js'
 import * as store from '../store.js'
-import { renderAppIcon } from '../utils/misc.js'
+import { renderAppIcon, groupAffectedBundles } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
 import { TELEGRAM_ICON, ARROW_LEFT, ARROW_RIGHT } from '../utils/svg.js'
 
+const HIDE_DEV_KEY = 'morphe_hide_dev'
+
 export function renderChangelog(container) {
   const page = el('div', { class: 'changelog-page' })
-  page.appendChild(el('h2', { class: 'section-title' }, ['Changelog']))
+
+  const headingRow = el('div', { class: 'changelog-heading-row' })
+  headingRow.appendChild(el('h2', { class: 'section-title' }, ['Changelog']))
+  const hideDev = localStorage.getItem(HIDE_DEV_KEY) === 'true'
+  const hideDevBtn = el('button', {
+    class: `today-hide-dev-btn${hideDev ? ' active' : ''}`,
+    type: 'button',
+    title: 'Hide dev-channel changes',
+    'aria-pressed': String(hideDev),
+  }, [hideDev ? 'Dev hidden' : 'Dev'])
+  hideDevBtn.addEventListener('click', () => {
+    if (localStorage.getItem(HIDE_DEV_KEY) === 'true') localStorage.removeItem(HIDE_DEV_KEY)
+    else localStorage.setItem(HIDE_DEV_KEY, 'true')
+    renderChangelog(container)
+  })
+  headingRow.appendChild(hideDevBtn)
+  page.appendChild(headingRow)
 
   const telegramBanner = el('div', { class: 'changelog-telegram' })
   telegramBanner.innerHTML = `
@@ -60,7 +78,9 @@ export function renderChangelog(container) {
       const dayEl = el('div', { class: 'changelog-day' })
       dayEl.appendChild(el('h3', { class: 'changelog-date' }, [day.date]))
 
-      for (const bundle of day.affected_bundles || []) {
+      for (const bundle of Object.values(groupAffectedBundles(
+        (day.affected_bundles || []).filter((b) => !(hideDev && b.channel === 'dev')),
+      ))) {
         const bundleEl = el('div', { class: 'changelog-bundle' })
         bundleEl.appendChild(el('span', { class: 'changelog-bundle-name' }, [bundle.patches_name || bundle.bundle]))
 

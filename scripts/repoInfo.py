@@ -1,6 +1,6 @@
 """Fetch repository metadata from GitHub/GitLab APIs.
 
-Gets: stars, avatarUrl, repoDescription, isArchived.
+Gets: stars, avatarUrl, repoDescription, isArchived, bundleImageUrl.
 Stores results in bundle data files.
 """
 import json
@@ -34,6 +34,32 @@ def _parse_repo_url(repo_url):
     return None, None
 
 
+def _probe_bundle_image(repo_url):
+    """Check for patches-bundle.png at the repo root (default branch).
+
+    Uses /raw/HEAD/ so no branch name is needed; follows redirect.
+    Returns the raw URL if found (200 + image/*), else "".
+    """
+    source, repo = _parse_repo_url(repo_url)
+    if not source or not repo:
+        return ""
+    if source == "github":
+        raw = f"https://github.com/{repo}/raw/HEAD/patches-bundle.png"
+    elif source == "gitlab":
+        raw = f"https://gitlab.com/{repo}/-/raw/HEAD/patches-bundle.png"
+    else:
+        return ""
+    try:
+        req = urllib.request.Request(raw, method="HEAD", headers={"User-Agent": "MorpheTracker/1.0"})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            content_type = resp.headers.get("Content-Type") or ""
+            if resp.status == 200 and content_type.startswith("image/"):
+                return raw
+    except Exception:
+        return ""
+    return ""
+
+
 def _fetch_github_repo(repo):
     """Fetch repo details from GitHub API."""
     url = f"https://api.github.com/repos/{repo}"
@@ -49,6 +75,7 @@ def _fetch_github_repo(repo):
                 "avatarUrl": (data.get("owner", {}).get("avatar_url") or ""),
                 "repoDescription": (data.get("description") or "")[:200],
                 "isArchived": bool(data.get("archived")),
+                "bundleImageUrl": _probe_bundle_image(f"https://github.com/{repo}"),
             }
     except urllib.error.HTTPError as e:
         if e.code in (404, 451):
@@ -87,6 +114,7 @@ def _fetch_gitlab_repo(repo):
                 "avatarUrl": (project.get("avatarUrl") or ""),
                 "repoDescription": (project.get("description") or "")[:200],
                 "isArchived": bool(project.get("archived")),
+                "bundleImageUrl": _probe_bundle_image(f"https://gitlab.com/{repo}"),
             }
     except Exception:
         return {}
@@ -169,7 +197,7 @@ def update_bundle_files(repo_metadata):
 
         if os.path.exists(bundle_path):
             bundle_data = load_json(bundle_path, default={})
-            for field in ("stars", "avatarUrl", "repoDescription", "isArchived"):
+            for field in ("stars", "avatarUrl", "repoDescription", "isArchived", "bundleImageUrl"):
                 if field in meta:
                     bundle_data[field] = meta[field]
             save_json(bundle_path, bundle_data)

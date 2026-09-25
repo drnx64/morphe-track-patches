@@ -50,6 +50,22 @@ export function resolveAvatarUrl(repoUrl, fallback = '') {
   return fallback || ''
 }
 
+/**
+ * Resolve a bundle's cover image (patches-bundle.png) URL.
+ * Priority: repo_cache map (repo_cache.json) → bundle record field.
+ * @param {string} repoUrl
+ * @param {string} [bundleField] - bundle.bundleImageUrl when map has no entry
+ * @returns {string} '' when no bundle image exists
+ */
+export function resolveBundleImage(repoUrl, bundleField = '') {
+  if (repoUrl) {
+    const map = store.get('repoBundleImageMap') || {}
+    const fromMap = map[repoUrl]
+    if (fromMap) return fromMap
+  }
+  return bundleField || ''
+}
+
 export function getAddMorpheUrl(repoUrl) {
   const info = getRepoInfo(repoUrl)
   const param = info.isGitLab ? 'gitlab' : 'github'

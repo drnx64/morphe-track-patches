@@ -29,6 +29,19 @@ export function formatFriendlyDate(dateStr) {
   return dateStr
 }
 
+/**
+ * Normalize a version string to exactly one leading "v".
+ * Handles raw data that sometimes includes "v" already (e.g. "v1.24.2" vs "1.24.2").
+ * @param {string} v
+ * @returns {string} '' if empty, otherwise 'v...' form
+ */
+export function formatVersion(v) {
+  if (!v) return ''
+  const s = String(v).trim()
+  if (!s) return ''
+  return 'v' + s.replace(/^v+/i, '')
+}
+
 export function formatTime(isoStr) {
   if (!isoStr) return '-'
   try {

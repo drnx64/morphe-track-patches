@@ -1,10 +1,15 @@
 /**
  * Modal — accessible focus-trap modal with ESC close.
+ * Supports stacking: openModal({ stack: true }) opens above the current modal.
  */
 import { el } from '../ui.js'
 import { CLOSE_ICON } from '../utils/svg.js'
 
-let activeModal = null
+const modalStack = []
+
+function topModal() {
+  return modalStack[modalStack.length - 1] || null
+}
 
 /**
  * Open a modal with content.
@@ -13,9 +18,13 @@ let activeModal = null
  * @param {string|Node} options.content
  * @param {string} [options.className]
  * @param {number} [options.maxWidth]
+ * @param {boolean} [options.hideHeader]
+ * @param {boolean} [options.stack] - open above current modal instead of replacing it
  */
-export function openModal({ title, content, className = '', maxWidth = 700, hideHeader = false }) {
-  closeModal()
+export function openModal({ title, content, className = '', maxWidth = 700, hideHeader = false, stack = false }) {
+  if (!stack) {
+    while (modalStack.length > 0) destroyModal(modalStack.pop())
+  }
 
   const overlay = el('div', { class: `modal-overlay ${className}`, role: 'dialog', 'aria-modal': 'true', 'aria-label': title })
 
@@ -41,7 +50,7 @@ export function openModal({ title, content, className = '', maxWidth = 700, hide
   modalBox.appendChild(body)
   overlay.appendChild(modalBox)
 
-  // Overlay click to close
+  // Overlay click to close (only its own)
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeModal()
   })
@@ -52,7 +61,7 @@ export function openModal({ title, content, className = '', maxWidth = 700, hide
   document.body.appendChild(overlay)
   requestAnimationFrame(() => overlay.classList.add('open'))
   document.body.style.overflow = 'hidden'
-  activeModal = overlay
+  modalStack.push(overlay)
 
   // Focus trap
   requestAnimationFrame(() => {
@@ -63,15 +72,28 @@ export function openModal({ title, content, className = '', maxWidth = 700, hide
   return overlay
 }
 
+function destroyModal(overlay) {
+  overlay.classList.remove('open')
+  setTimeout(() => overlay.remove(), 300)
+}
+
 export function closeModal() {
-  if (!activeModal) return
-  activeModal.classList.remove('open')
-  document.body.style.overflow = ''
-  document.removeEventListener('keydown', handleEsc)
-  document.removeEventListener('keydown', handleFocusTrap)
-  const ref = activeModal
-  activeModal = null
-  setTimeout(() => ref.remove(), 300)
+  const overlay = modalStack.pop()
+  if (!overlay) return
+  destroyModal(overlay)
+  if (modalStack.length === 0) {
+    document.body.style.overflow = ''
+    document.removeEventListener('keydown', handleEsc)
+    document.removeEventListener('keydown', handleFocusTrap)
+  } else {
+    // Re-focus the modal now on top
+    requestAnimationFrame(() => {
+      const next = topModal()
+      if (!next) return
+      const focusable = next.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
+      if (focusable.length) focusable[0].focus()
+    })
+  }
 }
 
 function handleEsc(e) {
@@ -79,7 +101,9 @@ function handleEsc(e) {
 }
 
 function handleFocusTrap(e) {
-  if (e.key !== 'Tab' || !activeModal) return
+  if (e.key !== 'Tab') return
+  const activeModal = topModal()
+  if (!activeModal) return
   const focusable = activeModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')
   if (focusable.length === 0) return
   const first = focusable[0]
@@ -94,5 +118,5 @@ function handleFocusTrap(e) {
 }
 
 export function isModalOpen() {
-  return !!activeModal
+  return modalStack.length > 0
 }

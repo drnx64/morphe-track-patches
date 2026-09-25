@@ -4,8 +4,9 @@
  */
 import { el, mount } from '../ui.js'
 import * as store from '../store.js'
-import { buildAppIndex, resolveAppName, renderAppIcon, suggestFuzzy, copyToClipboard, getDisplayAvatar } from '../utils/misc.js'
+import { buildAppIndex, resolveAppName, renderAppIcon, suggestFuzzy, copyToClipboard, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
+import { formatVersion } from '../utils/format.js'
 import { SEARCH_ICON, REFRESH_ICON } from '../utils/svg.js'
 
 const HIGHLIGHT_COLORS = [
@@ -234,7 +235,6 @@ export function renderDiff(container) {
     resultArea.appendChild(headerEl)
 
     const patchBundleMap = new Map()
-    const allPatchNames = new Set()
 
     for (const [key, bundle] of Object.entries(bundles)) {
       const bName = key.replace(/:(stable|dev)$/, '')
@@ -253,15 +253,12 @@ export function renderDiff(container) {
           channel,
           version: bundle.version || '',
           avatarUrl: getDisplayAvatar(bundle.repo_url, bundle.avatarUrl),
+          bundleImageUrl: getDisplayBundleImage(bundle.repo_url, bundle.bundleImageUrl),
           patches,
         })
       } else {
         const existing = patchBundleMap.get(bKey)
         if (bundle.version && !existing.version) existing.version = bundle.version
-      }
-
-      for (const p of patches) {
-        allPatchNames.add(p.name.toLowerCase())
       }
     }
 
@@ -270,31 +267,57 @@ export function renderDiff(container) {
       return
     }
 
-    const crossBundlePatches = new Map()
-    for (const patchName of allPatchNames) {
-      const containingBundles = new Set()
-      for (const [, bundleInfo] of patchBundleMap) {
-        if (bundleInfo.patches.some((p) => p.name.toLowerCase() === patchName)) {
-          containingBundles.add(bundleInfo.bundle)
-        }
-      }
-      if (containingBundles.size > 1) {
-        crossBundlePatches.set(patchName, [...containingBundles])
-      }
+    // ── Bundle picker: toggle which bundles are displayed ──
+    const selectedKeys = new Set(patchBundleMap.keys())
+    const pillByKey = new Map()
+
+    const pickerEl = el('div', { class: 'diff-bundle-picker' })
+    const pillsRow = el('div', { class: 'diff-bundle-picker-pills' })
+    const controlsRow = el('div', { class: 'diff-bundle-picker-controls' })
+
+    const sortedKeys = [...patchBundleMap.keys()].sort((a, b) => {
+      const ia = patchBundleMap.get(a)
+      const ib = patchBundleMap.get(b)
+      return ia.name.localeCompare(ib.name) || a.localeCompare(b)
+    })
+
+    for (const bKey of sortedKeys) {
+      const info = patchBundleMap.get(bKey)
+      const pill = el('button', { class: 'diff-bundle-pill active', type: 'button', title: `Toggle ${info.name}` })
+      pill.innerHTML = `${escHtml(info.name)} <span class="channel-badge channel-badge--sm ${info.channel}">${info.channel}</span>`
+      pill.addEventListener('click', () => {
+        if (selectedKeys.has(bKey)) selectedKeys.delete(bKey)
+        else selectedKeys.add(bKey)
+        pill.classList.toggle('active', selectedKeys.has(bKey))
+        renderGroups()
+      })
+      pillByKey.set(bKey, pill)
+      pillsRow.appendChild(pill)
     }
 
-    const patchColorMap = new Map()
-    let colorIdx = 0
-    for (const [patchName] of crossBundlePatches) {
-      patchColorMap.set(patchName, HIGHLIGHT_COLORS[colorIdx % HIGHLIGHT_COLORS.length])
-      colorIdx++
+    function setAll(on) {
+      selectedKeys.clear()
+      if (on) for (const k of patchBundleMap.keys()) selectedKeys.add(k)
+      for (const [, pill] of pillByKey) pill.classList.toggle('active', on)
+      renderGroups()
+    }
+    const allBtn = el('button', { class: 'diff-bundle-picker-btn', type: 'button' }, ['All'])
+    const noneBtn = el('button', { class: 'diff-bundle-picker-btn', type: 'button' }, ['None'])
+    allBtn.addEventListener('click', () => setAll(true))
+    noneBtn.addEventListener('click', () => setAll(false))
+    controlsRow.appendChild(allBtn)
+    controlsRow.appendChild(noneBtn)
+
+    pickerEl.appendChild(pillsRow)
+    if (patchBundleMap.size >= 2) {
+      pickerEl.appendChild(controlsRow)
+      resultArea.appendChild(pickerEl)
     }
 
-    const allBundles = [...patchBundleMap.values()]
-    const stableBundles = allBundles.filter((b) => b.channel === 'stable').sort((a, b) => a.name.localeCompare(b.name))
-    const devBundles = allBundles.filter((b) => b.channel === 'dev').sort((a, b) => a.name.localeCompare(b.name))
+    const groupsEl = el('div', { class: 'diff-bundle-groups' })
+    resultArea.appendChild(groupsEl)
 
-    const renderBundleGroup = (bundles, label) => {
+    const renderBundleGroup = (bundles, label, crossBundlePatches, patchColorMap) => {
       if (bundles.length === 0) return
       const groupEl = el('div', { class: 'diff-bundle-group' })
       groupEl.appendChild(el('h4', { class: 'diff-bundle-group-title' }, [label]))
@@ -305,14 +328,16 @@ export function renderDiff(container) {
       const titleRow = el('div', { class: 'diff-bundle-section-header' })
       titleRow.innerHTML = `
         <div class="diff-bundle-section-info">
-          ${bundleInfo.avatarUrl
-            ? `<img class="diff-bundle-section-avatar" src="${escHtml(bundleInfo.avatarUrl)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-            : ''
-          }
-          <div class="diff-bundle-section-avatar diff-bundle-section-avatar--fallback" ${bundleInfo.avatarUrl ? 'style="display:none"' : ''}>${(bundleInfo.name || '?').charAt(0).toUpperCase()}</div>
+          ${avatarStackHtml(
+            bundleInfo.bundleImageUrl,
+            bundleInfo.avatarUrl,
+            (bundleInfo.name || '?').charAt(0).toUpperCase(),
+            'diff-bundle-section-avatar',
+            'diff-bundle-section-avatar diff-bundle-section-avatar--fallback',
+          )}
           <span class="diff-bundle-section-name">${escHtml(bundleInfo.name)}</span>
           ${channelBadges}
-          ${bundleInfo.version ? `<span class="bundle-version-tag">v${escHtml(bundleInfo.version)}</span>` : ''}
+          ${bundleInfo.version ? `<span class="bundle-version-tag">${escHtml(formatVersion(bundleInfo.version))}</span>` : ''}
         </div>
         <span class="diff-bundle-section-count">${bundleInfo.patches.length} patches</span>
       `
@@ -364,10 +389,52 @@ export function renderDiff(container) {
       bundleSection.appendChild(patchesList)
       groupEl.appendChild(bundleSection)
       }
-      resultArea.appendChild(groupEl)
+      groupsEl.appendChild(groupEl)
     }
 
-    renderBundleGroup(stableBundles, 'Stable')
-    renderBundleGroup(devBundles, 'Dev')
+    function renderGroups() {
+      groupsEl.replaceChildren()
+
+      const selectedInfos = [...patchBundleMap.entries()]
+        .filter(([k]) => selectedKeys.has(k))
+        .map(([, v]) => v)
+
+      if (selectedInfos.length === 0) {
+        groupsEl.appendChild(el('div', { class: 'empty-state' }, ['No bundles selected. Use the pills above to add bundles.']))
+        return
+      }
+
+      const crossBundlePatches = new Map()
+      const selPatchNames = new Set()
+      for (const info of selectedInfos) {
+        for (const p of info.patches) selPatchNames.add(p.name.toLowerCase())
+      }
+      for (const patchName of selPatchNames) {
+        const containingBundles = new Set()
+        for (const info of selectedInfos) {
+          if (info.patches.some((p) => p.name.toLowerCase() === patchName)) {
+            containingBundles.add(info.bundle)
+          }
+        }
+        if (containingBundles.size > 1) {
+          crossBundlePatches.set(patchName, [...containingBundles])
+        }
+      }
+
+      const patchColorMap = new Map()
+      let colorIdx = 0
+      for (const [patchName] of crossBundlePatches) {
+        patchColorMap.set(patchName, HIGHLIGHT_COLORS[colorIdx % HIGHLIGHT_COLORS.length])
+        colorIdx++
+      }
+
+      const stableBundles = selectedInfos.filter((b) => b.channel === 'stable').sort((a, b) => a.name.localeCompare(b.name))
+      const devBundles = selectedInfos.filter((b) => b.channel === 'dev').sort((a, b) => a.name.localeCompare(b.name))
+
+      renderBundleGroup(stableBundles, 'Stable', crossBundlePatches, patchColorMap)
+      renderBundleGroup(devBundles, 'Dev', crossBundlePatches, patchColorMap)
+    }
+
+    renderGroups()
   }
 }

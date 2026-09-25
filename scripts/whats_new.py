@@ -1,4 +1,4 @@
-"""Generate emoji changelog for Telegram notifications.
+"""Generate ASCII-markers changelog for Telegram notifications.
 
 Reads daily_buffer.json + parsed_bundles.json to produce the diff.
 Output goes to scripts/temp/whats-new.md.
@@ -66,10 +66,10 @@ def _build_sections(entries, app_cache, parsed_bundles):
                 patches = []
                 if added:
                     for p in added:
-                        patches.append({"name": p.get("name", "unknown"), "badge": "🆕", "pkg": pkg})
+                        patches.append({"name": p.get("name", "unknown"), "badge": "+", "pkg": pkg})
                 else:
                     for pn in _get_patches_for_app(bundle_name, pkg, parsed_bundles):
-                        patches.append({"name": pn, "badge": "🆕", "pkg": pkg})
+                        patches.append({"name": pn, "badge": "+", "pkg": pkg})
 
                 if patches:
                     app_items.append({"name": app_name, "patches": patches, "pkg": pkg})
@@ -94,16 +94,16 @@ def _build_sections(entries, app_cache, parsed_bundles):
 
                 patches = []
                 for p in added:
-                    patches.append({"name": p.get("name", "unknown"), "badge": "🆕", "pkg": pkg})
+                    patches.append({"name": p.get("name", "unknown"), "badge": "+", "pkg": pkg})
                 for p in modified:
-                    patches.append({"name": p.get("name", "unknown"), "badge": "🔄", "pkg": pkg})
+                    patches.append({"name": p.get("name", "unknown"), "badge": "~", "pkg": pkg})
                 for p in removed:
-                    patches.append({"name": p.get("name", "unknown"), "badge": "❌", "pkg": pkg})
+                    patches.append({"name": p.get("name", "unknown"), "badge": "-", "pkg": pkg})
 
                 if app_badge == "NEW APP":
                     if not patches:
                         for pn in _get_patches_for_app(bundle_name, pkg, parsed_bundles):
-                            patches.append({"name": pn, "badge": "🆕", "pkg": pkg})
+                            patches.append({"name": pn, "badge": "+", "pkg": pkg})
                     if patches:
                         new_app_items.append({"name": app_name, "patches": patches, "pkg": pkg})
                 elif app_badge in ("UPDATED APP", "MAJOR UPDATE"):
@@ -149,19 +149,19 @@ def _dedup_sections(sections):
 def _render_bundle(item):
     """Render a single bundle as a block of lines."""
     lines = []
-    lines.append(f'💠 <b>{item["patches_name"]}</b>')
+    lines.append(f'# <b>{item["patches_name"]}</b>')
 
     apps = item.get("apps", [])
     for app in apps:
         if app.get("removed"):
-            lines.append(f'    ❌ <s>{app["name"]}</s>')
+            lines.append(f'    - <s>{app["name"]}</s>')
             continue
-        lines.append(f'    ▪️ <b>{app["name"]}</b>')
+        lines.append(f'    - <b>{app["name"]}</b>')
         for patch in app.get("patches", []):
             badge = patch["badge"]
             pkg = patch.get("pkg", "")
             name = patch["name"]
-            if badge == "❌":
+            if badge == "-":
                 lines.append(f'        {badge} {name}')
             else:
                 lines.append(f'        {badge} {_patch_link(name, pkg)}')
@@ -173,16 +173,18 @@ def _render_header():
     lines = []
     today = datetime.now(timezone.utc)
     date_str = today.strftime("%B %d, %Y")
-    lines.append("📣 <b>Today's Updates</b>")
-    lines.append(f"📅 {date_str}")
+    lines.append("<b>[TODAY'S UPDATES]</b>")
+    lines.append(f"Date: {date_str}")
     return "\n".join(lines)
 
 
 SECTION_LABELS = {
-    "new_bundles": "🟩 <b>NEW BUNDLES</b> 🟩",
-    "new_apps": "🟦 <b>UPDATED BUNDLES : NEW APPS</b> 🟦",
-    "updated_apps": "🟧 <b>UPDATED BUNDLES : UPDATED APPS</b> 🟧",
+    "new_bundles": "<b>[NEW BUNDLES]</b>",
+    "new_apps": "<b>[UPDATED BUNDLES: NEW APPS]</b>",
+    "updated_apps": "<b>[UPDATED BUNDLES: UPDATED APPS]</b>",
 }
+
+BUNDLE_PREFIX = "# "
 
 
 def _render_full(sections):
@@ -222,14 +224,14 @@ def _split_into_chunks(full_text):
     while i < len(lines):
         line = lines[i]
 
-        # Start a new bundle block at 💠 or section header
-        if line.startswith("💠") or line in SECTION_LABELS.values():
+        # Start a new bundle block at "# " (bundle header) or section header
+        if line.startswith(BUNDLE_PREFIX) or line in SECTION_LABELS.values():
             bundle_lines = [line]
             i += 1
-            # Collect all lines until next 💠 or section header or end
+            # Collect all lines until next bundle header or section header or end
             while i < len(lines):
                 next_line = lines[i]
-                if next_line.startswith("💠") or next_line in SECTION_LABELS.values():
+                if next_line.startswith(BUNDLE_PREFIX) or next_line in SECTION_LABELS.values():
                     break
                 bundle_lines.append(next_line)
                 i += 1
@@ -292,7 +294,7 @@ def generate_whats_new():
                 if not app.get("removed") and len(app.get("patches", [])) > MAX_PATCHES:
                     remaining = len(app["patches"]) - MAX_PATCHES
                     app["patches"] = app["patches"][:MAX_PATCHES]
-                    app["patches"].append({"name": f"+{remaining} more", "badge": "💡", "pkg": ""})
+                    app["patches"].append({"name": f"+{remaining} more", "badge": "*", "pkg": ""})
 
     full_text = _render_full(sections)
     chunks = _split_into_chunks(full_text)

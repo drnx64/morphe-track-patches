@@ -5,9 +5,10 @@
 import { el } from '../ui.js'
 import { openModal, closeModal } from './modal.js'
 import * as store from '../store.js'
-import { resolveAppName, getAppIconUrl, copyToClipboard, getDisplayAvatar } from '../utils/misc.js'
+import { resolveAppName, getAppIconUrl, copyToClipboard, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
 import { getPlayStoreUrl, getAddMorpheUrl } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
+import { formatVersion } from '../utils/format.js'
 import { CLOSE_ICON, CHEVRON_DOWN, CHEVRON_RIGHT } from '../utils/svg.js'
 
 const PLAY_STORE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M.859 11.981V1.741c0-.672.79-1.098 1.434-.771L12.37 6.09c.662.336.662 1.207 0 1.543l-10.077 5.12c-.644.327-1.434-.099-1.434-.772M9.23 9.23l-8.1-8.101m8.1 3.364l-8.1 8.1"/></svg>'
@@ -23,10 +24,12 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
   const pkg = app.package
   const appName = resolveAppName(app, nameCache)
   const iconUrl = getAppIconUrl({ package: pkg }, iconCache)
+  const hideDev = localStorage.getItem('morphe_hide_dev') === 'true'
 
   // Collect all bundles containing this app
   const appBundles = []
   for (const [key, bundle] of Object.entries(bundles)) {
+    if (hideDev && key.endsWith(':dev')) continue
     const bName = key.replace(/:(stable|dev)$/, '')
     const channel = key.endsWith(':dev') ? 'dev' : 'stable'
     if (bundle.apps?.some((a) => a.package === pkg)) {
@@ -41,6 +44,7 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
           version: bundle.version || '',
           channels: [channel],
           avatarUrl: getDisplayAvatar(bundle.repo_url, bundle.avatarUrl),
+          bundleImageUrl: getDisplayBundleImage(bundle.repo_url, bundle.bundleImageUrl),
         })
       }
     }
@@ -132,6 +136,89 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
   // ── Bundles tab ──────────────────────────────────────
   const bundlesTab = tabContents['Bundles']
   if (appBundles.length > 0) {
+    // Compare bar: select 2+ bundles, then open comparison overlay
+    const selectedForCompare = new Set()
+    const getPatchesFor = (b) => {
+      const bKey = b.channels.includes('dev') ? `${b.bundleName}:dev` : `${b.bundleName}:stable`
+      const bd = bundles[bKey]
+      return bd?.apps?.find((a) => a.package === pkg)?.patches || []
+    }
+
+    const compareBar = el('div', { class: 'app-detail-compare-bar' })
+    const compareHint = el('span', { class: 'app-detail-compare-hint' }, ['Select bundles to compare'])
+    const compareBtn = el('button', { class: 'btn btn--primary btn--sm', type: 'button', disabled: '' }, ['Compare'])
+    compareBar.appendChild(compareHint)
+    compareBar.appendChild(compareBtn)
+    if (appBundles.length >= 2) bundlesTab.appendChild(compareBar)
+
+    function updateCompareBar() {
+      const n = selectedForCompare.size
+      compareBtn.disabled = n < 2
+      compareBtn.textContent = n >= 2 ? `Compare (${n})` : 'Compare'
+      compareHint.textContent = n >= 2
+        ? `${n} bundle${n !== 1 ? 's' : ''} selected`
+        : 'Select bundles to compare'
+    }
+
+    compareBtn.addEventListener('click', () => {
+      const picked = appBundles.filter((b) => selectedForCompare.has(b.bundleName))
+      if (picked.length < 2) return
+
+      const patchSets = picked.map((b) => {
+        const names = new Set(getPatchesFor(b).map((p) => p.name.toLowerCase()))
+        return { bundle: b, names }
+      })
+
+      const shared = [...patchSets[0].names].filter((n) =>
+        patchSets.every((s) => s.names.has(n)),
+      )
+      const sharedNames = new Set(shared)
+      const sharedPatches = getPatchesFor(picked[0])
+        .filter((p) => sharedNames.has(p.name.toLowerCase()))
+        .sort((a, b) => a.name.localeCompare(b.name))
+
+      const overlay = el('div', { class: 'compare-overlay' })
+
+      const inAll = el('div', { class: 'compare-section' })
+      inAll.appendChild(el('h4', { class: 'compare-section-title' }, [`In all ${picked.length} bundles (${sharedPatches.length})`]))
+      if (sharedPatches.length === 0) {
+        inAll.appendChild(el('div', { class: 'compare-empty' }, ['No shared patches']))
+      }
+      for (const p of sharedPatches) {
+        inAll.appendChild(el('div', { class: 'compare-patch compare-patch--shared' }, [p.name]))
+      }
+      overlay.appendChild(inAll)
+
+      for (const s of patchSets) {
+        const only = [...s.names].filter((n) => {
+          const count = patchSets.filter((x) => x.names.has(n)).length
+          return count === 1
+        })
+        const onlyPatches = getPatchesFor(s.bundle)
+          .filter((p) => only.includes(p.name.toLowerCase()))
+          .sort((a, b) => a.name.localeCompare(b.name))
+        const sec = el('div', { class: 'compare-section' })
+        sec.appendChild(el('h4', { class: 'compare-section-title' }, [
+          `Only in ${s.bundle.patchesName} (${onlyPatches.length})`,
+        ]))
+        if (onlyPatches.length === 0) {
+          sec.appendChild(el('div', { class: 'compare-empty' }, ['No unique patches']))
+        }
+        for (const p of onlyPatches) {
+          sec.appendChild(el('div', { class: 'compare-patch compare-patch--unique' }, [p.name]))
+        }
+        overlay.appendChild(sec)
+      }
+
+      openModal({
+        title: `Compare ${appName} patches`,
+        content: overlay,
+        className: 'compare-modal',
+        maxWidth: 700,
+        stack: true,
+      })
+    })
+
     for (const b of appBundles) {
       const bundleAccordion = el('div', { class: 'app-detail-bundle-accordion' })
 
@@ -142,17 +229,32 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
       const bundleHeader = el('div', { class: 'app-detail-bundle-accordion-header', role: 'button', tabindex: '0' })
       bundleHeader.innerHTML = `
         <div class="app-detail-bundle-accordion-info">
-          ${b.avatarUrl ? `<img class="app-detail-bundle-avatar" src="${escHtml(b.avatarUrl)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
-          <div class="app-detail-bundle-avatar app-detail-bundle-avatar--fallback" ${b.avatarUrl ? 'style="display:none"' : ''}>${(b.patchesName || '?').charAt(0).toUpperCase()}</div>
+          ${avatarStackHtml(
+            b.bundleImageUrl,
+            b.avatarUrl,
+            (b.patchesName || '?').charAt(0).toUpperCase(),
+            'app-detail-bundle-avatar',
+            'app-detail-bundle-avatar app-detail-bundle-avatar--fallback',
+          )}
           <span class="app-detail-bundle-name">${escHtml(b.patchesName)}</span>
           ${channelBadges}
-          ${b.version ? `<span class="app-detail-bundle-version">v${escHtml(b.version)}</span>` : ''}
+          ${b.version ? `<span class="app-detail-bundle-version">${escHtml(formatVersion(b.version))}</span>` : ''}
         </div>
         <div class="app-detail-bundle-accordion-actions">
           ${b.repoUrl ? `<a href="${escHtml(getAddMorpheUrl(b.repoUrl))}" class="btn btn--primary btn--sm" target="_blank" rel="noopener" onclick="event.stopPropagation()">Add to Morphe</a>` : ''}
+          <label class="app-detail-compare-check" title="Select for comparison" onclick="event.stopPropagation()">
+            <input type="checkbox" data-bundle="${escHtml(b.bundleName)}">
+          </label>
           <span class="app-detail-bundle-chevron">${CHEVRON_DOWN}</span>
         </div>
       `
+
+      const checkBox = bundleHeader.querySelector('input[type="checkbox"]')
+      checkBox.addEventListener('change', () => {
+        if (checkBox.checked) selectedForCompare.add(b.bundleName)
+        else selectedForCompare.delete(b.bundleName)
+        updateCompareBar()
+      })
 
       const patchesContainer = el('div', { class: 'app-detail-bundle-patches' })
 
@@ -254,7 +356,7 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
     let currentBundle = targetBundle || appBundles[0]
 
     function getBundleLabel(b) {
-      return `${escHtml(b.patchesName)}${b.version ? ` v${escHtml(b.version)}` : ''}`
+      return `${escHtml(b.patchesName)}${b.version ? ` ${escHtml(formatVersion(b.version))}` : ''}`
     }
 
     const dropdownWrapper = el('div', { class: 'app-detail-bundle-dropdown' })
@@ -287,7 +389,7 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
         ).join(' ')
         option.innerHTML = `
           <span class="app-detail-bundle-dropdown-option-name">${escHtml(b.patchesName)}</span>
-          <span class="app-detail-bundle-dropdown-option-meta">${chBadges}${b.version ? ` v${escHtml(b.version)}` : ''}</span>
+          <span class="app-detail-bundle-dropdown-option-meta">${chBadges}${b.version ? ` ${escHtml(formatVersion(b.version))}` : ''}</span>
         `
         option.addEventListener('click', () => {
           currentBundle = b

@@ -183,6 +183,7 @@ def save_bundles_split(data):
             "app_count": len(record.get("apps", [])),
             "stars": record.get("stars", 0),
             "avatarUrl": record.get("avatarUrl", ""),
+            "bundleImageUrl": record.get("bundleImageUrl", ""),
             "repoDescription": record.get("repoDescription", ""),
             "isArchived": record.get("isArchived", False),
             "isPreRelease": record.get("isPreRelease", False),

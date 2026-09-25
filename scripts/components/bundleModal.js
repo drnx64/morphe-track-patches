@@ -5,9 +5,10 @@
 import { el } from '../ui.js'
 import { openModal } from './modal.js'
 import * as store from '../store.js'
-import { resolveAppName, renderAppIcon, getDisplayAvatar } from '../utils/misc.js'
+import { resolveAppName, renderAppIcon, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
 import { getAddMorpheUrl, getAuthorLink, getRepoInfo } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
+import { formatVersion } from '../utils/format.js'
 import { GITHUB_SVG, GITLAB_SVG } from '../utils/svg.js'
 
 /**
@@ -35,25 +36,26 @@ export function openBundleModal({ bundleName, channels = [] }) {
   const iconSvg = repoInfo.isGitLab ? GITLAB_SVG : GITHUB_SVG
 
   const avatarUrl = getDisplayAvatar(bundleData.repo_url, bundleData.avatarUrl)
+  const bundleImageUrl = getDisplayBundleImage(bundleData.repo_url, bundleData.bundleImageUrl)
 
   const content = el('div', { class: 'bundle-modal-content' })
 
   const headerEl = el('div', { class: 'bundle-modal-header' })
   headerEl.innerHTML = `
     <div class="bundle-modal-avatar-area">
-      ${avatarUrl
-        ? `<img class="bundle-modal-avatar" src="${escHtml(avatarUrl)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-        : ''
-      }
-      <div class="bundle-modal-avatar-placeholder" ${avatarUrl ? 'style="display:none"' : ''}>
-        <span>${displayName.charAt(0).toUpperCase()}</span>
-      </div>
+      ${avatarStackHtml(
+        bundleImageUrl,
+        avatarUrl,
+        `<span>${displayName.charAt(0).toUpperCase()}</span>`,
+        'bundle-modal-avatar',
+        'bundle-modal-avatar-placeholder',
+      )}
     </div>
     <div class="bundle-modal-info">
       <h3 class="bundle-modal-name">${escHtml(displayName)}</h3>
       <span class="bundle-modal-author">${authorHtml}</span>
       <div class="bundle-modal-meta">
-        ${bundleData.version ? `<span class="bundle-modal-version">v${escHtml(bundleData.version)}</span>` : ''}
+        ${bundleData.version ? `<span class="bundle-modal-version">${escHtml(formatVersion(bundleData.version))}</span>` : ''}
         ${(bundleData.channels || channels).map((ch) => `<span class="channel-badge ${ch}">${ch}</span>`).join('')}
         ${bundleData.stars ? `<span class="bundle-stars-badge" title="${bundleData.stars} stars">★ ${bundleData.stars}</span>` : ''}
         ${bundleData.isArchived ? '<span class="bundle-archived-badge">Archived</span>' : ''}

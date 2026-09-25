@@ -86,6 +86,7 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                 "previous_version": bundle_entry.get("previous_version", ""),
                 "new_version": bundle_entry.get("new_version", ""),
                 "avatarUrl": bundle_entry.get("avatarUrl", ""),
+                "bundleImageUrl": bundle_entry.get("bundleImageUrl", ""),
             }
         else:
             existing = buffer_bundles[b_key]
@@ -101,6 +102,8 @@ def assign_scan_numbers(buffer_bundles, incoming, scan_counter):
                 existing["new_version"] = bundle_entry["new_version"]
             if not existing.get("avatarUrl") and bundle_entry.get("avatarUrl"):
                 existing["avatarUrl"] = bundle_entry["avatarUrl"]
+            if not existing.get("bundleImageUrl") and bundle_entry.get("bundleImageUrl"):
+                existing["bundleImageUrl"] = bundle_entry["bundleImageUrl"]
 
             existing_app_map = {a["package"]: a for a in existing["apps"]}
             for app in bundle_entry.get("apps", []):

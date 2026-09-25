@@ -6,6 +6,7 @@ import { el } from '../ui.js'
 import * as store from '../store.js'
 import { buildAppIndex, suggestFuzzy, resolveAppName } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
+import { formatVersion } from '../utils/format.js'
 import { SEARCH_ICON } from '../utils/svg.js'
 
 const MAX_APP_RESULTS = 6
@@ -205,7 +206,7 @@ export function renderGlobalSearch() {
           <div class="global-search-item-icon global-search-item-icon--fallback">${bundle.name.charAt(0).toUpperCase()}</div>
           <div class="global-search-item-info">
             <span class="global-search-item-name">${escHtml(bundle.name)}</span>
-            <span class="global-search-item-meta">${channelBadges} ${bundle.version ? `v${escHtml(bundle.version)}` : ''} · ${bundle.appCount} apps</span>
+            <span class="global-search-item-meta">${channelBadges} ${bundle.version ? escHtml(formatVersion(bundle.version)) : ''} · ${bundle.appCount} apps</span>
           </div>
         `
         item.addEventListener('click', () => {

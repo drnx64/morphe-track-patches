@@ -6,6 +6,7 @@ import * as store from '../store.js'
 import { resolveAppName, getAppIconUrl, getStaleness, renderAppIcon } from '../utils/misc.js'
 import { getRepoInfo, getAddMorpheUrl, getAuthorLink } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
+import { formatVersion } from '../utils/format.js'
 import { GITHUB_SVG, GITLAB_SVG, ARROW_LEFT } from '../utils/svg.js'
 
 export function renderBundleDetail(container, bundleName) {
@@ -40,7 +41,7 @@ export function renderBundleDetail(container, bundleName) {
     el('h1', { class: 'bundle-detail-title' }, [bundle.patches_name || bundleName]),
     el('div', { class: 'bundle-detail-author', dangerouslySetInnerHTML: `by ${getAuthorLink(bundle.repo_url)}` }),
     el('div', { class: 'bundle-detail-meta' }, [
-      el('span', { class: 'bundle-detail-version' }, [`v${bundle.version || 'unknown'}`]),
+      el('span', { class: 'bundle-detail-version' }, [formatVersion(bundle.version) || 'unknown']),
       el('span', { class: 'bundle-detail-channels' }, [
         stable ? el('span', { class: 'channel-badge stable' }, ['stable']) : null,
         dev ? el('span', { class: 'channel-badge dev' }, ['dev']) : null,

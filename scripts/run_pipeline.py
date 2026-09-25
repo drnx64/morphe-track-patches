@@ -91,7 +91,8 @@ def run():
                 CACHE_TTL = 30 * 24 * 3600  # 30 days
 
                 fresh_urls = {url for url, entry in repo_cache.items()
-                              if now_ts - entry.get("fetched_at", 0) < CACHE_TTL}
+                              if now_ts - entry.get("fetched_at", 0) < CACHE_TTL
+                              and "bundleImageUrl" in entry}
                 stale_entries = [e for e in bundle_index.values()
                                  if e.get("repo_url", "") and e["repo_url"] not in fresh_urls]
 
@@ -99,7 +100,7 @@ def run():
                     log.info(f"  Fetching {len(stale_entries)} repos (cache miss)")
                     fresh_results = repoInfo.process(stale_entries)
                     for url, meta in fresh_results.items():
-                        repo_cache[url] = {**meta, "fetched_at": now_ts}
+                        repo_cache[url] = {**meta, "bundleImageUrl": meta.get("bundleImageUrl", ""), "fetched_at": now_ts}
                     save_json(cache_path, repo_cache)
                     repoInfo.update_bundle_files(fresh_results)
                 else:

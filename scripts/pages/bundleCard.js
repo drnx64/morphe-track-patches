@@ -3,9 +3,10 @@
  */
 import { el } from '../ui.js'
 import * as store from '../store.js'
-import { resolveAppName, getStaleness, getStoredVersions, renderAppIcon, getDisplayAvatar } from '../utils/misc.js'
+import { resolveAppName, getStaleness, getStoredVersions, renderAppIcon, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
 import { getRepoInfo, getAddMorpheUrl, getAuthorLink } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
+import { formatVersion } from '../utils/format.js'
 import { GITHUB_SVG, GITLAB_SVG, HISTORY_ICON, CHEVRON_DOWN } from '../utils/svg.js'
 
 export function renderBundleCard(bundle) {
@@ -35,7 +36,7 @@ export function renderBundleCard(bundle) {
   }
 
   const versionTag = bundle.version
-    ? `<span class="bundle-version-tag">v${escHtml(bundle.version)}</span>`
+    ? `<span class="bundle-version-tag">${escHtml(formatVersion(bundle.version))}</span>`
     : ''
 
   const starsHtml = bundle.stars
@@ -63,6 +64,7 @@ export function renderBundleCard(bundle) {
   ).join('')
 
   const avatarUrl = getDisplayAvatar(bundle.repo_url, bundle.avatarUrl)
+  const bundleImageUrl = getDisplayBundleImage(bundle.repo_url, bundle.bundleImageUrl)
   const isNewBundle = bundle.badge_type === 'NEW BUNDLE'
 
   const card = el('div', {
@@ -74,13 +76,13 @@ export function renderBundleCard(bundle) {
   const row = el('div', { class: 'bundle-card-row', role: 'button', tabindex: '0' })
   row.innerHTML = `
     <div class="bundle-card-avatar-area">
-      ${avatarUrl
-        ? `<img class="bundle-card-avatar" src="${escHtml(avatarUrl)}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-        : ''
-      }
-      <div class="bundle-card-avatar-placeholder" ${avatarUrl ? 'style="display:none"' : ''}>
-        <span>${(bundle.patches_name || bundle.bundle).charAt(0).toUpperCase()}</span>
-      </div>
+      ${avatarStackHtml(
+        bundleImageUrl,
+        avatarUrl,
+        `<span>${(bundle.patches_name || bundle.bundle).charAt(0).toUpperCase()}</span>`,
+        'bundle-card-avatar',
+        'bundle-card-avatar-placeholder',
+      )}
     </div>
     <div class="bundle-card-row-info">
       <div class="bundle-card-row-top">

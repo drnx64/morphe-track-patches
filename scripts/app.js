@@ -50,6 +50,7 @@ store.init({
   iconCache: {},
   nameCache: {},
   repoAvatarMap: {},
+  repoBundleImageMap: {},
   changelog: [],
   liveDataDate: '',
   lastChecked: '',
@@ -229,18 +230,22 @@ async function loadData() {
     // Repo owner avatars (repo_cache.json → repo_url → avatarUrl)
     const repoCacheRes = await fetchJson('data/state/repo_cache.json', {})
     const repoAvatarMap = {}
+    const repoBundleImageMap = {}
     if (repoCacheRes && typeof repoCacheRes === 'object') {
       for (const [repoUrl, entry] of Object.entries(repoCacheRes)) {
         if (entry && typeof entry === 'object' && entry.avatarUrl) {
           repoAvatarMap[repoUrl] = entry.avatarUrl
         }
+        if (entry && typeof entry === 'object' && entry.bundleImageUrl) {
+          repoBundleImageMap[repoUrl] = entry.bundleImageUrl
+        }
       }
     }
-    store.merge({ repoAvatarMap })
+    store.merge({ repoAvatarMap, repoBundleImageMap })
 
     // Background-warm icon + avatar caches (fetch, resize, store in IndexedDB)
     preloadIcons(iconCache).catch(() => {})
-    preloadAvatars(Object.values(repoAvatarMap)).catch(() => {})
+    preloadAvatars([...Object.values(repoAvatarMap), ...Object.values(repoBundleImageMap)]).catch(() => {})
 
     // Load bundle index
     const index = await fetchJson('data/bundles/_index.json')

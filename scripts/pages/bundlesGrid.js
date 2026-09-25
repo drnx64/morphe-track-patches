@@ -4,7 +4,7 @@
  */
 import { el } from '../ui.js'
 import * as store from '../store.js'
-import { resolveAppName, sortBundleNames, getDisplayAvatar } from '../utils/misc.js'
+import { resolveAppName, sortBundleNames, getDisplayAvatar, getDisplayBundleImage } from '../utils/misc.js'
 import { renderBundleCard } from './bundleCard.js'
 
 const SORT_OPTIONS = [
@@ -55,6 +55,7 @@ export function renderBundlesGrid() {
           apps: [...(b.apps || [])],
           stars: b.stars || 0,
           avatarUrl: getDisplayAvatar(b.repo_url, b.avatarUrl),
+          bundleImageUrl: getDisplayBundleImage(b.repo_url, b.bundleImageUrl),
           repoDescription: b.repoDescription || '',
           isArchived: b.isArchived || false,
           isPreRelease: b.isPreRelease || false,
@@ -67,6 +68,8 @@ export function renderBundlesGrid() {
         if ((b.stars || 0) > (g.stars || 0)) g.stars = b.stars
         const bAv = getDisplayAvatar(b.repo_url, b.avatarUrl)
         if (bAv && !g.avatarUrl) g.avatarUrl = bAv
+        const bImg = getDisplayBundleImage(b.repo_url, b.bundleImageUrl)
+        if (bImg && !g.bundleImageUrl) g.bundleImageUrl = bImg
         if (b.repoDescription && !g.repoDescription) g.repoDescription = b.repoDescription
         if (b.isArchived) g.isArchived = true
         if (b.isPreRelease) g.isPreRelease = true

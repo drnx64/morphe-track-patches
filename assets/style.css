@@ -749,6 +749,48 @@ img {
 .today-updates-heading-row .section-title {
   margin: 0;
 }
+.today-updates-heading-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  min-width: 0;
+}
+.today-updates-heading-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.today-updates-date {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.today-hide-dev-btn {
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-surface);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    border-color var(--transition-speed),
+    color var(--transition-speed),
+    background var(--transition-speed);
+}
+.today-hide-dev-btn:hover {
+  border-color: var(--border-hairline-strong);
+  color: var(--text-primary);
+}
+.today-hide-dev-btn.active {
+  background: var(--bg-surface-inner);
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+}
 .today-updates-toggle {
   display: flex;
   align-items: center;
@@ -887,6 +929,13 @@ img {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--transition-speed);
+}
+.today-bundle-name:hover,
+.today-bundle-name:focus-visible {
+  color: var(--text-primary);
+  text-decoration: underline;
 }
 .today-app-entry {
   display: flex;
@@ -2054,6 +2103,16 @@ img {
 /* ── Changelog Page ───────────────────────────────────── */
 .changelog-page {
   padding-bottom: 2rem;
+}
+.changelog-heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.changelog-heading-row .section-title {
+  margin: 0;
 }
 .changelog-telegram {
   background: var(--gradient-primary);
@@ -3784,4 +3843,134 @@ img {
   .app-card {
     border-color: #ccc;
   }
+}
+
+/* ── App modal: compare bar + overlay ─────────────────── */
+.app-detail-compare-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+}
+.app-detail-compare-hint {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+.app-detail-compare-check {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.15rem;
+}
+.app-detail-compare-check input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: var(--text-primary);
+  cursor: pointer;
+}
+.compare-overlay {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.compare-section {
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.7rem;
+  background: var(--bg-surface-inner);
+}
+.compare-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.45rem;
+}
+.compare-patch {
+  font-size: 0.78rem;
+  padding: 0.28rem 0.45rem;
+  border-left: 3px solid var(--border-hairline-strong);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--bg-surface);
+  margin-bottom: 0.3rem;
+  word-break: break-word;
+}
+.compare-patch--shared {
+  border-left-color: var(--text-muted);
+}
+.compare-patch--unique {
+  border-left-color: var(--accent, #4a7fc8);
+}
+.compare-empty {
+  font-size: 0.74rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* ── Diff page: bundle picker ─────────────────────────── */
+.diff-bundle-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0.7rem 0;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+}
+.diff-bundle-picker-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.diff-bundle-picker-controls {
+  display: flex;
+  gap: 0.4rem;
+}
+.diff-bundle-picker-btn {
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-surface-inner);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    border-color var(--transition-speed),
+    color var(--transition-speed);
+}
+.diff-bundle-picker-btn:hover {
+  border-color: var(--border-hairline-strong);
+  color: var(--text-primary);
+}
+.diff-bundle-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-surface-inner);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition:
+    border-color var(--transition-speed),
+    color var(--transition-speed),
+    opacity var(--transition-speed);
+}
+.diff-bundle-pill:hover {
+  border-color: var(--border-hairline-strong);
+}
+.diff-bundle-pill.active {
+  opacity: 1;
+  border-color: var(--text-muted);
+  color: var(--text-primary);
 }

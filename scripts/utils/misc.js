@@ -2,7 +2,7 @@
  * Miscellaneous utilities — version comparison, bundle grouping, sorting, etc.
  */
 import { escHtml } from './html.js'
-import { resolveAvatarUrl } from './url.js'
+import { resolveAvatarUrl, resolveBundleImage } from './url.js'
 import { getCachedAvatarDataUrl } from '../services/iconCache.js'
 
 export function compareVersions(a, b) {
@@ -32,7 +32,7 @@ export function groupAffectedBundles(affectedBundles) {
   for (const b of affectedBundles) {
     const bName = b.bundle
     if (!grouped[bName]) {
-      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: b.version || '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [], previous_version: b.previous_version || '', new_version: b.new_version || '', avatarUrl: getDisplayAvatar(b.repo_url || '', b.avatarUrl || '') }
+      grouped[bName] = { bundle: bName, channels: [], apps: [], badge_type: b.badge_type, version: b.version || '', repo_url: b.repo_url || '', patches_name: b.patches_name || '', extra_badges: b.extra_badges || [], previous_version: b.previous_version || '', new_version: b.new_version || '', avatarUrl: getDisplayAvatar(b.repo_url || '', b.avatarUrl || ''), bundleImageUrl: getDisplayBundleImage(b.repo_url || '', b.bundleImageUrl || '') }
     }
     if (!grouped[bName].channels.includes(b.channel)) {
       grouped[bName].channels.push(b.channel)
@@ -163,6 +163,42 @@ export function getDisplayAvatar(repoUrl, fallback = '') {
   const url = resolveAvatarUrl(repoUrl, fallback)
   if (!url) return ''
   return getCachedAvatarDataUrl(url) || url
+}
+
+/**
+ * Bundle cover image (patches-bundle.png) for display.
+ * Prefers warm base64/WebP cache; falls back to remote URL.
+ * @param {string} repoUrl
+ * @param {string} [bundleField] - bundle.bundleImageUrl
+ * @returns {string} '' when the repo has no bundle image
+ */
+export function getDisplayBundleImage(repoUrl, bundleField = '') {
+  const url = resolveBundleImage(repoUrl, bundleField)
+  if (!url) return ''
+  return getCachedAvatarDataUrl(url) || url
+}
+
+/**
+ * Avatar stack HTML: primary image → fallback image → letter placeholder.
+ * Each layer hides itself on error and reveals the next sibling.
+ * @param {string} primaryUrl - bundle image URL (may be '')
+ * @param {string} fallbackUrl - author avatar URL (may be '')
+ * @param {string} letterHtml - placeholder inner HTML
+ * @param {string} imgClass - class for both <img> elements
+ * @param {string} phClass - class for placeholder element
+ * @returns {string}
+ */
+export function avatarStackHtml(primaryUrl, fallbackUrl, letterHtml, imgClass, phClass) {
+  const urls = []
+  if (primaryUrl) urls.push(primaryUrl)
+  if (fallbackUrl && fallbackUrl !== primaryUrl) urls.push(fallbackUrl)
+  const reveal = `onerror="this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.style.display='flex'"`
+  let html = ''
+  for (let i = 0; i < urls.length; i++) {
+    html += `<img class="${imgClass}" src="${escHtml(urls[i])}" alt="" loading="lazy"${i > 0 ? ' style="display:none"' : ''} ${reveal}>`
+  }
+  html += `<div class="${phClass}"${urls.length ? ' style="display:none"' : ''}>${letterHtml}</div>`
+  return html
 }
 
 export function renderAppIcon(app, iconCache, size = 'default') {

@@ -51,6 +51,9 @@ if (existsSync(publicDir)) {
     cpSync(join(publicDir, file), join(DOCS, file))
     console.log(`[build] public/${file}`)
   }
+  // Also preserve public/ path — index.html and app.js reference public/*
+  cpSync(publicDir, join(DOCS, 'public'), { recursive: true })
+  console.log('[build] public/ (preserved path)')
 }
 
 // 5. Copy data/ (essential files only)
