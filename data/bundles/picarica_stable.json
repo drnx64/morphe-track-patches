@@ -4,7 +4,7 @@
   "repo_url": "https://github.com/picarica/My-moprhe-patches",
   "created_at": "2026-09-08T07:44:58Z",
   "version": "1.0.1",
-  "description": "Fix Morphe Manager metadata parsing and add AFFiNE XAPK signing-certificate metadata.",
+  "description": "Add a narrowly versioned patch for the Stick War: Legacy 2026.1.983 Google Play launch requirement.",
   "apps": [
     {
       "app_name": "AFFiNE",
@@ -20,10 +20,25 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "Stick War: Legacy",
+      "package": "com.maxgames.stickwarlegacy",
+      "patches": [
+        {
+          "name": "Remove Google Play requirement",
+          "description": "Removes Stick War: Legacy's mandatory Google Play PairIP launch checks while preserving the PairIP runtime, Unity asset packs, Play Games, billing, ads, and Firebase integrations.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.1.983"
+          ]
+        }
+      ]
     }
   ],
   "patches_name": "AFFiNE No-GMS Patches",
-  "fingerprint": "73c70a1e140014a5efd6881c76f3fd4607d088be71c953bc43e2c8d6f1c238eb",
+  "fingerprint": "723d66cce198a669a322d70bec449fd69bc3a14b2b1feb194142a2b25f763123",
   "release_notes": "Fix Morphe Manager metadata parsing, publish patches-list.json, and add AFFiNE XAPK signing-certificate metadata. Supports app.affine.pro 0.27.4, version code 439, arm64-v8a XAPK.",
   "release_tag": "v1.0.1",
   "release_date": "2026-09-08T07:44:58Z",
