@@ -32,9 +32,25 @@ console.log('[build] index.html')
 cpSync(join(ROOT, 'assets'), join(DOCS, 'assets'), { recursive: true })
 console.log('[build] assets/')
 
-// 3. Copy scripts/
-cpSync(join(ROOT, 'scripts'), join(DOCS, 'scripts'), { recursive: true })
-console.log('[build] scripts/')
+// 3. Copy scripts/ — frontend only ever loads ES modules, so ship .js only.
+//    Skips pipeline Python, __pycache__/ and the gitignored temp/ scratch dir.
+const SKIP_DIRS = new Set(['__pycache__', 'temp'])
+function copyJsModules(srcDir, destDir) {
+  mkdirSync(destDir, { recursive: true })
+  let count = 0
+  for (const entry of readdirSync(srcDir, { withFileTypes: true })) {
+    if (entry.isDirectory()) {
+      if (SKIP_DIRS.has(entry.name)) continue
+      count += copyJsModules(join(srcDir, entry.name), join(destDir, entry.name))
+    } else if (entry.name.endsWith('.js')) {
+      cpSync(join(srcDir, entry.name), join(destDir, entry.name))
+      count++
+    }
+  }
+  return count
+}
+const scriptFileCount = copyJsModules(join(ROOT, 'scripts'), join(DOCS, 'scripts'))
+console.log(`[build] scripts/ (${scriptFileCount} .js files)`)
 
 // 4. Copy public files (favicon, feed, msg.txt)
 for (const file of ['favicon.svg', 'feed.xml']) {
