@@ -2,9 +2,9 @@
   "bundle": "steamlink",
   "channel": "dev",
   "repo_url": "https://github.com/AngelDark92/steamlink-patches",
-  "created_at": "2026-09-22T20:52:14",
-  "version": "v1.18.0-dev.12",
-  "description": "## [1.18.0-dev.12](https://github.com/AngelDark92/steamlink-patches/compare/v1.18.0-dev.11...v1.18.0-dev.12) (2026-09-22)\n\n### ✨ New Features\n\n* implemented 4 more patches, dithering VD-Like and Blue Noise Dithering for both 10-bit and 8-bit inputs as experiment ([bd84126](https://github.com/AngelDark92/steamlink-patches/commit/bd841266f5f1c76b19c9b72730750bd0da93c5b6))\n",
+  "created_at": "2026-09-25T10:31:21",
+  "version": "v1.19.1-dev.1",
+  "description": "## [1.19.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.19.0...v1.19.1-dev.1) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* Revise Galaxy XR patch lists in README.md ([80e217d](https://github.com/AngelDark92/steamlink-patches/commit/80e217d085605c83a6d1f2bbe6e97c322341a86c))\n",
   "apps": [
     {
       "app_name": "Steam Link",
@@ -44,6 +44,48 @@
           "options": [],
           "compatible_versions": [
             "2.0.22"
+          ]
+        },
+        {
+          "name": "Background blue-noise dithering (experimental)",
+          "description": "Static blue-noise quantization after video colour processing and fade, only on the background/base layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Select independently or together with the other layer's blue-noise patch. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
+          "use": false,
+          "options": [
+            {
+              "key": "inputDepth",
+              "description": "Both choices apply the same final 8-bit output quantizer. This describes your stream; it does not change host negotiation or decoder precision. When combining with OLED calibration, leave both of its existing VD-like fovea toggles off."
+            }
+          ],
+          "compatible_versions": [
+            "2.0.20"
+          ]
+        },
+        {
+          "name": "Background blue-noise dithering (experimental)",
+          "description": "Static blue-noise quantization after video colour processing and fade, only on the background/base layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Select independently or together with the other layer's blue-noise patch. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
+          "use": false,
+          "options": [
+            {
+              "key": "inputDepth",
+              "description": "Both choices apply the same final 8-bit output quantizer. This describes your stream; it does not change host negotiation or decoder precision. When combining with OLED calibration, leave both of its existing VD-like fovea toggles off."
+            }
+          ],
+          "compatible_versions": [
+            "2.0.22"
+          ]
+        },
+        {
+          "name": "Background blue-noise dithering (experimental)",
+          "description": "Static blue-noise quantization after video colour processing and fade, only on the background/base layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Select independently or together with the other layer's blue-noise patch. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
+          "use": false,
+          "options": [
+            {
+              "key": "inputDepth",
+              "description": "Both choices apply the same final 8-bit output quantizer. This describes your stream; it does not change host negotiation or decoder precision. When combining with OLED calibration, leave both of its existing VD-like fovea toggles off."
+            }
+          ],
+          "compatible_versions": [
+            "2.0.23"
           ]
         },
         {
@@ -232,7 +274,7 @@
         },
         {
           "name": "Foveal blue-noise dithering (experimental)",
-          "description": "Static blue-noise quantization after video colour processing and fade, only on the foveal layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
+          "description": "Static blue-noise quantization after video colour processing and fade, only on the foveal layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Select independently or together with the other layer's blue-noise patch. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
           "use": false,
           "options": [
             {
@@ -246,7 +288,7 @@
         },
         {
           "name": "Foveal blue-noise dithering (experimental)",
-          "description": "Static blue-noise quantization after video colour processing and fade, only on the foveal layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
+          "description": "Static blue-noise quantization after video colour processing and fade, only on the foveal layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Select independently or together with the other layer's blue-noise patch. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
           "use": false,
           "options": [
             {
@@ -260,7 +302,7 @@
         },
         {
           "name": "Foveal blue-noise dithering (experimental)",
-          "description": "Static blue-noise quantization after video colour processing and fade, only on the foveal layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
+          "description": "Static blue-noise quantization after video colour processing and fade, only on the foveal layer. Accepts 8-bit or 10-bit input and always uses 8-bit sRGB output. Select independently or together with the other layer's blue-noise patch. Separate from OLED/VD-like processing; headset validation pending. Unknown host shaders pass through unchanged.",
           "use": false,
           "options": [
             {
@@ -666,10 +708,9 @@
     }
   ],
   "patches_name": "Steam Link GalaxyXR Patches",
-  "fingerprint": "c12aca452951cd1a8004bcbeb36c1e3d8cc342edd0efdd0f609978686663cd8e",
-  "release_notes": "## [1.18.0-dev.12](https://github.com/AngelDark92/steamlink-patches/compare/v1.18.0-dev.11...v1.18.0-dev.12) (2026-09-22)\n\n### ✨ New Features\n\n* implemented 4 more patches, dithering VD-Like and Blue Noise Dithering for both 10-bit and 8-bit inputs as experiment ([bd84126](https://github.com/AngelDark92/steamlink-patches/commit/bd841266f5f1c76b19c9b72730750bd0da93c5b6))\n",
-  "release_tag": "v1.18.0-dev.12",
-  "release_date": "2026-09-22T20:52:14Z",
-  "isPreRelease": true,
-  "bundleImageUrl": ""
+  "fingerprint": "48156edbcc8ef5605a88618c1722161fc36d69ef6f1f7f9fef8129c79577c82e",
+  "release_notes": "## [1.19.1-dev.1](https://github.com/AngelDark92/steamlink-patches/compare/v1.19.0...v1.19.1-dev.1) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* Revise Galaxy XR patch lists in README.md ([80e217d](https://github.com/AngelDark92/steamlink-patches/commit/80e217d085605c83a6d1f2bbe6e97c322341a86c))\n",
+  "release_tag": "v1.19.1-dev.1",
+  "release_date": "2026-09-25T10:31:21Z",
+  "isPreRelease": true
 }
