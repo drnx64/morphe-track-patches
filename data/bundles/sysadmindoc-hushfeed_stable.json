@@ -44,7 +44,7 @@
         },
         {
           "name": "Allow screenshots and Circle to Search",
-          "description": "Removes secure window flags and disables the Circle to Search block. Off by default; restart after changing. Switch: Hushfeed settings > Feed screen.",
+          "description": "Removes secure window flags and disables the Circle to Search block. Off by default. Restart after changing. Switch: Hushfeed settings > Feed screen.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -134,7 +134,7 @@
         },
         {
           "name": "Comment tools",
-          "description": "Hides comments that contain chosen words or come from chosen accounts, turns the thumbs down on each comment into a block button that shows the block symbol, makes links tappable, can show a poll's results before you vote and can hide pictures, polls or TikTok's suggested-search banner above comments. Compact comment header removes the count, controls and suggestion space above the list. Easier comment likes extends the heart's touch area into nearby blank space without changing row spacing. A separate search box filters comments already loaded on the video. Each tool has its own switch in Hushfeed settings > Comments.",
+          "description": "Hides comments that contain chosen words or come from chosen accounts, turns the thumbs down on each comment into a block button that shows the block symbol, makes links tappable, can show a poll's results before you vote and can hide pictures, polls or TikTok's suggested-search banner above comments. Compact comment header removes the count, controls and suggestion space above the list. Easier comment likes extends the heart's touch area into nearby blank space without changing row spacing. A separate search box filters comments already loaded on the video. Tapping more under a video can open its comments with the caption at the top, and the comment button can open them that way too. Brings Double-tap controls with it, which opens the comments. Each tool has its own switch in Hushfeed settings > Comments.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -305,7 +305,7 @@
         },
         {
           "name": "Feed tab navigation",
-          "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, can hide the Tako AI bubble and the unread badges on the bottom tabs, can keep For You from reloading on a Home tap or a pull down, can open TikTok on Following, Friends, Inbox or Profile, and can show TikTok's own feed buttons without a screen reader. Switch: Hushfeed settings > Feed tabs.",
+          "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, can hide the Following and For You names above the feed while swiping between them keeps working, can hide the Tako AI bubble and the unread badges on the bottom tabs, can keep For You from reloading on a Home tap or a pull down, brings TikTok's LIVE button back to the feed's corner when the LIVE tab is taken off the bottom bar, can open TikTok on Following, Friends, Inbox or Profile, and can show TikTok's own feed buttons without a screen reader. Switch: Hushfeed settings > Feed tabs.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -314,7 +314,7 @@
         },
         {
           "name": "Fit the video to the screen",
-          "description": "Puts the whole of a vertical video on screen instead of cropping it to the window. On a 9:16 phone nothing changes, because the video already fills it. On a Fold opened up, a squarer phone or a split view the sides or the ends stop being cut off. Switch: Hushfeed settings > Playback.",
+          "description": "Puts the whole of a vertical video on screen instead of cropping it to the window. On a 9:16 phone nothing changes, because the video already fills it. On a Fold opened up, a squarer phone or a split view the sides or the ends stop being cut off. A second switch, Fill the screen with the video, does the opposite and crops the video until it covers the screen, for the phones where TikTok leaves a black strip under a 9:16 video. Switches: Hushfeed settings > Playback.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -548,7 +548,7 @@
         },
         {
           "name": "Location access governor",
-          "description": "Answers TikTok's location requests with nothing: the last known location comes back empty and update requests never fire. The SIM and region spoof change the locale and timezone, not the coordinates; this stops the coordinates. Switch: Hushfeed settings > Privacy.",
+          "description": "Answers TikTok's location requests with nothing: the last known location comes back empty and update requests never fire. The SIM and region spoof change the locale and timezone, not the coordinates. This patch stops the coordinates. Switch: Hushfeed settings > Privacy.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -751,7 +751,7 @@
         },
         {
           "name": "Show the progress bar",
-          "description": "Shows TikTok's native video seekbar where it would normally be hidden. Switch: Hushfeed settings > App.",
+          "description": "Shows TikTok's native video seekbar where it would normally be hidden, including when one of TikTok's experiments takes it off every video but paid content. Switch: Hushfeed settings > App.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -796,7 +796,7 @@
         },
         {
           "name": "Stop on-device AI profiling",
-          "description": "Kills the Pitaya on-device ML inference engine at startup so it cannot build a behavioral profile. The AI asset strip in the core de-bloat patch removes the native libraries; this stops the initialization code that would download replacements.",
+          "description": "Kills the Pitaya on-device ML inference engine at startup so it cannot build a behavioral profile. The AI asset strip in the core de-bloat patch removes the native libraries. This patch stops the initialization code that would download replacements.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -850,7 +850,7 @@
         },
         {
           "name": "Use system font",
-          "description": "Draws TikTok's text in your device's font instead of TikTok Sans. The icons, the gift animations and the @ and # glyphs keep their own fonts. Off by default; restart after changing. Switch: Hushfeed settings > App.",
+          "description": "Draws TikTok's text in your device's font instead of TikTok Sans. The icons, the gift animations and the @ and # glyphs keep their own fonts. Off by default. Restart after changing. Switch: Hushfeed settings > App.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -861,7 +861,7 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "2984773b7b16912dd009637ea3648f99beb9cf8a2d1c68815d7389d73a3c4a5d",
+  "fingerprint": "c8826a1cb0262b2b6df6d42e84cd9369e8ef807c4d7eec941a9ddb70ee7d16b6",
   "release_notes": "Hushfeed v0.58.0 targets global TikTok 47.0.3 (`com.zhiliaoapp.musically`).\n\nThis one is mostly fixes from your bug reports, plus two requested switches and Turkish.\n\n* Hide series no longer empties creator profiles. TikTok 47.0.3 tags every ordinary profile video as episode 0, and Hushfeed took that for a series. Only a real episode number counts now. (#20)\n* Hide the Tako bubble now also removes the Ask Tako button floating over the search page, including the version paired with a Voice button. (#22)\n* The Save media button is back on comment stickers. TikTok renames its button class with every build, so the button had quietly gone missing since 46.7.3. Hushfeed finds the sheet's buttons by their layout now. (#23)\n* Cut the in-app browser off from TikTok now says plainly that it also stops Activity center and Watch history from responding. If Watch history ignores your taps, turn that switch off under Privacy. (#16)\n* Feed screen adds Hide the Report button on videos, for the flag button some regions get above the creator's picture. App adds Hide search rewards, for the points banner under the search box and the coin counter floating over results. Both are off by default. (#21)\n* Hushfeed's settings now come in Turkish. It's a first pass, and corrections from Turkish speakers are very welcome. (#13)\n\n## Checked\n\n1584 runtime tests passed locally, along with all 269 patch tests and both Android lint checks. All 91 patches applied to TikTok 47.0.3 and to the retained 46.2.3, 46.7.3, 46.8.3 and 46.9.3 fixtures with no manifest changes. The receipt attached here records each run. Older fixtures are compatibility checks. Use 47.0.3 when patching.\n\nThe APK built from this exact bundle was tested on a Galaxy S22 with the same signing key and its app data kept. The series and Tako bugs were reproduced on v0.57.0 first, and all three fixes were checked again on this build. Save media wrote a sticker to the phone.\n\nThe two regional switches were turned on and the feed and search were used without a crash. TikTok doesn't show the Report button or search rewards to our test account, so we couldn't watch them disappear. If you have them, tell us how the switches behave. The shopping block at the top of some search results isn't covered yet.\n\n## Updating\n\nNeeds Morphe Manager 1.30.0 or newer. Refresh the Hushfeed source, then patch and install again, keeping the manager's existing signing key. The `.mpp` is a patch bundle, not a TikTok APK.\n",
   "release_tag": "v0.58.0",
   "release_date": "2026-09-21T12:50:34Z",

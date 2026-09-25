@@ -122,7 +122,7 @@
         },
         {
           "name": "Open links in external browser",
-          "description": "Opens web links in your default browser instead of Facebook's in-app browser. Facebook pages still open in the app.",
+          "description": "Opens web links in your default browser instead of Facebook's in-app browser, without Facebook's click tracker or the fbclid tag it adds. Facebook pages still open in the app.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -139,13 +139,23 @@
             "580.0.0.51.74",
             "577.0.0.50.72"
           ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Takes Facebook's tracking tags, such as mibextid, off the links you share or copy. The post or reel a link opens stays the same. A facebook.com/share/ link is made for one share, so Facebook can still trace it back to you.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
         }
       ]
     }
   ],
   "patches_name": "Hushfacebook",
-  "fingerprint": "5434d5df874fa502929ce473c72d166ae53ea9b90bd4651c60106032bb6c822c",
-  "release_notes": "## What's new\n\n- Hushfacebook settings can now export the runtime feature switches to JSON and import them on this phone or another one. Import previews the changes, skips unknown names, and refuses damaged or newer files without changing anything.\n- Hushfacebook now has a Facebook-blue identity with a new icon, README hero, social preview, and light or dark wordmarks. The README also has direct install, download, patch, and support links.\n- Story and reel saves only fetch from Meta's media servers over HTTPS, and a file reaches your gallery only once it's whole and really is the photo or video it claims to be. Saves also work again behind routers that answer DNS from a fake-IP range, as OpenClash and sing-box do.\n- A save shows its progress in a notification with a Cancel button. Two saves started together no longer trip over each other.\n- Hushfacebook's own text follows the phone's language (German, Spanish, Indonesian, Brazilian Portuguese or Turkish, English otherwise), and TalkBack now reads section titles as headings and each switch as a switch.\n- Pause and safe mode now take out the reel Download button and the Save item on other people's stories. The settings screen says exactly what Pause turns off.\n- The diagnostic report names your Facebook build and lists every patch, along with failed saves and Reels filter trouble. File names and Facebook's ids stay out of it.\n- AMOLED black theme no longer breaks a screen on Facebook 580, and hooks that run before Facebook has started can't stop it from starting.\n- Built with Morphe patcher 1.14.1, so this bundle needs Morphe Manager 1.32.0 or newer.\n\n## Validation\n\n- 274 runtime tests and 79 patch tests passed locally, with both Android lint checks clean.\n- All 13 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without forced compatibility mode or manifest changes.\n\nThe `.mpp` is a Morphe patch bundle, not a Facebook APK. Use Morphe Manager 1.32.0 or newer and keep its existing signing key when updating.\n",
+  "fingerprint": "45c97bbca8334e531e0c428ac88fafeec8508c07ae59bb9c7860cdcc24bc494c",
+  "release_notes": "## What's new\n\n- Hushfacebook settings can now export the runtime feature switches to JSON and import them on this phone or another one. Import previews the changes, skips unknown names, and refuses damaged or newer files without changing anything.\n- Hushfacebook now has a Facebook-blue identity with a new icon and README hero, plus light or dark wordmarks. The README also has direct install, download, patch, and support links.\n- Story and reel saves only fetch from Meta's media servers over HTTPS, and a file reaches your gallery only once it's whole and really is the photo or video it claims to be. They still go through behind routers that answer DNS from a fake-IP range, as OpenClash and sing-box do.\n- A save shows its progress in a notification with a Cancel button. Two saves started together no longer trip over each other.\n- Hushfacebook's own text follows the phone's language (German, Spanish, Indonesian, Brazilian Portuguese or Turkish, English otherwise), and TalkBack now reads section titles as headings and each switch as a switch.\n- Pause and safe mode now take out the reel Download button and the Save item on other people's stories. The settings screen says exactly what Pause turns off.\n- The diagnostic report names your Facebook build and lists every patch, along with failed saves and Reels filter trouble. File names and Facebook's ids stay out of it.\n- AMOLED black theme no longer breaks a screen on Facebook 580, and hooks that run before Facebook has started can't stop it from starting.\n- Built with Morphe patcher 1.14.1, so this bundle needs Morphe Manager 1.32.0 or newer.\n\n## Validation\n\n- 274 runtime tests and 79 patch tests passed locally, with both Android lint checks clean.\n- All 13 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without forced compatibility mode or manifest changes.\n\nThe `.mpp` is a Morphe patch bundle, not a Facebook APK. Use Morphe Manager 1.32.0 or newer and keep its existing signing key when updating.\n",
   "release_tag": "v0.1.2",
   "release_date": "2026-09-25T14:50:42Z",
   "isPreRelease": false
