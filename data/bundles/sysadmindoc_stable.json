@@ -2,9 +2,9 @@
   "bundle": "sysadmindoc",
   "channel": "stable",
   "repo_url": "https://github.com/SysAdminDoc/Hushfacebook",
-  "created_at": "2026-09-25T14:50:42Z",
-  "version": "0.1.2",
-  "description": "Hushfacebook v0.1.2 targets Facebook 580.0.0.51.74 (com.facebook.katana), and 577.0.0.50.72 still works.\n\nThis release adds JSON export and import for the switches in Hushfacebook settings. It previews changes before import, skips settings a build doesn't know, and refuses damaged or newer files without changing anything. Hushfacebook also has a new Facebook-blue icon, README hero, social preview and wordmarks.\n\n13 patches in all. Sponsored and suggested posts leave the news feed without a gap, and ads are gone from Stories and Reels. Facebook stops downloading ads in the background and sending ad telemetry. Links open in your own browser, stories and reels can be saved, and there's an AMOLED black theme if you want one.\n\nValidation: 274 runtime tests passed locally. All 79 patch tests passed too, along with both Android lint checks. All 13 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 with no manifest changes.\n\nNeeds Morphe Manager 1.32.0 or newer. Patch the arm64-v8a bundle of Facebook 580.0.0.51.74 from APKMirror. The .mpp is a patch bundle, not a Facebook APK. Keep the manager's existing signing key when updating.",
+  "created_at": "2026-09-25T22:58:11Z",
+  "version": "0.1.4",
+  "description": "Hushfacebook v0.1.4 targets Facebook 580.0.0.51.74 (com.facebook.katana), and 577.0.0.50.72 still works.\n\nThis release adds Hide Reels in the feed, which takes the rows of reels between posts out of the news feed, along with the reels Facebook adds where your feed ends. A reel a friend posts stays.\n\n19 patches in all. Sponsored and suggested posts leave the news feed without a gap, and ads are gone from Stories and Reels. Facebook stops downloading ads in the background and sending ad telemetry. Links open in your own browser, stories, reels and videos can be saved, and there's an AMOLED black theme or a Material You one if you want it.\n\nValidation: 374 runtime tests passed locally. All 108 patch tests passed too, along with both Android lint checks. All 19 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 with no manifest changes.\n\nNeeds Morphe Manager 1.32.0 or newer. Patch the arm64-v8a bundle of Facebook 580.0.0.51.74 from APKMirror. The .mpp is a patch bundle, not a Facebook APK. Keep the manager's existing signing key when updating.",
   "apps": [
     {
       "app_name": "Facebook",
@@ -71,6 +71,46 @@
           ]
         },
         {
+          "name": "Download any video",
+          "description": "Adds Download to phone to the menu of videos in the feed and in Watch, below Facebook's own items. Videos save at the best quality the player streams.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide AI-detected posts",
+          "description": "Removes feed posts that Facebook's own detection marked as made with AI. Its switch starts off, so turn it on in Hushfacebook's settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide Reels in the feed",
+          "description": "Removes the rows of reels between posts in the news feed, and the reels Facebook adds where your feed ends. A reel a friend posts stays.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide Stories tray",
+          "description": "Removes the row of stories at the top of the news feed, Create story included.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
           "name": "Hide sponsored posts",
           "description": "Removes sponsored and promoted posts from the news feed, with no gap left behind.",
           "use": true,
@@ -102,7 +142,7 @@
         },
         {
           "name": "Hide suggested and promoted posts",
-          "description": "Removes posts that Facebook adds to the feed, such as \"Pages you may like\" and its own upsells. In-feed surveys go too.",
+          "description": "Removes what Facebook adds to the feed besides ads: \"Suggested for you\" posts, \"People you may know\", \"Pages you may like\" and its own upsells. In-feed surveys go too. Each kind has its own switch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -114,6 +154,16 @@
           "name": "Hushfacebook settings",
           "description": "Adds Hushfacebook settings to Facebook's launcher icon. Long-press the icon to turn features on or off, pause Hushfacebook, save your switches to a file or load them, and export diagnostics. The licenses are there too.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Material You theme",
+          "description": "Gives Facebook's dark mode the colours of your wallpaper on Android 12 and newer, and a fixed blue palette on Android 11. Light mode stays as it is. Turn on dark mode in Facebook first.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "580.0.0.51.74",
@@ -154,9 +204,9 @@
     }
   ],
   "patches_name": "Hushfacebook",
-  "fingerprint": "45c97bbca8334e531e0c428ac88fafeec8508c07ae59bb9c7860cdcc24bc494c",
-  "release_notes": "## What's new\n\n- Hushfacebook settings can now export the runtime feature switches to JSON and import them on this phone or another one. Import previews the changes, skips unknown names, and refuses damaged or newer files without changing anything.\n- Hushfacebook now has a Facebook-blue identity with a new icon and README hero, plus light or dark wordmarks. The README also has direct install, download, patch, and support links.\n- Story and reel saves only fetch from Meta's media servers over HTTPS, and a file reaches your gallery only once it's whole and really is the photo or video it claims to be. They still go through behind routers that answer DNS from a fake-IP range, as OpenClash and sing-box do.\n- A save shows its progress in a notification with a Cancel button. Two saves started together no longer trip over each other.\n- Hushfacebook's own text follows the phone's language (German, Spanish, Indonesian, Brazilian Portuguese or Turkish, English otherwise), and TalkBack now reads section titles as headings and each switch as a switch.\n- Pause and safe mode now take out the reel Download button and the Save item on other people's stories. The settings screen says exactly what Pause turns off.\n- The diagnostic report names your Facebook build and lists every patch, along with failed saves and Reels filter trouble. File names and Facebook's ids stay out of it.\n- AMOLED black theme no longer breaks a screen on Facebook 580, and hooks that run before Facebook has started can't stop it from starting.\n- Built with Morphe patcher 1.14.1, so this bundle needs Morphe Manager 1.32.0 or newer.\n\n## Validation\n\n- 274 runtime tests and 79 patch tests passed locally, with both Android lint checks clean.\n- All 13 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without forced compatibility mode or manifest changes.\n\nThe `.mpp` is a Morphe patch bundle, not a Facebook APK. Use Morphe Manager 1.32.0 or newer and keep its existing signing key when updating.\n",
-  "release_tag": "v0.1.2",
-  "release_date": "2026-09-25T14:50:42Z",
+  "fingerprint": "df8e4a445468d9c49e92f527d453ae2c0aab59ac5c0e7f5fabbef6239b7ea7ca",
+  "release_notes": "## What's new\n\n- **Hide Reels in the feed** is a new patch. The rows of reels between posts leave the news feed, and so do the reels Facebook adds where your feed ends. A reel a friend posts stays. Pick it in Morphe Manager; its switch starts on.\n- Built with Morphe patcher 1.14.1, so this bundle needs Morphe Manager 1.32.0 or newer.\n\n## Validation\n\n- 374 runtime tests and 108 patch tests passed locally, with both Android lint checks clean.\n- All 19 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without forced compatibility mode or manifest changes.\n\nThe `.mpp` is a Morphe patch bundle, not a Facebook APK. Use Morphe Manager 1.32.0 or newer and keep its existing signing key when updating. The `.cdx.json` is the bundle's SBOM.",
+  "release_tag": "v0.1.4",
+  "release_date": "2026-09-25T22:58:11Z",
   "isPreRelease": false
 }

@@ -2,9 +2,9 @@
   "bundle": "dual-vot",
   "channel": "dev",
   "repo_url": "https://github.com/sashade8-ship-it/dual-vot-patches",
-  "created_at": "2026-09-25T14:00:04",
-  "version": "v1.45.0-dev.14-dualvot.8.5.3",
-  "description": "## Dual VoT Patches 1.45.0-dev.14-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.14.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+  "created_at": "2026-09-25T18:47:27",
+  "version": "v1.45.0-dev.15-dualvot.8.5.3",
+  "description": "## Dual VoT Patches 1.45.0-dev.15-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.15.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
   "apps": [
     {
       "app_name": "YouTube Music",
@@ -307,6 +307,18 @@
         {
           "name": "Hide music action buttons",
           "description": "Adds options to hide action buttons under the player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Media notification controls",
+          "description": "Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -1422,7 +1434,16 @@
           "name": "Navigation bar",
           "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button) and the upper navigation toolbar.",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "hideSearchAppShortcut",
+              "description": "Permanently hides the shortcut to open Search when long pressing the app icon in your launcher."
+            },
+            {
+              "key": "hideSubscriptionsAppShortcut",
+              "description": "Permanently hides the shortcut to open Subscriptions when long pressing the app icon in your launcher."
+            }
+          ],
           "compatible_versions": [
             "21.38.123",
             "21.37.42",
@@ -2235,9 +2256,9 @@
     }
   ],
   "patches_name": "Dual VoT Patches",
-  "fingerprint": "62c659b60f4b694bceb874dcb90936ea002d59c7e2c3474291a7f01c2356587b",
-  "release_notes": "## Dual VoT Patches 1.45.0-dev.14-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.14.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
-  "release_tag": "v1.45.0-dev.14-dualvot.8.5.3",
-  "release_date": "2026-09-25T14:00:04Z",
+  "fingerprint": "57ef93bdd6f732380771de6739023c86844602fc1fb2ef70ffb7a1eb00a8ec6c",
+  "release_notes": "## Dual VoT Patches 1.45.0-dev.15-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.15.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+  "release_tag": "v1.45.0-dev.15-dualvot.8.5.3",
+  "release_date": "2026-09-25T18:47:27Z",
   "isPreRelease": true
 }
