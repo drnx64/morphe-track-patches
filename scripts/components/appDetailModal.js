@@ -8,7 +8,9 @@ import * as store from '../store.js'
 import { resolveAppName, getAppIconUrl, copyToClipboard, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
 import { getPlayStoreUrl, getAddMorpheUrl } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
+import { wordDiffHtml } from '../utils/wordDiff.js'
 import { formatVersion } from '../utils/format.js'
+import { buildCompareMatrix } from './compareMatrixTable.js'
 import { CLOSE_ICON, CHEVRON_DOWN, CHEVRON_RIGHT } from '../utils/svg.js'
 
 const PLAY_STORE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M.859 11.981V1.741c0-.672.79-1.098 1.434-.771L12.37 6.09c.662.336.662 1.207 0 1.543l-10.077 5.12c-.644.327-1.434-.099-1.434-.772M9.23 9.23l-8.1-8.101m8.1 3.364l-8.1 8.1"/></svg>'
@@ -164,57 +166,19 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
       const picked = appBundles.filter((b) => selectedForCompare.has(b.bundleName))
       if (picked.length < 2) return
 
-      const patchSets = picked.map((b) => {
-        const names = new Set(getPatchesFor(b).map((p) => p.name.toLowerCase()))
-        return { bundle: b, names }
-      })
-
-      const shared = [...patchSets[0].names].filter((n) =>
-        patchSets.every((s) => s.names.has(n)),
-      )
-      const sharedNames = new Set(shared)
-      const sharedPatches = getPatchesFor(picked[0])
-        .filter((p) => sharedNames.has(p.name.toLowerCase()))
-        .sort((a, b) => a.name.localeCompare(b.name))
-
-      const overlay = el('div', { class: 'compare-overlay' })
-
-      const inAll = el('div', { class: 'compare-section' })
-      inAll.appendChild(el('h4', { class: 'compare-section-title' }, [`In all ${picked.length} bundles (${sharedPatches.length})`]))
-      if (sharedPatches.length === 0) {
-        inAll.appendChild(el('div', { class: 'compare-empty' }, ['No shared patches']))
-      }
-      for (const p of sharedPatches) {
-        inAll.appendChild(el('div', { class: 'compare-patch compare-patch--shared' }, [p.name]))
-      }
-      overlay.appendChild(inAll)
-
-      for (const s of patchSets) {
-        const only = [...s.names].filter((n) => {
-          const count = patchSets.filter((x) => x.names.has(n)).length
-          return count === 1
-        })
-        const onlyPatches = getPatchesFor(s.bundle)
-          .filter((p) => only.includes(p.name.toLowerCase()))
-          .sort((a, b) => a.name.localeCompare(b.name))
-        const sec = el('div', { class: 'compare-section' })
-        sec.appendChild(el('h4', { class: 'compare-section-title' }, [
-          `Only in ${s.bundle.patchesName} (${onlyPatches.length})`,
-        ]))
-        if (onlyPatches.length === 0) {
-          sec.appendChild(el('div', { class: 'compare-empty' }, ['No unique patches']))
-        }
-        for (const p of onlyPatches) {
-          sec.appendChild(el('div', { class: 'compare-patch compare-patch--unique' }, [p.name]))
-        }
-        overlay.appendChild(sec)
-      }
+      const cols = picked.map((b) => ({
+        label: b.patchesName,
+        avatarUrl: b.avatarUrl,
+        version: b.version,
+        channel: b.channels.includes('dev') ? 'dev' : 'stable',
+        patches: getPatchesFor(b),
+      }))
 
       openModal({
         title: `Compare ${appName} patches`,
-        content: overlay,
+        content: buildCompareMatrix(cols),
         className: 'compare-modal',
-        maxWidth: 700,
+        maxWidth: 880,
         stack: true,
       })
     })
@@ -466,6 +430,11 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
       const changes = (modified.changes || []).map((c) => escHtml(c)).join(', ')
       row.innerHTML = `<span class="app-detail-diff-icon">~</span><span>${escHtml(modified.name)}<span class="app-detail-diff-changes">${changes}</span></span>`
       diffList.appendChild(row)
+      if (typeof modified.previous_description === 'string') {
+        const desc = el('div', { class: 'app-detail-diff-desc' })
+        desc.innerHTML = wordDiffHtml(modified.previous_description, modified.description || '', escHtml)
+        diffList.appendChild(desc)
+      }
     }
     changesTab.appendChild(diffList)
   }
