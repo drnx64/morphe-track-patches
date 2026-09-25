@@ -16,6 +16,8 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
+import config  # noqa: F401  — loads .env (TG_TOKEN/TG_CHAT) when run standalone
+
 STATE_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "state")
 LAST_MSG_PATH = os.path.join(STATE_DIR, "last_tg_msg.json")
 
@@ -61,14 +63,26 @@ def _send_message(chat_id, text, token):
     raise RuntimeError(f"Telegram API error: {result.get('description', result)}")
 
 
+def _truncate(text):
+    if len(text) > 4096:
+        return text[:4000] + "\n\n... (truncated)"
+    return text
+
+
 def _edit_message(chat_id, message_id, text, token):
-    result = _tg_api("editMessageText", {
-        "chat_id": chat_id,
-        "message_id": message_id,
-        "text": text,
-        "parse_mode": "HTML",
-        "disable_web_page_preview": True,
-    }, token)
+    try:
+        result = _tg_api("editMessageText", {
+            "chat_id": chat_id,
+            "message_id": message_id,
+            "text": text,
+            "parse_mode": "HTML",
+            "disable_web_page_preview": True,
+        }, token)
+    except urllib.error.HTTPError as err:
+        body = err.read().decode("utf-8", "replace")
+        if "message is not modified" in body:
+            return True
+        raise
     return result.get("ok", False)
 
 
@@ -105,6 +119,7 @@ def send_or_edit(chunks, token=None, chat_id=None):
         chunks = [chunks]
 
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    stamp = datetime.now(timezone.utc).strftime("%H:%M")
     last = _load_last_msg()
     existing = last.get("messages", []) if last.get("date") == today else []
     remaining_existing = list(existing)
@@ -112,15 +127,13 @@ def send_or_edit(chunks, token=None, chat_id=None):
     result_messages = []
 
     for i, chunk in enumerate(chunks):
-        if len(chunk) > 4096:
-            chunk = chunk[:4000] + "\n\n... (truncated)"
-
         # Try editing an existing message for this chunk index
         msg_entry = next((m for m in remaining_existing if m.get("chunk") == i), None)
         edited = False
         if msg_entry:
+            text = _truncate(chunk + f"\n\n<i>Updated {stamp}</i>")
             try:
-                if _edit_message(chat_id, msg_entry["message_id"], chunk, token):
+                if _edit_message(chat_id, msg_entry["message_id"], text, token):
                     print(f"[+] Edited message {msg_entry['message_id']} (chunk {i})")
                     result_messages.append({"message_id": msg_entry["message_id"], "chunk": i})
                     remaining_existing.remove(msg_entry)
@@ -130,7 +143,7 @@ def send_or_edit(chunks, token=None, chat_id=None):
 
         if not edited:
             try:
-                msg_id = _send_message(chat_id, chunk, token)
+                msg_id = _send_message(chat_id, _truncate(chunk), token)
                 print(f"[+] Sent message {msg_id} (chunk {i})")
                 result_messages.append({"message_id": msg_id, "chunk": i})
             except Exception as e:
