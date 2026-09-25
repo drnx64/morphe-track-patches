@@ -2,9 +2,9 @@
   "bundle": "ajstrick81-androidtv",
   "channel": "stable",
   "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-  "created_at": "2026-08-29T16:47:02",
-  "version": "v1.30.3",
-  "description": "## [1.30.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.30.2...v1.30.3) (2026-08-29)\n\n\n### Bug Fixes\n\n* **paramount:** harden ad-patch fingerprints; verify + support v16.19.0 ([#142](https://github.com/ajstrick81/morphe-androidtv-patches/issues/142)) ([5fcbb59](https://github.com/ajstrick81/morphe-androidtv-patches/commit/5fcbb596f55702f180223857b4dcec06a541b89b))\n\n\n\n",
+  "created_at": "2026-09-24T16:23:29",
+  "version": "v1.37.5",
+  "description": "## [1.37.5](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.37.4...v1.37.5) (2026-09-24)\n\n\n### Bug Fixes\n\n* **pluto:** lift the live ad mask when the last ad ends ([cce4172](https://github.com/ajstrick81/morphe-androidtv-patches/commit/cce417218d339446aab80a1bf476ff9f66647aed))\n\n\n\n",
   "apps": [
     {
       "app_name": "Livingroom",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Bundle native ad-strip hook",
-          "description": "Packages libpvhook.so into the APK's native lib dir for the in-process PRS Remote-item strip (libignite memcpy/memmove GOT/PLT import hook).",
+          "description": "Packages libpvhook.so into the APK's native lib dir for the in-process ad strip (libignite memcpy/memmove GOT/PLT import hook).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -39,7 +39,7 @@
         },
         {
           "name": "Load native ad-strip hook",
-          "description": "Loads libpvhook.so at startup to blank Remote (ad) items from the PRS intraTitlePlaylist in-process (libignite memcpy/memmove GOT/PLT import hook).",
+          "description": "Loads libpvhook.so at startup to strip ads in-process: blanks Remote (ad) items in the PRS intraTitlePlaylist and empties getVideoAds ad responses (libignite memcpy/memmove GOT/PLT import hook).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -121,7 +121,8 @@
             "26.6.0+rc5-2026.04.21",
             "26.8.0+rc6-2026.05.20",
             "26.9.2+rc1-2026.06.12",
-            "26.12.1+rc1-2026.07.15"
+            "26.12.1+rc1-2026.07.15",
+            "26.16.0+rc2-2026.09.08"
           ]
         },
         {
@@ -133,7 +134,50 @@
             "26.6.0+rc5-2026.04.21",
             "26.8.0+rc6-2026.05.20",
             "26.9.2+rc1-2026.06.12",
-            "26.12.1+rc1-2026.07.15"
+            "26.12.1+rc1-2026.07.15",
+            "26.16.0+rc2-2026.09.08"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Score Center",
+      "package": "com.espn.score_center",
+      "patches": [
+        {
+          "name": "Clone ESPN",
+          "description": "Installs the patched ESPN as a separate app alongside the stock one, instead of replacing it. Enable this when ESPN is a preinstalled system app that can't be uninstalled — most commonly on Amazon Fire TV, and on some Android TV boxes and Onn devices. The clone gets its own package (suffix .mod), so it shows up as a second ESPN icon and keeps its own settings. Leave OFF if you were able to uninstall the original ESPN first (a normal in-place install is cleaner). Opt-in.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "6.11.1"
+          ]
+        },
+        {
+          "name": "Disable auto-updates",
+          "description": "Stops the Google Play Store from silently updating ESPN back to the official version and wiping out the patch (which would bring the ads back). Works by setting the patched build's version number far ahead of anything on the Store, so it's treated as already up to date. You can still update deliberately by re-patching a newer APK in Morphe. Recommended to leave ON. Does not apply to mount-installed apps.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.11.1"
+          ]
+        },
+        {
+          "name": "ESPN Android TV",
+          "description": "Suppresses ESPN Android TV VOD/scheduled ads by forcing DMP SGAI isAdDisabled = true (that one boolean gates all six ad-scheduling sites). Live passthrough-SSAI commercial breaks can't be removed — to MASK them with a slate + mute, also select the \"ESPN live commercial-break slate\" patch. No DNS dependency.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.11.1"
+          ]
+        },
+        {
+          "name": "ESPN live commercial-break slate",
+          "description": "Masks LIVE ESPN commercial breaks (which are passthrough SSAI and can't be removed) with a full-screen slate + mute: your own video/image clips, or the animated \"Be Right Back\" overlay with a live countdown. Includes an on-screen D-pad picker to switch styles. Leave OFF if you only want the VOD ad suppression and no on-screen slate during live breaks. Runtime opt-out: a `slate_off` marker file.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.11.1"
           ]
         }
       ]
@@ -224,7 +268,8 @@
           "options": [],
           "compatible_versions": [
             "7.5.102",
-            "7.6.100"
+            "7.6.100",
+            "7.8.100"
           ]
         },
         {
@@ -234,17 +279,19 @@
           "options": [],
           "compatible_versions": [
             "7.5.102",
-            "7.6.100"
+            "7.6.100",
+            "7.8.100"
           ]
         },
         {
           "name": "Skip ads",
-          "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102 and v7.6.100.",
+          "description": "Disables ad delivery via Sky SDK surgical targets (FreeWheel DI module skip, MediaTailor SSAI layers, ad-break-started no-op), AdBlockInterceptor wiring on both the app NetworkingKt OkHttp client and the Sky SDK addon network client, and a WebView shouldInterceptRequest wrapper. Validated v7.5.102, v7.6.100 and v7.8.100.",
           "use": true,
           "options": [],
           "compatible_versions": [
             "7.5.102",
-            "7.6.100"
+            "7.6.100",
+            "7.8.100"
           ]
         }
       ]
@@ -260,6 +307,21 @@
           "options": [],
           "compatible_versions": [
             "10.28.5000"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Rte",
+      "package": "com.twentyfouri.tvbridge.rte",
+      "patches": [
+        {
+          "name": "Skip ads",
+          "description": "Suppresses client-side (VOD) Google IMA ads in the RTÉ Player Android TV app by neutering the IMA AdsManager start and ad-event handler. Live DAI (server-stitched SSAI) is not affected — that can't be removed client-side without breaking live content.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.160.3"
           ]
         }
       ]
@@ -355,6 +417,15 @@
           ]
         },
         {
+          "name": "Mask live ad breaks (black screen + mute)",
+          "description": "Masks Pluto TV LIVE/linear commercial breaks, which are real broadcast time stitched into the live feed and cannot be removed (unlike VOD ads, which \"Skip ads\" deletes outright). During a live break it covers the player with a black screen and mutes the audio, then restores both the instant the show returns — so gambling, drinking, or any other live ad is blanked and silenced. Detection is driven by Pluto's own ID3 ad-state flow (ID3AdsBeaconTracker), which fires only while an ad plays, so it needs no polling and keeps working alongside \"Skip ads\". Opt-out: leave it OFF to watch live ads normally; runtime controls are marker files in the app's external files dir — `slate_off` disables it, and `pluto_slate_mode` set to `black` or `mute` picks cover-only or mute-only instead of both. Validated on-device, 5.66.0-leanback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.66.0-leanback"
+          ]
+        },
+        {
           "name": "Override certificate pinning",
           "description": "Edits Pluto's network_security_config to trust user CAs (system + user, overridePins) on both a new base-config and every existing domain-config — including the pluto.tv entry that is otherwise system-only — so an HTTPS-filtering proxy can inspect the HLS manifest. Optional adjunct to the manifest-rewrite ad approach.",
           "use": true,
@@ -365,7 +436,7 @@
         },
         {
           "name": "Skip ads",
-          "description": "Removes Pluto TV's on-demand (VOD) ads entirely — ad video, markers, overlays, and beacons. Two layers: (1) drops the ad <Period>s from the stitched DASH manifest at media3's parser and re-bases the content periods contiguous, so the ad VIDEO is never played (verified on-device: 2:49:58 -> 2:18:41, mid-rolls gone); (2) empties the client-side ad-break timeline (StitcherSession.adBreaks — the same data AdGuard strips via jsonprune) and no-ops pause ads and clickable-ad overlays, removing the markers/UI/beacons. Fail-open: a manifest it can't rewrite is passed through unchanged (ads remain, playback never breaks). LIVE TV ads are real broadcast time in the linear feed and are not removable. Validated on-device, 5.66.0-leanback.",
+          "description": "Removes Pluto TV's on-demand (VOD) ads entirely — ad video, markers, overlays, and beacons. Two layers: (1) drops the ad <Period>s from the stitched DASH manifest at media3's parser and re-bases the content periods contiguous, so the ad VIDEO is never played (verified on-device: 2:49:58 -> 2:18:41, mid-rolls gone); (2) empties the client-side ad-break timeline (StitcherSession.adBreaks — the same data AdGuard strips via jsonprune) and no-ops pause ads and clickable-ad overlays, removing the markers/UI/beacons. Fail-open: a manifest it can't rewrite is passed through unchanged (ads remain, playback never breaks). A resume bookmark saved in the original (ad-inclusive) timeline is re-mapped into the shortened timeline so resuming a partially-watched episode no longer overshoots the end and autoplay-skips (issue #147). LIVE TV ads are real broadcast time in the linear feed and are not removable. Validated on-device, 5.66.0-leanback.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -391,8 +462,9 @@
     }
   ],
   "patches_name": "ajstrick81 Patches",
-  "fingerprint": "665fd42551d9b6a99da5e7d8ce1186f5c9b8053bdea6113ab2722008f05640b9",
-  "release_notes": "## [1.30.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.30.2...v1.30.3) (2026-08-29)\n\n\n### Bug Fixes\n\n* **paramount:** harden ad-patch fingerprints; verify + support v16.19.0 ([#142](https://github.com/ajstrick81/morphe-androidtv-patches/issues/142)) ([5fcbb59](https://github.com/ajstrick81/morphe-androidtv-patches/commit/5fcbb596f55702f180223857b4dcec06a541b89b))\n\n\n\n",
-  "release_tag": "v1.30.3",
-  "release_date": "2026-08-29T16:47:02Z"
+  "fingerprint": "5e506547db3f239c546ea128fce2954d01219c12b911c89959a74e2d6a189948",
+  "release_notes": "## [1.37.5](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.37.4...v1.37.5) (2026-09-24)\n\n\n### Bug Fixes\n\n* **pluto:** lift the live ad mask when the last ad ends ([cce4172](https://github.com/ajstrick81/morphe-androidtv-patches/commit/cce417218d339446aab80a1bf476ff9f66647aed))\n\n\n\n",
+  "release_tag": "v1.37.5",
+  "release_date": "2026-09-24T16:23:29Z",
+  "isPreRelease": false
 }

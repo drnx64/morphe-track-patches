@@ -4,7 +4,7 @@
   "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
   "created_at": "2026-09-19T23:38:16Z",
   "version": "pv-v15-fix-120",
-  "description": "## [1.37.4](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.37.3...v1.37.4) (2026-09-20)\n\n\n### Bug Fixes\n\n* **primevideo:** blank complete ad items in truncated mid-roll chunks ([#120](https://github.com/ajstrick81/morphe-androidtv-patches/issues/120)) ([5828353](https://github.com/ajstrick81/morphe-androidtv-patches/commit/5828353e07cab6e0eda673da9404e54fd50c48ff))",
+  "description": "## [1.37.5](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.37.4...v1.37.5) (2026-09-24)\n\n\n### Bug Fixes\n\n* **pluto:** lift the live ad mask when the last ad ends ([cce4172](https://github.com/ajstrick81/morphe-androidtv-patches/commit/cce417218d339446aab80a1bf476ff9f66647aed))",
   "apps": [
     {
       "app_name": "Livingroom",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Bundle native ad-strip hook",
-          "description": "Packages libpvhook.so into the APK's native lib dir for the in-process PRS Remote-item strip (libignite memcpy/memmove GOT/PLT import hook).",
+          "description": "Packages libpvhook.so into the APK's native lib dir for the in-process ad strip (libignite memcpy/memmove GOT/PLT import hook).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -39,7 +39,7 @@
         },
         {
           "name": "Load native ad-strip hook",
-          "description": "Loads libpvhook.so at startup to blank Remote (ad) items from the PRS intraTitlePlaylist in-process (libignite memcpy/memmove GOT/PLT import hook).",
+          "description": "Loads libpvhook.so at startup to strip ads in-process: blanks Remote (ad) items in the PRS intraTitlePlaylist and empties getVideoAds ad responses (libignite memcpy/memmove GOT/PLT import hook).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -462,7 +462,7 @@
     }
   ],
   "patches_name": "ajstrick81 Patches",
-  "fingerprint": "3613531920e98b9c7de420b799386f51f3f0b734a0d0c4cbe278bbe6f1c115fb",
+  "fingerprint": "e95eb52b8b065f111fc97b1b3f0cd810f46e6c932b56a5541e04537613787756",
   "release_notes": "**#120 v15 mid-roll ad-truncation FIX — field-test build (not an official release).**\n\nTarget: **Prime Video 6.23.23 + v15.5.0.70 only** (armeabi-v7a). Clone build (installs as `com.amazon.amazonvideo.livingroom.mod`).\n\n**⚠️ This is NOT a v16 fix.** On 6.24.x (v16.0.0.x) the ad pipeline is native — this patch applies/installs cleanly there but will **not** suppress ads. Use only on 6.23.23+v15.5.0.70.\n\n**What it fixes:** large mid-roll ad responses in aggressive-ad regions (India/EU) arrive split across memory chunks; the old code bailed and let the ad through (or buffer-locked into a freeze). This blanks each *complete* ad in a truncated chunk, leaving the half-copied tail alone.\n\n**Install:** signed with the project release key — it will NOT update over a self-patched build in place (`SIGNATURES_DO_NOT_MATCH`). Uninstall the existing `.mod` first, then install (one-time re-login). Self-signers can re-sign with their own key for in-place updates.\n\n**Confirming in logcat:** `PVKILL path=tv-trunc blanked=N` + climbing `rego_trunc` in the `[hb]` heartbeat.\n",
   "release_tag": "pv-v15-fix-120",
   "release_date": "2026-09-19T23:38:16Z",
