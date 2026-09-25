@@ -143,7 +143,7 @@
         },
         {
           "name": "Confirm feed interactions",
-          "description": "Adds optional second-tap protection to the feed Follow button and like heart. A red ring marks the armed button. Switch: Hushfeed settings > Feed screen.",
+          "description": "Asks for a second tap before the feed Follow button, the like heart, a comment or story like, or a quick repost goes through. A short message asks for the second tap, and most armed buttons also get a white ring. Switches: Hushfeed settings > Feed screen.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -305,7 +305,7 @@
         },
         {
           "name": "Feed tab navigation",
-          "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, and can hide the Tako AI bubble and the unread badges on the bottom tabs. Switch: Hushfeed settings > Feed tabs.",
+          "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, can hide the Tako AI bubble and the unread badges on the bottom tabs, can keep For You from reloading on a Home tap or a pull down, and can open TikTok on Friends, Inbox or Profile. Switch: Hushfeed settings > Feed tabs.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -861,7 +861,7 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "966e448a9ae1fe49c6da06cb20193c8f030b08f713a3da369405b948cee847fd",
+  "fingerprint": "18f3acf98e94ec0b19792bd3c1a720acb016775c165bb2ea7cc8c8021cd20da9",
   "release_notes": "Hushfeed v0.58.0 targets global TikTok 47.0.3 (`com.zhiliaoapp.musically`).\n\nThis one is mostly fixes from your bug reports, plus two requested switches and Turkish.\n\n* Hide series no longer empties creator profiles. TikTok 47.0.3 tags every ordinary profile video as episode 0, and Hushfeed took that for a series. Only a real episode number counts now. (#20)\n* Hide the Tako bubble now also removes the Ask Tako button floating over the search page, including the version paired with a Voice button. (#22)\n* The Save media button is back on comment stickers. TikTok renames its button class with every build, so the button had quietly gone missing since 46.7.3. Hushfeed finds the sheet's buttons by their layout now. (#23)\n* Cut the in-app browser off from TikTok now says plainly that it also stops Activity center and Watch history from responding. If Watch history ignores your taps, turn that switch off under Privacy. (#16)\n* Feed screen adds Hide the Report button on videos, for the flag button some regions get above the creator's picture. App adds Hide search rewards, for the points banner under the search box and the coin counter floating over results. Both are off by default. (#21)\n* Hushfeed's settings now come in Turkish. It's a first pass, and corrections from Turkish speakers are very welcome. (#13)\n\n## Checked\n\n1584 runtime tests passed locally, along with all 269 patch tests and both Android lint checks. All 91 patches applied to TikTok 47.0.3 and to the retained 46.2.3, 46.7.3, 46.8.3 and 46.9.3 fixtures with no manifest changes. The receipt attached here records each run. Older fixtures are compatibility checks. Use 47.0.3 when patching.\n\nThe APK built from this exact bundle was tested on a Galaxy S22 with the same signing key and its app data kept. The series and Tako bugs were reproduced on v0.57.0 first, and all three fixes were checked again on this build. Save media wrote a sticker to the phone.\n\nThe two regional switches were turned on and the feed and search were used without a crash. TikTok doesn't show the Report button or search rewards to our test account, so we couldn't watch them disappear. If you have them, tell us how the switches behave. The shopping block at the top of some search results isn't covered yet.\n\n## Updating\n\nNeeds Morphe Manager 1.30.0 or newer. Refresh the Hushfeed source, then patch and install again, keeping the manager's existing signing key. The `.mpp` is a patch bundle, not a TikTok APK.\n",
   "release_tag": "v0.58.0",
   "release_date": "2026-09-21T12:50:34Z",
