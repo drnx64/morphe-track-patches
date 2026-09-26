@@ -2,9 +2,9 @@
   "bundle": "ajstrick81-androidtv",
   "channel": "dev",
   "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-  "created_at": "2026-06-26T16:45:34",
-  "version": "v1.5.7-dev.3",
-  "description": "## [1.5.7-dev.3](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.5.7-dev.2...v1.5.7-dev.3) (2026-06-26)\n\n\n### Bug Fixes\n\n* **peacock:** re-add Layer 9 (NativeNetworkApi interceptor) only ([b14707e](https://github.com/ajstrick81/morphe-androidtv-patches/commit/b14707e23290fa26597f3b2ddda9b3c39442efc2))\n\n\n\n",
+  "created_at": "2026-09-26T12:54:16",
+  "version": "test-212",
+  "description": "**Test build for #212 — not a release.** Netflix ad-strip fix candidate (MASTER v3). Built from branch `fix/netflix-212-getadmetadata-branch` (commit e248a3e) on top of v1.37.7.\n\n**What changed:** `getAdMetadata` now empties its ad-break list on *every* branch, including the new `adverts.adBreaks` branch that leaked on 13.0.1. Only the Netflix ad-kill script changed.\n\n**How to test** (Netflix 13.0.1 build 25028):\n1. Patch with `test-212.mpp` using the same patches as before (Clone Netflix, Disable CertCheck, Remove Netflix ads bundle engine + loader).\n2. Install, launch, wait ~60s on the home screen, then play an ad-tier title.\n3. Attach `adb logcat -d -s KILL > kill.txt`. Look for `PATCH M2: ... else{};b=[];` or `PATCH MASTERw: ... v3`.\n\nVerified offline (patch applies, script bundled, branch logic simulated). Not yet verified on a device — that's what this build is for.\n",
   "apps": [
     {
       "app_name": "Livingroom",
@@ -176,9 +176,8 @@
   ],
   "patches_name": "ajstrick81 Patches",
   "fingerprint": "39891b6ac6f1f7f159f321c8c5bf22b1124c6d2c2b51a3537171d0e0b2768321",
-  "release_notes": "## [1.37.7](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.37.6...v1.37.7) (2026-09-26)\n\n\n### Bug Fixes\n\n* **netflix:** suppress household prompt on both profile-select and playback routes ([45609ef](https://github.com/ajstrick81/morphe-androidtv-patches/commit/45609ef40ca5fecb812f99ef65d5fa4738d60c0a)), closes [#168](https://github.com/ajstrick81/morphe-androidtv-patches/issues/168)\n\n\n\n",
-  "release_tag": "v1.37.7",
-  "release_date": "2026-09-26T01:39:59Z",
-  "isPreRelease": false,
-  "bundleImageUrl": ""
+  "release_notes": "**Test build for #212 — not a release.** Netflix ad-strip fix candidate (MASTER v3). Built from branch `fix/netflix-212-getadmetadata-branch` (commit e248a3e) on top of v1.37.7.\n\n**What changed:** `getAdMetadata` now empties its ad-break list on *every* branch, including the new `adverts.adBreaks` branch that leaked on 13.0.1. Only the Netflix ad-kill script changed.\n\n**How to test** (Netflix 13.0.1 build 25028):\n1. Patch with `test-212.mpp` using the same patches as before (Clone Netflix, Disable CertCheck, Remove Netflix ads bundle engine + loader).\n2. Install, launch, wait ~60s on the home screen, then play an ad-tier title.\n3. Attach `adb logcat -d -s KILL > kill.txt`. Look for `PATCH M2: ... else{};b=[];` or `PATCH MASTERw: ... v3`.\n\nVerified offline (patch applies, script bundled, branch logic simulated). Not yet verified on a device — that's what this build is for.\n",
+  "release_tag": "test-212",
+  "release_date": "2026-09-26T12:54:16Z",
+  "isPreRelease": true
 }
