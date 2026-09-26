@@ -2,8 +2,8 @@
   "bundle": "wake-old-hyphen",
   "channel": "stable",
   "repo_url": "https://github.com/Wake-Old-Hyphen/hushfeed",
-  "created_at": "2026-09-25T17:39:04Z",
-  "version": "0.58.0",
+  "created_at": "2026-09-26T07:38:40Z",
+  "version": "0.60.0",
   "description": "Hushfeed v0.60.0 targets global TikTok 47.0.3 (com.zhiliaoapp.musically).\n\nA small release with three fixes. Comments that TikTok dropped without a word now go out, through Comment send fix, a new patch that's on by default. With Caption above comments on, the caption no longer shows over the video too. Allow Duet and Stitch covers creators who limit duets on their whole account.\n\nValidation: 2040 runtime tests passed locally, along with the patch tests and both Android lint checks. All 94 patches applied to TikTok 47.0.3. Use 47.0.3 when patching.\n\nOn the S22 test phone, comments from the feed went out with the fix, and with the state that stopped them forced on, the fix sent them where TikTok alone stopped.\n\nNeeds Morphe Manager 1.30.0 or newer. Refresh the Hushfeed source to update. The .mpp is a patch bundle, not a TikTok APK. Keep the manager's existing signing key when updating.",
   "apps": [
     {
@@ -370,6 +370,15 @@
           "name": "Hide CAPTCHA popups",
           "description": "Adds a default-off setting to hide the CAPTCHA dialogs raised while browsing or watching LIVE. Login and account verification stay visible, and so does any CAPTCHA the server raised over a follow, like, comment or repost, because hiding one of those makes the action fail with no message. Switch: Hushfeed settings > Feed screen.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3"
+          ]
+        },
+        {
+          "name": "Hide Play Store update offer",
+          "description": "Gives the patched APK the highest Android version code so Play shows Open instead of Update. TikTok's visible version stays 47.0.3 in Morphe Manager. Off by default. Android won't install a lower-code APK over it, and uninstalling to return to a lower code can remove local TikTok data.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "47.0.3"
@@ -879,9 +888,9 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "46efcdacaa9c677d7195e30ff4229be8a5918068c15b05f9e59f6895fbea8b3f",
-  "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.58.0",
-  "release_tag": "v0.58.0",
-  "release_date": "2026-09-25T17:39:04Z",
+  "fingerprint": "475afb5a4792d57aeb96292454949528a143a7da6b6f5e30407d2c5c90a8793d",
+  "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0",
+  "release_tag": "v0.60.0",
+  "release_date": "2026-09-26T07:38:40Z",
   "isPreRelease": false
 }

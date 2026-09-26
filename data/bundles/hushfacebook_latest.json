@@ -2,9 +2,9 @@
   "bundle": "hushfacebook",
   "channel": "latest",
   "repo_url": "https://github.com/SysAdminDoc/Hushfacebook",
-  "created_at": "2026-09-25T22:58:11",
-  "version": "v0.1.4",
-  "description": "## What's new\n\n- **Hide Reels in the feed** is a new patch. The rows of reels between posts leave the news feed, and so do the reels Facebook adds where your feed ends. A reel a friend posts stays. Pick it in Morphe Manager; its switch starts on.\n- Built with Morphe patcher 1.14.1, so this bundle needs Morphe Manager 1.32.0 or newer.\n\n## Validation\n\n- 374 runtime tests and 108 patch tests passed locally, with both Android lint checks clean.\n- All 19 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without forced compatibility mode or manifest changes.\n\nThe `.mpp` is a Morphe patch bundle, not a Facebook APK. Use Morphe Manager 1.32.0 or newer and keep its existing signing key when updating. The `.cdx.json` is the bundle's SBOM.",
+  "created_at": "2026-09-26T04:36:23",
+  "version": "v0.1.5",
+  "description": "Hushfacebook 0.1.5 adds an optional switch that holds a Story at the end until you navigate, and another that keeps your place when you return to the feed within ten minutes. Pull to refresh and a fresh launch still work as before.\n\nThe Hushfacebook settings screen now groups controls into clearer cards. The default dark view has a stronger status header and blue controls. Hide Reels in the feed also catches showcase rows and the extra row Facebook adds near the end.\n\nAll 21 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without changing their manifests. Local checks passed: 115 patch tests, 389 extension tests and both Android lints. The Story timing behavior still needs a signed-in device check; the new patch starts off in Morphe Manager.\n\nRequires Morphe Manager 1.32.0 or newer. Patch the arm64-v8a Facebook bundle. The .mpp file is a patch bundle, not an APK.\n",
   "apps": [
     {
       "app_name": "Facebook",
@@ -34,6 +34,16 @@
           "name": "Block background ad prefetch",
           "description": "Stops Facebook downloading ads and its ad model in the background. That saves data and battery. The ads don't take up storage either.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Block background-return feed refresh",
+          "description": "Keeps your feed position when you return to Facebook within ten minutes. Pull to refresh and a fresh launch still work.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "580.0.0.51.74",
@@ -101,16 +111,6 @@
           ]
         },
         {
-          "name": "Hide Stories tray",
-          "description": "Removes the row of stories at the top of the news feed, Create story included.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "580.0.0.51.74",
-            "577.0.0.50.72"
-          ]
-        },
-        {
           "name": "Hide sponsored posts",
           "description": "Removes sponsored and promoted posts from the news feed, with no gap left behind.",
           "use": true,
@@ -134,6 +134,16 @@
           "name": "Hide sponsored stories",
           "description": "Removes ad cards from the story viewer, so swiping through stories only shows stories people posted.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide Stories tray",
+          "description": "Removes the row of stories at the top of the news feed, Create story included.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "580.0.0.51.74",
@@ -199,14 +209,24 @@
             "580.0.0.51.74",
             "577.0.0.50.72"
           ]
+        },
+        {
+          "name": "Stop Story auto-advance",
+          "description": "Keeps each Story on screen until you tap or swipe. Turn the switch off for Facebook's timing.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
         }
       ]
     }
   ],
   "patches_name": "Hushfacebook",
-  "fingerprint": "0d24449ed918049522a4207314f5bf4ed4c2941f65150f9f6541c713474b4758",
-  "release_notes": "## What's new\n\n- **Hide Reels in the feed** is a new patch. The rows of reels between posts leave the news feed, and so do the reels Facebook adds where your feed ends. A reel a friend posts stays. Pick it in Morphe Manager; its switch starts on.\n- Built with Morphe patcher 1.14.1, so this bundle needs Morphe Manager 1.32.0 or newer.\n\n## Validation\n\n- 374 runtime tests and 108 patch tests passed locally, with both Android lint checks clean.\n- All 19 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without forced compatibility mode or manifest changes.\n\nThe `.mpp` is a Morphe patch bundle, not a Facebook APK. Use Morphe Manager 1.32.0 or newer and keep its existing signing key when updating. The `.cdx.json` is the bundle's SBOM.",
-  "release_tag": "v0.1.4",
-  "release_date": "2026-09-25T22:58:11Z",
+  "fingerprint": "b041b274650579011995a6fccc49df2634484002eb48ddb7f9093a686d8506c0",
+  "release_notes": "Hushfacebook 0.1.5 adds an optional switch that holds a Story at the end until you navigate, and another that keeps your place when you return to the feed within ten minutes. Pull to refresh and a fresh launch still work as before.\n\nThe Hushfacebook settings screen now groups controls into clearer cards. The default dark view has a stronger status header and blue controls. Hide Reels in the feed also catches showcase rows and the extra row Facebook adds near the end.\n\nAll 21 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without changing their manifests. Local checks passed: 115 patch tests, 389 extension tests and both Android lints. The Story timing behavior still needs a signed-in device check; the new patch starts off in Morphe Manager.\n\nRequires Morphe Manager 1.32.0 or newer. Patch the arm64-v8a Facebook bundle. The .mpp file is a patch bundle, not an APK.\n",
+  "release_tag": "v0.1.5",
+  "release_date": "2026-09-26T04:36:23Z",
   "isPreRelease": false
 }
