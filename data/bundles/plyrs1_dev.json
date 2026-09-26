@@ -1,0 +1,106 @@
+{
+  "bundle": "plyrs1",
+  "channel": "dev",
+  "repo_url": "https://github.com/Plyrs1/morphe-patches",
+  "created_at": "2026-09-25T08:19:36Z",
+  "version": "1.4.0-dev.1",
+  "description": "## [1.3.0](https://github.com/Plyrs1/morphe-patches/compare/v1.2.0...v1.3.0) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* **com_pertaminiku:** inject premium purchase before conversion ([24f5301](https://github.com/Plyrs1/morphe-patches/commit/24f5301e87d4f5cee0ac89eb039f3c0ea560f85b))\n\n### ✨ New Features\n\n* **com_ogestudio_strukpertamini:** add BypassReviewDialog patch ([0c196d4](https://github.com/Plyrs1/morphe-patches/commit/0c196d42a0047e1114cfd2ab0c7c2e18f602e32f))\n* **com_ogestudio_strukpertamini:** add RemoveAds, HidePremiumButton, and brand credit patches ([afb7ee5](https://github.com/Plyrs1/morphe-patches/commit/afb7ee5034addbdabd4ffd6cceae15dec3c02574))\n* **com_pertaminiku:** Add lifetime premium patch ([6ebdf53](https://github.com/Plyrs1/morphe-patches/commit/6ebdf53c269c7ed5dd949ab4f79ad1d490d6b38e))\n* **com_pertaminiku:** Add PairIP patch ([d932728](https://github.com/Plyrs1/morphe-patches/commit/d9327284f4727d5da069f01e0c8ee8e8885ae00a))",
+  "apps": [
+    {
+      "app_name": "Struk POM",
+      "package": "com.garnesapps.strukpom",
+      "patches": [
+        {
+          "name": "Disable Startup Permissions",
+          "description": "Suppresses indiscriminate startup requests for camera and storage permissions, and configures manifest for direct system camera capture.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.17.057"
+          ]
+        },
+        {
+          "name": "Hide Gift Button",
+          "description": "Hides the gift / donation button in the top action bar of the main menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.17.057"
+          ]
+        },
+        {
+          "name": "Remove All Ads",
+          "description": "Disables all AdMob preloading, bypasses interstitial ads, and auto-removes the watermark on receipt screens without user interaction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.17.057"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Struk Pom / SPBU",
+      "package": "com.ogestudio.strukpertamini",
+      "patches": [
+        {
+          "name": "Bypass Review Dialog",
+          "description": "Bypasses the in-app review confirmation dialog when pressing Back on the Home screen, allowing immediate exit.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.2.7"
+          ]
+        },
+        {
+          "name": "Hide Premium Button",
+          "description": "Hides the Premium upgrade button from both the top action bar on the Home screen and the Settings menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.2.7"
+          ]
+        },
+        {
+          "name": "Remove Ads",
+          "description": "Removes all banner and interstitial ads by unlocking ad-free premium status and disabling AdMob loaders.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.2.7"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Pertaminiku",
+      "package": "com.pertaminiku",
+      "patches": [
+        {
+          "name": "Disable Licensing",
+          "description": "Bypasses PairIP license verification to prevent 'Something went wrong' errors on emulators and devices without Google Play.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.0.2"
+          ]
+        },
+        {
+          "name": "Lifetime Premium",
+          "description": "Unlocks lifetime premium: removes watermark forever, disables ads, unlocks all templates.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.2"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Plyrs1 Patches",
+  "fingerprint": "635bd29497c5edf61fa30cc1eb96069ba572e208ad153b6b53c3aaf71f0ea17f",
+  "release_notes": "## [1.4.0-dev.1](https://github.com/Plyrs1/morphe-patches/compare/v1.3.0...v1.4.0-dev.1) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* **com_doovera_eujianbrowser:** clear FLAG_SECURE on onResume for screenshot support ([f095bb9](https://github.com/Plyrs1/morphe-patches/commit/f095bb9c3e5e3e30a33e4767b53bffbd2a4ac26a))\n* **com_doovera_eujianbrowser:** fix activity lifecycle contract and register width in startup bypass ([9c7f648](https://github.com/Plyrs1/morphe-patches/commit/9c7f648136dbf2efd55c314e001b435205455592))\n* **com_doovera_eujianbrowser:** fix NoSuchFieldError on Unit singleton and direct exam launch ([0494667](https://github.com/Plyrs1/morphe-patches/commit/0494667005e4c4fba68bda46759e1a4e33beac23))\n\n### ✨ New Features\n\n* **com_doovera_eujianbrowser:** add patch to disable ClipboardGuard and preserve clipboard data ([cea6a78](https://github.com/Plyrs1/morphe-patches/commit/cea6a7839907bfc9e03130e7fc85695ef007c04e))\n* **com_doovera_eujianbrowser:** add patch to remove auto-pin app and allow app switching ([fa9f3d3](https://github.com/Plyrs1/morphe-patches/commit/fa9f3d3f31a8458a3381bb232063bb5cbbe70f21))\n* **com_doovera_eujianbrowser:** Add security bypass and background persistence patches ([40cc3b0](https://github.com/Plyrs1/morphe-patches/commit/40cc3b002e02fe7d4b1aca12c44885c913d0e705))\n* **pertaminiku:** add first-launch credit toast ([f35d17c](https://github.com/Plyrs1/morphe-patches/commit/f35d17cbdf4fb75562fce8ef842611b5f6253658))\n",
+  "release_tag": "v1.4.0-dev.1",
+  "release_date": "2026-09-25T08:19:36Z",
+  "isPreRelease": true
+}

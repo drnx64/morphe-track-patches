@@ -1,0 +1,234 @@
+{
+  "bundle": "ahmedyarub",
+  "channel": "stable",
+  "repo_url": "https://github.com/ahmedyarub/morphe-patches",
+  "created_at": "2026-09-23T10:29:46Z",
+  "version": "1.7.0",
+  "description": "## [1.7.0](https://github.com/ahmedyarub/morphe-patches/compare/v1.6.1...v1.7.0) (2026-09-23)\n\n### ✨ New Features\n\n* **Instagram:** Support 448.0.0.52.84 and fix the story tray hook ([4d60654](https://github.com/ahmedyarub/morphe-patches/commit/4d606544b466c260d3dd1749dac80e6e1bb2f784))\n* **Instagram:** Support 448.0.0.52.84 and fix the story tray hook ([d7125ae](https://github.com/ahmedyarub/morphe-patches/commit/d7125aea42ab7cd3c9ced7faa7bb9743483d4c63))",
+  "apps": [
+    {
+      "app_name": "Instagram",
+      "package": "com.instagram.android",
+      "patches": [
+        {
+          "name": "Bypass signature check",
+          "description": "",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Disable analytics",
+          "description": "Blocks analytics requests sent to Instagram and Facebook servers.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Disable screenshot detection",
+          "description": "Disables screenshot detection in direct messages and stories.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Download media",
+          "description": "Adds ability to download posts, reels, stories and highlights",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "448.0.0.52.84",
+            "447.0.0.55.81",
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Download voice message",
+          "description": "Enables ability to download voice messages",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "448.0.0.52.84",
+            "447.0.0.55.81",
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Filter stories",
+          "description": "Hides categories of stories from the story tray.",
+          "use": true,
+          "options": [
+            {
+              "key": "hideAdsStories",
+              "description": "Hides advertisements from the story tray."
+            },
+            {
+              "key": "hideSuggestedStories",
+              "description": "Hides suggested users and creators from the story tray."
+            },
+            {
+              "key": "hideHighlightStories",
+              "description": "Hides resurfaced highlights from the story tray."
+            }
+          ],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Hide Instants",
+          "description": "Hides Instants from DMs page.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Hide Threads profile button",
+          "description": "Hides the Threads button from the profile page action bar (top right of the profile page).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Hides ads in the feed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Hide suggested content",
+          "description": "Choose the suggested content to hide using the patch options.",
+          "use": true,
+          "options": [
+            {
+              "key": "hideSuggestedReels",
+              "description": "Hides suggested reels from feed and reels tab."
+            },
+            {
+              "key": "hideSuggestedStories",
+              "description": "Hides suggested stories/users from story tray."
+            },
+            {
+              "key": "hideHighlightStories",
+              "description": "Hides highlighted stories from story tray, sponsored stories which have no set expiration."
+            },
+            {
+              "key": "hideSuggestedAccount",
+              "description": "Hides suggested accounts from the list of followers and from other profiles."
+            }
+          ],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Improve image viewing",
+          "description": "Requests the maximum resolution images from the server.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Make ephemeral media permanent",
+          "description": "Changes unexpired view once, view twice media to permanent view.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "448.0.0.52.84",
+            "447.0.0.55.81",
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Open links externally",
+          "description": "Opens links in the system browser instead of the in-app browser.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Sanitize share links",
+          "description": "Removes tracking parameters from links shared out of the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        },
+        {
+          "name": "Save deleted messages",
+          "description": "Captures incoming DMs locally as they arrive from the server and marks them when the sender deletes them.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "448.0.0.52.84",
+            "447.0.0.55.81",
+            "446.0.0.49.77",
+            "439.0.0.37.89"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Reddit",
+      "package": "com.reddit.frontpage",
+      "patches": [
+        {
+          "name": "Remove Reddit Pro section",
+          "description": "Removes the Reddit Pro section from the community drawer, and the Reddit Pro promos: the post creation and subreddit join upsell sheets, and the Reddit Pro banner on the profile feed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.37.0"
+          ]
+        },
+        {
+          "name": "Remove Resources and Games on Reddit sections",
+          "description": "Removes the Resources and Games on Reddit sections from the community drawer.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.37.0"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Ahmed Yarub's Patches",
+  "fingerprint": "422ebec7fad7f8fb5fc6cf2611ea14fbcb2f8b1d0316e2a1ae73ac7a19856ac9",
+  "release_notes": "## [1.7.0](https://github.com/ahmedyarub/morphe-patches/compare/v1.6.1...v1.7.0) (2026-09-23)\n\n### ✨ New Features\n\n* **Instagram:** Support 448.0.0.52.84 and fix the story tray hook ([4d60654](https://github.com/ahmedyarub/morphe-patches/commit/4d606544b466c260d3dd1749dac80e6e1bb2f784))\n* **Instagram:** Support 448.0.0.52.84 and fix the story tray hook ([d7125ae](https://github.com/ahmedyarub/morphe-patches/commit/d7125aea42ab7cd3c9ced7faa7bb9743483d4c63))\n",
+  "release_tag": "v1.7.0",
+  "release_date": "2026-09-23T10:29:46Z",
+  "isPreRelease": false
+}

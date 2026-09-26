@@ -1,0 +1,232 @@
+{
+  "bundle": "hushfacebook",
+  "channel": "stable",
+  "repo_url": "https://github.com/SysAdminDoc/Hushfacebook",
+  "created_at": "2026-09-26T06:42:58",
+  "version": "v0.1.6",
+  "description": "Hushfacebook 0.1.6 makes settings easier to scan. Actions stand out more clearly in dark and light themes, and the recovery screen has more distinct controls. Shorter descriptions in all five translations keep the important exceptions. Pause has a visible badge when active.\n\nThe Save folder dialog explains where files go and confirms the saved name when characters need replacing. The diagnostic choices explain quick and full reports. The Licenses screen wraps notices for a phone and makes project links tappable.\n\nAll 21 patches applied without force to Facebook 580.0.0.51.74 and 577.0.0.50.72, with no manifest changes. Local checks passed: 389 extension tests, 115 patch tests and both Android lints. Signed-in feed and Story checks remain pending on an isolated test session.\n\nRequires Morphe Manager 1.32.0 or newer. Patch the arm64-v8a Facebook bundle. The .mpp is a patch bundle, not a Facebook APK.\n",
+  "apps": [
+    {
+      "app_name": "Facebook",
+      "package": "com.facebook.katana",
+      "patches": [
+        {
+          "name": "AMOLED black theme",
+          "description": "Makes Facebook's dark mode black instead of dark grey. Turn on dark mode in Facebook first.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Block ad telemetry",
+          "description": "Stops Facebook watching for screenshots of ads and reporting which apps you install for ad attribution.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Block background ad prefetch",
+          "description": "Stops Facebook downloading ads and its ad model in the background. That saves data and battery. The ads don't take up storage either.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Block background-return feed refresh",
+          "description": "Keeps your feed position when you return to Facebook within ten minutes. Pull to refresh and a fresh launch still work.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Disable Audience Network",
+          "description": "Stops Facebook serving ads to other apps. Those apps then show their own ads or none, and rewarded ads can fail.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Download any reel",
+          "description": "Adds a Download button beside every reel. Videos save at the best quality the player streams.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Download any story",
+          "description": "Adds Save to the menu of any story, including stories with music. Videos save at the best quality the player streams.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Download any video",
+          "description": "Adds Download to phone to the menu of videos in the feed and in Watch, below Facebook's own items. Videos save at the best quality the player streams.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide AI-detected posts",
+          "description": "Removes feed posts that Facebook's own detection marked as made with AI. Its switch starts off, so turn it on in Hushfacebook's settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide Reels in the feed",
+          "description": "Removes the rows of reels between posts in the news feed, and the reels Facebook adds where your feed ends. A reel a friend posts stays.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide sponsored posts",
+          "description": "Removes sponsored and promoted posts from the news feed, with no gap left behind.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide sponsored reels",
+          "description": "Removes ads from Reels and Watch, including product banners over a reel and ads inside a video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide sponsored stories",
+          "description": "Removes ad cards from the story viewer, so swiping through stories only shows stories people posted.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide Stories tray",
+          "description": "Removes the row of stories at the top of the news feed, Create story included.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide suggested and promoted posts",
+          "description": "Removes what Facebook adds to the feed besides ads: \"Suggested for you\" posts, \"People you may know\", \"Pages you may like\" and its own upsells. In-feed surveys go too. Each kind has its own switch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hushfacebook settings",
+          "description": "Adds Hushfacebook settings to Facebook's launcher icon. Long-press the icon to turn features on or off, pause Hushfacebook, save your switches to a file or load them, and export diagnostics. The licenses are there too.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Material You theme",
+          "description": "Gives Facebook's dark mode the colours of your wallpaper on Android 12 and newer, and a fixed blue palette on Android 11. Light mode stays as it is. Turn on dark mode in Facebook first.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Open links in external browser",
+          "description": "Opens web links in your default browser instead of Facebook's in-app browser, without Facebook's click tracker or the fbclid tag it adds. Facebook pages still open in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Restore screens on re-signed builds",
+          "description": "Makes profiles and some Settings pages open again on a re-signed build. A Root Mount install doesn't need this patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Takes Facebook's tracking tags, such as mibextid, off the links you share or copy. The post or reel a link opens stays the same. A facebook.com/share/ link is made for one share, so Facebook can still trace it back to you.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Stop Story auto-advance",
+          "description": "Keeps each Story on screen until you tap or swipe. Turn the switch off for Facebook's timing.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Hushfacebook",
+  "fingerprint": "9813322ac9ec876c91cb20cab7ad38a79954ba434425c61020260b98ccfd079e",
+  "release_notes": "Hushfacebook 0.1.6 makes settings easier to scan. Actions stand out more clearly in dark and light themes, and the recovery screen has more distinct controls. Shorter descriptions in all five translations keep the important exceptions. Pause has a visible badge when active.\n\nThe Save folder dialog explains where files go and confirms the saved name when characters need replacing. The diagnostic choices explain quick and full reports. The Licenses screen wraps notices for a phone and makes project links tappable.\n\nAll 21 patches applied without force to Facebook 580.0.0.51.74 and 577.0.0.50.72, with no manifest changes. Local checks passed: 389 extension tests, 115 patch tests and both Android lints. Signed-in feed and Story checks remain pending on an isolated test session.\n\nRequires Morphe Manager 1.32.0 or newer. Patch the arm64-v8a Facebook bundle. The .mpp is a patch bundle, not a Facebook APK.\n",
+  "release_tag": "v0.1.6",
+  "release_date": "2026-09-26T06:42:58Z",
+  "isPreRelease": false
+}

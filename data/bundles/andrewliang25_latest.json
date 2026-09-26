@@ -1,0 +1,389 @@
+{
+  "bundle": "andrewliang25",
+  "channel": "latest",
+  "repo_url": "https://github.com/andrewliang25/morphe-patches",
+  "created_at": "2026-09-24T18:21:28",
+  "version": "v3.2.0",
+  "description": "## [3.2.0](https://github.com/andrewliang25/morphe-patches/compare/v3.1.0...v3.2.0) (2026-09-25)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* Facebook: open profiles and settings on re-signed Facebook builds ([69a2f20](https://github.com/andrewliang25/morphe-patches/commit/69a2f20cbea21ffe49b3421c3ab56b0ec62cdf57))\r\n* Facebook: block the ads and the sponsored product banner inside a reel ([23334d1](https://github.com/andrewliang25/morphe-patches/commit/23334d14ec7462ac696dbf5b624475f6887409e2), [0d930d1](https://github.com/andrewliang25/morphe-patches/commit/0d930d1e348912d172eeab04de8881d77b62af11))\r\n* Facebook: stop the Reels ad-break lookup instead of retrying it ([eaca2ee](https://github.com/andrewliang25/morphe-patches/commit/eaca2ee9fcd2b427bb561ae53ee3fba775092c8b))\r\n* Facebook: save a photo story as a picture, and save stories with our own downloader ([56d7957](https://github.com/andrewliang25/morphe-patches/commit/56d7957ce7933c153301dbf6c4b77afa75b7315b), [4f229a1](https://github.com/andrewliang25/morphe-patches/commit/4f229a1e6ac4fe5246a7582585cd1bde78bd1e2b))\r\n\r\n### ✨ New Features\r\n\r\n* LINE: hide the Agent i and AI Friends buttons in LINE ([0ddc176](https://githubpatches/commit/0ddc1760a4f15edca734890968f0818b7cbb6215)), closes [#133](https://github.comhes/issues/133)\r\n* LINE: hide the \"CHECK\" tips under LINE chat messages ([c2f234d](https://githubpatches/commit/c2f234da10ff8e7d856fa188d88047eb06a5244f))\r\n* Facebook: add an AMOLED black theme for Facebook ([799d0ae](https://github.com/andrewliang25/morphe-patches/commit/799d0aec55b4e409c6cec6b5f9d6b947240ab9ec)), closes [#108](https://github.com/andrewliang25/morphe-patches/issues/108)\r\n* Facebook: add a download button beside every reel ([e0007d8](https://github.com/andrewliang25/morphe-patches/co1f38dfd6d21f45bbda8))\r\n* Facebook: save stories and reels at the quality the player streams ([d250464](https://githubpatches/commit/d250464794c1882aac02d7617a06742efdbe75f4), [16a9184](https://github.com/andrewliang25/morphe-patches/commit/16a9184e9284d1))",
+  "apps": [
+    {
+      "app_name": "Facebook",
+      "package": "com.facebook.katana",
+      "patches": [
+        {
+          "name": "[Ad] Block ad telemetry",
+          "description": "Stops Facebook watching for screenshots of ads and reporting which apps you install for ad attribution.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Ad] Block background ad prefetch",
+          "description": "Stops Facebook downloading ads and its ad model in the background, which saves data, battery and storage.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Ad] Disable Audience Network",
+          "description": "Stops Facebook serving ads to other apps. Those apps then show their own ads or none, and rewarded ads can fail.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Feed] Hide sponsored posts",
+          "description": "Removes sponsored posts from the news feed, with no gap left behind.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Feed] Hide suggested and promoted posts",
+          "description": "Removes posts that Facebook adds to the feed, such as \"Pages you may like\", upsells and surveys.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Fix] Restore screens on re-signed builds",
+          "description": "Makes profiles and some Settings pages open again on a re-signed build. A Root Mount install does not need this patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[General] AMOLED black theme",
+          "description": "Makes Facebook's dark mode black instead of dark grey. Turn on dark mode in Facebook first.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[General] Open links in external browser",
+          "description": "Opens web links in your default browser instead of Facebook's in-app browser. Facebook pages still open in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Reels] Download any reel",
+          "description": "Adds a Download button beside every reel. Videos save at the best quality the player streams.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Reels] Hide sponsored reels",
+          "description": "Removes ads from Reels and Watch, including product banners over a reel and ads inside a video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Stories] Download any story",
+          "description": "Adds Save to the menu of any story, including stories with music. Videos save at the best quality the player streams.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Stories] Hide sponsored stories",
+          "description": "Removes ad cards from the story viewer, so swiping through stories only shows stories people posted.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "LINE",
+      "package": "jp.naver.line.android",
+      "patches": [
+        {
+          "name": "[Ad] Hide ad views",
+          "description": "Hides LINE display ads: the LINE Ads banners, the Smart Channel banner in the chat list and Google AdManager ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Ad] Remove banner ads",
+          "description": "LINE no longer loads the Smart Channel banner ads. This patch makes the getBanners and getPrefetchableBanners responses null.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide AI Friends button",
+          "description": "Removes the AI Friends button from the Chats tab header. The Album button shows in its place.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide attach menu extra tools",
+          "description": "Removes the server-provided tools (Poll, Schedule and more) from the + menu in a chat. Built-in tiles stay.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide calendar buttons",
+          "description": "Removes every LINE Calendar button: in the Chats tab, the chat toolbar and menus, and the Home tab.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide community button",
+          "description": "Removes the community (OpenChat) button from the top of the Chats tab header.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide Events button",
+          "description": "Removes the \"Events\" row from the slide-out menu in a chat room. Events is a different feature from LINE Calendar, and it opens a server-hosted page.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide LINE GIFT button",
+          "description": "Removes the LINE GIFT tile from the + attach menu in a chat room.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide tips under messages",
+          "description": "Hides the \"CHECK\" tips under some messages, such as a received video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Hide Transfer button",
+          "description": "Removes the Transfer (LINE Pay) tile from the + attach menu in a chat room.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Keep chats unread",
+          "description": "When you open a chat, LINE does not mark it read or send a read receipt. \"Mark as read\" still works.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Chat] Keep unsent messages",
+          "description": "Keeps messages that others unsend in 1:1 and group chats, with a notice below each one. OpenChat is not covered.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Fix] Restore chat backup sign-in via MicroG-RE",
+          "description": "Makes Google Drive chat backup and restore work on a re-signed build, through MicroG-RE. Root Mount does not need it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Fix] Restore location maps via MicroG-RE",
+          "description": "Shows maps again on a re-signed build, with OpenFreeMap tiles. It needs MicroG-RE 7.0.0 or later. Root Mount does not need it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Fix] Restore push notifications",
+          "description": "When LINE is fully closed, push notifications work again on a re-signed build. A Root Mount install does not need this patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[General] Disable VOOM",
+          "description": "VOOM deep links, shares, and notifications do nothing. If you open the standalone VOOM feed, it closes. Messaging and the other tabs do not change.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[General] Hide Agent i buttons",
+          "description": "Removes the Agent i button from the Home header and from the search bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[General] Hide new item badges",
+          "description": "Hides the green dots and N badges that mark new items, on header buttons, tabs, menus, lists and settings rows. Unread message counts do not change.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[General] Open links in external browser",
+          "description": "Opens web links in your default browser instead of LINE's in-app browser. LIFF mini-apps and LINE links stay in LINE.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[General] Redirect LINE Pay",
+          "description": "Opens LINE Pay in the standalone LINE Pay app, so the integrity check that fails on a re-signed build never runs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Home] Hide Home content feed",
+          "description": "Removes the content feed below the friends list on the Home tab: LINE NEWS, official account posts and rankings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Home] Hide Home modules",
+          "description": "Hides the recommended content, hot-topics and ad modules on the Home tab.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Premium] Disable LINE Premium",
+          "description": "Hides all LINE Premium upsells, badges and pages. It unlocks nothing, because the server enforces Premium.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Premium] Hide premium unsend upsells",
+          "description": "Removes the Premium unsend upsells that \"Disable LINE Premium\" leaves. Ordinary unsend still works.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Tab] Hide LINE TODAY tab",
+          "description": "Removes the LINE TODAY (News) tab from the main bottom navigation, in both the news-tab and news-row layouts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Tab] Hide Shopping tab",
+          "description": "Removes the Shopping tab from the main bottom navigation. This includes the Japan variant (Shopping, ショッピング) and the Taiwan variant (Discover, 逛逛).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Tab] Hide VOOM tab",
+          "description": "Removes the VOOM (formerly Timeline) tab from the main bottom navigation.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[Tab] Hide Wallet tab",
+          "description": "Removes the Wallet (LINE Pay) tab from the main bottom navigation, in both the normal and mini-tab layouts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Andrew's Patches",
+  "fingerprint": "fe062102454f0763a7ac47d357e23eb8d3c7802a94261c9b232b66559da69d16",
+  "release_notes": "## [3.2.0](https://github.com/andrewliang25/morphe-patches/compare/v3.1.0...v3.2.0) (2026-09-25)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* Facebook: open profiles and settings on re-signed Facebook builds ([69a2f20](https://github.com/andrewliang25/morphe-patches/commit/69a2f20cbea21ffe49b3421c3ab56b0ec62cdf57))\r\n* Facebook: block the ads and the sponsored product banner inside a reel ([23334d1](https://github.com/andrewliang25/morphe-patches/commit/23334d14ec7462ac696dbf5b624475f6887409e2), [0d930d1](https://github.com/andrewliang25/morphe-patches/commit/0d930d1e348912d172eeab04de8881d77b62af11))\r\n* Facebook: stop the Reels ad-break lookup instead of retrying it ([eaca2ee](https://github.com/andrewliang25/morphe-patches/commit/eaca2ee9fcd2b427bb561ae53ee3fba775092c8b))\r\n* Facebook: save a photo story as a picture, and save stories with our own downloader ([56d7957](https://github.com/andrewliang25/morphe-patches/commit/56d7957ce7933c153301dbf6c4b77afa75b7315b), [4f229a1](https://github.com/andrewliang25/morphe-patches/commit/4f229a1e6ac4fe5246a7582585cd1bde78bd1e2b))\r\n\r\n### ✨ New Features\r\n\r\n* LINE: hide the Agent i and AI Friends buttons in LINE ([0ddc176](https://githubpatches/commit/0ddc1760a4f15edca734890968f0818b7cbb6215)), closes [#133](https://github.comhes/issues/133)\r\n* LINE: hide the \"CHECK\" tips under LINE chat messages ([c2f234d](https://githubpatches/commit/c2f234da10ff8e7d856fa188d88047eb06a5244f))\r\n* Facebook: add an AMOLED black theme for Facebook ([799d0ae](https://github.com/andrewliang25/morphe-patches/commit/799d0aec55b4e409c6cec6b5f9d6b947240ab9ec)), closes [#108](https://github.com/andrewliang25/morphe-patches/issues/108)\r\n* Facebook: add a download button beside every reel ([e0007d8](https://github.com/andrewliang25/morphe-patches/co1f38dfd6d21f45bbda8))\r\n* Facebook: save stories and reels at the quality the player streams ([d250464](https://githubpatches/commit/d250464794c1882aac02d7617a06742efdbe75f4), [16a9184](https://github.com/andrewliang25/morphe-patches/commit/16a9184e9284d1))",
+  "release_tag": "v3.2.0",
+  "release_date": "2026-09-24T18:21:28Z",
+  "isPreRelease": false,
+  "bundleImageUrl": ""
+}

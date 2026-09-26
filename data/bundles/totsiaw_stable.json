@@ -1,0 +1,193 @@
+{
+  "bundle": "totsiaw",
+  "channel": "stable",
+  "repo_url": "https://github.com/totsiaw/proxma-patches",
+  "created_at": "2026-09-21T08:37:37Z",
+  "version": "1.9.0",
+  "description": "## [1.12.1](https://github.com/totsiaw/proxma-patches/compare/1.12.0...1.12.1) (2026-09-21)\n\n### Bug Fixes\n\n* **netmonster:** retarget Unlock premium for 3.4.3 ([8beed38](https://github.com/totsiaw/proxma-patches/commit/8beed389993f2760daa2d859564d119a74d54cd9))",
+  "apps": [
+    {
+      "app_name": "Investify",
+      "package": "com.blueinklabs.investifystocks.free",
+      "patches": [
+        {
+          "name": "Bypass PairIP license check",
+          "description": "Disables Google PairIP's license/installer check (com.pairip.licensecheck) so a re-signed build runs on a real device instead of being redirected to the Play Store and killed. No-ops the LicenseContentProvider entry point and LicenseClient.initializeLicenseCheck().",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.6.0"
+          ]
+        },
+        {
+          "name": "Unlock premium (remove ads)",
+          "description": "Unlocks Investify premium — forces the backend `no_ads` entitlement getter to report true in both the model and its Realm proxy, so the app treats the account as ad-free without any purchase. Ad SDK loads are gated on this flag app-wide.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.6.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Simosa",
+      "package": "com.jazz.jazzworld",
+      "patches": [
+        {
+          "name": "Bypass signature verification",
+          "description": "Disables Simosa's anti-tamper signature check so a re-signed APK launches normally instead of stalling on the splash / \"version is not correct\" dialog.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.3.4.2"
+          ]
+        },
+        {
+          "name": "Remove ads & tracking",
+          "description": "Removes every ad (interstitial, banner, daily-reward) and every tracker (Mixpanel, Firebase, Facebook, AppsFlyer) — app events, network sends, ad-SDK requests (Google Ads / AppLovin / AnyMind / Prebid), SDK auto-collection, and the ipify IP leak. The app then phones home only to its own Jazz API.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.3.4.2"
+          ]
+        },
+        {
+          "name": "Remove daily check-in ads",
+          "description": "Removes the SocialPlus daily check-in / in-feed ads (FeedAdsManager banner + native loaders). Separate from \"Remove ads & tracking\" to keep that patch Morphe-Manager-safe; enable this one when patching with the desktop CLI.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.3.4.2"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "OLX",
+      "package": "com.olx.pk",
+      "patches": [
+        {
+          "name": "Force dark mode",
+          "description": "Forces OLX into dark (night) mode regardless of the system theme, using the app's built-in -night resources via UiModeManager.setApplicationNightMode at startup.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.8.0"
+          ]
+        },
+        {
+          "name": "Remove ads",
+          "description": "Removes native feed ads (Google GMA), the full-height ad slot, and the \"Buy with Delivery\" promo section (bar, cards and View all) from OLX. Pinned to the 18.8.0 build (matches that build's obfuscated feed classes).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.8.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "MTProxy",
+      "package": "com.sdev.mtproxy",
+      "patches": [
+        {
+          "name": "Remove ads",
+          "description": "Removes every AdMob ad — the interstitial (rerouted to its onAdFailedToLoad branch so the proxy-apply action still runs, but no ad loads or shows) and the on-screen banner (load skipped). No feature is lost.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.1.4"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "My Telenor",
+      "package": "com.telenor.pakistan.mytelenor",
+      "patches": [
+        {
+          "name": "Block trackers",
+          "description": "Stops the Insider, TikTok Business SDK and Mixpanel Session Replay trackers from initializing (event/attribution/session-replay tracking never starts). Leaves AWS Amplify, Firebase core/RemoteConfig/FCM and Google Ads init untouched so app data, push and the remote ad-config the ads patch relies on keep working.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.2.62"
+          ]
+        },
+        {
+          "name": "Block trackers (manifest flags)",
+          "description": "Disables Firebase Analytics + Google advertiser-id auto-collection and the Facebook SDK's auto app-events / advertiser-id / auto-init via AndroidManifest <meta-data> flags — the SDK-side auto-collection that no bytecode init-stub can reach. Leaves Firebase core (FCM push, RemoteConfig) and the Facebook ContentProvider intact. Separate from the bytecode Block trackers patch so you can pick either or both.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.2.62"
+          ]
+        },
+        {
+          "name": "Bypass device validation",
+          "description": "Neutralizes the client-side device-validation gate (anti-root / anti-emulator / anti-Frida / anti-Xposed / anti-tamper battery) that shows a \"Device validation failed\" toast and kills the app via finishAffinity() on a rooted, emulated or re-signed build. Redirects the single failure callback to the success path so all ~16 checks report as passed and the app keeps running pre- and post-login.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.2.62"
+          ]
+        },
+        {
+          "name": "Remove ads",
+          "description": "Removes every Google Ad Manager ad (banners + interstitials) across Daily Rewards, Home, Test Your Skills and Explore by nulling the remote ad-config chokepoint, so each surface renders its no-ads layout and never requests an interstitial.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.2.62"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "MyZong",
+      "package": "com.zong.customercare",
+      "patches": [
+        {
+          "name": "Remove ads & tracking",
+          "description": "Removes every ad (AdMob) and every tracker (Firebase Analytics, AppsFlyer, Facebook, TikTok, and the Veridium SDK's own Google Analytics) — event sends, full SDK init (AppsFlyer init, TikTok initializeSdk/startTrack, MobileAds.initialize), and auto-collection. Pushwoosh push is left intact. The app then phones home only to its own Zong API.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.19.19.112"
+          ]
+        },
+        {
+          "name": "Unlock daily reward (skip ad)",
+          "description": "Claim MyZong's daily reward with no 'watch ad' popup and no ad. Forces the reward-bubble tap to take the app's own direct-claim branch (the same claim call the post-ad path makes), upstream of both the popup and the rewarded ad.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.19.19.112"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "NetMonster",
+      "package": "cz.mroczis.netmonster",
+      "patches": [
+        {
+          "name": "Unlock premium (NetMonster)",
+          "description": "Unlocks NetMonster Premium — forces the premium repo's derived flows so real-time LTE/NR-NSA location calculation is unlocked, ads are removed, and the status shows Active (far-future expiry) without an Adapty subscription.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.4.3"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Proxma Patches",
+  "fingerprint": "a4d93f2c47c2f9047cbc7c3d56cd96342e286265012e98a48174a0197e0a86f1",
+  "release_notes": "## [1.9.0](https://github.com/totsiaw/proxma-patches/compare/1.8.0...1.9.0) (2026-09-21)\n\n### Bug Fixes\n\n* **simosa:** target Simosa 3.3.4.2 ([0363c02](https://github.com/totsiaw/proxma-patches/commit/0363c026d685ecc5e2b333f4e5b4dd04325aa727))\n\n### New Features\n\n* **simosa:** remove daily check-in / SocialPlus feed ads ([0c962f7](https://github.com/totsiaw/proxma-patches/commit/0c962f7b8c38cdb1e80e147b3d87defe2a97fd21))\n",
+  "release_tag": "1.9.0",
+  "release_date": "2026-09-21T08:37:37Z",
+  "isPreRelease": false
+}
