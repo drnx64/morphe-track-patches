@@ -1,0 +1,212 @@
+{
+  "bundle": "hushfacebook",
+  "channel": "stable",
+  "repo_url": "https://github.com/SysAdminDoc/Hushfacebook",
+  "created_at": "2026-09-25T22:58:11",
+  "version": "v0.1.4",
+  "description": "## What's new\n\n- **Hide Reels in the feed** is a new patch. The rows of reels between posts leave the news feed, and so do the reels Facebook adds where your feed ends. A reel a friend posts stays. Pick it in Morphe Manager; its switch starts on.\n- Built with Morphe patcher 1.14.1, so this bundle needs Morphe Manager 1.32.0 or newer.\n\n## Validation\n\n- 374 runtime tests and 108 patch tests passed locally, with both Android lint checks clean.\n- All 19 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without forced compatibility mode or manifest changes.\n\nThe `.mpp` is a Morphe patch bundle, not a Facebook APK. Use Morphe Manager 1.32.0 or newer and keep its existing signing key when updating. The `.cdx.json` is the bundle's SBOM.",
+  "apps": [
+    {
+      "app_name": "Facebook",
+      "package": "com.facebook.katana",
+      "patches": [
+        {
+          "name": "AMOLED black theme",
+          "description": "Makes Facebook's dark mode black instead of dark grey. Turn on dark mode in Facebook first.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Block ad telemetry",
+          "description": "Stops Facebook watching for screenshots of ads and reporting which apps you install for ad attribution.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Block background ad prefetch",
+          "description": "Stops Facebook downloading ads and its ad model in the background. That saves data and battery. The ads don't take up storage either.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Disable Audience Network",
+          "description": "Stops Facebook serving ads to other apps. Those apps then show their own ads or none, and rewarded ads can fail.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Download any reel",
+          "description": "Adds a Download button beside every reel. Videos save at the best quality the player streams.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Download any story",
+          "description": "Adds Save to the menu of any story, including stories with music. Videos save at the best quality the player streams.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Download any video",
+          "description": "Adds Download to phone to the menu of videos in the feed and in Watch, below Facebook's own items. Videos save at the best quality the player streams.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide AI-detected posts",
+          "description": "Removes feed posts that Facebook's own detection marked as made with AI. Its switch starts off, so turn it on in Hushfacebook's settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide Reels in the feed",
+          "description": "Removes the rows of reels between posts in the news feed, and the reels Facebook adds where your feed ends. A reel a friend posts stays.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide Stories tray",
+          "description": "Removes the row of stories at the top of the news feed, Create story included.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide sponsored posts",
+          "description": "Removes sponsored and promoted posts from the news feed, with no gap left behind.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide sponsored reels",
+          "description": "Removes ads from Reels and Watch, including product banners over a reel and ads inside a video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide sponsored stories",
+          "description": "Removes ad cards from the story viewer, so swiping through stories only shows stories people posted.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hide suggested and promoted posts",
+          "description": "Removes what Facebook adds to the feed besides ads: \"Suggested for you\" posts, \"People you may know\", \"Pages you may like\" and its own upsells. In-feed surveys go too. Each kind has its own switch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hushfacebook settings",
+          "description": "Adds Hushfacebook settings to Facebook's launcher icon. Long-press the icon to turn features on or off, pause Hushfacebook, save your switches to a file or load them, and export diagnostics. The licenses are there too.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Material You theme",
+          "description": "Gives Facebook's dark mode the colours of your wallpaper on Android 12 and newer, and a fixed blue palette on Android 11. Light mode stays as it is. Turn on dark mode in Facebook first.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Open links in external browser",
+          "description": "Opens web links in your default browser instead of Facebook's in-app browser, without Facebook's click tracker or the fbclid tag it adds. Facebook pages still open in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Restore screens on re-signed builds",
+          "description": "Makes profiles and some Settings pages open again on a re-signed build. A Root Mount install doesn't need this patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Takes Facebook's tracking tags, such as mibextid, off the links you share or copy. The post or reel a link opens stays the same. A facebook.com/share/ link is made for one share, so Facebook can still trace it back to you.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Hushfacebook",
+  "fingerprint": "35435f70f023a79f1e348c94196c549dc6c7533dede934a0d5f5d61b030936ed",
+  "release_notes": "## What's new\n\n- **Hide Reels in the feed** is a new patch. The rows of reels between posts leave the news feed, and so do the reels Facebook adds where your feed ends. A reel a friend posts stays. Pick it in Morphe Manager; its switch starts on.\n- Built with Morphe patcher 1.14.1, so this bundle needs Morphe Manager 1.32.0 or newer.\n\n## Validation\n\n- 374 runtime tests and 108 patch tests passed locally, with both Android lint checks clean.\n- All 19 patches applied to Facebook 580.0.0.51.74 and 577.0.0.50.72 without forced compatibility mode or manifest changes.\n\nThe `.mpp` is a Morphe patch bundle, not a Facebook APK. Use Morphe Manager 1.32.0 or newer and keep its existing signing key when updating. The `.cdx.json` is the bundle's SBOM.",
+  "release_tag": "v0.1.4",
+  "release_date": "2026-09-25T22:58:11Z",
+  "isPreRelease": false
+}
