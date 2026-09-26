@@ -2,9 +2,9 @@
   "bundle": "zeldrisho",
   "channel": "stable",
   "repo_url": "https://github.com/zeldrisho/morphe-patches",
-  "created_at": "2026-09-26T05:34:47",
-  "version": "v1.6.0",
-  "description": "### 🐛 Bug Fixes\n* **Zalo - microG Drive support:** Declares MicroG-RE package visibility so Android package filtering does not hide the installed provider.\n* **Zalo - microG Drive support:** Corrects the installation prompt's download link to the official Morphe MicroG page.\n* **Zalo - microG Drive support:** Cancels the previous pending Drive refresh when another account is selected for the same backup view.\n\n### ✨ New Features\n* **Zalo - Suppress outbound seen status:** Disables the dedicated outbound seen-status packet path by default for `26.08.01`; message delivery and incoming status rendering are not modified.\n* **Zalo - Enable Google Drive photo backup:** Restores Zalo's existing Google Drive photo-backup option for `26.08.01`; Google authorization, server retention, encryption, and media exclusions remain unchanged.\n",
+  "created_at": "2026-09-26T11:32:42Z",
+  "version": "1.6.1",
+  "description": "### 🔧 Improvements\n* **Zalo - Enable Google Drive photo backup:** Makes the patch opt-in while its startup verifier issue is investigated.",
   "apps": [
     {
       "app_name": "Threads",
@@ -133,7 +133,7 @@
         {
           "name": "Enable Google Drive photo backup",
           "description": "Enables Zalo's existing Google Drive photo-backup option. It does not bypass Google authorization, server retention, encryption, or media exclusions.",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "26.08.01"
@@ -160,15 +160,6 @@
         {
           "name": "Keep expired media accessible",
           "description": "Keeps locally stored large chat media usable after Zalo's client-side expiry window by bypassing the expired/subscription state. It does not restore missing files or bypass server download authorization.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.08.01"
-          ]
-        },
-        {
-          "name": "microG Drive support",
-          "description": "Adds Zalo launch/provider checks and redirects Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). Initial photo restore and the complete backup/restore cycle were device-validated on Zalo 26.08.01.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -219,14 +210,23 @@
           "compatible_versions": [
             "26.08.01"
           ]
+        },
+        {
+          "name": "microG Drive support",
+          "description": "Adds Zalo launch/provider checks and redirects Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). Initial photo restore and the complete backup/restore cycle were device-validated on Zalo 26.08.01.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
         }
       ]
     }
   ],
   "patches_name": "Zeldris Patches",
-  "fingerprint": "fb8fbd588a496d3b6e021e177f5bfb3f7ee7c9d77099e84018053121651dc3fb",
-  "release_notes": "### 🐛 Bug Fixes\n* **Zalo - microG Drive support:** Declares MicroG-RE package visibility so Android package filtering does not hide the installed provider.\n* **Zalo - microG Drive support:** Corrects the installation prompt's download link to the official Morphe MicroG page.\n* **Zalo - microG Drive support:** Cancels the previous pending Drive refresh when another account is selected for the same backup view.\n\n### ✨ New Features\n* **Zalo - Suppress outbound seen status:** Disables the dedicated outbound seen-status packet path by default for `26.08.01`; message delivery and incoming status rendering are not modified.\n* **Zalo - Enable Google Drive photo backup:** Restores Zalo's existing Google Drive photo-backup option for `26.08.01`; Google authorization, server retention, encryption, and media exclusions remain unchanged.\n",
-  "release_tag": "v1.6.0",
-  "release_date": "2026-09-26T05:34:47Z",
+  "fingerprint": "62392bfe5afd9b7dbe4cdef0863c79b5eb52a1dd995778fd08e2a8b4be94584b",
+  "release_notes": "### 🔧 Improvements\n* **Zalo - Enable Google Drive photo backup:** Makes the patch opt-in while its startup verifier issue is investigated.\n",
+  "release_tag": "v1.6.1",
+  "release_date": "2026-09-26T11:32:42Z",
   "isPreRelease": false
 }

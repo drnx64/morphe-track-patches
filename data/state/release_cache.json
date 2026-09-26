@@ -1,6 +1,6 @@
 {
   "https://github.com/WZSE/aapam-patches": {
-    "fetched_at": "2026-09-26T10:03:00.057414+00:00",
+    "fetched_at": "2026-09-26T14:39:21.629562+00:00",
     "releases": [
       {
         "tag": "v1.3.1-dev.1",
@@ -59,7 +59,7 @@
     ]
   },
   "https://github.com/TheRealCrazyfuy/abeja-morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:00.948176+00:00",
+    "fetched_at": "2026-09-26T14:39:20.749761+00:00",
     "releases": [
       {
         "tag": "v1.1.0-dev.2",
@@ -117,7 +117,7 @@
     ]
   },
   "https://github.com/theabhishekbhujang/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:02.513555+00:00",
+    "fetched_at": "2026-09-26T14:39:22.298489+00:00",
     "releases": [
       {
         "tag": "v1.6.0",
@@ -212,7 +212,7 @@
     ]
   },
   "https://github.com/jkennethcarino/adobo": {
-    "fetched_at": "2026-09-26T10:02:57.654311+00:00",
+    "fetched_at": "2026-09-26T14:39:17.684306+00:00",
     "releases": [
       {
         "tag": "v1.6.0-dev.1",
@@ -307,7 +307,7 @@
     ]
   },
   "https://github.com/hashtagbasit/aimal-patches": {
-    "fetched_at": "2026-09-26T10:02:58.392140+00:00",
+    "fetched_at": "2026-09-26T14:39:18.782834+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -390,13 +390,19 @@
     ]
   },
   "https://github.com/ajstrick81/morphe-androidtv-patches": {
-    "fetched_at": "2026-09-26T10:02:57.001476+00:00",
+    "fetched_at": "2026-09-26T14:39:20.580086+00:00",
     "releases": [
       {
         "tag": "v1.37.7",
         "body": "## [1.37.7](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.37.6...v1.37.7) (2026-09-26)\n\n\n### Bug Fixes\n\n* **netflix:** suppress household prompt on both profile-select and playback routes ([45609ef](https://github.com/ajstrick81/morphe-androidtv-patches/commit/45609ef40ca5fecb812f99ef65d5fa4738d60c0a)), closes [#168](https://github.com/ajstrick81/morphe-androidtv-patches/issues/168)\n\n\n\n",
         "prerelease": false,
         "dateReleased": "2026-09-26T01:39:59Z"
+      },
+      {
+        "tag": "test-212",
+        "body": "**Test build for #212 — not a release.** Netflix ad-strip fix candidate (MASTER v3). Built from branch `fix/netflix-212-getadmetadata-branch` (commit e248a3e) on top of v1.37.7.\n\n**What changed:** `getAdMetadata` now empties its ad-break list on *every* branch, including the new `adverts.adBreaks` branch that leaked on 13.0.1. Only the Netflix ad-kill script changed.\n\n**How to test** (Netflix 13.0.1 build 25028):\n1. Patch with `test-212.mpp` using the same patches as before (Clone Netflix, Disable CertCheck, Remove Netflix ads bundle engine + loader).\n2. Install, launch, wait ~60s on the home screen, then play an ad-tier title.\n3. Attach `adb logcat -d -s KILL > kill.txt`. Look for `PATCH M2: ... else{};b=[];` or `PATCH MASTERw: ... v3`.\n\nVerified offline (patch applies, script bundled, branch logic simulated). Not yet verified on a device — that's what this build is for.\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T12:54:16Z"
       },
       {
         "tag": "v1.37.6",
@@ -475,12 +481,6 @@
         "body": "## [1.35.1](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.35.0...v1.35.1) (2026-09-09)\n\n\n### Bug Fixes\n\n* **pluto:** mute live ad breaks at stream level so audio can't survive the mask ([#152](https://github.com/ajstrick81/morphe-androidtv-patches/issues/152)) ([4a904fc](https://github.com/ajstrick81/morphe-androidtv-patches/commit/4a904fc6dda49d26438f6fe792294a3bd5b16798))\n\n\n\n",
         "prerelease": false,
         "dateReleased": "2026-09-09T01:37:24Z"
-      },
-      {
-        "tag": "v1.35.0",
-        "body": "# [1.35.0](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.34.1...v1.35.0) (2026-09-08)\n\n\n### Features\n\n* **pluto:** mask live commercial breaks with black screen + mute ([#152](https://github.com/ajstrick81/morphe-androidtv-patches/issues/152)) ([d4c122c](https://github.com/ajstrick81/morphe-androidtv-patches/commit/d4c122cd8c2946cdf749415961b97da41262f40c))\n\n\n\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-08T01:21:28Z"
       }
     ]
   },
@@ -608,7 +608,7 @@
     ]
   },
   "https://github.com/ameenalasady/ameen-morphe": {
-    "fetched_at": "2026-09-26T10:02:58.748517+00:00",
+    "fetched_at": "2026-09-26T14:39:18.687631+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -660,7 +660,7 @@
     ]
   },
   "https://github.com/AmpleReVanced/revanced-patches": {
-    "fetched_at": "2026-09-26T10:03:00.836282+00:00",
+    "fetched_at": "2026-09-26T14:39:20.828152+00:00",
     "releases": [
       {
         "tag": "v1.5.0-dev.16",
@@ -755,7 +755,7 @@
     ]
   },
   "https://github.com/anddea/revanced-patches": {
-    "fetched_at": "2026-09-26T10:02:56.476353+00:00",
+    "fetched_at": "2026-09-26T14:39:16.325275+00:00",
     "releases": [
       {
         "tag": "v4.3.0-dev.8",
@@ -867,7 +867,7 @@
     ]
   },
   "https://github.com/andersonlucasg3/PetalMaps-NonHuawei": {
-    "fetched_at": "2026-09-26T10:02:58.008545+00:00",
+    "fetched_at": "2026-09-26T14:39:18.080101+00:00",
     "releases": [
       {
         "tag": "v1.3.4",
@@ -962,7 +962,7 @@
     ]
   },
   "https://github.com/andrewliang25/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:02.460484+00:00",
+    "fetched_at": "2026-09-26T14:39:22.229226+00:00",
     "releases": [
       {
         "tag": "v3.2.0",
@@ -1199,7 +1199,7 @@
     ]
   },
   "https://github.com/catsmoker/anime-witcher-patches": {
-    "fetched_at": "2026-09-26T10:03:01.052771+00:00",
+    "fetched_at": "2026-09-26T14:39:20.925487+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -1228,7 +1228,7 @@
     ]
   },
   "https://github.com/anxyis/anxy-patches": {
-    "fetched_at": "2026-09-26T10:03:01.515989+00:00",
+    "fetched_at": "2026-09-26T14:39:21.117828+00:00",
     "releases": [
       {
         "tag": "v2.9.0",
@@ -1323,7 +1323,7 @@
     ]
   },
   "https://github.com/Apostolique/apos-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:58.700673+00:00",
+    "fetched_at": "2026-09-26T14:39:18.706627+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -1476,7 +1476,7 @@
     ]
   },
   "https://github.com/madhu-gowda6/atharv-patches": {
-    "fetched_at": "2026-09-26T10:02:59.463535+00:00",
+    "fetched_at": "2026-09-26T14:39:19.584695+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -1498,7 +1498,7 @@
     ]
   },
   "https://github.com/homelander11/beetle-patches": {
-    "fetched_at": "2026-09-26T10:02:57.548693+00:00",
+    "fetched_at": "2026-09-26T14:39:17.636030+00:00",
     "releases": [
       {
         "tag": "v1.0.3",
@@ -2130,7 +2130,7 @@
     ]
   },
   "https://github.com/jasonwu1994/Gboard-patches": {
-    "fetched_at": "2026-09-26T10:02:59.582248+00:00",
+    "fetched_at": "2026-09-26T14:39:19.611856+00:00",
     "releases": [
       {
         "tag": "v3.11.0",
@@ -2272,7 +2272,7 @@
     ]
   },
   "https://github.com/chicco-carone/morphe-patches-chicco": {
-    "fetched_at": "2026-09-26T10:03:02.335756+00:00",
+    "fetched_at": "2026-09-26T14:39:21.901938+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -2301,7 +2301,7 @@
     ]
   },
   "https://github.com/durgesh0505/chiggi_morphe_patches": {
-    "fetched_at": "2026-09-26T10:02:59.826104+00:00",
+    "fetched_at": "2026-09-26T14:39:19.896956+00:00",
     "releases": [
       {
         "tag": "v1.23.1",
@@ -2473,7 +2473,7 @@
     ]
   },
   "https://github.com/skulldogged/cobalt-morphe": {
-    "fetched_at": "2026-09-26T10:02:58.163639+00:00",
+    "fetched_at": "2026-09-26T14:39:18.074579+00:00",
     "releases": [
       {
         "tag": "v1.8.2",
@@ -2568,7 +2568,7 @@
     ]
   },
   "https://github.com/isuruhg/cricinfo-tweaks": {
-    "fetched_at": "2026-09-26T10:03:02.334459+00:00",
+    "fetched_at": "2026-09-26T14:39:21.988877+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -2626,7 +2626,7 @@
     ]
   },
   "https://github.com/d0nj/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:59.875130+00:00",
+    "fetched_at": "2026-09-26T14:39:20.040267+00:00",
     "releases": [
       {
         "tag": "v1.3.1",
@@ -2785,7 +2785,7 @@
     ]
   },
   "https://github.com/dh6k/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:01.689206+00:00",
+    "fetched_at": "2026-09-26T14:39:21.524657+00:00",
     "releases": [
       {
         "tag": "v1.7.0",
@@ -2880,7 +2880,7 @@
     ]
   },
   "https://github.com/docbt/patched-up": {
-    "fetched_at": "2026-09-26T10:02:56.540364+00:00",
+    "fetched_at": "2026-09-26T14:39:16.666750+00:00",
     "releases": [
       {
         "tag": "v1.10.0",
@@ -3004,7 +3004,7 @@
     ]
   },
   "https://github.com/drosoCode/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:57.428167+00:00",
+    "fetched_at": "2026-09-26T14:39:17.452241+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -3015,7 +3015,7 @@
     ]
   },
   "https://github.com/dumb-software/T2C-App-Patch-Morphe": {
-    "fetched_at": "2026-09-26T10:03:00.471649+00:00",
+    "fetched_at": "2026-09-26T14:39:20.573214+00:00",
     "releases": [
       {
         "tag": "v1.7.0-dev.1",
@@ -3110,7 +3110,7 @@
     ]
   },
   "https://github.com/quantavil/edge-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:59.829460+00:00",
+    "fetched_at": "2026-09-26T14:39:19.994684+00:00",
     "releases": [
       {
         "tag": "v1.36.1",
@@ -3160,7 +3160,7 @@
     "releases": []
   },
   "https://github.com/HvQ/eksi-morphe": {
-    "fetched_at": "2026-09-26T10:03:00.328567+00:00",
+    "fetched_at": "2026-09-26T14:39:20.258714+00:00",
     "releases": [
       {
         "tag": "v0.1.4",
@@ -3218,7 +3218,7 @@
     ]
   },
   "https://github.com/JZ6/Flexboard": {
-    "fetched_at": "2026-09-26T10:02:57.978064+00:00",
+    "fetched_at": "2026-09-26T14:39:17.991648+00:00",
     "releases": [
       {
         "tag": "v2.5.1-dev.4",
@@ -3408,7 +3408,7 @@
     ]
   },
   "https://github.com/SapitoSucio/FroggoMorphePatches": {
-    "fetched_at": "2026-09-26T10:02:58.633732+00:00",
+    "fetched_at": "2026-09-26T14:39:18.729870+00:00",
     "releases": [
       {
         "tag": "v1.4.0-dev.2",
@@ -3503,7 +3503,7 @@
     ]
   },
   "https://github.com/BlazeFTL/FTL-Patches": {
-    "fetched_at": "2026-09-26T10:03:00.078713+00:00",
+    "fetched_at": "2026-09-26T14:39:20.048828+00:00",
     "releases": [
       {
         "tag": "v1.43.2-dev.1",
@@ -3568,7 +3568,7 @@
     ]
   },
   "https://github.com/BlazeFTL/Morphe-Portal-Patches-New": {
-    "fetched_at": "2026-09-26T10:03:02.432705+00:00",
+    "fetched_at": "2026-09-26T14:39:22.282665+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -3597,7 +3597,7 @@
     ]
   },
   "https://github.com/fangkampanat/gmaps-patches": {
-    "fetched_at": "2026-09-26T10:02:57.517871+00:00",
+    "fetched_at": "2026-09-26T14:39:17.638188+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -3697,7 +3697,7 @@
     ]
   },
   "https://github.com/NekoGryphou/gryphous-morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:00.946616+00:00",
+    "fetched_at": "2026-09-26T14:39:20.820512+00:00",
     "releases": [
       {
         "tag": "v1.2.0-dev.1",
@@ -3756,7 +3756,7 @@
     ]
   },
   "https://github.com/hackingguy/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:02.024422+00:00",
+    "fetched_at": "2026-09-26T14:39:21.776181+00:00",
     "releases": [
       {
         "tag": "v1.6.15-dev.1",
@@ -3868,7 +3868,7 @@
     ]
   },
   "https://github.com/HellveticaStandard/HellveticaPatches": {
-    "fetched_at": "2026-09-26T10:02:56.997805+00:00",
+    "fetched_at": "2026-09-26T14:39:16.816872+00:00",
     "releases": [
       {
         "tag": "v1.1.3",
@@ -4075,7 +4075,7 @@
     ]
   },
   "https://github.com/hhawkinsau/hh-patches": {
-    "fetched_at": "2026-09-26T10:02:59.134137+00:00",
+    "fetched_at": "2026-09-26T14:39:19.294953+00:00",
     "releases": [
       {
         "tag": "v1.3.1",
@@ -4199,7 +4199,7 @@
     ]
   },
   "https://github.com/humzakh/HK-Morphe-Patches": {
-    "fetched_at": "2026-09-26T10:02:59.481815+00:00",
+    "fetched_at": "2026-09-26T14:39:19.691015+00:00",
     "releases": [
       {
         "tag": "v1.8.0",
@@ -4389,7 +4389,7 @@
     ]
   },
   "https://github.com/arandomhooman/hoomans-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:57.037225+00:00",
+    "fetched_at": "2026-09-26T14:39:17.150112+00:00",
     "releases": [
       {
         "tag": "v1.53.0",
@@ -4501,7 +4501,7 @@
     ]
   },
   "https://github.com/hxreborn/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:58.314085+00:00",
+    "fetched_at": "2026-09-26T14:39:18.369504+00:00",
     "releases": [
       {
         "tag": "v1.30.0",
@@ -4596,7 +4596,7 @@
     ]
   },
   "https://github.com/hxreborn/hxreborn-tiktok-patches": {
-    "fetched_at": "2026-09-26T10:03:02.458396+00:00",
+    "fetched_at": "2026-09-26T14:39:21.994710+00:00",
     "releases": [
       {
         "tag": "v1.3.0",
@@ -4691,7 +4691,7 @@
     ]
   },
   "https://github.com/icysymmetra/tiktok-patches-for-morphe": {
-    "fetched_at": "2026-09-26T10:03:01.403848+00:00",
+    "fetched_at": "2026-09-26T14:39:21.146912+00:00",
     "releases": [
       {
         "tag": "v0.8.0-dev.12",
@@ -4786,7 +4786,7 @@
     ]
   },
   "https://github.com/bdgerszewski/morphe-patches-ihealth": {
-    "fetched_at": "2026-09-26T10:03:00.693128+00:00",
+    "fetched_at": "2026-09-26T14:39:20.487986+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -4850,7 +4850,7 @@
     ]
   },
   "https://github.com/sushruth/imgur-patches": {
-    "fetched_at": "2026-09-26T10:02:58.213296+00:00",
+    "fetched_at": "2026-09-26T14:39:18.351433+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -4893,7 +4893,7 @@
     "releases": []
   },
   "https://github.com/kuchingneko28/ipusnas-patches": {
-    "fetched_at": "2026-09-26T10:03:01.938461+00:00",
+    "fetched_at": "2026-09-26T14:39:21.703084+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -4936,7 +4936,7 @@
     ]
   },
   "https://github.com/jaredcat/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:01.568423+00:00",
+    "fetched_at": "2026-09-26T14:39:21.318117+00:00",
     "releases": [
       {
         "tag": "v1.3.0",
@@ -5106,7 +5106,7 @@
     ]
   },
   "https://github.com/Joussflls10/Jouss-Patches": {
-    "fetched_at": "2026-09-26T10:02:58.840657+00:00",
+    "fetched_at": "2026-09-26T14:39:18.917248+00:00",
     "releases": [
       {
         "tag": "v1.21.0",
@@ -5204,8 +5204,26 @@
     ]
   },
   "https://github.com/kondratjev/morphe-patches": {
-    "fetched_at": "2026-09-22T09:48:40.081200+00:00",
+    "fetched_at": "2026-09-26T14:39:18.047971+00:00",
     "releases": [
+      {
+        "tag": "v1.26.0",
+        "body": "## [1.26.0](https://github.com/kondratjev/morphe-patches/compare/v1.25.0...v1.26.0) (2026-09-26)\n\n### ✨ New Features\n\n* add patched yt music support for lyfta ([914bdb3](https://github.com/kondratjev/morphe-patches/commit/914bdb36cb0386ff0361e46fe9370dfb195825a5))\n* bump pillo, ornament, lyfta ([96b80b9](https://github.com/kondratjev/morphe-patches/commit/96b80b9a4422a39caddbb96a71297d3766abf5e9))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T13:40:35Z"
+      },
+      {
+        "tag": "v1.26.0-dev.2",
+        "body": "## [1.26.0-dev.2](https://github.com/kondratjev/morphe-patches/compare/v1.26.0-dev.1...v1.26.0-dev.2) (2026-09-26)\n\n### ✨ New Features\n\n* add patched yt music support for lyfta ([914bdb3](https://github.com/kondratjev/morphe-patches/commit/914bdb36cb0386ff0361e46fe9370dfb195825a5))\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T13:39:00Z"
+      },
+      {
+        "tag": "v1.26.0-dev.1",
+        "body": "## [1.26.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.25.0...v1.26.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* bump pillo, ornament, lyfta ([96b80b9](https://github.com/kondratjev/morphe-patches/commit/96b80b9a4422a39caddbb96a71297d3766abf5e9))\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T13:28:00Z"
+      },
       {
         "tag": "v1.25.0",
         "body": "## [1.25.0](https://github.com/kondratjev/morphe-patches/compare/v1.24.0...v1.25.0) (2026-09-18)\n\n### ✨ New Features\n\n* Bump medisafe and add pillo microg support ([400318d](https://github.com/kondratjev/morphe-patches/commit/400318dc649c88e55ecf9aeb144a93480bd0b08f))\n",
@@ -5277,24 +5295,6 @@
         "body": "## [1.20.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.19.0...v1.20.0-dev.1) (2026-08-31)\n\n### ✨ New Features\n\n* bump some apps ([f2a5580](https://github.com/kondratjev/morphe-patches/commit/f2a5580c9051e656a2f0651bd803e309246e9c83))\n",
         "prerelease": true,
         "dateReleased": "2026-08-31T17:32:10Z"
-      },
-      {
-        "tag": "v1.19.0",
-        "body": "## [1.19.0](https://github.com/kondratjev/morphe-patches/compare/v1.18.0...v1.19.0) (2026-08-07)\n\n### ✨ New Features\n\n* rollback lifesum ([7546656](https://github.com/kondratjev/morphe-patches/commit/75466565a95046c2be021a4df58dedbc5d2aac8d))\n",
-        "prerelease": false,
-        "dateReleased": "2026-08-07T12:27:23Z"
-      },
-      {
-        "tag": "v1.19.0-dev.1",
-        "body": "## [1.19.0-dev.1](https://github.com/kondratjev/morphe-patches/compare/v1.18.0...v1.19.0-dev.1) (2026-08-07)\n\n### ✨ New Features\n\n* rollback lifesum ([7546656](https://github.com/kondratjev/morphe-patches/commit/75466565a95046c2be021a4df58dedbc5d2aac8d))\n",
-        "prerelease": true,
-        "dateReleased": "2026-08-07T12:17:35Z"
-      },
-      {
-        "tag": "v1.18.0",
-        "body": "## [1.18.0](https://github.com/kondratjev/morphe-patches/compare/v1.17.0...v1.18.0) (2026-08-07)\n\n### 🐛 Bug Fixes\n\n* add logger import ([631742a](https://github.com/kondratjev/morphe-patches/commit/631742aa978eb190fe07a3a7d149b6925ac651ba))\n\n### ✨ New Features\n\n* add gmscore support for pillo ([34496e2](https://github.com/kondratjev/morphe-patches/commit/34496e2dcce69345f7203cdac6fb0f2953dd1f8f))\n* add some updates ([9600c3f](https://github.com/kondratjev/morphe-patches/commit/9600c3fd74c4c835e1d197997dc32647a6c80996))\n* bump some apps ([b2a69d2](https://github.com/kondratjev/morphe-patches/commit/b2a69d25f83bb29baf020e7a060c983465783694))\n* bump soundcloud ([8d94bfa](https://github.com/kondratjev/morphe-patches/commit/8d94bfa3a05d36d39499c5c7a6210122f01853f4))\n",
-        "prerelease": false,
-        "dateReleased": "2026-08-07T11:42:28Z"
       }
     ]
   },
@@ -5358,7 +5358,7 @@
     ]
   },
   "https://github.com/kveld9/kveld-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:57.002971+00:00",
+    "fetched_at": "2026-09-26T14:39:18.821091+00:00",
     "releases": [
       {
         "tag": "v2.0.0",
@@ -5470,7 +5470,7 @@
     ]
   },
   "https://github.com/kiraio-moe/Lain-Patches": {
-    "fetched_at": "2026-09-26T10:02:59.478908+00:00",
+    "fetched_at": "2026-09-26T14:39:19.615849+00:00",
     "releases": [
       {
         "tag": "v1.4.0-dev.3",
@@ -5565,7 +5565,7 @@
     ]
   },
   "https://github.com/LaKakaReal/LaKakaShitPatches": {
-    "fetched_at": "2026-09-26T10:02:58.468589+00:00",
+    "fetched_at": "2026-09-26T14:39:18.726491+00:00",
     "releases": [
       {
         "tag": "v1.3.1",
@@ -5648,7 +5648,7 @@
     ]
   },
   "https://github.com/legendsciber/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:56.878187+00:00",
+    "fetched_at": "2026-09-26T14:39:16.888862+00:00",
     "releases": [
       {
         "tag": "v1.31.0",
@@ -5743,7 +5743,7 @@
     ]
   },
   "https://github.com/ethanm6/letterboxd-stremio-morphe-patch": {
-    "fetched_at": "2026-09-26T10:02:56.788238+00:00",
+    "fetched_at": "2026-09-26T14:39:16.799222+00:00",
     "releases": [
       {
         "tag": "v1.4.1",
@@ -5802,7 +5802,7 @@
     ]
   },
   "https://github.com/liongalahad/liongalahad-stremio-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:57.882050+00:00",
+    "fetched_at": "2026-09-26T14:39:17.808674+00:00",
     "releases": [
       {
         "tag": "v1.0.0-dev.2",
@@ -5975,7 +5975,7 @@
     ]
   },
   "https://github.com/MiguelNinja19/miguel-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:58.446865+00:00",
+    "fetched_at": "2026-09-26T14:39:18.714298+00:00",
     "releases": [
       {
         "tag": "v1.14.0-dev.14",
@@ -6070,7 +6070,7 @@
     ]
   },
   "https://github.com/Entree3k/Morning-Entree-Patches": {
-    "fetched_at": "2026-09-26T10:02:57.042094+00:00",
+    "fetched_at": "2026-09-26T14:39:17.183025+00:00",
     "releases": [
       {
         "tag": "v1.22.0",
@@ -6165,7 +6165,7 @@
     ]
   },
   "https://github.com/MorpheApp/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:56.526536+00:00",
+    "fetched_at": "2026-09-26T14:39:16.382307+00:00",
     "releases": [
       {
         "tag": "v1.45.0-dev.17",
@@ -6260,7 +6260,7 @@
     ]
   },
   "https://github.com/Ripthulhu/morphe-google-patches": {
-    "fetched_at": "2026-09-26T10:02:59.293763+00:00",
+    "fetched_at": "2026-09-26T14:39:19.454709+00:00",
     "releases": [
       {
         "tag": "v1.1.4",
@@ -6312,7 +6312,7 @@
     ]
   },
   "https://github.com/Tornillo2/movistar-block-ads-morphe": {
-    "fetched_at": "2026-09-26T10:02:59.248699+00:00",
+    "fetched_at": "2026-09-26T14:39:19.439627+00:00",
     "releases": [
       {
         "tag": "v1.0.9",
@@ -6450,7 +6450,7 @@
     ]
   },
   "https://github.com/liongalahad/liongalahad-nuviotv-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:57.932178+00:00",
+    "fetched_at": "2026-09-26T14:39:17.925501+00:00",
     "releases": [
       {
         "tag": "v1.0.0-beta.1",
@@ -6545,7 +6545,7 @@
     ]
   },
   "https://github.com/byehi98/okish-morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:00.141046+00:00",
+    "fetched_at": "2026-09-26T14:39:19.151025+00:00",
     "releases": [
       {
         "tag": "v1.32.0-dev.1",
@@ -6644,7 +6644,7 @@
     "releases": []
   },
   "https://github.com/wchill/patcheddit": {
-    "fetched_at": "2026-09-26T10:02:58.440958+00:00",
+    "fetched_at": "2026-09-26T14:39:18.644930+00:00",
     "releases": [
       {
         "tag": "v1.4.1-dev.1",
@@ -6851,7 +6851,7 @@
     ]
   },
   "https://github.com/crimera/piko": {
-    "fetched_at": "2026-09-26T10:03:01.584552+00:00",
+    "fetched_at": "2026-09-26T14:39:21.107925+00:00",
     "releases": [
       {
         "tag": "v3.10.0-dev.8",
@@ -6950,7 +6950,7 @@
     "releases": []
   },
   "https://github.com/SouBryan/pinterest-morphed": {
-    "fetched_at": "2026-09-26T10:03:01.952768+00:00",
+    "fetched_at": "2026-09-26T14:39:21.722275+00:00",
     "releases": [
       {
         "tag": "v1.7.0",
@@ -7175,7 +7175,7 @@
     ]
   },
   "https://github.com/PrathxmOp/Prathxm-Patches": {
-    "fetched_at": "2026-09-26T10:02:58.868679+00:00",
+    "fetched_at": "2026-09-26T14:39:18.850105+00:00",
     "releases": [
       {
         "tag": "v1.13.1",
@@ -7270,7 +7270,7 @@
     ]
   },
   "https://github.com/PrathxmOp/ytmusic-patches": {
-    "fetched_at": "2026-09-26T10:02:58.910210+00:00",
+    "fetched_at": "2026-09-26T14:39:19.100303+00:00",
     "releases": [
       {
         "tag": "v1.38.0",
@@ -7365,7 +7365,7 @@
     ]
   },
   "https://github.com/totsiaw/proxma-patches": {
-    "fetched_at": "2026-09-26T10:02:57.530763+00:00",
+    "fetched_at": "2026-09-26T14:39:17.444598+00:00",
     "releases": [
       {
         "tag": "1.12.1",
@@ -7534,7 +7534,7 @@
     ]
   },
   "https://github.com/RabehX/rabehx-patches": {
-    "fetched_at": "2026-09-26T10:03:00.317115+00:00",
+    "fetched_at": "2026-09-26T14:39:20.393989+00:00",
     "releases": [
       {
         "tag": "v0.0.3",
@@ -7704,7 +7704,7 @@
     ]
   },
   "https://github.com/lyyako/realme-link-patches": {
-    "fetched_at": "2026-09-26T10:02:57.739641+00:00",
+    "fetched_at": "2026-09-26T14:39:17.801743+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -7715,7 +7715,7 @@
     ]
   },
   "https://github.com/rhubarbshoelaces/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:01.982761+00:00",
+    "fetched_at": "2026-09-26T14:39:21.783427+00:00",
     "releases": [
       {
         "tag": "v1.0.9",
@@ -7738,7 +7738,7 @@
     ]
   },
   "https://github.com/riky-dev/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:00.273775+00:00",
+    "fetched_at": "2026-09-26T14:39:20.353185+00:00",
     "releases": [
       {
         "tag": "v2.0.0",
@@ -7833,7 +7833,7 @@
     ]
   },
   "https://github.com/subenoeva/roadsync-patches": {
-    "fetched_at": "2026-09-26T10:02:57.140197+00:00",
+    "fetched_at": "2026-09-26T14:39:17.225821+00:00",
     "releases": [
       {
         "tag": "v1.2.2",
@@ -8011,7 +8011,7 @@
     ]
   },
   "https://github.com/RoundSalmon4/morphe-patches-template": {
-    "fetched_at": "2026-09-26T10:03:01.391515+00:00",
+    "fetched_at": "2026-09-26T14:39:21.207768+00:00",
     "releases": [
       {
         "tag": "v1.0.6",
@@ -8058,7 +8058,7 @@
     ]
   },
   "https://github.com/rushiranpise/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:00.824023+00:00",
+    "fetched_at": "2026-09-26T14:39:20.578013+00:00",
     "releases": [
       {
         "tag": "v1.23.0-dev.1",
@@ -8153,7 +8153,7 @@
     ]
   },
   "https://github.com/Freeman022026/rustore-privacy-patches": {
-    "fetched_at": "2026-09-26T10:03:00.991315+00:00",
+    "fetched_at": "2026-09-26T14:39:21.029222+00:00",
     "releases": [
       {
         "tag": "v1.1.12",
@@ -8242,7 +8242,7 @@
     ]
   },
   "https://github.com/wchill/rvx-morphed": {
-    "fetched_at": "2026-09-26T10:02:57.502224+00:00",
+    "fetched_at": "2026-09-26T14:39:17.590356+00:00",
     "releases": [
       {
         "tag": "v5.16.4",
@@ -8289,7 +8289,7 @@
     ]
   },
   "https://github.com/saieshshirodkar/saiesh-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:56.979409+00:00",
+    "fetched_at": "2026-09-26T14:39:16.853633+00:00",
     "releases": [
       {
         "tag": "v1.0.7",
@@ -8342,7 +8342,7 @@
     ]
   },
   "https://github.com/bigyank/morphe-patches-samsung": {
-    "fetched_at": "2026-09-26T10:03:01.565904+00:00",
+    "fetched_at": "2026-09-26T14:39:21.383064+00:00",
     "releases": [
       {
         "tag": "v1.2.1",
@@ -8460,7 +8460,7 @@
     ]
   },
   "https://github.com/shaun-the-sheep-patches/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:02.130273+00:00",
+    "fetched_at": "2026-09-26T14:39:21.831103+00:00",
     "releases": [
       {
         "tag": "v1.2.0-dev.1",
@@ -8519,8 +8519,14 @@
     ]
   },
   "https://github.com/ShuhaibNC/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:56.560941+00:00",
+    "fetched_at": "2026-09-26T14:39:16.443724+00:00",
     "releases": [
+      {
+        "tag": "v1.11.0",
+        "body": "## [1.11.0](https://github.com/ShuhaibNC/morphe-patches/compare/v1.10.0...v1.11.0) (2026-09-26)\n\n### ✨ New Features\n\n* facebook lite ([e44441d](https://github.com/ShuhaibNC/morphe-patches/commit/e44441d556026a876d70fc588c8df594888d770f))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T11:47:03Z"
+      },
       {
         "tag": "v1.11.0-dev.1",
         "body": "## [1.11.0-dev.1](https://github.com/ShuhaibNC/morphe-patches/compare/v1.10.0...v1.11.0-dev.1) (2026-09-24)\n\n### ✨ New Features\n\n* facebook lite ([e44441d](https://github.com/ShuhaibNC/morphe-patches/commit/e44441d556026a876d70fc588c8df594888d770f))\n",
@@ -8604,17 +8610,11 @@
         "body": "## [1.6.0](https://github.com/ShuhaibNC/morphe-patches/compare/v1.5.0...v1.6.0) (2026-09-11)\n\n### ✨ New Features\n\n* beatly ([7804931](https://github.com/ShuhaibNC/morphe-patches/commit/78049311106b91a3ba47c21144f42706c475d954))\n* reverso ([23fac96](https://github.com/ShuhaibNC/morphe-patches/commit/23fac96b008180d77e45b796c669374556ff0914))\n",
         "prerelease": false,
         "dateReleased": "2026-09-11T18:16:41Z"
-      },
-      {
-        "tag": "v1.6.0-dev.1",
-        "body": "## [1.6.0-dev.1](https://github.com/ShuhaibNC/morphe-patches/compare/v1.5.0...v1.6.0-dev.1) (2026-09-11)\n\n### ✨ New Features\n\n* beatly ([7804931](https://github.com/ShuhaibNC/morphe-patches/commit/78049311106b91a3ba47c21144f42706c475d954))\n* reverso ([23fac96](https://github.com/ShuhaibNC/morphe-patches/commit/23fac96b008180d77e45b796c669374556ff0914))\n",
-        "prerelease": true,
-        "dateReleased": "2026-09-11T18:11:19Z"
       }
     ]
   },
   "https://github.com/HSlightsteel/slight-patches": {
-    "fetched_at": "2026-09-26T10:02:59.038444+00:00",
+    "fetched_at": "2026-09-26T14:39:19.192169+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -8673,7 +8673,7 @@
     ]
   },
   "https://github.com/alan7383/sofatime-patches": {
-    "fetched_at": "2026-09-26T10:02:59.941086+00:00",
+    "fetched_at": "2026-09-26T14:39:20.070026+00:00",
     "releases": [
       {
         "tag": "v1.5.1",
@@ -8785,7 +8785,7 @@
     ]
   },
   "https://github.com/AngelDark92/steamlink-patches": {
-    "fetched_at": "2026-09-26T10:03:01.462129+00:00",
+    "fetched_at": "2026-09-26T14:39:21.370976+00:00",
     "releases": [
       {
         "tag": "v1.20.0",
@@ -8880,7 +8880,7 @@
     ]
   },
   "https://github.com/ch3thanhs/stylus": {
-    "fetched_at": "2026-09-26T10:03:01.877863+00:00",
+    "fetched_at": "2026-09-26T14:39:21.579166+00:00",
     "releases": [
       {
         "tag": "v1.5.3",
@@ -8975,7 +8975,7 @@
     ]
   },
   "https://github.com/MoonShadowKeeper/Telegram-patchesMorphe": {
-    "fetched_at": "2026-09-26T10:02:59.416484+00:00",
+    "fetched_at": "2026-09-26T14:39:19.583621+00:00",
     "releases": [
       {
         "tag": "v1.20.0",
@@ -9110,7 +9110,7 @@
     ]
   },
   "https://github.com/chukfinley/tidal-patches": {
-    "fetched_at": "2026-09-26T10:02:59.576779+00:00",
+    "fetched_at": "2026-09-26T14:39:19.719503+00:00",
     "releases": [
       {
         "tag": "v1.6.0",
@@ -9205,7 +9205,7 @@
     ]
   },
   "https://github.com/Trimpsuz/morphe-busuu": {
-    "fetched_at": "2026-09-26T10:03:02.029180+00:00",
+    "fetched_at": "2026-09-26T14:39:21.482497+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -9228,7 +9228,7 @@
     ]
   },
   "https://github.com/osirisad/teamsnap-patches": {
-    "fetched_at": "2026-09-26T10:02:57.433307+00:00",
+    "fetched_at": "2026-09-26T14:39:17.534458+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -9274,7 +9274,7 @@
     ]
   },
   "https://github.com/variablenine/morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:00.960220+00:00",
+    "fetched_at": "2026-09-26T14:39:20.922093+00:00",
     "releases": [
       {
         "tag": "v1.4.5",
@@ -9416,7 +9416,7 @@
     ]
   },
   "https://github.com/ilikeadofai/vocacolle-morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:00.026689+00:00",
+    "fetched_at": "2026-09-26T14:39:20.083469+00:00",
     "releases": [
       {
         "tag": "v1.2.0-dev.5",
@@ -9511,7 +9511,7 @@
     ]
   },
   "https://github.com/ciraolone/morphe-watch-later": {
-    "fetched_at": "2026-09-26T10:02:58.001140+00:00",
+    "fetched_at": "2026-09-26T14:39:18.298087+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -9623,8 +9623,14 @@
     ]
   },
   "https://github.com/xob0t/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:56.526556+00:00",
+    "fetched_at": "2026-09-26T14:39:16.338046+00:00",
     "releases": [
+      {
+        "tag": "v1.12.22",
+        "body": "## [1.12.22](https://github.com/xob0t/morphe-patches/compare/v1.12.21...v1.12.22) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* **ozon:** support version 19.36.1 ([b33964b](https://github.com/xob0t/morphe-patches/commit/b33964b0ed943949d0fb7f75b4b9c6abaab6eb7a))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T10:41:21Z"
+      },
       {
         "tag": "v1.12.21",
         "body": "## [1.12.21](https://github.com/xob0t/morphe-patches/compare/v1.12.20...v1.12.21) (2026-09-22)\n\n### 🚀 Updated App Support\n\n* publish Wildberries 7.8.1002 seller recommendations fix ([#89](https://github.com/xob0t/morphe-patches/issues/89)) ([fe1073c](https://github.com/xob0t/morphe-patches/commit/fe1073c77228c1b9f6d6669b52029d95870b4d07))\n",
@@ -9708,12 +9714,6 @@
         "body": "## [1.12.8](https://github.com/xob0t/morphe-patches/compare/v1.12.7...v1.12.8) (2026-09-02)\n\n### 🐛 Bug Fixes\n\n* **avito:** support version 232.0 ([6c29f48](https://github.com/xob0t/morphe-patches/commit/6c29f48c895bda5106e285899668de3df2d80986))\n",
         "prerelease": false,
         "dateReleased": "2026-09-02T10:29:45Z"
-      },
-      {
-        "tag": "v1.12.7",
-        "body": "## [1.12.7](https://github.com/xob0t/morphe-patches/compare/v1.12.6...v1.12.7) (2026-08-26)\n\n### 🐛 Bug Fixes\n\n* **wildberries:** support version 7.7.7001-rustore ([b0598e1](https://github.com/xob0t/morphe-patches/commit/b0598e1f32b07b22063e2472a590e2c7bb6c4860))\n",
-        "prerelease": false,
-        "dateReleased": "2026-08-26T06:53:57Z"
       }
     ]
   },
@@ -9813,7 +9813,7 @@
     ]
   },
   "https://github.com/MarcaDian/morphe-patches-yavot": {
-    "fetched_at": "2026-09-26T10:03:00.279135+00:00",
+    "fetched_at": "2026-09-26T14:39:20.120994+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -9883,7 +9883,7 @@
     ]
   },
   "https://github.com/eZ4RK0/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:59.146863+00:00",
+    "fetched_at": "2026-09-26T14:39:19.326227+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -9900,7 +9900,7 @@
     ]
   },
   "https://github.com/cesbar/zpatches": {
-    "fetched_at": "2026-09-26T10:03:00.338571+00:00",
+    "fetched_at": "2026-09-26T14:39:20.603827+00:00",
     "releases": [
       {
         "tag": "v1.13.1",
@@ -9995,7 +9995,7 @@
     ]
   },
   "https://github.com/kuntal-devrat/diskwala-patches": {
-    "fetched_at": "2026-09-26T10:02:58.185402+00:00",
+    "fetched_at": "2026-09-26T14:39:18.394156+00:00",
     "releases": [
       {
         "tag": "v1.0.3",
@@ -10030,7 +10030,7 @@
     ]
   },
   "https://github.com/Okazakee/iptv-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:57.345747+00:00",
+    "fetched_at": "2026-09-26T14:39:17.299323+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -10175,7 +10175,7 @@
     ]
   },
   "https://github.com/ahmedyarub/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:57.042112+00:00",
+    "fetched_at": "2026-09-26T14:39:17.188286+00:00",
     "releases": [
       {
         "tag": "v1.7.0",
@@ -10341,7 +10341,7 @@
     ]
   },
   "https://github.com/BlueDragon4251/tiktok-patches-for-morphe": {
-    "fetched_at": "2026-09-26T10:02:56.504300+00:00",
+    "fetched_at": "2026-09-26T14:39:16.733120+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -10565,7 +10565,7 @@
     ]
   },
   "https://github.com/drnhzn/supreme-patches": {
-    "fetched_at": "2026-09-26T10:02:57.831572+00:00",
+    "fetched_at": "2026-09-26T14:39:17.915524+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -10599,7 +10599,7 @@
     ]
   },
   "https://github.com/Epxec/android-patches": {
-    "fetched_at": "2026-09-26T10:03:00.519755+00:00",
+    "fetched_at": "2026-09-26T14:39:20.498348+00:00",
     "releases": [
       {
         "tag": "v1.11.0",
@@ -10789,7 +10789,7 @@
     ]
   },
   "https://github.com/Insane96/Pinterest-patch": {
-    "fetched_at": "2026-09-26T10:02:56.411241+00:00",
+    "fetched_at": "2026-09-26T14:39:16.333996+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -10882,7 +10882,7 @@
     ]
   },
   "https://github.com/jrddupont/discord-patches": {
-    "fetched_at": "2026-09-26T10:03:01.902222+00:00",
+    "fetched_at": "2026-09-26T14:39:21.545995+00:00",
     "releases": [
       {
         "tag": "v1.5.0",
@@ -11193,7 +11193,7 @@
     ]
   },
   "https://github.com/picarica/My-moprhe-patches": {
-    "fetched_at": "2026-09-26T10:03:01.469264+00:00",
+    "fetched_at": "2026-09-26T14:39:21.294847+00:00",
     "releases": [
       {
         "tag": "v1.1.1",
@@ -11222,7 +11222,7 @@
     ]
   },
   "https://github.com/Santodan/santodan-patches": {
-    "fetched_at": "2026-09-26T10:02:56.472756+00:00",
+    "fetched_at": "2026-09-26T14:39:16.347710+00:00",
     "releases": [
       {
         "tag": "v0.4.1",
@@ -11315,8 +11315,14 @@
     ]
   },
   "https://github.com/sashade8-ship-it/dual-vot-patches": {
-    "fetched_at": "2026-09-26T10:03:00.728385+00:00",
+    "fetched_at": "2026-09-26T14:39:18.021201+00:00",
     "releases": [
+      {
+        "tag": "v1.45.0-dev.17-dualvot.8.5.3",
+        "body": "## Dual VoT Patches 1.45.0-dev.17-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.17.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T11:36:44Z"
+      },
       {
         "tag": "v1.45.0-dev.16-dualvot.8.5.3",
         "body": "## Dual VoT Patches 1.45.0-dev.16-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.16.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
@@ -11400,12 +11406,6 @@
         "body": "## Dual VoT Patches 1.45.0-dev.1-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.1.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
         "prerelease": true,
         "dateReleased": "2026-09-22T11:54:11Z"
-      },
-      {
-        "tag": "v1.44.0-dualvot.8.5.3",
-        "body": "## Dual VoT Patches 1.44.0-dualvot.8.5.3\n\nStable automated update based on Morphe Patches 1.44.0.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-21T20:47:57Z"
       }
     ]
   },
@@ -11481,7 +11481,7 @@
     ]
   },
   "https://github.com/SysAdminDoc/hushfeed": {
-    "fetched_at": "2026-09-26T10:03:00.803785+00:00",
+    "fetched_at": "2026-09-26T14:39:20.709329+00:00",
     "releases": [
       {
         "tag": "v0.60.0",
@@ -11576,8 +11576,14 @@
     ]
   },
   "https://github.com/zeldrisho/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:59.999995+00:00",
+    "fetched_at": "2026-09-26T14:39:20.037107+00:00",
     "releases": [
+      {
+        "tag": "v1.6.1",
+        "body": "### 🔧 Improvements\n* **Zalo - Enable Google Drive photo backup:** Makes the patch opt-in while its startup verifier issue is investigated.\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T11:32:42Z"
+      },
       {
         "tag": "v1.6.0",
         "body": "### 🐛 Bug Fixes\n* **Zalo - microG Drive support:** Declares MicroG-RE package visibility so Android package filtering does not hide the installed provider.\n* **Zalo - microG Drive support:** Corrects the installation prompt's download link to the official Morphe MicroG page.\n* **Zalo - microG Drive support:** Cancels the previous pending Drive refresh when another account is selected for the same backup view.\n\n### ✨ New Features\n* **Zalo - Suppress outbound seen status:** Disables the dedicated outbound seen-status packet path by default for `26.08.01`; message delivery and incoming status rendering are not modified.\n* **Zalo - Enable Google Drive photo backup:** Restores Zalo's existing Google Drive photo-backup option for `26.08.01`; Google authorization, server retention, encryption, and media exclusions remain unchanged.\n",
@@ -11623,7 +11629,7 @@
     ]
   },
   "https://github.com/yann-soliman/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:58.864434+00:00",
+    "fetched_at": "2026-09-26T14:39:19.002618+00:00",
     "releases": [
       {
         "tag": "v1.5.0",
@@ -11681,7 +11687,7 @@
     ]
   },
   "https://github.com/Zanuaimi/UniPatches": {
-    "fetched_at": "2026-09-26T10:02:57.551579+00:00",
+    "fetched_at": "2026-09-26T14:39:17.595731+00:00",
     "releases": [
       {
         "tag": "v1.30.0-dev.23",
@@ -11776,8 +11782,20 @@
     ]
   },
   "https://github.com/Amitaisela/travian-morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:01.281437+00:00",
+    "fetched_at": "2026-09-26T14:39:18.313624+00:00",
     "releases": [
+      {
+        "tag": "v1.21.0",
+        "body": "## [1.21.0](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.20.1...v1.21.0) (2026-09-26)\n\n### ✨ New Features\n\n* **Travian: Legends:** read-only data check for celebrations, oases, merchants and hero ([ca96877](https://github.com/Amitaisela/travian-morphe-patches/commit/ca9687772c507e3973dc69d6a6d27b79b1885fb9))\n* **Travian: Legends:** start town hall celebrations automatically (off by default) ([021dfae](https://github.com/Amitaisela/travian-morphe-patches/commit/021dfaeca72c2f8d09bc69281075d635135e328f))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T13:13:42Z"
+      },
+      {
+        "tag": "v1.20.1",
+        "body": "## [1.20.1](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.20.0...v1.20.1) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* **Travian: Legends:** show that a tapped build is on its way and log every outcome ([8b3ab6c](https://github.com/Amitaisela/travian-morphe-patches/commit/8b3ab6c4029b6ed7eedf86e1d99f3d4f4ec6692b))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T10:04:38Z"
+      },
       {
         "tag": "v1.20.0",
         "body": "## [1.20.0](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.19.0...v1.20.0) (2026-09-26)\n\n### ✨ New Features\n\n* **Travian: Legends:** real village map and step-by-step game actions ([a38c6e9](https://github.com/Amitaisela/travian-morphe-patches/commit/a38c6e9ec96f9aed128a6846ac9f024d8730a0de))\n",
@@ -11855,18 +11873,6 @@
         "body": "## [1.12.1](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.12.0...v1.12.1) (2026-09-21)\n\n### 🐛 Bug Fixes\n\n* **Travian: Legends:** don't report arrivals when the game leaves out the movement lists ([4444a3c](https://github.com/Amitaisela/travian-morphe-patches/commit/4444a3c5c448d83a427f9e5ae01d8ba702a34cfd))\n",
         "prerelease": false,
         "dateReleased": "2026-09-21T14:19:05Z"
-      },
-      {
-        "tag": "v1.12.0",
-        "body": "## [1.12.0](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.11.1...v1.12.0) (2026-09-21)\n\n### ✨ New Features\n\n* **Travian: Legends:** add a Queues screen showing what is building and training with the time left ([2e9257d](https://github.com/Amitaisela/travian-morphe-patches/commit/2e9257d98165e9446229fbf9b9dec03a35c60656))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-21T13:54:37Z"
-      },
-      {
-        "tag": "v1.11.1",
-        "body": "## [1.11.1](https://github.com/Amitaisela/travian-morphe-patches/compare/v1.11.0...v1.11.1) (2026-09-21)\n\n### 🐛 Bug Fixes\n\n* **Travian: Legends:** write farm list data to the log, to prepare the farm list screen ([4c38ce2](https://github.com/Amitaisela/travian-morphe-patches/commit/4c38ce255b172d59bd68c4b5d79758b857bcc32b))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-21T13:33:04Z"
       }
     ]
   },
@@ -11935,8 +11941,14 @@
     ]
   },
   "https://github.com/0-BlackSpectrum-0/channel-blacklist-patch": {
-    "fetched_at": "2026-09-26T10:03:02.305764+00:00",
+    "fetched_at": "2026-09-26T14:39:21.918677+00:00",
     "releases": [
+      {
+        "tag": "v2.2.0",
+        "body": "## [2.2.0](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/compare/v2.1.3...v2.2.0) (2026-09-26)\n\n### ✨ New Features\n\n* **youtube:** merge upstream dev updates and bump target support to 21.39.522 ([dd175bb](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/commit/dd175bb5edc5e5e0685b29e285315e830661e2d5))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T13:56:35Z"
+      },
       {
         "tag": "v2.1.3",
         "body": "## [2.1.3](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/compare/v2.1.2...v2.1.3) (2026-09-23)\n\n### 🐛 Bug Fixes\n\n* isolate package selection and target correct package for settings intent ([cc38b3e](https://github.com/0-BlackSpectrum-0/channel-blacklist-patch/commit/cc38b3ea4f78003d9b11a30d8b27892aafe4ec4e))\n",
@@ -12024,8 +12036,14 @@
     ]
   },
   "https://github.com/Akash-Sriram/morphe-google-photos": {
-    "fetched_at": "2026-09-26T10:02:59.371394+00:00",
+    "fetched_at": "2026-09-26T14:39:21.282139+00:00",
     "releases": [
+      {
+        "tag": "v1.11.0",
+        "body": "## [1.11.0](https://github.com/Akash-Sriram/morphe-google-photos/compare/v1.10.1...v1.11.0) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* **flags:** fix curated flag default state, active counter, and deduplicate custom overrides ([bf07950](https://github.com/Akash-Sriram/morphe-google-photos/commit/bf07950d9b75bebc4b76f5a72e3275783a9e8407))\n* **flags:** strip inline comments/quotes and add self-healing sanitization for contaminated flag values ([8f67cc4](https://github.com/Akash-Sriram/morphe-google-photos/commit/8f67cc44f5b2876fa446901f99bda82127a6eb57))\n* **maps:** synchronize photo carousel and fix current location FAB toggle in Map Explore ([dadcbed](https://github.com/Akash-Sriram/morphe-google-photos/commit/dadcbed7e9f8cc982049000c187b68a66c4817c4))\n\n### ✨ New Features\n\n* **compat:** add 7.94.0.984908898 to experimental support ([a4ff34f](https://github.com/Akash-Sriram/morphe-google-photos/commit/a4ff34f3747c2e2aeca5d818b702229330417b50))\n* **diagnostics:** add in-app session log manager, crash reporting, and 1-tap sharing tool ([508aaba](https://github.com/Akash-Sriram/morphe-google-photos/commit/508aaba09e3c0200bbbf97e0458933d770296ed6))\n* **flags:** add complete 8 Creator Tab tools profile merged with user flags ([b0a9f60](https://github.com/Akash-Sriram/morphe-google-photos/commit/b0a9f607d2e32a93b6a2245f850e36d2f5ccaf7a))\n* **flags:** feed all 362 curated Morphe flags as default preset ([f25b284](https://github.com/Akash-Sriram/morphe-google-photos/commit/f25b284df9db2c7710009653b62377b5ba90b9f7))\n* **flags:** implement tool-centric group headers with Enable All batch toggles and trigger badges ([d9ae58e](https://github.com/Akash-Sriram/morphe-google-photos/commit/d9ae58ee82490ab41bd478115b6468fcb9619e9f))\n* **flags:** keep empty slate clean, move load presets to 3-dot menu as placeholder ([13e3f54](https://github.com/Akash-Sriram/morphe-google-photos/commit/13e3f542c14c5a29f5782f05426be8b576ea1bf4))\n* **flags:** only display configured flags, showing clean empty slate upon clearing ([1c94e7c](https://github.com/Akash-Sriram/morphe-google-photos/commit/1c94e7cbeaa5963f6c2826320c7c2ac55f95f458))\n* **flags:** redesign Flag Manager with single view, SAF file picker, and bulk paste ([e87d422](https://github.com/Akash-Sriram/morphe-google-photos/commit/e87d422d8247385f84cdfbef26ee3af5f400f19c))\n* **flags:** support all flag types and wire dynamic OneGoogle protobuf bridge ([355cde3](https://github.com/Akash-Sriram/morphe-google-photos/commit/355cde3a89576d9af4d04209eb8b1c6789c2f864))\n* **googlephotos:** add Google One Bento Badge patch to restore genuine Pro badge on MicroG ([483c41f](https://github.com/Akash-Sriram/morphe-google-photos/commit/483c41f319669bb86476ef007720ef7881f99875))\n* **morphe:** strip preloaded flags, load 568 flags from morphe_photos_flags.txt ([2139ad4](https://github.com/Akash-Sriram/morphe-google-photos/commit/2139ad48fdf32443f6294155c6285d61a7ffcb95))\n\n### 🔧 Improvements\n\n* **flags:** optimize Flag Manager for 1k+ flags with virtualized ListView, debounced search, and async stream import ([1f287b0](https://github.com/Akash-Sriram/morphe-google-photos/commit/1f287b058578ee752bfe9f3703bc89f18b7ce230))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T13:57:17Z"
+      },
       {
         "tag": "v1.10.1",
         "body": "## [1.10.1](https://github.com/Akash-Sriram/morphe-google-photos/compare/v1.10.0...v1.10.1) (2026-09-23)\n\n### 🚀 Updated App Support\n\n* **googlephotos:** promote Google Photos v7.93.0.982110057 to stable target ([01366bc](https://github.com/Akash-Sriram/morphe-google-photos/commit/01366bca5d3e6a3c6eae1c0483ced6e3bb0f21ab))\n",
@@ -12109,17 +12127,11 @@
         "body": "# [1.3.0](https://github.com/Akash-Sriram/De-Vanced/compare/v1.2.3...v1.3.0) (2026-09-15)\n\n\n### Features\n\n* **photos:** dynamic ML model discovery and download from MDD manifests ([e39c700](https://github.com/Akash-Sriram/De-Vanced/commit/e39c700c7a19173fcf5c2a848afbdd3c8cddc389))\n\n\n\n",
         "prerelease": false,
         "dateReleased": "2026-09-15T07:09:50Z"
-      },
-      {
-        "tag": "v1.2.3",
-        "body": "## [1.2.3](https://github.com/Akash-Sriram/De-Vanced/compare/v1.2.2...v1.2.3) (2026-09-13)\n\n\n### Bug Fixes\n\n* **Google Photos v7.92:** Restore ML Models and Fix Story Crashes ([9fa2350](https://github.com/Akash-Sriram/De-Vanced/commit/9fa23505e4c76790da39d84ae18035dd1d1f168b))\n* **photos:** revert crashy dynamic story fingerprinting and separate model readiness gates safely ([e34f695](https://github.com/Akash-Sriram/De-Vanced/commit/e34f695c4200ace18840cdb8a5ea2cba8af48e01))\n* **photos:** use dynamic fingerprinting for memory style flags ([62bc026](https://github.com/Akash-Sriram/De-Vanced/commit/62bc026b4cf2320f6a017ec80688a15361e27ece))\n\n\n\n\n\n### Bug Fixes\n\n* **Google Photos v7.92:** Restore ML Models and Fix Story Crashes ([9fa2350](https://github.com/Akash-Sriram/De-Vanced/commit/9fa23505e4c76790da39d84ae18035dd1d1f168b))\n* **photos:** revert crashy dynamic story fingerprinting and separate model readiness gates safely ([e34f695](https://github.com/Akash-Sriram/De-Vanced/commit/e34f695c4200ace18840cdb8a5ea2cba8af48e01))\n* **photos:** use dynamic fingerprinting for memory style flags ([62bc026](https://github.com/Akash-Sriram/De-Vanced/commit/62bc026b4cf2320f6a017ec80688a15361e27ece))",
-        "prerelease": false,
-        "dateReleased": "2026-09-13T16:14:09Z"
       }
     ]
   },
   "https://github.com/FoxxoOwO/foxxo-patches": {
-    "fetched_at": "2026-09-26T10:02:58.455704+00:00",
+    "fetched_at": "2026-09-26T14:39:17.145106+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -12266,97 +12278,97 @@
     ]
   },
   "https://github.com/SatanMerde/D-moniakPatches": {
-    "fetched_at": "2026-09-26T10:02:56.510183+00:00",
+    "fetched_at": "2026-09-26T14:39:17.297570+00:00",
     "releases": [
       {
-        "tag": "v1.22.0",
-        "body": "## [1.22.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.21.0...v1.22.0) (2026-09-26)\n\n### ✨ New Features\n\n* add messaging apps suite (Telegram, Signal, Session, SimpleX, Snapchat) ([b3f17a2](https://github.com/SatanMerde/D-moniakPatches/commit/b3f17a2caee026ff90176eefef00d973a5c43358))\n",
+        "tag": "v1.32.0",
+        "body": "## [1.32.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.31.0...v1.32.0) (2026-09-26)\n\n### ✨ New Features\n\n* add patch suites for VPN.lat, hide.me VPN, Claude AI, Euria AI, Bitwarden, DeepL ([4f0ad64](https://github.com/SatanMerde/D-moniakPatches/commit/4f0ad64cab7dab330df6c2ae2d8724dfd8d5f315))\n",
         "prerelease": false,
-        "dateReleased": "2026-09-26T09:59:13Z"
+        "dateReleased": "2026-09-26T14:32:22Z"
       },
       {
-        "tag": "v1.22.0-dev.1",
-        "body": "## [1.22.0-dev.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.21.0...v1.22.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* add messaging apps suite (Telegram, Signal, Session, SimpleX, Snapchat) ([b3f17a2](https://github.com/SatanMerde/D-moniakPatches/commit/b3f17a2caee026ff90176eefef00d973a5c43358))\n* add premium and pro feature patches for Duolingo, Waze, SoundCloud, and Pinterest ([6074d38](https://github.com/SatanMerde/D-moniakPatches/commit/6074d381fcbeeb913a385b389a556546ad33bcae))\n",
+        "tag": "v1.31.0",
+        "body": "## [1.31.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.30.0...v1.31.0) (2026-09-26)\n\n### ✨ New Features\n\n* add patch suites for useful apps (CamScanner, Flightradar24, PictureThis, AllTrails, Windy) ([9fc0274](https://github.com/SatanMerde/D-moniakPatches/commit/9fc02743f3778affa1ddee9bfd286f05b6735dff))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T14:19:11Z"
+      },
+      {
+        "tag": "v1.30.0",
+        "body": "## [1.30.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.29.0...v1.30.0) (2026-09-26)\n\n### ✨ New Features\n\n* add patch suites for useful apps (Stellarium Mobile, World Map Quiz, Photomath, Memrise, Peak) ([1b2cb1b](https://github.com/SatanMerde/D-moniakPatches/commit/1b2cb1b872d5a8ad2ad305bf7cea7ff17063b938))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T14:12:40Z"
+      },
+      {
+        "tag": "v1.29.0",
+        "body": "## [1.29.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.28.3...v1.29.0) (2026-09-26)\n\n### ✨ New Features\n\n* add patch suites for 10 mythical mobile games (Subway Surfers, PvZ, Temple Run 2, Fruit Ninja, etc.) ([71f9e31](https://github.com/SatanMerde/D-moniakPatches/commit/71f9e31a5f6f25464bb95077c35de54ccb3c44c8))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T14:02:34Z"
+      },
+      {
+        "tag": "v1.28.3",
+        "body": "## [1.28.3](https://github.com/SatanMerde/D-moniakPatches/compare/v1.28.2...v1.28.3) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* **movix:** switch to evaluateJavascript and inject via setInjectedJavaScriptBeforeContentLoaded ([7ad7820](https://github.com/SatanMerde/D-moniakPatches/commit/7ad7820d81f717521ebf743b7a0a7e281e2158f8))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T13:46:28Z"
+      },
+      {
+        "tag": "v1.28.2",
+        "body": "## [1.28.2](https://github.com/SatanMerde/D-moniakPatches/compare/v1.28.1...v1.28.2) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* **movix:** completely eliminate 'Une pub et c\\'est parti' modal via VIP storage locking, fetch mock and Radix dialog killer ([9af40e5](https://github.com/SatanMerde/D-moniakPatches/commit/9af40e5dde1c41cceb2a7254005b916f8c52dfb4))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T13:29:02Z"
+      },
+      {
+        "tag": "v1.28.1",
+        "body": "## [1.28.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.28.0...v1.28.1) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* **movix:** implement real React Native WebView bytecode hooks for Movix ad blocking and feature unlock ([e99f6c8](https://github.com/SatanMerde/D-moniakPatches/commit/e99f6c8048178023ddabd9e37af3c614b1bc0649))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T13:14:18Z"
+      },
+      {
+        "tag": "v1.28.0",
+        "body": "## [1.28.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.27.0...v1.28.0) (2026-09-26)\n\n### ✨ New Features\n\n* add Brave Browser, Firefox, Twitch and VLC patch suites (170 patches, 53 apps) ([8d83b4d](https://github.com/SatanMerde/D-moniakPatches/commit/8d83b4dacf3126762707764ca0239f984f0f80a3))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T13:06:02Z"
+      },
+      {
+        "tag": "v1.27.0",
+        "body": "## [1.27.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.26.0...v1.27.0) (2026-09-26)\n\n### ✨ New Features\n\n* expand Canva, Movix and Google Drive suites to 158 patches total ([5f55355](https://github.com/SatanMerde/D-moniakPatches/commit/5f55355c85423641c8164b872fb1bdd2d2ed941a))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T12:52:24Z"
+      },
+      {
+        "tag": "v1.26.0",
+        "body": "## [1.26.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.25.0...v1.26.0) (2026-09-26)\n\n### ✨ New Features\n\n* add Canva, Movix and Google Drive patch suites (145 patches, 49 apps) ([97ba158](https://github.com/SatanMerde/D-moniakPatches/commit/97ba15809ceedc83f2d15ecf9ba833d35be635f5))\n",
+        "prerelease": false,
+        "dateReleased": "2026-09-26T11:21:00Z"
+      },
+      {
+        "tag": "v1.26.0-dev.1",
+        "body": "## [1.26.0-dev.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.25.0...v1.26.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* add Canva, Movix and Google Drive patch suites (145 patches, 49 apps) ([97ba158](https://github.com/SatanMerde/D-moniakPatches/commit/97ba15809ceedc83f2d15ecf9ba833d35be635f5))\n* add premium and pro feature patches for Duolingo, Waze, SoundCloud, and Pinterest ([6074d38](https://github.com/SatanMerde/D-moniakPatches/commit/6074d381fcbeeb913a385b389a556546ad33bcae))\n",
         "prerelease": true,
-        "dateReleased": "2026-09-26T09:59:20Z"
+        "dateReleased": "2026-09-26T11:21:17Z"
       },
       {
-        "tag": "v1.21.0",
-        "body": "## [1.21.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.20.0...v1.21.0) (2026-09-26)\n\n### ✨ New Features\n\n* add AI apps suite (ChatGPT, Perplexity, Google Gemini) and expand Google Photos patches ([649c5d9](https://github.com/SatanMerde/D-moniakPatches/commit/649c5d98953ed31435f0161b210f92284f5c8238))\n",
+        "tag": "v1.25.0",
+        "body": "## [1.25.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.24.0...v1.25.0) (2026-09-26)\n\n### ✨ New Features\n\n* add cloud storage suite (MEGA, TeraBox, Proton Drive, Nextcloud) ([0204163](https://github.com/SatanMerde/D-moniakPatches/commit/0204163be3118d347336d7bda064777d01ff2312))\n",
         "prerelease": false,
-        "dateReleased": "2026-09-26T09:52:28Z"
+        "dateReleased": "2026-09-26T10:30:49Z"
       },
       {
-        "tag": "v1.21.0-dev.1",
-        "body": "## [1.21.0-dev.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.20.0...v1.21.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* add AI apps suite (ChatGPT, Perplexity, Google Gemini) and expand Google Photos patches ([649c5d9](https://github.com/SatanMerde/D-moniakPatches/commit/649c5d98953ed31435f0161b210f92284f5c8238))\n* add premium and pro feature patches for Duolingo, Waze, SoundCloud, and Pinterest ([6074d38](https://github.com/SatanMerde/D-moniakPatches/commit/6074d381fcbeeb913a385b389a556546ad33bcae))\n",
+        "tag": "v1.25.0-dev.2",
+        "body": "## [1.25.0-dev.2](https://github.com/SatanMerde/D-moniakPatches/compare/v1.25.0-dev.1...v1.25.0-dev.2) (2026-09-26)\n\n### ✨ New Features\n\n* add cloud storage suite (MEGA, TeraBox, Proton Drive, Nextcloud) ([0204163](https://github.com/SatanMerde/D-moniakPatches/commit/0204163be3118d347336d7bda064777d01ff2312))\n",
         "prerelease": true,
-        "dateReleased": "2026-09-26T09:53:04Z"
+        "dateReleased": "2026-09-26T10:30:42Z"
       },
       {
-        "tag": "v1.20.0",
-        "body": "## [1.20.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.19.0...v1.20.0) (2026-09-26)\n\n### ✨ New Features\n\n* add Google Phone, Google Maps, and Google Photos base apps suite ([17e4aef](https://github.com/SatanMerde/D-moniakPatches/commit/17e4aef2a906e0824723a0efe6fedd9318639c7c))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-26T09:28:19Z"
-      },
-      {
-        "tag": "v1.20.0-dev.1",
-        "body": "## [1.20.0-dev.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.19.0...v1.20.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* add Google Phone, Google Maps, and Google Photos base apps suite ([17e4aef](https://github.com/SatanMerde/D-moniakPatches/commit/17e4aef2a906e0824723a0efe6fedd9318639c7c))\n* add premium and pro feature patches for Duolingo, Waze, SoundCloud, and Pinterest ([6074d38](https://github.com/SatanMerde/D-moniakPatches/commit/6074d381fcbeeb913a385b389a556546ad33bcae))\n",
+        "tag": "v1.25.0-dev.1",
+        "body": "## [1.25.0-dev.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.24.0...v1.25.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* add premium and pro feature patches for Duolingo, Waze, SoundCloud, and Pinterest ([6074d38](https://github.com/SatanMerde/D-moniakPatches/commit/6074d381fcbeeb913a385b389a556546ad33bcae))\n",
         "prerelease": true,
-        "dateReleased": "2026-09-26T09:29:18Z"
+        "dateReleased": "2026-09-26T10:21:22Z"
       },
       {
-        "tag": "v1.19.0",
-        "body": "## [1.19.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.18.0...v1.19.0) (2026-09-26)\n\n### ✨ New Features\n\n* add Tuta Mail suite and expand Proton VPN patches suite ([6040fbb](https://github.com/SatanMerde/D-moniakPatches/commit/6040fbbb1ea0c8a1d9135ca0d2de4ed7745a029e))\n",
+        "tag": "v1.24.0",
+        "body": "## [1.24.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.23.0...v1.24.0) (2026-09-26)\n\n### ✨ New Features\n\n* add Pro and Premium feature unlocks for Telegram, Snapchat, Signal, Session, and SimpleX ([3c9b5d3](https://github.com/SatanMerde/D-moniakPatches/commit/3c9b5d354dd7a78e05aed37035807e6920360aa6))\n",
         "prerelease": false,
-        "dateReleased": "2026-09-26T09:18:19Z"
-      },
-      {
-        "tag": "v1.19.0-dev.1",
-        "body": "## [1.19.0-dev.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.18.0...v1.19.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* add premium and pro feature patches for Duolingo, Waze, SoundCloud, and Pinterest ([6074d38](https://github.com/SatanMerde/D-moniakPatches/commit/6074d381fcbeeb913a385b389a556546ad33bcae))\n* add Tuta Mail suite and expand Proton VPN patches suite ([6040fbb](https://github.com/SatanMerde/D-moniakPatches/commit/6040fbbb1ea0c8a1d9135ca0d2de4ed7745a029e))\n",
-        "prerelease": true,
-        "dateReleased": "2026-09-26T09:18:18Z"
-      },
-      {
-        "tag": "v1.18.0",
-        "body": "## [1.18.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.17.0...v1.18.0) (2026-09-26)\n\n### ✨ New Features\n\n* add advanced Proton VPN, Proton Mail, and Proton Pass patches suite ([21f6335](https://github.com/SatanMerde/D-moniakPatches/commit/21f6335c02825e9fedbe866516755537d60434c6))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-26T09:13:31Z"
-      },
-      {
-        "tag": "v1.18.0-dev.1",
-        "body": "## [1.18.0-dev.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.17.0...v1.18.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* add advanced Proton VPN, Proton Mail, and Proton Pass patches suite ([21f6335](https://github.com/SatanMerde/D-moniakPatches/commit/21f6335c02825e9fedbe866516755537d60434c6))\n* add premium and pro feature patches for Duolingo, Waze, SoundCloud, and Pinterest ([6074d38](https://github.com/SatanMerde/D-moniakPatches/commit/6074d381fcbeeb913a385b389a556546ad33bcae))\n",
-        "prerelease": true,
-        "dateReleased": "2026-09-26T09:13:39Z"
-      },
-      {
-        "tag": "v1.17.0",
-        "body": "## [1.17.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.16.0...v1.17.0) (2026-09-26)\n\n### ✨ New Features\n\n* add Proton VPN, Turbo VPN, and Windscribe patches suite ([475083e](https://github.com/SatanMerde/D-moniakPatches/commit/475083e667c13ad8ed7b3a8ab61cfc14d502f94c))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-26T09:07:39Z"
-      },
-      {
-        "tag": "v1.16.0",
-        "body": "## [1.16.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.15.0...v1.16.0) (2026-09-26)\n\n### ✨ New Features\n\n* add Hill Climb Racing, Jetpack Joyride, Alto's Adventure, and Speedtest patches suite ([071e03a](https://github.com/SatanMerde/D-moniakPatches/commit/071e03ae5a6ec1247d7be66b6f07547d89e7e441))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-26T09:01:58Z"
-      },
-      {
-        "tag": "v1.15.0",
-        "body": "## [1.15.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.14.0...v1.15.0) (2026-09-26)\n\n### ✨ New Features\n\n* add 6 universal patches for AMOLED, rotation, screen on, 120Hz, haptics, and webview debugging ([0e0373f](https://github.com/SatanMerde/D-moniakPatches/commit/0e0373fc15d542e630bd209379d92e2a430f790a))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-26T08:54:42Z"
-      },
-      {
-        "tag": "v1.14.0",
-        "body": "## [1.14.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.13.0...v1.14.0) (2026-09-26)\n\n### ✨ New Features\n\n* add Shazam, Strava, Truecaller, and MX Player patches suite ([389f538](https://github.com/SatanMerde/D-moniakPatches/commit/389f538d6cf0bf8d207cbd614f946712f328cc44))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-26T08:50:03Z"
-      },
-      {
-        "tag": "v1.13.0",
-        "body": "## [1.13.0](https://github.com/SatanMerde/D-moniakPatches/compare/v1.12.0...v1.13.0) (2026-09-26)\n\n### ✨ New Features\n\n* add premium and pro feature patches for Duolingo, Waze, SoundCloud, and Pinterest ([43364aa](https://github.com/SatanMerde/D-moniakPatches/commit/43364aa38f2231a5511418494c1ad0a5491431ab))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-26T08:38:56Z"
+        "dateReleased": "2026-09-26T10:07:35Z"
       }
     ]
   },
@@ -12491,7 +12503,7 @@
     ]
   },
   "https://github.com/adderalladmiral/psychonaut-journal-patches": {
-    "fetched_at": "2026-09-26T10:02:59.666081+00:00",
+    "fetched_at": "2026-09-26T14:39:19.658974+00:00",
     "releases": [
       {
         "tag": "v1.0.1-dev.1",
@@ -12561,7 +12573,7 @@
     ]
   },
   "https://github.com/HellLord77/media-patches": {
-    "fetched_at": "2026-09-26T10:03:00.500947+00:00",
+    "fetched_at": "2026-09-26T14:39:20.474768+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -12614,7 +12626,7 @@
     ]
   },
   "https://github.com/headboy99/headboy-morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:59.679783+00:00",
+    "fetched_at": "2026-09-26T14:39:19.730520+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -12637,7 +12649,7 @@
     ]
   },
   "https://github.com/Canic/twitch-morphe-patch": {
-    "fetched_at": "2026-09-26T10:03:01.642280+00:00",
+    "fetched_at": "2026-09-26T14:39:21.444240+00:00",
     "releases": [
       {
         "tag": "v1.44.3",
@@ -12666,7 +12678,7 @@
     ]
   },
   "https://github.com/Akshayykadam/Pixel-Camera": {
-    "fetched_at": "2026-09-26T10:03:02.547820+00:00",
+    "fetched_at": "2026-09-26T14:39:22.218766+00:00",
     "releases": [
       {
         "tag": "1.0.3",
@@ -12695,7 +12707,7 @@
     ]
   },
   "https://github.com/Gamer92000/pixelcamera-patches": {
-    "fetched_at": "2026-09-26T10:02:59.124892+00:00",
+    "fetched_at": "2026-09-26T14:39:19.250129+00:00",
     "releases": [
       {
         "tag": "v1.0.4",
@@ -12730,7 +12742,7 @@
     ]
   },
   "https://github.com/phamleduy04/duy-patches": {
-    "fetched_at": "2026-09-26T10:02:59.019123+00:00",
+    "fetched_at": "2026-09-26T14:39:19.116005+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -12747,7 +12759,7 @@
     ]
   },
   "https://github.com/virzak/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:57.161406+00:00",
+    "fetched_at": "2026-09-26T14:39:17.133221+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -12853,7 +12865,7 @@
     ]
   },
   "https://github.com/Jeff-tek/jeff-patches": {
-    "fetched_at": "2026-09-26T10:03:01.906580+00:00",
+    "fetched_at": "2026-09-26T14:39:21.669918+00:00",
     "releases": [
       {
         "tag": "v1.0.1-dev.3",
@@ -12894,7 +12906,7 @@
     ]
   },
   "https://github.com/WaggBR/Wagg13Patch_Morphe": {
-    "fetched_at": "2026-09-26T10:02:56.400115+00:00",
+    "fetched_at": "2026-09-26T14:39:16.311575+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -12905,7 +12917,7 @@
     ]
   },
   "https://github.com/ihatenodejs/aidans-patches": {
-    "fetched_at": "2026-09-26T10:03:01.221180+00:00",
+    "fetched_at": "2026-09-26T14:39:20.970017+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -12916,8 +12928,14 @@
     ]
   },
   "https://github.com/AgentKosticka/Jam-Patches": {
-    "fetched_at": "2026-09-26T10:03:01.139145+00:00",
+    "fetched_at": "2026-09-26T14:39:16.377822+00:00",
     "releases": [
+      {
+        "tag": "v1.0.0-dev.14",
+        "body": "## [1.0.0-dev.14](https://github.com/AgentKosticka/Jam-Patches/compare/v1.0.0-dev.13...v1.0.0-dev.14) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* **Jam:** route player controls to host and guard supported versions ([d75c61a](https://github.com/AgentKosticka/Jam-Patches/commit/d75c61aaee5d39985423b78a1e3d9c4e9697696f))\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T10:07:16Z"
+      },
       {
         "tag": "v1.0.0-dev.13",
         "body": "## [1.0.0-dev.13](https://github.com/AgentKosticka/Jam-Patches/compare/v1.0.0-dev.12...v1.0.0-dev.13) (2026-09-25)\n\n### ✨ New Features\n\n* **Jam:** support experimental Music 9.35.54 through 9.37.54 ([81820e6](https://github.com/AgentKosticka/Jam-Patches/commit/81820e66881ad8b3d7bc50aa397cd75cfe54dd93))\n",
@@ -12999,7 +13017,7 @@
     ]
   },
   "https://github.com/Nai64/Nai64ExtraPatches": {
-    "fetched_at": "2026-09-26T10:02:57.783584+00:00",
+    "fetched_at": "2026-09-26T14:39:16.737090+00:00",
     "releases": [
       {
         "tag": "1.1.0",
@@ -13051,7 +13069,7 @@
     ]
   },
   "https://github.com/thegibbonn/morphe-patches-anilili": {
-    "fetched_at": "2026-09-26T10:02:57.949940+00:00",
+    "fetched_at": "2026-09-26T14:39:18.118556+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -13062,8 +13080,20 @@
     ]
   },
   "https://github.com/dunecache/oyasumi-patches": {
-    "fetched_at": "2026-09-26T10:02:58.351306+00:00",
+    "fetched_at": "2026-09-26T14:39:18.548910+00:00",
     "releases": [
+      {
+        "tag": "v0.2.0-dev.17",
+        "body": "## [0.2.0-dev.17](https://github.com/dunecache/oyasumi-patches/compare/v0.2.0-dev.16...v0.2.0-dev.17) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* derive invoke range register count from parameter count ([6b360b6](https://github.com/dunecache/oyasumi-patches/commit/6b360b6c0c888c7421768dd4b5db1af9ee09fe4b))\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T13:30:24Z"
+      },
+      {
+        "tag": "v0.2.0-dev.16",
+        "body": "## [0.2.0-dev.16](https://github.com/dunecache/oyasumi-patches/compare/v0.2.0-dev.15...v0.2.0-dev.16) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* correct popup fingerprint class name and activity resolution ([1c4f620](https://github.com/dunecache/oyasumi-patches/commit/1c4f620761eea501151e9cbd1f6ada3a2453ae62))\n* hook the real browser popup menu instead of the dead options menu ([4073237](https://github.com/dunecache/oyasumi-patches/commit/4073237e387215970828ec5a3d270c42e0d2d8af))\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T13:22:59Z"
+      },
       {
         "tag": "v0.2.0-dev.9",
         "body": "## [0.2.0-dev.9](https://github.com/dunecache/oyasumi-patches/compare/v0.2.0-dev.8...v0.2.0-dev.9) (2026-09-25)\n\n### ✨ New Features\n\n* suppress ADM Telegram join prompt ([c820606](https://github.com/dunecache/oyasumi-patches/commit/c8206069185548b87f1d633d0327cbd3ad152fd5))\n",
@@ -13141,23 +13171,11 @@
         "body": "## [0.2.0-dev.3](https://github.com/dunecache/oyasumi-patches/compare/v0.2.0-dev.2...v0.2.0-dev.3) (2026-09-21)\n\n### ✨ New Features\n\n* add walk-and-win fixed step spoof for com.djezzy.internet 3.0.9 ([051d5a1](https://github.com/dunecache/oyasumi-patches/commit/051d5a16406c39a68b80231da6684a8507927731))\n",
         "prerelease": true,
         "dateReleased": "2026-09-21T12:38:48Z"
-      },
-      {
-        "tag": "v0.2.0-dev.2",
-        "body": "## [0.2.0-dev.2](https://github.com/dunecache/oyasumi-patches/compare/v0.2.0-dev.1...v0.2.0-dev.2) (2026-09-21)\n\n### 🐛 Bug Fixes\n\n* anchor error-dialog fingerprint on LicenseActivity runOnUiThread ref ([c94d3b7](https://github.com/dunecache/oyasumi-patches/commit/c94d3b7615da8d2359b63a1006932f7575dd5183))\n",
-        "prerelease": true,
-        "dateReleased": "2026-09-21T12:31:40Z"
-      },
-      {
-        "tag": "v0.2.0-dev.1",
-        "body": "## [0.2.0-dev.1](https://github.com/dunecache/oyasumi-patches/compare/v0.1.0...v0.2.0-dev.1) (2026-09-21)\n\n### ✨ New Features\n\n* kill license redirect screen as well as the checks ([354d4ae](https://github.com/dunecache/oyasumi-patches/commit/354d4aed78b1a559f52b021906e82e72bc1a7d14))\n",
-        "prerelease": true,
-        "dateReleased": "2026-09-21T12:24:52Z"
       }
     ]
   },
   "https://github.com/ausamnco/gboard-enc-patches": {
-    "fetched_at": "2026-09-26T10:03:02.473050+00:00",
+    "fetched_at": "2026-09-26T14:39:22.017059+00:00",
     "releases": [
       {
         "tag": "v1.4.2",
@@ -13240,7 +13258,7 @@
     ]
   },
   "https://github.com/ImEnigma2x0/morphe-maloja-patch": {
-    "fetched_at": "2026-09-26T10:02:57.379594+00:00",
+    "fetched_at": "2026-09-26T14:39:17.492266+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -13251,7 +13269,7 @@
     ]
   },
   "https://github.com/xxxR3Dxxx/R3D-PatchLab": {
-    "fetched_at": "2026-09-26T10:02:59.783558+00:00",
+    "fetched_at": "2026-09-26T14:39:19.964638+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -13298,7 +13316,7 @@
     ]
   },
   "https://github.com/YYDarlinker/morphe-ai-caption-translator": {
-    "fetched_at": "2026-09-26T10:02:58.963426+00:00",
+    "fetched_at": "2026-09-26T14:39:19.173488+00:00",
     "releases": [
       {
         "tag": "v1.3.4",
@@ -13404,7 +13422,7 @@
     ]
   },
   "https://github.com/giaaaacomo/nifty-patches-selection": {
-    "fetched_at": "2026-09-26T10:03:01.162689+00:00",
+    "fetched_at": "2026-09-26T14:39:17.185497+00:00",
     "releases": [
       {
         "tag": "v0.3.0",
@@ -13558,7 +13576,7 @@
     ]
   },
   "https://github.com/TimBuckrue/nyt-games-vrr-patch": {
-    "fetched_at": "2026-09-26T10:02:58.585901+00:00",
+    "fetched_at": "2026-09-26T14:39:18.256949+00:00",
     "releases": [
       {
         "tag": "v1.1.0",
@@ -13593,7 +13611,7 @@
     ]
   },
   "https://github.com/Jagannath70086/jagas-morphe-patches": {
-    "fetched_at": "2026-09-26T10:03:00.455509+00:00",
+    "fetched_at": "2026-09-26T14:39:18.332718+00:00",
     "releases": [
       {
         "tag": "v1.0.2",
@@ -13616,7 +13634,7 @@
     ]
   },
   "https://github.com/testiwy268/morphe-patches": {
-    "fetched_at": "2026-09-26T05:13:31.466886+00:00",
+    "fetched_at": "2026-09-26T14:39:18.423454+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -13627,7 +13645,7 @@
     ]
   },
   "https://github.com/lchanc3/morphe-patches": {
-    "fetched_at": "2026-09-26T10:02:59.025220+00:00",
+    "fetched_at": "2026-09-26T14:39:19.164816+00:00",
     "releases": [
       {
         "tag": "v1.2.9",
@@ -13846,7 +13864,7 @@
     ]
   },
   "https://github.com/akzzy/Morphi-Patcho": {
-    "fetched_at": "2026-09-26T10:03:02.025376+00:00",
+    "fetched_at": "2026-09-26T14:39:21.114474+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -13896,7 +13914,7 @@
     "releases": []
   },
   "https://github.com/bearinmindcat/morphe-patches": {
-    "fetched_at": "2026-09-26T05:13:29.670949+00:00",
+    "fetched_at": "2026-09-26T14:39:17.027207+00:00",
     "releases": [
       {
         "tag": "v1.0.5",
@@ -14032,13 +14050,31 @@
     ]
   },
   "https://github.com/Wake-Old-Hyphen/hushfeed": {
-    "fetched_at": "2026-09-26T10:02:59.336419+00:00",
+    "fetched_at": "2026-09-26T14:39:19.538093+00:00",
     "releases": [
       {
         "tag": "v0.60.0",
-        "body": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0",
+        "body": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0",
         "prerelease": false,
         "dateReleased": "2026-09-26T07:38:40Z"
+      },
+      {
+        "tag": "privacy-tiktok-47.0.3-v0.60.0-20260926-125114",
+        "body": "# TikTok 47.0.3 Privacy Build\n\nAutomated privacy-hardened build.\n\n- Hushfeed v0.60.0 (includes AMOLED dark-theme fix)\n- Nai64 Extra Patches v1.1.0\n- Static manifest permission stripping\n- arm64-v8a only (32-bit libraries stripped)\n\nBase APK: `stock-tiktok-apk` release, Wake-Old-Hyphen/PAB\n\n## Patches\n\n<details>\n<summary>Hushfeed patches (96/96 enabled)</summary>\n\nEnabled:\n- AMOLED dark theme\n- Advanced downloads\n- Allow Duet and Stitch\n- Allow screenshots and Circle to Search\n- Always show publish date\n- Automatic video advance\n- Block P2P video relay\n- Block author button\n- Block contact list access\n- Block installed app scanning\n- Camera and microphone indicator\n- Comment publish diagnostics\n- Comment send fix\n- Comment sort controls\n- Comment tools\n- Confirm feed interactions\n- Copy comments without username\n- Custom offline videos limit\n- Device privacy guard\n- Diagnostic tools\n- Disable login requirement\n- Disable screen capture detection\n- Disable telemetry\n- Disable the long press quick share\n- Disable the long press repost\n- Double-tap controls\n- Downloads\n- Drop the animated image cache\n- Enable voice comments\n- Expand activity list\n- Feature Gate Lab\n- Feature Gate Recorder\n- Feed filter\n- Feed tab navigation\n- Fit the video to the screen\n- Fix Google login\n- Foldable split comment view\n- Follow diagnostics\n- Ghost mode\n- Hide CAPTCHA popups\n- Hide Play Store update offer\n- Hide already seen videos\n- Hide comment popup ads\n- Hide comment typing suggestions\n- Hide feed LIVE button\n- Hide feed follow button\n- Hide feed save button\n- Hide feed search button\n- Hide floating promotions\n- Hide inbox items\n- Hide inbox stories\n- Hide search suggestions\n- Hide suggested accounts\n- Hide the launcher shortcuts\n- Hide the risk control CAPTCHA\n- Hide video overlays\n- Hold-and-slide 2x lock\n- In-app browser privacy guard\n- Keep the Favorites tab\n- Keep the screen's refresh rate\n- Limit background traffic\n- Location access governor\n- Long-press controls\n- Network request report\n- Not interested button\n- Notification controls\n- Open external links directly\n- Playback quality\n- Playback speed\n- Region spoof\n- Remember clear display\n- Remove LIVE extras\n- Remove content credential and card scanner assets\n- Remove creation tools\n- Remove unused language packs\n- Repost diagnostics\n- Resource and battery governor\n- Resume videos after scrolling\n- SIM spoof\n- Sanitize sharing links\n- Settings\n- Share sheet tools\n- Show LIVE search\n- Show author region\n- Show the progress bar\n- Show the progress bar thumbnail\n- Skip content warnings\n- Skip the splash ad\n- Skip update checks\n- Stop on-device AI profiling\n- Stop video looping\n- Subtitle tools\n- Swipe-left controls\n- Translate comments\n- Use non-personalized search\n- Use system font\n\n</details>\n\n<details>\n<summary>Nai64 Extra Patches (16/432 enabled)</summary>\n\nEnabled:\n- Bypass VPN Detection\n- Disable Crash Reporters\n- Disable Firebase Auto-Init\n- Disable Firebase Performance\n- Disable Remote Config Fetch\n- Disable Root Checks\n- Hide Roaming Status\n- Limit Ad Tracking\n- Remove Ad Services Entries\n- Spoof Phone Number\n- Spoof Play Store Install Source\n- Spoof SIM Serial Number (simSerial=8931084206518391742)\n- Spoof Subscriber ID (subscriberId=204081234567890)\n- Spoof Tracking IDs (spoofAppSetId=00000000-0000-0000-0000-000000000000, spoofFirebaseId=0000000000000000000000, spoofAppSetScope=True)\n- Spoof Voice Mail\n- Strip Exif Location (stripExifLocation=True)\n\nDisabled (yielded to Hushfeed):\n- AMOLED Theme\n- Allow Background Activity\n- Allow Clearing App Data\n- Allow Cleartext Traffic\n- Allow Mixed Content\n- Allow Mobile Downloads\n- Allow Screenshots\n- Allow Text Selection\n- Allow WebView Autoplay\n- Allow WebView File Access\n- Always Allow Biometrics\n- Always Show Scrollbars\n- Apk Junk Cleanup\n- Block APM Suites\n- Block Ad Network Extras\n- Block Analytics Long Tail\n- Block Attribution Extras\n- Block BLE Scan\n- Block Crash Extras\n- Block Data Pipelines\n- Block GMS Tracking\n- Block Huawei Analytics\n- Block Install Referrer\n- Block Legacy Analytics\n- Block Location Trackers\n- Block MoEngage\n- Block PostHog\n- Block Profile Tracking\n- Block Push Ads\n- Block Push Analytics\n- Block Screenshot Detection\n- Block Session Replay\n- Block Snowplow\n- Block TikTok Events\n- Block Yandex Metrica\n- Bypass DND Policy Access\n- Bypass Demo User\n- Bypass Emulator Detection\n- Bypass Forced Updates (Experimental)\n- Bypass Google Play Services Check\n- Bypass Guest User\n- Bypass Hostname Verification\n- Bypass Instant App\n- Bypass Keyguard Secure\n- Bypass License Verification\n- Bypass Linked User\n- Bypass Lock Task Mode\n- Bypass Low-End Device\n- Bypass Managed Profile\n- Bypass OkHttp Pinning\n- Bypass Overlay Detection\n- Bypass Package Suspended\n- Bypass Permission Check\n- Bypass Picture-in-Picture Mode\n- Bypass Play License Check\n- Bypass Safe Mode\n- Bypass System User\n- Bypass Test Environment\n- Bypass User Restricted\n- Bypass WebView SSL Errors\n- Bypass WebView Safe Browsing\n- Change Package Name\n- Change Version Code\n- Change Version Name\n- Classic Back Gesture\n- Clearing Split Metadata\n- Custom Accent Color\n- Custom App Icon\n- Custom App Resolution (Experimental)\n- Custom Navigation Bar Color\n- Custom Startup Dialog\n- Custom Startup Sound\n- Custom Startup Toast\n- Custom Status Bar Color\n- Custom Window Background\n- Deny Permission Checks\n- Disable Activity Transitions\n- Disable Ad SDK Init\n- Disable Analytics Events\n- Disable Animations\n- Disable App Backup\n- Disable App Links Verification\n- Disable Audio Effects\n- Disable Audio Recording\n- Disable Autofill\n- Disable Background Dim\n- Disable Background Sync\n- Disable Bandcamp Tracker\n- Disable Battery Optimization Prompt\n- Disable Bluetooth A2DP\n- Disable Bluetooth Discovering\n- Disable Bluetooth SCO\n- Disable Boot Auto-Start\n- Disable Camera Shutter Sound\n- Disable Clipboard Write\n- Disable Content Capture\n- Disable DTMF Tones\n- Disable Edge-To-Edge Enforcement\n- Disable Elevation Shadows\n- Disable Facebook SDK Auto-Init\n- Disable Fixed Volume\n- Disable Forced Online Checks (Experimental)\n- Disable Game Sounds\n- Disable Google Pay\n- Disable Google Update Check\n- Disable HDR Detection\n- Disable Haptic Feedback\n- Disable Haptic On Scroll\n- Disable Hardware Acceleration\n- Disable Heads-up Notifications\n- Disable Heap Pointer Tagging\n- Disable High Text Contrast\n- Disable Keyboard Sound\n- Disable Location Requests\n- Disable Logcat Logging\n- Disable Music Detection\n- Disable Notification Badges\n- Disable Notification Sound\n- Disable Notification Vibration\n- Disable Notifications\n- Disable Onboarding Overlays\n- Disable Orientation Lock\n- Disable Overscroll Effect\n- Disable Permission Auto-Revoke\n- Disable Popup Keyboard\n- Disable Quiet Mode\n- Disable RTT\n- Disable Ringtone Playback\n- Disable Scrollbars\n- Disable Secure Surfaces\n- Disable Sensors\n- Disable Snackbars\n- Disable Sound Effects\n- Disable StrictMode\n- Disable Support Banners\n- Disable Telemetry\n- Disable Text-to-Speech\n- Disable Toasts\n- Disable Vibration\n- Disable Wake Locks\n- Disable WebView Safe Browsing\n- Disable Window Blur\n- Empty Clipboard Report\n- Enable Hidden Settings\n- Enable Large Heap\n- Enable Unrestricted Background Work\n- Enable Unrestricted Clipboard Access\n- Enable WebView App Cache\n- Enable WebView Cache\n- Enable WebView Content Access\n- Enable WebView DOM Storage\n- Enable WebView Debugging\n- Enable WebView Geolocation\n- Enable WebView Image Loading\n- Enable WebView Initial Focus\n- Enable WebView JavaScript\n- Enable WebView Offscreen Pre-Raster\n- Enable WebView Popups\n- Enable WebView Save Form Data\n- Enable WebView Save Password\n- Enable WebView Wide Viewport\n- Enable WebView Zoom\n- Enable WebView Zoom Support\n- Ensure Exact Alarm Availability\n- Ensure Internet Permission\n- Ensure Modern Media Permissions\n- Ensure Notification Permission\n- Ensure Storage Permissions\n- Exclude From Recents\n- Export All Activities\n- Fake ADB Enabled\n- Fake Animation Scales\n- Fake Auto Rotate On\n- Fake Auto Time\n- Fake Auto Time Zone\n- Fake Available Processors\n- Fake Battery Whitelist\n- Fake Bluetooth Bonded Devices Empty\n- Fake Bluetooth Enabled\n- Fake Brightness Auto Mode\n- Fake Cell Info Empty\n- Fake DTMF Tone Enabled\n- Fake Device Admin\n- Fake Device Idle Mode\n- Fake Doze Always On\n- Fake Fingerprint Hardware\n- Fake Font Scale\n- Fake Location Accuracy\n- Fake Memory Class\n- Fake NFC Enabled\n- Fake Notification Listener\n- Fake Notification Policy Access\n- Fake Online State\n- Fake Pointer Location\n- Fake Screen Timeout\n- Fake Show Touches\n- Fake Sound Effects Enabled\n- Fake Stay On While Plugged\n- Fake Storage Available\n- Fake Store Install Source\n- Fake Usage Access\n- Fake Vibrate When Ringing\n- Fake WiFi Scan Results Empty\n- Fake Write Settings Access\n- Fix Maps on MicroG\n- Force 32-Bit Color\n- Force 5GHz Band Supported\n- Force Android Beam\n- Force App Active\n- Force Battery Health Good\n- Force Battery Present\n- Force Battery Temperature\n- Force Can Install Packages\n- Force Charging Status\n- Force Dark Mode\n- Force Data Capable\n- Force Do Not Disturb Off\n- Force Emulated Storage\n- Force Extract Native Libs\n- Force Google Signed-Out\n- Force Haptics Available\n- Force Hardware Acceleration\n- Force Hardware Layers\n- Force Has System Feature\n- Force Idle Call State\n- Force Ignore Audio Focus\n- Force Landscape / Portrait\n- Force Left-to-Right Layout\n- Force Light Mode\n- Force Max Brightness\n- Force Microphone Unmuted\n- Force Multi-SIM\n- Force Normal Audio Mode\n- Force Overlay Permission\n- Force Picture-in-Picture\n- Force Resizable Activity\n- Force SIM Ready\n- Force SMS Capable\n- Force Screen Interactive\n- Force Single Phone\n- Force Single SIM\n- Force Speakerphone Off\n- Force Speakerphone On\n- Force Storage Non-Removable\n- Force User Unlocked\n- Force Voice Capable\n- Force WiFi P2P Supported\n- Force WiFi Scan Always Available\n- Force Wide Color Gamut\n- Force World Phone\n- Frame Rate Preference (Experimental)\n- GmsCore support (MicroG)\n- Grant All-Files Access\n- Grant WebView Geolocation\n- Graphics API Override (Experimental)\n- Hide Accessibility Services\n- Hide Accessibility Usage\n- Hide Accounts\n- Hide App Ops\n- Hide App Tasks\n- Hide Audio Devices\n- Hide Cell Location\n- Hide Cell Signal\n- Hide Clipboard\n- Hide Clipboard Description\n- Hide Current Location\n- Hide Data Usage\n- Hide Debugger Connection\n- Hide Default Sensor\n- Hide Device Admins\n- Hide Display Cutout\n- Hide Eavesdropping\n- Hide Hardware Address\n- Hide Input Devices\n- Hide Input Methods\n- Hide Installed Apps\n- Hide Mock Location\n- Hide Navigation Bar\n- Hide Neighboring Cells\n- Hide Network Identity\n- Hide Nfc Adapter\n- Hide Personal Data\n- Hide Query Intents\n- Hide Running Processes\n- Hide Running Services\n- Hide Service State\n- Hide Storage Volumes\n- Hide Stylus Handwriting\n- Hide Title Bar\n- Hide USB Devices\n- Hide Usage Events\n- Hide Usage Stats\n- Hide Wallpaper\n- Ignore Data Saver\n- Ignore GPS Disabled\n- Ignore Location Services Off\n- Ignore Low RAM Device\n- Ignore Power Save Mode\n- Ignore Screen Lock\n- Ignore Touch Exploration\n- Immersive Fullscreen\n- Keep Data on Uninstall\n- Keep Screen On\n- Legacy App Reviver\n- Legacy External Storage\n- Make App Debuggable\n- Nai64Patches Universal Overlay Patch v1.0 (Experimental)\n- Null Play Location\n- Optimize as Game\n- Prefer ANGLE Graphics Driver\n- Preserve App Data\n- Relax Hardware Features\n- Relax Required Libraries\n- Relax Shared Libraries\n- Remove App Icon\n- Remove Backup Restrictions\n- Remove Compatible Screens\n- Remove Hardware Requirements\n- Remove Internet Permission\n- Remove Network Security Config\n- Remove Permissions\n- Remove Play Count Limit\n- Rename App\n- Repair Missing Component Export Flags\n- Report Legacy Storage\n- Report No Cameras\n- Restore Package Visibility\n- Set Install Location\n- Set Profileable\n- Show Navigation Bar\n- Show Search Result Scores\n- Show Status Bar\n- Silence Notification Channels\n- Silence Play Services Errors\n- Skip Consent Popup\n- Skip Rate-Us Prompt\n- Skip Splash Screen (Experimental)\n- Spoof 24-Hour Format\n- Spoof Airplane Mode\n- Spoof Amazon Appstore Availability\n- Spoof Android ID\n- Spoof App Signature\n- Spoof BSSID\n- Spoof Battery Charging State\n- Spoof Battery Level\n- Spoof Bluetooth Audio On\n- Spoof Bluetooth Enabled\n- Spoof Bluetooth Identity\n- Spoof Bluetooth Name\n- Spoof Bluetooth Profile State\n- Spoof Board and Hardware\n- Spoof Build Fingerprint\n- Spoof Build Serial\n- Spoof Build Type and Tags\n- Spoof CPU Architecture\n- Spoof Data State\n- Spoof Developer Options\n- Spoof Device Model\n- Spoof Device Provisioned\n- Spoof Device Software Version\n- Spoof Fixed Location\n- Spoof GPU Info\n- Spoof Group ID Level 1\n- Spoof High Sample Rate\n- Spoof IMEI\n- Spoof ISIM IMPI\n- Spoof Last Known Location\n- Spoof Locale\n- Spoof Location Provider\n- Spoof MAC Address\n- Spoof Media Playing\n- Spoof Multi-Window Mode\n- Spoof Network Access Identifier\n- Spoof Network Operator Name\n- Spoof Network Type LTE\n- Spoof Notifications as Enabled\n- Spoof OpenGL ES Version\n- Spoof Play Integrity\n- Spoof Play Services Version\n- Spoof Ringer Mode\n- Spoof SDK Level\n- Spoof SIM Country\n- Spoof SIM Operator\n- Spoof SIM Operator Name\n- Spoof Sensor List\n- Spoof Signature Match\n- Spoof Storage State\n- Spoof Stream Volume\n- Spoof Target SDK\n- Spoof Time Zone\n- Spoof UiMode Night State\n- Spoof WebView User Agent\n- Spoof WiFi Enabled\n- Spoof WiFi RSSI\n- Spoof WiFi SSID\n- Spoof Widevine L1\n- Spoof Wired Headset\n- Status Bar Icons\n- Strip BuildConfig DEBUG\n- Strip Package Verifier\n- Strip Translations\n- Support All Screens\n- Tablet Mode\n- Transparent System Bars\n- Treat Network as Unmetered\n- Treat Screen as On\n- Trust User CAs (Config)\n- Trust User Certificates\n- Unlock Max Aspect Ratio\n- Unlock Notification Channels\n- Unlock Playback Speed\n- Unlock Rotation\n- Unmark Test Only\n- Use Display Cutout Area\n- VM Safe Mode\n- WebView Private Mode\n\n</details>\n\n## Permissions\n\n<details>\n<summary>Removed permissions (54)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n## Changelog since previous build\n\n- 82d4da3f docs: re-capture the settings screenshots after the polish pass\n- b2f02ed0 style(settings): accessibility, wording and feedback pass\n- 1b0ed71e style(settings): shapes on the radius scale and named colour tokens\n- c14ae375 style(settings): a real title on the error page and aligned choice dialogs\n\n## Build information\n\n| Item | Value |\n|---|---|\n| TikTok version | 47.0.3 |\n| Architecture | arm64-v8a |\n| Hushfeed | v0.60.0 |\n| Nai64 | v1.1.0 |\n| Permissions | 54 removed, 10 kept |\n\n## Installation note\n\nThis build is signed with a custom keystore. Uninstall any existing TikTok (stock or previously patched) before first install; subsequent updates from this workflow install in place.\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T12:51:15Z"
+      },
+      {
+        "tag": "privacy-tiktok-47.0.3-v0.60.0-20260926-110825",
+        "body": "# TikTok 47.0.3 Privacy Build\n\nAutomated privacy-hardened build.\n\n- Hushfeed v0.60.0 (includes AMOLED dark-theme fix)\n- Nai64 Extra Patches v1.1.0\n- Static manifest permission stripping\n- arm64-v8a only (32-bit libraries stripped)\n\nBase APK: `stock-tiktok-apk` release, Wake-Old-Hyphen/PAB\n\n## Patches\n\n<details>\n<summary>Hushfeed patches (96/96 enabled)</summary>\n\nEnabled:\n- AMOLED dark theme\n- Advanced downloads\n- Allow Duet and Stitch\n- Allow screenshots and Circle to Search\n- Always show publish date\n- Automatic video advance\n- Block P2P video relay\n- Block author button\n- Block contact list access\n- Block installed app scanning\n- Camera and microphone indicator\n- Comment publish diagnostics\n- Comment send fix\n- Comment sort controls\n- Comment tools\n- Confirm feed interactions\n- Copy comments without username\n- Custom offline videos limit\n- Device privacy guard\n- Diagnostic tools\n- Disable login requirement\n- Disable screen capture detection\n- Disable telemetry\n- Disable the long press quick share\n- Disable the long press repost\n- Double-tap controls\n- Downloads\n- Drop the animated image cache\n- Enable voice comments\n- Expand activity list\n- Feature Gate Lab\n- Feature Gate Recorder\n- Feed filter\n- Feed tab navigation\n- Fit the video to the screen\n- Fix Google login\n- Foldable split comment view\n- Follow diagnostics\n- Ghost mode\n- Hide CAPTCHA popups\n- Hide Play Store update offer\n- Hide already seen videos\n- Hide comment popup ads\n- Hide comment typing suggestions\n- Hide feed LIVE button\n- Hide feed follow button\n- Hide feed save button\n- Hide feed search button\n- Hide floating promotions\n- Hide inbox items\n- Hide inbox stories\n- Hide search suggestions\n- Hide suggested accounts\n- Hide the launcher shortcuts\n- Hide the risk control CAPTCHA\n- Hide video overlays\n- Hold-and-slide 2x lock\n- In-app browser privacy guard\n- Keep the Favorites tab\n- Keep the screen's refresh rate\n- Limit background traffic\n- Location access governor\n- Long-press controls\n- Network request report\n- Not interested button\n- Notification controls\n- Open external links directly\n- Playback quality\n- Playback speed\n- Region spoof\n- Remember clear display\n- Remove LIVE extras\n- Remove content credential and card scanner assets\n- Remove creation tools\n- Remove unused language packs\n- Repost diagnostics\n- Resource and battery governor\n- Resume videos after scrolling\n- SIM spoof\n- Sanitize sharing links\n- Settings\n- Share sheet tools\n- Show LIVE search\n- Show author region\n- Show the progress bar\n- Show the progress bar thumbnail\n- Skip content warnings\n- Skip the splash ad\n- Skip update checks\n- Stop on-device AI profiling\n- Stop video looping\n- Subtitle tools\n- Swipe-left controls\n- Translate comments\n- Use non-personalized search\n- Use system font\n\n</details>\n\n<details>\n<summary>Nai64 Extra Patches (16/432 enabled)</summary>\n\nEnabled:\n- Bypass VPN Detection\n- Disable Crash Reporters\n- Disable Firebase Auto-Init\n- Disable Firebase Performance\n- Disable Remote Config Fetch\n- Disable Root Checks\n- Hide Roaming Status\n- Limit Ad Tracking\n- Remove Ad Services Entries\n- Spoof Phone Number\n- Spoof Play Store Install Source\n- Spoof SIM Serial Number (simSerial=8931084206518391742)\n- Spoof Subscriber ID (subscriberId=204081234567890)\n- Spoof Tracking IDs (spoofAppSetId=00000000-0000-0000-0000-000000000000, spoofFirebaseId=0000000000000000000000, spoofAppSetScope=True)\n- Spoof Voice Mail\n- Strip Exif Location (stripExifLocation=True)\n\nDisabled (yielded to Hushfeed):\n- AMOLED Theme\n- Allow Background Activity\n- Allow Clearing App Data\n- Allow Cleartext Traffic\n- Allow Mixed Content\n- Allow Mobile Downloads\n- Allow Screenshots\n- Allow Text Selection\n- Allow WebView Autoplay\n- Allow WebView File Access\n- Always Allow Biometrics\n- Always Show Scrollbars\n- Apk Junk Cleanup\n- Block APM Suites\n- Block Ad Network Extras\n- Block Analytics Long Tail\n- Block Attribution Extras\n- Block BLE Scan\n- Block Crash Extras\n- Block Data Pipelines\n- Block GMS Tracking\n- Block Huawei Analytics\n- Block Install Referrer\n- Block Legacy Analytics\n- Block Location Trackers\n- Block MoEngage\n- Block PostHog\n- Block Profile Tracking\n- Block Push Ads\n- Block Push Analytics\n- Block Screenshot Detection\n- Block Session Replay\n- Block Snowplow\n- Block TikTok Events\n- Block Yandex Metrica\n- Bypass DND Policy Access\n- Bypass Demo User\n- Bypass Emulator Detection\n- Bypass Forced Updates (Experimental)\n- Bypass Google Play Services Check\n- Bypass Guest User\n- Bypass Hostname Verification\n- Bypass Instant App\n- Bypass Keyguard Secure\n- Bypass License Verification\n- Bypass Linked User\n- Bypass Lock Task Mode\n- Bypass Low-End Device\n- Bypass Managed Profile\n- Bypass OkHttp Pinning\n- Bypass Overlay Detection\n- Bypass Package Suspended\n- Bypass Permission Check\n- Bypass Picture-in-Picture Mode\n- Bypass Play License Check\n- Bypass Safe Mode\n- Bypass System User\n- Bypass Test Environment\n- Bypass User Restricted\n- Bypass WebView SSL Errors\n- Bypass WebView Safe Browsing\n- Change Package Name\n- Change Version Code\n- Change Version Name\n- Classic Back Gesture\n- Clearing Split Metadata\n- Custom Accent Color\n- Custom App Icon\n- Custom App Resolution (Experimental)\n- Custom Navigation Bar Color\n- Custom Startup Dialog\n- Custom Startup Sound\n- Custom Startup Toast\n- Custom Status Bar Color\n- Custom Window Background\n- Deny Permission Checks\n- Disable Activity Transitions\n- Disable Ad SDK Init\n- Disable Analytics Events\n- Disable Animations\n- Disable App Backup\n- Disable App Links Verification\n- Disable Audio Effects\n- Disable Audio Recording\n- Disable Autofill\n- Disable Background Dim\n- Disable Background Sync\n- Disable Bandcamp Tracker\n- Disable Battery Optimization Prompt\n- Disable Bluetooth A2DP\n- Disable Bluetooth Discovering\n- Disable Bluetooth SCO\n- Disable Boot Auto-Start\n- Disable Camera Shutter Sound\n- Disable Clipboard Write\n- Disable Content Capture\n- Disable DTMF Tones\n- Disable Edge-To-Edge Enforcement\n- Disable Elevation Shadows\n- Disable Facebook SDK Auto-Init\n- Disable Fixed Volume\n- Disable Forced Online Checks (Experimental)\n- Disable Game Sounds\n- Disable Google Pay\n- Disable Google Update Check\n- Disable HDR Detection\n- Disable Haptic Feedback\n- Disable Haptic On Scroll\n- Disable Hardware Acceleration\n- Disable Heads-up Notifications\n- Disable Heap Pointer Tagging\n- Disable High Text Contrast\n- Disable Keyboard Sound\n- Disable Location Requests\n- Disable Logcat Logging\n- Disable Music Detection\n- Disable Notification Badges\n- Disable Notification Sound\n- Disable Notification Vibration\n- Disable Notifications\n- Disable Onboarding Overlays\n- Disable Orientation Lock\n- Disable Overscroll Effect\n- Disable Permission Auto-Revoke\n- Disable Popup Keyboard\n- Disable Quiet Mode\n- Disable RTT\n- Disable Ringtone Playback\n- Disable Scrollbars\n- Disable Secure Surfaces\n- Disable Sensors\n- Disable Snackbars\n- Disable Sound Effects\n- Disable StrictMode\n- Disable Support Banners\n- Disable Telemetry\n- Disable Text-to-Speech\n- Disable Toasts\n- Disable Vibration\n- Disable Wake Locks\n- Disable WebView Safe Browsing\n- Disable Window Blur\n- Empty Clipboard Report\n- Enable Hidden Settings\n- Enable Large Heap\n- Enable Unrestricted Background Work\n- Enable Unrestricted Clipboard Access\n- Enable WebView App Cache\n- Enable WebView Cache\n- Enable WebView Content Access\n- Enable WebView DOM Storage\n- Enable WebView Debugging\n- Enable WebView Geolocation\n- Enable WebView Image Loading\n- Enable WebView Initial Focus\n- Enable WebView JavaScript\n- Enable WebView Offscreen Pre-Raster\n- Enable WebView Popups\n- Enable WebView Save Form Data\n- Enable WebView Save Password\n- Enable WebView Wide Viewport\n- Enable WebView Zoom\n- Enable WebView Zoom Support\n- Ensure Exact Alarm Availability\n- Ensure Internet Permission\n- Ensure Modern Media Permissions\n- Ensure Notification Permission\n- Ensure Storage Permissions\n- Exclude From Recents\n- Export All Activities\n- Fake ADB Enabled\n- Fake Animation Scales\n- Fake Auto Rotate On\n- Fake Auto Time\n- Fake Auto Time Zone\n- Fake Available Processors\n- Fake Battery Whitelist\n- Fake Bluetooth Bonded Devices Empty\n- Fake Bluetooth Enabled\n- Fake Brightness Auto Mode\n- Fake Cell Info Empty\n- Fake DTMF Tone Enabled\n- Fake Device Admin\n- Fake Device Idle Mode\n- Fake Doze Always On\n- Fake Fingerprint Hardware\n- Fake Font Scale\n- Fake Location Accuracy\n- Fake Memory Class\n- Fake NFC Enabled\n- Fake Notification Listener\n- Fake Notification Policy Access\n- Fake Online State\n- Fake Pointer Location\n- Fake Screen Timeout\n- Fake Show Touches\n- Fake Sound Effects Enabled\n- Fake Stay On While Plugged\n- Fake Storage Available\n- Fake Store Install Source\n- Fake Usage Access\n- Fake Vibrate When Ringing\n- Fake WiFi Scan Results Empty\n- Fake Write Settings Access\n- Fix Maps on MicroG\n- Force 32-Bit Color\n- Force 5GHz Band Supported\n- Force Android Beam\n- Force App Active\n- Force Battery Health Good\n- Force Battery Present\n- Force Battery Temperature\n- Force Can Install Packages\n- Force Charging Status\n- Force Dark Mode\n- Force Data Capable\n- Force Do Not Disturb Off\n- Force Emulated Storage\n- Force Extract Native Libs\n- Force Google Signed-Out\n- Force Haptics Available\n- Force Hardware Acceleration\n- Force Hardware Layers\n- Force Has System Feature\n- Force Idle Call State\n- Force Ignore Audio Focus\n- Force Landscape / Portrait\n- Force Left-to-Right Layout\n- Force Light Mode\n- Force Max Brightness\n- Force Microphone Unmuted\n- Force Multi-SIM\n- Force Normal Audio Mode\n- Force Overlay Permission\n- Force Picture-in-Picture\n- Force Resizable Activity\n- Force SIM Ready\n- Force SMS Capable\n- Force Screen Interactive\n- Force Single Phone\n- Force Single SIM\n- Force Speakerphone Off\n- Force Speakerphone On\n- Force Storage Non-Removable\n- Force User Unlocked\n- Force Voice Capable\n- Force WiFi P2P Supported\n- Force WiFi Scan Always Available\n- Force Wide Color Gamut\n- Force World Phone\n- Frame Rate Preference (Experimental)\n- GmsCore support (MicroG)\n- Grant All-Files Access\n- Grant WebView Geolocation\n- Graphics API Override (Experimental)\n- Hide Accessibility Services\n- Hide Accessibility Usage\n- Hide Accounts\n- Hide App Ops\n- Hide App Tasks\n- Hide Audio Devices\n- Hide Cell Location\n- Hide Cell Signal\n- Hide Clipboard\n- Hide Clipboard Description\n- Hide Current Location\n- Hide Data Usage\n- Hide Debugger Connection\n- Hide Default Sensor\n- Hide Device Admins\n- Hide Display Cutout\n- Hide Eavesdropping\n- Hide Hardware Address\n- Hide Input Devices\n- Hide Input Methods\n- Hide Installed Apps\n- Hide Mock Location\n- Hide Navigation Bar\n- Hide Neighboring Cells\n- Hide Network Identity\n- Hide Nfc Adapter\n- Hide Personal Data\n- Hide Query Intents\n- Hide Running Processes\n- Hide Running Services\n- Hide Service State\n- Hide Storage Volumes\n- Hide Stylus Handwriting\n- Hide Title Bar\n- Hide USB Devices\n- Hide Usage Events\n- Hide Usage Stats\n- Hide Wallpaper\n- Ignore Data Saver\n- Ignore GPS Disabled\n- Ignore Location Services Off\n- Ignore Low RAM Device\n- Ignore Power Save Mode\n- Ignore Screen Lock\n- Ignore Touch Exploration\n- Immersive Fullscreen\n- Keep Data on Uninstall\n- Keep Screen On\n- Legacy App Reviver\n- Legacy External Storage\n- Make App Debuggable\n- Nai64Patches Universal Overlay Patch v1.0 (Experimental)\n- Null Play Location\n- Optimize as Game\n- Prefer ANGLE Graphics Driver\n- Preserve App Data\n- Relax Hardware Features\n- Relax Required Libraries\n- Relax Shared Libraries\n- Remove App Icon\n- Remove Backup Restrictions\n- Remove Compatible Screens\n- Remove Hardware Requirements\n- Remove Internet Permission\n- Remove Network Security Config\n- Remove Permissions\n- Remove Play Count Limit\n- Rename App\n- Repair Missing Component Export Flags\n- Report Legacy Storage\n- Report No Cameras\n- Restore Package Visibility\n- Set Install Location\n- Set Profileable\n- Show Navigation Bar\n- Show Search Result Scores\n- Show Status Bar\n- Silence Notification Channels\n- Silence Play Services Errors\n- Skip Consent Popup\n- Skip Rate-Us Prompt\n- Skip Splash Screen (Experimental)\n- Spoof 24-Hour Format\n- Spoof Airplane Mode\n- Spoof Amazon Appstore Availability\n- Spoof Android ID\n- Spoof App Signature\n- Spoof BSSID\n- Spoof Battery Charging State\n- Spoof Battery Level\n- Spoof Bluetooth Audio On\n- Spoof Bluetooth Enabled\n- Spoof Bluetooth Identity\n- Spoof Bluetooth Name\n- Spoof Bluetooth Profile State\n- Spoof Board and Hardware\n- Spoof Build Fingerprint\n- Spoof Build Serial\n- Spoof Build Type and Tags\n- Spoof CPU Architecture\n- Spoof Data State\n- Spoof Developer Options\n- Spoof Device Model\n- Spoof Device Provisioned\n- Spoof Device Software Version\n- Spoof Fixed Location\n- Spoof GPU Info\n- Spoof Group ID Level 1\n- Spoof High Sample Rate\n- Spoof IMEI\n- Spoof ISIM IMPI\n- Spoof Last Known Location\n- Spoof Locale\n- Spoof Location Provider\n- Spoof MAC Address\n- Spoof Media Playing\n- Spoof Multi-Window Mode\n- Spoof Network Access Identifier\n- Spoof Network Operator Name\n- Spoof Network Type LTE\n- Spoof Notifications as Enabled\n- Spoof OpenGL ES Version\n- Spoof Play Integrity\n- Spoof Play Services Version\n- Spoof Ringer Mode\n- Spoof SDK Level\n- Spoof SIM Country\n- Spoof SIM Operator\n- Spoof SIM Operator Name\n- Spoof Sensor List\n- Spoof Signature Match\n- Spoof Storage State\n- Spoof Stream Volume\n- Spoof Target SDK\n- Spoof Time Zone\n- Spoof UiMode Night State\n- Spoof WebView User Agent\n- Spoof WiFi Enabled\n- Spoof WiFi RSSI\n- Spoof WiFi SSID\n- Spoof Widevine L1\n- Spoof Wired Headset\n- Status Bar Icons\n- Strip BuildConfig DEBUG\n- Strip Package Verifier\n- Strip Translations\n- Support All Screens\n- Tablet Mode\n- Transparent System Bars\n- Treat Network as Unmetered\n- Treat Screen as On\n- Trust User CAs (Config)\n- Trust User Certificates\n- Unlock Max Aspect Ratio\n- Unlock Notification Channels\n- Unlock Playback Speed\n- Unlock Rotation\n- Unmark Test Only\n- Use Display Cutout Area\n- VM Safe Mode\n- WebView Private Mode\n\n</details>\n\n## Permissions\n\n<details>\n<summary>Removed permissions (54)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n## Changelog since previous build\n\nNo new upstream Hushfeed commits since the previous build.\n\n## Build information\n\n| Item | Value |\n|---|---|\n| TikTok version | 47.0.3 |\n| Architecture | arm64-v8a |\n| Hushfeed | v0.60.0 |\n| Nai64 | v1.1.0 |\n| Permissions | 54 removed, 10 kept |\n\n## Installation note\n\nThis build is signed with a custom keystore. Uninstall any existing TikTok (stock or previously patched) before first install; subsequent updates from this workflow install in place.\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T11:08:26Z"
+      },
+      {
+        "tag": "privacy-tiktok-47.0.3-v0.60.0",
+        "body": "Automated privacy-hardened build:\n- Hushfeed v0.60.0 + AMOLED fix\n- Nai64 patches configured via Nai64ExtraPatches_Options.yaml\n- Permissions stripped\n- arm64-v8a only\n\nBase: stock-tiktok-apk from Wake-Old-Hyphen/PAB",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T10:11:47Z"
       },
       {
         "tag": "v0.58.0",
@@ -14119,7 +14155,7 @@
     ]
   },
   "https://github.com/ComoEstaisAmigos/ck-zombies-morphe-patches": {
-    "fetched_at": "2026-09-26T05:13:28.999571+00:00",
+    "fetched_at": "2026-09-26T14:39:22.091917+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -14130,7 +14166,7 @@
     ]
   },
   "https://github.com/rahaaatul/morphe-patches": {
-    "fetched_at": "2026-09-26T05:13:29.337695+00:00",
+    "fetched_at": "2026-09-26T14:39:16.649990+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -14141,8 +14177,26 @@
     ]
   },
   "https://github.com/mahirsn/mahirsn-patches": {
-    "fetched_at": "2026-09-26T05:13:29.600628+00:00",
+    "fetched_at": "2026-09-26T14:39:16.776518+00:00",
     "releases": [
+      {
+        "tag": "v1.1.0-dev.3",
+        "body": "## [1.1.0-dev.3](https://github.com/mahirsn/mahirsn-patches/compare/v1.1.0-dev.2...v1.1.0-dev.3) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* Wait longer for the player before offering to continue, and log why it was not offered ([bd7a918](https://github.com/mahirsn/mahirsn-patches/commit/bd7a918155317088104d9ed44afef5af9d9dd8bd))\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T14:33:10Z"
+      },
+      {
+        "tag": "v1.1.0-dev.2",
+        "body": "## [1.1.0-dev.2](https://github.com/mahirsn/mahirsn-patches/compare/v1.1.0-dev.1...v1.1.0-dev.2) (2026-09-26)\n\n### 🐛 Bug Fixes\n\n* Use the app's own look for the continue chip, the history screen and the History button, and the old style player buttons when those are on ([f299d57](https://github.com/mahirsn/mahirsn-patches/commit/f299d57e56f2ff098e5e3649f51620d9e11038f1))\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T14:23:51Z"
+      },
+      {
+        "tag": "v1.1.0-dev.1",
+        "body": "## [1.1.0-dev.1](https://github.com/mahirsn/mahirsn-patches/compare/v1.0.3...v1.1.0-dev.1) (2026-09-26)\n\n### ✨ New Features\n\n* Continue prompt and button, a history screen, History in place of Shorts or Home, and a Personal history settings section ([3224102](https://github.com/mahirsn/mahirsn-patches/commit/3224102858b089d59d538317f5634318ad93382c))\n",
+        "prerelease": true,
+        "dateReleased": "2026-09-26T13:30:24Z"
+      },
       {
         "tag": "v1.0.3",
         "body": "## [1.0.3](https://github.com/mahirsn/mahirsn-patches/compare/v1.0.2...v1.0.3) (2026-09-24)\n\n### 🐛 Bug Fixes\n\n* Leave out the previews that play in the feeds ([611b15f](https://github.com/mahirsn/mahirsn-patches/commit/611b15fcb3e852384f8f8e93d7698430795947a8))\n",
@@ -14194,7 +14248,7 @@
     ]
   },
   "https://github.com/mich111discord/MightyMichs-Patches": {
-    "fetched_at": "2026-09-26T05:13:29.720315+00:00",
+    "fetched_at": "2026-09-26T14:39:19.174824+00:00",
     "releases": [
       {
         "tag": "v1.4.9",
@@ -14289,7 +14343,7 @@
     ]
   },
   "https://github.com/JCapretta/chessable-patches": {
-    "fetched_at": "2026-09-26T05:13:30.032718+00:00",
+    "fetched_at": "2026-09-26T14:39:16.728989+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
@@ -14312,7 +14366,7 @@
     ]
   },
   "https://github.com/non7043/365score-patches": {
-    "fetched_at": "2026-09-26T05:13:31.045368+00:00",
+    "fetched_at": "2026-09-26T14:39:22.009536+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -14323,7 +14377,7 @@
     ]
   },
   "https://github.com/Plyrs1/morphe-patches": {
-    "fetched_at": "2026-09-26T05:13:31.445352+00:00",
+    "fetched_at": "2026-09-26T14:39:18.422298+00:00",
     "releases": [
       {
         "tag": "v1.4.0-dev.1",
@@ -14400,7 +14454,7 @@
     ]
   },
   "https://github.com/jjjusf16-sys/3jPatch_Morphe": {
-    "fetched_at": "2026-09-26T05:13:31.614019+00:00",
+    "fetched_at": "2026-09-26T14:39:20.780557+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -14411,7 +14465,7 @@
     ]
   },
   "https://github.com/newuser7171/telegram-morphe-patches-": {
-    "fetched_at": "2026-09-26T05:13:31.761581+00:00",
+    "fetched_at": "2026-09-26T14:39:20.039248+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -14422,7 +14476,7 @@
     ]
   },
   "https://github.com/ns1207/morphe-patches-template": {
-    "fetched_at": "2026-09-26T05:13:34.246213+00:00",
+    "fetched_at": "2026-09-26T14:39:17.906401+00:00",
     "releases": [
       {
         "tag": "v1.0.0",
@@ -14433,7 +14487,7 @@
     ]
   },
   "https://github.com/raphaelbahat/zotero-self-hosted-sync": {
-    "fetched_at": "2026-09-26T05:13:34.565067+00:00",
+    "fetched_at": "2026-09-26T14:39:17.599511+00:00",
     "releases": [
       {
         "tag": "v1.0.4",
@@ -14504,7 +14558,7 @@
     ]
   },
   "https://github.com/Supperelias2/sbs-tv-morphe-patches": {
-    "fetched_at": "2026-09-26T05:13:34.905067+00:00",
+    "fetched_at": "2026-09-26T14:39:16.213435+00:00",
     "releases": [
       {
         "tag": "v1.0.1",
@@ -14521,7 +14575,7 @@
     ]
   },
   "https://github.com/ekazrahul100-web/redgifs-audio-patch": {
-    "fetched_at": "2026-09-26T05:13:35.481196+00:00",
+    "fetched_at": "2026-09-26T14:39:22.172452+00:00",
     "releases": [
       {
         "tag": "v1.3.12",
@@ -14616,7 +14670,7 @@
     ]
   },
   "https://github.com/Supperelias2/sbs-morphe-patches": {
-    "fetched_at": "2026-09-26T05:13:36.374803+00:00",
+    "fetched_at": "2026-09-26T14:39:16.362821+00:00",
     "releases": [
       {
         "tag": "v1.2.0",
