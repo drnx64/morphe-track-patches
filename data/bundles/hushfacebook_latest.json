@@ -2,9 +2,9 @@
   "bundle": "hushfacebook",
   "channel": "latest",
   "repo_url": "https://github.com/SysAdminDoc/Hushfacebook",
-  "created_at": "2026-09-26T20:23:41",
-  "version": "v0.1.8",
-  "description": "Hushfacebook 0.1.8 fixes the known issue from 0.1.7: Clean up Reels now takes the Follow button off reels on the Reels tab. It only caught the Following button next to people you already follow, so a reel from anyone else kept its Follow button. Following someone from their profile still works.\n\nChecked on a signed-in test phone (Galaxy S22, Android 16) before release. With the switch on, no reel on the Reels tab showed a Follow button, and turning it off brought the button back.\n\nAll 22 patches applied without force to Facebook 580.0.0.51.74 and 577.0.0.50.72, with no manifest changes. Local checks passed: 471 extension tests, 171 patch tests and both Android lints.\n\nRequires Morphe Manager 1.32.0 or newer. Patch the arm64-v8a Facebook bundle. The .mpp is a patch bundle, not a Facebook APK.\n",
+  "created_at": "2026-09-27T01:17:31",
+  "version": "v0.2.0",
+  "description": "Hushfacebook 0.2.0 targets Facebook 580.0.0.51.74, and 577.0.0.50.72 still works. It's the batch of fixes held back since 0.1.8, with 27 patches now, five of them new.\n\nNew patches:\n\n- **Install beside Meta's apps** (on by default). The official Messenger, Facebook Lite, Business Suite and Workplace can now be installed next to a patched Facebook without `INSTALL_FAILED_DUPLICATE_PERMISSION`. If you patched before, patch again and install over the top. It's an ordinary update and Facebook keeps its data.\n- **Stop update prompts** (on by default). A patched Facebook can't install Meta's updates, so it stops asking.\n- **Use the system font** and **Use the phone's emoji** (both off until you pick them in Manager) draw Facebook's text and emoji with your phone's own fonts.\n- **Don't send reel watch history** (off until you pick it) keeps the list of reels you watch from going back to Facebook.\n\nOther changes:\n\n- Long-press the Facebook logo at the top of your feed to open Hushfacebook's settings (#2). A tap still does what it always did.\n- Hide AI-detected posts has a second switch for Reels and Watch.\n- The Video file name setting takes `{owner}` and `{posted}`, so `{owner}_{posted}` saves a video as `Some Page_20260925.mp4` (#6).\n- An opt-in check tells you when a new Hushfacebook release is out. It's off by default and never downloads anything.\n- The settings screen shows which rows open something, and the diagnostic report choices fit at large text sizes.\n- The README has a Troubleshooting section for Manager's error messages and a section on what Meta can see.\n\nThe full list is in CHANGELOG.md.\n\nChecked on a signed-in test phone (Galaxy S22, Android 16) through Morphe Manager, installed over the top with the login kept: a long press on the Facebook logo opened the settings, a tap stayed Facebook's, and the Stories tray row reads as it should.\n\nAll 27 patches applied without force to Facebook 580.0.0.51.74 and 577.0.0.50.72. The only manifest change is the two renamed Meta permissions from Install beside Meta's apps. Local checks passed: 575 extension tests, 273 patch tests and both Android lints.\n\nRequires Morphe Manager 1.32.0 or newer. Patch the arm64-v8a (240-640dpi) (Android 11+) Facebook bundle from APKMirror. The .mpp is a patch bundle, not a Facebook APK. Keep the manager's signing key when you update.\n",
   "apps": [
     {
       "app_name": "Facebook",
@@ -71,6 +71,16 @@
           ]
         },
         {
+          "name": "Don't send reel watch history",
+          "description": "Stops sending Facebook the list of reels you've watched. It's used to rank your Reels feed, and nobody else sees it. Reels you've already watched may come back in the feed.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
           "name": "Download any reel",
           "description": "Adds a Download button beside every reel. Videos save at the Download quality you set, best by default.",
           "use": true,
@@ -102,7 +112,7 @@
         },
         {
           "name": "Hide AI-detected posts",
-          "description": "Removes feed posts that Facebook's own detection marked as made with AI. Its switch starts off, so turn it on in Hushfacebook's settings.",
+          "description": "Removes feed posts that Facebook's own detection marked as made with AI, and the reels and Watch videos it flagged the same way. Both switches start off, so turn them on in Hushfacebook's settings.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -172,7 +182,17 @@
         },
         {
           "name": "Hushfacebook settings",
-          "description": "Adds Hushfacebook settings to Facebook's launcher icon. Long-press the icon to turn features on or off, pause Hushfacebook, save your switches to a file or load them, and export diagnostics. The licenses are there too.",
+          "description": "Adds Hushfacebook settings to Facebook. Long-press the Facebook logo at the top of your feed, or Facebook's launcher icon, to turn features on or off, pause Hushfacebook, save your switches to a file or load them, and export diagnostics. The licenses are there too.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Install beside Meta's apps",
+          "description": "Lets the official Messenger, Facebook Lite, Business Suite and Workplace install beside the patched Facebook. Facebook shares two permissions with them, and Android lets only one signing key own a permission, so this patch renames Facebook's. A Root Mount install doesn't need it.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -229,14 +249,44 @@
             "580.0.0.51.74",
             "577.0.0.50.72"
           ]
+        },
+        {
+          "name": "Stop update prompts",
+          "description": "Stops Facebook's own update prompts on a patched build, which can't install Meta's updates anyway. Meta App Manager's update promotions and the push message that has it look for an update go, and so do chat promotions aimed at older versions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Use the phone's emoji",
+          "description": "Draws emoji with your phone's own emoji font instead of Meta's, so the ones in posts and comments look like the ones on your keyboard. Reactions and stickers stay as they are. Restart Facebook after changing the switch.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Use the system font",
+          "description": "Draws Facebook's own text in your phone's font instead of Meta's Optimistic typeface. Icons and emoji keep their fonts, and so does the text you put on a story. Restart Facebook after changing the switch.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
         }
       ]
     }
   ],
   "patches_name": "Hushfacebook",
-  "fingerprint": "6706e267a0c8ed26838752d3ba0b041ebddbaa8a994b4fa6a68be3ec1b31dc4b",
-  "release_notes": "Hushfacebook 0.1.8 fixes the known issue from 0.1.7: Clean up Reels now takes the Follow button off reels on the Reels tab. It only caught the Following button next to people you already follow, so a reel from anyone else kept its Follow button. Following someone from their profile still works.\n\nChecked on a signed-in test phone (Galaxy S22, Android 16) before release. With the switch on, no reel on the Reels tab showed a Follow button, and turning it off brought the button back.\n\nAll 22 patches applied without force to Facebook 580.0.0.51.74 and 577.0.0.50.72, with no manifest changes. Local checks passed: 471 extension tests, 171 patch tests and both Android lints.\n\nRequires Morphe Manager 1.32.0 or newer. Patch the arm64-v8a Facebook bundle. The .mpp is a patch bundle, not a Facebook APK.\n",
-  "release_tag": "v0.1.8",
-  "release_date": "2026-09-26T20:23:41Z",
+  "fingerprint": "ec18d927f6cd7abe028c2585d69ea485f4fe275c4883006f2745c8c25b85020b",
+  "release_notes": "Hushfacebook 0.2.0 targets Facebook 580.0.0.51.74, and 577.0.0.50.72 still works. It's the batch of fixes held back since 0.1.8, with 27 patches now, five of them new.\n\nNew patches:\n\n- **Install beside Meta's apps** (on by default). The official Messenger, Facebook Lite, Business Suite and Workplace can now be installed next to a patched Facebook without `INSTALL_FAILED_DUPLICATE_PERMISSION`. If you patched before, patch again and install over the top. It's an ordinary update and Facebook keeps its data.\n- **Stop update prompts** (on by default). A patched Facebook can't install Meta's updates, so it stops asking.\n- **Use the system font** and **Use the phone's emoji** (both off until you pick them in Manager) draw Facebook's text and emoji with your phone's own fonts.\n- **Don't send reel watch history** (off until you pick it) keeps the list of reels you watch from going back to Facebook.\n\nOther changes:\n\n- Long-press the Facebook logo at the top of your feed to open Hushfacebook's settings (#2). A tap still does what it always did.\n- Hide AI-detected posts has a second switch for Reels and Watch.\n- The Video file name setting takes `{owner}` and `{posted}`, so `{owner}_{posted}` saves a video as `Some Page_20260925.mp4` (#6).\n- An opt-in check tells you when a new Hushfacebook release is out. It's off by default and never downloads anything.\n- The settings screen shows which rows open something, and the diagnostic report choices fit at large text sizes.\n- The README has a Troubleshooting section for Manager's error messages and a section on what Meta can see.\n\nThe full list is in CHANGELOG.md.\n\nChecked on a signed-in test phone (Galaxy S22, Android 16) through Morphe Manager, installed over the top with the login kept: a long press on the Facebook logo opened the settings, a tap stayed Facebook's, and the Stories tray row reads as it should.\n\nAll 27 patches applied without force to Facebook 580.0.0.51.74 and 577.0.0.50.72. The only manifest change is the two renamed Meta permissions from Install beside Meta's apps. Local checks passed: 575 extension tests, 273 patch tests and both Android lints.\n\nRequires Morphe Manager 1.32.0 or newer. Patch the arm64-v8a (240-640dpi) (Android 11+) Facebook bundle from APKMirror. The .mpp is a patch bundle, not a Facebook APK. Keep the manager's signing key when you update.\n",
+  "release_tag": "v0.2.0",
+  "release_date": "2026-09-27T01:17:31Z",
   "isPreRelease": false
 }

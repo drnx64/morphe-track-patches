@@ -2,9 +2,9 @@
   "bundle": "haiagaru",
   "channel": "latest",
   "repo_url": "https://github.com/areteruhiro/Haiagaru-Morphe",
-  "created_at": "2026-09-26T04:52:09",
-  "version": "1.4.11",
-  "description": "## 変更内容\n\n- 既読のEdgeスレッドで履歴を削除しなくても、NGThreadから記者IDを登録できるよう修正\n- スレッド番号に加えて履歴タイトルの記者ID情報も保存し、NGThread操作時に復元\n- 191の旧式NG画面にも同じ復元処理を適用\n- 対応：ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.241 / 0.8.10.243 dev\n\nAndroid拡張を内包したMPPを配布します。`haiagaru_patches-1.4.11.mpp` と `patches-1.4.11.mpp` は同じ内容です。\n\nプレリリース用バンドル：\nhttps://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle-pre.json\n\nよろしければStarだけでもお願いします。励みになります。\n\n## 寄付\n\n- [Amazon Gift Card](https://www.amazon.co.jp/gp/product/B004N3APGO) — 送付先：areteruhiro@gmail.com\n- [PayPay](https://qr.paypay.ne.jp/p2p01_RsY3yQavNdvx74da)\n",
+  "created_at": "2026-09-27T11:50:33",
+  "version": "1.5.3",
+  "description": "## Haiagaru 1.5.3（プレリリース）\n\n標準の「必死チェッカーもどき」メニューから開くページをChMate内に表示できるようにしました。5ch.ioの板も対象です。既存のメニュー設定とカスタムのリンク先は維持します。\n\n対象: ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.241 / 0.8.10.243 dev\n\n4バージョンすべてへのパッチ適用とAndroid向けMPPの生成を確認しました。実機では191 devの画面起動を確認しています。241・243 devのメニュー操作は実機未確認のため、問題があれば報告をお願いします。\n\n通常版は1.5.2のままです。プレリリース用のパッチソースを登録している場合は1.5.3へ更新されます。\n",
   "apps": [
     {
       "app_name": "ChMate",
@@ -27,8 +27,8 @@
   ],
   "patches_name": "Haiagaru",
   "fingerprint": "3104b89011a3f060a482f1ce9a1c705c0064f84b799026fcfda0652f59aae553",
-  "release_notes": "## 変更内容\n\n- 既読のEdgeスレッドで履歴を削除しなくても、NGThreadから記者IDを登録できるよう修正\n- スレッド番号に加えて履歴タイトルの記者ID情報も保存し、NGThread操作時に復元\n- 191の旧式NG画面にも同じ復元処理を適用\n- 対応：ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.241 / 0.8.10.243 dev\n\nAndroid拡張を内包したMPPを配布します。`haiagaru_patches-1.4.11.mpp` と `patches-1.4.11.mpp` は同じ内容です。\n\nプレリリース用バンドル：\nhttps://raw.githubusercontent.com/areteruhiro/Haiagaru-Morphe/master/patches-bundle-pre.json\n\nよろしければStarだけでもお願いします。励みになります。\n\n## 寄付\n\n- [Amazon Gift Card](https://www.amazon.co.jp/gp/product/B004N3APGO) — 送付先：areteruhiro@gmail.com\n- [PayPay](https://qr.paypay.ne.jp/p2p01_RsY3yQavNdvx74da)\n",
-  "release_tag": "1.4.11",
-  "release_date": "2026-09-26T04:52:09Z",
-  "isPreRelease": true
+  "release_notes": "## Haiagaru 1.4.0\n\nChMate `0.8.10.226 dev`で、モバイル回線固定の書き込み時に断続的に発生する`Binding socket to network ... failed: EPERM`を修正した正式版です。\n\n### 主な変更\n\n- モバイル回線切り替え後に失効したnetwork IDを再利用して投稿に失敗する問題を修正しました。\n- モバイル回線固定の投稿では、投稿ごとにAndroidの`requestNetwork()`で有効なセルラー回線を取得します。\n- 投稿完了まで`NetworkCallback`を維持し、投稿中に選択したセルラー回線が有効な状態を保つようにしました。\n- 通常版・プレリリース版の配布先を`1.4.0`へ更新しました。\n\n### ビルド確認\n\n- `:patches:buildAndroid --no-daemon --max-workers=1` 成功\n- `git diff --check` 成功\n\n### 対応バージョン\n\n- ChMate `0.8.10.191 dev`\n- ChMate `0.8.10.226 dev`\n- ChMate `0.8.10.241`\n- ChMate `0.8.10.243 dev`\n\n配布MPPはAndroid拡張を内包しています。\n\nよろしければStarだけでもお願いします。励みになります。\n\n### 寄付\n\n- [Amazon Gift Card](https://www.amazon.co.jp/gp/product/B004N3APGO) — Send to `areteruhiro@gmail.com`\n- [PayPay](https://qr.paypay.ne.jp/p2p01_RsY3yQavNdvx74da)\r\n",
+  "release_tag": "1.4.0",
+  "release_date": "2026-09-23T11:48:20Z",
+  "isPreRelease": false
 }

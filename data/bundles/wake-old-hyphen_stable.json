@@ -2,9 +2,9 @@
   "bundle": "wake-old-hyphen",
   "channel": "stable",
   "repo_url": "https://github.com/Wake-Old-Hyphen/hushfeed",
-  "created_at": "2026-09-26T07:38:40Z",
-  "version": "0.60.0",
-  "description": "Hushfeed v0.60.0 targets global TikTok 47.0.3 (com.zhiliaoapp.musically).\n\nA small release with three fixes. Comments that TikTok dropped without a word now go out, through Comment send fix, a new patch that's on by default. With Caption above comments on, the caption no longer shows over the video too. Allow Duet and Stitch covers creators who limit duets on their whole account.\n\nValidation: 2040 runtime tests passed locally, along with the patch tests and both Android lint checks. All 94 patches applied to TikTok 47.0.3. Use 47.0.3 when patching.\n\nOn the S22 test phone, comments from the feed went out with the fix, and with the state that stopped them forced on, the fix sent them where TikTok alone stopped.\n\nNeeds Morphe Manager 1.30.0 or newer. Refresh the Hushfeed source to update. The .mpp is a patch bundle, not a TikTok APK. Keep the manager's existing signing key when updating.",
+  "created_at": "2026-09-27T07:25:12Z",
+  "version": "0.61.0",
+  "description": "Hushfeed v0.61.0 targets global TikTok 47.0.3 and 47.1.3 (com.zhiliaoapp.musically).\n\nA large release. TikTok 47.1.3 is supported alongside 47.0.3, and every fix made since 0.60.0 is in it. Save media on a comment sticker reads TikTok's own sticker data and lightens while you hold it, Copy comments without username works from the comment menu again, folding a foldable no longer jumps to another video, and Camera and microphone indicator shows on TikTok's camera screen. Hide Play Store update offer is a new optional patch. The changelog has the full list.\n\nValidation: 2076 runtime tests passed locally, along with the patch tests and both Android lint checks, on the commit before this release. All 96 patches applied to TikTok 47.0.3. Use 47.0.3 or 47.1.3 when patching.\n\nThe release bundle was installed on a Galaxy S25 running TikTok 47.1.3, and TikTok started normally.\n\nNeeds Morphe Manager 1.30.0 or newer. Refresh the Hushfeed source to update. The .mpp is a patch bundle, not a TikTok APK. Keep the manager's existing signing key when updating.",
   "apps": [
     {
       "app_name": "TikTok",
@@ -911,6 +911,16 @@
           ]
         },
         {
+          "name": "Stay on the video in full screen",
+          "description": "Keeps TikTok's full-screen viewer on a video when it ends instead of moving to the next one, and leaves out its next-video countdown. Swiping still moves on. Switch: Hushfeed settings > Playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3",
+            "47.1.3"
+          ]
+        },
+        {
           "name": "Stop on-device AI profiling",
           "description": "Kills the Pitaya on-device ML inference engine at startup so it cannot build a behavioral profile. The AI asset strip in the core de-bloat patch removes the native libraries. This patch stops the initialization code that would download replacements.",
           "use": false,
@@ -984,9 +994,9 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "dbcb6538bbc33f270fdd688ac73fa9bdb6f277f7e2ec24302b000da32bdfeec1",
-  "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/commits/v0.60.0",
-  "release_tag": "v0.60.0",
-  "release_date": "2026-09-26T07:38:40Z",
+  "fingerprint": "aa2935341d48d16ebc78c526cd48ff3bb2ce28eae04e9fecac6d3e2f601c3aca",
+  "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.60.0...v0.61.0",
+  "release_tag": "v0.61.0",
+  "release_date": "2026-09-27T07:25:12Z",
   "isPreRelease": false
 }
