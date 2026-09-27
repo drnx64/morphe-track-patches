@@ -1,0 +1,85 @@
+{
+  "bundle": "anghami",
+  "channel": "stable",
+  "repo_url": "https://github.com/mohamedamrnady/anghami-patches",
+  "created_at": "2026-09-26T20:25:18",
+  "version": "v1.0.0",
+  "description": "## 1.0.0 (2026-09-26)\n\n### ✨ New Features\n\n* publish Anghami 8.0.28 patches ([d901fbe](https://github.com/mohamedamrnady/anghami-patches/commit/d901fbe7750a593804b17d56e3dc6b7b400ee707))\n",
+  "apps": [
+    {
+      "app_name": "Anghami",
+      "package": "com.anghami",
+      "patches": [
+        {
+          "name": "Hide Gold features",
+          "description": "Forces Account.isGold/isGoldUser and all GoldUtilsKt.isGold overloads to false. Hides server-gated Gold UI instead of spoofing it.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.0.28"
+          ]
+        },
+        {
+          "name": "Hide upgrade upsell",
+          "description": "Forces getPlusTab/getHasRestrictedQueue=false, collapses the HeaderBar promo banner (GONE), and no-ops flyer onAdLoaded.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.0.28"
+          ]
+        },
+        {
+          "name": "Remove ads",
+          "description": "No-ops custom popup funnels (popupwindow + fullscreen startup dialog), hides upsell-deeplink feed cards (ButtonModel + LinkModel) at bind time, and drops the settings subscribe banner by nulling its server-question/upgrade-model sources.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.0.28"
+          ]
+        },
+        {
+          "name": "Spoof stock app signature",
+          "description": "Forces SignatureUtils.getAppSignature to hash with the stock cert prefix (he9B...kw=), so X-ANGH-APP-RGSIG matches a stock install. Salt/body hashing unchanged.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.0.28"
+          ]
+        },
+        {
+          "name": "Unforce shuffle",
+          "description": "No-ops PlayQueue.shuffle(), forces server shuffleOn=false at both sync points, disables the pick-a-song radio redirect, enables shuffle buttons, and disarms the shuffle upsell dialog. Manual shuffle toggle keeps working.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.0.28"
+          ]
+        },
+        {
+          "name": "Unlock local Plus",
+          "description": "Forces Account.isPlus/isPlusUser=true, enablePlayerRestrictions=false, canPlayOfflineAndFree=true. Local UI/gating only; server premium checks remain.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.0.28"
+          ]
+        },
+        {
+          "name": "Unlock playback/download restrictions",
+          "description": "Forces skip/queue limits off, download asserts no-op, limited-plan false, noAd true, max offline 999999. Local gates only.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.0.28"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Anghami patches by Nady",
+  "fingerprint": "05a191c44717b16ae43dbebc02445a8d5bb16bee0a631cc81671b330d896e35e",
+  "release_notes": "## 1.0.0 (2026-09-26)\n\n### ✨ New Features\n\n* publish Anghami 8.0.28 patches ([d901fbe](https://github.com/mohamedamrnady/anghami-patches/commit/d901fbe7750a593804b17d56e3dc6b7b400ee707))\n",
+  "release_tag": "v1.0.0",
+  "release_date": "2026-09-26T20:25:18Z",
+  "isPreRelease": false
+}
