@@ -1,22 +1,31 @@
 {
   "bundle": "supperelias2",
   "channel": "stable",
-  "repo_url": "https://github.com/Supperelias2/sbs-morphe-patches",
-  "created_at": "2026-09-23T20:04:34Z",
-  "version": "1.2.0",
-  "description": "## [1.2.0](https://github.com/Supperelias2/sbs-morphe-patches/compare/v1.1.0...v1.2.0) (2026-09-23)\n\n### ✨ New Features\n\n* promote SBS playback patches to stable ([03d5e61](https://github.com/Supperelias2/sbs-morphe-patches/commit/03d5e616e23c950bdb1e7785e5cd69f475cf0783))",
+  "repo_url": "https://github.com/Supperelias2/sbs-tv-morphe-patches",
+  "created_at": "2026-09-23T21:16:57Z",
+  "version": "1.0.1",
+  "description": "## [1.0.1](https://github.com/Supperelias2/sbs-tv-morphe-patches/compare/v1.0.0...v1.0.1) (2026-09-23)\n\n### 🐛 Bug Fixes\n\n* allow patched TV app to launch when sideloaded ([8945aa8](https://github.com/Supperelias2/sbs-tv-morphe-patches/commit/8945aa80d5951fc90610f36bdb6848e703263845))",
   "apps": [
     {
-      "app_name": "SBS On Demand",
-      "package": "com.sbs.ondemand.android",
+      "app_name": "SBS On Demand for Android TV",
+      "package": "com.sbs.ondemand.tv",
       "patches": [
+        {
+          "name": "Allow sideloaded installation",
+          "description": "Prevents the Play licensing redirect when launching a sideloaded SBS TV build.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.3.1"
+          ]
+        },
         {
           "name": "Prefer direct VOD stream",
           "description": "Prefers an available Akamai VOD stream over Google DAI. Keeps original selection for live or missing alternatives. Ad removal is not guaranteed.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "6.3.0"
+            "6.3.1"
           ]
         },
         {
@@ -25,25 +34,25 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "6.3.0"
+            "6.3.1"
           ]
         },
         {
           "name": "SBS playback compatibility check",
-          "description": "Checks SBS 6.3.0 playback integration points. Does not remove advertisements.",
+          "description": "Checks SBS TV 6.3.1 playback integration points. Does not remove advertisements.",
           "use": false,
           "options": [],
           "compatible_versions": [
-            "6.3.0"
+            "6.3.1"
           ]
         }
       ]
     }
   ],
-  "patches_name": "Supperelias2 SBS Patches",
-  "fingerprint": "71ce68de6b3b64bdccedbf46d19d244b9c20b4727b56bfec277253e30bad6ce3",
-  "release_notes": "## [1.2.0](https://github.com/Supperelias2/sbs-morphe-patches/compare/v1.1.0...v1.2.0) (2026-09-23)\n\n### ✨ New Features\n\n* promote SBS playback patches to stable ([03d5e61](https://github.com/Supperelias2/sbs-morphe-patches/commit/03d5e616e23c950bdb1e7785e5cd69f475cf0783))\n",
-  "release_tag": "v1.2.0",
-  "release_date": "2026-09-23T20:04:34Z",
+  "patches_name": "Supperelias2 SBS TV Patches",
+  "fingerprint": "ec5b525680a1e98034e3e11d918cd0ce0608afa593a6b186d5b9830c26ce8022",
+  "release_notes": "## [1.0.1](https://github.com/Supperelias2/sbs-tv-morphe-patches/compare/v1.0.0...v1.0.1) (2026-09-23)\n\n### 🐛 Bug Fixes\n\n* allow patched TV app to launch when sideloaded ([8945aa8](https://github.com/Supperelias2/sbs-tv-morphe-patches/commit/8945aa80d5951fc90610f36bdb6848e703263845))\n",
+  "release_tag": "v1.0.1",
+  "release_date": "2026-09-23T21:16:57Z",
   "isPreRelease": false
 }
