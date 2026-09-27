@@ -2,12 +2,12 @@
   "bundle": "dh6k",
   "channel": "latest",
   "repo_url": "https://github.com/dh6k/morphe-patches",
-  "created_at": "2026-09-27T10:25:49",
-  "version": "v1.8.0-dev.11",
-  "description": "## [1.8.0-dev.11](https://github.com/dh6k/morphe-patches/compare/v1.8.0-dev.10...v1.8.0-dev.11) (2026-09-27)\n\n### 🐛 Bug Fixes\n\n* **brave:** revert Use Google Translate to no-op stock restore ([7095687](https://github.com/dh6k/morphe-patches/commit/70956872569068fec75ae0ef1852f88d08d08f59))\n",
+  "created_at": "2026-09-24T07:45:37",
+  "version": "v1.7.0",
+  "description": "## [1.7.0](https://github.com/dh6k/morphe-patches/compare/v1.6.0...v1.7.0) (2026-09-24)\n\n### 🐛 Bug Fixes\n\n* **brave:** avoid param-register clobber in NTP wallpaper prologue ([62132b9](https://github.com/dh6k/morphe-patches/commit/62132b919f54d5cd6194cb29de87fce38f12a41c))\n* **brave:** fit NTP catalog factory in 3 registers via R.drawable ([bb3e4df](https://github.com/dh6k/morphe-patches/commit/bb3e4dff5a0983d1e2a4fe2d4286ddcc5d1a7a89))\n* **brave:** resolve NTP wallpaper via extension helper (2-reg invoke) ([33a3c93](https://github.com/dh6k/morphe-patches/commit/33a3c934f126d76a1bf96dcd6ffb99f331767d62))\n* **brave:** route NTP wallpaper through Java ambient catalog ([7c78a3c](https://github.com/dh6k/morphe-patches/commit/7c78a3cb11e44c04b1bb4fed833f1b4626c4932d))\n* **brave:** use invoke-interface for Runnable callback drain ([adf562b](https://github.com/dh6k/morphe-patches/commit/adf562b790e0a994a2400ddfb49bfe84e9e7620e))\n\n### ✨ New Features\n\n* **brave:** add Brave Startup Performance Optimization ([9b9f1ab](https://github.com/dh6k/morphe-patches/commit/9b9f1ab25f7de74231ff78abf2efd7afe072ddf8))\n* **brave:** custom NTP wallpaper patch (alpha, default off) ([387a449](https://github.com/dh6k/morphe-patches/commit/387a44977241523f2b8cab985ac76dd4e2a290a0))\n",
   "apps": [
     {
-      "app_name": "Brave Browser APKM",
+      "app_name": "Brave Browser",
       "package": "com.brave.browser",
       "patches": [
         {
@@ -42,20 +42,6 @@
             }
           ],
           "compatible_versions": []
-        },
-        {
-          "name": "Use Google Translate",
-          "description": "No-op stock restore. In-place Google Translate is not drop-in on this Brave build (C++ redirects the script to translate.brave.com; brave_translate.js is missing so the use-google-translate-endpoint switch has no consumer). Leaves libchrome.so untouched. For current Google quality use translate.google.com in the browser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Use Google Translate",
-          "description": "No-op stock restore. In-place Google Translate is not drop-in on this Brave build (C++ redirects the script to translate.brave.com; brave_translate.js is missing so the use-google-translate-endpoint switch has no consumer). Leaves libchrome.so untouched. For current Google quality use translate.google.com in the browser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
         }
       ]
     },
@@ -88,18 +74,11 @@
             }
           ],
           "compatible_versions": []
-        },
-        {
-          "name": "Use Google Translate",
-          "description": "No-op stock restore. In-place Google Translate is not drop-in on this Brave build (C++ redirects the script to translate.brave.com; brave_translate.js is missing so the use-google-translate-endpoint switch has no consumer). Leaves libchrome.so untouched. For current Google quality use translate.google.com in the browser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
         }
       ]
     },
     {
-      "app_name": "Brave Nightly APKM",
+      "app_name": "Brave Nightly",
       "package": "com.brave.browser_nightly",
       "patches": [
         {
@@ -133,20 +112,6 @@
               "description": "PNG wallpaper used as the Brave new-tab background. Crop it to your current screen resolution first, then select that file here. 480-8192 px on each side, maximum 8 MiB."
             }
           ],
-          "compatible_versions": []
-        },
-        {
-          "name": "Use Google Translate",
-          "description": "No-op stock restore. In-place Google Translate is not drop-in on this Brave build (C++ redirects the script to translate.brave.com; brave_translate.js is missing so the use-google-translate-endpoint switch has no consumer). Leaves libchrome.so untouched. For current Google quality use translate.google.com in the browser.",
-          "use": false,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Use Google Translate",
-          "description": "No-op stock restore. In-place Google Translate is not drop-in on this Brave build (C++ redirects the script to translate.brave.com; brave_translate.js is missing so the use-google-translate-endpoint switch has no consumer). Leaves libchrome.so untouched. For current Google quality use translate.google.com in the browser.",
-          "use": false,
-          "options": [],
           "compatible_versions": []
         }
       ]
@@ -222,9 +187,9 @@
     }
   ],
   "patches_name": "Brave and universal patches",
-  "fingerprint": "9df04fd604a8ea11ce2eaea765b0a0b189f8d4a52f149b135f4f8e3e02f5aab7",
-  "release_notes": "## [1.8.0-dev.11](https://github.com/dh6k/morphe-patches/compare/v1.8.0-dev.10...v1.8.0-dev.11) (2026-09-27)\n\n### 🐛 Bug Fixes\n\n* **brave:** revert Use Google Translate to no-op stock restore ([7095687](https://github.com/dh6k/morphe-patches/commit/70956872569068fec75ae0ef1852f88d08d08f59))\n",
-  "release_tag": "v1.8.0-dev.11",
-  "release_date": "2026-09-27T10:25:49Z",
-  "isPreRelease": true
+  "fingerprint": "de1c796b70466b21008857f0ba0e3aeb229a49a7b1edcd7c1f8c1798ddb9db73",
+  "release_notes": "## [1.7.0](https://github.com/dh6k/morphe-patches/compare/v1.6.0...v1.7.0) (2026-09-24)\n\n### 🐛 Bug Fixes\n\n* **brave:** avoid param-register clobber in NTP wallpaper prologue ([62132b9](https://github.com/dh6k/morphe-patches/commit/62132b919f54d5cd6194cb29de87fce38f12a41c))\n* **brave:** fit NTP catalog factory in 3 registers via R.drawable ([bb3e4df](https://github.com/dh6k/morphe-patches/commit/bb3e4dff5a0983d1e2a4fe2d4286ddcc5d1a7a89))\n* **brave:** resolve NTP wallpaper via extension helper (2-reg invoke) ([33a3c93](https://github.com/dh6k/morphe-patches/commit/33a3c934f126d76a1bf96dcd6ffb99f331767d62))\n* **brave:** route NTP wallpaper through Java ambient catalog ([7c78a3c](https://github.com/dh6k/morphe-patches/commit/7c78a3cb11e44c04b1bb4fed833f1b4626c4932d))\n* **brave:** use invoke-interface for Runnable callback drain ([adf562b](https://github.com/dh6k/morphe-patches/commit/adf562b790e0a994a2400ddfb49bfe84e9e7620e))\n\n### ✨ New Features\n\n* **brave:** add Brave Startup Performance Optimization ([9b9f1ab](https://github.com/dh6k/morphe-patches/commit/9b9f1ab25f7de74231ff78abf2efd7afe072ddf8))\n* **brave:** custom NTP wallpaper patch (alpha, default off) ([387a449](https://github.com/dh6k/morphe-patches/commit/387a44977241523f2b8cab985ac76dd4e2a290a0))\n",
+  "release_tag": "v1.7.0",
+  "release_date": "2026-09-24T07:45:37Z",
+  "isPreRelease": false
 }
