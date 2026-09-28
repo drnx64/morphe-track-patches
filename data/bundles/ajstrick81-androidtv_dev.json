@@ -2,9 +2,9 @@
   "bundle": "ajstrick81-androidtv",
   "channel": "dev",
   "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-  "created_at": "2026-09-26T12:54:16",
+  "created_at": "2026-09-28T02:55:15",
   "version": "test-212",
-  "description": "**Test build for #212 — not a release.** Netflix ad-strip fix candidate (MASTER v3). Built from branch `fix/netflix-212-getadmetadata-branch` (commit e248a3e) on top of v1.37.7.\n\n**What changed:** `getAdMetadata` now empties its ad-break list on *every* branch, including the new `adverts.adBreaks` branch that leaked on 13.0.1. Only the Netflix ad-kill script changed.\n\n**How to test** (Netflix 13.0.1 build 25028):\n1. Patch with `test-212.mpp` using the same patches as before (Clone Netflix, Disable CertCheck, Remove Netflix ads bundle engine + loader).\n2. Install, launch, wait ~60s on the home screen, then play an ad-tier title.\n3. Attach `adb logcat -d -s KILL > kill.txt`. Look for `PATCH M2: ... else{};b=[];` or `PATCH MASTERw: ... v3`.\n\nVerified offline (patch applies, script bundled, branch logic simulated). Not yet verified on a device — that's what this build is for.\n",
+  "description": "Crash-gate build: M1 flip gated on ADV so the pod-resolve crash can't happen. On titles where ADVw misses, ads may still play (no crash) — persistent ADVw is the next step. Look for 'ADV-gated, v2.2' in the KILL log.",
   "apps": [
     {
       "app_name": "Livingroom",
@@ -176,8 +176,8 @@
   ],
   "patches_name": "ajstrick81 Patches",
   "fingerprint": "39891b6ac6f1f7f159f321c8c5bf22b1124c6d2c2b51a3537171d0e0b2768321",
-  "release_notes": "**Test build for #212 — not a release.** Netflix ad-strip fix candidate (MASTER v3). Built from branch `fix/netflix-212-getadmetadata-branch` (commit e248a3e) on top of v1.37.7.\n\n**What changed:** `getAdMetadata` now empties its ad-break list on *every* branch, including the new `adverts.adBreaks` branch that leaked on 13.0.1. Only the Netflix ad-kill script changed.\n\n**How to test** (Netflix 13.0.1 build 25028):\n1. Patch with `test-212.mpp` using the same patches as before (Clone Netflix, Disable CertCheck, Remove Netflix ads bundle engine + loader).\n2. Install, launch, wait ~60s on the home screen, then play an ad-tier title.\n3. Attach `adb logcat -d -s KILL > kill.txt`. Look for `PATCH M2: ... else{};b=[];` or `PATCH MASTERw: ... v3`.\n\nVerified offline (patch applies, script bundled, branch logic simulated). Not yet verified on a device — that's what this build is for.\n",
+  "release_notes": "Crash-gate build: M1 flip gated on ADV so the pod-resolve crash can't happen. On titles where ADVw misses, ads may still play (no crash) — persistent ADVw is the next step. Look for 'ADV-gated, v2.2' in the KILL log.",
   "release_tag": "test-212",
-  "release_date": "2026-09-26T12:54:16Z",
+  "release_date": "2026-09-28T02:55:15Z",
   "isPreRelease": true
 }
