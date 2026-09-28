@@ -4,12 +4,21 @@
   "repo_url": "https://github.com/Santodan/santodan-patches",
   "created_at": "2026-09-27T11:12:37Z",
   "version": "NuvioTV-1.1.0-beta2-universal",
-  "description": "## [0.4.1](https://github.com/Santodan/santodan-patches/compare/v0.4.0...v0.4.1) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** support beta2 remaining count and side-by-side install ([b5976a1](https://github.com/Santodan/santodan-patches/commit/b5976a107bca80fab4f7860ff965b0b8caeb32a9))",
+  "description": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))",
   "apps": [
     {
       "app_name": "NuvioTV",
       "package": "com.nuvio.tv",
       "patches": [
+        {
+          "name": "NuvioTV - Merge tracking progress",
+          "description": "Merges Nuvio Sync and connected tracking-provider progress, preserving the previous snapshot while providers refresh.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.1.0-beta.2"
+          ]
+        },
         {
           "name": "NuvioTV - Remaining episodes in Continue Watching",
           "description": "Adds a disabled-by-default Continue Watching setting that displays aired, unwatched episode counts for every tracking integration.",
@@ -21,9 +30,18 @@
         },
         {
           "name": "NuvioTV - Side-by-side installation",
-          "description": "Installs the patched app as NuvioTV Patched beside the official NuvioTV app.",
+          "description": "Installs a separately named NuvioTV clone using a configurable package name and app name.",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "packageName",
+              "description": "Unique Android package name for this installation, for example com.nuvio.testing.one."
+            },
+            {
+              "key": "appName",
+              "description": "Name displayed by Android launchers for this installation."
+            }
+          ],
           "compatible_versions": [
             "1.1.0-beta.2"
           ]
@@ -95,8 +113,8 @@
     }
   ],
   "patches_name": "SantoDan Patches",
-  "fingerprint": "8db1ec44cd7e2e5c9306e6ff1d1c44d29fef95521b6a2f705f0e68b0717905b2",
-  "release_notes": "App patched with the side installation and the remaining episodes count",
+  "fingerprint": "1ade88443b2d621737b9f728e1ed53aa83eafd50262c98e9cac404ec9c5e816d",
+  "release_notes": "App patched with the side installation and the remaining episodes count\r\n\r\n28/09/2026 - patched with 0.5.0 patch\r\n<details>\r\n<summary>Changelog</summary>\r\n<br>\r\n### 🐛 Bug Fixes\r\n\r\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\r\n\r\n### ✨ New Features\r\n\r\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\r\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))\r\n</details>",
   "release_tag": "NuvioTV-1.1.0-beta2-universal",
   "release_date": "2026-09-27T11:12:37Z",
   "isPreRelease": true

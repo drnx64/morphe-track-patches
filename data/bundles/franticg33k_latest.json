@@ -2,9 +2,9 @@
   "bundle": "franticg33k",
   "channel": "latest",
   "repo_url": "https://github.com/franticg33k/morphe-patches",
-  "created_at": "2026-09-28T05:22:52",
-  "version": "v1.4.0-dev.3",
-  "description": "## [1.4.0-dev.3](https://github.com/franticg33k/morphe-patches/compare/v1.4.0-dev.2...v1.4.0-dev.3) (2026-09-28)\n\n### 🚀 Updated App Support\n\n* fix Nepali Patro launch crash - address inserted smali with vN registers only ([1a83481](https://github.com/franticg33k/morphe-patches/commit/1a83481155e8abd8e247b3da801fff2a197fdf73))\n",
+  "created_at": "2026-09-28T11:29:11",
+  "version": "v1.4.0-dev.12",
+  "description": "## [1.4.0-dev.12](https://github.com/franticg33k/morphe-patches/compare/v1.4.0-dev.11...v1.4.0-dev.12) (2026-09-28)\n\n### 🚀 Updated App Support\n\n* gate Nepali Patro interstitials in the shared callee, not a caller ([32b5b60](https://github.com/franticg33k/morphe-patches/commit/32b5b60d8e23de62377621b5feba4bf72dd8918b)), closes [#0x961d78](https://github.com/franticg33k/morphe-patches/issues/0x961d78) [#0x30](https://github.com/franticg33k/morphe-patches/issues/0x30)\n",
   "apps": [
     {
       "app_name": "Bolpatra Nepal",
@@ -275,8 +275,15 @@
       "package": "np.com.nepalipatro",
       "patches": [
         {
+          "name": "Block Ad Server",
+          "description": "Stops Nepali Patro's interstitial ads. Two edits to libapp.so: the ad-only host ads-delivery.nepalipatro.com.np is rewritten to an unresolvable .xx domain of the same length, and AdsBloc::featureInterstitialAdWithHtmlPopup - the single callee behind all 24 interstitial call sites - is forced down its existing 'popup blocked' return, so the full-screen ad page and its countdown never open. The host rewrite alone is not enough: the ad URLs are also cached in SharedPreferences under PREF_SLIDER_DATA, and whether to show the page at all comes from remote config, which the app rewrites on every launch. Pairs with Remove Ads, which stops the ad content itself and the AdMob interstitials.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
           "name": "Remove Ads",
-          "description": "Disables both ad stacks in Nepali Patro: Google Mobile Ads (AdMob) and the first-party flutter_adserver HTML ad server. AdMob's method-channel entry point is short-circuited for every load and show call so no ad is ever created, and the three WebView loaders the ad server uses are neutralised - loadData and loadDataWithBaseUrl become no-ops, while loadUrl only refuses the ads-delivery.nepalipatro.com.np host and data: URLs so normal in-app browsing keeps working.",
+          "description": "Disables both ad stacks in Nepali Patro: Google Mobile Ads (AdMob) and the first-party flutter_adserver HTML ad server. AdMob's method-channel entry point is short-circuited for every load and show call so no ad is ever created, and the WebView loaders the ad server uses are neutralised - loadData and loadDataWithBaseUrl become no-ops, while loadUrl only refuses the ads-delivery.nepalipatro.com.np host and data: URLs so normal in-app browsing keeps working.",
           "use": true,
           "options": [],
           "compatible_versions": []
@@ -285,9 +292,9 @@
     }
   ],
   "patches_name": "franticg33k's Morphe Patches",
-  "fingerprint": "762439b87d6884148c2f16d495358884b16924365aa70d5d4ddb1da1b3b35aab",
-  "release_notes": "## [1.4.0-dev.3](https://github.com/franticg33k/morphe-patches/compare/v1.4.0-dev.2...v1.4.0-dev.3) (2026-09-28)\n\n### 🚀 Updated App Support\n\n* fix Nepali Patro launch crash - address inserted smali with vN registers only ([1a83481](https://github.com/franticg33k/morphe-patches/commit/1a83481155e8abd8e247b3da801fff2a197fdf73))\n",
-  "release_tag": "v1.4.0-dev.3",
-  "release_date": "2026-09-28T05:22:52Z",
+  "fingerprint": "49efe22330ab261b2e4c0b8776b075259bd267809cd96d4fb3c9ef10a6705f15",
+  "release_notes": "## [1.4.0-dev.12](https://github.com/franticg33k/morphe-patches/compare/v1.4.0-dev.11...v1.4.0-dev.12) (2026-09-28)\n\n### 🚀 Updated App Support\n\n* gate Nepali Patro interstitials in the shared callee, not a caller ([32b5b60](https://github.com/franticg33k/morphe-patches/commit/32b5b60d8e23de62377621b5feba4bf72dd8918b)), closes [#0x961d78](https://github.com/franticg33k/morphe-patches/issues/0x961d78) [#0x30](https://github.com/franticg33k/morphe-patches/issues/0x30)\n",
+  "release_tag": "v1.4.0-dev.12",
+  "release_date": "2026-09-28T11:29:11Z",
   "isPreRelease": true
 }

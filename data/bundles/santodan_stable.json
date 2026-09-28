@@ -2,14 +2,23 @@
   "bundle": "santodan",
   "channel": "stable",
   "repo_url": "https://github.com/Santodan/santodan-patches",
-  "created_at": "2026-09-25T15:49:01Z",
-  "version": "0.4.1",
-  "description": "## [0.4.1](https://github.com/Santodan/santodan-patches/compare/v0.4.0...v0.4.1) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** support beta2 remaining count and side-by-side install ([b5976a1](https://github.com/Santodan/santodan-patches/commit/b5976a107bca80fab4f7860ff965b0b8caeb32a9))",
+  "created_at": "2026-09-28T14:44:05Z",
+  "version": "0.5.0",
+  "description": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))",
   "apps": [
     {
       "app_name": "NuvioTV",
       "package": "com.nuvio.tv",
       "patches": [
+        {
+          "name": "NuvioTV - Merge tracking progress",
+          "description": "Merges Nuvio Sync and connected tracking-provider progress, preserving the previous snapshot while providers refresh.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.1.0-beta.2"
+          ]
+        },
         {
           "name": "NuvioTV - Remaining episodes in Continue Watching",
           "description": "Adds a disabled-by-default Continue Watching setting that displays aired, unwatched episode counts for every tracking integration.",
@@ -21,9 +30,18 @@
         },
         {
           "name": "NuvioTV - Side-by-side installation",
-          "description": "Installs the patched app as NuvioTV Patched beside the official NuvioTV app.",
+          "description": "Installs a separately named NuvioTV clone using a configurable package name and app name.",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "packageName",
+              "description": "Unique Android package name for this installation, for example com.nuvio.testing.one."
+            },
+            {
+              "key": "appName",
+              "description": "Name displayed by Android launchers for this installation."
+            }
+          ],
           "compatible_versions": [
             "1.1.0-beta.2"
           ]
@@ -95,9 +113,9 @@
     }
   ],
   "patches_name": "SantoDan Patches",
-  "fingerprint": "7ea2cca18cbab8165a64d8589e489f8e6f1eb2042301c85e010d549a0aa596b3",
-  "release_notes": "## [0.4.1](https://github.com/Santodan/santodan-patches/compare/v0.4.0...v0.4.1) (2026-09-25)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** support beta2 remaining count and side-by-side install ([b5976a1](https://github.com/Santodan/santodan-patches/commit/b5976a107bca80fab4f7860ff965b0b8caeb32a9))\n",
-  "release_tag": "v0.4.1",
-  "release_date": "2026-09-25T15:49:01Z",
+  "fingerprint": "de22440dbefb80df5bf9a4039d93072789c8d64bfe65fe6e878a00a0ddb9c99d",
+  "release_notes": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))\n",
+  "release_tag": "v0.5.0",
+  "release_date": "2026-09-28T14:44:05Z",
   "isPreRelease": false
 }
