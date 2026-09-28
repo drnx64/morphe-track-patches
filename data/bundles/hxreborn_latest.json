@@ -2,9 +2,9 @@
   "bundle": "hxreborn",
   "channel": "latest",
   "repo_url": "https://github.com/hxreborn/morphe-patches",
-  "created_at": "2026-09-27T11:55:10",
-  "version": "v1.32.0",
-  "description": "## [1.32.0](https://github.com/hxreborn/morphe-patches/compare/v1.31.0...v1.32.0) (2026-09-27)\n\n### New Features\n\n* **Cxxdroid - AMOLED dark theme:** add pure black editor theme option ([7b2ceeb](https://github.com/hxreborn/morphe-patches/commit/7b2ceeb84eae707fe4b58144f26f1c55b3b23e73))\n* **Cxxdroid - Disable tracking:** stop Firebase Analytics collection ([8666ec7](https://github.com/hxreborn/morphe-patches/commit/8666ec76150bb45e98b9a4a63fd924df5baade5a))\n* **Cxxdroid - Unlock premium:** unlock premium libraries and projects and remove ads ([f822181](https://github.com/hxreborn/morphe-patches/commit/f822181a9f83d1bfafb32c504702787872829058)), closes [#94](https://github.com/hxreborn/morphe-patches/issues/94)\n* **Proton VPN - Disable telemetry:** stop usage statistics and diagnostics uploads ([45fbb99](https://github.com/hxreborn/morphe-patches/commit/45fbb99a3ffad8eaf353ec86052c61f5bbbf59fa))\n* **Yi iot - Hide ads:** remove splash, interstitial, banner and native ads ([fb7d85d](https://github.com/hxreborn/morphe-patches/commit/fb7d85df33fd83c488829df22e0037557e979142)), closes [#93](https://github.com/hxreborn/morphe-patches/issues/93)\n",
+  "created_at": "2026-09-27T17:49:02",
+  "version": "v1.33.0",
+  "description": "## [1.33.0](https://github.com/hxreborn/morphe-patches/compare/v1.32.0...v1.33.0) (2026-09-27)\n\n### Bug Fixes\n\n* **TeraBox - Unlock Premium Plus:** play HD on shared links ([c265749](https://github.com/hxreborn/morphe-patches/commit/c26574902720ca83d0c735f8681eb38d8e7b137d))\n* **TeraBox - Unlock Premium Plus:** start HD playback on large videos ([6235864](https://github.com/hxreborn/morphe-patches/commit/623586488d2a73d5efa2a0b45a3e5ea2910e462e)), closes [#92](https://github.com/hxreborn/morphe-patches/issues/92)\n\n### New Features\n\n* **Jvdroid:** unlock premium, remove ads, add AMOLED theme and disable tracking ([4a35646](https://github.com/hxreborn/morphe-patches/commit/4a356467280f38de488929eee0e959ed8e65b0b6))\n* **Proton Mail:** add support for 7.11.8 ([cffca92](https://github.com/hxreborn/morphe-patches/commit/cffca9287515bd56315223b021b9fe4932a33ee3)), closes [#89](https://github.com/hxreborn/morphe-patches/issues/89)\n* **Pydroid 3:** unlock premium, remove ads, add AMOLED theme and disable tracking ([8adf062](https://github.com/hxreborn/morphe-patches/commit/8adf0622131583b9aeb10c0008dce1d68725b58c)), closes [#96](https://github.com/hxreborn/morphe-patches/issues/96)\n",
   "apps": [
     {
       "app_name": "Perplexity",
@@ -88,6 +88,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -98,6 +99,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -108,6 +110,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -118,6 +121,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -128,6 +132,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -138,6 +143,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -148,6 +154,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -1125,12 +1132,78 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "Jvdroid",
+      "package": "ru.iiec.jvdroid",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Adds an AMOLED option to Settings > Appearance > Editor theme (dark). Applies only while the Dark theme is active.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.8"
+          ]
+        },
+        {
+          "name": "Disable tracking",
+          "description": "Stops Firebase Analytics from collecting usage data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.8"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium and removes ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.8"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Pydroid 3",
+      "package": "ru.iiec.pydroid3",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Adds an AMOLED option to Settings > Appearance > Editor theme (dark). Applies only while the Dark theme is active.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.6_arm64"
+          ]
+        },
+        {
+          "name": "Disable tracking",
+          "description": "Stops Firebase Analytics from collecting usage data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.6_arm64"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium and removes ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.6_arm64"
+          ]
+        }
+      ]
     }
   ],
   "patches_name": "hxreborn Patches",
-  "fingerprint": "3ce81c495e941ac4e00034332d57a454de77e5e7b9fa098986da6f7d8ad1254e",
-  "release_notes": "## [1.32.0](https://github.com/hxreborn/morphe-patches/compare/v1.31.0...v1.32.0) (2026-09-27)\n\n### New Features\n\n* **Cxxdroid - AMOLED dark theme:** add pure black editor theme option ([7b2ceeb](https://github.com/hxreborn/morphe-patches/commit/7b2ceeb84eae707fe4b58144f26f1c55b3b23e73))\n* **Cxxdroid - Disable tracking:** stop Firebase Analytics collection ([8666ec7](https://github.com/hxreborn/morphe-patches/commit/8666ec76150bb45e98b9a4a63fd924df5baade5a))\n* **Cxxdroid - Unlock premium:** unlock premium libraries and projects and remove ads ([f822181](https://github.com/hxreborn/morphe-patches/commit/f822181a9f83d1bfafb32c504702787872829058)), closes [#94](https://github.com/hxreborn/morphe-patches/issues/94)\n* **Proton VPN - Disable telemetry:** stop usage statistics and diagnostics uploads ([45fbb99](https://github.com/hxreborn/morphe-patches/commit/45fbb99a3ffad8eaf353ec86052c61f5bbbf59fa))\n* **Yi iot - Hide ads:** remove splash, interstitial, banner and native ads ([fb7d85d](https://github.com/hxreborn/morphe-patches/commit/fb7d85df33fd83c488829df22e0037557e979142)), closes [#93](https://github.com/hxreborn/morphe-patches/issues/93)\n",
-  "release_tag": "v1.32.0",
-  "release_date": "2026-09-27T11:55:10Z",
+  "fingerprint": "cc763b345074f620aef13394014d0bb1ccc4cfc17d7de85faa8469424d03d78d",
+  "release_notes": "## [1.33.0](https://github.com/hxreborn/morphe-patches/compare/v1.32.0...v1.33.0) (2026-09-27)\n\n### Bug Fixes\n\n* **TeraBox - Unlock Premium Plus:** play HD on shared links ([c265749](https://github.com/hxreborn/morphe-patches/commit/c26574902720ca83d0c735f8681eb38d8e7b137d))\n* **TeraBox - Unlock Premium Plus:** start HD playback on large videos ([6235864](https://github.com/hxreborn/morphe-patches/commit/623586488d2a73d5efa2a0b45a3e5ea2910e462e)), closes [#92](https://github.com/hxreborn/morphe-patches/issues/92)\n\n### New Features\n\n* **Jvdroid:** unlock premium, remove ads, add AMOLED theme and disable tracking ([4a35646](https://github.com/hxreborn/morphe-patches/commit/4a356467280f38de488929eee0e959ed8e65b0b6))\n* **Proton Mail:** add support for 7.11.8 ([cffca92](https://github.com/hxreborn/morphe-patches/commit/cffca9287515bd56315223b021b9fe4932a33ee3)), closes [#89](https://github.com/hxreborn/morphe-patches/issues/89)\n* **Pydroid 3:** unlock premium, remove ads, add AMOLED theme and disable tracking ([8adf062](https://github.com/hxreborn/morphe-patches/commit/8adf0622131583b9aeb10c0008dce1d68725b58c)), closes [#96](https://github.com/hxreborn/morphe-patches/issues/96)\n",
+  "release_tag": "v1.33.0",
+  "release_date": "2026-09-27T17:49:02Z",
   "isPreRelease": false
 }
