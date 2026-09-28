@@ -2,9 +2,9 @@
   "bundle": "bartlomiejfornalczyk",
   "channel": "stable",
   "repo_url": "https://github.com/bartlomiejfornalczyk/morphe-patches",
-  "created_at": "2026-09-27T22:23:50Z",
-  "version": "1.3.1",
-  "description": "## [1.3.1](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.3.0...v1.3.1) (2026-09-27)\n\n### 🐛 Bug Fixes\n\n* **maps:** resolve crash by preventing duplicate keys in media provider map ([8576bf0](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/8576bf062aab405be3954fc5faf25bfb833663bd))",
+  "created_at": "2026-09-28T21:59:29Z",
+  "version": "1.7.0",
+  "description": "## [1.7.0](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.6.1...v1.7.0) (2026-09-28)\n\n### ✨ New Features\n\n* **maps:** replace exact package matching with endsWith for flawless media integration ([50fee39](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/50fee39731d118fd16a2a4a218d6ce581fdf2f7e))",
   "apps": [
     {
       "app_name": "Google Maps",
@@ -32,14 +32,46 @@
           "compatible_versions": [
             "26.36.04.973607363"
           ]
+        },
+        {
+          "name": "Change package name",
+          "description": "Installs alongside stock Google Maps under its own package name and adds MicroG spoofing.",
+          "use": true,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "The package name to install under."
+            }
+          ],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
+          "name": "Flexible Media App Match",
+          "description": "Allows Google Maps to connect to renamed media apps by checking if the package name ends with the expected string rather than an exact match.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
+          "name": "Restore map data",
+          "description": "Lets a re-signed Maps load tiles, search and routing, by sending Google's own package and certificate.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
         }
       ]
     }
   ],
   "patches_name": "Google Maps Morphe Patches",
-  "fingerprint": "98f36506a154ab359e39a0a5293df690c14d417276f2c011e2befdc5ffeba30d",
-  "release_notes": "## [1.3.1](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.3.0...v1.3.1) (2026-09-27)\n\n### 🐛 Bug Fixes\n\n* **maps:** resolve crash by preventing duplicate keys in media provider map ([8576bf0](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/8576bf062aab405be3954fc5faf25bfb833663bd))\n",
-  "release_tag": "v1.3.1",
-  "release_date": "2026-09-27T22:23:50Z",
+  "fingerprint": "8d71756aadc64766be45e08b79b1958d5e2ae746fe0279eab2ea4539c4d88330",
+  "release_notes": "## [1.7.0](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.6.1...v1.7.0) (2026-09-28)\n\n### ✨ New Features\n\n* **maps:** replace exact package matching with endsWith for flawless media integration ([50fee39](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/50fee39731d118fd16a2a4a218d6ce581fdf2f7e))\n",
+  "release_tag": "v1.7.0",
+  "release_date": "2026-09-28T21:59:29Z",
   "isPreRelease": false
 }

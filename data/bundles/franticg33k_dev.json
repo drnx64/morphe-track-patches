@@ -2,9 +2,9 @@
   "bundle": "franticg33k",
   "channel": "dev",
   "repo_url": "https://github.com/franticg33k/morphe-patches",
-  "created_at": "2026-09-28T11:29:11",
-  "version": "v1.4.0-dev.12",
-  "description": "## [1.4.0-dev.12](https://github.com/franticg33k/morphe-patches/compare/v1.4.0-dev.11...v1.4.0-dev.12) (2026-09-28)\n\n### 🚀 Updated App Support\n\n* gate Nepali Patro interstitials in the shared callee, not a caller ([32b5b60](https://github.com/franticg33k/morphe-patches/commit/32b5b60d8e23de62377621b5feba4bf72dd8918b)), closes [#0x961d78](https://github.com/franticg33k/morphe-patches/issues/0x961d78) [#0x30](https://github.com/franticg33k/morphe-patches/issues/0x30)\n",
+  "created_at": "2026-09-28T12:46:33",
+  "version": "v1.4.1-dev.3",
+  "description": "## [1.4.1-dev.3](https://github.com/franticg33k/morphe-patches/compare/v1.4.1-dev.2...v1.4.1-dev.3) (2026-09-28)\n\n### 🚀 Updated App Support\n\n* pin Hamro Patro compatibility to 10.7.33 ([3e17533](https://github.com/franticg33k/morphe-patches/commit/3e175331dcbb532bb4e0ba4f92a43f01fab4b5bb))\n",
   "apps": [
     {
       "app_name": "Bolpatra Nepal",
@@ -85,10 +85,12 @@
       "patches": [
         {
           "name": "Remove Ads",
-          "description": "Disables all ad serving in Hamro Patro by no-oping the native ad-placement resolver (HamroAdsPlacements). Every banner, native, interstitial, fullscreen and roadblock placement funnels through these leaf builders, so returning an empty list means no ad request is ever built for AdMob, Pangle, IronSource or Facebook Audience Network. Verified on v10.7.30.",
+          "description": "Disables all ad serving in Hamro Patro by no-oping the native ad-placement resolver (HamroAdsPlacements). Every banner, native, interstitial, fullscreen and roadblock placement funnels through these leaf builders, so returning an empty list means no ad request is ever built for the bundled MAX, Pangle, ironSource, Facebook Audience, Unity, Vungle and Google Ads SDKs, and no mediation cycle ever starts. Re-verified on v10.7.33. Works on its own, and combines cleanly with Nai64's universal No Ads patch if you have it enabled - the two act on different layers, so together they also cover the Google ads_mobile_sdk layer that no SDK-level patch reaches.",
           "use": true,
           "options": [],
-          "compatible_versions": []
+          "compatible_versions": [
+            "10.7.33"
+          ]
         }
       ]
     },
@@ -292,9 +294,9 @@
     }
   ],
   "patches_name": "franticg33k's Morphe Patches",
-  "fingerprint": "2f8bbfe25e522a6e4a4a510503a8373ef6af5ae766292972ef5e790d18c9632a",
-  "release_notes": "## [1.4.0-dev.12](https://github.com/franticg33k/morphe-patches/compare/v1.4.0-dev.11...v1.4.0-dev.12) (2026-09-28)\n\n### 🚀 Updated App Support\n\n* gate Nepali Patro interstitials in the shared callee, not a caller ([32b5b60](https://github.com/franticg33k/morphe-patches/commit/32b5b60d8e23de62377621b5feba4bf72dd8918b)), closes [#0x961d78](https://github.com/franticg33k/morphe-patches/issues/0x961d78) [#0x30](https://github.com/franticg33k/morphe-patches/issues/0x30)\n",
-  "release_tag": "v1.4.0-dev.12",
-  "release_date": "2026-09-28T11:29:11Z",
+  "fingerprint": "17fba748a57806642701c908dbd29b3db0838ad51392776e0533c122b445983f",
+  "release_notes": "## [1.4.1-dev.3](https://github.com/franticg33k/morphe-patches/compare/v1.4.1-dev.2...v1.4.1-dev.3) (2026-09-28)\n\n### 🚀 Updated App Support\n\n* pin Hamro Patro compatibility to 10.7.33 ([3e17533](https://github.com/franticg33k/morphe-patches/commit/3e175331dcbb532bb4e0ba4f92a43f01fab4b5bb))\n",
+  "release_tag": "v1.4.1-dev.3",
+  "release_date": "2026-09-28T12:46:33Z",
   "isPreRelease": true
 }
