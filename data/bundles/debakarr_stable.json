@@ -2,9 +2,9 @@
   "bundle": "debakarr",
   "channel": "stable",
   "repo_url": "https://github.com/debakarr/morphe-patches",
-  "created_at": "2026-09-29T05:28:32",
-  "version": "v1.2.0",
-  "description": "## [1.2.0](https://github.com/debakarr/morphe-patches/compare/v1.1.4...v1.2.0) (2026-09-29)\n\n### ✨ New Features\n\n* **flipkart:** intercept every mapi page and remove ads ([719b983](https://github.com/debakarr/morphe-patches/commit/719b98324b64da675e337171c2948f93ecdf66db))\n",
+  "created_at": "2026-09-29T11:41:24",
+  "version": "v1.6.0",
+  "description": "## [1.6.0](https://github.com/debakarr/morphe-patches/compare/v1.5.0...v1.6.0) (2026-09-29)\n\n### ✨ New Features\n\n* floating Sort/Hide-ads buttons for Flipkart, Myntra, Meesho ([de670a1](https://github.com/debakarr/morphe-patches/commit/de670a17a9fae227bb4fa506d7669f4b6a7e3dac))\n",
   "apps": [
     {
       "app_name": "Amazon Shopping",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Sort by number of ratings",
-          "description": "Adds a 'Sort: Most rated' button on Amazon search/listing pages that re-orders loaded results by ratings count, descending.",
+          "description": "Adds 'Sort: Most rated' and 'Hide ads' buttons on Amazon search pages; both stay on for new results and later searches.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -27,7 +27,7 @@
       "patches": [
         {
           "name": "Sort by number of ratings",
-          "description": "Sorts Flipkart search results by number of ratings (descending) via native JSON interception of the React Native NetworkCaller bridge.",
+          "description": "Sorts Flipkart search results by number of ratings (descending) and removes ad/sponsored items across all listing pages.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -38,15 +38,46 @@
       ]
     },
     {
+      "app_name": "Meesho",
+      "package": "com.meesho.supply",
+      "patches": [
+        {
+          "name": "Sort by number of ratings",
+          "description": "Sorts Meesho catalog, search and collection feeds by number of ratings (descending) and removes ad catalogs.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "29.5"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Myntra",
+      "package": "com.myntra.android",
+      "patches": [
+        {
+          "name": "Sort by number of ratings",
+          "description": "Sorts Myntra search and listing results by number of ratings (descending) and removes sponsored items.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "4.2609.30"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Amazon India",
       "package": "in.amazon.mshop.android.shopping",
       "patches": [
         {
           "name": "Sort by number of ratings",
-          "description": "Adds a 'Sort: Most rated' button on Amazon search/listing pages that re-orders loaded results by ratings count, descending.",
+          "description": "Adds 'Sort: Most rated' and 'Hide ads' buttons on Amazon search pages; both stay on for new results and later searches.",
           "use": false,
           "options": [],
           "compatible_versions": [
+            "32.18.0.300",
             "32.16.2.300"
           ]
         }
@@ -54,9 +85,9 @@
     }
   ],
   "patches_name": "Debakar's Morphe Patches",
-  "fingerprint": "07af6a3a285b7e41f22b3b70615b20f767093881582ec66ff12f5e9d67c0738c",
-  "release_notes": "## [1.2.0](https://github.com/debakarr/morphe-patches/compare/v1.1.4...v1.2.0) (2026-09-29)\n\n### ✨ New Features\n\n* **flipkart:** intercept every mapi page and remove ads ([719b983](https://github.com/debakarr/morphe-patches/commit/719b98324b64da675e337171c2948f93ecdf66db))\n",
-  "release_tag": "v1.2.0",
-  "release_date": "2026-09-29T05:28:32Z",
+  "fingerprint": "dbbe192399dd4a47da161b9e4b0b7c5f4992b7fc5efddd98351d1a3d360fc59f",
+  "release_notes": "## [1.6.0](https://github.com/debakarr/morphe-patches/compare/v1.5.0...v1.6.0) (2026-09-29)\n\n### ✨ New Features\n\n* floating Sort/Hide-ads buttons for Flipkart, Myntra, Meesho ([de670a1](https://github.com/debakarr/morphe-patches/commit/de670a17a9fae227bb4fa506d7669f4b6a7e3dac))\n",
+  "release_tag": "v1.6.0",
+  "release_date": "2026-09-29T11:41:24Z",
   "isPreRelease": false
 }

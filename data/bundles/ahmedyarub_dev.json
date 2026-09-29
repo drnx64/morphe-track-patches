@@ -2,9 +2,9 @@
   "bundle": "ahmedyarub",
   "channel": "dev",
   "repo_url": "https://github.com/ahmedyarub/morphe-patches",
-  "created_at": "2026-09-28T20:52:39Z",
-  "version": "1.7.1-dev.1",
-  "description": "## [1.7.1](https://github.com/ahmedyarub/morphe-patches/compare/v1.7.0...v1.7.1) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Stop Open links externally crashing on link taps ([c458fcf](https://github.com/ahmedyarub/morphe-patches/commit/c458fcf5a53b403b26934bfe492ca79cff5d2f30))\n* **Instagram:** Stop Open links externally crashing on link taps ([c77faf8](https://github.com/ahmedyarub/morphe-patches/commit/c77faf8e90281de4ce7c955a3f91d23fa021cd52))",
+  "created_at": "2026-09-29T10:40:41",
+  "version": "v1.8.0-dev.1",
+  "description": "## [1.8.0-dev.1](https://github.com/ahmedyarub/morphe-patches/compare/v1.7.1...v1.8.0-dev.1) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Drop the import of the deleted TooltipHelper ([0f548d1](https://github.com/ahmedyarub/morphe-patches/commit/0f548d157af7b369ea123986b37585c9c4c73896))\n* **Instagram:** Make every patch work on 448.0.0.52.84 ([7327f5b](https://github.com/ahmedyarub/morphe-patches/commit/7327f5be5022171d037eb3fc4c0c483eca0d2ec7))\n* **scripts:** Stop verify-dex.sh recursing and passing on a failed original ([ce61366](https://github.com/ahmedyarub/morphe-patches/commit/ce61366585bd72fb94a49209a2e01b2d6d2918bd))\n\n### ✨ New Features\n\n* **Instagram:** Support 449.0.0.52.84 ([e228b8c](https://github.com/ahmedyarub/morphe-patches/commit/e228b8cf19fb2d232b095a703a05a6eda5ab8c0a))\n",
   "apps": [
     {
       "app_name": "Instagram",
@@ -16,8 +16,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -26,8 +25,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -36,8 +34,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -46,10 +43,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "448.0.0.52.84",
-            "447.0.0.55.81",
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -58,10 +52,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "448.0.0.52.84",
-            "447.0.0.55.81",
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -79,32 +70,11 @@
             },
             {
               "key": "hideHighlightStories",
-              "description": "Hides resurfaced highlights from the story tray."
+              "description": "Hides resurfaced highlights, which carry no expiry, from the story tray."
             }
           ],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
-          ]
-        },
-        {
-          "name": "Hide Instants",
-          "description": "Hides Instants from DMs page.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
-          ]
-        },
-        {
-          "name": "Hide Threads profile button",
-          "description": "Hides the Threads button from the profile page action bar (top right of the profile page).",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -113,13 +83,21 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide Instants",
+          "description": "Hides Instants from DMs page.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
           ]
         },
         {
           "name": "Hide suggested content",
-          "description": "Choose the suggested content to hide using the patch options.",
+          "description": "Hides suggested reels and suggested accounts. Suggested stories are hidden by Filter stories.",
           "use": true,
           "options": [
             {
@@ -127,21 +105,21 @@
               "description": "Hides suggested reels from feed and reels tab."
             },
             {
-              "key": "hideSuggestedStories",
-              "description": "Hides suggested stories/users from story tray."
-            },
-            {
-              "key": "hideHighlightStories",
-              "description": "Hides highlighted stories from story tray, sponsored stories which have no set expiration."
-            },
-            {
               "key": "hideSuggestedAccount",
               "description": "Hides suggested accounts from the list of followers and from other profiles."
             }
           ],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide Threads profile button",
+          "description": "Hides the Threads button from the profile page action bar (top right of the profile page).",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
           ]
         },
         {
@@ -150,8 +128,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -160,10 +137,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "448.0.0.52.84",
-            "447.0.0.55.81",
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -172,8 +146,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
@@ -182,20 +155,21 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         },
         {
           "name": "Save deleted messages",
-          "description": "Captures incoming DMs locally as they arrive from the server and marks them when the sender deletes them.",
+          "description": "Keeps a local copy of incoming DMs so ones the sender deletes stay readable. Messages are stored unencrypted in the app's private storage.",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "retentionDays",
+              "description": "How long a copy of a message that was not deleted is kept. A message deleted after this is not recoverable. Deleted messages are kept until cleared."
+            }
+          ],
           "compatible_versions": [
-            "448.0.0.52.84",
-            "447.0.0.55.81",
-            "446.0.0.49.77",
-            "439.0.0.37.89"
+            "449.0.0.52.84"
           ]
         }
       ]
@@ -226,9 +200,9 @@
     }
   ],
   "patches_name": "Ahmed Yarub's Patches",
-  "fingerprint": "bb24c850d9d63a33e063f6d87bfb4573c7bdaa3c6bb0697b0b5d8fd9fc86ec5d",
-  "release_notes": "## [1.7.1-dev.1](https://github.com/ahmedyarub/morphe-patches/compare/v1.7.0...v1.7.1-dev.1) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Stop Open links externally crashing on link taps ([c458fcf](https://github.com/ahmedyarub/morphe-patches/commit/c458fcf5a53b403b26934bfe492ca79cff5d2f30))\n* **Instagram:** Stop Open links externally crashing on link taps ([c77faf8](https://github.com/ahmedyarub/morphe-patches/commit/c77faf8e90281de4ce7c955a3f91d23fa021cd52))\n",
-  "release_tag": "v1.7.1-dev.1",
-  "release_date": "2026-09-28T20:52:39Z",
+  "fingerprint": "1963d4f189b19f1c48459ec54b1a9d3a95ecaafa89a115323f16754c8170a3d2",
+  "release_notes": "## [1.8.0-dev.1](https://github.com/ahmedyarub/morphe-patches/compare/v1.7.1...v1.8.0-dev.1) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Drop the import of the deleted TooltipHelper ([0f548d1](https://github.com/ahmedyarub/morphe-patches/commit/0f548d157af7b369ea123986b37585c9c4c73896))\n* **Instagram:** Make every patch work on 448.0.0.52.84 ([7327f5b](https://github.com/ahmedyarub/morphe-patches/commit/7327f5be5022171d037eb3fc4c0c483eca0d2ec7))\n* **scripts:** Stop verify-dex.sh recursing and passing on a failed original ([ce61366](https://github.com/ahmedyarub/morphe-patches/commit/ce61366585bd72fb94a49209a2e01b2d6d2918bd))\n\n### ✨ New Features\n\n* **Instagram:** Support 449.0.0.52.84 ([e228b8c](https://github.com/ahmedyarub/morphe-patches/commit/e228b8cf19fb2d232b095a703a05a6eda5ab8c0a))\n",
+  "release_tag": "v1.8.0-dev.1",
+  "release_date": "2026-09-29T10:40:41Z",
   "isPreRelease": true
 }

@@ -487,7 +487,7 @@
   ],
   "patches_name": "ajstrick81 Patches",
   "fingerprint": "785d78d0f345ff5053ba3e27ab8f596b719914386ba67f756d0c425b9e2d9e13",
-  "release_notes": "Crash-gate build: M1 flip gated on ADV so the pod-resolve crash can't happen. On titles where ADVw misses, ads may still play (no crash) — persistent ADVw is the next step. Look for 'ADV-gated, v2.2' in the KILL log.",
+  "release_notes": "Persistent fastADV: ADVw now keeps scanning for the adverts.adBreaks normaliser (tight ~50s + ~5min tail) so it lands on late-loading titles. On the problem title this should empty the pod before playback reaches it -> no crash, no leak. Look for 'fastADV armed' and 'fastADV: applied by pass N' + ANCHOR MAP ADV=w in the KILL log.",
   "release_tag": "test-212",
   "release_date": "2026-09-28T02:55:15Z",
   "isPreRelease": true

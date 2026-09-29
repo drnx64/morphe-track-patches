@@ -2,9 +2,9 @@
   "bundle": "morphe",
   "channel": "dev",
   "repo_url": "https://github.com/MorpheApp/morphe-patches",
-  "created_at": "2026-09-28T16:09:32",
-  "version": "v1.45.0-dev.19",
-  "description": "## [1.45.0-dev.19](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.18...v1.45.0-dev.19) (2026-09-28)\n\n### ✨ New Features\n\n* **YouTube Music - Third-party lyrics:** Search and prompt ([#3372](https://github.com/MorpheApp/morphe-patches/issues/3372)) ([f2b3201](https://github.com/MorpheApp/morphe-patches/commit/f2b32016108b112458aaf09384423faa37910983))\n* **YouTube Music:** Add `Playback speed` patch ([#3295](https://github.com/MorpheApp/morphe-patches/issues/3295)) ([96eae8f](https://github.com/MorpheApp/morphe-patches/commit/96eae8f66b243646de2e767b37a9d9fb20b81dc4))\n",
+  "created_at": "2026-09-29T08:47:40",
+  "version": "v1.45.0-dev.20",
+  "description": "## [1.45.0-dev.20](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.19...v1.45.0-dev.20) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **YouTube:** Always use Litho instead RenderNext as rendering library ([#3347](https://github.com/MorpheApp/morphe-patches/issues/3347)) ([52e0138](https://github.com/MorpheApp/morphe-patches/commit/52e01385e857b5a9858bef107dbaded6a89078df))\n\n### ✨ New Features\n\n* **YouTube - Player icon style:** Add custom icons from a zip file ([#3374](https://github.com/MorpheApp/morphe-patches/issues/3374)) ([224b731](https://github.com/MorpheApp/morphe-patches/commit/224b731509a1133a770d1c2f9938178d6a81a920))\n",
   "apps": [
     {
       "app_name": "YouTube Music",
@@ -1656,6 +1656,27 @@
           ]
         },
         {
+          "name": "Player icon style",
+          "description": "Adds an option to change the style of the player button icons.",
+          "use": true,
+          "options": [
+            {
+              "key": "customIcons",
+              "description": "\n    Zip file with icons to use as the 'Custom' icon style.\n\n    Each icon is named after the icon it replaces, such as 'morphe_yt_copy.xml'.\n    An icon is a vector drawable (.xml), or a white square PNG image (.png, 96x96 pixels is recommended).\n    Icons missing from the file keep the 'Automatic' style.\n"
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
           "name": "PoToken provider",
           "description": "Adds option to get PoToken using an external PoToken minter app.",
           "use": true,
@@ -1835,7 +1856,12 @@
           "name": "Shorts icon style",
           "description": "Adds an option to change the style of the Shorts action button icons.",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "customIcons",
+              "description": "\n    Zip file with icons to use as the 'Custom' icon style.\n\n    Each icon is named after the icon it replaces, such as 'morphe_shorts_heart.xml'.\n    An icon is a vector drawable (.xml), or a white square PNG image (.png, 96x96 pixels is recommended).\n    Icons missing from the file keep the 'Automatic' style.\n"
+            }
+          ],
           "compatible_versions": [
             "21.39.522",
             "21.38.130",
@@ -2296,9 +2322,9 @@
     }
   ],
   "patches_name": "Morphe Patches",
-  "fingerprint": "f4e9e498d65f80c9836af7d5b673dc3f095d70c8e4ad2be7d41767646c4022f8",
-  "release_notes": "## [1.45.0-dev.19](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.18...v1.45.0-dev.19) (2026-09-28)\n\n### ✨ New Features\n\n* **YouTube Music - Third-party lyrics:** Search and prompt ([#3372](https://github.com/MorpheApp/morphe-patches/issues/3372)) ([f2b3201](https://github.com/MorpheApp/morphe-patches/commit/f2b32016108b112458aaf09384423faa37910983))\n* **YouTube Music:** Add `Playback speed` patch ([#3295](https://github.com/MorpheApp/morphe-patches/issues/3295)) ([96eae8f](https://github.com/MorpheApp/morphe-patches/commit/96eae8f66b243646de2e767b37a9d9fb20b81dc4))\n",
-  "release_tag": "v1.45.0-dev.19",
-  "release_date": "2026-09-28T16:09:32Z",
+  "fingerprint": "c19036b44da075da1baf22ba6632c59075a7c27a8667266ff3ce3b6556eacbd5",
+  "release_notes": "## [1.45.0-dev.20](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.19...v1.45.0-dev.20) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **YouTube:** Always use Litho instead RenderNext as rendering library ([#3347](https://github.com/MorpheApp/morphe-patches/issues/3347)) ([52e0138](https://github.com/MorpheApp/morphe-patches/commit/52e01385e857b5a9858bef107dbaded6a89078df))\n\n### ✨ New Features\n\n* **YouTube - Player icon style:** Add custom icons from a zip file ([#3374](https://github.com/MorpheApp/morphe-patches/issues/3374)) ([224b731](https://github.com/MorpheApp/morphe-patches/commit/224b731509a1133a770d1c2f9938178d6a81a920))\n",
+  "release_tag": "v1.45.0-dev.20",
+  "release_date": "2026-09-29T08:47:40Z",
   "isPreRelease": true
 }
