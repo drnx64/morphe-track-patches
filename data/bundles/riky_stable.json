@@ -2,66 +2,57 @@
   "bundle": "riky",
   "channel": "stable",
   "repo_url": "https://github.com/riky-dev/morphe-patches",
-  "created_at": "2026-08-30T09:46:33",
-  "version": "v1.4.1",
-  "description": "## [1.4.1](https://github.com/riky-dev/morphe-patches/compare/v1.4.0...v1.4.1) (2026-08-30)\n\n### 🐛 Bug Fixes\n\n* **capcut:** prevent TransLynxActivity crash from duplicate onCreate patches ([1b27804](https://github.com/riky-dev/morphe-patches/commit/1b27804fb6f5cc68ebc1e8381970fe3341ca7eee))\n",
+  "created_at": "2026-09-25T16:47:30",
+  "version": "v2.0.0",
+  "description": "## [2.0.0](https://github.com/riky-dev/morphe-patches/compare/v1.4.1...v2.0.0) (2026-09-25)\n\n### ⚠ BREAKING CHANGES\n\n* **capcut:** CapCut support is 9.0.0 only; 19.2/19.6 patches removed.\n\n### 🐛 Bug Fixes\n\n* **capcut:** harden security notice for geo-gated crack/force-update ([c92aaa8](https://github.com/riky-dev/morphe-patches/commit/c92aaa8457af0bc744a812e35a04a001bab6c1e5))\n* **capcut:** match CrackingInterceptor with or without NATIVE ([af9c523](https://github.com/riky-dev/morphe-patches/commit/af9c5234a11360eaf9b81d35b5e575e545a3270e))\n* **capcut:** tolerate 19.6.0 R.id drift across versionCodes ([525cab7](https://github.com/riky-dev/morphe-patches/commit/525cab741919fb079cca3f524199363e62cec58a))\n* **capcut:** update Simplify Navigation tab IDs for 19.6.0 ([c4d7d37](https://github.com/riky-dev/morphe-patches/commit/c4d7d3728c3ba1d7bbccace765f3c9130a79ae7f))\n\n### ✨ New Features\n\n* **capcut:** retarget Unlock Premium to CapCut 9.0.0 ([a0185d8](https://github.com/riky-dev/morphe-patches/commit/a0185d8beec242d75ee9b8d76357ed890a40560a))\n* **vn:** hide export nags and projects ads on 2.20.0 ([b8d5826](https://github.com/riky-dev/morphe-patches/commit/b8d5826062a5af85f8ff855afed1392c22b04df1))\n* **vn:** port Unlock Premium patch from archived paresh-patches ([e5bc2a7](https://github.com/riky-dev/morphe-patches/commit/e5bc2a71413acc45bf91c98063bc697032d34d15))\n\n### 🚀 Updated App Support\n\n* 3BMeteo target version 4.9.15 → 4.9.16 ([3b62fd8](https://github.com/riky-dev/morphe-patches/commit/3b62fd88cfdca2c47cb31fb3d2e682f050289d3f))\n",
   "apps": [
+    {
+      "app_name": "VN",
+      "package": "com.frontrow.vlog",
+      "patches": [
+        {
+          "name": "Hide export nags",
+          "description": "Hides the post-export review dialog and the inspiring-tips guidance banner.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.12.0",
+            "2.20.0"
+          ]
+        },
+        {
+          "name": "Hide projects ads",
+          "description": "Hides AdsLayout banners (Projects list and other in-app ad slots).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.12.0",
+            "2.20.0"
+          ]
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks premium features, removes watermark, hides Pro tab, and hides the home upgrade-to-Pro banner.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.12.0",
+            "2.20.0"
+          ]
+        }
+      ]
+    },
     {
       "app_name": "CapCut",
       "package": "com.lemon.lvoverseas",
       "patches": [
         {
-          "name": "Hide Promotional UI",
-          "description": "Suppresses home banners, export promos, subscription paywalls, Pro badges, Lynx promo modals, and PC diversion popups.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "19.2.0"
-          ]
-        },
-        {
-          "name": "Hide Unavailable Features",
-          "description": "Hides cloud-gated editor options that won't work offline: AI sounds, super resolution, optical flow, and smart frame interpolation.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "19.2.0"
-          ]
-        },
-        {
-          "name": "Remove Security Notice",
-          "description": "Suppresses the modified-build security notice by disabling the risk SDK dialog entry point and the isCracking flag writer.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "19.2.0"
-          ]
-        },
-        {
-          "name": "Simplify Navigation",
-          "description": "Removes the Templates, Inbox, and AI Lab bottom navigation tabs.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "19.2.0"
-          ]
-        },
-        {
-          "name": "Suppress Telemetry",
-          "description": "Disables background monitoring and analytics frameworks including ByteDance Helios, AppLog, and AppsFlyer.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "19.2.0"
-          ]
-        },
-        {
           "name": "Unlock Premium",
-          "description": "Forces the VIP flag to true so premium features are unlocked client-side. Server-validated assets (cloud effects/templates) are not affected.",
+          "description": "Forces CapCut 9.0 VIP gates to true (VipSubscribeManager, SubscribeImpl, UserVipInfo, benefits). Cloud-gated assets may still fail.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "19.2.0"
+            "9.0.0"
           ]
         }
       ]
@@ -91,7 +82,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "4.9.15"
+            "4.9.16"
           ]
         }
       ]
@@ -122,10 +113,9 @@
     }
   ],
   "patches_name": "riky's patches",
-  "fingerprint": "28f8a811e7262145266b8459534bd458d9d3b5e9dc305315a9203ad76640ab6d",
-  "release_notes": "## [1.4.1](https://github.com/riky-dev/morphe-patches/compare/v1.4.0...v1.4.1) (2026-08-30)\n\n### 🐛 Bug Fixes\n\n* **capcut:** prevent TransLynxActivity crash from duplicate onCreate patches ([1b27804](https://github.com/riky-dev/morphe-patches/commit/1b27804fb6f5cc68ebc1e8381970fe3341ca7eee))\n",
-  "release_tag": "v1.4.1",
-  "release_date": "2026-08-30T09:46:33Z",
-  "isPreRelease": false,
-  "bundleImageUrl": ""
+  "fingerprint": "0203bd99cc2a912b544b7032eea8aa1f5b3725ce483e881e29686e3b445add5f",
+  "release_notes": "## [2.0.0](https://github.com/riky-dev/morphe-patches/compare/v1.4.1...v2.0.0) (2026-09-25)\n\n### ⚠ BREAKING CHANGES\n\n* **capcut:** CapCut support is 9.0.0 only; 19.2/19.6 patches removed.\n\n### 🐛 Bug Fixes\n\n* **capcut:** harden security notice for geo-gated crack/force-update ([c92aaa8](https://github.com/riky-dev/morphe-patches/commit/c92aaa8457af0bc744a812e35a04a001bab6c1e5))\n* **capcut:** match CrackingInterceptor with or without NATIVE ([af9c523](https://github.com/riky-dev/morphe-patches/commit/af9c5234a11360eaf9b81d35b5e575e545a3270e))\n* **capcut:** tolerate 19.6.0 R.id drift across versionCodes ([525cab7](https://github.com/riky-dev/morphe-patches/commit/525cab741919fb079cca3f524199363e62cec58a))\n* **capcut:** update Simplify Navigation tab IDs for 19.6.0 ([c4d7d37](https://github.com/riky-dev/morphe-patches/commit/c4d7d3728c3ba1d7bbccace765f3c9130a79ae7f))\n\n### ✨ New Features\n\n* **capcut:** retarget Unlock Premium to CapCut 9.0.0 ([a0185d8](https://github.com/riky-dev/morphe-patches/commit/a0185d8beec242d75ee9b8d76357ed890a40560a))\n* **vn:** hide export nags and projects ads on 2.20.0 ([b8d5826](https://github.com/riky-dev/morphe-patches/commit/b8d5826062a5af85f8ff855afed1392c22b04df1))\n* **vn:** port Unlock Premium patch from archived paresh-patches ([e5bc2a7](https://github.com/riky-dev/morphe-patches/commit/e5bc2a71413acc45bf91c98063bc697032d34d15))\n\n### 🚀 Updated App Support\n\n* 3BMeteo target version 4.9.15 → 4.9.16 ([3b62fd8](https://github.com/riky-dev/morphe-patches/commit/3b62fd88cfdca2c47cb31fb3d2e682f050289d3f))\n",
+  "release_tag": "v2.0.0",
+  "release_date": "2026-09-25T16:47:30Z",
+  "isPreRelease": false
 }

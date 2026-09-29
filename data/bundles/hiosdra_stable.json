@@ -2,9 +2,9 @@
   "bundle": "hiosdra",
   "channel": "stable",
   "repo_url": "https://github.com/Hiosdra/morphe-patches",
-  "created_at": "2026-08-25T20:04:52Z",
-  "version": "1.4.0",
-  "description": "## [1.4.0](https://github.com/Hiosdra/morphe-patches/compare/v1.3.1...v1.4.0) (2026-08-25)\n\n### 🐛 Bug Fixes\n\n* **f1:** enable all patches by default ([bbe871c](https://github.com/Hiosdra/morphe-patches/commit/bbe871c3d6293b450b83627bace82f3e8b4616fd))\n* **f1:** enable package name patch by default ([4c56cb0](https://github.com/Hiosdra/morphe-patches/commit/4c56cb017f4e0d9b6801efd77c0b55488bed52fd))\n* **f1:** preserve playback position when entering pip ([2b6e86a](https://github.com/Hiosdra/morphe-patches/commit/2b6e86aa481d5a0681c216ccc0f6ebdbe9cb30fb))\n\n### ✨ New Features\n\n* **f1:** add standalone package and update patches ([60ea94a](https://github.com/Hiosdra/morphe-patches/commit/60ea94a18243ba8f8cf7e1ae76d3c50ce375f69a))",
+  "created_at": "2026-09-28T16:07:46Z",
+  "version": "1.6.0",
+  "description": "## [1.6.0](https://github.com/Hiosdra/morphe-patches/compare/v1.5.0...v1.6.0) (2026-09-28)\n\n### ✨ New Features\n\n* add F1 update dismissal and Movie Paradise GMS support ([4cf9ea5](https://github.com/Hiosdra/morphe-patches/commit/4cf9ea5d381dee980fd0649455889b3f590262a3))",
   "apps": [
     {
       "app_name": "F1 TV",
@@ -12,11 +12,11 @@
       "patches": [
         {
           "name": "F1 TV - Background playback",
-          "description": "Keeps the F1 TV player alive when the activity goes to the background or the screen turns off.",
+          "description": "Keeps Bitmovin playback alive and enables Tiledmedia background audio for F1 TV multiview.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.0.48.1-SP157.6.0-release-R52-mobile"
+            "3.0.49.4-SP166.4.1-release-R54.2-mobile"
           ]
         },
         {
@@ -38,7 +38,7 @@
             }
           ],
           "compatible_versions": [
-            "3.0.48.1-SP157.6.0-release-R52-mobile"
+            "3.0.49.4-SP166.4.1-release-R54.2-mobile"
           ]
         },
         {
@@ -47,7 +47,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.0.48.1-SP157.6.0-release-R52-mobile"
+            "3.0.49.4-SP166.4.1-release-R54.2-mobile"
+          ]
+        },
+        {
+          "name": "F1 TV - Dismiss forced update prompt",
+          "description": "Allows closing F1 TV's forced-update dialog without exiting the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.0.49.4-SP166.4.1-release-R54.2-mobile"
           ]
         },
         {
@@ -56,7 +65,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.0.48.1-SP157.6.0-release-R52-mobile"
+            "3.0.49.4-SP166.4.1-release-R54.2-mobile"
           ]
         },
         {
@@ -65,17 +74,40 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.0.48.1-SP157.6.0-release-R52-mobile"
+            "3.0.49.4-SP166.4.1-release-R54.2-mobile"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Movie Paradise",
+      "package": "com.techkitlabs.movieparadise",
+      "patches": [
+        {
+          "name": "Movie Paradise - GmsCore support (microG login)",
+          "description": "Routes Google Play Services through microG (MicroG-RE) so Google sign-in works without stock Play Services.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "5.2.0"
+          ]
+        },
+        {
+          "name": "Movie Paradise - PairIP license bypass",
+          "description": "Neutralises Google Play integrity/license checks (PairIP) so a repackaged build launches.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.2.0"
           ]
         }
       ]
     }
   ],
   "patches_name": "Hiosdra Patches",
-  "fingerprint": "f97402ffe023b5c7698a7093ab5285ebb30e8fa83d39b5656b7df0b2c96eb563",
-  "release_notes": "## [1.4.0](https://github.com/Hiosdra/morphe-patches/compare/v1.3.1...v1.4.0) (2026-08-25)\n\n### 🐛 Bug Fixes\n\n* **f1:** enable all patches by default ([bbe871c](https://github.com/Hiosdra/morphe-patches/commit/bbe871c3d6293b450b83627bace82f3e8b4616fd))\n* **f1:** enable package name patch by default ([4c56cb0](https://github.com/Hiosdra/morphe-patches/commit/4c56cb017f4e0d9b6801efd77c0b55488bed52fd))\n* **f1:** preserve playback position when entering pip ([2b6e86a](https://github.com/Hiosdra/morphe-patches/commit/2b6e86aa481d5a0681c216ccc0f6ebdbe9cb30fb))\n\n### ✨ New Features\n\n* **f1:** add standalone package and update patches ([60ea94a](https://github.com/Hiosdra/morphe-patches/commit/60ea94a18243ba8f8cf7e1ae76d3c50ce375f69a))\n",
-  "release_tag": "v1.4.0",
-  "release_date": "2026-08-25T20:04:52Z",
-  "isPreRelease": false,
-  "bundleImageUrl": ""
+  "fingerprint": "56edf39d21c81077f187f69d01ab245adc6cb6e16048977aad2005da39f58754",
+  "release_notes": "## [1.6.0](https://github.com/Hiosdra/morphe-patches/compare/v1.5.0...v1.6.0) (2026-09-28)\n\n### ✨ New Features\n\n* add F1 update dismissal and Movie Paradise GMS support ([4cf9ea5](https://github.com/Hiosdra/morphe-patches/commit/4cf9ea5d381dee980fd0649455889b3f590262a3))\n",
+  "release_tag": "v1.6.0",
+  "release_date": "2026-09-28T16:07:46Z",
+  "isPreRelease": false
 }

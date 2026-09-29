@@ -2,9 +2,9 @@
   "bundle": "hoo-dles",
   "channel": "dev",
   "repo_url": "https://github.com/hoo-dles/morphe-patches",
-  "created_at": "2026-09-21T21:39:38Z",
-  "version": "1.45.0-dev.2",
-  "description": "## [1.44.1](https://github.com/hoo-dles/morphe-patches/compare/v1.44.0...v1.44.1) (2026-09-17)\n\n\n### Bug Fixes\n\n* **Lightroom:** Fix pairip stripping and update patches to `11.5.22` ([2c1b213](https://github.com/hoo-dles/morphe-patches/commit/2c1b213cbfe3665b3d1330065c31d7f807fe7919))",
+  "created_at": "2026-09-29T05:43:10",
+  "version": "v1.46.0-dev.3",
+  "description": "# [1.46.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.46.0-dev.2...v1.46.0-dev.3) (2026-09-29)\n\n\n### Features\n\n* **Superchinese:** Add `Block launch upsell` patch ([7968b81](https://github.com/hoo-dles/morphe-patches/commit/7968b8193f38faaf442bcb69b33d9ea6e1f442ac))\n\n\n\n",
   "apps": [
     {
       "app_name": "TTMIK Stories",
@@ -31,7 +31,6 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.16.7",
             "1.16.24"
           ]
         }
@@ -51,8 +50,8 @@
           ]
         },
         {
-          "name": "Unlock LAN connections",
-          "description": "Enables the LAN connections feature usually locked behind the Proton Plus paywall.",
+          "name": "Unlock custom DNS",
+          "description": "Enables the custom DNS feature usually locked behind the Proton Plus paywall.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -60,8 +59,8 @@
           ]
         },
         {
-          "name": "Unlock custom DNS",
-          "description": "Enables the custom DNS feature usually locked behind the Proton Plus paywall.",
+          "name": "Unlock LAN connections",
+          "description": "Enables the LAN connections feature usually locked behind the Proton Plus paywall.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -99,15 +98,6 @@
       "package": "cn.wps.moffice_eng",
       "patches": [
         {
-          "name": "Disable anti-tamper",
-          "description": "Disables various anti-tamper checks that causes the app to force-close.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.24"
-          ]
-        },
-        {
           "name": "Enable Pro",
           "description": "Enables app features locked behind the subscription paywall. Login is required and AI functionality is unavailable.",
           "use": true,
@@ -138,21 +128,12 @@
       "package": "com.adobe.lrmobile",
       "patches": [
         {
-          "name": "Bypass login",
-          "description": "Allows app use without login. BUT breaks many features. Requirements: arm64-v8a, strict apk version",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "11.5.22"
-          ]
-        },
-        {
           "name": "Unlock premium features",
           "description": "Enables app features locked behind the subscription paywall. Requirements: arm64-v8a, strict apk version",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "11.5.22"
+            "11.5.31"
           ]
         }
       ]
@@ -182,7 +163,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.0.452.1047"
+            "3.0.470.1047"
           ]
         },
         {
@@ -191,7 +172,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.0.452.1047"
+            "3.0.470.1047"
           ]
         },
         {
@@ -200,7 +181,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.0.452.1047"
+            "3.0.470.1047"
           ]
         }
       ]
@@ -245,7 +226,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "7.6.6"
+            "7.8.0"
           ]
         }
       ]
@@ -260,7 +241,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.21.0"
+            "3.23.1"
           ]
         }
       ]
@@ -275,7 +256,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "32.30.0(1575420)"
+            "32.44.1(1717099)"
           ]
         }
       ]
@@ -290,21 +271,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "6.95.4"
-          ]
-        },
-        {
-          "name": "Enable Premium",
-          "description": "Enables app features locked behind the subscription paywall.",
-          "use": true,
-          "options": [
-            {
-              "key": "premiumVariant",
-              "description": "Choose which type of premium Duolingo subscription to enable."
-            }
-          ],
-          "compatible_versions": [
-            "6.95.4"
+            "6.98.4"
           ]
         },
         {
@@ -313,7 +280,30 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "6.95.4"
+            "6.98.4"
+          ]
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Enables app features locked behind the subscription paywall. Some features like AI video calls may not work.",
+          "use": true,
+          "options": [
+            {
+              "key": "premiumVariant",
+              "description": "Choose which type of premium Duolingo subscription to enable."
+            }
+          ],
+          "compatible_versions": [
+            "6.98.4"
+          ]
+        },
+        {
+          "name": "Unlimited RampUp time",
+          "description": "The timer for RampUp challenges will never decrease.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "6.98.4"
           ]
         }
       ]
@@ -328,7 +318,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "9.24"
+            "9.30"
           ]
         }
       ]
@@ -427,7 +417,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2.99.412"
+            "2.99.413"
           ]
         }
       ]
@@ -442,7 +432,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.551"
+            "1.599"
           ]
         }
       ]
@@ -683,12 +673,21 @@
       "package": "com.superchinese",
       "patches": [
         {
+          "name": "Block launch upsell",
+          "description": "Prevents the premium upsell popup on app launch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.8.1"
+          ]
+        },
+        {
           "name": "Disable telemetry",
           "description": "Blocks SuperChinese's custom telemetry reporting.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "6.6.3"
+            "6.8.1"
           ]
         },
         {
@@ -697,7 +696,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "6.6.3"
+            "6.8.1"
           ]
         }
       ]
@@ -787,7 +786,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "11.0.0"
+            "11.2.0"
           ]
         }
       ]
@@ -832,7 +831,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "6.6 build 016"
+            "6.6 build 020"
           ]
         }
       ]
@@ -981,7 +980,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.5.20"
+            "3.6.1"
           ]
         }
       ]
@@ -1018,10 +1017,9 @@
     }
   ],
   "patches_name": "Hoodles Morphe Patches",
-  "fingerprint": "5de07288ac191378e522636783ef1181ab4530fc537f60223f5db48e96ccfc9d",
-  "release_notes": "# [1.45.0-dev.2](https://github.com/hoo-dles/morphe-patches/compare/v1.45.0-dev.1...v1.45.0-dev.2) (2026-09-21)\n\n\n### Bug Fixes\n\n* **MicroG:** Fix support for Busuu ([39796a6](https://github.com/hoo-dles/morphe-patches/commit/39796a698897f764279d7439c1f01fe5395bae1a))\n\n\n\n",
-  "release_tag": "v1.45.0-dev.2",
-  "release_date": "2026-09-21T21:39:38Z",
-  "isPreRelease": true,
-  "bundleImageUrl": ""
+  "fingerprint": "fccf05f5a655ec23da81fbe87d98aee400fcaffdf0cf3212cfc5a9331c322e5a",
+  "release_notes": "# [1.46.0-dev.3](https://github.com/hoo-dles/morphe-patches/compare/v1.46.0-dev.2...v1.46.0-dev.3) (2026-09-29)\n\n\n### Features\n\n* **Superchinese:** Add `Block launch upsell` patch ([7968b81](https://github.com/hoo-dles/morphe-patches/commit/7968b8193f38faaf442bcb69b33d9ea6e1f442ac))\n\n\n\n",
+  "release_tag": "v1.46.0-dev.3",
+  "release_date": "2026-09-29T05:43:10Z",
+  "isPreRelease": true
 }

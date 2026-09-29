@@ -2,9 +2,9 @@
   "bundle": "letterboxd-stremio",
   "channel": "stable",
   "repo_url": "https://github.com/ethanm6/letterboxd-stremio-morphe-patch",
-  "created_at": "2026-07-15T16:53:46",
-  "version": "v1.3.2",
-  "description": "Stremio button polish: press-ripple color now matches the trailer button, the pill shape is exact from the first drawn frame, and the button is hidden on films with no IMDb link (mirroring the trailer button when there's no trailer).",
+  "created_at": "2026-09-28T11:03:33",
+  "version": "v1.4.2",
+  "description": "### Changed\r\n- **Add Stremio button** now works correctly with [Nuvio](https://github.com/tapframe/NuvioStreaming), a Stremio-addon client that also registers the stremio:// scheme but doesn't understand its URL shape. Previously, tapping the button just opened Nuvio's home screen instead of the film.\r\n- The button now checks which of Nuvio or Stremio is installed and sends each its own correct deep link. Nuvio is preferred when both are present.\r\n- The label and color switch to match: purple \"Stremio\", or blue \"Nuvio\" (using the blue from Nuvio's logo).",
   "apps": [
     {
       "app_name": "Letterboxd",
@@ -18,8 +18,15 @@
           "compatible_versions": []
         },
         {
+          "name": "Hide Spotlight Ad",
+          "description": "Hides the sponsored \"Spotlight\" ad card on the home feed. Can be toggled independently of the other patches.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
           "name": "Hide Video Store",
-          "description": "Hides the \"Rent from Letterboxd Video Store\" banner on film pages and the video store carousel row on the home feed. Can be toggled independently of the Stremio button patch.",
+          "description": "Hides the \"Rent from Letterboxd Video Store\" banner on film pages, the video store carousel row on the home feed, and the \"Letterboxd Video Store\" row in the search page's \"Browse by\" list. Can be toggled independently of the Stremio button patch.",
           "use": true,
           "options": [],
           "compatible_versions": []
@@ -35,10 +42,9 @@
     }
   ],
   "patches_name": "Letterboxd Stremio Bridge",
-  "fingerprint": "c4b8b97e4de371f357d6b8be8e36e249a0d164e7b9b28a27b233e7ca52e3dfe6",
-  "release_notes": "Stremio button polish: press-ripple color now matches the trailer button, the pill shape is exact from the first drawn frame, and the button is hidden on films with no IMDb link (mirroring the trailer button when there's no trailer).",
-  "release_tag": "v1.3.2",
-  "release_date": "2026-07-15T16:53:46Z",
-  "isPreRelease": false,
-  "bundleImageUrl": ""
+  "fingerprint": "0120a2b9e5170173debdd8709553b8d10326ca52424424c12c6fe9a15aacc588",
+  "release_notes": "### Changed\r\n- **Add Stremio button** now works correctly with [Nuvio](https://github.com/tapframe/NuvioStreaming), a Stremio-addon client that also registers the stremio:// scheme but doesn't understand its URL shape. Previously, tapping the button just opened Nuvio's home screen instead of the film.\r\n- The button now checks which of Nuvio or Stremio is installed and sends each its own correct deep link. Nuvio is preferred when both are present.\r\n- The label and color switch to match: purple \"Stremio\", or blue \"Nuvio\" (using the blue from Nuvio's logo).",
+  "release_tag": "v1.4.2",
+  "release_date": "2026-09-28T11:03:33Z",
+  "isPreRelease": false
 }

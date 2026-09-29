@@ -2,9 +2,9 @@
   "bundle": "kveld",
   "channel": "stable",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-09-25T02:38:20",
-  "version": "v1.46.0",
-  "description": "## [1.46.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.45.0...v1.46.0) (2026-09-25)\n\n### Bug Fixes\n\n* **brave:** neutralize ARM64 BTI flag to prevent startup crash on Android 16 ([f799f29](https://github.com/kveld9/kveld-morphe-patches/commit/f799f2927bccde164bc30ef04a7b0b9255f27ed7))\n* **ci:** prevent html tag truncation in telegram release notifications ([b758dd4](https://github.com/kveld9/kveld-morphe-patches/commit/b758dd46b1450105810f301801bed975590f593f))\n* **tiktok:** prevent false positives in ai remix detection ([45e4eb9](https://github.com/kveld9/kveld-morphe-patches/commit/45e4eb9457a397e73b1be584b516eb332d07baf5))\n\n### New Features\n\n* **tiktok:** add custom share sheet patch ([4a7e2b8](https://github.com/kveld9/kveld-morphe-patches/commit/4a7e2b8b5d2ce5603bcef744630dd193b30bafe6))\n\n### Code Refactoring\n\n* **tiktok:** tune default patch selection and standardize metadata ([d9a0538](https://github.com/kveld9/kveld-morphe-patches/commit/d9a05381cb53eee20cc00da086c4ea4c84eef13b))\n",
+  "created_at": "2026-09-29T01:39:16",
+  "version": "v2.1.0",
+  "description": "## [2.1.0](https://github.com/kveld9/kveld-morphe-patches/compare/v2.0.0...v2.1.0) (2026-09-29)\n\n### Bug Fixes\n\n* **brave:** neutralize armv8.0 cpu feature constructor traps in libchrome ([98201c2](https://github.com/kveld9/kveld-morphe-patches/commit/98201c27bef7ff641330784f2417063fe4ef9fd1))\n* **brave:** resolve android 16 arm64 bti trap and enforce native library extraction ([2224cdb](https://github.com/kveld9/kveld-morphe-patches/commit/2224cdb1afef63b358f0a535044821eb6e9a5a2b))\n* **nokoprint:** resolve infinite progress dialog hang when adding printers ([47fed43](https://github.com/kveld9/kveld-morphe-patches/commit/47fed434581ae4f8f3b432d6f31f77ee5c77881a))\n* **tiktok:** align obfuscated privacy client targets and prune obsolete hooks in device privacy guard patch ([282c95b](https://github.com/kveld9/kveld-morphe-patches/commit/282c95b8384d432994cd5d8bf5594794523dc03e))\n* **tiktok:** decouple quality governor lifecycle, resolution ceilings, and DASH manifests ([8ca1161](https://github.com/kveld9/kveld-morphe-patches/commit/8ca1161273fd414b7528da1b389a71e1b4071cf3))\n* **tiktok:** eliminate cold and warm background resume splash and topview ads ([7fa4796](https://github.com/kveld9/kveld-morphe-patches/commit/7fa479680d13b7effb5adf3de1d0ddb12a5b5b9f))\n* **tiktok:** eliminate obsolete MainPageFragment hook in SkipFirstLaunchOnboarding ([e5ec9c2](https://github.com/kveld9/kveld-morphe-patches/commit/e5ec9c2d20b957ea3f2bc21a68c0dc0cbd6704c1))\n* **tiktok:** enforce fail-fast fingerprint resolution in SkipFirstLaunchOnboarding ([e7f7fb4](https://github.com/kveld9/kveld-morphe-patches/commit/e7f7fb4fedcd6c5c254be2c9ba5344bfac0343eb))\n* **tiktok:** enforce fail-fast resolution capping hooks in VideoQualityGovernor ([658608c](https://github.com/kveld9/kveld-morphe-patches/commit/658608c59d70352928c172cc8ffd777c82a86946))\n* **tiktok:** enforce register allocation and clear try blocks in InstantColdStart ([fe5f7cf](https://github.com/kveld9/kveld-morphe-patches/commit/fe5f7cf4f70d0ab6162feb3a1a072c46df3aa070))\n* **tiktok:** expand hideRepost key set to include live repost channel variants ([68bc856](https://github.com/kveld9/kveld-morphe-patches/commit/68bc856d9d287584a88b80761e05ed68da95bfcf))\n* **tiktok:** expand tracking parameter filtering and enforce fail-fast in clean share url ([e46107d](https://github.com/kveld9/kveld-morphe-patches/commit/e46107dcfed03a12a1fe6d74e5203976ff0d3bff))\n* **tiktok:** harden feed ad filter reflection type guards ([afd4060](https://github.com/kveld9/kveld-morphe-patches/commit/afd40608a499546b68774e9a77880227b67ed383))\n* **tiktok:** isolate share sheet panel mutations and escape string options ([470fb30](https://github.com/kveld9/kveld-morphe-patches/commit/470fb300039c6ffa6c9b3df8e9592ab08c109407))\n* **tiktok:** preserve repost channel in custom share sheet essentials ([ace8225](https://github.com/kveld9/kveld-morphe-patches/commit/ace82254e1b5db31b10e1bef3a83f4854e9dc8c8))\n* **tiktok:** prevent video ID collision and preserve distinct stream download mapping (fixes [#58](https://github.com/kveld9/kveld-morphe-patches/issues/58)) ([1a83be8](https://github.com/kveld9/kveld-morphe-patches/commit/1a83be8d5bff462669ce8e98efea44b18a4b9f7c))\n* **tiktok:** replace share sheet whitelist with granular boolean toggles ([5c8ba5e](https://github.com/kveld9/kveld-morphe-patches/commit/5c8ba5ea654ce98c07d5514285f1c2b9bd079bfd)), closes [#59](https://github.com/kveld9/kveld-morphe-patches/issues/59)\n* **tiktok:** resolve class cast exception by dynamically hooking video frame rate opt in display refresh rate governor patch ([3356eaf](https://github.com/kveld9/kveld-morphe-patches/commit/3356eaf2fdc67d01a8364e8995c411ca6ce81c27))\n* **tiktok:** resolve null pointer exception in aweme video control seekbar initialization ([0fc11fd](https://github.com/kveld9/kveld-morphe-patches/commit/0fc11fda03fe00f1e881c97db44c7be79fd66258))\n* **tiktok:** resolve share item reflection key per instance ([3e88ee0](https://github.com/kveld9/kveld-morphe-patches/commit/3e88ee05489f7320673cf6704e90af6dac0e115a))\n* **tiktok:** support shifted account user service getters in mandatory login bypass hook ([3439f1f](https://github.com/kveld9/kveld-morphe-patches/commit/3439f1ff21419776299206dcc7827634535a2ca1))\n* **tiktok:** suppress settings redirect prompts and onboarding triggers for blocked permissions ([086b25a](https://github.com/kveld9/kveld-morphe-patches/commit/086b25ad5d58031444f39434de2338d1aa3bfef0))\n* **tiktok:** update aweme stats api and history targets in disable watch history recording patch ([7a06f6a](https://github.com/kveld9/kveld-morphe-patches/commit/7a06f6a280dedacf705c130cef586baa782edff7))\n* **tiktok:** update bottom tab protocol hooks in hide community tab patch ([9596583](https://github.com/kveld9/kveld-morphe-patches/commit/9596583fc86cc17c7caa0d89fef853917758b0fb))\n* **tiktok:** update feed anchor filter targets in hide tiktok shop anchors patch ([73cd253](https://github.com/kveld9/kveld-morphe-patches/commit/73cd253cdeef7cf3d1b0ccb8dea2995b4e2ebef0))\n* **tiktok:** update feed avatar default assem hooks and helper in hide avatar follow button patch ([b14eefc](https://github.com/kveld9/kveld-morphe-patches/commit/b14eefc8d1356f2959c5fb26491b1ccfc4c7afc5))\n* **tiktok:** update feed avatar live assem hooks in disable avatar live status patch ([83253d4](https://github.com/kveld9/kveld-morphe-patches/commit/83253d4b1d389942d32134f03bf8a517d8380ce4))\n* **tiktok:** update live outer service hooks in hide top live entrance patch ([af41b2d](https://github.com/kveld9/kveld-morphe-patches/commit/af41b2dc1de264e83715ceedff087bd4f0d7cb30))\n* **tiktok:** update player controller hooks and dynamic panel discovery in auto pause first video patch ([db5bfb2](https://github.com/kveld9/kveld-morphe-patches/commit/db5bfb29034fbdeef8794d8677887126fdc50bb6))\n* **tiktok:** update search bar assem target hooks in hide feed search bar patch ([b4f5e4e](https://github.com/kveld9/kveld-morphe-patches/commit/b4f5e4e15b1c55a18644da57c16c4bb88d5e8611))\n* **tiktok:** update search filter hooks in hide search popular lives patch ([a083c6f](https://github.com/kveld9/kveld-morphe-patches/commit/a083c6f84913bc8db263a9f8d989b839c1d9539f))\n* **tiktok:** update search history repository target in disable search history recording patch ([7d29bb1](https://github.com/kveld9/kveld-morphe-patches/commit/7d29bb1223412f75041f2b6be50287a9c2601c5c))\n* **tiktok:** update search intermediate and guess query hooks in hide suggested searches patch ([d227b9e](https://github.com/kveld9/kveld-morphe-patches/commit/d227b9eee5d9bc952065bfcc594d6e9d21830692))\n* **tiktok:** update smart service and client ai targets in client ai governor patch ([793aeb4](https://github.com/kveld9/kveld-morphe-patches/commit/793aeb4b8b433d64a388682a945fff5a9aa4a542))\n* **tiktok:** update splash ad service and real time splash manager targets in instant cold start patch ([caf2530](https://github.com/kveld9/kveld-morphe-patches/commit/caf253027dcb9a55c76aaf180df3bc112329025b))\n\n### New Features\n\n* **shared:** bump tiktok target version to 47.1.3 and update compatibility docs ([83e8d24](https://github.com/kveld9/kveld-morphe-patches/commit/83e8d240969b7fcd2f676de19e04b17a22c188fd))\n* **tiktok:** add comment sort controls patch ([2751e0e](https://github.com/kveld9/kveld-morphe-patches/commit/2751e0ef8ff27a3ab555c98962863de2e2eb2fa8))\n* **tiktok:** add disable search video autoplay patch ([7af1162](https://github.com/kveld9/kveld-morphe-patches/commit/7af1162bc3f190ceddc1a1001f5187a8a3f7f158))\n* **tiktok:** add hide nearby feed tab patch ([ea84d65](https://github.com/kveld9/kveld-morphe-patches/commit/ea84d65ee6dac84f88ba2267189b3a4c33981cd5))\n* **tiktok:** add hide seen videos patch ([027b385](https://github.com/kveld9/kveld-morphe-patches/commit/027b385cd8d6a2deb4a53fa5ccaf6a078c61bb6c))\n* **tiktok:** add resume video after scroll patch ([265cd07](https://github.com/kveld9/kveld-morphe-patches/commit/265cd0713d2eb8cc2c32c32f0d74116172255745))\n* **tiktok:** add stop video looping patch ([709a3ad](https://github.com/kveld9/kveld-morphe-patches/commit/709a3add8e766319f88d25a139a1a1c4d05b2464))\n* **tiktok:** block sponsored ads in search video feeds ([f0dfa68](https://github.com/kveld9/kveld-morphe-patches/commit/f0dfa68104a40746473fc91d628a34d59deae295))\n* **tiktok:** increase default custom offline videos limit to 1000 ([988887e](https://github.com/kveld9/kveld-morphe-patches/commit/988887e7e5146920e28836f57f5b192dc768169f))\n\n### Code Refactoring\n\n* **hevy:** standardize patch titles and align documentation metadata ([93549e3](https://github.com/kveld9/kveld-morphe-patches/commit/93549e322224e3420e2bce949211e420fa40f83b))\n* **tiktok:** focus disable story feed indicators patch on avatar story rings and prune obsolete story tags ([8d77540](https://github.com/kveld9/kveld-morphe-patches/commit/8d7754071ca3e781ce4381cb88de56b18159d2b0))\n* **xiaomi:** strip redundant title prefixes and enhance patch descriptions ([de37cc2](https://github.com/kveld9/kveld-morphe-patches/commit/de37cc2b5dd92145609a94506a26a80f59878983))\n",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -20,27 +20,9 @@
           ]
         },
         {
-          "name": "Brave ARM64 BTI Compatibility",
-          "description": "Neutralizes GNU_PROPERTY_AARCH64_FEATURE_1_BTI in libchrome.so to prevent Branch Target Exception SIGILL crashes on ARMv8.5+ devices.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "1.96.59"
-          ]
-        },
-        {
           "name": "Brave In-Product & Commercial Notification Optimizer",
           "description": "Eliminates background wakeups and notifications from Chromium tips scheduler (Job ID 105), Brave Rewards onboarding promo, and retention marketing campaigns.",
           "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.96.59"
-          ]
-        },
-        {
-          "name": "Brave Native Library Extraction Compatibility",
-          "description": "Enforces native library extraction in AndroidManifest.xml to ensure 16 KB page and BTI compatibility across modern ARM64 devices.",
-          "use": false,
           "options": [],
           "compatible_versions": [
             "1.96.59"
@@ -183,7 +165,7 @@
         },
         {
           "name": "Block Telemetry",
-          "description": "Disables background metrics dispatch, event logging, daily pings, and crash reporting.",
+          "description": "Disables background metrics dispatch, event logging, daily pings, Google Primes profiling, crash reporting, AppDoctor diagnostics, and Tenor share tracking.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -230,28 +212,8 @@
           ]
         },
         {
-          "name": "Disable Diagnostics",
-          "description": "Disables Google's diagnostic and recovery telemetry.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.2.4.969776716-lite_beta-arm64-v8a",
-            "18.2.4.969776716-lite_beta-armeabi-v7a"
-          ]
-        },
-        {
-          "name": "Disable Google Primes",
-          "description": "Neutralizes Google Primes performance profiling, jank monitoring, native crash sidecars, and background telemetry threads.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.2.4.969776716-lite_beta-arm64-v8a",
-            "18.2.4.969776716-lite_beta-armeabi-v7a"
-          ]
-        },
-        {
-          "name": "Disable MDD Background Sync",
-          "description": "Neutralizes Mobile Data Download (MDD) periodic background synchronization, automated polling, and prefetch worker tasks while preserving on-demand and user-requested downloads.",
+          "name": "Disable Background Sync",
+          "description": "Neutralizes AndroidX WorkManager schedulers, MDD (Mobile Data Download) periodic sync, and Superpacks eager asset synchronization (opt-in to preserve initial dictionary downloads).",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -263,36 +225,6 @@
           "name": "Disable Remote Configuration",
           "description": "Disables periodic remote experiment flag synchronization and background updates.",
           "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.2.4.969776716-lite_beta-arm64-v8a",
-            "18.2.4.969776716-lite_beta-armeabi-v7a"
-          ]
-        },
-        {
-          "name": "Disable Superpacks Eager Sync",
-          "description": "Neutralizes eager background Superpacks synchronization during application startup, eliminating unnecessary disk sweeps and network polling while preserving on-demand pack downloads.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "18.2.4.969776716-lite_beta-arm64-v8a",
-            "18.2.4.969776716-lite_beta-armeabi-v7a"
-          ]
-        },
-        {
-          "name": "Disable Tenor Share Tracking",
-          "description": "Disables Tenor GIF selection and share tracking telemetry.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.2.4.969776716-lite_beta-arm64-v8a",
-            "18.2.4.969776716-lite_beta-armeabi-v7a"
-          ]
-        },
-        {
-          "name": "Disable WorkManager",
-          "description": "Neutralizes background WorkManager initialization, database creation, and periodic maintenance workers.",
-          "use": false,
           "options": [],
           "compatible_versions": [
             "18.2.4.969776716-lite_beta-arm64-v8a",
@@ -393,12 +325,7 @@
           "name": "Offline Only",
           "description": "Completely isolates Gboard from the network by revoking network permissions, neutralizing HTTP clients (Cronet, OkHttp, Superpacks), and spoofing offline status.",
           "use": false,
-          "options": [
-            {
-              "key": "stripContacts",
-              "description": "Revokes READ_CONTACTS permission from AndroidManifest.xml for maximum isolation."
-            }
-          ],
+          "options": [],
           "compatible_versions": [
             "18.2.4.969776716-lite_beta-arm64-v8a",
             "18.2.4.969776716-lite_beta-armeabi-v7a"
@@ -419,6 +346,37 @@
           "description": "Strips embedded third-party license text, onboarding tutorial Lottie animations, promotional GIFs, and APK root metadata/junk files.",
           "use": true,
           "options": [],
+          "compatible_versions": [
+            "18.2.4.969776716-lite_beta-arm64-v8a",
+            "18.2.4.969776716-lite_beta-armeabi-v7a"
+          ]
+        },
+        {
+          "name": "Strip Permissions",
+          "description": "Selectively revokes sensitive hardware, privacy, and system permissions from AndroidManifest.xml.",
+          "use": false,
+          "options": [
+            {
+              "key": "stripContacts",
+              "description": "Revokes READ_CONTACTS permission from AndroidManifest.xml (disables contact name suggestions)."
+            },
+            {
+              "key": "stripAudio",
+              "description": "Revokes RECORD_AUDIO permission from AndroidManifest.xml (disables voice dictation)."
+            },
+            {
+              "key": "stripMedia",
+              "description": "Revokes photo and media permissions (READ_MEDIA_IMAGES, READ_MEDIA_VISUAL_USER_SELECTED, READ_EXTERNAL_STORAGE) from AndroidManifest.xml (disables custom image background themes)."
+            },
+            {
+              "key": "stripUserDictionary",
+              "description": "Revokes system personal dictionary sync permissions (READ_USER_DICTIONARY, WRITE_USER_DICTIONARY) from AndroidManifest.xml."
+            },
+            {
+              "key": "stripCrossProfile",
+              "description": "Revokes INTERACT_ACROSS_PROFILES permission from AndroidManifest.xml to isolate work and personal profiles."
+            }
+          ],
           "compatible_versions": [
             "18.2.4.969776716-lite_beta-arm64-v8a",
             "18.2.4.969776716-lite_beta-armeabi-v7a"
@@ -446,16 +404,7 @@
       "package": "com.hevy",
       "patches": [
         {
-          "name": "Block Hevy Telemetry & Trackers",
-          "description": "Neutralizes Sentry crash reporting, Adjust attribution, Facebook AppEvents, Branch referral tracking, and WearOS background sync.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "3.1.14"
-          ]
-        },
-        {
-          "name": "Hevy Battery Optimization & Background Sync Killer",
+          "name": "Battery & Background Sync Optimizer",
           "description": "Disables background WorkManager alarms, periodic job schedulers, Google Play Billing IPC (~89 MB RAM), and removes largeHeap to force aggressive Garbage Collection.",
           "use": true,
           "options": [],
@@ -464,7 +413,16 @@
           ]
         },
         {
-          "name": "Hevy Resource Slimmer",
+          "name": "Block Telemetry & Trackers",
+          "description": "Neutralizes Sentry crash reporting, Adjust attribution, Facebook AppEvents, Branch referral tracking, and WearOS background sync.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.1.14"
+          ]
+        },
+        {
+          "name": "Resource Slimmer",
           "description": "Strips embedded onboarding MP4 tutorial video, heavy IMG.LY photo editor stickers/textures, and compiler junk metadata.",
           "use": true,
           "options": [],
@@ -488,7 +446,7 @@
       "package": "com.mi.earphone",
       "patches": [
         {
-          "name": "Xiaomi Earbuds Anti-Tamper Bypass",
+          "name": "Anti-Tamper Bypass",
           "description": "Bypasses Xposed and hook detection, neutralizes VPN and ADB security checks, bypasses root and emulator detection, and hardens WebView JavaScript bridges.",
           "use": true,
           "options": [],
@@ -497,7 +455,7 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Background Optimizer",
+          "name": "Background Optimizer",
           "description": "Neutralizes KeepAliveForegroundService, background BLE observation, companion device manager, and MIUI Nearby discovery to eliminate persistent notifications, wakelocks, and background battery drain.",
           "use": true,
           "options": [],
@@ -506,7 +464,7 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Block Telemetry & Trackers",
+          "name": "Block Telemetry & Trackers",
           "description": "Neutralizes Firebase Analytics, Xiaomi OneTrack, AutoReportHelper, and GlobalReport telemetry and event dispatching.",
           "use": true,
           "options": [],
@@ -515,7 +473,7 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Device Privacy Guard",
+          "name": "Device Privacy Guard",
           "description": "Blinds hardware device IDs, anonymizes device identifiers, neutralizes environment info leakage, and bypasses location checks for Bluetooth scanning.",
           "use": true,
           "options": [],
@@ -524,7 +482,7 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Disable Promos & Nags",
+          "name": "Disable Promos & Nags",
           "description": "Bypasses startup privacy agreements, onboarding guides, region selector prompts, and Bluetooth permission nags, and disables in-app promotional banners, marketing activities, and store review nag dialogs.",
           "use": true,
           "options": [],
@@ -533,7 +491,7 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Guest OTA Unlock",
+          "name": "Guest OTA Unlock",
           "description": "Bypasses mandatory Xiaomi account login checks for firmware update queries, allowing guest users to check and perform device OTA updates.",
           "use": true,
           "options": [],
@@ -542,7 +500,7 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Model Catalog Unlock",
+          "name": "Model Catalog Unlock",
           "description": "Forces DeviceInfoListCache.isShowProduct to return true, bypassing version-gating and distribution restrictions so that all device models are always displayed and discoverable.",
           "use": true,
           "options": [],
@@ -551,7 +509,7 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Network Security & TLS Inspection",
+          "name": "Network Security & TLS Inspection",
           "description": "Disables cleartext traffic, trusts user-installed certificates, and bypasses OkHttp certificate pinning.",
           "use": true,
           "options": [],
@@ -560,8 +518,8 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Offline Only",
-          "description": "Completely isolates the app from the network by revoking internet permissions and spoofing offline status to prevent background socket failures.",
+          "name": "Offline Only",
+          "description": "Completely isolates the app from the network by revoking internet permissions and spoofing offline status. Note: do not activate on first launch; pair your earbuds once before enabling.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -569,7 +527,7 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Sound Features Unlock",
+          "name": "Sound Features Unlock",
           "description": "Unblocks Spatial Audio, hearing enhancement, and voice wake-up restrictions, unbans Spatial Audio on 96kHz aptX Adaptive connections, and bypasses XPAN requirements.",
           "use": true,
           "options": [],
@@ -578,8 +536,8 @@
           ]
         },
         {
-          "name": "Xiaomi Earbuds Surgical OEM Unlock",
-          "description": "Bypasses Xiaomi OEM hardware gating for SuperAivs (function 5009) and suppresses MIUI-specific spatial audio system dialog nags.",
+          "name": "Surgical OEM Unlock",
+          "description": "Bypasses Xiaomi OEM gating to enable full feature parity (voice assistant & spatial audio dialogs) on non-Xiaomi devices (Samsung, Pixel, etc.).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -593,8 +551,8 @@
       "package": "com.nokoprint",
       "patches": [
         {
-          "name": "NokoPrint Ad Activities Slimmer",
-          "description": "Disables over 100 third-party ad mediation activities, internal web browsers, and debuggers registered in AndroidManifest.xml.",
+          "name": "Ad Dispatch Governor",
+          "description": "Neutralizes ad loaders, unlocks ad-free status, and strips mediation components & startup providers.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -602,8 +560,8 @@
           ]
         },
         {
-          "name": "NokoPrint Ad Dispatch Governor",
-          "description": "Neutralizes in-app banner, interstitial, and rewarded ad loaders, preloading schedulers, and refresh handlers.",
+          "name": "Asset Debloat",
+          "description": "Strips embedded ad DEX, tracking scripts, web templates, and ad drawables to reduce APK size.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -611,16 +569,7 @@
           ]
         },
         {
-          "name": "NokoPrint Asset De-bloat",
-          "description": "Strips embedded secondary Meta Audience Network DEX, tracking scripts, ad-viewer HTML/JS templates, RuStore TLS certs, and third-party ad assets to save APK space.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "5.28.4"
-          ]
-        },
-        {
-          "name": "NokoPrint Background Sync Optimizer",
+          "name": "Background Sync Optimizer",
           "description": "Neutralizes background WorkManager constraint tasks and diagnostic wakelocks.",
           "use": true,
           "options": [],
@@ -629,8 +578,8 @@
           ]
         },
         {
-          "name": "NokoPrint Block Telemetry & Trackers",
-          "description": "Neutralizes Firebase Analytics and Google Measurement tracking and event dispatching.",
+          "name": "Block Telemetry & Trackers",
+          "description": "Neutralizes Firebase Analytics, Google Measurement, TikTok Business SDK, and crashlytics tracking.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -638,8 +587,8 @@
           ]
         },
         {
-          "name": "NokoPrint Multi-Store Debridger",
-          "description": "Disables orphan billing activities, background services, and permissions for alternative OEM stores (Huawei HMS, Xiaomi, Samsung, CafeBazaar, OneStore).",
+          "name": "Multi-Store Debridger",
+          "description": "Disables orphan billing activities, services, and permissions for alternative OEM stores (Huawei, Xiaomi, Samsung).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -647,17 +596,8 @@
           ]
         },
         {
-          "name": "NokoPrint Network Security Hardening",
-          "description": "Enforces HTTPS encryption for driver downloads and backend communications with nokoprint.com while preserving local cleartext traffic for LAN network printers.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "5.28.4"
-          ]
-        },
-        {
-          "name": "NokoPrint Startup Performance Optimizer",
-          "description": "Disables non-essential ad mediation and tracker ContentProviders that auto-initialize before Application.onCreate, accelerating cold startup.",
+          "name": "Network Security Hardening",
+          "description": "Enforces user trust anchors while preserving HTTP cleartext traffic for driver downloads and LAN printers.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -676,7 +616,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -685,7 +625,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -694,7 +634,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -703,7 +643,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Bypass Screen Capture Detection",
+          "description": "Clears FLAG_SECURE on protected windows to allow screenshots and screen recording across restricted views, and neutralizes screenshot detection listeners and feedback prompts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -712,7 +661,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -721,7 +670,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Comment Sort Controls",
+          "description": "Unlocks TikTok's native comment sorting menu (Hot, Newest, Creator only, With media) across all posts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -730,7 +688,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -739,7 +697,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -749,46 +707,138 @@
           "options": [
             {
               "key": "customLimit",
-              "description": "Maximum number of offline videos that can be cached for offline playback (default: 200)."
+              "description": "Maximum number of offline videos that can be cached for offline playback (default: 1000)."
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Custom Share Sheet",
-          "description": "Customizes and simplifies the native TikTok share sheet by removing third-party app bloat, hiding specified apps or actions, and optionally suppressing the friends/contacts direct message row.",
+          "description": "Customizes and cleans the native TikTok share sheet via individual toggle switches for third-party apps, essential sharing features, and secondary utility actions.",
           "use": true,
           "options": [
             {
-              "key": "simplifyShareSheet",
-              "description": "Trims third-party app channels down to essentials (Copy link and System share / More)."
+              "key": "hideWhatsApp",
+              "description": "Hides WhatsApp and WhatsApp Status from the share sheet."
+            },
+            {
+              "key": "hideInstagram",
+              "description": "Hides Instagram and Instagram Stories from the share sheet."
+            },
+            {
+              "key": "hideFacebook",
+              "description": "Hides Facebook, Facebook Stories, and Messenger from the share sheet."
+            },
+            {
+              "key": "hideTelegram",
+              "description": "Hides Telegram from the share sheet."
+            },
+            {
+              "key": "hideTwitter",
+              "description": "Hides X (Twitter) from the share sheet."
+            },
+            {
+              "key": "hideSnapchat",
+              "description": "Hides Snapchat from the share sheet."
+            },
+            {
+              "key": "hideReddit",
+              "description": "Hides Reddit and Discord from the share sheet."
+            },
+            {
+              "key": "hideSms",
+              "description": "Hides SMS and Google Messages from the share sheet."
+            },
+            {
+              "key": "hideSecondaryApps",
+              "description": "Hides regional and secondary third-party social apps (Line, Kakao, Viber, VK, Lemon8, etc.)."
+            },
+            {
+              "key": "hideRepost",
+              "description": "Hides the native Repost button from the share sheet. Note: disabling this also disables the long-press to repost gesture."
+            },
+            {
+              "key": "hideQrCode",
+              "description": "Hides the QR code sharing button from the share sheet."
+            },
+            {
+              "key": "hideCopyLink",
+              "description": "Hides the Copy link button from the share sheet."
+            },
+            {
+              "key": "hideSystemShare",
+              "description": "Hides the system share dialog ('More') button from the share sheet."
             },
             {
               "key": "hideFriendsRow",
-              "description": "Hides the top row of direct message friend/contact avatars ('Send to') in the share sheet."
+              "description": "Hides the top row of direct message friend and contact avatars ('Send to') in the share sheet."
+            },
+            {
+              "key": "hidePromote",
+              "description": "Hides the commercial Promote action from the bottom utilities row."
+            },
+            {
+              "key": "hideWhyThisVideo",
+              "description": "Hides the recommendation explanation action from the bottom utilities row."
+            },
+            {
+              "key": "hideCreateSticker",
+              "description": "Hides the sticker creation tool from the bottom utilities row."
+            },
+            {
+              "key": "hideDuet",
+              "description": "Hides the Duet action from the bottom utilities row."
+            },
+            {
+              "key": "hideStitch",
+              "description": "Hides the Stitch action from the bottom utilities row."
+            },
+            {
+              "key": "hidePip",
+              "description": "Hides the Picture-in-Picture floating player action from the bottom utilities row."
+            },
+            {
+              "key": "hideClearDisplay",
+              "description": "Hides the Clear display mode action from the bottom utilities row."
+            },
+            {
+              "key": "hideListenAudio",
+              "description": "Hides the background audio playback action from the bottom utilities row."
+            },
+            {
+              "key": "hideWallpaperAndGif",
+              "description": "Hides Live wallpaper and GIF creation actions from the bottom utilities row."
+            },
+            {
+              "key": "hideNotInterested",
+              "description": "Hides the 'Not interested' action from the bottom utilities row."
+            },
+            {
+              "key": "hideReport",
+              "description": "Hides the Report action from the bottom utilities row."
             },
             {
               "key": "hiddenApps",
-              "description": "Comma-separated list of app channel keys to hide (e.g. facebook,instagram,snapchat,messenger,twitter). Active when Simplify Share Sheet is disabled."
+              "description": "Optional comma-separated list of additional app channel keys to hide."
             },
             {
               "key": "hiddenActions",
-              "description": "Comma-separated list of share sheet action keys to hide (e.g. promote,qr_code,pip_switch,why_this_video)."
+              "description": "Optional comma-separated list of additional action keys to hide."
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Device Privacy Guard",
-          "description": "Neutralizes invasive runtime permissions (contacts sync, location tracking, nearby devices), advertising ID profiling, background clipboard snooping routines, motion sensor profiling, and screenshot/recording detection to protect user data.",
+          "description": "Neutralizes invasive runtime permissions (contacts sync, location tracking, nearby devices), advertising ID profiling, background clipboard snooping routines, and motion sensor profiling to protect user data.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -797,7 +847,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -806,7 +856,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -815,7 +865,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -824,7 +874,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -833,16 +883,25 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Disable Search Video Autoplay",
+          "description": "Disables automatic video playback in search results. Videos only play when tapped to view in detail.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
           "name": "Disable Story Feed Indicators",
-          "description": "Removes the top-center story drop-down indicator pill (e.g. '1 Story') and creator profile photo story rings from feed videos, ensuring avatar photos remain clean.",
+          "description": "Removes creator profile photo story rings from feed videos, ensuring avatar photos remain clean without blue story rings.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -851,7 +910,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -865,7 +924,7 @@
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -874,16 +933,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Feed Ad Blocker",
-          "description": "Removes sponsored advertisements, brand promotions, and promotional audio from the For You and Following feeds.",
+          "description": "Removes sponsored advertisements, brand promotions, and promotional audio from the For You, Following, and Search feeds.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -892,7 +951,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -901,7 +960,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -910,7 +969,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -919,7 +978,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -928,7 +987,16 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Hide Community Tab",
+          "description": "Removes the Community (Explore) tab from the top navigation feed strip.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -937,7 +1005,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Hide Nearby Feed Tab",
+          "description": "Removes the Nearby (local city or region) feed tab from the top navigation feed strip.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -946,7 +1023,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -955,16 +1032,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
-          "name": "Hide STEM and Community Tabs",
-          "description": "Removes the STEM and Topics (Community / Explore) tabs from the top navigation feed strip.",
-          "use": true,
+          "name": "Hide Seen Videos",
+          "description": "Filters previously watched videos from incoming For You feed batches.",
+          "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -973,16 +1050,25 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Hide TikTok Shop & Mall",
           "description": "Removes product showcase badges, shopping cart tags, and the TikTok Shop / Mall tab from navigation bars and video posts.",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "hideShopTab",
+              "description": "Removes the TikTok Shop / Mall navigation tab and indicator from navigation bars. Disable if you want to keep access to your purchases and orders while still hiding video product tags."
+            },
+            {
+              "key": "hideVideoAnchors",
+              "description": "Removes shopping cart tags, product showcase badges, and commercial anchors from FYP and Following feed videos."
+            }
+          ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -991,7 +1077,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1000,16 +1086,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Instant Launch & Splash Blocker",
-          "description": "Eliminates cold startup delays, real-time splash advertisements, and background TopView ad preloading.",
+          "description": "Eliminates cold startup delays, background resume splash advertisements, real-time splash requests, and TopView ad preloading.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1023,7 +1109,7 @@
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1032,7 +1118,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1041,7 +1127,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1050,7 +1136,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1059,7 +1145,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1068,7 +1154,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1077,7 +1163,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Resume Video After Scroll",
+          "description": "Remembers playback timestamp when scrolling away and resumes from where playback stopped upon returning.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -1086,7 +1181,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1100,7 +1195,7 @@
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1109,7 +1204,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Stop Video Looping",
+          "description": "Stops videos at the end instead of replaying them in an infinite loop.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -1118,7 +1222,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1127,7 +1231,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1136,7 +1240,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1154,153 +1258,7 @@
             }
           ],
           "compatible_versions": [
-            "47.0.3"
-          ]
-        }
-      ]
-    },
-    {
-      "app_name": "Vivaldi Browser - Fast & Safe",
-      "package": "com.vivaldi.browser",
-      "patches": [
-        {
-          "name": "Block Vivaldi Sync",
-          "description": "Redirects bifrost.vivaldi.com to 0.0.0.0 in libchrome.so to completely disable Vivaldi account synchronization for an air-gapped experience.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Block Vivaldi Telemetry",
-          "description": "Blocks Vivaldi usage statistics, crash reporting, Crashpad endpoints, DirectMatch suggestions, install referrer transmission, and background wallpaper polling.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Clean Share URL",
-          "description": "Strips tracking parameters (utm_*, fbclid, gclid, igshid, si, msclkid) when sharing or copying links.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Clean Speed Dial Bookmarks",
-          "description": "Removes sponsored commercial affiliate bookmarks, hides the 3-dot customize button, and disables phantom touch actions on the blank Start Page.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Close Tabs on Exit",
-          "description": "Prevents tab restoration on startup, ensuring Vivaldi always opens with a clean Start Page session regardless of how the app was terminated.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Disable Background Sync & Periodic Sync",
-          "description": "Prevents Web Background Sync and Periodic Sync APIs from scheduling wakeups and background tasks in Android JobScheduler.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Disable Battery Status API & OS Listener",
-          "description": "Neutralizes the Battery Status API (navigator.getBattery) to prevent cross-site device fingerprinting and drops OS battery change broadcasts.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Disable Chromium Tips & Notification Scheduler",
-          "description": "Eliminates periodic background wakeups, native library loading, and in-product promotional tips from Chromium tips scheduler.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Disable Vivaldi Prompts & In-App Popups",
-          "description": "Disables in-app donation prompts, search engine switch promos, rate-app popups, background privacy report alarms, default browser promo handlers, and hides the Vivaldia game from the main menu.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Locale PAK Slimmer",
-          "description": "Strips unselected language resource PAKs from assets/locales/.",
-          "use": false,
-          "options": [
-            {
-              "key": "locales",
-              "description": "Comma-separated locale codes to keep (e.g. 'es, es-419, en-US, pt-BR, fr, de'). English (en-US) is always kept as a safe fallback."
-            }
-          ],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Resource Slimmer",
-          "description": "Strips bundled stock wallpapers, sponsored Speed Dial thumbnails, partner favicons, Privacy Sandbox attestations, and hardens declarative preference defaults.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Sensor Privacy Guard",
-          "description": "Neutralizes motion, ambient, and orientation sensor providers to prevent hardware fingerprinting and tracking via Generic Sensor APIs.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Skip First Run",
-          "description": "Skips the welcome screen, search engine selection, and onboarding First Run Experience (FRE) on clean installs.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Split Bundle Compatibility",
-          "description": "Removes split APK constraints (isSplitRequired, isolatedSplits) and split metadata from AndroidManifest.xml for standalone APK installation.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
-          ]
-        },
-        {
-          "name": "Vivaldi Startup Performance Optimization",
-          "description": "Guards against fatal CompositorView NullPointerException crashes on cold startup and bypasses carrier partner customizations.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "8.2.4147.93"
+            "47.1.3"
           ]
         }
       ]
@@ -1315,7 +1273,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1324,7 +1282,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1333,7 +1291,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1342,7 +1300,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Bypass Screen Capture Detection",
+          "description": "Clears FLAG_SECURE on protected windows to allow screenshots and screen recording across restricted views, and neutralizes screenshot detection listeners and feedback prompts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -1351,7 +1318,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1360,7 +1327,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Comment Sort Controls",
+          "description": "Unlocks TikTok's native comment sorting menu (Hot, Newest, Creator only, With media) across all posts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -1369,7 +1345,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1378,7 +1354,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1388,46 +1364,138 @@
           "options": [
             {
               "key": "customLimit",
-              "description": "Maximum number of offline videos that can be cached for offline playback (default: 200)."
+              "description": "Maximum number of offline videos that can be cached for offline playback (default: 1000)."
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Custom Share Sheet",
-          "description": "Customizes and simplifies the native TikTok share sheet by removing third-party app bloat, hiding specified apps or actions, and optionally suppressing the friends/contacts direct message row.",
+          "description": "Customizes and cleans the native TikTok share sheet via individual toggle switches for third-party apps, essential sharing features, and secondary utility actions.",
           "use": true,
           "options": [
             {
-              "key": "simplifyShareSheet",
-              "description": "Trims third-party app channels down to essentials (Copy link and System share / More)."
+              "key": "hideWhatsApp",
+              "description": "Hides WhatsApp and WhatsApp Status from the share sheet."
+            },
+            {
+              "key": "hideInstagram",
+              "description": "Hides Instagram and Instagram Stories from the share sheet."
+            },
+            {
+              "key": "hideFacebook",
+              "description": "Hides Facebook, Facebook Stories, and Messenger from the share sheet."
+            },
+            {
+              "key": "hideTelegram",
+              "description": "Hides Telegram from the share sheet."
+            },
+            {
+              "key": "hideTwitter",
+              "description": "Hides X (Twitter) from the share sheet."
+            },
+            {
+              "key": "hideSnapchat",
+              "description": "Hides Snapchat from the share sheet."
+            },
+            {
+              "key": "hideReddit",
+              "description": "Hides Reddit and Discord from the share sheet."
+            },
+            {
+              "key": "hideSms",
+              "description": "Hides SMS and Google Messages from the share sheet."
+            },
+            {
+              "key": "hideSecondaryApps",
+              "description": "Hides regional and secondary third-party social apps (Line, Kakao, Viber, VK, Lemon8, etc.)."
+            },
+            {
+              "key": "hideRepost",
+              "description": "Hides the native Repost button from the share sheet. Note: disabling this also disables the long-press to repost gesture."
+            },
+            {
+              "key": "hideQrCode",
+              "description": "Hides the QR code sharing button from the share sheet."
+            },
+            {
+              "key": "hideCopyLink",
+              "description": "Hides the Copy link button from the share sheet."
+            },
+            {
+              "key": "hideSystemShare",
+              "description": "Hides the system share dialog ('More') button from the share sheet."
             },
             {
               "key": "hideFriendsRow",
-              "description": "Hides the top row of direct message friend/contact avatars ('Send to') in the share sheet."
+              "description": "Hides the top row of direct message friend and contact avatars ('Send to') in the share sheet."
+            },
+            {
+              "key": "hidePromote",
+              "description": "Hides the commercial Promote action from the bottom utilities row."
+            },
+            {
+              "key": "hideWhyThisVideo",
+              "description": "Hides the recommendation explanation action from the bottom utilities row."
+            },
+            {
+              "key": "hideCreateSticker",
+              "description": "Hides the sticker creation tool from the bottom utilities row."
+            },
+            {
+              "key": "hideDuet",
+              "description": "Hides the Duet action from the bottom utilities row."
+            },
+            {
+              "key": "hideStitch",
+              "description": "Hides the Stitch action from the bottom utilities row."
+            },
+            {
+              "key": "hidePip",
+              "description": "Hides the Picture-in-Picture floating player action from the bottom utilities row."
+            },
+            {
+              "key": "hideClearDisplay",
+              "description": "Hides the Clear display mode action from the bottom utilities row."
+            },
+            {
+              "key": "hideListenAudio",
+              "description": "Hides the background audio playback action from the bottom utilities row."
+            },
+            {
+              "key": "hideWallpaperAndGif",
+              "description": "Hides Live wallpaper and GIF creation actions from the bottom utilities row."
+            },
+            {
+              "key": "hideNotInterested",
+              "description": "Hides the 'Not interested' action from the bottom utilities row."
+            },
+            {
+              "key": "hideReport",
+              "description": "Hides the Report action from the bottom utilities row."
             },
             {
               "key": "hiddenApps",
-              "description": "Comma-separated list of app channel keys to hide (e.g. facebook,instagram,snapchat,messenger,twitter). Active when Simplify Share Sheet is disabled."
+              "description": "Optional comma-separated list of additional app channel keys to hide."
             },
             {
               "key": "hiddenActions",
-              "description": "Comma-separated list of share sheet action keys to hide (e.g. promote,qr_code,pip_switch,why_this_video)."
+              "description": "Optional comma-separated list of additional action keys to hide."
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Device Privacy Guard",
-          "description": "Neutralizes invasive runtime permissions (contacts sync, location tracking, nearby devices), advertising ID profiling, background clipboard snooping routines, motion sensor profiling, and screenshot/recording detection to protect user data.",
+          "description": "Neutralizes invasive runtime permissions (contacts sync, location tracking, nearby devices), advertising ID profiling, background clipboard snooping routines, and motion sensor profiling to protect user data.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1436,7 +1504,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1445,7 +1513,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1454,7 +1522,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1463,7 +1531,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1472,16 +1540,25 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Disable Search Video Autoplay",
+          "description": "Disables automatic video playback in search results. Videos only play when tapped to view in detail.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
           "name": "Disable Story Feed Indicators",
-          "description": "Removes the top-center story drop-down indicator pill (e.g. '1 Story') and creator profile photo story rings from feed videos, ensuring avatar photos remain clean.",
+          "description": "Removes creator profile photo story rings from feed videos, ensuring avatar photos remain clean without blue story rings.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1490,7 +1567,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1504,7 +1581,7 @@
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1513,16 +1590,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Feed Ad Blocker",
-          "description": "Removes sponsored advertisements, brand promotions, and promotional audio from the For You and Following feeds.",
+          "description": "Removes sponsored advertisements, brand promotions, and promotional audio from the For You, Following, and Search feeds.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1531,7 +1608,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1540,7 +1617,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1549,7 +1626,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1558,7 +1635,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1567,7 +1644,16 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Hide Community Tab",
+          "description": "Removes the Community (Explore) tab from the top navigation feed strip.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -1576,7 +1662,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Hide Nearby Feed Tab",
+          "description": "Removes the Nearby (local city or region) feed tab from the top navigation feed strip.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -1585,7 +1680,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1594,16 +1689,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
-          "name": "Hide STEM and Community Tabs",
-          "description": "Removes the STEM and Topics (Community / Explore) tabs from the top navigation feed strip.",
-          "use": true,
+          "name": "Hide Seen Videos",
+          "description": "Filters previously watched videos from incoming For You feed batches.",
+          "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1612,16 +1707,25 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Hide TikTok Shop & Mall",
           "description": "Removes product showcase badges, shopping cart tags, and the TikTok Shop / Mall tab from navigation bars and video posts.",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "hideShopTab",
+              "description": "Removes the TikTok Shop / Mall navigation tab and indicator from navigation bars. Disable if you want to keep access to your purchases and orders while still hiding video product tags."
+            },
+            {
+              "key": "hideVideoAnchors",
+              "description": "Removes shopping cart tags, product showcase badges, and commercial anchors from FYP and Following feed videos."
+            }
+          ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1630,7 +1734,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1639,16 +1743,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
           "name": "Instant Launch & Splash Blocker",
-          "description": "Eliminates cold startup delays, real-time splash advertisements, and background TopView ad preloading.",
+          "description": "Eliminates cold startup delays, background resume splash advertisements, real-time splash requests, and TopView ad preloading.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1662,7 +1766,7 @@
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1671,7 +1775,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1680,7 +1784,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1689,7 +1793,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1698,7 +1802,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1707,7 +1811,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1716,7 +1820,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Resume Video After Scroll",
+          "description": "Remembers playback timestamp when scrolling away and resumes from where playback stopped upon returning.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -1725,7 +1838,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1739,7 +1852,7 @@
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1748,7 +1861,16 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
+          ]
+        },
+        {
+          "name": "Stop Video Looping",
+          "description": "Stops videos at the end instead of replaying them in an infinite loop.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.1.3"
           ]
         },
         {
@@ -1757,7 +1879,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1766,7 +1888,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1775,7 +1897,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         },
         {
@@ -1793,17 +1915,16 @@
             }
           ],
           "compatible_versions": [
-            "47.0.3"
+            "47.1.3"
           ]
         }
       ]
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "854b256ed70f44c917f7234a3582a6093d3852e33ceb40496cf118dde012ff35",
-  "release_notes": "## [1.46.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.45.0...v1.46.0) (2026-09-25)\n\n### Bug Fixes\n\n* **brave:** neutralize ARM64 BTI flag to prevent startup crash on Android 16 ([f799f29](https://github.com/kveld9/kveld-morphe-patches/commit/f799f2927bccde164bc30ef04a7b0b9255f27ed7))\n* **ci:** prevent html tag truncation in telegram release notifications ([b758dd4](https://github.com/kveld9/kveld-morphe-patches/commit/b758dd46b1450105810f301801bed975590f593f))\n* **tiktok:** prevent false positives in ai remix detection ([45e4eb9](https://github.com/kveld9/kveld-morphe-patches/commit/45e4eb9457a397e73b1be584b516eb332d07baf5))\n\n### New Features\n\n* **tiktok:** add custom share sheet patch ([4a7e2b8](https://github.com/kveld9/kveld-morphe-patches/commit/4a7e2b8b5d2ce5603bcef744630dd193b30bafe6))\n\n### Code Refactoring\n\n* **tiktok:** tune default patch selection and standardize metadata ([d9a0538](https://github.com/kveld9/kveld-morphe-patches/commit/d9a05381cb53eee20cc00da086c4ea4c84eef13b))\n",
-  "release_tag": "v1.46.0",
-  "release_date": "2026-09-25T02:38:20Z",
-  "isPreRelease": false,
-  "bundleImageUrl": ""
+  "fingerprint": "951d5b568424c4e066b9d7479beabcc1ef6f2fdf365a9f8eb72eb91534a7cfed",
+  "release_notes": "## [2.1.0](https://github.com/kveld9/kveld-morphe-patches/compare/v2.0.0...v2.1.0) (2026-09-29)\n\n### Bug Fixes\n\n* **brave:** neutralize armv8.0 cpu feature constructor traps in libchrome ([98201c2](https://github.com/kveld9/kveld-morphe-patches/commit/98201c27bef7ff641330784f2417063fe4ef9fd1))\n* **brave:** resolve android 16 arm64 bti trap and enforce native library extraction ([2224cdb](https://github.com/kveld9/kveld-morphe-patches/commit/2224cdb1afef63b358f0a535044821eb6e9a5a2b))\n* **nokoprint:** resolve infinite progress dialog hang when adding printers ([47fed43](https://github.com/kveld9/kveld-morphe-patches/commit/47fed434581ae4f8f3b432d6f31f77ee5c77881a))\n* **tiktok:** align obfuscated privacy client targets and prune obsolete hooks in device privacy guard patch ([282c95b](https://github.com/kveld9/kveld-morphe-patches/commit/282c95b8384d432994cd5d8bf5594794523dc03e))\n* **tiktok:** decouple quality governor lifecycle, resolution ceilings, and DASH manifests ([8ca1161](https://github.com/kveld9/kveld-morphe-patches/commit/8ca1161273fd414b7528da1b389a71e1b4071cf3))\n* **tiktok:** eliminate cold and warm background resume splash and topview ads ([7fa4796](https://github.com/kveld9/kveld-morphe-patches/commit/7fa479680d13b7effb5adf3de1d0ddb12a5b5b9f))\n* **tiktok:** eliminate obsolete MainPageFragment hook in SkipFirstLaunchOnboarding ([e5ec9c2](https://github.com/kveld9/kveld-morphe-patches/commit/e5ec9c2d20b957ea3f2bc21a68c0dc0cbd6704c1))\n* **tiktok:** enforce fail-fast fingerprint resolution in SkipFirstLaunchOnboarding ([e7f7fb4](https://github.com/kveld9/kveld-morphe-patches/commit/e7f7fb4fedcd6c5c254be2c9ba5344bfac0343eb))\n* **tiktok:** enforce fail-fast resolution capping hooks in VideoQualityGovernor ([658608c](https://github.com/kveld9/kveld-morphe-patches/commit/658608c59d70352928c172cc8ffd777c82a86946))\n* **tiktok:** enforce register allocation and clear try blocks in InstantColdStart ([fe5f7cf](https://github.com/kveld9/kveld-morphe-patches/commit/fe5f7cf4f70d0ab6162feb3a1a072c46df3aa070))\n* **tiktok:** expand hideRepost key set to include live repost channel variants ([68bc856](https://github.com/kveld9/kveld-morphe-patches/commit/68bc856d9d287584a88b80761e05ed68da95bfcf))\n* **tiktok:** expand tracking parameter filtering and enforce fail-fast in clean share url ([e46107d](https://github.com/kveld9/kveld-morphe-patches/commit/e46107dcfed03a12a1fe6d74e5203976ff0d3bff))\n* **tiktok:** harden feed ad filter reflection type guards ([afd4060](https://github.com/kveld9/kveld-morphe-patches/commit/afd40608a499546b68774e9a77880227b67ed383))\n* **tiktok:** isolate share sheet panel mutations and escape string options ([470fb30](https://github.com/kveld9/kveld-morphe-patches/commit/470fb300039c6ffa6c9b3df8e9592ab08c109407))\n* **tiktok:** preserve repost channel in custom share sheet essentials ([ace8225](https://github.com/kveld9/kveld-morphe-patches/commit/ace82254e1b5db31b10e1bef3a83f4854e9dc8c8))\n* **tiktok:** prevent video ID collision and preserve distinct stream download mapping (fixes [#58](https://github.com/kveld9/kveld-morphe-patches/issues/58)) ([1a83be8](https://github.com/kveld9/kveld-morphe-patches/commit/1a83be8d5bff462669ce8e98efea44b18a4b9f7c))\n* **tiktok:** replace share sheet whitelist with granular boolean toggles ([5c8ba5e](https://github.com/kveld9/kveld-morphe-patches/commit/5c8ba5ea654ce98c07d5514285f1c2b9bd079bfd)), closes [#59](https://github.com/kveld9/kveld-morphe-patches/issues/59)\n* **tiktok:** resolve class cast exception by dynamically hooking video frame rate opt in display refresh rate governor patch ([3356eaf](https://github.com/kveld9/kveld-morphe-patches/commit/3356eaf2fdc67d01a8364e8995c411ca6ce81c27))\n* **tiktok:** resolve null pointer exception in aweme video control seekbar initialization ([0fc11fd](https://github.com/kveld9/kveld-morphe-patches/commit/0fc11fda03fe00f1e881c97db44c7be79fd66258))\n* **tiktok:** resolve share item reflection key per instance ([3e88ee0](https://github.com/kveld9/kveld-morphe-patches/commit/3e88ee05489f7320673cf6704e90af6dac0e115a))\n* **tiktok:** support shifted account user service getters in mandatory login bypass hook ([3439f1f](https://github.com/kveld9/kveld-morphe-patches/commit/3439f1ff21419776299206dcc7827634535a2ca1))\n* **tiktok:** suppress settings redirect prompts and onboarding triggers for blocked permissions ([086b25a](https://github.com/kveld9/kveld-morphe-patches/commit/086b25ad5d58031444f39434de2338d1aa3bfef0))\n* **tiktok:** update aweme stats api and history targets in disable watch history recording patch ([7a06f6a](https://github.com/kveld9/kveld-morphe-patches/commit/7a06f6a280dedacf705c130cef586baa782edff7))\n* **tiktok:** update bottom tab protocol hooks in hide community tab patch ([9596583](https://github.com/kveld9/kveld-morphe-patches/commit/9596583fc86cc17c7caa0d89fef853917758b0fb))\n* **tiktok:** update feed anchor filter targets in hide tiktok shop anchors patch ([73cd253](https://github.com/kveld9/kveld-morphe-patches/commit/73cd253cdeef7cf3d1b0ccb8dea2995b4e2ebef0))\n* **tiktok:** update feed avatar default assem hooks and helper in hide avatar follow button patch ([b14eefc](https://github.com/kveld9/kveld-morphe-patches/commit/b14eefc8d1356f2959c5fb26491b1ccfc4c7afc5))\n* **tiktok:** update feed avatar live assem hooks in disable avatar live status patch ([83253d4](https://github.com/kveld9/kveld-morphe-patches/commit/83253d4b1d389942d32134f03bf8a517d8380ce4))\n* **tiktok:** update live outer service hooks in hide top live entrance patch ([af41b2d](https://github.com/kveld9/kveld-morphe-patches/commit/af41b2dc1de264e83715ceedff087bd4f0d7cb30))\n* **tiktok:** update player controller hooks and dynamic panel discovery in auto pause first video patch ([db5bfb2](https://github.com/kveld9/kveld-morphe-patches/commit/db5bfb29034fbdeef8794d8677887126fdc50bb6))\n* **tiktok:** update search bar assem target hooks in hide feed search bar patch ([b4f5e4e](https://github.com/kveld9/kveld-morphe-patches/commit/b4f5e4e15b1c55a18644da57c16c4bb88d5e8611))\n* **tiktok:** update search filter hooks in hide search popular lives patch ([a083c6f](https://github.com/kveld9/kveld-morphe-patches/commit/a083c6f84913bc8db263a9f8d989b839c1d9539f))\n* **tiktok:** update search history repository target in disable search history recording patch ([7d29bb1](https://github.com/kveld9/kveld-morphe-patches/commit/7d29bb1223412f75041f2b6be50287a9c2601c5c))\n* **tiktok:** update search intermediate and guess query hooks in hide suggested searches patch ([d227b9e](https://github.com/kveld9/kveld-morphe-patches/commit/d227b9eee5d9bc952065bfcc594d6e9d21830692))\n* **tiktok:** update smart service and client ai targets in client ai governor patch ([793aeb4](https://github.com/kveld9/kveld-morphe-patches/commit/793aeb4b8b433d64a388682a945fff5a9aa4a542))\n* **tiktok:** update splash ad service and real time splash manager targets in instant cold start patch ([caf2530](https://github.com/kveld9/kveld-morphe-patches/commit/caf253027dcb9a55c76aaf180df3bc112329025b))\n\n### New Features\n\n* **shared:** bump tiktok target version to 47.1.3 and update compatibility docs ([83e8d24](https://github.com/kveld9/kveld-morphe-patches/commit/83e8d240969b7fcd2f676de19e04b17a22c188fd))\n* **tiktok:** add comment sort controls patch ([2751e0e](https://github.com/kveld9/kveld-morphe-patches/commit/2751e0ef8ff27a3ab555c98962863de2e2eb2fa8))\n* **tiktok:** add disable search video autoplay patch ([7af1162](https://github.com/kveld9/kveld-morphe-patches/commit/7af1162bc3f190ceddc1a1001f5187a8a3f7f158))\n* **tiktok:** add hide nearby feed tab patch ([ea84d65](https://github.com/kveld9/kveld-morphe-patches/commit/ea84d65ee6dac84f88ba2267189b3a4c33981cd5))\n* **tiktok:** add hide seen videos patch ([027b385](https://github.com/kveld9/kveld-morphe-patches/commit/027b385cd8d6a2deb4a53fa5ccaf6a078c61bb6c))\n* **tiktok:** add resume video after scroll patch ([265cd07](https://github.com/kveld9/kveld-morphe-patches/commit/265cd0713d2eb8cc2c32c32f0d74116172255745))\n* **tiktok:** add stop video looping patch ([709a3ad](https://github.com/kveld9/kveld-morphe-patches/commit/709a3add8e766319f88d25a139a1a1c4d05b2464))\n* **tiktok:** block sponsored ads in search video feeds ([f0dfa68](https://github.com/kveld9/kveld-morphe-patches/commit/f0dfa68104a40746473fc91d628a34d59deae295))\n* **tiktok:** increase default custom offline videos limit to 1000 ([988887e](https://github.com/kveld9/kveld-morphe-patches/commit/988887e7e5146920e28836f57f5b192dc768169f))\n\n### Code Refactoring\n\n* **hevy:** standardize patch titles and align documentation metadata ([93549e3](https://github.com/kveld9/kveld-morphe-patches/commit/93549e322224e3420e2bce949211e420fa40f83b))\n* **tiktok:** focus disable story feed indicators patch on avatar story rings and prune obsolete story tags ([8d77540](https://github.com/kveld9/kveld-morphe-patches/commit/8d7754071ca3e781ce4381cb88de56b18159d2b0))\n* **xiaomi:** strip redundant title prefixes and enhance patch descriptions ([de37cc2](https://github.com/kveld9/kveld-morphe-patches/commit/de37cc2b5dd92145609a94506a26a80f59878983))\n",
+  "release_tag": "v2.1.0",
+  "release_date": "2026-09-29T01:39:16Z",
+  "isPreRelease": false
 }

@@ -2,9 +2,9 @@
   "bundle": "ajstrick81-androidtv",
   "channel": "latest",
   "repo_url": "https://github.com/ajstrick81/morphe-androidtv-patches",
-  "created_at": "2026-09-24T16:23:29",
-  "version": "v1.37.5",
-  "description": "## [1.37.5](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.37.4...v1.37.5) (2026-09-24)\n\n\n### Bug Fixes\n\n* **pluto:** lift the live ad mask when the last ad ends ([cce4172](https://github.com/ajstrick81/morphe-androidtv-patches/commit/cce417218d339446aab80a1bf476ff9f66647aed))\n\n\n\n",
+  "created_at": "2026-09-28T02:55:15",
+  "version": "test-212",
+  "description": "Persistent fastADV: ADVw now keeps scanning for the adverts.adBreaks normaliser (tight ~50s + ~5min tail) so it lands on late-loading titles. On the problem title this should empty the pod before playback reaches it -> no crash, no leak. Look for 'fastADV armed' and 'fastADV: applied by pass N' + ANCHOR MAP ADV=w in the KILL log.",
   "apps": [
     {
       "app_name": "Livingroom",
@@ -48,8 +48,8 @@
         },
         {
           "name": "Override certificate pinning",
-          "description": "Adds a network_security_config trusting user CAs (no pin sets) so AdGuard Premium can inspect the app's platform-stack HTTPS. Optional adjunct: Prime Video's ad plane is largely native libcurl, so DNS blocking is the primary tool.",
-          "use": true,
+          "description": "Adds a network_security_config trusting user CAs (no pin sets) so AdGuard Premium can inspect the app's platform-stack HTTPS. Optional adjunct: removes no ads by itself and is not needed for the native in-app ad strip. Opt-in. Security trade-off: the app will also trust ANY user-installed CA, so leave it off unless you run an HTTPS-filtering proxy.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "6.23.23+v15.5.0.70-armv7a"
@@ -301,6 +301,15 @@
       "package": "com.tubitv",
       "patches": [
         {
+          "name": "Block analytics & tracking",
+          "description": "Stops Tubi's analytics and tracking: Adjust, Branch, Braze, Nielsen, Conviva, NPAW/Youbora, Mux, Firebase/Google Analytics, Meta app events, and Tubi's own analytics endpoint (which receives your advertiser ID, device ID and ZIP/location fields). Blocking happens on the device, inside the app. Crash reporting, feature flags, sign-in and playback are left alone. Recommendations may be less personalised. Opt-in / experimental; test on-device.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "10.28.5000"
+          ]
+        },
+        {
           "name": "Skip ads",
           "description": "Suppresses all ad delivery systems in Tubi Android TV.",
           "use": true,
@@ -332,7 +341,7 @@
       "patches": [
         {
           "name": "Override certificate pinning",
-          "description": "Allows HTTPS traffic inspection tools like AdGuard Premium to intercept app connections. Enables ViX live (Lura SSAI) ad suppression when used alongside AdGuard Premium.",
+          "description": "Allows HTTPS traffic inspection tools like AdGuard Premium to intercept app connections. Enables ViX live (Lura SSAI) ad suppression when used alongside AdGuard Premium. Security trade-off: the app will also trust ANY user-installed CA; turn it off if you don't use an HTTPS-filtering proxy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -395,6 +404,21 @@
       ]
     },
     {
+      "app_name": "Androidtv",
+      "package": "it.rainet.androidtv",
+      "patches": [
+        {
+          "name": "Skip ads",
+          "description": "Suppresses Smartclip VOD ads in the RaiPlay Android TV app by forcing the native ad-context parser to return null, so every title takes RaiPlay's own ad-free playback path — no Smartclip session, no VMAP ad slot, no pre/mid/post-roll breaks. Live-channel server-side ads (if any) are not affected.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.0.0"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Pluto",
       "package": "tv.pluto.android",
       "patches": [
@@ -427,8 +451,8 @@
         },
         {
           "name": "Override certificate pinning",
-          "description": "Edits Pluto's network_security_config to trust user CAs (system + user, overridePins) on both a new base-config and every existing domain-config — including the pluto.tv entry that is otherwise system-only — so an HTTPS-filtering proxy can inspect the HLS manifest. Optional adjunct to the manifest-rewrite ad approach.",
-          "use": true,
+          "description": "Edits Pluto's network_security_config to trust user CAs (system + user, overridePins) on both a new base-config and every existing domain-config — including the pluto.tv entry that is otherwise system-only — so an HTTPS-filtering proxy can inspect the HLS manifest. Optional adjunct: removes no ads by itself and is not needed for the in-app ad removal. Opt-in. Security trade-off: the app will also trust ANY user-installed CA, so leave it off unless you run an HTTPS-filtering proxy.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "5.66.0-leanback"
@@ -462,10 +486,9 @@
     }
   ],
   "patches_name": "ajstrick81 Patches",
-  "fingerprint": "5852bc70079b5ffafbd816e52f0eff937e1037c1dc24e007c5e5948e687f395c",
-  "release_notes": "## [1.37.5](https://github.com/ajstrick81/morphe-androidtv-patches/compare/v1.37.4...v1.37.5) (2026-09-24)\n\n\n### Bug Fixes\n\n* **pluto:** lift the live ad mask when the last ad ends ([cce4172](https://github.com/ajstrick81/morphe-androidtv-patches/commit/cce417218d339446aab80a1bf476ff9f66647aed))\n\n\n\n",
-  "release_tag": "v1.37.5",
-  "release_date": "2026-09-24T16:23:29Z",
-  "isPreRelease": false,
-  "bundleImageUrl": ""
+  "fingerprint": "55681614b71e2026c1e445f4e9626461fcaf98b1c0e310645d675171725c5261",
+  "release_notes": "Persistent fastADV: ADVw now keeps scanning for the adverts.adBreaks normaliser (tight ~50s + ~5min tail) so it lands on late-loading titles. On the problem title this should empty the pod before playback reaches it -> no crash, no leak. Look for 'fastADV armed' and 'fastADV: applied by pass N' + ANCHOR MAP ADV=w in the KILL log.",
+  "release_tag": "test-212",
+  "release_date": "2026-09-28T02:55:15Z",
+  "isPreRelease": true
 }

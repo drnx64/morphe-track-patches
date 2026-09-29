@@ -2,9 +2,9 @@
   "bundle": "andrewliang25",
   "channel": "latest",
   "repo_url": "https://github.com/andrewliang25/morphe-patches",
-  "created_at": "2026-09-24T18:21:28",
-  "version": "v3.2.0",
-  "description": "## [3.2.0](https://github.com/andrewliang25/morphe-patches/compare/v3.1.0...v3.2.0) (2026-09-25)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* Facebook: open profiles and settings on re-signed Facebook builds ([69a2f20](https://github.com/andrewliang25/morphe-patches/commit/69a2f20cbea21ffe49b3421c3ab56b0ec62cdf57))\r\n* Facebook: block the ads and the sponsored product banner inside a reel ([23334d1](https://github.com/andrewliang25/morphe-patches/commit/23334d14ec7462ac696dbf5b624475f6887409e2), [0d930d1](https://github.com/andrewliang25/morphe-patches/commit/0d930d1e348912d172eeab04de8881d77b62af11))\r\n* Facebook: stop the Reels ad-break lookup instead of retrying it ([eaca2ee](https://github.com/andrewliang25/morphe-patches/commit/eaca2ee9fcd2b427bb561ae53ee3fba775092c8b))\r\n* Facebook: save a photo story as a picture, and save stories with our own downloader ([56d7957](https://github.com/andrewliang25/morphe-patches/commit/56d7957ce7933c153301dbf6c4b77afa75b7315b), [4f229a1](https://github.com/andrewliang25/morphe-patches/commit/4f229a1e6ac4fe5246a7582585cd1bde78bd1e2b))\r\n\r\n### ✨ New Features\r\n\r\n* LINE: hide the Agent i and AI Friends buttons in LINE ([0ddc176](https://githubpatches/commit/0ddc1760a4f15edca734890968f0818b7cbb6215)), closes [#133](https://github.comhes/issues/133)\r\n* LINE: hide the \"CHECK\" tips under LINE chat messages ([c2f234d](https://githubpatches/commit/c2f234da10ff8e7d856fa188d88047eb06a5244f))\r\n* Facebook: add an AMOLED black theme for Facebook ([799d0ae](https://github.com/andrewliang25/morphe-patches/commit/799d0aec55b4e409c6cec6b5f9d6b947240ab9ec)), closes [#108](https://github.com/andrewliang25/morphe-patches/issues/108)\r\n* Facebook: add a download button beside every reel ([e0007d8](https://github.com/andrewliang25/morphe-patches/co1f38dfd6d21f45bbda8))\r\n* Facebook: save stories and reels at the quality the player streams ([d250464](https://githubpatches/commit/d250464794c1882aac02d7617a06742efdbe75f4), [16a9184](https://github.com/andrewliang25/morphe-patches/commit/16a9184e9284d1))",
+  "created_at": "2026-09-29T05:02:26",
+  "version": "v3.3.2",
+  "description": "## [3.3.2](https://github.com/andrewliang25/morphe-patches/compare/v3.3.1...v3.3.2) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** rename \"Hide suggested and promoted posts\" to \"Hide page suggestions and promo cards\" ([e466869](https://github.com/andrewliang25/morphe-patches/commit/e46686992675ea757590095ebd7eef059475f202)), closes [#143](https://github.com/andrewliang25/morphe-patches/issues/143)\n",
   "apps": [
     {
       "app_name": "Facebook",
@@ -38,8 +38,8 @@
           ]
         },
         {
-          "name": "[Feed] Hide sponsored posts",
-          "description": "Removes sponsored posts from the news feed, with no gap left behind.",
+          "name": "[Feed] Block feed auto refresh",
+          "description": "Keeps your place in the news feed when you come back to Facebook. Pull down to refresh the feed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -47,8 +47,26 @@
           ]
         },
         {
-          "name": "[Feed] Hide suggested and promoted posts",
-          "description": "Removes posts that Facebook adds to the feed, such as \"Pages you may like\", upsells and surveys.",
+          "name": "[Feed] Hide page suggestions and promo cards",
+          "description": "Removes the items that Facebook adds to the feed, such as \"Pages you may like\", promo cards and surveys. \"Suggested for you\" posts stay.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Feed] Hide post prompts",
+          "description": "Removes the prompts Facebook adds inside a post, such as \"Are you interested in this post?\".",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Feed] Hide sponsored posts",
+          "description": "Removes sponsored posts from the news feed, with no gap left behind.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -74,6 +92,15 @@
           ]
         },
         {
+          "name": "[General] Hide affiliate product links",
+          "description": "Removes the product cards of affiliate shop links from Reels, feed posts and comments. The \"Commission eligible\" label stays.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
           "name": "[General] Open links in external browser",
           "description": "Opens web links in your default browser instead of Facebook's in-app browser. Facebook pages still open in the app.",
           "use": true,
@@ -85,7 +112,16 @@
         {
           "name": "[Reels] Download any reel",
           "description": "Adds a Download button beside every reel. Videos save at the best quality the player streams.",
-          "use": false,
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Reels] Hide interest prompts",
+          "description": "Removes the \"Are you interested in this reel?\" prompt from Reels.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "577.0.0.50.72"
@@ -95,6 +131,15 @@
           "name": "[Reels] Hide sponsored reels",
           "description": "Removes ads from Reels and Watch, including product banners over a reel and ads inside a video.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Stories] Disable auto advance",
+          "description": "Keeps each story on the screen until you tap or swipe to the next one.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "577.0.0.50.72"
@@ -113,6 +158,15 @@
           "name": "[Stories] Hide sponsored stories",
           "description": "Removes ad cards from the story viewer, so swiping through stories only shows stories people posted.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Stories] View stories anonymously",
+          "description": "Stops Facebook telling the server which stories you saw, so you are not in the viewer list. Stories that you saw still show as seen on this device.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "577.0.0.50.72"
@@ -380,10 +434,9 @@
     }
   ],
   "patches_name": "Andrew's Patches",
-  "fingerprint": "fe062102454f0763a7ac47d357e23eb8d3c7802a94261c9b232b66559da69d16",
-  "release_notes": "## [3.2.0](https://github.com/andrewliang25/morphe-patches/compare/v3.1.0...v3.2.0) (2026-09-25)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* Facebook: open profiles and settings on re-signed Facebook builds ([69a2f20](https://github.com/andrewliang25/morphe-patches/commit/69a2f20cbea21ffe49b3421c3ab56b0ec62cdf57))\r\n* Facebook: block the ads and the sponsored product banner inside a reel ([23334d1](https://github.com/andrewliang25/morphe-patches/commit/23334d14ec7462ac696dbf5b624475f6887409e2), [0d930d1](https://github.com/andrewliang25/morphe-patches/commit/0d930d1e348912d172eeab04de8881d77b62af11))\r\n* Facebook: stop the Reels ad-break lookup instead of retrying it ([eaca2ee](https://github.com/andrewliang25/morphe-patches/commit/eaca2ee9fcd2b427bb561ae53ee3fba775092c8b))\r\n* Facebook: save a photo story as a picture, and save stories with our own downloader ([56d7957](https://github.com/andrewliang25/morphe-patches/commit/56d7957ce7933c153301dbf6c4b77afa75b7315b), [4f229a1](https://github.com/andrewliang25/morphe-patches/commit/4f229a1e6ac4fe5246a7582585cd1bde78bd1e2b))\r\n\r\n### ✨ New Features\r\n\r\n* LINE: hide the Agent i and AI Friends buttons in LINE ([0ddc176](https://githubpatches/commit/0ddc1760a4f15edca734890968f0818b7cbb6215)), closes [#133](https://github.comhes/issues/133)\r\n* LINE: hide the \"CHECK\" tips under LINE chat messages ([c2f234d](https://githubpatches/commit/c2f234da10ff8e7d856fa188d88047eb06a5244f))\r\n* Facebook: add an AMOLED black theme for Facebook ([799d0ae](https://github.com/andrewliang25/morphe-patches/commit/799d0aec55b4e409c6cec6b5f9d6b947240ab9ec)), closes [#108](https://github.com/andrewliang25/morphe-patches/issues/108)\r\n* Facebook: add a download button beside every reel ([e0007d8](https://github.com/andrewliang25/morphe-patches/co1f38dfd6d21f45bbda8))\r\n* Facebook: save stories and reels at the quality the player streams ([d250464](https://githubpatches/commit/d250464794c1882aac02d7617a06742efdbe75f4), [16a9184](https://github.com/andrewliang25/morphe-patches/commit/16a9184e9284d1))",
-  "release_tag": "v3.2.0",
-  "release_date": "2026-09-24T18:21:28Z",
-  "isPreRelease": false,
-  "bundleImageUrl": ""
+  "fingerprint": "922979fc93a7ab31efd78b4cb7f4408c2d1b30e0382fc3b889d9c0bf2fdd2fdd",
+  "release_notes": "## [3.3.2](https://github.com/andrewliang25/morphe-patches/compare/v3.3.1...v3.3.2) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** rename \"Hide suggested and promoted posts\" to \"Hide page suggestions and promo cards\" ([e466869](https://github.com/andrewliang25/morphe-patches/commit/e46686992675ea757590095ebd7eef059475f202)), closes [#143](https://github.com/andrewliang25/morphe-patches/issues/143)\n",
+  "release_tag": "v3.3.2",
+  "release_date": "2026-09-29T05:02:26Z",
+  "isPreRelease": false
 }

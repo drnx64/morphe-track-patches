@@ -2,9 +2,9 @@
   "bundle": "adobo",
   "channel": "dev",
   "repo_url": "https://github.com/jkennethcarino/adobo",
-  "created_at": "2026-08-31T14:59:08",
-  "version": "v1.4.0-dev.5",
-  "description": "## [1.4.0-dev.5](https://github.com/jkennethcarino/adobo/compare/v1.4.0-dev.4...v1.4.0-dev.5) (2026-08-31)\n\n### Features\n\n* **Gboard:** Add `Enable extended clipboard history` patch ([de234b7](https://github.com/jkennethcarino/adobo/commit/de234b7de9e77a2c88e496c7d1f8b2adcdad422e))\n",
+  "created_at": "2026-09-26T18:21:28",
+  "version": "v1.6.0-dev.3",
+  "description": "## [1.6.0-dev.3](https://github.com/jkennethcarino/adobo/compare/v1.6.0-dev.2...v1.6.0-dev.3) (2026-09-26)\n\n### Features\n\n* **9GAG:** Add `Sanitize share links` patch ([ab5d7b3](https://github.com/jkennethcarino/adobo/commit/ab5d7b33aad0f559bc2d7006a09bb8daccfb8bc7))\n",
   "apps": [
     {
       "app_name": "Gboard",
@@ -102,13 +102,36 @@
       "package": "com.ninegag.android.app",
       "patches": [
         {
+          "name": "Disable forced update dialog",
+          "description": "Disables the forced update dialog on an outdated app version.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.24.5",
+            "8.23.0",
+            "8.22.0"
+          ]
+        },
+        {
           "name": "Remove 9GAG's ads, trackers, and analytics",
           "description": "Removes ads, trackers, and analytics in the 9GAG app.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "8.17.5",
-            "8.17.4"
+            "8.24.5",
+            "8.23.0",
+            "8.22.0"
+          ]
+        },
+        {
+          "name": "Sanitize share links",
+          "description": "Removes the tracking query parameters from shared links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.24.5",
+            "8.23.0",
+            "8.22.0"
           ]
         }
       ]
@@ -160,9 +183,9 @@
             }
           ],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -173,9 +196,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -186,9 +209,22 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Disable home feed refresh on back to exit",
+          "description": "Disables the back-to-top scroll and home feed refresh on back navigation to exit.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -199,9 +235,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -212,9 +248,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -225,9 +261,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -238,9 +274,22 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Enable guest mode",
+          "description": "Enables browsing Reddit without signing in.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -251,9 +300,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -264,9 +313,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -277,9 +326,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -290,9 +339,22 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Hide crosspost",
+          "description": "Hides the crosspost on Reddit posts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -303,9 +365,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -316,9 +378,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -329,9 +391,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -351,9 +413,9 @@
             }
           ],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -364,9 +426,9 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -377,9 +439,22 @@
           "use": false,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
+            "2026.24.0",
+            "2026.14.0"
+          ]
+        },
+        {
+          "name": "Make system navigation bar transparent",
+          "description": "Sets the system navigation bar to fully transparent.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -390,9 +465,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -403,9 +478,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -416,9 +491,9 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "2026.35.0",
-            "2026.34.0",
-            "2026.33.2",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.36.0",
             "2026.24.0",
             "2026.14.0"
           ]
@@ -427,10 +502,9 @@
     }
   ],
   "patches_name": "Adobo",
-  "fingerprint": "a7987dce3b4600db0dffd46fbe33b16341d80d77d0911f42a48b78ecaab346be",
-  "release_notes": "## [1.4.0-dev.5](https://github.com/jkennethcarino/adobo/compare/v1.4.0-dev.4...v1.4.0-dev.5) (2026-08-31)\n\n### Features\n\n* **Gboard:** Add `Enable extended clipboard history` patch ([de234b7](https://github.com/jkennethcarino/adobo/commit/de234b7de9e77a2c88e496c7d1f8b2adcdad422e))\n",
-  "release_tag": "v1.4.0-dev.5",
-  "release_date": "2026-08-31T14:59:08Z",
-  "isPreRelease": true,
-  "bundleImageUrl": ""
+  "fingerprint": "a6553cb41d53cf38f07d80287e281aeec9cf580eab72f4887e784208513ea9e1",
+  "release_notes": "## [1.6.0-dev.3](https://github.com/jkennethcarino/adobo/compare/v1.6.0-dev.2...v1.6.0-dev.3) (2026-09-26)\n\n### Features\n\n* **9GAG:** Add `Sanitize share links` patch ([ab5d7b3](https://github.com/jkennethcarino/adobo/commit/ab5d7b33aad0f559bc2d7006a09bb8daccfb8bc7))\n",
+  "release_tag": "v1.6.0-dev.3",
+  "release_date": "2026-09-26T18:21:28Z",
+  "isPreRelease": true
 }

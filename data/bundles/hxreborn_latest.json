@@ -2,9 +2,9 @@
   "bundle": "hxreborn",
   "channel": "latest",
   "repo_url": "https://github.com/hxreborn/morphe-patches",
-  "created_at": "2026-09-23T14:32:11",
-  "version": "v1.29.0",
-  "description": "## [1.29.0](https://github.com/hxreborn/morphe-patches/compare/v1.28.0...v1.29.0) (2026-09-23)\n\n### Bug Fixes\n\n* **Realme Link - AMOLED dark theme:** apply the black theme to the earbuds screens too ([5231e4c](https://github.com/hxreborn/morphe-patches/commit/5231e4c52bd63a5753899a1924b7a15f19f66c7a))\n* **Realme Link - AMOLED dark theme:** cover the earbuds screens the theme missed ([69b11db](https://github.com/hxreborn/morphe-patches/commit/69b11db1bb4f8772a7e626139c0bc1323d9a7260))\n* **Realme Link - AMOLED dark theme:** keep pinned night colours on page backgrounds ([2279e5f](https://github.com/hxreborn/morphe-patches/commit/2279e5fe1c9a2637951c47e2476a738adbdf32b6))\n\n### New Features\n\n* **Override certificate pinning:** allow inspecting app traffic via proxy ([392ff3e](https://github.com/hxreborn/morphe-patches/commit/392ff3e9a122e6e21d5cee5ef4cd19840127fb18))\n* **Photo Editor Pro - Hide share options:** hide share buttons and center saved photo ([2d0b293](https://github.com/hxreborn/morphe-patches/commit/2d0b29323151cc964f72dbc9c79c40c14701860c))\n",
+  "created_at": "2026-09-28T14:58:53",
+  "version": "v1.34.0",
+  "description": "## [1.34.0](https://github.com/hxreborn/morphe-patches/compare/v1.33.0...v1.34.0) (2026-09-28)\n\n### New Features\n\n* **BlurWall:** unlock premium, add AMOLED theme and disable tracking ([2962191](https://github.com/hxreborn/morphe-patches/commit/2962191b1f8a3e012a7e54bd2924e3a428cb4d62)), closes [#78](https://github.com/hxreborn/morphe-patches/issues/78)\n* **Proton Pass - Hide upgrade promotions:** hide attachments card on free plans ([f070b39](https://github.com/hxreborn/morphe-patches/commit/f070b39b0601ad5ba8e190f3b620b73a179b21be)), closes [#88](https://github.com/hxreborn/morphe-patches/issues/88)\n* **Proton VPN - Hide upgrade promotions:** hide account settings upgrade card ([7da5ec1](https://github.com/hxreborn/morphe-patches/commit/7da5ec199145d3eb0d3b2d62ea22d579a277feff)), closes [#99](https://github.com/hxreborn/morphe-patches/issues/99)\n",
   "apps": [
     {
       "app_name": "Perplexity",
@@ -79,6 +79,39 @@
       ]
     },
     {
+      "app_name": "BlurWall",
+      "package": "apps.automan.blurwallpaper",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the dark theme background with pure black.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.9.8"
+          ]
+        },
+        {
+          "name": "Disable tracking",
+          "description": "Stops the Google Mobile Ads SDK from starting and reading the advertising ID.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.9.8"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks the HalfBlur effect.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.9.8"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Proton Mail",
       "package": "ch.protonmail.android",
       "patches": [
@@ -88,6 +121,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -98,6 +132,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -108,6 +143,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -118,6 +154,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -128,6 +165,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -138,6 +176,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
           ]
@@ -148,8 +187,147 @@
           "use": true,
           "options": [],
           "compatible_versions": [
+            "7.11.8",
             "7.11.5",
             "7.10.4"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Proton VPN",
+      "package": "ch.protonvpn.android",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Replaces the dark theme background with pure black.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Custom accent color",
+          "description": "Changes the accent color. Choose a color in the patches menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Disable telemetry",
+          "description": "Stops sending usage statistics and diagnostics to Proton.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Hide upgrade promotions",
+          "description": "Hides settings that need a paid plan, upgrade banners, the Discover VPN Plus carousel and special offers.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Remove server change delay",
+          "description": "Removes the wait between server changes on free plans.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Show free server locations",
+          "description": "Lists free server locations in Countries and Search and connects to the one you pick. Applies only to free plans.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Unlock connection preferences",
+          "description": "Unlocks the default connection and excluded locations on free plans.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Unlock custom DNS",
+          "description": "Unlocks custom DNS on free plans.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Unlock LAN connections",
+          "description": "Unlocks LAN connections on free plans.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Unlock NetShield",
+          "description": "Unlocks NetShield ad and tracker blocking on free plans.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Unlock profiles",
+          "description": "Unlocks profiles on free plans and limits them to free locations. Profiles for other locations are hidden.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        },
+        {
+          "name": "Unlock split tunneling",
+          "description": "Unlocks split tunneling on free plans.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.20.39.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Hindu Calendar",
+      "package": "com.alokmandavgane.hinducalendar",
+      "patches": [
+        {
+          "name": "Disable tracking",
+          "description": "Stops Firebase Analytics from collecting usage data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.3.0"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Removes banner and interstitial ads and the Remove Ads menu item.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.3.0"
           ]
         }
       ]
@@ -240,6 +418,90 @@
           "options": [],
           "compatible_versions": [
             "2.7.8"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "VLLO",
+      "package": "com.darinsoft.vimo",
+      "patches": [
+        {
+          "name": "Disable tracking",
+          "description": "Stops AppsFlyer, Firebase Analytics, and Facebook from collecting usage data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "13.7.4"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium editing features, removes ads and the export watermark, and skips the ad before importing audio. Hides the store button. The AI tools are not included.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "13.7.4"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "TeraBox",
+      "package": "com.dubox.drive",
+      "patches": [
+        {
+          "name": "Fix Google login",
+          "description": "Restores signing in with a Google account.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.26.0"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Removes feed, banner, interstitial, app-open, video player and rewarded ads. Features unlocked by watching an ad are unavailable.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.26.0"
+          ]
+        },
+        {
+          "name": "Hide consent form",
+          "description": "Hides the ad consent form shown at startup.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.26.0"
+          ]
+        },
+        {
+          "name": "Hide promotions",
+          "description": "Hides Premium upgrade cards and banners, prize and campaign cards, speed-up prompts, floating invites, and sale, coupon and promotional popups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.26.0"
+          ]
+        },
+        {
+          "name": "Hide video recommendations",
+          "description": "Hides the recommended videos below the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.26.0"
+          ]
+        },
+        {
+          "name": "Unlock Premium Plus",
+          "description": "Unlocks HD up to original quality, playback speeds up to 3x and video uploads. HD buffers faster over parallel connections.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "4.26.0"
           ]
         }
       ]
@@ -387,6 +649,21 @@
           "use": true,
           "options": [],
           "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "Echogram",
+      "package": "com.liori.echogram",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all premium features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.7.0"
+          ]
         }
       ]
     },
@@ -626,6 +903,21 @@
       ]
     },
     {
+      "app_name": "Yi iot",
+      "package": "com.yunyi.smartcamera",
+      "patches": [
+        {
+          "name": "Hide ads",
+          "description": "Removes splash, interstitial, banner and native ads. Keeps the optional ad that unlocks an alarm video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.1.7_20260914"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Klassik Radio+",
       "package": "de.klassikradio.app",
       "patches": [
@@ -759,6 +1051,15 @@
           ]
         },
         {
+          "name": "Custom accent color",
+          "description": "Changes the accent color. Choose a color in the patches menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.40.3"
+          ]
+        },
+        {
           "name": "Hide promotional messages",
           "description": "Hides promotional banners, offers and pop-up messages.",
           "use": true,
@@ -828,13 +1129,114 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "Cxxdroid",
+      "package": "ru.iiec.cxxdroid",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Adds an AMOLED option to Settings > Appearance > Editor theme (dark). Applies only while the Dark theme is active.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.6_arm64",
+            "6.0_arm64"
+          ]
+        },
+        {
+          "name": "Disable tracking",
+          "description": "Stops Firebase Analytics from collecting usage data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.6_arm64",
+            "6.0_arm64"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium and removes ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.6_arm64",
+            "6.0_arm64"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Jvdroid",
+      "package": "ru.iiec.jvdroid",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Adds an AMOLED option to Settings > Appearance > Editor theme (dark). Applies only while the Dark theme is active.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.8"
+          ]
+        },
+        {
+          "name": "Disable tracking",
+          "description": "Stops Firebase Analytics from collecting usage data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.8"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium and removes ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.8"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Pydroid 3",
+      "package": "ru.iiec.pydroid3",
+      "patches": [
+        {
+          "name": "AMOLED dark theme",
+          "description": "Adds an AMOLED option to Settings > Appearance > Editor theme (dark). Applies only while the Dark theme is active.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.6_arm64"
+          ]
+        },
+        {
+          "name": "Disable tracking",
+          "description": "Stops Firebase Analytics from collecting usage data.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.6_arm64"
+          ]
+        },
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks premium and removes ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.6_arm64"
+          ]
+        }
+      ]
     }
   ],
   "patches_name": "hxreborn Patches",
-  "fingerprint": "7c44da67451e39cd3b09a6f8ac2527d3f70f9a4acea982efb19a40b1a365366b",
-  "release_notes": "## [1.29.0](https://github.com/hxreborn/morphe-patches/compare/v1.28.0...v1.29.0) (2026-09-23)\n\n### Bug Fixes\n\n* **Realme Link - AMOLED dark theme:** apply the black theme to the earbuds screens too ([5231e4c](https://github.com/hxreborn/morphe-patches/commit/5231e4c52bd63a5753899a1924b7a15f19f66c7a))\n* **Realme Link - AMOLED dark theme:** cover the earbuds screens the theme missed ([69b11db](https://github.com/hxreborn/morphe-patches/commit/69b11db1bb4f8772a7e626139c0bc1323d9a7260))\n* **Realme Link - AMOLED dark theme:** keep pinned night colours on page backgrounds ([2279e5f](https://github.com/hxreborn/morphe-patches/commit/2279e5fe1c9a2637951c47e2476a738adbdf32b6))\n\n### New Features\n\n* **Override certificate pinning:** allow inspecting app traffic via proxy ([392ff3e](https://github.com/hxreborn/morphe-patches/commit/392ff3e9a122e6e21d5cee5ef4cd19840127fb18))\n* **Photo Editor Pro - Hide share options:** hide share buttons and center saved photo ([2d0b293](https://github.com/hxreborn/morphe-patches/commit/2d0b29323151cc964f72dbc9c79c40c14701860c))\n",
-  "release_tag": "v1.29.0",
-  "release_date": "2026-09-23T14:32:11Z",
-  "isPreRelease": false,
-  "bundleImageUrl": ""
+  "fingerprint": "393ca52699fa3d18fcf567e62bd938ef8a08cb2a3120cba39c96ab6a936d7706",
+  "release_notes": "## [1.34.0](https://github.com/hxreborn/morphe-patches/compare/v1.33.0...v1.34.0) (2026-09-28)\n\n### New Features\n\n* **BlurWall:** unlock premium, add AMOLED theme and disable tracking ([2962191](https://github.com/hxreborn/morphe-patches/commit/2962191b1f8a3e012a7e54bd2924e3a428cb4d62)), closes [#78](https://github.com/hxreborn/morphe-patches/issues/78)\n* **Proton Pass - Hide upgrade promotions:** hide attachments card on free plans ([f070b39](https://github.com/hxreborn/morphe-patches/commit/f070b39b0601ad5ba8e190f3b620b73a179b21be)), closes [#88](https://github.com/hxreborn/morphe-patches/issues/88)\n* **Proton VPN - Hide upgrade promotions:** hide account settings upgrade card ([7da5ec1](https://github.com/hxreborn/morphe-patches/commit/7da5ec199145d3eb0d3b2d62ea22d579a277feff)), closes [#99](https://github.com/hxreborn/morphe-patches/issues/99)\n",
+  "release_tag": "v1.34.0",
+  "release_date": "2026-09-28T14:58:53Z",
+  "isPreRelease": false
 }

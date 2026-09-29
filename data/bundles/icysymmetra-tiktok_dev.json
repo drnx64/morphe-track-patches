@@ -2,9 +2,9 @@
   "bundle": "icysymmetra-tiktok",
   "channel": "dev",
   "repo_url": "https://github.com/icysymmetra/tiktok-patches-for-morphe",
-  "created_at": "2026-08-30T20:30:09",
-  "version": "v0.8.0-dev.2",
-  "description": "# [0.8.0-dev.2](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.1...v0.8.0-dev.2) (2026-08-30)\n\n\n### Bug Fixes\n\n* remove ineffective regional fallback ([714830c](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/714830caeeaa5be1691609efefdae4d50ff179c6))\n\n\n\n\n\n## 0.8.0-dev.2",
+  "created_at": "2026-09-25T21:33:08",
+  "version": "v0.8.0-dev.12",
+  "description": "# [0.8.0-dev.12](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.11...v0.8.0-dev.12) (2026-09-25)\n\n\n### Bug Fixes\n\n* **tiktok:** activate installed features on first use ([4da92b5](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/4da92b530a2fe9f9cf571abe1c8253eee46c6e2c))\n* **tiktok:** keep feed debugger observations after filter hooks ([dab81e3](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/dab81e3820024953ed43b85a9a695ce0828cdc4d))\n* **tiktok:** recheck ads when feed items are read ([0ec3cab](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/0ec3cab045fb003d9e9b755217e4f2b81ad58323))\n\n\n### Features\n\n* hide AI-labelled posts across feed delivery paths ([b612614](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/b6126148b8bba777d781f6ff790ddb8638ce50dd))\n* **tiktok:** add themed feed debugger to diagnostic tools ([c16aef7](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/c16aef7edcfa5ed148c3b6f7b83c1bfd518a4304))\n* **tiktok:** hide FYP unpersonalized slop videos ([fa71265](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/fa712650d411eb830eff5ea0a23526706db457a2))\n\n\n\n\n\n## 0.8.0-dev.12",
   "apps": [
     {
       "app_name": "TikTok",
@@ -13,6 +13,15 @@
         {
           "name": "Always show publish date",
           "description": "Always shows the publish date in video author information. Thanks to lyyako for the original implementation.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Comment sort controls",
+          "description": "Exposes TikTok's native full comment-sort sheet, including its hot, time, media, and creator modes, instead of relying on rollout gates.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -39,7 +48,7 @@
         },
         {
           "name": "Diagnostic tools",
-          "description": "Adds optional Morphe diagnostic logging, filtered reports, and local TikTok crash capture.",
+          "description": "Adds diagnostic logging, crash capture, reports, and an optional rolling feed debugger.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -75,7 +84,7 @@
         },
         {
           "name": "Disable screen capture detection",
-          "description": "Prevents TikTok from reacting to screenshots and screen recordings.",
+          "description": "Disables capture detection and secure-window screenshot protection, including Circle to Search blocking.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -84,7 +93,7 @@
         },
         {
           "name": "Downloads",
-          "description": "Adds watermark-free downloads, comment sticker saving, configurable folders, and filename templates.",
+          "description": "Adds watermark-free downloads, video quality selection, comment sticker saving, configurable folders, and filename templates.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -103,6 +112,15 @@
         {
           "name": "Enable non-personalized search",
           "description": "Uses TikTok's non-personalized search mode instead of its saved account choice.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Enable voice comments",
+          "description": "Enables TikTok's native voice-comment recording and publishing entry points.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -146,8 +164,71 @@
           ]
         },
         {
+          "name": "Foldable split comment view",
+          "description": "Forces TikTok's tablet-style split layout (video beside comments instead of a bottom sheet) once the screen is at least as wide as a configurable threshold, for foldables TikTok doesn't already recognize as tablet-class.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Force show Auto scroll",
+          "description": "Adds a setting that bypasses TikTok's rollout gates for its native Auto scroll action on supported videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Hide AI content",
+          "description": "Hides posts marked as AI-generated or AI-modified by TikTok or their creators. Unmarked AI content may still appear.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
           "name": "Hide CAPTCHA popups",
           "description": "Adds a default-off setting to hide browsing and LIVE puzzle dialogs while preserving login and account verification.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Hide feed follow button",
+          "description": "Adds an option to hide the + follow button below creator avatars in video feeds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Hide feed LIVE button",
+          "description": "Adds an option to hide the LIVE button at the top left of video feeds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Hide feed save button",
+          "description": "Adds an option to hide the save/favourites button from video feeds.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Hide feed search button",
+          "description": "Adds an option to hide the search button at the top right of video feeds.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -164,8 +245,26 @@
           ]
         },
         {
+          "name": "Hide FYP unpersonalized slop videos",
+          "description": "Hides certain batches of unpersonalized slop posts that appear in your For You feed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
           "name": "Hide quick comment reactions",
           "description": "Hides TikTok's exposed quick emoji row in supported comment inputs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
+          "name": "Hide suggested accounts",
+          "description": "Removes suggested-account cards from profile and inbox surfaces. Thanks to tymmesyde for the original implementation.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -245,6 +344,15 @@
           ]
         },
         {
+          "name": "Share sheet modification",
+          "description": "Adds toggles and allow-lists for the video share sheet's \"Send to\", \"Share via app\", and \"Video Actions\" sections.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "46.2.3"
+          ]
+        },
+        {
           "name": "Show seekbar",
           "description": "Shows TikTok's native video seekbar where it would normally be hidden.",
           "use": true,
@@ -284,10 +392,9 @@
     }
   ],
   "patches_name": "Metra TikTok Patches",
-  "fingerprint": "766225e6e0619fbc6c3160b7a8cf7b3407425e5f4cdb6b74362eafb9d7a357ac",
-  "release_notes": "# [0.8.0-dev.2](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.1...v0.8.0-dev.2) (2026-08-30)\n\n\n### Bug Fixes\n\n* remove ineffective regional fallback ([714830c](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/714830caeeaa5be1691609efefdae4d50ff179c6))\n\n\n\n\n\n## 0.8.0-dev.2",
-  "release_tag": "v0.8.0-dev.2",
-  "release_date": "2026-08-30T20:30:09Z",
-  "isPreRelease": true,
-  "bundleImageUrl": "https://github.com/icysymmetra/tiktok-patches-for-morphe/raw/HEAD/patches-bundle.png"
+  "fingerprint": "97529a80dfba354cdcbba9f1fe9fdb981d16468adf29e3a5ff3312a8a195ed39",
+  "release_notes": "# [0.8.0-dev.12](https://github.com/icysymmetra/tiktok-patches-for-morphe/compare/v0.8.0-dev.11...v0.8.0-dev.12) (2026-09-25)\n\n\n### Bug Fixes\n\n* **tiktok:** activate installed features on first use ([4da92b5](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/4da92b530a2fe9f9cf571abe1c8253eee46c6e2c))\n* **tiktok:** keep feed debugger observations after filter hooks ([dab81e3](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/dab81e3820024953ed43b85a9a695ce0828cdc4d))\n* **tiktok:** recheck ads when feed items are read ([0ec3cab](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/0ec3cab045fb003d9e9b755217e4f2b81ad58323))\n\n\n### Features\n\n* hide AI-labelled posts across feed delivery paths ([b612614](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/b6126148b8bba777d781f6ff790ddb8638ce50dd))\n* **tiktok:** add themed feed debugger to diagnostic tools ([c16aef7](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/c16aef7edcfa5ed148c3b6f7b83c1bfd518a4304))\n* **tiktok:** hide FYP unpersonalized slop videos ([fa71265](https://github.com/icysymmetra/tiktok-patches-for-morphe/commit/fa712650d411eb830eff5ea0a23526706db457a2))\n\n\n\n\n\n## 0.8.0-dev.12",
+  "release_tag": "v0.8.0-dev.12",
+  "release_date": "2026-09-25T21:33:08Z",
+  "isPreRelease": true
 }
