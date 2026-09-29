@@ -21,6 +21,12 @@ import config  # noqa: F401  — loads .env (TG_TOKEN/TG_CHAT) when run standalo
 STATE_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "state")
 LAST_MSG_PATH = os.path.join(STATE_DIR, "last_tg_msg.json")
 
+STALE_EDIT_ERRORS = (
+    "message to edit not found",
+    "message can't be edited",
+    "MESSAGE_ID_INVALID",
+)
+
 
 def _load_last_msg():
     try:
@@ -29,7 +35,6 @@ def _load_last_msg():
         if "message_id" in data and "messages" not in data:
             data = {
                 "date": data.get("date", ""),
-                "chat_id": data.get("chat_id", ""),
                 "messages": [{"message_id": data["message_id"], "chunk": 0}],
             }
         return data
@@ -63,13 +68,23 @@ def _send_message(chat_id, text, token):
     raise RuntimeError(f"Telegram API error: {result.get('description', result)}")
 
 
-def _truncate(text):
-    if len(text) > 4096:
-        return text[:4000] + "\n\n... (truncated)"
-    return text
+def _utc_stamp():
+    return datetime.now(timezone.utc).strftime("%I:%M %p").lstrip("0") + " UTC"
+
+
+def _truncate(text, limit=4096):
+    if len(text) <= limit:
+        return text
+    cut = text.rfind("\n", 0, limit - 32)
+    return (text[:cut] if cut > 0 else text[:limit - 32]) + "\n\n\u2026 truncated"
 
 
 def _edit_message(chat_id, message_id, text, token):
+    """Edit a message.
+
+    Returns "ok" (edited, or already identical), "stale" (message is gone and
+    should be forgotten) or "retry" (transient — keep the ID and try again).
+    """
     try:
         result = _tg_api("editMessageText", {
             "chat_id": chat_id,
@@ -81,9 +96,13 @@ def _edit_message(chat_id, message_id, text, token):
     except urllib.error.HTTPError as err:
         body = err.read().decode("utf-8", "replace")
         if "message is not modified" in body:
-            return True
-        raise
-    return result.get("ok", False)
+            return "ok"
+        if any(marker in body for marker in STALE_EDIT_ERRORS):
+            return "stale"
+        return "retry"
+    except (urllib.error.URLError, TimeoutError, OSError, ValueError):
+        return "retry"
+    return "ok" if result.get("ok") else "retry"
 
 
 def _delete_message(chat_id, message_id, token):
@@ -119,7 +138,7 @@ def send_or_edit(chunks, token=None, chat_id=None):
         chunks = [chunks]
 
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    stamp = datetime.now(timezone.utc).strftime("%H:%M")
+    stamp = _utc_stamp()
     last = _load_last_msg()
     existing = last.get("messages", []) if last.get("date") == today else []
     remaining_existing = list(existing)
@@ -127,36 +146,44 @@ def send_or_edit(chunks, token=None, chat_id=None):
     result_messages = []
 
     for i, chunk in enumerate(chunks):
-        # Try editing an existing message for this chunk index
+        is_last = i == len(chunks) - 1
         msg_entry = next((m for m in remaining_existing if m.get("chunk") == i), None)
-        edited = False
-        if msg_entry:
-            text = _truncate(chunk + f"\n\n<i>Updated {stamp}</i>")
-            try:
-                if _edit_message(chat_id, msg_entry["message_id"], text, token):
-                    print(f"[+] Edited message {msg_entry['message_id']} (chunk {i})")
-                    result_messages.append({"message_id": msg_entry["message_id"], "chunk": i})
-                    remaining_existing.remove(msg_entry)
-                    edited = True
-            except Exception as e:
-                print(f"[-] Edit failed for message {msg_entry['message_id']}: {e}")
+        text = chunk
 
-        if not edited:
-            try:
-                msg_id = _send_message(chat_id, _truncate(chunk), token)
-                print(f"[+] Sent message {msg_id} (chunk {i})")
-                result_messages.append({"message_id": msg_id, "chunk": i})
-            except Exception as e:
-                print(f"[-] Send failed for chunk {i}: {e}")
+        if msg_entry:
+            remaining_existing.remove(msg_entry)
+            # Only a rewrite of an already-delivered message carries the stamp,
+            # and only the last one does.
+            if is_last:
+                text = f"{chunk}\n\n<i>Updated {stamp}</i>"
+
+            outcome = _edit_message(chat_id, msg_entry["message_id"], _truncate(text), token)
+            if outcome == "ok":
+                print(f"[+] Edited message {msg_entry['message_id']} (chunk {i})")
+                result_messages.append({"message_id": msg_entry["message_id"], "chunk": i})
+                continue
+            if outcome == "retry":
+                print(f"[-] Transient edit failure for {msg_entry['message_id']}, will retry")
+                result_messages.append({"message_id": msg_entry["message_id"], "chunk": i})
+                continue
+            print(f"[-] Message {msg_entry['message_id']} is gone, resending chunk {i}")
+
+        try:
+            msg_id = _send_message(chat_id, _truncate(text), token)
+            print(f"[+] Sent message {msg_id} (chunk {i})")
+            result_messages.append({"message_id": msg_id, "chunk": i})
+        except Exception as e:
+            print(f"[-] Send failed for chunk {i}: {e}")
 
     # Delete leftover messages that are no longer needed
     for msg_entry in remaining_existing:
         _delete_message(chat_id, msg_entry["message_id"], token)
         print(f"[+] Deleted stale message {msg_entry['message_id']}")
 
+    # chat_id is deliberately not persisted: this file is tracked in git and
+    # copied verbatim into the public site build.
     _save_last_msg({
         "date": today,
-        "chat_id": chat_id,
         "messages": result_messages,
     })
 
