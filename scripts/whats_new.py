@@ -1,8 +1,8 @@
-"""Generate ASCII-markers changelog for Telegram notifications.
+"""Generate the Telegram "what's new" digest.
 
-Reads daily_buffer.json + parsed_bundles.json to produce the diff.
-Output goes to scripts/temp/whats-new.md.
-Supports multi-message splitting when content exceeds Telegram's 4096 char limit.
+Reads daily_buffer.json + parsed_bundles.json, renders a list of blocks, then
+packs them into at most MAX_MESSAGES Telegram messages. Continuation messages
+never repeat the banner. Output goes to scripts/temp/whats-new.{md,json}.
 """
 import os
 import sys
@@ -20,7 +20,22 @@ from icon_fetcher import APP_CACHE_PATH
 from config import SITE_URL
 
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "temp")
-TG_MAX_LEN = 4000
+
+PACK_BUDGET = 3900  # per-message budget under Telegram's 4096 cap, with slack for the edit stamp
+MAX_MESSAGES = 2  # 1 normally, a continuation message on busy days
+MAX_BUNDLES = 8
+MAX_APPS = 6
+MAX_PATCHES = 5
+
+SECTION_ORDER = ["new_bundles", "new_apps", "updated_apps"]
+SECTION_LABELS = {
+    "new_bundles": "\u2501" * 25 + "\n<b><u>NEW BUNDLES</u></b>" + "\n" + "\u2501" * 25,
+    "new_apps": "\u2501" * 25 + "\n<b><u>NEW APPS</u></b>" + "\n" + "\u2501" * 25,
+    "updated_apps": "\u2501" * 25 + "\n<b><u>UPDATED APPS</u></b>" + "\n" + "\u2501" * 25,
+}
+CONT_MARKER = "<i>\u25c2 continued</i>"
+MORE_LABEL = "see full changelog"
+LINK_ROOM = 160  # headroom held back in the last message for the overflow link
 
 
 def _load_app_name(pkg, app_cache):
@@ -149,7 +164,7 @@ def _dedup_sections(sections):
 def _render_bundle(item):
     """Render a single bundle as a block of lines."""
     lines = []
-    lines.append(f'# <b>{item["patches_name"]}</b>')
+    lines.append(f'\u25b8 <b>{item["patches_name"]}</b>')
 
     apps = item.get("apps", [])
     for app in apps:
@@ -169,95 +184,138 @@ def _render_bundle(item):
     return "\n".join(lines)
 
 
+def _sans_bold(text):
+    """Map ASCII letters/digits to Mathematical Sans-Serif Bold glyphs.
+
+    Telegram has no heading tags, so the banner relies on these. Generated
+    rather than hand-typed to avoid mistyping the code points.
+    """
+    out = []
+    for ch in text:
+        if "A" <= ch <= "Z":
+            out.append(chr(0x1D5D4 + ord(ch) - ord("A")))
+        elif "a" <= ch <= "z":
+            out.append(chr(0x1D5EE + ord(ch) - ord("a")))
+        elif "0" <= ch <= "9":
+            out.append(chr(0x1D7EC + ord(ch) - ord("0")))
+        else:
+            out.append(ch)
+    return "".join(out)
+
+
 def _render_header():
-    lines = []
     today = datetime.now(timezone.utc)
-    date_str = today.strftime("%B %d, %Y")
-    lines.append("<b>[TODAY'S UPDATES]</b>")
-    lines.append(f"Date: {date_str}")
-    return "\n".join(lines)
+    return "\n".join([
+        _sans_bold("TODAY'S UPDATES"),
+        f"Date: {today.strftime('%B %d, %Y')}",
+        "\u2501" * 25,
+    ])
 
 
-SECTION_LABELS = {
-    "new_bundles": "<b>[NEW BUNDLES]</b>",
-    "new_apps": "<b>[UPDATED BUNDLES: NEW APPS]</b>",
-    "updated_apps": "<b>[UPDATED BUNDLES: UPDATED APPS]</b>",
-}
+def _render_blocks(sections):
+    """Render the digest as an ordered list of blocks (highest priority first)."""
+    blocks = [_render_header()]
 
-BUNDLE_PREFIX = "# "
-
-
-def _render_full(sections):
-    """Render full changelog, returning list of bundle blocks with section headers."""
-    blocks = []
-    blocks.append(_render_header())
-
-    for key in ["new_bundles", "new_apps", "updated_apps"]:
+    for key in SECTION_ORDER:
         items = sections.get(key, [])
         if not items:
             continue
-        blocks.append("")
         blocks.append(SECTION_LABELS[key])
         for item in items:
-            blocks.append("")
             blocks.append(_render_bundle(item))
 
-    return "\n".join(blocks)
+    return blocks
 
 
-def _split_into_chunks(full_text):
-    """Split text into chunks, keeping bundles whole."""
-    if len(full_text) <= TG_MAX_LEN:
-        return [full_text]
+def _more_link(dropped):
+    url = f"{SITE_URL}/#/changelog"
+    return f'<a href="{url}">\u2026 {dropped} more ({MORE_LABEL})</a>'
 
-    header = _render_header()
+
+def _pack_lines(blocks, budget, max_messages, reserve):
+    """Pack blocks line by line, breaking only where Telegram's limit demands.
+
+    Every continuation message gets CONT_MARKER instead of the banner, and the
+    final message holds `reserve` chars back for an overflow pointer.
+
+    Returns the list of messages, or None if they would exceed max_messages.
+    """
     chunks = []
-    current = header
+    current = ""
 
-    lines = full_text.split("\n")
-    i = 0
+    def room():
+        return budget - (reserve if len(chunks) + 1 >= max_messages else 0)
 
-    # Skip header lines (already used)
-    while i < len(lines) and lines[i] != "":
-        i += 1
+    def open_next(line):
+        nonlocal current
+        chunks.append(current)
+        current = f"{CONT_MARKER}\n\n{line}"
 
-    while i < len(lines):
-        line = lines[i]
-
-        # Start a new bundle block at "# " (bundle header) or section header
-        if line.startswith(BUNDLE_PREFIX) or line in SECTION_LABELS.values():
-            bundle_lines = [line]
-            i += 1
-            # Collect all lines until next bundle header or section header or end
-            while i < len(lines):
-                next_line = lines[i]
-                if next_line.startswith(BUNDLE_PREFIX) or next_line in SECTION_LABELS.values():
-                    break
-                bundle_lines.append(next_line)
-                i += 1
-
-            bundle_block = "\n".join(bundle_lines)
-            candidate = current + "\n" + bundle_block if current else bundle_block
-
-            if len(candidate) > TG_MAX_LEN and current != header:
-                chunks.append(current)
-                current = header + "\n\n" + bundle_block
+    for block in blocks:
+        lines = block.split("\n")
+        for i, line in enumerate(lines):
+            if i == 0:
+                separator = "\n\n" if current else ""
+                if len(current) + len(separator) + len(line) > room():
+                    if not current:
+                        pass  # single line longer than the budget — take it as-is
+                    elif len(chunks) + 1 >= max_messages:
+                        return None
+                    else:
+                        open_next(line)
+                        continue
+                current = f"{current}{separator}{line}"
             else:
-                current = candidate
-        else:
-            # Section header, blank line, etc. — attach to current
-            candidate = current + "\n" + line if current else line
-            if len(candidate) > TG_MAX_LEN:
-                chunks.append(current)
-                current = header + "\n\n" + line
-            else:
-                current = candidate
-            i += 1
+                if len(current) + 1 + len(line) > room():
+                    if len(chunks) + 1 >= max_messages:
+                        return None
+                    open_next(line)
+                    continue
+                current = f"{current}\n{line}"
 
     if current:
         chunks.append(current)
+    return chunks or None
 
-    return chunks
+
+def _is_section_label(block):
+    return block in SECTION_LABELS.values()
+
+
+def _content_blocks(blocks):
+    """Blocks that carry actual content (banner and section labels excluded)."""
+    return [b for i, b in enumerate(blocks) if i and not _is_section_label(b)]
+
+
+def _pack_blocks(blocks, budget=PACK_BUDGET, max_messages=MAX_MESSAGES, link_room=LINK_ROOM):
+    """Pack blocks into at most max_messages Telegram messages.
+
+    Blocks arrive highest-priority first, so overflow is always dropped from
+    the tail — UPDATED APPS yields before NEW APPS yields before NEW BUNDLES —
+    and is replaced by a pointer to the full changelog. The last content block
+    is never dropped: the digest always shows something.
+    """
+    if not blocks or not any(blocks):
+        return []
+
+    chunks = _pack_lines(blocks, budget, max_messages, reserve=0)
+    if chunks is not None:
+        return chunks
+
+    kept = list(blocks)
+    dropped = 0
+    while len(_content_blocks(kept)) > 1:
+        kept.pop()
+        dropped += 1
+        while len(kept) > 2 and _is_section_label(kept[-1]):
+            kept.pop()
+        chunks = _pack_lines(kept, budget, max_messages, reserve=link_room)
+        if chunks is not None:
+            chunks[-1] = f"{chunks[-1]}\n\n{_more_link(dropped)}"
+            return chunks
+
+    # single content block that still won't fit — show it truncated
+    return _pack_lines(kept, budget, max_messages, reserve=0) or [blocks[0]]
 
 
 def generate_whats_new():
@@ -283,9 +341,6 @@ def generate_whats_new():
         print("[-] No changes to report")
         return None
 
-    MAX_BUNDLES = 8
-    MAX_APPS = 6
-    MAX_PATCHES = 5
     for key in sections:
         sections[key] = sections[key][:MAX_BUNDLES]
         for item in sections[key]:
@@ -296,13 +351,12 @@ def generate_whats_new():
                     app["patches"] = app["patches"][:MAX_PATCHES]
                     app["patches"].append({"name": f"+{remaining} more", "badge": "*", "pkg": ""})
 
-    full_text = _render_full(sections)
-    chunks = _split_into_chunks(full_text)
+    chunks = _pack_blocks(_render_blocks(sections))
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     md_path = os.path.join(OUTPUT_DIR, "whats-new.md")
     with open(md_path, "w", encoding="utf-8") as f:
-        f.write(chunks[0])
+        f.write("\n\n--- next message ---\n\n".join(chunks))
     print(f"[+] Wrote {md_path} ({len(chunks)} chunk{'s' if len(chunks) > 1 else ''})")
 
     json_path = os.path.join(OUTPUT_DIR, "whats-new.json")
