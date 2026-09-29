@@ -312,7 +312,7 @@
         },
         {
           "name": "Marketplace only",
-          "description": "Leaves only Marketplace, Notifications and your profile or Menu in the tab bar, and opens Facebook on Marketplace. Home with the news feed, Video, Friends, Feeds, Groups, Gaming and Events go. Notifications and links still open where they lead.",
+          "description": "Leaves only Marketplace, Notifications and your profile or Menu in the tab bar, and opens Facebook on Marketplace. Home with the news feed, Video, Friends, Feeds, Groups, Gaming and Events go. Notifications and links still open where they lead. Its switch starts off, so turn it on under Opening Facebook in Hushfacebook's settings.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -331,6 +331,16 @@
           ]
         },
         {
+          "name": "Open Messenger from the top bar",
+          "description": "Lets the Messenger icon at the top of Facebook open the Messenger app instead of Facebook's own Chats. Without Messenger installed, Chats opens as before, and a long press on the icon still does what Facebook does with it. Its switch starts off, so turn it on under Chats in Hushfacebook's settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
           "name": "Open links in external browser",
           "description": "Opens web links in your default browser instead of Facebook's in-app browser, without Facebook's click tracker or the fbclid tag it adds. Facebook pages still open in the app.",
           "use": true,
@@ -342,7 +352,7 @@
         },
         {
           "name": "Open on a chosen tab",
-          "description": "Opens Facebook on the tab you pick in Hushfacebook's settings when you start it from its icon. It's Marketplace unless you change it. Notifications and links still open where they lead.",
+          "description": "Opens Facebook on the tab you pick in Hushfacebook's settings when you start it from its icon. It's Marketplace unless you change it. Notifications and links still open where they lead. Its switch starts off, so turn it on under Opening Facebook.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -439,12 +449,22 @@
             "580.0.0.51.74",
             "577.0.0.50.72"
           ]
+        },
+        {
+          "name": "View stories anonymously",
+          "description": "Keeps you off the viewer list of the stories you watch, because Facebook isn't told which ones you've seen. Replying or reacting still shows you, and stories you've watched keep the ring that marks them as new.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
         }
       ]
     }
   ],
   "patches_name": "Hushfacebook",
-  "fingerprint": "bb019124bcc6b69190e14182dd03d6bb7d9e0841db36f0cb08c1fc023babea92",
+  "fingerprint": "bdd24f63256e808b4c2616bc5e870af96760a09f3d8dde2f1a215c5f2ce801ff",
   "release_notes": "Hushfacebook v0.4.0 gathers the fixes and additions since v0.3.4. It targets Facebook 580.0.0.51.74 and still supports 577.0.0.50.72, with the same 43 patches.\n\n## What's new\n\n- **Clone app copies.** A copy of Facebook renamed with Morphe's Clone app patch recognises itself again, so Dark mode and Active status should open there (#16).\n- **AMOLED black theme.** The status bar stays black when you come back to Facebook from Recent Apps, on the Reels and Video tabs too (#22).\n- **Keep your feed.** Block background-return feed refresh has a new No time limit switch, so your place stays however long you're away (#23).\n- **Saves.** Running saves are listed under Downloads with a Cancel button, which helps when notifications are off. A save cut short is cleaned up the next time Facebook starts. Error pages, oversized manifests and a full phone now stop a save sooner, and Cancel stops a video while its picture and sound are being joined.\n- **Diagnostic reports.** Export diagnostic report always gives a report with your build details, even when nothing was logged. It leaves out more credentials and IDs, says what a saved video actually holds, and counts why a reel has no Download button (#18).\n- **Feed filter.** Closes a way Facebook could swap sponsored posts into the news feed past the filter.\n- **Settings.** A Supported links row shows whether Android opens facebook.com links in this app, with a shortcut to Android's page for it. Reels and Watch opens with a map of which switch hides which Reels surface. Search tells TalkBack how many settings it found, category pages say when Hushfacebook is paused, and settings import and export now report what was really saved.\n\n## Update\n\n1. Refresh the Hushfacebook source in Morphe Manager 1.32.0 or newer.\n2. Patch the arm64-v8a, Android 11+ bundle of Facebook **580.0.0.51.74**, build **475019344**. Facebook **577.0.0.50.72**, build **474426275**, is also supported.\n3. Install over your current patched Facebook using the manager's existing signing key. Keep that key to preserve update compatibility.\n\nThe `.mpp` download is a patch bundle, not a Facebook APK. [Installation instructions](https://github.com/SysAdminDoc/Hushfacebook#install).\n\n## Known limitations\n\nMost of this release was checked with automated tests and hasn't been tried on a phone yet, in particular the clone fix, the AMOLED status bar, the running saves list and the feed swap check. Sign-in, notifications and links in a Clone app copy haven't been checked at all. Some reports still need the affected phone or viewer: WhatsApp import (#11), Media settings (#12), Xiaomi Gallery audio (#14) and the missing Reel Download button (#18), where a diagnostic report now shows which reel sidebar Facebook drew.\n\nReview diagnostic reports before sharing them. The filter can still miss private text it doesn't recognise.\n\n## Validation\n\nLocal checks passed: 1094 runtime tests and 473 patch tests with no failures or skips, plus both Android lints and the release-script checks. All 43 patches applied without forcing to both supported Facebook builds, with no resource or injected-code structural errors. The dependency advisory check passed.\n",
   "release_tag": "v0.4.0",
   "release_date": "2026-09-28T15:11:16Z",

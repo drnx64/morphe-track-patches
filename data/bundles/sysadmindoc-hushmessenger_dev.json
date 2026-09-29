@@ -20,6 +20,15 @@
           ]
         },
         {
+          "name": "Allow screenshots",
+          "description": "Removes screenshot restrictions in vanish mode and E2EE chats. Long-press Messenger > Patch controls. Starts off.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.49.91"
+          ]
+        },
+        {
           "name": "Hide AI sticker tools",
           "description": "Hides the generated-sticker tab and AI sticker suggestions. Long-press Messenger > Patch controls. Starts off.",
           "use": true,
@@ -47,8 +56,8 @@
           ]
         },
         {
-          "name": "Hide Meta AI buttons",
-          "description": "Hides the floating button, toolbar button and AI menu entries. Search stays available. Long-press Messenger > Patch controls. Starts off.",
+          "name": "Hide Meta AI",
+          "description": "Hides the floating button, toolbar button, menu entries and search AI. Long-press Messenger > Patch controls. Starts off.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -164,6 +173,15 @@
           ]
         },
         {
+          "name": "Hide read receipts",
+          "description": "Suppresses your outgoing read receipt so senders can't see when you viewed their message. Long-press Messenger > Patch controls. Starts off.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.49.91"
+          ]
+        },
+        {
           "name": "Hide stories and notes",
           "description": "Hides the horizontal tray above chats. Long-press Messenger > Patch controls. Starts off.",
           "use": true,
@@ -191,8 +209,44 @@
           ]
         },
         {
+          "name": "Keep unsent messages",
+          "description": "Preserves messages other people remove for everyone. Your own unsend ability may be limited while active. Long-press Messenger > Patch controls. Starts off.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.49.91"
+          ]
+        },
+        {
+          "name": "Open settings from menu",
+          "description": "Adds a HushMessenger entry to the Menu tab. Always on.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.49.91"
+          ]
+        },
+        {
           "name": "Open web links externally",
           "description": "Uses Messenger's external-browser branch for HTTP and HTTPS links. Long-press Messenger > Patch controls. Starts off.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.49.91"
+          ]
+        },
+        {
+          "name": "Restore screens on re-signed builds",
+          "description": "Answers Messenger's own signer lookup with the original Meta certificate. Always on.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.49.91"
+          ]
+        },
+        {
+          "name": "Use system emoji",
+          "description": "Renders emoji with the phone's own font instead of Messenger's. Long-press Messenger > Patch controls. Starts off.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -203,7 +257,7 @@
     }
   ],
   "patches_name": "HushMessenger",
-  "fingerprint": "c71699206b0419656e35c0b2c113d347b1b802bb59595d4adc81bff0ad464a25",
+  "fingerprint": "c8ac24026c275299a50502aa8ff76b147158d213621123f8bd840401e918c381",
   "release_notes": "Signed installation testing found a blocker. A Messenger 580 APK patched with HushMessenger installed on the S25 using the same signing key as Hushfacebook, but Messenger stayed on a blank first-run screen. An unchanged APK rebuilt by Morphe did the same. The original stock APK opened its login form after reinstall.\n\nThe permission patch is unchanged. This release updates the warning in the patch source and README. The S25 requires account sign-in again, and chats, notifications and calls with a re-signed app remain unverified. Use this preview only with an account you can restore.\n\nThe local build passed 12 tests. Morphe Desktop 1.17.0 applied the v0.0.8 bundle to the exact S25 stock APK, Android verified its v3 signature, and a changed-APK check stopped before output. Two clean builds produced the same SHA-256 listed in SHA256SUMS.txt.\n",
   "release_tag": "v0.0.8",
   "release_date": "2026-09-27T17:32:43Z",

@@ -1,10 +1,10 @@
 {
-  "bundle": "trivisa-itihasa",
-  "channel": "dev",
+  "bundle": "bakwudo",
+  "channel": "stable",
   "repo_url": "https://github.com/bakwudo/uyu",
-  "created_at": "2026-09-27T16:53:55Z",
-  "version": "1.1.0-dev.1",
-  "description": "## [1.1.0](https://github.com/trivisa-itihasa/uyu/compare/v1.0.0...v1.1.0) (2026-09-27)\n\n### ✨ New Features\n\n* Show danmaku comments in portrait, the mini player and picture in picture ([9afa8f5](https://github.com/trivisa-itihasa/uyu/commit/9afa8f51260896f1e154afd3f0edf78822ee69e6))",
+  "created_at": "2026-09-28T12:11:51Z",
+  "version": "2.0.0",
+  "description": "## [2.0.0](https://github.com/bakwudo/uyu/compare/v1.2.0...v2.0.0) (2026-09-28)\n\n### ⚠ BREAKING CHANGES\n\n* With \"Install as a separate app\", uyu now installs as io.github.bakwudo.uyu. Android treats it as a different app from earlier uyu builds, so install it again and log in again. The uyu settings of the separate app start from the defaults. Uninstall the earlier uyu when you no longer need it.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\n\n### refactor\n\n* Rename the package to io.github.bakwudo.uyu ([5bd7d0e](https://github.com/bakwudo/uyu/commit/5bd7d0e19850ca07d1260a882d582d2191e8f32e))",
   "apps": [
     {
       "app_name": "Twitch",
@@ -13,6 +13,15 @@
         {
           "name": "Auto claim channel points",
           "description": "Adds an option to claim the channel points bonus chest automatically on the channel you are watching. It works while chat or the points button is hidden, for example in fullscreen. Streams open in Twitch's native player instead of the new React Native one, which this relies on.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "31.3.1"
+          ]
+        },
+        {
+          "name": "Block ads",
+          "description": "Adds an option to block ads. Streams are requested as Twitch's embedded web player, which gets fewer ads, and the app no longer requests or plays ads itself. Ads that are part of the stream are covered with a black screen and muted until they end. Display ads are not shown. Live streams can optionally be loaded through a proxy. Streams open in Twitch's native player instead of the new React Native one, which this relies on.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -57,7 +66,7 @@
         },
         {
           "name": "Install as a separate app",
-          "description": "Installs the patched app as \"uyu\" next to the official Twitch app instead of replacing it. The package name becomes io.github.trivisa_itihasa.uyu.",
+          "description": "Installs the patched app as \"uyu\" next to the official Twitch app instead of replacing it. The package name becomes io.github.bakwudo.uyu.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -68,7 +77,7 @@
     }
   ],
   "patches_name": "uyu",
-  "fingerprint": "3af020b1672e5b8e9a8d350b74bb03b963905f2d2892cca77c95ee41b5015a42",
+  "fingerprint": "4d004d1e01e3d0bc5148d3512d8481730b4ed5a495a79e1e03957cb7461fcc39",
   "release_notes": "## [2.0.0](https://github.com/bakwudo/uyu/compare/v1.2.0...v2.0.0) (2026-09-28)\r\n### refactor\r\n\r\n* Rename the package to io.github.bakwudo.uyu ([5bd7d0e](https://github.com/bakwudo/uyu/commit/5bd7d0e19850ca07d1260a882d582d2191e8f32e))\r\n",
   "release_tag": "v2.0.0",
   "release_date": "2026-09-28T12:11:51Z",
