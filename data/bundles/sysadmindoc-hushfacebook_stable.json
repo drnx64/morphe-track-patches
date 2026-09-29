@@ -192,7 +192,7 @@
         },
         {
           "name": "Hide sponsored Marketplace listings",
-          "description": "Removes the ads and boosted listings from Marketplace's feed. Hushfacebook asks Facebook not to send them, and the requests that fetch only ads don't go out. The listings people post stay.",
+          "description": "Removes the ads and boosted listings from Marketplace's feed and search results. The feed's request asks Facebook to leave them out and the requests that fetch only ads don't go out. Ads that come back among search results are taken out before Marketplace shows them. The listings people post stay.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -281,6 +281,26 @@
           ]
         },
         {
+          "name": "Hide the Reels tab",
+          "description": "Takes the Reels tab, which some accounts call Video, off the tab bar. Reel links and the reels in your feed still open. Facebook's own Hide in its tab bar settings keeps working, and a change to the switch shows once Facebook restarts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Hold a reel for 2x",
+          "description": "Holding a reel plays it at double speed until you let go. The hold takes the place of Facebook's long-press menu, which the reel's more button still opens.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
           "name": "Hushfacebook in the Menu",
           "description": "Adds a Hushfacebook settings row to Facebook's Menu, at the end of Settings and privacy. The logo long press and the launcher shortcut still open the settings too.",
           "use": true,
@@ -303,6 +323,16 @@
         {
           "name": "Install beside Meta's apps",
           "description": "Lets the official Messenger, Facebook Lite, Business Suite and Workplace install beside the patched Facebook. Facebook shares two permissions with them, and Android lets only one signing key own a permission, so this patch renames Facebook's. A Root Mount install doesn't need it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "Keep the reel speed",
+          "description": "A playback speed you pick in a reel's menu stays for the next reels until you pick another or Facebook restarts.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -362,7 +392,7 @@
         },
         {
           "name": "Restore screens on re-signed builds",
-          "description": "Makes profiles and some Settings pages open again on a re-signed build. A Root Mount install doesn't need this patch.",
+          "description": "Makes profiles and some Settings pages open again on a re-signed build, and lets a Messenger, Messenger Lite or Facebook Lite you patch with this build's own key sign in through it, the same as the real Meta app would. A Root Mount install doesn't need this patch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -431,6 +461,16 @@
           ]
         },
         {
+          "name": "Turn off double tap to like",
+          "description": "Stops a double tap on a reel or a video from liking it, and the heart doesn't show. A single tap still plays or pauses, and the Like button still likes.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.51.74",
+            "577.0.0.50.72"
+          ]
+        },
+        {
           "name": "Use the phone's emoji",
           "description": "Draws emoji with your phone's own emoji font instead of Meta's, so the ones in posts, comments and chats look like the ones on your keyboard, big chat emoji included. Reactions and stickers stay as they are. Restart Facebook after changing the switch.",
           "use": false,
@@ -464,7 +504,7 @@
     }
   ],
   "patches_name": "Hushfacebook",
-  "fingerprint": "a90724569c13d73b8c960e160fd4d16e0c8293642a31d697c28491fcec0b3338",
+  "fingerprint": "1108761051e6e13ba48ca4ba0788bfbba196315b8b2483f73438638d52363565",
   "release_notes": "Hushfacebook v0.4.0 gathers the fixes and additions since v0.3.4. It targets Facebook 580.0.0.51.74 and still supports 577.0.0.50.72, with the same 43 patches.\n\n## What's new\n\n- **Clone app copies.** A copy of Facebook renamed with Morphe's Clone app patch recognises itself again, so Dark mode and Active status should open there (#16).\n- **AMOLED black theme.** The status bar stays black when you come back to Facebook from Recent Apps, on the Reels and Video tabs too (#22).\n- **Keep your feed.** Block background-return feed refresh has a new No time limit switch, so your place stays however long you're away (#23).\n- **Saves.** Running saves are listed under Downloads with a Cancel button, which helps when notifications are off. A save cut short is cleaned up the next time Facebook starts. Error pages, oversized manifests and a full phone now stop a save sooner, and Cancel stops a video while its picture and sound are being joined.\n- **Diagnostic reports.** Export diagnostic report always gives a report with your build details, even when nothing was logged. It leaves out more credentials and IDs, says what a saved video actually holds, and counts why a reel has no Download button (#18).\n- **Feed filter.** Closes a way Facebook could swap sponsored posts into the news feed past the filter.\n- **Settings.** A Supported links row shows whether Android opens facebook.com links in this app, with a shortcut to Android's page for it. Reels and Watch opens with a map of which switch hides which Reels surface. Search tells TalkBack how many settings it found, category pages say when Hushfacebook is paused, and settings import and export now report what was really saved.\n\n## Update\n\n1. Refresh the Hushfacebook source in Morphe Manager 1.32.0 or newer.\n2. Patch the arm64-v8a, Android 11+ bundle of Facebook **580.0.0.51.74**, build **475019344**. Facebook **577.0.0.50.72**, build **474426275**, is also supported.\n3. Install over your current patched Facebook using the manager's existing signing key. Keep that key to preserve update compatibility.\n\nThe `.mpp` download is a patch bundle, not a Facebook APK. [Installation instructions](https://github.com/SysAdminDoc/Hushfacebook#install).\n\n## Known limitations\n\nMost of this release was checked with automated tests and hasn't been tried on a phone yet, in particular the clone fix, the AMOLED status bar, the running saves list and the feed swap check. Sign-in, notifications and links in a Clone app copy haven't been checked at all. Some reports still need the affected phone or viewer: WhatsApp import (#11), Media settings (#12), Xiaomi Gallery audio (#14) and the missing Reel Download button (#18), where a diagnostic report now shows which reel sidebar Facebook drew.\n\nReview diagnostic reports before sharing them. The filter can still miss private text it doesn't recognise.\n\n## Validation\n\nLocal checks passed: 1094 runtime tests and 473 patch tests with no failures or skips, plus both Android lints and the release-script checks. All 43 patches applied without forcing to both supported Facebook builds, with no resource or injected-code structural errors. The dependency advisory check passed.\n",
   "release_tag": "v0.4.0",
   "release_date": "2026-09-28T15:11:16Z",
