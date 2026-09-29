@@ -2,9 +2,9 @@
   "bundle": "dual-vot",
   "channel": "latest",
   "repo_url": "https://github.com/sashade8-ship-it/dual-vot-patches",
-  "created_at": "2026-09-28T16:33:49",
-  "version": "v1.45.0-dev.19-dualvot.8.5.3",
-  "description": "## Dual VoT Patches 1.45.0-dev.19-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.19.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+  "created_at": "2026-09-29T17:02:06",
+  "version": "v1.45.0-dev.20-dualvot.8.5.3",
+  "description": "## Dual VoT Patches 1.45.0-dev.20-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.20.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
   "apps": [
     {
       "app_name": "YouTube Music",
@@ -1656,6 +1656,27 @@
           ]
         },
         {
+          "name": "Player icon style",
+          "description": "Adds an option to change the style of the player button icons.",
+          "use": true,
+          "options": [
+            {
+              "key": "customIcons",
+              "description": "\n    Zip file with icons to use as the 'Custom' icon style.\n\n    Each icon is named after the icon it replaces, such as 'morphe_yt_copy.xml'.\n    An icon is a vector drawable (.xml), or a white square PNG image (.png, 96x96 pixels is recommended).\n    Icons missing from the file keep the 'Automatic' style.\n"
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
           "name": "PoToken provider",
           "description": "Adds option to get PoToken using an external PoToken minter app.",
           "use": true,
@@ -1835,7 +1856,12 @@
           "name": "Shorts icon style",
           "description": "Adds an option to change the style of the Shorts action button icons.",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "customIcons",
+              "description": "\n    Zip file with icons to use as the 'Custom' icon style.\n\n    Each icon is named after the icon it replaces, such as 'morphe_shorts_heart.xml'.\n    An icon is a vector drawable (.xml), or a white square PNG image (.png, 96x96 pixels is recommended).\n    Icons missing from the file keep the 'Automatic' style.\n"
+            }
+          ],
           "compatible_versions": [
             "21.39.522",
             "21.38.130",
@@ -2312,9 +2338,9 @@
     }
   ],
   "patches_name": "Dual VoT Patches",
-  "fingerprint": "e6f20489c674b7b548916b83d4b6cf2d51551b478cc989fd1890596b70ab87cd",
-  "release_notes": "## Dual VoT Patches 1.45.0-dev.19-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.19.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
-  "release_tag": "v1.45.0-dev.19-dualvot.8.5.3",
-  "release_date": "2026-09-28T16:33:49Z",
+  "fingerprint": "1a102d5a1ad3e11d47ef526324e654073e2d09649df05f586645a5e0eccb092c",
+  "release_notes": "## Dual VoT Patches 1.45.0-dev.20-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.20.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+  "release_tag": "v1.45.0-dev.20-dualvot.8.5.3",
+  "release_date": "2026-09-29T17:02:06Z",
   "isPreRelease": true
 }
