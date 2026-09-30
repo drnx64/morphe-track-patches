@@ -252,12 +252,21 @@
           "compatible_versions": [
             "580.0.0.49.91"
           ]
+        },
+        {
+          "name": "View stories anonymously",
+          "description": "Opens other people's stories without adding you to their viewer list. For now the story still shows as new on your side. Long-press Messenger > Patch controls. Starts off.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "580.0.0.49.91"
+          ]
         }
       ]
     }
   ],
   "patches_name": "HushMessenger",
-  "fingerprint": "82ef4a9090264f4f098ca50cdb99318537d4505636e2fc4173dcb61250fcb55e",
+  "fingerprint": "3f69f894c29c17578ebafd7774c3811f47725a7435ae63b995af3fb94c615eeb",
   "release_notes": "A big one. HushMessenger goes from 21 to 27 patches.\n\n**New**\n\n- Three privacy switches, all off by default. **Hide read receipts** works in end-to-end encrypted chats too, but there Messenger marks a chat read and sends the receipt in one step, so chats you open stay unread until you reply. **Keep unsent messages** keeps what other people unsend and marks it \"[unsent]\". It can't cover end-to-end encrypted chats. **Allow screenshots** lifts the screenshot block in vanish mode and encrypted chats.\n- **Use system emoji** draws emoji with your phone's font instead of Messenger's.\n- A **HushMessenger** row right under Settings in the Menu tab.\n- Re-signed builds no longer open to a blank screen. The fix answers Messenger's check of its own certificate and nothing else.\n- Each switch shows when it last took effect, and the App tab can export and import your choices.\n- Crash-loop safe mode turns every switch off if Messenger keeps closing right after it starts. Your choices stay saved.\n- An optional update check in the App tab. It's off by default, and nothing is sent while it's off.\n- Support for build 346013442 from APKPure.\n\n**Better**\n\n- **Hide typing indicator** now works in end-to-end encrypted chats, which is most one-to-one chats. Before, the other person still saw \"is typing\" there.\n- **Hide Meta AI** also removes the \"Ask Meta AI\" button in search. **Hide avatar stickers** also covers Messenger's newer sticker keyboard.\n- Other apps can no longer restart Messenger.\n- Lots of settings polish: screen reader labels, focus rings, theme fixes and right-to-left layout.\n\n**Updating**\n\nRefresh the HushMessenger source in Morphe, patch Messenger again with the same key and install it over your current copy. Then use Restart Messenger. Builds 346013354 and 346013370 are still rejected before any change, because their original APKs are needed first (issues #1 and #3). Signing in with \"Continue as\" through a patched Facebook app still fails on the Facebook side. That fix is coming in Hushfacebook.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.5.0/CHANGELOG.md).\n\nSHA-256: 8ce9bfacfe293973aff7586dd85e3cfe0a11101d0caef1dca2878b58618893f4  patches-0.5.0.mpp\n",
   "release_tag": "v0.5.0",
   "release_date": "2026-09-29T03:53:27Z",
