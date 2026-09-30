@@ -2,9 +2,9 @@
   "bundle": "amplerevanced",
   "channel": "latest",
   "repo_url": "https://github.com/AmpleReVanced/revanced-patches",
-  "created_at": "2026-09-28T12:34:49",
-  "version": "v1.5.0-dev.17",
-  "description": "# [1.5.0-dev.17](https://github.com/AmpleReVanced/revanced-patches/compare/v1.5.0-dev.16...v1.5.0-dev.17) (2026-09-28)\n\n\n### Bug Fixes\n\n* **samsung-keyboard:** create dialogs before converting window type ([b4b4708](https://github.com/AmpleReVanced/revanced-patches/commit/b4b470840695e11680b684af9a9a71c583f096e9)), closes [#175](https://github.com/AmpleReVanced/revanced-patches/issues/175)\n* **samsung-keyboard:** defer toolbar initialization until user unlock ([6f88b77](https://github.com/AmpleReVanced/revanced-patches/commit/6f88b773a8d2f6ba807842e00943ea9340011fd8))\n\n\n\n",
+  "created_at": "2026-09-30T11:23:36",
+  "version": "v1.5.0-dev.18",
+  "description": "# [1.5.0-dev.18](https://github.com/AmpleReVanced/revanced-patches/compare/v1.5.0-dev.17...v1.5.0-dev.18) (2026-09-30)\n\n\n### Features\n\n* **kakaotalk:** add `Remove local connect tab` patch ([6ea248c](https://github.com/AmpleReVanced/revanced-patches/commit/6ea248c9c111bbb0c6a37eaccd7b95ab0c0d1f85))\n* **kakaotalk:** add a setting for the `Disable Friend Feed tab` patch ([9d184bb](https://github.com/AmpleReVanced/revanced-patches/commit/9d184bbbc039929b2564bf35a302b11cc6d224f7))\n* **kakaotalk:** add device profile options to `Change model` ([bdad9b5](https://github.com/AmpleReVanced/revanced-patches/commit/bdad9b57ba070a6dc6a7f3ef1285d8b0e5a8b331))\n* **kakaotalk:** add settings for the shop and local connect tab patches ([206532f](https://github.com/AmpleReVanced/revanced-patches/commit/206532f8f20447efc6adaceeb2a9f4f0331e933f))\n\n\n\n",
   "apps": [
     {
       "app_name": "dcinside",
@@ -474,7 +474,68 @@
           "name": "Change model",
           "description": "Changes the device model to supporting subdevice features",
           "use": true,
-          "options": [],
+          "options": [
+            {
+              "key": "brand",
+              "description": "The value reported as Build.BRAND."
+            },
+            {
+              "key": "manufacturer",
+              "description": "The value reported as Build.MANUFACTURER."
+            },
+            {
+              "key": "model",
+              "description": "The value reported as Build.MODEL."
+            },
+            {
+              "key": "device",
+              "description": "The value reported as Build.DEVICE."
+            },
+            {
+              "key": "product",
+              "description": "The value reported as Build.PRODUCT."
+            },
+            {
+              "key": "board",
+              "description": "The value reported as Build.BOARD."
+            },
+            {
+              "key": "hardware",
+              "description": "The value reported as Build.HARDWARE."
+            },
+            {
+              "key": "cpuAbi",
+              "description": "The value reported as Build.CPU_ABI."
+            },
+            {
+              "key": "socManufacturer",
+              "description": "The value reported as Build.SOC_MANUFACTURER."
+            },
+            {
+              "key": "socModel",
+              "description": "The value reported as Build.SOC_MODEL."
+            },
+            {
+              "key": "fingerprint",
+              "description": "The value reported as Build.FINGERPRINT. Keep the brand, product, device, build ID, build type and tags consistent with it."
+            },
+            {
+              "key": "id",
+              "description": "The value reported as Build.ID."
+            },
+            {
+              "key": "display",
+              "description": "The value reported as Build.DISPLAY."
+            },
+            {
+              "key": "type",
+              "description": "The value reported as Build.TYPE."
+            },
+            {
+              "key": "tags",
+              "description": "The value reported as Build.TAGS."
+            }
+          ],
           "compatible_versions": [
             "26.8.2"
           ]
@@ -598,7 +659,7 @@
         },
         {
           "name": "Disable Friend Feed tab",
-          "description": "Disables the Friend Feed tab in KakaoTalk.",
+          "description": "Adds an option to replace the Friend Feed tab with the classic Friends tab.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -836,6 +897,15 @@
           ]
         },
         {
+          "name": "Remove local connect tab",
+          "description": "Adds an option to remove the local connect tab from the bottom navigation bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.8.2"
+          ]
+        },
+        {
           "name": "Remove More tab ad",
           "description": "Removes the ad from the More tab.",
           "use": true,
@@ -864,7 +934,7 @@
         },
         {
           "name": "Remove shop tab",
-          "description": "Removes the shop tab from the bottom navigation bar.",
+          "description": "Adds an option to remove the shop tab from the bottom navigation bar.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -1287,9 +1357,9 @@
     }
   ],
   "patches_name": "Ample Patches",
-  "fingerprint": "755af53824b451fc5266ce3034818d3c0bd61af3d2ae2f686b49a05b61f9cd58",
-  "release_notes": "# [1.5.0-dev.17](https://github.com/AmpleReVanced/revanced-patches/compare/v1.5.0-dev.16...v1.5.0-dev.17) (2026-09-28)\n\n\n### Bug Fixes\n\n* **samsung-keyboard:** create dialogs before converting window type ([b4b4708](https://github.com/AmpleReVanced/revanced-patches/commit/b4b470840695e11680b684af9a9a71c583f096e9)), closes [#175](https://github.com/AmpleReVanced/revanced-patches/issues/175)\n* **samsung-keyboard:** defer toolbar initialization until user unlock ([6f88b77](https://github.com/AmpleReVanced/revanced-patches/commit/6f88b773a8d2f6ba807842e00943ea9340011fd8))\n\n\n\n",
-  "release_tag": "v1.5.0-dev.17",
-  "release_date": "2026-09-28T12:34:49Z",
+  "fingerprint": "e379added3426835712698be9e42f452d2e673d7eb422b0593adbdae37d7ff51",
+  "release_notes": "# [1.5.0-dev.18](https://github.com/AmpleReVanced/revanced-patches/compare/v1.5.0-dev.17...v1.5.0-dev.18) (2026-09-30)\n\n\n### Features\n\n* **kakaotalk:** add `Remove local connect tab` patch ([6ea248c](https://github.com/AmpleReVanced/revanced-patches/commit/6ea248c9c111bbb0c6a37eaccd7b95ab0c0d1f85))\n* **kakaotalk:** add a setting for the `Disable Friend Feed tab` patch ([9d184bb](https://github.com/AmpleReVanced/revanced-patches/commit/9d184bbbc039929b2564bf35a302b11cc6d224f7))\n* **kakaotalk:** add device profile options to `Change model` ([bdad9b5](https://github.com/AmpleReVanced/revanced-patches/commit/bdad9b57ba070a6dc6a7f3ef1285d8b0e5a8b331))\n* **kakaotalk:** add settings for the shop and local connect tab patches ([206532f](https://github.com/AmpleReVanced/revanced-patches/commit/206532f8f20447efc6adaceeb2a9f4f0331e933f))\n\n\n\n",
+  "release_tag": "v1.5.0-dev.18",
+  "release_date": "2026-09-30T11:23:36Z",
   "isPreRelease": true
 }
