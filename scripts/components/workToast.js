@@ -23,7 +23,7 @@ function ensureStack() {
  *   setProgress: (done: number, total: number) => void,
  *   setDetail: (text: string) => void,
  *   setActions: (actions: Array<{label: string, primary?: boolean, onClick: Function}>) => void,
- *   finish: (text?: string, opts?: {autoCloseMs?: number}) => void,
+ *   finish: (text?: string, opts?: {autoCloseMs?: number, fillBar?: boolean}) => void,
  *   close: () => void,
  * }}
  */
@@ -65,8 +65,8 @@ export function showWorkToast(title) {
         actionsEl.appendChild(btn)
       }
     },
-    finish(text, { autoCloseMs = 3000 } = {}) {
-      barFill.style.width = '100%'
+    finish(text, { autoCloseMs = 3000, fillBar = true } = {}) {
+      if (fillBar) barFill.style.width = '100%'
       if (text) detailEl.textContent = text
       toast.setActions([])
       clearTimeout(autoCloseTimer)
