@@ -2,10 +2,43 @@
   "bundle": "santodan",
   "channel": "stable",
   "repo_url": "https://github.com/Santodan/santodan-patches",
-  "created_at": "2026-09-28T14:44:05",
-  "version": "v0.5.0",
-  "description": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))\n",
+  "created_at": "2026-10-01T13:55:43",
+  "version": "v0.6.0",
+  "description": "## [0.6.0](https://github.com/Santodan/santodan-patches/compare/v0.5.0...v0.6.0) (2026-10-01)\n\n### ✨ New Features\n\n* **meo:** add side-by-side and device compatibility patches [skip ci] ([cd28017](https://github.com/Santodan/santodan-patches/commit/cd28017e4f3890ee27d99e917a9d0668cda0d274))\n\n### 🚀 Updated App Support\n\n* **pillo:** support version 0.6.20 ([33da858](https://github.com/Santodan/santodan-patches/commit/33da8586e0cbe7fadbf5dae595fee8512f438794))\n",
   "apps": [
+    {
+      "app_name": "MEO (Android TV)",
+      "package": "com.alticelabs.meo.androidtv",
+      "patches": [
+        {
+          "name": "MEO - Side-by-side installation",
+          "description": "Installs a separately named MEO clone using a configurable package name and app name.",
+          "use": true,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "Unique Android package name for this installation."
+            },
+            {
+              "key": "appName",
+              "description": "Name displayed by Android launchers for this installation."
+            }
+          ],
+          "compatible_versions": [
+            "5.7.0"
+          ]
+        },
+        {
+          "name": "MEO - Spoof supported device",
+          "description": "Reports a Sagemcom DIW3930 to MEO provisioning and skips the server's non-blocking device-verification warning.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "5.7.0"
+          ]
+        }
+      ]
+    },
     {
       "app_name": "NuvioTV",
       "package": "com.nuvio.tv",
@@ -106,6 +139,7 @@
           "use": false,
           "options": [],
           "compatible_versions": [
+            "0.6.20",
             "0.6.19"
           ]
         }
@@ -113,9 +147,9 @@
     }
   ],
   "patches_name": "SantoDan Patches",
-  "fingerprint": "de22440dbefb80df5bf9a4039d93072789c8d64bfe65fe6e878a00a0ddb9c99d",
-  "release_notes": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))\n",
-  "release_tag": "v0.5.0",
-  "release_date": "2026-09-28T14:44:05Z",
+  "fingerprint": "a757c815022b87d884b9d19a55516b12831677dfee40af646345957af771801f",
+  "release_notes": "## [0.6.0](https://github.com/Santodan/santodan-patches/compare/v0.5.0...v0.6.0) (2026-10-01)\n\n### ✨ New Features\n\n* **meo:** add side-by-side and device compatibility patches [skip ci] ([cd28017](https://github.com/Santodan/santodan-patches/commit/cd28017e4f3890ee27d99e917a9d0668cda0d274))\n\n### 🚀 Updated App Support\n\n* **pillo:** support version 0.6.20 ([33da858](https://github.com/Santodan/santodan-patches/commit/33da8586e0cbe7fadbf5dae595fee8512f438794))\n",
+  "release_tag": "v0.6.0",
+  "release_date": "2026-10-01T13:55:43Z",
   "isPreRelease": false
 }

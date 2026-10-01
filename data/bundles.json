@@ -3,10 +3,43 @@
     "bundle": "santodan",
     "channel": "latest",
     "repo_url": "https://github.com/Santodan/santodan-patches",
-    "created_at": "2026-09-28T14:44:05",
-    "version": "v0.5.0",
-    "description": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))\n",
+    "created_at": "2026-10-01T13:55:43",
+    "version": "v0.6.0",
+    "description": "## [0.6.0](https://github.com/Santodan/santodan-patches/compare/v0.5.0...v0.6.0) (2026-10-01)\n\n### ✨ New Features\n\n* **meo:** add side-by-side and device compatibility patches [skip ci] ([cd28017](https://github.com/Santodan/santodan-patches/commit/cd28017e4f3890ee27d99e917a9d0668cda0d274))\n\n### 🚀 Updated App Support\n\n* **pillo:** support version 0.6.20 ([33da858](https://github.com/Santodan/santodan-patches/commit/33da8586e0cbe7fadbf5dae595fee8512f438794))\n",
     "apps": [
+      {
+        "app_name": "MEO (Android TV)",
+        "package": "com.alticelabs.meo.androidtv",
+        "patches": [
+          {
+            "name": "MEO - Side-by-side installation",
+            "description": "Installs a separately named MEO clone using a configurable package name and app name.",
+            "use": true,
+            "options": [
+              {
+                "key": "packageName",
+                "description": "Unique Android package name for this installation."
+              },
+              {
+                "key": "appName",
+                "description": "Name displayed by Android launchers for this installation."
+              }
+            ],
+            "compatible_versions": [
+              "5.7.0"
+            ]
+          },
+          {
+            "name": "MEO - Spoof supported device",
+            "description": "Reports a Sagemcom DIW3930 to MEO provisioning and skips the server's non-blocking device-verification warning.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "5.7.0"
+            ]
+          }
+        ]
+      },
       {
         "app_name": "NuvioTV",
         "package": "com.nuvio.tv",
@@ -107,6 +140,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "0.6.20",
               "0.6.19"
             ]
           }
@@ -114,20 +148,53 @@
       }
     ],
     "patches_name": "SantoDan Patches",
-    "fingerprint": "baabe063cb939d0627c68d598099bd0573d8b2d2ea344e16650f04fddde9373f",
-    "release_notes": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))\n",
-    "release_tag": "v0.5.0",
-    "release_date": "2026-09-28T14:44:05Z",
+    "fingerprint": "fc007c314a090fd63948b521a388fb18378b7bbdbdd5079fc39aef208407b475",
+    "release_notes": "## [0.6.0](https://github.com/Santodan/santodan-patches/compare/v0.5.0...v0.6.0) (2026-10-01)\n\n### ✨ New Features\n\n* **meo:** add side-by-side and device compatibility patches [skip ci] ([cd28017](https://github.com/Santodan/santodan-patches/commit/cd28017e4f3890ee27d99e917a9d0668cda0d274))\n\n### 🚀 Updated App Support\n\n* **pillo:** support version 0.6.20 ([33da858](https://github.com/Santodan/santodan-patches/commit/33da8586e0cbe7fadbf5dae595fee8512f438794))\n",
+    "release_tag": "v0.6.0",
+    "release_date": "2026-10-01T13:55:43Z",
     "isPreRelease": false
   },
   "santodan:stable": {
     "bundle": "santodan",
     "channel": "stable",
     "repo_url": "https://github.com/Santodan/santodan-patches",
-    "created_at": "2026-09-28T14:44:05",
-    "version": "v0.5.0",
-    "description": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))\n",
+    "created_at": "2026-10-01T13:55:43",
+    "version": "v0.6.0",
+    "description": "## [0.6.0](https://github.com/Santodan/santodan-patches/compare/v0.5.0...v0.6.0) (2026-10-01)\n\n### ✨ New Features\n\n* **meo:** add side-by-side and device compatibility patches [skip ci] ([cd28017](https://github.com/Santodan/santodan-patches/commit/cd28017e4f3890ee27d99e917a9d0668cda0d274))\n\n### 🚀 Updated App Support\n\n* **pillo:** support version 0.6.20 ([33da858](https://github.com/Santodan/santodan-patches/commit/33da8586e0cbe7fadbf5dae595fee8512f438794))\n",
     "apps": [
+      {
+        "app_name": "MEO (Android TV)",
+        "package": "com.alticelabs.meo.androidtv",
+        "patches": [
+          {
+            "name": "MEO - Side-by-side installation",
+            "description": "Installs a separately named MEO clone using a configurable package name and app name.",
+            "use": true,
+            "options": [
+              {
+                "key": "packageName",
+                "description": "Unique Android package name for this installation."
+              },
+              {
+                "key": "appName",
+                "description": "Name displayed by Android launchers for this installation."
+              }
+            ],
+            "compatible_versions": [
+              "5.7.0"
+            ]
+          },
+          {
+            "name": "MEO - Spoof supported device",
+            "description": "Reports a Sagemcom DIW3930 to MEO provisioning and skips the server's non-blocking device-verification warning.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "5.7.0"
+            ]
+          }
+        ]
+      },
       {
         "app_name": "NuvioTV",
         "package": "com.nuvio.tv",
@@ -228,6 +295,7 @@
             "use": false,
             "options": [],
             "compatible_versions": [
+              "0.6.20",
               "0.6.19"
             ]
           }
@@ -235,10 +303,10 @@
       }
     ],
     "patches_name": "SantoDan Patches",
-    "fingerprint": "de22440dbefb80df5bf9a4039d93072789c8d64bfe65fe6e878a00a0ddb9c99d",
-    "release_notes": "## [0.5.0](https://github.com/Santodan/santodan-patches/compare/v0.4.1...v0.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **nuviotv:** preserve and refresh merged progress ([3e7595b](https://github.com/Santodan/santodan-patches/commit/3e7595bc1a830c88136ec0e068dfeae9a203172a))\n\n### ✨ New Features\n\n* **nuviotv:** add merged tracking progress [skip ci] ([be772fe](https://github.com/Santodan/santodan-patches/commit/be772fe379f73156595e1f4def5546e83525b417))\n* **nuviotv:** configure side-by-side installation ([1cfc77e](https://github.com/Santodan/santodan-patches/commit/1cfc77e21814eed47a5035053d096950227622cf))\n",
-    "release_tag": "v0.5.0",
-    "release_date": "2026-09-28T14:44:05Z",
+    "fingerprint": "a757c815022b87d884b9d19a55516b12831677dfee40af646345957af771801f",
+    "release_notes": "## [0.6.0](https://github.com/Santodan/santodan-patches/compare/v0.5.0...v0.6.0) (2026-10-01)\n\n### ✨ New Features\n\n* **meo:** add side-by-side and device compatibility patches [skip ci] ([cd28017](https://github.com/Santodan/santodan-patches/commit/cd28017e4f3890ee27d99e917a9d0668cda0d274))\n\n### 🚀 Updated App Support\n\n* **pillo:** support version 0.6.20 ([33da858](https://github.com/Santodan/santodan-patches/commit/33da8586e0cbe7fadbf5dae595fee8512f438794))\n",
+    "release_tag": "v0.6.0",
+    "release_date": "2026-10-01T13:55:43Z",
     "isPreRelease": false
   },
   "logm1lo:latest": {
@@ -7834,9 +7902,9 @@
     "bundle": "xob0t",
     "channel": "latest",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-10-01T05:52:02",
-    "version": "v1.13.3",
-    "description": "## [1.13.3](https://github.com/xob0t/morphe-patches/compare/v1.13.2...v1.13.3) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **avito:** drop embedded Avito ads from search results ([#112](https://github.com/xob0t/morphe-patches/issues/112)) ([60d135e](https://github.com/xob0t/morphe-patches/commit/60d135ee9af19667ae270052d4b16f98223ba805))\n",
+    "created_at": "2026-10-01T14:08:40",
+    "version": "v1.13.4",
+    "description": "## [1.13.4](https://github.com/xob0t/morphe-patches/compare/v1.13.3...v1.13.4) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **avito:** match the Profile Pro widgets converter on 234.5 ([#116](https://github.com/xob0t/morphe-patches/issues/116)) ([a36b22f](https://github.com/xob0t/morphe-patches/commit/a36b22fba7e19a79e09298e9c5889dd0ce15a84e)), closes [#115](https://github.com/xob0t/morphe-patches/issues/115)\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -8100,9 +8168,9 @@
     "bundle": "xob0t",
     "channel": "dev",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-10-01T05:37:25",
-    "version": "v1.13.3-dev.1",
-    "description": "## [1.13.3-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.13.2...v1.13.3-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **avito:** drop embedded Avito ads from search results ([#112](https://github.com/xob0t/morphe-patches/issues/112)) ([60d135e](https://github.com/xob0t/morphe-patches/commit/60d135ee9af19667ae270052d4b16f98223ba805))\n",
+    "created_at": "2026-10-01T13:16:37",
+    "version": "v1.13.4-dev.1",
+    "description": "## [1.13.4-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.13.3...v1.13.4-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **avito:** match the Profile Pro widgets converter on 234.5 ([#116](https://github.com/xob0t/morphe-patches/issues/116)) ([a36b22f](https://github.com/xob0t/morphe-patches/commit/a36b22fba7e19a79e09298e9c5889dd0ce15a84e)), closes [#115](https://github.com/xob0t/morphe-patches/issues/115)\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -8357,18 +8425,18 @@
     ],
     "patches_name": "xob0t Morphe Patches",
     "fingerprint": "2bfd10240ccd141ee00646b892388b92432dd64ef75525245d5910f7cb0ea9a2",
-    "release_notes": "## [1.13.3-dev.1](https://github.com/xob0t/morphe-patches/compare/v1.13.2...v1.13.3-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **avito:** drop embedded Avito ads from search results ([#112](https://github.com/xob0t/morphe-patches/issues/112)) ([60d135e](https://github.com/xob0t/morphe-patches/commit/60d135ee9af19667ae270052d4b16f98223ba805))\n",
-    "release_tag": "v1.13.3-dev.1",
-    "release_date": "2026-10-01T05:37:25Z",
-    "isPreRelease": true
+    "release_notes": "## [1.13.3](https://github.com/xob0t/morphe-patches/compare/v1.13.2...v1.13.3) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **avito:** drop embedded Avito ads from search results ([#112](https://github.com/xob0t/morphe-patches/issues/112)) ([60d135e](https://github.com/xob0t/morphe-patches/commit/60d135ee9af19667ae270052d4b16f98223ba805))\n",
+    "release_tag": "v1.13.3",
+    "release_date": "2026-10-01T05:52:02Z",
+    "isPreRelease": false
   },
   "xob0t:stable": {
     "bundle": "xob0t",
     "channel": "stable",
     "repo_url": "https://github.com/xob0t/morphe-patches",
-    "created_at": "2026-10-01T05:52:02",
-    "version": "v1.13.3",
-    "description": "## [1.13.3](https://github.com/xob0t/morphe-patches/compare/v1.13.2...v1.13.3) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **avito:** drop embedded Avito ads from search results ([#112](https://github.com/xob0t/morphe-patches/issues/112)) ([60d135e](https://github.com/xob0t/morphe-patches/commit/60d135ee9af19667ae270052d4b16f98223ba805))\n",
+    "created_at": "2026-10-01T14:08:40",
+    "version": "v1.13.4",
+    "description": "## [1.13.4](https://github.com/xob0t/morphe-patches/compare/v1.13.3...v1.13.4) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **avito:** match the Profile Pro widgets converter on 234.5 ([#116](https://github.com/xob0t/morphe-patches/issues/116)) ([a36b22f](https://github.com/xob0t/morphe-patches/commit/a36b22fba7e19a79e09298e9c5889dd0ce15a84e)), closes [#115](https://github.com/xob0t/morphe-patches/issues/115)\n",
     "apps": [
       {
         "app_name": "Avito",
@@ -49965,9 +50033,9 @@
     "bundle": "morphe",
     "channel": "latest",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-09-30T09:20:47",
-    "version": "v1.45.0-dev.21",
-    "description": "## [1.45.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.20...v1.45.0-dev.21) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))\n\n### ✨ New Features\n\n* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))\n* **YouTube:** Added \"Restore original videos title and description\" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))\n",
+    "created_at": "2026-10-01T08:57:53",
+    "version": "v1.45.0-dev.22",
+    "description": "## [1.45.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.21...v1.45.0-dev.22) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))\n\n### ✨ New Features\n\n* **YouTube - Hide layout components:** Add \"Hide live streams\" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))\n* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))\n* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))\n* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -50282,6 +50350,18 @@
           {
             "name": "Hide music action buttons",
             "description": "Adds options to hide action buttons under the player.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.38.51",
+              "9.37.54",
+              "9.36.50",
+              "9.15.51"
+            ]
+          },
+          {
+            "name": "Jam queue sharing",
+            "description": "Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -50787,6 +50867,22 @@
           {
             "name": "Custom player overlay opacity",
             "description": "Adds an option to change the opacity of the video player background when player controls are visible.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "21.39.522",
+              "21.38.130",
+              "21.28.208",
+              "21.23.492",
+              "21.16.256",
+              "21.13.164",
+              "20.31.42",
+              "20.21.37"
+            ]
+          },
+          {
+            "name": "Disable auto feed refresh",
+            "description": "Adds an option to stop feeds from refreshing automatically after they become outdated.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -51737,7 +51833,7 @@
           },
           {
             "name": "Restore original titles",
-            "description": "Adds an option to show the original video titles and descriptions instead of the auto-translated ones.",
+            "description": "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -52317,19 +52413,19 @@
       }
     ],
     "patches_name": "Morphe Patches",
-    "fingerprint": "66349e65d9a24eaa58f3c8d75243e73ceb601611f6a4900cff0cd85b175bc99b",
-    "release_notes": "## [1.45.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.20...v1.45.0-dev.21) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))\n\n### ✨ New Features\n\n* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))\n* **YouTube:** Added \"Restore original videos title and description\" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))\n",
-    "release_tag": "v1.45.0-dev.21",
-    "release_date": "2026-09-30T09:20:47Z",
+    "fingerprint": "25e9198a8d70162b3e7a0a06202e9f28dfc3f4ad03a82e96da3376f054a1519d",
+    "release_notes": "## [1.45.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.21...v1.45.0-dev.22) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))\n\n### ✨ New Features\n\n* **YouTube - Hide layout components:** Add \"Hide live streams\" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))\n* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))\n* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))\n* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))\n",
+    "release_tag": "v1.45.0-dev.22",
+    "release_date": "2026-10-01T08:57:53Z",
     "isPreRelease": true
   },
   "morphe:dev": {
     "bundle": "morphe",
     "channel": "dev",
     "repo_url": "https://github.com/MorpheApp/morphe-patches",
-    "created_at": "2026-09-30T09:20:47",
-    "version": "v1.45.0-dev.21",
-    "description": "## [1.45.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.20...v1.45.0-dev.21) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))\n\n### ✨ New Features\n\n* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))\n* **YouTube:** Added \"Restore original videos title and description\" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))\n",
+    "created_at": "2026-10-01T08:57:53",
+    "version": "v1.45.0-dev.22",
+    "description": "## [1.45.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.21...v1.45.0-dev.22) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))\n\n### ✨ New Features\n\n* **YouTube - Hide layout components:** Add \"Hide live streams\" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))\n* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))\n* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))\n* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -52644,6 +52740,18 @@
           {
             "name": "Hide music action buttons",
             "description": "Adds options to hide action buttons under the player.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.38.51",
+              "9.37.54",
+              "9.36.50",
+              "9.15.51"
+            ]
+          },
+          {
+            "name": "Jam queue sharing",
+            "description": "Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -53149,6 +53257,22 @@
           {
             "name": "Custom player overlay opacity",
             "description": "Adds an option to change the opacity of the video player background when player controls are visible.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "21.39.522",
+              "21.38.130",
+              "21.28.208",
+              "21.23.492",
+              "21.16.256",
+              "21.13.164",
+              "20.31.42",
+              "20.21.37"
+            ]
+          },
+          {
+            "name": "Disable auto feed refresh",
+            "description": "Adds an option to stop feeds from refreshing automatically after they become outdated.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -54099,7 +54223,7 @@
           },
           {
             "name": "Restore original titles",
-            "description": "Adds an option to show the original video titles and descriptions instead of the auto-translated ones.",
+            "description": "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -54679,10 +54803,10 @@
       }
     ],
     "patches_name": "Morphe Patches",
-    "fingerprint": "0f9195ffa68f02b0de6f3a0669e66cd17c103816a50308212d1e76e74e754d1f",
-    "release_notes": "## [1.45.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.20...v1.45.0-dev.21) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))\n\n### ✨ New Features\n\n* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))\n* **YouTube:** Added \"Restore original videos title and description\" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))\n",
-    "release_tag": "v1.45.0-dev.21",
-    "release_date": "2026-09-30T09:20:47Z",
+    "fingerprint": "e4708f269c47120ccf626d04b26a508dd2850c89098554a5b21b300ea3d7002d",
+    "release_notes": "## [1.45.0-dev.22](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.21...v1.45.0-dev.22) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))\n\n### ✨ New Features\n\n* **YouTube - Hide layout components:** Add \"Hide live streams\" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))\n* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))\n* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))\n* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))\n",
+    "release_tag": "v1.45.0-dev.22",
+    "release_date": "2026-10-01T08:57:53Z",
     "isPreRelease": true
   },
   "morphe:stable": {
@@ -56803,9 +56927,9 @@
     ],
     "patches_name": "Morphe Patches",
     "fingerprint": "9ce6c1cb7d2857540b52c1d08113d5653f6520ca56c52a91cdddf2cef841df09",
-    "release_notes": "## [1.45.0-dev.21](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.20...v1.45.0-dev.21) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))\n\n### ✨ New Features\n\n* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))\n* **YouTube:** Added \"Restore original videos title and description\" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))\n",
-    "release_tag": "v1.45.0-dev.21",
-    "release_date": "2026-09-30T09:20:47Z",
+    "release_notes": "## [1.45.0-dev.23](https://github.com/MorpheApp/morphe-patches/compare/v1.45.0-dev.22...v1.45.0-dev.23) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Captions:** Make \"Always show\" override a manual caption-off ([#3421](https://github.com/MorpheApp/morphe-patches/issues/3421)) ([a92b8ed](https://github.com/MorpheApp/morphe-patches/commit/a92b8edc30e31e16ca61e072540ac722a2616ff9))\n* **YouTube:** Search bar becomes invisible with Hide Status Bar enabled ([b0492b5](https://github.com/MorpheApp/morphe-patches/commit/b0492b552c0fe9b760bd6e00c56f6ec3bbd005c0))\n\n### ✨ New Features\n\n* **YouTube - Swipe controls:** Add \"Volume boost\" setting ([#3412](https://github.com/MorpheApp/morphe-patches/issues/3412)) ([9e393e5](https://github.com/MorpheApp/morphe-patches/commit/9e393e542cb8de29edacba412acf127dfc0e775c))\n* **YouTube:** Add `Picture-in-picture button` patch ([#3397](https://github.com/MorpheApp/morphe-patches/issues/3397)) ([6c94728](https://github.com/MorpheApp/morphe-patches/commit/6c947288a3fc75105ef7e1c02d37a324dc20dc76))\n",
+    "release_tag": "v1.45.0-dev.23",
+    "release_date": "2026-10-01T16:14:30Z",
     "isPreRelease": true
   },
   "ipusnas:latest": {
@@ -65720,9 +65844,9 @@
     "bundle": "plyrs1",
     "channel": "latest",
     "repo_url": "https://github.com/Plyrs1/morphe-patches",
-    "created_at": "2026-09-29T09:26:37",
-    "version": "v1.4.0",
-    "description": "## [1.4.0](https://github.com/Plyrs1/morphe-patches/compare/v1.3.0...v1.4.0) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **com_doovera_eujianbrowser:** clear FLAG_SECURE on onResume for screenshot support ([f095bb9](https://github.com/Plyrs1/morphe-patches/commit/f095bb9c3e5e3e30a33e4767b53bffbd2a4ac26a))\n* **com_doovera_eujianbrowser:** fix activity lifecycle contract and register width in startup bypass ([9c7f648](https://github.com/Plyrs1/morphe-patches/commit/9c7f648136dbf2efd55c314e001b435205455592))\n* **com_doovera_eujianbrowser:** fix NoSuchFieldError on Unit singleton and direct exam launch ([0494667](https://github.com/Plyrs1/morphe-patches/commit/0494667005e4c4fba68bda46759e1a4e33beac23))\n\n### ✨ New Features\n\n* **com_doovera_eujianbrowser:** add patch to disable ClipboardGuard and preserve clipboard data ([cea6a78](https://github.com/Plyrs1/morphe-patches/commit/cea6a7839907bfc9e03130e7fc85695ef007c04e))\n* **com_doovera_eujianbrowser:** add patch to remove auto-pin app and allow app switching ([fa9f3d3](https://github.com/Plyrs1/morphe-patches/commit/fa9f3d3f31a8458a3381bb232063bb5cbbe70f21))\n* **com_doovera_eujianbrowser:** Add security bypass and background persistence patches ([40cc3b0](https://github.com/Plyrs1/morphe-patches/commit/40cc3b002e02fe7d4b1aca12c44885c913d0e705))\n* **com_habitrpg_android_habitica:** add self-hosted server, google services stripping, and instant armoire patches ([6ceee47](https://github.com/Plyrs1/morphe-patches/commit/6ceee47bf1bce352a1b81daf50334c0f07501c97))\n* **pertaminiku:** add first-launch credit toast ([f35d17c](https://github.com/Plyrs1/morphe-patches/commit/f35d17cbdf4fb75562fce8ef842611b5f6253658))\n",
+    "created_at": "2026-10-01T13:55:59",
+    "version": "v1.5.0-dev.1",
+    "description": "## [1.5.0-dev.1](https://github.com/Plyrs1/morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **shared:** register Android Auto compatibility target ([26b8fe1](https://github.com/Plyrs1/morphe-patches/commit/26b8fe1bed8e729cf821f910155be1dab36d2b89))\n\n### ✨ New Features\n\n* **com_google_android_projection_gearhead:** add allow sideloaded apps patch ([15558b4](https://github.com/Plyrs1/morphe-patches/commit/15558b4f74ebd362f6dabff436d0e9936e4d0902))\n",
     "apps": [
       {
         "app_name": "E-Ujian Browser",
@@ -65926,6 +66050,21 @@
         ]
       },
       {
+        "app_name": "Android Auto",
+        "package": "com.google.android.projection.gearhead",
+        "patches": [
+          {
+            "name": "Allow sideloaded apps",
+            "description": "Bypasses Play Store installation checks, allowing sideloaded third-party apps to appear and run on the Android Auto car head unit.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "17.7.663654-release"
+            ]
+          }
+        ]
+      },
+      {
         "app_name": "Habitica",
         "package": "com.habitrpg.android.habitica",
         "patches": [
@@ -66026,19 +66165,19 @@
       }
     ],
     "patches_name": "Plyrs1 Patches",
-    "fingerprint": "be333457e78443f88efa3b0d683071b255dbb0ab1c64515808cb1c6d394e3543",
-    "release_notes": "## [1.4.0](https://github.com/Plyrs1/morphe-patches/compare/v1.3.0...v1.4.0) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **com_doovera_eujianbrowser:** clear FLAG_SECURE on onResume for screenshot support ([f095bb9](https://github.com/Plyrs1/morphe-patches/commit/f095bb9c3e5e3e30a33e4767b53bffbd2a4ac26a))\n* **com_doovera_eujianbrowser:** fix activity lifecycle contract and register width in startup bypass ([9c7f648](https://github.com/Plyrs1/morphe-patches/commit/9c7f648136dbf2efd55c314e001b435205455592))\n* **com_doovera_eujianbrowser:** fix NoSuchFieldError on Unit singleton and direct exam launch ([0494667](https://github.com/Plyrs1/morphe-patches/commit/0494667005e4c4fba68bda46759e1a4e33beac23))\n\n### ✨ New Features\n\n* **com_doovera_eujianbrowser:** add patch to disable ClipboardGuard and preserve clipboard data ([cea6a78](https://github.com/Plyrs1/morphe-patches/commit/cea6a7839907bfc9e03130e7fc85695ef007c04e))\n* **com_doovera_eujianbrowser:** add patch to remove auto-pin app and allow app switching ([fa9f3d3](https://github.com/Plyrs1/morphe-patches/commit/fa9f3d3f31a8458a3381bb232063bb5cbbe70f21))\n* **com_doovera_eujianbrowser:** Add security bypass and background persistence patches ([40cc3b0](https://github.com/Plyrs1/morphe-patches/commit/40cc3b002e02fe7d4b1aca12c44885c913d0e705))\n* **com_habitrpg_android_habitica:** add self-hosted server, google services stripping, and instant armoire patches ([6ceee47](https://github.com/Plyrs1/morphe-patches/commit/6ceee47bf1bce352a1b81daf50334c0f07501c97))\n* **pertaminiku:** add first-launch credit toast ([f35d17c](https://github.com/Plyrs1/morphe-patches/commit/f35d17cbdf4fb75562fce8ef842611b5f6253658))\n",
-    "release_tag": "v1.4.0",
-    "release_date": "2026-09-29T09:26:37Z",
-    "isPreRelease": false
+    "fingerprint": "3109109aa1c0dff95a95778e090ea62f9e4835974fcef3edabcb5c7932baff7c",
+    "release_notes": "## [1.5.0-dev.1](https://github.com/Plyrs1/morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **shared:** register Android Auto compatibility target ([26b8fe1](https://github.com/Plyrs1/morphe-patches/commit/26b8fe1bed8e729cf821f910155be1dab36d2b89))\n\n### ✨ New Features\n\n* **com_google_android_projection_gearhead:** add allow sideloaded apps patch ([15558b4](https://github.com/Plyrs1/morphe-patches/commit/15558b4f74ebd362f6dabff436d0e9936e4d0902))\n",
+    "release_tag": "v1.5.0-dev.1",
+    "release_date": "2026-10-01T13:55:59Z",
+    "isPreRelease": true
   },
   "plyrs1:dev": {
     "bundle": "plyrs1",
     "channel": "dev",
     "repo_url": "https://github.com/Plyrs1/morphe-patches",
-    "created_at": "2026-09-28T23:06:27",
-    "version": "v1.4.0-dev.2",
-    "description": "## [1.4.0-dev.2](https://github.com/Plyrs1/morphe-patches/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-09-28)\n\n### ✨ New Features\n\n* **com_habitrpg_android_habitica:** add self-hosted server, google services stripping, and instant armoire patches ([6ceee47](https://github.com/Plyrs1/morphe-patches/commit/6ceee47bf1bce352a1b81daf50334c0f07501c97))\n",
+    "created_at": "2026-10-01T13:55:59",
+    "version": "v1.5.0-dev.1",
+    "description": "## [1.5.0-dev.1](https://github.com/Plyrs1/morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **shared:** register Android Auto compatibility target ([26b8fe1](https://github.com/Plyrs1/morphe-patches/commit/26b8fe1bed8e729cf821f910155be1dab36d2b89))\n\n### ✨ New Features\n\n* **com_google_android_projection_gearhead:** add allow sideloaded apps patch ([15558b4](https://github.com/Plyrs1/morphe-patches/commit/15558b4f74ebd362f6dabff436d0e9936e4d0902))\n",
     "apps": [
       {
         "app_name": "E-Ujian Browser",
@@ -66242,6 +66381,21 @@
         ]
       },
       {
+        "app_name": "Android Auto",
+        "package": "com.google.android.projection.gearhead",
+        "patches": [
+          {
+            "name": "Allow sideloaded apps",
+            "description": "Bypasses Play Store installation checks, allowing sideloaded third-party apps to appear and run on the Android Auto car head unit.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "17.7.663654-release"
+            ]
+          }
+        ]
+      },
+      {
         "app_name": "Habitica",
         "package": "com.habitrpg.android.habitica",
         "patches": [
@@ -66342,10 +66496,10 @@
       }
     ],
     "patches_name": "Plyrs1 Patches",
-    "fingerprint": "a0dfe8e7a1932ae3bc9e3a74d30c16953a3c832525caeb599788ec90f265b80e",
-    "release_notes": "## [1.4.0-dev.2](https://github.com/Plyrs1/morphe-patches/compare/v1.4.0-dev.1...v1.4.0-dev.2) (2026-09-28)\n\n### ✨ New Features\n\n* **com_habitrpg_android_habitica:** add self-hosted server, google services stripping, and instant armoire patches ([6ceee47](https://github.com/Plyrs1/morphe-patches/commit/6ceee47bf1bce352a1b81daf50334c0f07501c97))\n",
-    "release_tag": "v1.4.0-dev.2",
-    "release_date": "2026-09-28T23:06:27Z",
+    "fingerprint": "9c73f750111c8d34d0eeac9bcd2b9e0f80cff7bcf39d2f46fcf96c8c631324de",
+    "release_notes": "## [1.5.0-dev.1](https://github.com/Plyrs1/morphe-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **shared:** register Android Auto compatibility target ([26b8fe1](https://github.com/Plyrs1/morphe-patches/commit/26b8fe1bed8e729cf821f910155be1dab36d2b89))\n\n### ✨ New Features\n\n* **com_google_android_projection_gearhead:** add allow sideloaded apps patch ([15558b4](https://github.com/Plyrs1/morphe-patches/commit/15558b4f74ebd362f6dabff436d0e9936e4d0902))\n",
+    "release_tag": "v1.5.0-dev.1",
+    "release_date": "2026-10-01T13:55:59Z",
     "isPreRelease": true
   },
   "plyrs1:stable": {
@@ -66819,9 +66973,9 @@
     "bundle": "iptv",
     "channel": "latest",
     "repo_url": "https://github.com/Okazakee/iptv-morphe-patches",
-    "created_at": "2026-08-31T16:36:42",
-    "version": "v1.0.1",
-    "description": "Stable release containing the fixed Morphe installer-source patch and Unlock Pro patch.",
+    "created_at": "2026-10-01T14:12:38",
+    "version": "v1.0.2",
+    "description": "## [1.0.2](https://github.com/Okazakee/iptv-morphe-patches/compare/v1.0.1...v1.0.2) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* dedupe bundle display name (\"IPTV IPTV patches\" -> \"IPTV Pro patches\") ([a856d74](https://github.com/Okazakee/iptv-morphe-patches/commit/a856d74ea35e4ac1b7cbe251876a748b33fa7c7a))\n",
     "apps": [
       {
         "app_name": "IPTV Pro Stream Player",
@@ -66851,9 +67005,9 @@
     "bundle": "iptv",
     "channel": "dev",
     "repo_url": "https://github.com/Okazakee/iptv-morphe-patches",
-    "created_at": "2026-08-31T15:51:35",
-    "version": "v1.0.0-dev.1",
-    "description": "## 1.0.0-dev.1 (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* trigger dev after tag cleanup ([bebc97a](https://github.com/Okazakee/iptv-morphe-patches/commit/bebc97a49d5e345a6172a071abf111512bb49c48))\n* use method instead of mutableMethod for morphe-patcher 1.11.0 ([8137a2d](https://github.com/Okazakee/iptv-morphe-patches/commit/8137a2d9e35111d19b8f76876a4f69ce454f52c1))\n* use shared changePackageInstallerPatch + mutableMethod + Boolean.TRUE for IPTV ([e984175](https://github.com/Okazakee/iptv-morphe-patches/commit/e9841753b8363d6cb6c493237da4e9f760a8f82e))\n\n### ✨ New Features\n\n* add Unlock Pro patch for IPTV Pro Stream Player ([8f120b4](https://github.com/Okazakee/iptv-morphe-patches/commit/8f120b46bdb730eb5b6cb6745ab4880128e7e1a9))\n* test new dev version for Morphe ([c7ec32a](https://github.com/Okazakee/iptv-morphe-patches/commit/c7ec32a8eaf77b801dd7d88f6f9b8387fc635796))\n",
+    "created_at": "2026-10-01T14:08:15",
+    "version": "v1.0.2-dev.1",
+    "description": "## [1.0.2-dev.1](https://github.com/Okazakee/iptv-morphe-patches/compare/v1.0.1...v1.0.2-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* dedupe bundle display name (\"IPTV IPTV patches\" -> \"IPTV Pro patches\") ([a856d74](https://github.com/Okazakee/iptv-morphe-patches/commit/a856d74ea35e4ac1b7cbe251876a748b33fa7c7a))\n",
     "apps": [
       {
         "app_name": "IPTV Pro Stream Player",
@@ -66874,18 +67028,18 @@
     ],
     "patches_name": "IPTV IPTV patches",
     "fingerprint": "b34185c27e518d50410b15ac472e4fecae7e66f87136b04eefc28d80575407e9",
-    "release_notes": "## 1.0.0-dev.1 (2026-08-31)\n\n### 🐛 Bug Fixes\n\n* trigger dev after tag cleanup ([bebc97a](https://github.com/Okazakee/iptv-morphe-patches/commit/bebc97a49d5e345a6172a071abf111512bb49c48))\n* use method instead of mutableMethod for morphe-patcher 1.11.0 ([8137a2d](https://github.com/Okazakee/iptv-morphe-patches/commit/8137a2d9e35111d19b8f76876a4f69ce454f52c1))\n* use shared changePackageInstallerPatch + mutableMethod + Boolean.TRUE for IPTV ([e984175](https://github.com/Okazakee/iptv-morphe-patches/commit/e9841753b8363d6cb6c493237da4e9f760a8f82e))\n\n### ✨ New Features\n\n* add Unlock Pro patch for IPTV Pro Stream Player ([8f120b4](https://github.com/Okazakee/iptv-morphe-patches/commit/8f120b46bdb730eb5b6cb6745ab4880128e7e1a9))\n* test new dev version for Morphe ([c7ec32a](https://github.com/Okazakee/iptv-morphe-patches/commit/c7ec32a8eaf77b801dd7d88f6f9b8387fc635796))\n",
-    "release_tag": "v1.0.0-dev.1",
-    "release_date": "2026-08-31T15:51:35Z",
-    "isPreRelease": true
+    "release_notes": "Stable release containing the fixed Morphe installer-source patch and Unlock Pro patch.",
+    "release_tag": "v1.0.1",
+    "release_date": "2026-08-31T16:36:42Z",
+    "isPreRelease": false
   },
   "iptv:stable": {
     "bundle": "iptv",
     "channel": "stable",
     "repo_url": "https://github.com/Okazakee/iptv-morphe-patches",
-    "created_at": "2026-08-31T16:36:42",
-    "version": "v1.0.1",
-    "description": "Stable release containing the fixed Morphe installer-source patch and Unlock Pro patch.",
+    "created_at": "2026-10-01T14:12:38",
+    "version": "v1.0.2",
+    "description": "## [1.0.2](https://github.com/Okazakee/iptv-morphe-patches/compare/v1.0.1...v1.0.2) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* dedupe bundle display name (\"IPTV IPTV patches\" -> \"IPTV Pro patches\") ([a856d74](https://github.com/Okazakee/iptv-morphe-patches/commit/a856d74ea35e4ac1b7cbe251876a748b33fa7c7a))\n",
     "apps": [
       {
         "app_name": "IPTV Pro Stream Player",
@@ -89468,9 +89622,9 @@
     "bundle": "lockhart07",
     "channel": "latest",
     "repo_url": "https://github.com/LOCKhart07/morphe-patches",
-    "created_at": "2026-09-10T13:13:18",
-    "version": "v1.0.0",
-    "description": "## 1.0.0 (2026-09-10)\n\n### ✨ New Features\n\n* Heads Up! – unlock all decks ([47c0862](https://github.com/LOCKhart07/morphe-patches/commit/47c0862c40dc45c3c2c65e83d8fe87adaed5e56b)), closes [#1](https://github.com/LOCKhart07/morphe-patches/issues/1)\n",
+    "created_at": "2026-10-01T13:56:04",
+    "version": "v1.0.1",
+    "description": "## [1.0.1](https://github.com/LOCKhart07/morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* support armeabi-v7a in Heads Up! unlock all decks ([2f3c05e](https://github.com/LOCKhart07/morphe-patches/commit/2f3c05eadf817777f1bf0bcbade8489e3312664a)), closes [#3](https://github.com/LOCKhart07/morphe-patches/issues/3)\n",
     "apps": [
       {
         "app_name": "Heads Up!",
@@ -89490,18 +89644,49 @@
     ],
     "patches_name": "LOCKhart07 Patches",
     "fingerprint": "a14545647d9a7396474eef3c5679c51735b1e8687ef32f54c2b748646fc32083",
-    "release_notes": "## 1.0.0 (2026-09-10)\n\n### ✨ New Features\n\n* Heads Up! – unlock all decks ([47c0862](https://github.com/LOCKhart07/morphe-patches/commit/47c0862c40dc45c3c2c65e83d8fe87adaed5e56b)), closes [#1](https://github.com/LOCKhart07/morphe-patches/issues/1)\n",
-    "release_tag": "v1.0.0",
-    "release_date": "2026-09-10T13:13:18Z",
+    "release_notes": "## [1.0.1](https://github.com/LOCKhart07/morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* support armeabi-v7a in Heads Up! unlock all decks ([2f3c05e](https://github.com/LOCKhart07/morphe-patches/commit/2f3c05eadf817777f1bf0bcbade8489e3312664a)), closes [#3](https://github.com/LOCKhart07/morphe-patches/issues/3)\n",
+    "release_tag": "v1.0.1",
+    "release_date": "2026-10-01T13:56:04Z",
     "isPreRelease": false
+  },
+  "lockhart07:dev": {
+    "bundle": "lockhart07",
+    "channel": "dev",
+    "repo_url": "https://github.com/LOCKhart07/morphe-patches",
+    "created_at": "2026-10-01T13:54:48",
+    "version": "v1.0.1-dev.1",
+    "description": "## [1.0.1-dev.1](https://github.com/LOCKhart07/morphe-patches/compare/v1.0.0...v1.0.1-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* support armeabi-v7a in Heads Up! unlock all decks ([2f3c05e](https://github.com/LOCKhart07/morphe-patches/commit/2f3c05eadf817777f1bf0bcbade8489e3312664a)), closes [#3](https://github.com/LOCKhart07/morphe-patches/issues/3)\n",
+    "apps": [
+      {
+        "app_name": "Heads Up!",
+        "package": "com.wb.headsup",
+        "patches": [
+          {
+            "name": "Unlock all decks",
+            "description": "Unlocks every deck without a purchase by forcing the native ownership checks in libil2cpp.so to report each deck as bought.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "4.15.11"
+            ]
+          }
+        ]
+      }
+    ],
+    "patches_name": "LOCKhart07 Patches",
+    "fingerprint": "e65dd6918dc12a9d95444d99004a455991f50283dc28d5bff42a63799eed9deb",
+    "release_notes": "## [1.0.1-dev.1](https://github.com/LOCKhart07/morphe-patches/compare/v1.0.0...v1.0.1-dev.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* support armeabi-v7a in Heads Up! unlock all decks ([2f3c05e](https://github.com/LOCKhart07/morphe-patches/commit/2f3c05eadf817777f1bf0bcbade8489e3312664a)), closes [#3](https://github.com/LOCKhart07/morphe-patches/issues/3)\n",
+    "release_tag": "v1.0.1-dev.1",
+    "release_date": "2026-10-01T13:54:48Z",
+    "isPreRelease": true
   },
   "lockhart07:stable": {
     "bundle": "lockhart07",
     "channel": "stable",
     "repo_url": "https://github.com/LOCKhart07/morphe-patches",
-    "created_at": "2026-09-10T13:13:18",
-    "version": "v1.0.0",
-    "description": "## 1.0.0 (2026-09-10)\n\n### ✨ New Features\n\n* Heads Up! – unlock all decks ([47c0862](https://github.com/LOCKhart07/morphe-patches/commit/47c0862c40dc45c3c2c65e83d8fe87adaed5e56b)), closes [#1](https://github.com/LOCKhart07/morphe-patches/issues/1)\n",
+    "created_at": "2026-10-01T13:56:04",
+    "version": "v1.0.1",
+    "description": "## [1.0.1](https://github.com/LOCKhart07/morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* support armeabi-v7a in Heads Up! unlock all decks ([2f3c05e](https://github.com/LOCKhart07/morphe-patches/commit/2f3c05eadf817777f1bf0bcbade8489e3312664a)), closes [#3](https://github.com/LOCKhart07/morphe-patches/issues/3)\n",
     "apps": [
       {
         "app_name": "Heads Up!",
@@ -89521,9 +89706,9 @@
     ],
     "patches_name": "LOCKhart07 Patches",
     "fingerprint": "16ea43395f7928937ac02698dc89dab3f5ae210e1269551c1614440d1a141463",
-    "release_notes": "## 1.0.0 (2026-09-10)\n\n### ✨ New Features\n\n* Heads Up! – unlock all decks ([47c0862](https://github.com/LOCKhart07/morphe-patches/commit/47c0862c40dc45c3c2c65e83d8fe87adaed5e56b)), closes [#1](https://github.com/LOCKhart07/morphe-patches/issues/1)\n",
-    "release_tag": "v1.0.0",
-    "release_date": "2026-09-10T13:13:18Z",
+    "release_notes": "## [1.0.1](https://github.com/LOCKhart07/morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* support armeabi-v7a in Heads Up! unlock all decks ([2f3c05e](https://github.com/LOCKhart07/morphe-patches/commit/2f3c05eadf817777f1bf0bcbade8489e3312664a)), closes [#3](https://github.com/LOCKhart07/morphe-patches/issues/3)\n",
+    "release_tag": "v1.0.1",
+    "release_date": "2026-10-01T13:56:04Z",
     "isPreRelease": false
   },
   "letterboxd:latest": {
@@ -104649,8 +104834,8 @@
     "bundle": "wake-old-hyphen",
     "channel": "dev",
     "repo_url": "https://github.com/Wake-Old-Hyphen/hushfeed",
-    "created_at": "2026-10-01T12:58:44Z",
-    "version": "privacy-tiktok-multi-v0.66.0-20261001-125843",
+    "created_at": "2026-10-01T14:19:36Z",
+    "version": "privacy-tiktok-multi-v0.66.0-20261001-141936",
     "description": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (com.zhiliaoapp.musically).\n\nTikTok 47.1.4 is supported, and Hushfeed's settings now come in Italian and Russian. Change app name puts a name of your own under the app icon, Keep a streak going sends one message a day to someone you pick, Look like the store app is for follows and likes that undo themselves, and Keep playing in the background keeps a video going with the screen off.\n\nThe share sheet no longer shows \"Tap again to send\" on a friend you never touched, Fit the video to the screen follows a space that changes size, and patching is faster. See the changelog for the full list.\n\nValidation: 2565 runtime tests passed and 480 patch tests passed locally. Both Android lint checks passed. All 102 patches applied to all three supported APKs with resource and manifest checks. The attached release receipt identifies the exact source and bundle. Keep a streak going was checked on an Android emulator running TikTok 47.1.3.\n\nNeeds Morphe Manager 1.32.0 or newer. Refresh the Hushfeed source to update. The .mpp is a patch bundle, not a TikTok APK. Keep the manager's existing signing key when updating.",
     "apps": [
       {
@@ -105799,10 +105984,10 @@
     ],
     "patches_name": "Hushfeed",
     "fingerprint": "f439620379b7f6d28cd924f60b880c0a56bf1eddd2a466fddf3aef349662c936",
-    "release_notes": "# TikTok Privacy Build (47.0.3, 47.1.3)\n\nAutomated privacy-hardened builds.\n\n- Hushfeed v0.66.0 (includes AMOLED dark-theme fix)\n- Nai64 Extra Patches v1.1.0\n- Static manifest permission stripping\n- arm64-v8a only (32-bit libraries stripped)\n\nBase APKs: `stock-tiktok-apk` release, Wake-Old-Hyphen/PAB\n\n## Patches\n\n<details>\n<summary>Hushfeed patches (102/102 enabled)</summary>\n\nEnabled:\n- AMOLED dark theme\n- Advanced downloads\n- Allow Duet and Stitch\n- Allow screenshots and Circle to Search\n- Always show publish date\n- Automatic video advance\n- Block P2P video relay\n- Block author button\n- Block contact list access\n- Block installed app scanning\n- Camera and microphone indicator\n- Change app name\n- Comment publish diagnostics\n- Comment send fix\n- Comment sort controls\n- Comment tools\n- Confirm feed interactions\n- Copy comments without username\n- Custom offline videos limit\n- Device privacy guard\n- Diagnostic tools\n- Disable login requirement\n- Disable screen capture detection\n- Disable telemetry\n- Disable the long press quick share\n- Disable the long press repost\n- Double-tap controls\n- Downloads\n- Drop the animated image cache\n- Enable voice comments\n- Expand activity list\n- Feature Gate Lab\n- Feature Gate Recorder\n- Feed filter\n- Feed tab navigation\n- Fit the video to the screen\n- Fix Google login\n- Foldable split comment view\n- Follow diagnostics\n- Ghost mode\n- Hide CAPTCHA popups\n- Hide Play Store update offer\n- Hide already seen videos\n- Hide comment popup ads\n- Hide comment typing suggestions\n- Hide feed LIVE button\n- Hide feed follow button\n- Hide feed save button\n- Hide feed search button\n- Hide floating promotions\n- Hide inbox items\n- Hide inbox stories\n- Hide search suggestions\n- Hide suggested accounts\n- Hide the launcher shortcuts\n- Hide the risk control CAPTCHA\n- Hide video overlays\n- Hold-and-slide 2x lock\n- In-app browser privacy guard\n- Keep a streak going\n- Keep playing in the background\n- Keep the Favorites tab\n- Keep the screen's refresh rate\n- Limit background traffic\n- Location access governor\n- Long-press controls\n- Look like the store app\n- Mute feed videos\n- Network request report\n- Not interested button\n- Notification controls\n- Open external links directly\n- Playback quality\n- Playback speed\n- Region spoof\n- Remember clear display\n- Remove LIVE extras\n- Remove content credential and card scanner assets\n- Remove creation tools\n- Remove unused language packs\n- Repost diagnostics\n- Resource and battery governor\n- Resume videos after scrolling\n- SIM spoof\n- Sanitize sharing links\n- Settings\n- Share sheet tools\n- Show LIVE search\n- Show author region\n- Show the progress bar\n- Show the progress bar thumbnail\n- Skip content warnings\n- Skip the splash ad\n- Skip update checks\n- Stay on the video in full screen\n- Stop on-device AI profiling\n- Stop video looping\n- Subtitle tools\n- Swipe-left controls\n- Translate comments\n- Use non-personalized search\n- Use system font\n\n</details>\n\n<details>\n<summary>Nai64 Extra Patches (16/432 enabled)</summary>\n\nEnabled:\n- Bypass VPN Detection\n- Disable Crash Reporters\n- Disable Firebase Auto-Init\n- Disable Firebase Performance\n- Disable Remote Config Fetch\n- Disable Root Checks\n- Hide Roaming Status\n- Limit Ad Tracking\n- Remove Ad Services Entries\n- Spoof Phone Number\n- Spoof Play Store Install Source\n- Spoof SIM Serial Number (simSerial=8931084206518391742)\n- Spoof Subscriber ID (subscriberId=204081234567890)\n- Spoof Tracking IDs (spoofAppSetId=00000000-0000-0000-0000-000000000000, spoofFirebaseId=0000000000000000000000, spoofAppSetScope=True)\n- Spoof Voice Mail\n- Strip Exif Location (stripExifLocation=True)\n\nDisabled (yielded to Hushfeed):\n- AMOLED Theme\n- Allow Background Activity\n- Allow Clearing App Data\n- Allow Cleartext Traffic\n- Allow Mixed Content\n- Allow Mobile Downloads\n- Allow Screenshots\n- Allow Text Selection\n- Allow WebView Autoplay\n- Allow WebView File Access\n- Always Allow Biometrics\n- Always Show Scrollbars\n- Apk Junk Cleanup\n- Block APM Suites\n- Block Ad Network Extras\n- Block Analytics Long Tail\n- Block Attribution Extras\n- Block BLE Scan\n- Block Crash Extras\n- Block Data Pipelines\n- Block GMS Tracking\n- Block Huawei Analytics\n- Block Install Referrer\n- Block Legacy Analytics\n- Block Location Trackers\n- Block MoEngage\n- Block PostHog\n- Block Profile Tracking\n- Block Push Ads\n- Block Push Analytics\n- Block Screenshot Detection\n- Block Session Replay\n- Block Snowplow\n- Block TikTok Events\n- Block Yandex Metrica\n- Bypass DND Policy Access\n- Bypass Demo User\n- Bypass Emulator Detection\n- Bypass Forced Updates (Experimental)\n- Bypass Google Play Services Check\n- Bypass Guest User\n- Bypass Hostname Verification\n- Bypass Instant App\n- Bypass Keyguard Secure\n- Bypass License Verification\n- Bypass Linked User\n- Bypass Lock Task Mode\n- Bypass Low-End Device\n- Bypass Managed Profile\n- Bypass OkHttp Pinning\n- Bypass Overlay Detection\n- Bypass Package Suspended\n- Bypass Permission Check\n- Bypass Picture-in-Picture Mode\n- Bypass Play License Check\n- Bypass Safe Mode\n- Bypass System User\n- Bypass Test Environment\n- Bypass User Restricted\n- Bypass WebView SSL Errors\n- Bypass WebView Safe Browsing\n- Change Package Name\n- Change Version Code\n- Change Version Name\n- Classic Back Gesture\n- Clearing Split Metadata\n- Custom Accent Color\n- Custom App Icon\n- Custom App Resolution (Experimental)\n- Custom Navigation Bar Color\n- Custom Startup Dialog\n- Custom Startup Sound\n- Custom Startup Toast\n- Custom Status Bar Color\n- Custom Window Background\n- Deny Permission Checks\n- Disable Activity Transitions\n- Disable Ad SDK Init\n- Disable Analytics Events\n- Disable Animations\n- Disable App Backup\n- Disable App Links Verification\n- Disable Audio Effects\n- Disable Audio Recording\n- Disable Autofill\n- Disable Background Dim\n- Disable Background Sync\n- Disable Bandcamp Tracker\n- Disable Battery Optimization Prompt\n- Disable Bluetooth A2DP\n- Disable Bluetooth Discovering\n- Disable Bluetooth SCO\n- Disable Boot Auto-Start\n- Disable Camera Shutter Sound\n- Disable Clipboard Write\n- Disable Content Capture\n- Disable DTMF Tones\n- Disable Edge-To-Edge Enforcement\n- Disable Elevation Shadows\n- Disable Facebook SDK Auto-Init\n- Disable Fixed Volume\n- Disable Forced Online Checks (Experimental)\n- Disable Game Sounds\n- Disable Google Pay\n- Disable Google Update Check\n- Disable HDR Detection\n- Disable Haptic Feedback\n- Disable Haptic On Scroll\n- Disable Hardware Acceleration\n- Disable Heads-up Notifications\n- Disable Heap Pointer Tagging\n- Disable High Text Contrast\n- Disable Keyboard Sound\n- Disable Location Requests\n- Disable Logcat Logging\n- Disable Music Detection\n- Disable Notification Badges\n- Disable Notification Sound\n- Disable Notification Vibration\n- Disable Notifications\n- Disable Onboarding Overlays\n- Disable Orientation Lock\n- Disable Overscroll Effect\n- Disable Permission Auto-Revoke\n- Disable Popup Keyboard\n- Disable Quiet Mode\n- Disable RTT\n- Disable Ringtone Playback\n- Disable Scrollbars\n- Disable Secure Surfaces\n- Disable Sensors\n- Disable Snackbars\n- Disable Sound Effects\n- Disable StrictMode\n- Disable Support Banners\n- Disable Telemetry\n- Disable Text-to-Speech\n- Disable Toasts\n- Disable Vibration\n- Disable Wake Locks\n- Disable WebView Safe Browsing\n- Disable Window Blur\n- Empty Clipboard Report\n- Enable Hidden Settings\n- Enable Large Heap\n- Enable Unrestricted Background Work\n- Enable Unrestricted Clipboard Access\n- Enable WebView App Cache\n- Enable WebView Cache\n- Enable WebView Content Access\n- Enable WebView DOM Storage\n- Enable WebView Debugging\n- Enable WebView Geolocation\n- Enable WebView Image Loading\n- Enable WebView Initial Focus\n- Enable WebView JavaScript\n- Enable WebView Offscreen Pre-Raster\n- Enable WebView Popups\n- Enable WebView Save Form Data\n- Enable WebView Save Password\n- Enable WebView Wide Viewport\n- Enable WebView Zoom\n- Enable WebView Zoom Support\n- Ensure Exact Alarm Availability\n- Ensure Internet Permission\n- Ensure Modern Media Permissions\n- Ensure Notification Permission\n- Ensure Storage Permissions\n- Exclude From Recents\n- Export All Activities\n- Fake ADB Enabled\n- Fake Animation Scales\n- Fake Auto Rotate On\n- Fake Auto Time\n- Fake Auto Time Zone\n- Fake Available Processors\n- Fake Battery Whitelist\n- Fake Bluetooth Bonded Devices Empty\n- Fake Bluetooth Enabled\n- Fake Brightness Auto Mode\n- Fake Cell Info Empty\n- Fake DTMF Tone Enabled\n- Fake Device Admin\n- Fake Device Idle Mode\n- Fake Doze Always On\n- Fake Fingerprint Hardware\n- Fake Font Scale\n- Fake Location Accuracy\n- Fake Memory Class\n- Fake NFC Enabled\n- Fake Notification Listener\n- Fake Notification Policy Access\n- Fake Online State\n- Fake Pointer Location\n- Fake Screen Timeout\n- Fake Show Touches\n- Fake Sound Effects Enabled\n- Fake Stay On While Plugged\n- Fake Storage Available\n- Fake Store Install Source\n- Fake Usage Access\n- Fake Vibrate When Ringing\n- Fake WiFi Scan Results Empty\n- Fake Write Settings Access\n- Fix Maps on MicroG\n- Force 32-Bit Color\n- Force 5GHz Band Supported\n- Force Android Beam\n- Force App Active\n- Force Battery Health Good\n- Force Battery Present\n- Force Battery Temperature\n- Force Can Install Packages\n- Force Charging Status\n- Force Dark Mode\n- Force Data Capable\n- Force Do Not Disturb Off\n- Force Emulated Storage\n- Force Extract Native Libs\n- Force Google Signed-Out\n- Force Haptics Available\n- Force Hardware Acceleration\n- Force Hardware Layers\n- Force Has System Feature\n- Force Idle Call State\n- Force Ignore Audio Focus\n- Force Landscape / Portrait\n- Force Left-to-Right Layout\n- Force Light Mode\n- Force Max Brightness\n- Force Microphone Unmuted\n- Force Multi-SIM\n- Force Normal Audio Mode\n- Force Overlay Permission\n- Force Picture-in-Picture\n- Force Resizable Activity\n- Force SIM Ready\n- Force SMS Capable\n- Force Screen Interactive\n- Force Single Phone\n- Force Single SIM\n- Force Speakerphone Off\n- Force Speakerphone On\n- Force Storage Non-Removable\n- Force User Unlocked\n- Force Voice Capable\n- Force WiFi P2P Supported\n- Force WiFi Scan Always Available\n- Force Wide Color Gamut\n- Force World Phone\n- Frame Rate Preference (Experimental)\n- GmsCore support (MicroG)\n- Grant All-Files Access\n- Grant WebView Geolocation\n- Graphics API Override (Experimental)\n- Hide Accessibility Services\n- Hide Accessibility Usage\n- Hide Accounts\n- Hide App Ops\n- Hide App Tasks\n- Hide Audio Devices\n- Hide Cell Location\n- Hide Cell Signal\n- Hide Clipboard\n- Hide Clipboard Description\n- Hide Current Location\n- Hide Data Usage\n- Hide Debugger Connection\n- Hide Default Sensor\n- Hide Device Admins\n- Hide Display Cutout\n- Hide Eavesdropping\n- Hide Hardware Address\n- Hide Input Devices\n- Hide Input Methods\n- Hide Installed Apps\n- Hide Mock Location\n- Hide Navigation Bar\n- Hide Neighboring Cells\n- Hide Network Identity\n- Hide Nfc Adapter\n- Hide Personal Data\n- Hide Query Intents\n- Hide Running Processes\n- Hide Running Services\n- Hide Service State\n- Hide Storage Volumes\n- Hide Stylus Handwriting\n- Hide Title Bar\n- Hide USB Devices\n- Hide Usage Events\n- Hide Usage Stats\n- Hide Wallpaper\n- Ignore Data Saver\n- Ignore GPS Disabled\n- Ignore Location Services Off\n- Ignore Low RAM Device\n- Ignore Power Save Mode\n- Ignore Screen Lock\n- Ignore Touch Exploration\n- Immersive Fullscreen\n- Keep Data on Uninstall\n- Keep Screen On\n- Legacy App Reviver\n- Legacy External Storage\n- Make App Debuggable\n- Nai64Patches Universal Overlay Patch v1.0 (Experimental)\n- Null Play Location\n- Optimize as Game\n- Prefer ANGLE Graphics Driver\n- Preserve App Data\n- Relax Hardware Features\n- Relax Required Libraries\n- Relax Shared Libraries\n- Remove App Icon\n- Remove Backup Restrictions\n- Remove Compatible Screens\n- Remove Hardware Requirements\n- Remove Internet Permission\n- Remove Network Security Config\n- Remove Permissions\n- Remove Play Count Limit\n- Rename App\n- Repair Missing Component Export Flags\n- Report Legacy Storage\n- Report No Cameras\n- Restore Package Visibility\n- Set Install Location\n- Set Profileable\n- Show Navigation Bar\n- Show Search Result Scores\n- Show Status Bar\n- Silence Notification Channels\n- Silence Play Services Errors\n- Skip Consent Popup\n- Skip Rate-Us Prompt\n- Skip Splash Screen (Experimental)\n- Spoof 24-Hour Format\n- Spoof Airplane Mode\n- Spoof Amazon Appstore Availability\n- Spoof Android ID\n- Spoof App Signature\n- Spoof BSSID\n- Spoof Battery Charging State\n- Spoof Battery Level\n- Spoof Bluetooth Audio On\n- Spoof Bluetooth Enabled\n- Spoof Bluetooth Identity\n- Spoof Bluetooth Name\n- Spoof Bluetooth Profile State\n- Spoof Board and Hardware\n- Spoof Build Fingerprint\n- Spoof Build Serial\n- Spoof Build Type and Tags\n- Spoof CPU Architecture\n- Spoof Data State\n- Spoof Developer Options\n- Spoof Device Model\n- Spoof Device Provisioned\n- Spoof Device Software Version\n- Spoof Fixed Location\n- Spoof GPU Info\n- Spoof Group ID Level 1\n- Spoof High Sample Rate\n- Spoof IMEI\n- Spoof ISIM IMPI\n- Spoof Last Known Location\n- Spoof Locale\n- Spoof Location Provider\n- Spoof MAC Address\n- Spoof Media Playing\n- Spoof Multi-Window Mode\n- Spoof Network Access Identifier\n- Spoof Network Operator Name\n- Spoof Network Type LTE\n- Spoof Notifications as Enabled\n- Spoof OpenGL ES Version\n- Spoof Play Integrity\n- Spoof Play Services Version\n- Spoof Ringer Mode\n- Spoof SDK Level\n- Spoof SIM Country\n- Spoof SIM Operator\n- Spoof SIM Operator Name\n- Spoof Sensor List\n- Spoof Signature Match\n- Spoof Storage State\n- Spoof Stream Volume\n- Spoof Target SDK\n- Spoof Time Zone\n- Spoof UiMode Night State\n- Spoof WebView User Agent\n- Spoof WiFi Enabled\n- Spoof WiFi RSSI\n- Spoof WiFi SSID\n- Spoof Widevine L1\n- Spoof Wired Headset\n- Status Bar Icons\n- Strip BuildConfig DEBUG\n- Strip Package Verifier\n- Strip Translations\n- Support All Screens\n- Tablet Mode\n- Transparent System Bars\n- Treat Network as Unmetered\n- Treat Screen as On\n- Trust User CAs (Config)\n- Trust User Certificates\n- Unlock Max Aspect Ratio\n- Unlock Notification Channels\n- Unlock Playback Speed\n- Unlock Rotation\n- Unmark Test Only\n- Use Display Cutout Area\n- VM Safe Mode\n- WebView Private Mode\n\n</details>\n\n## Permissions\n\n### TikTok 47.0.3\n\n<details>\n<summary>Removed permissions (57)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECEIVE_BOOT_COMPLETED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SCHEDULE_EXACT_ALARM\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_EXACT_ALARM\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n### TikTok 47.1.3\n\n<details>\n<summary>Removed permissions (58)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECEIVE_BOOT_COMPLETED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SCHEDULE_EXACT_ALARM\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_EXACT_ALARM\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.PRF_INTERNAL\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n## Changelog since previous build\n\n- b12a1693 fix(gestures): open the comments of the video on screen (Refs #63)\n- 6b09dc78 fix(feed): count hidden LIVE rooms without an API 24 call (Refs #57)\n- 8ae12d2b feat(feed): filter the LIVE feed you swipe through (Refs #57)\n- 9d8d29ec chore(release): point Manager to the verified 0.66.0 bundle\n- e5bb455b chore(release): approve Keep a streak going's alarm permissions\n- 1fca4892 chore(release): prepare 0.66.0 for publication\n- 5ad3cfd4 fix(fit): let go of a space whose video has left, at any size (Refs #29)\n- 8d9b5a0f fix(diagnostics): report the saved choices under Pause (Refs #58, Refs #29)\n- 3c6aa21d fix(l10n): name settings the way their own rows do (Refs #60, Refs #61)\n- 62332db7 test(l10n): read count forms by position, number row units included\n- 624e4b80 fix(l10n): keep English first, and count by the shown language's rule\n\n## Build information\n\n| Item | Value |\n|---|---|\n| TikTok versions | 47.0.3, 47.1.3 |\n| Architecture | arm64-v8a |\n| Hushfeed | v0.66.0 |\n| Nai64 | v1.1.0 |\n\n## Installation note\n\nThese builds are signed with a custom keystore. Uninstall any existing TikTok (stock or previously patched) before first install; subsequent updates from this workflow install in place.\n",
-    "release_tag": "privacy-tiktok-multi-v0.66.0-20261001-125843",
-    "release_date": "2026-10-01T12:58:44Z",
-    "isPreRelease": true
+    "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0",
+    "release_tag": "v0.66.0",
+    "release_date": "2026-10-01T12:41:23Z",
+    "isPreRelease": false
   },
   "wake-old-hyphen:stable": {
     "bundle": "wake-old-hyphen",
@@ -121837,9 +122022,9 @@
     "bundle": "hushfeed",
     "channel": "latest",
     "repo_url": "https://github.com/SysAdminDoc/HushFeed",
-    "created_at": "2026-09-30T03:21:31",
-    "version": "v0.65.0",
-    "description": "Hushfeed v0.65.0 has 98 patches for global TikTok 47.0.3 and 47.1.3 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* Mute feed videos now works on TikTok 47.1.3, and on 47.0.3 it silences photo posts with a sound too. A video is already quiet when you swipe to it, and it stays quiet after you watch the same video from a DM or scroll a long profile grid. DMs, stories and LIVE keep their sound, and another app's music keeps playing.\n* Press and hold the Home tab to open Hushfeed's settings (#45). A tap on Home works as before.\n* Every save says it's been taken the moment you ask, including the ones waiting in line. If TikTok closes in the middle of a save, a banner says which saves didn't finish the next time you open it.\n* Saves connect only to the server address Hushfeed checked, so nothing can swap in a different machine between the check and the download.\n* The block control, the mute button and Hushfeed's other buttons over the video now show on videos opened from a creator's profile, a hashtag or a sound.\n* When the time budget runs out partway through a long video, the notice and the hold come right then, and the budget label leaves as soon as you switch tabs.\n* New row under Downloads, Forget saved videos. It empties the already-saved record and keeps your files.\n* On Android 10 and older, the block button, Unblock and Save media on a sticker no longer close TikTok.\n* Your keyboard no longer rewrites a package name or host you type into the share settings.\n* Diagnostics can record a screen's layout for a \"please hide this\" report, and the feed filter table has a line for every route that delivers videos.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.65.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2490 runtime tests and 459 patch tests passed. Both Android lint checks passed.\n* All 98 patches applied to both supported APKs. Resource checks passed, with no manifest changes. The attached release receipt records the exact bundle and each target's result.\n* On phones and Android emulators running TikTok 47.0.3 and 47.1.3, the mute silenced feed videos and photo posts while another app's music kept playing, saves went through the checked address, and holding Home opened Hushfeed's settings. A locked budget, What's new, the block control's larger tap area and Stay on the video in full screen behaved as described.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3 or 47.1.3 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.65.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
+    "created_at": "2026-10-01T07:47:17",
+    "version": "v0.66.0",
+    "description": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* TikTok 47.1.4 is supported now, beside 47.0.3 and 47.1.3 (#56). Every patch applies to each of the three.\n* Hushfeed's settings come in Italian (#61) and Russian (#60). They're first passes, so if a label reads oddly, please open an issue and say which one.\n* Change app name is a new patch that puts a name you pick under the app icon and in Android's app list (#59). Type the name in the patch's options in Morphe Manager.\n* Keep a streak going, also new, sends one message a day to someone you pick, at a time you pick. Set it up under Hushfeed settings > Inbox > Streak.\n* For a follow or a like that undoes itself on a patched build, try the new Look like the store app patch (#55). It's off by default. Turn it on under Hushfeed settings > Privacy and restart TikTok.\n* With the new Keep playing in the background patch, a video keeps going after you leave TikTok or turn the screen off (#52).\n* The share sheet no longer shows \"Tap again to send\" on a friend you never touched (#58). You can also add apps of your own to its Share via row.\n* Fit the video to the screen fits a video again when the space around it changes size (#29).\n* Two new switches: Let the last video finish on the Screen time page, and Hide effect and template tags on the Feed screen page (#51).\n* Patching is faster (#54), and Stop on-device AI profiling works again.\n* The diagnostic report has FEED MUTE and VIDEO FIT sections, so a report of a silent feed or a badly fitted video shows what Hushfeed did.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.66.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2565 runtime tests and 480 patch tests passed. Both Android lint checks passed.\n* All 102 patches applied to all three supported APKs. Resource checks passed. The manifest gains three permissions, all from Keep a streak going and only when it's selected: start at boot and two for exact alarms. The attached release receipt records the exact bundle and each target's result.\n* On an Android emulator running TikTok 47.1.3, Keep a streak going's message arrived from its alarm while TikTok was closed, and again when TikTok was opened after a missed time. On a phone, patching the recommended set in Morphe Manager took about 6 1/2 minutes, down from 8 3/4.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3, 47.1.3 or 47.1.4 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.66.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
     "apps": [
       {
         "app_name": "TikTok",
@@ -121852,7 +122037,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121862,7 +122048,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121872,7 +122059,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121882,7 +122070,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121897,7 +122086,8 @@
             ],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121907,7 +122097,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121917,7 +122108,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121927,7 +122119,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121937,7 +122130,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121947,7 +122141,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121957,7 +122152,24 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
+            "name": "Change app name",
+            "description": "Shows a name you choose under the app's icon and in Android's app list, so the patched TikTok is easy to tell from another one. Type the name in this patch's options. Inside the app everything still says TikTok.",
+            "use": false,
+            "options": [
+              {
+                "key": "appName",
+                "description": "The name shown under the app icon, up to 50 characters."
+              }
+            ],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121967,7 +122179,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121977,7 +122190,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121987,7 +122201,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -121997,7 +122212,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122007,7 +122223,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122017,7 +122234,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122027,7 +122245,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122037,7 +122256,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122047,7 +122267,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122057,7 +122278,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122067,7 +122289,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122077,7 +122300,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122087,7 +122311,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122097,7 +122322,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122107,7 +122333,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122117,7 +122344,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122127,7 +122355,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122137,7 +122366,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122147,7 +122377,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122157,7 +122388,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122167,7 +122399,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122177,7 +122410,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122187,7 +122421,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122197,7 +122432,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122207,7 +122443,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122217,7 +122454,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122227,7 +122465,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122237,7 +122476,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122247,7 +122487,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122257,7 +122498,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122267,7 +122509,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122277,7 +122520,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122287,7 +122531,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122297,7 +122542,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122307,7 +122553,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122317,7 +122564,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122327,7 +122575,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122337,7 +122586,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122347,7 +122597,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122357,7 +122608,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122367,7 +122619,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122377,7 +122630,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122387,7 +122641,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122397,17 +122652,19 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
             "name": "Hide video overlays",
-            "description": "Hides the visual search prompt TikTok lays over videos, the LIVE entrance in the top left corner, caption and music text, selected action buttons or their counts in the right column, survey cards and the status bar, which can also be hidden only while a LIVE room is open. Separate switches hide the Full screen button, location labels and the Report button some regions get above the creator's picture, without removing videos or changing location permissions. Switch: Hushfeed settings > Feed screen.",
+            "description": "Hides the visual search prompt TikTok lays over videos, the LIVE entrance in the top left corner, caption and music text, selected action buttons or their counts in the right column, survey cards and the status bar, which can also be hidden only while a LIVE room is open. Separate switches hide the Full screen button, location labels, the effect, template and CapCut tags above descriptions, and the Report button some regions get above the creator's picture, without removing videos or changing location permissions. Switch: Hushfeed settings > Feed screen.",
             "use": false,
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122417,7 +122674,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122427,7 +122685,30 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
+            "name": "Keep a streak going",
+            "description": "Sends one message a day to a person you pick, at a time you pick, so a message streak with them keeps going on days you don't open TikTok. The message goes through TikTok's own notification reply. Adds the exact alarm and start at boot permissions the daily alarm needs. Off until you turn it on: Hushfeed settings > Inbox.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
+            "name": "Keep playing in the background",
+            "description": "Keeps TikTok's own background play on, whatever its server says, so the video you're watching keeps playing after you leave the app or turn the screen off, and TikTok's media notification pauses and resumes it. It also covers photo posts and the videos on your own profile, private ones included, which TikTok leaves out. A feed video plays to its end, because TikTok doesn't loop or move on in the feed while it's in the background, and another app's sound still pauses it. TikTok's own background play switch in the long-press menu stays on while this is on. Off by default. Restart TikTok after changing it. Switch: Hushfeed settings > Playback.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122437,7 +122718,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122447,7 +122729,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122457,7 +122740,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122467,7 +122751,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122477,7 +122762,19 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
+            "name": "Look like the store app",
+            "description": "Answers TikTok's own checks of how it was signed and installed the way the Play Store app would. Its signature hash reads as TikTok's certificate and its installer reads as the Play Store. For a follow or a like that undoes itself on a refresh on a patched build. TikTok can also read the APK from native code, which no patch reaches, so it may not be enough on its own. Off by default. Switch: Hushfeed settings > Privacy.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122487,7 +122784,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122497,7 +122795,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122507,7 +122806,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122517,7 +122817,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122527,7 +122828,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122537,7 +122839,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122547,7 +122850,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122557,7 +122861,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122567,7 +122872,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122577,7 +122883,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122587,7 +122894,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122597,7 +122905,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122612,7 +122921,8 @@
             ],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122622,7 +122932,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122632,7 +122943,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122642,7 +122954,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122652,7 +122965,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122662,17 +122976,19 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
             "name": "Share sheet tools",
-            "description": "Asks twice before a video is sent to a friend from the share sheet. The check follows the account or conversation instead of the visible name and covers accessibility actions and keyboard input. It can also hide chosen people, share options or the whole Send to row, and a profile's or a LIVE's share sheet can hide a different set from a video's. Switch: Hushfeed settings > Share sheet.",
+            "description": "Hides chosen people, share options or the whole Send to row of the share sheet, and a profile's or a LIVE's share sheet can hide a different set from a video's. Apps you pick can be added to the Share via row. Switch: Hushfeed settings > Share sheet.",
             "use": false,
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122682,7 +122998,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122692,7 +123009,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122702,7 +123020,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122712,7 +123031,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122722,7 +123042,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122732,7 +123053,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122742,7 +123064,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122752,7 +123075,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122762,17 +123086,19 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
             "name": "Stop on-device AI profiling",
-            "description": "Kills the Pitaya on-device ML inference engine at startup so it cannot build a behavioral profile. The AI asset strip in the core de-bloat patch removes the native libraries. This patch stops the initialization code that would download replacements.",
+            "description": "Keeps TikTok's Pitaya on-device AI plugin from starting, so its native engine doesn't load and it doesn't get a copy of every analytics event TikTok logs. TikTok carries on as if the Pitaya plugin weren't installed. Remove content credential and card scanner assets also empties some of Pitaya's libraries.",
             "use": false,
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122782,7 +123108,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122792,7 +123119,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122802,7 +123130,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122812,7 +123141,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122822,7 +123152,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122832,26 +123163,27 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           }
         ]
       }
     ],
     "patches_name": "Hushfeed",
-    "fingerprint": "a23a548a1c8b3cf52d57b813a299ff9e4669e3486120a3f253e2abe4da36d0e9",
-    "release_notes": "Hushfeed v0.65.0 has 98 patches for global TikTok 47.0.3 and 47.1.3 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* Mute feed videos now works on TikTok 47.1.3, and on 47.0.3 it silences photo posts with a sound too. A video is already quiet when you swipe to it, and it stays quiet after you watch the same video from a DM or scroll a long profile grid. DMs, stories and LIVE keep their sound, and another app's music keeps playing.\n* Press and hold the Home tab to open Hushfeed's settings (#45). A tap on Home works as before.\n* Every save says it's been taken the moment you ask, including the ones waiting in line. If TikTok closes in the middle of a save, a banner says which saves didn't finish the next time you open it.\n* Saves connect only to the server address Hushfeed checked, so nothing can swap in a different machine between the check and the download.\n* The block control, the mute button and Hushfeed's other buttons over the video now show on videos opened from a creator's profile, a hashtag or a sound.\n* When the time budget runs out partway through a long video, the notice and the hold come right then, and the budget label leaves as soon as you switch tabs.\n* New row under Downloads, Forget saved videos. It empties the already-saved record and keeps your files.\n* On Android 10 and older, the block button, Unblock and Save media on a sticker no longer close TikTok.\n* Your keyboard no longer rewrites a package name or host you type into the share settings.\n* Diagnostics can record a screen's layout for a \"please hide this\" report, and the feed filter table has a line for every route that delivers videos.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.65.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2490 runtime tests and 459 patch tests passed. Both Android lint checks passed.\n* All 98 patches applied to both supported APKs. Resource checks passed, with no manifest changes. The attached release receipt records the exact bundle and each target's result.\n* On phones and Android emulators running TikTok 47.0.3 and 47.1.3, the mute silenced feed videos and photo posts while another app's music kept playing, saves went through the checked address, and holding Home opened Hushfeed's settings. A locked budget, What's new, the block control's larger tap area and Stay on the video in full screen behaved as described.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3 or 47.1.3 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.65.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
-    "release_tag": "v0.65.0",
-    "release_date": "2026-09-30T03:21:31Z",
+    "fingerprint": "d90c21c35e214d03203c0ee2ad58f63edf1960064b845720bb57d71a1b53685b",
+    "release_notes": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* TikTok 47.1.4 is supported now, beside 47.0.3 and 47.1.3 (#56). Every patch applies to each of the three.\n* Hushfeed's settings come in Italian (#61) and Russian (#60). They're first passes, so if a label reads oddly, please open an issue and say which one.\n* Change app name is a new patch that puts a name you pick under the app icon and in Android's app list (#59). Type the name in the patch's options in Morphe Manager.\n* Keep a streak going, also new, sends one message a day to someone you pick, at a time you pick. Set it up under Hushfeed settings > Inbox > Streak.\n* For a follow or a like that undoes itself on a patched build, try the new Look like the store app patch (#55). It's off by default. Turn it on under Hushfeed settings > Privacy and restart TikTok.\n* With the new Keep playing in the background patch, a video keeps going after you leave TikTok or turn the screen off (#52).\n* The share sheet no longer shows \"Tap again to send\" on a friend you never touched (#58). You can also add apps of your own to its Share via row.\n* Fit the video to the screen fits a video again when the space around it changes size (#29).\n* Two new switches: Let the last video finish on the Screen time page, and Hide effect and template tags on the Feed screen page (#51).\n* Patching is faster (#54), and Stop on-device AI profiling works again.\n* The diagnostic report has FEED MUTE and VIDEO FIT sections, so a report of a silent feed or a badly fitted video shows what Hushfeed did.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.66.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2565 runtime tests and 480 patch tests passed. Both Android lint checks passed.\n* All 102 patches applied to all three supported APKs. Resource checks passed. The manifest gains three permissions, all from Keep a streak going and only when it's selected: start at boot and two for exact alarms. The attached release receipt records the exact bundle and each target's result.\n* On an Android emulator running TikTok 47.1.3, Keep a streak going's message arrived from its alarm while TikTok was closed, and again when TikTok was opened after a missed time. On a phone, patching the recommended set in Morphe Manager took about 6 1/2 minutes, down from 8 3/4.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3, 47.1.3 or 47.1.4 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.66.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
+    "release_tag": "v0.66.0",
+    "release_date": "2026-10-01T07:47:17Z",
     "isPreRelease": false
   },
   "hushfeed:stable": {
     "bundle": "hushfeed",
     "channel": "stable",
     "repo_url": "https://github.com/SysAdminDoc/HushFeed",
-    "created_at": "2026-09-30T03:21:31",
-    "version": "v0.65.0",
-    "description": "Hushfeed v0.65.0 has 98 patches for global TikTok 47.0.3 and 47.1.3 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* Mute feed videos now works on TikTok 47.1.3, and on 47.0.3 it silences photo posts with a sound too. A video is already quiet when you swipe to it, and it stays quiet after you watch the same video from a DM or scroll a long profile grid. DMs, stories and LIVE keep their sound, and another app's music keeps playing.\n* Press and hold the Home tab to open Hushfeed's settings (#45). A tap on Home works as before.\n* Every save says it's been taken the moment you ask, including the ones waiting in line. If TikTok closes in the middle of a save, a banner says which saves didn't finish the next time you open it.\n* Saves connect only to the server address Hushfeed checked, so nothing can swap in a different machine between the check and the download.\n* The block control, the mute button and Hushfeed's other buttons over the video now show on videos opened from a creator's profile, a hashtag or a sound.\n* When the time budget runs out partway through a long video, the notice and the hold come right then, and the budget label leaves as soon as you switch tabs.\n* New row under Downloads, Forget saved videos. It empties the already-saved record and keeps your files.\n* On Android 10 and older, the block button, Unblock and Save media on a sticker no longer close TikTok.\n* Your keyboard no longer rewrites a package name or host you type into the share settings.\n* Diagnostics can record a screen's layout for a \"please hide this\" report, and the feed filter table has a line for every route that delivers videos.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.65.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2490 runtime tests and 459 patch tests passed. Both Android lint checks passed.\n* All 98 patches applied to both supported APKs. Resource checks passed, with no manifest changes. The attached release receipt records the exact bundle and each target's result.\n* On phones and Android emulators running TikTok 47.0.3 and 47.1.3, the mute silenced feed videos and photo posts while another app's music kept playing, saves went through the checked address, and holding Home opened Hushfeed's settings. A locked budget, What's new, the block control's larger tap area and Stay on the video in full screen behaved as described.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3 or 47.1.3 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.65.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
+    "created_at": "2026-10-01T07:47:17",
+    "version": "v0.66.0",
+    "description": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* TikTok 47.1.4 is supported now, beside 47.0.3 and 47.1.3 (#56). Every patch applies to each of the three.\n* Hushfeed's settings come in Italian (#61) and Russian (#60). They're first passes, so if a label reads oddly, please open an issue and say which one.\n* Change app name is a new patch that puts a name you pick under the app icon and in Android's app list (#59). Type the name in the patch's options in Morphe Manager.\n* Keep a streak going, also new, sends one message a day to someone you pick, at a time you pick. Set it up under Hushfeed settings > Inbox > Streak.\n* For a follow or a like that undoes itself on a patched build, try the new Look like the store app patch (#55). It's off by default. Turn it on under Hushfeed settings > Privacy and restart TikTok.\n* With the new Keep playing in the background patch, a video keeps going after you leave TikTok or turn the screen off (#52).\n* The share sheet no longer shows \"Tap again to send\" on a friend you never touched (#58). You can also add apps of your own to its Share via row.\n* Fit the video to the screen fits a video again when the space around it changes size (#29).\n* Two new switches: Let the last video finish on the Screen time page, and Hide effect and template tags on the Feed screen page (#51).\n* Patching is faster (#54), and Stop on-device AI profiling works again.\n* The diagnostic report has FEED MUTE and VIDEO FIT sections, so a report of a silent feed or a badly fitted video shows what Hushfeed did.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.66.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2565 runtime tests and 480 patch tests passed. Both Android lint checks passed.\n* All 102 patches applied to all three supported APKs. Resource checks passed. The manifest gains three permissions, all from Keep a streak going and only when it's selected: start at boot and two for exact alarms. The attached release receipt records the exact bundle and each target's result.\n* On an Android emulator running TikTok 47.1.3, Keep a streak going's message arrived from its alarm while TikTok was closed, and again when TikTok was opened after a missed time. On a phone, patching the recommended set in Morphe Manager took about 6 1/2 minutes, down from 8 3/4.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3, 47.1.3 or 47.1.4 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.66.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
     "apps": [
       {
         "app_name": "TikTok",
@@ -122864,7 +123196,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122874,7 +123207,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122884,7 +123218,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122894,7 +123229,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122909,7 +123245,8 @@
             ],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122919,7 +123256,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122929,7 +123267,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122939,7 +123278,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122949,7 +123289,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122959,7 +123300,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122969,7 +123311,24 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
+            "name": "Change app name",
+            "description": "Shows a name you choose under the app's icon and in Android's app list, so the patched TikTok is easy to tell from another one. Type the name in this patch's options. Inside the app everything still says TikTok.",
+            "use": false,
+            "options": [
+              {
+                "key": "appName",
+                "description": "The name shown under the app icon, up to 50 characters."
+              }
+            ],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122979,7 +123338,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122989,7 +123349,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -122999,7 +123360,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123009,7 +123371,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123019,7 +123382,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123029,7 +123393,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123039,7 +123404,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123049,7 +123415,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123059,7 +123426,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123069,7 +123437,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123079,7 +123448,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123089,7 +123459,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123099,7 +123470,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123109,7 +123481,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123119,7 +123492,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123129,7 +123503,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123139,7 +123514,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123149,7 +123525,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123159,7 +123536,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123169,7 +123547,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123179,7 +123558,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123189,7 +123569,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123199,7 +123580,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123209,7 +123591,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123219,7 +123602,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123229,7 +123613,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123239,7 +123624,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123249,7 +123635,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123259,7 +123646,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123269,7 +123657,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123279,7 +123668,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123289,7 +123679,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123299,7 +123690,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123309,7 +123701,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123319,7 +123712,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123329,7 +123723,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123339,7 +123734,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123349,7 +123745,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123359,7 +123756,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123369,7 +123767,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123379,7 +123778,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123389,7 +123789,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123399,7 +123800,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123409,17 +123811,19 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
             "name": "Hide video overlays",
-            "description": "Hides the visual search prompt TikTok lays over videos, the LIVE entrance in the top left corner, caption and music text, selected action buttons or their counts in the right column, survey cards and the status bar, which can also be hidden only while a LIVE room is open. Separate switches hide the Full screen button, location labels and the Report button some regions get above the creator's picture, without removing videos or changing location permissions. Switch: Hushfeed settings > Feed screen.",
+            "description": "Hides the visual search prompt TikTok lays over videos, the LIVE entrance in the top left corner, caption and music text, selected action buttons or their counts in the right column, survey cards and the status bar, which can also be hidden only while a LIVE room is open. Separate switches hide the Full screen button, location labels, the effect, template and CapCut tags above descriptions, and the Report button some regions get above the creator's picture, without removing videos or changing location permissions. Switch: Hushfeed settings > Feed screen.",
             "use": false,
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123429,7 +123833,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123439,7 +123844,30 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
+            "name": "Keep a streak going",
+            "description": "Sends one message a day to a person you pick, at a time you pick, so a message streak with them keeps going on days you don't open TikTok. The message goes through TikTok's own notification reply. Adds the exact alarm and start at boot permissions the daily alarm needs. Off until you turn it on: Hushfeed settings > Inbox.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
+            "name": "Keep playing in the background",
+            "description": "Keeps TikTok's own background play on, whatever its server says, so the video you're watching keeps playing after you leave the app or turn the screen off, and TikTok's media notification pauses and resumes it. It also covers photo posts and the videos on your own profile, private ones included, which TikTok leaves out. A feed video plays to its end, because TikTok doesn't loop or move on in the feed while it's in the background, and another app's sound still pauses it. TikTok's own background play switch in the long-press menu stays on while this is on. Off by default. Restart TikTok after changing it. Switch: Hushfeed settings > Playback.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123449,7 +123877,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123459,7 +123888,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123469,7 +123899,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123479,7 +123910,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123489,7 +123921,19 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
+            "name": "Look like the store app",
+            "description": "Answers TikTok's own checks of how it was signed and installed the way the Play Store app would. Its signature hash reads as TikTok's certificate and its installer reads as the Play Store. For a follow or a like that undoes itself on a refresh on a patched build. TikTok can also read the APK from native code, which no patch reaches, so it may not be enough on its own. Off by default. Switch: Hushfeed settings > Privacy.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123499,7 +123943,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123509,7 +123954,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123519,7 +123965,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123529,7 +123976,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123539,7 +123987,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123549,7 +123998,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123559,7 +124009,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123569,7 +124020,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123579,7 +124031,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123589,7 +124042,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123599,7 +124053,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123609,7 +124064,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123624,7 +124080,8 @@
             ],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123634,7 +124091,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123644,7 +124102,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123654,7 +124113,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123664,7 +124124,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123674,17 +124135,19 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
             "name": "Share sheet tools",
-            "description": "Asks twice before a video is sent to a friend from the share sheet. The check follows the account or conversation instead of the visible name and covers accessibility actions and keyboard input. It can also hide chosen people, share options or the whole Send to row, and a profile's or a LIVE's share sheet can hide a different set from a video's. Switch: Hushfeed settings > Share sheet.",
+            "description": "Hides chosen people, share options or the whole Send to row of the share sheet, and a profile's or a LIVE's share sheet can hide a different set from a video's. Apps you pick can be added to the Share via row. Switch: Hushfeed settings > Share sheet.",
             "use": false,
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123694,7 +124157,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123704,7 +124168,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123714,7 +124179,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123724,7 +124190,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123734,7 +124201,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123744,7 +124212,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123754,7 +124223,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123764,7 +124234,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123774,17 +124245,19 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
             "name": "Stop on-device AI profiling",
-            "description": "Kills the Pitaya on-device ML inference engine at startup so it cannot build a behavioral profile. The AI asset strip in the core de-bloat patch removes the native libraries. This patch stops the initialization code that would download replacements.",
+            "description": "Keeps TikTok's Pitaya on-device AI plugin from starting, so its native engine doesn't load and it doesn't get a copy of every analytics event TikTok logs. TikTok carries on as if the Pitaya plugin weren't installed. Remove content credential and card scanner assets also empties some of Pitaya's libraries.",
             "use": false,
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123794,7 +124267,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123804,7 +124278,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123814,7 +124289,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123824,7 +124300,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123834,7 +124311,8 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           },
           {
@@ -123844,17 +124322,18 @@
             "options": [],
             "compatible_versions": [
               "47.0.3",
-              "47.1.3"
+              "47.1.3",
+              "47.1.4"
             ]
           }
         ]
       }
     ],
     "patches_name": "Hushfeed",
-    "fingerprint": "6b3748b45d2fae0950ebdd404475317d48163999fa1cfcdbded88a430fe2bd4f",
-    "release_notes": "Hushfeed v0.65.0 has 98 patches for global TikTok 47.0.3 and 47.1.3 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* Mute feed videos now works on TikTok 47.1.3, and on 47.0.3 it silences photo posts with a sound too. A video is already quiet when you swipe to it, and it stays quiet after you watch the same video from a DM or scroll a long profile grid. DMs, stories and LIVE keep their sound, and another app's music keeps playing.\n* Press and hold the Home tab to open Hushfeed's settings (#45). A tap on Home works as before.\n* Every save says it's been taken the moment you ask, including the ones waiting in line. If TikTok closes in the middle of a save, a banner says which saves didn't finish the next time you open it.\n* Saves connect only to the server address Hushfeed checked, so nothing can swap in a different machine between the check and the download.\n* The block control, the mute button and Hushfeed's other buttons over the video now show on videos opened from a creator's profile, a hashtag or a sound.\n* When the time budget runs out partway through a long video, the notice and the hold come right then, and the budget label leaves as soon as you switch tabs.\n* New row under Downloads, Forget saved videos. It empties the already-saved record and keeps your files.\n* On Android 10 and older, the block button, Unblock and Save media on a sticker no longer close TikTok.\n* Your keyboard no longer rewrites a package name or host you type into the share settings.\n* Diagnostics can record a screen's layout for a \"please hide this\" report, and the feed filter table has a line for every route that delivers videos.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.65.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2490 runtime tests and 459 patch tests passed. Both Android lint checks passed.\n* All 98 patches applied to both supported APKs. Resource checks passed, with no manifest changes. The attached release receipt records the exact bundle and each target's result.\n* On phones and Android emulators running TikTok 47.0.3 and 47.1.3, the mute silenced feed videos and photo posts while another app's music kept playing, saves went through the checked address, and holding Home opened Hushfeed's settings. A locked budget, What's new, the block control's larger tap area and Stay on the video in full screen behaved as described.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3 or 47.1.3 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.65.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
-    "release_tag": "v0.65.0",
-    "release_date": "2026-09-30T03:21:31Z",
+    "fingerprint": "bf178fcf527b9eeedecad2f1cade93b824a0402a089dd799b0842c952f13eee7",
+    "release_notes": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* TikTok 47.1.4 is supported now, beside 47.0.3 and 47.1.3 (#56). Every patch applies to each of the three.\n* Hushfeed's settings come in Italian (#61) and Russian (#60). They're first passes, so if a label reads oddly, please open an issue and say which one.\n* Change app name is a new patch that puts a name you pick under the app icon and in Android's app list (#59). Type the name in the patch's options in Morphe Manager.\n* Keep a streak going, also new, sends one message a day to someone you pick, at a time you pick. Set it up under Hushfeed settings > Inbox > Streak.\n* For a follow or a like that undoes itself on a patched build, try the new Look like the store app patch (#55). It's off by default. Turn it on under Hushfeed settings > Privacy and restart TikTok.\n* With the new Keep playing in the background patch, a video keeps going after you leave TikTok or turn the screen off (#52).\n* The share sheet no longer shows \"Tap again to send\" on a friend you never touched (#58). You can also add apps of your own to its Share via row.\n* Fit the video to the screen fits a video again when the space around it changes size (#29).\n* Two new switches: Let the last video finish on the Screen time page, and Hide effect and template tags on the Feed screen page (#51).\n* Patching is faster (#54), and Stop on-device AI profiling works again.\n* The diagnostic report has FEED MUTE and VIDEO FIT sections, so a report of a silent feed or a badly fitted video shows what Hushfeed did.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.66.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2565 runtime tests and 480 patch tests passed. Both Android lint checks passed.\n* All 102 patches applied to all three supported APKs. Resource checks passed. The manifest gains three permissions, all from Keep a streak going and only when it's selected: start at boot and two for exact alarms. The attached release receipt records the exact bundle and each target's result.\n* On an Android emulator running TikTok 47.1.3, Keep a streak going's message arrived from its alarm while TikTok was closed, and again when TikTok was opened after a missed time. On a phone, patching the recommended set in Morphe Manager took about 6 1/2 minutes, down from 8 3/4.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3, 47.1.3 or 47.1.4 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.66.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
+    "release_tag": "v0.66.0",
+    "release_date": "2026-10-01T07:47:17Z",
     "isPreRelease": false
   },
   "uyu:latest": {
@@ -124116,9 +124595,9 @@
     "bundle": "spicetify",
     "channel": "latest",
     "repo_url": "https://github.com/spicetify/morphe-patches",
-    "created_at": "2026-09-30T23:27:35",
-    "version": "v1.0.0",
-    "description": "## 1.0.0 (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* add the player-ad capability to the development app ([3d6d0b3](https://github.com/spicetify/morphe-patches/commit/3d6d0b32cd0f6bed8071115c628faea34725cd24))\n* clarify disabling server files after cancellation tests ([c98c63f](https://github.com/spicetify/morphe-patches/commit/c98c63f327b0091aa18cdd1accbcde4af901b193))\n* clean server-generated Spotify sharing links ([c01bddb](https://github.com/spicetify/morphe-patches/commit/c01bddb1c07c670c94922961ee955c7ecc0d064f))\n* describe Jellyfin in the server-files patch picker ([7aa0707](https://github.com/spicetify/morphe-patches/commit/7aa070740d52dcd47796f3eb5288ccb4ddb7a6ce))\n* discard server listings cancelled during network reads ([9e844a5](https://github.com/spicetify/morphe-patches/commit/9e844a54ae4aa4f36d526dbd79f2c671ecbb6073))\n* extend Jellyfin Quick Connect approval window ([d706634](https://github.com/spicetify/morphe-patches/commit/d70663474dbf4418eddb72f767a9c09b7d097664))\n* fail patching when submitted theme colors are invalid ([56c4cc0](https://github.com/spicetify/morphe-patches/commit/56c4cc00cedce0d09405cd0b5bf28fe90b885880))\n* include native settings generation in source packaging ([740d7a9](https://github.com/spicetify/morphe-patches/commit/740d7a9a3019c6d892e1fee6b9cc876877cd6836))\n* order untagged discs first and drop singles filed under albums ([b00a7cc](https://github.com/spicetify/morphe-patches/commit/b00a7cc0e287efc6317fd9bb9c6568d31c6f45c0))\n* polish server settings after device verification ([2429a12](https://github.com/spicetify/morphe-patches/commit/2429a12d9977a000d63f6c84f338f114bfb922b5))\n* preserve server browser padding with system insets ([336fc5c](https://github.com/spicetify/morphe-patches/commit/336fc5c4acc1dd35a8387026b254491121c5c556))\n* tighten theme palette hooks and keep unsaved color groups stock ([5171b09](https://github.com/spicetify/morphe-patches/commit/5171b0991ed677b7e40c10746c9cf096678b8cef))\n\n### ✨ New Features\n\n* add a reversible Premium navigation tab setting ([b2d2a7a](https://github.com/spicetify/morphe-patches/commit/b2d2a7a3b2b2ea61faa493a8c5a2afa357d07238))\n* add in-app Spotify patch settings ([7822e51](https://github.com/spicetify/morphe-patches/commit/7822e51a809ee9de226fca12e65433461f122c96))\n* add Jellyfin authentication and streaming protocol ([c470e97](https://github.com/spicetify/morphe-patches/commit/c470e979e3ffe744f578effacc475013d4527aa6))\n* add Jellyfin library setup to server files settings ([ce687a3](https://github.com/spicetify/morphe-patches/commit/ce687a31f6245e2ab9933fa62b23b67d3df07965))\n* add optional Home and Browse brand-ad filtering ([46cf033](https://github.com/spicetify/morphe-patches/commit/46cf0338c5699d0524ca2843e1ef2cf904ce0ff1))\n* add optional Home pins and WebDAV server files ([37b4f5e](https://github.com/spicetify/morphe-patches/commit/37b4f5e7da99168f06b24ef11371f257e58815cd))\n* add Spotify sharing cleanup and theme colors ([7213920](https://github.com/spicetify/morphe-patches/commit/7213920d3b4986364e006da08f4944f8a4aa48d7))\n* browse server music by albums and artists ([f1f2ca5](https://github.com/spicetify/morphe-patches/commit/f1f2ca501dd28e04354c1c827ffcda26af7ed6e2))\n* change theme colors from Spicetify settings ([a37f1a1](https://github.com/spicetify/morphe-patches/commit/a37f1a1e60c239c298ba0bcb7c7250b6e045de6c))\n* choose theme colors only in the app and recolor Encore palettes ([4909197](https://github.com/spicetify/morphe-patches/commit/4909197025bb45ede4bf4cec50cda18234bab9e2))\n* connect Jellyfin sessions to server indexing and streaming ([7a96b1b](https://github.com/spicetify/morphe-patches/commit/7a96b1b8d62f12fb8e76911b92feb4c6cb973fde))\n* follow the in-app theme in Spicetify settings ([520e457](https://github.com/spicetify/morphe-patches/commit/520e45775cce94b60402ac39f677360efde94eb1))\n* group Spicetify settings into Spotify-styled pages ([8439bab](https://github.com/spicetify/morphe-patches/commit/8439bab8529df09670d0062a2b5d1a07a11e45ce))\n* hide embedded ad pages in Now Playing ([cc3d971](https://github.com/spicetify/morphe-patches/commit/cc3d971397f16324a43d525ef282631759c24a84))\n* hide Now Playing image ad cards ([b89e227](https://github.com/spicetify/morphe-patches/commit/b89e227fdae31055134fed3022314c7104625d55))\n* keep album artwork tags in the server catalog ([cec06e2](https://github.com/spicetify/morphe-patches/commit/cec06e2cc7adf7d93c0d24fa442b86e7171b3b3a))\n* lay out server albums and artists like Spotify's pages ([add517e](https://github.com/spicetify/morphe-patches/commit/add517eb74da8bf2cc31677090048e07191e6837))\n* pick a theme such as OLED, with custom colors including the header surface ([1b9b34b](https://github.com/spicetify/morphe-patches/commit/1b9b34b827d155350c4b7116d460e4f3c3dc2090))\n* read album release years from Jellyfin ([13b66d8](https://github.com/spicetify/morphe-patches/commit/13b66d87518aa11a2f99dd9a0f86d723dc66ce16))\n* restart Spotify from settings when a change needs it ([0687d32](https://github.com/spicetify/morphe-patches/commit/0687d3212bc0fb55837cfe7898cda1667568f839))\n* retain server album and artist catalog metadata ([52a76e0](https://github.com/spicetify/morphe-patches/commit/52a76e03da4712135666622fe4347cfdb110b31c))\n* serve sized server artwork for albums and artists ([13c9715](https://github.com/spicetify/morphe-patches/commit/13c9715a32bab59f29d01dd204c05ab42acb57b4))\n* show server album artwork for local tracks in the player ([4c025d0](https://github.com/spicetify/morphe-patches/commit/4c025d0354a73c99064715deac8ed87fd8c83383))\n* show server albums and artists in Your Library ([483d066](https://github.com/spicetify/morphe-patches/commit/483d0669156b9514ae132dd242ad517fbf29ec9a))\n* show settings dialogs as Spotify-style bottom sheets ([4215d22](https://github.com/spicetify/morphe-patches/commit/4215d223eb5bbe6b5c59ab5dd9357a2639de6c0b))\n* show the release year and the playing song on server albums ([37d04f1](https://github.com/spicetify/morphe-patches/commit/37d04f18e4a60fef9e4057da7d6dde72d77defb1))\n* simplify Jellyfin sign-in and link Quick Connect approval ([9ff0dc1](https://github.com/spicetify/morphe-patches/commit/9ff0dc1034e549e3e92f098323e6379004bb94ed))\n\n### 🔧 Improvements\n\n* avoid repeated server file scan and status work ([47a04d5](https://github.com/spicetify/morphe-patches/commit/47a04d51277410ff14c4aa881512c0384a9dd5d4))\n",
+    "created_at": "2026-10-01T10:12:21",
+    "version": "v1.0.1",
+    "description": "## [1.0.1](https://github.com/spicetify/morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* serve server tracks from their own process so Spotify never wedges ([0ec5e69](https://github.com/spicetify/morphe-patches/commit/0ec5e693e6f1015875809c1673467589c2db2eb2))\n",
     "apps": [
       {
         "app_name": "Spotify",
@@ -124272,9 +124751,9 @@
     "bundle": "spicetify",
     "channel": "stable",
     "repo_url": "https://github.com/spicetify/morphe-patches",
-    "created_at": "2026-09-30T23:27:35",
-    "version": "v1.0.0",
-    "description": "## 1.0.0 (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* add the player-ad capability to the development app ([3d6d0b3](https://github.com/spicetify/morphe-patches/commit/3d6d0b32cd0f6bed8071115c628faea34725cd24))\n* clarify disabling server files after cancellation tests ([c98c63f](https://github.com/spicetify/morphe-patches/commit/c98c63f327b0091aa18cdd1accbcde4af901b193))\n* clean server-generated Spotify sharing links ([c01bddb](https://github.com/spicetify/morphe-patches/commit/c01bddb1c07c670c94922961ee955c7ecc0d064f))\n* describe Jellyfin in the server-files patch picker ([7aa0707](https://github.com/spicetify/morphe-patches/commit/7aa070740d52dcd47796f3eb5288ccb4ddb7a6ce))\n* discard server listings cancelled during network reads ([9e844a5](https://github.com/spicetify/morphe-patches/commit/9e844a54ae4aa4f36d526dbd79f2c671ecbb6073))\n* extend Jellyfin Quick Connect approval window ([d706634](https://github.com/spicetify/morphe-patches/commit/d70663474dbf4418eddb72f767a9c09b7d097664))\n* fail patching when submitted theme colors are invalid ([56c4cc0](https://github.com/spicetify/morphe-patches/commit/56c4cc00cedce0d09405cd0b5bf28fe90b885880))\n* include native settings generation in source packaging ([740d7a9](https://github.com/spicetify/morphe-patches/commit/740d7a9a3019c6d892e1fee6b9cc876877cd6836))\n* order untagged discs first and drop singles filed under albums ([b00a7cc](https://github.com/spicetify/morphe-patches/commit/b00a7cc0e287efc6317fd9bb9c6568d31c6f45c0))\n* polish server settings after device verification ([2429a12](https://github.com/spicetify/morphe-patches/commit/2429a12d9977a000d63f6c84f338f114bfb922b5))\n* preserve server browser padding with system insets ([336fc5c](https://github.com/spicetify/morphe-patches/commit/336fc5c4acc1dd35a8387026b254491121c5c556))\n* tighten theme palette hooks and keep unsaved color groups stock ([5171b09](https://github.com/spicetify/morphe-patches/commit/5171b0991ed677b7e40c10746c9cf096678b8cef))\n\n### ✨ New Features\n\n* add a reversible Premium navigation tab setting ([b2d2a7a](https://github.com/spicetify/morphe-patches/commit/b2d2a7a3b2b2ea61faa493a8c5a2afa357d07238))\n* add in-app Spotify patch settings ([7822e51](https://github.com/spicetify/morphe-patches/commit/7822e51a809ee9de226fca12e65433461f122c96))\n* add Jellyfin authentication and streaming protocol ([c470e97](https://github.com/spicetify/morphe-patches/commit/c470e979e3ffe744f578effacc475013d4527aa6))\n* add Jellyfin library setup to server files settings ([ce687a3](https://github.com/spicetify/morphe-patches/commit/ce687a31f6245e2ab9933fa62b23b67d3df07965))\n* add optional Home and Browse brand-ad filtering ([46cf033](https://github.com/spicetify/morphe-patches/commit/46cf0338c5699d0524ca2843e1ef2cf904ce0ff1))\n* add optional Home pins and WebDAV server files ([37b4f5e](https://github.com/spicetify/morphe-patches/commit/37b4f5e7da99168f06b24ef11371f257e58815cd))\n* add Spotify sharing cleanup and theme colors ([7213920](https://github.com/spicetify/morphe-patches/commit/7213920d3b4986364e006da08f4944f8a4aa48d7))\n* browse server music by albums and artists ([f1f2ca5](https://github.com/spicetify/morphe-patches/commit/f1f2ca501dd28e04354c1c827ffcda26af7ed6e2))\n* change theme colors from Spicetify settings ([a37f1a1](https://github.com/spicetify/morphe-patches/commit/a37f1a1e60c239c298ba0bcb7c7250b6e045de6c))\n* choose theme colors only in the app and recolor Encore palettes ([4909197](https://github.com/spicetify/morphe-patches/commit/4909197025bb45ede4bf4cec50cda18234bab9e2))\n* connect Jellyfin sessions to server indexing and streaming ([7a96b1b](https://github.com/spicetify/morphe-patches/commit/7a96b1b8d62f12fb8e76911b92feb4c6cb973fde))\n* follow the in-app theme in Spicetify settings ([520e457](https://github.com/spicetify/morphe-patches/commit/520e45775cce94b60402ac39f677360efde94eb1))\n* group Spicetify settings into Spotify-styled pages ([8439bab](https://github.com/spicetify/morphe-patches/commit/8439bab8529df09670d0062a2b5d1a07a11e45ce))\n* hide embedded ad pages in Now Playing ([cc3d971](https://github.com/spicetify/morphe-patches/commit/cc3d971397f16324a43d525ef282631759c24a84))\n* hide Now Playing image ad cards ([b89e227](https://github.com/spicetify/morphe-patches/commit/b89e227fdae31055134fed3022314c7104625d55))\n* keep album artwork tags in the server catalog ([cec06e2](https://github.com/spicetify/morphe-patches/commit/cec06e2cc7adf7d93c0d24fa442b86e7171b3b3a))\n* lay out server albums and artists like Spotify's pages ([add517e](https://github.com/spicetify/morphe-patches/commit/add517eb74da8bf2cc31677090048e07191e6837))\n* pick a theme such as OLED, with custom colors including the header surface ([1b9b34b](https://github.com/spicetify/morphe-patches/commit/1b9b34b827d155350c4b7116d460e4f3c3dc2090))\n* read album release years from Jellyfin ([13b66d8](https://github.com/spicetify/morphe-patches/commit/13b66d87518aa11a2f99dd9a0f86d723dc66ce16))\n* restart Spotify from settings when a change needs it ([0687d32](https://github.com/spicetify/morphe-patches/commit/0687d3212bc0fb55837cfe7898cda1667568f839))\n* retain server album and artist catalog metadata ([52a76e0](https://github.com/spicetify/morphe-patches/commit/52a76e03da4712135666622fe4347cfdb110b31c))\n* serve sized server artwork for albums and artists ([13c9715](https://github.com/spicetify/morphe-patches/commit/13c9715a32bab59f29d01dd204c05ab42acb57b4))\n* show server album artwork for local tracks in the player ([4c025d0](https://github.com/spicetify/morphe-patches/commit/4c025d0354a73c99064715deac8ed87fd8c83383))\n* show server albums and artists in Your Library ([483d066](https://github.com/spicetify/morphe-patches/commit/483d0669156b9514ae132dd242ad517fbf29ec9a))\n* show settings dialogs as Spotify-style bottom sheets ([4215d22](https://github.com/spicetify/morphe-patches/commit/4215d223eb5bbe6b5c59ab5dd9357a2639de6c0b))\n* show the release year and the playing song on server albums ([37d04f1](https://github.com/spicetify/morphe-patches/commit/37d04f18e4a60fef9e4057da7d6dde72d77defb1))\n* simplify Jellyfin sign-in and link Quick Connect approval ([9ff0dc1](https://github.com/spicetify/morphe-patches/commit/9ff0dc1034e549e3e92f098323e6379004bb94ed))\n\n### 🔧 Improvements\n\n* avoid repeated server file scan and status work ([47a04d5](https://github.com/spicetify/morphe-patches/commit/47a04d51277410ff14c4aa881512c0384a9dd5d4))\n",
+    "created_at": "2026-10-01T10:12:21",
+    "version": "v1.0.1",
+    "description": "## [1.0.1](https://github.com/spicetify/morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* serve server tracks from their own process so Spotify never wedges ([0ec5e69](https://github.com/spicetify/morphe-patches/commit/0ec5e693e6f1015875809c1673467589c2db2eb2))\n",
     "apps": [
       {
         "app_name": "Spotify",
@@ -137146,9 +137625,9 @@
     "bundle": "dual-vot",
     "channel": "latest",
     "repo_url": "https://github.com/sashade8-ship-it/dual-vot-patches",
-    "created_at": "2026-09-30T12:50:09",
-    "version": "v1.45.0-dev.21-dualvot.8.5.3",
-    "description": "## Dual VoT Patches 1.45.0-dev.21-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.21.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+    "created_at": "2026-10-01T10:53:42",
+    "version": "v1.45.0-dev.22-dualvot.8.5.3",
+    "description": "## Dual VoT Patches 1.45.0-dev.22-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.22.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -137463,6 +137942,18 @@
           {
             "name": "Hide music action buttons",
             "description": "Adds options to hide action buttons under the player.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.38.51",
+              "9.37.54",
+              "9.36.50",
+              "9.15.51"
+            ]
+          },
+          {
+            "name": "Jam queue sharing",
+            "description": "Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -137968,6 +138459,22 @@
           {
             "name": "Custom player overlay opacity",
             "description": "Adds an option to change the opacity of the video player background when player controls are visible.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "21.39.522",
+              "21.38.130",
+              "21.28.208",
+              "21.23.492",
+              "21.16.256",
+              "21.13.164",
+              "20.31.42",
+              "20.21.37"
+            ]
+          },
+          {
+            "name": "Disable auto feed refresh",
+            "description": "Adds an option to stop feeds from refreshing automatically after they become outdated.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -138918,7 +139425,7 @@
           },
           {
             "name": "Restore original titles",
-            "description": "Adds an option to show the original video titles and descriptions instead of the auto-translated ones.",
+            "description": "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -139514,19 +140021,19 @@
       }
     ],
     "patches_name": "Dual VoT Patches",
-    "fingerprint": "e080fc941b73677ec9f4cae142faf59ebc92ff2d130d43548fd5ec74deb1e675",
-    "release_notes": "## Dual VoT Patches 1.45.0-dev.21-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.21.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
-    "release_tag": "v1.45.0-dev.21-dualvot.8.5.3",
-    "release_date": "2026-09-30T12:50:09Z",
+    "fingerprint": "61ab004fa5cd5752991b5cd39f527838ed8fb2d625b28a0dc76bccfabf8da04d",
+    "release_notes": "## Dual VoT Patches 1.45.0-dev.22-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.22.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+    "release_tag": "v1.45.0-dev.22-dualvot.8.5.3",
+    "release_date": "2026-10-01T10:53:42Z",
     "isPreRelease": true
   },
   "dual-vot:dev": {
     "bundle": "dual-vot",
     "channel": "dev",
     "repo_url": "https://github.com/sashade8-ship-it/dual-vot-patches",
-    "created_at": "2026-09-30T12:50:09",
-    "version": "v1.45.0-dev.21-dualvot.8.5.3",
-    "description": "## Dual VoT Patches 1.45.0-dev.21-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.21.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+    "created_at": "2026-10-01T10:53:42",
+    "version": "v1.45.0-dev.22-dualvot.8.5.3",
+    "description": "## Dual VoT Patches 1.45.0-dev.22-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.22.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
     "apps": [
       {
         "app_name": "YouTube Music",
@@ -139841,6 +140348,18 @@
           {
             "name": "Hide music action buttons",
             "description": "Adds options to hide action buttons under the player.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "9.38.51",
+              "9.37.54",
+              "9.36.50",
+              "9.15.51"
+            ]
+          },
+          {
+            "name": "Jam queue sharing",
+            "description": "Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -140346,6 +140865,22 @@
           {
             "name": "Custom player overlay opacity",
             "description": "Adds an option to change the opacity of the video player background when player controls are visible.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "21.39.522",
+              "21.38.130",
+              "21.28.208",
+              "21.23.492",
+              "21.16.256",
+              "21.13.164",
+              "20.31.42",
+              "20.21.37"
+            ]
+          },
+          {
+            "name": "Disable auto feed refresh",
+            "description": "Adds an option to stop feeds from refreshing automatically after they become outdated.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -141296,7 +141831,7 @@
           },
           {
             "name": "Restore original titles",
-            "description": "Adds an option to show the original video titles and descriptions instead of the auto-translated ones.",
+            "description": "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -141892,10 +142427,10 @@
       }
     ],
     "patches_name": "Dual VoT Patches",
-    "fingerprint": "9dcff3ccab0f004db90b8c2d264b99d30ad37b4b76c5199bfd95854956237491",
-    "release_notes": "## Dual VoT Patches 1.45.0-dev.21-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.21.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
-    "release_tag": "v1.45.0-dev.21-dualvot.8.5.3",
-    "release_date": "2026-09-30T12:50:09Z",
+    "fingerprint": "42cf1371ed9856c863ee08ee81b0bf27050052613468548fe5cc6987271d289e",
+    "release_notes": "## Dual VoT Patches 1.45.0-dev.22-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.22.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+    "release_tag": "v1.45.0-dev.22-dualvot.8.5.3",
+    "release_date": "2026-10-01T10:53:42Z",
     "isPreRelease": true
   },
   "dual-vot:stable": {
@@ -144031,9 +144566,9 @@
     ],
     "patches_name": "Dual VoT Patches",
     "fingerprint": "21df9a06590532122a0cb6081514aeda3093b4e7491b4e7684777b13df92b8dc",
-    "release_notes": "## Dual VoT Patches 1.45.0-dev.21-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.21.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
-    "release_tag": "v1.45.0-dev.21-dualvot.8.5.3",
-    "release_date": "2026-09-30T12:50:09Z",
+    "release_notes": "## Dual VoT Patches 1.45.0-dev.22-dualvot.8.5.3\n\nPre-release automated update based on Morphe Patches 1.45.0-dev.22.\n\n### Included\n\n- Google/other and Yandex voice-over translation in one patch bundle.\n- Separate player controls with mutual exclusion.\n- Dual VoT volume controls and automatic reset when the video changes.\n- Requests for previously untranslated Yandex videos.\n\n### Validation\n\n- Android patch bundle compiled successfully.\n- Both translation patches are present in generated metadata.\n- Required Dual VoT integration sources and bundle manifest were verified.\n\nThis release was produced automatically. Runtime regressions that cannot be\ndetected by compilation should be reported in this repository.\n",
+    "release_tag": "v1.45.0-dev.22-dualvot.8.5.3",
+    "release_date": "2026-10-01T10:53:42Z",
     "isPreRelease": true
   },
   "ringconn:latest": {
@@ -163762,9 +164297,9 @@
     "bundle": "dh6k",
     "channel": "latest",
     "repo_url": "https://github.com/dh6k/morphe-patches",
-    "created_at": "2026-10-01T06:24:48",
-    "version": "v1.8.0",
-    "description": "## [1.8.0](https://github.com/dh6k/morphe-patches/compare/v1.7.0...v1.8.0) (2026-10-01)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* **brave:** actually kill Material You in AMOLED and stop greying the switch ([41fb1b4](https://github.com/dh6k/morphe-patches/commit/41fb1b4d376f5e4bb8f577f5a4392c7b9e82f1d7))\r\n* **brave:** keep accent-coloured text when declaring night ink ([5b6f269](https://github.com/dh6k/morphe-patches/commit/5b6f2690031607d733cfb049ad428462099e0364)), closes [#cd4400](https://github.com/dh6k/morphe-patches/issues/cd4400) [#545ff8](https://github.com/dh6k/morphe-patches/issues/545ff8) [#687485](https://github.com/dh6k/morphe-patches/issues/687485)\r\n* **brave:** keep colors the app renders text with out of the surface sweep ([0703501](https://github.com/dh6k/morphe-patches/commit/0703501ec7aecf9b1488e1185fd76afa568fe812)), closes [#1c1c1d](https://github.com/dh6k/morphe-patches/issues/1c1c1d) [#0d0f14](https://github.com/dh6k/morphe-patches/issues/0d0f14) [#202124](https://github.com/dh6k/morphe-patches/issues/202124) [#484b4e](https://github.com/dh6k/morphe-patches/issues/484b4e) [#25272b](https://github.com/dh6k/morphe-patches/issues/25272b)\r\n* **brave:** only force the dedicated AMOLED dynamic-colors getter ([84ed3a4](https://github.com/dh6k/morphe-patches/commit/84ed3a445584981592038e82f5b29a1c0cba6365))\r\n* **brave:** rewrite AMOLED dark surfaces in values/ not just values-night ([238a4f2](https://github.com/dh6k/morphe-patches/commit/238a4f27d78eafd4f8eab5cb5c31a33144f0af00)), closes [#121212](https://github.com/dh6k/morphe-patches/issues/121212) [#ff303030](https://github.com/dh6k/morphe-patches/issues/ff303030)\r\n* **brave:** stop declaring text colors that already have selectors ([4974aea](https://github.com/dh6k/morphe-patches/commit/4974aea31deb3b317bb6e9b557510cda4478d578))\r\n* **brave:** stop night-v31 overrides from re-asserting text as background ([6832558](https://github.com/dh6k/morphe-patches/commit/6832558e54e676c890e4b81820b1aff14474e3b2)), closes [#000000](https://github.com/dh6k/morphe-patches/issues/000000)\r\n\r\n### ✨ New Features\r\n\r\n* **brave:** add AMOLED text and accent color options ([9254614](https://github.com/dh6k/morphe-patches/commit/925461415ceb6b86bd3438aa0e9ba35b1984aef2))\r\n* **brave:** add patch-time AMOLED theme (issue [#21](https://github.com/dh6k/morphe-patches/issues/21)) ([7d0c8ad](https://github.com/dh6k/morphe-patches/commit/7d0c8ad3665a686c6f05e94b2464052934c92526))\r\n* **titanium:** scope keep-alive boosts to extension processes ([a461882](https://github.com/dh6k/morphe-patches/commit/a461882a418570b36eb0531176065dc1f8006a8f))\r\n",
+    "created_at": "2026-10-01T09:41:07",
+    "version": "v1.8.1-dev.1",
+    "description": "## [1.8.1-dev.1](https://github.com/dh6k/morphe-patches/compare/v1.8.0...v1.8.1-dev.1) (2026-10-01)\n\n### 🚀 Updated App Support\n\n* upgrade morphe-patcher to 1.15.0 ([46479c7](https://github.com/dh6k/morphe-patches/commit/46479c7531b87ca7743c8503a901cda8e165a2a9))\n",
     "apps": [
       {
         "app_name": "Brave Browser",
@@ -164077,9 +164612,9 @@
     "bundle": "dh6k",
     "channel": "dev",
     "repo_url": "https://github.com/dh6k/morphe-patches",
-    "created_at": "2026-10-01T05:46:20",
-    "version": "v1.8.0-dev.10",
-    "description": "## [1.8.0-dev.10](https://github.com/dh6k/morphe-patches/compare/v1.8.0-dev.9...v1.8.0-dev.10) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **brave:** keep accent-coloured text when declaring night ink ([11d8e1f](https://github.com/dh6k/morphe-patches/commit/11d8e1fa0a6d398682e19d33d81cf22d535ad635)), closes [#cd4400](https://github.com/dh6k/morphe-patches/issues/cd4400) [#545ff8](https://github.com/dh6k/morphe-patches/issues/545ff8) [#687485](https://github.com/dh6k/morphe-patches/issues/687485)\n",
+    "created_at": "2026-10-01T09:41:07",
+    "version": "v1.8.1-dev.1",
+    "description": "## [1.8.1-dev.1](https://github.com/dh6k/morphe-patches/compare/v1.8.0...v1.8.1-dev.1) (2026-10-01)\n\n### 🚀 Updated App Support\n\n* upgrade morphe-patcher to 1.15.0 ([46479c7](https://github.com/dh6k/morphe-patches/commit/46479c7531b87ca7743c8503a901cda8e165a2a9))\n",
     "apps": [
       {
         "app_name": "Brave Browser",
@@ -164383,10 +164918,10 @@
     ],
     "patches_name": "Brave and universal patches",
     "fingerprint": "e45a1e21f2b772ec7f232da94978702fb5a89c0a4abfe4267233c1da8fc59b2d",
-    "release_notes": "## [1.8.0-dev.10](https://github.com/dh6k/morphe-patches/compare/v1.8.0-dev.9...v1.8.0-dev.10) (2026-10-01)\n\n### 🐛 Bug Fixes\n\n* **brave:** keep accent-coloured text when declaring night ink ([11d8e1f](https://github.com/dh6k/morphe-patches/commit/11d8e1fa0a6d398682e19d33d81cf22d535ad635)), closes [#cd4400](https://github.com/dh6k/morphe-patches/issues/cd4400) [#545ff8](https://github.com/dh6k/morphe-patches/issues/545ff8) [#687485](https://github.com/dh6k/morphe-patches/issues/687485)\n",
-    "release_tag": "v1.8.0-dev.10",
-    "release_date": "2026-10-01T05:46:20Z",
-    "isPreRelease": true
+    "release_notes": "## [1.8.0](https://github.com/dh6k/morphe-patches/compare/v1.7.0...v1.8.0) (2026-10-01)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* **brave:** actually kill Material You in AMOLED and stop greying the switch ([41fb1b4](https://github.com/dh6k/morphe-patches/commit/41fb1b4d376f5e4bb8f577f5a4392c7b9e82f1d7))\r\n* **brave:** keep accent-coloured text when declaring night ink ([5b6f269](https://github.com/dh6k/morphe-patches/commit/5b6f2690031607d733cfb049ad428462099e0364)), closes [#cd4400](https://github.com/dh6k/morphe-patches/issues/cd4400) [#545ff8](https://github.com/dh6k/morphe-patches/issues/545ff8) [#687485](https://github.com/dh6k/morphe-patches/issues/687485)\r\n* **brave:** keep colors the app renders text with out of the surface sweep ([0703501](https://github.com/dh6k/morphe-patches/commit/0703501ec7aecf9b1488e1185fd76afa568fe812)), closes [#1c1c1d](https://github.com/dh6k/morphe-patches/issues/1c1c1d) [#0d0f14](https://github.com/dh6k/morphe-patches/issues/0d0f14) [#202124](https://github.com/dh6k/morphe-patches/issues/202124) [#484b4e](https://github.com/dh6k/morphe-patches/issues/484b4e) [#25272b](https://github.com/dh6k/morphe-patches/issues/25272b)\r\n* **brave:** only force the dedicated AMOLED dynamic-colors getter ([84ed3a4](https://github.com/dh6k/morphe-patches/commit/84ed3a445584981592038e82f5b29a1c0cba6365))\r\n* **brave:** rewrite AMOLED dark surfaces in values/ not just values-night ([238a4f2](https://github.com/dh6k/morphe-patches/commit/238a4f27d78eafd4f8eab5cb5c31a33144f0af00)), closes [#121212](https://github.com/dh6k/morphe-patches/issues/121212) [#ff303030](https://github.com/dh6k/morphe-patches/issues/ff303030)\r\n* **brave:** stop declaring text colors that already have selectors ([4974aea](https://github.com/dh6k/morphe-patches/commit/4974aea31deb3b317bb6e9b557510cda4478d578))\r\n* **brave:** stop night-v31 overrides from re-asserting text as background ([6832558](https://github.com/dh6k/morphe-patches/commit/6832558e54e676c890e4b81820b1aff14474e3b2)), closes [#000000](https://github.com/dh6k/morphe-patches/issues/000000)\r\n\r\n### ✨ New Features\r\n\r\n* **brave:** add AMOLED text and accent color options ([9254614](https://github.com/dh6k/morphe-patches/commit/925461415ceb6b86bd3438aa0e9ba35b1984aef2))\r\n* **brave:** add patch-time AMOLED theme (issue [#21](https://github.com/dh6k/morphe-patches/issues/21)) ([7d0c8ad](https://github.com/dh6k/morphe-patches/commit/7d0c8ad3665a686c6f05e94b2464052934c92526))\r\n* **titanium:** scope keep-alive boosts to extension processes ([a461882](https://github.com/dh6k/morphe-patches/commit/a461882a418570b36eb0531176065dc1f8006a8f))\r\n",
+    "release_tag": "v1.8.0",
+    "release_date": "2026-10-01T06:24:48Z",
+    "isPreRelease": false
   },
   "dh6k:stable": {
     "bundle": "dh6k",
