@@ -67,32 +67,3 @@ export function mount(target, nodes) {
   }
 }
 
-/**
- * Show the loading screen with a message and optional progress.
- * @param {string} [status]
- * @param {number} [progress] 0-100
- */
-export function showLoading(status, progress) {
-  const screen = document.getElementById('loading-screen')
-  if (!screen) return
-  if (status) {
-    const statusEl = screen.querySelector('#loading-progress-text')
-    if (statusEl) statusEl.textContent = status
-  }
-  if (progress != null) {
-    const bar = screen.querySelector('#loading-progress-bar')
-    if (bar) bar.style.width = `${progress}%`
-    const pct = screen.querySelector('#loading-progress-pct')
-    if (pct) pct.textContent = `${Math.round(progress)}%`
-  }
-}
-
-/**
- * Hide and remove the loading screen.
- */
-export function hideLoading() {
-  const screen = document.getElementById('loading-screen')
-  if (!screen) return
-  screen.classList.add('loaded')
-  setTimeout(() => screen.remove(), 600)
-}

@@ -19,7 +19,8 @@ export function renderBundleCard(bundle) {
   const iconSvg = repoInfo.isGitLab ? GITLAB_SVG : GITHUB_SVG
 
   const apps = sortAppsByName(bundle.apps || [], nameCache)
-  const count = apps.length
+  // While bundle files stream in, cards render from the index first — use its app_count
+  const count = Math.max(apps.length, bundle.appCount || 0)
 
   let updatedBadge = ''
   if (bundle.version) {
@@ -50,9 +51,10 @@ export function renderBundleCard(bundle) {
     ? '<span class="bundle-pre-release-badge" title="Pre-release version">Pre-release</span>'
     : ''
 
-  const stableKey = `${bundle.bundle}:stable`
-  const devKey = `${bundle.bundle}:dev`
-  const releaseDate = store.get('bundles')?.[stableKey]?.release_date || store.get('bundles')?.[devKey]?.release_date || ''
+  const releaseDate =
+    store.get('bundles')?.[`${bundle.bundle}:stable`]?.release_date ||
+    store.get('bundles')?.[`${bundle.bundle}:latest`]?.release_date ||
+    store.get('bundles')?.[`${bundle.bundle}:dev`]?.release_date || ''
   const staleness = getStaleness(releaseDate)
   const stalenessHtml = staleness
     ? `<span class="staleness-badge staleness--${staleness.level}" title="Released ${releaseDate}">${staleness.label}</span>`

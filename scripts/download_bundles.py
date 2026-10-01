@@ -168,7 +168,10 @@ def download_all_bundles():
     changed_tree = get_changed_files(tree_files, known_shas)
     changed_paths = {item["path"] for item in changed_tree}
 
-    # Filter bundles to only those with at least one changed file
+    # Filter bundles to only those with at least one changed file,
+    # or whose files are missing locally (fresh CI checkout has no raw files —
+    # SHA-skip alone would leave the snapshot incomplete and every unchanged
+    # bundle would look "removed").
     if known_shas:
         before = len(bundles)
         filtered = {}
@@ -176,12 +179,19 @@ def download_all_bundles():
             for ch, paths in channels.items():
                 bp = paths.get("bundle_path", "")
                 lp = paths.get("list_path", "")
-                if bp in changed_paths or lp in changed_paths:
+                need_force = False
+                if bp and lp:
+                    local_dir = os.path.join(RAW_DIR, "bundles", b_name, ch)
+                    need_force = not (
+                        os.path.isfile(os.path.join(local_dir, "patches-bundle.json"))
+                        and os.path.isfile(os.path.join(local_dir, "patches-list.json"))
+                    )
+                if bp in changed_paths or lp in changed_paths or need_force:
                     filtered.setdefault(b_name, {})[ch] = paths
         bundles = filtered
         skipped = before - len(bundles)
         if skipped:
-            print(f"  SHA filter: {skipped} bundles unchanged (skipping)")
+            print(f"  SHA filter: {skipped} bundles unchanged and present locally (skipping)")
     else:
         print("  First run: no stored SHAs, downloading all bundles")
 
@@ -305,7 +315,9 @@ def download_all_bundles():
         save_file_shas(new_shas)
         print(f"  SHA store updated: {len(new_shas)} tracked files")
     
-    # Atomic swap: rename old dir, rename temp to final, remove old
+    # Merge downloaded files over the existing raw tree: keep every bundle
+    # that was not re-downloaded this run (a fresh checkout simply gets a
+    # full download below), overlay the changed ones from temp_dir.
     bundles_old = bundles_raw_dir + "_old"
     if os.path.exists(bundles_old):
         shutil.rmtree(bundles_old, ignore_errors=True)
@@ -323,11 +335,27 @@ def download_all_bundles():
                     print("[warn] rename failed, trying shutil.move")
                     shutil.move(bundles_raw_dir, bundles_old)
 
-    if os.path.exists(temp_dir):
-        os.rename(temp_dir, bundles_raw_dir)
-
     if os.path.exists(bundles_old):
+        os.makedirs(bundles_raw_dir, exist_ok=True)
+        for entry in os.listdir(bundles_old):
+            src = os.path.join(bundles_old, entry)
+            dst = os.path.join(bundles_raw_dir, entry)
+            if os.path.isdir(src):
+                shutil.copytree(src, dst, dirs_exist_ok=True)
+            else:
+                shutil.copy2(src, dst)
         shutil.rmtree(bundles_old, ignore_errors=True)
+
+    if os.path.exists(temp_dir):
+        os.makedirs(bundles_raw_dir, exist_ok=True)
+        for entry in os.listdir(temp_dir):
+            src = os.path.join(temp_dir, entry)
+            dst = os.path.join(bundles_raw_dir, entry)
+            if os.path.isdir(src):
+                shutil.copytree(src, dst, dirs_exist_ok=True)
+            else:
+                shutil.copy2(src, dst)
+        shutil.rmtree(temp_dir, ignore_errors=True)
     
     # Merge download results into last_run.json
     last_run_data = load_last_run()

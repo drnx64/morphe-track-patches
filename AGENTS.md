@@ -10,6 +10,7 @@
 | Python tests | `python -m pytest tests/ -v` | Requires `pip install -r requirements.txt`. |
 | Run pipeline | `python scripts/run_pipeline.py` | Requires `GITHUB_TOKEN` env var. |
 | Manual finalization | `python scripts/merge_daily_buffer.py --finalize` | Force-flush daily buffer to changelog. |
+| Verify/purge phantoms | `python scripts/cleanup_phantoms.py` | Idempotent — re-run after changing REMOVED/claims logic. |
 
 ### Verification order
 
@@ -38,15 +39,21 @@ FETCH → PARSE → DIFF → ACCUMULATE → PUBLISH
 
 If no changes and no day rollover, pipeline exits silently after step 3. `write_data_files(has_changes=...)` controls what `changes.json` contains — empty when no changes.
 
+**Removal safety:** `state_manager.load_claimed_keys()` (Jman tree + external repo index) gates every REMOVED — inputs missing or `archive_available` False suppresses removals wholesale; channel migrations are matched by `repo_slug` (moving `repo:dev` → `repo:stable` never reports REMOVED+NEW). `rebuild_snapshot_from_bundles()` reads only `_index.json`, and `save_bundles_split()` prunes orphan files on every write — invariant: bundle file count = index keys + `_index.json`. `tests/test_pipeline_stability.py` covers all of this; `scripts/cleanup_phantoms.py` re-verifies and purges historical phantoms.
+
 ## Key gotchas
 
 - **`docs/` is the build output and is gitignored.** `npm run build` generates it. Never edit manually, never commit it. CI pushes it to the `gh-pages` branch.
 - **`data/raw/` and `data/output/` are gitignored.** Large generated files.
 - **`data/state/` is partially gitignored.** `current_snapshot.json`, `previous_snapshot.json`, `external_repos.json`, `last_tg_msg.json` are gitignored. Caches (`app_cache.json`, `daily_buffer.json`, `last_run.json`, `patches_names_cache.json`, `release_cache.json`) are tracked.
-- **CSS is one monolithic file** (`assets/style.css`, ~7000 lines). No CSS modules.
+- **CSS is one monolithic file** (`assets/style.css`, ~4400 lines). No CSS modules.
 - **SVG icons** are inline strings exported from `scripts/utils/svg.js`. No icon font or library.
 - **Python imports** use `sys.path.append` — scripts must run from repo root.
 - **No node_modules.** Zero npm dependencies. `npx serve` used for dev/preview only.
+- **Bundle keys are `repo:channel` with channels `stable | latest | dev`.** Always go through `scripts/utils/bundleKey.js` (`parseBundleKey`, `makeBundleKey`, `pickChannel`, `findBundleRecord`) — never split on `:` ad hoc. `CHANNEL_PREFERENCE = ['dev','latest','stable']` for storage order; display picks `stable || latest || dev`. `morphe_hide_dev` hides dev only (`latest` stays visible); `.channel-badge.latest` uses `--state-plum`.
+- **The frontend never hangs on a bad fetch.** `fetchJson(url, fallback)` always resolves; boot paints from the IndexedDB bundle cache (`services/bundleCache.js`, 24h TTL, version-delta) when the network fails or is slow; background work reports via `components/workToast.js` with Retry/Dismiss. Every floating promise needs a `.catch` — `window.onunhandledrejection` in `index.html` renders the full error page.
+- **Icons warm lazily; display never waits on the cache.** `services/iconFetchQueue.js`: IntersectionObserver priority lane (icons scrolled into view) + paced sweep (6 per batch, 1–2s pauses), shared 429/403 exponential backoff in `iconCache.loadImage`, remaining queue persisted to localStorage. `renderAppIcon` serves warm WebP data URLs and tags cold icons `data-icon-url` for the observer.
+- **`main` is PR-only (ruleset + required checks).** Never `git push` directly to `main` — rejected for everyone. Land changes: branch → `gh pr create` → `gh pr merge --auto --merge` (merge commit; waits for required checks `Python Tests` + `Production Build`). Never put `[skip ci]` in PR commits — required checks never report and auto-merge stalls. The sole direct pusher is `update.yml`, authenticating as the repo deploy key (secret `MORPHE_DEPLOY_KEY`, ruleset bypass actor `DeployKey` — the GitHub Actions app can't be a bypass actor on personal repos). Emergency direct push: `PUT /repos/{owner}/{repo}/rulesets/{id}` with `"enforcement": "disabled"` (resend the full definition — PUT replaces, it doesn't merge), push, re-enable.
 
 ## File structure
 
@@ -58,12 +65,13 @@ scripts/
   router.js                   — Hash-based SPA router
   store.js                    — Reactive pub/sub state
   ui.js                       — DOM helpers (el, html, mount)
-  services/                   — Data fetching, icon cache, IndexedDB
+  services/                   — Data fetch, icon/avatar cache, bundle cache, icon queue, IndexedDB
   pages/                      — Page renderers (dashboard, apps, changelog, diff)
-  components/                 — Reusable UI (header, footer, modal, skeleton)
-  utils/                      — SVG icons, formatting, URL helpers, misc
+  components/                 — Reusable UI (header, footer, modal, skeleton, work toast)
+  utils/                      — SVG icons, formatting, URL helpers, bundle keys, misc
 data/                         — Pipeline output (JSON files)
-scripts/ (Python)             — Pipeline scripts (crawl, parse, diff, publish)
+scripts/ (Python)             — Pipeline scripts (crawl, parse, diff, publish, cleanup)
+tests/                        — pytest suite (pipeline invariants)
 ```
 
 ## Conventions

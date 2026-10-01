@@ -77,53 +77,106 @@ def save_new_snapshot(snapshot_data):
 def load_current_snapshot():
     return load_json(CURRENT_SNAPSHOT_PATH, default={})
 
+
+def repo_slug(repo_url):
+    """Normalize a github/gitlab repo URL to 'owner/repo' (lowercase, no .git)."""
+    if not isinstance(repo_url, str) or not repo_url:
+        return ""
+    m = re.match(r"^https?://(?:www\.)?(?:github|gitlab)\.com/([^/]+)/([^/#?]+)", repo_url.strip().lower())
+    if not m:
+        return ""
+    repo = m.group(2).rstrip("/")
+    if repo.endswith(".git"):
+        repo = repo[:-4]
+    return f"{m.group(1)}/{repo}"
+
+
+def load_claimed_keys():
+    """Authoritative set of bundle keys still expected upstream.
+
+    Returns {"keys": set of "bundle:channel" from the Jman tree (minus
+    custom/ignore skip names), "repos": set of "owner/repo" claimed by the
+    external-repos index} — or None when the claim universe is unusable
+    (missing tree, missing external index, or archive fetch failed), in which
+    case callers must conservatively suppress all removals.
+    """
+    tree_files = load_json(os.path.join(RAW_DIR, "tree.json"), default=[])
+    ext_path = os.path.join(STATE_DIR, "external_repos.json")
+    ext = load_json(ext_path, default={}) if os.path.exists(ext_path) else None
+    if not tree_files or not ext or not ext.get("archive_available", True):
+        return None
+
+    skip = set()
+    for filepath in (CUSTOM_REPO_PATH, IGNORE_REPO_PATH):
+        for owner, repo, _ in load_repo_list(filepath):
+            skip.add(owner.lower().replace("_", "-"))
+            skip.add(f"{owner.lower()}-{repo.lower().replace('_', '-')}")
+
+    from download_bundles import group_tree_files  # lazy: avoids import cycle
+    keys = set()
+    for name, channels in group_tree_files(tree_files).items():
+        if name.lower() in skip:
+            continue
+        for channel in channels:
+            keys.add(f"{name}:{channel}")
+
+    repos = set()
+    for entry in ext.get("added", []):
+        owner = str(entry.get("owner", "")).lower()
+        repo = str(entry.get("repo", "")).lower()
+        if owner and repo:
+            repos.add(f"{owner}/{repo}")
+    for entry in ext.get("errors", []):
+        repo = str(entry.get("repo", "")).lower().strip().strip("/")
+        if repo:
+            repos.add(repo)
+
+    return {"keys": keys, "repos": repos}
+
+
+def is_claimed(key, record, claims):
+    """True if a bundle key/repo is still claimed upstream (or claims are unavailable)."""
+    if claims is None:
+        return True
+    if key in claims["keys"]:
+        return True
+    slug = repo_slug((record or {}).get("repo_url", ""))
+    return bool(slug) and slug in claims["repos"]
+
+
 def rebuild_snapshot_from_bundles():
     """Rebuild snapshot from committed data/bundles/*.json files.
 
     Used when current_snapshot.json is missing (e.g. CI fresh checkout).
-    Each bundle file already contains apps, version, and fingerprint fields
-    needed for diff comparison.
+    Only files referenced by _index.json are included — stray/orphan files
+    must never re-enter the snapshot (they would resurface as false
+    REMOVED BUNDLE diffs on every run).
     """
-    import glob as glob_mod
-
     if not os.path.isdir(BUNDLES_DIR):
         print("[snapshot] No data/bundles/ directory found, starting with empty snapshot")
         return {}
 
-    # Fast path: use _index.json to get the correct key for each file
     index = load_json(os.path.join(BUNDLES_DIR, "_index.json"), default={})
-
-    # Build reverse map: filename -> key from index
-    filename_to_key = {}
-    for key in index:
-        filename = key.replace(":", "_") + ".json"
-        filename_to_key[filename] = key
+    if not index:
+        print("[snapshot] No _index.json — starting with empty snapshot")
+        return {}
 
     snapshot = {}
-    bundle_files = sorted(glob_mod.glob(os.path.join(BUNDLES_DIR, "*.json")))
-
-    for filepath in bundle_files:
-        filename = os.path.basename(filepath)
-        if filename == "_index.json":
+    for key in index:
+        filepath = os.path.join(BUNDLES_DIR, key.replace(":", "_") + ".json")
+        if not os.path.exists(filepath):
             continue
         try:
             record = load_json(filepath, default=None)
             if not record:
                 continue
-            key = filename_to_key.get(filename)
-            if not key:
-                # Fallback: reconstruct from record fields
-                bundle_name = record.get("bundle", filename.removesuffix(".json"))
-                channel = record.get("channel", "stable")
-                key = f"{bundle_name}:{channel}"
-            # Strip icon_url to match snapshot format
             for app in record.get("apps", []):
                 app.pop("icon_url", None)
             snapshot[key] = record
         except Exception as e:
             print(f"[snapshot] Error reading {filepath}: {e}")
 
-    print(f"[snapshot] Rebuilt snapshot from {len(snapshot)} bundle files")
+    print(f"[snapshot] Rebuilt snapshot from {len(snapshot)} indexed bundle files")
     return snapshot
 
 def load_daily_buffer():
@@ -192,6 +245,24 @@ def save_bundles_split(data):
         save_json(os.path.join(BUNDLES_DIR, filename), record)
 
     save_json(os.path.join(BUNDLES_DIR, "_index.json"), index)
+
+    # Prune orphaned per-bundle files (no longer in the index) so stale
+    # bundles cannot resurface on a CI snapshot rebuild.
+    if data:
+        expected = {key.replace(":", "_") + ".json" for key in index}
+        pruned = 0
+        for filename in os.listdir(BUNDLES_DIR):
+            if filename == "_index.json" or not filename.endswith(".json"):
+                continue
+            if filename not in expected:
+                try:
+                    os.remove(os.path.join(BUNDLES_DIR, filename))
+                    pruned += 1
+                except OSError as e:
+                    print(f"[bundles] Failed to prune {filename}: {e}")
+        if pruned:
+            print(f"[bundles] Pruned {pruned} orphaned bundle files")
+
     print(f"[bundles] Split {len(data)} bundles into {BUNDLES_DIR}")
     return True
 

@@ -11,8 +11,20 @@ from state_manager import (
     save_last_run,
     load_last_run,
     ensure_dirs,
+    load_claimed_keys,
+    is_claimed,
+    repo_slug,
     RAW_DIR
 )
+
+def _repo_key_map(snapshot):
+    """Map normalized repo slug -> list of snapshot keys sharing that repo."""
+    mapping = {}
+    for key, record in snapshot.items():
+        slug = repo_slug(record.get("repo_url", ""))
+        if slug:
+            mapping.setdefault(slug, []).append(key)
+    return mapping
 
 def compute_fingerprint(bundle_name, apps, channel):
     """Computes fingerprint = SHA256(bundle_name + canonical_hash(apps) + channel)."""
@@ -198,6 +210,9 @@ def diff_snapshots():
 
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
+    old_repo_keys = _repo_key_map(old_snapshot)
+    new_repo_keys = _repo_key_map(new_snapshot)
+
     affected_bundles = []
 
     # Process each bundle:channel in the new snapshot
@@ -207,6 +222,18 @@ def diff_snapshots():
         new_apps_list = new_rec.get("apps", [])
 
         if bundle_key not in old_snapshot:
+            # Identity migration? Same repo already known under a different
+            # key that vanished this run — not a genuinely new bundle.
+            slug = repo_slug(new_rec.get("repo_url", ""))
+            migrated = slug and any(
+                old_key != bundle_key
+                and old_key.split(":")[0] != bundle_name
+                and old_key not in new_snapshot
+                for old_key in old_repo_keys.get(slug, [])
+            )
+            if migrated:
+                print(f"[*] Diff: {bundle_key} is an identity migration, not a new bundle")
+                continue
             # Scenario B: New Bundle — include all its apps
             print(f"[+] Diff: Found new bundle {bundle_key}")
             apps = []
@@ -323,12 +350,27 @@ def diff_snapshots():
     has_changes = len(affected_bundles) > 0
 
     # Detect removed bundles (in old snapshot but not in new)
+    claims = load_claimed_keys()
     for bundle_key in old_snapshot:
         if bundle_key not in new_snapshot:
             old_rec = old_snapshot[bundle_key]
             bundle_name = old_rec.get("bundle") or bundle_key.split(":")[0]
             channel = old_rec.get("channel") or (bundle_key.split(":")[1] if ":" in bundle_key else "stable")
             old_apps_list = old_rec.get("apps", [])
+
+            if is_claimed(bundle_key, old_rec, claims):
+                print(f"[*] Diff: {bundle_key} still claimed upstream — suppressing removal (fetch/parse failure?)")
+                continue
+
+            slug = repo_slug(old_rec.get("repo_url", ""))
+            migrated = slug and any(
+                new_key != bundle_key and new_key.split(":")[0] != bundle_name
+                for new_key in new_repo_keys.get(slug, [])
+            )
+            if migrated:
+                print(f"[*] Diff: {bundle_key} gone but its repo lives under a new key — identity migration")
+                continue
+
             print(f"[-] Diff: Found removed bundle {bundle_key}")
             removed_apps = []
             for app in old_apps_list:

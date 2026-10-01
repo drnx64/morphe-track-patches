@@ -5,6 +5,7 @@
 import { el } from '../ui.js'
 import * as store from '../store.js'
 import { buildAppIndex, suggestFuzzy, resolveAppName } from '../utils/misc.js'
+import { parseBundleKey } from '../utils/bundleKey.js'
 import { escHtml } from '../utils/html.js'
 import { formatVersion } from '../utils/format.js'
 import { SEARCH_ICON } from '../utils/svg.js'
@@ -72,7 +73,7 @@ export function renderGlobalSearch() {
     const bundles = store.get('bundles') || {}
     const grouped = {}
     for (const [key, bundle] of Object.entries(bundles)) {
-      const bName = key.replace(/:(stable|dev)$/, '')
+      const { name: bName } = parseBundleKey(key)
       if (!grouped[bName]) {
         grouped[bName] = {
           name: bundle.patches_name || bName,

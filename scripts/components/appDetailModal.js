@@ -10,6 +10,7 @@ import { getPlayStoreUrl, getAddMorpheUrl } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { wordDiffHtml } from '../utils/wordDiff.js'
 import { formatVersion } from '../utils/format.js'
+import { parseBundleKey, findBundleRecord, pickChannel } from '../utils/bundleKey.js'
 import { buildCompareMatrix } from './compareMatrixTable.js'
 import { CLOSE_ICON, CHEVRON_DOWN, CHEVRON_RIGHT } from '../utils/svg.js'
 
@@ -31,9 +32,8 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
   // Collect all bundles containing this app
   const appBundles = []
   for (const [key, bundle] of Object.entries(bundles)) {
-    if (hideDev && key.endsWith(':dev')) continue
-    const bName = key.replace(/:(stable|dev)$/, '')
-    const channel = key.endsWith(':dev') ? 'dev' : 'stable'
+    const { name: bName, channel } = parseBundleKey(key)
+    if (hideDev && channel === 'dev') continue
     if (bundle.apps?.some((a) => a.package === pkg)) {
       const existing = appBundles.find((b) => b.bundleName === bName)
       if (existing) {
@@ -56,10 +56,9 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
   const targetBundle = appBundles.find((b) => b.bundleName === bundleName) || appBundles[0]
   let patches = []
   if (targetBundle) {
-    const bKey = targetBundle.channels.includes('dev')
-      ? `${targetBundle.bundleName}:dev`
-      : `${targetBundle.bundleName}:stable`
-    const bundleData = bundles[bKey]
+    const { record: bundleData } = findBundleRecord(
+      bundles, targetBundle.bundleName, targetBundle.channels
+    )
     if (bundleData) {
       const appData = bundleData.apps?.find((a) => a.package === pkg)
       if (appData) patches = appData.patches || []
@@ -113,18 +112,22 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
     })
   }
 
-  // Tabs
-  const tabNames = ['Bundles', 'Patches']
+  // Tabs — a single-bundle app opens directly on Patches (Bundles tab hidden)
+  const showBundlesTab = appBundles.length !== 1
+  const tabNames = []
+  if (showBundlesTab) tabNames.push('Bundles')
+  tabNames.push('Patches')
   if (hasChanges) tabNames.push('Changes')
+  const initialTab = tabNames[0]
 
   const tabsEl = el('div', { class: 'modal-tabs' })
   const tabContents = {}
 
   for (const tabName of tabNames) {
-    const tabBtn = el('button', { class: `modal-tab${tabName === 'Bundles' ? ' active' : ''}` }, [tabName])
+    const tabBtn = el('button', { class: `modal-tab${tabName === initialTab ? ' active' : ''}` }, [tabName])
     tabsEl.appendChild(tabBtn)
 
-    const tabContent = el('div', { class: `modal-tab-content${tabName === 'Bundles' ? ' active' : ''}` })
+    const tabContent = el('div', { class: `modal-tab-content${tabName === initialTab ? ' active' : ''}` })
     tabContents[tabName] = tabContent
 
     tabBtn.addEventListener('click', () => {
@@ -137,12 +140,11 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
 
   // ── Bundles tab ──────────────────────────────────────
   const bundlesTab = tabContents['Bundles']
-  if (appBundles.length > 0) {
+  if (bundlesTab && appBundles.length > 0) {
     // Compare bar: select 2+ bundles, then open comparison overlay
     const selectedForCompare = new Set()
     const getPatchesFor = (b) => {
-      const bKey = b.channels.includes('dev') ? `${b.bundleName}:dev` : `${b.bundleName}:stable`
-      const bd = bundles[bKey]
+      const { record: bd } = findBundleRecord(bundles, b.bundleName, b.channels)
       return bd?.apps?.find((a) => a.package === pkg)?.patches || []
     }
 
@@ -170,7 +172,7 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
         label: b.patchesName,
         avatarUrl: b.avatarUrl,
         version: b.version,
-        channel: b.channels.includes('dev') ? 'dev' : 'stable',
+        channel: pickChannel(b.channels),
         patches: getPatchesFor(b),
       }))
 
@@ -223,10 +225,7 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
       const patchesContainer = el('div', { class: 'app-detail-bundle-patches' })
 
       let bundlePatches = []
-      const bKey = b.channels.includes('dev')
-        ? `${b.bundleName}:dev`
-        : `${b.bundleName}:stable`
-      const bundleData = bundles[bKey]
+      const { record: bundleData } = findBundleRecord(bundles, b.bundleName, b.channels)
       if (bundleData) {
         const appData = bundleData.apps?.find((a) => a.package === pkg)
         if (appData) bundlePatches = appData.patches || []
@@ -273,7 +272,7 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
       bundleAccordion.appendChild(patchesContainer)
       bundlesTab.appendChild(bundleAccordion)
     }
-  } else {
+  } else if (bundlesTab) {
     bundlesTab.innerHTML = '<div class="empty-state">No bundles found for this app.</div>'
   }
 
@@ -284,10 +283,9 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
   function renderPatchesForBundle(bundleInfo) {
     patchesList.replaceChildren()
     let bundlePatches = []
-    const bKey = bundleInfo.channels.includes('dev')
-      ? `${bundleInfo.bundleName}:dev`
-      : `${bundleInfo.bundleName}:stable`
-    const bundleData = bundles[bKey]
+    const { record: bundleData } = findBundleRecord(
+      bundles, bundleInfo.bundleName, bundleInfo.channels
+    )
     if (bundleData) {
       const appData = bundleData.apps?.find((a) => a.package === pkg)
       if (appData) bundlePatches = appData.patches || []
@@ -385,9 +383,12 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
     })
 
     updateTrigger()
-    dropdownWrapper.appendChild(trigger)
-    dropdownWrapper.appendChild(menu)
-    patchesTab.appendChild(dropdownWrapper)
+    // Dropdown is only useful when choosing between multiple bundles
+    if (appBundles.length > 1) {
+      dropdownWrapper.appendChild(trigger)
+      dropdownWrapper.appendChild(menu)
+      patchesTab.appendChild(dropdownWrapper)
+    }
     renderPatchesForBundle(currentBundle)
     patchesTab.appendChild(patchesList)
 

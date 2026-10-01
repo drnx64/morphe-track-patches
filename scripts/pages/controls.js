@@ -29,7 +29,7 @@ export function renderControls() {
   // Channel filter
   const channelGroup = el('div', { class: 'filter-group' })
   channelGroup.appendChild(el('span', { class: 'filter-label' }, ['Channel:']))
-  const channels = ['all', 'stable', 'dev']
+  const channels = ['all', 'stable', 'dev', 'latest']
   const currentChannel = store.get('filters')?.channel || 'all'
   for (const ch of channels) {
     const btn = el('button', { class: `filter-btn${currentChannel === ch ? ' active' : ''}`, 'data-channel': ch }, [ch === 'all' ? 'All' : ch.charAt(0).toUpperCase() + ch.slice(1)])
