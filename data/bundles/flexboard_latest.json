@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "latest",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-09-30T23:57:31",
-  "version": "v2.5.1-dev.7",
-  "description": "## 2.5.1-dev.7\n\n- feat: swipe up to undo, rebuilt in the motion-event-handler layer\n- docs: record that swipe up sends Gboard's general undo, by decision\n- fix: the gate honours FLEXBOARD_BUNDLE as documented, and proves opt-in patches emit\n- refactor: delete the dead swipe-up paths and correct what the rest claims",
+  "created_at": "2026-10-01T03:08:13",
+  "version": "v2.5.1-dev.9",
+  "description": "## 2.5.1-dev.9\n\n- feat: swipe up stage 2 — take the gesture over, and say whether it took",
   "apps": [
     {
       "app_name": "Gboard",
@@ -101,17 +101,8 @@
           ]
         },
         {
-          "name": "Swipe up diagnostic (temporary)",
-          "description": "Diagnostic build only. After each upward swipe, types what the detector measured: u<rise>/<drift>s<samples>=<outcome><when>, with rise and drift in dp. 6 means it would count as a swipe up, 2 means too short, 3 means too diagonal; a trailing m or e says whether that was reached mid-swipe or only at release. It only reports: it does not undo anything and does not stop the key being typed. Needs Swipe Left to Delete enabled. Off by default, and this patch will be removed once it has answered its question.",
-          "use": false,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
           "name": "Swipe up to undo autocorrect",
-          "description": "Swipe up on the keyboard to undo the last autocorrection — or, with none pending, the last edit — without the swiped key being typed. Off by default until it has been confirmed on a device.",
+          "description": "Work in progress, being built in stages. This build takes the swipe over: swipe up on the keyboard and it types a 6 instead of the key you swiped on, or an x if it could not take the swipe over. It does not undo anything yet. Off by default.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -149,9 +140,9 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "c56ee87d0e3a7793434d026428b95d7d65826ddc4295f5a33c8134ac5365f675",
-  "release_notes": "## 2.5.1-dev.7\n\n- feat: swipe up to undo, rebuilt in the motion-event-handler layer\n- docs: record that swipe up sends Gboard's general undo, by decision\n- fix: the gate honours FLEXBOARD_BUNDLE as documented, and proves opt-in patches emit\n- refactor: delete the dead swipe-up paths and correct what the rest claims",
-  "release_tag": "v2.5.1-dev.7",
-  "release_date": "2026-09-30T23:57:31Z",
+  "fingerprint": "8d1f12069c5bfadb115e317c7bf61b39ee7218a58e5d30061f9f3c3a705df30a",
+  "release_notes": "## 2.5.1-dev.9\n\n- feat: swipe up stage 2 — take the gesture over, and say whether it took",
+  "release_tag": "v2.5.1-dev.9",
+  "release_date": "2026-10-01T03:08:13Z",
   "isPreRelease": true
 }
