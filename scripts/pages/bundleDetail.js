@@ -15,12 +15,11 @@ export function renderBundleDetail(container, bundleName) {
   const nameCache = store.get('nameCache') || {}
   const iconCache = store.get('iconCache') || {}
 
-  // Find all channel versions
-  const stableKey = `${bundleName}:stable`
-  const devKey = `${bundleName}:dev`
-  const stable = bundles[stableKey]
-  const dev = bundles[devKey]
-  const bundle = stable || dev
+  // Find all channel versions (stable is primary; latest-only bundles work too)
+  const stable = bundles[`${bundleName}:stable`]
+  const latest = bundles[`${bundleName}:latest`]
+  const dev = bundles[`${bundleName}:dev`]
+  const bundle = stable || latest || dev
 
   if (!bundle) {
     mount(container, el('div', { class: 'loading-state' }, [`Bundle "${bundleName}" not found.`]))
@@ -45,6 +44,7 @@ export function renderBundleDetail(container, bundleName) {
       el('span', { class: 'bundle-detail-channels' }, [
         stable ? el('span', { class: 'channel-badge stable' }, ['stable']) : null,
         dev ? el('span', { class: 'channel-badge dev' }, ['dev']) : null,
+        latest ? el('span', { class: 'channel-badge latest' }, ['latest']) : null,
       ].filter(Boolean)),
     ]),
     el('div', { class: 'bundle-detail-actions' }, [

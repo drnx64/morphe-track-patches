@@ -41,8 +41,12 @@ import { openAppDetailModal } from './components/appDetailModal.js'
 import { openBundleHistoryModal } from './components/bundleHistoryModal.js'
 import { openBundleModal } from './components/bundleModal.js'
 import { renderGlobalSearch } from './components/globalSearch.js'
-import { preloadIcons, preloadAvatars } from './services/iconCache.js'
+import { showWorkToast } from './components/workToast.js'
+import { preloadAvatars } from './services/iconCache.js'
+import { initIconQueue, runIconQueue } from './services/iconFetchQueue.js'
+import { loadBundleState, saveBundleState } from './services/bundleCache.js'
 import { SITE_URL, GITHUB_REPO_URL } from './utils/url.js'
+import { parseBundleKey } from './utils/bundleKey.js'
 
 // ── Default State ──
 store.init({
@@ -137,6 +141,24 @@ function renderShell() {
   themeBtn.addEventListener('click', toggleTheme)
   header.querySelector('#header-actions').appendChild(themeBtn)
 
+  // Boot progress bar — determinate top bar + status pill while loadData runs
+  const bootProgress = el('div', {
+    class: 'boot-progress',
+    id: 'boot-progress',
+    role: 'progressbar',
+    'aria-valuemin': '0',
+    'aria-valuemax': '100',
+    'aria-valuenow': '0',
+    'aria-label': 'Loading site data',
+  }, [
+    el('div', { class: 'boot-progress-track' }, [
+      el('div', { class: 'boot-progress-fill', id: 'boot-progress-fill' }),
+    ]),
+    el('div', { class: 'boot-progress-status', id: 'boot-progress-status' }, [
+      store.get('loadingStatus') || 'Starting…',
+    ]),
+  ])
+
   const pageContainer = el('main', { id: 'page-container', class: 'page-container dashboard-page' })
 
   const footer = el('footer', { class: 'app-footer' }, [
@@ -162,7 +184,22 @@ function renderShell() {
     bottomNav.appendChild(link)
   }
 
-  mount(root, [header, pageContainer, footer, bottomNav])
+  mount(root, [header, bootProgress, pageContainer, footer, bottomNav])
+
+  // Drive the progress bar from store state (shell renders once — no leak)
+  const progressFill = bootProgress.querySelector('#boot-progress-fill')
+  const progressStatus = bootProgress.querySelector('#boot-progress-status')
+  store.subscribe('loadingProgress', (progress) => {
+    const clamped = Math.max(0, Math.min(100, progress))
+    progressFill.style.width = `${clamped}%`
+    bootProgress.setAttribute('aria-valuenow', String(Math.round(clamped)))
+  })
+  store.subscribe('loadingStatus', (status) => {
+    progressStatus.textContent = status
+  })
+  store.subscribe('loading', (loading) => {
+    if (!loading) bootProgress.classList.add('done')
+  })
 }
 
 // ── Routes ──
@@ -219,15 +256,172 @@ function ensureChangelog() {
   return changelogPromise
 }
 
+function setBootProgress(progress, status) {
+  store.set('loadingProgress', progress)
+  if (status) store.set('loadingStatus', status)
+}
+
+function bundleFileUrl(key) {
+  return `data/bundles/${key.replace(':', '_')}.json`
+}
+
+async function retryBundleFiles(failedKeys, bundles, toast, index) {
+  toast.setActions([])
+  toast.setDetail(`Retrying ${failedKeys.length} file${failedKeys.length !== 1 ? 's' : ''}…`)
+  const stillFailed = []
+  for (const key of failedKeys) {
+    try {
+      const data = await fetchJson(bundleFileUrl(key))
+      if (data) {
+        bundles[key] = { ...index[key], ...data }
+      } else {
+        stillFailed.push(key)
+      }
+    } catch {
+      stillFailed.push(key)
+    }
+  }
+  store.set('bundles', { ...bundles })
+
+  if (stillFailed.length === 0) {
+    saveBundleState(index, bundles)
+    toast.finish(`Recovered ${failedKeys.length} file${failedKeys.length !== 1 ? 's' : ''}`)
+    return
+  }
+  // Incomplete keys stay out of the cache index so they revalidate next boot
+  const stillFailedSet = new Set(stillFailed)
+  saveBundleState(
+    Object.fromEntries(Object.entries(index).filter(([key]) => !stillFailedSet.has(key))),
+    bundles,
+  )
+  toast.setDetail(`${stillFailed.length} file${stillFailed.length !== 1 ? 's' : ''} failed to load`)
+  toast.setActions([
+    { label: 'Retry', primary: true, onClick: () => retryBundleFiles(stillFailed, bundles, toast, index) },
+    { label: 'Dismiss', onClick: () => toast.close() },
+  ])
+}
+
+function offerBundleRetry(failedKeys, bundles, index) {
+  const toast = showWorkToast('Bundle data')
+  toast.setDetail(`${failedKeys.length} file${failedKeys.length !== 1 ? 's' : ''} failed to load`)
+  toast.setActions([
+    { label: 'Retry', primary: true, onClick: () => retryBundleFiles(failedKeys, bundles, toast, index) },
+    { label: 'Dismiss', onClick: () => toast.close() },
+  ])
+}
+
+function offerOfflineNotice() {
+  const toast = showWorkToast('Data refresh failed')
+  toast.setDetail('Showing cached data')
+  toast.setActions([
+    { label: 'Retry', primary: true, onClick: () => location.reload() },
+    { label: 'Dismiss', onClick: () => toast.close() },
+  ])
+}
+
+function finishBoot(status = 'Loading complete') {
+  setBootProgress(100, status)
+  store.set('loading', false)
+
+  // Record last visit for "new scan" detection
+  const today = new Date().toISOString().split('T')[0]
+  if (store.get('lastVisitScan') !== today) {
+    localStorage.setItem('morphe_last_visit_scan', today)
+    store.set('lastVisitScan', today)
+  }
+}
+
+function offerImageRetry(failedCount, runPass, toast) {
+  const retry = async () => {
+    toast.setActions([])
+    toast.setDetail('Retrying…')
+    try {
+      const stillFailed = await runPass()
+      if (stillFailed > 0) {
+        offerImageRetry(stillFailed, runPass, toast)
+      } else {
+        toast.finish('Images cached')
+      }
+    } catch (err) {
+      console.error('[app] Image retry failed:', err)
+      toast.setDetail('Retry failed')
+      toast.setActions([{ label: 'Dismiss', onClick: () => toast.close() }])
+    }
+  }
+  toast.setDetail(`${failedCount} image${failedCount !== 1 ? 's' : ''} failed to cache`)
+  toast.setActions([
+    { label: 'Retry', primary: true, onClick: retry },
+    { label: 'Dismiss', onClick: () => toast.close() },
+  ])
+}
+
+// Background-warm the avatar cache, then the icon queue (viewport-first lane
+// + paced sweep), reporting through one progress toast with retry on failures.
+async function cacheImagesInBackground(iconMap, repoAvatarMap, repoBundleImageMap) {
+  const iconTotal = Object.values(iconMap).filter((v) => typeof v === 'string' && v.startsWith('http')).length
+  const avatarUrls = [...new Set(
+    [...Object.values(repoAvatarMap), ...Object.values(repoBundleImageMap)]
+      .filter((u) => u && typeof u === 'string' && !u.startsWith('data:')),
+  )]
+  if (!iconTotal && !avatarUrls.length) return
+
+  const toast = showWorkToast('Caching images')
+
+  const runPass = async () => {
+    let failed = 0
+    if (avatarUrls.length) {
+      toast.setTitle('Caching avatars')
+      const avRes = await preloadAvatars(avatarUrls, (loaded) => toast.setProgress(loaded, avatarUrls.length))
+      failed += avRes.failed
+    }
+    if (iconTotal) {
+      toast.setTitle('Caching icons')
+      const iconRes = await runIconQueue((done, total) => toast.setProgress(done, total), { includeFailed: true })
+      failed += iconRes.failed
+    }
+    return failed
+  }
+
+  try {
+    const failed = await runPass()
+    if (failed > 0) {
+      offerImageRetry(failed, runPass, toast)
+    } else {
+      toast.finish('Images cached')
+    }
+  } catch (err) {
+    console.error('[app] Image caching failed:', err)
+    toast.setDetail('Image caching failed')
+    toast.setActions([{ label: 'Dismiss', onClick: () => toast.close() }])
+  }
+}
+
 async function loadData() {
   try {
+    setBootProgress(5, 'Loading site data…')
+
+    // Local cache first — full paint with zero bundle fetches while revalidating
+    const cachedState = await loadBundleState()
+
     // Fetch core + stats + changes in parallel
     const ts = Date.now()
-    const [coreRes, statsRes, changesRes] = await Promise.all([
-      fetchJson(`data/core.json?_t=${ts}`),
-      fetchJson(`data/stats.json?_t=${ts}`),
-      fetchJson(`data/changes.json?_t=${ts}`),
-    ])
+    let coreRes, statsRes, changesRes
+    try {
+      ;[coreRes, statsRes, changesRes] = await Promise.all([
+        fetchJson(`data/core.json?_t=${ts}`),
+        fetchJson(`data/stats.json?_t=${ts}`),
+        fetchJson(`data/changes.json?_t=${ts}`),
+      ])
+    } catch (err) {
+      if (cachedState) {
+        store.set('bundles', { ...cachedState.records })
+        deferredPreloads = null
+        offerOfflineNotice()
+        finishBoot('Offline — cached data')
+        return
+      }
+      throw err
+    }
 
     store.merge({
       liveDataDate: coreRes.date || '',
@@ -235,9 +429,13 @@ async function loadData() {
       stats: statsRes,
       changes: changesRes,
     })
+    setBootProgress(25, 'Loading caches…')
 
-    // Load icon + name caches
-    const cacheRes = await fetchJson('data/state/app_cache.json')
+    // Instant full paint from cache while everything else loads
+    if (cachedState) store.set('bundles', { ...cachedState.records })
+
+    // Icon + name caches — degraded (fallback icons, resolved names) if missing
+    const cacheRes = await fetchJson('data/state/app_cache.json', {})
     const iconCache = {}
     const nameCache = {}
     for (const [pkg, entry] of Object.entries(cacheRes)) {
@@ -247,6 +445,8 @@ async function loadData() {
       }
     }
     store.merge({ iconCache, nameCache })
+    initIconQueue(iconCache)
+    setBootProgress(35, 'Loading caches…')
 
     // Repo owner avatars (repo_cache.json → repo_url → avatarUrl)
     const repoCacheRes = await fetchJson('data/state/repo_cache.json', {})
@@ -264,40 +464,109 @@ async function loadData() {
     }
     store.merge({ repoAvatarMap, repoBundleImageMap })
 
-    // Background-warm icon + avatar caches (fetch, resize, store in IndexedDB).
-    // Deferred until after bundles load so they don't compete with the
-    // 359-file bundle fetch for connections.
+    // Background-warm icon + avatar caches. Deferred until after the bundle
+    // fetch so they don't compete for connections.
     deferredPreloads = () => {
-      preloadIcons(iconCache).catch(() => {})
-      preloadAvatars([...Object.values(repoAvatarMap), ...Object.values(repoBundleImageMap)]).catch(() => {})
+      cacheImagesInBackground(iconCache, repoAvatarMap, repoBundleImageMap).catch((err) => {
+        console.error('[app] Image caching failed:', err)
+      })
     }
 
-    // Load bundle index
-    const index = await fetchJson('data/bundles/_index.json')
+    // Load bundle index (cached records were painted above)
+    if (cachedState) {
+      setBootProgress(45, 'Refreshing bundle index…')
+    } else {
+      setBootProgress(45, 'Loading bundle index…')
+    }
+
+    let index
+    try {
+      index = await fetchJson('data/bundles/_index.json')
+    } catch (err) {
+      if (cachedState) {
+        deferredPreloads = null
+        offerOfflineNotice()
+        finishBoot('Using cached data')
+        return
+      }
+      throw err
+    }
+
     const keys = Object.keys(index)
     if (keys.length === 0) {
-      store.set('loading', false)
+      finishBoot()
       return
     }
 
-    // Load bundles in batches
-    const BATCH = 50
+    // Revalidate per key: version match → trust cached file data; else fetch
+    const cachedRecords = cachedState?.records || null
+    const cachedIndex = cachedState?.index || null
     const bundles = {}
-    for (let i = 0; i < keys.length; i += BATCH) {
-      const batch = keys.slice(i, i + BATCH)
-      const results = await Promise.all(
-        batch.map(async (key) => {
-          const filename = key.replace(':', '_') + '.json'
-          const data = await fetchJson(`data/bundles/${filename}`)
-          return [key, data]
-        })
-      )
-      for (const [key, data] of results) {
-        if (data) bundles[key] = data
+    const keysToFetch = []
+    for (const key of keys) {
+      const indexEntry = index[key]
+      const cachedRecord = cachedRecords?.[key]
+      if (cachedRecord && cachedIndex?.[key]?.version === indexEntry.version) {
+        bundles[key] = { ...cachedRecord, ...indexEntry }
+      } else {
+        // New or changed — paint now (stale beats empty), file streams in below
+        bundles[key] = cachedRecord ? { ...cachedRecord, ...indexEntry } : { ...indexEntry, apps: [] }
+        keysToFetch.push(key)
       }
     }
+    store.set('bundles', { ...bundles })
+    setBootProgress(
+      keysToFetch.length ? 50 : 95,
+      keysToFetch.length ? `Loading bundles 0/${keysToFetch.length}` : 'Data up to date',
+    )
 
-    store.set('bundles', bundles)
+    // Load changed bundles in batches — one bad file must not sink the page
+    const BATCH = 50
+    const failedKeys = []
+    for (let i = 0; i < keysToFetch.length; i += BATCH) {
+      const batch = keysToFetch.slice(i, i + BATCH)
+      const results = await Promise.all(
+        batch.map(async (key) => {
+          try {
+            const data = await fetchJson(bundleFileUrl(key))
+            return { key, data }
+          } catch {
+            return { key, data: null }
+          }
+        }),
+      )
+      for (const { key, data } of results) {
+        if (data) {
+          // Index carries card metadata files lack (stars, isArchived, …)
+          bundles[key] = { ...index[key], ...data }
+        } else {
+          failedKeys.push(key)
+          // Stale beats empty while the retry runs
+          if (cachedRecords?.[key]) {
+            bundles[key] = { ...cachedRecords[key], ...index[key] }
+          }
+        }
+      }
+      const done = Math.min(i + BATCH, keysToFetch.length)
+      setBootProgress(
+        50 + Math.round((45 * done) / keysToFetch.length),
+        `Loading bundles ${done}/${keysToFetch.length}`,
+      )
+      store.set('bundles', { ...bundles })
+    }
+
+    if (failedKeys.length) offerBundleRetry(failedKeys, bundles, index)
+
+    // Persist for next boot — incomplete keys excluded so they revalidate
+    if (failedKeys.length) {
+      const failedSet = new Set(failedKeys)
+      saveBundleState(
+        Object.fromEntries(Object.entries(index).filter(([key]) => !failedSet.has(key))),
+        bundles,
+      )
+    } else {
+      saveBundleState(index, bundles)
+    }
 
     // Icon/avatar preloads now that the bundle fetch is done
     if (deferredPreloads) {
@@ -305,17 +574,7 @@ async function loadData() {
       deferredPreloads = null
     }
 
-    // Changelog (2.75 MB) is loaded lazily by the /changelog route and
-    // bundle history modal via ensureChangelog()
-
-    store.set('loading', false)
-
-    // Record last visit for "new scan" detection
-    const today = new Date().toISOString().split('T')[0]
-    if (store.get('lastVisitScan') !== today) {
-      localStorage.setItem('morphe_last_visit_scan', today)
-      store.set('lastVisitScan', today)
-    }
+    finishBoot()
   } catch (err) {
     console.error('[app] Data loading failed:', err)
     store.set('fetchErrors', [...store.get('fetchErrors'), err.message])
@@ -339,10 +598,18 @@ async function loadData() {
   }
 }
 
-async function fetchJson(url) {
-  const resp = await fetch(url)
-  if (!resp.ok) throw new Error(`${url} returned ${resp.status}`)
-  return resp.json()
+async function fetchJson(url, fallback) {
+  try {
+    const resp = await fetch(url)
+    if (!resp.ok) {
+      if (fallback !== undefined) return fallback
+      throw new Error(`${url} returned ${resp.status}`)
+    }
+    return await resp.json()
+  } catch (err) {
+    if (fallback !== undefined) return fallback
+    throw err
+  }
 }
 
 // ── Active Nav State ──
@@ -391,7 +658,7 @@ function handleUrlParams() {
       const appData = bundle.apps?.find((a) => a.package === openApp)
       if (appData) {
         const bKey = Object.keys(bundles).find((k) => bundles[k] === bundle)
-        const bundleName = bKey?.replace(/:(stable|dev)$/, '') || ''
+        const bundleName = bKey ? parseBundleKey(bKey).name : ''
         openAppDetailModal({
           app: appData,
           bundleName,

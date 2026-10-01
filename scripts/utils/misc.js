@@ -3,7 +3,8 @@
  */
 import { escHtml } from './html.js'
 import { resolveAvatarUrl, resolveBundleImage } from './url.js'
-import { getCachedAvatarDataUrl } from '../services/iconCache.js'
+import { parseBundleKey } from './bundleKey.js'
+import { getCachedAvatarDataUrl, getCachedIconDataUrl } from '../services/iconCache.js'
 
 export function compareVersions(a, b) {
   const pa = a.split('.').map(Number)
@@ -18,11 +19,10 @@ export function compareVersions(a, b) {
 }
 
 export function isAppPreRelease(bundleName, pkgName, bundlesData) {
-  const stableKey = `${bundleName}:stable`
-  const devKey = `${bundleName}:dev`
-  const inStable = bundlesData[stableKey]?.apps?.some((a) => a.package === pkgName)
-  const inDev = bundlesData[devKey]?.apps?.some((a) => a.package === pkgName)
-  return !!inDev && !inStable
+  const inStable = bundlesData[`${bundleName}:stable`]?.apps?.some((a) => a.package === pkgName)
+  const inLatest = bundlesData[`${bundleName}:latest`]?.apps?.some((a) => a.package === pkgName)
+  const inDev = bundlesData[`${bundleName}:dev`]?.apps?.some((a) => a.package === pkgName)
+  return !!inDev && !inStable && !inLatest
 }
 
 export function groupAffectedBundles(affectedBundles) {
@@ -205,7 +205,13 @@ export function renderAppIcon(app, iconCache, size = 'default') {
   const iconUrl = getAppIconUrl(app, iconCache)
   const sizeClass = size === 'sm' ? ' app-icon--sm' : ''
   if (iconUrl) {
-    return `<img class="app-icon${sizeClass} app-icon--loading" src="${escHtml(iconUrl)}" alt="" loading="lazy" onload="this.classList.remove('app-icon--loading')" onerror="this.classList.remove('app-icon--loading');this.style.display='none'">`
+    const warm = getCachedIconDataUrl(iconUrl)
+    if (warm) {
+      return `<img class="app-icon${sizeClass}" src="${escHtml(warm)}" alt="">`
+    }
+    // Cold: the browser lazy-loads the original itself; data-icon-url lets
+    // the fetch queue warm IndexedDB once this element scrolls into view.
+    return `<img class="app-icon app-icon--loading${sizeClass}" src="${escHtml(iconUrl)}" alt="" loading="lazy" data-icon-url="${escHtml(iconUrl)}" onload="this.classList.remove('app-icon--loading')" onerror="this.classList.remove('app-icon--loading');this.style.display='none'">`
   }
   const name = app.app_name || app.package || '?'
   return `<div class="app-icon app-icon--fallback${sizeClass}">${name.charAt(0).toUpperCase()}</div>`
@@ -299,7 +305,7 @@ export function buildAppIndex(bundlesData, nameCache, iconCache) {
   const map = new Map()
   for (const key of Object.keys(bundlesData)) {
     const bundle = bundlesData[key]
-    const bundleName = key.replace(/:(stable|dev)$/, '')
+    const { name: bundleName } = parseBundleKey(key)
     const repoUrl = bundle.repo_url || `https://github.com/${bundleName}/revanced-patches`
     for (const app of bundle.apps || []) {
       let entry = map.get(app.package)

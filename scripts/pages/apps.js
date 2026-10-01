@@ -7,6 +7,9 @@ import { buildAppIndex, resolveAppName, getAppIconUrl, renderAppIcon, suggestFuz
 import { getPlayStoreUrl } from '../utils/url.js'
 import { escHtml } from '../utils/html.js'
 import { renderTodayUpdates } from './todayUpdates.js'
+import { skeletonGrid } from '../components/skeleton.js'
+
+let unsubscribeBundles = null
 
 export function renderApps(container) {
   const page = el('div', { class: 'apps-page' })
@@ -42,13 +45,31 @@ export function renderApps(container) {
   mount(container, page)
 
   // Build app index
-  const bundles = store.get('bundles') || {}
   const nameCache = store.get('nameCache') || {}
   const iconCache = store.get('iconCache') || {}
-  const appIndex = buildAppIndex(bundles, nameCache, iconCache)
+  let appIndex = buildAppIndex(store.get('bundles') || {}, nameCache, iconCache)
+
+  // Invalidates an in-flight progressive-render chain when the list refills
+  let listGeneration = 0
+
+  function rebuildIndex() {
+    appIndex = buildAppIndex(
+      store.get('bundles') || {},
+      store.get('nameCache') || {},
+      store.get('iconCache') || {},
+    )
+  }
 
   function renderAppsList(query = '') {
+    const gen = ++listGeneration
     grid.replaceChildren()
+
+    // Booting: bundle files still streaming in — show skeletons, not "no apps"
+    if (store.get('loading') && appIndex.length === 0) {
+      grid.appendChild(skeletonGrid(8))
+      return
+    }
+
     let list = appIndex
     if (query) {
       const q = query.toLowerCase()
@@ -92,6 +113,7 @@ export function renderApps(container) {
     let rendered = 0
     const BATCH = 24
     function renderBatch() {
+      if (gen !== listGeneration) return
       const end = Math.min(rendered + BATCH, list.length)
       for (let i = rendered; i < end; i++) {
         const app = list[i]
@@ -150,6 +172,17 @@ export function renderApps(container) {
   }
 
   renderAppsList()
+
+  // Streaming boot: refill the grid as bundle files land (keeps search input focus)
+  if (unsubscribeBundles) unsubscribeBundles()
+  unsubscribeBundles = store.subscribe('bundles', () => {
+    if (!page.isConnected) {
+      unsubscribeBundles()
+      return
+    }
+    rebuildIndex()
+    renderAppsList(searchInput.value)
+  })
 
   let debounceTimer
   searchInput.addEventListener('input', () => {

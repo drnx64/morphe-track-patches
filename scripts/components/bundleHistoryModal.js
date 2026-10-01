@@ -17,9 +17,10 @@ export function openBundleHistoryModal(bundleName) {
   const nameCache = store.get('nameCache') || {}
   const iconCache = store.get('iconCache') || {}
 
-  const stableKey = `${bundleName}:stable`
-  const devKey = `${bundleName}:dev`
-  const bundleData = bundles[stableKey] || bundles[devKey]
+  const bundleData =
+    bundles[`${bundleName}:stable`] ||
+    bundles[`${bundleName}:latest`] ||
+    bundles[`${bundleName}:dev`]
   const displayName = bundleData?.patches_name || bundleName
   const avatarUrl = getDisplayAvatar(bundleData?.repo_url || '', bundleData?.avatarUrl || '')
   const bundleImageUrl = getDisplayBundleImage(bundleData?.repo_url || '', bundleData?.bundleImageUrl || '')

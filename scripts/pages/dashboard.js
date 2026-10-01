@@ -5,16 +5,18 @@ import { el, mount } from '../ui.js'
 import * as store from '../store.js'
 import { renderStatsSection } from './statsSection.js'
 import { renderControls } from './controls.js'
-import { renderBundlesGrid } from './bundlesGrid.js'
+import { renderBundlesGrid, renderBundleCardsInto } from './bundlesGrid.js'
 
 let unsubscribe = null
 
-function rerenderGrid(page) {
+function refillGrid(page) {
   const gridContainer = page.querySelector('#bundles-grid-container')
-  if (gridContainer) {
-    gridContainer.replaceChildren()
-    gridContainer.appendChild(renderBundlesGrid().firstChild || el('div', {}, ['No bundles found.']))
-  }
+  if (gridContainer) renderBundleCardsInto(gridContainer)
+}
+
+function refreshStats(page) {
+  const statsSection = page.querySelector('.stats-section')
+  if (statsSection) statsSection.replaceWith(renderStatsSection())
 }
 
 export function renderDashboard(container) {
@@ -28,8 +30,21 @@ export function renderDashboard(container) {
 
   // Re-subscribe on each visit; drop the previous page's subscriptions first
   if (unsubscribe) unsubscribe()
-  const unsubBundles = store.subscribe('bundles', () => rerenderGrid(page))
-  const unsubFilters = store.subscribe('filters', () => rerenderGrid(page))
+  const unsubBundles = store.subscribe('bundles', () => {
+    if (!page.isConnected) {
+      unsubscribe()
+      return
+    }
+    refreshStats(page)
+    refillGrid(page)
+  })
+  const unsubFilters = store.subscribe('filters', () => {
+    if (!page.isConnected) {
+      unsubscribe()
+      return
+    }
+    refillGrid(page)
+  })
   unsubscribe = () => {
     unsubBundles()
     unsubFilters()

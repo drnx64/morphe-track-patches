@@ -7,6 +7,7 @@ import * as store from '../store.js'
 import { buildAppIndex, resolveAppName, renderAppIcon, suggestFuzzy, copyToClipboard, getDisplayAvatar, getDisplayBundleImage, avatarStackHtml } from '../utils/misc.js'
 import { escHtml } from '../utils/html.js'
 import { formatVersion } from '../utils/format.js'
+import { parseBundleKey } from '../utils/bundleKey.js'
 import { SEARCH_ICON, REFRESH_ICON, CHEVRON_DOWN } from '../utils/svg.js'
 import { buildCompareMatrix } from '../components/compareMatrixTable.js'
 
@@ -249,8 +250,7 @@ export function renderDiff(container) {
     const patchBundleMap = new Map()
 
     for (const [key, bundle] of Object.entries(bundles)) {
-      const bName = key.replace(/:(stable|dev)$/, '')
-      const channel = key.endsWith(':dev') ? 'dev' : 'stable'
+      const { name: bName, channel } = parseBundleKey(key)
       const appData = bundle.apps?.find((a) => a.package === pkg)
       if (!appData) continue
 
@@ -520,9 +520,11 @@ export function renderDiff(container) {
 
       const stableBundles = selectedInfos.filter((b) => b.channel === 'stable').sort((a, b) => a.name.localeCompare(b.name))
       const devBundles = selectedInfos.filter((b) => b.channel === 'dev').sort((a, b) => a.name.localeCompare(b.name))
+      const latestBundles = selectedInfos.filter((b) => b.channel === 'latest').sort((a, b) => a.name.localeCompare(b.name))
 
       renderBundleGroup(stableBundles, 'Stable', crossBundlePatches, patchColorMap)
       renderBundleGroup(devBundles, 'Dev', crossBundlePatches, patchColorMap)
+      renderBundleGroup(latestBundles, 'Latest', crossBundlePatches, patchColorMap)
     }
 
     renderGroups()

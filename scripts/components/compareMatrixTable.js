@@ -126,10 +126,10 @@ export function buildCompareMatrix(cols, state = {}) {
     `<b class="compare-summary-differs">${differsCount}</b> differ`
   root.appendChild(summary)
 
-  // Channel chip only when it disambiguates (dev bundles, or duplicate labels)
+  // Channel chip only when it disambiguates (non-stable bundles, or duplicate labels)
   const labelCounts = new Map()
   for (const c of cols) labelCounts.set(c.label, (labelCounts.get(c.label) || 0) + 1)
-  const showChannel = cols.some((c) => c.channel === 'dev') || [...labelCounts.values()].some((n) => n > 1)
+  const showChannel = cols.some((c) => c.channel && c.channel !== 'stable') || [...labelCounts.values()].some((n) => n > 1)
 
   const filterDefs = [
     ['all', 'All', rows.length],
