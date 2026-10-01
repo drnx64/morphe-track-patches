@@ -426,6 +426,7 @@ def fetch_external_repos():
         # Still save index with custom results
         save_json(EXTERNAL_INDEX_PATH, {
             "last_run": datetime.now(timezone.utc).isoformat(),
+            "archive_available": False,
             "added": custom_results,
             "errors": custom_errors,
             "custom_fetched": len(custom_results),
@@ -441,6 +442,7 @@ def fetch_external_repos():
 
     # 3. Parse into repo list
     all_repos = parse_repos_txt(repos_text)
+    archive_count = len(all_repos)
     print(f"  Found {len(all_repos)} repos in repos.txt")
 
     # 3a. Add successfully processed custom repos to all_repos
@@ -496,6 +498,7 @@ def fetch_external_repos():
     # 7. Save index of processed external repos
     save_json(EXTERNAL_INDEX_PATH, {
         "last_run": datetime.now(timezone.utc).isoformat(),
+        "archive_available": archive_count > 0,
         "added": results,
         "errors": errors,
         "custom_fetched": len(custom_results),

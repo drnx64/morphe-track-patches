@@ -2,7 +2,11 @@ import os
 import re
 import json
 from datetime import datetime
-from state_manager import load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, load_last_run, save_last_run, COMMON_PACKAGES
+from state_manager import (
+    load_json, save_json, ensure_dirs, RAW_DIR, STATE_DIR, load_last_run,
+    save_last_run, COMMON_PACKAGES, load_current_snapshot,
+    rebuild_snapshot_from_bundles, load_claimed_keys, is_claimed,
+)
 
 def get_app_name(package_name):
     """Normalize package names to a readable display name."""
@@ -276,6 +280,38 @@ def validate_and_parse_bundle(bundle_name, channel):
 
 
 
+def reconcile_parsed_bundles(parsed_bundles, old_snapshot, claims):
+    """Reconcile this run's parse output with the previous snapshot.
+
+    - Drops records no longer claimed upstream (stale raw dirs left behind
+      by removed/renamed bundles).
+    - Carries forward previously-parsed records whose keys are still claimed
+      upstream but missing from this run's parse — transient download/parse
+      failures must never look like removals.
+
+    Returns (parsed_bundles, dropped_keys, carried_keys).
+    """
+    stale = []
+    if claims is not None:
+        stale = [k for k, v in parsed_bundles.items() if not is_claimed(k, v, claims)]
+        for key in stale:
+            del parsed_bundles[key]
+
+    carried = []
+    for key, record in old_snapshot.items():
+        if key in parsed_bundles:
+            continue
+        if is_claimed(key, record, claims):
+            parsed_bundles[key] = record
+            carried.append(key)
+
+    if stale:
+        print(f"[*] Reconcile: dropped {len(stale)} unclaimed stale bundles")
+    if carried:
+        print(f"[*] Reconcile: carried forward {len(carried)} claimed bundles missing from parse")
+    return parsed_bundles, stale, carried
+
+
 def parse_all_bundles():
     bundles_raw_dir = os.path.join(RAW_DIR, "bundles")
     if not os.path.exists(bundles_raw_dir):
@@ -312,7 +348,17 @@ def parse_all_bundles():
                     "bundle": bundle_key,
                     "error": err_msg
                 })
-                
+
+    # Reconcile with the previous snapshot: drop stale unclaimed dirs,
+    # carry forward claimed keys missing from this run (transient failures).
+    old_snapshot = load_current_snapshot()
+    if not old_snapshot:
+        old_snapshot = rebuild_snapshot_from_bundles()
+    claims = load_claimed_keys()
+    parsed_bundles, dropped_keys, carried_keys = reconcile_parsed_bundles(
+        parsed_bundles, old_snapshot, claims
+    )
+
     # Enrich with Google Play Store app icons
     print("\n--- Enriching apps with Play Store icons ---")
     try:
