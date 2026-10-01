@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-09-29T00:12:59",
-  "version": "v2.5.1-dev.5",
-  "description": "## 2.5.1-dev.5\n\n- fix: measure the flick from the touch stream, not from Gboard's start fields",
+  "created_at": "2026-09-30T23:57:31",
+  "version": "v2.5.1-dev.7",
+  "description": "## 2.5.1-dev.7\n\n- feat: swipe up to undo, rebuilt in the motion-event-handler layer\n- docs: record that swipe up sends Gboard's general undo, by decision\n- fix: the gate honours FLEXBOARD_BUNDLE as documented, and proves opt-in patches emit\n- refactor: delete the dead swipe-up paths and correct what the rest claims",
   "apps": [
     {
       "app_name": "Gboard",
@@ -102,7 +102,7 @@
         },
         {
           "name": "Swipe up diagnostic (temporary)",
-          "description": "Diagnostic build only. Types a digit after every swipe that moved, saying what the up-flick detector made of it: 1 means it never saw the gesture, 2 means the travel was too short, 3 means the motion was too diagonal, and 6 means it would have fired. It does not undo anything and does not stop the key being typed — it only reports. Cannot be used alongside \"Swipe up to undo autocorrect\", which records the same gesture. Off by default, and this patch will be removed once it has answered its question.",
+          "description": "Diagnostic build only. After each upward swipe, types what the detector measured: u<rise>/<drift>s<samples>=<outcome><when>, with rise and drift in dp. 6 means it would count as a swipe up, 2 means too short, 3 means too diagonal; a trailing m or e says whether that was reached mid-swipe or only at release. It only reports: it does not undo anything and does not stop the key being typed. Needs Swipe Left to Delete enabled. Off by default, and this patch will be removed once it has answered its question.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -111,7 +111,7 @@
         },
         {
           "name": "Swipe up to undo autocorrect",
-          "description": "Swipe up on the keyboard to put back the word an autocorrect replaced. Gboard has the same undo on backspace, behind a setting; this adds a gesture for it and works whether or not that setting is on. A swipe with nothing to undo does nothing. Cannot be used alongside \"Swipe up diagnostic (temporary)\", which attaches to the same instruction. Off by default until it has been confirmed on a device.",
+          "description": "Swipe up on the keyboard to undo the last autocorrection — or, with none pending, the last edit — without the swiped key being typed. Off by default until it has been confirmed on a device.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -149,9 +149,9 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "434421fc7eadd43131cf53e4d7e01fba28e85871eb98f734a68bac8929a2e86b",
-  "release_notes": "## 2.5.1-dev.5\n\n- fix: measure the flick from the touch stream, not from Gboard's start fields",
-  "release_tag": "v2.5.1-dev.5",
-  "release_date": "2026-09-29T00:12:59Z",
+  "fingerprint": "d49ff900c2e6ce2b31677173cfab93bfd641be60f560a25b05b91dfa86c88ab4",
+  "release_notes": "## 2.5.1-dev.7\n\n- feat: swipe up to undo, rebuilt in the motion-event-handler layer\n- docs: record that swipe up sends Gboard's general undo, by decision\n- fix: the gate honours FLEXBOARD_BUNDLE as documented, and proves opt-in patches emit\n- refactor: delete the dead swipe-up paths and correct what the rest claims",
+  "release_tag": "v2.5.1-dev.7",
+  "release_date": "2026-09-30T23:57:31Z",
   "isPreRelease": true
 }

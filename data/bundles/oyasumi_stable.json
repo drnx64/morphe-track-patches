@@ -2,9 +2,9 @@
   "bundle": "oyasumi",
   "channel": "stable",
   "repo_url": "https://github.com/dunecache/oyasumi-patches",
-  "created_at": "2026-09-30T19:27:37",
-  "version": "v0.5.2",
-  "description": "## [0.5.2](https://github.com/dunecache/oyasumi-patches/compare/v0.5.1...v0.5.2) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* stop naming classes in the preference fingerprints ([673c2ba](https://github.com/dunecache/oyasumi-patches/commit/673c2ba3e7cbcb1d97bb3f6090721c7d04849bc7))\n",
+  "created_at": "2026-09-30T21:30:22",
+  "version": "v0.5.3",
+  "description": "## [0.5.3](https://github.com/dunecache/oyasumi-patches/compare/v0.5.2...v0.5.3) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* push a zero before the forced steps, not just the steps ([f51ed17](https://github.com/dunecache/oyasumi-patches/commit/f51ed1783a74db8ddf6b33b5113aeff89d6e169d))\n",
   "apps": [
     {
       "app_name": "Djezzy",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Force Walk & Win steps to 10000",
-          "description": "Report 10,000 steps to Djezzy's Walk & Win campaign, both on every step-counter event and once when the step stream is first subscribed, and force the stored step total itself to read back as 10,000.",
+          "description": "Report 10,000 steps to Djezzy's Walk & Win campaign, both on every step-counter event and once when the step stream is first subscribed. The subscribe push is a zero followed by 10,000, because one value cannot both open the counter's accumulation window and jump through it.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -71,9 +71,9 @@
     }
   ],
   "patches_name": "Oyasumi Patches",
-  "fingerprint": "282a3a156428008d33bd65577b21636b5f62616a95ba528d6a63601ddef02691",
-  "release_notes": "## [0.5.2](https://github.com/dunecache/oyasumi-patches/compare/v0.5.1...v0.5.2) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* stop naming classes in the preference fingerprints ([673c2ba](https://github.com/dunecache/oyasumi-patches/commit/673c2ba3e7cbcb1d97bb3f6090721c7d04849bc7))\n",
-  "release_tag": "v0.5.2",
-  "release_date": "2026-09-30T19:27:37Z",
+  "fingerprint": "4e76068d0983616d4c22904a09ac08466f089161b3b9339fb7ca80f17faa81f8",
+  "release_notes": "## [0.5.3](https://github.com/dunecache/oyasumi-patches/compare/v0.5.2...v0.5.3) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* push a zero before the forced steps, not just the steps ([f51ed17](https://github.com/dunecache/oyasumi-patches/commit/f51ed1783a74db8ddf6b33b5113aeff89d6e169d))\n",
+  "release_tag": "v0.5.3",
+  "release_date": "2026-09-30T21:30:22Z",
   "isPreRelease": false
 }

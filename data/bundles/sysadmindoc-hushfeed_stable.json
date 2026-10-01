@@ -137,6 +137,22 @@
           ]
         },
         {
+          "name": "Change app name",
+          "description": "Shows a name you choose under the app's icon and in Android's app list, so the patched TikTok is easy to tell from another one. Type the name in this patch's options. Inside the app everything still says TikTok.",
+          "use": false,
+          "options": [
+            {
+              "key": "appName",
+              "description": "The name shown under the app icon, up to 50 characters."
+            }
+          ],
+          "compatible_versions": [
+            "47.0.3",
+            "47.1.3",
+            "47.1.4"
+          ]
+        },
+        {
           "name": "Comment publish diagnostics",
           "description": "Says in the diagnostic report whether a comment send reached TikTok's publish code, what it had in hand, and whether it returned early or handed the comment to the request. A comment that never posts leaves no other trace.",
           "use": true,
@@ -957,7 +973,7 @@
         },
         {
           "name": "Share sheet tools",
-          "description": "Asks twice before a video is sent to a friend from the share sheet. The check follows the account or conversation instead of the visible name and covers accessibility actions and keyboard input. It can also hide chosen people, share options or the whole Send to row, and a profile's or a LIVE's share sheet can hide a different set from a video's. Switch: Hushfeed settings > Share sheet.",
+          "description": "Hides chosen people, share options or the whole Send to row of the share sheet, and a profile's or a LIVE's share sheet can hide a different set from a video's. Apps you pick can be added to the Share via row. Switch: Hushfeed settings > Share sheet.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -1135,7 +1151,7 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "e5e354eff4475daca0613c7a2fdc6379fd09a479aeca3c5360fc9af2b0ec19f8",
+  "fingerprint": "2a1329c1af9d3d3fdbcbbf80e2632b525c974f5b78e47a61d04525b8f69f410d",
   "release_notes": "Hushfeed v0.65.0 has 98 patches for global TikTok 47.0.3 and 47.1.3 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* Mute feed videos now works on TikTok 47.1.3, and on 47.0.3 it silences photo posts with a sound too. A video is already quiet when you swipe to it, and it stays quiet after you watch the same video from a DM or scroll a long profile grid. DMs, stories and LIVE keep their sound, and another app's music keeps playing.\n* Press and hold the Home tab to open Hushfeed's settings (#45). A tap on Home works as before.\n* Every save says it's been taken the moment you ask, including the ones waiting in line. If TikTok closes in the middle of a save, a banner says which saves didn't finish the next time you open it.\n* Saves connect only to the server address Hushfeed checked, so nothing can swap in a different machine between the check and the download.\n* The block control, the mute button and Hushfeed's other buttons over the video now show on videos opened from a creator's profile, a hashtag or a sound.\n* When the time budget runs out partway through a long video, the notice and the hold come right then, and the budget label leaves as soon as you switch tabs.\n* New row under Downloads, Forget saved videos. It empties the already-saved record and keeps your files.\n* On Android 10 and older, the block button, Unblock and Save media on a sticker no longer close TikTok.\n* Your keyboard no longer rewrites a package name or host you type into the share settings.\n* Diagnostics can record a screen's layout for a \"please hide this\" report, and the feed filter table has a line for every route that delivers videos.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.65.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2490 runtime tests and 459 patch tests passed. Both Android lint checks passed.\n* All 98 patches applied to both supported APKs. Resource checks passed, with no manifest changes. The attached release receipt records the exact bundle and each target's result.\n* On phones and Android emulators running TikTok 47.0.3 and 47.1.3, the mute silenced feed videos and photo posts while another app's music kept playing, saves went through the checked address, and holding Home opened Hushfeed's settings. A locked budget, What's new, the block control's larger tap area and Stay on the video in full screen behaved as described.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3 or 47.1.3 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.65.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
   "release_tag": "v0.65.0",
   "release_date": "2026-09-30T03:21:31Z",
