@@ -248,7 +248,8 @@ export async function fetchAndCacheAvatar(url) {
 }
 
 /**
- * Warm avatar cache: hydrate from IndexedDB, then network-fetch misses.
+ * Warm avatar cache: hydrate from IndexedDB, then network-fetch misses
+ * strictly one at a time (no parallel requests) as WebP data URLs.
  * @param {string[]} urls
  * @param {(loaded: number, total: number) => void} [onProgress]
  * @returns {Promise<{failed: number}>}
@@ -274,37 +275,19 @@ export async function preloadAvatars(urls, onProgress) {
   // Hydrated-from-IndexedDB URLs count as done so callers' progress reaches total
   const hydrated = unique.length - missing.length
   onProgress?.(hydrated, unique.length)
-  let idx = 0
-  let active = 0
   let loaded = 0
   let failed = 0
-  const CONCURRENCY = 4
 
-  await new Promise((resolve) => {
-    if (!missing.length) { resolve(); return }
-    function next() {
-      while (active < CONCURRENCY && idx < missing.length) {
-        const i = idx++
-        active++
-        fetchAndCacheAvatar(missing[i]).then(
-          (result) => {
-            if (!result) failed++
-          },
-          () => {
-            failed++
-          },
-        ).finally(() => {
-          active--
-          loaded++
-          onProgress?.(hydrated + loaded, unique.length)
-          if (idx >= missing.length && active === 0) resolve()
-          else next()
-        })
-      }
-      if (idx >= missing.length && active === 0) resolve()
+  for (const url of missing) {
+    try {
+      const result = await fetchAndCacheAvatar(url)
+      if (!result) failed++
+    } catch {
+      failed++
     }
-    next()
-  })
+    loaded++
+    onProgress?.(hydrated + loaded, unique.length)
+  }
 
   return { failed }
 }

@@ -88,11 +88,18 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
     ? `<img class="app-detail-icon" src="${escHtml(iconUrl)}" alt="" loading="lazy" onerror="this.style.display='none'">`
     : `<div class="app-detail-icon app-detail-icon--fallback">${appName.charAt(0).toUpperCase()}</div>`
 
+  // Attribution: "Facebook by Hushbook patches" — each bundle name links to
+  // that bundle's detail page (only bundles containing this app).
+  const sourceLinks = appBundles.map((b) =>
+    `<a href="#/bundle/${encodeURIComponent(b.bundleName)}" title="Open bundle page">${escHtml(b.patchesName)}</a>`
+  ).join(', ')
+  const sourceHtml = sourceLinks ? `<span class="app-detail-source"> by ${sourceLinks}</span>` : ''
+
   const heroEl = el('div', { class: 'app-detail-hero' })
   heroEl.innerHTML = `
     ${iconHtml}
     <div class="app-detail-hero-info">
-      <h3 class="app-detail-name">${escHtml(appName)}</h3>
+      <h3 class="app-detail-name">${escHtml(appName)}${sourceHtml}</h3>
       <span class="app-detail-pkg">${escHtml(pkg)}</span>
       <a class="app-detail-playstore" href="${escHtml(getPlayStoreUrl(pkg))}" target="_blank" rel="noopener">
         ${PLAY_STORE_SVG} View on Google Play
@@ -100,6 +107,10 @@ export function openAppDetailModal({ app, bundleName, channels = [], patchName =
     </div>
   `
   content.appendChild(heroEl)
+
+  heroEl.querySelectorAll('.app-detail-source a').forEach((a) => {
+    a.addEventListener('click', () => closeModal())
+  })
 
   // Copy package name on click
   const pkgEl = heroEl.querySelector('.app-detail-pkg')

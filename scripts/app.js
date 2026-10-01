@@ -294,11 +294,11 @@ async function retryBundleFiles(failedKeys, bundles, toast, index) {
     Object.fromEntries(Object.entries(index).filter(([key]) => !stillFailedSet.has(key))),
     bundles,
   )
-  toast.setDetail(`${stillFailed.length} file${stillFailed.length !== 1 ? 's' : ''} failed to load`)
-  toast.setActions([
-    { label: 'Retry', primary: true, onClick: () => retryBundleFiles(stillFailed, bundles, toast, index) },
-    { label: 'Dismiss', onClick: () => toast.close() },
-  ])
+  // Retried once and still failing — auto-dismiss instead of offering again.
+  toast.finish(
+    `${stillFailed.length} file${stillFailed.length !== 1 ? 's' : ''} failed to load`,
+    { fillBar: false },
+  )
 }
 
 function offerBundleRetry(failedKeys, bundles, index) {
@@ -338,14 +338,17 @@ function offerImageRetry(failedCount, runPass, toast) {
     try {
       const stillFailed = await runPass()
       if (stillFailed > 0) {
-        offerImageRetry(stillFailed, runPass, toast)
+        // Retried once and still failing — auto-dismiss the toast.
+        toast.finish(
+          `${stillFailed} image${stillFailed !== 1 ? 's' : ''} failed to cache`,
+          { fillBar: false },
+        )
       } else {
         toast.finish('Images cached')
       }
     } catch (err) {
       console.error('[app] Image retry failed:', err)
-      toast.setDetail('Retry failed')
-      toast.setActions([{ label: 'Dismiss', onClick: () => toast.close() }])
+      toast.finish('Retry failed', { fillBar: false })
     }
   }
   toast.setDetail(`${failedCount} image${failedCount !== 1 ? 's' : ''} failed to cache`)
