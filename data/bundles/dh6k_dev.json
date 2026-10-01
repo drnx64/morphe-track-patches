@@ -2,9 +2,9 @@
   "bundle": "dh6k",
   "channel": "dev",
   "repo_url": "https://github.com/dh6k/morphe-patches",
-  "created_at": "2026-09-30T15:28:42",
-  "version": "v1.8.0-dev.4",
-  "description": "## [1.8.0-dev.4](https://github.com/dh6k/morphe-patches/compare/v1.8.0-dev.3...v1.8.0-dev.4) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* **brave:** only force the dedicated AMOLED dynamic-colors getter ([535f6f2](https://github.com/dh6k/morphe-patches/commit/535f6f281c1de3464d1971f437c4abc2af1150a4))\n",
+  "created_at": "2026-09-30T17:48:07",
+  "version": "v1.8.0-dev.6",
+  "description": "## [1.8.0-dev.6](https://github.com/dh6k/morphe-patches/compare/v1.8.0-dev.5...v1.8.0-dev.6) (2026-09-30)\n\n### ✨ New Features\n\n* **brave:** add AMOLED text and accent color options ([e0484bb](https://github.com/dh6k/morphe-patches/commit/e0484bbec22ffb990d510ca2b9ecaa3499545f81))\n",
   "apps": [
     {
       "app_name": "Brave Browser",
@@ -12,12 +12,20 @@
       "patches": [
         {
           "name": "Brave AMOLED theme",
-          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
+          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Optional text and accent colors (defaults keep Brave's #f0f2ff / #737ade). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
           "use": false,
           "options": [
             {
               "key": "backgroundColor",
               "description": "Opaque hex used for dark chrome surfaces. Use #000000 for pure black OLED. Example elevated near-black: #0a0a0a."
+            },
+            {
+              "key": "textColor",
+              "description": "Opaque hex for text and icon ink (primary/secondary/muted). Brave dark default: #f0f2ff."
+            },
+            {
+              "key": "accentColor",
+              "description": "Opaque hex for Brave accent (toggles, links, highlights). Default: #737ade. Status coral/orange is left alone."
             },
             {
               "key": "disableDynamicColors",
@@ -28,12 +36,20 @@
         },
         {
           "name": "Brave AMOLED theme",
-          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
+          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Optional text and accent colors (defaults keep Brave's #f0f2ff / #737ade). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
           "use": false,
           "options": [
             {
               "key": "backgroundColor",
               "description": "Opaque hex used for dark chrome surfaces. Use #000000 for pure black OLED. Example elevated near-black: #0a0a0a."
+            },
+            {
+              "key": "textColor",
+              "description": "Opaque hex for text and icon ink (primary/secondary/muted). Brave dark default: #f0f2ff."
+            },
+            {
+              "key": "accentColor",
+              "description": "Opaque hex for Brave accent (toggles, links, highlights). Default: #737ade. Status coral/orange is left alone."
             },
             {
               "key": "disableDynamicColors",
@@ -83,12 +99,20 @@
       "patches": [
         {
           "name": "Brave AMOLED theme",
-          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
+          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Optional text and accent colors (defaults keep Brave's #f0f2ff / #737ade). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
           "use": false,
           "options": [
             {
               "key": "backgroundColor",
               "description": "Opaque hex used for dark chrome surfaces. Use #000000 for pure black OLED. Example elevated near-black: #0a0a0a."
+            },
+            {
+              "key": "textColor",
+              "description": "Opaque hex for text and icon ink (primary/secondary/muted). Brave dark default: #f0f2ff."
+            },
+            {
+              "key": "accentColor",
+              "description": "Opaque hex for Brave accent (toggles, links, highlights). Default: #737ade. Status coral/orange is left alone."
             },
             {
               "key": "disableDynamicColors",
@@ -131,12 +155,20 @@
       "patches": [
         {
           "name": "Brave AMOLED theme",
-          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
+          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Optional text and accent colors (defaults keep Brave's #f0f2ff / #737ade). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
           "use": false,
           "options": [
             {
               "key": "backgroundColor",
               "description": "Opaque hex used for dark chrome surfaces. Use #000000 for pure black OLED. Example elevated near-black: #0a0a0a."
+            },
+            {
+              "key": "textColor",
+              "description": "Opaque hex for text and icon ink (primary/secondary/muted). Brave dark default: #f0f2ff."
+            },
+            {
+              "key": "accentColor",
+              "description": "Opaque hex for Brave accent (toggles, links, highlights). Default: #737ade. Status coral/orange is left alone."
             },
             {
               "key": "disableDynamicColors",
@@ -147,12 +179,20 @@
         },
         {
           "name": "Brave AMOLED theme",
-          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
+          "description": "Patch-time AMOLED dark theme (issue #21): rewrites Brave dark chrome surfaces to pure black (or a custom opaque hex). Optional text and accent colors (defaults keep Brave's #f0f2ff / #737ade). Forces Material You dynamic colors off in bytecode (the pref is non-persistent) and overrides system neutral night roles on Android 12+. Apply Dark theme in Brave to see it. Does not change web content force-dark, NTP theme collections, or add a runtime color picker. Default off.",
           "use": false,
           "options": [
             {
               "key": "backgroundColor",
               "description": "Opaque hex used for dark chrome surfaces. Use #000000 for pure black OLED. Example elevated near-black: #0a0a0a."
+            },
+            {
+              "key": "textColor",
+              "description": "Opaque hex for text and icon ink (primary/secondary/muted). Brave dark default: #f0f2ff."
+            },
+            {
+              "key": "accentColor",
+              "description": "Opaque hex for Brave accent (toggles, links, highlights). Default: #737ade. Status coral/orange is left alone."
             },
             {
               "key": "disableDynamicColors",
@@ -267,9 +307,9 @@
     }
   ],
   "patches_name": "Brave and universal patches",
-  "fingerprint": "ea37e7082880c8ce6fda3a4249b492cbeb07a5884641179c9a8b5dc6f644928a",
-  "release_notes": "## [1.8.0-dev.4](https://github.com/dh6k/morphe-patches/compare/v1.8.0-dev.3...v1.8.0-dev.4) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* **brave:** only force the dedicated AMOLED dynamic-colors getter ([535f6f2](https://github.com/dh6k/morphe-patches/commit/535f6f281c1de3464d1971f437c4abc2af1150a4))\n",
-  "release_tag": "v1.8.0-dev.4",
-  "release_date": "2026-09-30T15:28:42Z",
+  "fingerprint": "e45a1e21f2b772ec7f232da94978702fb5a89c0a4abfe4267233c1da8fc59b2d",
+  "release_notes": "## [1.8.0-dev.6](https://github.com/dh6k/morphe-patches/compare/v1.8.0-dev.5...v1.8.0-dev.6) (2026-09-30)\n\n### ✨ New Features\n\n* **brave:** add AMOLED text and accent color options ([e0484bb](https://github.com/dh6k/morphe-patches/commit/e0484bbec22ffb990d510ca2b9ecaa3499545f81))\n",
+  "release_tag": "v1.8.0-dev.6",
+  "release_date": "2026-09-30T17:48:07Z",
   "isPreRelease": true
 }

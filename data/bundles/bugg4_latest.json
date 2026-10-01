@@ -1,0 +1,68 @@
+{
+  "bundle": "bugg4",
+  "channel": "latest",
+  "repo_url": "https://github.com/Bugg4/bugg4s-patches",
+  "created_at": "2026-09-30T19:45:18",
+  "version": "v1.1.0",
+  "description": "## [1.1.0](https://github.com/Bugg4/bugg4s-patches/compare/v1.0.0...v1.1.0) (2026-09-30)\n\n### ✨ New Features\n\n* Add Change installer source patch for PairIP startup check ([ee7e89c](https://github.com/Bugg4/bugg4s-patches/commit/ee7e89c9a2e60c1cafd9f1a0383fa967440abd87))\n",
+  "apps": [
+    {
+      "app_name": "OPL Monitor",
+      "package": "com.insigniadpfgmailcom.oplmonitor",
+      "patches": [
+        {
+          "name": "Change installer source",
+          "description": "Spoofs the installer source so the app appears to be installed from an app store. Required for the patched app to pass the startup license check, otherwise it redirects to Google Play and closes.",
+          "use": true,
+          "options": [
+            {
+              "key": "packageInstallerName",
+              "description": "Package name of the app store the app will appear to be installed from."
+            }
+          ],
+          "compatible_versions": [
+            "1.0.3.65"
+          ]
+        },
+        {
+          "name": "Remove ads",
+          "description": "Removes banner, interstitial, rewarded, rewarded interstitial, app open and native ads by preventing the Google Mobile Ads SDK from loading them.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.0.3.65"
+          ]
+        },
+        {
+          "name": "Remove internet permission",
+          "description": "Removes the INTERNET permission from the manifest. This stops the app from reaching the network at all, which also prevents app update checks. This will likely break features that download data, such as DTC descriptions, VIN decoder gauges and function files.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.0.3.65"
+          ]
+        },
+        {
+          "name": "Spoof app version",
+          "description": "Changes the version name the app reports to itself. Reporting a version higher than any published release can prevent the in-app update prompt. The spoofed version will also be shown in the app's about screen.",
+          "use": false,
+          "options": [
+            {
+              "key": "version",
+              "description": "Version name to report. Must be higher than the latest released app version."
+            }
+          ],
+          "compatible_versions": [
+            "1.0.3.65"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Bugg4s Patches",
+  "fingerprint": "f56b54a7aee3973edb81da372b869871917457e5ad121d3e7cfe4cfc3a227cce",
+  "release_notes": "## [1.1.0](https://github.com/Bugg4/bugg4s-patches/compare/v1.0.0...v1.1.0) (2026-09-30)\n\n### ✨ New Features\n\n* Add Change installer source patch for PairIP startup check ([ee7e89c](https://github.com/Bugg4/bugg4s-patches/commit/ee7e89c9a2e60c1cafd9f1a0383fa967440abd87))\n",
+  "release_tag": "v1.1.0",
+  "release_date": "2026-09-30T19:45:18Z",
+  "isPreRelease": false
+}
