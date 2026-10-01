@@ -5,10 +5,9 @@
  * their own. The queue only warms IndexedDB with resized WebP data URLs so
  * later renders are instant and survive offline.
  *
- * Two lanes share one worker:
- *  - Priority: icons scrolled into view (IntersectionObserver) fetch first,
- *    one at a time.
- *  - Sweep: the rest of the icon universe in batches of 6 with 1–2s pauses.
+ * Two lanes share one worker, one fetch at a time:
+ *  - Priority: icons scrolled into view (IntersectionObserver) fetch first.
+ *  - Sweep: the rest of the icon universe one at a time with 1–2s pauses.
  *
  * 429/403 responses back off exponentially inside iconCache.loadImage, which
  * pauses both lanes (rate-limited URLs are requeued, not failed). Remaining
@@ -22,9 +21,8 @@ import {
 } from './iconCache.js'
 
 const QUEUE_KEY = 'morphe_icon_queue_v1'
-const BATCH_SIZE = 6
-const BATCH_PAUSE_MIN_MS = 1000
-const BATCH_PAUSE_JITTER_MS = 1000
+const SWEEP_PAUSE_MIN_MS = 1000
+const SWEEP_PAUSE_JITTER_MS = 1000
 const PERSIST_THROTTLE_MS = 2000
 
 /** @type {Set<string>} all http icon URLs from app_cache */
@@ -133,10 +131,9 @@ async function workerLoop() {
       continue
     }
     if (sweepStarted && pending.length) {
-      const batch = pending.splice(0, BATCH_SIZE)
-      await Promise.all(batch.map(fetchOne))
+      await fetchOne(pending.shift())
       if (pending.length || priorityQueue.length) {
-        await sleep(BATCH_PAUSE_MIN_MS + Math.random() * BATCH_PAUSE_JITTER_MS)
+        await sleep(SWEEP_PAUSE_MIN_MS + Math.random() * SWEEP_PAUSE_JITTER_MS)
       }
       continue
     }
