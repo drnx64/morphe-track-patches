@@ -2,9 +2,9 @@
   "bundle": "bugg4",
   "channel": "latest",
   "repo_url": "https://github.com/Bugg4/bugg4s-patches",
-  "created_at": "2026-09-30T19:45:18",
-  "version": "v1.1.0",
-  "description": "## [1.1.0](https://github.com/Bugg4/bugg4s-patches/compare/v1.0.0...v1.1.0) (2026-09-30)\n\n### ✨ New Features\n\n* Add Change installer source patch for PairIP startup check ([ee7e89c](https://github.com/Bugg4/bugg4s-patches/commit/ee7e89c9a2e60c1cafd9f1a0383fa967440abd87))\n",
+  "created_at": "2026-10-01T19:16:30",
+  "version": "v1.2.0-dev.1",
+  "description": "## [1.2.0-dev.1](https://github.com/Bugg4/bugg4s-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-10-01)\n\n### ✨ New Features\n\n* Add Remove license check patch for Android 9 and older devices ([eca270b](https://github.com/Bugg4/bugg4s-patches/commit/eca270bf6dde165758f41c008d322bd97169b3d8))\n",
   "apps": [
     {
       "app_name": "OPL Monitor",
@@ -43,6 +43,15 @@
           ]
         },
         {
+          "name": "Remove license check",
+          "description": "Removes the startup license check (PairIP). Only needed on devices where 'Change installer source' cannot work, such as Android 9 and older: there the app always performs a full Google Play license verification, which fails for any sideloaded (patched) install and redirects to Google Play. This grants no entitlements and does not affect purchases or premium features.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.0.3.65"
+          ]
+        },
+        {
           "name": "Spoof app version",
           "description": "Changes the version name the app reports to itself. Reporting a version higher than any published release can prevent the in-app update prompt. The spoofed version will also be shown in the app's about screen.",
           "use": false,
@@ -60,9 +69,9 @@
     }
   ],
   "patches_name": "Bugg4s Patches",
-  "fingerprint": "f56b54a7aee3973edb81da372b869871917457e5ad121d3e7cfe4cfc3a227cce",
-  "release_notes": "## [1.1.0](https://github.com/Bugg4/bugg4s-patches/compare/v1.0.0...v1.1.0) (2026-09-30)\n\n### ✨ New Features\n\n* Add Change installer source patch for PairIP startup check ([ee7e89c](https://github.com/Bugg4/bugg4s-patches/commit/ee7e89c9a2e60c1cafd9f1a0383fa967440abd87))\n",
-  "release_tag": "v1.1.0",
-  "release_date": "2026-09-30T19:45:18Z",
-  "isPreRelease": false
+  "fingerprint": "33c6ff324028921ef6153ed1e80ccfcb637752311d3d22120ddd866ab420d3d9",
+  "release_notes": "## [1.2.0-dev.1](https://github.com/Bugg4/bugg4s-patches/compare/v1.1.0...v1.2.0-dev.1) (2026-10-01)\n\n### ✨ New Features\n\n* Add Remove license check patch for Android 9 and older devices ([eca270b](https://github.com/Bugg4/bugg4s-patches/commit/eca270bf6dde165758f41c008d322bd97169b3d8))\n",
+  "release_tag": "v1.2.0-dev.1",
+  "release_date": "2026-10-01T19:16:30Z",
+  "isPreRelease": true
 }
