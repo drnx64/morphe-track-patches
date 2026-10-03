@@ -1,0 +1,184 @@
+{
+  "bundle": "hushtelegram",
+  "channel": "stable",
+  "repo_url": "https://github.com/SysAdminDoc/HushTelegram",
+  "created_at": "2026-10-03T02:45:35",
+  "version": "v0.0.6",
+  "description": "HushTelegram v0.0.6 has 18 patches for telegram.org's Telegram 12.10.6 (`org.telegram.messenger.web`), up from 4 in v0.0.4. Every patch is selected by default, and each feature has its own switch in HushTelegram settings.\n\n## What's new\n\n- **Hide Stories** hides the story bar above your chats, the story rings on avatars and the Post Story button, and Telegram stops fetching the story list. Stories on a profile and your archive are still there when you open them.\n- **Hide recommendations** hides similar channels and bots.\n- **Hide Premium, gifts and Stars** takes Premium, Stars, Business and Send a Gift out of Settings, and hides profile Gifts tabs and the channel Gift button.\n- **Hide promotional banners** hides the Premium, birthday and low Stars balance banners in the chat list. Account security notices still show.\n- **Hide sponsored proxy channel** hides the channel a proxy sponsors from your chat list and folders.\n- **Hide popular apps** hides the Popular apps list in search's Apps tab.\n- **Quiet contacts nag** stops the Contacts tab asking for contacts access again once you've said no.\n- **Disable call debug upload** stops the call debug reports and log uploads Telegram's server asks for.\n- **Disable analytics** now also keeps the Premium screen reports on your phone.\n- **Open links externally** opens ordinary web links in your browser. Telegram links and logins open the way they always have.\n- Five new switches start off, so nothing changes until you turn them on. **Strip link tracking** takes utm tags, gclid and fbclid off links you open or share. **Disable draft link previews** stops Telegram fetching previews for messages you haven't sent yet. **Gallery camera on tap** keeps the attachment gallery from starting the camera until you tap the camera tile. **Disable chat swipe actions** keeps a sideways swipe from archiving, muting, pinning or deleting a chat. **Holiday look all year** keeps Telegram's New Year snow falling over the chat list and chat backgrounds.\n\n## Install\n\n1. Install [Morphe Manager](https://github.com/MorpheApp/morphe-manager) 1.32.0 or newer.\n2. Add HushTelegram as a patch source: https://morphe.software/add-source?github=SysAdminDoc%2FHushTelegram\n3. Download Telegram **12.10.6** from [telegram.org](https://telegram.org/android), version code **71129**, and patch it. The patched app needs Android 9 or newer.\n4. Coming from v0.0.4? Patch again and install over it with the same Morphe Manager signing key. New to HushTelegram? Uninstall the stock Telegram first, since Android won't put one over the other. Your chats come back when you sign in, but secret chats don't. Back up Morphe Manager's signing key after your first patch, you'll need it for every update.\n5. For notifications, open Telegram's Settings, then Notifications and Sounds, and turn on Keep-Alive Service and Background Connection. Google's push service only delivers to Telegram's own signed build, so a patched Telegram relies on its own connection.\n\nThe `.mpp` download is a patch bundle, not a Telegram APK. [Installation instructions](https://github.com/SysAdminDoc/HushTelegram#install).\n\n## Validation\n\n512 runtime tests and 232 patch tests passed locally, along with both Android lints and the release script checks. All 18 patches applied without forcing to Telegram 12.10.6. The dependency advisory check passed. On a signed-in Android 16 phone the patched app ran with every patch, and the New Year snow came and went with its switch.\n",
+  "apps": [
+    {
+      "app_name": "Web",
+      "package": "org.telegram.messenger.web",
+      "patches": [
+        {
+          "name": "Disable analytics",
+          "description": "Stops Telegram sending its storage-type statistic and how long you spent on each channel post to its server. Also stops reports about Premium screen views, feature taps, accepts and purchase failures. Messages and calls work as before.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Disable call debug upload",
+          "description": "Stops automatic call debug reports and log-file uploads requested by Telegram's server.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Disable chat swipe actions",
+          "description": "Adds a switch, off by default, that stops a sideways swipe on a chat in the chat list from archiving, muting, pinning, deleting or marking it read. A swipe set to change folders still does. Long-press keeps every action.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Disable draft link previews",
+          "description": "Adds a switch, off by default, that stops Telegram fetching link previews for messages you haven't sent yet, in chats, the share sheet, polls, story links and bot shares. Sent messages still get their preview.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Disable update checks",
+          "description": "Stops telegram.org's Telegram offering its own updates, which can't install over a patched build. Patch the new version in Morphe Manager instead.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Gallery camera on tap",
+          "description": "Adds a switch, off by default, that keeps the attachment gallery from starting the camera or asking for camera access when it opens. Tapping the camera tile starts it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Hides the sponsored messages in channels, the sponsored accounts in search and the ads in Telegram's video player. Telegram never asks for them, so none are counted as seen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Hide popular apps",
+          "description": "Hides the Popular apps list in search's Apps tab and stops Telegram from asking its server for it. Apps you've opened and other search results stay.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Hide Premium, gifts and Stars",
+          "description": "Hides Premium, Stars, My Grams, Business and Send a Gift in Settings, profile Gifts tabs and the channel Gift button. Purchases and account controls keep their usual behavior.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Hide promotional banners",
+          "description": "Hides Premium, birthday and low Stars balance banners in the chat list. Account security notices and other suggestions remain. Nothing is dismissed for you.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Hide recommendations",
+          "description": "Hides similar channels and bots, including cached recommendations. Telegram doesn't ask for new recommendations while the switch is on.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Hide sponsored proxy channel",
+          "description": "Hides a proxy's sponsored channel from the chat list and folders. Leaves proxy settings and shared promo-data updates alone.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Hide Stories",
+          "description": "Hides the chat-list story bar, avatar story rings and Post Story button, and stops fetching the story list. Profile stories and archives remain available.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Holiday look all year",
+          "description": "Adds a switch, off by default, that keeps Telegram's New Year snow falling all year over the chat list's top bar and chat backgrounds. Telegram's own holiday dates apply while it's off.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "HushTelegram settings",
+          "description": "Adds HushTelegram settings to Telegram. Long-press Telegram's launcher icon, or open Additional settings in the app on Telegram's App info page, to turn features on or off, pause HushTelegram, save your switches to a file or load them, and export diagnostics. The licenses are there too.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Open links externally",
+          "description": "Opens ordinary HTTP(S) links in your browser. Telegram links, login, payment and authenticated routes keep their existing behavior.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Quiet contacts nag",
+          "description": "Keeps the Contacts tab from asking for contacts access again, and clears its warning badge, once you've said no. The first request, the tab's own buttons and contact sync stay as they are.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Strip link tracking",
+          "description": "Optional local cleaning at link-open and Share Link chooser sites. Removes only utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid and fbclid. Any unknown query key preserves the entire URL. Off by default in settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "HushTelegram",
+  "fingerprint": "619cd7bd26c62ce5ca69be03c4218e864c3650d4b25186c4f02d67cff6654f8c",
+  "release_notes": "HushTelegram v0.0.6 has 18 patches for telegram.org's Telegram 12.10.6 (`org.telegram.messenger.web`), up from 4 in v0.0.4. Every patch is selected by default, and each feature has its own switch in HushTelegram settings.\n\n## What's new\n\n- **Hide Stories** hides the story bar above your chats, the story rings on avatars and the Post Story button, and Telegram stops fetching the story list. Stories on a profile and your archive are still there when you open them.\n- **Hide recommendations** hides similar channels and bots.\n- **Hide Premium, gifts and Stars** takes Premium, Stars, Business and Send a Gift out of Settings, and hides profile Gifts tabs and the channel Gift button.\n- **Hide promotional banners** hides the Premium, birthday and low Stars balance banners in the chat list. Account security notices still show.\n- **Hide sponsored proxy channel** hides the channel a proxy sponsors from your chat list and folders.\n- **Hide popular apps** hides the Popular apps list in search's Apps tab.\n- **Quiet contacts nag** stops the Contacts tab asking for contacts access again once you've said no.\n- **Disable call debug upload** stops the call debug reports and log uploads Telegram's server asks for.\n- **Disable analytics** now also keeps the Premium screen reports on your phone.\n- **Open links externally** opens ordinary web links in your browser. Telegram links and logins open the way they always have.\n- Five new switches start off, so nothing changes until you turn them on. **Strip link tracking** takes utm tags, gclid and fbclid off links you open or share. **Disable draft link previews** stops Telegram fetching previews for messages you haven't sent yet. **Gallery camera on tap** keeps the attachment gallery from starting the camera until you tap the camera tile. **Disable chat swipe actions** keeps a sideways swipe from archiving, muting, pinning or deleting a chat. **Holiday look all year** keeps Telegram's New Year snow falling over the chat list and chat backgrounds.\n\n## Install\n\n1. Install [Morphe Manager](https://github.com/MorpheApp/morphe-manager) 1.32.0 or newer.\n2. Add HushTelegram as a patch source: https://morphe.software/add-source?github=SysAdminDoc%2FHushTelegram\n3. Download Telegram **12.10.6** from [telegram.org](https://telegram.org/android), version code **71129**, and patch it. The patched app needs Android 9 or newer.\n4. Coming from v0.0.4? Patch again and install over it with the same Morphe Manager signing key. New to HushTelegram? Uninstall the stock Telegram first, since Android won't put one over the other. Your chats come back when you sign in, but secret chats don't. Back up Morphe Manager's signing key after your first patch, you'll need it for every update.\n5. For notifications, open Telegram's Settings, then Notifications and Sounds, and turn on Keep-Alive Service and Background Connection. Google's push service only delivers to Telegram's own signed build, so a patched Telegram relies on its own connection.\n\nThe `.mpp` download is a patch bundle, not a Telegram APK. [Installation instructions](https://github.com/SysAdminDoc/HushTelegram#install).\n\n## Validation\n\n512 runtime tests and 232 patch tests passed locally, along with both Android lints and the release script checks. All 18 patches applied without forcing to Telegram 12.10.6. The dependency advisory check passed. On a signed-in Android 16 phone the patched app ran with every patch, and the New Year snow came and went with its switch.\n",
+  "release_tag": "v0.0.6",
+  "release_date": "2026-10-03T02:45:35Z",
+  "isPreRelease": false
+}

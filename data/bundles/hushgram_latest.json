@@ -1,0 +1,436 @@
+{
+  "bundle": "hushgram",
+  "channel": "latest",
+  "repo_url": "https://github.com/SysAdminDoc/HushGram",
+  "created_at": "2026-10-03T02:25:26",
+  "version": "v0.0.4",
+  "description": "HushGram v0.0.4 has 46 patches for Instagram 449.0.0.52.84 (arm64-v8a, version code 385511871), eleven more than v0.0.3. It still runs on Android 9 and newer. Every new patch is off until you pick it in Manager.\n\n**Before you sign in,** read the section of that name in the README. A re-signed Instagram can't pass Google's Play Store check whatever the patches do, so a spare account keeps your main one out of it.\n\n## New patches\n\n* `Keep Reels auto scroll on`. Turn on Instagram's auto scroll in Reels once and it stays on after Instagram restarts or you leave Reels. Turn it off and it stays off. Asked for in #21.\n* `Keep a seek bar on Reels`. Every ordinary reel keeps Instagram's seek bar, short ones too, with the time played and the reel's length just above it, like 0:10 / 0:55. Ads keep Instagram's own rules. Asked for in #10.\n* `Stop Reels scrolling`. A swipe in Reels doesn't move on to the next reel, and pulling down doesn't load new ones. Instagram's auto scroll still moves on if you've turned it on. A change takes a restart. Asked for in #23.\n* `Hide suggested accounts in Reels`. The cards of people and creators to follow that Instagram puts between reels are left out. Asked for in #15 and #20.\n* `Hide suggested people on profiles`. Suggested for you and the Discover people button go from profiles, yours and other people's. Asked for in #15 and #20.\n* `Hide highlights`. The row of story highlights goes from profiles. Add to highlight on your own stories still works.\n* `Loop a story`. A story plays again from the start when it ends, until you tap or swipe. Ads still move on. Asked for in #1, and piko had it first.\n* `Show a story's exact time`. A story's header says when it was posted, like Oct 2, 3:45 PM, instead of 3h. Asked for in #1, and piko had it first.\n* `Stop swipe to create`. A sideways swipe or a quick flick on Home no longer slides the camera in. The + button still opens it.\n* `Copy comment`. A selected comment's menu gets a Copy row that copies its text, line breaks and all.\n* `Save comment photo`. When a comment carries a photo of its own, its menu gets a Save row that saves the largest size Instagram sent. It hasn't been tried on a phone yet. Asked for in #1.\n\n## Fixes and changes\n\n* View stories anonymously has a second switch, Mark as seen button. It puts an eye in each story's header, and a story you tap it on is sent as seen by itself while the rest stay held back. Views Instagram saved in an earlier session to send later are held back now too. Asked for in #1 and #13.\n* The Threads buttons on a profile open Threads when it's patched with the same key as HushGram, instead of showing \"Sorry, we weren't able to load that website\". Facebook and Messenger patched with that key open the same way. An app that has moved to another key goes back to Instagram's own check. Reported in #22.\n* Show if a profile follows you has a second switch, Mark who doesn't follow you back, for your own Following list. Asked for in #1.\n* With Tap to play on, Instagram's auto scroll in Reels doesn't stop after one reel anymore. Each reel it moves to plays, and a reel you swipe to still waits for your tap.\n* A carousel's feed menu has Save all, which saves up to 32 pages in order with one Cancel for the lot.\n* HushGram's settings can be searched by a control's label in your phone's language or by its English patch name.\n* Settings backup exports and imports your HushGram choices through Android's file picker, with a 10 second Undo.\n* Developer has Open MetaConfig overrides, Export overrides and Validate an overrides file. Allow importing overrides, off to start, lets you put an exported file back and undo it with Restore previous overrides. Asked for in #1.\n* When a save stops because Instagram closed, its unfinished files are cleaned up and the next start tells you to save again.\n* On a phone set to a right-to-left language, every title and summary in HushGram's settings lines up on the right.\n* Default playback quality is in Manager's simple mode. It starts at Auto, so nothing changes until you pick a quality.\n\n## Under the hood\n\n* Most patches check more of Instagram's code before they change anything, so a build that's set up differently is refused instead of misbehaving.\n* The translation scripts need Python 3.12 or newer and say so in one line on an older one. Translations can go out and come back as Crowdin-style JSON.\n",
+  "apps": [
+    {
+      "app_name": "Instagram",
+      "package": "com.instagram.android",
+      "patches": [
+        {
+          "name": "Clean up Reels",
+          "description": "Hides the Follow button on reels, the pills that push Edits, templates, Meta AI and Ray-Ban Meta glasses, and friends' activity with the comment preview. Each part has its own switch.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Copy comment",
+          "description": "Adds an optional Copy action to the common comment menu. Copies the original text with its line breaks.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Default playback quality",
+          "description": "Plays videos, reels and video stories at the quality you choose in HushGram's settings, such as Data saver or up to 720p, instead of the one Instagram picks as it plays.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Disable analytics",
+          "description": "Sends Instagram's usage events and crash reports to an address on your phone that refuses them, instead of to Instagram's and Facebook's servers. It also skips the contacts and location setup screens, which would come back on every start without those events. Restart Instagram after changing the switch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Don't send reel watch history",
+          "description": "Stops telling Instagram which reels you watched and how far into them you got. It's used to rank your Reels, and nobody else sees it. Reels you've already watched may come back.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Download any reel",
+          "description": "Adds Download to every reel's more menu. Reels save at the Download quality you set, best by default, without Instagram's watermark.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Download any story",
+          "description": "Adds Download to the menu of anyone's story. A video saves at the Download quality you set, a photo at its largest size.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Download any video",
+          "description": "Adds Download to the menu of a post in your feed with a video, and of a carousel showing a video. Videos save at the Download quality you set, without Instagram's watermark. A second switch does the same for photo posts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Hides sponsored posts, reels and stories. Instagram is told the ad didn't go in, so no gap is left where it would have been.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide group buttons on the share sheet",
+          "description": "Takes the New group button away from beside the share sheet's search bar, and the button that sends to the people you picked as one group, so they get it one by one. You can still start a group from your messages.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide highlights",
+          "description": "Takes the row of story highlights off profiles, yours and other people's. Bios, counts, posts and the Add to highlight list on your stories stay.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide Meta AI",
+          "description": "Takes Meta AI out of the search bars, in the Search tab and at the top of your messages, so they search the plain way, drops the Ask a follow-up bar under search results and Meta AI's buttons in Home's top bar, and removes Meta AI's posts from your home feed. Each has its own switch, and the search one shows once Instagram restarts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide Reels in the feed",
+          "description": "Removes the rows of suggested reels between posts in your home feed, and the other units that open the Reels viewer from there. A reel someone you follow posts stays.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide suggested accounts in Reels",
+          "description": "Leaves out the cards of people and creators to follow that Instagram puts between reels. Every reel still plays.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide suggested people on profiles",
+          "description": "Takes Suggested for you and the Discover people button off profiles, yours and other people's. Bios, counts, posts and follower lists stay.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide suggested posts",
+          "description": "Removes the posts and reels from accounts you don't follow that Instagram puts in your home feed as Suggested for you, the rows of accounts, shops and hashtags it suggests you follow, and the posts and accounts from Threads it mixes in. Each has its own switch. Posts from accounts you follow stay.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide suggested stories",
+          "description": "Removes the stories from accounts you don't follow, and the accounts Instagram suggests, from the row of stories at the top of Home. A second switch, off to start, takes the whole row away.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide the Explore grid",
+          "description": "Empties the grid of posts and reels under the Search tab's bar. Search, your recent searches and search results stay.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide the Reels tab",
+          "description": "Takes the Reels tab off the tab bar, and a start or a notification meant for it opens Home. Reels in your feed and reels people send you still open, and a change to the switch shows once Instagram restarts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Hide the Repost button",
+          "description": "Takes the Repost button and its count off posts and reels, so nothing gets reposted by mistake. Share still sends a post or reel to someone.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "HushGram settings",
+          "description": "Adds HushGram settings to Instagram. Long-press Instagram's launcher icon and pick HushGram settings, or tap HushGram settings at the top of Instagram's Settings and activity, to turn features on or off, pause HushGram and export diagnostics. The licenses are there too.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Keep a seek bar on Reels",
+          "description": "Keeps Instagram's seek bar under every reel, short ones too, with the time played and the reel's length above it, like 0:10 / 0:55. Ads keep Instagram's own rules.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Keep Reels auto scroll on",
+          "description": "Once you turn on Instagram's auto scroll in Reels, it stays on after Instagram restarts or you leave Reels, until you turn it off yourself.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Keep the reel speed",
+          "description": "Lock a reel at 2x with Instagram's own lock (hold its edge, then slide down) and the next reels play at 2x too, until you slide the lock off, hold the edge and let go, or Instagram restarts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Loop a story",
+          "description": "A story plays again from the start when it ends, instead of moving on to the next one. Tap or swipe to move on.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Open developer options",
+          "description": "A long press on the Home tab opens Instagram's own developer options, where its server flags (MetaConfig and quick experiments) can be looked at and overridden on your phone. A wrong flag can break parts of Instagram until you reset it there.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Open links in external browser",
+          "description": "Opens a web link you tap in your default browser instead of Instagram's in-app browser, without Instagram's click tracker. Instagram and other Meta pages, and ads, still open in the app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Pure black dark mode",
+          "description": "Instagram's dark mode uses pure black instead of its near-black gray, which looks deeper and saves power on an OLED screen. Menus, sheets and buttons keep their own grays so they stay easy to see. Chosen when you patch, with no switch.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Remove build expired popup",
+          "description": "Stops Instagram from locking you out with a screen that says this version is too old. A patched build doesn't update on its own, so without this it would stop working after a few weeks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Remove the advertising ID",
+          "description": "Instagram can't read your phone's advertising ID or tell Android's ad services which ads you saw or tapped. The permissions for them are taken out of the build, so Google Play services hands Instagram a string of zeros in place of the ID.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Remove the empty space at the bottom",
+          "description": "Takes away the empty room Instagram leaves under its tab bar for a navigation bar that isn't there, on a phone that hides its navigation bar and in a pop-up window. A change to the switch shows once Instagram restarts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Restore trust on re-signed builds",
+          "description": "Lets Instagram's own signature checks pass on a re-signed build, so the parts of the app that check who signed it keep working. Threads, Facebook and Messenger patched with the same key open from Instagram too, and Instagram trusts them when they share to it or ask it for your sign-in. A Root Mount install doesn't need this patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Resume long videos",
+          "description": "A video or reel longer than two minutes that you left partway picks up where you left it the next time it plays. Live videos and ads start as usual. Its switch starts off.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Takes stkn, igsh, utm_source and Instagram's other tracking keys off the links you copy or share, and opens a bio link without going through Instagram's click tracker. The post, reel, story or profile a link opens stays the same.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Save comment photo",
+          "description": "Adds an optional Save action to the common comment menu when a comment has a photo of its own. It saves the largest size Instagram sent, the same way Download saves a post's photo.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Show a story's exact time",
+          "description": "Shows the date and time a story was posted in its header, like Oct 2, 3:45 PM, instead of how long ago. It follows your phone's language and 12 or 24-hour setting.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Show if a profile follows you",
+          "description": "Adds Follows you or Doesn't follow you beside the name on someone's profile, after their pronouns if they've set any. A second switch, off to start, marks the accounts on your own Following list that don't follow you back.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Start Home on Following",
+          "description": "Opens Home on posts from accounts you follow. Tap Following at the top to switch to For you, and Home remembers your pick. A second switch, off to start, takes For you out of Home. A change to either shows once Instagram restarts.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Start on x86 devices",
+          "description": "Keeps Instagram from crashing or freezing on an x86 device that runs its arm code through a translator, such as an x86 Chromebook or an emulator, by skipping the one code protection step that breaks there. Phones and tablets with arm chips run it as before.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Stop Reels scrolling",
+          "description": "Keeps a swipe in Reels from moving on to the next reel, and a pull down from loading new ones. The reel you opened still plays, and its buttons still work.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Stop Story auto-advance",
+          "description": "Keeps each story on screen until you tap or swipe. Turn the switch off for Instagram's timing.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Stop swipe to create",
+          "description": "Keeps a sideways swipe on Home from opening the camera. The + button and every other way into the camera still work.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Story ring size",
+          "description": "Draws the rings in the stories row at the top of Home smaller, so more fit on the screen, or larger. Pick the size in HushGram's settings.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Tap to play",
+          "description": "Videos, reels and stories wait for your tap instead of starting by themselves. Feed videos show a play button, the way they do when Instagram saves mobile data.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "Turn off double tap to like",
+          "description": "Stops a double tap on a post or a reel from liking it, and the heart doesn't show. A single tap still does what it did, and the Like button still likes.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        },
+        {
+          "name": "View stories anonymously",
+          "description": "Keeps you off the viewer list of the stories you watch, because Instagram isn't told which ones you've seen. Replying or reacting still shows you, and stories you've watched keep showing as new. A second switch, off to start, adds a Mark as seen button to each story, so you can still show up on the ones you pick.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "449.0.0.52.84"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "HushGram",
+  "fingerprint": "52f051d945aa7267d2a8e1d2284d71ba5c566ca74abb3a7d127a4b17460fd2ae",
+  "release_notes": "HushGram v0.0.4 has 46 patches for Instagram 449.0.0.52.84 (arm64-v8a, version code 385511871), eleven more than v0.0.3. It still runs on Android 9 and newer. Every new patch is off until you pick it in Manager.\n\n**Before you sign in,** read the section of that name in the README. A re-signed Instagram can't pass Google's Play Store check whatever the patches do, so a spare account keeps your main one out of it.\n\n## New patches\n\n* `Keep Reels auto scroll on`. Turn on Instagram's auto scroll in Reels once and it stays on after Instagram restarts or you leave Reels. Turn it off and it stays off. Asked for in #21.\n* `Keep a seek bar on Reels`. Every ordinary reel keeps Instagram's seek bar, short ones too, with the time played and the reel's length just above it, like 0:10 / 0:55. Ads keep Instagram's own rules. Asked for in #10.\n* `Stop Reels scrolling`. A swipe in Reels doesn't move on to the next reel, and pulling down doesn't load new ones. Instagram's auto scroll still moves on if you've turned it on. A change takes a restart. Asked for in #23.\n* `Hide suggested accounts in Reels`. The cards of people and creators to follow that Instagram puts between reels are left out. Asked for in #15 and #20.\n* `Hide suggested people on profiles`. Suggested for you and the Discover people button go from profiles, yours and other people's. Asked for in #15 and #20.\n* `Hide highlights`. The row of story highlights goes from profiles. Add to highlight on your own stories still works.\n* `Loop a story`. A story plays again from the start when it ends, until you tap or swipe. Ads still move on. Asked for in #1, and piko had it first.\n* `Show a story's exact time`. A story's header says when it was posted, like Oct 2, 3:45 PM, instead of 3h. Asked for in #1, and piko had it first.\n* `Stop swipe to create`. A sideways swipe or a quick flick on Home no longer slides the camera in. The + button still opens it.\n* `Copy comment`. A selected comment's menu gets a Copy row that copies its text, line breaks and all.\n* `Save comment photo`. When a comment carries a photo of its own, its menu gets a Save row that saves the largest size Instagram sent. It hasn't been tried on a phone yet. Asked for in #1.\n\n## Fixes and changes\n\n* View stories anonymously has a second switch, Mark as seen button. It puts an eye in each story's header, and a story you tap it on is sent as seen by itself while the rest stay held back. Views Instagram saved in an earlier session to send later are held back now too. Asked for in #1 and #13.\n* The Threads buttons on a profile open Threads when it's patched with the same key as HushGram, instead of showing \"Sorry, we weren't able to load that website\". Facebook and Messenger patched with that key open the same way. An app that has moved to another key goes back to Instagram's own check. Reported in #22.\n* Show if a profile follows you has a second switch, Mark who doesn't follow you back, for your own Following list. Asked for in #1.\n* With Tap to play on, Instagram's auto scroll in Reels doesn't stop after one reel anymore. Each reel it moves to plays, and a reel you swipe to still waits for your tap.\n* A carousel's feed menu has Save all, which saves up to 32 pages in order with one Cancel for the lot.\n* HushGram's settings can be searched by a control's label in your phone's language or by its English patch name.\n* Settings backup exports and imports your HushGram choices through Android's file picker, with a 10 second Undo.\n* Developer has Open MetaConfig overrides, Export overrides and Validate an overrides file. Allow importing overrides, off to start, lets you put an exported file back and undo it with Restore previous overrides. Asked for in #1.\n* When a save stops because Instagram closed, its unfinished files are cleaned up and the next start tells you to save again.\n* On a phone set to a right-to-left language, every title and summary in HushGram's settings lines up on the right.\n* Default playback quality is in Manager's simple mode. It starts at Auto, so nothing changes until you pick a quality.\n\n## Under the hood\n\n* Most patches check more of Instagram's code before they change anything, so a build that's set up differently is refused instead of misbehaving.\n* The translation scripts need Python 3.12 or newer and say so in one line on an older one. Translations can go out and come back as Crowdin-style JSON.\n",
+  "release_tag": "v0.0.4",
+  "release_date": "2026-10-03T02:25:26Z",
+  "isPreRelease": false
+}

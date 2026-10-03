@@ -1,0 +1,50 @@
+{
+  "bundle": "letterboxd-stremio",
+  "channel": "latest",
+  "repo_url": "https://github.com/ethanm6/letterboxd-stremio-morphe-patch",
+  "created_at": "2026-10-02T21:59:02",
+  "version": "v1.4.3",
+  "description": "### Fixed\r\n- The Nuvio button now opens Nuvio in its own entry in the app switcher, instead of appearing merged into Letterboxd's task.\r\n\r\n### Changed\r\n- Refactored the Stremio/Nuvio launch code to share one helper for targeting a package, giving it its own task, and falling back to the web player, instead of repeating that logic three times.\r\n- Simplified the internal app-selection logic from a three-state enum down to a boolean, since the third state was never actually treated differently anywhere. No user-facing behavior change beyond the task-switcher fix above.",
+  "apps": [
+    {
+      "app_name": "Letterboxd",
+      "package": "com.letterboxd.letterboxd",
+      "patches": [
+        {
+          "name": "Add Stremio button",
+          "description": "Adds a purple Stremio button directly below the trailer button on film pages, styled identically to it. Takes the trailer button's position when there is no trailer. Opens the film directly in the Stremio app or web player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Hide Spotlight Ad",
+          "description": "Hides the sponsored \"Spotlight\" ad card on the home feed. Can be toggled independently of the other patches.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Hide Video Store",
+          "description": "Hides the \"Rent from Letterboxd Video Store\" banner on film pages, the video store carousel row on the home feed, and the \"Letterboxd Video Store\" row in the search page's \"Browse by\" list. Can be toggled independently of the Stremio button patch.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Hide Where to Watch",
+          "description": "Hides the \"Where to watch\" streaming-service icon row on film pages. Can be toggled independently of the other patches.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    }
+  ],
+  "patches_name": "Letterboxd Stremio Bridge",
+  "fingerprint": "5ddf7a774676ac0a0eb2e9c1ef88d954a770ee5eb7cff2cd876b866dfce1c164",
+  "release_notes": "### Changed\r\n- **Add Stremio button** now works correctly with [Nuvio](https://github.com/tapframe/NuvioStreaming), a Stremio-addon client that also registers the stremio:// scheme but doesn't understand its URL shape. Previously, tapping the button just opened Nuvio's home screen instead of the film.\r\n- The button now checks which of Nuvio or Stremio is installed and sends each its own correct deep link. Nuvio is preferred when both are present.\r\n- The label and color switch to match: purple \"Stremio\", or blue \"Nuvio\" (using the blue from Nuvio's logo).",
+  "release_tag": "v1.4.2",
+  "release_date": "2026-09-28T11:03:33Z",
+  "isPreRelease": false
+}

@@ -1,0 +1,2406 @@
+{
+  "bundle": "morphe",
+  "channel": "stable",
+  "repo_url": "https://github.com/MorpheApp/morphe-patches",
+  "created_at": "2026-10-02T08:55:35",
+  "version": "v1.45.0",
+  "description": "## [1.45.0](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0...v1.45.0) (2026-10-02)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* **GmsCore support:** Omit empty intent data ([#3170](https://github.com/MorpheApp/morphe-patches/issues/3170)) ([f03894a](https://github.com/MorpheApp/morphe-patches/commit/f03894a8663fdb19a3ff48765d0cb928bcbc36a3))\r\n* Reduce heap use from ConversionContext dumps and JS player cache ([#3120](https://github.com/MorpheApp/morphe-patches/issues/3120)) ([317fd56](https://github.com/MorpheApp/morphe-patches/commit/317fd56c1ecba41a7b928011a39e6a943ca9b07f))\r\n* **YouTube  - Voice over translation:** Add missing accessibility labels and Voice over translation button state ([#3203](https://github.com/MorpheApp/morphe-patches/issues/3203)) ([d99679b](https://github.com/MorpheApp/morphe-patches/commit/d99679b50dc6f19a2feffaa7f5a8940a9d83da94))\r\n* **YouTube - Captions:** Make \"Always show\" override a manual caption-off ([#3421](https://github.com/MorpheApp/morphe-patches/issues/3421)) ([a92b8ed](https://github.com/MorpheApp/morphe-patches/commit/a92b8edc30e31e16ca61e072540ac722a2616ff9))\r\n* **YouTube - Custom branding:** Do not ask which app to use for app shortcut actions ([#3204](https://github.com/MorpheApp/morphe-patches/issues/3204)) ([0a2f0e0](https://github.com/MorpheApp/morphe-patches/commit/0a2f0e0f487512d6fd5f0c97ca83ad061859988c))\r\n* **YouTube - Hide layout components:** Open the correct channel tab when channel tabs are hidden ([#3200](https://github.com/MorpheApp/morphe-patches/issues/3200)) ([53cc35b](https://github.com/MorpheApp/morphe-patches/commit/53cc35b0552b59d0ff34ed057e4c167cb8881322))\r\n* **YouTube - Hide layout components:** Restore preview comment simplebox matcher ([#3130](https://github.com/MorpheApp/morphe-patches/issues/3130)) ([6e55325](https://github.com/MorpheApp/morphe-patches/commit/6e55325ddbbff9323206bda909b4a50b6d2ab178))\r\n* **YouTube - Hide player flyout menu components:** Hide the Audio Track item in the Shorts flyout menu ([#3297](https://github.com/MorpheApp/morphe-patches/issues/3297)) ([09de4d2](https://github.com/MorpheApp/morphe-patches/commit/09de4d2332b4e499435bf7a3032381faf51893c3))\r\n* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))\r\n* **YouTube - Legacy player controls:** Preserve end screen on 21.36+ ([#3121](https://github.com/MorpheApp/morphe-patches/issues/3121)) ([b895285](https://github.com/MorpheApp/morphe-patches/commit/b895285b2aa0e4cab6bb23226e129c62d517c670))\r\n* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))\r\n* **YouTube - Media notification controls:** Remove Previous & Next buttons on Android 12 and lower ([#3332](https://github.com/MorpheApp/morphe-patches/issues/3332)) ([df6c914](https://github.com/MorpheApp/morphe-patches/commit/df6c91407abdb93ea81e9c8a57ddf9ba865f626c))\r\n* **YouTube - Minimal miniplayer:** Fixed Type 2 aspect ratio by hooking video format size ([551490f](https://github.com/MorpheApp/morphe-patches/commit/551490f50127c8ea02725848eab7a16ffec9d487))\r\n* **YouTube - Minimal miniplayer:** Restored interpolate minimizing transitions ([#3280](https://github.com/MorpheApp/morphe-patches/issues/3280)) ([dff3749](https://github.com/MorpheApp/morphe-patches/commit/dff3749d6b665b2669a4ccc9b1b8f70985b1c358))\r\n* **YouTube - Playback speed:** Music videos do not play at 1x speed ([#3210](https://github.com/MorpheApp/morphe-patches/issues/3210)) ([1c7086d](https://github.com/MorpheApp/morphe-patches/commit/1c7086da6270a723da370f89440d70475f96c888))\r\n* **YouTube - Playback speed:** Prevent speed leak into Shorts ([#3169](https://github.com/MorpheApp/morphe-patches/issues/3169)) ([ff35586](https://github.com/MorpheApp/morphe-patches/commit/ff35586e14b339e24a06d32cb77b57234c942fe2))\r\n* **YouTube - Player controls:** Decouple legacy buttons from settings UI ([#3171](https://github.com/MorpheApp/morphe-patches/issues/3171)) ([dfeeb64](https://github.com/MorpheApp/morphe-patches/commit/dfeeb64c54bd2aa49fdbc3653f5ba2f81558d558))\r\n* **YouTube - Restore old video action bar:** Do not hide newly posted comments ([#3324](https://github.com/MorpheApp/morphe-patches/issues/3324)) ([37b43f7](https://github.com/MorpheApp/morphe-patches/commit/37b43f7dd36133b6b3a7e76b8489f788e5b46727))\r\n* **YouTube - Return YouTube Dislike:** Do not show dislikes on the share and comment buttons of community posts ([31b657c](https://github.com/MorpheApp/morphe-patches/commit/31b657c5482def040a368b1d4661db704249db50))\r\n* **YouTube - Return YouTube Dislike:** Show dislikes on tablet layout ([#3153](https://github.com/MorpheApp/morphe-patches/issues/3153)) ([7835519](https://github.com/MorpheApp/morphe-patches/commit/7835519c42a656c2d30122dcd97fb27dd12b0b87))\r\n* **YouTube - SponsorBlock:** Preserve exact video end for segment markers ([#3157](https://github.com/MorpheApp/morphe-patches/issues/3157)) ([a860f5b](https://github.com/MorpheApp/morphe-patches/commit/a860f5bdbce792254617fb31d424c02521c62c6f))\r\n* **YouTube - SponsorBlock:** Segments may not load for some versions of YouTube ([#3328](https://github.com/MorpheApp/morphe-patches/issues/3328)) ([3d8c748](https://github.com/MorpheApp/morphe-patches/commit/3d8c748ae7f9ce9b9f21f97a041e60923673e728))\r\n* **YouTube - Video quality:** Do not give a regular video the Shorts quality after leaving Shorts ([#3322](https://github.com/MorpheApp/morphe-patches/issues/3322)) ([aaa2bc1](https://github.com/MorpheApp/morphe-patches/commit/aaa2bc1f6d22db827b73ea064ce1c1c3cf89061e))\r\n* **YouTube - Video quality:** Keep Shorts quality after closing a live stream opened from Shorts ([#3333](https://github.com/MorpheApp/morphe-patches/issues/3333)) ([0a94e0e](https://github.com/MorpheApp/morphe-patches/commit/0a94e0e5714af91c7250a2be66bee3ba6fe7cb17))\r\n* **YouTube Music - Download in app:** Expose offline audio session ([#3167](https://github.com/MorpheApp/morphe-patches/issues/3167)) ([b4fb0e9](https://github.com/MorpheApp/morphe-patches/commit/b4fb0e9d00a2e876b30ce64da66ee459ad974abc))\r\n* **YouTube Music - Hide flyout menu components:** Hide nested download items ([#3165](https://github.com/MorpheApp/morphe-patches/issues/3165)) ([fd2b325](https://github.com/MorpheApp/morphe-patches/commit/fd2b325a655819233d6bdb0ded83ba08b0cb5295))\r\n* **YouTube Music - Play albums songs:** Do not play the first track's song for every track of a queued album ([#3319](https://github.com/MorpheApp/morphe-patches/issues/3319)) ([cd82092](https://github.com/MorpheApp/morphe-patches/commit/cd820925387333b3b45516479c4c4880a450452b))\r\n* **YouTube Music - Third-party lyrics:** Crash while trimming the lyrics cache ([#3272](https://github.com/MorpheApp/morphe-patches/issues/3272)) ([e450b7a](https://github.com/MorpheApp/morphe-patches/commit/e450b7a073b3d0b2c83d37509a7443f40a7b6369))\r\n* **YouTube Music - Third-party lyrics:** Do not cover comments panel ([#3155](https://github.com/MorpheApp/morphe-patches/issues/3155)) ([50e4e65](https://github.com/MorpheApp/morphe-patches/commit/50e4e65ef15e28586ec55fae51da0bb03ae392d9))\r\n* **YouTube Music - Third-party lyrics:** Keep the screen on after the track changes ([#3246](https://github.com/MorpheApp/morphe-patches/issues/3246)) ([e730ebf](https://github.com/MorpheApp/morphe-patches/commit/e730ebfa8be5b689e484eefa33b380554884a862))\r\n* **YouTube Music - Third-party lyrics:** Keep the token dialog buttons on screen with long cookies ([#3245](https://github.com/MorpheApp/morphe-patches/issues/3245)) ([1cf6be0](https://github.com/MorpheApp/morphe-patches/commit/1cf6be0051247409030199b54d864540f9e3f55a))\r\n* **YouTube Music - Third-party lyrics:** minor bug fixes ([#3323](https://github.com/MorpheApp/morphe-patches/issues/3323)) ([292d78b](https://github.com/MorpheApp/morphe-patches/commit/292d78bb3c9b52796a54c68b4797c8db77496b28))\r\n* **YouTube Music - Third-party lyrics:** Reload lyrics when video changes ([#3148](https://github.com/MorpheApp/morphe-patches/issues/3148)) ([2920175](https://github.com/MorpheApp/morphe-patches/commit/29201754faeec713fa2fc43725527062160f8c0c))\r\n* **YouTube:** \"Hide preview comment\" breaks comment section text box ([#3187](https://github.com/MorpheApp/morphe-patches/issues/3187)) ([d592804](https://github.com/MorpheApp/morphe-patches/commit/d5928043b7982326a102aafa2993e3cb8872eaf7))\r\n* **YouTube:** \"Restore old video action bar\" hides newly posted comments ([#3216](https://github.com/MorpheApp/morphe-patches/issues/3216)) ([24d5823](https://github.com/MorpheApp/morphe-patches/commit/24d582398b812f96e23bc374c3c77c4dd5506eb4))\r\n* **YouTube:** Always use Litho instead RenderNext as rendering library ([#3347](https://github.com/MorpheApp/morphe-patches/issues/3347)) ([52e0138](https://github.com/MorpheApp/morphe-patches/commit/52e01385e857b5a9858bef107dbaded6a89078df))\r\n* **YouTube:** Hidden preview comment still has clickable timestamps ([#3268](https://github.com/MorpheApp/morphe-patches/issues/3268)) ([1dfd537](https://github.com/MorpheApp/morphe-patches/commit/1dfd537aa48d56f050556e262c8547de619f88ea))\r\n* **YouTube:** Hide new community/subscribe buttons on channel page ([#3315](https://github.com/MorpheApp/morphe-patches/issues/3315)) ([5fb37df](https://github.com/MorpheApp/morphe-patches/commit/5fb37dfbc5df6a18914302d4e4a5a5c0b2d8f0b9))\r\n* **YouTube:** Search bar becomes invisible with Hide Status Bar enabled ([b0492b5](https://github.com/MorpheApp/morphe-patches/commit/b0492b552c0fe9b760bd6e00c56f6ec3bbd005c0))\r\n\r\n### ✨ New Features\r\n\r\n* Add universal `Spoof signature` patch ([#3330](https://github.com/MorpheApp/morphe-patches/issues/3330)) ([77117f6](https://github.com/MorpheApp/morphe-patches/commit/77117f61d312b23f42b74e838c3a2e902be90029))\r\n* **Custom branding:** Animate the Morphe logo at startup ([#3178](https://github.com/MorpheApp/morphe-patches/issues/3178)) ([70e8a9d](https://github.com/MorpheApp/morphe-patches/commit/70e8a9de9fc16efb830e2594dc6ba37ef49653c8))\r\n* **YouTube - Channel search:** Add channel search result sorting ([#3298](https://github.com/MorpheApp/morphe-patches/issues/3298)) ([baadcf7](https://github.com/MorpheApp/morphe-patches/commit/baadcf7ef177c8dc07cbc61670d8d475869f934c))\r\n* **YouTube - Hide layout components:** Add \"Hide channel names in subscribed channels bar\" ([#3274](https://github.com/MorpheApp/morphe-patches/issues/3274)) ([f8b330f](https://github.com/MorpheApp/morphe-patches/commit/f8b330f7d317632766cb0eeb8b98f64f0c974b0a))\r\n* **YouTube - Hide layout components:** Add \"Hide Dislike button\" to comments ([#3293](https://github.com/MorpheApp/morphe-patches/issues/3293)) ([bd43ccf](https://github.com/MorpheApp/morphe-patches/commit/bd43ccf58d622b0ed66d3cd739351644de9c8295))\r\n* **YouTube - Hide layout components:** Add \"Hide History shelf\" ([#3277](https://github.com/MorpheApp/morphe-patches/issues/3277)) ([50c4f34](https://github.com/MorpheApp/morphe-patches/commit/50c4f34ae3728e318d2e61512674167616fedc0c))\r\n* **YouTube - Hide layout components:** Add \"Hide live streams\" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))\r\n* **YouTube - Hide layout components:** Add \"Hide Menu button\" for comments ([#3253](https://github.com/MorpheApp/morphe-patches/issues/3253)) ([9b30447](https://github.com/MorpheApp/morphe-patches/commit/9b30447302de598bd51e612610a858c7a6de9dfb))\r\n* **YouTube - Hide layout components:** Add \"Hide Translate button\" setting  ([#3265](https://github.com/MorpheApp/morphe-patches/issues/3265)) ([16894f1](https://github.com/MorpheApp/morphe-patches/commit/16894f1ecb93ffdbe8269b0b04aced6a6805da55))\r\n* **YouTube - Hide video action buttons:** Add \"Hide channel and Subscribe button\" ([#3289](https://github.com/MorpheApp/morphe-patches/issues/3289)) ([0c7cd56](https://github.com/MorpheApp/morphe-patches/commit/0c7cd56bd24c693b59aa3efd472730cee5df72c2))\r\n* **YouTube - Hide video action buttons:** Add Hide Subscribe button option ([#3326](https://github.com/MorpheApp/morphe-patches/issues/3326)) ([a94ccdb](https://github.com/MorpheApp/morphe-patches/commit/a94ccdb354d4aad25c60c25dffea130681924d35))\r\n* **YouTube - Navigation bar:** Add \"Hide new content dot\" setting  ([#3269](https://github.com/MorpheApp/morphe-patches/issues/3269)) ([c8d440d](https://github.com/MorpheApp/morphe-patches/commit/c8d440d309550c8d41e31238b61ecdc99e993b42))\r\n* **YouTube - Navigation bar:** Add patch options to hide the Search and Subscriptions app shortcuts ([#3270](https://github.com/MorpheApp/morphe-patches/issues/3270)) ([37585d1](https://github.com/MorpheApp/morphe-patches/commit/37585d17d1afdc9cd6c0d371664e5cf585c88043))\r\n* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))\r\n* **YouTube - Player icon style:** Add custom icons from a zip file ([#3374](https://github.com/MorpheApp/morphe-patches/issues/3374)) ([224b731](https://github.com/MorpheApp/morphe-patches/commit/224b731509a1133a770d1c2f9938178d6a81a920))\r\n* **YouTube - Player icons:** Add icon styles for overlay player buttons, swipe controls and Shorts ([#3287](https://github.com/MorpheApp/morphe-patches/issues/3287)) ([cca4ce0](https://github.com/MorpheApp/morphe-patches/commit/cca4ce0d186d415a651a8c1744afb9cb37a6dc3b))\r\n* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))\r\n* **YouTube - Swipe controls:** Add \"Volume boost\" setting ([#3412](https://github.com/MorpheApp/morphe-patches/issues/3412)) ([9e393e5](https://github.com/MorpheApp/morphe-patches/commit/9e393e542cb8de29edacba412acf127dfc0e775c))\r\n* **YouTube Music - Hide buttons:** Add \"Hide New button\" setting  ([#3264](https://github.com/MorpheApp/morphe-patches/issues/3264)) ([d535e8d](https://github.com/MorpheApp/morphe-patches/commit/d535e8daa7119f86f1a7bd92f16c8ed1aba23d2a))\r\n* **YouTube Music - Hide buttons:** Add \"Hide Voice search button\" and \"Hide Sound search button\" ([#3250](https://github.com/MorpheApp/morphe-patches/issues/3250)) ([cfc880b](https://github.com/MorpheApp/morphe-patches/commit/cfc880bbba4b2ef9451c537fcdb4751e2ce09caa))\r\n* **YouTube Music - Hide layout components:** Add \"Hide podcast episode Download button\" ([#3251](https://github.com/MorpheApp/morphe-patches/issues/3251)) ([d94ca13](https://github.com/MorpheApp/morphe-patches/commit/d94ca13031d57b80edce4a872d633ffcffdae002))\r\n* **YouTube Music - Third-party lyrics:** Add new provider ([#3174](https://github.com/MorpheApp/morphe-patches/issues/3174)) ([1bc710e](https://github.com/MorpheApp/morphe-patches/commit/1bc710e371eb89e663acaadb415c497b7829fe1e))\r\n* **YouTube Music - Third-party lyrics:** Add Translation / Romanization only modes ([#3252](https://github.com/MorpheApp/morphe-patches/issues/3252)) ([1c6e6cd](https://github.com/MorpheApp/morphe-patches/commit/1c6e6cdbdacdd33088293c27e56c4fa6cc4f4049))\r\n* **YouTube Music - Third-party lyrics:** Add translation language ([#3128](https://github.com/MorpheApp/morphe-patches/issues/3128)) ([7349cb6](https://github.com/MorpheApp/morphe-patches/commit/7349cb691635e2a506163aa9fd5813f0b73c4e3f))\r\n* **YouTube Music - Third-party lyrics:** Keep screen on while viewing lyrics ([#3127](https://github.com/MorpheApp/morphe-patches/issues/3127)) ([cb4df9a](https://github.com/MorpheApp/morphe-patches/commit/cb4df9acf11249de66477ce9764ff29fbe41f9ca))\r\n* **YouTube Music - Third-party lyrics:** Search and prompt ([#3372](https://github.com/MorpheApp/morphe-patches/issues/3372)) ([f2b3201](https://github.com/MorpheApp/morphe-patches/commit/f2b32016108b112458aaf09384423faa37910983))\r\n* **YouTube Music:** Add `Force portrait orientation` patch ([#3291](https://github.com/MorpheApp/morphe-patches/issues/3291)) ([143726e](https://github.com/MorpheApp/morphe-patches/commit/143726ed161e493e5a827654f7f5a1465e2ff53f))\r\n* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))\r\n* **YouTube Music:** Add `Media notification controls` patch ([#3288](https://github.com/MorpheApp/morphe-patches/issues/3288)) ([7c4431b](https://github.com/MorpheApp/morphe-patches/commit/7c4431b3b854cb145c540459fbde314b1a4d035a))\r\n* **YouTube Music:** Add `Playback speed` patch ([#3295](https://github.com/MorpheApp/morphe-patches/issues/3295)) ([96eae8f](https://github.com/MorpheApp/morphe-patches/commit/96eae8f66b243646de2e767b37a9d9fb20b81dc4))\r\n* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))\r\n* **YouTube:** Add `Hide status bar` patch ([#3337](https://github.com/MorpheApp/morphe-patches/issues/3337)) ([05c1597](https://github.com/MorpheApp/morphe-patches/commit/05c1597e97ebd428a0d9b0e0a7ae2cbd05442735))\r\n* **YouTube:** Add `Picture-in-picture button` patch ([#3397](https://github.com/MorpheApp/morphe-patches/issues/3397)) ([6c94728](https://github.com/MorpheApp/morphe-patches/commit/6c947288a3fc75105ef7e1c02d37a324dc20dc76))\r\n* **YouTube:** Added \"Minimal comments button\" setting ([916f228](https://github.com/MorpheApp/morphe-patches/commit/916f228495509ac2af2780a93502e0b872f61aa8))\r\n* **YouTube:** Added \"Restore original videos title and description\" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))\r\n\r\n### 🚀 Updated App Support\r\n\r\n* **Reddit:** Add experimental support for `2026.39.0` ([755bf21](https://github.com/MorpheApp/morphe-patches/commit/755bf216267521a3d206d19be0cb230d8034ebb8))\r\n* **Reddit:** Add support for `2026.24.0` ([707ba5e](https://github.com/MorpheApp/morphe-patches/commit/707ba5ed71d4713d213126db9477e8dde9fd2493))\r\n* **YouTube Music:** Add experimental support for `9.38.51` ([314116f](https://github.com/MorpheApp/morphe-patches/commit/314116f3bad8eb4b42773651da7b663a2fcf759c))\r\n* **YouTube:** Add experimental support for `21.39.522` ([#3290](https://github.com/MorpheApp/morphe-patches/issues/3290)) ([5687e86](https://github.com/MorpheApp/morphe-patches/commit/5687e86075418094937fbb7449e79406f7400ca9))\r\n",
+  "apps": [
+    {
+      "app_name": "YouTube Music",
+      "package": "com.google.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "App refresh rate",
+          "description": "Adds an option to change the app refresh rate.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Bypass certificate checks",
+          "description": "Bypasses certificate checks which prevent YouTube Music from working on Android Auto.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Change header",
+          "description": "Adds an option to change the header logo in the top left corner of the app.",
+          "use": true,
+          "options": [
+            {
+              "key": "custom",
+              "description": "\n            Folder with images to use as a custom header logo.\n\n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\n            Each of the folders must contain the following file(s):\n            - morphe_header_custom_dark.png\n\n            Required dimensions:\n            - drawable-hdpi: 121x36 px\n- drawable-xhdpi: 160x48 px\n- drawable-xxhdpi: 240x72 px\n- drawable-xxxhdpi: 320x96 px\n        "
+            }
+          ],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Change miniplayer color",
+          "description": "Adds an option to change the miniplayer background color to match the fullscreen player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Change start page",
+          "description": "Adds an option to set which page the app opens in instead of the homepage.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Check watch history domain name resolution",
+          "description": "Checks if the device DNS server is preventing user watch history from being saved.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Crossfade",
+          "description": "Adds a true dual-player crossfade between consecutive tracks. Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Custom branding",
+          "description": "Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings.",
+          "use": true,
+          "options": [
+            {
+              "key": "customName",
+              "description": "Custom app name."
+            },
+            {
+              "key": "customIcon",
+              "description": "\n            Folder with images to use as a custom icon.\n            \n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n            \n            Each of the folders must contain all of the following files:\n            morphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n            \n            The image dimensions must be as follows:\n            - mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\n            Optionally, the path contains a 'drawable' folder with a monochrome icon file:\n            morphe_adaptive_monochrome_custom.xml\n\n            Optionally, the path contains a notification icon in one of the following formats:\n            - XML vector drawable placed in 'drawable':\n              morphe_notification_icon_custom.xml\n            - PNG raster images placed in the matching 'drawable-<dpi>' folders:\n              - drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)\n        "
+            },
+            {
+              "key": "appIcon",
+              "description": "\n            The app icon to use, including the notification icon.\n\n            'Automatic' uses the custom icon if one is provided, and otherwise 'Black'.\n            Select 'Original' to keep the icon of the unpatched app.\n\n            The icon can be changed later in the app settings, but only for the launcher.\n            Android Auto, the app list of the system settings and the apk file always show\n            the icon chosen here, and a mounted (root) installation can only change it by\n            patching again.\n        "
+            }
+          ],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Disable dislike redirection",
+          "description": "Adds an option to prevent skipping to the next track when the dislike button is pressed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Disable DRC audio",
+          "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Disable QUIC protocol",
+          "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Downloads",
+          "description": "Adds support to download songs using the in-app download button, either with an external downloader app or inside YouTube Music.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Enable debugging",
+          "description": "Adds options for debugging and exporting Morphe logs to the clipboard.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Enable exclusive audio playback",
+          "description": "Enables the option to play audio without video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Enable forced miniplayer",
+          "description": "Adds an option to enable forced miniplayer when switching between music videos, podcasts, or songs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Enable swipe to dismiss miniplayer",
+          "description": "Adds an option to enable dismissing the miniplayer by swiping down on it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Force original audio",
+          "description": "Adds an option to always use the original audio track.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Force portrait orientation",
+          "description": "Adds an option to keep the app in portrait orientation when the device is rotated.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "GmsCore support",
+          "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Adds options to hide fullscreen ads, Premium promotions and video ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide buttons",
+          "description": "Adds options to hide the cast, history, notification, search, voice search, sound search, and Library New buttons.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide filter bar",
+          "description": "Adds an option to hide the filter bar at the top of the homepage.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide flyout menu components",
+          "description": "Adds options to hide individual items from the player and queue flyout menus.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide layout components",
+          "description": "Adds options to hide general layout components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Hide music action buttons",
+          "description": "Adds options to hide action buttons under the player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Jam queue sharing",
+          "description": "Shares the host queue and playback controls through an authenticated Jam bridge. Root installation is not supported.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Media notification controls",
+          "description": "Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Miniplayer previous and next buttons",
+          "description": "Adds options to show previous and next track buttons in the miniplayer.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Navigation bar",
+          "description": "Adds options to hide navigation bar, labels and buttons.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Network proxy",
+          "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Play albums songs",
+          "description": "Adds an option to play the song version of album tracks instead of music videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Playback speed",
+          "description": "Adds options to change the playback speed and pitch of tracks.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "PoToken provider",
+          "description": "Adds option to get PoToken using an external PoToken minter app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Remember repeat state",
+          "description": "Adds an option to remember the repeat state when playing a new track or playlist.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Remember shuffle state",
+          "description": "Adds an option to remember the shuffle state when playing a new track or playlist.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Remove background playback restrictions",
+          "description": "Removes restrictions on background playback, including playing kids videos in the background.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Remove viewer discretion dialog",
+          "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Return YouTube Dislike",
+          "description": "Adds an option to show the dislike count of tracks with Return YouTube Dislike.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Removes the tracking query parameters from shared links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Scrobbling",
+          "description": "Adds options to add played tracks to Last.fm and ListenBrainz.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Settings menu filter",
+          "description": "Adds an option to hide items on the standard YouTube Music settings screen by their visible name.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "SponsorBlock",
+          "description": "Adds options to enable and configure SponsorBlock, which can skip non-music segments.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Spoof app version",
+          "description": "Adds an option to trick the app into thinking you are running an older version.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Spoof video streams",
+          "description": "Adds options to spoof the client video streams to fix playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Theme",
+          "description": "Adds options for theming, and settings to change the app foreground and background colors.",
+          "use": true,
+          "options": [
+            {
+              "key": "darkThemeColor",
+              "description": "Can be a hex color (#RRGGBB) or a color resource reference. Setting a color of either theme applies both while patching and removes the in-app theme color settings."
+            }
+          ],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        },
+        {
+          "name": "Third-party lyrics",
+          "description": "Adds an option to show synced lyrics with experience enhancement from 16+ providers in the lyrics panel.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.51",
+            "9.37.54",
+            "9.36.50",
+            "9.15.51"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "YouTube",
+      "package": "com.google.android.youtube",
+      "patches": [
+        {
+          "name": "Add to queue",
+          "description": "Overrides the feed flyout 'Play next in queue' with the Morphe video queue.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Alternative thumbnails",
+          "description": "Adds options to replace video thumbnails using the DeArrow API or image captures from the video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Ambient mode",
+          "description": "Adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "App refresh rate",
+          "description": "Adds an option to change the app refresh rate.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Bypass image region restrictions",
+          "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Bypass link redirects",
+          "description": "Adds an option to bypass redirects and open the original link directly.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Captions",
+          "description": "Adds an option to disable captions from being automatically enabled or to set caption cookies.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Change form factor",
+          "description": "Adds an option to change the UI appearance to a phone, tablet, or automotive device.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Change header",
+          "description": "Adds an option to change the header logo in the top left corner of the app.",
+          "use": true,
+          "options": [
+            {
+              "key": "custom",
+              "description": "\n            Folder with images to use as a custom header logo.\n\n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - drawable-hdpi\n- drawable-xhdpi\n- drawable-xxhdpi\n- drawable-xxxhdpi\n\n            Each of the folders must contain the following file(s):\n            - morphe_header_custom_light.png\n- morphe_header_custom_dark.png\n\n            Required dimensions:\n            - drawable-hdpi: 194x72 px\n- drawable-xhdpi: 258x96 px\n- drawable-xxhdpi: 387x144 px\n- drawable-xxxhdpi: 512x192 px\n        "
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Change start page",
+          "description": "Adds an option to set which page the app opens in instead of the homepage.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Channel search",
+          "description": "Adds an option to search inside the channel that is currently open instead of searching all of YouTube.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Check watch history domain name resolution",
+          "description": "Checks if the device DNS server is preventing user watch history from being saved.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Copy video link",
+          "description": "Adds options to display buttons in the video player to copy video links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Custom branding",
+          "description": "Adds options to change the app icon and app name. For mounted (root) installations the branding is applied while patching, because it cannot be changed from the app settings.",
+          "use": true,
+          "options": [
+            {
+              "key": "customName",
+              "description": "Custom app name."
+            },
+            {
+              "key": "customIcon",
+              "description": "\n            Folder with images to use as a custom icon.\n            \n            The folder must contain one or more of the following folders, depending on the DPI of the device:\n            - mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n            \n            Each of the folders must contain all of the following files:\n            morphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n            \n            The image dimensions must be as follows:\n            - mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\n            Optionally, the path contains a 'drawable' folder with a monochrome icon file:\n            morphe_adaptive_monochrome_custom.xml\n\n            Optionally, the path contains a notification icon in one of the following formats:\n            - XML vector drawable placed in 'drawable':\n              morphe_notification_icon_custom.xml\n            - PNG raster images placed in the matching 'drawable-<dpi>' folders:\n              - drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)\n        "
+            },
+            {
+              "key": "appIcon",
+              "description": "\n            The app icon to use, including the notification icon.\n\n            'Automatic' uses the custom icon if one is provided, and otherwise 'Black'.\n            Select 'Original' to keep the icon of the unpatched app.\n\n            The icon can be changed later in the app settings, but only for the launcher.\n            Android Auto, the app list of the system settings and the apk file always show\n            the icon chosen here, and a mounted (root) installation can only change it by\n            patching again.\n        "
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Custom player overlay opacity",
+          "description": "Adds an option to change the opacity of the video player background when player controls are visible.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable auto feed refresh",
+          "description": "Adds an option to stop feeds from refreshing automatically after they become outdated.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable double tap actions",
+          "description": "Adds an option to disable player double tap gestures.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable DRC audio",
+          "description": "Adds an option to disable DRC (Dynamic Range Compression) audio.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable fullscreen gestures",
+          "description": "Adds options to selectively disable gestures for entering and exiting fullscreen mode, and to disable pinch-to-zoom.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable haptic feedback",
+          "description": "Adds an option to disable haptic feedback in the player for various actions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable layout updates",
+          "description": "Adds an option to disable server side layout updates and use an older UI.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable player popup panels",
+          "description": "Adds an option to disable panels (such as live chat) from opening automatically.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable playlist autoplay",
+          "description": "Adds an option to stop a playlist from automatically advancing to the next video.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable QUIC protocol",
+          "description": "Adds an option to disable QUIC (Quick UDP Internet Connections) network protocol.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable rolling number animations",
+          "description": "Adds an option to disable rolling number animations of video view count, user likes, and upload time.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable scrolling speed limit",
+          "description": "Adds an option to remove limits of how fast the home and subscription feed can be scrolled.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable Shorts resuming on startup",
+          "description": "Adds an option to disable Shorts from resuming on app startup when Shorts were last being watched.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable sign in to TV popup",
+          "description": "Adds options to disable the popups asking to sign into or connect to a TV on the same local network.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Disable video codecs",
+          "description": "Adds options to disable or force HDR, and to disable VP9 codecs.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Double tap to seek",
+          "description": "Adds additional double-tap to seek values to the YouTube settings menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Downloads",
+          "description": "Adds support to download videos with an external downloader app using the in-app download button or a video player action button.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Enable debugging",
+          "description": "Adds options for debugging and exporting Morphe logs to the clipboard.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Exit fullscreen mode",
+          "description": "Adds options to automatically exit fullscreen mode when a video reaches the end.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Force fullscreen landscape",
+          "description": "Adds an option to rotate the player to landscape when entering fullscreen mode on tablets and other large screen devices.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Force original audio",
+          "description": "Adds an option to always use the original audio track.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Fullscreen video scale",
+          "description": "Adds options to stretch or zoom videos to fill the screen in fullscreen mode.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "GmsCore support",
+          "description": "Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Adds options to hide general ads, Premium promotions and video ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide autoplay preview",
+          "description": "Adds an option to hide the autoplay preview at the end of videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide end screen cards",
+          "description": "Adds an option to hide suggested video cards at the end of videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide end screen suggested video",
+          "description": "Adds an option to hide the suggested video at the end of videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide info cards",
+          "description": "Adds an option to hide info cards that creators add in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide layout components",
+          "description": "Adds options to hide general layout components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide player flyout menu components",
+          "description": "Adds options to hide menu components that appear when pressing the gear icon in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide player overlay buttons",
+          "description": "Adds options to hide the player Cast, Autoplay, Captions, Previous & Next buttons, and to hide or change the opacity of the player control buttons background.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide related video overlay",
+          "description": "Adds an option to hide the related video overlay shown when swiping up in fullscreen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide related videos",
+          "description": "Adds options to hide related videos.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide Shorts components",
+          "description": "Adds options to hide components related to Shorts.",
+          "use": true,
+          "options": [
+            {
+              "key": "hideShortsAppShortcut",
+              "description": "Permanently hides the shortcut to open Shorts when long pressing the app icon in your launcher."
+            },
+            {
+              "key": "hideShortsWidget",
+              "description": "Permanently hides the launcher widget Shorts button."
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide status bar",
+          "description": "Adds an option to hide the system status bar. Swipe down from the top edge to show it for a moment.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide timestamp",
+          "description": "Adds an option to hide the timestamp in the bottom left of the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Hide video action buttons",
+          "description": "Adds options to hide video action buttons in fullscreen and portrait modes.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Loop video",
+          "description": "Adds an option to loop videos and display loop video button in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Media notification controls",
+          "description": "Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Miniplayer",
+          "description": "Adds options to change the in-app minimized player. Patching 21.28.206 and lower has more miniplayer types to choose from.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Mute button",
+          "description": "Adds an option to show a player button that mutes the video audio.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Navigation bar",
+          "description": "Adds options to hide and change the bottom navigation bar (such as the Shorts button) and the upper navigation toolbar.",
+          "use": true,
+          "options": [
+            {
+              "key": "hideSearchAppShortcut",
+              "description": "Permanently hides the shortcut to open Search when long pressing the app icon in your launcher."
+            },
+            {
+              "key": "hideSubscriptionsAppShortcut",
+              "description": "Permanently hides the shortcut to open Subscriptions when long pressing the app icon in your launcher."
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Network proxy",
+          "description": "Adds settings to route supported network requests through an HTTP or HTTPS proxy. Including this patch may cause connectivity problems on certain devices",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Open channel of live avatar",
+          "description": "Adds an option to prevent a channel's current live video from opening when tapping its avatar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Open links externally",
+          "description": "Adds an option to always open links in your browser instead of with the in-app browser.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Open Shorts in regular player",
+          "description": "Adds options to open Shorts in the regular video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Open system share sheet",
+          "description": "Adds an option to always open the system share sheet instead of the in-app share sheet.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Open videos fullscreen",
+          "description": "Adds options to automatically open videos in fullscreen portrait or landscape mode.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Override YouTube Music buttons",
+          "description": "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Picture-in-picture button",
+          "description": "Adds an option to display a picture-in-picture button in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Play all",
+          "description": "Adds an option to play all the videos from a channel and to display play all button in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Playback buffer",
+          "description": "Adds an option to change the video playback buffer size.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Playback in feeds",
+          "description": "Adds the 'Playback in feeds' setting of YouTube to the Morphe settings, where it is always available even if YouTube hides it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Playback speed",
+          "description": "Adds options to customize available playback speeds, set a default playback speed, and show a speed dialog button in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Player icon style",
+          "description": "Adds an option to change the style of the player button icons.",
+          "use": true,
+          "options": [
+            {
+              "key": "customIcons",
+              "description": "\n    Zip file with icons to use as the 'Custom' icon style.\n\n    Each icon is named after the icon it replaces, such as 'morphe_yt_copy.xml'.\n    An icon is a vector drawable (.xml), or a white square PNG image (.png, 96x96 pixels is recommended).\n    Icons missing from the file keep the 'Automatic' style.\n"
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "PoToken provider",
+          "description": "Adds option to get PoToken using an external PoToken minter app.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Reload video",
+          "description": "Adds an option to display reload video button in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Remember live stream playback position",
+          "description": "Adds an option to remember the playback position of an ongoing live stream and resume from there when reopening that live stream.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Remove background playback restrictions",
+          "description": "Removes restrictions on background playback, including playing kids videos in the background.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Remove viewer discretion dialog",
+          "description": "Adds an option to remove the dialog that appears when opening a video that has been age-restricted by accepting it automatically. This does not bypass the age restriction.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Restore original titles",
+          "description": "Adds an option to show the original video titles, video descriptions and channel descriptions instead of the auto-translated ones.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Return YouTube Dislike",
+          "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Removes the tracking query parameters from shared links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Save to Watch later",
+          "description": "Adds an option to display save to Watch later button in the video player.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Seekbar",
+          "description": "Adds options to show old seekbar thumbnails, disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, enabling seeking in live streams, and expanding the live stream DVR duration.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Settings menu filter",
+          "description": "Adds an option to hide items on the standard YouTube settings screen by their visible name.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Shorts autoplay",
+          "description": "Adds options to automatically play the next Short.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Shorts icon style",
+          "description": "Adds an option to change the style of the Shorts action button icons.",
+          "use": true,
+          "options": [
+            {
+              "key": "customIcons",
+              "description": "\n    Zip file with icons to use as the 'Custom' icon style.\n\n    Each icon is named after the icon it replaces, such as 'morphe_shorts_heart.xml'.\n    An icon is a vector drawable (.xml), or a white square PNG image (.png, 96x96 pixels is recommended).\n    Icons missing from the file keep the 'Automatic' style.\n"
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "SponsorBlock",
+          "description": "Adds options to enable and configure SponsorBlock, which can skip undesired video segments such as sponsored content.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Spoof app version",
+          "description": "Adds an option to trick the app into thinking you are running an older version.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Spoof device dimensions",
+          "description": "Adds an option to spoof the device dimensions which can unlock higher video qualities.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Spoof video streams",
+          "description": "Adds options to spoof the client video streams to fix playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Swipe controls",
+          "description": "Adds options to enable and configure volume and brightness swipe controls.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Theme",
+          "description": "Adds options for theming, and settings to change the app foreground and background colors.",
+          "use": true,
+          "options": [
+            {
+              "key": "darkThemeColor",
+              "description": "Can be a hex color (#RRGGBB) or a color resource reference. Setting a color of either theme applies both while patching and removes the in-app theme color settings."
+            },
+            {
+              "key": "lightThemeColor",
+              "description": "Can be a hex color (#RRGGBB) or a color resource reference. Setting a color of either theme applies both while patching and removes the in-app theme color settings."
+            }
+          ],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Video quality",
+          "description": "Adds options to set default video qualities and always use the advanced video quality menu.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Voice over translation",
+          "description": "Adds additional voice over languages using text-to-speech synchronized to the video playback.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        },
+        {
+          "name": "Wide search bar",
+          "description": "Adds a wide search bar to the top of the home and subscription feed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "21.39.522",
+            "21.38.130",
+            "21.28.208",
+            "21.23.492",
+            "21.16.256",
+            "21.13.164",
+            "20.31.42",
+            "20.21.37"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Reddit",
+      "package": "com.reddit.frontpage",
+      "patches": [
+        {
+          "name": "App icon",
+          "description": "Adds an option to select from the Reddit app icons available in the manifest.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Custom branding name for Reddit",
+          "description": "Changes the Reddit app name to the name specified in patch options.",
+          "use": false,
+          "options": [
+            {
+              "key": "appName",
+              "description": "The name of the app."
+            }
+          ],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Custom font",
+          "description": "Adds an option to replace Reddit Sans / Roboto with a custom TTF or OTF font file at runtime.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Disable modern home",
+          "description": "Adds an option to disable the modern home UI. This patch works with Reddit 2026.24.0 and earlier.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Disable screenshot popup",
+          "description": "Adds an option to disable the popup that appears when taking a screenshot.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Force system font",
+          "description": "Adds an option that renders Reddit with the device system font instead of Reddit Sans / Roboto.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Hide ads",
+          "description": "Adds options to hide ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Hide Ask button",
+          "description": "Adds an option to hide Ask button in the search bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Hide communities shelf",
+          "description": "Adds an option to hide the related or suggested communities shelf in subreddits.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Hide navigation buttons",
+          "description": "Adds options to hide buttons in the navigation bar.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Hide Reddit search",
+          "description": "Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Hide sidebar components",
+          "description": "Adds options to hide the sidebar components.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Hide Trending shelves",
+          "description": "Adds an option to hide the Trending shelves from feed and search suggestions.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Open links directly",
+          "description": "Adds an option to skip over redirection URLs in external links.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Open links externally",
+          "description": "Adds an option to always open links in your browser instead of with the in-app-browser.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Remove subreddit dialog",
+          "description": "Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Sanitize sharing links",
+          "description": "Adds an option to sanitize sharing links by removing tracking query parameters.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Show view count",
+          "description": "Adds an option to show the view count of Posts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        },
+        {
+          "name": "Spoof signature",
+          "description": "Spoofs the signature of the app to fix notification issues.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0",
+            "2024.02.0"
+          ]
+        },
+        {
+          "name": "Start as guest",
+          "description": "Skips the forced startup login screen using Reddit's native guest browsing mode.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2026.39.0",
+            "2026.38.0",
+            "2026.37.0",
+            "2026.24.0",
+            "2026.14.0",
+            "2026.10.0"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Morphe Patches",
+  "fingerprint": "5959dee4e34d5032e1c63a5e7d69d264ad31ad9b21a4f748d5066f43e936ee3d",
+  "release_notes": "## [1.45.0](https://github.com/MorpheApp/morphe-patches/compare/v1.44.0...v1.45.0) (2026-10-02)\r\n\r\n### 🐛 Bug Fixes\r\n\r\n* **GmsCore support:** Omit empty intent data ([#3170](https://github.com/MorpheApp/morphe-patches/issues/3170)) ([f03894a](https://github.com/MorpheApp/morphe-patches/commit/f03894a8663fdb19a3ff48765d0cb928bcbc36a3))\r\n* Reduce heap use from ConversionContext dumps and JS player cache ([#3120](https://github.com/MorpheApp/morphe-patches/issues/3120)) ([317fd56](https://github.com/MorpheApp/morphe-patches/commit/317fd56c1ecba41a7b928011a39e6a943ca9b07f))\r\n* **YouTube  - Voice over translation:** Add missing accessibility labels and Voice over translation button state ([#3203](https://github.com/MorpheApp/morphe-patches/issues/3203)) ([d99679b](https://github.com/MorpheApp/morphe-patches/commit/d99679b50dc6f19a2feffaa7f5a8940a9d83da94))\r\n* **YouTube - Captions:** Make \"Always show\" override a manual caption-off ([#3421](https://github.com/MorpheApp/morphe-patches/issues/3421)) ([a92b8ed](https://github.com/MorpheApp/morphe-patches/commit/a92b8edc30e31e16ca61e072540ac722a2616ff9))\r\n* **YouTube - Custom branding:** Do not ask which app to use for app shortcut actions ([#3204](https://github.com/MorpheApp/morphe-patches/issues/3204)) ([0a2f0e0](https://github.com/MorpheApp/morphe-patches/commit/0a2f0e0f487512d6fd5f0c97ca83ad061859988c))\r\n* **YouTube - Hide layout components:** Open the correct channel tab when channel tabs are hidden ([#3200](https://github.com/MorpheApp/morphe-patches/issues/3200)) ([53cc35b](https://github.com/MorpheApp/morphe-patches/commit/53cc35b0552b59d0ff34ed057e4c167cb8881322))\r\n* **YouTube - Hide layout components:** Restore preview comment simplebox matcher ([#3130](https://github.com/MorpheApp/morphe-patches/issues/3130)) ([6e55325](https://github.com/MorpheApp/morphe-patches/commit/6e55325ddbbff9323206bda909b4a50b6d2ab178))\r\n* **YouTube - Hide player flyout menu components:** Hide the Audio Track item in the Shorts flyout menu ([#3297](https://github.com/MorpheApp/morphe-patches/issues/3297)) ([09de4d2](https://github.com/MorpheApp/morphe-patches/commit/09de4d2332b4e499435bf7a3032381faf51893c3))\r\n* **YouTube - Layout components filter:** Filtered header buttons left empty spaces ([#3402](https://github.com/MorpheApp/morphe-patches/issues/3402)) ([b719412](https://github.com/MorpheApp/morphe-patches/commit/b719412520f3ed7828b7424a9f4814eec3b4ae50))\r\n* **YouTube - Legacy player controls:** Preserve end screen on 21.36+ ([#3121](https://github.com/MorpheApp/morphe-patches/issues/3121)) ([b895285](https://github.com/MorpheApp/morphe-patches/commit/b895285b2aa0e4cab6bb23226e129c62d517c670))\r\n* **YouTube - Litho filtering:** Shorts were not hidden on home feed after pressing the back button ([#3416](https://github.com/MorpheApp/morphe-patches/issues/3416)) ([5c21cf7](https://github.com/MorpheApp/morphe-patches/commit/5c21cf78bd7cc8fa9d67491cf46c07ae622f02a5))\r\n* **YouTube - Media notification controls:** Remove Previous & Next buttons on Android 12 and lower ([#3332](https://github.com/MorpheApp/morphe-patches/issues/3332)) ([df6c914](https://github.com/MorpheApp/morphe-patches/commit/df6c91407abdb93ea81e9c8a57ddf9ba865f626c))\r\n* **YouTube - Minimal miniplayer:** Fixed Type 2 aspect ratio by hooking video format size ([551490f](https://github.com/MorpheApp/morphe-patches/commit/551490f50127c8ea02725848eab7a16ffec9d487))\r\n* **YouTube - Minimal miniplayer:** Restored interpolate minimizing transitions ([#3280](https://github.com/MorpheApp/morphe-patches/issues/3280)) ([dff3749](https://github.com/MorpheApp/morphe-patches/commit/dff3749d6b665b2669a4ccc9b1b8f70985b1c358))\r\n* **YouTube - Playback speed:** Music videos do not play at 1x speed ([#3210](https://github.com/MorpheApp/morphe-patches/issues/3210)) ([1c7086d](https://github.com/MorpheApp/morphe-patches/commit/1c7086da6270a723da370f89440d70475f96c888))\r\n* **YouTube - Playback speed:** Prevent speed leak into Shorts ([#3169](https://github.com/MorpheApp/morphe-patches/issues/3169)) ([ff35586](https://github.com/MorpheApp/morphe-patches/commit/ff35586e14b339e24a06d32cb77b57234c942fe2))\r\n* **YouTube - Player controls:** Decouple legacy buttons from settings UI ([#3171](https://github.com/MorpheApp/morphe-patches/issues/3171)) ([dfeeb64](https://github.com/MorpheApp/morphe-patches/commit/dfeeb64c54bd2aa49fdbc3653f5ba2f81558d558))\r\n* **YouTube - Restore old video action bar:** Do not hide newly posted comments ([#3324](https://github.com/MorpheApp/morphe-patches/issues/3324)) ([37b43f7](https://github.com/MorpheApp/morphe-patches/commit/37b43f7dd36133b6b3a7e76b8489f788e5b46727))\r\n* **YouTube - Return YouTube Dislike:** Do not show dislikes on the share and comment buttons of community posts ([31b657c](https://github.com/MorpheApp/morphe-patches/commit/31b657c5482def040a368b1d4661db704249db50))\r\n* **YouTube - Return YouTube Dislike:** Show dislikes on tablet layout ([#3153](https://github.com/MorpheApp/morphe-patches/issues/3153)) ([7835519](https://github.com/MorpheApp/morphe-patches/commit/7835519c42a656c2d30122dcd97fb27dd12b0b87))\r\n* **YouTube - SponsorBlock:** Preserve exact video end for segment markers ([#3157](https://github.com/MorpheApp/morphe-patches/issues/3157)) ([a860f5b](https://github.com/MorpheApp/morphe-patches/commit/a860f5bdbce792254617fb31d424c02521c62c6f))\r\n* **YouTube - SponsorBlock:** Segments may not load for some versions of YouTube ([#3328](https://github.com/MorpheApp/morphe-patches/issues/3328)) ([3d8c748](https://github.com/MorpheApp/morphe-patches/commit/3d8c748ae7f9ce9b9f21f97a041e60923673e728))\r\n* **YouTube - Video quality:** Do not give a regular video the Shorts quality after leaving Shorts ([#3322](https://github.com/MorpheApp/morphe-patches/issues/3322)) ([aaa2bc1](https://github.com/MorpheApp/morphe-patches/commit/aaa2bc1f6d22db827b73ea064ce1c1c3cf89061e))\r\n* **YouTube - Video quality:** Keep Shorts quality after closing a live stream opened from Shorts ([#3333](https://github.com/MorpheApp/morphe-patches/issues/3333)) ([0a94e0e](https://github.com/MorpheApp/morphe-patches/commit/0a94e0e5714af91c7250a2be66bee3ba6fe7cb17))\r\n* **YouTube Music - Download in app:** Expose offline audio session ([#3167](https://github.com/MorpheApp/morphe-patches/issues/3167)) ([b4fb0e9](https://github.com/MorpheApp/morphe-patches/commit/b4fb0e9d00a2e876b30ce64da66ee459ad974abc))\r\n* **YouTube Music - Hide flyout menu components:** Hide nested download items ([#3165](https://github.com/MorpheApp/morphe-patches/issues/3165)) ([fd2b325](https://github.com/MorpheApp/morphe-patches/commit/fd2b325a655819233d6bdb0ded83ba08b0cb5295))\r\n* **YouTube Music - Play albums songs:** Do not play the first track's song for every track of a queued album ([#3319](https://github.com/MorpheApp/morphe-patches/issues/3319)) ([cd82092](https://github.com/MorpheApp/morphe-patches/commit/cd820925387333b3b45516479c4c4880a450452b))\r\n* **YouTube Music - Third-party lyrics:** Crash while trimming the lyrics cache ([#3272](https://github.com/MorpheApp/morphe-patches/issues/3272)) ([e450b7a](https://github.com/MorpheApp/morphe-patches/commit/e450b7a073b3d0b2c83d37509a7443f40a7b6369))\r\n* **YouTube Music - Third-party lyrics:** Do not cover comments panel ([#3155](https://github.com/MorpheApp/morphe-patches/issues/3155)) ([50e4e65](https://github.com/MorpheApp/morphe-patches/commit/50e4e65ef15e28586ec55fae51da0bb03ae392d9))\r\n* **YouTube Music - Third-party lyrics:** Keep the screen on after the track changes ([#3246](https://github.com/MorpheApp/morphe-patches/issues/3246)) ([e730ebf](https://github.com/MorpheApp/morphe-patches/commit/e730ebfa8be5b689e484eefa33b380554884a862))\r\n* **YouTube Music - Third-party lyrics:** Keep the token dialog buttons on screen with long cookies ([#3245](https://github.com/MorpheApp/morphe-patches/issues/3245)) ([1cf6be0](https://github.com/MorpheApp/morphe-patches/commit/1cf6be0051247409030199b54d864540f9e3f55a))\r\n* **YouTube Music - Third-party lyrics:** minor bug fixes ([#3323](https://github.com/MorpheApp/morphe-patches/issues/3323)) ([292d78b](https://github.com/MorpheApp/morphe-patches/commit/292d78bb3c9b52796a54c68b4797c8db77496b28))\r\n* **YouTube Music - Third-party lyrics:** Reload lyrics when video changes ([#3148](https://github.com/MorpheApp/morphe-patches/issues/3148)) ([2920175](https://github.com/MorpheApp/morphe-patches/commit/29201754faeec713fa2fc43725527062160f8c0c))\r\n* **YouTube:** \"Hide preview comment\" breaks comment section text box ([#3187](https://github.com/MorpheApp/morphe-patches/issues/3187)) ([d592804](https://github.com/MorpheApp/morphe-patches/commit/d5928043b7982326a102aafa2993e3cb8872eaf7))\r\n* **YouTube:** \"Restore old video action bar\" hides newly posted comments ([#3216](https://github.com/MorpheApp/morphe-patches/issues/3216)) ([24d5823](https://github.com/MorpheApp/morphe-patches/commit/24d582398b812f96e23bc374c3c77c4dd5506eb4))\r\n* **YouTube:** Always use Litho instead RenderNext as rendering library ([#3347](https://github.com/MorpheApp/morphe-patches/issues/3347)) ([52e0138](https://github.com/MorpheApp/morphe-patches/commit/52e01385e857b5a9858bef107dbaded6a89078df))\r\n* **YouTube:** Hidden preview comment still has clickable timestamps ([#3268](https://github.com/MorpheApp/morphe-patches/issues/3268)) ([1dfd537](https://github.com/MorpheApp/morphe-patches/commit/1dfd537aa48d56f050556e262c8547de619f88ea))\r\n* **YouTube:** Hide new community/subscribe buttons on channel page ([#3315](https://github.com/MorpheApp/morphe-patches/issues/3315)) ([5fb37df](https://github.com/MorpheApp/morphe-patches/commit/5fb37dfbc5df6a18914302d4e4a5a5c0b2d8f0b9))\r\n* **YouTube:** Search bar becomes invisible with Hide Status Bar enabled ([b0492b5](https://github.com/MorpheApp/morphe-patches/commit/b0492b552c0fe9b760bd6e00c56f6ec3bbd005c0))\r\n\r\n### ✨ New Features\r\n\r\n* Add universal `Spoof signature` patch ([#3330](https://github.com/MorpheApp/morphe-patches/issues/3330)) ([77117f6](https://github.com/MorpheApp/morphe-patches/commit/77117f61d312b23f42b74e838c3a2e902be90029))\r\n* **Custom branding:** Animate the Morphe logo at startup ([#3178](https://github.com/MorpheApp/morphe-patches/issues/3178)) ([70e8a9d](https://github.com/MorpheApp/morphe-patches/commit/70e8a9de9fc16efb830e2594dc6ba37ef49653c8))\r\n* **YouTube - Channel search:** Add channel search result sorting ([#3298](https://github.com/MorpheApp/morphe-patches/issues/3298)) ([baadcf7](https://github.com/MorpheApp/morphe-patches/commit/baadcf7ef177c8dc07cbc61670d8d475869f934c))\r\n* **YouTube - Hide layout components:** Add \"Hide channel names in subscribed channels bar\" ([#3274](https://github.com/MorpheApp/morphe-patches/issues/3274)) ([f8b330f](https://github.com/MorpheApp/morphe-patches/commit/f8b330f7d317632766cb0eeb8b98f64f0c974b0a))\r\n* **YouTube - Hide layout components:** Add \"Hide Dislike button\" to comments ([#3293](https://github.com/MorpheApp/morphe-patches/issues/3293)) ([bd43ccf](https://github.com/MorpheApp/morphe-patches/commit/bd43ccf58d622b0ed66d3cd739351644de9c8295))\r\n* **YouTube - Hide layout components:** Add \"Hide History shelf\" ([#3277](https://github.com/MorpheApp/morphe-patches/issues/3277)) ([50c4f34](https://github.com/MorpheApp/morphe-patches/commit/50c4f34ae3728e318d2e61512674167616fedc0c))\r\n* **YouTube - Hide layout components:** Add \"Hide live streams\" setting  ([#3331](https://github.com/MorpheApp/morphe-patches/issues/3331)) ([53d5680](https://github.com/MorpheApp/morphe-patches/commit/53d5680ee84f8be2e1767f7c1832e081c165a15a))\r\n* **YouTube - Hide layout components:** Add \"Hide Menu button\" for comments ([#3253](https://github.com/MorpheApp/morphe-patches/issues/3253)) ([9b30447](https://github.com/MorpheApp/morphe-patches/commit/9b30447302de598bd51e612610a858c7a6de9dfb))\r\n* **YouTube - Hide layout components:** Add \"Hide Translate button\" setting  ([#3265](https://github.com/MorpheApp/morphe-patches/issues/3265)) ([16894f1](https://github.com/MorpheApp/morphe-patches/commit/16894f1ecb93ffdbe8269b0b04aced6a6805da55))\r\n* **YouTube - Hide video action buttons:** Add \"Hide channel and Subscribe button\" ([#3289](https://github.com/MorpheApp/morphe-patches/issues/3289)) ([0c7cd56](https://github.com/MorpheApp/morphe-patches/commit/0c7cd56bd24c693b59aa3efd472730cee5df72c2))\r\n* **YouTube - Hide video action buttons:** Add Hide Subscribe button option ([#3326](https://github.com/MorpheApp/morphe-patches/issues/3326)) ([a94ccdb](https://github.com/MorpheApp/morphe-patches/commit/a94ccdb354d4aad25c60c25dffea130681924d35))\r\n* **YouTube - Navigation bar:** Add \"Hide new content dot\" setting  ([#3269](https://github.com/MorpheApp/morphe-patches/issues/3269)) ([c8d440d](https://github.com/MorpheApp/morphe-patches/commit/c8d440d309550c8d41e31238b61ecdc99e993b42))\r\n* **YouTube - Navigation bar:** Add patch options to hide the Search and Subscriptions app shortcuts ([#3270](https://github.com/MorpheApp/morphe-patches/issues/3270)) ([37585d1](https://github.com/MorpheApp/morphe-patches/commit/37585d17d1afdc9cd6c0d371664e5cf585c88043))\r\n* **YouTube - Playback buffer:** Add playback buffer size option ([#3386](https://github.com/MorpheApp/morphe-patches/issues/3386)) ([dfff1f5](https://github.com/MorpheApp/morphe-patches/commit/dfff1f5b170058fe14a59abb6da8214e3022842f))\r\n* **YouTube - Player icon style:** Add custom icons from a zip file ([#3374](https://github.com/MorpheApp/morphe-patches/issues/3374)) ([224b731](https://github.com/MorpheApp/morphe-patches/commit/224b731509a1133a770d1c2f9938178d6a81a920))\r\n* **YouTube - Player icons:** Add icon styles for overlay player buttons, swipe controls and Shorts ([#3287](https://github.com/MorpheApp/morphe-patches/issues/3287)) ([cca4ce0](https://github.com/MorpheApp/morphe-patches/commit/cca4ce0d186d415a651a8c1744afb9cb37a6dc3b))\r\n* **YouTube - Restore original titles:** Restore original channel descriptions ([#3418](https://github.com/MorpheApp/morphe-patches/issues/3418)) ([3467b84](https://github.com/MorpheApp/morphe-patches/commit/3467b84d92a19443cc7cd13167a89e56100b338b))\r\n* **YouTube - Swipe controls:** Add \"Volume boost\" setting ([#3412](https://github.com/MorpheApp/morphe-patches/issues/3412)) ([9e393e5](https://github.com/MorpheApp/morphe-patches/commit/9e393e542cb8de29edacba412acf127dfc0e775c))\r\n* **YouTube Music - Hide buttons:** Add \"Hide New button\" setting  ([#3264](https://github.com/MorpheApp/morphe-patches/issues/3264)) ([d535e8d](https://github.com/MorpheApp/morphe-patches/commit/d535e8daa7119f86f1a7bd92f16c8ed1aba23d2a))\r\n* **YouTube Music - Hide buttons:** Add \"Hide Voice search button\" and \"Hide Sound search button\" ([#3250](https://github.com/MorpheApp/morphe-patches/issues/3250)) ([cfc880b](https://github.com/MorpheApp/morphe-patches/commit/cfc880bbba4b2ef9451c537fcdb4751e2ce09caa))\r\n* **YouTube Music - Hide layout components:** Add \"Hide podcast episode Download button\" ([#3251](https://github.com/MorpheApp/morphe-patches/issues/3251)) ([d94ca13](https://github.com/MorpheApp/morphe-patches/commit/d94ca13031d57b80edce4a872d633ffcffdae002))\r\n* **YouTube Music - Third-party lyrics:** Add new provider ([#3174](https://github.com/MorpheApp/morphe-patches/issues/3174)) ([1bc710e](https://github.com/MorpheApp/morphe-patches/commit/1bc710e371eb89e663acaadb415c497b7829fe1e))\r\n* **YouTube Music - Third-party lyrics:** Add Translation / Romanization only modes ([#3252](https://github.com/MorpheApp/morphe-patches/issues/3252)) ([1c6e6cd](https://github.com/MorpheApp/morphe-patches/commit/1c6e6cdbdacdd33088293c27e56c4fa6cc4f4049))\r\n* **YouTube Music - Third-party lyrics:** Add translation language ([#3128](https://github.com/MorpheApp/morphe-patches/issues/3128)) ([7349cb6](https://github.com/MorpheApp/morphe-patches/commit/7349cb691635e2a506163aa9fd5813f0b73c4e3f))\r\n* **YouTube Music - Third-party lyrics:** Keep screen on while viewing lyrics ([#3127](https://github.com/MorpheApp/morphe-patches/issues/3127)) ([cb4df9a](https://github.com/MorpheApp/morphe-patches/commit/cb4df9acf11249de66477ce9764ff29fbe41f9ca))\r\n* **YouTube Music - Third-party lyrics:** Search and prompt ([#3372](https://github.com/MorpheApp/morphe-patches/issues/3372)) ([f2b3201](https://github.com/MorpheApp/morphe-patches/commit/f2b32016108b112458aaf09384423faa37910983))\r\n* **YouTube Music:** Add `Force portrait orientation` patch ([#3291](https://github.com/MorpheApp/morphe-patches/issues/3291)) ([143726e](https://github.com/MorpheApp/morphe-patches/commit/143726ed161e493e5a827654f7f5a1465e2ff53f))\r\n* **YouTube Music:** Add `Jam queue sharing` patch ([#3014](https://github.com/MorpheApp/morphe-patches/issues/3014)) ([cd6d03b](https://github.com/MorpheApp/morphe-patches/commit/cd6d03b71a2ef3bbfb6b53af8f07ada24c7cd36c))\r\n* **YouTube Music:** Add `Media notification controls` patch ([#3288](https://github.com/MorpheApp/morphe-patches/issues/3288)) ([7c4431b](https://github.com/MorpheApp/morphe-patches/commit/7c4431b3b854cb145c540459fbde314b1a4d035a))\r\n* **YouTube Music:** Add `Playback speed` patch ([#3295](https://github.com/MorpheApp/morphe-patches/issues/3295)) ([96eae8f](https://github.com/MorpheApp/morphe-patches/commit/96eae8f66b243646de2e767b37a9d9fb20b81dc4))\r\n* **YouTube:** Add `Disable auto feed refresh` patch  ([#3387](https://github.com/MorpheApp/morphe-patches/issues/3387)) ([444bb0d](https://github.com/MorpheApp/morphe-patches/commit/444bb0dc18f33f56083ab9274a1d86b574fba1b4))\r\n* **YouTube:** Add `Hide status bar` patch ([#3337](https://github.com/MorpheApp/morphe-patches/issues/3337)) ([05c1597](https://github.com/MorpheApp/morphe-patches/commit/05c1597e97ebd428a0d9b0e0a7ae2cbd05442735))\r\n* **YouTube:** Add `Picture-in-picture button` patch ([#3397](https://github.com/MorpheApp/morphe-patches/issues/3397)) ([6c94728](https://github.com/MorpheApp/morphe-patches/commit/6c947288a3fc75105ef7e1c02d37a324dc20dc76))\r\n* **YouTube:** Added \"Minimal comments button\" setting ([916f228](https://github.com/MorpheApp/morphe-patches/commit/916f228495509ac2af2780a93502e0b872f61aa8))\r\n* **YouTube:** Added \"Restore original videos title and description\" ([#3384](https://github.com/MorpheApp/morphe-patches/issues/3384)) ([67e650c](https://github.com/MorpheApp/morphe-patches/commit/67e650c1a263a1c26de354527fc00c7dae828db9))\r\n\r\n### 🚀 Updated App Support\r\n\r\n* **Reddit:** Add experimental support for `2026.39.0` ([755bf21](https://github.com/MorpheApp/morphe-patches/commit/755bf216267521a3d206d19be0cb230d8034ebb8))\r\n* **Reddit:** Add support for `2026.24.0` ([707ba5e](https://github.com/MorpheApp/morphe-patches/commit/707ba5ed71d4713d213126db9477e8dde9fd2493))\r\n* **YouTube Music:** Add experimental support for `9.38.51` ([314116f](https://github.com/MorpheApp/morphe-patches/commit/314116f3bad8eb4b42773651da7b663a2fcf759c))\r\n* **YouTube:** Add experimental support for `21.39.522` ([#3290](https://github.com/MorpheApp/morphe-patches/issues/3290)) ([5687e86](https://github.com/MorpheApp/morphe-patches/commit/5687e86075418094937fbb7449e79406f7400ca9))\r\n",
+  "release_tag": "v1.45.0",
+  "release_date": "2026-10-02T08:55:35Z",
+  "isPreRelease": false
+}

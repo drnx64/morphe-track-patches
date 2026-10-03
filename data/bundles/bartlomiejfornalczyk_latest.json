@@ -1,0 +1,103 @@
+{
+  "bundle": "bartlomiejfornalczyk",
+  "channel": "latest",
+  "repo_url": "https://github.com/bartlomiejfornalczyk/morphe-patches",
+  "created_at": "2026-10-03T17:01:26",
+  "version": "v1.4.35",
+  "description": "## [1.4.35](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.4.34...v1.4.35) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* **music:** prevent VerifyError in AllowlistManager by safely replacing return values in-place (v1.4.35) ([a7a2f12](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/a7a2f12eb9653c3ee3ce07df46953b5f9075128b))\n",
+  "apps": [
+    {
+      "app_name": "YouTube Music (Morphe)",
+      "package": "app.morphe.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Allow external media browser connections",
+          "description": "Allows Google Maps, Android Auto, and third-party media controllers to connect to YouTube Music.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "YouTube Music (ReVanced)",
+      "package": "app.revanced.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Allow external media browser connections",
+          "description": "Allows Google Maps, Android Auto, and third-party media controllers to connect to YouTube Music.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "Google Maps",
+      "package": "com.google.android.apps.maps",
+      "patches": [
+        {
+          "name": "Allow Morphe YouTube Music mini player",
+          "description": "Enables YouTube Music and modded media apps as the navigation mini player.",
+          "use": true,
+          "options": [
+            {
+              "key": "targetPackage",
+              "description": "Package name of your modded YouTube Music app."
+            }
+          ],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
+          "name": "Allow Morphe YouTube Music package visibility",
+          "description": "Adds package queries and permission to AndroidManifest.xml for full media apps visibility.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
+          "name": "Change package name",
+          "description": "Installs alongside stock Google Maps under its own package name and adds MicroG spoofing.",
+          "use": true,
+          "options": [
+            {
+              "key": "packageName",
+              "description": "The package name to install under."
+            }
+          ],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
+          "name": "Restore map data",
+          "description": "Lets a re-signed Maps load tiles, search and routing, by sending Google's own package and certificate.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "YouTube Music",
+      "package": "com.google.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Allow external media browser connections",
+          "description": "Allows Google Maps, Android Auto, and third-party media controllers to connect to YouTube Music.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    }
+  ],
+  "patches_name": "Google Maps Morphe Patches",
+  "fingerprint": "5877d2d0f3b2b041eff349ce5cd8498d1f078ce0ea4f8c83a1b7276a4abc9ebf"
+}

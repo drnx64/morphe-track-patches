@@ -1,0 +1,34 @@
+{
+  "bundle": "haiagaru",
+  "channel": "latest",
+  "repo_url": "https://github.com/areteruhiro/Haiagaru-Morphe",
+  "created_at": "2026-10-02T14:08:53",
+  "version": "1.6.4",
+  "description": "ChMate 0.8.10.191 dev / 0.8.10.226 dev / 0.8.10.241 / 0.8.10.242 dev / 0.8.10.243 dev 向けの検証用プレリリースです。Android向けの classes.dex を含む MPP です。\n\n- 242 dev: 画像添付時のゼロ除算を修正\n- 226 dev: スレ起動クラッシュとクイックフィルターを開けない問題を修正\n- 191 dev: エッヂ次スレ判定時にタイトル末尾の記者IDを比較対象から除外\n\n226 devのスレ起動は修正版で確認済みです。画像添付、フィルタ操作、エッヂ次スレの自動お気に入り追加は実機での最終確認が必要です。利用前にバックアップを取ってください。",
+  "apps": [
+    {
+      "app_name": "ChMate",
+      "package": "jp.co.airfront.android.a2chmate",
+      "patches": [
+        {
+          "name": "Haiagaru",
+          "description": "Ports the Haiagaru ChMate module, including its in-app settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "0.8.10.191 dev",
+            "0.8.10.241",
+            "0.8.10.242 dev",
+            "0.8.10.243 dev"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "Haiagaru",
+  "fingerprint": "3104b89011a3f060a482f1ce9a1c705c0064f84b799026fcfda0652f59aae553",
+  "release_notes": "## Haiagaru 1.5.2\n\nMorphe Manager で 1.5.1 から更新できるようにした正式版です。パッチの機能は 1.5.1 と同じです。\n\n### 修正内容\n\n- Android 向け `:patches:buildAndroid` で生成した MPP を配布します。\n- MPP に `classes.dex` を含め、`Patch bundle is missing dex entries` による読み込み失敗を解消します。\n- 通常版・プレリリース版の配布用 JSON を 1.5.2 に更新します。\n\n### 確認\n\n- `:patches:buildAndroid --no-daemon --max-workers=1` 成功\n- MPP 内の `classes.dex` と Android 拡張 2 点を確認\n- `git diff --check` 成功\n\n対応する ChMate: `0.8.10.191 dev`、`0.8.10.226 dev`、`0.8.10.241`、`0.8.10.243 dev`。\r\n",
+  "release_tag": "1.5.2",
+  "release_date": "2026-09-27T11:40:55Z",
+  "isPreRelease": false
+}
