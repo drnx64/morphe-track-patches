@@ -2,9 +2,9 @@
   "bundle": "heval99",
   "channel": "stable",
   "repo_url": "https://github.com/heval99/Heval-Morphe-Patches",
-  "created_at": "2026-09-28T10:24:59",
-  "version": "v1.5.0",
-  "description": "## [1.5.0](https://github.com/heval99/Heval-Morphe-Patches/compare/v1.4.0...v1.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **unifiedremote:** force the local License.Status gate instead of RevenueCat ([1e5126d](https://github.com/heval99/Heval-Morphe-Patches/commit/1e5126de6048080929ab06ddcef83e2c1dbbf487)), closes [#21](https://github.com/heval99/Heval-Morphe-Patches/issues/21)\n\n### ✨ New Features\n\n* add Futbin Disable ads patch ([169259c](https://github.com/heval99/Heval-Morphe-Patches/commit/169259cd2ab22084fee9adbbe2842069cce03201))\n* add Pocket Color Wheel Disable ads patch ([1d004f8](https://github.com/heval99/Heval-Morphe-Patches/commit/1d004f8d0d0597c2621b2c662f83c2beb35cdc1c))\n* add Textra, jetAudio and Unified Remote patches ([2226983](https://github.com/heval99/Heval-Morphe-Patches/commit/22269830ef70d7886c1c337d3501dfa59c8704c2))\n",
+  "created_at": "2026-10-03T11:57:49",
+  "version": "v1.7.0",
+  "description": "## [1.7.0](https://github.com/heval99/Heval-Morphe-Patches/compare/v1.6.0...v1.7.0) (2026-10-03)\n\n### ⚠ BREAKING CHANGES\n\n* **anydesk:** remove Enable Premium patch (issue #23)\n\n### 🐛 Bug Fixes\n\n* **anydesk:** remove Enable Premium patch (issue [#23](https://github.com/heval99/Heval-Morphe-Patches/issues/23)) ([9643e03](https://github.com/heval99/Heval-Morphe-Patches/commit/9643e030623a54dd242df199e2fabc58dcfbfe09))\n\n### ✨ New Features\n\n* add Zedge Disable ads patch ([92ee853](https://github.com/heval99/Heval-Morphe-Patches/commit/92ee8533fd71e784228a713ae77406a232b5bc78))\n",
   "apps": [
     {
       "app_name": "BoxBox",
@@ -40,21 +40,6 @@
       ]
     },
     {
-      "app_name": "AnyDesk",
-      "package": "com.anydesk.anydeskandroid",
-      "patches": [
-        {
-          "name": "Enable Premium",
-          "description": "Enables premium features by making the app treat the free license as paid.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.0.0"
-          ]
-        }
-      ]
-    },
-    {
       "app_name": "Brave Browser",
       "package": "com.brave.browser",
       "patches": [
@@ -65,6 +50,36 @@
           "options": [],
           "compatible_versions": [
             "1.95.104"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "YouCut",
+      "package": "com.camerasideas.trimmer",
+      "patches": [
+        {
+          "name": "Enable Pro",
+          "description": "Unlocks YouCut Pro: watermark-free export and all paid features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.716.1222"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "WiFi Analyzer",
+      "package": "com.farproc.wifi.analyzer",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Disables the banner ad.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.10.5-L"
           ]
         }
       ]
@@ -156,7 +171,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "26.37.0"
+            "26.37.0",
+            "26.38.0"
           ]
         }
       ]
@@ -172,6 +188,30 @@
           "options": [],
           "compatible_versions": [
             "3.26"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Pi Music Player",
+      "package": "com.project100pi.themusicplayer",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Disables banner, interstitial, native and rewarded ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.2.0.0_release_2"
+          ]
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks Pi Music Player Premium (ad-free) by forcing the local purchase-state checks to true.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.2.0.0_release_2"
           ]
         }
       ]
@@ -216,7 +256,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "14.9.4"
+            "14.9.4",
+            "14.9.5"
           ]
         }
       ]
@@ -233,7 +274,8 @@
           "compatible_versions": [
             "26.07.27",
             "26.08.24",
-            "26.09.07"
+            "26.09.07",
+            "26.09.14"
           ]
         },
         {
@@ -244,18 +286,20 @@
           "compatible_versions": [
             "26.07.27",
             "26.08.24",
-            "26.09.07"
+            "26.09.07",
+            "26.09.14"
           ]
         },
         {
           "name": "Disable Facebook SDK",
-          "description": "Blocks Facebook SDK and Audience Network auto-initialization.",
+          "description": "Blocks Facebook Audience Network ads and disables Facebook event tracking while keeping Facebook Login working.",
           "use": true,
           "options": [],
           "compatible_versions": [
             "26.07.27",
             "26.08.24",
-            "26.09.07"
+            "26.09.07",
+            "26.09.14"
           ]
         },
         {
@@ -266,7 +310,8 @@
           "compatible_versions": [
             "26.07.27",
             "26.08.24",
-            "26.09.07"
+            "26.09.07",
+            "26.09.14"
           ]
         },
         {
@@ -277,7 +322,32 @@
           "compatible_versions": [
             "26.07.27",
             "26.08.24",
-            "26.09.07"
+            "26.09.07",
+            "26.09.14"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Simple Radio",
+      "package": "com.streema.simpleradio",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Disables banner, interstitial, native and rewarded ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.2.0"
+          ]
+        },
+        {
+          "name": "Enable Premium",
+          "description": "Unlocks Simple Radio Premium (ad-free listening) by forcing the local subscription checks to true.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "6.2.0"
           ]
         }
       ]
@@ -451,6 +521,21 @@
       ]
     },
     {
+      "app_name": "Zedge",
+      "package": "net.zedge.android",
+      "patches": [
+        {
+          "name": "Disable ads",
+          "description": "Disables banner, interstitial, native, app-open and rewarded ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "9.38.3"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "FishBuddy",
       "package": "no.fishbuddy_playground.app",
       "patches": [
@@ -506,9 +591,9 @@
     }
   ],
   "patches_name": "heval patches",
-  "fingerprint": "3049b98d16470570d41e6e9ed15735ece8abdc739eefd63e3c8e9e3a11a9ba53",
-  "release_notes": "## [1.5.0](https://github.com/heval99/Heval-Morphe-Patches/compare/v1.4.0...v1.5.0) (2026-09-28)\n\n### 🐛 Bug Fixes\n\n* **unifiedremote:** force the local License.Status gate instead of RevenueCat ([1e5126d](https://github.com/heval99/Heval-Morphe-Patches/commit/1e5126de6048080929ab06ddcef83e2c1dbbf487)), closes [#21](https://github.com/heval99/Heval-Morphe-Patches/issues/21)\n\n### ✨ New Features\n\n* add Futbin Disable ads patch ([169259c](https://github.com/heval99/Heval-Morphe-Patches/commit/169259cd2ab22084fee9adbbe2842069cce03201))\n* add Pocket Color Wheel Disable ads patch ([1d004f8](https://github.com/heval99/Heval-Morphe-Patches/commit/1d004f8d0d0597c2621b2c662f83c2beb35cdc1c))\n* add Textra, jetAudio and Unified Remote patches ([2226983](https://github.com/heval99/Heval-Morphe-Patches/commit/22269830ef70d7886c1c337d3501dfa59c8704c2))\n",
-  "release_tag": "v1.5.0",
-  "release_date": "2026-09-28T10:24:59Z",
+  "fingerprint": "6c8bc9413615ebfc24a472adae80352795df672c58e479718d606934a47242fa",
+  "release_notes": "## [1.7.0](https://github.com/heval99/Heval-Morphe-Patches/compare/v1.6.0...v1.7.0) (2026-10-03)\n\n### ⚠ BREAKING CHANGES\n\n* **anydesk:** remove Enable Premium patch (issue #23)\n\n### 🐛 Bug Fixes\n\n* **anydesk:** remove Enable Premium patch (issue [#23](https://github.com/heval99/Heval-Morphe-Patches/issues/23)) ([9643e03](https://github.com/heval99/Heval-Morphe-Patches/commit/9643e030623a54dd242df199e2fabc58dcfbfe09))\n\n### ✨ New Features\n\n* add Zedge Disable ads patch ([92ee853](https://github.com/heval99/Heval-Morphe-Patches/commit/92ee8533fd71e784228a713ae77406a232b5bc78))\n",
+  "release_tag": "v1.7.0",
+  "release_date": "2026-10-03T11:57:49Z",
   "isPreRelease": false
 }
