@@ -2,8 +2,8 @@
   "bundle": "wake-old-hyphen",
   "channel": "stable",
   "repo_url": "https://github.com/Wake-Old-Hyphen/hushfeed",
-  "created_at": "2026-10-01T12:41:23Z",
-  "version": "0.66.0",
+  "created_at": "2026-10-03T03:23:18Z",
+  "version": "0.67.0",
   "description": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (com.zhiliaoapp.musically).\n\nTikTok 47.1.4 is supported, and Hushfeed's settings now come in Italian and Russian. Change app name puts a name of your own under the app icon, Keep a streak going sends one message a day to someone you pick, Look like the store app is for follows and likes that undo themselves, and Keep playing in the background keeps a video going with the screen off.\n\nThe share sheet no longer shows \"Tap again to send\" on a friend you never touched, Fit the video to the screen follows a space that changes size, and patching is faster. See the changelog for the full list.\n\nValidation: 2565 runtime tests passed and 480 patch tests passed locally. Both Android lint checks passed. All 102 patches applied to all three supported APKs with resource and manifest checks. The attached release receipt identifies the exact source and bundle. Keep a streak going was checked on an Android emulator running TikTok 47.1.3.\n\nNeeds Morphe Manager 1.32.0 or newer. Refresh the Hushfeed source to update. The .mpp is a patch bundle, not a TikTok APK. Keep the manager's existing signing key when updating.",
   "apps": [
     {
@@ -118,6 +118,17 @@
           "name": "Block installed app scanning",
           "description": "Answers TikTok's scan of the apps installed on your phone with an empty list. Checks for one named app, which TikTok also uses to open an app you tap, are left alone. Switch: Hushfeed settings > Privacy.",
           "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3",
+            "47.1.3",
+            "47.1.4"
+          ]
+        },
+        {
+          "name": "Block suggested video notifications",
+          "description": "Stops TikTok's \"Videos you might like\" notifications, the pushes about popular videos it picked for you. They're blocked from the start, and the switch lets them through again. Messages, comments, likes, follows and posts from accounts you follow aren't touched. Switch: Hushfeed settings > Inbox.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "47.0.3",
@@ -1184,9 +1195,9 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "e4bc4923ef4988196f8ac907f3ebcd826d158e446d5b8af5e5b11a76c75dd910",
-  "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0",
-  "release_tag": "v0.66.0",
-  "release_date": "2026-10-01T12:41:23Z",
+  "fingerprint": "9ce8f44a688c2d8b67ec897a17e72632116bc0522546b381465384ea9775faae",
+  "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.66.0...v0.67.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.66.0...v0.67.0",
+  "release_tag": "v0.67.0",
+  "release_date": "2026-10-03T03:23:18Z",
   "isPreRelease": false
 }

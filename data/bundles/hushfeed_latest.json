@@ -2,9 +2,9 @@
   "bundle": "hushfeed",
   "channel": "latest",
   "repo_url": "https://github.com/SysAdminDoc/HushFeed",
-  "created_at": "2026-10-01T07:47:17",
-  "version": "v0.66.0",
-  "description": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* TikTok 47.1.4 is supported now, beside 47.0.3 and 47.1.3 (#56). Every patch applies to each of the three.\n* Hushfeed's settings come in Italian (#61) and Russian (#60). They're first passes, so if a label reads oddly, please open an issue and say which one.\n* Change app name is a new patch that puts a name you pick under the app icon and in Android's app list (#59). Type the name in the patch's options in Morphe Manager.\n* Keep a streak going, also new, sends one message a day to someone you pick, at a time you pick. Set it up under Hushfeed settings > Inbox > Streak.\n* For a follow or a like that undoes itself on a patched build, try the new Look like the store app patch (#55). It's off by default. Turn it on under Hushfeed settings > Privacy and restart TikTok.\n* With the new Keep playing in the background patch, a video keeps going after you leave TikTok or turn the screen off (#52).\n* The share sheet no longer shows \"Tap again to send\" on a friend you never touched (#58). You can also add apps of your own to its Share via row.\n* Fit the video to the screen fits a video again when the space around it changes size (#29).\n* Two new switches: Let the last video finish on the Screen time page, and Hide effect and template tags on the Feed screen page (#51).\n* Patching is faster (#54), and Stop on-device AI profiling works again.\n* The diagnostic report has FEED MUTE and VIDEO FIT sections, so a report of a silent feed or a badly fitted video shows what Hushfeed did.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.66.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2565 runtime tests and 480 patch tests passed. Both Android lint checks passed.\n* All 102 patches applied to all three supported APKs. Resource checks passed. The manifest gains three permissions, all from Keep a streak going and only when it's selected: start at boot and two for exact alarms. The attached release receipt records the exact bundle and each target's result.\n* On an Android emulator running TikTok 47.1.3, Keep a streak going's message arrived from its alarm while TikTok was closed, and again when TikTok was opened after a missed time. On a phone, patching the recommended set in Morphe Manager took about 6 1/2 minutes, down from 8 3/4.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3, 47.1.3 or 47.1.4 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.66.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
+  "created_at": "2026-10-03T02:44:23",
+  "version": "v0.67.0",
+  "description": "Hushfeed v0.67.0 has 106 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.33.0 or newer.\n\n## What's changed\n\n* TikTok's \"Videos you might like\" pushes, the ones like \"25M+ people viewed\", are blocked by the new Block suggested video notifications patch. It's on from the first launch, and its switch under Inbox lets them through again. Messages, comments, likes, follows and videos from accounts you follow aren't touched.\n* Stop saving search history is new too. With Privacy > Don't save new searches on, new searches stay out of the history TikTok keeps on your phone.\n* Feed text sizes gives the video description and the creator's name their own sizes on the Feed screen page (#66).\n* The LIVE feed you open with the LIVE button can be filtered now (#57).\n* Hide profile shortcuts takes the shortcuts you pick off the row under a profile's bio, like TikTok Studio or Your orders (#49).\n* Stop TikTok's benchmark runs, on the Privacy page, keeps TikTok's phone benchmark from starting in the background (#64).\n* Streaks take several usernames, separated by commas or new lines (#73), and Hushfeed's settings come in Azerbaijani (#77).\n* Hide search rewards keeps the floating coin off search along with the points banner (#21). Restart TikTok after you change it.\n* Hide the status bar, and a new Hide the comment bar on opened videos switch, work on videos you open from a profile, a hashtag, a sound or search (#50).\n* A double tap, long press or swipe set to open comments goes to the video on screen, not the one you just left. The other long press actions do too (#63).\n* Show author region puts the country on the video you're watching after a swipe down (#75).\n* Hide the music line also hides the \"Contains:\" song credit (#68). Share actions you've excluded by name stay hidden after the sheet reopens (#74).\n* With Download original photos on, Download video on a photo post saves the original images instead of TikTok's watermarked video (#71).\n* Hushfeed works in a copy of TikTok made with Morphe's Clone app patch (#59), and the resource optimizers accept an APK split down to one ABI (#43).\n* Remove unused language packs keeps every language unless you list the ones you want (#67). If you patched with an older bundle, check what that option says.\n* Hide CAPTCHA popups isn't available for now, so every verification challenge stays visible.\n* About > Build details copies or saves what your build was patched with, and automatic reports include it.\n* Hushfeed is built with Morphe patcher 1.15.0 now, which is why it needs Manager 1.33.0. In a test with memory held near what Manager gets on a phone, the new patcher finished saving patched TikTok 47.1.4 where the old one ran out of memory.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.67.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2733 runtime tests and 533 patch tests passed. Both Android lint checks passed.\n* All 106 patches applied to all three supported APKs. Resource checks passed, and the manifest changes are the reviewed ones from earlier releases. The attached release receipt records the exact bundle and each target's result.\n* On a Samsung phone running TikTok 47.0.3, the music line, the share sheet exclusions and photo post saves were checked by hand.\n\n## Install\n\nUse Morphe Manager 1.33.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3, 47.1.3 or 47.1.4 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.67.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
   "apps": [
     {
       "app_name": "TikTok",
@@ -118,6 +118,17 @@
           "name": "Block P2P video relay",
           "description": "Strips TikTok's peer-to-peer CDN libraries so your phone is not used as a relay node for other people's video traffic. The APK gets about 3.5 MB smaller.",
           "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3",
+            "47.1.3",
+            "47.1.4"
+          ]
+        },
+        {
+          "name": "Block suggested video notifications",
+          "description": "Stops TikTok's \"Videos you might like\" notifications, the pushes about popular videos it picked for you. They're blocked from the start, and the switch lets them through again. Messages, comments, likes, follows and posts from accounts you follow aren't touched. Switch: Hushfeed settings > Inbox.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "47.0.3",
@@ -385,7 +396,7 @@
         },
         {
           "name": "Feed filter",
-          "description": "Hides feed ads, including videos with creator commission disclosures, TikTok Shop items, livestreams, LIVE replays, stories, photo posts, paid partnerships, AI labeled videos, location-tagged videos, verified accounts, series, mini dramas, playlists, the playlist bar, the floating event badge and inserted cards. Videos can also be filtered by your own caption words, creator handles or patterns, sound names, length, the country they were posted from, the language of their original caption and their view, like, comment, favorite and share counts. A short list of creator exceptions lets chosen accounts through the filters on the kind of post, its labels, age, length and counts. Ads, blocked creators, words, sounds, countries and caption languages, paid and Shop content, LIVE and seen videos still apply to them. Sponsored cards are dropped from the profile video viewer, the search grids and the Friends tab as well as the feed, and so are the mid-roll ads TikTok splices into a video pager after the list has loaded and the ads a creator's video pager asks for on its own. The share prompt that appears after a like can be hidden too, and so can TikTok Shop's Products block and product cards in search results. Switch: Hushfeed settings > Feed filter.",
+          "description": "Hides feed ads, including videos with creator commission disclosures, TikTok Shop items, livestreams, LIVE replays, stories, photo posts, paid partnerships, AI labeled videos, location-tagged videos, verified accounts, series, mini dramas, playlists, the playlist bar, the floating event badge and inserted cards. Videos can also be filtered by your own caption words, creator handles or patterns, sound names, length, the country they were posted from, the language of their original caption and their view, like, comment, favorite and share counts. A short list of creator exceptions lets chosen accounts through the filters on the kind of post, its labels, age, length and counts. Ads, blocked creators, words, sounds, countries and caption languages, paid and Shop content, LIVE and seen videos still apply to them. Sponsored cards are dropped from the profile video viewer, the search grids and the Friends tab as well as the feed, and so are the mid-roll ads TikTok splices into a video pager after the list has loaded and the ads a creator's video pager asks for on its own. The share prompt that appears after a like can be hidden too, and so can TikTok Shop's Products block and product cards in search results. The LIVE feed you swipe through has its own rules: gaming, shopping, sponsored and verified LIVEs, categories, and viewer and follower ranges. Switch: Hushfeed settings > Feed filter.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -398,6 +409,17 @@
           "name": "Feed tab navigation",
           "description": "Controls which loaded top and bottom navigation tabs remain visible, blocks newly added tabs when requested, can hide the Following and For You names above the feed while swiping between them keeps working, can hide the Tako AI bubble and the unread badges on the bottom tabs, can keep For You from reloading on a Home tap or a pull down, brings TikTok's LIVE button back to the feed's corner when the LIVE tab is taken off either bar, can open TikTok on Following, Friends, Inbox or Profile, can show TikTok's own feed buttons without a screen reader, and opens Hushfeed's settings from a long press on Home. Switch: Hushfeed settings > Feed tabs.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3",
+            "47.1.3",
+            "47.1.4"
+          ]
+        },
+        {
+          "name": "Feed text sizes",
+          "description": "Sets independent sizes for video descriptions and creator names. Switch: Hushfeed settings > Feed screen.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "47.0.3",
@@ -473,7 +495,7 @@
         },
         {
           "name": "Hide CAPTCHA popups",
-          "description": "Adds a default-off setting to hide the CAPTCHA dialogs raised while browsing or watching LIVE. Login and account verification stay visible, and so does any CAPTCHA the server raised over a follow, like, comment or repost, because hiding one of those makes the action fail with no message. Switch: Hushfeed settings > Feed screen.",
+          "description": "Records CAPTCHA decisions and preserves TikTok's verification dialogs. The existing hide switch is unavailable on the declared builds because no browsing scene has been validated. Switch: Hushfeed settings > Feed screen.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -593,6 +615,17 @@
           ]
         },
         {
+          "name": "Hide profile shortcuts",
+          "description": "Hides the shortcuts you pick from the row under a profile's bio, like TikTok Studio or Your orders. TikTok's server decides what goes in that row, so the checklist offers the ones it has sent to your phone, and you can also type names. Restart TikTok after a change. Switch: Hushfeed settings > App.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3",
+            "47.1.3",
+            "47.1.4"
+          ]
+        },
+        {
           "name": "Hide search suggestions",
           "description": "Hides the suggested searches TikTok offers on the search page before you type, and stops the page asking for them. Your own search history is left alone. A separate switch hides the search rewards banner and coin counter some regions get. Switch: Hushfeed settings > App.",
           "use": false,
@@ -627,7 +660,7 @@
         },
         {
           "name": "Hide the risk control CAPTCHA",
-          "description": "Hides TikTok's risk control CAPTCHA dialog, raised by its BdTuring service, which the browsing CAPTCHA patch does not cover. Answers the Hide CAPTCHA popups setting, never touches SMS or two factor verification, and never hides a check the server raised over a follow, like, comment or repost. Off by default.",
+          "description": "Records TikTok's BdTuring risk-control decisions through the shared CAPTCHA gate. All verification dialogs remain visible because no browsing scene has been validated. Off by default.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -638,7 +671,7 @@
         },
         {
           "name": "Hide video overlays",
-          "description": "Hides the visual search prompt TikTok lays over videos, the LIVE entrance in the top left corner, caption and music text, selected action buttons or their counts in the right column, survey cards and the status bar, which can also be hidden only while a LIVE room is open. Separate switches hide the Full screen button, location labels, the effect, template and CapCut tags above descriptions, and the Report button some regions get above the creator's picture, without removing videos or changing location permissions. Switch: Hushfeed settings > Feed screen.",
+          "description": "Hides the visual search prompt TikTok lays over videos, the LIVE entrance in the top left corner, caption and music text, selected action buttons or their counts in the right column, survey cards and the status bar, on the feed and on videos opened from a profile, a hashtag, a sound or search. The status bar can also be hidden only while a LIVE room is open. Separate switches hide the Full screen button, location labels, the effect, template and CapCut tags above descriptions, and the Report button some regions get above the creator's picture, without removing videos or changing location permissions. One more takes the Add comment bar off those opened videos so they fill the screen. Switch: Hushfeed settings > Feed screen.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -671,7 +704,7 @@
         },
         {
           "name": "Keep a streak going",
-          "description": "Sends one message a day to a person you pick, at a time you pick, so a message streak with them keeps going on days you don't open TikTok. The message goes through TikTok's own notification reply. Adds the exact alarm and start at boot permissions the daily alarm needs. Off until you turn it on: Hushfeed settings > Inbox.",
+          "description": "Sends one message a day to each person you pick, at a time you pick, so message streaks with them keep going on days you don't open TikTok. The message goes through TikTok's own notification reply. Adds the exact alarm and start at boot permissions the daily alarm needs. Off until you turn it on: Hushfeed settings > Inbox.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -891,12 +924,12 @@
         },
         {
           "name": "Remove unused language packs",
-          "description": "Empties unselected TikTok language bundles while always keeping English. Selected language codes are checked before any file changes. With the default choices it saves about 26 MB of storage.",
+          "description": "Empties the TikTok language bundles you leave out of Languages to keep, always keeping English. It keeps every language until you list the ones you want, so picking every patch removes none. Listed codes are checked before any file changes. Keeping only English saves about 26 MB of storage.",
           "use": false,
           "options": [
             {
               "key": "locales",
-              "description": "Comma-separated language codes such as en, es, pt, fr or de. English is always kept."
+              "description": "Comma-separated language codes such as en, es, pt, fr or de, or all to keep every language. English is always kept."
             }
           ],
           "compatible_versions": [
@@ -918,7 +951,7 @@
         },
         {
           "name": "Resource and battery governor",
-          "description": "Stops TikTok listening to the motion sensors it polls for device fingerprinting: the accelerometer, gyroscope, magnetometer, rotation, gravity and linear acceleration sensors. Switch: Hushfeed settings > Privacy.",
+          "description": "Stops TikTok listening to the motion sensors it polls for device fingerprinting: the accelerometer, gyroscope, magnetometer, rotation, gravity and linear acceleration sensors. A second switch, off by default, keeps TikTok's phone benchmark from starting in a background process of its own. Switch: Hushfeed settings > Privacy.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -1082,6 +1115,17 @@
           ]
         },
         {
+          "name": "Stop saving search history",
+          "description": "Stops TikTok adding your new searches to the search history it saves on the phone. Searches you already made stay until you delete them, and this doesn't change what TikTok keeps on its servers. Switch: Hushfeed settings > Privacy.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "47.0.3",
+            "47.1.3",
+            "47.1.4"
+          ]
+        },
+        {
           "name": "Stop video looping",
           "description": "Stops videos at the end instead of replaying them. Switch: Hushfeed settings > App.",
           "use": true,
@@ -1151,9 +1195,9 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "d90c21c35e214d03203c0ee2ad58f63edf1960064b845720bb57d71a1b53685b",
-  "release_notes": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.32.0 or newer.\n\n## What's changed\n\n* TikTok 47.1.4 is supported now, beside 47.0.3 and 47.1.3 (#56). Every patch applies to each of the three.\n* Hushfeed's settings come in Italian (#61) and Russian (#60). They're first passes, so if a label reads oddly, please open an issue and say which one.\n* Change app name is a new patch that puts a name you pick under the app icon and in Android's app list (#59). Type the name in the patch's options in Morphe Manager.\n* Keep a streak going, also new, sends one message a day to someone you pick, at a time you pick. Set it up under Hushfeed settings > Inbox > Streak.\n* For a follow or a like that undoes itself on a patched build, try the new Look like the store app patch (#55). It's off by default. Turn it on under Hushfeed settings > Privacy and restart TikTok.\n* With the new Keep playing in the background patch, a video keeps going after you leave TikTok or turn the screen off (#52).\n* The share sheet no longer shows \"Tap again to send\" on a friend you never touched (#58). You can also add apps of your own to its Share via row.\n* Fit the video to the screen fits a video again when the space around it changes size (#29).\n* Two new switches: Let the last video finish on the Screen time page, and Hide effect and template tags on the Feed screen page (#51).\n* Patching is faster (#54), and Stop on-device AI profiling works again.\n* The diagnostic report has FEED MUTE and VIDEO FIT sections, so a report of a silent feed or a badly fitted video shows what Hushfeed did.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.66.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2565 runtime tests and 480 patch tests passed. Both Android lint checks passed.\n* All 102 patches applied to all three supported APKs. Resource checks passed. The manifest gains three permissions, all from Keep a streak going and only when it's selected: start at boot and two for exact alarms. The attached release receipt records the exact bundle and each target's result.\n* On an Android emulator running TikTok 47.1.3, Keep a streak going's message arrived from its alarm while TikTok was closed, and again when TikTok was opened after a missed time. On a phone, patching the recommended set in Morphe Manager took about 6 1/2 minutes, down from 8 3/4.\n\n## Install\n\nUse Morphe Manager 1.32.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3, 47.1.3 or 47.1.4 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.66.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
-  "release_tag": "v0.66.0",
-  "release_date": "2026-10-01T07:47:17Z",
+  "fingerprint": "153f21b545e0f3c91474a8d2f0c520bcac40bcb8fdc855b70f66b8ae60d4f1c9",
+  "release_notes": "Hushfeed v0.67.0 has 106 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (`com.zhiliaoapp.musically`). It needs Morphe Manager 1.33.0 or newer.\n\n## What's changed\n\n* TikTok's \"Videos you might like\" pushes, the ones like \"25M+ people viewed\", are blocked by the new Block suggested video notifications patch. It's on from the first launch, and its switch under Inbox lets them through again. Messages, comments, likes, follows and videos from accounts you follow aren't touched.\n* Stop saving search history is new too. With Privacy > Don't save new searches on, new searches stay out of the history TikTok keeps on your phone.\n* Feed text sizes gives the video description and the creator's name their own sizes on the Feed screen page (#66).\n* The LIVE feed you open with the LIVE button can be filtered now (#57).\n* Hide profile shortcuts takes the shortcuts you pick off the row under a profile's bio, like TikTok Studio or Your orders (#49).\n* Stop TikTok's benchmark runs, on the Privacy page, keeps TikTok's phone benchmark from starting in the background (#64).\n* Streaks take several usernames, separated by commas or new lines (#73), and Hushfeed's settings come in Azerbaijani (#77).\n* Hide search rewards keeps the floating coin off search along with the points banner (#21). Restart TikTok after you change it.\n* Hide the status bar, and a new Hide the comment bar on opened videos switch, work on videos you open from a profile, a hashtag, a sound or search (#50).\n* A double tap, long press or swipe set to open comments goes to the video on screen, not the one you just left. The other long press actions do too (#63).\n* Show author region puts the country on the video you're watching after a swipe down (#75).\n* Hide the music line also hides the \"Contains:\" song credit (#68). Share actions you've excluded by name stay hidden after the sheet reopens (#74).\n* With Download original photos on, Download video on a photo post saves the original images instead of TikTok's watermarked video (#71).\n* Hushfeed works in a copy of TikTok made with Morphe's Clone app patch (#59), and the resource optimizers accept an APK split down to one ABI (#43).\n* Remove unused language packs keeps every language unless you list the ones you want (#67). If you patched with an older bundle, check what that option says.\n* Hide CAPTCHA popups isn't available for now, so every verification challenge stays visible.\n* About > Build details copies or saves what your build was patched with, and automatic reports include it.\n* Hushfeed is built with Morphe patcher 1.15.0 now, which is why it needs Manager 1.33.0. In a test with memory held near what Manager gets on a phone, the new patcher finished saving patched TikTok 47.1.4 where the old one ran out of memory.\n\nSee the [changelog](https://github.com/SysAdminDoc/HushFeed/blob/v0.67.0/CHANGELOG.md) for the full list.\n\n## Checked\n\n* 2733 runtime tests and 533 patch tests passed. Both Android lint checks passed.\n* All 106 patches applied to all three supported APKs. Resource checks passed, and the manifest changes are the reviewed ones from earlier releases. The attached release receipt records the exact bundle and each target's result.\n* On a Samsung phone running TikTok 47.0.3, the music line, the share sheet exclusions and photo post saves were checked by hand.\n\n## Install\n\nUse Morphe Manager 1.33.0 or newer. An older Manager says the bundle needs a Manager update. Refresh the Hushfeed source, select the TikTok 47.0.3, 47.1.3 or 47.1.4 APK, then patch and install it. Keep the manager's existing signing key when updating.\n\n`patches-0.67.0.mpp` is the patch bundle, not a TikTok APK. `SHA256SUMS.txt` includes checksums for the bundle and its release receipt.\n",
+  "release_tag": "v0.67.0",
+  "release_date": "2026-10-03T02:44:23Z",
   "isPreRelease": false
 }
