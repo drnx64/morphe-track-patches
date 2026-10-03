@@ -8700,9 +8700,9 @@
     "bundle": "unipatches",
     "channel": "latest",
     "repo_url": "https://github.com/Zanuaimi/UniPatches",
-    "created_at": "2026-10-01T21:30:52",
-    "version": "v1.30.0-dev.24",
-    "description": "## [1.30.0-dev.24](https://github.com/Zanuaimi/UniPatches/compare/v1.30.0-dev.23...v1.30.0-dev.24) (2026-10-01)\n\n### 🔧 Improvements\n\n* unipatches wide improvement ([97b9383](https://github.com/Zanuaimi/UniPatches/commit/97b9383a0694145a865a1de16f5a2ce57e68ff13))\n",
+    "created_at": "2026-10-02T22:32:06",
+    "version": "v1.30.0-dev.25",
+    "description": "## [1.30.0-dev.25](https://github.com/Zanuaimi/UniPatches/compare/v1.30.0-dev.24...v1.30.0-dev.25) (2026-10-02)\n\n### ✨ New Features\n\n* add runtime support for permission guard ([7b77d70](https://github.com/Zanuaimi/UniPatches/commit/7b77d704c296bd3cb3599165fa769a669944c507))\n",
     "apps": [
       {
         "app_name": "Hill Climb Racing",
@@ -8754,9 +8754,9 @@
     "bundle": "unipatches",
     "channel": "dev",
     "repo_url": "https://github.com/Zanuaimi/UniPatches",
-    "created_at": "2026-10-01T21:30:52",
-    "version": "v1.30.0-dev.24",
-    "description": "## [1.30.0-dev.24](https://github.com/Zanuaimi/UniPatches/compare/v1.30.0-dev.23...v1.30.0-dev.24) (2026-10-01)\n\n### 🔧 Improvements\n\n* unipatches wide improvement ([97b9383](https://github.com/Zanuaimi/UniPatches/commit/97b9383a0694145a865a1de16f5a2ce57e68ff13))\n",
+    "created_at": "2026-10-02T22:32:06",
+    "version": "v1.30.0-dev.25",
+    "description": "## [1.30.0-dev.25](https://github.com/Zanuaimi/UniPatches/compare/v1.30.0-dev.24...v1.30.0-dev.25) (2026-10-02)\n\n### ✨ New Features\n\n* add runtime support for permission guard ([7b77d70](https://github.com/Zanuaimi/UniPatches/commit/7b77d704c296bd3cb3599165fa769a669944c507))\n",
     "apps": [
       {
         "app_name": "Hill Climb Racing",
@@ -50962,9 +50962,9 @@
     "bundle": "oyasumi",
     "channel": "latest",
     "repo_url": "https://github.com/dunecache/oyasumi-patches",
-    "created_at": "2026-09-30T21:30:22",
-    "version": "v0.5.3",
-    "description": "## [0.5.3](https://github.com/dunecache/oyasumi-patches/compare/v0.5.2...v0.5.3) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* push a zero before the forced steps, not just the steps ([f51ed17](https://github.com/dunecache/oyasumi-patches/commit/f51ed1783a74db8ddf6b33b5113aeff89d6e169d))\n",
+    "created_at": "2026-10-03T01:09:00",
+    "version": "v0.6.0-dev.7",
+    "description": "## [0.6.0-dev.7](https://github.com/dunecache/oyasumi-patches/compare/v0.6.0-dev.6...v0.6.0-dev.7) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* settings header below status bar with version subtitle ([d04e89c](https://github.com/dunecache/oyasumi-patches/commit/d04e89ced84840b59181e0a02a8593db0639ecfd))\n",
     "apps": [
       {
         "app_name": "Djezzy",
@@ -51015,6 +51015,75 @@
         ]
       },
       {
+        "app_name": "Pinterest",
+        "package": "com.pinterest",
+        "patches": [
+          {
+            "name": "Disable AppsFlyer tracking",
+            "description": "Neutralize the AppsFlyer attribution SDK, so no state is returned to the external data tracker.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Disable email confirmation dialog",
+            "description": "Hide the \"Confirm your email\" prompt and related screen, whether in home or settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Disable Google Engage",
+            "description": "Stop Pinterest publishing user actions to Google, so nothing is sent to Snooper, Analytics, Play or Ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Morphe settings entry",
+            "description": "Add the \"Morphe\" entry to the Account Settings list, opening the Morphe settings screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Morphe settings screen (label)",
+            "description": "Rename the reused string resource to \"Morphe\" in every shipped language, so the settings entry is identifiable.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Morphe settings screen (manifest)",
+            "description": "Register the Morphe settings activity in the manifest, with an intent-filter for the morphe:// scheme.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Neutralize advertising ID",
+            "description": "Return a random advertising ID instead of the real one, so the app has no advertising identifier to hand to Pinterest or to any bundled tracker.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          }
+        ]
+      },
+      {
         "app_name": "1DM",
         "package": "idm.internet.download.manager",
         "patches": [
@@ -51031,20 +51100,35 @@
       }
     ],
     "patches_name": "Oyasumi Patches",
-    "fingerprint": "066bda9ff62329029d03bfffcd7c8a8b103dcbdbdff46f12f198e6423736e674",
-    "release_notes": "## [0.5.3](https://github.com/dunecache/oyasumi-patches/compare/v0.5.2...v0.5.3) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* push a zero before the forced steps, not just the steps ([f51ed17](https://github.com/dunecache/oyasumi-patches/commit/f51ed1783a74db8ddf6b33b5113aeff89d6e169d))\n",
-    "release_tag": "v0.5.3",
-    "release_date": "2026-09-30T21:30:22Z",
-    "isPreRelease": false
+    "fingerprint": "34a5970b2ab31091a658aab6253d4b2f880a7d6d3dba4cfea6fe4a2fa3ea40f4",
+    "release_notes": "## [0.6.0-dev.7](https://github.com/dunecache/oyasumi-patches/compare/v0.6.0-dev.6...v0.6.0-dev.7) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* settings header below status bar with version subtitle ([d04e89c](https://github.com/dunecache/oyasumi-patches/commit/d04e89ced84840b59181e0a02a8593db0639ecfd))\n",
+    "release_tag": "v0.6.0-dev.7",
+    "release_date": "2026-10-03T01:09:00Z",
+    "isPreRelease": true
   },
   "oyasumi:dev": {
     "bundle": "oyasumi",
     "channel": "dev",
     "repo_url": "https://github.com/dunecache/oyasumi-patches",
-    "created_at": "2026-09-29T16:30:54",
-    "version": "v0.2.1-dev.3",
-    "description": "## [0.2.1-dev.3](https://github.com/dunecache/oyasumi-patches/compare/v0.2.1-dev.2...v0.2.1-dev.3) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* declare only ADM 14.0.39 as a supported target ([40307b4](https://github.com/dunecache/oyasumi-patches/commit/40307b49002e88e11fbec914be1ca1a3a1e8a3f8))\n",
+    "created_at": "2026-10-03T01:09:00",
+    "version": "v0.6.0-dev.7",
+    "description": "## [0.6.0-dev.7](https://github.com/dunecache/oyasumi-patches/compare/v0.6.0-dev.6...v0.6.0-dev.7) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* settings header below status bar with version subtitle ([d04e89c](https://github.com/dunecache/oyasumi-patches/commit/d04e89ced84840b59181e0a02a8593db0639ecfd))\n",
     "apps": [
+      {
+        "app_name": "Djezzy",
+        "package": "com.djezzy.internet",
+        "patches": [
+          {
+            "name": "Force Walk & Win steps to 10000",
+            "description": "Report 10,000 steps to Djezzy's Walk & Win campaign, both on every step-counter event and once when the step stream is first subscribed. The subscribe push is a zero followed by 10,000, because one value cannot both open the counter's accumulation window and jump through it.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "3.0.9"
+            ]
+          }
+        ]
+      },
       {
         "app_name": "ADM",
         "package": "com.dv.adm",
@@ -51077,13 +51161,97 @@
             ]
           }
         ]
+      },
+      {
+        "app_name": "Pinterest",
+        "package": "com.pinterest",
+        "patches": [
+          {
+            "name": "Disable AppsFlyer tracking",
+            "description": "Neutralize the AppsFlyer attribution SDK, so no state is returned to the external data tracker.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Disable email confirmation dialog",
+            "description": "Hide the \"Confirm your email\" prompt and related screen, whether in home or settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Disable Google Engage",
+            "description": "Stop Pinterest publishing user actions to Google, so nothing is sent to Snooper, Analytics, Play or Ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Morphe settings entry",
+            "description": "Add the \"Morphe\" entry to the Account Settings list, opening the Morphe settings screen.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Morphe settings screen (label)",
+            "description": "Rename the reused string resource to \"Morphe\" in every shipped language, so the settings entry is identifiable.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Morphe settings screen (manifest)",
+            "description": "Register the Morphe settings activity in the manifest, with an intent-filter for the morphe:// scheme.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          },
+          {
+            "name": "Neutralize advertising ID",
+            "description": "Return a random advertising ID instead of the real one, so the app has no advertising identifier to hand to Pinterest or to any bundled tracker.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "14.38.0"
+            ]
+          }
+        ]
+      },
+      {
+        "app_name": "1DM",
+        "package": "idm.internet.download.manager",
+        "patches": [
+          {
+            "name": "Disable home screen ads",
+            "description": "Keep 1DM's home screen banner from loading, rotating, or rendering, including the built-in \"install 1DM+\" banner ad.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "18.2"
+            ]
+          }
+        ]
       }
     ],
     "patches_name": "Oyasumi Patches",
-    "fingerprint": "2dbcd24faa2987e87fd47850a077fabd3c80a1e9c46d06bac858d95f7fe3a9a2",
-    "release_notes": "## [0.2.1-dev.3](https://github.com/dunecache/oyasumi-patches/compare/v0.2.1-dev.2...v0.2.1-dev.3) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* declare only ADM 14.0.39 as a supported target ([40307b4](https://github.com/dunecache/oyasumi-patches/commit/40307b49002e88e11fbec914be1ca1a3a1e8a3f8))\n",
-    "release_tag": "v0.2.1-dev.3",
-    "release_date": "2026-09-29T16:30:54Z",
+    "fingerprint": "7b88f0fdbbc6d25444ecf740466ae93adcde5d7f8916e262b77d7cd7a6675e37",
+    "release_notes": "## [0.6.0-dev.7](https://github.com/dunecache/oyasumi-patches/compare/v0.6.0-dev.6...v0.6.0-dev.7) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* settings header below status bar with version subtitle ([d04e89c](https://github.com/dunecache/oyasumi-patches/commit/d04e89ced84840b59181e0a02a8593db0639ecfd))\n",
+    "release_tag": "v0.6.0-dev.7",
+    "release_date": "2026-10-03T01:09:00Z",
     "isPreRelease": true
   },
   "oyasumi:stable": {
@@ -71585,9 +71753,9 @@
     "bundle": "bartlomiejfornalczyk",
     "channel": "latest",
     "repo_url": "https://github.com/bartlomiejfornalczyk/morphe-patches",
-    "created_at": "2026-10-02T21:50:55",
-    "version": "v1.4.29",
-    "description": "## [1.4.29](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.4.28...v1.4.29) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* preserve switch table offsets in navigation media provider resolution ([b4a5483](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/b4a54832ffe78d63f419cdee7d0e58d1ab6e9083))\n",
+    "created_at": "2026-10-02T22:30:00",
+    "version": "v1.4.30",
+    "description": "## [1.4.30](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.4.29...v1.4.30) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* bypass media provider test connection and inject match-all flag ([c6bdabb](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/c6bdabba5de6f88ed04ac2c483b8602dcfd24b93))\n",
     "apps": [
       {
         "app_name": "Google Maps",
@@ -71653,9 +71821,9 @@
     "bundle": "bartlomiejfornalczyk",
     "channel": "stable",
     "repo_url": "https://github.com/bartlomiejfornalczyk/morphe-patches",
-    "created_at": "2026-10-02T21:50:55",
-    "version": "v1.4.29",
-    "description": "## [1.4.29](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.4.28...v1.4.29) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* preserve switch table offsets in navigation media provider resolution ([b4a5483](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/b4a54832ffe78d63f419cdee7d0e58d1ab6e9083))\n",
+    "created_at": "2026-10-02T22:30:00",
+    "version": "v1.4.30",
+    "description": "## [1.4.30](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.4.29...v1.4.30) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* bypass media provider test connection and inject match-all flag ([c6bdabb](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/c6bdabba5de6f88ed04ac2c483b8602dcfd24b93))\n",
     "apps": [
       {
         "app_name": "Google Maps",
@@ -97260,9 +97428,9 @@
     "bundle": "hushmessenger",
     "channel": "latest",
     "repo_url": "https://github.com/SysAdminDoc/HushMessenger",
-    "created_at": "2026-10-02T02:49:24",
-    "version": "v0.8.0",
-    "description": "HushMessenger v0.8.0 is for Messenger 580.0.0.49.91 and works on all 21 arm64 builds. It has the same 31 patches as v0.7.0, and 28 of them are switches you turn on in settings.\n\nThe fix a lot of you were waiting for is in here. Patching with **Material You theme** selected no longer runs Morphe Manager out of memory (#18). Thanks to everyone who reported it and posted what they saw.\n\n**New patches**\n\nNone this time. The App tab does get one new feature:\n\n- **Save choices to a file** and **Restore choices from a file** go through Android's file picker, so HushMessenger doesn't need storage access. The file uses the same format as the clipboard backup. If you cancel, or pick a file that's damaged or isn't a backup, nothing changes.\n\n**Fixes and changes**\n\n- **Material You theme** checks every spot it changes before it edits anything. That keeps a full patch run within a 1 GB heap, the limit people ran into in #18, on every supported build.\n- Safe mode has a **Resume** button now. If you'd already turned on **Pause all changes**, the button reads **Clear safe mode** and leaves Pause alone. Your saved choices stay either way.\n- Crash recovery reads Android's own record of why Messenger stopped. When Android closes Messenger for low memory or an app update, that no longer counts toward safe mode, and the same crash can't be counted twice.\n- **Open** in settings takes you to Messenger instead of back into settings.\n- The status line under each switch refreshes when you come back to settings. Paused switches say **Changes paused**, and the text is easier to read in both themes.\n- **Keep unsent messages** now explains right beside the switch what it covers (#23). It works on Messenger's older unsend path. End-to-end encrypted chats aren't covered, and group chats haven't been checked. Its activity line only moves when it really catches an unsend, and two unsends arriving together can't overwrite each other anymore.\n- When **Hide app drawer icon** isn't offered, the App tab says why, for example on a Root Mount install. Searching settings for \"drawer icon\" takes you there (#6).\n- The update check shows that it's working and has a **Check now** button if it fails. Turning it off or closing settings stops a check that's still running. It only trusts a small, well formed reply that points at this repository.\n- Restoring a backup checks the whole thing first, so one bad line means nothing changes instead of half a restore. Older clipboard backups still work. Switches a backup doesn't mention keep their current setting.\n- Tapping a backup button twice quickly no longer opens two pickers.\n- The Menu tab's HushMessenger row checks every place it edits before it changes any of them.\n\n**Updating**\n\n1. Use Morphe Manager 1.33.0 or newer, since that's the version the memory fix was tried with, and refresh the HushMessenger source. It should show v0.8.0 with 31 patches. On a computer, Morphe Desktop needs 1.17.0 or newer.\n2. Patch an unmodified arm64 Messenger **580.0.0.49.91**. Any of the 21 version codes listed under Supported Messenger builds in the README works, for example 346013440 or 346013387. The 32-bit builds aren't supported.\n3. Sign with the same key you used last time and install over your current copy. A different key means uninstalling Messenger and losing its local data.\n4. Open HushMessenger settings and tap **Restart Messenger**.\n\nThe `.mpp` file is a patch bundle for Morphe. It isn't an APK you can install.\n\n**Known limitations**\n\n- Saving and restoring choices with a file has only been covered by the automated tests. It hasn't been tried on a phone yet.\n- The Android 17 crash records are covered by tests, but no phone running Android 17 has tried this build.\n- Morphe Manager was tried at its 1 GB limit with build 346013440 while this was being built. The release bundle itself was checked at that limit with Morphe Desktop on all 21 builds.\n- Keep unsent messages doesn't work in end-to-end encrypted chats, and group chats haven't been checked.\n- After you view a story anonymously, the ring around that person's picture in your chat list still shows the story as new until it expires.\n- Nobody has checked a fresh sign-in or recovering encrypted chat history on a phone yet, and live ad removal is still unconfirmed. Builds 346013354, 346013370, 346013394 and 346013423 patch cleanly but haven't been installed on a phone.\n\n**Validation**\n\n- 121 Kotlin tests, 352 Android unit tests and 47 Python checks pass. Android lint reports no errors.\n- Morphe Desktop 1.18.0 applied all 31 patches, Material You included, to every one of the 21 supported builds with a 1024 MB Java heap and without forcing compatibility. Each output had the settings code and the expected number of theme edits, and the stock files were unchanged afterwards.\n- One build from each of the five groups that share internal names (346013440, 346013372, 346013423, 346013357 and 346013374) was also patched and signed, and apksigner verified every v3 signature.\n- Two clean builds of the bundle, one of them from a fresh checkout of the release commit, came out byte for byte the same.\n- OSV-Scanner found no known advisories in anything the bundle ships or the patch build runs. Its only hits are old Netty and Apache HTTP libraries that the Android Gradle plugin keeps for its device test runner, which this build doesn't use.\n- `SHA256SUMS.txt.sig` is signed with the release key `SHA256:Z+UfHy7IUbtgNRO/wHkIr68+u4I+SIKPY9avfx/VAPU`. The README shows how to check it with `ssh-keygen`.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.8.0/CHANGELOG.md).\n\nSHA-256: 472ae92749e85c08b8de9de6154c863e415c876317c7dba91067a1ac0adbfc93  patches-0.8.0.mpp\n",
+    "created_at": "2026-10-02T23:16:18",
+    "version": "v0.14.0",
+    "description": "HushMessenger v0.14.0 is for Messenger 580.0.0.49.91 and works on all 21 arm64 builds. It has 32 patches, and 29 of them are switches you turn on in settings.\n\nThis is the first release since v0.8.0, so it rolls up a few days of work. The big additions are Native Bubbles and an optional slide when you open a chat.\n\n**New**\n\n- **Slide chats in and out** (#28) slides a chat in from the side when you open it from your chat list or search, and back out when you go back. The screen underneath holds still, and right-to-left languages slide from the left. It starts off. Pause or Android's **Remove animations** setting keeps Messenger's own transitions.\n- **Allow chat bubbles** now offers **Stock**, **Chat Heads** and **Native Bubbles** (#19). Native Bubbles uses Android's own bubbles on Android 11 and newer, so a chat can open as a floating bubble. Your account still has to qualify, and Android has to allow Messenger's bubbles. A link to Android's bubble settings sits right below the mode buttons.\n\n**Fixes and changes**\n\n- Settings open from Messenger's side menu now, as well as from its Menu tab (#26).\n- **Use system emoji** draws your phone's own emoji on Android 12 and newer (#25). It used to load Google's emoji every time, so Samsung phones and emoji modules lost their own set.\n- On a Root Mount install, Android never reads the patched long-press shortcuts, so **Patch controls** and **Restart Messenger** were missing from Messenger's icon. HushMessenger adds them itself now when Messenger starts (#27).\n- The directions to settings now say **Long-press Messenger's home screen icon > Patch controls**. \"Long-press Messenger\" was easy to read as the title inside the app (#27).\n- Saving and restoring choices with a file only works with documents you pick, never Messenger's own private files, and it shows progress while it works. A restore that takes a while won't undo switches you changed in the meantime.\n- **Original-quality photos** strips the small preview thumbnail some cameras tuck into the photo header. The main image, its color profile and density info stay as they were.\n- Settings and the install guide explain that uninstalling the settings icon removes Messenger too. Use **Hide app drawer icon** to hide just the icon.\n\n**Updating**\n\n1. Use Morphe Manager 1.33.0 or newer and refresh the HushMessenger source. It should show v0.14.0 with 32 patches. On a computer, Morphe Desktop needs 1.17.0 or newer.\n2. Patch an unmodified arm64 Messenger **580.0.0.49.91**. Any of the 21 version codes listed under Supported Messenger builds in the README works, for example 346013440 or 346013387. The 32-bit builds aren't supported.\n3. Sign with the same key you used last time and install over your current copy. A different key means uninstalling Messenger and losing its local data.\n4. Open HushMessenger settings and tap **Restart Messenger**.\n\nThe `.mpp` file is a patch bundle for Morphe. It isn't an APK you can install.\n\n**Known limitations**\n\n- Opening a chat from a notification with Slide chats in and out turned on hasn't been tried on a phone yet, and neither has Android 13 or older.\n- Native Bubbles hasn't been tried on a custom ROM or a low-memory phone.\n- The Root Mount shortcut fix was checked on a rooted test emulator, not a rooted phone.\n- Hide read receipts can leave your own copy of a chat marked unread (#20).\n- Nobody has checked a fresh sign-in or recovering encrypted chat history on a phone yet, and live ad removal is still unconfirmed.\n\n**Validation**\n\n- 147 Kotlin tests, 458 Android unit tests and 47 Python checks pass. Android lint reports no errors.\n- Morphe Desktop 1.18.0 applied all 32 patches, Material You included, to every one of the 21 supported builds with a 1024 MB Java heap.\n- One build from each of the five groups that share internal names (346013440, 346013372, 346013423, 346013357 and 346013374) was also patched and signed, and apksigner verified every v3 signature.\n- On an Android 16 test phone, chats slid in from the chat list and from search in both themes, and turning the switch off brought back Messenger's own transitions.\n- Two clean builds of the bundle, one of them from a fresh checkout of the release commit, came out byte for byte the same.\n- OSV-Scanner found no known advisories in anything the bundle ships. Its only hits are old Commons Lang and Apache HTTP libraries inside Android's lint tool, which isn't part of the bundle.\n- `SHA256SUMS.txt.sig` is signed with the release key `SHA256:Z+UfHy7IUbtgNRO/wHkIr68+u4I+SIKPY9avfx/VAPU`. The README shows how to check it with `ssh-keygen`.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.14.0/CHANGELOG.md).\n\nSHA-256: 6e67bf58dad6ca26a94f2b024f4f229e65acfc84ddf593371bf3acaa2414b2ad  patches-0.14.0.mpp\n",
     "apps": [
       {
         "app_name": "Messenger",
@@ -97270,7 +97438,7 @@
         "patches": [
           {
             "name": "Allow chat bubbles",
-            "description": "Removes the low-memory eligibility limit on Android 11 and newer. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Offers Stock, Chat Heads and Native Bubbles on verified Messenger routes on Android 11 and newer. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97279,7 +97447,7 @@
           },
           {
             "name": "Allow screenshots",
-            "description": "Lets you screenshot photos, media and video Messenger protects in a chat, and stops screenshot notices. View-once media stays protected. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Lets you screenshot photos, media and video Messenger protects in a chat, and stops screenshot notices. View-once media stays protected. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97288,7 +97456,7 @@
           },
           {
             "name": "Hide AI sticker tools",
-            "description": "Hides the generated-sticker tab and AI sticker suggestions. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the generated-sticker tab and AI sticker suggestions. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97297,7 +97465,7 @@
           },
           {
             "name": "Hide avatar stickers",
-            "description": "Hides the avatar tab in the sticker keyboard. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the avatar tab in the sticker keyboard. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97306,7 +97474,7 @@
           },
           {
             "name": "Hide business reply suggestions",
-            "description": "Hides suggested replies in business conversations. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides suggested replies in business conversations. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97315,7 +97483,7 @@
           },
           {
             "name": "Hide business typing suggestions",
-            "description": "Hides business suggestions as you type. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides business suggestions as you type. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97324,7 +97492,7 @@
           },
           {
             "name": "Hide Chat Moments",
-            "description": "Hides the Chat Moments entry in the menu. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the Chat Moments entry in the menu. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97333,7 +97501,7 @@
           },
           {
             "name": "Hide chat promotions",
-            "description": "Hides Messenger quick-promotion banners inside conversations. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides Messenger quick-promotion banners inside conversations. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97342,7 +97510,7 @@
           },
           {
             "name": "Hide event prompts",
-            "description": "Hides event quick-promotion prompts inside chats. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides event quick-promotion prompts inside chats. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97351,7 +97519,7 @@
           },
           {
             "name": "Hide Facebook shortcuts",
-            "description": "Hides Facebook toolbar, profile and sharing shortcuts, and Also from Meta in the Menu tab. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides Facebook toolbar, profile and sharing shortcuts, and Also from Meta in the Menu tab. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97360,7 +97528,7 @@
           },
           {
             "name": "Hide friend request cards",
-            "description": "Hides friend request cards inside the inbox. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides friend request cards inside the inbox. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97369,7 +97537,7 @@
           },
           {
             "name": "Hide growth prompts",
-            "description": "Hides the inbox's add-more-people promotion unit. Also hides the tip sheets in notes, like Make my notes public, and the Share your own story card after someone else's stories. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the inbox's add-more-people promotion unit. Also hides the tip sheets in notes, like Make my notes public, and the Share your own story card after someone else's stories. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97378,7 +97546,7 @@
           },
           {
             "name": "Hide inbox ads",
-            "description": "Filters typed inbox ad items, in case Meta brings back the inbox ads it stopped selling in November 2025. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Filters typed inbox ad items, in case Meta brings back the inbox ads it stopped selling in November 2025. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97387,7 +97555,7 @@
           },
           {
             "name": "Hide inbox promotions",
-            "description": "Hides Messenger quick-promotion banners in the chat list. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides Messenger quick-promotion banners in the chat list. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97396,7 +97564,7 @@
           },
           {
             "name": "Hide inbox tabs",
-            "description": "Hides the Home and Channels subtabs. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the Home and Channels subtabs. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97405,7 +97573,7 @@
           },
           {
             "name": "Hide Meta AI",
-            "description": "Hides the floating button, toolbar button, Meta AI tab, menu entries and search AI. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the floating button, toolbar button, Meta AI tab, menu entries and search AI. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97414,7 +97582,7 @@
           },
           {
             "name": "Hide People You May Know",
-            "description": "Hides suggested people in chats, search and stories, and on the People and Notifications tabs. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides suggested people in chats, search and stories, and on the People and Notifications tabs. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97423,7 +97591,7 @@
           },
           {
             "name": "Hide read receipts",
-            "description": "Suppresses your outgoing read receipt. In end-to-end encrypted chats, chats you open stay unread until you reply. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Suppresses your outgoing read receipt. In end-to-end encrypted chats, chats you open stay unread until you reply. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97432,7 +97600,7 @@
           },
           {
             "name": "Hide Reels badge",
-            "description": "Hides the Reels notification badge. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the Reels notification badge. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97441,7 +97609,7 @@
           },
           {
             "name": "Hide stories and notes",
-            "description": "Hides the horizontal tray above chats. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the horizontal tray above chats. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97450,7 +97618,7 @@
           },
           {
             "name": "Hide typing indicator",
-            "description": "Suppresses your outgoing active-typing signal, including in end-to-end encrypted chats. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Suppresses your outgoing active-typing signal, including in end-to-end encrypted chats. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97468,7 +97636,7 @@
           },
           {
             "name": "Keep unsent messages",
-            "description": "Preserves messages on verified legacy unsend routes. End-to-end encrypted chats are unsupported, and group coverage is unverified. Activity records intercepted legacy unsends, not chat support. Your own unsend may be limited. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Preserves messages on verified legacy unsend routes. End-to-end encrypted chats are unsupported, and group coverage is unverified. Activity records intercepted legacy unsends, not chat support. Your own unsend may be limited. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97486,7 +97654,7 @@
           },
           {
             "name": "Open settings from menu",
-            "description": "Adds a HushMessenger entry to the Menu tab. Always on.",
+            "description": "Adds a HushMessenger entry to the Menu tab and side menu. Always on.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97495,7 +97663,7 @@
           },
           {
             "name": "Open web links externally",
-            "description": "Uses Messenger's external-browser branch for HTTP and HTTPS links. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Uses Messenger's external-browser branch for HTTP and HTTPS links. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97513,7 +97681,7 @@
           },
           {
             "name": "Save any story",
-            "description": "Adds Save to the More options menu on other people's stories. The photo or video goes to your phone the same way Messenger saves your own. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Adds Save to the More options menu on other people's stories. The photo or video goes to your phone the same way Messenger saves your own. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97522,7 +97690,16 @@
           },
           {
             "name": "Send photos at original quality",
-            "description": "With HD on, sends a JPEG photo's own image data instead of a re-encoded copy, without its metadata except the rotation tag. Videos and photos over 20 MB are still compressed. Long-press Messenger > Patch controls. Starts off.",
+            "description": "With HD on, sends a JPEG photo's own image data instead of a re-encoded copy, without its metadata except the rotation tag. Videos and photos over 20 MB are still compressed. Long-press Messenger's home screen icon > Patch controls. Starts off.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.49.91"
+            ]
+          },
+          {
+            "name": "Slide chats in and out",
+            "description": "Slides a chat in from the side when you open it and back out when you go back, while the screen underneath holds still. Chat heads and bubbles keep their own animations. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97531,7 +97708,7 @@
           },
           {
             "name": "Use system emoji",
-            "description": "Renders emoji with the phone's own font instead of Messenger's. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Renders emoji with the phone's own font instead of Messenger's. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97540,7 +97717,7 @@
           },
           {
             "name": "View stories anonymously",
-            "description": "Opens other people's stories without adding you to their viewer list. Stories you open this way are marked as seen on your side. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Opens other people's stories without adding you to their viewer list. Stories you open this way are marked as seen on your side. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97551,19 +97728,19 @@
       }
     ],
     "patches_name": "HushMessenger",
-    "fingerprint": "5eb2ad7fb1fd0c291bfc24666c458ee031e3ade4cad799b745dd7de41a6da694",
-    "release_notes": "HushMessenger v0.8.0 is for Messenger 580.0.0.49.91 and works on all 21 arm64 builds. It has the same 31 patches as v0.7.0, and 28 of them are switches you turn on in settings.\n\nThe fix a lot of you were waiting for is in here. Patching with **Material You theme** selected no longer runs Morphe Manager out of memory (#18). Thanks to everyone who reported it and posted what they saw.\n\n**New patches**\n\nNone this time. The App tab does get one new feature:\n\n- **Save choices to a file** and **Restore choices from a file** go through Android's file picker, so HushMessenger doesn't need storage access. The file uses the same format as the clipboard backup. If you cancel, or pick a file that's damaged or isn't a backup, nothing changes.\n\n**Fixes and changes**\n\n- **Material You theme** checks every spot it changes before it edits anything. That keeps a full patch run within a 1 GB heap, the limit people ran into in #18, on every supported build.\n- Safe mode has a **Resume** button now. If you'd already turned on **Pause all changes**, the button reads **Clear safe mode** and leaves Pause alone. Your saved choices stay either way.\n- Crash recovery reads Android's own record of why Messenger stopped. When Android closes Messenger for low memory or an app update, that no longer counts toward safe mode, and the same crash can't be counted twice.\n- **Open** in settings takes you to Messenger instead of back into settings.\n- The status line under each switch refreshes when you come back to settings. Paused switches say **Changes paused**, and the text is easier to read in both themes.\n- **Keep unsent messages** now explains right beside the switch what it covers (#23). It works on Messenger's older unsend path. End-to-end encrypted chats aren't covered, and group chats haven't been checked. Its activity line only moves when it really catches an unsend, and two unsends arriving together can't overwrite each other anymore.\n- When **Hide app drawer icon** isn't offered, the App tab says why, for example on a Root Mount install. Searching settings for \"drawer icon\" takes you there (#6).\n- The update check shows that it's working and has a **Check now** button if it fails. Turning it off or closing settings stops a check that's still running. It only trusts a small, well formed reply that points at this repository.\n- Restoring a backup checks the whole thing first, so one bad line means nothing changes instead of half a restore. Older clipboard backups still work. Switches a backup doesn't mention keep their current setting.\n- Tapping a backup button twice quickly no longer opens two pickers.\n- The Menu tab's HushMessenger row checks every place it edits before it changes any of them.\n\n**Updating**\n\n1. Use Morphe Manager 1.33.0 or newer, since that's the version the memory fix was tried with, and refresh the HushMessenger source. It should show v0.8.0 with 31 patches. On a computer, Morphe Desktop needs 1.17.0 or newer.\n2. Patch an unmodified arm64 Messenger **580.0.0.49.91**. Any of the 21 version codes listed under Supported Messenger builds in the README works, for example 346013440 or 346013387. The 32-bit builds aren't supported.\n3. Sign with the same key you used last time and install over your current copy. A different key means uninstalling Messenger and losing its local data.\n4. Open HushMessenger settings and tap **Restart Messenger**.\n\nThe `.mpp` file is a patch bundle for Morphe. It isn't an APK you can install.\n\n**Known limitations**\n\n- Saving and restoring choices with a file has only been covered by the automated tests. It hasn't been tried on a phone yet.\n- The Android 17 crash records are covered by tests, but no phone running Android 17 has tried this build.\n- Morphe Manager was tried at its 1 GB limit with build 346013440 while this was being built. The release bundle itself was checked at that limit with Morphe Desktop on all 21 builds.\n- Keep unsent messages doesn't work in end-to-end encrypted chats, and group chats haven't been checked.\n- After you view a story anonymously, the ring around that person's picture in your chat list still shows the story as new until it expires.\n- Nobody has checked a fresh sign-in or recovering encrypted chat history on a phone yet, and live ad removal is still unconfirmed. Builds 346013354, 346013370, 346013394 and 346013423 patch cleanly but haven't been installed on a phone.\n\n**Validation**\n\n- 121 Kotlin tests, 352 Android unit tests and 47 Python checks pass. Android lint reports no errors.\n- Morphe Desktop 1.18.0 applied all 31 patches, Material You included, to every one of the 21 supported builds with a 1024 MB Java heap and without forcing compatibility. Each output had the settings code and the expected number of theme edits, and the stock files were unchanged afterwards.\n- One build from each of the five groups that share internal names (346013440, 346013372, 346013423, 346013357 and 346013374) was also patched and signed, and apksigner verified every v3 signature.\n- Two clean builds of the bundle, one of them from a fresh checkout of the release commit, came out byte for byte the same.\n- OSV-Scanner found no known advisories in anything the bundle ships or the patch build runs. Its only hits are old Netty and Apache HTTP libraries that the Android Gradle plugin keeps for its device test runner, which this build doesn't use.\n- `SHA256SUMS.txt.sig` is signed with the release key `SHA256:Z+UfHy7IUbtgNRO/wHkIr68+u4I+SIKPY9avfx/VAPU`. The README shows how to check it with `ssh-keygen`.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.8.0/CHANGELOG.md).\n\nSHA-256: 472ae92749e85c08b8de9de6154c863e415c876317c7dba91067a1ac0adbfc93  patches-0.8.0.mpp\n",
-    "release_tag": "v0.8.0",
-    "release_date": "2026-10-02T02:49:24Z",
+    "fingerprint": "d731ade2145bccda191955f012ac55f0e0f4854c9f798ff8aec4883cb805dcc7",
+    "release_notes": "HushMessenger v0.14.0 is for Messenger 580.0.0.49.91 and works on all 21 arm64 builds. It has 32 patches, and 29 of them are switches you turn on in settings.\n\nThis is the first release since v0.8.0, so it rolls up a few days of work. The big additions are Native Bubbles and an optional slide when you open a chat.\n\n**New**\n\n- **Slide chats in and out** (#28) slides a chat in from the side when you open it from your chat list or search, and back out when you go back. The screen underneath holds still, and right-to-left languages slide from the left. It starts off. Pause or Android's **Remove animations** setting keeps Messenger's own transitions.\n- **Allow chat bubbles** now offers **Stock**, **Chat Heads** and **Native Bubbles** (#19). Native Bubbles uses Android's own bubbles on Android 11 and newer, so a chat can open as a floating bubble. Your account still has to qualify, and Android has to allow Messenger's bubbles. A link to Android's bubble settings sits right below the mode buttons.\n\n**Fixes and changes**\n\n- Settings open from Messenger's side menu now, as well as from its Menu tab (#26).\n- **Use system emoji** draws your phone's own emoji on Android 12 and newer (#25). It used to load Google's emoji every time, so Samsung phones and emoji modules lost their own set.\n- On a Root Mount install, Android never reads the patched long-press shortcuts, so **Patch controls** and **Restart Messenger** were missing from Messenger's icon. HushMessenger adds them itself now when Messenger starts (#27).\n- The directions to settings now say **Long-press Messenger's home screen icon > Patch controls**. \"Long-press Messenger\" was easy to read as the title inside the app (#27).\n- Saving and restoring choices with a file only works with documents you pick, never Messenger's own private files, and it shows progress while it works. A restore that takes a while won't undo switches you changed in the meantime.\n- **Original-quality photos** strips the small preview thumbnail some cameras tuck into the photo header. The main image, its color profile and density info stay as they were.\n- Settings and the install guide explain that uninstalling the settings icon removes Messenger too. Use **Hide app drawer icon** to hide just the icon.\n\n**Updating**\n\n1. Use Morphe Manager 1.33.0 or newer and refresh the HushMessenger source. It should show v0.14.0 with 32 patches. On a computer, Morphe Desktop needs 1.17.0 or newer.\n2. Patch an unmodified arm64 Messenger **580.0.0.49.91**. Any of the 21 version codes listed under Supported Messenger builds in the README works, for example 346013440 or 346013387. The 32-bit builds aren't supported.\n3. Sign with the same key you used last time and install over your current copy. A different key means uninstalling Messenger and losing its local data.\n4. Open HushMessenger settings and tap **Restart Messenger**.\n\nThe `.mpp` file is a patch bundle for Morphe. It isn't an APK you can install.\n\n**Known limitations**\n\n- Opening a chat from a notification with Slide chats in and out turned on hasn't been tried on a phone yet, and neither has Android 13 or older.\n- Native Bubbles hasn't been tried on a custom ROM or a low-memory phone.\n- The Root Mount shortcut fix was checked on a rooted test emulator, not a rooted phone.\n- Hide read receipts can leave your own copy of a chat marked unread (#20).\n- Nobody has checked a fresh sign-in or recovering encrypted chat history on a phone yet, and live ad removal is still unconfirmed.\n\n**Validation**\n\n- 147 Kotlin tests, 458 Android unit tests and 47 Python checks pass. Android lint reports no errors.\n- Morphe Desktop 1.18.0 applied all 32 patches, Material You included, to every one of the 21 supported builds with a 1024 MB Java heap.\n- One build from each of the five groups that share internal names (346013440, 346013372, 346013423, 346013357 and 346013374) was also patched and signed, and apksigner verified every v3 signature.\n- On an Android 16 test phone, chats slid in from the chat list and from search in both themes, and turning the switch off brought back Messenger's own transitions.\n- Two clean builds of the bundle, one of them from a fresh checkout of the release commit, came out byte for byte the same.\n- OSV-Scanner found no known advisories in anything the bundle ships. Its only hits are old Commons Lang and Apache HTTP libraries inside Android's lint tool, which isn't part of the bundle.\n- `SHA256SUMS.txt.sig` is signed with the release key `SHA256:Z+UfHy7IUbtgNRO/wHkIr68+u4I+SIKPY9avfx/VAPU`. The README shows how to check it with `ssh-keygen`.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.14.0/CHANGELOG.md).\n\nSHA-256: 6e67bf58dad6ca26a94f2b024f4f229e65acfc84ddf593371bf3acaa2414b2ad  patches-0.14.0.mpp\n",
+    "release_tag": "v0.14.0",
+    "release_date": "2026-10-02T23:16:18Z",
     "isPreRelease": false
   },
   "hushmessenger:stable": {
     "bundle": "hushmessenger",
     "channel": "stable",
     "repo_url": "https://github.com/SysAdminDoc/HushMessenger",
-    "created_at": "2026-10-02T02:49:24",
-    "version": "v0.8.0",
-    "description": "HushMessenger v0.8.0 is for Messenger 580.0.0.49.91 and works on all 21 arm64 builds. It has the same 31 patches as v0.7.0, and 28 of them are switches you turn on in settings.\n\nThe fix a lot of you were waiting for is in here. Patching with **Material You theme** selected no longer runs Morphe Manager out of memory (#18). Thanks to everyone who reported it and posted what they saw.\n\n**New patches**\n\nNone this time. The App tab does get one new feature:\n\n- **Save choices to a file** and **Restore choices from a file** go through Android's file picker, so HushMessenger doesn't need storage access. The file uses the same format as the clipboard backup. If you cancel, or pick a file that's damaged or isn't a backup, nothing changes.\n\n**Fixes and changes**\n\n- **Material You theme** checks every spot it changes before it edits anything. That keeps a full patch run within a 1 GB heap, the limit people ran into in #18, on every supported build.\n- Safe mode has a **Resume** button now. If you'd already turned on **Pause all changes**, the button reads **Clear safe mode** and leaves Pause alone. Your saved choices stay either way.\n- Crash recovery reads Android's own record of why Messenger stopped. When Android closes Messenger for low memory or an app update, that no longer counts toward safe mode, and the same crash can't be counted twice.\n- **Open** in settings takes you to Messenger instead of back into settings.\n- The status line under each switch refreshes when you come back to settings. Paused switches say **Changes paused**, and the text is easier to read in both themes.\n- **Keep unsent messages** now explains right beside the switch what it covers (#23). It works on Messenger's older unsend path. End-to-end encrypted chats aren't covered, and group chats haven't been checked. Its activity line only moves when it really catches an unsend, and two unsends arriving together can't overwrite each other anymore.\n- When **Hide app drawer icon** isn't offered, the App tab says why, for example on a Root Mount install. Searching settings for \"drawer icon\" takes you there (#6).\n- The update check shows that it's working and has a **Check now** button if it fails. Turning it off or closing settings stops a check that's still running. It only trusts a small, well formed reply that points at this repository.\n- Restoring a backup checks the whole thing first, so one bad line means nothing changes instead of half a restore. Older clipboard backups still work. Switches a backup doesn't mention keep their current setting.\n- Tapping a backup button twice quickly no longer opens two pickers.\n- The Menu tab's HushMessenger row checks every place it edits before it changes any of them.\n\n**Updating**\n\n1. Use Morphe Manager 1.33.0 or newer, since that's the version the memory fix was tried with, and refresh the HushMessenger source. It should show v0.8.0 with 31 patches. On a computer, Morphe Desktop needs 1.17.0 or newer.\n2. Patch an unmodified arm64 Messenger **580.0.0.49.91**. Any of the 21 version codes listed under Supported Messenger builds in the README works, for example 346013440 or 346013387. The 32-bit builds aren't supported.\n3. Sign with the same key you used last time and install over your current copy. A different key means uninstalling Messenger and losing its local data.\n4. Open HushMessenger settings and tap **Restart Messenger**.\n\nThe `.mpp` file is a patch bundle for Morphe. It isn't an APK you can install.\n\n**Known limitations**\n\n- Saving and restoring choices with a file has only been covered by the automated tests. It hasn't been tried on a phone yet.\n- The Android 17 crash records are covered by tests, but no phone running Android 17 has tried this build.\n- Morphe Manager was tried at its 1 GB limit with build 346013440 while this was being built. The release bundle itself was checked at that limit with Morphe Desktop on all 21 builds.\n- Keep unsent messages doesn't work in end-to-end encrypted chats, and group chats haven't been checked.\n- After you view a story anonymously, the ring around that person's picture in your chat list still shows the story as new until it expires.\n- Nobody has checked a fresh sign-in or recovering encrypted chat history on a phone yet, and live ad removal is still unconfirmed. Builds 346013354, 346013370, 346013394 and 346013423 patch cleanly but haven't been installed on a phone.\n\n**Validation**\n\n- 121 Kotlin tests, 352 Android unit tests and 47 Python checks pass. Android lint reports no errors.\n- Morphe Desktop 1.18.0 applied all 31 patches, Material You included, to every one of the 21 supported builds with a 1024 MB Java heap and without forcing compatibility. Each output had the settings code and the expected number of theme edits, and the stock files were unchanged afterwards.\n- One build from each of the five groups that share internal names (346013440, 346013372, 346013423, 346013357 and 346013374) was also patched and signed, and apksigner verified every v3 signature.\n- Two clean builds of the bundle, one of them from a fresh checkout of the release commit, came out byte for byte the same.\n- OSV-Scanner found no known advisories in anything the bundle ships or the patch build runs. Its only hits are old Netty and Apache HTTP libraries that the Android Gradle plugin keeps for its device test runner, which this build doesn't use.\n- `SHA256SUMS.txt.sig` is signed with the release key `SHA256:Z+UfHy7IUbtgNRO/wHkIr68+u4I+SIKPY9avfx/VAPU`. The README shows how to check it with `ssh-keygen`.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.8.0/CHANGELOG.md).\n\nSHA-256: 472ae92749e85c08b8de9de6154c863e415c876317c7dba91067a1ac0adbfc93  patches-0.8.0.mpp\n",
+    "created_at": "2026-10-02T23:16:18",
+    "version": "v0.14.0",
+    "description": "HushMessenger v0.14.0 is for Messenger 580.0.0.49.91 and works on all 21 arm64 builds. It has 32 patches, and 29 of them are switches you turn on in settings.\n\nThis is the first release since v0.8.0, so it rolls up a few days of work. The big additions are Native Bubbles and an optional slide when you open a chat.\n\n**New**\n\n- **Slide chats in and out** (#28) slides a chat in from the side when you open it from your chat list or search, and back out when you go back. The screen underneath holds still, and right-to-left languages slide from the left. It starts off. Pause or Android's **Remove animations** setting keeps Messenger's own transitions.\n- **Allow chat bubbles** now offers **Stock**, **Chat Heads** and **Native Bubbles** (#19). Native Bubbles uses Android's own bubbles on Android 11 and newer, so a chat can open as a floating bubble. Your account still has to qualify, and Android has to allow Messenger's bubbles. A link to Android's bubble settings sits right below the mode buttons.\n\n**Fixes and changes**\n\n- Settings open from Messenger's side menu now, as well as from its Menu tab (#26).\n- **Use system emoji** draws your phone's own emoji on Android 12 and newer (#25). It used to load Google's emoji every time, so Samsung phones and emoji modules lost their own set.\n- On a Root Mount install, Android never reads the patched long-press shortcuts, so **Patch controls** and **Restart Messenger** were missing from Messenger's icon. HushMessenger adds them itself now when Messenger starts (#27).\n- The directions to settings now say **Long-press Messenger's home screen icon > Patch controls**. \"Long-press Messenger\" was easy to read as the title inside the app (#27).\n- Saving and restoring choices with a file only works with documents you pick, never Messenger's own private files, and it shows progress while it works. A restore that takes a while won't undo switches you changed in the meantime.\n- **Original-quality photos** strips the small preview thumbnail some cameras tuck into the photo header. The main image, its color profile and density info stay as they were.\n- Settings and the install guide explain that uninstalling the settings icon removes Messenger too. Use **Hide app drawer icon** to hide just the icon.\n\n**Updating**\n\n1. Use Morphe Manager 1.33.0 or newer and refresh the HushMessenger source. It should show v0.14.0 with 32 patches. On a computer, Morphe Desktop needs 1.17.0 or newer.\n2. Patch an unmodified arm64 Messenger **580.0.0.49.91**. Any of the 21 version codes listed under Supported Messenger builds in the README works, for example 346013440 or 346013387. The 32-bit builds aren't supported.\n3. Sign with the same key you used last time and install over your current copy. A different key means uninstalling Messenger and losing its local data.\n4. Open HushMessenger settings and tap **Restart Messenger**.\n\nThe `.mpp` file is a patch bundle for Morphe. It isn't an APK you can install.\n\n**Known limitations**\n\n- Opening a chat from a notification with Slide chats in and out turned on hasn't been tried on a phone yet, and neither has Android 13 or older.\n- Native Bubbles hasn't been tried on a custom ROM or a low-memory phone.\n- The Root Mount shortcut fix was checked on a rooted test emulator, not a rooted phone.\n- Hide read receipts can leave your own copy of a chat marked unread (#20).\n- Nobody has checked a fresh sign-in or recovering encrypted chat history on a phone yet, and live ad removal is still unconfirmed.\n\n**Validation**\n\n- 147 Kotlin tests, 458 Android unit tests and 47 Python checks pass. Android lint reports no errors.\n- Morphe Desktop 1.18.0 applied all 32 patches, Material You included, to every one of the 21 supported builds with a 1024 MB Java heap.\n- One build from each of the five groups that share internal names (346013440, 346013372, 346013423, 346013357 and 346013374) was also patched and signed, and apksigner verified every v3 signature.\n- On an Android 16 test phone, chats slid in from the chat list and from search in both themes, and turning the switch off brought back Messenger's own transitions.\n- Two clean builds of the bundle, one of them from a fresh checkout of the release commit, came out byte for byte the same.\n- OSV-Scanner found no known advisories in anything the bundle ships. Its only hits are old Commons Lang and Apache HTTP libraries inside Android's lint tool, which isn't part of the bundle.\n- `SHA256SUMS.txt.sig` is signed with the release key `SHA256:Z+UfHy7IUbtgNRO/wHkIr68+u4I+SIKPY9avfx/VAPU`. The README shows how to check it with `ssh-keygen`.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.14.0/CHANGELOG.md).\n\nSHA-256: 6e67bf58dad6ca26a94f2b024f4f229e65acfc84ddf593371bf3acaa2414b2ad  patches-0.14.0.mpp\n",
     "apps": [
       {
         "app_name": "Messenger",
@@ -97571,7 +97748,7 @@
         "patches": [
           {
             "name": "Allow chat bubbles",
-            "description": "Removes the low-memory eligibility limit on Android 11 and newer. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Offers Stock, Chat Heads and Native Bubbles on verified Messenger routes on Android 11 and newer. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97580,7 +97757,7 @@
           },
           {
             "name": "Allow screenshots",
-            "description": "Lets you screenshot photos, media and video Messenger protects in a chat, and stops screenshot notices. View-once media stays protected. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Lets you screenshot photos, media and video Messenger protects in a chat, and stops screenshot notices. View-once media stays protected. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97589,7 +97766,7 @@
           },
           {
             "name": "Hide AI sticker tools",
-            "description": "Hides the generated-sticker tab and AI sticker suggestions. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the generated-sticker tab and AI sticker suggestions. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97598,7 +97775,7 @@
           },
           {
             "name": "Hide avatar stickers",
-            "description": "Hides the avatar tab in the sticker keyboard. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the avatar tab in the sticker keyboard. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97607,7 +97784,7 @@
           },
           {
             "name": "Hide business reply suggestions",
-            "description": "Hides suggested replies in business conversations. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides suggested replies in business conversations. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97616,7 +97793,7 @@
           },
           {
             "name": "Hide business typing suggestions",
-            "description": "Hides business suggestions as you type. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides business suggestions as you type. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97625,7 +97802,7 @@
           },
           {
             "name": "Hide Chat Moments",
-            "description": "Hides the Chat Moments entry in the menu. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the Chat Moments entry in the menu. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97634,7 +97811,7 @@
           },
           {
             "name": "Hide chat promotions",
-            "description": "Hides Messenger quick-promotion banners inside conversations. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides Messenger quick-promotion banners inside conversations. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97643,7 +97820,7 @@
           },
           {
             "name": "Hide event prompts",
-            "description": "Hides event quick-promotion prompts inside chats. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides event quick-promotion prompts inside chats. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97652,7 +97829,7 @@
           },
           {
             "name": "Hide Facebook shortcuts",
-            "description": "Hides Facebook toolbar, profile and sharing shortcuts, and Also from Meta in the Menu tab. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides Facebook toolbar, profile and sharing shortcuts, and Also from Meta in the Menu tab. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97661,7 +97838,7 @@
           },
           {
             "name": "Hide friend request cards",
-            "description": "Hides friend request cards inside the inbox. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides friend request cards inside the inbox. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97670,7 +97847,7 @@
           },
           {
             "name": "Hide growth prompts",
-            "description": "Hides the inbox's add-more-people promotion unit. Also hides the tip sheets in notes, like Make my notes public, and the Share your own story card after someone else's stories. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the inbox's add-more-people promotion unit. Also hides the tip sheets in notes, like Make my notes public, and the Share your own story card after someone else's stories. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97679,7 +97856,7 @@
           },
           {
             "name": "Hide inbox ads",
-            "description": "Filters typed inbox ad items, in case Meta brings back the inbox ads it stopped selling in November 2025. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Filters typed inbox ad items, in case Meta brings back the inbox ads it stopped selling in November 2025. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97688,7 +97865,7 @@
           },
           {
             "name": "Hide inbox promotions",
-            "description": "Hides Messenger quick-promotion banners in the chat list. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides Messenger quick-promotion banners in the chat list. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97697,7 +97874,7 @@
           },
           {
             "name": "Hide inbox tabs",
-            "description": "Hides the Home and Channels subtabs. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the Home and Channels subtabs. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97706,7 +97883,7 @@
           },
           {
             "name": "Hide Meta AI",
-            "description": "Hides the floating button, toolbar button, Meta AI tab, menu entries and search AI. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the floating button, toolbar button, Meta AI tab, menu entries and search AI. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97715,7 +97892,7 @@
           },
           {
             "name": "Hide People You May Know",
-            "description": "Hides suggested people in chats, search and stories, and on the People and Notifications tabs. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides suggested people in chats, search and stories, and on the People and Notifications tabs. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97724,7 +97901,7 @@
           },
           {
             "name": "Hide read receipts",
-            "description": "Suppresses your outgoing read receipt. In end-to-end encrypted chats, chats you open stay unread until you reply. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Suppresses your outgoing read receipt. In end-to-end encrypted chats, chats you open stay unread until you reply. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97733,7 +97910,7 @@
           },
           {
             "name": "Hide Reels badge",
-            "description": "Hides the Reels notification badge. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the Reels notification badge. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97742,7 +97919,7 @@
           },
           {
             "name": "Hide stories and notes",
-            "description": "Hides the horizontal tray above chats. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Hides the horizontal tray above chats. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97751,7 +97928,7 @@
           },
           {
             "name": "Hide typing indicator",
-            "description": "Suppresses your outgoing active-typing signal, including in end-to-end encrypted chats. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Suppresses your outgoing active-typing signal, including in end-to-end encrypted chats. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97769,7 +97946,7 @@
           },
           {
             "name": "Keep unsent messages",
-            "description": "Preserves messages on verified legacy unsend routes. End-to-end encrypted chats are unsupported, and group coverage is unverified. Activity records intercepted legacy unsends, not chat support. Your own unsend may be limited. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Preserves messages on verified legacy unsend routes. End-to-end encrypted chats are unsupported, and group coverage is unverified. Activity records intercepted legacy unsends, not chat support. Your own unsend may be limited. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97787,7 +97964,7 @@
           },
           {
             "name": "Open settings from menu",
-            "description": "Adds a HushMessenger entry to the Menu tab. Always on.",
+            "description": "Adds a HushMessenger entry to the Menu tab and side menu. Always on.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97796,7 +97973,7 @@
           },
           {
             "name": "Open web links externally",
-            "description": "Uses Messenger's external-browser branch for HTTP and HTTPS links. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Uses Messenger's external-browser branch for HTTP and HTTPS links. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97814,7 +97991,7 @@
           },
           {
             "name": "Save any story",
-            "description": "Adds Save to the More options menu on other people's stories. The photo or video goes to your phone the same way Messenger saves your own. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Adds Save to the More options menu on other people's stories. The photo or video goes to your phone the same way Messenger saves your own. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97823,7 +98000,16 @@
           },
           {
             "name": "Send photos at original quality",
-            "description": "With HD on, sends a JPEG photo's own image data instead of a re-encoded copy, without its metadata except the rotation tag. Videos and photos over 20 MB are still compressed. Long-press Messenger > Patch controls. Starts off.",
+            "description": "With HD on, sends a JPEG photo's own image data instead of a re-encoded copy, without its metadata except the rotation tag. Videos and photos over 20 MB are still compressed. Long-press Messenger's home screen icon > Patch controls. Starts off.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.49.91"
+            ]
+          },
+          {
+            "name": "Slide chats in and out",
+            "description": "Slides a chat in from the side when you open it and back out when you go back, while the screen underneath holds still. Chat heads and bubbles keep their own animations. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97832,7 +98018,7 @@
           },
           {
             "name": "Use system emoji",
-            "description": "Renders emoji with the phone's own font instead of Messenger's. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Renders emoji with the phone's own font instead of Messenger's. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97841,7 +98027,7 @@
           },
           {
             "name": "View stories anonymously",
-            "description": "Opens other people's stories without adding you to their viewer list. Stories you open this way are marked as seen on your side. Long-press Messenger > Patch controls. Starts off.",
+            "description": "Opens other people's stories without adding you to their viewer list. Stories you open this way are marked as seen on your side. Long-press Messenger's home screen icon > Patch controls. Starts off.",
             "use": true,
             "options": [],
             "compatible_versions": [
@@ -97852,10 +98038,10 @@
       }
     ],
     "patches_name": "HushMessenger",
-    "fingerprint": "51281a0ca1f77c0e8512094da985c4ae42f72321e3096e48d7fa7eecd921b25d",
-    "release_notes": "HushMessenger v0.8.0 is for Messenger 580.0.0.49.91 and works on all 21 arm64 builds. It has the same 31 patches as v0.7.0, and 28 of them are switches you turn on in settings.\n\nThe fix a lot of you were waiting for is in here. Patching with **Material You theme** selected no longer runs Morphe Manager out of memory (#18). Thanks to everyone who reported it and posted what they saw.\n\n**New patches**\n\nNone this time. The App tab does get one new feature:\n\n- **Save choices to a file** and **Restore choices from a file** go through Android's file picker, so HushMessenger doesn't need storage access. The file uses the same format as the clipboard backup. If you cancel, or pick a file that's damaged or isn't a backup, nothing changes.\n\n**Fixes and changes**\n\n- **Material You theme** checks every spot it changes before it edits anything. That keeps a full patch run within a 1 GB heap, the limit people ran into in #18, on every supported build.\n- Safe mode has a **Resume** button now. If you'd already turned on **Pause all changes**, the button reads **Clear safe mode** and leaves Pause alone. Your saved choices stay either way.\n- Crash recovery reads Android's own record of why Messenger stopped. When Android closes Messenger for low memory or an app update, that no longer counts toward safe mode, and the same crash can't be counted twice.\n- **Open** in settings takes you to Messenger instead of back into settings.\n- The status line under each switch refreshes when you come back to settings. Paused switches say **Changes paused**, and the text is easier to read in both themes.\n- **Keep unsent messages** now explains right beside the switch what it covers (#23). It works on Messenger's older unsend path. End-to-end encrypted chats aren't covered, and group chats haven't been checked. Its activity line only moves when it really catches an unsend, and two unsends arriving together can't overwrite each other anymore.\n- When **Hide app drawer icon** isn't offered, the App tab says why, for example on a Root Mount install. Searching settings for \"drawer icon\" takes you there (#6).\n- The update check shows that it's working and has a **Check now** button if it fails. Turning it off or closing settings stops a check that's still running. It only trusts a small, well formed reply that points at this repository.\n- Restoring a backup checks the whole thing first, so one bad line means nothing changes instead of half a restore. Older clipboard backups still work. Switches a backup doesn't mention keep their current setting.\n- Tapping a backup button twice quickly no longer opens two pickers.\n- The Menu tab's HushMessenger row checks every place it edits before it changes any of them.\n\n**Updating**\n\n1. Use Morphe Manager 1.33.0 or newer, since that's the version the memory fix was tried with, and refresh the HushMessenger source. It should show v0.8.0 with 31 patches. On a computer, Morphe Desktop needs 1.17.0 or newer.\n2. Patch an unmodified arm64 Messenger **580.0.0.49.91**. Any of the 21 version codes listed under Supported Messenger builds in the README works, for example 346013440 or 346013387. The 32-bit builds aren't supported.\n3. Sign with the same key you used last time and install over your current copy. A different key means uninstalling Messenger and losing its local data.\n4. Open HushMessenger settings and tap **Restart Messenger**.\n\nThe `.mpp` file is a patch bundle for Morphe. It isn't an APK you can install.\n\n**Known limitations**\n\n- Saving and restoring choices with a file has only been covered by the automated tests. It hasn't been tried on a phone yet.\n- The Android 17 crash records are covered by tests, but no phone running Android 17 has tried this build.\n- Morphe Manager was tried at its 1 GB limit with build 346013440 while this was being built. The release bundle itself was checked at that limit with Morphe Desktop on all 21 builds.\n- Keep unsent messages doesn't work in end-to-end encrypted chats, and group chats haven't been checked.\n- After you view a story anonymously, the ring around that person's picture in your chat list still shows the story as new until it expires.\n- Nobody has checked a fresh sign-in or recovering encrypted chat history on a phone yet, and live ad removal is still unconfirmed. Builds 346013354, 346013370, 346013394 and 346013423 patch cleanly but haven't been installed on a phone.\n\n**Validation**\n\n- 121 Kotlin tests, 352 Android unit tests and 47 Python checks pass. Android lint reports no errors.\n- Morphe Desktop 1.18.0 applied all 31 patches, Material You included, to every one of the 21 supported builds with a 1024 MB Java heap and without forcing compatibility. Each output had the settings code and the expected number of theme edits, and the stock files were unchanged afterwards.\n- One build from each of the five groups that share internal names (346013440, 346013372, 346013423, 346013357 and 346013374) was also patched and signed, and apksigner verified every v3 signature.\n- Two clean builds of the bundle, one of them from a fresh checkout of the release commit, came out byte for byte the same.\n- OSV-Scanner found no known advisories in anything the bundle ships or the patch build runs. Its only hits are old Netty and Apache HTTP libraries that the Android Gradle plugin keeps for its device test runner, which this build doesn't use.\n- `SHA256SUMS.txt.sig` is signed with the release key `SHA256:Z+UfHy7IUbtgNRO/wHkIr68+u4I+SIKPY9avfx/VAPU`. The README shows how to check it with `ssh-keygen`.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.8.0/CHANGELOG.md).\n\nSHA-256: 472ae92749e85c08b8de9de6154c863e415c876317c7dba91067a1ac0adbfc93  patches-0.8.0.mpp\n",
-    "release_tag": "v0.8.0",
-    "release_date": "2026-10-02T02:49:24Z",
+    "fingerprint": "bca8cfe88a9cc53425fdb1a3f2e8442c051804f95daf3d239f139deac5326f13",
+    "release_notes": "HushMessenger v0.14.0 is for Messenger 580.0.0.49.91 and works on all 21 arm64 builds. It has 32 patches, and 29 of them are switches you turn on in settings.\n\nThis is the first release since v0.8.0, so it rolls up a few days of work. The big additions are Native Bubbles and an optional slide when you open a chat.\n\n**New**\n\n- **Slide chats in and out** (#28) slides a chat in from the side when you open it from your chat list or search, and back out when you go back. The screen underneath holds still, and right-to-left languages slide from the left. It starts off. Pause or Android's **Remove animations** setting keeps Messenger's own transitions.\n- **Allow chat bubbles** now offers **Stock**, **Chat Heads** and **Native Bubbles** (#19). Native Bubbles uses Android's own bubbles on Android 11 and newer, so a chat can open as a floating bubble. Your account still has to qualify, and Android has to allow Messenger's bubbles. A link to Android's bubble settings sits right below the mode buttons.\n\n**Fixes and changes**\n\n- Settings open from Messenger's side menu now, as well as from its Menu tab (#26).\n- **Use system emoji** draws your phone's own emoji on Android 12 and newer (#25). It used to load Google's emoji every time, so Samsung phones and emoji modules lost their own set.\n- On a Root Mount install, Android never reads the patched long-press shortcuts, so **Patch controls** and **Restart Messenger** were missing from Messenger's icon. HushMessenger adds them itself now when Messenger starts (#27).\n- The directions to settings now say **Long-press Messenger's home screen icon > Patch controls**. \"Long-press Messenger\" was easy to read as the title inside the app (#27).\n- Saving and restoring choices with a file only works with documents you pick, never Messenger's own private files, and it shows progress while it works. A restore that takes a while won't undo switches you changed in the meantime.\n- **Original-quality photos** strips the small preview thumbnail some cameras tuck into the photo header. The main image, its color profile and density info stay as they were.\n- Settings and the install guide explain that uninstalling the settings icon removes Messenger too. Use **Hide app drawer icon** to hide just the icon.\n\n**Updating**\n\n1. Use Morphe Manager 1.33.0 or newer and refresh the HushMessenger source. It should show v0.14.0 with 32 patches. On a computer, Morphe Desktop needs 1.17.0 or newer.\n2. Patch an unmodified arm64 Messenger **580.0.0.49.91**. Any of the 21 version codes listed under Supported Messenger builds in the README works, for example 346013440 or 346013387. The 32-bit builds aren't supported.\n3. Sign with the same key you used last time and install over your current copy. A different key means uninstalling Messenger and losing its local data.\n4. Open HushMessenger settings and tap **Restart Messenger**.\n\nThe `.mpp` file is a patch bundle for Morphe. It isn't an APK you can install.\n\n**Known limitations**\n\n- Opening a chat from a notification with Slide chats in and out turned on hasn't been tried on a phone yet, and neither has Android 13 or older.\n- Native Bubbles hasn't been tried on a custom ROM or a low-memory phone.\n- The Root Mount shortcut fix was checked on a rooted test emulator, not a rooted phone.\n- Hide read receipts can leave your own copy of a chat marked unread (#20).\n- Nobody has checked a fresh sign-in or recovering encrypted chat history on a phone yet, and live ad removal is still unconfirmed.\n\n**Validation**\n\n- 147 Kotlin tests, 458 Android unit tests and 47 Python checks pass. Android lint reports no errors.\n- Morphe Desktop 1.18.0 applied all 32 patches, Material You included, to every one of the 21 supported builds with a 1024 MB Java heap.\n- One build from each of the five groups that share internal names (346013440, 346013372, 346013423, 346013357 and 346013374) was also patched and signed, and apksigner verified every v3 signature.\n- On an Android 16 test phone, chats slid in from the chat list and from search in both themes, and turning the switch off brought back Messenger's own transitions.\n- Two clean builds of the bundle, one of them from a fresh checkout of the release commit, came out byte for byte the same.\n- OSV-Scanner found no known advisories in anything the bundle ships. Its only hits are old Commons Lang and Apache HTTP libraries inside Android's lint tool, which isn't part of the bundle.\n- `SHA256SUMS.txt.sig` is signed with the release key `SHA256:Z+UfHy7IUbtgNRO/wHkIr68+u4I+SIKPY9avfx/VAPU`. The README shows how to check it with `ssh-keygen`.\n\nThe full list is in the [changelog](https://github.com/SysAdminDoc/HushMessenger/blob/v0.14.0/CHANGELOG.md).\n\nSHA-256: 6e67bf58dad6ca26a94f2b024f4f229e65acfc84ddf593371bf3acaa2414b2ad  patches-0.14.0.mpp\n",
+    "release_tag": "v0.14.0",
+    "release_date": "2026-10-02T23:16:18Z",
     "isPreRelease": false
   },
   "joristdh:latest": {
@@ -107486,8 +107672,8 @@
     "bundle": "wake-old-hyphen",
     "channel": "dev",
     "repo_url": "https://github.com/Wake-Old-Hyphen/hushfeed",
-    "created_at": "2026-10-02T21:24:45Z",
-    "version": "privacy-tiktok-multi-v0.66.0-20261002-212444",
+    "created_at": "2026-10-03T01:09:19Z",
+    "version": "privacy-tiktok-multi-v0.66.0-20261003-010918",
     "description": "Hushfeed v0.66.0 has 102 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (com.zhiliaoapp.musically).\n\nTikTok 47.1.4 is supported, and Hushfeed's settings now come in Italian and Russian. Change app name puts a name of your own under the app icon, Keep a streak going sends one message a day to someone you pick, Look like the store app is for follows and likes that undo themselves, and Keep playing in the background keeps a video going with the screen off.\n\nThe share sheet no longer shows \"Tap again to send\" on a friend you never touched, Fit the video to the screen follows a space that changes size, and patching is faster. See the changelog for the full list.\n\nValidation: 2565 runtime tests passed and 480 patch tests passed locally. Both Android lint checks passed. All 102 patches applied to all three supported APKs with resource and manifest checks. The attached release receipt identifies the exact source and bundle. Keep a streak going was checked on an Android emulator running TikTok 47.1.3.\n\nNeeds Morphe Manager 1.32.0 or newer. Refresh the Hushfeed source to update. The .mpp is a patch bundle, not a TikTok APK. Keep the manager's existing signing key when updating.",
     "apps": [
       {
@@ -108588,6 +108774,17 @@
             ]
           },
           {
+            "name": "Stop saving search history",
+            "description": "Stops TikTok adding your new searches to the search history it saves on the phone. Searches you already made stay until you delete them, and this doesn't change what TikTok keeps on its servers. Switch: Hushfeed settings > Privacy.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
             "name": "Stop video looping",
             "description": "Stops videos at the end instead of replaying them. Switch: Hushfeed settings > App.",
             "use": true,
@@ -108657,10 +108854,10 @@
       }
     ],
     "patches_name": "Hushfeed",
-    "fingerprint": "a417c4b32faeb678e0369efb4a2b82d500a6cb299fcbd4f6c16f46b01d074b32",
-    "release_notes": "# TikTok Privacy Build (47.0.3, 47.1.3, 47.1.4)\n\nAutomated privacy-hardened builds.\n\n- Hushfeed v0.66.0 (includes AMOLED dark-theme fix)\n- Nai64 Extra Patches v1.1.0\n- Static manifest permission stripping\n- arm64-v8a only (32-bit libraries stripped)\n\nBase APKs: `stock-tiktok-apk` release, Wake-Old-Hyphen/PAB\n\n## Patches\n\n<details>\n<summary>Hushfeed patches (104/104 enabled)</summary>\n\nEnabled:\n- AMOLED dark theme\n- Advanced downloads\n- Allow Duet and Stitch\n- Allow screenshots and Circle to Search\n- Always show publish date\n- Automatic video advance\n- Block P2P video relay\n- Block author button\n- Block contact list access\n- Block installed app scanning\n- Camera and microphone indicator\n- Change app name\n- Comment publish diagnostics\n- Comment send fix\n- Comment sort controls\n- Comment tools\n- Confirm feed interactions\n- Copy comments without username\n- Custom offline videos limit\n- Device privacy guard\n- Diagnostic tools\n- Disable login requirement\n- Disable screen capture detection\n- Disable telemetry\n- Disable the long press quick share\n- Disable the long press repost\n- Double-tap controls\n- Downloads\n- Drop the animated image cache\n- Enable voice comments\n- Expand activity list\n- Feature Gate Lab\n- Feature Gate Recorder\n- Feed filter\n- Feed tab navigation\n- Feed text sizes\n- Fit the video to the screen\n- Fix Google login\n- Foldable split comment view\n- Follow diagnostics\n- Ghost mode\n- Hide CAPTCHA popups\n- Hide Play Store update offer\n- Hide already seen videos\n- Hide comment popup ads\n- Hide comment typing suggestions\n- Hide feed LIVE button\n- Hide feed follow button\n- Hide feed save button\n- Hide feed search button\n- Hide floating promotions\n- Hide inbox items\n- Hide inbox stories\n- Hide profile shortcuts\n- Hide search suggestions\n- Hide suggested accounts\n- Hide the launcher shortcuts\n- Hide the risk control CAPTCHA\n- Hide video overlays\n- Hold-and-slide 2x lock\n- In-app browser privacy guard\n- Keep a streak going\n- Keep playing in the background\n- Keep the Favorites tab\n- Keep the screen's refresh rate\n- Limit background traffic\n- Location access governor\n- Long-press controls\n- Look like the store app\n- Mute feed videos\n- Network request report\n- Not interested button\n- Notification controls\n- Open external links directly\n- Playback quality\n- Playback speed\n- Region spoof\n- Remember clear display\n- Remove LIVE extras\n- Remove content credential and card scanner assets\n- Remove creation tools\n- Remove unused language packs\n- Repost diagnostics\n- Resource and battery governor\n- Resume videos after scrolling\n- SIM spoof\n- Sanitize sharing links\n- Settings\n- Share sheet tools\n- Show LIVE search\n- Show author region\n- Show the progress bar\n- Show the progress bar thumbnail\n- Skip content warnings\n- Skip the splash ad\n- Skip update checks\n- Stay on the video in full screen\n- Stop on-device AI profiling\n- Stop video looping\n- Subtitle tools\n- Swipe-left controls\n- Translate comments\n- Use non-personalized search\n- Use system font\n\n</details>\n\n<details>\n<summary>Nai64 Extra Patches (16/432 enabled)</summary>\n\nEnabled:\n- Bypass VPN Detection\n- Disable Crash Reporters\n- Disable Firebase Auto-Init\n- Disable Firebase Performance\n- Disable Remote Config Fetch\n- Disable Root Checks\n- Hide Roaming Status\n- Limit Ad Tracking\n- Remove Ad Services Entries\n- Spoof Phone Number\n- Spoof Play Store Install Source\n- Spoof SIM Serial Number (simSerial=8931084206518391742)\n- Spoof Subscriber ID (subscriberId=204081234567890)\n- Spoof Tracking IDs (spoofAppSetId=00000000-0000-0000-0000-000000000000, spoofFirebaseId=0000000000000000000000, spoofAppSetScope=True)\n- Spoof Voice Mail\n- Strip Exif Location (stripExifLocation=True)\n\nDisabled (yielded to Hushfeed):\n- AMOLED Theme\n- Allow Background Activity\n- Allow Clearing App Data\n- Allow Cleartext Traffic\n- Allow Mixed Content\n- Allow Mobile Downloads\n- Allow Screenshots\n- Allow Text Selection\n- Allow WebView Autoplay\n- Allow WebView File Access\n- Always Allow Biometrics\n- Always Show Scrollbars\n- Apk Junk Cleanup\n- Block APM Suites\n- Block Ad Network Extras\n- Block Analytics Long Tail\n- Block Attribution Extras\n- Block BLE Scan\n- Block Crash Extras\n- Block Data Pipelines\n- Block GMS Tracking\n- Block Huawei Analytics\n- Block Install Referrer\n- Block Legacy Analytics\n- Block Location Trackers\n- Block MoEngage\n- Block PostHog\n- Block Profile Tracking\n- Block Push Ads\n- Block Push Analytics\n- Block Screenshot Detection\n- Block Session Replay\n- Block Snowplow\n- Block TikTok Events\n- Block Yandex Metrica\n- Bypass DND Policy Access\n- Bypass Demo User\n- Bypass Emulator Detection\n- Bypass Forced Updates (Experimental)\n- Bypass Google Play Services Check\n- Bypass Guest User\n- Bypass Hostname Verification\n- Bypass Instant App\n- Bypass Keyguard Secure\n- Bypass License Verification\n- Bypass Linked User\n- Bypass Lock Task Mode\n- Bypass Low-End Device\n- Bypass Managed Profile\n- Bypass OkHttp Pinning\n- Bypass Overlay Detection\n- Bypass Package Suspended\n- Bypass Permission Check\n- Bypass Picture-in-Picture Mode\n- Bypass Play License Check\n- Bypass Safe Mode\n- Bypass System User\n- Bypass Test Environment\n- Bypass User Restricted\n- Bypass WebView SSL Errors\n- Bypass WebView Safe Browsing\n- Change Package Name\n- Change Version Code\n- Change Version Name\n- Classic Back Gesture\n- Clearing Split Metadata\n- Custom Accent Color\n- Custom App Icon\n- Custom App Resolution (Experimental)\n- Custom Navigation Bar Color\n- Custom Startup Dialog\n- Custom Startup Sound\n- Custom Startup Toast\n- Custom Status Bar Color\n- Custom Window Background\n- Deny Permission Checks\n- Disable Activity Transitions\n- Disable Ad SDK Init\n- Disable Analytics Events\n- Disable Animations\n- Disable App Backup\n- Disable App Links Verification\n- Disable Audio Effects\n- Disable Audio Recording\n- Disable Autofill\n- Disable Background Dim\n- Disable Background Sync\n- Disable Bandcamp Tracker\n- Disable Battery Optimization Prompt\n- Disable Bluetooth A2DP\n- Disable Bluetooth Discovering\n- Disable Bluetooth SCO\n- Disable Boot Auto-Start\n- Disable Camera Shutter Sound\n- Disable Clipboard Write\n- Disable Content Capture\n- Disable DTMF Tones\n- Disable Edge-To-Edge Enforcement\n- Disable Elevation Shadows\n- Disable Facebook SDK Auto-Init\n- Disable Fixed Volume\n- Disable Forced Online Checks (Experimental)\n- Disable Game Sounds\n- Disable Google Pay\n- Disable Google Update Check\n- Disable HDR Detection\n- Disable Haptic Feedback\n- Disable Haptic On Scroll\n- Disable Hardware Acceleration\n- Disable Heads-up Notifications\n- Disable Heap Pointer Tagging\n- Disable High Text Contrast\n- Disable Keyboard Sound\n- Disable Location Requests\n- Disable Logcat Logging\n- Disable Music Detection\n- Disable Notification Badges\n- Disable Notification Sound\n- Disable Notification Vibration\n- Disable Notifications\n- Disable Onboarding Overlays\n- Disable Orientation Lock\n- Disable Overscroll Effect\n- Disable Permission Auto-Revoke\n- Disable Popup Keyboard\n- Disable Quiet Mode\n- Disable RTT\n- Disable Ringtone Playback\n- Disable Scrollbars\n- Disable Secure Surfaces\n- Disable Sensors\n- Disable Snackbars\n- Disable Sound Effects\n- Disable StrictMode\n- Disable Support Banners\n- Disable Telemetry — Hushfeed Disable telemetry owns AppLog/AppsFlyer/Firebase screens\n- Disable Text-to-Speech\n- Disable Toasts\n- Disable Vibration\n- Disable Wake Locks\n- Disable WebView Safe Browsing\n- Disable Window Blur\n- Empty Clipboard Report — Hushfeed Device privacy guard owns clipboard\n- Enable Hidden Settings\n- Enable Large Heap\n- Enable Unrestricted Background Work\n- Enable Unrestricted Clipboard Access\n- Enable WebView App Cache\n- Enable WebView Cache\n- Enable WebView Content Access\n- Enable WebView DOM Storage\n- Enable WebView Debugging\n- Enable WebView Geolocation\n- Enable WebView Image Loading\n- Enable WebView Initial Focus\n- Enable WebView JavaScript\n- Enable WebView Offscreen Pre-Raster\n- Enable WebView Popups\n- Enable WebView Save Form Data\n- Enable WebView Save Password\n- Enable WebView Wide Viewport\n- Enable WebView Zoom\n- Enable WebView Zoom Support\n- Ensure Exact Alarm Availability\n- Ensure Internet Permission\n- Ensure Modern Media Permissions\n- Ensure Notification Permission\n- Ensure Storage Permissions\n- Exclude From Recents\n- Export All Activities\n- Fake ADB Enabled\n- Fake Animation Scales\n- Fake Auto Rotate On\n- Fake Auto Time\n- Fake Auto Time Zone\n- Fake Available Processors\n- Fake Battery Whitelist\n- Fake Bluetooth Bonded Devices Empty\n- Fake Bluetooth Enabled\n- Fake Brightness Auto Mode\n- Fake Cell Info Empty\n- Fake DTMF Tone Enabled\n- Fake Device Admin\n- Fake Device Idle Mode\n- Fake Doze Always On\n- Fake Fingerprint Hardware\n- Fake Font Scale\n- Fake Location Accuracy\n- Fake Memory Class\n- Fake NFC Enabled\n- Fake Notification Listener\n- Fake Notification Policy Access\n- Fake Online State\n- Fake Pointer Location\n- Fake Screen Timeout\n- Fake Show Touches\n- Fake Sound Effects Enabled\n- Fake Stay On While Plugged\n- Fake Storage Available\n- Fake Store Install Source\n- Fake Usage Access\n- Fake Vibrate When Ringing\n- Fake WiFi Scan Results Empty\n- Fake Write Settings Access\n- Fix Maps on MicroG\n- Force 32-Bit Color\n- Force 5GHz Band Supported\n- Force Android Beam\n- Force App Active\n- Force Battery Health Good\n- Force Battery Present\n- Force Battery Temperature\n- Force Can Install Packages\n- Force Charging Status\n- Force Dark Mode\n- Force Data Capable\n- Force Do Not Disturb Off\n- Force Emulated Storage\n- Force Extract Native Libs\n- Force Google Signed-Out\n- Force Haptics Available\n- Force Hardware Acceleration\n- Force Hardware Layers\n- Force Has System Feature\n- Force Idle Call State\n- Force Ignore Audio Focus\n- Force Landscape / Portrait\n- Force Left-to-Right Layout\n- Force Light Mode\n- Force Max Brightness\n- Force Microphone Unmuted\n- Force Multi-SIM\n- Force Normal Audio Mode\n- Force Overlay Permission\n- Force Picture-in-Picture\n- Force Resizable Activity\n- Force SIM Ready\n- Force SMS Capable\n- Force Screen Interactive\n- Force Single Phone\n- Force Single SIM\n- Force Speakerphone Off\n- Force Speakerphone On\n- Force Storage Non-Removable\n- Force User Unlocked\n- Force Voice Capable\n- Force WiFi P2P Supported\n- Force WiFi Scan Always Available\n- Force Wide Color Gamut\n- Force World Phone\n- Frame Rate Preference (Experimental)\n- GmsCore support (MicroG)\n- Grant All-Files Access\n- Grant WebView Geolocation\n- Graphics API Override (Experimental)\n- Hide Accessibility Services\n- Hide Accessibility Usage\n- Hide Accounts\n- Hide App Ops\n- Hide App Tasks\n- Hide Audio Devices\n- Hide Cell Location\n- Hide Cell Signal\n- Hide Clipboard — Hushfeed Device privacy guard owns clipboard\n- Hide Clipboard Description — Hushfeed Device privacy guard owns clipboard\n- Hide Current Location\n- Hide Data Usage\n- Hide Debugger Connection\n- Hide Default Sensor\n- Hide Device Admins\n- Hide Display Cutout\n- Hide Eavesdropping\n- Hide Hardware Address\n- Hide Input Devices\n- Hide Input Methods\n- Hide Installed Apps\n- Hide Mock Location\n- Hide Navigation Bar\n- Hide Neighboring Cells\n- Hide Network Identity\n- Hide Nfc Adapter\n- Hide Personal Data\n- Hide Query Intents\n- Hide Running Processes\n- Hide Running Services\n- Hide Service State\n- Hide Storage Volumes\n- Hide Stylus Handwriting\n- Hide Title Bar\n- Hide USB Devices\n- Hide Usage Events\n- Hide Usage Stats\n- Hide Wallpaper\n- Ignore Data Saver\n- Ignore GPS Disabled\n- Ignore Location Services Off\n- Ignore Low RAM Device\n- Ignore Power Save Mode\n- Ignore Screen Lock\n- Ignore Touch Exploration\n- Immersive Fullscreen\n- Keep Data on Uninstall\n- Keep Screen On\n- Legacy App Reviver\n- Legacy External Storage\n- Make App Debuggable\n- Nai64Patches Universal Overlay Patch v1.0 (Experimental)\n- Null Play Location\n- Optimize as Game\n- Prefer ANGLE Graphics Driver\n- Preserve App Data\n- Relax Hardware Features\n- Relax Required Libraries\n- Relax Shared Libraries\n- Remove App Icon\n- Remove Backup Restrictions\n- Remove Compatible Screens\n- Remove Hardware Requirements\n- Remove Internet Permission\n- Remove Network Security Config\n- Remove Permissions\n- Remove Play Count Limit\n- Rename App\n- Repair Missing Component Export Flags\n- Report Legacy Storage\n- Report No Cameras\n- Restore Package Visibility\n- Set Install Location\n- Set Profileable\n- Show Navigation Bar\n- Show Search Result Scores\n- Show Status Bar\n- Silence Notification Channels\n- Silence Play Services Errors\n- Skip Consent Popup\n- Skip Rate-Us Prompt\n- Skip Splash Screen (Experimental)\n- Spoof 24-Hour Format\n- Spoof Airplane Mode\n- Spoof Amazon Appstore Availability\n- Spoof Android ID\n- Spoof App Signature\n- Spoof BSSID\n- Spoof Battery Charging State\n- Spoof Battery Level\n- Spoof Bluetooth Audio On\n- Spoof Bluetooth Enabled\n- Spoof Bluetooth Identity\n- Spoof Bluetooth Name\n- Spoof Bluetooth Profile State\n- Spoof Board and Hardware\n- Spoof Build Fingerprint\n- Spoof Build Serial\n- Spoof Build Type and Tags\n- Spoof CPU Architecture\n- Spoof Data State\n- Spoof Developer Options\n- Spoof Device Model\n- Spoof Device Provisioned\n- Spoof Device Software Version\n- Spoof Fixed Location\n- Spoof GPU Info\n- Spoof Group ID Level 1\n- Spoof High Sample Rate\n- Spoof IMEI\n- Spoof ISIM IMPI\n- Spoof Last Known Location — Hushfeed Location access governor owns location\n- Spoof Locale — Hushfeed Region spoof owns locale/timezone\n- Spoof Location Provider\n- Spoof MAC Address\n- Spoof Media Playing\n- Spoof Multi-Window Mode\n- Spoof Network Access Identifier\n- Spoof Network Operator Name\n- Spoof Network Type LTE\n- Spoof Notifications as Enabled\n- Spoof OpenGL ES Version\n- Spoof Play Integrity\n- Spoof Play Services Version\n- Spoof Ringer Mode\n- Spoof SDK Level\n- Spoof SIM Country — Hushfeed SIM spoof owns telephony identity\n- Spoof SIM Operator — Hushfeed SIM spoof owns telephony identity\n- Spoof SIM Operator Name — Hushfeed SIM spoof owns telephony identity\n- Spoof Sensor List\n- Spoof Signature Match\n- Spoof Storage State\n- Spoof Stream Volume\n- Spoof Target SDK\n- Spoof Time Zone — Hushfeed Region spoof owns locale/timezone\n- Spoof UiMode Night State\n- Spoof WebView User Agent\n- Spoof WiFi Enabled\n- Spoof WiFi RSSI\n- Spoof WiFi SSID\n- Spoof Widevine L1\n- Spoof Wired Headset\n- Status Bar Icons\n- Strip BuildConfig DEBUG\n- Strip Package Verifier\n- Strip Translations\n- Support All Screens\n- Tablet Mode\n- Transparent System Bars\n- Treat Network as Unmetered\n- Treat Screen as On\n- Trust User CAs (Config)\n- Trust User Certificates\n- Unlock Max Aspect Ratio\n- Unlock Notification Channels\n- Unlock Playback Speed\n- Unlock Rotation\n- Unmark Test Only\n- Use Display Cutout Area\n- VM Safe Mode\n- WebView Private Mode\n\n</details>\n\n## Permissions\n\n### TikTok 47.0.3\n\n<details>\n<summary>Removed permissions (57)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECEIVE_BOOT_COMPLETED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SCHEDULE_EXACT_ALARM\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_EXACT_ALARM\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n### TikTok 47.1.3\n\n<details>\n<summary>Removed permissions (58)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECEIVE_BOOT_COMPLETED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SCHEDULE_EXACT_ALARM\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_EXACT_ALARM\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.PRF_INTERNAL\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n### TikTok 47.1.4\n\n<details>\n<summary>Removed permissions (58)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECEIVE_BOOT_COMPLETED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SCHEDULE_EXACT_ALARM\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_EXACT_ALARM\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.PRF_INTERNAL\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n## Changelog since previous build\n\n- 78c7d15a fix(checks): mark device log runs instead of clearing a shared phone's buffer\n- fd999285 fix(streak): send to every listed recipient and keep retries per chat\n- 2da7d1fc test(probe): measure app storage by store for growth reports\n- 7c3a46df feat(feed): add independent description and author text sizes\n- a546b75a feat(diagnostics): record patch-time build details in local exports\n\n## Build information\n\n| Item | Value |\n|---|---|\n| TikTok versions | 47.0.3, 47.1.3, 47.1.4 |\n| Architecture | arm64-v8a |\n| Hushfeed | v0.66.0 |\n| Nai64 | v1.1.0 |\n\n## Installation note\n\nThese builds are signed with a custom keystore. Uninstall any existing TikTok (stock or previously patched) before first install; subsequent updates from this workflow install in place.\n",
-    "release_tag": "privacy-tiktok-multi-v0.66.0-20261002-212444",
-    "release_date": "2026-10-02T21:24:45Z",
+    "fingerprint": "8d3289b9cc6393bb6e1ecacfcb7895bf98fd0ba1d0f688fabe6d3d683f94b699",
+    "release_notes": "# TikTok Privacy Build (47.0.3, 47.1.3, 47.1.4)\n\nAutomated privacy-hardened builds.\n\n- Hushfeed v0.66.0 (includes AMOLED dark-theme fix)\n- Nai64 Extra Patches v1.1.0\n- Static manifest permission stripping\n- arm64-v8a only (32-bit libraries stripped)\n\nBase APKs: `stock-tiktok-apk` release, Wake-Old-Hyphen/PAB\n\n## Patches\n\n<details>\n<summary>Hushfeed patches (105/105 enabled)</summary>\n\nEnabled:\n- AMOLED dark theme\n- Advanced downloads\n- Allow Duet and Stitch\n- Allow screenshots and Circle to Search\n- Always show publish date\n- Automatic video advance\n- Block P2P video relay\n- Block author button\n- Block contact list access\n- Block installed app scanning\n- Camera and microphone indicator\n- Change app name\n- Comment publish diagnostics\n- Comment send fix\n- Comment sort controls\n- Comment tools\n- Confirm feed interactions\n- Copy comments without username\n- Custom offline videos limit\n- Device privacy guard\n- Diagnostic tools\n- Disable login requirement\n- Disable screen capture detection\n- Disable telemetry\n- Disable the long press quick share\n- Disable the long press repost\n- Double-tap controls\n- Downloads\n- Drop the animated image cache\n- Enable voice comments\n- Expand activity list\n- Feature Gate Lab\n- Feature Gate Recorder\n- Feed filter\n- Feed tab navigation\n- Feed text sizes\n- Fit the video to the screen\n- Fix Google login\n- Foldable split comment view\n- Follow diagnostics\n- Ghost mode\n- Hide CAPTCHA popups\n- Hide Play Store update offer\n- Hide already seen videos\n- Hide comment popup ads\n- Hide comment typing suggestions\n- Hide feed LIVE button\n- Hide feed follow button\n- Hide feed save button\n- Hide feed search button\n- Hide floating promotions\n- Hide inbox items\n- Hide inbox stories\n- Hide profile shortcuts\n- Hide search suggestions\n- Hide suggested accounts\n- Hide the launcher shortcuts\n- Hide the risk control CAPTCHA\n- Hide video overlays\n- Hold-and-slide 2x lock\n- In-app browser privacy guard\n- Keep a streak going\n- Keep playing in the background\n- Keep the Favorites tab\n- Keep the screen's refresh rate\n- Limit background traffic\n- Location access governor\n- Long-press controls\n- Look like the store app\n- Mute feed videos\n- Network request report\n- Not interested button\n- Notification controls\n- Open external links directly\n- Playback quality\n- Playback speed\n- Region spoof\n- Remember clear display\n- Remove LIVE extras\n- Remove content credential and card scanner assets\n- Remove creation tools\n- Remove unused language packs\n- Repost diagnostics\n- Resource and battery governor\n- Resume videos after scrolling\n- SIM spoof\n- Sanitize sharing links\n- Settings\n- Share sheet tools\n- Show LIVE search\n- Show author region\n- Show the progress bar\n- Show the progress bar thumbnail\n- Skip content warnings\n- Skip the splash ad\n- Skip update checks\n- Stay on the video in full screen\n- Stop on-device AI profiling\n- Stop saving search history\n- Stop video looping\n- Subtitle tools\n- Swipe-left controls\n- Translate comments\n- Use non-personalized search\n- Use system font\n\n</details>\n\n<details>\n<summary>Nai64 Extra Patches (16/432 enabled)</summary>\n\nEnabled:\n- Bypass VPN Detection\n- Disable Crash Reporters\n- Disable Firebase Auto-Init\n- Disable Firebase Performance\n- Disable Remote Config Fetch\n- Disable Root Checks\n- Hide Roaming Status\n- Limit Ad Tracking\n- Remove Ad Services Entries\n- Spoof Phone Number\n- Spoof Play Store Install Source\n- Spoof SIM Serial Number (simSerial=8931084206518391742)\n- Spoof Subscriber ID (subscriberId=204081234567890)\n- Spoof Tracking IDs (spoofAppSetId=00000000-0000-0000-0000-000000000000, spoofFirebaseId=0000000000000000000000, spoofAppSetScope=True)\n- Spoof Voice Mail\n- Strip Exif Location (stripExifLocation=True)\n\nDisabled (yielded to Hushfeed):\n- AMOLED Theme\n- Allow Background Activity\n- Allow Clearing App Data\n- Allow Cleartext Traffic\n- Allow Mixed Content\n- Allow Mobile Downloads\n- Allow Screenshots\n- Allow Text Selection\n- Allow WebView Autoplay\n- Allow WebView File Access\n- Always Allow Biometrics\n- Always Show Scrollbars\n- Apk Junk Cleanup\n- Block APM Suites\n- Block Ad Network Extras\n- Block Analytics Long Tail\n- Block Attribution Extras\n- Block BLE Scan\n- Block Crash Extras\n- Block Data Pipelines\n- Block GMS Tracking\n- Block Huawei Analytics\n- Block Install Referrer\n- Block Legacy Analytics\n- Block Location Trackers\n- Block MoEngage\n- Block PostHog\n- Block Profile Tracking\n- Block Push Ads\n- Block Push Analytics\n- Block Screenshot Detection\n- Block Session Replay\n- Block Snowplow\n- Block TikTok Events\n- Block Yandex Metrica\n- Bypass DND Policy Access\n- Bypass Demo User\n- Bypass Emulator Detection\n- Bypass Forced Updates (Experimental)\n- Bypass Google Play Services Check\n- Bypass Guest User\n- Bypass Hostname Verification\n- Bypass Instant App\n- Bypass Keyguard Secure\n- Bypass License Verification\n- Bypass Linked User\n- Bypass Lock Task Mode\n- Bypass Low-End Device\n- Bypass Managed Profile\n- Bypass OkHttp Pinning\n- Bypass Overlay Detection\n- Bypass Package Suspended\n- Bypass Permission Check\n- Bypass Picture-in-Picture Mode\n- Bypass Play License Check\n- Bypass Safe Mode\n- Bypass System User\n- Bypass Test Environment\n- Bypass User Restricted\n- Bypass WebView SSL Errors\n- Bypass WebView Safe Browsing\n- Change Package Name\n- Change Version Code\n- Change Version Name\n- Classic Back Gesture\n- Clearing Split Metadata\n- Custom Accent Color\n- Custom App Icon\n- Custom App Resolution (Experimental)\n- Custom Navigation Bar Color\n- Custom Startup Dialog\n- Custom Startup Sound\n- Custom Startup Toast\n- Custom Status Bar Color\n- Custom Window Background\n- Deny Permission Checks\n- Disable Activity Transitions\n- Disable Ad SDK Init\n- Disable Analytics Events\n- Disable Animations\n- Disable App Backup\n- Disable App Links Verification\n- Disable Audio Effects\n- Disable Audio Recording\n- Disable Autofill\n- Disable Background Dim\n- Disable Background Sync\n- Disable Bandcamp Tracker\n- Disable Battery Optimization Prompt\n- Disable Bluetooth A2DP\n- Disable Bluetooth Discovering\n- Disable Bluetooth SCO\n- Disable Boot Auto-Start\n- Disable Camera Shutter Sound\n- Disable Clipboard Write\n- Disable Content Capture\n- Disable DTMF Tones\n- Disable Edge-To-Edge Enforcement\n- Disable Elevation Shadows\n- Disable Facebook SDK Auto-Init\n- Disable Fixed Volume\n- Disable Forced Online Checks (Experimental)\n- Disable Game Sounds\n- Disable Google Pay\n- Disable Google Update Check\n- Disable HDR Detection\n- Disable Haptic Feedback\n- Disable Haptic On Scroll\n- Disable Hardware Acceleration\n- Disable Heads-up Notifications\n- Disable Heap Pointer Tagging\n- Disable High Text Contrast\n- Disable Keyboard Sound\n- Disable Location Requests\n- Disable Logcat Logging\n- Disable Music Detection\n- Disable Notification Badges\n- Disable Notification Sound\n- Disable Notification Vibration\n- Disable Notifications\n- Disable Onboarding Overlays\n- Disable Orientation Lock\n- Disable Overscroll Effect\n- Disable Permission Auto-Revoke\n- Disable Popup Keyboard\n- Disable Quiet Mode\n- Disable RTT\n- Disable Ringtone Playback\n- Disable Scrollbars\n- Disable Secure Surfaces\n- Disable Sensors\n- Disable Snackbars\n- Disable Sound Effects\n- Disable StrictMode\n- Disable Support Banners\n- Disable Telemetry — Hushfeed Disable telemetry owns AppLog/AppsFlyer/Firebase screens\n- Disable Text-to-Speech\n- Disable Toasts\n- Disable Vibration\n- Disable Wake Locks\n- Disable WebView Safe Browsing\n- Disable Window Blur\n- Empty Clipboard Report — Hushfeed Device privacy guard owns clipboard\n- Enable Hidden Settings\n- Enable Large Heap\n- Enable Unrestricted Background Work\n- Enable Unrestricted Clipboard Access\n- Enable WebView App Cache\n- Enable WebView Cache\n- Enable WebView Content Access\n- Enable WebView DOM Storage\n- Enable WebView Debugging\n- Enable WebView Geolocation\n- Enable WebView Image Loading\n- Enable WebView Initial Focus\n- Enable WebView JavaScript\n- Enable WebView Offscreen Pre-Raster\n- Enable WebView Popups\n- Enable WebView Save Form Data\n- Enable WebView Save Password\n- Enable WebView Wide Viewport\n- Enable WebView Zoom\n- Enable WebView Zoom Support\n- Ensure Exact Alarm Availability\n- Ensure Internet Permission\n- Ensure Modern Media Permissions\n- Ensure Notification Permission\n- Ensure Storage Permissions\n- Exclude From Recents\n- Export All Activities\n- Fake ADB Enabled\n- Fake Animation Scales\n- Fake Auto Rotate On\n- Fake Auto Time\n- Fake Auto Time Zone\n- Fake Available Processors\n- Fake Battery Whitelist\n- Fake Bluetooth Bonded Devices Empty\n- Fake Bluetooth Enabled\n- Fake Brightness Auto Mode\n- Fake Cell Info Empty\n- Fake DTMF Tone Enabled\n- Fake Device Admin\n- Fake Device Idle Mode\n- Fake Doze Always On\n- Fake Fingerprint Hardware\n- Fake Font Scale\n- Fake Location Accuracy\n- Fake Memory Class\n- Fake NFC Enabled\n- Fake Notification Listener\n- Fake Notification Policy Access\n- Fake Online State\n- Fake Pointer Location\n- Fake Screen Timeout\n- Fake Show Touches\n- Fake Sound Effects Enabled\n- Fake Stay On While Plugged\n- Fake Storage Available\n- Fake Store Install Source\n- Fake Usage Access\n- Fake Vibrate When Ringing\n- Fake WiFi Scan Results Empty\n- Fake Write Settings Access\n- Fix Maps on MicroG\n- Force 32-Bit Color\n- Force 5GHz Band Supported\n- Force Android Beam\n- Force App Active\n- Force Battery Health Good\n- Force Battery Present\n- Force Battery Temperature\n- Force Can Install Packages\n- Force Charging Status\n- Force Dark Mode\n- Force Data Capable\n- Force Do Not Disturb Off\n- Force Emulated Storage\n- Force Extract Native Libs\n- Force Google Signed-Out\n- Force Haptics Available\n- Force Hardware Acceleration\n- Force Hardware Layers\n- Force Has System Feature\n- Force Idle Call State\n- Force Ignore Audio Focus\n- Force Landscape / Portrait\n- Force Left-to-Right Layout\n- Force Light Mode\n- Force Max Brightness\n- Force Microphone Unmuted\n- Force Multi-SIM\n- Force Normal Audio Mode\n- Force Overlay Permission\n- Force Picture-in-Picture\n- Force Resizable Activity\n- Force SIM Ready\n- Force SMS Capable\n- Force Screen Interactive\n- Force Single Phone\n- Force Single SIM\n- Force Speakerphone Off\n- Force Speakerphone On\n- Force Storage Non-Removable\n- Force User Unlocked\n- Force Voice Capable\n- Force WiFi P2P Supported\n- Force WiFi Scan Always Available\n- Force Wide Color Gamut\n- Force World Phone\n- Frame Rate Preference (Experimental)\n- GmsCore support (MicroG)\n- Grant All-Files Access\n- Grant WebView Geolocation\n- Graphics API Override (Experimental)\n- Hide Accessibility Services\n- Hide Accessibility Usage\n- Hide Accounts\n- Hide App Ops\n- Hide App Tasks\n- Hide Audio Devices\n- Hide Cell Location\n- Hide Cell Signal\n- Hide Clipboard — Hushfeed Device privacy guard owns clipboard\n- Hide Clipboard Description — Hushfeed Device privacy guard owns clipboard\n- Hide Current Location\n- Hide Data Usage\n- Hide Debugger Connection\n- Hide Default Sensor\n- Hide Device Admins\n- Hide Display Cutout\n- Hide Eavesdropping\n- Hide Hardware Address\n- Hide Input Devices\n- Hide Input Methods\n- Hide Installed Apps\n- Hide Mock Location\n- Hide Navigation Bar\n- Hide Neighboring Cells\n- Hide Network Identity\n- Hide Nfc Adapter\n- Hide Personal Data\n- Hide Query Intents\n- Hide Running Processes\n- Hide Running Services\n- Hide Service State\n- Hide Storage Volumes\n- Hide Stylus Handwriting\n- Hide Title Bar\n- Hide USB Devices\n- Hide Usage Events\n- Hide Usage Stats\n- Hide Wallpaper\n- Ignore Data Saver\n- Ignore GPS Disabled\n- Ignore Location Services Off\n- Ignore Low RAM Device\n- Ignore Power Save Mode\n- Ignore Screen Lock\n- Ignore Touch Exploration\n- Immersive Fullscreen\n- Keep Data on Uninstall\n- Keep Screen On\n- Legacy App Reviver\n- Legacy External Storage\n- Make App Debuggable\n- Nai64Patches Universal Overlay Patch v1.0 (Experimental)\n- Null Play Location\n- Optimize as Game\n- Prefer ANGLE Graphics Driver\n- Preserve App Data\n- Relax Hardware Features\n- Relax Required Libraries\n- Relax Shared Libraries\n- Remove App Icon\n- Remove Backup Restrictions\n- Remove Compatible Screens\n- Remove Hardware Requirements\n- Remove Internet Permission\n- Remove Network Security Config\n- Remove Permissions\n- Remove Play Count Limit\n- Rename App\n- Repair Missing Component Export Flags\n- Report Legacy Storage\n- Report No Cameras\n- Restore Package Visibility\n- Set Install Location\n- Set Profileable\n- Show Navigation Bar\n- Show Search Result Scores\n- Show Status Bar\n- Silence Notification Channels\n- Silence Play Services Errors\n- Skip Consent Popup\n- Skip Rate-Us Prompt\n- Skip Splash Screen (Experimental)\n- Spoof 24-Hour Format\n- Spoof Airplane Mode\n- Spoof Amazon Appstore Availability\n- Spoof Android ID\n- Spoof App Signature\n- Spoof BSSID\n- Spoof Battery Charging State\n- Spoof Battery Level\n- Spoof Bluetooth Audio On\n- Spoof Bluetooth Enabled\n- Spoof Bluetooth Identity\n- Spoof Bluetooth Name\n- Spoof Bluetooth Profile State\n- Spoof Board and Hardware\n- Spoof Build Fingerprint\n- Spoof Build Serial\n- Spoof Build Type and Tags\n- Spoof CPU Architecture\n- Spoof Data State\n- Spoof Developer Options\n- Spoof Device Model\n- Spoof Device Provisioned\n- Spoof Device Software Version\n- Spoof Fixed Location\n- Spoof GPU Info\n- Spoof Group ID Level 1\n- Spoof High Sample Rate\n- Spoof IMEI\n- Spoof ISIM IMPI\n- Spoof Last Known Location — Hushfeed Location access governor owns location\n- Spoof Locale — Hushfeed Region spoof owns locale/timezone\n- Spoof Location Provider\n- Spoof MAC Address\n- Spoof Media Playing\n- Spoof Multi-Window Mode\n- Spoof Network Access Identifier\n- Spoof Network Operator Name\n- Spoof Network Type LTE\n- Spoof Notifications as Enabled\n- Spoof OpenGL ES Version\n- Spoof Play Integrity\n- Spoof Play Services Version\n- Spoof Ringer Mode\n- Spoof SDK Level\n- Spoof SIM Country — Hushfeed SIM spoof owns telephony identity\n- Spoof SIM Operator — Hushfeed SIM spoof owns telephony identity\n- Spoof SIM Operator Name — Hushfeed SIM spoof owns telephony identity\n- Spoof Sensor List\n- Spoof Signature Match\n- Spoof Storage State\n- Spoof Stream Volume\n- Spoof Target SDK\n- Spoof Time Zone — Hushfeed Region spoof owns locale/timezone\n- Spoof UiMode Night State\n- Spoof WebView User Agent\n- Spoof WiFi Enabled\n- Spoof WiFi RSSI\n- Spoof WiFi SSID\n- Spoof Widevine L1\n- Spoof Wired Headset\n- Status Bar Icons\n- Strip BuildConfig DEBUG\n- Strip Package Verifier\n- Strip Translations\n- Support All Screens\n- Tablet Mode\n- Transparent System Bars\n- Treat Network as Unmetered\n- Treat Screen as On\n- Trust User CAs (Config)\n- Trust User Certificates\n- Unlock Max Aspect Ratio\n- Unlock Notification Channels\n- Unlock Playback Speed\n- Unlock Rotation\n- Unmark Test Only\n- Use Display Cutout Area\n- VM Safe Mode\n- WebView Private Mode\n\n</details>\n\n## Permissions\n\n### TikTok 47.0.3\n\n<details>\n<summary>Removed permissions (57)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECEIVE_BOOT_COMPLETED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SCHEDULE_EXACT_ALARM\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_EXACT_ALARM\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n### TikTok 47.1.3\n\n<details>\n<summary>Removed permissions (58)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECEIVE_BOOT_COMPLETED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SCHEDULE_EXACT_ALARM\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_EXACT_ALARM\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.PRF_INTERNAL\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n### TikTok 47.1.4\n\n<details>\n<summary>Removed permissions (58)</summary>\n\n- android.permission.ACCESS_ADSERVICES_AD_ID\n- android.permission.ACCESS_ADSERVICES_ATTRIBUTION\n- android.permission.ACCESS_COARSE_LOCATION\n- android.permission.ACCESS_FINE_LOCATION\n- android.permission.ACCESS_LOCAL_NETWORK\n- android.permission.ACCESS_MEDIA_LOCATION\n- android.permission.BLUETOOTH\n- android.permission.BLUETOOTH_ADVERTISE\n- android.permission.BLUETOOTH_CONNECT\n- android.permission.BLUETOOTH_SCAN\n- android.permission.CAMERA\n- android.permission.CHANGE_NETWORK_STATE\n- android.permission.CHANGE_WIFI_STATE\n- android.permission.DETECT_SCREEN_CAPTURE\n- android.permission.DETECT_SCREEN_RECORDING\n- android.permission.FOREGROUND_SERVICE_CAMERA\n- android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION\n- android.permission.FOREGROUND_SERVICE_MICROPHONE\n- android.permission.FOREGROUND_SERVICE_PHONE_CALL\n- android.permission.MANAGE_OWN_CALLS\n- android.permission.NFC\n- android.permission.POST_NOTIFICATIONS\n- android.permission.READ_CONTACTS\n- android.permission.READ_MEDIA_AUDIO\n- android.permission.READ_MEDIA_IMAGES\n- android.permission.READ_MEDIA_VIDEO\n- android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n- android.permission.RECEIVE_BOOT_COMPLETED\n- android.permission.RECORD_AUDIO\n- android.permission.REORDER_TASKS\n- android.permission.SCHEDULE_EXACT_ALARM\n- android.permission.SET_WALLPAPER\n- android.permission.SYSTEM_ALERT_WINDOW\n- android.permission.USE_BIOMETRIC\n- android.permission.USE_EXACT_ALARM\n- android.permission.USE_FINGERPRINT\n- android.permission.USE_FULL_SCREEN_INTENT\n- android.permission.VIBRATE\n- com.amazon.device.messaging.permission.RECEIVE\n- com.android.launcher.permission.READ_SETTINGS\n- com.android.vending.BILLING\n- com.google.android.apps.aicore.service.BIND_SERVICE\n- com.google.android.c2dm.permission.RECEIVE\n- com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE\n- com.google.android.gms.permission.AD_ID\n- com.huawei.appmarket.service.commondata.permission.GET_COMMON_DATA\n- com.oplus.ocs.permission.third\n- com.oplus.ocs.permission.third\n- com.orange.update.permission.READ_ATTRIBUTION\n- com.samsung.android.mapsagent.permission.READ_APP_INFO\n- com.sec.android.provider.badge.permission.READ\n- com.sec.android.provider.badge.permission.WRITE\n- com.tiktok.manager.SYS_START_PERMISSION\n- com.tiktok.preload.permission.IDENTIFY\n- com.zhiliao.musically.livewallpaper.permission.wallpaperplugin\n- com.zhiliaoapp.musically.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION\n- com.zhiliaoapp.musically.permission.PRF_INTERNAL\n- com.zhiliaoapp.musically.permission.RECEIVE_ADM_MESSAGE\n\n</details>\n\n<details>\n<summary>Kept permissions (10)</summary>\n\n1. android.permission.ACCESS_NETWORK_STATE\n2. android.permission.ACCESS_WIFI_STATE\n3. android.permission.FOREGROUND_SERVICE\n4. android.permission.FOREGROUND_SERVICE_DATA_SYNC\n5. android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK\n6. android.permission.INTERNET\n7. android.permission.MODIFY_AUDIO_SETTINGS\n8. android.permission.READ_EXTERNAL_STORAGE\n9. android.permission.WAKE_LOCK\n10. android.permission.WRITE_EXTERNAL_STORAGE\n\n</details>\n\n## Changelog since previous build\n\n- 05bc8f23 feat(l10n): translate the settings into Azerbaijani (Refs #77)\n- ef50c828 fix(optimizers): accept an APK split down to one ABI (Refs #43)\n- 3d81c1d9 fix(feed): put the author region on the row that is on screen (Refs #75)\n- 10088770 feat(privacy): add a patch that stops new searches being saved to history\n- 45bd66dd test(utils): wait out a full background queue instead of failing\n\n## Build information\n\n| Item | Value |\n|---|---|\n| TikTok versions | 47.0.3, 47.1.3, 47.1.4 |\n| Architecture | arm64-v8a |\n| Hushfeed | v0.66.0 |\n| Nai64 | v1.1.0 |\n\n## Installation note\n\nThese builds are signed with a custom keystore. Uninstall any existing TikTok (stock or previously patched) before first install; subsequent updates from this workflow install in place.\n",
+    "release_tag": "privacy-tiktok-multi-v0.66.0-20261003-010918",
+    "release_date": "2026-10-03T01:09:19Z",
     "isPreRelease": true
   },
   "wake-old-hyphen:stable": {
@@ -109769,6 +109966,17 @@
             ]
           },
           {
+            "name": "Stop saving search history",
+            "description": "Stops TikTok adding your new searches to the search history it saves on the phone. Searches you already made stay until you delete them, and this doesn't change what TikTok keeps on its servers. Switch: Hushfeed settings > Privacy.",
+            "use": false,
+            "options": [],
+            "compatible_versions": [
+              "47.0.3",
+              "47.1.3",
+              "47.1.4"
+            ]
+          },
+          {
             "name": "Stop video looping",
             "description": "Stops videos at the end instead of replaying them. Switch: Hushfeed settings > App.",
             "use": true,
@@ -109838,8 +110046,8 @@
       }
     ],
     "patches_name": "Hushfeed",
-    "fingerprint": "c9dcb748fd61a50b631b817c0b0a879ca7f0b5ae0b52841e9e43e2f530c1fcab",
-    "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0",
+    "fingerprint": "e4bc4923ef4988196f8ac907f3ebcd826d158e446d5b8af5e5b11a76c75dd910",
+    "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.65.0...v0.66.0",
     "release_tag": "v0.66.0",
     "release_date": "2026-10-01T12:41:23Z",
     "isPreRelease": false
@@ -148519,9 +148727,9 @@
     "bundle": "rookieenough",
     "channel": "latest",
     "repo_url": "https://github.com/RookieEnough/De-Vanced",
-    "created_at": "2026-09-29T19:47:24",
-    "version": "v1.5.0-dev.4",
-    "description": "## [1.5.0-dev.4](https://github.com/RookieEnough/De-Vanced/compare/v1.5.0-dev.3...v1.5.0-dev.4) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** normalize downloads to H.264/AAC-LC in single pass ([432f243](https://github.com/RookieEnough/De-Vanced/commit/432f243f07468e54cf1ca0d3d05c9e87828fbce7)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n",
+    "created_at": "2026-10-02T23:19:45",
+    "version": "v1.5.0",
+    "description": "## [1.5.0](https://github.com/RookieEnough/De-Vanced/compare/v1.4.4...v1.5.0) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* add missing junit to version catalog ([82a7d5c](https://github.com/RookieEnough/De-Vanced/commit/82a7d5ce10c7304a2f66c4c5c57bff279cd38457))\n* **facebook:** match static flag instead of exact access flags in KeepAskedStartTab fingerprint ([c22c02d](https://github.com/RookieEnough/De-Vanced/commit/c22c02d1a0a538736e434b4a32f3435864842f22))\n* **facebook:** normalize downloads to H.264/AAC-LC in single pass ([432f243](https://github.com/RookieEnough/De-Vanced/commit/432f243f07468e54cf1ca0d3d05c9e87828fbce7)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n* **facebook:** prefer H.264 video and AAC audio in download variant selection ([4e8759e](https://github.com/RookieEnough/De-Vanced/commit/4e8759ef71d0bf3657c79ea22a93b2c89bf14977)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n* **facebook:** prevent AMOLED theme recursion crash in Messenger DMs ([c667a13](https://github.com/RookieEnough/De-Vanced/commit/c667a134f22c95e3b52c047f35cff0e64012035b))\n\n### ✨ New Features\n\n* **Facebook:** add full 580 patch set ([7c90029](https://github.com/RookieEnough/De-Vanced/commit/7c9002965f3c30a1d11bd564169e944af9e6edd1))\n",
     "apps": [
       {
         "app_name": "Photoshop Mix",
@@ -149372,10 +149580,10 @@
     ],
     "patches_name": "De-Vanced Patches",
     "fingerprint": "8751faaf54f4fe906ebcae70a31618616c7aa587e7fcfbba2508b41382cdd53d",
-    "release_notes": "## [1.5.0-dev.4](https://github.com/RookieEnough/De-Vanced/compare/v1.5.0-dev.3...v1.5.0-dev.4) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* **facebook:** normalize downloads to H.264/AAC-LC in single pass ([432f243](https://github.com/RookieEnough/De-Vanced/commit/432f243f07468e54cf1ca0d3d05c9e87828fbce7)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n",
-    "release_tag": "v1.5.0-dev.4",
-    "release_date": "2026-09-29T19:47:24Z",
-    "isPreRelease": true
+    "release_notes": "## [1.5.0](https://github.com/RookieEnough/De-Vanced/compare/v1.4.4...v1.5.0) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* add missing junit to version catalog ([82a7d5c](https://github.com/RookieEnough/De-Vanced/commit/82a7d5ce10c7304a2f66c4c5c57bff279cd38457))\n* **facebook:** match static flag instead of exact access flags in KeepAskedStartTab fingerprint ([c22c02d](https://github.com/RookieEnough/De-Vanced/commit/c22c02d1a0a538736e434b4a32f3435864842f22))\n* **facebook:** normalize downloads to H.264/AAC-LC in single pass ([432f243](https://github.com/RookieEnough/De-Vanced/commit/432f243f07468e54cf1ca0d3d05c9e87828fbce7)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n* **facebook:** prefer H.264 video and AAC audio in download variant selection ([4e8759e](https://github.com/RookieEnough/De-Vanced/commit/4e8759ef71d0bf3657c79ea22a93b2c89bf14977)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n* **facebook:** prevent AMOLED theme recursion crash in Messenger DMs ([c667a13](https://github.com/RookieEnough/De-Vanced/commit/c667a134f22c95e3b52c047f35cff0e64012035b))\n\n### ✨ New Features\n\n* **Facebook:** add full 580 patch set ([7c90029](https://github.com/RookieEnough/De-Vanced/commit/7c9002965f3c30a1d11bd564169e944af9e6edd1))\n",
+    "release_tag": "v1.5.0",
+    "release_date": "2026-10-02T23:19:45Z",
+    "isPreRelease": false
   },
   "rookieenough:dev": {
     "bundle": "rookieenough",
@@ -150243,9 +150451,9 @@
     "bundle": "rookieenough",
     "channel": "stable",
     "repo_url": "https://github.com/RookieEnough/De-Vanced",
-    "created_at": "2026-09-20T23:42:11",
-    "version": "v1.4.4",
-    "description": "## [1.4.4](https://github.com/RookieEnough/De-Vanced/compare/v1.4.3...v1.4.4) (2026-09-20)\n\n### 🐛 Bug Fixes\n\n* **Peacock TV:** Restore `Hide ads` patch ([dbd5846](https://github.com/RookieEnough/De-Vanced/commit/dbd584672223ca2d9248657c6069de631f6b2f04))\n",
+    "created_at": "2026-10-02T23:19:45",
+    "version": "v1.5.0",
+    "description": "## [1.5.0](https://github.com/RookieEnough/De-Vanced/compare/v1.4.4...v1.5.0) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* add missing junit to version catalog ([82a7d5c](https://github.com/RookieEnough/De-Vanced/commit/82a7d5ce10c7304a2f66c4c5c57bff279cd38457))\n* **facebook:** match static flag instead of exact access flags in KeepAskedStartTab fingerprint ([c22c02d](https://github.com/RookieEnough/De-Vanced/commit/c22c02d1a0a538736e434b4a32f3435864842f22))\n* **facebook:** normalize downloads to H.264/AAC-LC in single pass ([432f243](https://github.com/RookieEnough/De-Vanced/commit/432f243f07468e54cf1ca0d3d05c9e87828fbce7)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n* **facebook:** prefer H.264 video and AAC audio in download variant selection ([4e8759e](https://github.com/RookieEnough/De-Vanced/commit/4e8759ef71d0bf3657c79ea22a93b2c89bf14977)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n* **facebook:** prevent AMOLED theme recursion crash in Messenger DMs ([c667a13](https://github.com/RookieEnough/De-Vanced/commit/c667a134f22c95e3b52c047f35cff0e64012035b))\n\n### ✨ New Features\n\n* **Facebook:** add full 580 patch set ([7c90029](https://github.com/RookieEnough/De-Vanced/commit/7c9002965f3c30a1d11bd564169e944af9e6edd1))\n",
     "apps": [
       {
         "app_name": "Photoshop Mix",
@@ -150360,21 +150568,138 @@
         "package": "com.facebook.katana",
         "patches": [
           {
-            "name": "Hide 'Sponsored Stories'",
-            "description": "",
+            "name": "AMOLED dark theme",
+            "description": "Makes Facebook's native dark themes use pure-black AMOLED surfaces.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "490.0.0.63.82"
+              "580.0.0.51.74"
             ]
           },
           {
-            "name": "Hide story ads",
-            "description": "Hides the ads in the Facebook app stories.",
+            "name": "Clean Home feed",
+            "description": "Hides Home Reels panels, the Stories tray, and exact recommendation feed units.",
             "use": true,
             "options": [],
             "compatible_versions": [
-              "490.0.0.63.82"
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "De-Vanced Settings",
+            "description": "Adds De-Vanced controls to Facebook Profile Settings.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Disable all ads",
+            "description": "Blocks Facebook sponsored feed units, Stories ads, Reels ads, Marketplace ads, and Instant Games/Audience Network ads.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Disable analytics and telemetry",
+            "description": "Blocks Facebook Analytics2, Falco, Papaya, QPL, XAnalytics, crash/trace uploads, and attribution trackers.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Disable auto refresh",
+            "description": "Keeps the current feed position when you return to Facebook within ten minutes.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Download Media",
+            "description": "Adds a native-styled Download media action to Facebook Reels and Stories menus.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Facebook signature compatibility",
+            "description": "Keeps Facebook first-party navigation working after signing with the established De-Vanced key.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Material You theme",
+            "description": "Tints Facebook's dark theme with the phone's wallpaper palette.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Media quality controls",
+            "description": "Applies De-Vanced resolution choices to Facebook Reels and video Stories.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Messenger install compatibility",
+            "description": "Namespaces Facebook's shared signature permissions so official Messenger installs beside a re-signed Facebook build.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Open Marketplace on launch",
+            "description": "Opens Marketplace when Facebook is started from its launcher icon.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Optimize Facebook",
+            "description": "Suppresses explicit GC stalls, trims extension caches under memory pressure, and reduces render-time reflection.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Picture-in-picture",
+            "description": "Extends Facebook picture-in-picture to every supported video surface.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
+            ]
+          },
+          {
+            "name": "Reels 2x speed",
+            "description": "Adds hold-to-speed and slide-to-lock gestures for Shorts.",
+            "use": true,
+            "options": [],
+            "compatible_versions": [
+              "580.0.0.51.74"
             ]
           }
         ]
@@ -150978,10 +151303,10 @@
       }
     ],
     "patches_name": "De-Vanced Patches",
-    "fingerprint": "8475b7e0d486cad24af0e6b744a65ea473d2bd92df84ae310247f1b0dca6c62e",
-    "release_notes": "## [1.4.4](https://github.com/RookieEnough/De-Vanced/compare/v1.4.3...v1.4.4) (2026-09-20)\n\n### 🐛 Bug Fixes\n\n* **Peacock TV:** Restore `Hide ads` patch ([dbd5846](https://github.com/RookieEnough/De-Vanced/commit/dbd584672223ca2d9248657c6069de631f6b2f04))\n",
-    "release_tag": "v1.4.4",
-    "release_date": "2026-09-20T23:42:11Z",
+    "fingerprint": "e78cf20818bfb5f30a4196581286f71589dd0a4efb63087802b50b10f79ffc58",
+    "release_notes": "## [1.5.0](https://github.com/RookieEnough/De-Vanced/compare/v1.4.4...v1.5.0) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* add missing junit to version catalog ([82a7d5c](https://github.com/RookieEnough/De-Vanced/commit/82a7d5ce10c7304a2f66c4c5c57bff279cd38457))\n* **facebook:** match static flag instead of exact access flags in KeepAskedStartTab fingerprint ([c22c02d](https://github.com/RookieEnough/De-Vanced/commit/c22c02d1a0a538736e434b4a32f3435864842f22))\n* **facebook:** normalize downloads to H.264/AAC-LC in single pass ([432f243](https://github.com/RookieEnough/De-Vanced/commit/432f243f07468e54cf1ca0d3d05c9e87828fbce7)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n* **facebook:** prefer H.264 video and AAC audio in download variant selection ([4e8759e](https://github.com/RookieEnough/De-Vanced/commit/4e8759ef71d0bf3657c79ea22a93b2c89bf14977)), closes [#154](https://github.com/RookieEnough/De-Vanced/issues/154)\n* **facebook:** prevent AMOLED theme recursion crash in Messenger DMs ([c667a13](https://github.com/RookieEnough/De-Vanced/commit/c667a134f22c95e3b52c047f35cff0e64012035b))\n\n### ✨ New Features\n\n* **Facebook:** add full 580 patch set ([7c90029](https://github.com/RookieEnough/De-Vanced/commit/7c9002965f3c30a1d11bd564169e944af9e6edd1))\n",
+    "release_tag": "v1.5.0",
+    "release_date": "2026-10-02T23:19:45Z",
     "isPreRelease": false
   },
   "ggyasin:latest": {

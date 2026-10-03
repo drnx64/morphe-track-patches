@@ -2,10 +2,25 @@
   "bundle": "oyasumi",
   "channel": "dev",
   "repo_url": "https://github.com/dunecache/oyasumi-patches",
-  "created_at": "2026-09-29T16:30:54",
-  "version": "v0.2.1-dev.3",
-  "description": "## [0.2.1-dev.3](https://github.com/dunecache/oyasumi-patches/compare/v0.2.1-dev.2...v0.2.1-dev.3) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* declare only ADM 14.0.39 as a supported target ([40307b4](https://github.com/dunecache/oyasumi-patches/commit/40307b49002e88e11fbec914be1ca1a3a1e8a3f8))\n",
+  "created_at": "2026-10-03T01:09:00",
+  "version": "v0.6.0-dev.7",
+  "description": "## [0.6.0-dev.7](https://github.com/dunecache/oyasumi-patches/compare/v0.6.0-dev.6...v0.6.0-dev.7) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* settings header below status bar with version subtitle ([d04e89c](https://github.com/dunecache/oyasumi-patches/commit/d04e89ced84840b59181e0a02a8593db0639ecfd))\n",
   "apps": [
+    {
+      "app_name": "Djezzy",
+      "package": "com.djezzy.internet",
+      "patches": [
+        {
+          "name": "Force Walk & Win steps to 10000",
+          "description": "Report 10,000 steps to Djezzy's Walk & Win campaign, both on every step-counter event and once when the step stream is first subscribed. The subscribe push is a zero followed by 10,000, because one value cannot both open the counter's accumulation window and jump through it.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.0.9"
+          ]
+        }
+      ]
+    },
     {
       "app_name": "ADM",
       "package": "com.dv.adm",
@@ -38,12 +53,96 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "Pinterest",
+      "package": "com.pinterest",
+      "patches": [
+        {
+          "name": "Disable AppsFlyer tracking",
+          "description": "Neutralize the AppsFlyer attribution SDK, so no state is returned to the external data tracker.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.38.0"
+          ]
+        },
+        {
+          "name": "Disable email confirmation dialog",
+          "description": "Hide the \"Confirm your email\" prompt and related screen, whether in home or settings.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.38.0"
+          ]
+        },
+        {
+          "name": "Disable Google Engage",
+          "description": "Stop Pinterest publishing user actions to Google, so nothing is sent to Snooper, Analytics, Play or Ads.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.38.0"
+          ]
+        },
+        {
+          "name": "Morphe settings entry",
+          "description": "Add the \"Morphe\" entry to the Account Settings list, opening the Morphe settings screen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.38.0"
+          ]
+        },
+        {
+          "name": "Morphe settings screen (label)",
+          "description": "Rename the reused string resource to \"Morphe\" in every shipped language, so the settings entry is identifiable.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.38.0"
+          ]
+        },
+        {
+          "name": "Morphe settings screen (manifest)",
+          "description": "Register the Morphe settings activity in the manifest, with an intent-filter for the morphe:// scheme.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.38.0"
+          ]
+        },
+        {
+          "name": "Neutralize advertising ID",
+          "description": "Return a random advertising ID instead of the real one, so the app has no advertising identifier to hand to Pinterest or to any bundled tracker.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "14.38.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "1DM",
+      "package": "idm.internet.download.manager",
+      "patches": [
+        {
+          "name": "Disable home screen ads",
+          "description": "Keep 1DM's home screen banner from loading, rotating, or rendering, including the built-in \"install 1DM+\" banner ad.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.2"
+          ]
+        }
+      ]
     }
   ],
   "patches_name": "Oyasumi Patches",
-  "fingerprint": "2dbcd24faa2987e87fd47850a077fabd3c80a1e9c46d06bac858d95f7fe3a9a2",
-  "release_notes": "## [0.2.1-dev.3](https://github.com/dunecache/oyasumi-patches/compare/v0.2.1-dev.2...v0.2.1-dev.3) (2026-09-29)\n\n### 🐛 Bug Fixes\n\n* declare only ADM 14.0.39 as a supported target ([40307b4](https://github.com/dunecache/oyasumi-patches/commit/40307b49002e88e11fbec914be1ca1a3a1e8a3f8))\n",
-  "release_tag": "v0.2.1-dev.3",
-  "release_date": "2026-09-29T16:30:54Z",
+  "fingerprint": "7b88f0fdbbc6d25444ecf740466ae93adcde5d7f8916e262b77d7cd7a6675e37",
+  "release_notes": "## [0.6.0-dev.7](https://github.com/dunecache/oyasumi-patches/compare/v0.6.0-dev.6...v0.6.0-dev.7) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* settings header below status bar with version subtitle ([d04e89c](https://github.com/dunecache/oyasumi-patches/commit/d04e89ced84840b59181e0a02a8593db0639ecfd))\n",
+  "release_tag": "v0.6.0-dev.7",
+  "release_date": "2026-10-03T01:09:00Z",
   "isPreRelease": true
 }
