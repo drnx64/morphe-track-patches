@@ -2,10 +2,36 @@
   "bundle": "bartlomiejfornalczyk",
   "channel": "latest",
   "repo_url": "https://github.com/bartlomiejfornalczyk/morphe-patches",
-  "created_at": "2026-10-03T06:36:41",
-  "version": "v1.4.31",
-  "description": "## [1.4.31](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.4.30...v1.4.31) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* resolve crash on start by reverting queryIntentServices edit and securing verify fingerprint ([bda9d45](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/bda9d45d5eff1a5b8bcd3f0754e2625711e01135))\n",
+  "created_at": "2026-10-03T17:01:26",
+  "version": "v1.4.35",
+  "description": "## [1.4.35](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.4.34...v1.4.35) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* **music:** prevent VerifyError in AllowlistManager by safely replacing return values in-place (v1.4.35) ([a7a2f12](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/a7a2f12eb9653c3ee3ce07df46953b5f9075128b))\n",
   "apps": [
+    {
+      "app_name": "YouTube Music (Morphe)",
+      "package": "app.morphe.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Allow external media browser connections",
+          "description": "Allows Google Maps, Android Auto, and third-party media controllers to connect to YouTube Music.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "YouTube Music (ReVanced)",
+      "package": "app.revanced.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Allow external media browser connections",
+          "description": "Allows Google Maps, Android Auto, and third-party media controllers to connect to YouTube Music.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
     {
       "app_name": "Google Maps",
       "package": "com.google.android.apps.maps",
@@ -57,12 +83,21 @@
           ]
         }
       ]
+    },
+    {
+      "app_name": "YouTube Music",
+      "package": "com.google.android.apps.youtube.music",
+      "patches": [
+        {
+          "name": "Allow external media browser connections",
+          "description": "Allows Google Maps, Android Auto, and third-party media controllers to connect to YouTube Music.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
     }
   ],
   "patches_name": "Google Maps Morphe Patches",
-  "fingerprint": "5a92b3fc079a414495ccd2564f078429386fb91ce23af12cc6b11230ace7cec8",
-  "release_notes": "## [1.4.27](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.4.26...v1.4.27) (2026-09-30)\n\n### 🐛 Bug Fixes\n\n* resolve crash on start by keeping loop bytecode intact and safe build call ([dbd2e15](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/dbd2e154a182e40a610f2bc5d5b908b70736ac60))\n",
-  "release_tag": "v1.4.27",
-  "release_date": "2026-09-30T10:04:45Z",
-  "isPreRelease": false
+  "fingerprint": "5877d2d0f3b2b041eff349ce5cd8498d1f078ce0ea4f8c83a1b7276a4abc9ebf"
 }
