@@ -2,8 +2,8 @@
   "bundle": "wake-old-hyphen",
   "channel": "stable",
   "repo_url": "https://github.com/Wake-Old-Hyphen/hushfeed",
-  "created_at": "2026-10-03T03:23:18Z",
-  "version": "0.67.0",
+  "created_at": "2026-10-04T00:18:02Z",
+  "version": "0.67.1",
   "description": "Hushfeed v0.67.0 has 106 patches for global TikTok 47.0.3, 47.1.3 and 47.1.4 (com.zhiliaoapp.musically).\n\nTikTok's \"Videos you might like\" pushes are blocked from the first launch, with a switch under Inbox to let them back. New patches keep new searches out of your history, give feed descriptions and creator names their own text sizes, and hide the shortcuts under a profile's bio. The LIVE feed can be filtered, TikTok's phone benchmark can be stopped, streaks take several people, and the settings come in Azerbaijani.\n\nComments, the author region and long press actions follow the video on screen, the music line hides its song credit, share sheet exclusions stay put, and photo posts save as their original images. See the changelog for the full list.\n\nValidation: 2733 runtime tests passed and 533 patch tests passed locally. Both Android lint checks passed. All 106 patches applied to all three supported APKs with resource and manifest checks. The attached release receipt identifies the exact source and bundle. The music line, share sheet exclusions and photo saves were checked on a Samsung phone running TikTok 47.0.3.\n\nNeeds Morphe Manager 1.33.0 or newer. Refresh the Hushfeed source to update. The .mpp is a patch bundle, not a TikTok APK. Keep the manager's existing signing key when updating.",
   "apps": [
     {
@@ -94,7 +94,7 @@
         },
         {
           "name": "Block author button",
-          "description": "Adds one-tap controls for blocking the creator, hiding them locally and blocking the current sound. A confirmed account block skips to the next video and shows a small Unblock button at the top left for two seconds. The local-hide and sound controls have separate switches. Long press any visible control to move it. Hushfeed keeps it clear of system bars, cutouts and TikTok's bottom tabs when the window changes. A local action shows Undo only after its setting was saved. All controls hide while comments are open. Switch: Hushfeed settings > Feed filter.",
+          "description": "Adds one-tap controls for blocking the creator, hiding them locally and blocking the current sound. A confirmed account block skips to the next video and shows a small Unblock button at the top left for two seconds. The local-hide and sound controls start off and have separate switches, and either one can show without the block control. Long press any visible control to move it. Hushfeed keeps it clear of system bars, cutouts and TikTok's bottom tabs when the window changes. A local action shows Undo only after its setting was saved. All controls hide while comments are open. Switch: Hushfeed settings > Feed filter.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -748,9 +748,14 @@
         },
         {
           "name": "Limit background traffic",
-          "description": "Turns off TikTok's buffer-preload gate and skips its push initialization task. Videos may start buffering later, and TikTok push notifications may stop.",
+          "description": "Turns off TikTok's buffer-preload gate. Videos may start buffering later. Push setup stays on unless Skip push setup is enabled in the patch options.",
           "use": false,
-          "options": [],
+          "options": [
+            {
+              "key": "skipPushSetup",
+              "description": "Can stop TikTok notifications, including messages. Pause won't reverse this change. Repatch with this option off to restore push setup."
+            }
+          ],
           "compatible_versions": [
             "47.0.3",
             "47.1.3",
@@ -1195,9 +1200,9 @@
     }
   ],
   "patches_name": "Hushfeed",
-  "fingerprint": "9ce8f44a688c2d8b67ec897a17e72632116bc0522546b381465384ea9775faae",
-  "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.66.0...v0.67.0\n\n**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.66.0...v0.67.0",
-  "release_tag": "v0.67.0",
-  "release_date": "2026-10-03T03:23:18Z",
+  "fingerprint": "23a23483e1471a0d683c5d4258b273e767d5cbc393f1ba2cfe2217edec1ab031",
+  "release_notes": "**Full Changelog**: https://github.com/Wake-Old-Hyphen/hushfeed/compare/v0.67.0...v0.67.1",
+  "release_tag": "v0.67.1",
+  "release_date": "2026-10-04T00:18:02Z",
   "isPreRelease": false
 }
