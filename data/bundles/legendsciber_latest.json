@@ -2,9 +2,9 @@
   "bundle": "legendsciber",
   "channel": "latest",
   "repo_url": "https://github.com/legendsciber/morphe-patches",
-  "created_at": "2026-10-04T22:12:05",
-  "version": "v1.39.4",
-  "description": "## [1.39.4](https://github.com/legendsciber/morphe-patches/compare/v1.39.3...v1.39.4) (2026-10-04)\n\n### 🐛 Bug Fixes\n\n* **slingdrift:** pass this pointer from x19 in reward stubs ([aeb7e57](https://github.com/legendsciber/morphe-patches/commit/aeb7e57b6fd95d32c2e38017e3843bedc816acad))\n",
+  "created_at": "2026-10-05T00:02:06",
+  "version": "v1.41.1",
+  "description": "## [1.41.1](https://github.com/legendsciber/morphe-patches/compare/v1.41.0...v1.41.1) (2026-10-05)\n\n### 🐛 Bug Fixes\n\n* **hillclimb:** report full IAP balances so purchases are actually granted ([9ec5b77](https://github.com/legendsciber/morphe-patches/commit/9ec5b77354fbc0eefc852715c7203f9d05798957))\n",
   "apps": [
     {
       "app_name": "Extreme Car Driving Simulator",
@@ -74,30 +74,21 @@
       "package": "com.fingersoft.hillclimb",
       "patches": [
         {
-          "name": "Hill Climb Racing Ad Removal",
-          "description": "Completely removes ads: banners and interstitials can never be displayed (CFirebaseAds.showBanners/showInterstitial become no-ops) and ad-free is granted once per app start — loadStore() seeds mAdFree = 1, the native engine's poll grants it and the store's own reset (inappPurchasesProcessed) zeroes the field, so no repeated purchase popups.",
+          "name": "Hill Climb Racing Free IAP",
+          "description": "Every in-app purchase is granted for free: coins, gems, paints, ad-skips, bundles and ad-free are reported as already bought with a full balance, without Google Play billing and without a network connection.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.71.1"
+            "1.72.2"
           ]
         },
         {
-          "name": "Hill Climb Racing Free Store",
-          "description": "Every store item is granted instantly and free: coins, gems, paints, ad-skips, ad-free and bundles, without launching Google Play billing.",
+          "name": "Hill Climb Racing Instant Rewards",
+          "description": "Rewarded video rewards are granted instantly without playing an ad and without a network connection: the engine's own \"video completed\" path runs, so coins, the reward multipliers and every other ad-gated bonus are delivered immediately.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.71.1"
-          ]
-        },
-        {
-          "name": "Hill Climb Racing Instant Rewarded Video Rewards",
-          "description": "Rewarded video ads grant their reward instantly without playing the ad: the native engine receives onVideoStartedSuccess + onVideoCompletedSuccess on the GL thread, exactly as if the video had been watched and completed.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "1.71.1"
+            "1.72.2"
           ]
         }
       ]
@@ -296,9 +287,9 @@
     }
   ],
   "patches_name": "legendsciber's Patches",
-  "fingerprint": "6ad08637f71ac027336dbf6637270c45bcd8bef2a1b019516ea06c49932c6012",
-  "release_notes": "## [1.39.4](https://github.com/legendsciber/morphe-patches/compare/v1.39.3...v1.39.4) (2026-10-04)\n\n### 🐛 Bug Fixes\n\n* **slingdrift:** pass this pointer from x19 in reward stubs ([aeb7e57](https://github.com/legendsciber/morphe-patches/commit/aeb7e57b6fd95d32c2e38017e3843bedc816acad))\n",
-  "release_tag": "v1.39.4",
-  "release_date": "2026-10-04T22:12:05Z",
+  "fingerprint": "a330a538dc68160e53c36390d3ec752940b4a53d8db87575f199a2a9a9b360b3",
+  "release_notes": "## [1.41.1](https://github.com/legendsciber/morphe-patches/compare/v1.41.0...v1.41.1) (2026-10-05)\n\n### 🐛 Bug Fixes\n\n* **hillclimb:** report full IAP balances so purchases are actually granted ([9ec5b77](https://github.com/legendsciber/morphe-patches/commit/9ec5b77354fbc0eefc852715c7203f9d05798957))\n",
+  "release_tag": "v1.41.1",
+  "release_date": "2026-10-05T00:02:06Z",
   "isPreRelease": false
 }
