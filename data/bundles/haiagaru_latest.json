@@ -2,9 +2,9 @@
   "bundle": "haiagaru",
   "channel": "latest",
   "repo_url": "https://github.com/areteruhiro/Haiagaru-Morphe",
-  "created_at": "2026-10-05T00:08:42",
-  "version": "1.6.10",
-  "description": "# Haiagaru 1.6.10 (Pre-release)\n\n## 1.6.9からの修正\n\n- ChMate 0.8.10.191 devで、スレを開くとクラッシュする問題を修正しました。広告行の補正処理がフィルター用の命令を誤って書き換え、レス一覧の読み込み時に`VerifyError`が発生していました。\n- 広告行の補正では元の戻り値・引数・フィルター処理を保持するように変更しました。同じ補正処理を使う226 devについても、元の型チェックを保持することを検証しています。\n- 1.6.9の「未読をすべて0にする」実行後の新着バッジ更新修正は引き続き含まれます。\n\n## 配布について\n\nAndroid版Morphe向けMPPです。1.6.9を適用済みの場合も、元のAPKへ1.6.10を適用して更新してください。\n\n191・226へのパッチ適用と、元の命令・戻り値を保持する回帰テストを通過しています。191修正版はエミュレータにインストール済みですが、スレ表示の動作確認は未完了です。\n\nよろしければ[GitHubのStar](https://github.com/areteruhiro/Haiagaru-Morphe)だけでもお願いします。励みになります。開発をご支援いただける場合は[READMEの寄付案内](https://github.com/areteruhiro/Haiagaru-Morphe#寄付)をご覧ください。\n",
+  "created_at": "2026-10-05T12:01:27",
+  "version": "1.6.11",
+  "description": "# Haiagaru 1.6.11 (Pre-release)\n\n## 1.6.10からの変更\n\n- 任意の有効なパッケージ名でパッチできるよう検証条件を修正。アプリ名変更後に起動時のクラス名復号が失敗する問題も修正しました。\n- クラス名復号に使うパッケージ名の文字・長さだけを純正ChMateの値に固定し、通常のパッケージ名参照への影響を限定しました。\n- 191 devのフィルター行を隠した際に残る余白を抑制し、フィルター画面の「画像」長押しから画像一覧を開けるよう改善しました。\n- 必死チェッカー／Kyodemoのインライン表示でスタイルが適用されないケースを修正しました。\n- 0.8.10.243 devは一部機能が未実装のため非推奨です（パッチ適用自体は可能です）。\n\n## 検証\n\n- 191 dev、226 dev、241、242 dev、243 devの各APKでMPP適用に成功しました。\n- 191 devはXIG05へインストールし、HomeActivityの起動を確認しました。\n- 191 devで指定された任意パッケージ名を使ったパッチ適用・起動も確認しました。\n- 画面内テーマJavaScriptの構文・配色テストを実行しました。\n\nAndroid版Morphe向けMPPです。更新時は元のChMate APKへパッチを適用してください。プレリリースのため、事前バックアップを推奨します。\n\nMPP SHA-256: `B6621AFB731A969187C6CEA3C332B5B2C9968CBEB4398CCD59F1CCBAFDFC1B2E`\n\nよろしければ[GitHubのStar](https://github.com/areteruhiro/Haiagaru-Morphe)だけでもお願いします。励みになります。開発をご支援いただける場合は[READMEの寄付案内](https://github.com/areteruhiro/Haiagaru-Morphe#寄付)をご覧ください。\n",
   "apps": [
     {
       "app_name": "ChMate",
