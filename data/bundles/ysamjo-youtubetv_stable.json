@@ -1,0 +1,71 @@
+{
+  "bundle": "ysamjo-youtubetv",
+  "channel": "stable",
+  "repo_url": "https://github.com/ysamjo/ysamjo-youtubetv-patches",
+  "created_at": "2026-10-04T22:07:07",
+  "version": "v1.3.0",
+  "description": "## [1.3.0](https://github.com/ysamjo/ysamjo-youtubetv-patches/compare/v1.2.0...v1.3.0) (2026-10-04)\n\n### ✨ New Features\n\n* MOD-Kennzeichnung für TizenTube-Icon und -Banner ([fbe24db](https://github.com/ysamjo/ysamjo-youtubetv-patches/commit/fbe24dbdaf87568eaf3a9aa97fc0d6d1556e0c84))\n",
+  "apps": [
+    {
+      "app_name": "YouTube for Android TV",
+      "package": "com.google.android.youtube.tv",
+      "patches": [
+        {
+          "name": "Cobalt-Start-URL ändern",
+          "description": "Schreibt die Meta-Data 'cobalt.APP_URL' in der AndroidManifest.xml um. Sie entscheidet, welche URL die Cobalt-Engine beim Start lädt. Damit lässt sich ein filterndes Frontend ansteuern, das eine veränderte Leanback-Web-App ausliefert und Werbung entfernt, ohne die native Engine anzufassen. Die serienmäßige Startprüfung blockiert fremde URLs nicht.",
+          "use": false,
+          "options": [
+            {
+              "key": "startupUrl",
+              "description": "URL, die die Cobalt-Engine beim Start lädt. Original ist https://www.youtube.com/tv. Muss eine http(s)-URL sein."
+            }
+          ],
+          "compatible_versions": [
+            "7.11.300",
+            "7.25.302"
+          ]
+        },
+        {
+          "name": "Werbe-Blocker-Userscript einspritzen",
+          "description": "Spritzt ein JavaScript-Userscript in die Leanback-Web-App ein, die Cobalt von youtube.com/tv lädt — dort liegt die Werbe-Pipeline tatsächlich. Das Skript entfernt Werbeplatzierungen aus den InnerTube-Antworten, bevor die App sie auswertet. Geprüft auf einem Google TV Streamer; die Payload greift nachweislich zu.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "7.11.300",
+            "7.25.302"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "TizenTube",
+      "package": "io.gh.reisxd.tizentube.cobalt",
+      "patches": [
+        {
+          "name": "MOD-Kennzeichnung für Icon und Banner",
+          "description": "Ersetzt Icon und Banner der App durch ein YouTube-Logo mit MOD-Aufkleber. Auf Android TV zeigt der Launcher den Banner, deshalb wird beides getauscht. Nur für TizenTube — die Stock-App behält ihr eigenes Artwork.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.2"
+          ]
+        },
+        {
+          "name": "Werbe-Blocker-Userscript einspritzen",
+          "description": "Spritzt ein JavaScript-Userscript in die Leanback-Web-App ein, die Cobalt von youtube.com/tv lädt — dort liegt die Werbe-Pipeline tatsächlich. Das Skript entfernt Werbeplatzierungen aus den InnerTube-Antworten, bevor die App sie auswertet. Geprüft auf einem Google TV Streamer; die Payload greift nachweislich zu.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "2.0.2"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "ysamjo YouTube TV Patches",
+  "fingerprint": "36c378abbe383fd4a5dee5e372e8fe94666541320536fedb99fe21b18cb0da45",
+  "release_notes": "## [1.3.0](https://github.com/ysamjo/ysamjo-youtubetv-patches/compare/v1.2.0...v1.3.0) (2026-10-04)\n\n### ✨ New Features\n\n* MOD-Kennzeichnung für TizenTube-Icon und -Banner ([fbe24db](https://github.com/ysamjo/ysamjo-youtubetv-patches/commit/fbe24dbdaf87568eaf3a9aa97fc0d6d1556e0c84))\n",
+  "release_tag": "v1.3.0",
+  "release_date": "2026-10-04T22:07:07Z",
+  "isPreRelease": false
+}
