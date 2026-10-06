@@ -22,10 +22,20 @@
                 "description": "Rewarded video rewards are granted instantly without playing an ad and without a network connection: the engine's own \"video completed\" path runs, so coins, the reward multipliers and every other ad-gated bonus are delivered immediately."
               }
             ],
-            "patches_modified": []
+            "patches_modified": [
+              {
+                "name": "Hill Climb Racing Instant Rewarded Video Rewards",
+                "description": "Rewarded ads pay out instantly: no video plays, the engine receives the started and completed callbacks straight away so the reward is granted offline too.",
+                "previous_description": "Rewarded ads pay out instantly: no video plays, the engine is told a rewarded ad is available and receives the started and completed callbacks straight away, so every reward is granted offline too.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
           },
           "scan_numbers": [
-            1
+            1,
+            2
           ]
         }
       ],
@@ -35,7 +45,7 @@
         "VERSION BUMP"
       ],
       "previous_version": "v1.41.2",
-      "new_version": "v1.41.7",
+      "new_version": "v1.41.9",
       "avatarUrl": "",
       "bundleImageUrl": ""
     },
@@ -61,10 +71,20 @@
                 "description": "Rewarded video rewards are granted instantly without playing an ad and without a network connection: the engine's own \"video completed\" path runs, so coins, the reward multipliers and every other ad-gated bonus are delivered immediately."
               }
             ],
-            "patches_modified": []
+            "patches_modified": [
+              {
+                "name": "Hill Climb Racing Instant Rewarded Video Rewards",
+                "description": "Rewarded ads pay out instantly: no video plays, the engine receives the started and completed callbacks straight away so the reward is granted offline too.",
+                "previous_description": "Rewarded ads pay out instantly: no video plays, the engine is told a rewarded ad is available and receives the started and completed callbacks straight away, so every reward is granted offline too.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
           },
           "scan_numbers": [
-            1
+            1,
+            2
           ]
         }
       ],
@@ -74,7 +94,7 @@
         "VERSION BUMP"
       ],
       "previous_version": "v1.41.2",
-      "new_version": "v1.41.7",
+      "new_version": "v1.41.9",
       "avatarUrl": "",
       "bundleImageUrl": ""
     },
@@ -102,7 +122,8 @@
             ]
           },
           "scan_numbers": [
-            1
+            1,
+            2
           ]
         }
       ],
@@ -112,7 +133,7 @@
         "VERSION BUMP"
       ],
       "previous_version": "v1.9.2-beta.6",
-      "new_version": "v1.9.2-beta.11",
+      "new_version": "v1.9.2-rc.1",
       "avatarUrl": "",
       "bundleImageUrl": ""
     },
@@ -140,7 +161,8 @@
             ]
           },
           "scan_numbers": [
-            1
+            1,
+            2
           ]
         }
       ],
@@ -150,7 +172,7 @@
         "VERSION BUMP"
       ],
       "previous_version": "v1.9.2-beta.6",
-      "new_version": "v1.9.2-beta.11",
+      "new_version": "v1.9.2-rc.1",
       "avatarUrl": "",
       "bundleImageUrl": ""
     },
@@ -1199,6 +1221,1200 @@
       ],
       "previous_version": "v1.1.12",
       "new_version": "v1.2.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "kveld",
+      "channel": "latest",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Gboard Lite",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Disable Cloud Backup",
+                "description": "Disables Android backup for Gboard (allowBackup=false and backup agent removed) so keyboard settings, learned words, and personal dictionary data are never uploaded to Google Drive backups or copied by device-to-device transfer."
+              },
+              {
+                "name": "Disable Play Services Integration",
+                "description": "Makes Gboard's Google Play services availability check always report SERVICE_DISABLED, so GMS-backed code paths (Clearcut logging, Phenotype, account sync, Google Help feedback) are skipped at the source instead of being attempted."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Hardened Intent Security",
+                "description": "Enables Gboard internal external intent protection against unauthorized intent hijacking and removes the exported, permissionless web debug bridge content provider.",
+                "previous_description": "Enables Gboard internal external intent protection against unauthorized intent hijacking.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Direct Message Declutter",
+                "description": "Removes visual clutter in direct messages and chat list, including the call button, reaction tray, message forward button, camera icons, input action buttons, try effect button, and sticker reply suggestions."
+              },
+              {
+                "name": "Disable HDR Video Playback",
+                "description": "Forces the video playback engine to select standard SDR bitrates (BT.709/sRGB) instead of HDR (HDR10/PQ/HLG), preventing blinding screen brightness spikes and display thermal throttling while preserving smooth playback."
+              },
+              {
+                "name": "Fix Spotify Login",
+                "description": "Restores the 'Add to Spotify' music button after patching by routing the Spotify app sign-in, which rejects the modified APK signature, through Spotify's Web-based OAuth."
+              },
+              {
+                "name": "Friends Feed Strict Mutuals",
+                "description": "Filters out suggested accounts, recommended videos, and non-mutual profiles (such as 'People you may know') from the Friends feed so it only plays videos from accounts you mutually follow."
+              },
+              {
+                "name": "Popups & Prompts Suppressor",
+                "description": "Suppresses intrusive popups, dialogs, and modal prompts, including 'Follow your friends' dialogs, contacts sync overlays, multi-account notification guides, 2SV security checkup modals, PopLayer promotional sheets, live stream teaser bubbles, sticker recommendations, and DM streak expiration warnings."
+              },
+              {
+                "name": "System Font",
+                "description": "Forces TikTok to use the Android system font instead of bundled proprietary TikTokSans fonts."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Comment Customizer",
+                "description": "Customizes TikTok's comment section, including native sort controls, clean text copying, disabling suggested emojis bar, hiding comment quick actions, hiding in-comment surveys and feedback cards, hiding profile photo story rings, enabling voice comments, and automatic comment translation.",
+                "previous_description": "Customizes TikTok's comment section, including native sort controls, clean text copying, disabling suggested emojis bar, enabling voice comments, and automatic comment translation.",
+                "changes": [
+                  "description updated",
+                  "options: +3 options"
+                ]
+              },
+              {
+                "name": "Disable Feed Long-Press Actions",
+                "description": "Disables long-press action gestures on feed buttons, including Like to repost, Share to quick DMs, and Comment to quick emojis.",
+                "changes": [
+                  "disabled"
+                ]
+              },
+              {
+                "name": "Feed Bloat & Distraction Blocker",
+                "description": "Removes non-video clutter and floating ad widgets from the For You, Following, and Friends feeds, including Touchpoint Rewards pendants, floating ad stickers, suggested friend cards, mini-games, CapCut/template creation prompts, memories ('On This Day'), community/topic cards, post-video surveys and evaluation questionnaires, mini-drama paywalls, and in-feed search recommendations/interest cards.",
+                "previous_description": "Removes non-video clutter and floating ad widgets from the For You, Following, and Friends feeds, including Touchpoint Rewards pendants, floating ad stickers, suggested friend cards, mini-games, CapCut/template creation prompts, memories ('On This Day'), surveys, mini-drama paywalls, and in-feed search recommendations/interest cards.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Feed Interface Declutter",
+                "description": "Customizes and cleans feed video overlay elements, including the full screen button, repost pill, video descriptions, profile photo follow badges, story rings, playlist bottom bars, save buttons, and music discs.",
+                "previous_description": "Customizes and cleans feed video overlay elements, including the repost pill, video descriptions, profile photo follow badges, story rings, playlist bottom bars, save buttons, and music discs.",
+                "changes": [
+                  "description updated",
+                  "disabled",
+                  "options: +1 option, ~1 option"
+                ]
+              },
+              {
+                "name": "Hide Inbox Promos & Alerts",
+                "description": "Hides promotional banners, streak mascot cards, contact sync suggestions, friend recommendations, and migration guide tooltips in the inbox and direct messages.",
+                "changes": [
+                  "options: ~1 option"
+                ]
+              },
+              {
+                "name": "Hide Inbox Story & Status Tray",
+                "description": "Hides the horizontal story, notes, and status tray (Skylight) displayed at the top of direct messages and the inbox.",
+                "changes": [
+                  "disabled"
+                ]
+              },
+              {
+                "name": "Hide Seen Videos",
+                "description": "Filters previously watched videos from incoming For You feed batches.",
+                "changes": [
+                  "enabled"
+                ]
+              },
+              {
+                "name": "Navigation & Header Declutter",
+                "description": "Removes clutter from the feed navigation and top header bar, including the Nearby feed tab, Community (Explore) tab, top-left LIVE broadcast button, central '+' create content button, in-video bottom search suggestion bar, friend profile photo previews on the bottom Friends tab, and unread notification badges on the bottom Messages (Inbox) tab.",
+                "previous_description": "Removes clutter from the feed navigation and top header bar, including the Nearby feed tab, Community (Explore) tab, top-left LIVE broadcast button, central '+' create content button, and in-video bottom search suggestion bar.",
+                "changes": [
+                  "description updated",
+                  "options: +2 options"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
+      "patches_name": "kveld9 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v2.4.0",
+      "new_version": "v2.5.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "kveld",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Gboard Lite",
+          "package": "com.google.android.inputmethod.latin",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Disable Cloud Backup",
+                "description": "Disables Android backup for Gboard (allowBackup=false and backup agent removed) so keyboard settings, learned words, and personal dictionary data are never uploaded to Google Drive backups or copied by device-to-device transfer."
+              },
+              {
+                "name": "Disable Play Services Integration",
+                "description": "Makes Gboard's Google Play services availability check always report SERVICE_DISABLED, so GMS-backed code paths (Clearcut logging, Phenotype, account sync, Google Help feedback) are skipped at the source instead of being attempted."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Hardened Intent Security",
+                "description": "Enables Gboard internal external intent protection against unauthorized intent hijacking and removes the exported, permissionless web debug bridge content provider.",
+                "previous_description": "Enables Gboard internal external intent protection against unauthorized intent hijacking.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "TikTok",
+          "package": "com.zhiliaoapp.musically",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Direct Message Declutter",
+                "description": "Removes visual clutter in direct messages and chat list, including the call button, reaction tray, message forward button, camera icons, input action buttons, try effect button, and sticker reply suggestions."
+              },
+              {
+                "name": "Disable HDR Video Playback",
+                "description": "Forces the video playback engine to select standard SDR bitrates (BT.709/sRGB) instead of HDR (HDR10/PQ/HLG), preventing blinding screen brightness spikes and display thermal throttling while preserving smooth playback."
+              },
+              {
+                "name": "Fix Spotify Login",
+                "description": "Restores the 'Add to Spotify' music button after patching by routing the Spotify app sign-in, which rejects the modified APK signature, through Spotify's Web-based OAuth."
+              },
+              {
+                "name": "Friends Feed Strict Mutuals",
+                "description": "Filters out suggested accounts, recommended videos, and non-mutual profiles (such as 'People you may know') from the Friends feed so it only plays videos from accounts you mutually follow."
+              },
+              {
+                "name": "Popups & Prompts Suppressor",
+                "description": "Suppresses intrusive popups, dialogs, and modal prompts, including 'Follow your friends' dialogs, contacts sync overlays, multi-account notification guides, 2SV security checkup modals, PopLayer promotional sheets, live stream teaser bubbles, sticker recommendations, and DM streak expiration warnings."
+              },
+              {
+                "name": "System Font",
+                "description": "Forces TikTok to use the Android system font instead of bundled proprietary TikTokSans fonts."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Comment Customizer",
+                "description": "Customizes TikTok's comment section, including native sort controls, clean text copying, disabling suggested emojis bar, hiding comment quick actions, hiding in-comment surveys and feedback cards, hiding profile photo story rings, enabling voice comments, and automatic comment translation.",
+                "previous_description": "Customizes TikTok's comment section, including native sort controls, clean text copying, disabling suggested emojis bar, enabling voice comments, and automatic comment translation.",
+                "changes": [
+                  "description updated",
+                  "options: +3 options"
+                ]
+              },
+              {
+                "name": "Disable Feed Long-Press Actions",
+                "description": "Disables long-press action gestures on feed buttons, including Like to repost, Share to quick DMs, and Comment to quick emojis.",
+                "changes": [
+                  "disabled"
+                ]
+              },
+              {
+                "name": "Feed Bloat & Distraction Blocker",
+                "description": "Removes non-video clutter and floating ad widgets from the For You, Following, and Friends feeds, including Touchpoint Rewards pendants, floating ad stickers, suggested friend cards, mini-games, CapCut/template creation prompts, memories ('On This Day'), community/topic cards, post-video surveys and evaluation questionnaires, mini-drama paywalls, and in-feed search recommendations/interest cards.",
+                "previous_description": "Removes non-video clutter and floating ad widgets from the For You, Following, and Friends feeds, including Touchpoint Rewards pendants, floating ad stickers, suggested friend cards, mini-games, CapCut/template creation prompts, memories ('On This Day'), surveys, mini-drama paywalls, and in-feed search recommendations/interest cards.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Feed Interface Declutter",
+                "description": "Customizes and cleans feed video overlay elements, including the full screen button, repost pill, video descriptions, profile photo follow badges, story rings, playlist bottom bars, save buttons, and music discs.",
+                "previous_description": "Customizes and cleans feed video overlay elements, including the repost pill, video descriptions, profile photo follow badges, story rings, playlist bottom bars, save buttons, and music discs.",
+                "changes": [
+                  "description updated",
+                  "disabled",
+                  "options: +1 option, ~1 option"
+                ]
+              },
+              {
+                "name": "Hide Inbox Promos & Alerts",
+                "description": "Hides promotional banners, streak mascot cards, contact sync suggestions, friend recommendations, and migration guide tooltips in the inbox and direct messages.",
+                "changes": [
+                  "options: ~1 option"
+                ]
+              },
+              {
+                "name": "Hide Inbox Story & Status Tray",
+                "description": "Hides the horizontal story, notes, and status tray (Skylight) displayed at the top of direct messages and the inbox.",
+                "changes": [
+                  "disabled"
+                ]
+              },
+              {
+                "name": "Hide Seen Videos",
+                "description": "Filters previously watched videos from incoming For You feed batches.",
+                "changes": [
+                  "enabled"
+                ]
+              },
+              {
+                "name": "Navigation & Header Declutter",
+                "description": "Removes clutter from the feed navigation and top header bar, including the Nearby feed tab, Community (Explore) tab, top-left LIVE broadcast button, central '+' create content button, in-video bottom search suggestion bar, friend profile photo previews on the bottom Friends tab, and unread notification badges on the bottom Messages (Inbox) tab.",
+                "previous_description": "Removes clutter from the feed navigation and top header bar, including the Nearby feed tab, Community (Explore) tab, top-left LIVE broadcast button, central '+' create content button, and in-video bottom search suggestion bar.",
+                "changes": [
+                  "description updated",
+                  "options: +2 options"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
+      "patches_name": "kveld9 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v2.4.0",
+      "new_version": "v2.5.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "zeldrisho",
+      "channel": "latest",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Zalo",
+          "package": "com.zing.zalo",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Bypass Zalo Drive Contacts permission gate",
+                "description": "Uses Android's account picker for Drive photo restore without requesting Contacts/account-list permission. Contacts remain protected by Android and are not read by this bypass."
+              },
+              {
+                "name": "Enable avatar saving",
+                "description": "Restores the “Save photo” action for avatars opened from a profile and allows screenshots. Other Zalo screenshot protections are unchanged."
+              },
+              {
+                "name": "Enable profile cover saving",
+                "description": "Restores the “Save photo” action and allows screenshots for profile cover photos. Other viewer entry points are unchanged."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Change Zalo package name",
+                "description": "Changes Zalo's package name so a clone can be installed beside stock Zalo, including package-owned provider references used after login. Google Drive sign-in with the microG Drive support patch works for the renamed clone; other package- and certificate-bound login, push, sharing, and deep links may be affected.",
+                "previous_description": "Changes Zalo's package name so a clone can be installed beside stock Zalo, including package-owned provider references used after login. WARNING: package- and certificate-bound login, push, sharing, deep links, and backup may not work with the renamed application.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Suppress outbound seen status",
+                "description": "Prevents others from seeing when you read their messages while keeping incoming seen-status display enabled; delivery acknowledgements and message transport are unchanged.",
+                "previous_description": "Stops Zalo from sending seen-status packets without changing message delivery or incoming status rendering.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "microG Drive support",
+                "description": "Adds Zalo launch/provider checks and redirects Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). Preserves the clone's actual caller identity; MicroG manifest metadata supplies the upstream Zalo identity.",
+                "previous_description": "Adds Zalo launch/provider checks and redirects Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). Initial photo restore and the complete backup/restore cycle were device-validated on Zalo 26.08.01.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/zeldrisho/morphe-patches",
+      "patches_name": "Zeldris Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.7.2",
+      "new_version": "v1.8.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "zeldrisho",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Zalo",
+          "package": "com.zing.zalo",
+          "badge_type": "MAJOR UPDATE",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Bypass Zalo Drive Contacts permission gate",
+                "description": "Uses Android's account picker for Drive photo restore without requesting Contacts/account-list permission. Contacts remain protected by Android and are not read by this bypass."
+              },
+              {
+                "name": "Enable avatar saving",
+                "description": "Restores the “Save photo” action for avatars opened from a profile and allows screenshots. Other Zalo screenshot protections are unchanged."
+              },
+              {
+                "name": "Enable profile cover saving",
+                "description": "Restores the “Save photo” action and allows screenshots for profile cover photos. Other viewer entry points are unchanged."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Change Zalo package name",
+                "description": "Changes Zalo's package name so a clone can be installed beside stock Zalo, including package-owned provider references used after login. Google Drive sign-in with the microG Drive support patch works for the renamed clone; other package- and certificate-bound login, push, sharing, and deep links may be affected.",
+                "previous_description": "Changes Zalo's package name so a clone can be installed beside stock Zalo, including package-owned provider references used after login. WARNING: package- and certificate-bound login, push, sharing, deep links, and backup may not work with the renamed application.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "Suppress outbound seen status",
+                "description": "Prevents others from seeing when you read their messages while keeping incoming seen-status display enabled; delivery acknowledgements and message transport are unchanged.",
+                "previous_description": "Stops Zalo from sending seen-status packets without changing message delivery or incoming status rendering.",
+                "changes": [
+                  "description updated"
+                ]
+              },
+              {
+                "name": "microG Drive support",
+                "description": "Adds Zalo launch/provider checks and redirects Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). Preserves the clone's actual caller identity; MicroG manifest metadata supplies the upstream Zalo identity.",
+                "previous_description": "Adds Zalo launch/provider checks and redirects Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). Initial photo restore and the complete backup/restore cycle were device-validated on Zalo 26.08.01.",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/zeldrisho/morphe-patches",
+      "patches_name": "Zeldris Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.7.2",
+      "new_version": "v1.8.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "latest",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Grimvalor",
+          "package": "com.direlight.grimvalor",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "Into the Dead",
+          "package": "com.sidheinteractive.sif.dr",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Ad Removal & Instant Boost Rewards",
+                "description": "Removes all ads (interstitials, banners, app-open) and grants rewarded-video perk boosts instantly on tap (no ad watch) using the correct reward name PERKS_BOOST, verified against a real rewarded event."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Into the Dead 2 Ad Removal & Instant Boost Rewards",
+                "description": "Removes all ads (interstitials, banners, app-open) and grants rewarded-video perk boosts instantly on tap (no ad watch) using the correct reward name PERKS_BOOST, verified against a real rewarded event."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Into the Dead Billing Bypass",
+                "description": "Unlocks all in-app purchases for free and bypasses SHA1withRSA receipt verification: every store item is granted instantly without launching the Google Play payment dialog, and any fabricated receipt is accepted.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+      "patches_name": "byehi98 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.39.0",
+      "new_version": "v1.40.0-dev.1",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Grimvalor",
+          "package": "com.direlight.grimvalor",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "Into the Dead",
+          "package": "com.sidheinteractive.sif.dr",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Ad Removal & Instant Boost Rewards",
+                "description": "Removes all ads (interstitials, banners, app-open) and grants rewarded-video perk boosts instantly on tap (no ad watch) using the correct reward name PERKS_BOOST, verified against a real rewarded event."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Into the Dead 2 Ad Removal & Instant Boost Rewards",
+                "description": "Removes all ads (interstitials, banners, app-open) and grants rewarded-video perk boosts instantly on tap (no ad watch) using the correct reward name PERKS_BOOST, verified against a real rewarded event."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Into the Dead Billing Bypass",
+                "description": "Unlocks all in-app purchases for free and bypasses SHA1withRSA receipt verification: every store item is granted instantly without launching the Google Play payment dialog, and any fabricated receipt is accepted.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+      "patches_name": "byehi98 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.39.0-dev.1",
+      "new_version": "v1.40.0-dev.1",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "okish-morphe",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Into the Dead",
+          "package": "com.sidheinteractive.sif.dr",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Ad Removal & Instant Boost Rewards",
+                "description": "Removes all ads (interstitials, banners, app-open) and grants rewarded-video perk boosts instantly on tap (no ad watch) using the correct reward name PERKS_BOOST, verified against a real rewarded event."
+              }
+            ],
+            "patches_removed": [
+              {
+                "name": "Into the Dead 2 Ad Removal & Instant Boost Rewards",
+                "description": "Removes all ads (interstitials, banners, app-open) and grants rewarded-video perk boosts instantly on tap (no ad watch) using the correct reward name PERKS_BOOST, verified against a real rewarded event."
+              }
+            ],
+            "patches_modified": [
+              {
+                "name": "Into the Dead Billing Bypass",
+                "description": "Unlocks all in-app purchases for free and bypasses SHA1withRSA receipt verification: every store item is granted instantly without launching the Google Play payment dialog, and any fabricated receipt is accepted.",
+                "changes": [
+                  "versions: +1 version, -1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/byehi98/okish-morphe-patches",
+      "patches_name": "byehi98 Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.39.0",
+      "new_version": "v1.39.1",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "stylus",
+      "channel": "latest",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Telegram (web version)",
+          "package": "org.telegram.messenger.web",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/ch3thanhs/stylus",
+      "patches_name": "Stylus",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.6.0",
+      "new_version": "v1.7.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "stylus",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Telegram (web version)",
+          "package": "org.telegram.messenger.web",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/ch3thanhs/stylus",
+      "patches_name": "Stylus",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.6.0-dev.2",
+      "new_version": "v1.7.0-dev.1",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "stylus",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Telegram (web version)",
+          "package": "org.telegram.messenger.web",
+          "badge_type": "NEW APP",
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/ch3thanhs/stylus",
+      "patches_name": "Stylus",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.6.0",
+      "new_version": "v1.7.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "dual-vot",
+      "channel": "latest",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Channel whitelist",
+                "description": "Adds options to allow whitelisting specific channels to show ads or override playback speeds."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/sashade8-ship-it/dual-vot-patches",
+      "patches_name": "Dual VoT Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.46.0-dev.7-dualvot.8.5.3",
+      "new_version": "v1.46.0-dev.8-dualvot.8.5.3",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "dual-vot",
+      "channel": "dev",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "YouTube",
+          "package": "com.google.android.youtube",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Channel whitelist",
+                "description": "Adds options to allow whitelisting specific channels to show ads or override playback speeds."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/sashade8-ship-it/dual-vot-patches",
+      "patches_name": "Dual VoT Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.46.0-dev.7-dualvot.8.5.3",
+      "new_version": "v1.46.0-dev.8-dualvot.8.5.3",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "aidans",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Sezzle",
+          "package": "com.sezzle.sezzlemobile",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Remove Ads and Tracking from JS Bundle",
+                "description": "Neutralizes post-payment reward and offer modals (Thanks network and Rokt placements) in the embedded Hermes JavaScript bundle."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove Ads and Tracking",
+                "description": "Removes all ads (AppLovin MAX, Google Mobile Ads, Rokt, Thanks network, Playtime, InBrain Surveys) and disables analytics and tracking SDKs (AppsFlyer, FullStory, Braze, Firebase Analytics, mParticle, Facebook SDK, AppCenter).",
+                "previous_description": "Removes all ads (AppLovin MAX, Google Mobile Ads, Rokt, Playtime, InBrain Surveys) and disables analytics and tracking SDKs (AppsFlyer, FullStory, Braze, Firebase Analytics, mParticle, Facebook SDK, AppCenter).",
+                "changes": [
+                  "description updated"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/ihatenodejs/aidans-patches",
+      "patches_name": "Aidan's Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.2.0",
+      "new_version": "v1.3.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "rhubarbshoelaces",
+      "channel": "latest",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Google Maps",
+          "package": "com.google.android.apps.maps",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Hybrid Theme (Dark Menus, Light Map)",
+                "description": "Allows toggling a light map canvas while keeping app UI in Dark Mode via Customizations menu."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/rhubarbshoelaces/morphe-patches",
+      "patches_name": "Rhubarb Shoelaces Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.0.12",
+      "new_version": "v1.0.13",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "rhubarbshoelaces",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Google Maps",
+          "package": "com.google.android.apps.maps",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Hybrid Theme (Dark Menus, Light Map)",
+                "description": "Allows toggling a light map canvas while keeping app UI in Dark Mode via Customizations menu."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/rhubarbshoelaces/morphe-patches",
+      "patches_name": "Rhubarb Shoelaces Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.0.12",
+      "new_version": "v1.0.13",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "hxreborn",
+      "channel": "latest",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Symfonium",
+          "package": "app.symfonik.music.player",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium features.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "Cx File Explorer",
+          "package": "com.cxinventor.file.explorer",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "AMOLED dark theme",
+                "description": "Adds a pure black option to the dark theme.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Dark theme",
+                "description": "Renders the app's dark theme and adds it to the settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks premium and removes ads.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "TeraBox",
+          "package": "com.dubox.drive",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Clone app",
+                "description": "Installs TeraBox as a separate app alongside the original, with its own account. Each copy needs a different clone number."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "VPN Super Unlimited Proxy",
+          "package": "com.free.vpn.super.hotspot.open",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks premium servers and removes ads, upgrade banners, the launch paywall and the Android TV sign-in screen.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "One4Home Launcher",
+          "package": "com.one4studio.one4home",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks One4Home Pro and the collector Pals.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "Trainline",
+          "package": "com.thetrainline",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Hide ads",
+                "description": "Removes the adverts shown between search results.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "ReadEra",
+          "package": "org.readera",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove nags",
+                "description": "Removes the rate this app dialog, the promotional dialogs shown on startup and the Premium button in the toolbar.",
+                "previous_description": "Removes the rate this app dialog and the promotional dialogs shown on startup.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/hxreborn/morphe-patches",
+      "patches_name": "hxreborn Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.41.0",
+      "new_version": "v1.42.0",
+      "avatarUrl": "",
+      "bundleImageUrl": ""
+    },
+    {
+      "bundle": "hxreborn",
+      "channel": "stable",
+      "badge_type": "UPDATED",
+      "apps": [
+        {
+          "app_name": "Symfonium",
+          "package": "app.symfonik.music.player",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks all premium features.",
+                "changes": [
+                  "versions: +2 versions"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "Cx File Explorer",
+          "package": "com.cxinventor.file.explorer",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "AMOLED dark theme",
+                "description": "Adds a pure black option to the dark theme.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Dark theme",
+                "description": "Renders the app's dark theme and adds it to the settings.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              },
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks premium and removes ads.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "TeraBox",
+          "package": "com.dubox.drive",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [
+              {
+                "name": "Clone app",
+                "description": "Installs TeraBox as a separate app alongside the original, with its own account. Each copy needs a different clone number."
+              }
+            ],
+            "patches_removed": [],
+            "patches_modified": []
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "VPN Super Unlimited Proxy",
+          "package": "com.free.vpn.super.hotspot.open",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks premium servers and removes ads, upgrade banners, the launch paywall and the Android TV sign-in screen.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "One4Home Launcher",
+          "package": "com.one4studio.one4home",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Unlock premium",
+                "description": "Unlocks One4Home Pro and the collector Pals.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "Trainline",
+          "package": "com.thetrainline",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Hide ads",
+                "description": "Removes the adverts shown between search results.",
+                "changes": [
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        },
+        {
+          "app_name": "ReadEra",
+          "package": "org.readera",
+          "badge_type": "UPDATED APP",
+          "patch_diff": {
+            "patches_added": [],
+            "patches_removed": [],
+            "patches_modified": [
+              {
+                "name": "Remove nags",
+                "description": "Removes the rate this app dialog, the promotional dialogs shown on startup and the Premium button in the toolbar.",
+                "previous_description": "Removes the rate this app dialog and the promotional dialogs shown on startup.",
+                "changes": [
+                  "description updated",
+                  "versions: +1 version"
+                ]
+              }
+            ]
+          },
+          "scan_numbers": [
+            2
+          ]
+        }
+      ],
+      "repo_url": "https://github.com/hxreborn/morphe-patches",
+      "patches_name": "hxreborn Patches",
+      "extra_badges": [
+        "VERSION BUMP"
+      ],
+      "previous_version": "v1.41.0",
+      "new_version": "v1.42.0",
       "avatarUrl": "",
       "bundleImageUrl": ""
     }

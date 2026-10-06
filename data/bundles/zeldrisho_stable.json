@@ -2,9 +2,9 @@
   "bundle": "zeldrisho",
   "channel": "stable",
   "repo_url": "https://github.com/zeldrisho/morphe-patches",
-  "created_at": "2026-10-05T05:46:12",
-  "version": "v1.7.2",
-  "description": "### 🔧 Improvements\n* **Threads - Change app name:** Makes launcher-name customization opt-in; without it, the app keeps its original name.\n* **Zalo - Enable Google Drive photo backup:** Bypasses Zalo's local Drive-account eligibility check and forces its media-backup feature flag on, exposing the existing option to accounts that would otherwise not see it.\n",
+  "created_at": "2026-10-06T02:33:25",
+  "version": "v1.8.0",
+  "description": "### ✨ New Features\n* **Zalo - Enable avatar saving:** Restores the “Save photo” action for avatars opened from a profile and allows screenshots without changing protection for other screens.\n* **Zalo - Enable profile cover saving:** Restores the “Save photo” action and allows screenshots for profile cover photos.\n* **Zalo - Bypass Zalo Drive Contacts permission gate:** Allows selecting an account for Drive photo restore without granting Contacts permission.\n\n### 🐛 Bug Fixes\n* **Zalo - Suppress outbound seen status:** Fixes read-receipt suppression in additional message flows.\n* **Zalo - Change package name:** Fixes login initialization in renamed clones.\n* **Zalo - microG Drive support:** Fixes Google Drive sign-in for renamed clones.\n* **Zalo - Configurable native backup interval:** Fixes another patching failure when detecting the app's backup interval setting.\n",
   "apps": [
     {
       "app_name": "Threads",
@@ -91,6 +91,15 @@
           ]
         },
         {
+          "name": "Bypass Zalo Drive Contacts permission gate",
+          "description": "Uses Android's account picker for Drive photo restore without requesting Contacts/account-list permission. Contacts remain protected by Android and are not read by this bypass.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        },
+        {
           "name": "Change Zalo app name",
           "description": "Changes the name shown for Zalo under the launcher icon. Set the desired name in the patch options.",
           "use": false,
@@ -106,7 +115,7 @@
         },
         {
           "name": "Change Zalo package name",
-          "description": "Changes Zalo's package name so a clone can be installed beside stock Zalo, including package-owned provider references used after login. WARNING: package- and certificate-bound login, push, sharing, deep links, and backup may not work with the renamed application.",
+          "description": "Changes Zalo's package name so a clone can be installed beside stock Zalo, including package-owned provider references used after login. Google Drive sign-in with the microG Drive support patch works for the renamed clone; other package- and certificate-bound login, push, sharing, and deep links may be affected.",
           "use": false,
           "options": [
             {
@@ -160,9 +169,27 @@
           ]
         },
         {
+          "name": "Enable avatar saving",
+          "description": "Restores the “Save photo” action for avatars opened from a profile and allows screenshots. Other Zalo screenshot protections are unchanged.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        },
+        {
           "name": "Enable Google Drive photo backup",
           "description": "Forces Zalo's media-backup feature flag on and bypasses its local Drive-account eligibility check to expose the existing photo-backup option. This optional patch does not bypass Google authorization, server retention, encryption, or media exclusions.",
           "use": false,
+          "options": [],
+          "compatible_versions": [
+            "26.08.01"
+          ]
+        },
+        {
+          "name": "Enable profile cover saving",
+          "description": "Restores the “Save photo” action and allows screenshots for profile cover photos. Other viewer entry points are unchanged.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "26.08.01"
@@ -197,7 +224,7 @@
         },
         {
           "name": "microG Drive support",
-          "description": "Adds Zalo launch/provider checks and redirects Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). Initial photo restore and the complete backup/restore cycle were device-validated on Zalo 26.08.01.",
+          "description": "Adds Zalo launch/provider checks and redirects Google Drive account selection and token binding to microG-RE (app.revanced / app.revanced.android.gms). Preserves the clone's actual caller identity; MicroG manifest metadata supplies the upstream Zalo identity.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -233,7 +260,7 @@
         },
         {
           "name": "Suppress outbound seen status",
-          "description": "Stops Zalo from sending seen-status packets without changing message delivery or incoming status rendering.",
+          "description": "Prevents others from seeing when you read their messages while keeping incoming seen-status display enabled; delivery acknowledgements and message transport are unchanged.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -253,9 +280,9 @@
     }
   ],
   "patches_name": "Zeldris Patches",
-  "fingerprint": "0450fb8223ec14114d8e31869b94d2a624a7d88df23cbe30e7e734616b538c78",
-  "release_notes": "### 🔧 Improvements\n* **Threads - Change app name:** Makes launcher-name customization opt-in; without it, the app keeps its original name.\n* **Zalo - Enable Google Drive photo backup:** Bypasses Zalo's local Drive-account eligibility check and forces its media-backup feature flag on, exposing the existing option to accounts that would otherwise not see it.\n",
-  "release_tag": "v1.7.2",
-  "release_date": "2026-10-05T05:46:12Z",
+  "fingerprint": "ebb01a1078e530df3d7b226217bb5b971d12e9b6333832cf5eacbea404931bf7",
+  "release_notes": "### ✨ New Features\n* **Zalo - Enable avatar saving:** Restores the “Save photo” action for avatars opened from a profile and allows screenshots without changing protection for other screens.\n* **Zalo - Enable profile cover saving:** Restores the “Save photo” action and allows screenshots for profile cover photos.\n* **Zalo - Bypass Zalo Drive Contacts permission gate:** Allows selecting an account for Drive photo restore without granting Contacts permission.\n\n### 🐛 Bug Fixes\n* **Zalo - Suppress outbound seen status:** Fixes read-receipt suppression in additional message flows.\n* **Zalo - Change package name:** Fixes login initialization in renamed clones.\n* **Zalo - microG Drive support:** Fixes Google Drive sign-in for renamed clones.\n* **Zalo - Configurable native backup interval:** Fixes another patching failure when detecting the app's backup interval setting.\n",
+  "release_tag": "v1.8.0",
+  "release_date": "2026-10-06T02:33:25Z",
   "isPreRelease": false
 }
