@@ -2,9 +2,9 @@
   "bundle": "hxreborn",
   "channel": "latest",
   "repo_url": "https://github.com/hxreborn/morphe-patches",
-  "created_at": "2026-10-06T11:53:00",
-  "version": "v1.43.0",
-  "description": "## [1.43.0](https://github.com/hxreborn/morphe-patches/compare/v1.42.0...v1.43.0) (2026-10-06)\n\n### Bug Fixes\n\n* **Proton:** stop patches settings crashing on mount installs ([3cc0dba](https://github.com/hxreborn/morphe-patches/commit/3cc0dba5a27096d9d654f5e9bec4a5ecc7c3d050))\n\n### New Features\n\n* **Fast STL Viewer - Unlock premium:** unlock paid viewing and analysis tools and remove ads ([25426c5](https://github.com/hxreborn/morphe-patches/commit/25426c5fa66ce54fe41bef8b6d8b7ae6d6a3743b)), closes [#159](https://github.com/hxreborn/morphe-patches/issues/159)\n* **Joyn - Hide ads:** remove ads before and during videos ([3063376](https://github.com/hxreborn/morphe-patches/commit/3063376bc82831777d44a8afbe2df57e16785b8b)), closes [#160](https://github.com/hxreborn/morphe-patches/issues/160)\n* **Raindrop.io - GmsCore support:** sign in with Google through GmsCore ([a257400](https://github.com/hxreborn/morphe-patches/commit/a25740011d81cc64c0bf4bd27e291d8c3a33dd82))\n* **Raindrop.io - Hide upgrade promotions:** hide Go Pro entry in Settings ([a41e004](https://github.com/hxreborn/morphe-patches/commit/a41e004791c496beff303516282e9452a157b6cd))\n* **Raindrop.io - Unlock pro:** unlock reminders, highlight notes, duplicate and broken link filters ([444946a](https://github.com/hxreborn/morphe-patches/commit/444946afe7b6b7c93707cf42e8ab2304aced34d5)), closes [#158](https://github.com/hxreborn/morphe-patches/issues/158)\n",
+  "created_at": "2026-10-07T08:45:24",
+  "version": "v1.44.0",
+  "description": "## [1.44.0](https://github.com/hxreborn/morphe-patches/compare/v1.43.0...v1.44.0) (2026-10-07)\n\n### Bug Fixes\n\n* **All Video Player App - Remove rating prompts:** stop rating prompt on second launch ([010a5ac](https://github.com/hxreborn/morphe-patches/commit/010a5ac8be9b57f2cae38a7ebca6de8138ffb89b)), closes [#104](https://github.com/hxreborn/morphe-patches/issues/104)\n* offer Symfonium TV builds on older Android versions ([998f60f](https://github.com/hxreborn/morphe-patches/commit/998f60fbf8ab3c43d03a47c6e7ee59a9a9b021bc))\n* stop hiding apps from Manager on older Android versions ([c44a8f6](https://github.com/hxreborn/morphe-patches/commit/c44a8f630e3b53ba19b1bee2f3eed1879e5b05df)), closes [#165](https://github.com/hxreborn/morphe-patches/issues/165)\n* **TeraBox:** stop email login failing with the malicious implantation warning ([599ad7a](https://github.com/hxreborn/morphe-patches/commit/599ad7af345db0cc7cac21f4dfe1bd2d6d3e7594)), closes [#147](https://github.com/hxreborn/morphe-patches/issues/147)\n\n### New Features\n\n* **All Video Player App - Allow offline use:** open app without internet connection ([5af51e6](https://github.com/hxreborn/morphe-patches/commit/5af51e63a39367a9d4200e6dcf00580a3282a27c))\n* **AnyTracker - Unlock Platinum:** unlock unlimited items, every-minute updates and widgets ([9538470](https://github.com/hxreborn/morphe-patches/commit/9538470a70c35b3de6092c6744b650fe442518df)), closes [#161](https://github.com/hxreborn/morphe-patches/issues/161)\n* **Musixmatch - Unlock premium:** unlock offline lyrics, animated backgrounds, Android Auto lyrics ([744d41c](https://github.com/hxreborn/morphe-patches/commit/744d41cbe3eb24f04acb9edb49c6ed9ea22b3b11)), closes [#163](https://github.com/hxreborn/morphe-patches/issues/163)\n* **Photone - Unlock premium:** unlock all light sources and Pro settings ([c4a47fb](https://github.com/hxreborn/morphe-patches/commit/c4a47fb7eb3103fe52332ab63f53fb2669af2e64)), closes [#156](https://github.com/hxreborn/morphe-patches/issues/156)\n",
   "apps": [
     {
       "app_name": "Perplexity",
@@ -359,6 +359,15 @@
       "app_name": "All Video Player App",
       "package": "com.allformatplayer.streamvideoplayer",
       "patches": [
+        {
+          "name": "Allow offline use",
+          "description": "Opens the app without an internet connection.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.4"
+          ]
+        },
         {
           "name": "Disable tracking",
           "description": "Stops Firebase Analytics, Crashlytics, Facebook and OneSignal from collecting usage data.",
@@ -966,6 +975,21 @@
       ]
     },
     {
+      "app_name": "Musixmatch",
+      "package": "com.musixmatch.android.lyrify",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks offline lyrics, animated backgrounds and Android Auto lyrics.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.4.2"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "ForusApp",
       "package": "com.myvitale.forus",
       "patches": [
@@ -1123,6 +1147,21 @@
             "Android V1.78.51",
             "Android V1.78.49",
             "Android V1.78.47"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "AnyTracker",
+      "package": "com.shervinkoushan.anytracker",
+      "patches": [
+        {
+          "name": "Unlock Platinum",
+          "description": "Unlocks the Platinum plan with unlimited tracked items, every-minute updates, widgets, watchlists and backups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "7.5.4"
           ]
         }
       ]
@@ -1305,6 +1344,21 @@
           "options": [],
           "compatible_versions": [
             "1.3.2"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Photone",
+      "package": "io.lightray.photone",
+      "patches": [
+        {
+          "name": "Unlock premium",
+          "description": "Unlocks all light sources, extended PAR, Pro guides, Pro settings and the full toolbox. Pro support is not included.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.5.4"
           ]
         }
       ]
@@ -1640,9 +1694,9 @@
     }
   ],
   "patches_name": "hxreborn Patches",
-  "fingerprint": "d4118bd2cbbc3a3d263eefbfe312112935ef1f6fba7a222a6458a110cc5d0bdc",
-  "release_notes": "## [1.43.0](https://github.com/hxreborn/morphe-patches/compare/v1.42.0...v1.43.0) (2026-10-06)\n\n### Bug Fixes\n\n* **Proton:** stop patches settings crashing on mount installs ([3cc0dba](https://github.com/hxreborn/morphe-patches/commit/3cc0dba5a27096d9d654f5e9bec4a5ecc7c3d050))\n\n### New Features\n\n* **Fast STL Viewer - Unlock premium:** unlock paid viewing and analysis tools and remove ads ([25426c5](https://github.com/hxreborn/morphe-patches/commit/25426c5fa66ce54fe41bef8b6d8b7ae6d6a3743b)), closes [#159](https://github.com/hxreborn/morphe-patches/issues/159)\n* **Joyn - Hide ads:** remove ads before and during videos ([3063376](https://github.com/hxreborn/morphe-patches/commit/3063376bc82831777d44a8afbe2df57e16785b8b)), closes [#160](https://github.com/hxreborn/morphe-patches/issues/160)\n* **Raindrop.io - GmsCore support:** sign in with Google through GmsCore ([a257400](https://github.com/hxreborn/morphe-patches/commit/a25740011d81cc64c0bf4bd27e291d8c3a33dd82))\n* **Raindrop.io - Hide upgrade promotions:** hide Go Pro entry in Settings ([a41e004](https://github.com/hxreborn/morphe-patches/commit/a41e004791c496beff303516282e9452a157b6cd))\n* **Raindrop.io - Unlock pro:** unlock reminders, highlight notes, duplicate and broken link filters ([444946a](https://github.com/hxreborn/morphe-patches/commit/444946afe7b6b7c93707cf42e8ab2304aced34d5)), closes [#158](https://github.com/hxreborn/morphe-patches/issues/158)\n",
-  "release_tag": "v1.43.0",
-  "release_date": "2026-10-06T11:53:00Z",
+  "fingerprint": "6d851a39f799843a2ad1e6ed442769fef93379fc1b90823bec4f83773897b4d0",
+  "release_notes": "## [1.44.0](https://github.com/hxreborn/morphe-patches/compare/v1.43.0...v1.44.0) (2026-10-07)\n\n### Bug Fixes\n\n* **All Video Player App - Remove rating prompts:** stop rating prompt on second launch ([010a5ac](https://github.com/hxreborn/morphe-patches/commit/010a5ac8be9b57f2cae38a7ebca6de8138ffb89b)), closes [#104](https://github.com/hxreborn/morphe-patches/issues/104)\n* offer Symfonium TV builds on older Android versions ([998f60f](https://github.com/hxreborn/morphe-patches/commit/998f60fbf8ab3c43d03a47c6e7ee59a9a9b021bc))\n* stop hiding apps from Manager on older Android versions ([c44a8f6](https://github.com/hxreborn/morphe-patches/commit/c44a8f630e3b53ba19b1bee2f3eed1879e5b05df)), closes [#165](https://github.com/hxreborn/morphe-patches/issues/165)\n* **TeraBox:** stop email login failing with the malicious implantation warning ([599ad7a](https://github.com/hxreborn/morphe-patches/commit/599ad7af345db0cc7cac21f4dfe1bd2d6d3e7594)), closes [#147](https://github.com/hxreborn/morphe-patches/issues/147)\n\n### New Features\n\n* **All Video Player App - Allow offline use:** open app without internet connection ([5af51e6](https://github.com/hxreborn/morphe-patches/commit/5af51e63a39367a9d4200e6dcf00580a3282a27c))\n* **AnyTracker - Unlock Platinum:** unlock unlimited items, every-minute updates and widgets ([9538470](https://github.com/hxreborn/morphe-patches/commit/9538470a70c35b3de6092c6744b650fe442518df)), closes [#161](https://github.com/hxreborn/morphe-patches/issues/161)\n* **Musixmatch - Unlock premium:** unlock offline lyrics, animated backgrounds, Android Auto lyrics ([744d41c](https://github.com/hxreborn/morphe-patches/commit/744d41cbe3eb24f04acb9edb49c6ed9ea22b3b11)), closes [#163](https://github.com/hxreborn/morphe-patches/issues/163)\n* **Photone - Unlock premium:** unlock all light sources and Pro settings ([c4a47fb](https://github.com/hxreborn/morphe-patches/commit/c4a47fb7eb3103fe52332ab63f53fb2669af2e64)), closes [#156](https://github.com/hxreborn/morphe-patches/issues/156)\n",
+  "release_tag": "v1.44.0",
+  "release_date": "2026-10-07T08:45:24Z",
   "isPreRelease": false
 }

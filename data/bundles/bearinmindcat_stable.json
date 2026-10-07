@@ -2,9 +2,9 @@
   "bundle": "bearinmindcat",
   "channel": "stable",
   "repo_url": "https://github.com/bearinmindcat/morphe-patches",
-  "created_at": "2026-10-07T07:42:16",
-  "version": "v1.5.1",
-  "description": "## [1.5.1](https://github.com/bearinmindcat/morphe-patches/compare/v1.5.0...v1.5.1) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* merge related patches into fewer patches (33 to 21) ([871e40b](https://github.com/bearinmindcat/morphe-patches/commit/871e40b8ba3e2ace5ef2c393aa79c2593746a1ff))\n",
+  "created_at": "2026-10-07T13:49:10",
+  "version": "v1.6.0",
+  "description": "## [1.6.0](https://github.com/bearinmindcat/morphe-patches/compare/v1.5.1...v1.6.0) (2026-10-07)\n\n### ✨ New Features\n\n* add microG Maps (separate app that signs in through MicroG-RE) ([78d3edc](https://github.com/bearinmindcat/morphe-patches/commit/78d3edcac5f9fd458f87216d8f84197b0c5e3a97))\n* give microG Maps its own icon ([920a8ad](https://github.com/bearinmindcat/morphe-patches/commit/920a8ad26013ac3fdfa8805bed765d3f436c4a10))\n",
   "apps": [
     {
       "app_name": "Google Maps",
@@ -23,6 +23,15 @@
           "name": "Account sheet cleanup",
           "description": "Removes the \"More from this app\" label from the account sheet, and keeps the sheet open when you come back from Settings or Customization or tap \"Your profile\", instead of dropping back to the map.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
+          "name": "Add microG support",
+          "description": "Builds microG Maps, a separate app (org.ungoogled.android.apps.maps.microg) that signs in to your Google account through microG: saved places and lists, Timeline, location sharing, contributions and push messages. Remove sign-in prompts, Trim account menu, Offline saved places and Remove permissions are left out of this build, and its icon carries microG's C. Needs MicroG-RE 7.2.1 or newer; ReVanced GmsCore runs the map but does not pass your account to Maps. Not for root (mount) installs.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "26.36.04.973607363"
@@ -71,7 +80,7 @@
           "options": [
             {
               "key": "appName",
-              "description": "The name shown under the launcher icon and in the app switcher."
+              "description": "The name shown under the launcher icon and in the app switcher. Left at Ungoogled Maps, Add microG support names the app microG Maps instead."
             }
           ],
           "compatible_versions": [
@@ -85,7 +94,7 @@
           "options": [
             {
               "key": "packageName",
-              "description": "The package name to install under. Must be a valid Android package name."
+              "description": "The package name to install under. Must be a valid Android package name. Left at org.ungoogled.android.apps.maps, Add microG support installs under org.ungoogled.android.apps.maps.microg instead."
             }
           ],
           "compatible_versions": [
@@ -112,7 +121,7 @@
         },
         {
           "name": "Legacy icon",
-          "description": "Uses the flat multicolour pin Maps had before the 2025 gradient icon as the launcher icon.",
+          "description": "Uses the flat multicolour pin Maps had before the 2025 gradient icon as the launcher icon. With Add microG support, microG's C sits in the pin's circle.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -135,7 +144,7 @@
         },
         {
           "name": "Offline saved places",
-          "description": "Save places without a Google account, kept only on the phone: Save opens Maps' own \"Place saved\" sheet (Want to go, Travel plans, Starred places, Favorites, your own lists, a note), and a \"Local saved\" row on the account sheet rebuilds Maps' You tab -- your recent places, your lists and labels (Home, Work, your own) -- with export and import (backup file, KML, Google Takeout's Saved Places.json). It also has a Timeline: where the phone has been, grouped into days and visits, kept only on the phone, with GPX export. Recording is off until switched on there; it shows a notification while it runs.",
+          "description": "Save places without a Google account, kept only on the phone: Save opens Maps' own \"Place saved\" sheet (Want to go, Travel plans, Starred places, Favorites, your own lists, a note), and a \"Local saved\" row on the account sheet rebuilds Maps' You tab -- your recent places, your lists and labels (Home, Work, your own) -- with export and import (backup file, KML, Google Takeout's Saved Places.json). It also has a Timeline: where the phone has been, grouped into days and visits, kept only on the phone, with GPX export. Recording is off until switched on there; it shows a notification while it runs. Left out with Add microG support, where Maps' own Save syncs to your account.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -171,7 +180,7 @@
         },
         {
           "name": "Remove permissions",
-          "description": "Removes permissions that only serve Google-account features or Google's data collection: background location, physical activity, contacts, microphone (voice search stops working), camera (Lens and Live View stop working), car speed, advertising ID, push messages and Google services settings.",
+          "description": "Removes permissions that only serve Google-account features or Google's data collection: background location, physical activity, contacts, microphone (voice search stops working), camera (Lens and Live View stop working), car speed, advertising ID, push messages and Google services settings. Left out with Add microG support, whose account features need them.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -180,7 +189,7 @@
         },
         {
           "name": "Remove sign-in prompts",
-          "description": "Removes Google's sign-in prompts: the first-launch \"Make it your map\" page, the search screen's \"Tired of typing?\" card and the account sheet's \"Sign in\" pill. Tapping \"Your profile\" (or the pill, where it still shows) answers with a \"Can't sign in\" toast instead of nothing.",
+          "description": "Removes Google's sign-in prompts: the first-launch \"Make it your map\" page, the search screen's \"Tired of typing?\" card and the account sheet's \"Sign in\" pill. Tapping \"Your profile\" (or the pill, where it still shows) answers with a \"Can't sign in\" toast instead of nothing. Left out with Add microG support, which signs in.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -189,7 +198,7 @@
         },
         {
           "name": "Remove telemetry",
-          "description": "Points the Firebase Installations and Play services compliance check-ins at an unresolvable host, stops every ad impression and click ping from being sent, and deregisters Google's logging, performance-monitoring, survey and Location History libraries and the on-device federated-learning services.",
+          "description": "Points the Firebase Installations and Play services compliance check-ins at an unresolvable host, stops every ad impression and click ping from being sent, and deregisters Google's logging, performance-monitoring, survey and Location History libraries and the on-device federated-learning services. With Add microG support, Firebase Installations and Location History are left alone, so Timeline, account sync and push messages keep working.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -198,7 +207,7 @@
         },
         {
           "name": "Trim account menu",
-          "description": "Removes Your Timeline, Location sharing, Your data in Maps and Help & feedback from the account sheet.",
+          "description": "Removes Your Timeline, Location sharing, Your data in Maps and Help & feedback from the account sheet. Left out with Add microG support, whose account features need them.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -218,9 +227,9 @@
     }
   ],
   "patches_name": "bearinmind patches",
-  "fingerprint": "3f435005774ee057cf3090df19b75f9b78a9d066acf3bd14f78bf2d1973ab524",
-  "release_notes": "## [1.5.1](https://github.com/bearinmindcat/morphe-patches/compare/v1.5.0...v1.5.1) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* merge related patches into fewer patches (33 to 21) ([871e40b](https://github.com/bearinmindcat/morphe-patches/commit/871e40b8ba3e2ace5ef2c393aa79c2593746a1ff))\n",
-  "release_tag": "v1.5.1",
-  "release_date": "2026-10-07T07:42:16Z",
+  "fingerprint": "7f088b027a1889cc578cc3829dac63036a137decef6cc3188b714d963fbb1212",
+  "release_notes": "## [1.6.0](https://github.com/bearinmindcat/morphe-patches/compare/v1.5.1...v1.6.0) (2026-10-07)\n\n### ✨ New Features\n\n* add microG Maps (separate app that signs in through MicroG-RE) ([78d3edc](https://github.com/bearinmindcat/morphe-patches/commit/78d3edcac5f9fd458f87216d8f84197b0c5e3a97))\n* give microG Maps its own icon ([920a8ad](https://github.com/bearinmindcat/morphe-patches/commit/920a8ad26013ac3fdfa8805bed765d3f436c4a10))\n",
+  "release_tag": "v1.6.0",
+  "release_date": "2026-10-07T13:49:10Z",
   "isPreRelease": false
 }
