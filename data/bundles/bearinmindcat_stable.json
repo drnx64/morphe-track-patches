@@ -2,9 +2,9 @@
   "bundle": "bearinmindcat",
   "channel": "stable",
   "repo_url": "https://github.com/bearinmindcat/morphe-patches",
-  "created_at": "2026-10-06T17:37:12",
-  "version": "v1.4.4",
-  "description": "## [1.4.4](https://github.com/bearinmindcat/morphe-patches/compare/v1.4.3...v1.4.4) (2026-10-06)\n\n### 🐛 Bug Fixes\n\n* 120 refresh rate now keeps navigation smooth ([f323173](https://github.com/bearinmindcat/morphe-patches/commit/f32317373b574bbe89eb45964bac18c5addb0090))\n",
+  "created_at": "2026-10-07T07:42:16",
+  "version": "v1.5.1",
+  "description": "## [1.5.1](https://github.com/bearinmindcat/morphe-patches/compare/v1.5.0...v1.5.1) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* merge related patches into fewer patches (33 to 21) ([871e40b](https://github.com/bearinmindcat/morphe-patches/commit/871e40b8ba3e2ace5ef2c393aa79c2593746a1ff))\n",
   "apps": [
     {
       "app_name": "Google Maps",
@@ -13,6 +13,15 @@
         {
           "name": "120 refresh rate",
           "description": "Lifts the 60 Hz limit Maps puts on itself, on the app and on the map, so it can run at your screen's full refresh rate (such as 120 Hz). Uses more battery, most of all while navigating. Off by default: switch it on on the Customization screen.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
+          "name": "Account sheet cleanup",
+          "description": "Removes the \"More from this app\" label from the account sheet, and keeps the sheet open when you come back from Settings or Customization or tap \"Your profile\", instead of dropping back to the map.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -48,7 +57,7 @@
         },
         {
           "name": "Bypass Play Services checks",
-          "description": "Makes Maps' bundled Play services signature and availability checks always pass, so it runs re-signed and with Play services disabled or absent.",
+          "description": "Makes Maps' bundled Play services signature and availability checks always pass, so it runs re-signed and with Play services disabled or absent, and lets it load tiles, search and routing by sending Google's own package and certificate in the identity headers the Maps backend checks. Where Play services rejects the re-signed app, Maps degrades instead of crashing.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -93,80 +102,8 @@
           ]
         },
         {
-          "name": "Hide ads",
-          "description": "Hides promoted map pins and \"Sponsored\" search result rows.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Hide AI",
-          "description": "Hides Gemini's AI summaries: the \"Know before you go\" card on place sheets and the review summary (\"Summarized with Gemini\") on the Reviews tab. Can be switched off on the Customization screen.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Hide explore feed",
-          "description": "Hides the home tab's Explore feed sheet (\"Local vibe\"). Can be switched back on on the Customization screen.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Hide login promo",
-          "description": "Hides the full-screen \"Make it your map\" page shown on first launch.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Hide navigation tabs",
-          "description": "Hides the Explore / Contribute / You strip at the bottom of the home screen. Can be switched back on on the Customization screen.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Hide section title",
-          "description": "Removes the \"More from this app\" label from the account sheet.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Hide sign-in button",
-          "description": "Removes the \"Sign in\" pill from the account sheet.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Hide suggestions",
-          "description": "Hides the row of businesses under an address on its place sheet: a preview of the address's Directory (the restaurants, shops and offices at that address). The Directory button still lists them. Can be switched off on the Customization screen.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Keep account sheet open",
-          "description": "Returning from Settings or Customization, or tapping \"Your profile\", leaves the account sheet open instead of dropping back to the map.",
+          "name": "Hide ads and clutter",
+          "description": "Hides promoted map pins and \"Sponsored\" search results, Gemini's AI summaries (\"Know before you go\" and the review summary), the row of businesses under an address on its place sheet, the home tab's Explore feed and the Explore / Contribute / You tabs. Each can be switched back on on the Customization screen.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -184,7 +121,7 @@
         },
         {
           "name": "Location provider toggle",
-          "description": "Adds a Location source choice to the Customization screen: Android's own location providers, or Google Play services' fused provider. With Android, Play services is never asked for a location. Play services is never used while it is missing or disabled, so location keeps working on phones without it.",
+          "description": "Adds a Location source choice to the Customization screen: Android's own location providers, or Google Play services' fused provider. With Android, Play services is never asked for a location. Play services is never used while it is missing or disabled, so location keeps working on phones without it. Also keeps the network (Wi-Fi/cell) provider registered when no fused provider answers, instead of GPS only, so a fix does not go stale indoors.",
           "use": true,
           "options": [
             {
@@ -197,26 +134,8 @@
           ]
         },
         {
-          "name": "Network location fallback",
-          "description": "Keeps the network (Wi-Fi/cell) location provider registered when no fused location provider answers, instead of GPS-only, so a fix does not go stale indoors.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
           "name": "Offline saved places",
-          "description": "Save places without a Google account, kept only on the phone: Save opens Maps' own \"Place saved\" sheet (Want to go, Travel plans, Starred places, Favorites, your own lists, a note), and a \"Local saved\" row on the account sheet rebuilds Maps' You tab -- your recent places (looked at, routed to, called, shared or saved), your lists and labels (Home, Work, your own) -- with export and import (backup file, KML, Google Takeout's Saved Places.json).",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Offline timeline",
-          "description": "Adds a Timeline to the Local saved screen: a record of where the phone has been, grouped into days and visits, kept only on the phone, with GPX export. Recording is off until switched on there; it shows a notification while it runs.",
+          "description": "Save places without a Google account, kept only on the phone: Save opens Maps' own \"Place saved\" sheet (Want to go, Travel plans, Starred places, Favorites, your own lists, a note), and a \"Local saved\" row on the account sheet rebuilds Maps' You tab -- your recent places, your lists and labels (Home, Work, your own) -- with export and import (backup file, KML, Google Takeout's Saved Places.json). It also has a Timeline: where the phone has been, grouped into days and visits, kept only on the phone, with GPX export. Recording is off until switched on there; it shows a notification while it runs.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -225,7 +144,7 @@
         },
         {
           "name": "Power saving mode",
-          "description": "Brings the Pixel-only power saving mode to every phone: while driving with navigation, press the power button and Maps shows only key information such as the next turn on a black screen. Turn it on or off in Settings > Navigation > Power saving mode. Pixels that have it built in keep Google's own version unless Customization > Power saving mode is turned on.",
+          "description": "Brings the Pixel-only power saving mode to every phone: while driving with navigation, press the power button and Maps shows only key information such as the next turn on a black screen. Turn it on or off in Settings > Navigation > Power saving mode. Pixels that have it built in keep Google's own version unless Customization > Power Saving Options > Power saving mode is turned on. Power Saving Options also has: a navigation button that opens the power saving screen without locking the phone, switching to it by itself when idle, a speedometer on it, a lower frame rate, and its black map in navigation or all over Maps.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -260,8 +179,8 @@
           ]
         },
         {
-          "name": "Remove sign-in promo",
-          "description": "Removes the \"Tired of typing?\" sign-in card from the search screen.",
+          "name": "Remove sign-in prompts",
+          "description": "Removes Google's sign-in prompts: the first-launch \"Make it your map\" page, the search screen's \"Tired of typing?\" card and the account sheet's \"Sign in\" pill. Tapping \"Your profile\" (or the pill, where it still shows) answers with a \"Can't sign in\" toast instead of nothing.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -278,35 +197,8 @@
           ]
         },
         {
-          "name": "Restore map data",
-          "description": "Lets a re-signed Maps load tiles, search and routing, by sending Google's own package and certificate in the identity headers the Maps backend checks, and by degrading instead of crashing when Play services rejects the re-signed app -- including skipping a view property that fails for that reason instead of crashing the screen.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Sign-in toast",
-          "description": "The \"Sign in\" pill shows a \"Can't sign in\" toast instead of failing silently.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
           "name": "Trim account menu",
           "description": "Removes Your Timeline, Location sharing, Your data in Maps and Help & feedback from the account sheet.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "26.36.04.973607363"
-          ]
-        },
-        {
-          "name": "Your profile toast",
-          "description": "Tapping \"Your profile\" shows a \"Can't sign in\" toast instead of opening nothing.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -326,9 +218,9 @@
     }
   ],
   "patches_name": "bearinmind patches",
-  "fingerprint": "a4d884662cb3e642244f71fdb6747f29d8ed11fe5c4fd47411b6b651cee53c7d",
-  "release_notes": "## [1.4.3](https://github.com/bearinmindcat/morphe-patches/compare/v1.4.2...v1.4.3) (2026-10-06)\n\n### 🐛 Bug Fixes\n\n* customization screen no longer removes other account menu rows ([269e0ef](https://github.com/bearinmindcat/morphe-patches/commit/269e0ef335990d713c46ff49ddf5d8cc4d8f5de6))\n",
-  "release_tag": "v1.4.3",
-  "release_date": "2026-10-06T15:22:41Z",
+  "fingerprint": "3f435005774ee057cf3090df19b75f9b78a9d066acf3bd14f78bf2d1973ab524",
+  "release_notes": "## [1.5.1](https://github.com/bearinmindcat/morphe-patches/compare/v1.5.0...v1.5.1) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* merge related patches into fewer patches (33 to 21) ([871e40b](https://github.com/bearinmindcat/morphe-patches/commit/871e40b8ba3e2ace5ef2c393aa79c2593746a1ff))\n",
+  "release_tag": "v1.5.1",
+  "release_date": "2026-10-07T07:42:16Z",
   "isPreRelease": false
 }

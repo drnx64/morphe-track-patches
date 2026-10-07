@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-10-07T01:08:44",
-  "version": "v2.5.1-dev.11",
-  "description": "## 2.5.1-dev.11\n\n- docs: correct issue forms for unsupported builds and roadmap\n- chore: pin editor scope and shell script line endings\n- docs: mark superseded gesture analyses and current undo path\n- docs: correct settings, toolbar and flag derivations\n- docs: refresh contributor gate, APK tooling and release guide\n- docs: align feature guide and roadmap with shipped behavior\n- docs(changelog): restore missing dev and stable release entries\n- docs: record full-repository findings and fix status\n- fix(gate): protect provider and verify the pushed tree\n- fix(release): make recovery resumable and stamp bundle sources\n- fix(driver): enforce patch selection and output handling\n- fix(checks): enforce generated artifacts and source contracts\n- fix(preflight): pin current Gboard bindings and flag defaults\n- fix(apk): validate resource replay and improve APK readers\n- fix(verify): follow real control flow and inspect same-size edits\n- fix(extension): harden settings, hotkeys, and crash diagnostics\n- fix(settings): guard resource metadata and defaults\n- fix(toolbar): validate native registration and capacity seams\n- fix(flags): validate isolated and long-valued flag rewrites\n- fix(patches): harden shared resolution and gesture emissions\n- fix(signature): bypass only Gboard's own startup check",
+  "created_at": "2026-10-07T02:42:50",
+  "version": "v2.5.2-dev.0",
+  "description": "## 2.5.2-dev.0\n\n- docs: swipe up reverts through the decoder, not the undo stack\n- feat(swipe-up): revert the last autocorrection through Gboard's decoder\n- refactor(patches): resolve branch targets in one shared helper\n- chore: store gradlew.bat with LF, as .gitattributes declares\n- chore(deps): bump gradle-wrapper from 9.7.1 to 9.8.0\n- chore(deps): bump actions/upload-artifact from 4 to 7\n- chore(deps): bump actions/setup-java from 6.0.0 to 6.0.1",
   "apps": [
     {
       "app_name": "Gboard",
@@ -102,7 +102,7 @@
         },
         {
           "name": "Swipe up to undo autocorrect",
-          "description": "Work in progress, being built in stages. This build takes the swipe over: swipe up on the keyboard and it types a 6 instead of the key you swiped on, or an x if it could not take the swipe over. It does not undo anything yet. While it is on, a keyboard crash is saved and copied to your clipboard the next time the keyboard starts, so it can be pasted into a bug report. Off by default.",
+          "description": "Swipe up on the keyboard to undo the last autocorrection: the word you typed comes back, as with Gboard's own undo autocorrect on backspace. Gboard's decoder decides whether there is one to undo; if not, the swipe does nothing. The key you swiped on is not typed. Not yet confirmed on a device. While it is on, a keyboard crash is saved and copied to your clipboard the next time the keyboard starts, so it can be pasted into a bug report. Off by default.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -140,9 +140,9 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "f9cfac33dffd59d83e3b817d0a8abc6b178b4e5519b2e3aecec2ef41bc5e4276",
-  "release_notes": "## 2.5.1-dev.11\n\n- docs: correct issue forms for unsupported builds and roadmap\n- chore: pin editor scope and shell script line endings\n- docs: mark superseded gesture analyses and current undo path\n- docs: correct settings, toolbar and flag derivations\n- docs: refresh contributor gate, APK tooling and release guide\n- docs: align feature guide and roadmap with shipped behavior\n- docs(changelog): restore missing dev and stable release entries\n- docs: record full-repository findings and fix status\n- fix(gate): protect provider and verify the pushed tree\n- fix(release): make recovery resumable and stamp bundle sources\n- fix(driver): enforce patch selection and output handling\n- fix(checks): enforce generated artifacts and source contracts\n- fix(preflight): pin current Gboard bindings and flag defaults\n- fix(apk): validate resource replay and improve APK readers\n- fix(verify): follow real control flow and inspect same-size edits\n- fix(extension): harden settings, hotkeys, and crash diagnostics\n- fix(settings): guard resource metadata and defaults\n- fix(toolbar): validate native registration and capacity seams\n- fix(flags): validate isolated and long-valued flag rewrites\n- fix(patches): harden shared resolution and gesture emissions\n- fix(signature): bypass only Gboard's own startup check",
-  "release_tag": "v2.5.1-dev.11",
-  "release_date": "2026-10-07T01:08:44Z",
+  "fingerprint": "bd8e194df5e641e5f772be6d942ff9c1eb7c8365a935d75d11f4305bddd7f27a",
+  "release_notes": "## 2.5.2-dev.0\n\n- docs: swipe up reverts through the decoder, not the undo stack\n- feat(swipe-up): revert the last autocorrection through Gboard's decoder\n- refactor(patches): resolve branch targets in one shared helper\n- chore: store gradlew.bat with LF, as .gitattributes declares\n- chore(deps): bump gradle-wrapper from 9.7.1 to 9.8.0\n- chore(deps): bump actions/upload-artifact from 4 to 7\n- chore(deps): bump actions/setup-java from 6.0.0 to 6.0.1",
+  "release_tag": "v2.5.2-dev.0",
+  "release_date": "2026-10-07T02:42:50Z",
   "isPreRelease": true
 }
