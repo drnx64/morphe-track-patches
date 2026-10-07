@@ -2,9 +2,9 @@
   "bundle": "bearinmindcat",
   "channel": "stable",
   "repo_url": "https://github.com/bearinmindcat/morphe-patches",
-  "created_at": "2026-10-07T13:49:10",
-  "version": "v1.6.0",
-  "description": "## [1.6.0](https://github.com/bearinmindcat/morphe-patches/compare/v1.5.1...v1.6.0) (2026-10-07)\n\n### ✨ New Features\n\n* add microG Maps (separate app that signs in through MicroG-RE) ([78d3edc](https://github.com/bearinmindcat/morphe-patches/commit/78d3edcac5f9fd458f87216d8f84197b0c5e3a97))\n* give microG Maps its own icon ([920a8ad](https://github.com/bearinmindcat/morphe-patches/commit/920a8ad26013ac3fdfa8805bed765d3f436c4a10))\n",
+  "created_at": "2026-10-07T19:59:00",
+  "version": "v1.7.4",
+  "description": "## [1.7.4](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.3...v1.7.4) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* pull from google account in ungoogled maps' local saved too ([b5e4b94](https://github.com/bearinmindcat/morphe-patches/commit/b5e4b940e8a11f7e3fadfd6d6279a2b8f17f935e))\n",
   "apps": [
     {
       "app_name": "Google Maps",
@@ -30,7 +30,7 @@
         },
         {
           "name": "Add microG support",
-          "description": "Builds microG Maps, a separate app (org.ungoogled.android.apps.maps.microg) that signs in to your Google account through microG: saved places and lists, Timeline, location sharing, contributions and push messages. Remove sign-in prompts, Trim account menu, Offline saved places and Remove permissions are left out of this build, and its icon carries microG's C. Needs MicroG-RE 7.2.1 or newer; ReVanced GmsCore runs the map but does not pass your account to Maps. Not for root (mount) installs.",
+          "description": "Builds microG Maps, a separate app (org.ungoogled.android.apps.maps.microg) that signs in to your Google account through microG: saved places and lists, Timeline, location sharing, contributions and push messages. Remove sign-in prompts, Trim account menu and Remove permissions are left out of this build, Offline saved places keeps only its Local saved screen, which copies your account's saved lists to the phone (Pull from Google account), and its icon carries microG's C. Needs microG: MicroG-RE or ReVanced GmsCore. Not for root (mount) installs.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -121,7 +121,7 @@
         },
         {
           "name": "Legacy icon",
-          "description": "Uses the flat multicolour pin Maps had before the 2025 gradient icon as the launcher icon. With Add microG support, microG's C sits in the pin's circle.",
+          "description": "Uses the flat multicolour pin Maps had before the 2025 gradient icon as the launcher icon and on the screen Maps opens with. With Add microG support, microG's C sits in the pin's circle.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -144,7 +144,7 @@
         },
         {
           "name": "Offline saved places",
-          "description": "Save places without a Google account, kept only on the phone: Save opens Maps' own \"Place saved\" sheet (Want to go, Travel plans, Starred places, Favorites, your own lists, a note), and a \"Local saved\" row on the account sheet rebuilds Maps' You tab -- your recent places, your lists and labels (Home, Work, your own) -- with export and import (backup file, KML, Google Takeout's Saved Places.json). It also has a Timeline: where the phone has been, grouped into days and visits, kept only on the phone, with GPX export. Recording is off until switched on there; it shows a notification while it runs. Left out with Add microG support, where Maps' own Save syncs to your account.",
+          "description": "Save places without a Google account, kept only on the phone: Save opens Maps' own \"Place saved\" sheet (Want to go, Travel plans, Starred places, Favorites, your own lists, a note), and a \"Local saved\" row on the account sheet rebuilds Maps' You tab -- your recent places, your lists and labels (Home, Work, your own) -- with export and import (backup file, KML, Google Takeout's Saved Places.json). It also has a Timeline: where the phone has been, grouped into days and visits, kept only on the phone, with GPX export. Recording is off until switched on there; it shows a notification while it runs. With Add microG support, Maps' own Save keeps syncing to your account and Local saved instead copies the account's saved lists to the phone (Pull from Google account).",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -153,7 +153,7 @@
         },
         {
           "name": "Power saving mode",
-          "description": "Brings the Pixel-only power saving mode to every phone: while driving with navigation, press the power button and Maps shows only key information such as the next turn on a black screen. Turn it on or off in Settings > Navigation > Power saving mode. Pixels that have it built in keep Google's own version unless Customization > Power Saving Options > Power saving mode is turned on. Power Saving Options also has: a navigation button that opens the power saving screen without locking the phone, switching to it by itself when idle, a speedometer on it, a lower frame rate, and its black map in navigation or all over Maps.",
+          "description": "Brings the Pixel-only power saving mode to every phone: while driving with navigation, press the power button and Maps shows only key information such as the next turn on a black screen. Turn it on or off in Settings > Navigation > Power saving mode. Pixels that have it built in keep Google's own version unless Power saving mode is turned on in Power Saving Options, a row on the account sheet under Customization, which also has: a navigation button that opens the power saving screen without locking the phone, switching to it by itself when idle, a speedometer on it, a lower frame rate, and its black map in navigation or all over Maps.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -227,9 +227,9 @@
     }
   ],
   "patches_name": "bearinmind patches",
-  "fingerprint": "7f088b027a1889cc578cc3829dac63036a137decef6cc3188b714d963fbb1212",
-  "release_notes": "## [1.6.0](https://github.com/bearinmindcat/morphe-patches/compare/v1.5.1...v1.6.0) (2026-10-07)\n\n### ✨ New Features\n\n* add microG Maps (separate app that signs in through MicroG-RE) ([78d3edc](https://github.com/bearinmindcat/morphe-patches/commit/78d3edcac5f9fd458f87216d8f84197b0c5e3a97))\n* give microG Maps its own icon ([920a8ad](https://github.com/bearinmindcat/morphe-patches/commit/920a8ad26013ac3fdfa8805bed765d3f436c4a10))\n",
-  "release_tag": "v1.6.0",
-  "release_date": "2026-10-07T13:49:10Z",
+  "fingerprint": "44d5c389dd0f97ca37bd3744367683a71dacf11caf5208c978583ca58050fcb1",
+  "release_notes": "## [1.7.4](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.3...v1.7.4) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* pull from google account in ungoogled maps' local saved too ([b5e4b94](https://github.com/bearinmindcat/morphe-patches/commit/b5e4b940e8a11f7e3fadfd6d6279a2b8f17f935e))\n",
+  "release_tag": "v1.7.4",
+  "release_date": "2026-10-07T19:59:00Z",
   "isPreRelease": false
 }
