@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-10-02T02:14:37",
-  "version": "v2.5.1-dev.10",
-  "description": "## 2.5.1-dev.10\n\n- fix(swipe-up): make Lozi; public so the takeover read-back can run\n- feat(verify): check what a patched class is allowed to reach\n- docs: the swipe-up crash happens from every row\n- feat: a crash recorder, so the next crash names its own cause",
+  "created_at": "2026-10-07T01:08:44",
+  "version": "v2.5.1-dev.11",
+  "description": "## 2.5.1-dev.11\n\n- docs: correct issue forms for unsupported builds and roadmap\n- chore: pin editor scope and shell script line endings\n- docs: mark superseded gesture analyses and current undo path\n- docs: correct settings, toolbar and flag derivations\n- docs: refresh contributor gate, APK tooling and release guide\n- docs: align feature guide and roadmap with shipped behavior\n- docs(changelog): restore missing dev and stable release entries\n- docs: record full-repository findings and fix status\n- fix(gate): protect provider and verify the pushed tree\n- fix(release): make recovery resumable and stamp bundle sources\n- fix(driver): enforce patch selection and output handling\n- fix(checks): enforce generated artifacts and source contracts\n- fix(preflight): pin current Gboard bindings and flag defaults\n- fix(apk): validate resource replay and improve APK readers\n- fix(verify): follow real control flow and inspect same-size edits\n- fix(extension): harden settings, hotkeys, and crash diagnostics\n- fix(settings): guard resource metadata and defaults\n- fix(toolbar): validate native registration and capacity seams\n- fix(flags): validate isolated and long-valued flag rewrites\n- fix(patches): harden shared resolution and gesture emissions\n- fix(signature): bypass only Gboard's own startup check",
   "apps": [
     {
       "app_name": "Gboard",
@@ -21,7 +21,7 @@
         },
         {
           "name": "Bypass Gboard Signature",
-          "description": "Bypass Gboard's signature whitelist checks and force them to pass.",
+          "description": "Bypass Gboard's own startup signature check without changing other callers.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -48,7 +48,7 @@
         },
         {
           "name": "Hidden Features (unconfirmed)",
-          "description": "Turns on four finished Gboard features that a resigned build can never receive: Emoji Kitchen browse, the custom sticker tab, offline translation, and search in Gboard's settings. Off by default because none of the four has been seen working on a device — the flags flip, but each also depends on data Google only sends to an unpatched install. Safe to try: none of them crashes.",
+          "description": "Turns on four finished Gboard features that a resigned build can never receive: Emoji Kitchen browse, the custom sticker tab, offline translation, and search in Gboard's settings. Off by default because none of the four has been seen working on a device — the flags flip, but some also need data Google only sends to an unpatched install. Safe to try: none of them crashes.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -84,7 +84,7 @@
         },
         {
           "name": "Swipe Left to Delete",
-          "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's own word-scrub engine, so it behaves exactly like swiping on the backspace key already does — only it can start anywhere.",
+          "description": "Swipe left anywhere on the keyboard to delete the previous word, and swipe right to restore it. Uses Gboard's word-scrub engine; anywhere swipes have a one-word default cap, while deliberate backspace swipes keep Gboard's uncapped behaviour.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -140,9 +140,9 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "de81e466a7aaebc66b104df3dab5ffae00209828ace7b623721756c85892b9d8",
-  "release_notes": "## 2.5.1-dev.10\n\n- fix(swipe-up): make Lozi; public so the takeover read-back can run\n- feat(verify): check what a patched class is allowed to reach\n- docs: the swipe-up crash happens from every row\n- feat: a crash recorder, so the next crash names its own cause",
-  "release_tag": "v2.5.1-dev.10",
-  "release_date": "2026-10-02T02:14:37Z",
+  "fingerprint": "f9cfac33dffd59d83e3b817d0a8abc6b178b4e5519b2e3aecec2ef41bc5e4276",
+  "release_notes": "## 2.5.1-dev.11\n\n- docs: correct issue forms for unsupported builds and roadmap\n- chore: pin editor scope and shell script line endings\n- docs: mark superseded gesture analyses and current undo path\n- docs: correct settings, toolbar and flag derivations\n- docs: refresh contributor gate, APK tooling and release guide\n- docs: align feature guide and roadmap with shipped behavior\n- docs(changelog): restore missing dev and stable release entries\n- docs: record full-repository findings and fix status\n- fix(gate): protect provider and verify the pushed tree\n- fix(release): make recovery resumable and stamp bundle sources\n- fix(driver): enforce patch selection and output handling\n- fix(checks): enforce generated artifacts and source contracts\n- fix(preflight): pin current Gboard bindings and flag defaults\n- fix(apk): validate resource replay and improve APK readers\n- fix(verify): follow real control flow and inspect same-size edits\n- fix(extension): harden settings, hotkeys, and crash diagnostics\n- fix(settings): guard resource metadata and defaults\n- fix(toolbar): validate native registration and capacity seams\n- fix(flags): validate isolated and long-valued flag rewrites\n- fix(patches): harden shared resolution and gesture emissions\n- fix(signature): bypass only Gboard's own startup check",
+  "release_tag": "v2.5.1-dev.11",
+  "release_date": "2026-10-07T01:08:44Z",
   "isPreRelease": true
 }
