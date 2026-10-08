@@ -2,9 +2,9 @@
   "bundle": "aidans",
   "channel": "dev",
   "repo_url": "https://github.com/ihatenodejs/aidans-patches",
-  "created_at": "2026-10-08T15:10:45",
-  "version": "v1.4.0-dev.5",
-  "description": "## [1.4.0-dev.5](https://github.com/ihatenodejs/aidans-patches/compare/v1.4.0-dev.4...v1.4.0-dev.5) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* **apk-lab:** address review feedback on asm, native extraction, il2cpp layouts, and unity cli ([9e1addc](https://github.com/ihatenodejs/aidans-patches/commit/9e1addccd11969151c735345d231718afc730e21))\n* **apk-lab:** detect conflicting duplicate native library entries within an APK ([d85bc28](https://github.com/ihatenodejs/aidans-patches/commit/d85bc28f716251f3e0952a93e8bb5798aaf4693e))\n\n### ✨ New Features\n\n* **apk-lab:** add deterministic ARM64 instruction encoder and CLI ([58324dc](https://github.com/ihatenodejs/aidans-patches/commit/58324dc430cc9ed8659e29ced02be7776e257289))\n* **apk-lab:** add IL2CPP metadata extractor and symbol search command ([13d41bd](https://github.com/ihatenodejs/aidans-patches/commit/13d41bdc0d492fdf705e48f8d497cf3ede376235))\n* **apk-lab:** add Unity serialized asset inspector and GameObject locator ([4cdb737](https://github.com/ihatenodejs/aidans-patches/commit/4cdb7378b6f5d4ccf3204ff55eb34da95f524a80))\n* **apk-lab:** extract native libraries across splits during analyze ([55e7aa1](https://github.com/ihatenodejs/aidans-patches/commit/55e7aa13a782c5096b7ea564f2f1e43eb446c837))\n",
+  "created_at": "2026-10-08T19:58:38",
+  "version": "v1.4.0-dev.7",
+  "description": "## [1.4.0-dev.7](https://github.com/ihatenodejs/aidans-patches/compare/v1.4.0-dev.6...v1.4.0-dev.7) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* **apk-lab:** Included AndroidManifest in patchable member check ([af7fcd6](https://github.com/ihatenodejs/aidans-patches/commit/af7fcd6d19ec5d22d9f8494ac774a7ed3fa26124))\n\n### ✨ New Features\n\n* **sidelineswap:** Added AMOLED theme patch ([619e112](https://github.com/ihatenodejs/aidans-patches/commit/619e112c7304eb0a0a03d677fb0d65f47448b99c))\n* **sidelineswap:** Added cart item and CardView theming ([9603003](https://github.com/ihatenodejs/aidans-patches/commit/9603003d69265ffafd4ce4fbe5a39dfe27ea4469))\n* **sidelineswap:** Added dark WebView support and expanded AMOLED theme ([d0de58a](https://github.com/ihatenodejs/aidans-patches/commit/d0de58a456ec9d9bd8a2f421cf216ef6f8420f75))\n* **sidelineswap:** Added payment sheet theming and address list fix ([4290b27](https://github.com/ihatenodejs/aidans-patches/commit/4290b270af2c009b4ef1c1c52c483a0b5c9a0b57))\n* **sidelineswap:** Added shipping badge and avatar stroke theming ([cdfed1e](https://github.com/ihatenodejs/aidans-patches/commit/cdfed1e4bbba03c8d94d789ca57824c5964a5498))\n",
   "apps": [
     {
       "app_name": "Adobe Scan",
@@ -586,6 +586,24 @@
       "package": "com.sidelineswap.android",
       "patches": [
         {
+          "name": "AMOLED Theme",
+          "description": "Forces SidelineSwap into a pure-black AMOLED theme with dark system bars, black app surfaces, readable light text and icons, and force dark mode on embedded WebViews.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.52.0"
+          ]
+        },
+        {
+          "name": "AMOLED Theme Resources",
+          "description": "Resource modifications for AMOLED theme.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.52.0"
+          ]
+        },
+        {
           "name": "Block Tracking and Telemetry",
           "description": "Neutralizes first-party analytics (SidelineSwap backend), behavioral tracking (Amplitude, Firebase Analytics, Facebook App Events, Iterable), diagnostic telemetry (Firebase Crashlytics, Timber logging tree), payment gateway telemetry (Braintree FPTI), and zeros the Google Play Advertising ID (AAID).",
           "use": true,
@@ -690,9 +708,9 @@
     }
   ],
   "patches_name": "Aidan's Patches",
-  "fingerprint": "c803a74eef0cafcb90dd648d644ac97b2cfbe55ec767201254b27055c011184b",
-  "release_notes": "## [1.4.0-dev.5](https://github.com/ihatenodejs/aidans-patches/compare/v1.4.0-dev.4...v1.4.0-dev.5) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* **apk-lab:** address review feedback on asm, native extraction, il2cpp layouts, and unity cli ([9e1addc](https://github.com/ihatenodejs/aidans-patches/commit/9e1addccd11969151c735345d231718afc730e21))\n* **apk-lab:** detect conflicting duplicate native library entries within an APK ([d85bc28](https://github.com/ihatenodejs/aidans-patches/commit/d85bc28f716251f3e0952a93e8bb5798aaf4693e))\n\n### ✨ New Features\n\n* **apk-lab:** add deterministic ARM64 instruction encoder and CLI ([58324dc](https://github.com/ihatenodejs/aidans-patches/commit/58324dc430cc9ed8659e29ced02be7776e257289))\n* **apk-lab:** add IL2CPP metadata extractor and symbol search command ([13d41bd](https://github.com/ihatenodejs/aidans-patches/commit/13d41bdc0d492fdf705e48f8d497cf3ede376235))\n* **apk-lab:** add Unity serialized asset inspector and GameObject locator ([4cdb737](https://github.com/ihatenodejs/aidans-patches/commit/4cdb7378b6f5d4ccf3204ff55eb34da95f524a80))\n* **apk-lab:** extract native libraries across splits during analyze ([55e7aa1](https://github.com/ihatenodejs/aidans-patches/commit/55e7aa13a782c5096b7ea564f2f1e43eb446c837))\n",
-  "release_tag": "v1.4.0-dev.5",
-  "release_date": "2026-10-08T15:10:45Z",
+  "fingerprint": "4f5b5e91d28e73580f0314434213c37c323536eb78fefe2c8272130cbceadaab",
+  "release_notes": "## [1.4.0-dev.7](https://github.com/ihatenodejs/aidans-patches/compare/v1.4.0-dev.6...v1.4.0-dev.7) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* **apk-lab:** Included AndroidManifest in patchable member check ([af7fcd6](https://github.com/ihatenodejs/aidans-patches/commit/af7fcd6d19ec5d22d9f8494ac774a7ed3fa26124))\n\n### ✨ New Features\n\n* **sidelineswap:** Added AMOLED theme patch ([619e112](https://github.com/ihatenodejs/aidans-patches/commit/619e112c7304eb0a0a03d677fb0d65f47448b99c))\n* **sidelineswap:** Added cart item and CardView theming ([9603003](https://github.com/ihatenodejs/aidans-patches/commit/9603003d69265ffafd4ce4fbe5a39dfe27ea4469))\n* **sidelineswap:** Added dark WebView support and expanded AMOLED theme ([d0de58a](https://github.com/ihatenodejs/aidans-patches/commit/d0de58a456ec9d9bd8a2f421cf216ef6f8420f75))\n* **sidelineswap:** Added payment sheet theming and address list fix ([4290b27](https://github.com/ihatenodejs/aidans-patches/commit/4290b270af2c009b4ef1c1c52c483a0b5c9a0b57))\n* **sidelineswap:** Added shipping badge and avatar stroke theming ([cdfed1e](https://github.com/ihatenodejs/aidans-patches/commit/cdfed1e4bbba03c8d94d789ca57824c5964a5498))\n",
+  "release_tag": "v1.4.0-dev.7",
+  "release_date": "2026-10-08T19:58:38Z",
   "isPreRelease": true
 }

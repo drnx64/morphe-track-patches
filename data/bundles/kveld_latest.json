@@ -2,9 +2,9 @@
   "bundle": "kveld",
   "channel": "latest",
   "repo_url": "https://github.com/kveld9/kveld-morphe-patches",
-  "created_at": "2026-10-08T01:31:43",
-  "version": "v2.6.0-experimental.4",
-  "description": "## [2.6.0-experimental.4](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.3...v2.6.0-experimental.4) (2026-10-08)\n\n### Bug Fixes\n\n* **universal:** pre-filter immutable dex scan before materializing mutable defs ([96070c0](https://github.com/kveld9/kveld-morphe-patches/commit/96070c0d9501a1b89403eda23b23df9b0bcdfecb))\n",
+  "created_at": "2026-10-08T19:46:31",
+  "version": "v2.6.0-experimental.6",
+  "description": "## [2.6.0-experimental.6](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.5...v2.6.0-experimental.6) (2026-10-08)\n\n### Bug Fixes\n\n* **brave:** list hooked telemetry methods in log ([bfcb6bc](https://github.com/kveld9/kveld-morphe-patches/commit/bfcb6bc483ff2051a81675b492cf4f4eb35bbd61))\n* **hevy:** break down purged components by category in log ([6b6c9ed](https://github.com/kveld9/kveld-morphe-patches/commit/6b6c9ed3a55bd0e80926c88fb55bf3dcee3260cc))\n* **nokoprint:** break down governed ad components by tag in log ([85cb1dd](https://github.com/kveld9/kveld-morphe-patches/commit/85cb1dda694f4d9952958a68db83dcb92434730a))\n* **nokoprint:** break down purged components by category in log ([60f2949](https://github.com/kveld9/kveld-morphe-patches/commit/60f2949dd0b59656c94b55e9cec21cacea390f6a))\n* **universal:** break down neutralized components by category in log ([e3c4487](https://github.com/kveld9/kveld-morphe-patches/commit/e3c4487822fc6a55d8f312040be6b10749c6028d))\n* **universal:** keep push and auth receivers out of default telemetry toggle ([b7afeea](https://github.com/kveld9/kveld-morphe-patches/commit/b7afeea3833f95891056e52c8c05ded902a41c19)), closes [#77](https://github.com/kveld9/kveld-morphe-patches/issues/77)\n* **xiaomi-earbuds:** break down keepalive components by tag in log ([0116df7](https://github.com/kveld9/kveld-morphe-patches/commit/0116df7ff87d34d86ef3389a784f705dfc1efffc))\n* **xiaomi-earbuds:** break down purged components by category in log ([8bed861](https://github.com/kveld9/kveld-morphe-patches/commit/8bed861d15fce6b7ef286379bd081d42f2a74677))\n\n### New Features\n\n* **brave:** preselect previous tab in group when closing selected tab ([91be179](https://github.com/kveld9/kveld-morphe-patches/commit/91be17948defc045d86fbd21449c170d7758872a))\n",
   "apps": [
     {
       "app_name": "Brave Private Web Browser, VPN",
@@ -149,6 +149,15 @@
         {
           "name": "Suppress In-App Promos & Surveys",
           "description": "Suppresses intrusive in-app rating surveys, Play Store review prompts, and marketing promo popups (YouTube promo, ad-free callouts, and Brave Ads onboarding).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.97.56"
+          ]
+        },
+        {
+          "name": "Tab Group Close Selection",
+          "description": "When closing the active tab in a tab group, selects the previous tab in the same group instead of jumping outside the group.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -1512,6 +1521,80 @@
           ]
         },
         {
+          "name": "TikTok Privacy Permissions Stripper",
+          "description": "Selectively strips sensitive privacy, sensor, hardware, and tracking permissions from AndroidManifest.xml via configurable boolean toggles.",
+          "use": false,
+          "options": [
+            {
+              "key": "stripNotifications",
+              "description": "Remove POST_NOTIFICATIONS permission (Android 13+). Notification channels cannot dispatch push alerts."
+            },
+            {
+              "key": "stripCamera",
+              "description": "Remove CAMERA permission. WARNING: Breaks camera recording, photo capturing, QR scanning, LIVE broadcasting, and video creation."
+            },
+            {
+              "key": "stripMicrophone",
+              "description": "Remove RECORD_AUDIO, FOREGROUND_SERVICE_MICROPHONE, and FOREGROUND_SERVICE_CAMERA permissions. WARNING: Breaks video voice recording, LIVE audio broadcasting, audio comments, and voice/video calling."
+            },
+            {
+              "key": "stripStorageMedia",
+              "description": "Remove external storage (READ/WRITE_EXTERNAL_STORAGE) and media permissions (READ_MEDIA_IMAGES, READ_MEDIA_VIDEO, READ_MEDIA_AUDIO, READ_MEDIA_VISUAL_USER_SELECTED, ACCESS_MEDIA_LOCATION). WARNING: Breaks local gallery picker, drafts, and video/photo saving."
+            },
+            {
+              "key": "stripBluetooth",
+              "description": "Remove BLUETOOTH, BLUETOOTH_SCAN, BLUETOOTH_CONNECT, and BLUETOOTH_ADVERTISE permissions. WARNING: Breaks Bluetooth audio accessories, wireless headphones low-latency sync, Cast devices, and external remote controls."
+            },
+            {
+              "key": "stripNfc",
+              "description": "Remove NFC permission. WARNING: Disables NFC tag interactions and NFC-based hardware authentication tokens."
+            },
+            {
+              "key": "stripBiometric",
+              "description": "Remove USE_BIOMETRIC and USE_FINGERPRINT permissions. WARNING: Breaks fingerprint/face biometric unlocking, passkeys, and biometric payment authorization."
+            },
+            {
+              "key": "stripForegroundServices",
+              "description": "Remove generic FOREGROUND_SERVICE and specialized types (DATA_SYNC, MEDIA_PLAYBACK, MEDIA_PROJECTION, PHONE_CALL). WARNING: HIGH RISK. Breaks background video uploads, offline caching, media playback notification services, screen sharing, and VoIP calls in background."
+            },
+            {
+              "key": "stripSystemAlertWindow",
+              "description": "Remove SYSTEM_ALERT_WINDOW permission. WARNING: Breaks Picture-in-Picture overlay window outside the app, floating mini-player, and overlay notification heads."
+            },
+            {
+              "key": "stripNetworkState",
+              "description": "Remove ACCESS_NETWORK_STATE, ACCESS_WIFI_STATE, CHANGE_NETWORK_STATE, CHANGE_WIFI_STATE, and ACCESS_LOCAL_NETWORK permissions. WARNING: May cause SecurityException crashes on startup if network monitoring components query Wi-Fi/cellular state without catch guards."
+            },
+            {
+              "key": "stripWakeLock",
+              "description": "Remove WAKE_LOCK permission. WARNING: Device CPU may sleep during media playback or long video uploads/downloads when screen turns off, suspending progress."
+            },
+            {
+              "key": "stripScreenshotDetection",
+              "description": "Remove DETECT_SCREEN_CAPTURE and DETECT_SCREEN_RECORDING permissions to neutralize system-level capture callbacks."
+            },
+            {
+              "key": "stripMiscHardware",
+              "description": "Remove VIBRATE, MODIFY_AUDIO_SETTINGS, MANAGE_OWN_CALLS, REORDER_TASKS, SET_WALLPAPER, and USE_FULL_SCREEN_INTENT permissions. WARNING: Disables haptic feedback vibration, volume adjustments, alarm priority intents, and live wallpaper export."
+            },
+            {
+              "key": "stripOemSignals",
+              "description": "Remove OEM attribution, launcher badges, AICore bindings, and proprietary TikTok internal IPC permissions. WARNING: Removing DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION may impact runtime dynamic broadcast receivers."
+            },
+            {
+              "key": "stripPushDelivery",
+              "description": "Remove Google C2DM/FCM and Amazon ADM push receiver permissions. WARNING: Breaks push notification delivery."
+            },
+            {
+              "key": "stripBilling",
+              "description": "Remove Google Play in-app billing permission (com.android.vending.BILLING). WARNING: Breaks coin purchases and in-app transactions."
+            }
+          ],
+          "compatible_versions": [
+            "47.1.4"
+          ]
+        },
+        {
           "name": "Unified Telemetry & Tracker Silencer",
           "description": "Neutralizes ByteDance AppLog user tracking, APM/Npth/Heimdallr crash monitors, AppsFlyer attribution, and Firebase analytics.",
           "use": true,
@@ -1578,9 +1661,9 @@
     }
   ],
   "patches_name": "kveld9 Patches",
-  "fingerprint": "22fdb63b847ee26d1866fe98ae3eff3db4c7b597252b15a21cdbf5e4fc67d107",
-  "release_notes": "## [2.6.0-experimental.4](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.3...v2.6.0-experimental.4) (2026-10-08)\n\n### Bug Fixes\n\n* **universal:** pre-filter immutable dex scan before materializing mutable defs ([96070c0](https://github.com/kveld9/kveld-morphe-patches/commit/96070c0d9501a1b89403eda23b23df9b0bcdfecb))\n",
-  "release_tag": "v2.6.0-experimental.4",
-  "release_date": "2026-10-08T01:31:43Z",
+  "fingerprint": "262342b2798d314b106646d1ed6771d9dd81ad4f2c151feb50961c8f299c2c1b",
+  "release_notes": "## [2.6.0-experimental.6](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.5...v2.6.0-experimental.6) (2026-10-08)\n\n### Bug Fixes\n\n* **brave:** list hooked telemetry methods in log ([bfcb6bc](https://github.com/kveld9/kveld-morphe-patches/commit/bfcb6bc483ff2051a81675b492cf4f4eb35bbd61))\n* **hevy:** break down purged components by category in log ([6b6c9ed](https://github.com/kveld9/kveld-morphe-patches/commit/6b6c9ed3a55bd0e80926c88fb55bf3dcee3260cc))\n* **nokoprint:** break down governed ad components by tag in log ([85cb1dd](https://github.com/kveld9/kveld-morphe-patches/commit/85cb1dda694f4d9952958a68db83dcb92434730a))\n* **nokoprint:** break down purged components by category in log ([60f2949](https://github.com/kveld9/kveld-morphe-patches/commit/60f2949dd0b59656c94b55e9cec21cacea390f6a))\n* **universal:** break down neutralized components by category in log ([e3c4487](https://github.com/kveld9/kveld-morphe-patches/commit/e3c4487822fc6a55d8f312040be6b10749c6028d))\n* **universal:** keep push and auth receivers out of default telemetry toggle ([b7afeea](https://github.com/kveld9/kveld-morphe-patches/commit/b7afeea3833f95891056e52c8c05ded902a41c19)), closes [#77](https://github.com/kveld9/kveld-morphe-patches/issues/77)\n* **xiaomi-earbuds:** break down keepalive components by tag in log ([0116df7](https://github.com/kveld9/kveld-morphe-patches/commit/0116df7ff87d34d86ef3389a784f705dfc1efffc))\n* **xiaomi-earbuds:** break down purged components by category in log ([8bed861](https://github.com/kveld9/kveld-morphe-patches/commit/8bed861d15fce6b7ef286379bd081d42f2a74677))\n\n### New Features\n\n* **brave:** preselect previous tab in group when closing selected tab ([91be179](https://github.com/kveld9/kveld-morphe-patches/commit/91be17948defc045d86fbd21449c170d7758872a))\n",
+  "release_tag": "v2.6.0-experimental.6",
+  "release_date": "2026-10-08T19:46:31Z",
   "isPreRelease": true
 }

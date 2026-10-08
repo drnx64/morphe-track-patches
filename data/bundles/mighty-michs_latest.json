@@ -2,9 +2,9 @@
   "bundle": "mighty-michs",
   "channel": "latest",
   "repo_url": "https://github.com/mich111discord/MightyMichs-Patches",
-  "created_at": "2026-10-06T11:54:58",
-  "version": "v1.8.0",
-  "description": "## [1.8.0](https://github.com/mich111discord/MightyMichs-Patches/compare/v1.7.0...v1.8.0) (2026-10-06)\n\n### ✨ New Features\n\n* Added Login Bypass to sofascore [skip ci] ([6e28529](https://github.com/mich111discord/MightyMichs-Patches/commit/6e28529ed7fcb807478c05f46321a55aa397be9c))\n* Added unlock premium patch for Sofascore [skip ci] ([68c7349](https://github.com/mich111discord/MightyMichs-Patches/commit/68c7349d527ff4f00c8286a8ba45d2f4ba286b29))\n",
+  "created_at": "2026-10-08T17:02:30",
+  "version": "v1.9.0",
+  "description": "## [1.9.0](https://github.com/mich111discord/MightyMichs-Patches/compare/v1.8.0...v1.9.0) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* correct ToDoList compatibility syntax and add two versions [skip ci] ([7e92213](https://github.com/mich111discord/MightyMichs-Patches/commit/7e9221334695cea2dae7360fd8325d621b5cb5ad))\n* fixed magovideo patch ([e839f5b](https://github.com/mich111discord/MightyMichs-Patches/commit/e839f5bd815d0e299da47faeee9db8a1223d0685))\n* fixed pou package error ([32b64b6](https://github.com/mich111discord/MightyMichs-Patches/commit/32b64b6cffbf55bc55319fb594d7534613a7ee38))\n* fixed some patches ([e7aa495](https://github.com/mich111discord/MightyMichs-Patches/commit/e7aa495372b4e75e1e1f49d846c86d3842efe3d9))\n\n### ✨ New Features\n\n* add Nova Launcher Enable Prime patch ([73f8710](https://github.com/mich111discord/MightyMichs-Patches/commit/73f8710f151797f75fd64793379487d9e58e0a56))\n",
   "apps": [
     {
       "app_name": "Audio Editor",
@@ -42,7 +42,7 @@
       "patches": [
         {
           "name": "Unlock Premium (Experimental)",
-          "description": "Unlocks Callfilter.app premium by forcing the 'isSubscribed' check to return true. WARNING: May cause crashes or unexpected behavior.",
+          "description": "Unlocks Callfilter.app premium by forcing the 'isSubscribed' check to return true. WARNING: May cause crashes or unexpected behavior. ",
           "use": false,
           "options": [],
           "compatible_versions": []
@@ -89,6 +89,21 @@
           "use": false,
           "options": [],
           "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "InShot",
+      "package": "com.camerasideas.instashot",
+      "patches": [
+        {
+          "name": "Unlock Premium ",
+          "description": "Unlocks InShot premium by forcing billing methods to return true.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.243.1555"
+          ]
         }
       ]
     },
@@ -147,7 +162,7 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "3.2.3.0"
+            "v3.2.3.0"
           ]
         }
       ]
@@ -178,6 +193,36 @@
           "options": [],
           "compatible_versions": [
             "4.2.00"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "VivaCut",
+      "package": "com.quvideo.vivacut",
+      "patches": [
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks VivaCut Pro by forcing IapService.F()Z to return true. WARNING: May cause crashes.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "3.9.9"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "PhotoApp",
+      "package": "com.scaleup.photofx",
+      "patches": [
+        {
+          "name": "Unlock Premium ",
+          "description": "Unlocks PhotoApp Premium by forcing UserViewModel.isPremium to true. WARNING: May cause crashes.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "2.8.1"
           ]
         }
       ]
@@ -242,8 +287,17 @@
       "package": "com.teslacoilsw.launcher",
       "patches": [
         {
-          "name": "Unlock Nova Launcher Prime",
-          "description": "Unlocks Nova Launcher Prime by forcing isPrime() to return true.",
+          "name": "Enable Prime (Experimental)",
+          "description": "Enables Nova Launcher Prime WARNING: May cause crashes. ",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.8.9"
+          ]
+        },
+        {
+          "name": "Remove Internet permission (Nova)",
+          "description": "Removes INTERNET permission from Nova Launcher and disables network-only entry points so Nova does not crash.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -298,13 +352,37 @@
       ]
     },
     {
+      "app_name": "Pou",
+      "package": "me.pou.app",
+      "patches": [
+        {
+          "name": "Unlimited Coins (Experimental)",
+          "description": "Gives unlimited coins in POU. WARNING: May cause crashes or reset progress.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.4.135"
+          ]
+        },
+        {
+          "name": "Unlock Everything (Experimental)",
+          "description": "Unlocks all items in POU and bypasses integrity check. WARNING: May cause crashes.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "1.4.135"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "MagoVideo",
       "package": "mobi.charmer.magovideo",
       "patches": [
         {
-          "name": "Unlock Premium Features",
-          "description": "Unlocks premium features in MagoVideo by forcing the premium check to return true. ",
-          "use": true,
+          "name": "Unlock Premium (Experimental)",
+          "description": "Unlocks MagoVideo premium by forcing the premium check method h0 to return true. WARNING: May cause crashes.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "5.7.1"
@@ -322,7 +400,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.04.16.0813"
+            "1.04.16.0813",
+            "1.04.17.0918"
           ]
         }
       ]
@@ -353,6 +432,21 @@
           "options": [],
           "compatible_versions": [
             "12.10.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "Polarr",
+      "package": "photo.editor.polarr",
+      "patches": [
+        {
+          "name": "Unlock Premium (Experimental)",
+          "description": "Unlocks Polarr Premium by forcing isPremium to true. WARNING: May cause crashes.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "6.12.0"
           ]
         }
       ]
@@ -425,7 +519,8 @@
           "use": true,
           "options": [],
           "compatible_versions": [
-            "1.02.94.0925"
+            "1.02.94.0925",
+            "1.03.38.0924"
           ]
         }
       ]
@@ -463,9 +558,9 @@
     }
   ],
   "patches_name": "MightyMich's Patches",
-  "fingerprint": "4614d1371feb355b0113edf6bac54c13ad046d9e3d53b267697b030bbe7a2fdc",
-  "release_notes": "## [1.8.0](https://github.com/mich111discord/MightyMichs-Patches/compare/v1.7.0...v1.8.0) (2026-10-06)\n\n### ✨ New Features\n\n* Added Login Bypass to sofascore [skip ci] ([6e28529](https://github.com/mich111discord/MightyMichs-Patches/commit/6e28529ed7fcb807478c05f46321a55aa397be9c))\n* Added unlock premium patch for Sofascore [skip ci] ([68c7349](https://github.com/mich111discord/MightyMichs-Patches/commit/68c7349d527ff4f00c8286a8ba45d2f4ba286b29))\n",
-  "release_tag": "v1.8.0",
-  "release_date": "2026-10-06T11:54:58Z",
+  "fingerprint": "3a7673402c59fa8c419e0f01fb6053cfbdc42d51e6207350a647ffd589eb86e0",
+  "release_notes": "## [1.9.0](https://github.com/mich111discord/MightyMichs-Patches/compare/v1.8.0...v1.9.0) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* correct ToDoList compatibility syntax and add two versions [skip ci] ([7e92213](https://github.com/mich111discord/MightyMichs-Patches/commit/7e9221334695cea2dae7360fd8325d621b5cb5ad))\n* fixed magovideo patch ([e839f5b](https://github.com/mich111discord/MightyMichs-Patches/commit/e839f5bd815d0e299da47faeee9db8a1223d0685))\n* fixed pou package error ([32b64b6](https://github.com/mich111discord/MightyMichs-Patches/commit/32b64b6cffbf55bc55319fb594d7534613a7ee38))\n* fixed some patches ([e7aa495](https://github.com/mich111discord/MightyMichs-Patches/commit/e7aa495372b4e75e1e1f49d846c86d3842efe3d9))\n\n### ✨ New Features\n\n* add Nova Launcher Enable Prime patch ([73f8710](https://github.com/mich111discord/MightyMichs-Patches/commit/73f8710f151797f75fd64793379487d9e58e0a56))\n",
+  "release_tag": "v1.9.0",
+  "release_date": "2026-10-08T17:02:30Z",
   "isPreRelease": false
 }
