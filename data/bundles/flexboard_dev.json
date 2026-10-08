@@ -2,9 +2,9 @@
   "bundle": "flexboard",
   "channel": "dev",
   "repo_url": "https://github.com/JZ6/Flexboard",
-  "created_at": "2026-10-07T02:42:50",
-  "version": "v2.5.2-dev.0",
-  "description": "## 2.5.2-dev.0\n\n- docs: swipe up reverts through the decoder, not the undo stack\n- feat(swipe-up): revert the last autocorrection through Gboard's decoder\n- refactor(patches): resolve branch targets in one shared helper\n- chore: store gradlew.bat with LF, as .gitattributes declares\n- chore(deps): bump gradle-wrapper from 9.7.1 to 9.8.0\n- chore(deps): bump actions/upload-artifact from 4 to 7\n- chore(deps): bump actions/setup-java from 6.0.0 to 6.0.1",
+  "created_at": "2026-10-07T23:10:30",
+  "version": "v2.5.2-dev.1",
+  "description": "## 2.5.2-dev.1\n\n- feat(flags): remove Hidden Features (unconfirmed)\n- docs: swipe up confirmed on a device, and on by default\n- feat(swipe-up): on by default; crash recorder moves to its own opt-in patch",
   "apps": [
     {
       "app_name": "Gboard",
@@ -29,6 +29,15 @@
           ]
         },
         {
+          "name": "Crash reporter (debug)",
+          "description": "For debugging. After a keyboard crash, the error is saved and copied to your clipboard the next time the keyboard starts, so it can be pasted into a bug report. This replaces whatever was on the clipboard. Off by default.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
           "name": "Enable Rambler",
           "description": "Exposes Google Rambler — Gboard's agentic dictation, which rewrites what you say into composed text — as a choice in Voice settings. It is not switched on for you: the feature uses a Google server, has its own quota and asks for consent, so picking it is left to you.",
           "use": true,
@@ -41,15 +50,6 @@
           "name": "Hidden Features",
           "description": "Turns on two finished Gboard features that a resigned build can never receive: grammar check, and a close control on the chips Gboard offers unprompted. Their flags are delivered per app signature, so resigning the APK means they never arrive and stay off. Both are confirmed working on a device; five other flags were tried and dropped.",
           "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Hidden Features (unconfirmed)",
-          "description": "Turns on four finished Gboard features that a resigned build can never receive: Emoji Kitchen browse, the custom sticker tab, offline translation, and search in Gboard's settings. Off by default because none of the four has been seen working on a device — the flags flip, but some also need data Google only sends to an unpatched install. Safe to try: none of them crashes.",
-          "use": false,
           "options": [],
           "compatible_versions": [
             "18.0.3.954559732-release-arm64-v8a"
@@ -102,8 +102,8 @@
         },
         {
           "name": "Swipe up to undo autocorrect",
-          "description": "Swipe up on the keyboard to undo the last autocorrection: the word you typed comes back, as with Gboard's own undo autocorrect on backspace. Gboard's decoder decides whether there is one to undo; if not, the swipe does nothing. The key you swiped on is not typed. Not yet confirmed on a device. While it is on, a keyboard crash is saved and copied to your clipboard the next time the keyboard starts, so it can be pasted into a bug report. Off by default.",
-          "use": false,
+          "description": "Swipe up on the keyboard to undo the last autocorrection: the word you typed comes back, as with Gboard's own undo autocorrect on backspace. It works right after the correction, before you type anything else; otherwise the swipe does nothing. The key you swiped on is not typed.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "18.0.3.954559732-release-arm64-v8a"
@@ -140,9 +140,9 @@
     }
   ],
   "patches_name": "Flexboard",
-  "fingerprint": "bd8e194df5e641e5f772be6d942ff9c1eb7c8365a935d75d11f4305bddd7f27a",
-  "release_notes": "## 2.5.2-dev.0\n\n- docs: swipe up reverts through the decoder, not the undo stack\n- feat(swipe-up): revert the last autocorrection through Gboard's decoder\n- refactor(patches): resolve branch targets in one shared helper\n- chore: store gradlew.bat with LF, as .gitattributes declares\n- chore(deps): bump gradle-wrapper from 9.7.1 to 9.8.0\n- chore(deps): bump actions/upload-artifact from 4 to 7\n- chore(deps): bump actions/setup-java from 6.0.0 to 6.0.1",
-  "release_tag": "v2.5.2-dev.0",
-  "release_date": "2026-10-07T02:42:50Z",
+  "fingerprint": "e59733ad9fa708ebf8ea79b18d999b2895cb15705d1a1466fc2f2ba1e5c1555b",
+  "release_notes": "## 2.5.2-dev.1\n\n- feat(flags): remove Hidden Features (unconfirmed)\n- docs: swipe up confirmed on a device, and on by default\n- feat(swipe-up): on by default; crash recorder moves to its own opt-in patch",
+  "release_tag": "v2.5.2-dev.1",
+  "release_date": "2026-10-07T23:10:30Z",
   "isPreRelease": true
 }
