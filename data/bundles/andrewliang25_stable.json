@@ -2,9 +2,9 @@
   "bundle": "andrewliang25",
   "channel": "stable",
   "repo_url": "https://github.com/andrewliang25/morphe-patches",
-  "created_at": "2026-10-03T16:28:04",
-  "version": "v3.4.0",
-  "description": "## [3.4.0](https://github.com/andrewliang25/morphe-patches/compare/v3.3.2...v3.4.0) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* make search result cards black in the AMOLED theme ([3268483](https://github.com/andrewliang25/morphe-patches/commit/326848304a9ac7d6b63c535689a1ca6b6383a52f)), closes [#333334](https://github.com/andrewliang25/morphe-patches/issues/333334) [#3B3C3E](https://github.com/andrewliang25/morphe-patches/issues/3B3C3E) [#136](https://github.com/andrewliang25/morphe-patches/issues/136)\n\n### ✨ New Features\n\n* add the option \"Save as H.264\" to story and reel download ([f18cb4d](https://github.com/andrewliang25/morphe-patches/commit/f18cb4d2d47a657fa20de7504867d3278a4e3b3f)), closes [#155](https://github.com/andrewliang25/morphe-patches/issues/155)\n* save VP9 stories in full quality ([0bbd0f7](https://github.com/andrewliang25/morphe-patches/commit/0bbd0f73cffb1fc13f1d36650d7c3500ecf28c5f))\n",
+  "created_at": "2026-10-08T13:58:52",
+  "version": "v3.5.0",
+  "description": "## [3.5.0](https://github.com/andrewliang25/morphe-patches/compare/v3.4.0...v3.5.0) (2026-10-08)\n\n### ✨ New Features\n\n* **Facebook - [Reels] Picture-in-picture:** keep a reel playing in a small window ([a194a2f](https://github.com/andrewliang25/morphe-patches/commit/a194a2f4d45fce78fdb2dd130827d7447a026a1d)), closes [#174](https://github.com/andrewliang25/morphe-patches/issues/174)\n* **LINE:** add \"[General] Trust user-installed CAs\" for LIFF traffic ([2c00dd6](https://github.com/andrewliang25/morphe-patches/commit/2c00dd6be27cc89cdd1f764f286eb217d3ea9dd8)), closes [#182](https://github.com/andrewliang25/morphe-patches/issues/182)\n* **LINE:** add \"Andrew's Patch Setting\" to turn patches on or off in LINE ([a94eed6](https://github.com/andrewliang25/morphe-patches/commit/a94eed6481d74eaf4a4b760259b10fd520dad961))\n",
   "apps": [
     {
       "app_name": "Facebook",
@@ -136,6 +136,15 @@
           "name": "[Reels] Hide sponsored reels",
           "description": "Removes ads from Reels and Watch, including product banners over a reel and ads inside a video.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "577.0.0.50.72"
+          ]
+        },
+        {
+          "name": "[Reels] Picture-in-picture",
+          "description": "Keeps a reel playing in a small window when you leave Facebook from the Reels tab. Only vertical reels get a window. Needs Android 12 or later.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "577.0.0.50.72"
@@ -324,6 +333,15 @@
           ]
         },
         {
+          "name": "[General] Andrew's Patch Setting",
+          "description": "Adds \"Andrew's Patch Setting\" to LINE Settings, below \"Profile\". There you can turn some patches on or off without patching again, and see the credits and licenses.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
           "name": "[General] Disable VOOM",
           "description": "VOOM deep links, shares, and notifications do nothing. If you open the standalone VOOM feed, it closes. Messaging and the other tabs do not change.",
           "use": true,
@@ -363,6 +381,15 @@
           "name": "[General] Redirect LINE Pay",
           "description": "Opens LINE Pay in the standalone LINE Pay app, so the integrity check that fails on a re-signed build never runs.",
           "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.14.0"
+          ]
+        },
+        {
+          "name": "[General] Trust user-installed CAs",
+          "description": "Makes LINE trust certificate authorities you install, so your own HTTPS proxy can read LIFF and mini-app web traffic. Bank and LINE Pay stay pinned. For debugging. Off by default.",
+          "use": false,
           "options": [],
           "compatible_versions": [
             "26.14.0"
@@ -444,9 +471,9 @@
     }
   ],
   "patches_name": "Andrew's Patches",
-  "fingerprint": "f9695002c6f9036dfbb9b91fb8b70b6ca3e65590aff92ddf15a0c844b993b3e5",
-  "release_notes": "## [3.4.0](https://github.com/andrewliang25/morphe-patches/compare/v3.3.2...v3.4.0) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* make search result cards black in the AMOLED theme ([3268483](https://github.com/andrewliang25/morphe-patches/commit/326848304a9ac7d6b63c535689a1ca6b6383a52f)), closes [#333334](https://github.com/andrewliang25/morphe-patches/issues/333334) [#3B3C3E](https://github.com/andrewliang25/morphe-patches/issues/3B3C3E) [#136](https://github.com/andrewliang25/morphe-patches/issues/136)\n\n### ✨ New Features\n\n* add the option \"Save as H.264\" to story and reel download ([f18cb4d](https://github.com/andrewliang25/morphe-patches/commit/f18cb4d2d47a657fa20de7504867d3278a4e3b3f)), closes [#155](https://github.com/andrewliang25/morphe-patches/issues/155)\n* save VP9 stories in full quality ([0bbd0f7](https://github.com/andrewliang25/morphe-patches/commit/0bbd0f73cffb1fc13f1d36650d7c3500ecf28c5f))\n",
-  "release_tag": "v3.4.0",
-  "release_date": "2026-10-03T16:28:04Z",
+  "fingerprint": "849e84170da799278db6f3d41e8511f777346f39785b49b96ed82825d69353ca",
+  "release_notes": "## [3.5.0](https://github.com/andrewliang25/morphe-patches/compare/v3.4.0...v3.5.0) (2026-10-08)\n\n### ✨ New Features\n\n* **Facebook - [Reels] Picture-in-picture:** keep a reel playing in a small window ([a194a2f](https://github.com/andrewliang25/morphe-patches/commit/a194a2f4d45fce78fdb2dd130827d7447a026a1d)), closes [#174](https://github.com/andrewliang25/morphe-patches/issues/174)\n* **LINE:** add \"[General] Trust user-installed CAs\" for LIFF traffic ([2c00dd6](https://github.com/andrewliang25/morphe-patches/commit/2c00dd6be27cc89cdd1f764f286eb217d3ea9dd8)), closes [#182](https://github.com/andrewliang25/morphe-patches/issues/182)\n* **LINE:** add \"Andrew's Patch Setting\" to turn patches on or off in LINE ([a94eed6](https://github.com/andrewliang25/morphe-patches/commit/a94eed6481d74eaf4a4b760259b10fd520dad961))\n",
+  "release_tag": "v3.5.0",
+  "release_date": "2026-10-08T13:58:52Z",
   "isPreRelease": false
 }
