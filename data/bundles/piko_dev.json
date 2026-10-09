@@ -2,9 +2,9 @@
   "bundle": "piko",
   "channel": "dev",
   "repo_url": "https://github.com/crimera/piko",
-  "created_at": "2026-10-07T11:04:16",
-  "version": "v3.10.0-dev.12",
-  "description": "## [3.10.0-dev.12](https://github.com/crimera/piko/compare/v3.10.0-dev.11...v3.10.0-dev.12) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Allow screenshots in protected DM windows ([45fee55](https://github.com/crimera/piko/commit/45fee5532102b27aa8a4e95ff5c00ac3cb75fd75))\n* **Instagram:** Correct patch status mappings ([bf4a28c](https://github.com/crimera/piko/commit/bf4a28ca5387efd2c51453ef368d686cbf643f8b))\n* **Instagram:** Correct the names of the HDR and auto-scroll recommended flags ([#2078](https://github.com/crimera/piko/issues/2078)) ([8917d71](https://github.com/crimera/piko/commit/8917d71e36356ed56e68154b7cf272cfa4dcf0c5))\n* **Instagram:** Hide ads in the Following feed ([7914a26](https://github.com/crimera/piko/commit/7914a2634e39738dd11318ea71491a5bf11493f4))\n* **Instagram:** Hide the reshare button in the home feed ([ae38467](https://github.com/crimera/piko/commit/ae38467035fbbeeba8e03824535f927cc635adea))\n* **Instagram:** Isolate story filters and refresh highlight visibility ([2946e7e](https://github.com/crimera/piko/commit/2946e7ecabedd5da21075e56e9f10824cd1c94d3))\n* **Instagram:** Move the story seen button to the bottom action row ([0d7fba0](https://github.com/crimera/piko/commit/0d7fba0feeb17c430af4292176be47036593bda3))\n* **Instagram:** Preserve ephemeral media after refreshing chats ([d9ab7c7](https://github.com/crimera/piko/commit/d9ab7c7d3327481ea07e8a63f302590158c9fae5))\n* **Instagram:** Refresh profile friendship status and hide unknown states ([2418d65](https://github.com/crimera/piko/commit/2418d657c7cfb1db752980c2cc10b74bd3af4641))\n\n### ✨ New Features\n\n* **Instagram:** Add Hide save buttons patch ([ac89a04](https://github.com/crimera/piko/commit/ac89a04d6f75dbc5e5c80dc95a80bec539e8f167))\n* **Instagram:** Add Hide share button patch ([15b8856](https://github.com/crimera/piko/commit/15b88567abb2433ca930da264709f5c2b37f7037))\n* **Instagram:** Add recommended flags for the Reels seekbar ([e558f88](https://github.com/crimera/piko/commit/e558f8848f983802a9063c45996b3275ccdb0b0a))\n* **Instagram:** Add Story category ([#1948](https://github.com/crimera/piko/issues/1948)) ([ec55052](https://github.com/crimera/piko/commit/ec55052596689de7996ed8fb78ea907977158269))\n\n### 🔧 Improvements\n\n* **Instagram:** Hide comment buttons and counts ([2cbd8b2](https://github.com/crimera/piko/commit/2cbd8b268b8ba21c5321b58be861c1402b46e6d8))\n* **Instagram:** Organization options ([#2073](https://github.com/crimera/piko/issues/2073)) ([e3039f9](https://github.com/crimera/piko/commit/e3039f97cd247659d9f853146e2393f57ce662c1))\n",
+  "created_at": "2026-10-09T08:28:33",
+  "version": "v3.10.0-dev.13",
+  "description": "## [3.10.0-dev.13](https://github.com/crimera/piko/compare/v3.10.0-dev.12...v3.10.0-dev.13) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Fix deleted message handling ([4254162](https://github.com/crimera/piko/commit/425416276c0ae2df7a6cf53fab9b37708735f8be))\n* **Instagram:** Preserve friendship status when metadata is missing ([6eeb0f0](https://github.com/crimera/piko/commit/6eeb0f08db63e99cfb102e1ddb653945a10e1780))\n* **Instagram:** Sanitize shared links before changing domains ([b1d0eb4](https://github.com/crimera/piko/commit/b1d0eb481e748a33110a5f5fd51ade221fe1ecef))\n* **Instagram:** Use an adaptive settings shortcut icon ([454f283](https://github.com/crimera/piko/commit/454f283baf3f7d444cb7d8b13eb3728e6a081a36))\n\n### 🔧 Improvements\n\n* **Instagram:** Add flags to Suggested users in search ([4dbc376](https://github.com/crimera/piko/commit/4dbc3764bf9bda3c10546d8e112328a4310cf48a))\n",
   "apps": [
     {
       "app_name": "Instagram",
@@ -22,7 +22,7 @@
         {
           "name": "Allow user network certificate",
           "description": "Allows user network certificate for whitehat testing",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -135,7 +135,7 @@
         {
           "name": "Disable analytics",
           "description": "Block analytics that are sent to Instagram/Facebook servers.",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -198,7 +198,7 @@
         {
           "name": "Disable screenshot detection",
           "description": "Disables screenshots detection in DM",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -414,7 +414,7 @@
         {
           "name": "Make ephemeral media permanent",
           "description": "Changes unexpired view once, view twice media to permanent view.",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -545,7 +545,7 @@
         {
           "name": "Unlock employee options",
           "description": "Unlocks all options using by employee for debugging",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -554,7 +554,7 @@
         {
           "name": "Unlock Plus benefits",
           "description": "Unlocks 'Plus' subscription benefits that are checked locally. USE IT AT YOUR OWN RISK",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -572,7 +572,7 @@
         {
           "name": "View DMs anonymously",
           "description": "",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -581,7 +581,7 @@
         {
           "name": "View live anonymously",
           "description": "",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -590,7 +590,7 @@
         {
           "name": "View stories anonymously",
           "description": "",
-          "use": true,
+          "use": false,
           "options": [],
           "compatible_versions": [
             "447.0.0.55.81"
@@ -1304,9 +1304,9 @@
     }
   ],
   "patches_name": "Piko",
-  "fingerprint": "180a1476530f7deb1d9a449e397285da96c8804e002b4e202a82c6595826838a",
-  "release_notes": "## [3.10.0-dev.12](https://github.com/crimera/piko/compare/v3.10.0-dev.11...v3.10.0-dev.12) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Allow screenshots in protected DM windows ([45fee55](https://github.com/crimera/piko/commit/45fee5532102b27aa8a4e95ff5c00ac3cb75fd75))\n* **Instagram:** Correct patch status mappings ([bf4a28c](https://github.com/crimera/piko/commit/bf4a28ca5387efd2c51453ef368d686cbf643f8b))\n* **Instagram:** Correct the names of the HDR and auto-scroll recommended flags ([#2078](https://github.com/crimera/piko/issues/2078)) ([8917d71](https://github.com/crimera/piko/commit/8917d71e36356ed56e68154b7cf272cfa4dcf0c5))\n* **Instagram:** Hide ads in the Following feed ([7914a26](https://github.com/crimera/piko/commit/7914a2634e39738dd11318ea71491a5bf11493f4))\n* **Instagram:** Hide the reshare button in the home feed ([ae38467](https://github.com/crimera/piko/commit/ae38467035fbbeeba8e03824535f927cc635adea))\n* **Instagram:** Isolate story filters and refresh highlight visibility ([2946e7e](https://github.com/crimera/piko/commit/2946e7ecabedd5da21075e56e9f10824cd1c94d3))\n* **Instagram:** Move the story seen button to the bottom action row ([0d7fba0](https://github.com/crimera/piko/commit/0d7fba0feeb17c430af4292176be47036593bda3))\n* **Instagram:** Preserve ephemeral media after refreshing chats ([d9ab7c7](https://github.com/crimera/piko/commit/d9ab7c7d3327481ea07e8a63f302590158c9fae5))\n* **Instagram:** Refresh profile friendship status and hide unknown states ([2418d65](https://github.com/crimera/piko/commit/2418d657c7cfb1db752980c2cc10b74bd3af4641))\n\n### ✨ New Features\n\n* **Instagram:** Add Hide save buttons patch ([ac89a04](https://github.com/crimera/piko/commit/ac89a04d6f75dbc5e5c80dc95a80bec539e8f167))\n* **Instagram:** Add Hide share button patch ([15b8856](https://github.com/crimera/piko/commit/15b88567abb2433ca930da264709f5c2b37f7037))\n* **Instagram:** Add recommended flags for the Reels seekbar ([e558f88](https://github.com/crimera/piko/commit/e558f8848f983802a9063c45996b3275ccdb0b0a))\n* **Instagram:** Add Story category ([#1948](https://github.com/crimera/piko/issues/1948)) ([ec55052](https://github.com/crimera/piko/commit/ec55052596689de7996ed8fb78ea907977158269))\n\n### 🔧 Improvements\n\n* **Instagram:** Hide comment buttons and counts ([2cbd8b2](https://github.com/crimera/piko/commit/2cbd8b268b8ba21c5321b58be861c1402b46e6d8))\n* **Instagram:** Organization options ([#2073](https://github.com/crimera/piko/issues/2073)) ([e3039f9](https://github.com/crimera/piko/commit/e3039f97cd247659d9f853146e2393f57ce662c1))\n",
-  "release_tag": "v3.10.0-dev.12",
-  "release_date": "2026-10-07T11:04:16Z",
+  "fingerprint": "4cc907baa4917b49198692eb966230a00f49149a81e23a00dc8e224537566e23",
+  "release_notes": "## [3.10.0-dev.13](https://github.com/crimera/piko/compare/v3.10.0-dev.12...v3.10.0-dev.13) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Fix deleted message handling ([4254162](https://github.com/crimera/piko/commit/425416276c0ae2df7a6cf53fab9b37708735f8be))\n* **Instagram:** Preserve friendship status when metadata is missing ([6eeb0f0](https://github.com/crimera/piko/commit/6eeb0f08db63e99cfb102e1ddb653945a10e1780))\n* **Instagram:** Sanitize shared links before changing domains ([b1d0eb4](https://github.com/crimera/piko/commit/b1d0eb481e748a33110a5f5fd51ade221fe1ecef))\n* **Instagram:** Use an adaptive settings shortcut icon ([454f283](https://github.com/crimera/piko/commit/454f283baf3f7d444cb7d8b13eb3728e6a081a36))\n\n### 🔧 Improvements\n\n* **Instagram:** Add flags to Suggested users in search ([4dbc376](https://github.com/crimera/piko/commit/4dbc3764bf9bda3c10546d8e112328a4310cf48a))\n",
+  "release_tag": "v3.10.0-dev.13",
+  "release_date": "2026-10-09T08:28:33Z",
   "isPreRelease": true
 }

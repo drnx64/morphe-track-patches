@@ -3301,8 +3301,14 @@
     ]
   },
   "https://github.com/JZ6/Flexboard": {
-    "fetched_at": "2026-10-08T02:05:29.866156+00:00",
+    "fetched_at": "2026-10-09T09:19:14.150544+00:00",
     "releases": [
+      {
+        "tag": "v2.5.0",
+        "body": "## 2.5.0\r\nSwipe up to undo auto correct!\r\n\r\n- feat(flags): remove Hidden Features (unconfirmed)\r\n- docs: swipe up confirmed on a device, and on by default\r\n- feat(swipe-up): on by default; crash recorder moves to its own opt-in patch\r\n- docs: swipe up reverts through the decoder, not the undo stack\r\n- feat(swipe-up): revert the last autocorrection through Gboard's decoder\r\n- refactor(patches): resolve branch targets in one shared helper\r\n- chore: store gradlew.bat with LF, as .gitattributes declares\r\n- chore(deps): bump gradle-wrapper from 9.7.1 to 9.8.0\r\n- chore(deps): bump actions/upload-artifact from 4 to 7\r\n- chore(deps): bump actions/setup-java from 6.0.0 to 6.0.1\r\n- docs: correct issue forms for unsupported builds and roadmap\r\n- chore: pin editor scope and shell script line endings\r\n- docs: mark superseded gesture analyses and current undo path\r\n- docs: correct settings, toolbar and flag derivations\r\n- docs: refresh contributor gate, APK tooling and release guide\r\n- docs: align feature guide and roadmap with shipped behavior\r\n- docs(changelog): restore missing dev and stable release entries\r\n- docs: record full-repository findings and fix status\r\n- fix(gate): protect provider and verify the pushed tree\r\n- fix(release): make recovery resumable and stamp bundle sources\r\n- fix(driver): enforce patch selection and output handling\r\n- fix(checks): enforce generated artifacts and source contracts\r\n- fix(preflight): pin current Gboard bindings and flag defaults\r\n- fix(apk): validate resource replay and improve APK readers\r\n- fix(verify): follow real control flow and inspect same-size edits\r\n- fix(extension): harden settings, hotkeys, and crash diagnostics\r\n- fix(settings): guard resource metadata and defaults\r\n- fix(toolbar): validate native registration and capacity seams\r\n- fix(flags): validate isolated and long-valued flag rewrites\r\n- fix(patches): harden shared resolution and gesture emissions\r\n- fix(signature): bypass only Gboard's own startup check\r\n- fix(swipe-up): make Lozi; public so the takeover read-back can run\r\n- feat(verify): check what a patched class is allowed to reach\r\n- docs: the swipe-up crash happens from every row\r\n- feat: a crash recorder, so the next crash names its own cause\r\n- feat: swipe up stage 2 — take the gesture over, and say whether it took\r\n- refactor: one swipe-up patch, rebuilt in stages from the diagnostic\r\n- feat: swipe up to undo, rebuilt in the motion-event-handler layer\r\n- docs: record that swipe up sends Gboard's general undo, by decision\r\n- fix: the gate honours FLEXBOARD_BUNDLE as documented, and proves opt-in patches emit\r\n- refactor: delete the dead swipe-up paths and correct what the rest claims\r\n- test: report whether the flick crossed the threshold before the finger lifted\r\n- feat: move the swipe-up diagnostic into the motion-event-handler layer\r\n- fix: the tracker leaked state between gestures, and a tap inherited it\r\n- test: report the measurement, not a verdict on it\r\n- fix: measure the flick from the touch stream, not from Gboard's start fields\r\n- test: make the device say why the up-flick did not fire\r\n- revert: drop two patches that did not do what I claimed\r\n- feat: recognise the up-flick by its journey, not by where the finger lifted\r\n- feat: restore inline autofill suggestions, which a clone install loses\r\n- docs: the intermittency is the detection mechanism, not the threshold\r\n- feat: a patch for more sensitive slide gestures\r\n- docs: the pointer can be claimed — goal 2 confirmed on a device\r\n- fix: read the gesture direction from h(), not i() — dev.0 could never fire\r\n- feat: claim the pointer in Lpvi;->G instead of un-deciding a keypress",
+        "prerelease": false,
+        "dateReleased": "2026-10-09T03:54:14Z"
+      },
       {
         "tag": "v2.5.2-dev.1",
         "body": "## 2.5.2-dev.1\n\n- feat(flags): remove Hidden Features (unconfirmed)\n- docs: swipe up confirmed on a device, and on by default\n- feat(swipe-up): on by default; crash recorder moves to its own opt-in patch",
@@ -3386,12 +3392,6 @@
         "body": "## 2.5.1-dev.0\n\n- feat: claim the pointer in Lpvi;->G instead of un-deciding a keypress",
         "prerelease": true,
         "dateReleased": "2026-09-19T04:44:08Z"
-      },
-      {
-        "tag": "v2.4.2",
-        "body": "## 2.4.2\n\n- fix: a flag scan that failed on another bundle's merged extension\n- docs: draft option B against the dex, and verify the claim it rests on\n- docs: read out the handler registry's consumer, and reverse the recommendation\n- docs: Gboard does not instantiate motion event handlers by reflection\n- fix: act on an independent review of the four unpushed commits\n- refactor: the resolution helpers take a class lookup, not the patcher\n- test: cover the register helpers, which is where the crashes came from\n- test: lock in the mutual exclusion, and ask whether the bundle is current\n- fix: the driver applied a combination no install can produce\n- test: cover the patch helpers, document the output tools, assert the Python floor\n- ci: catch drift in the generated inventory and README table\n- feat: check extension references, and admit the general case needs the SDK\n- test: run the extension's logic, not just compile it\n- feat: verify invoke arguments and catch-handler merges\n- docs: correct development.md, which was three beliefs out of date\n- feat: verify every method the patch changed, automatically\n- ci: upload the bundle on every push, so a patch can be tested before it ships\n- feat: a type-merge check for the bug ART rejects at class load\n- docs: what the driver covers, and what it does not\n- feat: run the patches locally — :driver:run was never blocked\n- docs: the dev.1 crash, diagnosed by reading the output\n- feat: read the patched APK, not just the stock one\n- docs: improve the replan — the cause is unknown and the tooling is the gap\n- docs: replan swipe up to undo autocorrect\n- revert: drop the consume branch, it ships a keyboard that will not open\n- fix: the consume branch shipped a keyboard that would not open\n- fix: swipe up consumes the gesture and lowers the slide threshold",
-        "prerelease": false,
-        "dateReleased": "2026-09-19T18:58:51Z"
       }
     ]
   },
@@ -5554,7 +5554,7 @@
     ]
   },
   "https://github.com/kveld9/kveld-morphe-patches": {
-    "fetched_at": "2026-10-09T02:18:51.052678+00:00",
+    "fetched_at": "2026-10-09T09:19:14.168811+00:00",
     "releases": [
       {
         "tag": "v2.6.0-experimental.9",
@@ -5573,6 +5573,30 @@
         "body": "## [2.6.0-experimental.7](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.6...v2.6.0-experimental.7) (2026-10-09)\n\n### Bug Fixes\n\n* **universal:** drop direction-inverted methods from Sensors block set ([24f5900](https://github.com/kveld9/kveld-morphe-patches/commit/24f5900e024f975f4ddf068dae9e943728857676))\n\n### New Features\n\n* **universal:** add Sensors Analytics coverage to SDK Blocker ([24caebe](https://github.com/kveld9/kveld-morphe-patches/commit/24caebe3e8e6602e15499d0d5bc3d79f71a0cb61))\n* **validation:** add unattended smoke install gate with JSON verdict ([bd01dcd](https://github.com/kveld9/kveld-morphe-patches/commit/bd01dcdbde7d1b952a06e7e515be489f70ac82b8))\n\n### Improvements\n\n* **tiktok:** avoid redundant full-dex scans in Comment Customizer ([48c6d1f](https://github.com/kveld9/kveld-morphe-patches/commit/48c6d1fd8bc3317f955a7c06f9305441986e6fcf))\n* **tiktok:** instrument camera and mic call sites in a single scan ([9cc6c55](https://github.com/kveld9/kveld-morphe-patches/commit/9cc6c552cbc902ef936238b3635d4c452d5a7e89))\n* **tiktok:** narrow DM Declutter class scans to the member kind they need ([27314b6](https://github.com/kveld9/kveld-morphe-patches/commit/27314b6f7799dfbdb9197a5ecbd8b1e41ddbe03e))\n* **tiktok:** share one candidate scan across Device Privacy Guard call sites ([d43645f](https://github.com/kveld9/kveld-morphe-patches/commit/d43645ff517de713e858cef12e233c3c5ba92e5a))\n",
         "prerelease": true,
         "dateReleased": "2026-10-09T00:20:38Z"
+      },
+      {
+        "tag": "v2.6.0-experimental.13",
+        "body": "## [2.6.0-experimental.13](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.12...v2.6.0-experimental.13) (2026-10-09)\n\n### Bug Fixes\n\n* **universal:** accumulate ML Kit registrar count with opt-out removals ([f839f3c](https://github.com/kveld9/kveld-morphe-patches/commit/f839f3c845483933009c8de704f88f854811e29b))\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T06:42:08Z"
+      },
+      {
+        "tag": "v2.6.0-experimental.12",
+        "body": "## [2.6.0-experimental.12](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.11...v2.6.0-experimental.12) (2026-10-09)\n\n### Bug Fixes\n\n* **brave:** fail hard on telemetry fingerprint misses ([6fb8e66](https://github.com/kveld9/kveld-morphe-patches/commit/6fb8e662d29d60060b3633f7c9cb8ed659dfd312))\n* **shared:** declare XAPK bundle file types for nokoprint and xiaomi targets ([acd89ef](https://github.com/kveld9/kveld-morphe-patches/commit/acd89ef3b28f794a2964b904fc5a7b6436ec8ed5))\n* **universal:** preserve ML Kit on-device components by default ([5221830](https://github.com/kveld9/kveld-morphe-patches/commit/5221830adab569e081716f570c11118eb0104104))\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T06:39:43Z"
+      },
+      {
+        "tag": "v2.6.0-experimental.11",
+        "body": "## [2.6.0-experimental.11](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.10...v2.6.0-experimental.11) (2026-10-09)\n\n### Bug Fixes\n\n* **tiktok:** retune privacy stripper defaults and drop network-state group ([1bfa48b](https://github.com/kveld9/kveld-morphe-patches/commit/1bfa48b2ee08681e52fe695b4873501198217333))\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T05:39:43Z"
+      },
+      {
+        "tag": "v2.6.0-experimental.10",
+        "body": "## [2.6.0-experimental.10](https://github.com/kveld9/kveld-morphe-patches/compare/v2.6.0-experimental.9...v2.6.0-experimental.10) (2026-10-09)\n\n### Bug Fixes\n\n* **tiktok:** drop isPaidContent signal from promotional filter ([4a55916](https://github.com/kveld9/kveld-morphe-patches/commit/4a55916b689094c0b2dbff32ba367b7fbe5c1109))\n* **tiktok:** starve friends-tab rec-swipe stack at backing-list source ([cf931c6](https://github.com/kveld9/kveld-morphe-patches/commit/cf931c6637cee6e50925691c21b6f4606c9a291d))\n* **tiktok:** stop feed bloat filter purging normal videos in 47.1.4 ([1434e58](https://github.com/kveld9/kveld-morphe-patches/commit/1434e58edb3fa57e8d4ad2fd3a12c885eaceca80))\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T03:26:02Z"
       },
       {
         "tag": "v2.6.0-experimental.6",
@@ -5621,30 +5645,6 @@
         "body": "## [2.4.0](https://github.com/kveld9/kveld-morphe-patches/compare/v2.3.0...v2.4.0) (2026-10-03)\n\n### Bug Fixes\n\n* **ci:** support dynamic channel in gboard apkmirror link generator ([a1b42fa](https://github.com/kveld9/kveld-morphe-patches/commit/a1b42fa87aa5ff0bdbeb86d6d32122660493c04c))\n* **gboard:** add aapt workaround for connectionless stylus handwriting attribute ([78abfda](https://github.com/kveld9/kveld-morphe-patches/commit/78abfda79c7d30813c47516553e0f2da2203057f))\n* **gboard:** correct opcode insertion index for more_pill_keys feature flag ([3a696fd](https://github.com/kveld9/kveld-morphe-patches/commit/3a696fde8d9c759b39b5547e4336278b4d7836ea))\n* **gboard:** disable cursor trackpad by default to prevent web view flicker ([c7ddbd7](https://github.com/kveld9/kveld-morphe-patches/commit/c7ddbd7ba32dd4299790d14aa31395a1cc0f69fd))\n* **gboard:** eliminate register clobbering and add hot-path caching to decouple haptics ([f1b4223](https://github.com/kveld9/kveld-morphe-patches/commit/f1b422331d11df82ce7396806da0d007623f3aae))\n* **gboard:** use more_pill_keys feature flag for key shape selection ([3719ae6](https://github.com/kveld9/kveld-morphe-patches/commit/3719ae6ec8b94f1ebb3c486337bddc6dbbc98c83))\n* **hevy:** recalculate hermes bundle sha-1 footer hash on pro unlock ([ac0c671](https://github.com/kveld9/kveld-morphe-patches/commit/ac0c6712b476f046126e9154ed196d6bac51c675))\n* **shared:** prevent asset scale corruption and protect launcher icons in dpi resource slimmer ([#67](https://github.com/kveld9/kveld-morphe-patches/issues/67)) ([271f06e](https://github.com/kveld9/kveld-morphe-patches/commit/271f06e702befac0dafb4b96858d1af00eabb89e))\n* **shared:** qualify android xml namespace attributes in ManifestXml helpers ([d4c9aab](https://github.com/kveld9/kveld-morphe-patches/commit/d4c9aab4ce4bb5b959b67f5e0b296b536bb68f7a))\n* **tiktok:** eliminate empty gap under share panel send button ([192b1ba](https://github.com/kveld9/kveld-morphe-patches/commit/192b1bab76c962cd197ea2aba984e02228a7a8d1))\n* **tiktok:** prevent register collision in publish tab visibility hook ([53c4d3c](https://github.com/kveld9/kveld-morphe-patches/commit/53c4d3c32b9ecb309b4a4b35d3698f94bd965920))\n* **tiktok:** restore circle to search and recent apps preview ([c5d2f93](https://github.com/kveld9/kveld-morphe-patches/commit/c5d2f9392f1b65e59a92b364fb874e2269e9ca5c))\n* **tiktok:** suppress see translation button in hide video descriptions ([9962117](https://github.com/kveld9/kveld-morphe-patches/commit/99621170d69c8a04f4870db19765378a9587a281))\n\n### New Features\n\n* **brave:** add Disable Tab Auto-Minimization patch ([0940c43](https://github.com/kveld9/kveld-morphe-patches/commit/0940c43efaaf2dfaf2b47c4cff86caf7c967bc30))\n* **brave:** update target to 1.96.61 and align native offsets ([575d864](https://github.com/kveld9/kveld-morphe-patches/commit/575d8647fe58be8a86eae5020a1ac65e3edaae42))\n* **gboard:** add Voice Typing in Incognito patch ([cfcfda8](https://github.com/kveld9/kveld-morphe-patches/commit/cfcfda856efe007d51868967f605dd12777fe664))\n* **gboard:** declutter root settings menu by stripping privacy, about and help headers ([9100049](https://github.com/kveld9/kveld-morphe-patches/commit/9100049cb93590722faa084183eaedd457a9980f))\n* **gboard:** decouple keyboard vibration from system touch feedback ([d5d2d79](https://github.com/kveld9/kveld-morphe-patches/commit/d5d2d795d03c79424ca77b8b912424c6ed198394))\n* **gboard:** implement Gboard Enhancements master suite and in-app settings ([0dbb53e](https://github.com/kveld9/kveld-morphe-patches/commit/0dbb53e2873227e80e70a17aad41ef76600c9d7d))\n* **shared:** add Disable Firebase Telemetry universal patch ([16a670d](https://github.com/kveld9/kveld-morphe-patches/commit/16a670de6d2ada3c793a39cd853c2d3f5de85f1d))\n* **shared:** add DOM manipulation helper extensions for AndroidManifest.xml ([ada638c](https://github.com/kveld9/kveld-morphe-patches/commit/ada638c088488c0cba3cd86b44e134b024636871))\n* **shared:** add multi-package arsc traversal to locale resource slimmer ([f19f6ee](https://github.com/kveld9/kveld-morphe-patches/commit/f19f6ee2517eeaf05455e8bf23376d3cbd9f3d22))\n* **shared:** add non-phone ui mode stripping and multi-package arsc traversal to dpi resource slimmer ([0bd4b03](https://github.com/kveld9/kveld-morphe-patches/commit/0bd4b03731093c537ccd2ae07eb957b1da07bdff))\n* **shared:** implement universal screen timeout enforcer patch ([071392f](https://github.com/kveld9/kveld-morphe-patches/commit/071392fa298f329b7354345315b63cf2dc064ef4))\n* **shared:** implement universal screenshot protection bypass patch ([634bf2c](https://github.com/kveld9/kveld-morphe-patches/commit/634bf2c30f81e3a814466ce04bf57bae3e20f6bd))\n* **tiktok:** add feed interface declutter patch ([ef9bf0d](https://github.com/kveld9/kveld-morphe-patches/commit/ef9bf0dd73fb040832b7edba63d50e13e747fbdf))\n* **tiktok:** add hide create button option to navigation declutter ([5fbe3fd](https://github.com/kveld9/kveld-morphe-patches/commit/5fbe3fd5b41000092963e18c8c5db5bc10398efe))\n* **tiktok:** add hide music cover disc option to feed interface declutter ([27df3a7](https://github.com/kveld9/kveld-morphe-patches/commit/27df3a7d53cdb149c6211270408290fbe24ac46c))\n* **tiktok:** add hide playlist bottom bar option to feed interface declutter ([ac8e468](https://github.com/kveld9/kveld-morphe-patches/commit/ac8e468ee7b86ec4b9fb1b440b49666b9853d20d))\n* **tiktok:** add hide save button option to feed interface declutter ([e1fe07c](https://github.com/kveld9/kveld-morphe-patches/commit/e1fe07c69fe8287148bbf7aa5423439557848f83))\n* **tiktok:** enable profile banner by default and sync documentation ([4e6442d](https://github.com/kveld9/kveld-morphe-patches/commit/4e6442d7e721e5a354137968b630a3d869f9b653))\n* **tiktok:** implement profile banner unlock patch ([50ecff6](https://github.com/kveld9/kveld-morphe-patches/commit/50ecff6068837c7f248ee2e59420ef569652246a))\n\n### Code Refactoring\n\n* **gboard:** consolidate voice typing in incognito and aapt workaround into gboard enhancements ([c732b0c](https://github.com/kveld9/kveld-morphe-patches/commit/c732b0c6a3d6f6c4b1f86a947c43c663c7efb587))\n* **gboard:** deduplicate byte scanning helper and synchronize options documentation ([1aa075d](https://github.com/kveld9/kveld-morphe-patches/commit/1aa075d2b962eb99a6f34a68c62b129e550c57ca))\n* **shared:** consolidate firebase telemetry neutralization into universal telemetry neutralizer ([ae0108d](https://github.com/kveld9/kveld-morphe-patches/commit/ae0108d474d3c4dd85c02e86ffb85ad99d1794a6))\n",
         "prerelease": false,
         "dateReleased": "2026-10-03T20:17:11Z"
-      },
-      {
-        "tag": "v2.3.0",
-        "body": "## [2.3.0](https://github.com/kveld9/kveld-morphe-patches/compare/v2.2.0...v2.3.0) (2026-10-01)\n\n### Bug Fixes\n\n* **gboard:** hook internal ergonomic and navigation metrics to eliminate bottom chin ([6328ab3](https://github.com/kveld9/kveld-morphe-patches/commit/6328ab3fac749951515383c868d91c10429888ec))\n\n### New Features\n\n* **brave:** update target to 1.96.60 and align native offsets ([b9c8869](https://github.com/kveld9/kveld-morphe-patches/commit/b9c8869a88541733ec56cb6d66efdf35431f5bb2))\n* **gboard:** add zero bottom inset patch to eliminate gesture navigation chin ([c591c01](https://github.com/kveld9/kveld-morphe-patches/commit/c591c01ddc6cc9aa1f35609c9b083b00965802e5))\n* **gboard:** consolidate experimental flags into feature flags patch ([6b0a6ca](https://github.com/kveld9/kveld-morphe-patches/commit/6b0a6ca19ee2e8f36084b2b51bc7ba37ef834828))\n* **gboard:** consolidate signature bypass, launcher trampoline, and phenotype resilience into core integrity patch ([994d168](https://github.com/kveld9/kveld-morphe-patches/commit/994d168d5e405e09a14017b4cea315876cb4ff0d))\n* **gboard:** update target to 18.4.1.985164140 and align obfuscated targets ([af42cfa](https://github.com/kveld9/kveld-morphe-patches/commit/af42cfab146aff347b6ff10fc31ba9b3eaa65bd9))\n* **nokoprint:** update target to 5.28.6 and align obfuscated targets ([c6b6396](https://github.com/kveld9/kveld-morphe-patches/commit/c6b63966674892252f4e5029f9ad1fe54b5f48c8))\n* **shared:** implement universal privacy permissions stripper patch ([8f18fc0](https://github.com/kveld9/kveld-morphe-patches/commit/8f18fc0ef5aba259a602d42b32537d3efe7f5c6f))\n* **tiktok:** add clean share panel patch ([a4a0fec](https://github.com/kveld9/kveld-morphe-patches/commit/a4a0fec987232a33ae4371fa4cf50b04726ff1ae))\n* **tiktok:** add dragging thumbnail preview to show seekbar patch ([6864d71](https://github.com/kveld9/kveld-morphe-patches/commit/6864d710a826d7af8bdc0860eb89e4b00043b498))\n* **tiktok:** add hide inbox promos and alerts patch ([fda0bb5](https://github.com/kveld9/kveld-morphe-patches/commit/fda0bb501410215db2ab8a4e376f84a4ef931ac2))\n* **tiktok:** consolidate comment enhancements into comment customizer patch ([6e1ed0d](https://github.com/kveld9/kveld-morphe-patches/commit/6e1ed0d028b020ec921ab5e8fd45befa839c0425))\n* **tiktok:** consolidate feed navigation and header declutter patches ([9c6ce3f](https://github.com/kveld9/kveld-morphe-patches/commit/9c6ce3fb46d3ba451125ecab8d20fad2ef716176))\n* **tiktok:** decouple asia variant and enforce single global target ([bac43bc](https://github.com/kveld9/kveld-morphe-patches/commit/bac43bc04d56d3a21b453efc4c254ee069c4b1ce))\n* **tiktok:** disable feed long-press action gestures ([9f1dfc7](https://github.com/kveld9/kveld-morphe-patches/commit/9f1dfc72a3739c4e836ccd044f470fd5e48b6b70))\n* **tiktok:** hide inbox story and status tray ([7a5b82e](https://github.com/kveld9/kveld-morphe-patches/commit/7a5b82e313db6d7e027fe5cbb4a3f479f56b2915))\n* **tiktok:** implement disable post-download share dialog patch (default: false) ([7ab8546](https://github.com/kveld9/kveld-morphe-patches/commit/7ab85465e9f15cc923f5c0fc6db0246d1b875819))\n* **tiktok:** suppress in-feed search recommendations and interest cards ([ebc94bf](https://github.com/kveld9/kveld-morphe-patches/commit/ebc94bf2d8149a6de1f40b2e8fe0782ae3e83576))\n",
-        "prerelease": false,
-        "dateReleased": "2026-10-01T03:29:52Z"
-      },
-      {
-        "tag": "v2.2.0",
-        "body": "## [2.2.0](https://github.com/kveld9/kveld-morphe-patches/compare/v2.1.0...v2.2.0) (2026-09-30)\n\n### New Features\n\n* **gboard:** add hide incognito icon toggle to force incognito mode patch ([f81f9ac](https://github.com/kveld9/kveld-morphe-patches/commit/f81f9acc4c5d5eff33c04d608283db65abe970cc))\n* **gboard:** update target to 18.3.2.977415014 and align obfuscated targets ([191cfcc](https://github.com/kveld9/kveld-morphe-patches/commit/191cfcce7d411be9e3b998d49f9b9dd714b310b3))\n* **tiktok:** add create group and story toggles and fix promote filter in custom share sheet ([940d66f](https://github.com/kveld9/kveld-morphe-patches/commit/940d66f48bd932e949f1c4641fa7d1ddd941b919))\n* **tiktok:** update target to 47.1.4 and align obfuscated targets ([de5b141](https://github.com/kveld9/kveld-morphe-patches/commit/de5b1418eb2223e6f069528a79fe8a54bc3840b1))\n\n### Code Refactoring\n\n* **tiktok:** remove redundant custom hidden keys from share sheet patch ([a971ae8](https://github.com/kveld9/kveld-morphe-patches/commit/a971ae8cf83a58664d5265feb47542c43be5ff9a))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-30T01:11:03Z"
-      },
-      {
-        "tag": "v2.1.0",
-        "body": "## [2.1.0](https://github.com/kveld9/kveld-morphe-patches/compare/v2.0.0...v2.1.0) (2026-09-29)\n\n### Bug Fixes\n\n* **brave:** neutralize armv8.0 cpu feature constructor traps in libchrome ([98201c2](https://github.com/kveld9/kveld-morphe-patches/commit/98201c27bef7ff641330784f2417063fe4ef9fd1))\n* **brave:** resolve android 16 arm64 bti trap and enforce native library extraction ([2224cdb](https://github.com/kveld9/kveld-morphe-patches/commit/2224cdb1afef63b358f0a535044821eb6e9a5a2b))\n* **nokoprint:** resolve infinite progress dialog hang when adding printers ([47fed43](https://github.com/kveld9/kveld-morphe-patches/commit/47fed434581ae4f8f3b432d6f31f77ee5c77881a))\n* **tiktok:** align obfuscated privacy client targets and prune obsolete hooks in device privacy guard patch ([282c95b](https://github.com/kveld9/kveld-morphe-patches/commit/282c95b8384d432994cd5d8bf5594794523dc03e))\n* **tiktok:** decouple quality governor lifecycle, resolution ceilings, and DASH manifests ([8ca1161](https://github.com/kveld9/kveld-morphe-patches/commit/8ca1161273fd414b7528da1b389a71e1b4071cf3))\n* **tiktok:** eliminate cold and warm background resume splash and topview ads ([7fa4796](https://github.com/kveld9/kveld-morphe-patches/commit/7fa479680d13b7effb5adf3de1d0ddb12a5b5b9f))\n* **tiktok:** eliminate obsolete MainPageFragment hook in SkipFirstLaunchOnboarding ([e5ec9c2](https://github.com/kveld9/kveld-morphe-patches/commit/e5ec9c2d20b957ea3f2bc21a68c0dc0cbd6704c1))\n* **tiktok:** enforce fail-fast fingerprint resolution in SkipFirstLaunchOnboarding ([e7f7fb4](https://github.com/kveld9/kveld-morphe-patches/commit/e7f7fb4fedcd6c5c254be2c9ba5344bfac0343eb))\n* **tiktok:** enforce fail-fast resolution capping hooks in VideoQualityGovernor ([658608c](https://github.com/kveld9/kveld-morphe-patches/commit/658608c59d70352928c172cc8ffd777c82a86946))\n* **tiktok:** enforce register allocation and clear try blocks in InstantColdStart ([fe5f7cf](https://github.com/kveld9/kveld-morphe-patches/commit/fe5f7cf4f70d0ab6162feb3a1a072c46df3aa070))\n* **tiktok:** expand hideRepost key set to include live repost channel variants ([68bc856](https://github.com/kveld9/kveld-morphe-patches/commit/68bc856d9d287584a88b80761e05ed68da95bfcf))\n* **tiktok:** expand tracking parameter filtering and enforce fail-fast in clean share url ([e46107d](https://github.com/kveld9/kveld-morphe-patches/commit/e46107dcfed03a12a1fe6d74e5203976ff0d3bff))\n* **tiktok:** harden feed ad filter reflection type guards ([afd4060](https://github.com/kveld9/kveld-morphe-patches/commit/afd40608a499546b68774e9a77880227b67ed383))\n* **tiktok:** isolate share sheet panel mutations and escape string options ([470fb30](https://github.com/kveld9/kveld-morphe-patches/commit/470fb300039c6ffa6c9b3df8e9592ab08c109407))\n* **tiktok:** preserve repost channel in custom share sheet essentials ([ace8225](https://github.com/kveld9/kveld-morphe-patches/commit/ace82254e1b5db31b10e1bef3a83f4854e9dc8c8))\n* **tiktok:** prevent video ID collision and preserve distinct stream download mapping (fixes [#58](https://github.com/kveld9/kveld-morphe-patches/issues/58)) ([1a83be8](https://github.com/kveld9/kveld-morphe-patches/commit/1a83be8d5bff462669ce8e98efea44b18a4b9f7c))\n* **tiktok:** replace share sheet whitelist with granular boolean toggles ([5c8ba5e](https://github.com/kveld9/kveld-morphe-patches/commit/5c8ba5ea654ce98c07d5514285f1c2b9bd079bfd)), closes [#59](https://github.com/kveld9/kveld-morphe-patches/issues/59)\n* **tiktok:** resolve class cast exception by dynamically hooking video frame rate opt in display refresh rate governor patch ([3356eaf](https://github.com/kveld9/kveld-morphe-patches/commit/3356eaf2fdc67d01a8364e8995c411ca6ce81c27))\n* **tiktok:** resolve null pointer exception in aweme video control seekbar initialization ([0fc11fd](https://github.com/kveld9/kveld-morphe-patches/commit/0fc11fda03fe00f1e881c97db44c7be79fd66258))\n* **tiktok:** resolve share item reflection key per instance ([3e88ee0](https://github.com/kveld9/kveld-morphe-patches/commit/3e88ee05489f7320673cf6704e90af6dac0e115a))\n* **tiktok:** support shifted account user service getters in mandatory login bypass hook ([3439f1f](https://github.com/kveld9/kveld-morphe-patches/commit/3439f1ff21419776299206dcc7827634535a2ca1))\n* **tiktok:** suppress settings redirect prompts and onboarding triggers for blocked permissions ([086b25a](https://github.com/kveld9/kveld-morphe-patches/commit/086b25ad5d58031444f39434de2338d1aa3bfef0))\n* **tiktok:** update aweme stats api and history targets in disable watch history recording patch ([7a06f6a](https://github.com/kveld9/kveld-morphe-patches/commit/7a06f6a280dedacf705c130cef586baa782edff7))\n* **tiktok:** update bottom tab protocol hooks in hide community tab patch ([9596583](https://github.com/kveld9/kveld-morphe-patches/commit/9596583fc86cc17c7caa0d89fef853917758b0fb))\n* **tiktok:** update feed anchor filter targets in hide tiktok shop anchors patch ([73cd253](https://github.com/kveld9/kveld-morphe-patches/commit/73cd253cdeef7cf3d1b0ccb8dea2995b4e2ebef0))\n* **tiktok:** update feed avatar default assem hooks and helper in hide avatar follow button patch ([b14eefc](https://github.com/kveld9/kveld-morphe-patches/commit/b14eefc8d1356f2959c5fb26491b1ccfc4c7afc5))\n* **tiktok:** update feed avatar live assem hooks in disable avatar live status patch ([83253d4](https://github.com/kveld9/kveld-morphe-patches/commit/83253d4b1d389942d32134f03bf8a517d8380ce4))\n* **tiktok:** update live outer service hooks in hide top live entrance patch ([af41b2d](https://github.com/kveld9/kveld-morphe-patches/commit/af41b2dc1de264e83715ceedff087bd4f0d7cb30))\n* **tiktok:** update player controller hooks and dynamic panel discovery in auto pause first video patch ([db5bfb2](https://github.com/kveld9/kveld-morphe-patches/commit/db5bfb29034fbdeef8794d8677887126fdc50bb6))\n* **tiktok:** update search bar assem target hooks in hide feed search bar patch ([b4f5e4e](https://github.com/kveld9/kveld-morphe-patches/commit/b4f5e4e15b1c55a18644da57c16c4bb88d5e8611))\n* **tiktok:** update search filter hooks in hide search popular lives patch ([a083c6f](https://github.com/kveld9/kveld-morphe-patches/commit/a083c6f84913bc8db263a9f8d989b839c1d9539f))\n* **tiktok:** update search history repository target in disable search history recording patch ([7d29bb1](https://github.com/kveld9/kveld-morphe-patches/commit/7d29bb1223412f75041f2b6be50287a9c2601c5c))\n* **tiktok:** update search intermediate and guess query hooks in hide suggested searches patch ([d227b9e](https://github.com/kveld9/kveld-morphe-patches/commit/d227b9eee5d9bc952065bfcc594d6e9d21830692))\n* **tiktok:** update smart service and client ai targets in client ai governor patch ([793aeb4](https://github.com/kveld9/kveld-morphe-patches/commit/793aeb4b8b433d64a388682a945fff5a9aa4a542))\n* **tiktok:** update splash ad service and real time splash manager targets in instant cold start patch ([caf2530](https://github.com/kveld9/kveld-morphe-patches/commit/caf253027dcb9a55c76aaf180df3bc112329025b))\n\n### New Features\n\n* **shared:** bump tiktok target version to 47.1.3 and update compatibility docs ([83e8d24](https://github.com/kveld9/kveld-morphe-patches/commit/83e8d240969b7fcd2f676de19e04b17a22c188fd))\n* **tiktok:** add comment sort controls patch ([2751e0e](https://github.com/kveld9/kveld-morphe-patches/commit/2751e0ef8ff27a3ab555c98962863de2e2eb2fa8))\n* **tiktok:** add disable search video autoplay patch ([7af1162](https://github.com/kveld9/kveld-morphe-patches/commit/7af1162bc3f190ceddc1a1001f5187a8a3f7f158))\n* **tiktok:** add hide nearby feed tab patch ([ea84d65](https://github.com/kveld9/kveld-morphe-patches/commit/ea84d65ee6dac84f88ba2267189b3a4c33981cd5))\n* **tiktok:** add hide seen videos patch ([027b385](https://github.com/kveld9/kveld-morphe-patches/commit/027b385cd8d6a2deb4a53fa5ccaf6a078c61bb6c))\n* **tiktok:** add resume video after scroll patch ([265cd07](https://github.com/kveld9/kveld-morphe-patches/commit/265cd0713d2eb8cc2c32c32f0d74116172255745))\n* **tiktok:** add stop video looping patch ([709a3ad](https://github.com/kveld9/kveld-morphe-patches/commit/709a3add8e766319f88d25a139a1a1c4d05b2464))\n* **tiktok:** block sponsored ads in search video feeds ([f0dfa68](https://github.com/kveld9/kveld-morphe-patches/commit/f0dfa68104a40746473fc91d628a34d59deae295))\n* **tiktok:** increase default custom offline videos limit to 1000 ([988887e](https://github.com/kveld9/kveld-morphe-patches/commit/988887e7e5146920e28836f57f5b192dc768169f))\n\n### Code Refactoring\n\n* **hevy:** standardize patch titles and align documentation metadata ([93549e3](https://github.com/kveld9/kveld-morphe-patches/commit/93549e322224e3420e2bce949211e420fa40f83b))\n* **tiktok:** focus disable story feed indicators patch on avatar story rings and prune obsolete story tags ([8d77540](https://github.com/kveld9/kveld-morphe-patches/commit/8d7754071ca3e781ce4381cb88de56b18159d2b0))\n* **xiaomi:** strip redundant title prefixes and enhance patch descriptions ([de37cc2](https://github.com/kveld9/kveld-morphe-patches/commit/de37cc2b5dd92145609a94506a26a80f59878983))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-29T01:39:16Z"
-      },
-      {
-        "tag": "v2.0.0",
-        "body": "## [2.0.0](https://github.com/kveld9/kveld-morphe-patches/compare/v1.46.0...v2.0.0) (2026-09-26)\n\n### ⚠ BREAKING CHANGES\n\n* **vivaldi:** drop Vivaldi Browser target application and all 8 associated patches\n\n### Bug Fixes\n\n* **brave:** remove destructive elf bti and manifest extraction patches ([1785a21](https://github.com/kveld9/kveld-morphe-patches/commit/1785a219dff9491cc6ec7bbcef653d8d4947b5e2))\n* **brave:** update arm32 libchrome telemetry offsets for 1.96.59 (closes [#50](https://github.com/kveld9/kveld-morphe-patches/issues/50)) ([98d702f](https://github.com/kveld9/kveld-morphe-patches/commit/98d702f5f077697ae231b2b08904059424058b4b))\n* **harness:** fix split version code override, attribute resolution, and build-tools compatibility ([58565f2](https://github.com/kveld9/kveld-morphe-patches/commit/58565f2e5c0ddc60d16c2b9f43758b5d33a573d5))\n* **nokoprint:** resolve driver download freeze and startup crash regressions ([c7118d2](https://github.com/kveld9/kveld-morphe-patches/commit/c7118d24e5af84d3f159193f741ac250ed8e35e1))\n* **tiktok:** filter recom_search cards in suggested searches patch ([c34b779](https://github.com/kveld9/kveld-morphe-patches/commit/c34b7794696bd7bd071df2b20d05e40f7ba27de6))\n* **tiktok:** filter trending_rank_live cards in popular lives search patch ([3a4c6b3](https://github.com/kveld9/kveld-morphe-patches/commit/3a4c6b3222ccb757299df9c41f251723dc87143a))\n* **tiktok:** suppress aweme story model in disable story feed indicators patch ([c9fce75](https://github.com/kveld9/kveld-morphe-patches/commit/c9fce755030b0711318a83e86565e7ec972b3826))\n* **tiktok:** suppress lynx ab parameters and schema queries in hide popular lives search patch ([cbb625e](https://github.com/kveld9/kveld-morphe-patches/commit/cbb625e668b5f70e24c87df1f2a255343949ec4c))\n* **tiktok:** suppress lynx ab parameters and schema queries in hide suggested searches patch ([b54d095](https://github.com/kveld9/kveld-morphe-patches/commit/b54d0955b9e532adedc878faed768814f56aeb9e))\n\n### New Features\n\n* **gboard:** add strip permissions patch with configurable manifest toggles ([e53fc66](https://github.com/kveld9/kveld-morphe-patches/commit/e53fc6670cc0390d62e78b74b090b6cd6f0e424b))\n* **tiktok:** add configurable options to hide shop tab and video anchors ([e1d93e9](https://github.com/kveld9/kveld-morphe-patches/commit/e1d93e940119274eb9b8191c85acdade6daf61b6))\n* **tiktok:** replace stem and community tabs patch with hide community tab ([1eba714](https://github.com/kveld9/kveld-morphe-patches/commit/1eba7142e7f308192f13e2be978833b6bcbdf8c0))\n* **tiktok:** separate screen capture bypass into dedicated patch ([541a62f](https://github.com/kveld9/kveld-morphe-patches/commit/541a62f180f7671bb88d3036d36f2400f1e030ca))\n* **vivaldi:** drop vivaldi browser target and patches ([0103e8f](https://github.com/kveld9/kveld-morphe-patches/commit/0103e8f45db564b765428c5491d0295a000ce93c))\n\n### Code Refactoring\n\n* **brave:** demote bti and native extraction patches to anonymous internal invariants ([288e61c](https://github.com/kveld9/kveld-morphe-patches/commit/288e61c3405f6659851def6ed72e4b78d539c4bf))\n* **gboard:** consolidate telemetry, primes, appdoctor and tenor tracking into block telemetry patch ([6f42fd5](https://github.com/kveld9/kveld-morphe-patches/commit/6f42fd5cc0ddf135dd039ffcfaa02560e09dd0f5))\n* **gboard:** consolidate workmanager, mdd and superpacks into disable background sync patch ([9dfe539](https://github.com/kveld9/kveld-morphe-patches/commit/9dfe539ffd19bcc3d557e9b7b0fd036a215e05f8))\n* **gboard:** decouple contacts permission stripping from offline only patch ([2b9bfd9](https://github.com/kveld9/kveld-morphe-patches/commit/2b9bfd9bead2a9ce391192908ac34f41b2f4de4e))\n* **harness:** add 16kb zipalign signing and max version code support ([9ca61d3](https://github.com/kveld9/kveld-morphe-patches/commit/9ca61d361db3339f25d63f3c0c870d97ebe10cf1))\n* **harness:** remove vivaldi pipeline and migration validator contracts ([ca2c09f](https://github.com/kveld9/kveld-morphe-patches/commit/ca2c09fadb68356aedfa060812c950fe0d0a071b))\n* **nokoprint:** consolidate ad patches and streamline catalog names ([5d5715a](https://github.com/kveld9/kveld-morphe-patches/commit/5d5715acead329efec59933f7dcc8c68c36c582d))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-26T03:51:31Z"
       }
     ]
   },
@@ -7053,8 +7053,14 @@
     "releases": []
   },
   "https://github.com/crimera/piko": {
-    "fetched_at": "2026-10-07T16:41:30.323978+00:00",
+    "fetched_at": "2026-10-09T09:19:14.202993+00:00",
     "releases": [
+      {
+        "tag": "v3.10.0-dev.13",
+        "body": "## [3.10.0-dev.13](https://github.com/crimera/piko/compare/v3.10.0-dev.12...v3.10.0-dev.13) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Fix deleted message handling ([4254162](https://github.com/crimera/piko/commit/425416276c0ae2df7a6cf53fab9b37708735f8be))\n* **Instagram:** Preserve friendship status when metadata is missing ([6eeb0f0](https://github.com/crimera/piko/commit/6eeb0f08db63e99cfb102e1ddb653945a10e1780))\n* **Instagram:** Sanitize shared links before changing domains ([b1d0eb4](https://github.com/crimera/piko/commit/b1d0eb481e748a33110a5f5fd51ade221fe1ecef))\n* **Instagram:** Use an adaptive settings shortcut icon ([454f283](https://github.com/crimera/piko/commit/454f283baf3f7d444cb7d8b13eb3728e6a081a36))\n\n### 🔧 Improvements\n\n* **Instagram:** Add flags to Suggested users in search ([4dbc376](https://github.com/crimera/piko/commit/4dbc3764bf9bda3c10546d8e112328a4310cf48a))\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T08:28:33Z"
+      },
       {
         "tag": "v3.10.0-dev.12",
         "body": "## [3.10.0-dev.12](https://github.com/crimera/piko/compare/v3.10.0-dev.11...v3.10.0-dev.12) (2026-10-07)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** Allow screenshots in protected DM windows ([45fee55](https://github.com/crimera/piko/commit/45fee5532102b27aa8a4e95ff5c00ac3cb75fd75))\n* **Instagram:** Correct patch status mappings ([bf4a28c](https://github.com/crimera/piko/commit/bf4a28ca5387efd2c51453ef368d686cbf643f8b))\n* **Instagram:** Correct the names of the HDR and auto-scroll recommended flags ([#2078](https://github.com/crimera/piko/issues/2078)) ([8917d71](https://github.com/crimera/piko/commit/8917d71e36356ed56e68154b7cf272cfa4dcf0c5))\n* **Instagram:** Hide ads in the Following feed ([7914a26](https://github.com/crimera/piko/commit/7914a2634e39738dd11318ea71491a5bf11493f4))\n* **Instagram:** Hide the reshare button in the home feed ([ae38467](https://github.com/crimera/piko/commit/ae38467035fbbeeba8e03824535f927cc635adea))\n* **Instagram:** Isolate story filters and refresh highlight visibility ([2946e7e](https://github.com/crimera/piko/commit/2946e7ecabedd5da21075e56e9f10824cd1c94d3))\n* **Instagram:** Move the story seen button to the bottom action row ([0d7fba0](https://github.com/crimera/piko/commit/0d7fba0feeb17c430af4292176be47036593bda3))\n* **Instagram:** Preserve ephemeral media after refreshing chats ([d9ab7c7](https://github.com/crimera/piko/commit/d9ab7c7d3327481ea07e8a63f302590158c9fae5))\n* **Instagram:** Refresh profile friendship status and hide unknown states ([2418d65](https://github.com/crimera/piko/commit/2418d657c7cfb1db752980c2cc10b74bd3af4641))\n\n### ✨ New Features\n\n* **Instagram:** Add Hide save buttons patch ([ac89a04](https://github.com/crimera/piko/commit/ac89a04d6f75dbc5e5c80dc95a80bec539e8f167))\n* **Instagram:** Add Hide share button patch ([15b8856](https://github.com/crimera/piko/commit/15b88567abb2433ca930da264709f5c2b37f7037))\n* **Instagram:** Add recommended flags for the Reels seekbar ([e558f88](https://github.com/crimera/piko/commit/e558f8848f983802a9063c45996b3275ccdb0b0a))\n* **Instagram:** Add Story category ([#1948](https://github.com/crimera/piko/issues/1948)) ([ec55052](https://github.com/crimera/piko/commit/ec55052596689de7996ed8fb78ea907977158269))\n\n### 🔧 Improvements\n\n* **Instagram:** Hide comment buttons and counts ([2cbd8b2](https://github.com/crimera/piko/commit/2cbd8b268b8ba21c5321b58be861c1402b46e6d8))\n* **Instagram:** Organization options ([#2073](https://github.com/crimera/piko/issues/2073)) ([e3039f9](https://github.com/crimera/piko/commit/e3039f97cd247659d9f853146e2393f57ce662c1))\n",
@@ -7138,12 +7144,6 @@
         "body": "## [3.9.0-dev.10](https://github.com/crimera/piko/compare/v3.9.0-dev.9...v3.9.0-dev.10) (2026-08-28)\n\n### 🐛 Bug Fixes\n\n* **Bring back Twitter:** restore omitted Twitter 9.98 terminology ([a435e35](https://github.com/crimera/piko/commit/a435e35f9bb5008b39d2f9e2a08bd2c27450913f))\n* **instagram:** add dialog entity dependency for media downloads ([5987d0b](https://github.com/crimera/piko/commit/5987d0be5704abdf1da15a8609924aa8a1118dbb))\n* **Instagram:** follow app theme in deleted messages screen ([36b21b2](https://github.com/crimera/piko/commit/36b21b28d5f5ff5aad85a7329b39d50e7f490375))\n* **instagram:** preserve material you surface contrast ([0c1fff3](https://github.com/crimera/piko/commit/0c1fff3f8510cfa818e237bf36f74a7ac35a0080))\n* **resources:** support plural overrides for bundled resources ([3acd3aa](https://github.com/crimera/piko/commit/3acd3aa4f7326e606f0bd81e978b735ef0fdc9e9))\n* **Twitter:** Don't rely on obfuscated names in `Show sensitive media` fingerprint ([d70c4d0](https://github.com/crimera/piko/commit/d70c4d008402547055a03777664702e65f2c18eb))\n* **Twitter:** Fix `Show sensitive media` on the Compose timeline ([aeeb178](https://github.com/crimera/piko/commit/aeeb178390a8a52ecec1897dd278b6ac38f8f371))\n* **twitter:** rewrite repost share links with original author ([11e7222](https://github.com/crimera/piko/commit/11e72222b5b6a974535991e34cf0e9daefb2b537))\n",
         "prerelease": true,
         "dateReleased": "2026-08-28T03:27:55Z"
-      },
-      {
-        "tag": "v3.9.0-dev.9",
-        "body": "## [3.9.0-dev.9](https://github.com/crimera/piko/compare/v3.9.0-dev.8...v3.9.0-dev.9) (2026-08-17)\n\n### 🐛 Bug Fixes\n\n* **Instagram:** don't record an unsend we never captured ([#1728](https://github.com/crimera/piko/issues/1728)) ([e38bc52](https://github.com/crimera/piko/commit/e38bc52c246992cb5ada60c826b27a2d89163e52))\n* **Twitter:** `Block redirecting to X Lite` patch failed on X 12.6.0-release.0 ([01d4452](https://github.com/crimera/piko/commit/01d445211b68f43cd4dd56f962854f3df20d1f5e))\n* **Twitter:** Add `Block update screen` patch ([9f257f7](https://github.com/crimera/piko/commit/9f257f71f927d03b09c1dd1212ccd74d1e5d8413))\n",
-        "prerelease": true,
-        "dateReleased": "2026-08-17T03:42:55Z"
       }
     ]
   },
@@ -13425,8 +13425,26 @@
     ]
   },
   "https://github.com/ihatenodejs/aidans-patches": {
-    "fetched_at": "2026-10-08T22:14:16.687640+00:00",
+    "fetched_at": "2026-10-09T09:19:14.218956+00:00",
     "releases": [
+      {
+        "tag": "v1.5.1",
+        "body": "## [1.5.1](https://github.com/ihatenodejs/aidans-patches/compare/v1.5.0...v1.5.1) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* **ci:** set User-Agent in compatibility submission and reuse acquired artifact for target check if version matches ([1901351](https://github.com/ihatenodejs/aidans-patches/commit/1901351bfddb604a4674695a86d9826f6a0a0caf))\n",
+        "prerelease": false,
+        "dateReleased": "2026-10-09T04:08:45Z"
+      },
+      {
+        "tag": "v1.5.0-dev.2",
+        "body": "## [1.5.0-dev.2](https://github.com/ihatenodejs/aidans-patches/compare/v1.5.0-dev.1...v1.5.0-dev.2) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* **site:** clean up status page, worker, and apk lab ([#16](https://github.com/ihatenodejs/aidans-patches/issues/16)) ([a666f02](https://github.com/ihatenodejs/aidans-patches/commit/a666f02c74b7c2a5f2d716df0a94f38ec127624c))\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T04:01:49Z"
+      },
+      {
+        "tag": "v1.5.0-dev.1",
+        "body": "## [1.5.0-dev.1](https://github.com/ihatenodejs/aidans-patches/compare/v1.4.0...v1.5.0-dev.1) (2026-10-09)\n\n### ✨ New Features\n\n* **sezzle:** Added subscription removal patch and shortcut toggle ([47801e6](https://github.com/ihatenodejs/aidans-patches/commit/47801e691eca3274ceb00d21ac43932a48ca5545))\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T03:39:34Z"
+      },
       {
         "tag": "v1.4.0",
         "body": "## [1.4.0](https://github.com/ihatenodejs/aidans-patches/compare/v1.3.1...v1.4.0) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* **apk-lab:** address review feedback on asm, native extraction, il2cpp layouts, and unity cli ([9e1addc](https://github.com/ihatenodejs/aidans-patches/commit/9e1addccd11969151c735345d231718afc730e21))\n* **apk-lab:** Allowed overriding default kwargs in tool runner ([76801f6](https://github.com/ihatenodejs/aidans-patches/commit/76801f612922c52a52bb264a01eb9d78f0a1e53d))\n* **apk-lab:** detect conflicting duplicate native library entries within an APK ([d85bc28](https://github.com/ihatenodejs/aidans-patches/commit/d85bc28f716251f3e0952a93e8bb5798aaf4693e))\n* **apk-lab:** Included AndroidManifest in patchable member check ([af7fcd6](https://github.com/ihatenodejs/aidans-patches/commit/af7fcd6d19ec5d22d9f8494ac774a7ed3fa26124))\n* **apk-lab:** Included resources.arsc in patch artifact detection ([845d8f1](https://github.com/ihatenodejs/aidans-patches/commit/845d8f1623fa68063ccf17ee9e5e62df1c746cb4))\n* **blackjack:** update to 2.22.09 ([34eca78](https://github.com/ihatenodejs/aidans-patches/commit/34eca782360220175556fc587f37a8c5e011c9e0))\n* **build:** Selected newest patch artifact ([185b8bc](https://github.com/ihatenodejs/aidans-patches/commit/185b8bce6097df0a9c9d435a482d1fd898115b43))\n* **sezzle:** Corrected rewards dispatch and CodePush method matching ([0b60e45](https://github.com/ihatenodejs/aidans-patches/commit/0b60e450f3fbae774b4ec7888458bb8152f62e10))\n* **sezzle:** Preserved Sezzle Send navigation in rewards patch ([9245a74](https://github.com/ihatenodejs/aidans-patches/commit/9245a74c3d49b921938e435bd31edf1114217147))\n* **sezzle:** Stubbed CodePush bundle resolution in update patch ([c1cac39](https://github.com/ihatenodejs/aidans-patches/commit/c1cac396717618c97eae379f4328677b74975ca2))\n\n### ✨ New Features\n\n* **apk-lab:** add deterministic ARM64 instruction encoder and CLI ([58324dc](https://github.com/ihatenodejs/aidans-patches/commit/58324dc430cc9ed8659e29ced02be7776e257289))\n* **apk-lab:** add IL2CPP metadata extractor and symbol search command ([13d41bd](https://github.com/ihatenodejs/aidans-patches/commit/13d41bdc0d492fdf705e48f8d497cf3ede376235))\n* **apk-lab:** add Unity serialized asset inspector and GameObject locator ([4cdb737](https://github.com/ihatenodejs/aidans-patches/commit/4cdb7378b6f5d4ccf3204ff55eb34da95f524a80))\n* **apk-lab:** added apk compatibility testing and status tracking ([c077d5a](https://github.com/ihatenodejs/aidans-patches/commit/c077d5a2b72447f455c9e80268f95c59a7bd7395))\n* **apk-lab:** extract native libraries across splits during analyze ([55e7aa1](https://github.com/ihatenodejs/aidans-patches/commit/55e7aa13a782c5096b7ea564f2f1e43eb446c837))\n* **fizz:** Added feed advertisement removal patch ([6c10066](https://github.com/ihatenodejs/aidans-patches/commit/6c100662f9516b125cf4ce3fe60808fb3c9e1678))\n* **sezzle:** Added configurable shortcut filtering ([5716677](https://github.com/ihatenodejs/aidans-patches/commit/57166774f3ce51eed55606f7c9d783750397183f))\n* **sidelineswap:** Added AMOLED theme patch ([619e112](https://github.com/ihatenodejs/aidans-patches/commit/619e112c7304eb0a0a03d677fb0d65f47448b99c))\n* **sidelineswap:** Added cart item and CardView theming ([9603003](https://github.com/ihatenodejs/aidans-patches/commit/9603003d69265ffafd4ce4fbe5a39dfe27ea4469))\n* **sidelineswap:** Added dark WebView support and expanded AMOLED theme ([d0de58a](https://github.com/ihatenodejs/aidans-patches/commit/d0de58a456ec9d9bd8a2f421cf216ef6f8420f75))\n* **sidelineswap:** Added payment sheet theming and address list fix ([4290b27](https://github.com/ihatenodejs/aidans-patches/commit/4290b270af2c009b4ef1c1c52c483a0b5c9a0b57))\n* **sidelineswap:** Added shipping badge and avatar stroke theming ([cdfed1e](https://github.com/ihatenodejs/aidans-patches/commit/cdfed1e4bbba03c8d94d789ca57824c5964a5498))\n",
@@ -13498,24 +13516,6 @@
         "body": "## [1.3.0-dev.1](https://github.com/ihatenodejs/aidans-patches/compare/v1.2.0...v1.3.0-dev.1) (2026-10-05)\n\n### 🐛 Bug Fixes\n\n* add semantic-release-backmerge plugin ([234cab1](https://github.com/ihatenodejs/aidans-patches/commit/234cab18dcce7c2eb3493ea0ceec0b001eaacac1))\n* **release:** rollback incorrect version, implement @kilianpaquier/semantic-release-backmerge ([7df1007](https://github.com/ihatenodejs/aidans-patches/commit/7df1007579ff01f896aaee32bd791acb6e9c0bc6))\n\n### ✨ New Features\n\n* **sezzle:** added js bundle patch to remove ads and tracking ([a5c9937](https://github.com/ihatenodejs/aidans-patches/commit/a5c993787b66b2da0c9b6a37dafe6a7263b6ec0e))\n",
         "prerelease": true,
         "dateReleased": "2026-10-05T03:07:40Z"
-      },
-      {
-        "tag": "v1.2.0",
-        "body": "## [1.2.0](https://github.com/ihatenodejs/aidans-patches/compare/v1.1.0...v1.2.0) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* **fizz:** fixed developer button visibility on single-feed layouts ([0bc1f31](https://github.com/ihatenodejs/aidans-patches/commit/0bc1f31358350260a0b437eb5ab8151255574f71))\n* **fizz:** preserved 2048 UPM metrics for Apple Color Emoji ([cbd6f86](https://github.com/ihatenodejs/aidans-patches/commit/cbd6f86735c84fabe381ffc61e19c53567a4f684))\n\n### ✨ New Features\n\n* **adobe-scan:** added patch suite and documentation for adobe scan ([89eae8e](https://github.com/ihatenodejs/aidans-patches/commit/89eae8e7e9bfc36784f5c90798ba36fb4dd36bfe))\n* **blackjack:** added internet and notification permission removal patches ([2f23c54](https://github.com/ihatenodejs/aidans-patches/commit/2f23c541fa089abf3fbc1f52f620b1e0a1457ba0))\n* **fizz:** added developer settings mod menu patch ([aee93d8](https://github.com/ihatenodejs/aidans-patches/commit/aee93d8e05aa66e620b8d25cfbd498439dbcc8e1))\n* **fizz:** added ios emoji font replacement patch and dynamic build pipeline ([0bf8157](https://github.com/ihatenodejs/aidans-patches/commit/0bf81570512fc4db0ff731d9b6b5e113236ed870))\n* **fizz:** added patch suite and documentation for fizz ([1ecfacf](https://github.com/ihatenodejs/aidans-patches/commit/1ecfacffb6af05ac285dd006c0b18f353d00867e))\n",
-        "prerelease": false,
-        "dateReleased": "2026-10-03T21:23:12Z"
-      },
-      {
-        "tag": "v1.2.0-dev.5",
-        "body": "## [1.2.0-dev.5](https://github.com/ihatenodejs/aidans-patches/compare/v1.2.0-dev.4...v1.2.0-dev.5) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* **fizz:** preserved 2048 UPM metrics for Apple Color Emoji ([cbd6f86](https://github.com/ihatenodejs/aidans-patches/commit/cbd6f86735c84fabe381ffc61e19c53567a4f684))\n",
-        "prerelease": true,
-        "dateReleased": "2026-10-03T10:28:40Z"
-      },
-      {
-        "tag": "v1.2.0-dev.4",
-        "body": "## [1.2.0-dev.4](https://github.com/ihatenodejs/aidans-patches/compare/v1.2.0-dev.3...v1.2.0-dev.4) (2026-10-03)\n\n### 🐛 Bug Fixes\n\n* **fizz:** fixed developer button visibility on single-feed layouts ([0bc1f31](https://github.com/ihatenodejs/aidans-patches/commit/0bc1f31358350260a0b437eb5ab8151255574f71))\n",
-        "prerelease": true,
-        "dateReleased": "2026-10-03T09:38:36Z"
       }
     ]
   },
@@ -14572,8 +14572,26 @@
     "releases": []
   },
   "https://github.com/bearinmindcat/morphe-patches": {
-    "fetched_at": "2026-10-08T22:14:16.043860+00:00",
+    "fetched_at": "2026-10-09T09:19:14.173020+00:00",
     "releases": [
+      {
+        "tag": "v1.7.9",
+        "body": "## [1.7.9](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.8...v1.7.9) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* Customization and the other added screens open on root mount installs; issue [#25](https://github.com/bearinmindcat/morphe-patches/issues/25) ([00ddf32](https://github.com/bearinmindcat/morphe-patches/commit/00ddf32177525aa99b1ac9bb4db0f492055c4404))\n",
+        "prerelease": false,
+        "dateReleased": "2026-10-09T07:25:03Z"
+      },
+      {
+        "tag": "v1.7.8",
+        "body": "## [1.7.8](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.7...v1.7.8) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* my location no longer crashes microG Maps when location is off; issue [#27](https://github.com/bearinmindcat/morphe-patches/issues/27) ([a1d74bb](https://github.com/bearinmindcat/morphe-patches/commit/a1d74bbd53ad9d4e0d78fdb5768fba9f8c133c38))\n",
+        "prerelease": false,
+        "dateReleased": "2026-10-09T06:11:11Z"
+      },
+      {
+        "tag": "v1.7.7",
+        "body": "## [1.7.7](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.6...v1.7.7) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* pick any music app as the default media app in navigation; issue [#9](https://github.com/bearinmindcat/morphe-patches/issues/9) ([e831ff1](https://github.com/bearinmindcat/morphe-patches/commit/e831ff186a4660978eae26076bd2bf8df8b9bb12))\n",
+        "prerelease": false,
+        "dateReleased": "2026-10-09T05:37:36Z"
+      },
       {
         "tag": "v1.7.6",
         "body": "## [1.7.6](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.5...v1.7.6) (2026-10-08)\n\n### 🐛 Bug Fixes\n\n* import google takeout saved lists (csv files or the whole zip, several at once); issue [#23](https://github.com/bearinmindcat/morphe-patches/issues/23) ([991db7f](https://github.com/bearinmindcat/morphe-patches/commit/991db7f397083bb6ff63ca8ed0acc742fe346bbc))\n",
@@ -14645,30 +14663,18 @@
         "body": "## [1.4.2](https://github.com/bearinmindcat/morphe-patches/compare/v1.4.1...v1.4.2) (2026-10-06)\n\n### 🐛 Bug Fixes\n\n* customization and other screens no longer crash on android 10; issue [#8](https://github.com/bearinmindcat/morphe-patches/issues/8) ([9bac165](https://github.com/bearinmindcat/morphe-patches/commit/9bac165b01a94c97699376b692c46def333dfc89))\n",
         "prerelease": false,
         "dateReleased": "2026-10-06T13:29:30Z"
-      },
-      {
-        "tag": "v1.4.1",
-        "body": "## [1.4.1](https://github.com/bearinmindcat/morphe-patches/compare/v1.4.0...v1.4.1) (2026-10-06)\n\n### 🐛 Bug Fixes\n\n* black theme no longer overrides the theme picked in maps settings; issue [#11](https://github.com/bearinmindcat/morphe-patches/issues/11) ([5d9df9e](https://github.com/bearinmindcat/morphe-patches/commit/5d9df9e14f7af9662ad2fa1948e8d7167a9c8883))\n",
-        "prerelease": false,
-        "dateReleased": "2026-10-06T12:38:06Z"
-      },
-      {
-        "tag": "v1.4.0",
-        "body": "## [1.4.0](https://github.com/bearinmindcat/morphe-patches/compare/v1.3.0...v1.4.0) (2026-10-06)\n\n### 🐛 Bug Fixes\n\n* fixed issue with zoom buttons floating over pulled up menu ([65878f1](https://github.com/bearinmindcat/morphe-patches/commit/65878f16d29c0c55933a3c8eaa6c2f723f0d00a4))\n* fixed layout for landscape zoom control icons ([5e8783c](https://github.com/bearinmindcat/morphe-patches/commit/5e8783c9f8c6809a78f45c2981be1fe9b03b5a96))\n\n### ✨ New Features\n\n* add hide ai toggle (know before you go & gemini review summaries); issue [#19](https://github.com/bearinmindcat/morphe-patches/issues/19) ([efc79d7](https://github.com/bearinmindcat/morphe-patches/commit/efc79d71a2fe72b581724a0c54e120024934cc9c))\n",
-        "prerelease": false,
-        "dateReleased": "2026-10-06T06:56:12Z"
-      },
-      {
-        "tag": "v1.3.0",
-        "body": "## [1.3.0](https://github.com/bearinmindcat/morphe-patches/compare/v1.2.0...v1.3.0) (2026-09-30)\n\n### ✨ New Features\n\n* add locally saved bookmarks & pins (also added timeline and recent searches) ([d6d4604](https://github.com/bearinmindcat/morphe-patches/commit/d6d460499327aa32b7de29c750d42313dec166ed))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-30T15:33:33Z"
       }
     ]
   },
   "https://github.com/mrx7014/MRXHalawa-Patches": {
-    "fetched_at": "2026-10-02T23:06:27.986778+00:00",
+    "fetched_at": "2026-10-09T09:19:14.205175+00:00",
     "releases": [
+      {
+        "tag": "v1.49.1",
+        "body": "## [1.49.1](https://github.com/mrx7014/MRXHalawa-Patches/compare/v1.49.0...v1.49.1) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* **reddit:** forcibly remove Enable NSFW button ([8667fca](https://github.com/mrx7014/MRXHalawa-Patches/commit/8667fca23c44f4d6fa6da6f6f75dcbba81403b6c))\n",
+        "prerelease": false,
+        "dateReleased": "2026-10-09T08:20:48Z"
+      },
       {
         "tag": "v1.49.0",
         "body": "## [1.49.0](https://github.com/mrx7014/MRXHalawa-Patches/compare/v1.48.0...v1.49.0) (2026-10-02)\n\n### 🐛 Bug Fixes\n\n* import bytecodePatch in NSFW patch ([2c4f999](https://github.com/mrx7014/MRXHalawa-Patches/commit/2c4f99901949f977b17925ef0c05838b8fbbdf26))\n* **youtube:** harden Block Channel matching ([e9d1563](https://github.com/mrx7014/MRXHalawa-Patches/commit/e9d1563bfb935f6b7ebe6ddcb24f97be52a2c2d8))\n* **youtube:** relabel native hide user item ([61bb33d](https://github.com/mrx7014/MRXHalawa-Patches/commit/61bb33d7199f40cdb7625744a7e2b5bd8762e2da))\n\n### ✨ New Features\n\n* **reddit:** hide enable NSFW button ([2e9d849](https://github.com/mrx7014/MRXHalawa-Patches/commit/2e9d849be0ff729db07922b8eb0d35ac2441b26c))\n\n### ⚙️ CI\n\n* add authenticated Gradle build workflow ([7a531b2](https://github.com/mrx7014/MRXHalawa-Patches/commit/7a531b29d393c50f9fbc1102fc1c7e5684a13e80))\n",
@@ -14752,12 +14758,6 @@
         "body": "## [1.46.1](https://github.com/mrx7014/morphe-patches/compare/v1.46.0...v1.46.1) (2026-09-10)\n\n### 🐛 Bug Fixes\n\n* **ci:** guard optional release integrations ([065b67e](https://github.com/mrx7014/morphe-patches/commit/065b67e7c6957a885a64e71eb42ef2dd9af83aa4))\n* **youtube:** restore custom settings integrations ([d87e0e3](https://github.com/mrx7014/morphe-patches/commit/d87e0e3647e3d95f30b07ccabaa8c070673c6d70))\n* **youtube:** restore missing patch settings ([51538bd](https://github.com/mrx7014/morphe-patches/commit/51538bd6799591221d656bcc0de962372853812b))\n",
         "prerelease": false,
         "dateReleased": "2026-09-10T10:49:42Z"
-      },
-      {
-        "tag": "v1.46.0",
-        "body": "## [1.46.0](https://github.com/mrx7014/morphe-patches/compare/v1.45.0...v1.46.0) (2026-09-10)\n\n### ✨ New Features\n\n* **youtube:** confirm channel blocking and store handle ([5fc4c48](https://github.com/mrx7014/morphe-patches/commit/5fc4c48432072582734954ec8a190dc0e84bc6de))\n",
-        "prerelease": false,
-        "dateReleased": "2026-09-10T09:10:10Z"
       }
     ]
   },
@@ -15058,8 +15058,20 @@
     ]
   },
   "https://github.com/rahaaatul/morphe-patches": {
-    "fetched_at": "2026-10-01T08:24:46.489849+00:00",
+    "fetched_at": "2026-10-09T09:19:14.114562+00:00",
     "releases": [
+      {
+        "tag": "v1.1.0",
+        "body": "## [1.1.0](https://github.com/rahaaatul/morphe-patches/compare/v1.0.1...v1.1.0) (2026-10-09)\n\n### ✨ New Features\n\n* add ProtonVPN patches, fix PrivacyKit v3.x fingerprint mismatches ([1f648f8](https://github.com/rahaaatul/morphe-patches/commit/1f648f809d305e0412748bac2cdfd0a9f51237b9))\n* ProtonVPN premium ([4fd3f02](https://github.com/rahaaatul/morphe-patches/commit/4fd3f028425b9eed767802e44b30044b03737e9e))\n",
+        "prerelease": false,
+        "dateReleased": "2026-10-09T04:43:22Z"
+      },
+      {
+        "tag": "v1.0.1",
+        "body": "## [1.0.1](https://github.com/rahaaatul/morphe-patches/compare/v1.0.0...v1.0.1) (2026-10-09)\n\n### 🚀 Updated App Support\n\n* add PrivacyKit 3 compatibility ([a893a20](https://github.com/rahaaatul/morphe-patches/commit/a893a2086d7155b02e5de71f66ace356d6510c8f))\n",
+        "prerelease": false,
+        "dateReleased": "2026-10-09T03:16:34Z"
+      },
       {
         "tag": "v1.0.0",
         "body": "## 1.0.0 (2026-09-24)\n\n### ✨ New Features\n\n* PrivacyKit Premium ([6d408f0](https://github.com/rahaaatul/morphe-patches/commit/6d408f0cebaca66f0487e5cb1ea258fe29a3ee25))\n",
@@ -17162,8 +17174,44 @@
     ]
   },
   "https://github.com/K8R8TO/kizu-morphe-patches": {
-    "fetched_at": "2026-10-08T22:14:16.129413+00:00",
+    "fetched_at": "2026-10-09T09:19:14.256717+00:00",
     "releases": [
+      {
+        "tag": "v1.9.3-beta.6",
+        "body": "Kizu Twitch Patches v1.9.3-beta.6 pre-release.\nTesting channel only. This is not the stable release.\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T07:31:23Z"
+      },
+      {
+        "tag": "v1.9.3-beta.5",
+        "body": "Kizu Twitch Patches v1.9.3-beta.5 pre-release.\nTesting channel only. This is not the stable release.\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T07:12:32Z"
+      },
+      {
+        "tag": "v1.9.3-beta.4.4",
+        "body": "Kizu Twitch Patches v1.9.3-beta.4.4 pre-release.\nTesting channel only. This is not the stable release.\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T06:36:45Z"
+      },
+      {
+        "tag": "v1.9.3-beta.4.3",
+        "body": "Kizu Twitch Patches v1.9.3-beta.4.3 pre-release.\nTesting channel only. This is not the stable release.\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T05:11:46Z"
+      },
+      {
+        "tag": "v1.9.3-beta.4.2",
+        "body": "Kizu Twitch Patches v1.9.3-beta.4.2 pre-release.\nTesting channel only. This is not the stable release.\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T04:43:12Z"
+      },
+      {
+        "tag": "v1.9.3-beta.4.1",
+        "body": "Kizu Twitch Patches v1.9.3-beta.4.1 pre-release.\nTesting channel only. This is not the stable release.\n",
+        "prerelease": true,
+        "dateReleased": "2026-10-09T04:30:03Z"
+      },
       {
         "tag": "v1.9.3-beta.4",
         "body": "Kizu Twitch Patches v1.9.3-beta.4 pre-release.\nTesting channel only. This is not the stable release.\n",
@@ -17217,42 +17265,6 @@
         "body": "Kizu Twitch Patches v1.9.3-beta.3.2 pre-release.\nTesting channel only. This is not the stable release.\n",
         "prerelease": true,
         "dateReleased": "2026-10-08T18:12:24Z"
-      },
-      {
-        "tag": "v1.9.3-beta.3.1",
-        "body": "Kizu Twitch Patches v1.9.3-beta.3.1 pre-release.\nTesting channel only. This is not the stable release.\n",
-        "prerelease": true,
-        "dateReleased": "2026-10-08T17:34:06Z"
-      },
-      {
-        "tag": "v1.9.3-beta.3",
-        "body": "Kizu Twitch Patches v1.9.3-beta.3 pre-release.\nTesting channel only. This is not the stable release.\n",
-        "prerelease": true,
-        "dateReleased": "2026-10-08T17:28:15Z"
-      },
-      {
-        "tag": "v1.9.3-beta.1.9",
-        "body": "Kizu Twitch Patches v1.9.3-beta.1.9 pre-release.\nTesting channel only. This is not the stable release.\n",
-        "prerelease": true,
-        "dateReleased": "2026-10-08T16:30:10Z"
-      },
-      {
-        "tag": "v1.9.3-beta.1.8",
-        "body": "Kizu Twitch Patches v1.9.3-beta.1.8 pre-release.\nTesting channel only. This is not the stable release.\n",
-        "prerelease": true,
-        "dateReleased": "2026-10-08T15:58:04Z"
-      },
-      {
-        "tag": "v1.9.3-beta.1.7",
-        "body": "Kizu Twitch Patches v1.9.3-beta.1.7 pre-release.\nTesting channel only. This is not the stable release.\n",
-        "prerelease": true,
-        "dateReleased": "2026-10-08T15:46:19Z"
-      },
-      {
-        "tag": "v1.9.3-beta.1.6",
-        "body": "Kizu Twitch Patches v1.9.3-beta.1.6 pre-release.\nTesting channel only. This is not the stable release.\n",
-        "prerelease": true,
-        "dateReleased": "2026-10-08T15:34:56Z"
       }
     ]
   },
