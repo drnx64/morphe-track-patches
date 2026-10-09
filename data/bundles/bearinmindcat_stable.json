@@ -2,9 +2,9 @@
   "bundle": "bearinmindcat",
   "channel": "stable",
   "repo_url": "https://github.com/bearinmindcat/morphe-patches",
-  "created_at": "2026-10-09T07:25:03",
-  "version": "v1.7.9",
-  "description": "## [1.7.9](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.8...v1.7.9) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* Customization and the other added screens open on root mount installs; issue [#25](https://github.com/bearinmindcat/morphe-patches/issues/25) ([00ddf32](https://github.com/bearinmindcat/morphe-patches/commit/00ddf32177525aa99b1ac9bb4db0f492055c4404))\n",
+  "created_at": "2026-10-09T15:25:13",
+  "version": "v1.7.11",
+  "description": "## [1.7.11](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.10...v1.7.11) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* choose microg Services or Google Play Services location in both apps ([1e7c8a5](https://github.com/bearinmindcat/morphe-patches/commit/1e7c8a5681249794a21d46f93e76e66a7edb76f0))\n",
   "apps": [
     {
       "app_name": "Google Maps",
@@ -139,12 +139,12 @@
         },
         {
           "name": "Location provider toggle",
-          "description": "Adds a Location source choice to the Customization screen: Android's own location providers, or Google Play services' fused provider. With Android, Play services is never asked for a location. Play services is never used while it is missing or disabled, so location keeps working on phones without it. Also keeps the network (Wi-Fi/cell) provider registered when no fused provider answers, instead of GPS only, so a fix does not go stale indoors.",
+          "description": "Adds a Location source choice to the Customization screen: Android's own location providers, microG's (microg Services) or Google Play services' fused provider. With Android, neither is ever asked for a location. A source that is missing or disabled is never used, so location keeps working without it. Also keeps the network (Wi-Fi/cell) provider registered when no fused provider answers, instead of GPS only, so a fix does not go stale indoors.",
           "use": true,
           "options": [
             {
               "key": "useFusedProvider",
-              "description": "The location source Maps starts with. On: Google Play services' fused provider whenever Play services is installed and enabled, Android's own providers otherwise. Off: Android's own providers. Either can be changed later on the Customization screen."
+              "description": "The location source Maps starts with. On: the fused provider -- Google Play services', or microG's in microG Maps -- whenever it is installed and enabled, Android's own providers otherwise. Off: Android's own providers. Can be changed later on the Customization screen."
             }
           ],
           "compatible_versions": [
@@ -236,9 +236,9 @@
     }
   ],
   "patches_name": "bearinmind patches",
-  "fingerprint": "b89f6bf58152fc7a3b8e2e041862a2e2f6960b6afe06ca6544c7f7bb0b883885",
-  "release_notes": "## [1.7.9](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.8...v1.7.9) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* Customization and the other added screens open on root mount installs; issue [#25](https://github.com/bearinmindcat/morphe-patches/issues/25) ([00ddf32](https://github.com/bearinmindcat/morphe-patches/commit/00ddf32177525aa99b1ac9bb4db0f492055c4404))\n",
-  "release_tag": "v1.7.9",
-  "release_date": "2026-10-09T07:25:03Z",
+  "fingerprint": "923a40addfa36b2409ef181314b01454805e8f44fb7f7ea7c5ca8a63cde23f8b",
+  "release_notes": "## [1.7.11](https://github.com/bearinmindcat/morphe-patches/compare/v1.7.10...v1.7.11) (2026-10-09)\n\n### 🐛 Bug Fixes\n\n* choose microg Services or Google Play Services location in both apps ([1e7c8a5](https://github.com/bearinmindcat/morphe-patches/commit/1e7c8a5681249794a21d46f93e76e66a7edb76f0))\n",
+  "release_tag": "v1.7.11",
+  "release_date": "2026-10-09T15:25:13Z",
   "isPreRelease": false
 }
