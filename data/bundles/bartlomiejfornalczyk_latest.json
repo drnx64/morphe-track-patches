@@ -2,99 +2,24 @@
   "bundle": "bartlomiejfornalczyk",
   "channel": "latest",
   "repo_url": "https://github.com/bartlomiejfornalczyk/morphe-patches",
-  "created_at": "2026-10-05T23:04:45",
-  "version": "v1.1.0-dev.4",
-  "description": "## [1.1.0-dev.4](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-10-05)\n\n### 🐛 Bug Fixes\n\n* **maps:** load MicroG accounts directly via AccountManager and bypass AANG service ([e0976d3](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/e0976d3233d8e7c94c645aff26ca2f41167f9c1c))\n",
+  "created_at": "2026-10-09T21:07:37",
+  "version": "v1.1.0-dev.5",
+  "description": "## [1.1.0-dev.5](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.1.0-dev.4...v1.1.0-dev.5) (2026-10-09)\n\n### ✨ New Features\n\n* **maps:** add Location provider toggle and Network location fallback patches ([1591346](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/15913468f41eb80ffad17e5fb8330ae8ab74cbe1))\n",
   "apps": [
-    {
-      "app_name": "YouTube Music (Morphe)",
-      "package": "app.morphe.android.apps.youtube.music",
-      "patches": [
-        {
-          "name": "Allow external media browser connections",
-          "description": "Allows Google Maps, Android Auto, and third-party media controllers to connect to YouTube Music.",
-          "use": true,
-          "options": [],
-          "compatible_versions": []
-        }
-      ]
-    },
-    {
-      "app_name": "Google Maps (ReVanced)",
-      "package": "app.revanced.android.apps.maps",
-      "patches": [
-        {
-          "name": "Allow Morphe YouTube Music mini player",
-          "description": "Enables YouTube Music and modded media apps as the navigation mini player.",
-          "use": true,
-          "options": [
-            {
-              "key": "targetPackage",
-              "description": "Package name of your modded YouTube Music app."
-            }
-          ],
-          "compatible_versions": []
-        },
-        {
-          "name": "Allow Morphe YouTube Music package visibility",
-          "description": "Adds package queries and permission to AndroidManifest.xml for full media apps visibility.",
-          "use": true,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Change package name",
-          "description": "Installs alongside stock Google Maps under its own package name and adds MicroG spoofing.",
-          "use": true,
-          "options": [
-            {
-              "key": "packageName",
-              "description": "The package name to install under."
-            }
-          ],
-          "compatible_versions": []
-        },
-        {
-          "name": "MicroG manifest support",
-          "description": "Adds MicroG package visibility queries, permissions, and spoofing metadata to AndroidManifest.xml.",
-          "use": true,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "MicroG support",
-          "description": "Redirects Google account sign-in and authentication to MicroG (app.revanced.android.gms) on non-rooted devices.",
-          "use": true,
-          "options": [],
-          "compatible_versions": []
-        },
-        {
-          "name": "Restore map data",
-          "description": "Lets a re-signed Maps load tiles, search and routing, by sending Google's own package and certificate.",
-          "use": true,
-          "options": [],
-          "compatible_versions": []
-        }
-      ]
-    },
-    {
-      "app_name": "YouTube Music (ReVanced)",
-      "package": "app.revanced.android.apps.youtube.music",
-      "patches": [
-        {
-          "name": "Allow external media browser connections",
-          "description": "Allows Google Maps, Android Auto, and third-party media controllers to connect to YouTube Music.",
-          "use": true,
-          "options": [],
-          "compatible_versions": []
-        }
-      ]
-    },
     {
       "app_name": "Google Maps",
       "package": "com.google.android.apps.maps",
       "patches": [
         {
+          "name": "Add microG support",
+          "description": "Builds microG Maps, a separate app (org.ungoogled.android.apps.maps.microg) that signs in to your Google account through microG: saved places and lists, Timeline, location sharing, contributions and push messages. Remove sign-in prompts, Trim account menu and Remove permissions are left out of this build, Offline saved places keeps only its Local saved screen, which copies your account's saved lists to the phone (Pull from Google account), and its icon carries microG's C. Needs microG: MicroG-RE or ReVanced GmsCore. Not for root (mount) installs.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
           "name": "Allow Morphe YouTube Music mini player",
           "description": "Enables YouTube Music and modded media apps as the navigation mini player.",
           "use": true,
@@ -118,6 +43,15 @@
           ]
         },
         {
+          "name": "Bypass Play Services checks",
+          "description": "Makes Maps' bundled Play services signature and availability checks always pass, so it runs re-signed and with Play services disabled or absent, and lets it load tiles, search and routing by sending Google's own package and certificate in the identity headers the Maps backend checks. Where Play services rejects the re-signed app, Maps degrades instead of crashing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
           "name": "Change package name",
           "description": "Installs alongside stock Google Maps under its own package name and adds MicroG spoofing.",
           "use": true,
@@ -132,8 +66,22 @@
           ]
         },
         {
-          "name": "MicroG manifest support",
-          "description": "Adds MicroG package visibility queries, permissions, and spoofing metadata to AndroidManifest.xml.",
+          "name": "Location provider toggle",
+          "description": "Adds a Location source choice to the Customization screen: Android's own location providers, microG's (microg Services) or Google Play services' fused provider. With Android, neither is ever asked for a location. A source that is missing or disabled is never used, so location keeps working without it. Also keeps the network (Wi-Fi/cell) provider registered when no fused provider answers, instead of GPS only, so a fix does not go stale indoors.",
+          "use": true,
+          "options": [
+            {
+              "key": "useFusedProvider",
+              "description": "The location source Maps starts with. On: the fused provider -- Google Play services', or microG's in microG Maps -- whenever it is installed and enabled, Android's own providers otherwise. Off: Android's own providers. Can be changed later on the Customization screen."
+            }
+          ],
+          "compatible_versions": [
+            "26.36.04.973607363"
+          ]
+        },
+        {
+          "name": "Remove permissions",
+          "description": "Removes permissions that only serve Google-account features or Google's data collection: background location, physical activity, contacts, microphone (voice search stops working), camera (Lens and Live View stop working), car speed, advertising ID, push messages and Google services settings. Left out with Add microG support, whose account features need them.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -141,8 +89,8 @@
           ]
         },
         {
-          "name": "MicroG support",
-          "description": "Redirects Google account sign-in and authentication to MicroG (app.revanced.android.gms) on non-rooted devices.",
+          "name": "Remove telemetry",
+          "description": "Points the Firebase Installations and Play services compliance check-ins at an unresolvable host, stops every ad impression and click ping from being sent, and deregisters Google's logging, performance-monitoring, survey and Location History libraries and the on-device federated-learning services. With Add microG support, Firebase Installations and Location History are left alone, so Timeline, account sync and push messages keep working.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -175,9 +123,9 @@
     }
   ],
   "patches_name": "Google Maps Morphe Patches",
-  "fingerprint": "e8f820a850f13487ecd56f5c8ebe8baf3a7c5223f1d0b64b50af9cfda150b992",
-  "release_notes": "## [1.1.0-dev.4](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.1.0-dev.3...v1.1.0-dev.4) (2026-10-05)\n\n### 🐛 Bug Fixes\n\n* **maps:** load MicroG accounts directly via AccountManager and bypass AANG service ([e0976d3](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/e0976d3233d8e7c94c645aff26ca2f41167f9c1c))\n",
-  "release_tag": "v1.1.0-dev.4",
-  "release_date": "2026-10-05T23:04:45Z",
+  "fingerprint": "06f89547573f0a8bbdb14ab8be74c6a27d2031d51aeef2a59605049e61fbf280",
+  "release_notes": "## [1.1.0-dev.5](https://github.com/bartlomiejfornalczyk/morphe-patches/compare/v1.1.0-dev.4...v1.1.0-dev.5) (2026-10-09)\n\n### ✨ New Features\n\n* **maps:** add Location provider toggle and Network location fallback patches ([1591346](https://github.com/bartlomiejfornalczyk/morphe-patches/commit/15913468f41eb80ffad17e5fb8330ae8ab74cbe1))\n",
+  "release_tag": "v1.1.0-dev.5",
+  "release_date": "2026-10-09T21:07:37Z",
   "isPreRelease": true
 }

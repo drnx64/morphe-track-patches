@@ -2,9 +2,9 @@
   "bundle": "ahmedyarub",
   "channel": "dev",
   "repo_url": "https://github.com/ahmedyarub/morphe-patches",
-  "created_at": "2026-10-07T22:18:41",
-  "version": "v1.12.0-dev.1",
-  "description": "## [1.12.0-dev.1](https://github.com/ahmedyarub/morphe-patches/compare/v1.11.0...v1.12.0-dev.1) (2026-10-07)\n\n### ✨ New Features\n\n* **X:** Support 12.32.0-prod.01 ([9310ad6](https://github.com/ahmedyarub/morphe-patches/commit/9310ad6437671be0131b2fcdff7277ed727dd08f))\n",
+  "created_at": "2026-10-09T18:39:51",
+  "version": "v1.14.0-dev.1",
+  "description": "## [1.14.0-dev.1](https://github.com/ahmedyarub/morphe-patches/compare/v1.13.0...v1.14.0-dev.1) (2026-10-09)\n\n### ✨ New Features\n\n* Remove Grok, hide suggested followings, filter Your Turn stories, reorder menu ([96f3902](https://github.com/ahmedyarub/morphe-patches/commit/96f3902959954067eecd4888e1c46ba34dbeffb7))\n",
   "apps": [
     {
       "app_name": "Instagram",
@@ -71,6 +71,10 @@
             {
               "key": "hideHighlightStories",
               "description": "Hides resurfaced highlights, which carry no expiry, from the story tray."
+            },
+            {
+              "key": "hideYourTurnStories",
+              "description": "Hides \"Add Yours\" / \"Your Turn\" stories from the story tray."
             }
           ],
           "compatible_versions": [
@@ -143,6 +147,15 @@
         {
           "name": "Open links externally",
           "description": "Opens links in the system browser instead of the in-app browser.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "450.0.0.50.77"
+          ]
+        },
+        {
+          "name": "Reorder menu options",
+          "description": "Moves Interested and Not Interested to the top of the post menu.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -578,6 +591,20 @@
           ]
         },
         {
+          "name": "Feed filters",
+          "description": "Adds feed filters to timelines: media only (images, videos, GIFs), hide followed profiles, and include/exclude keyword filtering. Toggle each filter from the Morphe settings.",
+          "use": true,
+          "options": [
+            {
+              "key": "includeKeywords",
+              "description": "When set, only posts containing at least one of these are shown. Edit in the app."
+            }
+          ],
+          "compatible_versions": [
+            "12.32.0-prod.01"
+          ]
+        },
+        {
           "name": "Filter posts by keyword",
           "description": "Hides posts whose text contains any of your keywords, ignoring case. Edit the keywords from \"Filtered keywords\" in any post's menu, or in the Morphe settings.",
           "use": true,
@@ -794,9 +821,9 @@
     }
   ],
   "patches_name": "Ahmed Yarub's Patches",
-  "fingerprint": "8ccfce096181514af029a82faae4b7d039942c9ba693b670deff1a09d58c0bbf",
-  "release_notes": "## [1.12.0-dev.1](https://github.com/ahmedyarub/morphe-patches/compare/v1.11.0...v1.12.0-dev.1) (2026-10-07)\n\n### ✨ New Features\n\n* **X:** Support 12.32.0-prod.01 ([9310ad6](https://github.com/ahmedyarub/morphe-patches/commit/9310ad6437671be0131b2fcdff7277ed727dd08f))\n",
-  "release_tag": "v1.12.0-dev.1",
-  "release_date": "2026-10-07T22:18:41Z",
+  "fingerprint": "d4751a8a138bf30a79325c933ea39b8b6a3c7442beea55fceb2e09fb884301e0",
+  "release_notes": "## [1.14.0-dev.1](https://github.com/ahmedyarub/morphe-patches/compare/v1.13.0...v1.14.0-dev.1) (2026-10-09)\n\n### ✨ New Features\n\n* Remove Grok, hide suggested followings, filter Your Turn stories, reorder menu ([96f3902](https://github.com/ahmedyarub/morphe-patches/commit/96f3902959954067eecd4888e1c46ba34dbeffb7))\n",
+  "release_tag": "v1.14.0-dev.1",
+  "release_date": "2026-10-09T18:39:51Z",
   "isPreRelease": true
 }
