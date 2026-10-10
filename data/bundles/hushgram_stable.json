@@ -2,9 +2,9 @@
   "bundle": "hushgram",
   "channel": "stable",
   "repo_url": "https://github.com/SysAdminDoc/HushGram",
-  "created_at": "2026-10-08T19:05:19",
-  "version": "v0.0.7",
-  "description": "HushGram v0.0.7 has 78 patches for Instagram 450.0.0.50.77, 3 more than v0.0.6. It still targets the arm64-v8a build 385611438, and now the other arm64 builds of that version patch too, along with the x86 and x86_64 ones. It needs Morphe Manager 1.34.0 or newer and runs on Android 9 and newer. Here's everything that changed.\r\n\r\n## What's new\r\n\r\n* New patches: Emoji style, Hide the Threads button (#50) and See who a story mentions.\r\n* Every build of Instagram 450.0.0.50.77 patches now, not only 385611438 (#77, #95).\r\n* New switches: Download video covers, Hide Meta AI in the share sheet, double tap to like On messages, Copy username and bio, View profile picture, Hide videos, photos and carousels on Home, and Import flag names in developer options.\r\n* With View stories anonymously on, a story you watch keeps its colored ring (#92).\r\n* Fixes for Show if a profile follows you (#40), the Welcome to Instagram card on Home (#28), carousels in Reels (#78), reel covers (#79) and HDR brightness on Android 14 and newer (#85).\r\n\r\n## Instagram\r\n\r\n* HushGram 0.0.7 adds 3 patches, for 78 in all, and stays on Instagram 450.0.0.50.77 with Morphe Manager 1.34.0 or newer. Besides build 385611438, the other arm64 builds of that version (385611395, 385611400, 385611404 and 385611431) and the x86 and x86_64 ones (385611439 and 385611440) patch now too.\r\n* Show if a profile follows you now goes by what the profile screen itself heard, the same answer Instagram's own menu on that profile uses to offer Remove follower. On a few profiles the label said Doesn't follow you while that menu offered Remove follower, because the label read an older follow status Instagram had saved for the account. The saved status only counts now when the screen has no answer yet, and the chip under the counts goes by the same answer. Reported in #40.\r\n* Open developer options adds Import flag names under Developer. Pick a name list, such as a file in Instagram's own id_name_mapping.json format or a text file of `config=name` lines, and Instagram's MetaConfig editor shows those names in its list and its search in place of numbers like _23355. Searching by a config's number still works. The names stay in HushGram's private folder and only change the editor's labels, so Instagram's schema and overrides keep the numbers, and so does an override export. Remove flag names puts the numbers back. HushGram doesn't ship a name list. Asked for in #50, #67 and #91.\r\n* With View stories anonymously on, a story you watch keeps its colored ring and stays where it was in the tray. Before, the view was held back but Instagram still noted on the phone that you'd seen it, so the ring went gray and moved to the end of the row, which looked as if the view had gone out. A story you mark as seen still grays once its mark goes out. Reported in #92.\r\n* The other arm64 builds of 450.0.0.50.77, 385611395, 385611400, 385611404 and 385611431, patch the way 385611438 does. Each build is compiled on its own, and Instagram's compiler moves a different set of strings into shared tables in each one and puts some code in other classes, so on 385611395 six patches and the story links part of Sanitize sharing links couldn't find what they change, and on 385611400 the HushGram row couldn't find the Settings screen. They read those tables now and look where the code moved, so they find the same places on all five builds. Morphe Manager still calls the four an unsupported version, since it can only be told one build number for each kind of phone. Reported in #77. The x86 and x86_64 builds, 385611439 and 385611440, patch that way too. The same change lets the HushGram row find their Settings screen. Read messages without the seen receipt no longer needs a helper 385611440 doesn't have, and on 385611439 Sanitize sharing links finds the copy link parser and Turn off double tap to like finds all three comment rows. Start on x86 devices now lets those two builds run their code protection step, since their code is x86 and nothing gets translated. Reported in #95.\r\n* Download any video has a new switch under Downloads, Download video covers, that starts off. With it on, the menu of a feed post with a video, or of a carousel on a video page, gets Download cover. It saves the still picture you see before the video plays, at the largest size Instagram lists, the way Download cover on a reel does. Asked for in #94.\r\n* Hide Meta AI has a new switch, Hide Meta AI in the share sheet, that starts off. Turn it on and Meta AI's target, which some accounts see as Muse, is gone from the row at the bottom of the share sheet. The other targets stay where they were.\r\n* Turn off double tap to like has an On messages switch under it, off to start. With it on, a double tap on a message in a chat doesn't send a reaction. A long press still shows the reactions, and you can pick one there.\r\n* Copy comment can also copy the username of whoever wrote a comment. Turn on Copy the commenter's username under Comments, then open a comment's menu and pick Copy username. It starts off and copies the name exactly. Asked for in #35.\r\n* Settings entry has a new switch, Hide the HushGram row in Instagram's menu, for people who open HushGram from a tab long press and don't want the extra row at the top of Instagram's Settings and activity. It starts off. The row only goes while the tab you picked can open HushGram, so turning the long press off, or pausing HushGram, brings it back and there's always a way in. Asked for in #84.\r\n* With Hide suggested posts on, Home could open on Instagram's Welcome to Instagram card for a few seconds, the one it shows when you follow nobody, before your posts loaded. A suggestion taken out anywhere in the app, or from what Home saved last time, was enough to make Home look finished while it was still waiting for its first page. Now only suggestions taken out of Home's own posts can end it, so it shows its usual loading placeholder until your posts arrive. Reported in #28.\r\n* Open settings with a tab long press works as soon as you pick a tab. Before, the choice saved but only reached the tabs after Instagram restarted, so until then the tab's long press still did what it always had, which looked like the choice hadn't stuck. Profile could also go on opening Instagram's account switcher, even after a restart, because Instagram puts that long press on the Profile button a second way. That one follows your choice now too. Reported in #82.\r\n* Download cover no longer fails with Download failed on a reel whose cover address has its size written into it, which the photo save mistook for a thumbnail. It saves the largest size the reel lists for its cover. Reported in #79, and thanks to @talhaeenss for finding the cause in #81.\r\n* Download any reel saves every page of a carousel that turns up in Reels, in order. Before, it saved the first page whichever one you were looking at. Download as photo on a carousel with music saves them all too. Reported in #78.\r\n* On Android 14 and newer, Turn off HDR brightness boosts also holds back the extra brightness Instagram asks for when it draws a video on a layer of its own. That layer shows the video brighter than the rest of the screen, and the switch didn't reach it before (#85).\r\n* New patch, Hide the Threads button. Turn on its switch under Profiles and the Threads button at the top of a profile, yours or anyone else's, isn't built at all, so there's no gap where it was. The menu and the other buttons stay put. It's in the default selection with its switch off. Asked for in #50.\r\n* New patch, Emoji style. Instagram already loads Google's emoji font through Google Play services, but it only uses it for emoji your phone's own font is missing. Turn on Google's emoji everywhere under Layout and every emoji Instagram runs through Android's emoji support draws in Google's style instead. It's in the default selection with its switch off, and a change shows fully after Instagram restarts.\r\n* New opt-in patch, See who a story mentions. A story that mentions someone gets a pill under the name in its header, like 2 mentions, even when the mention sticker is hidden or off screen. Tap it to see who's mentioned, with their picture, name and username, and tap someone to open their profile. Its switch is under Stories. Asked for in #13 and #44.\r\n* Hide suggested posts gets Hide videos, Hide photos and Hide carousels under Feed, and they start off. Each takes every post of its type out of Home, from accounts you follow too, and leaves profiles, Explore and Reels as they were. Reels count as videos.\r\n* Save profile picture has a third switch under Downloads, Copy username and bio, that starts off. With it on, the menu on someone's profile also gets Copy username and Copy bio, which copy the account's username or bio exactly as it's written, emoji and line breaks included. An account with no bio gets no Copy bio. Asked for in #29.\r\n* With Name saves by account and post time on, a saved profile picture is named for the account and the time you saved it, like `username_profile_20261007_105151.jpg`, instead of IG_IMG_. Off, it keeps the IG_IMG_ name.\r\n* Hide the comment bar on reposted reels now keeps the bar hidden after Instagram tucks it away for a moment and brings it back, which some reposted reels do and which used to put the bar back under them. Asked for in #64.\r\n* Save profile picture has a second switch under Downloads, View profile picture, that starts off. With it on, the menu on someone's profile also gets View profile picture, which opens their picture full screen at the largest size Instagram has, with pinch zoom and a Save button. Back closes it.\r\n\r\n## Install or update\r\n\r\n* Morphe Manager 1.34.0 or newer is still all you need.\r\n* Update the HushGram source in Morphe Manager, or add it with the link in the README.\r\n* Instagram 450.0.0.50.77 is still the target. Build 385611438, the (480-640dpi) bundle on APKMirror, is the one every check runs on. The other arm64 builds (385611395, 385611400, 385611404, 385611431) and the x86 and x86_64 ones (385611439, 385611440) patch too now, but Manager still names only 385611438, so it shows the others as unsupported. The .mpp is a patch bundle, not an Instagram APK.\r\n* Keep the manager's signing key for updates, so the new build installs over the old one and you stay signed in.\r\n* Read Before you sign in in the README first. A spare account keeps your main one out of it.\r\n\r\n## Validation\r\n\r\n2869 runtime tests and all 1182 patch tests passed locally. All 78 patches applied to Instagram 450.0.0.50.77 build 385611438 without forcing, and the resource and injected-code checks passed. The receipt and SHA256SUMS.txt beside the bundle list every file's hash.\r\n",
+  "created_at": "2026-10-10T04:24:39",
+  "version": "v0.0.8",
+  "description": "HushGram v0.0.8 has 79 patches for Instagram 450.0.0.50.77, 1 more than v0.0.7. All seven builds of that version patch, and it needs Morphe Manager 1.34.0 or newer on Android 9 and newer. Here's everything that changed.\n\n## What's new\n\n* New patch: Hide suggested accounts in DMs takes the Accounts to follow section off the bottom of your messages (#112).\n* With Hide suggested posts on, Home no longer sits on gray loading boxes after you switch to an account that follows nobody (#104, #105).\n* View stories anonymously has a new switch, Gray out stories you've watched (#113).\n* Sanitize sharing links takes off the share id Instagram began adding to copied post, reel and profile links (#109).\n* Hide the Stories tray keeps the floating tray away when you come back to Home (#88).\n* Simple mode in Morphe Manager picks 75 of the 79 patches now, and every description says where its switch is.\n* Opening HushGram settings from the launcher shortcut no longer crashes Instagram while it restarts its screen.\n\n## Instagram\n\n* HushGram 0.0.8 adds 1 patch, for 79 in all, and stays on Instagram 450.0.0.50.77 with Morphe Manager 1.34.0 or newer. All seven builds of that version patch: the arm64 ones (385611395, 385611400, 385611404, 385611431 and 385611438) and the x86 and x86_64 ones (385611439 and 385611440).\n* New patch, Hide suggested accounts in DMs. Turn on its switch under Messages and restart Instagram, and the Accounts to follow section at the bottom of your messages isn't built. Your chats and follow requests stay, and so does a section of people who follow you. It's in the default selection with its switch off. Asked for in #112.\n* Copy the commenter's username only shows up in HushGram settings when Copy username actually went into your build. On an Instagram build where it couldn't, Copy comment still works, the extra switch stays out of the way, and the diagnostic report says why.\n* With Hide the Stories tray on, the tray could still show up at the top of Home for a few seconds after you watched a story you opened in DMs. When you come back to Home partway down the feed, Instagram floats a copy of the tray over it, and that copy now stays hidden too. Reported in #88.\n* Disable analytics is stricter about which saved address it treats as the crash reporter's. It only follows the address when it's saved right after it's built, so a later Instagram build that saves something else there won't have that value changed. Both places Instagram 450 saves it still qualify.\n* Disable analytics won't apply to an Instagram build where it finds none of the addresses reports are sent to, even if it finds the contacts and location setup screens or Instagram's live event stream. Skipping those screens protects nothing by itself, and turning the stream off only moves events to the regular upload. When a build has only some of what Disable analytics or Sanitize sharing links work on, the switch's description in HushGram settings now says how many it covers.\n* Opening HushGram's settings from the launcher shortcut while Instagram was restarting its screen could crash Instagram, because the screen still had Instagram's startup look and couldn't draw text yet. The settings now wait until the screen is ready and then open.\n* View stories anonymously has a new switch, Gray out stories you've watched. It starts off, so a story you watch keeps its colored ring as it does now. Turn it on and a watched story turns gray and moves to the end of the row on your phone, while Instagram still isn't told you watched it. Asked for in #113 and on #92.\n* Sanitize sharing links now also cleans a link that's copied to the clipboard as a link item rather than as text, which kept its share id before. Thanks to @Aholicknight, who spotted it and sent the approach in #107.\n* With Hide suggested posts on, Home no longer sits on gray loading boxes after you switch to an account whose Home is all suggestions, such as a new account that follows nobody. Home used to remember every post it had kept since Instagram started, so the first account's posts kept it from ending. Now only Home's latest load counts. Reported in #104 and #105.\n* Messages and notices are plainer too. Import and export results, save progress, the sign-in notice and the Developer page now say what happened and what to do next, without terms like \"flag\" or \"cache\". All six languages were updated.\n* The rows in HushGram settings now explain themselves in plain English. Each summary says what you'll notice and, where it matters, to restart Instagram to see the change. The German, Spanish, Indonesian, Brazilian Portuguese, Turkish and Korean text was updated to match.\n* Every patch description in Morphe Manager is rewritten in plain English. Each one says what changes, why you might want it, and ends with where its switch is, or that it works with no switch.\n* Morphe Manager's simple mode now picks 75 of the 79 patches, so you don't need Expert mode to get a feature. Every patch with a switch in HushGram settings is in, and one that comes in this way changes nothing until you turn its switch on. The 25 that joined are Clean up Reels, Don't send reel watch history, Download any video, Hide group buttons on the share sheet, Hide Reels in the feed, Hide suggested accounts in Reels, Hide suggested people on profiles, Hide that you're typing, Hide the Explore grid, Hide the Reels tab, Hide the Repost button, Keep a seek bar on Reels, Keep Reels auto scroll on, Loop a story, Read messages without the seen receipt, Remove the empty space at the bottom, See who a story mentions, Show a post's exact time, Show a story's exact time, Spoof location, Start Home on Following, Stop Story auto-advance, Tap to play, Turn off double tap to like and View stories anonymously. Change version code, Open developer options, Pure black dark mode and View DM photos and videos anonymously stay out, and the README says why.\n* Coming from an earlier build, 24 switches start off now where they used to start on once you picked their patch. Under Feed, Start Home on Following and Show a post's exact time. Under Explore, Hide the Explore grid. Under Reels, Hide Reels in the feed, Hide suggested accounts, Hide the Follow button, Hide creation and promotion pills, Hide friends' activity and comment previews, Don't send reel watch history, Turn off double tap to like, Hide the Reels tab, Keep a seek bar and Keep auto scroll on. Under Stories, Stop Story auto-advance, Loop a story, Show a story's exact time, See who a story mentions and View stories anonymously. Under Playback, Tap to play. Under Sharing, Hide group buttons and Hide the Repost button. Under Profiles, Hide suggested people. Under Layout, Remove the empty space at the bottom. Under Downloads, Download feed videos. If you used one and never changed its switch, turn it on again in HushGram settings, or import a settings backup you exported before updating. A switch you'd set yourself keeps your choice.\n* Each patch's description in Morphe Manager now says where its switch is in HushGram settings and whether it starts on or off, and the install steps end with opening HushGram settings to turn on what you want.\n* Expert mode groups the patches under 15 headings instead of 8, so Interface no longer holds 43 of them. The new ones are Ghost mode, Messages, Stories, Reels, Playback, Interaction and Profiles, and most match a section in HushGram settings.\n* Download any story now also looks at the type a story was posted as before it picks the menu's rows, the way Instagram's own story viewer tells a photo story with music from a filmed video. Instagram sends most photo stories with music as a video, and only some of them carry the flag the menu checked until now, so the rest got a single Download that saved the video. A story posted as a photo that arrives as a video gets Download as video and Download as photo. Plain photo and video stories keep their one Download, and the diagnostic report counts which kind of story each menu was for. Reported in #98.\n* Sanitize sharing links now also takes off the share id Instagram began adding to copied post, reel and profile links under a different short name each time, such as ?obrf= or ?mdxt=. Every other part of the link stays as Instagram wrote it.\n* README's Troubleshooting has a section for an Instagram that feels slow right after a Root Mount install. Android's compiled copy of the app was made from Meta's code, so it's thrown out and Instagram runs uncompiled until it's compiled again, and the section gives the root shell command that does it straight away.\n\n## Tooling\n\n* The patch contract check can count a name Instagram asks its shared string pool for, on the rules marked for it. Some 450 builds (385611395, 400, 439 and 440) ask the pool for a few names that 438 loads itself, so the check turned down the story link parser, the setup screen presenter and the share sheet's target list there even with the patch in the right place. Other rules still count only names a method loads itself, so a pool ask elsewhere can't confuse them.\n* Release notes now have to open with a short What's new list of 5 to 8 one-line bullets, with the full list of changes under it. The notes builder won't write them without one, or with one that's grown too long to scan. Asked for in #86 and #106.\n* Hide ads has tests of its own. One checks that only an on switch with HushGram ready and not paused hides an ad. The other checks that each supported Instagram build has exactly one place where ads go into a feed, and that HushGram's check is the first thing that runs there.\n* The Instagram internals reference now includes measured network traffic, background activity and unplugged battery discharge, with exact installed-build evidence and the limits of each measurement. The observation uses an installation reporting HushGram 0.0.5 and does not establish savings against stock or validate the current release.\n* The push gate, the release receipt, the dependency audit and the all-patches check wait their turn in the machine's build queue now, when it has one, instead of starting Gradle or the patcher straight away. The gate holds one slot from its first build to its last patch run, and a push made with `HUSHGRAM_ALLOW_RELEASE=1` goes ahead of everyday builds in the line. `BUILD_QUEUE_SCRIPT` names the queue and `HUSHGRAM_BUILD_WRAPPER` the script that runs Gradle. Without them the scripts run as they did before and say so.\n* The push gate runs its quick checks first. The catalog, both lints and the runtime tests go in one build, and the patch tests (most of a quarter hour) and the bundle come after it, so a lint slip or a stale catalog stops the push in a few minutes. A declared build with no fixture stops it before anything is built.\n* The push gate keeps its results when it removes its worktree, pass or fail. The test results, the bundle and its SBOM, each declared build's patch reports and its passing patch run go in a folder named for the commit, under `%LOCALAPPDATA%\\HushGram\\gate` unless `HUSHGRAM_GATE_CACHE` names another place, with a manifest of what the gate ran and how far it got. The newest three are kept. Before, a gate's test results went with its worktree, and the release check had to run the patch tests again.\n* `build-release-receipt.ps1 -FromGate` and `validate-release-facts.ps1 -FromGate` read the gate's run of the commit they check instead of doing its work again. The receipt takes the gate's bundle and SBOM when none was built here, and reads each declared build's patch run back when the gate made it with the same bundle, catalog, desktop CLI and APK. The release check takes the gate's test results, bundle and receipt when the checkout has none, and the index push passes `-FromGate` by itself. A run is read only when its manifest, tree, hashes and test counts still hold up for that commit, and every check runs on what's read. Anything else and the scripts build, test and patch as before.\n* The index push that follows a release doesn't build and test the release's sources all over again. When every file it pushes is an index file and the only lines changed since a commit the gate passed are the index, the README's latest release sentence and the bug form's version, the gate is skipped. The release switch, the commit checks, the suites and the release check against the published release still run. The gate runs anyway when the kept run doesn't hold up, or when it would patch a build here that the kept run didn't patch with the same fixture and desktop CLI.\n* The gate's kept run is held to more before a push or a release leans on it. An index push is gated in full when the fixture folder has changed since the gate ran, since a build added or replaced there changes what the patch tests read. The same goes when `pre-push.ps1` or `gate-evidence.ps1` changed after the run was made, or when a kept patched APK, patch report or merge no longer matches what the gate stamped. Two gates of one commit no longer write into the same folder. The second one stops until the first is done. Pruning still keeps the newest three runs, and failed runs go before passed ones, so a release's passed run survives a busy day of pushes.\n* When the fixture folder holds more than one copy of the Instagram version the bundle declares, the gate patches the declared build, picked by its version code. It used to take whichever file sorted first, so a second full bundle kept beside the declared one sent the patch step to the wrong build.\n* `scripts/release/` holds the helpers a release used to need by hand. `preflight.ps1` runs the quick checks in a few minutes before the source push (a clean checkout on main, every declared build in the fixture folder, the desktop CLI, the release facts, the CHANGELOG section and the patch tests that read no Instagram build) and says how long each took. `patch-all-builds.ps1` patches every Instagram build in the fixture folder with the whole catalog and reports the patches each applied and missed and the CLI's warnings, patching a build kept as a bundle from the bundle rather than its base split, and reading the gate's run back with `-FromGate`. `release_notes.py` builds the GitHub notes from a CHANGELOG section with every bullet in it, and `count_tests.py` counts the test results, the gate's included, and prints the index description's validation sentence. The release steps in CONTRIBUTING.md use all four.\n* A push that changes a PowerShell script has every tracked script parsed before anything else runs, and a script that doesn't parse stops the push. Most of them run only for a release or with a phone, so a slip such as a variable name run into a colon used to surface there first.\n\n## Install or update\n\n* Morphe Manager 1.34.0 or newer is still all you need.\n* Update the HushGram source in Morphe Manager, or add it with the link in the README.\n* Coming from 0.0.7, 24 switches start off now where they used to start on. If something you used seems gone after the update, turn its switch back on in HushGram settings.\n* Instagram 450.0.0.50.77 is still the target. Build 385611438, the (480-640dpi) bundle on APKMirror, is the one every check runs on. The other arm64 builds (385611395, 385611400, 385611404, 385611431) and the x86 and x86_64 ones (385611439, 385611440) patch too, but Manager still names only 385611438, so it shows the others as unsupported. The .mpp is a patch bundle, not an Instagram APK.\n* Keep the manager's signing key for updates, so the new build installs over the old one and you stay signed in.\n* Read Before you sign in in the README first. A spare account keeps your main one out of it.\n\n## Validation\n\n2925 runtime tests and all 1213 patch tests passed locally. All 79 patches applied to Instagram 450.0.0.50.77 build 385611438 without forcing, and the resource and injected-code checks passed. The other six builds of 450.0.0.50.77 took all 79 patches too. The receipt and SHA256SUMS.txt beside the bundle list every file's hash.\n",
   "apps": [
     {
       "app_name": "Instagram",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Allow screenshots",
-          "description": "Lets screenshots and screen recordings work wherever Instagram blocks them, like disappearing photos and videos in your chats.",
+          "description": "Lets you take screenshots and record your screen where Instagram normally blocks it, such as disappearing photos and videos in chats. Starts off. Turn it on in HushGram settings > Messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -21,7 +21,7 @@
         },
         {
           "name": "Ask before a call",
-          "description": "Asks before a call starts from a chat, so a stray tap on a call button doesn't ring anyone. Call starts it and Cancel doesn't. Its switch starts off.",
+          "description": "Asks you to confirm before a call starts from a chat, so a stray tap on the call button doesn't ring anyone. Starts off. Turn it on in HushGram settings > Messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -30,7 +30,7 @@
         },
         {
           "name": "Ask before a like",
-          "description": "Asks before the Like button under a post likes or unlikes it, so a stray tap doesn't. Continue goes ahead and Cancel doesn't. Its switch, under Feed, starts off.",
+          "description": "Asks you to confirm before the Like button under a post likes or unlikes it, so a stray tap doesn't do it for you. Starts off. Turn it on in HushGram settings > Feed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -39,7 +39,7 @@
         },
         {
           "name": "Ask before a refresh",
-          "description": "Asks before pulling down refreshes Home, Reels or another list, so a stray pull keeps what's on screen. Refresh goes ahead, and Cancel stops the spinner. Its switch, under Feed, starts off.",
+          "description": "Asks you to confirm before pulling down refreshes Home, Reels or another list, so an accidental pull doesn't replace what you were reading. Starts off. Turn it on in HushGram settings > Feed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -48,7 +48,7 @@
         },
         {
           "name": "Change the like animation",
-          "description": "Plays an animation you pick, from the ones Instagram made for Instagram Rings creators, in the heart that pops up when you double tap a post. Its switch, under Reels, starts off.",
+          "description": "Lets you pick the animation that plays when you double tap a post to like it. The choices are animations Instagram made for its Rings creators. Starts off. Turn it on in HushGram settings > Reels.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -57,7 +57,7 @@
         },
         {
           "name": "Change version code",
-          "description": "Raises this build's version code to the highest Android allows, so Google Play stops offering Meta's updates over it. Instagram's checks against the version it was built as still see the real one. Once it's in, going back to an unpatched Instagram means uninstalling first, which deletes Instagram's data on your phone, and later HushGram builds need this patch too or they won't install over this one.",
+          "description": "Stops Google Play from offering Meta's updates over your patched Instagram. Going back to the normal Instagram later means uninstalling first, which deletes its data. Later HushGram builds need this patch too. Works as soon as you patch it in, with no switch.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -66,8 +66,8 @@
         },
         {
           "name": "Clean up Reels",
-          "description": "Hides the Follow button on reels, the pills that push Edits, templates, Meta AI and Ray-Ban Meta glasses, friends' activity with the comment preview, and the comment bar under a reposted reel. Each part has its own switch.",
-          "use": false,
+          "description": "Hides extra buttons and prompts on reels, such as Follow, Edits, templates, Meta AI, Ray-Ban Meta glasses, friends' activity and the comment bar on reposts. Each one has its own switch. Starts off. Turn it on in HushGram settings > Reels.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -75,7 +75,7 @@
         },
         {
           "name": "Clear the media cache",
-          "description": "Once Instagram's cache holds more than 500 MB of images and videos, deletes the images when it goes to the background and the videos the next time it starts. A Clear now row shows what it freed. Your sign-in, drafts and settings stay.",
+          "description": "Frees storage by deleting Instagram's saved copies of photos and videos once they pass 500 MB. Your sign-in, drafts and settings stay. A row clears them right away. Starts off. Turn it on in HushGram settings > Storage.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -84,7 +84,7 @@
         },
         {
           "name": "Copy comment",
-          "description": "Adds optional Copy and Copy username actions to the common comment menu. Copy keeps the original text with its line breaks, and Copy username copies the commenter's username. Their switches start off.",
+          "description": "Adds Copy and Copy username to the menu you get on a comment, so you can copy its text or the commenter's username. Starts off. Turn it on in HushGram settings > Comments.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -93,7 +93,7 @@
         },
         {
           "name": "Data saver",
-          "description": "Loads photos at a smaller size and starts videos, reels and stories at the lowest quality, on mobile data or on every network. It works through Full resolution photos and Default playback quality, so it brings both along.",
+          "description": "Saves mobile data by loading smaller photos and starting videos at the lowest quality. It uses Full resolution photos and Default playback quality, so it turns both on. It starts with mobile data only. Starts off. Turn it on in HushGram settings > Playback.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -102,7 +102,7 @@
         },
         {
           "name": "Default playback quality",
-          "description": "Plays videos, reels and video stories at the quality you choose in HushGram's settings, such as Data saver or up to 720p, instead of the one Instagram picks as it plays.",
+          "description": "Plays videos, reels and video stories at the quality you choose, instead of the one Instagram picks as it plays. Nothing changes until you pick a quality. On by default. Turn it off in HushGram settings > Playback.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -111,7 +111,7 @@
         },
         {
           "name": "Disable analytics",
-          "description": "Sends Instagram's usage events and crash reports to an address on your phone that refuses them, instead of to Instagram's and Facebook's servers. It also skips the contacts and location setup screens, which would come back on every start without those events. Restart Instagram after changing the switch.",
+          "description": "Stops Instagram from sending usage reports and crash reports to Instagram and Facebook. It also skips the contacts and location setup screens. Restart Instagram after you change it. On by default. Turn it off in HushGram settings > Ads and privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -120,7 +120,7 @@
         },
         {
           "name": "Don't report screenshots",
-          "description": "Keeps Instagram from noticing your screenshots, so whoever sent you a disappearing photo or video isn't told you took one.",
+          "description": "Stops Instagram from telling people when you take a screenshot of their disappearing photo or video. Ghost mode, at the top of Ads and privacy, turns it on with the others. Starts off. Turn it on in HushGram settings > Messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -129,7 +129,7 @@
         },
         {
           "name": "Don't save recent searches",
-          "description": "Keeps what you open from search out of Recent, both in the app and on Instagram's side. Searches already in Recent stay until you clear them.",
+          "description": "Keeps the accounts and tags you open from search out of your Recent list. Searches already in Recent stay until you clear them. Starts off. Turn it on in HushGram settings > Explore.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -138,8 +138,8 @@
         },
         {
           "name": "Don't send reel watch history",
-          "description": "Stops telling Instagram which reels you watched and how far into them you got. It's used to rank your Reels, and nobody else sees it. Reels you've already watched may come back.",
-          "use": false,
+          "description": "Stops Instagram from learning which reels you watched and how far you got. Reels you've already watched may come back. Starts off. Turn it on in HushGram settings > Reels.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -147,7 +147,7 @@
         },
         {
           "name": "Download any reel",
-          "description": "Adds Download to every reel's more menu. Reels save at the Download quality you set, best by default, without Instagram's watermark. Turn on Download cover for a row that saves the still picture shown before the reel plays.",
+          "description": "Adds Download to the menu of every reel and saves it without Instagram's watermark. You choose the quality, and best is the default. A separate Download cover switch also saves the reel's cover picture. On by default. Turn it off in HushGram settings > Reels.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -156,7 +156,7 @@
         },
         {
           "name": "Download any story",
-          "description": "Adds Download to the menu of anyone's story. A video saves at the Download quality you set, a photo at its largest size. A photo story with music offers Download as video and Download as photo.",
+          "description": "Adds Download to the menu of anyone's story. Videos save at the quality you choose and photos at their largest size. On by default. Turn it off in HushGram settings > Stories.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -165,8 +165,8 @@
         },
         {
           "name": "Download any video",
-          "description": "Adds Download to the menu of a post in your feed with a video, and of a carousel showing a video. Videos save at the Download quality you set, without Instagram's watermark. A second switch does the same for photo posts, and a third adds Download cover, which saves the still picture a video shows before it plays. Another adds Details, with the post's time, who posted it, its media ID and buttons that copy its direct link, the username and the caption.",
-          "use": false,
+          "description": "Adds Download to video posts in your feed, saving the video without Instagram's watermark. Other switches add Download for photos, Download cover and a Details row with the post's time and poster. Starts off. Turn it on in HushGram settings > Downloads.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -174,7 +174,7 @@
         },
         {
           "name": "Download voice messages",
-          "description": "Adds an optional Save to the menu you get by holding a voice message in a chat. It saves the recording as an audio file. Its switch starts off.",
+          "description": "Adds Save to the menu you get when you hold a voice message in a chat. It saves the recording as an audio file. Starts off. Turn it on in HushGram settings > Downloads.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -183,7 +183,7 @@
         },
         {
           "name": "Emoji style",
-          "description": "Draws every emoji in Google's style, from the emoji font Instagram gets through Google Play services, instead of your phone's own style. Its switch, under Layout, starts off, and a change shows fully after Instagram restarts.",
+          "description": "Shows every emoji in Google's style instead of your phone's own. The full change shows after you restart Instagram. Starts off. Turn it on in HushGram settings > Layout.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -192,7 +192,7 @@
         },
         {
           "name": "Full resolution photos",
-          "description": "Loads photos in your feed, in carousels and in posts you open at the largest size Instagram sends rather than the size it picks for your screen. A second switch asks for a larger size on a phone under 1440 pixels wide. It can use more data.",
+          "description": "Loads photos in the largest size Instagram sends instead of one picked for your screen. A second switch asks for a larger size on screens under 1440 pixels wide. Uses more data. Starts off. Turn it on in HushGram settings > Feed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -201,7 +201,7 @@
         },
         {
           "name": "Group Instagram's notifications",
-          "description": "Puts Instagram's notifications in one group, or in a group per type with a second switch, so they don't fill the notification shade. A group of two or more shows how many it holds. Tapping a notification still opens what it did.",
+          "description": "Puts Instagram's notifications in one group, or in a group for each type, so they don't fill your notification shade. Tapping one still opens it. Starts off. Turn it on in HushGram settings > Notifications.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -210,7 +210,7 @@
         },
         {
           "name": "Hide ads",
-          "description": "Hides sponsored posts, reels and stories. Instagram is told the ad didn't go in, so no gap is left where it would have been.",
+          "description": "Hides sponsored posts, reels and stories, and leaves no gap where an ad would have been. On by default. Turn it off in HushGram settings > Ads and privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -219,7 +219,7 @@
         },
         {
           "name": "Hide comments",
-          "description": "Takes the Comment button and the comment count off the posts in your feed, with a switch under Comments that starts off.",
+          "description": "Takes the Comment button and the comment count off posts in your feed. Starts off. Turn it on in HushGram settings > Comments.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -228,8 +228,8 @@
         },
         {
           "name": "Hide group buttons on the share sheet",
-          "description": "Takes the New group button away from beside the share sheet's search bar, and the button that sends to the people you picked as one group, so they get it one by one. You can still start a group from your messages.",
-          "use": false,
+          "description": "Takes the New group button and the button that sends to several people as a group off the share sheet. You can still start a group from your messages. Starts off. Turn it on in HushGram settings > Sharing.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -237,7 +237,7 @@
         },
         {
           "name": "Hide highlights",
-          "description": "Takes the row of story highlights off profiles, yours and other people's. Bios, counts, posts and the Add to highlight list on your stories stay.",
+          "description": "Takes the row of story highlights off profiles, yours and other people's. Bios, counts and posts stay. Starts off. Turn it on in HushGram settings > Profiles.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -246,7 +246,7 @@
         },
         {
           "name": "Hide Instants",
-          "description": "Takes the stack of Instants out of your messages. Instagram is told your account doesn't have Instants, its no-edit camera for friends.",
+          "description": "Takes the stack of Instants out of your messages. Instants is Instagram's no-edit camera for sharing quick photos with friends. Starts off. Turn it on in HushGram settings > Messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -255,7 +255,7 @@
         },
         {
           "name": "Hide Meta AI",
-          "description": "Takes Meta AI out of the search bars, in the Search tab and at the top of your messages, so they search the plain way, drops the Ask a follow-up bar under search results and Meta AI's buttons in Home's top bar and the message composer, hides its optional row in your inbox, and removes Meta AI's posts from your home feed. It can also take About this reel, or only its Ask Meta AI box, out of a reel's More menu, and Meta AI's target out of the share sheet. Search, posts, About this reel, Ask Meta AI and the share sheet have separate switches, and the last three start off. The search switch applies after Instagram restarts.",
+          "description": "Removes Meta AI from Instagram's search bars, messages, home top bar, reels menus, share sheet and feed. Each part has its own switch, and some start on. Starts off. Turn it on in HushGram settings > Meta AI.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -264,8 +264,17 @@
         },
         {
           "name": "Hide Reels in the feed",
-          "description": "Removes the rows of suggested reels between posts in your home feed, and the other units that open the Reels viewer from there. A reel someone you follow posts stays.",
-          "use": false,
+          "description": "Removes the rows of suggested reels from your home feed. A reel posted by someone you follow stays. Starts off. Turn it on in HushGram settings > Reels.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "450.0.0.50.77"
+          ]
+        },
+        {
+          "name": "Hide suggested accounts in DMs",
+          "description": "Takes the Accounts to follow section off the bottom of your messages. Your chats and follow requests stay. Starts off. Turn it on in HushGram settings > Messages.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -273,8 +282,8 @@
         },
         {
           "name": "Hide suggested accounts in Reels",
-          "description": "Leaves out the cards of people and creators to follow that Instagram puts between reels. Every reel still plays.",
-          "use": false,
+          "description": "Leaves out the cards of accounts to follow that Instagram puts between reels. Every reel still plays. Starts off. Turn it on in HushGram settings > Reels.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -282,8 +291,8 @@
         },
         {
           "name": "Hide suggested people on profiles",
-          "description": "Takes Suggested for you and the Discover people button off profiles, yours and other people's. Bios, counts, posts and follower lists stay.",
-          "use": false,
+          "description": "Takes Suggested for you and the Discover people button off profiles. Bios, counts, posts and follower lists stay. Starts off. Turn it on in HushGram settings > Profiles.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -291,7 +300,7 @@
         },
         {
           "name": "Hide suggested posts",
-          "description": "Removes the posts and reels from accounts you don't follow that Instagram puts in your home feed as Suggested for you, the rows of accounts, shops and hashtags it suggests you follow, the posts and accounts from Threads it mixes in, the surveys it asks you to fill in, and its shopping rows. Each has its own switch. Posts from accounts you follow stay, unless you turn on Hide videos, Hide photos or Hide carousels, which start off and take every post of that type out of Home.",
+          "description": "Removes posts from accounts you don't follow, suggested accounts, surveys and shopping rows from Home. Posts from accounts you follow stay. Extra switches can also hide all videos, photos or carousels. On by default. Turn it off in HushGram settings > Feed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -300,7 +309,7 @@
         },
         {
           "name": "Hide suggested stories",
-          "description": "Removes the stories from accounts you don't follow, and the accounts Instagram suggests, from the row of stories at the top of Home. More switches, off to start, take out rewinds, memories and recaps, stop the row's stories loading, or take the whole row away.",
+          "description": "Removes stories from accounts you don't follow from the row at the top of Home. More switches hide rewinds and memories, or the whole row. Starts off. Turn it on in HushGram settings > Stories.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -309,8 +318,8 @@
         },
         {
           "name": "Hide that you're typing",
-          "description": "Adds an off-by-default switch so the people you're chatting with don't see when you're typing. Unlike turning off the typing indicator in Instagram's settings, you still see when they're typing.",
-          "use": false,
+          "description": "Stops the people you're chatting with from seeing when you're typing. You still see when they type. Ghost mode, at the top of Ads and privacy, turns it on with the others. Starts off. Turn it on in HushGram settings > Messages.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -318,8 +327,8 @@
         },
         {
           "name": "Hide the Explore grid",
-          "description": "Empties the grid of posts and reels under the Search tab's bar. Search, your recent searches and search results stay.",
-          "use": false,
+          "description": "Empties the grid of posts and reels on the Search tab. Search, recent searches and results stay. Starts off. Turn it on in HushGram settings > Explore.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -327,7 +336,7 @@
         },
         {
           "name": "Hide the home feed",
-          "description": "Empties your home feed on purpose, so Home shows the stories row and nothing under it. Profiles, Explore and Reels still show posts.",
+          "description": "Empties your home feed on purpose, so Home shows only the stories row. Profiles, Explore and Reels still show posts. Starts off. Turn it on in HushGram settings > Feed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -336,7 +345,7 @@
         },
         {
           "name": "Hide the notes row",
-          "description": "Takes the row of notes off the top of your messages, the Map bubble in it too. Your chats, search and requests stay.",
+          "description": "Takes the row of notes, and the Map bubble in it, off the top of your messages. Your chats stay. Starts off. Turn it on in HushGram settings > Messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -345,8 +354,8 @@
         },
         {
           "name": "Hide the Reels tab",
-          "description": "Takes the Reels tab off the tab bar, and a start or a notification meant for it opens Home. Reels in your feed and reels people send you still open, and a change to the switch shows once Instagram restarts.",
-          "use": false,
+          "description": "Takes the Reels tab off the tab bar. Reels in your feed and reels people send you still open. Restart Instagram to see the change. Starts off. Turn it on in HushGram settings > Reels.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -354,8 +363,8 @@
         },
         {
           "name": "Hide the Repost button",
-          "description": "Takes the Repost button and its count off posts and reels, so nothing gets reposted by mistake. Share still sends a post or reel to someone.",
-          "use": false,
+          "description": "Takes the Repost button and its count off posts and reels, so nothing gets reposted by mistake. Share still works. Starts off. Turn it on in HushGram settings > Sharing.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -363,7 +372,7 @@
         },
         {
           "name": "Hide the Share button",
-          "description": "Takes the Share button and its count off the posts in your feed and off reels, with a switch under Sharing that starts off.",
+          "description": "Takes the Share button and its count off posts in your feed and off reels. Starts off. Turn it on in HushGram settings > Sharing.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -372,7 +381,7 @@
         },
         {
           "name": "Hide the Threads button",
-          "description": "Takes the Threads button off the top of profiles, yours and other people's. The menu and the other buttons stay. Its switch starts off.",
+          "description": "Takes the Threads button off the top of profiles. The menu and the other buttons stay. Starts off. Turn it on in HushGram settings > Profiles.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -381,7 +390,7 @@
         },
         {
           "name": "HushGram settings",
-          "description": "Adds HushGram settings to Instagram. Long-press Instagram's launcher icon and pick HushGram settings, or tap HushGram settings at the top of Instagram's Settings and activity. You can also choose one tab whose long press opens HushGram. That choice starts off. Turn features on or off, pause HushGram and export diagnostics. The licenses are there too.",
+          "description": "Adds a HushGram settings page to Instagram. Open it by pressing and holding Instagram's icon, or from the top of Settings and activity. Turn features on or off there, pause HushGram and save diagnostics. Works as soon as you patch it in, with no switch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -390,8 +399,8 @@
         },
         {
           "name": "Keep a seek bar on Reels",
-          "description": "Keeps Instagram's seek bar under every reel, short ones too, with the time played and the reel's length above it, like 0:10 / 0:55. Ads keep Instagram's own rules.",
-          "use": false,
+          "description": "Keeps a seek bar under every reel, short ones too, with the time played and the reel's length above it, like 0:10 / 0:55. Starts off. Turn it on in HushGram settings > Reels.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -399,7 +408,7 @@
         },
         {
           "name": "Keep in chat",
-          "description": "Keeps view once and replayable photos and videos in your chats, as if they'd been sent with Keep in chat, so they don't disappear after you open them. Turning it on or off reaches the ones already loaded once the chat loads again.",
+          "description": "Keeps view once and replayable photos and videos in your chats after you open them, so they don't disappear. Starts off. Turn it on in HushGram settings > Messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -408,8 +417,8 @@
         },
         {
           "name": "Keep Reels auto scroll on",
-          "description": "Once you turn on Instagram's auto scroll in Reels, it stays on after Instagram restarts or you leave Reels, until you turn it off yourself.",
-          "use": false,
+          "description": "Keeps Instagram's auto scroll in Reels turned on after you leave Reels or restart Instagram, until you turn it off yourself. Starts off. Turn it on in HushGram settings > Reels.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -417,7 +426,7 @@
         },
         {
           "name": "Keep the reel speed",
-          "description": "Lock a reel at 2x with Instagram's own lock (hold its edge, then slide down) and the next reels play at 2x too, until you slide the lock off, hold the edge and let go, or Instagram restarts.",
+          "description": "Keeps the 2x speed on for the next reels after you lock a reel at 2x (hold its edge, then slide down), until you slide the lock off. On by default. Turn it off in HushGram settings > Reels.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -426,7 +435,7 @@
         },
         {
           "name": "Lock your messages",
-          "description": "Adds switches that keep your inbox and chats, or all of Instagram, covered until your fingerprint, face or screen lock says it's you. They lock again when you leave Instagram or after the time you pick, and message notifications say only that a message came.",
+          "description": "Covers your inbox and chats, or all of Instagram, until your fingerprint, face or screen lock says it's you. Message notifications only say that a message came. Starts off. Turn it on in HushGram settings > Messages.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -435,8 +444,8 @@
         },
         {
           "name": "Loop a story",
-          "description": "A story plays again from the start when it ends, instead of moving on to the next one. Tap or swipe to move on.",
-          "use": false,
+          "description": "Plays a story again from the start when it ends, instead of moving on to the next one. Tap or swipe to move on. Starts off. Turn it on in HushGram settings > Stories.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -444,7 +453,7 @@
         },
         {
           "name": "Open developer options",
-          "description": "A long press on the Home tab opens Instagram's own developer options, where its server flags (MetaConfig and quick experiments) can be looked at and overridden on your phone. A wrong flag can break parts of Instagram until you reset it there.",
+          "description": "A long press on the Home tab opens Instagram's own developer options, where you can change its hidden settings. A wrong change can break parts of Instagram until you reset it. On once you patch it in. Turn it off in HushGram settings > Developer.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -453,7 +462,7 @@
         },
         {
           "name": "Open links in external browser",
-          "description": "Opens a web link you tap in your default browser instead of Instagram's in-app browser, without Instagram's click tracker. Instagram and other Meta pages, and ads, still open in the app.",
+          "description": "Opens web links you tap in your usual browser instead of Instagram's built-in one, without Instagram's click tracker. Instagram pages and ads still open in the app. On by default. Turn it off in HushGram settings > Ads and privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -462,7 +471,7 @@
         },
         {
           "name": "Pure black dark mode",
-          "description": "Instagram's dark mode uses pure black instead of its near-black gray, which looks deeper and saves power on an OLED screen. Menus, sheets and buttons keep their own grays so they stay easy to see. Chosen when you patch, with no switch.",
+          "description": "Makes Instagram's dark mode pure black instead of dark gray. It looks deeper and can save battery on an OLED screen. Menus and buttons keep their grays so they stay easy to see. Works as soon as you patch it in, with no switch.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -471,8 +480,8 @@
         },
         {
           "name": "Read messages without the seen receipt",
-          "description": "Adds an off-by-default switch so opening a chat doesn't tell people you've seen their messages. Unlike turning off read receipts in Instagram's settings, you still see when they've seen yours. Instagram's Mark as read still lets them know, whether you long press one chat or pick several. View-once photos and videos have their own patch.",
-          "use": false,
+          "description": "Opening a chat no longer tells people you've seen their messages. You still see when they've seen yours. Mark as read still tells them. Ghost mode turns it on too. Starts off. Turn it on in HushGram settings > Messages.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -480,7 +489,7 @@
         },
         {
           "name": "Remove build expired popup",
-          "description": "Stops Instagram from locking you out with a screen that says this version is too old. A patched build doesn't update on its own, so without this it would stop working after a few weeks.",
+          "description": "Stops Instagram from locking you out with a screen that says this version is too old. A patched build can't update itself, so it would stop working after a few weeks. On by default. Turn it off in HushGram settings > Updates.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -489,7 +498,7 @@
         },
         {
           "name": "Remove the advertising ID",
-          "description": "Instagram can't read your phone's advertising ID or tell Android's ad services which ads you saw or tapped. The permissions for them are taken out of the build, so Google Play services hands Instagram a string of zeros in place of the ID.",
+          "description": "Stops Instagram from reading your phone's advertising ID, which ad companies use to follow you between apps. Instagram gets a string of zeros instead. Works as soon as you patch it in, with no switch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -498,8 +507,8 @@
         },
         {
           "name": "Remove the empty space at the bottom",
-          "description": "Takes away the empty room Instagram leaves under its tab bar for a navigation bar that isn't there, on a phone that hides its navigation bar and in a pop-up window. A change to the switch shows once Instagram restarts.",
-          "use": false,
+          "description": "Takes away the empty gap Instagram leaves under its tab bar for a navigation bar that isn't there. Restart Instagram to see the change. Starts off. Turn it on in HushGram settings > Layout.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -507,7 +516,7 @@
         },
         {
           "name": "Restore trust on re-signed builds",
-          "description": "Lets Instagram's own signature checks pass on a re-signed build, so the parts of the app that check who signed it keep working. Threads, Facebook and Messenger patched with the same key open from Instagram too, and Instagram trusts them when they share to it or ask it for your sign-in. A Root Mount install doesn't need this patch.",
+          "description": "Lets Instagram's own checks of who signed the app pass on a patched build, so the parts that need them keep working. Threads, Facebook and Messenger patched with the same key work too. Works as soon as you patch it in, with no switch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -516,7 +525,7 @@
         },
         {
           "name": "Resume long videos",
-          "description": "A video or reel longer than two minutes that you left partway picks up where you left it the next time it plays on the same account. Live videos and ads start as usual. Its switch starts off.",
+          "description": "A video or reel longer than two minutes picks up where you left off the next time you play it on the same account. Live videos and ads start as usual. Starts off. Turn it on in HushGram settings > Playback.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -525,7 +534,7 @@
         },
         {
           "name": "Sanitize sharing links",
-          "description": "Takes stkn, igsh, utm_source and Instagram's other tracking keys off the links you copy or share, and opens a bio link without going through Instagram's click tracker. The post, reel, story or profile a link opens stays the same.",
+          "description": "Removes tracking tags from the links you copy or share, and opens bio links without Instagram's click tracker. The link still opens the same post, reel, story or profile. On by default. Turn it off in HushGram settings > Ads and privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -534,7 +543,7 @@
         },
         {
           "name": "Save comment photo",
-          "description": "Adds an optional Save action to the common comment menu when a comment has a photo of its own. It saves the largest size Instagram sent, the same way Download saves a post's photo.",
+          "description": "Adds Save to the menu on a comment that has its own photo, saving the largest size Instagram sent. Starts off. Turn it on in HushGram settings > Comments.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -543,7 +552,7 @@
         },
         {
           "name": "Save profile picture",
-          "description": "Adds optional Save profile picture, View profile picture, Copy username and Copy bio rows to the menu on someone's profile. Save keeps their picture at the largest size Instagram has, View opens it full screen with pinch zoom, and the copy rows copy the text exactly. Their switches start off.",
+          "description": "Adds Save profile picture, View profile picture, Copy username and Copy bio to the menu on someone's profile. View opens the picture full screen and lets you zoom. Starts off. Turn it on in HushGram settings > Downloads.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -552,8 +561,8 @@
         },
         {
           "name": "See who a story mentions",
-          "description": "Adds a pill under the name in a story's header saying how many accounts the story mentions, even when the mention sticker is hidden or off screen. Tap it for a list with each account's picture, name and username, and tap one to open their profile. A story with no mentions gets no pill.",
-          "use": false,
+          "description": "Adds a small label in a story's header showing how many accounts it mentions. Tap it for a list and tap an account to open their profile. Starts off. Turn it on in HushGram settings > Stories.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -561,8 +570,8 @@
         },
         {
           "name": "Show a post's exact time",
-          "description": "Shows the date and time a post went up, like Oct 2, 3:45 PM, under it in your feed, and the date and time of each comment, instead of how long ago. It follows your phone's language and 12 or 24-hour setting.",
-          "use": false,
+          "description": "Shows the date and time a post went up, like Oct 2, 3:45 PM, instead of how long ago. It does the same for comments. Starts off. Turn it on in HushGram settings > Feed.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -570,8 +579,8 @@
         },
         {
           "name": "Show a story's exact time",
-          "description": "Shows the date and time a story was posted in its header, like Oct 2, 3:45 PM, instead of how long ago. A choice under its switch can show the time left before the story expires, or only the time it went up. It follows your phone's language and 12 or 24-hour setting.",
-          "use": false,
+          "description": "Shows the date and time a story was posted, like Oct 2, 3:45 PM, instead of how long ago. A choice under the switch can show the time left instead. Starts off. Turn it on in HushGram settings > Stories.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -579,7 +588,7 @@
         },
         {
           "name": "Show if a profile follows you",
-          "description": "Adds Follows you or Doesn't follow you beside the name on someone's profile, after their pronouns if they've set any, or as a chip under their counts that also says Following each other. A second switch, off to start, marks the accounts on your own Following list that don't follow you back.",
+          "description": "Adds Follows you or Doesn't follow you beside the name on someone's profile. Other switches add a chip and mark accounts on your Following list that don't follow you back. On by default. Turn it off in HushGram settings > Profiles.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -588,8 +597,8 @@
         },
         {
           "name": "Spoof location",
-          "description": "Tells Instagram the phone is at a place you set in HushGram's settings, for the location sticker, nearby places and maps. Photos keep their own places.",
-          "use": false,
+          "description": "Tells Instagram your phone is at a place you pick, for the location sticker, nearby places and maps. Photos keep their own places. You need to pick a place too. Starts off. Turn it on in HushGram settings > Ads and privacy.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -597,8 +606,8 @@
         },
         {
           "name": "Start Home on Following",
-          "description": "Opens Home on posts from accounts you follow. Tap Following at the top to switch to For you, and Home remembers your pick. A second switch, off to start, takes For you out of Home. A change to either shows once Instagram restarts.",
-          "use": false,
+          "description": "Opens Home on posts from accounts you follow instead of For you. A second switch removes For you from Home. Restart Instagram to see the change. Starts off. Turn it on in HushGram settings > Feed.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -606,7 +615,7 @@
         },
         {
           "name": "Start on x86 devices",
-          "description": "Keeps Instagram from crashing or freezing on an x86 device that runs its arm code through a translator, such as an x86 Chromebook or an emulator, by skipping the one code protection step that breaks there. Phones and tablets with arm chips run it as before.",
+          "description": "Stops Instagram from crashing or freezing on x86 devices that run its code through a translator, such as some Chromebooks and emulators. Phones and tablets with arm chips run it as before. Works as soon as you patch it in, with no switch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -615,7 +624,7 @@
         },
         {
           "name": "Stop Reels scrolling",
-          "description": "Keeps a swipe in Reels from moving on to the next reel, and a pull down from loading new ones. The reel you opened still plays, and its buttons still work. A second switch lets you watch 20 reels, then stops swiping until you've had a 15 minute break.",
+          "description": "Stops a swipe in Reels from moving to the next reel, so you stay on the one you opened. A second switch lets you watch 20 reels, then stops swiping for 15 minutes. Starts off. Turn it on in HushGram settings > Reels.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -624,8 +633,8 @@
         },
         {
           "name": "Stop Story auto-advance",
-          "description": "Keeps each story on screen until you tap or swipe. Turn the switch off for Instagram's timing.",
-          "use": false,
+          "description": "Keeps each story on screen until you tap or swipe. Starts off. Turn it on in HushGram settings > Stories.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -633,7 +642,7 @@
         },
         {
           "name": "Stop swipe to create",
-          "description": "Keeps a sideways swipe on Home from opening the camera. The + button and every other way into the camera still work.",
+          "description": "Stops a sideways swipe on Home from opening the camera. The + button still opens it. Starts off. Turn it on in HushGram settings > Feed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -642,7 +651,7 @@
         },
         {
           "name": "Stop swiping between tabs",
-          "description": "Keeps a sideways swipe from moving between Home, Reels and the other main tabs. Tapping the tab bar still changes tabs, and Reels still scroll up and down.",
+          "description": "Stops a sideways swipe from moving between Home, Reels and the other main tabs. Tapping the tab bar still works. Starts off. Turn it on in HushGram settings > Feed.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -651,7 +660,7 @@
         },
         {
           "name": "Story ring size",
-          "description": "Draws the rings in the stories row at the top of Home smaller, so more fit on the screen, or larger. Pick the size in HushGram's settings.",
+          "description": "Draws the rings in the stories row at the top of Home smaller, so more fit on screen, or larger. Nothing changes until you pick a size. On by default. Turn it off in HushGram settings > Stories.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -660,8 +669,8 @@
         },
         {
           "name": "Tap to play",
-          "description": "Videos, reels and stories wait for your tap instead of starting by themselves. Feed videos show a play button, the way they do when Instagram saves mobile data.",
-          "use": false,
+          "description": "Makes videos, reels and stories wait for your tap instead of starting by themselves, like Instagram does when it saves mobile data. A choice under the switch can leave Reels out or hold only Reels. Starts off. Turn it on in HushGram settings > Playback.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -669,8 +678,8 @@
         },
         {
           "name": "Turn off double tap to like",
-          "description": "Stops a double tap on a post or a reel from liking it, and the heart doesn't show. Switches for comments and chat messages start off. A single tap still does what it did, and the Like button still likes.",
-          "use": false,
+          "description": "Stops a double tap on a post or reel from liking it, and the heart doesn't show. The Like button still works. Separate switches cover posts, reels, comments and chat messages. Starts off. Turn it on in HushGram settings > Reels.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -678,7 +687,7 @@
         },
         {
           "name": "Turn off HDR brightness boosts",
-          "description": "Keeps HDR photos and reels from brightening the screen above everything else, with a switch under Playback that starts off.",
+          "description": "Stops HDR photos and reels from making the screen brighter than everything else. Starts off. Turn it on in HushGram settings > Playback.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -687,7 +696,7 @@
         },
         {
           "name": "View DM photos and videos anonymously",
-          "description": "Adds an off-by-default switch to hold back the opened receipt for view-once photos and videos in messages. Ordinary chat and voice receipts keep Instagram's behavior.",
+          "description": "Holds back the Opened notice for view once photos and videos in messages, so the sender doesn't see you opened them. Ghost mode turns it on too. Starts off. Turn it on in HushGram settings > Ads and privacy.",
           "use": false,
           "options": [],
           "compatible_versions": [
@@ -696,7 +705,7 @@
         },
         {
           "name": "View live anonymously",
-          "description": "Keeps you off the viewer list of the lives you watch, so the host isn't told you're there. A live that ends can keep looking live until you leave it. Your own lives still count their viewers.",
+          "description": "Keeps you off the viewer list of the lives you watch, so the host isn't told you're there. Your own lives still count their viewers. Ghost mode turns it on too. Starts off. Turn it on in HushGram settings > Stories.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -705,8 +714,8 @@
         },
         {
           "name": "View stories anonymously",
-          "description": "Holds story-view reports while its switch is on. Replying or reacting still shows you, and stories you've watched keep showing as new. An optional Mark as seen button selects stories to send.",
-          "use": false,
+          "description": "Keeps you off the viewer list of the stories you watch. Replying or reacting still shows you. An optional Mark as seen button lets you choose. Ghost mode turns it on too. Starts off. Turn it on in HushGram settings > Stories.",
+          "use": true,
           "options": [],
           "compatible_versions": [
             "450.0.0.50.77"
@@ -716,9 +725,9 @@
     }
   ],
   "patches_name": "HushGram",
-  "fingerprint": "a85129aa6b31eda045026b9414be14f5eb24393138603ec30f6a8f722282d1fe",
-  "release_notes": "HushGram v0.0.7 has 78 patches for Instagram 450.0.0.50.77, 3 more than v0.0.6. It still targets the arm64-v8a build 385611438, and now the other arm64 builds of that version patch too, along with the x86 and x86_64 ones. It needs Morphe Manager 1.34.0 or newer and runs on Android 9 and newer. Here's everything that changed.\r\n\r\n## What's new\r\n\r\n* New patches: Emoji style, Hide the Threads button (#50) and See who a story mentions.\r\n* Every build of Instagram 450.0.0.50.77 patches now, not only 385611438 (#77, #95).\r\n* New switches: Download video covers, Hide Meta AI in the share sheet, double tap to like On messages, Copy username and bio, View profile picture, Hide videos, photos and carousels on Home, and Import flag names in developer options.\r\n* With View stories anonymously on, a story you watch keeps its colored ring (#92).\r\n* Fixes for Show if a profile follows you (#40), the Welcome to Instagram card on Home (#28), carousels in Reels (#78), reel covers (#79) and HDR brightness on Android 14 and newer (#85).\r\n\r\n## Instagram\r\n\r\n* HushGram 0.0.7 adds 3 patches, for 78 in all, and stays on Instagram 450.0.0.50.77 with Morphe Manager 1.34.0 or newer. Besides build 385611438, the other arm64 builds of that version (385611395, 385611400, 385611404 and 385611431) and the x86 and x86_64 ones (385611439 and 385611440) patch now too.\r\n* Show if a profile follows you now goes by what the profile screen itself heard, the same answer Instagram's own menu on that profile uses to offer Remove follower. On a few profiles the label said Doesn't follow you while that menu offered Remove follower, because the label read an older follow status Instagram had saved for the account. The saved status only counts now when the screen has no answer yet, and the chip under the counts goes by the same answer. Reported in #40.\r\n* Open developer options adds Import flag names under Developer. Pick a name list, such as a file in Instagram's own id_name_mapping.json format or a text file of `config=name` lines, and Instagram's MetaConfig editor shows those names in its list and its search in place of numbers like _23355. Searching by a config's number still works. The names stay in HushGram's private folder and only change the editor's labels, so Instagram's schema and overrides keep the numbers, and so does an override export. Remove flag names puts the numbers back. HushGram doesn't ship a name list. Asked for in #50, #67 and #91.\r\n* With View stories anonymously on, a story you watch keeps its colored ring and stays where it was in the tray. Before, the view was held back but Instagram still noted on the phone that you'd seen it, so the ring went gray and moved to the end of the row, which looked as if the view had gone out. A story you mark as seen still grays once its mark goes out. Reported in #92.\r\n* The other arm64 builds of 450.0.0.50.77, 385611395, 385611400, 385611404 and 385611431, patch the way 385611438 does. Each build is compiled on its own, and Instagram's compiler moves a different set of strings into shared tables in each one and puts some code in other classes, so on 385611395 six patches and the story links part of Sanitize sharing links couldn't find what they change, and on 385611400 the HushGram row couldn't find the Settings screen. They read those tables now and look where the code moved, so they find the same places on all five builds. Morphe Manager still calls the four an unsupported version, since it can only be told one build number for each kind of phone. Reported in #77. The x86 and x86_64 builds, 385611439 and 385611440, patch that way too. The same change lets the HushGram row find their Settings screen. Read messages without the seen receipt no longer needs a helper 385611440 doesn't have, and on 385611439 Sanitize sharing links finds the copy link parser and Turn off double tap to like finds all three comment rows. Start on x86 devices now lets those two builds run their code protection step, since their code is x86 and nothing gets translated. Reported in #95.\r\n* Download any video has a new switch under Downloads, Download video covers, that starts off. With it on, the menu of a feed post with a video, or of a carousel on a video page, gets Download cover. It saves the still picture you see before the video plays, at the largest size Instagram lists, the way Download cover on a reel does. Asked for in #94.\r\n* Hide Meta AI has a new switch, Hide Meta AI in the share sheet, that starts off. Turn it on and Meta AI's target, which some accounts see as Muse, is gone from the row at the bottom of the share sheet. The other targets stay where they were.\r\n* Turn off double tap to like has an On messages switch under it, off to start. With it on, a double tap on a message in a chat doesn't send a reaction. A long press still shows the reactions, and you can pick one there.\r\n* Copy comment can also copy the username of whoever wrote a comment. Turn on Copy the commenter's username under Comments, then open a comment's menu and pick Copy username. It starts off and copies the name exactly. Asked for in #35.\r\n* Settings entry has a new switch, Hide the HushGram row in Instagram's menu, for people who open HushGram from a tab long press and don't want the extra row at the top of Instagram's Settings and activity. It starts off. The row only goes while the tab you picked can open HushGram, so turning the long press off, or pausing HushGram, brings it back and there's always a way in. Asked for in #84.\r\n* With Hide suggested posts on, Home could open on Instagram's Welcome to Instagram card for a few seconds, the one it shows when you follow nobody, before your posts loaded. A suggestion taken out anywhere in the app, or from what Home saved last time, was enough to make Home look finished while it was still waiting for its first page. Now only suggestions taken out of Home's own posts can end it, so it shows its usual loading placeholder until your posts arrive. Reported in #28.\r\n* Open settings with a tab long press works as soon as you pick a tab. Before, the choice saved but only reached the tabs after Instagram restarted, so until then the tab's long press still did what it always had, which looked like the choice hadn't stuck. Profile could also go on opening Instagram's account switcher, even after a restart, because Instagram puts that long press on the Profile button a second way. That one follows your choice now too. Reported in #82.\r\n* Download cover no longer fails with Download failed on a reel whose cover address has its size written into it, which the photo save mistook for a thumbnail. It saves the largest size the reel lists for its cover. Reported in #79, and thanks to @talhaeenss for finding the cause in #81.\r\n* Download any reel saves every page of a carousel that turns up in Reels, in order. Before, it saved the first page whichever one you were looking at. Download as photo on a carousel with music saves them all too. Reported in #78.\r\n* On Android 14 and newer, Turn off HDR brightness boosts also holds back the extra brightness Instagram asks for when it draws a video on a layer of its own. That layer shows the video brighter than the rest of the screen, and the switch didn't reach it before (#85).\r\n* New patch, Hide the Threads button. Turn on its switch under Profiles and the Threads button at the top of a profile, yours or anyone else's, isn't built at all, so there's no gap where it was. The menu and the other buttons stay put. It's in the default selection with its switch off. Asked for in #50.\r\n* New patch, Emoji style. Instagram already loads Google's emoji font through Google Play services, but it only uses it for emoji your phone's own font is missing. Turn on Google's emoji everywhere under Layout and every emoji Instagram runs through Android's emoji support draws in Google's style instead. It's in the default selection with its switch off, and a change shows fully after Instagram restarts.\r\n* New opt-in patch, See who a story mentions. A story that mentions someone gets a pill under the name in its header, like 2 mentions, even when the mention sticker is hidden or off screen. Tap it to see who's mentioned, with their picture, name and username, and tap someone to open their profile. Its switch is under Stories. Asked for in #13 and #44.\r\n* Hide suggested posts gets Hide videos, Hide photos and Hide carousels under Feed, and they start off. Each takes every post of its type out of Home, from accounts you follow too, and leaves profiles, Explore and Reels as they were. Reels count as videos.\r\n* Save profile picture has a third switch under Downloads, Copy username and bio, that starts off. With it on, the menu on someone's profile also gets Copy username and Copy bio, which copy the account's username or bio exactly as it's written, emoji and line breaks included. An account with no bio gets no Copy bio. Asked for in #29.\r\n* With Name saves by account and post time on, a saved profile picture is named for the account and the time you saved it, like `username_profile_20261007_105151.jpg`, instead of IG_IMG_. Off, it keeps the IG_IMG_ name.\r\n* Hide the comment bar on reposted reels now keeps the bar hidden after Instagram tucks it away for a moment and brings it back, which some reposted reels do and which used to put the bar back under them. Asked for in #64.\r\n* Save profile picture has a second switch under Downloads, View profile picture, that starts off. With it on, the menu on someone's profile also gets View profile picture, which opens their picture full screen at the largest size Instagram has, with pinch zoom and a Save button. Back closes it.\r\n\r\n## Install or update\r\n\r\n* Morphe Manager 1.34.0 or newer is still all you need.\r\n* Update the HushGram source in Morphe Manager, or add it with the link in the README.\r\n* Instagram 450.0.0.50.77 is still the target. Build 385611438, the (480-640dpi) bundle on APKMirror, is the one every check runs on. The other arm64 builds (385611395, 385611400, 385611404, 385611431) and the x86 and x86_64 ones (385611439, 385611440) patch too now, but Manager still names only 385611438, so it shows the others as unsupported. The .mpp is a patch bundle, not an Instagram APK.\r\n* Keep the manager's signing key for updates, so the new build installs over the old one and you stay signed in.\r\n* Read Before you sign in in the README first. A spare account keeps your main one out of it.\r\n\r\n## Validation\r\n\r\n2869 runtime tests and all 1182 patch tests passed locally. All 78 patches applied to Instagram 450.0.0.50.77 build 385611438 without forcing, and the resource and injected-code checks passed. The receipt and SHA256SUMS.txt beside the bundle list every file's hash.\r\n",
-  "release_tag": "v0.0.7",
-  "release_date": "2026-10-08T19:05:19Z",
+  "fingerprint": "ddbe856298f05dab4117b3ac2e4392e819ad4c32b8908da16faa6e88a87eddbc",
+  "release_notes": "HushGram v0.0.8 has 79 patches for Instagram 450.0.0.50.77, 1 more than v0.0.7. All seven builds of that version patch, and it needs Morphe Manager 1.34.0 or newer on Android 9 and newer. Here's everything that changed.\n\n## What's new\n\n* New patch: Hide suggested accounts in DMs takes the Accounts to follow section off the bottom of your messages (#112).\n* With Hide suggested posts on, Home no longer sits on gray loading boxes after you switch to an account that follows nobody (#104, #105).\n* View stories anonymously has a new switch, Gray out stories you've watched (#113).\n* Sanitize sharing links takes off the share id Instagram began adding to copied post, reel and profile links (#109).\n* Hide the Stories tray keeps the floating tray away when you come back to Home (#88).\n* Simple mode in Morphe Manager picks 75 of the 79 patches now, and every description says where its switch is.\n* Opening HushGram settings from the launcher shortcut no longer crashes Instagram while it restarts its screen.\n\n## Instagram\n\n* HushGram 0.0.8 adds 1 patch, for 79 in all, and stays on Instagram 450.0.0.50.77 with Morphe Manager 1.34.0 or newer. All seven builds of that version patch: the arm64 ones (385611395, 385611400, 385611404, 385611431 and 385611438) and the x86 and x86_64 ones (385611439 and 385611440).\n* New patch, Hide suggested accounts in DMs. Turn on its switch under Messages and restart Instagram, and the Accounts to follow section at the bottom of your messages isn't built. Your chats and follow requests stay, and so does a section of people who follow you. It's in the default selection with its switch off. Asked for in #112.\n* Copy the commenter's username only shows up in HushGram settings when Copy username actually went into your build. On an Instagram build where it couldn't, Copy comment still works, the extra switch stays out of the way, and the diagnostic report says why.\n* With Hide the Stories tray on, the tray could still show up at the top of Home for a few seconds after you watched a story you opened in DMs. When you come back to Home partway down the feed, Instagram floats a copy of the tray over it, and that copy now stays hidden too. Reported in #88.\n* Disable analytics is stricter about which saved address it treats as the crash reporter's. It only follows the address when it's saved right after it's built, so a later Instagram build that saves something else there won't have that value changed. Both places Instagram 450 saves it still qualify.\n* Disable analytics won't apply to an Instagram build where it finds none of the addresses reports are sent to, even if it finds the contacts and location setup screens or Instagram's live event stream. Skipping those screens protects nothing by itself, and turning the stream off only moves events to the regular upload. When a build has only some of what Disable analytics or Sanitize sharing links work on, the switch's description in HushGram settings now says how many it covers.\n* Opening HushGram's settings from the launcher shortcut while Instagram was restarting its screen could crash Instagram, because the screen still had Instagram's startup look and couldn't draw text yet. The settings now wait until the screen is ready and then open.\n* View stories anonymously has a new switch, Gray out stories you've watched. It starts off, so a story you watch keeps its colored ring as it does now. Turn it on and a watched story turns gray and moves to the end of the row on your phone, while Instagram still isn't told you watched it. Asked for in #113 and on #92.\n* Sanitize sharing links now also cleans a link that's copied to the clipboard as a link item rather than as text, which kept its share id before. Thanks to @Aholicknight, who spotted it and sent the approach in #107.\n* With Hide suggested posts on, Home no longer sits on gray loading boxes after you switch to an account whose Home is all suggestions, such as a new account that follows nobody. Home used to remember every post it had kept since Instagram started, so the first account's posts kept it from ending. Now only Home's latest load counts. Reported in #104 and #105.\n* Messages and notices are plainer too. Import and export results, save progress, the sign-in notice and the Developer page now say what happened and what to do next, without terms like \"flag\" or \"cache\". All six languages were updated.\n* The rows in HushGram settings now explain themselves in plain English. Each summary says what you'll notice and, where it matters, to restart Instagram to see the change. The German, Spanish, Indonesian, Brazilian Portuguese, Turkish and Korean text was updated to match.\n* Every patch description in Morphe Manager is rewritten in plain English. Each one says what changes, why you might want it, and ends with where its switch is, or that it works with no switch.\n* Morphe Manager's simple mode now picks 75 of the 79 patches, so you don't need Expert mode to get a feature. Every patch with a switch in HushGram settings is in, and one that comes in this way changes nothing until you turn its switch on. The 25 that joined are Clean up Reels, Don't send reel watch history, Download any video, Hide group buttons on the share sheet, Hide Reels in the feed, Hide suggested accounts in Reels, Hide suggested people on profiles, Hide that you're typing, Hide the Explore grid, Hide the Reels tab, Hide the Repost button, Keep a seek bar on Reels, Keep Reels auto scroll on, Loop a story, Read messages without the seen receipt, Remove the empty space at the bottom, See who a story mentions, Show a post's exact time, Show a story's exact time, Spoof location, Start Home on Following, Stop Story auto-advance, Tap to play, Turn off double tap to like and View stories anonymously. Change version code, Open developer options, Pure black dark mode and View DM photos and videos anonymously stay out, and the README says why.\n* Coming from an earlier build, 24 switches start off now where they used to start on once you picked their patch. Under Feed, Start Home on Following and Show a post's exact time. Under Explore, Hide the Explore grid. Under Reels, Hide Reels in the feed, Hide suggested accounts, Hide the Follow button, Hide creation and promotion pills, Hide friends' activity and comment previews, Don't send reel watch history, Turn off double tap to like, Hide the Reels tab, Keep a seek bar and Keep auto scroll on. Under Stories, Stop Story auto-advance, Loop a story, Show a story's exact time, See who a story mentions and View stories anonymously. Under Playback, Tap to play. Under Sharing, Hide group buttons and Hide the Repost button. Under Profiles, Hide suggested people. Under Layout, Remove the empty space at the bottom. Under Downloads, Download feed videos. If you used one and never changed its switch, turn it on again in HushGram settings, or import a settings backup you exported before updating. A switch you'd set yourself keeps your choice.\n* Each patch's description in Morphe Manager now says where its switch is in HushGram settings and whether it starts on or off, and the install steps end with opening HushGram settings to turn on what you want.\n* Expert mode groups the patches under 15 headings instead of 8, so Interface no longer holds 43 of them. The new ones are Ghost mode, Messages, Stories, Reels, Playback, Interaction and Profiles, and most match a section in HushGram settings.\n* Download any story now also looks at the type a story was posted as before it picks the menu's rows, the way Instagram's own story viewer tells a photo story with music from a filmed video. Instagram sends most photo stories with music as a video, and only some of them carry the flag the menu checked until now, so the rest got a single Download that saved the video. A story posted as a photo that arrives as a video gets Download as video and Download as photo. Plain photo and video stories keep their one Download, and the diagnostic report counts which kind of story each menu was for. Reported in #98.\n* Sanitize sharing links now also takes off the share id Instagram began adding to copied post, reel and profile links under a different short name each time, such as ?obrf= or ?mdxt=. Every other part of the link stays as Instagram wrote it.\n* README's Troubleshooting has a section for an Instagram that feels slow right after a Root Mount install. Android's compiled copy of the app was made from Meta's code, so it's thrown out and Instagram runs uncompiled until it's compiled again, and the section gives the root shell command that does it straight away.\n\n## Tooling\n\n* The patch contract check can count a name Instagram asks its shared string pool for, on the rules marked for it. Some 450 builds (385611395, 400, 439 and 440) ask the pool for a few names that 438 loads itself, so the check turned down the story link parser, the setup screen presenter and the share sheet's target list there even with the patch in the right place. Other rules still count only names a method loads itself, so a pool ask elsewhere can't confuse them.\n* Release notes now have to open with a short What's new list of 5 to 8 one-line bullets, with the full list of changes under it. The notes builder won't write them without one, or with one that's grown too long to scan. Asked for in #86 and #106.\n* Hide ads has tests of its own. One checks that only an on switch with HushGram ready and not paused hides an ad. The other checks that each supported Instagram build has exactly one place where ads go into a feed, and that HushGram's check is the first thing that runs there.\n* The Instagram internals reference now includes measured network traffic, background activity and unplugged battery discharge, with exact installed-build evidence and the limits of each measurement. The observation uses an installation reporting HushGram 0.0.5 and does not establish savings against stock or validate the current release.\n* The push gate, the release receipt, the dependency audit and the all-patches check wait their turn in the machine's build queue now, when it has one, instead of starting Gradle or the patcher straight away. The gate holds one slot from its first build to its last patch run, and a push made with `HUSHGRAM_ALLOW_RELEASE=1` goes ahead of everyday builds in the line. `BUILD_QUEUE_SCRIPT` names the queue and `HUSHGRAM_BUILD_WRAPPER` the script that runs Gradle. Without them the scripts run as they did before and say so.\n* The push gate runs its quick checks first. The catalog, both lints and the runtime tests go in one build, and the patch tests (most of a quarter hour) and the bundle come after it, so a lint slip or a stale catalog stops the push in a few minutes. A declared build with no fixture stops it before anything is built.\n* The push gate keeps its results when it removes its worktree, pass or fail. The test results, the bundle and its SBOM, each declared build's patch reports and its passing patch run go in a folder named for the commit, under `%LOCALAPPDATA%\\HushGram\\gate` unless `HUSHGRAM_GATE_CACHE` names another place, with a manifest of what the gate ran and how far it got. The newest three are kept. Before, a gate's test results went with its worktree, and the release check had to run the patch tests again.\n* `build-release-receipt.ps1 -FromGate` and `validate-release-facts.ps1 -FromGate` read the gate's run of the commit they check instead of doing its work again. The receipt takes the gate's bundle and SBOM when none was built here, and reads each declared build's patch run back when the gate made it with the same bundle, catalog, desktop CLI and APK. The release check takes the gate's test results, bundle and receipt when the checkout has none, and the index push passes `-FromGate` by itself. A run is read only when its manifest, tree, hashes and test counts still hold up for that commit, and every check runs on what's read. Anything else and the scripts build, test and patch as before.\n* The index push that follows a release doesn't build and test the release's sources all over again. When every file it pushes is an index file and the only lines changed since a commit the gate passed are the index, the README's latest release sentence and the bug form's version, the gate is skipped. The release switch, the commit checks, the suites and the release check against the published release still run. The gate runs anyway when the kept run doesn't hold up, or when it would patch a build here that the kept run didn't patch with the same fixture and desktop CLI.\n* The gate's kept run is held to more before a push or a release leans on it. An index push is gated in full when the fixture folder has changed since the gate ran, since a build added or replaced there changes what the patch tests read. The same goes when `pre-push.ps1` or `gate-evidence.ps1` changed after the run was made, or when a kept patched APK, patch report or merge no longer matches what the gate stamped. Two gates of one commit no longer write into the same folder. The second one stops until the first is done. Pruning still keeps the newest three runs, and failed runs go before passed ones, so a release's passed run survives a busy day of pushes.\n* When the fixture folder holds more than one copy of the Instagram version the bundle declares, the gate patches the declared build, picked by its version code. It used to take whichever file sorted first, so a second full bundle kept beside the declared one sent the patch step to the wrong build.\n* `scripts/release/` holds the helpers a release used to need by hand. `preflight.ps1` runs the quick checks in a few minutes before the source push (a clean checkout on main, every declared build in the fixture folder, the desktop CLI, the release facts, the CHANGELOG section and the patch tests that read no Instagram build) and says how long each took. `patch-all-builds.ps1` patches every Instagram build in the fixture folder with the whole catalog and reports the patches each applied and missed and the CLI's warnings, patching a build kept as a bundle from the bundle rather than its base split, and reading the gate's run back with `-FromGate`. `release_notes.py` builds the GitHub notes from a CHANGELOG section with every bullet in it, and `count_tests.py` counts the test results, the gate's included, and prints the index description's validation sentence. The release steps in CONTRIBUTING.md use all four.\n* A push that changes a PowerShell script has every tracked script parsed before anything else runs, and a script that doesn't parse stops the push. Most of them run only for a release or with a phone, so a slip such as a variable name run into a colon used to surface there first.\n\n## Install or update\n\n* Morphe Manager 1.34.0 or newer is still all you need.\n* Update the HushGram source in Morphe Manager, or add it with the link in the README.\n* Coming from 0.0.7, 24 switches start off now where they used to start on. If something you used seems gone after the update, turn its switch back on in HushGram settings.\n* Instagram 450.0.0.50.77 is still the target. Build 385611438, the (480-640dpi) bundle on APKMirror, is the one every check runs on. The other arm64 builds (385611395, 385611400, 385611404, 385611431) and the x86 and x86_64 ones (385611439, 385611440) patch too, but Manager still names only 385611438, so it shows the others as unsupported. The .mpp is a patch bundle, not an Instagram APK.\n* Keep the manager's signing key for updates, so the new build installs over the old one and you stay signed in.\n* Read Before you sign in in the README first. A spare account keeps your main one out of it.\n\n## Validation\n\n2925 runtime tests and all 1213 patch tests passed locally. All 79 patches applied to Instagram 450.0.0.50.77 build 385611438 without forcing, and the resource and injected-code checks passed. The other six builds of 450.0.0.50.77 took all 79 patches too. The receipt and SHA256SUMS.txt beside the bundle list every file's hash.\n",
+  "release_tag": "v0.0.8",
+  "release_date": "2026-10-10T04:24:39Z",
   "isPreRelease": false
 }

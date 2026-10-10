@@ -2,9 +2,9 @@
   "bundle": "hushtelegram",
   "channel": "stable",
   "repo_url": "https://github.com/SysAdminDoc/HushTelegram",
-  "created_at": "2026-10-08T23:35:35",
-  "version": "v0.0.11",
-  "description": "HushTelegram v0.0.11 has 55 patches for telegram.org's Telegram 12.10.6 (`org.telegram.messenger.web`) and the official Telegram beta 12.10.7 (`org.telegram.messenger.beta`), up from 25 in v0.0.9. Fifty-three are selected by default, and every new switch starts off. The two credential patches take your own values, so they stay off until you pick them.\n\n## What's new\n\n* **Telegram:** Local notification status has a new line for Telegram's answer to its latest push registration. It reads Accepted, Refused, or Refused with the error name Telegram's server sent back, and the diagnostic report carries the same line. Telegram throws a refusal away without saying anything, so until now a phone with a saved push token and no confirmed accounts had no way to show why. Telegram only asks again when an account isn't registered yet or its push token changes, so \"None since Telegram started\" is normal on a phone that's already set up.\n* **Telegram:** A new Hide contacts on Telegram switch, off by default, takes the Your contacts on Telegram list off a short chat list, along with its heading and the loading rows shown while contacts sync. Chats, folders, contact sync and search don't change. With no chats at all, you get the welcome screen Telegram shows when none of your contacts use it. Turning it off or pausing HushTelegram brings the same rows back. A change shows up the next time Telegram rebuilds the chat list, and a restart always does.\n* **Telegram:** A new Hide greeting stickers switch, off by default, takes away the sticker an empty private chat offers to send as a greeting, so a stray tap can't send it. The empty chat's text stays, and business introductions keep their sticker. Premium and paid-message notices, the sticker picker and sending don't change.\n* **Telegram:** A new Use system font switch, off by default, draws Telegram's bold and italic text in your phone's own font instead of the Roboto files the app carries, so headings match the rest of the text on a phone with a custom font. Code blocks take the phone's monospace font. Some number displays and Instant View pages keep Telegram's fonts. A change takes effect after Telegram restarts.\n* **Telegram:** A new AMOLED black switch, off by default, turns the screens of Telegram's Night and Dark themes pure black, which looks deeper on an OLED screen. A patterned chat background shows its pattern over black. Message bubbles and pop-up menus keep the theme's colors, and a theme you've installed from a file stays as it is. A change takes effect after Telegram restarts.\n* **Telegram:** A new Hide translate bar switch, off by default, takes the translate bar off the top of chats in another language. Translate is still in the chat's menu, and a chat you're translating keeps its bar so the original is one tap away.\n* **Telegram:** A new Exact numbers switch, off by default, shows member, subscriber, view, reply and reaction counts in full, so a channel reads 12,345 subscribers instead of 12.3K.\n* **Telegram:** A new Reveal spoilers switch, off by default, shows spoiler text, photos and videos without making you tap them. View-once media and sensitive content keep their blur, and login codes from Telegram stay covered.\n* **Telegram:** A new Hide keyboard on scroll switch, off by default, closes the keyboard as soon as you start scrolling through a chat.\n* **Telegram:** A new Keep videos muted on volume keys switch, off by default, stops the volume keys from playing the video on screen with sound in a chat. They just change the volume.\n* **Telegram:** A new Swipe back on profiles switch, off by default, lets a swipe to the right on a profile's photos or media tabs go back instead of flipping to the previous photo or tab.\n* **Telegram:** A new Hide phone number switch, off by default, shows your own number as dots in the side menu, Settings, your profile and everywhere else Telegram displays it. Handy for screenshots. Other people's numbers stay visible.\n* **Telegram:** A new Message times with seconds switch, off by default, adds seconds to the time on each message, like 9:41:27 PM.\n* **Telegram:** A new Allow chat blur on slower phones switch, off by default, lets phones Telegram rates as slow turn on its blurred chat header and panels under Power saving.\n* **Telegram:** A new Play voice messages one at a time switch, off by default, stops Telegram playing the next voice or video message in a chat when one ends.\n* **Telegram:** A new Turn off haptic feedback switch, off by default, stops the vibration Telegram adds to taps, long presses, swipes and wrong entries. Incoming calls and notifications still vibrate.\n* **Telegram:** A new Turn off reaction effects switch, off by default, stops the fly-in and burst Telegram plays over the screen when you or someone else reacts. The reaction still lands on the message.\n* **Telegram:** A new Hide folder tab counters switch, off by default, takes the unread counts off the folder tabs above the chat list. Chats stay unread.\n* **Telegram:** A new Hide sender names when forwarding switch, off by default, starts each forward with Telegram's Hide sender's name option on. You can still turn it off before sending, and an article forward from an account without Premium keeps the sender, as Telegram requires.\n* **Telegram:** A new Voice messages in the music player switch, off by default, opens Telegram's full music player when you tap the bar above a chat while a voice message plays, so you get the big seek bar and speed controls. Without it the tap jumps to the message, as before. View-once voice messages never open the player.\n* **Telegram:** A new Silence people outside your contacts switch, off by default, lets a private message from someone who isn't in your contacts arrive quietly. You still get the notification, it just doesn't ring or buzz. Bots, reminders and Telegram's login codes keep their sound.\n* **Telegram:** A new Disable pull to archive switch, off by default, keeps a hidden archive out of the chat list so pulling down doesn't bring it up. The chat list's menu gets an Archived chats entry, and a pinned archive stays where it is.\n* **Telegram:** A new Start the camera on the rear lens switch, off by default, opens the attachment menu's camera on the rear lens each time instead of the lens you used last.\n* **Telegram:** A new Hide gallery camera tile switch, off by default, takes the live camera tile out of the attachment menu's photo grid so it starts with your photos.\n* **Telegram:** A new Hide time on stickers switch, off by default, takes the little time bubble off stickers and big animated emoji, read checks included. Every other message keeps its time.\n* **Telegram:** A new Ignore mentions in muted chats switch, off by default, keeps a mention or a reply to you quiet in a group or channel you've muted. Telegram normally lets those through the mute. Chats you haven't muted notify as before.\n* **Telegram:** A new Hide blocked users in groups switch, off by default, leaves messages from people you've blocked out of the groups and supergroups you open. Private chats and channel posts aren't touched, and nothing is deleted, so turning it off and reopening the chat brings them back.\n* **Telegram:** A new Hide Telegram Features and Invite Friends switch, off by default, takes the Telegram Features row out of Settings and Invite Friends out of Contacts. If you have no contacts yet, the invite list Contacts shows in their place goes too.\n* **Telegram:** A new Add Repeat to the message menu switch, off by default, puts Repeat under Forward in a message's long-press menu. It sends the message again to the same chat as a new message from you, through Telegram's own forward, so slow mode and paid messages work as they always do. It doesn't show in protected or secret chats, or for polls and paid media. Three more switches go with it. Add Copy photo to the message menu copies a downloaded photo to the clipboard so you can paste it into another app, and it isn't offered in protected or secret chats either. Add Message details to the message menu adds an item that shows the message's IDs, when it was sent and edited to the second, where it was forwarded from and the file's data center and size, with a Copy button. Add Quick forward to the message menu adds a Quick forward item that lists Saved Messages and a few recent chats, and one tap forwards the message there through Telegram's own forward. The sender stays shown unless Hide sender names when forwarding is on, and protected or secret chats never get it.\n* **Telegram:** A new Keep deleted messages switch, off by default, keeps a message on your phone when the person who sent it deletes it, and shows a deleted label next to its time. Your own deletes, messages that disappear on their own, view-once media and protected chats work as usual, and their notifications clear the way Telegram clears them. Turning the switch off doesn't remove what's already kept, and a message from someone else that you delete on another device of yours stays too.\n* **Telegram:** A new Ask before sending a sticker switch, off by default, asks Send or Cancel before a sticker you tap goes into a chat. Cancel drops it. Three more switches go with it. Ask before sending a GIF does the same for a GIF, Ask before sending a voice or video message asks before a recording goes out and throws it away on Cancel, and Ask before starting a call asks before the call button in a chat's header or on a profile starts a call. Scheduled sends and paid messages go through as they always did.\n* **Telegram:** Show user and chat IDs has a second switch, Show profile data center, off by default. It adds a row to a profile's menu with the data center, 1 to 5, that holds the profile's photo, read from the copy Telegram already has. A profile without a photo shows no row. Either switch works without the other.\n* **Telegram:** Disable pull to next channel has a second switch, Stop pull to next topic, off by default. With it on, pulling up at the bottom of a forum topic only scrolls instead of opening the next topic. Each switch covers only its own pull, and a switch flipped mid-drag counts when you let go.\n* **Telegram:** The beta target is now telegram.org's current 12.10.7 build, version code 71239, which replaced build 71179. Every patch applies and passes its fixture tests on it.\n\n## Install\n\n1. Install [Morphe Manager](https://github.com/MorpheApp/morphe-manager) 1.34.0 or newer.\n2. Add HushTelegram as a patch source: https://morphe.software/add-source?github=SysAdminDoc%2FHushTelegram\n3. Get Telegram **12.10.6** from [telegram.org/android](https://telegram.org/android) by tapping Download Telegram (it saves as plain `Telegram.apk`), or the [official beta](https://telegram.org/dl/android/apk-public-beta) **12.10.7**, and patch it. The patched app needs Android 9 or newer.\n4. Coming from v0.0.9? Patch again and install over it with the same Morphe Manager signing key. New to HushTelegram? Uninstall the stock Telegram first, since Android won't put one over the other. Your chats come back when you sign in, but secret chats don't. Back up Morphe Manager's signing key after your first patch. You'll need it for every update.\n5. If Telegram won't send you a login code, register your own app at [my.telegram.org/apps](https://my.telegram.org/apps). Use only letters and numbers in the short name. Then select **Use registered Telegram API credentials**, fill in `apiId` and `apiHash`, and patch again. The result installs over your current HushTelegram build. Keep both values private.\n6. For notifications, open Telegram's Settings, then Notifications and Sounds, and turn on Keep-Alive Service and Background Connection.\n7. To change HushTelegram's switches, open Telegram's Settings and tap HushTelegram settings.\n\nThe `.mpp` download is a patch bundle, not a Telegram APK. [Installation instructions](https://github.com/SysAdminDoc/HushTelegram#install).\n\n## Validation\n\n766 runtime tests and 352 patch tests passed locally, along with both Android lints. All 55 patches applied without forcing to Telegram 12.10.6 and to the 12.10.7 beta, build 71239. The dependency advisory check passed. On an Android 16 phone, this build installed over the previous HushTelegram build and kept its data, and Local notification status showed Telegram's answer to the push registration by name.\n",
+  "created_at": "2026-10-10T03:34:30",
+  "version": "v0.0.12",
+  "description": "HushTelegram v0.0.12 has 56 patches for telegram.org's Telegram 12.10.6 (`org.telegram.messenger.web`) and the official Telegram beta 12.10.7 (`org.telegram.messenger.beta`). Fifty-four are selected by default, and the one new switch starts off. Most of this release is about reading easier. Every patch description, settings row and message inside HushTelegram is rewritten in plain English, and Expert mode groups the patches the way you'd look for them. Keep deleted messages now marks a message the moment it's deleted while the chat is open, and it can clear what it kept. On the beta, Disable analytics also stops Firebase's crash and session reports.\n\n## What's new\n\n* **Telegram:** On Telegram Beta, Disable analytics now also turns off Firebase's crash and session reports. Telegram's own crash reporter setup, which handed Crashlytics your user ID and username and switched collection back on at every launch, no longer runs, and Crashlytics' own setting is saved off, so it stops collecting and sending from the next start. Session reports stop right away. Push notifications don't change, and the regular build has neither reporter. Turning the switch off brings both back at the next launch.\n* **Telegram:** A new Turn off beta debug logs switch, off by default, stops Telegram Beta from writing debug logs all the time. The beta turned them on at every start, its connection log included, and its own debug menu couldn't stop that. Logs already saved stay until you clear them, and the regular build doesn't change. Restart Telegram after you turn it on.\n* **Telegram:** Keep deleted messages has a new Clear kept messages row in HushTelegram settings, right under its switch. One tap gives every message it kept, in every signed-in account, to Telegram's own deletion, so they go the way they would have without the patch. A notice tells you how many went. It's translated into all five languages.\n* **Telegram:** Keep deleted messages now marks a message as deleted the moment someone deletes it while you have that chat open. Before, the label only showed up after you left the chat and came back.\n* **Telegram:** Contributors have a new audit of the stock beta, signed in on a real phone. It covers a live search ad, the app's own settings screens, what the app sends on the local network, and how busy it stays in the foreground and background. It also separates contact sync from contact suggestions and notes what you can't learn from encrypted traffic.\n* **Telegram:** Added an app audit for sponsored-message delivery, ad reporting, telemetry, contact sync and current patch opportunities on the pinned 12.10.6 APK.\n* **Telegram:** Build and Pause reports now use Morphe Manager's patch names for haptic feedback and link tracking. The pause card's test now matches its current wording about Debug logging.\n* **Telegram:** Contributors now have a factory-app reference for the pinned APK, with the first-run flow, manifest entry points, stable anchors and fixture-update steps.\n* **Telegram:** The three patch options (your Telegram API ID and hash, and your Google Maps key) have clearer names and say where to find each value.\n* **Telegram:** Messages inside HushTelegram are plainer too: the notification status lines, the pause and safe mode notes, update check results, settings file errors, and the \"this build doesn't change\" notes now say what happened and what to do next, with no technical words. All five languages are updated.\n* **Telegram:** The rows in HushTelegram settings now say in plain English what you'll notice when a switch is on, and a few titles are clearer (Stop vibrations on taps, Remove link tracking tags, Show where a profile photo is stored). The translations are updated to match.\n* **Telegram:** Every patch description in Morphe Manager is rewritten in plain English. Each one now says what changes on screen, why you might want it, and ends with where to find its switch in HushTelegram settings and whether it starts on or off.\n* **Telegram:** Each patch's description in Morphe Manager now says which page of HushTelegram settings holds its switch, under the switch's own name when that differs, and whether it starts on or off. Nothing is hidden behind Expert mode: every patch but the two credential patches was already in the default selection, and the README's install steps now say so.\n* **Telegram:** Expert mode's Chats group held 41 of the 55 patches. It's now split into groups you'd look in: Chats for the chat list, Conversations for inside a chat, Playback, Notifications, Theme, Interface, Stories and Search. Hide promotional banners and Hide Premium, gifts and Stars moved to Ads, and Disable update checks moved to Updates.\n* **Telegram:** Strip link tracking's description now reads plainly. It still removes only the listed tracking keys and still starts off.\n\n### Tooling\n\n* **Tooling:** The scripts that patch Telegram with the desktop CLI (the all-patches check, the release receipt and the selection matrix) now wait their turn in the build queue that `BUILD_QUEUE_SCRIPT` names, so they don't fight a Gradle build for the same cores. Release runs go to the front. Without a queue they run straight away and print a warning.\n* **Tooling:** The pre-push hook now reads `HUSHTELEGRAM_BUILD_WRAPPER` and its other settings from your user environment when the shell has them empty, not only when they're missing, since pwsh keeps an empty variable around. With no wrapper at all, its own `gradlew` run waits in the build queue too.\n* **Tooling:** The selection matrix reads the whole fixture APK for its hash twice a run, before the first case and after the last, instead of up to three times in each of its 74 cases. Each case still checks the APK's size and write time, and a changed APK still fails the run.\n* **Tooling:** The patch tests that open the vendor Telegram APKs now run in their own Gradle task, `:patches:fixtureTest`. `:patches:test` still runs every patch test and passes `--tests` on to it, while `:patches:test -x :patches:fixtureTest` runs the rest without opening an APK. The release check counts the results from both folders.\n* **Tooling:** The pre-push gate runs its cheap checks before the long fixture suite. After the script suites it checks the release facts right away when no code changed, then runs every Gradle task except the fixture tests, the advisory scan and the facts that read the runtime results, and only then the fixture tests. A broken script, lint error or stale fact now stops a push before any vendor APK is patched.\n* **Tooling:** `verify-all-patches.ps1 -KeepIn <dir>` keeps a clean run's patched APK and CLI report, stamped with the commit and the hashes of the fixture, bundle, patch list and CLI. `build-release-receipt.ps1 -AppliedDir <dir>` reads a kept run whose stamp matches instead of patching that fixture a second time, and still runs every check on it. Anything that doesn't match gets patched as before.\n* **Tooling:** Releases now run from `scripts/release/release.ps1`, one command per stage: prepare, preflight, build, publish and index. Each stage records the commit it finished on and won't start until the one before it has finished. A stage can be run again after a fix, and one that already finished checks its work and says so. Preflight is a five-minute check of the scripts, release text, facts and the patch tests without the fixture suite. Build runs the full tests, the bundle and every declared Telegram build once, and the receipt reads those runs. The release notes builder now lives in the repo too, and it carries every bullet of the version's CHANGELOG section and checks the published notes still do.\n\n## Install\n\n1. Install [Morphe Manager](https://github.com/MorpheApp/morphe-manager) 1.34.0 or newer.\n2. Add HushTelegram as a patch source: https://morphe.software/add-source?github=SysAdminDoc%2FHushTelegram\n3. Get Telegram **12.10.6**, version code 71129, from [APKMirror's Telegram (Web version) page](https://www.apkmirror.com/apk/telegram-fz-llc/telegram-web-version/telegram-web-version-12-10-6-release/) and pick the universal APK. It's telegram.org's own build. The Download button on telegram.org now gives you 13.0.0, so use the APKMirror link for this release. If you already have the official beta 12.10.7, build 71239, you can patch that instead. The patched app needs Android 9 or newer.\n4. Coming from v0.0.11? Patch again and install over it with the same Morphe Manager signing key. New to HushTelegram? Uninstall the stock Telegram first, since Android won't put one over the other. Your chats come back when you sign in, but secret chats don't. Back up Morphe Manager's signing key after your first patch. You'll need it for every update.\n5. If Telegram won't send you a login code, register your own app at [my.telegram.org/apps](https://my.telegram.org/apps). Use only letters and numbers in the short name. Then select **Use registered Telegram API credentials**, fill in `apiId` and `apiHash`, and patch again. The result installs over your current HushTelegram build. Keep both values private.\n6. For notifications, open Telegram's Settings, then Notifications and Sounds, and turn on Keep-Alive Service and Background Connection.\n7. To change HushTelegram's switches, open Telegram's Settings and tap HushTelegram settings.\n\nThe `.mpp` download is a patch bundle, not a Telegram APK. [Installation instructions](https://github.com/SysAdminDoc/HushTelegram#install).\n\n## Validation\n\n786 runtime tests and 364 patch tests passed locally, along with both Android lints. All 56 patches applied without forcing to Telegram 12.10.6 and to the 12.10.7 beta, build 71239. The release receipt checked each patched app's manifest, native libraries, resources and alignment.\n",
   "apps": [
     {
       "app_name": "Beta",
@@ -12,7 +12,7 @@
       "patches": [
         {
           "name": "Add Repeat to the message menu",
-          "description": "Adds switches, off by default, for a message's long-press menu. Repeat sends the message again to the same chat as a new message from you. Copy photo puts a downloaded photo on the clipboard, and Message details shows the message's IDs and times, plus the file's data center and size. Quick forward lists a few recent chats to forward to in one tap.",
+          "description": "Adds Repeat, Copy photo, Message details and Quick forward to a message's press-and-hold menu, for resending, copying and forwarding faster. All four start off. Turn them on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -21,7 +21,7 @@
         },
         {
           "name": "Allow chat blur on slower phones",
-          "description": "Adds a switch, off by default, that lets phones Telegram rates as slow use its blurred chat header and panels.",
+          "description": "Lets slower phones show the blurred chat header and panels that Telegram keeps for fast phones. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -30,7 +30,7 @@
         },
         {
           "name": "AMOLED black",
-          "description": "Adds a switch, off by default, that turns the screens of Telegram's Night and Dark themes pure black and shows a patterned chat background's pattern over black. Message bubbles and pop-up menus keep the theme's colors. A change takes effect after Telegram restarts.",
+          "description": "Gives Telegram's Night and Dark themes pure black screens for a darker look. Message bubbles and menus keep their colors. Starts off. Turn it on in HushTelegram settings > Chats, then restart Telegram.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -39,7 +39,7 @@
         },
         {
           "name": "Ask before sending a sticker",
-          "description": "Adds switches, off by default, that ask before a sticker, a GIF, a voice or video message or a call goes out. Cancel drops it.",
+          "description": "Asks you to confirm before a sticker, GIF, voice or video message, or call goes out, so a stray tap doesn't send it. All four start off. Turn them on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -48,7 +48,7 @@
         },
         {
           "name": "Disable analytics",
-          "description": "Stops Telegram sending its storage-type statistic and how long you spent on each channel post to its server. Also stops reports about Premium screen views, feature taps, accepts and purchase failures. Messages and calls work as before.",
+          "description": "Stops Telegram from reporting how you use the app, like how long you read channel posts and what you tap on Premium screens. On Telegram Beta it also turns off Firebase's crash and session reports from the next start. Messages, calls and notifications work as before. On by default. Turn it off in HushTelegram settings > Privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -57,7 +57,7 @@
         },
         {
           "name": "Disable call debug upload",
-          "description": "Stops automatic call debug reports and log-file uploads requested by Telegram's server.",
+          "description": "Stops your phone from sending call problem reports and log files to Telegram when its server asks for them. On by default. Turn it off in HushTelegram settings > Privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -66,7 +66,7 @@
         },
         {
           "name": "Disable chat swipe actions",
-          "description": "Adds a switch, off by default, that stops a sideways swipe on a chat in the chat list from archiving, muting, pinning, deleting or marking it read. A swipe set to change folders still does. Long-press keeps every action.",
+          "description": "Stops a sideways swipe on a chat from archiving, muting, pinning, deleting or marking it read, so a slip can't change a chat. Press and hold still has every action. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -75,7 +75,7 @@
         },
         {
           "name": "Disable double-tap reactions",
-          "description": "Adds a switch, off by default, that stops reactions from a double tap in chats and the reaction-settings preview. Scrolling, taps, selection and explicit reaction menus keep their usual behavior.",
+          "description": "Stops a double tap on a message from adding a reaction, handy if you keep reacting by accident. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -84,7 +84,7 @@
         },
         {
           "name": "Disable draft link previews",
-          "description": "Adds a switch, off by default, that stops Telegram fetching link previews for messages you haven't sent yet, in chats, the share sheet, polls, story links and bot shares. Sent messages still get their preview.",
+          "description": "Keeps Telegram from looking up a link's preview before you send the message. Sent messages still get a preview. Starts off. Turn it on in HushTelegram settings > Privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -93,7 +93,7 @@
         },
         {
           "name": "Disable pull to archive",
-          "description": "Adds a switch, off by default, so pulling down the chat list doesn't bring up a hidden archive. The chat list's menu opens it instead.",
+          "description": "Stops pulling down the chat list from opening the hidden archive. Open it from Archived chats in the chat list's menu instead. Starts off. Turn it on in HushTelegram settings > Chats, then restart Telegram.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -102,7 +102,7 @@
         },
         {
           "name": "Disable pull to next channel",
-          "description": "Adds a switch, on by default, that stops pulling past the bottom of a channel from opening the next channel, and a second one, off by default, that does the same for the next forum topic. Scrolling and opening channels or topics directly still work.",
+          "description": "Stops pulling up at the bottom of a channel from jumping to the next channel. A second switch does the same for forum topics. The channel switch starts on and the topic switch starts off. Find them in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -111,7 +111,7 @@
         },
         {
           "name": "Disable update checks",
-          "description": "Stops telegram.org's Telegram offering its own updates, which can't install over a patched build. Patch the new version in Morphe Manager instead.",
+          "description": "Stops Telegram from offering its own updates from telegram.org, which can't install over a patched app. Patch each new version in Morphe Manager instead. On by default. Turn it off in HushTelegram settings > More settings > Updates.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -120,7 +120,7 @@
         },
         {
           "name": "Exact numbers",
-          "description": "Adds a switch, off by default, that shows member, subscriber, view, reply and reaction counts in full, like 12,345 instead of 12.3K.",
+          "description": "Shows member, subscriber, view, reply and reaction counts in full, like 12,345 instead of 12.3K. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -129,7 +129,7 @@
         },
         {
           "name": "Gallery camera on tap",
-          "description": "Adds a switch, off by default, that keeps the attachment gallery from starting the camera or asking for camera access when it opens. Tapping the camera tile starts it.",
+          "description": "Keeps the attachment gallery from starting the camera or asking for camera access when it opens. The camera starts when you tap its tile. Starts off. Turn it on in HushTelegram settings > Privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -138,7 +138,7 @@
         },
         {
           "name": "Hide ads",
-          "description": "Hides the sponsored messages in channels, the sponsored accounts in search and the ads in Telegram's video player. Telegram never asks for them, so none are counted as seen.",
+          "description": "Removes sponsored messages in channels, sponsored accounts in search and ads in Telegram's video player, so you see fewer ads. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -147,7 +147,7 @@
         },
         {
           "name": "Hide blocked users in groups",
-          "description": "Adds a switch, off by default, that leaves messages from people you've blocked out of groups and supergroups you open. Private chats and channel posts stay as they are, and nothing is deleted.",
+          "description": "Leaves messages from people you've blocked out of groups and supergroups you open. Nothing is deleted. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -156,7 +156,7 @@
         },
         {
           "name": "Hide contacts on Telegram",
-          "description": "Adds a switch, off by default, that hides the Your contacts on Telegram list under a short chat list, with its heading and loading rows. Chats, folders, contact sync and search keep their usual behavior.",
+          "description": "Hides the Your contacts on Telegram list that shows under a short chat list. Chats, folders and search stay. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -165,7 +165,7 @@
         },
         {
           "name": "Hide folder tab counters",
-          "description": "Adds a switch, off by default, that hides the unread count on each folder tab above the chat list.",
+          "description": "Hides the unread count on each folder tab above the chat list, for a calmer look. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -174,7 +174,7 @@
         },
         {
           "name": "Hide gallery camera tile",
-          "description": "Adds a switch, off by default, that takes the live camera tile out of the attachment menu's photo grid, so the grid starts with your photos.",
+          "description": "Removes the live camera tile from the attachment menu's photo grid, so the grid starts with your photos. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -183,7 +183,7 @@
         },
         {
           "name": "Hide greeting stickers",
-          "description": "Adds a switch, off by default, that hides the sticker an empty private chat offers to send as a greeting. The empty chat's text, business introductions, Premium and paid-message notices, the sticker picker and sending keep their usual behavior.",
+          "description": "Hides the sticker that an empty private chat offers to send as a greeting. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -192,7 +192,7 @@
         },
         {
           "name": "Hide keyboard on scroll",
-          "description": "Adds a switch, off by default, that closes the keyboard when you start scrolling through a chat.",
+          "description": "Closes the on-screen keyboard when you start scrolling a chat, so you can read more. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -201,7 +201,7 @@
         },
         {
           "name": "Hide phone number",
-          "description": "Adds a switch, off by default, that covers the digits of your own phone number wherever Telegram shows it, like the side menu, Settings and your profile.",
+          "description": "Covers your own phone number with dots in the side menu, Settings and your profile, which helps when you share your screen. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -210,7 +210,7 @@
         },
         {
           "name": "Hide popular apps",
-          "description": "Hides the Popular apps list in search's Apps tab and stops Telegram from asking its server for it. Apps you've opened and other search results stay.",
+          "description": "Hides the Popular apps list on the Apps tab of search and stops Telegram from loading it. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -219,7 +219,7 @@
         },
         {
           "name": "Hide Premium, gifts and Stars",
-          "description": "Hides Premium, Stars, My Grams, Business and Send a Gift in Settings, profile Gifts tabs and the channel Gift button. Purchases and account controls keep their usual behavior.",
+          "description": "Removes Premium, Stars, My Grams, Business and Send a Gift from Settings, Gifts tabs on profiles, and the Gift button in channels, for a less cluttered app. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -228,7 +228,7 @@
         },
         {
           "name": "Hide promotional banners",
-          "description": "Hides Premium, birthday and low Stars balance banners in the chat list. Account security notices and other suggestions remain. Nothing is dismissed for you.",
+          "description": "Hides Premium, birthday and low Stars balance banners above your chat list. Account security notices still show. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -237,7 +237,7 @@
         },
         {
           "name": "Hide recommendations",
-          "description": "Hides similar channels and bots, including cached recommendations. Telegram doesn't ask for new recommendations while the switch is on.",
+          "description": "Hides suggested similar channels and bots, and stops Telegram from loading new suggestions. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -246,7 +246,7 @@
         },
         {
           "name": "Hide sender names when forwarding",
-          "description": "Adds a switch, off by default, that starts Telegram's Hide sender's name option on each time you forward. You can still turn it off before sending.",
+          "description": "Turns on Telegram's Hide sender's name option each time you forward, so copies arrive without the original author. You can turn it off before sending. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -255,7 +255,7 @@
         },
         {
           "name": "Hide sponsored proxy channel",
-          "description": "Hides a proxy's sponsored channel from the chat list and folders. Leaves proxy settings and shared promo-data updates alone.",
+          "description": "Hides the sponsored channel a proxy adds to your chat list and folders. Your proxy settings aren't touched. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -264,7 +264,7 @@
         },
         {
           "name": "Hide Stories",
-          "description": "Hides the chat-list story bar, avatar story rings and Post Story button, and stops fetching the story list. Profile stories and archives remain available.",
+          "description": "Removes the story bar above your chats, the rings around profile pictures and the Post Story button. Profile stories and archives stay. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -273,7 +273,7 @@
         },
         {
           "name": "Hide Telegram Features and Invite Friends",
-          "description": "Adds a switch, off by default, that takes the Telegram Features row out of Settings and the Invite Friends rows out of Contacts.",
+          "description": "Removes the Telegram Features row from Settings and the Invite Friends rows from Contacts. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -282,7 +282,7 @@
         },
         {
           "name": "Hide time on stickers",
-          "description": "Adds a switch, off by default, that takes the time and read checks off stickers and big animated emoji in chats.",
+          "description": "Removes the time and read checks from stickers and big animated emoji in chats. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -291,7 +291,7 @@
         },
         {
           "name": "Hide translate bar",
-          "description": "Adds a switch, off by default, that hides the translate bar at the top of chats in another language. Translate moves to the chat's menu, and a chat you're translating keeps its bar so you can go back to the original.",
+          "description": "Hides the translate bar at the top of chats in another language. Translate moves to the chat's menu. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -300,7 +300,7 @@
         },
         {
           "name": "Holiday look all year",
-          "description": "Adds a switch, off by default, that puts a Santa hat over the chat list logo and keeps Telegram's New Year snow falling all year over the chat list's top bar and chat backgrounds. Telegram's own holiday dates apply while it's off.",
+          "description": "Shows Telegram's Santa hat and New Year snow all year, not just around New Year. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -309,7 +309,7 @@
         },
         {
           "name": "HushTelegram settings",
-          "description": "Adds a HushTelegram row to Telegram's Settings. You can also long-press Telegram's launcher icon, or open Additional settings in the app on Telegram's App info page, to turn features on or off, pause HushTelegram, save your switches to a file or load them, and export diagnostics. The licenses are there too.",
+          "description": "Adds a HushTelegram row to Telegram's Settings, where you turn features on or off, pause HushTelegram, save your choices and export a report. You can also press and hold Telegram's app icon. Works as soon as you patch it in, with no switch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -318,7 +318,7 @@
         },
         {
           "name": "Ignore mentions in muted chats",
-          "description": "Adds a switch, off by default, so a mention or a reply to you in a group or channel you've muted doesn't notify. Unmuted chats notify as before.",
+          "description": "Stops mentions and replies in groups or channels you've muted from notifying you. Chats you haven't muted notify as before. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -327,7 +327,7 @@
         },
         {
           "name": "Keep deleted messages",
-          "description": "Adds a switch, off by default, that keeps a message on your phone when someone else deletes it, and shows a deleted label next to its time. Your own deletes, disappearing messages and protected chats work as usual, and turning it off keeps what's already saved.",
+          "description": "Keeps a message on your phone when someone else deletes it, and marks it deleted next to the time. Your own deletes still work normally. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -336,7 +336,7 @@
         },
         {
           "name": "Keep videos muted on volume keys",
-          "description": "Adds a switch, off by default, that stops the volume keys in a chat from playing the video or round video on screen with sound, so they only change the volume.",
+          "description": "Makes the volume keys only change the volume in a chat, instead of playing the video on screen with sound. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -345,7 +345,7 @@
         },
         {
           "name": "Message times with seconds",
-          "description": "Adds a switch, off by default, that shows seconds in the time on each message, like 9:41:27 PM.",
+          "description": "Shows seconds in each message's time, like 9:41:27 PM, so messages sent close together are easy to tell apart. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -354,7 +354,7 @@
         },
         {
           "name": "Open links externally",
-          "description": "Opens ordinary HTTP(S) links in your browser. Telegram links, login, payment and authenticated routes keep their existing behavior.",
+          "description": "Opens ordinary web links in your browser instead of inside Telegram. Telegram links, sign-in and payment pages work as before. On by default. Turn it off in HushTelegram settings > More settings > Links.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -363,7 +363,7 @@
         },
         {
           "name": "Play voice messages one at a time",
-          "description": "Adds a switch, off by default, so a voice or video message stops when it ends instead of playing the next one.",
+          "description": "Stops the next voice or video message from playing by itself when one ends. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -372,7 +372,7 @@
         },
         {
           "name": "Quiet contacts nag",
-          "description": "Keeps the Contacts tab from asking for contacts access again, and clears its warning badge, once you've said no. The first request, the tab's own buttons and contact sync stay as they are.",
+          "description": "Once you've said no, stops the Contacts tab from asking for contacts access again and clears its warning badge. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -381,7 +381,7 @@
         },
         {
           "name": "Repair Firebase push registration",
-          "description": "Restores Telegram's official certificate header in Firebase Installations requests on re-signed builds. Other signature checks keep their usual behavior.",
+          "description": "Tries to help a patched Telegram sign up for push notifications, by giving Google's Firebase service Telegram's original certificate. On by default. Turn it off in HushTelegram settings > More settings > Notifications.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -390,7 +390,7 @@
         },
         {
           "name": "Reveal spoilers",
-          "description": "Adds a switch, off by default, that shows spoiler text, photos and videos without the cover. View-once media, sensitive content and login codes stay covered.",
+          "description": "Shows spoiler text, photos and videos without the cover, so you don't have to tap. View-once media, sensitive content and login codes stay covered. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -399,7 +399,7 @@
         },
         {
           "name": "Show user and chat IDs",
-          "description": "Adds a switch, off by default, that shows a copyable local user or chat ID in the inspected profile's menu, and a second one, off by default, that adds the data center holding the profile's photo. Neither exposes access hashes or asks Telegram's server for anything.",
+          "description": "Adds a copyable ID number for a user or chat to the profile menu. A second switch also shows where the profile photo is stored. Both start off. Turn them on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -408,7 +408,7 @@
         },
         {
           "name": "Silence people outside your contacts",
-          "description": "Adds a switch, off by default, so a private message from someone who isn't in your contacts shows its notification without sound or vibration. Bots, reminders and Telegram's login codes keep their sound.",
+          "description": "Shows notifications from people who aren't in your contacts without sound or vibration. Bots, reminders and login codes keep their sound. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -417,7 +417,7 @@
         },
         {
           "name": "Start the camera on the rear lens",
-          "description": "Adds a switch, off by default, that starts the attachment menu's camera on the rear lens each time, instead of the lens you used last or the front one.",
+          "description": "Opens the attachment menu's camera on the rear lens every time, not the lens you used last. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -426,7 +426,7 @@
         },
         {
           "name": "Strip link tracking",
-          "description": "Optional local cleaning at link-open and Share Link chooser sites. Removes only utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid and fbclid. Any unknown query key preserves the entire URL. Off by default in settings.",
+          "description": "Removes tracking tags like utm_source, gclid and fbclid from links you open or share. Links with any other extra part stay unchanged. Starts off. Turn it on in HushTelegram settings > More settings > Links.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -435,7 +435,16 @@
         },
         {
           "name": "Swipe back on profiles",
-          "description": "Adds a switch, off by default, so a swipe to the right on a profile's photos or media tabs goes back, the way it does on the rest of the profile.",
+          "description": "Makes a swipe right on a profile's photos or media tabs go back, like the rest of the profile. Starts off. Turn it on in HushTelegram settings > Chats.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.7"
+          ]
+        },
+        {
+          "name": "Turn off beta debug logs",
+          "description": "Telegram Beta always writes debug logs to your phone, its connection log included, and its own debug menu can't stop that. This stops them, so the beta only logs when you turn logs on in its debug menu. The regular telegram.org build doesn't force them, so nothing changes there. Starts off. Turn it on in HushTelegram settings > Chats, then restart Telegram.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -444,7 +453,7 @@
         },
         {
           "name": "Turn off haptic feedback",
-          "description": "Adds a switch, off by default, that stops Telegram vibrating for taps, long presses, swipes and wrong entries. Calls and notifications still vibrate.",
+          "description": "Stops Telegram from vibrating for taps, long presses, swipes and wrong entries. Calls and notifications still vibrate. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -453,7 +462,7 @@
         },
         {
           "name": "Turn off reaction effects",
-          "description": "Adds a switch, off by default, that stops the burst and fly-in effect Telegram plays when someone reacts. The reaction still shows on the message.",
+          "description": "Stops the emoji burst and fly-in when someone reacts. The reaction still shows on the message. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -462,7 +471,7 @@
         },
         {
           "name": "Use normal paste",
-          "description": "Adds a switch, off by default, that pastes text with Android's plain-text action. Whitespace and URLs stay intact without Telegram's HTML, table or monospace conversion. Other clipboard actions stay available.",
+          "description": "Pastes text exactly as you copied it, without Telegram adding formatting, tables or code styling. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -471,12 +480,12 @@
         },
         {
           "name": "Use registered Maps API key",
-          "description": "Uses your Google Maps Android SDK key, authorized for Telegram's package and the installed signer. Leaving the option unset keeps the original key.",
+          "description": "Lets maps in your patched Telegram use a Google Maps key you registered. Leave the option empty to keep Telegram's key. It has no switch and isn't selected by default. Turn on Expert mode in Morphe Manager to pick it and enter your key.",
           "use": false,
           "options": [
             {
               "key": "apiKey",
-              "description": "An Android SDK key from your Google Cloud project. Restrict it to the app package and your signing certificate SHA-1."
+              "description": "A Google Maps key for Android apps, made in your own Google Cloud project. Limit it to Telegram's package name and your signing certificate (SHA-1)."
             }
           ],
           "compatible_versions": [
@@ -485,16 +494,16 @@
         },
         {
           "name": "Use registered Telegram API credentials",
-          "description": "Uses the API ID and hash registered for your application at my.telegram.org. Supply both patch options. Leaving both unset keeps the original credentials.",
+          "description": "Signs in to Telegram with the API ID and hash you registered at my.telegram.org. Fill in both options, or leave both empty to keep the originals. It has no switch and isn't selected by default. Use Expert mode in Morphe Manager.",
           "use": false,
           "options": [
             {
               "key": "apiId",
-              "description": "The positive application ID from your Telegram API development tools."
+              "description": "The number shown as App api_id at my.telegram.org/apps. Fill in the API hash too, or leave both empty."
             },
             {
               "key": "apiHash",
-              "description": "The 32 hexadecimal characters paired with that API ID. Keep this value in local patch inputs."
+              "description": "The 32-character code shown as App api_hash at my.telegram.org/apps. Keep it private, and fill in the API ID too."
             }
           ],
           "compatible_versions": [
@@ -503,7 +512,7 @@
         },
         {
           "name": "Use system font",
-          "description": "Adds a switch, off by default, that draws Telegram's bold, italic and monospace text in your phone's font instead of the Roboto files built into the app. Regular text already uses the phone's font. Some number displays and Instant View pages keep Telegram's own. A change takes effect after Telegram restarts.",
+          "description": "Draws Telegram's bold, italic and code text in your phone's font instead of the one built into the app. Starts off. Turn it on in HushTelegram settings > Chats, then restart Telegram.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -512,7 +521,7 @@
         },
         {
           "name": "Voice messages in the music player",
-          "description": "Adds a switch, off by default, so tapping the bar above a chat while a voice message plays opens Telegram's full music player with its seek bar instead of jumping to the message. View-once voice messages stay as they are.",
+          "description": "Makes tapping the bar above a chat, while a voice message plays, open Telegram's full music player with a seek bar. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -527,7 +536,7 @@
       "patches": [
         {
           "name": "Add Repeat to the message menu",
-          "description": "Adds switches, off by default, for a message's long-press menu. Repeat sends the message again to the same chat as a new message from you. Copy photo puts a downloaded photo on the clipboard, and Message details shows the message's IDs and times, plus the file's data center and size. Quick forward lists a few recent chats to forward to in one tap.",
+          "description": "Adds Repeat, Copy photo, Message details and Quick forward to a message's press-and-hold menu, for resending, copying and forwarding faster. All four start off. Turn them on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -536,7 +545,7 @@
         },
         {
           "name": "Allow chat blur on slower phones",
-          "description": "Adds a switch, off by default, that lets phones Telegram rates as slow use its blurred chat header and panels.",
+          "description": "Lets slower phones show the blurred chat header and panels that Telegram keeps for fast phones. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -545,7 +554,7 @@
         },
         {
           "name": "AMOLED black",
-          "description": "Adds a switch, off by default, that turns the screens of Telegram's Night and Dark themes pure black and shows a patterned chat background's pattern over black. Message bubbles and pop-up menus keep the theme's colors. A change takes effect after Telegram restarts.",
+          "description": "Gives Telegram's Night and Dark themes pure black screens for a darker look. Message bubbles and menus keep their colors. Starts off. Turn it on in HushTelegram settings > Chats, then restart Telegram.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -554,7 +563,7 @@
         },
         {
           "name": "Ask before sending a sticker",
-          "description": "Adds switches, off by default, that ask before a sticker, a GIF, a voice or video message or a call goes out. Cancel drops it.",
+          "description": "Asks you to confirm before a sticker, GIF, voice or video message, or call goes out, so a stray tap doesn't send it. All four start off. Turn them on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -563,7 +572,7 @@
         },
         {
           "name": "Disable analytics",
-          "description": "Stops Telegram sending its storage-type statistic and how long you spent on each channel post to its server. Also stops reports about Premium screen views, feature taps, accepts and purchase failures. Messages and calls work as before.",
+          "description": "Stops Telegram from reporting how you use the app, like how long you read channel posts and what you tap on Premium screens. On Telegram Beta it also turns off Firebase's crash and session reports from the next start. Messages, calls and notifications work as before. On by default. Turn it off in HushTelegram settings > Privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -572,7 +581,7 @@
         },
         {
           "name": "Disable call debug upload",
-          "description": "Stops automatic call debug reports and log-file uploads requested by Telegram's server.",
+          "description": "Stops your phone from sending call problem reports and log files to Telegram when its server asks for them. On by default. Turn it off in HushTelegram settings > Privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -581,7 +590,7 @@
         },
         {
           "name": "Disable chat swipe actions",
-          "description": "Adds a switch, off by default, that stops a sideways swipe on a chat in the chat list from archiving, muting, pinning, deleting or marking it read. A swipe set to change folders still does. Long-press keeps every action.",
+          "description": "Stops a sideways swipe on a chat from archiving, muting, pinning, deleting or marking it read, so a slip can't change a chat. Press and hold still has every action. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -590,7 +599,7 @@
         },
         {
           "name": "Disable double-tap reactions",
-          "description": "Adds a switch, off by default, that stops reactions from a double tap in chats and the reaction-settings preview. Scrolling, taps, selection and explicit reaction menus keep their usual behavior.",
+          "description": "Stops a double tap on a message from adding a reaction, handy if you keep reacting by accident. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -599,7 +608,7 @@
         },
         {
           "name": "Disable draft link previews",
-          "description": "Adds a switch, off by default, that stops Telegram fetching link previews for messages you haven't sent yet, in chats, the share sheet, polls, story links and bot shares. Sent messages still get their preview.",
+          "description": "Keeps Telegram from looking up a link's preview before you send the message. Sent messages still get a preview. Starts off. Turn it on in HushTelegram settings > Privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -608,7 +617,7 @@
         },
         {
           "name": "Disable pull to archive",
-          "description": "Adds a switch, off by default, so pulling down the chat list doesn't bring up a hidden archive. The chat list's menu opens it instead.",
+          "description": "Stops pulling down the chat list from opening the hidden archive. Open it from Archived chats in the chat list's menu instead. Starts off. Turn it on in HushTelegram settings > Chats, then restart Telegram.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -617,7 +626,7 @@
         },
         {
           "name": "Disable pull to next channel",
-          "description": "Adds a switch, on by default, that stops pulling past the bottom of a channel from opening the next channel, and a second one, off by default, that does the same for the next forum topic. Scrolling and opening channels or topics directly still work.",
+          "description": "Stops pulling up at the bottom of a channel from jumping to the next channel. A second switch does the same for forum topics. The channel switch starts on and the topic switch starts off. Find them in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -626,7 +635,7 @@
         },
         {
           "name": "Disable update checks",
-          "description": "Stops telegram.org's Telegram offering its own updates, which can't install over a patched build. Patch the new version in Morphe Manager instead.",
+          "description": "Stops Telegram from offering its own updates from telegram.org, which can't install over a patched app. Patch each new version in Morphe Manager instead. On by default. Turn it off in HushTelegram settings > More settings > Updates.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -635,7 +644,7 @@
         },
         {
           "name": "Exact numbers",
-          "description": "Adds a switch, off by default, that shows member, subscriber, view, reply and reaction counts in full, like 12,345 instead of 12.3K.",
+          "description": "Shows member, subscriber, view, reply and reaction counts in full, like 12,345 instead of 12.3K. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -644,7 +653,7 @@
         },
         {
           "name": "Gallery camera on tap",
-          "description": "Adds a switch, off by default, that keeps the attachment gallery from starting the camera or asking for camera access when it opens. Tapping the camera tile starts it.",
+          "description": "Keeps the attachment gallery from starting the camera or asking for camera access when it opens. The camera starts when you tap its tile. Starts off. Turn it on in HushTelegram settings > Privacy.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -653,7 +662,7 @@
         },
         {
           "name": "Hide ads",
-          "description": "Hides the sponsored messages in channels, the sponsored accounts in search and the ads in Telegram's video player. Telegram never asks for them, so none are counted as seen.",
+          "description": "Removes sponsored messages in channels, sponsored accounts in search and ads in Telegram's video player, so you see fewer ads. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -662,7 +671,7 @@
         },
         {
           "name": "Hide blocked users in groups",
-          "description": "Adds a switch, off by default, that leaves messages from people you've blocked out of groups and supergroups you open. Private chats and channel posts stay as they are, and nothing is deleted.",
+          "description": "Leaves messages from people you've blocked out of groups and supergroups you open. Nothing is deleted. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -671,7 +680,7 @@
         },
         {
           "name": "Hide contacts on Telegram",
-          "description": "Adds a switch, off by default, that hides the Your contacts on Telegram list under a short chat list, with its heading and loading rows. Chats, folders, contact sync and search keep their usual behavior.",
+          "description": "Hides the Your contacts on Telegram list that shows under a short chat list. Chats, folders and search stay. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -680,7 +689,7 @@
         },
         {
           "name": "Hide folder tab counters",
-          "description": "Adds a switch, off by default, that hides the unread count on each folder tab above the chat list.",
+          "description": "Hides the unread count on each folder tab above the chat list, for a calmer look. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -689,7 +698,7 @@
         },
         {
           "name": "Hide gallery camera tile",
-          "description": "Adds a switch, off by default, that takes the live camera tile out of the attachment menu's photo grid, so the grid starts with your photos.",
+          "description": "Removes the live camera tile from the attachment menu's photo grid, so the grid starts with your photos. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -698,7 +707,7 @@
         },
         {
           "name": "Hide greeting stickers",
-          "description": "Adds a switch, off by default, that hides the sticker an empty private chat offers to send as a greeting. The empty chat's text, business introductions, Premium and paid-message notices, the sticker picker and sending keep their usual behavior.",
+          "description": "Hides the sticker that an empty private chat offers to send as a greeting. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -707,7 +716,7 @@
         },
         {
           "name": "Hide keyboard on scroll",
-          "description": "Adds a switch, off by default, that closes the keyboard when you start scrolling through a chat.",
+          "description": "Closes the on-screen keyboard when you start scrolling a chat, so you can read more. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -716,7 +725,7 @@
         },
         {
           "name": "Hide phone number",
-          "description": "Adds a switch, off by default, that covers the digits of your own phone number wherever Telegram shows it, like the side menu, Settings and your profile.",
+          "description": "Covers your own phone number with dots in the side menu, Settings and your profile, which helps when you share your screen. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -725,7 +734,7 @@
         },
         {
           "name": "Hide popular apps",
-          "description": "Hides the Popular apps list in search's Apps tab and stops Telegram from asking its server for it. Apps you've opened and other search results stay.",
+          "description": "Hides the Popular apps list on the Apps tab of search and stops Telegram from loading it. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -734,7 +743,7 @@
         },
         {
           "name": "Hide Premium, gifts and Stars",
-          "description": "Hides Premium, Stars, My Grams, Business and Send a Gift in Settings, profile Gifts tabs and the channel Gift button. Purchases and account controls keep their usual behavior.",
+          "description": "Removes Premium, Stars, My Grams, Business and Send a Gift from Settings, Gifts tabs on profiles, and the Gift button in channels, for a less cluttered app. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -743,7 +752,7 @@
         },
         {
           "name": "Hide promotional banners",
-          "description": "Hides Premium, birthday and low Stars balance banners in the chat list. Account security notices and other suggestions remain. Nothing is dismissed for you.",
+          "description": "Hides Premium, birthday and low Stars balance banners above your chat list. Account security notices still show. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -752,7 +761,7 @@
         },
         {
           "name": "Hide recommendations",
-          "description": "Hides similar channels and bots, including cached recommendations. Telegram doesn't ask for new recommendations while the switch is on.",
+          "description": "Hides suggested similar channels and bots, and stops Telegram from loading new suggestions. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -761,7 +770,7 @@
         },
         {
           "name": "Hide sender names when forwarding",
-          "description": "Adds a switch, off by default, that starts Telegram's Hide sender's name option on each time you forward. You can still turn it off before sending.",
+          "description": "Turns on Telegram's Hide sender's name option each time you forward, so copies arrive without the original author. You can turn it off before sending. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -770,7 +779,7 @@
         },
         {
           "name": "Hide sponsored proxy channel",
-          "description": "Hides a proxy's sponsored channel from the chat list and folders. Leaves proxy settings and shared promo-data updates alone.",
+          "description": "Hides the sponsored channel a proxy adds to your chat list and folders. Your proxy settings aren't touched. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -779,7 +788,7 @@
         },
         {
           "name": "Hide Stories",
-          "description": "Hides the chat-list story bar, avatar story rings and Post Story button, and stops fetching the story list. Profile stories and archives remain available.",
+          "description": "Removes the story bar above your chats, the rings around profile pictures and the Post Story button. Profile stories and archives stay. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -788,7 +797,7 @@
         },
         {
           "name": "Hide Telegram Features and Invite Friends",
-          "description": "Adds a switch, off by default, that takes the Telegram Features row out of Settings and the Invite Friends rows out of Contacts.",
+          "description": "Removes the Telegram Features row from Settings and the Invite Friends rows from Contacts. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -797,7 +806,7 @@
         },
         {
           "name": "Hide time on stickers",
-          "description": "Adds a switch, off by default, that takes the time and read checks off stickers and big animated emoji in chats.",
+          "description": "Removes the time and read checks from stickers and big animated emoji in chats. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -806,7 +815,7 @@
         },
         {
           "name": "Hide translate bar",
-          "description": "Adds a switch, off by default, that hides the translate bar at the top of chats in another language. Translate moves to the chat's menu, and a chat you're translating keeps its bar so you can go back to the original.",
+          "description": "Hides the translate bar at the top of chats in another language. Translate moves to the chat's menu. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -815,7 +824,7 @@
         },
         {
           "name": "Holiday look all year",
-          "description": "Adds a switch, off by default, that puts a Santa hat over the chat list logo and keeps Telegram's New Year snow falling all year over the chat list's top bar and chat backgrounds. Telegram's own holiday dates apply while it's off.",
+          "description": "Shows Telegram's Santa hat and New Year snow all year, not just around New Year. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -824,7 +833,7 @@
         },
         {
           "name": "HushTelegram settings",
-          "description": "Adds a HushTelegram row to Telegram's Settings. You can also long-press Telegram's launcher icon, or open Additional settings in the app on Telegram's App info page, to turn features on or off, pause HushTelegram, save your switches to a file or load them, and export diagnostics. The licenses are there too.",
+          "description": "Adds a HushTelegram row to Telegram's Settings, where you turn features on or off, pause HushTelegram, save your choices and export a report. You can also press and hold Telegram's app icon. Works as soon as you patch it in, with no switch.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -833,7 +842,7 @@
         },
         {
           "name": "Ignore mentions in muted chats",
-          "description": "Adds a switch, off by default, so a mention or a reply to you in a group or channel you've muted doesn't notify. Unmuted chats notify as before.",
+          "description": "Stops mentions and replies in groups or channels you've muted from notifying you. Chats you haven't muted notify as before. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -842,7 +851,7 @@
         },
         {
           "name": "Keep deleted messages",
-          "description": "Adds a switch, off by default, that keeps a message on your phone when someone else deletes it, and shows a deleted label next to its time. Your own deletes, disappearing messages and protected chats work as usual, and turning it off keeps what's already saved.",
+          "description": "Keeps a message on your phone when someone else deletes it, and marks it deleted next to the time. Your own deletes still work normally. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -851,7 +860,7 @@
         },
         {
           "name": "Keep videos muted on volume keys",
-          "description": "Adds a switch, off by default, that stops the volume keys in a chat from playing the video or round video on screen with sound, so they only change the volume.",
+          "description": "Makes the volume keys only change the volume in a chat, instead of playing the video on screen with sound. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -860,7 +869,7 @@
         },
         {
           "name": "Message times with seconds",
-          "description": "Adds a switch, off by default, that shows seconds in the time on each message, like 9:41:27 PM.",
+          "description": "Shows seconds in each message's time, like 9:41:27 PM, so messages sent close together are easy to tell apart. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -869,7 +878,7 @@
         },
         {
           "name": "Open links externally",
-          "description": "Opens ordinary HTTP(S) links in your browser. Telegram links, login, payment and authenticated routes keep their existing behavior.",
+          "description": "Opens ordinary web links in your browser instead of inside Telegram. Telegram links, sign-in and payment pages work as before. On by default. Turn it off in HushTelegram settings > More settings > Links.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -878,7 +887,7 @@
         },
         {
           "name": "Play voice messages one at a time",
-          "description": "Adds a switch, off by default, so a voice or video message stops when it ends instead of playing the next one.",
+          "description": "Stops the next voice or video message from playing by itself when one ends. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -887,7 +896,7 @@
         },
         {
           "name": "Quiet contacts nag",
-          "description": "Keeps the Contacts tab from asking for contacts access again, and clears its warning badge, once you've said no. The first request, the tab's own buttons and contact sync stay as they are.",
+          "description": "Once you've said no, stops the Contacts tab from asking for contacts access again and clears its warning badge. On by default. Turn it off in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -896,7 +905,7 @@
         },
         {
           "name": "Repair Firebase push registration",
-          "description": "Restores Telegram's official certificate header in Firebase Installations requests on re-signed builds. Other signature checks keep their usual behavior.",
+          "description": "Tries to help a patched Telegram sign up for push notifications, by giving Google's Firebase service Telegram's original certificate. On by default. Turn it off in HushTelegram settings > More settings > Notifications.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -905,7 +914,7 @@
         },
         {
           "name": "Reveal spoilers",
-          "description": "Adds a switch, off by default, that shows spoiler text, photos and videos without the cover. View-once media, sensitive content and login codes stay covered.",
+          "description": "Shows spoiler text, photos and videos without the cover, so you don't have to tap. View-once media, sensitive content and login codes stay covered. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -914,7 +923,7 @@
         },
         {
           "name": "Show user and chat IDs",
-          "description": "Adds a switch, off by default, that shows a copyable local user or chat ID in the inspected profile's menu, and a second one, off by default, that adds the data center holding the profile's photo. Neither exposes access hashes or asks Telegram's server for anything.",
+          "description": "Adds a copyable ID number for a user or chat to the profile menu. A second switch also shows where the profile photo is stored. Both start off. Turn them on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -923,7 +932,7 @@
         },
         {
           "name": "Silence people outside your contacts",
-          "description": "Adds a switch, off by default, so a private message from someone who isn't in your contacts shows its notification without sound or vibration. Bots, reminders and Telegram's login codes keep their sound.",
+          "description": "Shows notifications from people who aren't in your contacts without sound or vibration. Bots, reminders and login codes keep their sound. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -932,7 +941,7 @@
         },
         {
           "name": "Start the camera on the rear lens",
-          "description": "Adds a switch, off by default, that starts the attachment menu's camera on the rear lens each time, instead of the lens you used last or the front one.",
+          "description": "Opens the attachment menu's camera on the rear lens every time, not the lens you used last. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -941,7 +950,7 @@
         },
         {
           "name": "Strip link tracking",
-          "description": "Optional local cleaning at link-open and Share Link chooser sites. Removes only utm_source, utm_medium, utm_campaign, utm_term, utm_content, gclid and fbclid. Any unknown query key preserves the entire URL. Off by default in settings.",
+          "description": "Removes tracking tags like utm_source, gclid and fbclid from links you open or share. Links with any other extra part stay unchanged. Starts off. Turn it on in HushTelegram settings > More settings > Links.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -950,7 +959,16 @@
         },
         {
           "name": "Swipe back on profiles",
-          "description": "Adds a switch, off by default, so a swipe to the right on a profile's photos or media tabs goes back, the way it does on the rest of the profile.",
+          "description": "Makes a swipe right on a profile's photos or media tabs go back, like the rest of the profile. Starts off. Turn it on in HushTelegram settings > Chats.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "12.10.6"
+          ]
+        },
+        {
+          "name": "Turn off beta debug logs",
+          "description": "Telegram Beta always writes debug logs to your phone, its connection log included, and its own debug menu can't stop that. This stops them, so the beta only logs when you turn logs on in its debug menu. The regular telegram.org build doesn't force them, so nothing changes there. Starts off. Turn it on in HushTelegram settings > Chats, then restart Telegram.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -959,7 +977,7 @@
         },
         {
           "name": "Turn off haptic feedback",
-          "description": "Adds a switch, off by default, that stops Telegram vibrating for taps, long presses, swipes and wrong entries. Calls and notifications still vibrate.",
+          "description": "Stops Telegram from vibrating for taps, long presses, swipes and wrong entries. Calls and notifications still vibrate. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -968,7 +986,7 @@
         },
         {
           "name": "Turn off reaction effects",
-          "description": "Adds a switch, off by default, that stops the burst and fly-in effect Telegram plays when someone reacts. The reaction still shows on the message.",
+          "description": "Stops the emoji burst and fly-in when someone reacts. The reaction still shows on the message. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -977,7 +995,7 @@
         },
         {
           "name": "Use normal paste",
-          "description": "Adds a switch, off by default, that pastes text with Android's plain-text action. Whitespace and URLs stay intact without Telegram's HTML, table or monospace conversion. Other clipboard actions stay available.",
+          "description": "Pastes text exactly as you copied it, without Telegram adding formatting, tables or code styling. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -986,12 +1004,12 @@
         },
         {
           "name": "Use registered Maps API key",
-          "description": "Uses your Google Maps Android SDK key, authorized for Telegram's package and the installed signer. Leaving the option unset keeps the original key.",
+          "description": "Lets maps in your patched Telegram use a Google Maps key you registered. Leave the option empty to keep Telegram's key. It has no switch and isn't selected by default. Turn on Expert mode in Morphe Manager to pick it and enter your key.",
           "use": false,
           "options": [
             {
               "key": "apiKey",
-              "description": "An Android SDK key from your Google Cloud project. Restrict it to the app package and your signing certificate SHA-1."
+              "description": "A Google Maps key for Android apps, made in your own Google Cloud project. Limit it to Telegram's package name and your signing certificate (SHA-1)."
             }
           ],
           "compatible_versions": [
@@ -1000,16 +1018,16 @@
         },
         {
           "name": "Use registered Telegram API credentials",
-          "description": "Uses the API ID and hash registered for your application at my.telegram.org. Supply both patch options. Leaving both unset keeps the original credentials.",
+          "description": "Signs in to Telegram with the API ID and hash you registered at my.telegram.org. Fill in both options, or leave both empty to keep the originals. It has no switch and isn't selected by default. Use Expert mode in Morphe Manager.",
           "use": false,
           "options": [
             {
               "key": "apiId",
-              "description": "The positive application ID from your Telegram API development tools."
+              "description": "The number shown as App api_id at my.telegram.org/apps. Fill in the API hash too, or leave both empty."
             },
             {
               "key": "apiHash",
-              "description": "The 32 hexadecimal characters paired with that API ID. Keep this value in local patch inputs."
+              "description": "The 32-character code shown as App api_hash at my.telegram.org/apps. Keep it private, and fill in the API ID too."
             }
           ],
           "compatible_versions": [
@@ -1018,7 +1036,7 @@
         },
         {
           "name": "Use system font",
-          "description": "Adds a switch, off by default, that draws Telegram's bold, italic and monospace text in your phone's font instead of the Roboto files built into the app. Regular text already uses the phone's font. Some number displays and Instant View pages keep Telegram's own. A change takes effect after Telegram restarts.",
+          "description": "Draws Telegram's bold, italic and code text in your phone's font instead of the one built into the app. Starts off. Turn it on in HushTelegram settings > Chats, then restart Telegram.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -1027,7 +1045,7 @@
         },
         {
           "name": "Voice messages in the music player",
-          "description": "Adds a switch, off by default, so tapping the bar above a chat while a voice message plays opens Telegram's full music player with its seek bar instead of jumping to the message. View-once voice messages stay as they are.",
+          "description": "Makes tapping the bar above a chat, while a voice message plays, open Telegram's full music player with a seek bar. Starts off. Turn it on in HushTelegram settings > Chats.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -1038,9 +1056,9 @@
     }
   ],
   "patches_name": "HushTelegram",
-  "fingerprint": "13ea73b0db34c4fd597794fb7c0c2e2c859c7bd8153a52b699ef88c529d1ce47",
-  "release_notes": "HushTelegram v0.0.11 has 55 patches for telegram.org's Telegram 12.10.6 (`org.telegram.messenger.web`) and the official Telegram beta 12.10.7 (`org.telegram.messenger.beta`), up from 25 in v0.0.9. Fifty-three are selected by default, and every new switch starts off. The two credential patches take your own values, so they stay off until you pick them.\n\n## What's new\n\n* **Telegram:** Local notification status has a new line for Telegram's answer to its latest push registration. It reads Accepted, Refused, or Refused with the error name Telegram's server sent back, and the diagnostic report carries the same line. Telegram throws a refusal away without saying anything, so until now a phone with a saved push token and no confirmed accounts had no way to show why. Telegram only asks again when an account isn't registered yet or its push token changes, so \"None since Telegram started\" is normal on a phone that's already set up.\n* **Telegram:** A new Hide contacts on Telegram switch, off by default, takes the Your contacts on Telegram list off a short chat list, along with its heading and the loading rows shown while contacts sync. Chats, folders, contact sync and search don't change. With no chats at all, you get the welcome screen Telegram shows when none of your contacts use it. Turning it off or pausing HushTelegram brings the same rows back. A change shows up the next time Telegram rebuilds the chat list, and a restart always does.\n* **Telegram:** A new Hide greeting stickers switch, off by default, takes away the sticker an empty private chat offers to send as a greeting, so a stray tap can't send it. The empty chat's text stays, and business introductions keep their sticker. Premium and paid-message notices, the sticker picker and sending don't change.\n* **Telegram:** A new Use system font switch, off by default, draws Telegram's bold and italic text in your phone's own font instead of the Roboto files the app carries, so headings match the rest of the text on a phone with a custom font. Code blocks take the phone's monospace font. Some number displays and Instant View pages keep Telegram's fonts. A change takes effect after Telegram restarts.\n* **Telegram:** A new AMOLED black switch, off by default, turns the screens of Telegram's Night and Dark themes pure black, which looks deeper on an OLED screen. A patterned chat background shows its pattern over black. Message bubbles and pop-up menus keep the theme's colors, and a theme you've installed from a file stays as it is. A change takes effect after Telegram restarts.\n* **Telegram:** A new Hide translate bar switch, off by default, takes the translate bar off the top of chats in another language. Translate is still in the chat's menu, and a chat you're translating keeps its bar so the original is one tap away.\n* **Telegram:** A new Exact numbers switch, off by default, shows member, subscriber, view, reply and reaction counts in full, so a channel reads 12,345 subscribers instead of 12.3K.\n* **Telegram:** A new Reveal spoilers switch, off by default, shows spoiler text, photos and videos without making you tap them. View-once media and sensitive content keep their blur, and login codes from Telegram stay covered.\n* **Telegram:** A new Hide keyboard on scroll switch, off by default, closes the keyboard as soon as you start scrolling through a chat.\n* **Telegram:** A new Keep videos muted on volume keys switch, off by default, stops the volume keys from playing the video on screen with sound in a chat. They just change the volume.\n* **Telegram:** A new Swipe back on profiles switch, off by default, lets a swipe to the right on a profile's photos or media tabs go back instead of flipping to the previous photo or tab.\n* **Telegram:** A new Hide phone number switch, off by default, shows your own number as dots in the side menu, Settings, your profile and everywhere else Telegram displays it. Handy for screenshots. Other people's numbers stay visible.\n* **Telegram:** A new Message times with seconds switch, off by default, adds seconds to the time on each message, like 9:41:27 PM.\n* **Telegram:** A new Allow chat blur on slower phones switch, off by default, lets phones Telegram rates as slow turn on its blurred chat header and panels under Power saving.\n* **Telegram:** A new Play voice messages one at a time switch, off by default, stops Telegram playing the next voice or video message in a chat when one ends.\n* **Telegram:** A new Turn off haptic feedback switch, off by default, stops the vibration Telegram adds to taps, long presses, swipes and wrong entries. Incoming calls and notifications still vibrate.\n* **Telegram:** A new Turn off reaction effects switch, off by default, stops the fly-in and burst Telegram plays over the screen when you or someone else reacts. The reaction still lands on the message.\n* **Telegram:** A new Hide folder tab counters switch, off by default, takes the unread counts off the folder tabs above the chat list. Chats stay unread.\n* **Telegram:** A new Hide sender names when forwarding switch, off by default, starts each forward with Telegram's Hide sender's name option on. You can still turn it off before sending, and an article forward from an account without Premium keeps the sender, as Telegram requires.\n* **Telegram:** A new Voice messages in the music player switch, off by default, opens Telegram's full music player when you tap the bar above a chat while a voice message plays, so you get the big seek bar and speed controls. Without it the tap jumps to the message, as before. View-once voice messages never open the player.\n* **Telegram:** A new Silence people outside your contacts switch, off by default, lets a private message from someone who isn't in your contacts arrive quietly. You still get the notification, it just doesn't ring or buzz. Bots, reminders and Telegram's login codes keep their sound.\n* **Telegram:** A new Disable pull to archive switch, off by default, keeps a hidden archive out of the chat list so pulling down doesn't bring it up. The chat list's menu gets an Archived chats entry, and a pinned archive stays where it is.\n* **Telegram:** A new Start the camera on the rear lens switch, off by default, opens the attachment menu's camera on the rear lens each time instead of the lens you used last.\n* **Telegram:** A new Hide gallery camera tile switch, off by default, takes the live camera tile out of the attachment menu's photo grid so it starts with your photos.\n* **Telegram:** A new Hide time on stickers switch, off by default, takes the little time bubble off stickers and big animated emoji, read checks included. Every other message keeps its time.\n* **Telegram:** A new Ignore mentions in muted chats switch, off by default, keeps a mention or a reply to you quiet in a group or channel you've muted. Telegram normally lets those through the mute. Chats you haven't muted notify as before.\n* **Telegram:** A new Hide blocked users in groups switch, off by default, leaves messages from people you've blocked out of the groups and supergroups you open. Private chats and channel posts aren't touched, and nothing is deleted, so turning it off and reopening the chat brings them back.\n* **Telegram:** A new Hide Telegram Features and Invite Friends switch, off by default, takes the Telegram Features row out of Settings and Invite Friends out of Contacts. If you have no contacts yet, the invite list Contacts shows in their place goes too.\n* **Telegram:** A new Add Repeat to the message menu switch, off by default, puts Repeat under Forward in a message's long-press menu. It sends the message again to the same chat as a new message from you, through Telegram's own forward, so slow mode and paid messages work as they always do. It doesn't show in protected or secret chats, or for polls and paid media. Three more switches go with it. Add Copy photo to the message menu copies a downloaded photo to the clipboard so you can paste it into another app, and it isn't offered in protected or secret chats either. Add Message details to the message menu adds an item that shows the message's IDs, when it was sent and edited to the second, where it was forwarded from and the file's data center and size, with a Copy button. Add Quick forward to the message menu adds a Quick forward item that lists Saved Messages and a few recent chats, and one tap forwards the message there through Telegram's own forward. The sender stays shown unless Hide sender names when forwarding is on, and protected or secret chats never get it.\n* **Telegram:** A new Keep deleted messages switch, off by default, keeps a message on your phone when the person who sent it deletes it, and shows a deleted label next to its time. Your own deletes, messages that disappear on their own, view-once media and protected chats work as usual, and their notifications clear the way Telegram clears them. Turning the switch off doesn't remove what's already kept, and a message from someone else that you delete on another device of yours stays too.\n* **Telegram:** A new Ask before sending a sticker switch, off by default, asks Send or Cancel before a sticker you tap goes into a chat. Cancel drops it. Three more switches go with it. Ask before sending a GIF does the same for a GIF, Ask before sending a voice or video message asks before a recording goes out and throws it away on Cancel, and Ask before starting a call asks before the call button in a chat's header or on a profile starts a call. Scheduled sends and paid messages go through as they always did.\n* **Telegram:** Show user and chat IDs has a second switch, Show profile data center, off by default. It adds a row to a profile's menu with the data center, 1 to 5, that holds the profile's photo, read from the copy Telegram already has. A profile without a photo shows no row. Either switch works without the other.\n* **Telegram:** Disable pull to next channel has a second switch, Stop pull to next topic, off by default. With it on, pulling up at the bottom of a forum topic only scrolls instead of opening the next topic. Each switch covers only its own pull, and a switch flipped mid-drag counts when you let go.\n* **Telegram:** The beta target is now telegram.org's current 12.10.7 build, version code 71239, which replaced build 71179. Every patch applies and passes its fixture tests on it.\n\n## Install\n\n1. Install [Morphe Manager](https://github.com/MorpheApp/morphe-manager) 1.34.0 or newer.\n2. Add HushTelegram as a patch source: https://morphe.software/add-source?github=SysAdminDoc%2FHushTelegram\n3. Get Telegram **12.10.6** from [telegram.org/android](https://telegram.org/android) by tapping Download Telegram (it saves as plain `Telegram.apk`), or the [official beta](https://telegram.org/dl/android/apk-public-beta) **12.10.7**, and patch it. The patched app needs Android 9 or newer.\n4. Coming from v0.0.9? Patch again and install over it with the same Morphe Manager signing key. New to HushTelegram? Uninstall the stock Telegram first, since Android won't put one over the other. Your chats come back when you sign in, but secret chats don't. Back up Morphe Manager's signing key after your first patch. You'll need it for every update.\n5. If Telegram won't send you a login code, register your own app at [my.telegram.org/apps](https://my.telegram.org/apps). Use only letters and numbers in the short name. Then select **Use registered Telegram API credentials**, fill in `apiId` and `apiHash`, and patch again. The result installs over your current HushTelegram build. Keep both values private.\n6. For notifications, open Telegram's Settings, then Notifications and Sounds, and turn on Keep-Alive Service and Background Connection.\n7. To change HushTelegram's switches, open Telegram's Settings and tap HushTelegram settings.\n\nThe `.mpp` download is a patch bundle, not a Telegram APK. [Installation instructions](https://github.com/SysAdminDoc/HushTelegram#install).\n\n## Validation\n\n766 runtime tests and 352 patch tests passed locally, along with both Android lints. All 55 patches applied without forcing to Telegram 12.10.6 and to the 12.10.7 beta, build 71239. The dependency advisory check passed. On an Android 16 phone, this build installed over the previous HushTelegram build and kept its data, and Local notification status showed Telegram's answer to the push registration by name.\n",
-  "release_tag": "v0.0.11",
-  "release_date": "2026-10-08T23:35:35Z",
+  "fingerprint": "7654d624166adc6000cb5087ef2aae6c80921a7a30b8f9c859e9d7f94ff64049",
+  "release_notes": "HushTelegram v0.0.12 has 56 patches for telegram.org's Telegram 12.10.6 (`org.telegram.messenger.web`) and the official Telegram beta 12.10.7 (`org.telegram.messenger.beta`). Fifty-four are selected by default, and the one new switch starts off. Most of this release is about reading easier. Every patch description, settings row and message inside HushTelegram is rewritten in plain English, and Expert mode groups the patches the way you'd look for them. Keep deleted messages now marks a message the moment it's deleted while the chat is open, and it can clear what it kept. On the beta, Disable analytics also stops Firebase's crash and session reports.\n\n## What's new\n\n* **Telegram:** On Telegram Beta, Disable analytics now also turns off Firebase's crash and session reports. Telegram's own crash reporter setup, which handed Crashlytics your user ID and username and switched collection back on at every launch, no longer runs, and Crashlytics' own setting is saved off, so it stops collecting and sending from the next start. Session reports stop right away. Push notifications don't change, and the regular build has neither reporter. Turning the switch off brings both back at the next launch.\n* **Telegram:** A new Turn off beta debug logs switch, off by default, stops Telegram Beta from writing debug logs all the time. The beta turned them on at every start, its connection log included, and its own debug menu couldn't stop that. Logs already saved stay until you clear them, and the regular build doesn't change. Restart Telegram after you turn it on.\n* **Telegram:** Keep deleted messages has a new Clear kept messages row in HushTelegram settings, right under its switch. One tap gives every message it kept, in every signed-in account, to Telegram's own deletion, so they go the way they would have without the patch. A notice tells you how many went. It's translated into all five languages.\n* **Telegram:** Keep deleted messages now marks a message as deleted the moment someone deletes it while you have that chat open. Before, the label only showed up after you left the chat and came back.\n* **Telegram:** Contributors have a new audit of the stock beta, signed in on a real phone. It covers a live search ad, the app's own settings screens, what the app sends on the local network, and how busy it stays in the foreground and background. It also separates contact sync from contact suggestions and notes what you can't learn from encrypted traffic.\n* **Telegram:** Added an app audit for sponsored-message delivery, ad reporting, telemetry, contact sync and current patch opportunities on the pinned 12.10.6 APK.\n* **Telegram:** Build and Pause reports now use Morphe Manager's patch names for haptic feedback and link tracking. The pause card's test now matches its current wording about Debug logging.\n* **Telegram:** Contributors now have a factory-app reference for the pinned APK, with the first-run flow, manifest entry points, stable anchors and fixture-update steps.\n* **Telegram:** The three patch options (your Telegram API ID and hash, and your Google Maps key) have clearer names and say where to find each value.\n* **Telegram:** Messages inside HushTelegram are plainer too: the notification status lines, the pause and safe mode notes, update check results, settings file errors, and the \"this build doesn't change\" notes now say what happened and what to do next, with no technical words. All five languages are updated.\n* **Telegram:** The rows in HushTelegram settings now say in plain English what you'll notice when a switch is on, and a few titles are clearer (Stop vibrations on taps, Remove link tracking tags, Show where a profile photo is stored). The translations are updated to match.\n* **Telegram:** Every patch description in Morphe Manager is rewritten in plain English. Each one now says what changes on screen, why you might want it, and ends with where to find its switch in HushTelegram settings and whether it starts on or off.\n* **Telegram:** Each patch's description in Morphe Manager now says which page of HushTelegram settings holds its switch, under the switch's own name when that differs, and whether it starts on or off. Nothing is hidden behind Expert mode: every patch but the two credential patches was already in the default selection, and the README's install steps now say so.\n* **Telegram:** Expert mode's Chats group held 41 of the 55 patches. It's now split into groups you'd look in: Chats for the chat list, Conversations for inside a chat, Playback, Notifications, Theme, Interface, Stories and Search. Hide promotional banners and Hide Premium, gifts and Stars moved to Ads, and Disable update checks moved to Updates.\n* **Telegram:** Strip link tracking's description now reads plainly. It still removes only the listed tracking keys and still starts off.\n\n### Tooling\n\n* **Tooling:** The scripts that patch Telegram with the desktop CLI (the all-patches check, the release receipt and the selection matrix) now wait their turn in the build queue that `BUILD_QUEUE_SCRIPT` names, so they don't fight a Gradle build for the same cores. Release runs go to the front. Without a queue they run straight away and print a warning.\n* **Tooling:** The pre-push hook now reads `HUSHTELEGRAM_BUILD_WRAPPER` and its other settings from your user environment when the shell has them empty, not only when they're missing, since pwsh keeps an empty variable around. With no wrapper at all, its own `gradlew` run waits in the build queue too.\n* **Tooling:** The selection matrix reads the whole fixture APK for its hash twice a run, before the first case and after the last, instead of up to three times in each of its 74 cases. Each case still checks the APK's size and write time, and a changed APK still fails the run.\n* **Tooling:** The patch tests that open the vendor Telegram APKs now run in their own Gradle task, `:patches:fixtureTest`. `:patches:test` still runs every patch test and passes `--tests` on to it, while `:patches:test -x :patches:fixtureTest` runs the rest without opening an APK. The release check counts the results from both folders.\n* **Tooling:** The pre-push gate runs its cheap checks before the long fixture suite. After the script suites it checks the release facts right away when no code changed, then runs every Gradle task except the fixture tests, the advisory scan and the facts that read the runtime results, and only then the fixture tests. A broken script, lint error or stale fact now stops a push before any vendor APK is patched.\n* **Tooling:** `verify-all-patches.ps1 -KeepIn <dir>` keeps a clean run's patched APK and CLI report, stamped with the commit and the hashes of the fixture, bundle, patch list and CLI. `build-release-receipt.ps1 -AppliedDir <dir>` reads a kept run whose stamp matches instead of patching that fixture a second time, and still runs every check on it. Anything that doesn't match gets patched as before.\n* **Tooling:** Releases now run from `scripts/release/release.ps1`, one command per stage: prepare, preflight, build, publish and index. Each stage records the commit it finished on and won't start until the one before it has finished. A stage can be run again after a fix, and one that already finished checks its work and says so. Preflight is a five-minute check of the scripts, release text, facts and the patch tests without the fixture suite. Build runs the full tests, the bundle and every declared Telegram build once, and the receipt reads those runs. The release notes builder now lives in the repo too, and it carries every bullet of the version's CHANGELOG section and checks the published notes still do.\n\n## Install\n\n1. Install [Morphe Manager](https://github.com/MorpheApp/morphe-manager) 1.34.0 or newer.\n2. Add HushTelegram as a patch source: https://morphe.software/add-source?github=SysAdminDoc%2FHushTelegram\n3. Get Telegram **12.10.6**, version code 71129, from [APKMirror's Telegram (Web version) page](https://www.apkmirror.com/apk/telegram-fz-llc/telegram-web-version/telegram-web-version-12-10-6-release/) and pick the universal APK. It's telegram.org's own build. The Download button on telegram.org now gives you 13.0.0, so use the APKMirror link for this release. If you already have the official beta 12.10.7, build 71239, you can patch that instead. The patched app needs Android 9 or newer.\n4. Coming from v0.0.11? Patch again and install over it with the same Morphe Manager signing key. New to HushTelegram? Uninstall the stock Telegram first, since Android won't put one over the other. Your chats come back when you sign in, but secret chats don't. Back up Morphe Manager's signing key after your first patch. You'll need it for every update.\n5. If Telegram won't send you a login code, register your own app at [my.telegram.org/apps](https://my.telegram.org/apps). Use only letters and numbers in the short name. Then select **Use registered Telegram API credentials**, fill in `apiId` and `apiHash`, and patch again. The result installs over your current HushTelegram build. Keep both values private.\n6. For notifications, open Telegram's Settings, then Notifications and Sounds, and turn on Keep-Alive Service and Background Connection.\n7. To change HushTelegram's switches, open Telegram's Settings and tap HushTelegram settings.\n\nThe `.mpp` download is a patch bundle, not a Telegram APK. [Installation instructions](https://github.com/SysAdminDoc/HushTelegram#install).\n\n## Validation\n\n786 runtime tests and 364 patch tests passed locally, along with both Android lints. All 56 patches applied without forcing to Telegram 12.10.6 and to the 12.10.7 beta, build 71239. The release receipt checked each patched app's manifest, native libraries, resources and alignment.\n",
+  "release_tag": "v0.0.12",
+  "release_date": "2026-10-10T03:34:30Z",
   "isPreRelease": false
 }
