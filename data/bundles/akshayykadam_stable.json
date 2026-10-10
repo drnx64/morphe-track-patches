@@ -1,75 +1,99 @@
 {
   "bundle": "akshayykadam",
   "channel": "stable",
-  "repo_url": "https://github.com/Akshayykadam/PixelBoard",
-  "created_at": "2026-10-06T14:03:18Z",
-  "version": "18.4.1-Stable",
-  "description": "### PixelBoard Patches (v1.0.5)\n\n* **Gemini Rambler Voice Typing**: Auto-cleanup, sentence restructuring, auto-punctuation, and idle battery drain fix\n* **In-Line AI Writing Assistant**: Proofread, rephrase, and tone switcher\n* **Writing Tools V2 Gating**: Suggested style chips, Describe your edit bar, and hardware model gating\n* **Backend Type Selector**: Device-gated Gboard Server, AICore, and Astrea backend selection\n* **Google Signature Bypass**: Bypass signature whitelist checks\n* **Standalone Coexistence**: Side-by-side installation with stock Gboard\n\nSupports Gboard v18.4.1 (Release) and v18.3.1 (Release / Beta).",
+  "repo_url": "https://github.com/Akshayykadam/Pixel-Camera",
+  "created_at": "2026-10-09T18:07:20Z",
+  "version": "1.0.4",
+  "description": "Pixel Camera 11.1: 13 Camera Looks (Sauce/Tomte), Viewfinder Quick Access Controls, Pro Manual Controls (Focus, Shutter Speed, ISO, Peaking), 10x Quick Zoom Button, Creator Suite, Clone Companion, Permanent Portrait Mode Fix, Default Gallery Unblock, and Pixel 10 12MP Photo Saving Fix.",
   "apps": [
     {
-      "app_name": "Latin",
-      "package": "com.google.android.inputmethod.latin",
+      "app_name": "Pixel Camera",
+      "package": "com.google.android.googlecamera",
       "patches": [
         {
-          "name": "AI Writing Tools",
-          "description": "Enable AI writing tools with support for all languages.",
+          "name": "Camera Looks Backport",
+          "description": "Enables Google Pixel 11's 10 signature Camera Looks (Sauce & Tomte) on Pixel 6 through Pixel 10, fixes Portrait Mode blur on all cameras, and resolves Pixel 10 photo saving.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a",
-            "18.3.1.977415014-beta-arm64-v8a",
-            "18.3.1.977415014-release-arm64-v8a",
-            "18.4.1.985164140-release-arm64-v8a"
+            "11.1.040.982810059.19"
           ]
         },
         {
-          "name": "Add Gboard Signature Bypass",
-          "description": "Bypass Gboard signature whitelist checks and force them to pass.",
+          "name": "Viewfinder Quick Access Controls",
+          "description": "Enables customizable Left/Right viewfinder quick-access shortcut slots, interactive 10-tick Brightness & Shadow slider with tap-focus guards, smooth shadow curve, and proper tone pipeline reset.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a",
-            "18.3.1.977415014-beta-arm64-v8a",
-            "18.3.1.977415014-release-arm64-v8a",
-            "18.4.1.985164140-release-arm64-v8a"
+            "11.1.040.982810059.19"
           ]
         },
         {
-          "name": "Advanced Voice Typing",
-          "description": "Enable Advanced Voice Typing with automatic punctuation and rambler mode.",
+          "name": "10x Viewfinder Quick Zoom",
+          "description": "Unlocks the discrete 10x quick zoom button on viewfinder in Photo mode.",
           "use": true,
           "options": [],
           "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a",
-            "18.3.1.977415014-beta-arm64-v8a",
-            "18.3.1.977415014-release-arm64-v8a",
-            "18.4.1.985164140-release-arm64-v8a"
+            "11.1.040.982810059.19"
           ]
         },
         {
-          "name": "Package Rename",
-          "description": "Rename the package to com.akshaykadam.pixelboard and allow a custom app name so it can be installed alongside the official Gboard.",
+          "name": "Pixel Camera Creator Suite",
+          "description": "Enables Teleprompter HUD (Biotite), Live Audio VU Meter (Mica), and Social Framing Guides (Slate).",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.1.040.982810059.19"
+          ]
+        },
+        {
+          "name": "Pro Manual Controls",
+          "description": "Enables Pro Manual Controls (Manual Focus, Shutter Speed, ISO, Focus Peaking, and Live Badges) on non-Pro Pixel models.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.1.040.982810059.19"
+          ]
+        },
+        {
+          "name": "Permanent Portrait Mode Fix",
+          "description": "Fixes front camera total blur and rear camera flat/bokeh-less portraits by routing portrait processing to Google's pure-TFLite monocular depth pipeline across all cameras.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.1.040.982810059.19"
+          ]
+        },
+        {
+          "name": "Pixel 10 Photo Saving Fix",
+          "description": "Resolves Pixel 10 & Pro 12MP photos not saving by disabling failing Flare Removal (ceftazidime) and Eclipse AE, mapping binned RAW stream dimensions, and guarding telephoto streams.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "11.1.040.982810059.19"
+          ]
+        },
+        {
+          "name": "Pixel Camera Clone (Non-Root)",
+          "description": "Changes package identifier to com.google.android.GoogleCamera.morphe to allow side-by-side installation alongside stock Camera.",
           "use": true,
           "options": [
             {
-              "key": "app_display_name",
-              "description": ""
+              "key": "packageName",
+              "description": "Package name to use for the cloned app."
             }
           ],
           "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a",
-            "18.3.1.977415014-beta-arm64-v8a",
-            "18.3.1.977415014-release-arm64-v8a",
-            "18.4.1.985164140-release-arm64-v8a"
+            "11.1.040.982810059.19"
           ]
         }
       ]
     }
   ],
   "patches_name": "Akshayykadam",
-  "fingerprint": "7c12e2115a228c867f716e65e1bc833177d64fb9ca735c3f7b44fb63d54b8757",
-  "release_notes": "## Summary\r\nPixelBoard v18.4.1 (Patch Bundle v1.0.5) brings the rock-solid in-line AI feature set directly to Google's latest **Gboard v18.4.1 Release** (`18.4.1.985164140-release-arm64-v8a`), introducing **Writing Tools V2 Gating**, **Device-Gated AI Inference Backend Selection**, and idle battery optimizations for Gemini Rambler Voice Typing.\r\n\r\n---\r\n\r\n## What's New & Changed\r\n\r\n### 1. Updated to Gboard v18.4.1 Release Base\r\n- Rebased primary build to official **Gboard 18.4.1 Release** (`18.4.1.985164140-release-arm64-v8a`, ~122 MB base).\r\n- Fully supports arm64-v8a devices running Android 10 through Android 16 Preview.\r\n- Backward compatibility maintained for Gboard 18.3.1.\r\n\r\n### 2. Writing Tools V2 Gating (Beta) (New & Only in Google Pixel)\r\n- **\"Suggested\" Style Chips & Freeform Prompt Bar**: Unlocks Google's modern writing tools interface with quick style chips and \"Describe your edit\".\r\n- **Hardware & Model Eligibility Gating**: Automatically hides V2 elements on unsupported devices to prevent errors or UI glitches.\r\n- **Dedicated Advanced Settings Toggle**: Toggle Writing Tools V2 inside Advanced Settings with a Material You **BETA** badge.\r\n\r\n### 3. Device-Gated AI Inference Backend Selector (Beta) ((New & Only in Google Pixel)\r\n- On supported Pixel devices (e.g. Pixel 8 Pro / Pixel 9 series), users can select their preferred inference backend:\r\n  - `GBOARD_SERVER` (Google Cloud Server Inference)\r\n  - `PRIVATE_INFERENCE_AICORE` (On-Device Private Android AICore)\r\n  - `PRIVATE_INFERENCE_ASTREA` (On-Device Astrea Framework)\r\n- Dynamically hidden on unsupported hardware for a clean, native experience.\r\n\r\n### 4. Gemini \"Rambler\" Natural Voice Typing & Battery Fix\r\n- Unlocked Google's state-of-the-art Rambler dictation model.\r\n- **Speech Cleanup**: Automatically filters hesitation, stutters, and filler words (\"um\", \"ah\", \"like\").\r\n- **Thought Correction**: Seamlessly corrects self-revisions on the fly.\r\n- **Context-Aware Punctuation**: Real-time auto-punctuation and capitalization.\r\n- **Rambler ASR Battery & Service Lifecycle Fix**: Eliminated background `GoogleAsrService` (`com.google.android.tts`) service binder persistence after closing the keyboard by enforcing `immediately_end_dictation_on_keyboard_hidden=true` (credits: @PaoloDelCasale).\r\n\r\n### 5. Offline Language Pack Download Loop Fix (#5)\r\n- **Eliminated 150 req/sec Download Loop**: Fixed an aggressive loop where Gboard repeatedly retried downloading offline language packs for secondary dictation languages (e.g., Italian + English) after Google Speech (`com.google.android.tts`) rejected silent downloads for the modified package ID.\r\n- **In-Process Download Guard**: Integrated `GboardLanguageDownloadGuard` to ensure each language pack download is requested at most once per process, slashing idle CPU usage from ~15% to 0.02% and reducing battery drain from 3.68 mAh/h to 0.43 mAh/h (investigation & candidate fix: @PaoloDelCasale).\r\n- **Dual-Version Support**: Bytecode patch targets both Gboard 18.3.1 (`Lsnm;->c`) and 18.4.1 (`Lsqk;->c`).\r\n\r\n### 6. Fix Advanced Voice Typing Reboot Persistence (#4)\r\n- **Immediate Reboot Readiness**: Resolved an issue where Advanced Voice Typing did not initialize on cold boot (e.g., on Xiaomi HyperOS / Android 14–16) until \"Restart Gboard\" was tapped manually.\r\n- **Direct Boot & Device-Protected Storage**: Migrated PixelBoard settings to Device-Protected (DE) storage with automatic seamless migration from Credential-Encrypted (CE) storage, ensuring preferences are accessible as soon as Gboard's `directBootAware` IME service launches.\r\n- **Selector State De-Poisoning**: Fixed runtime selection gate so unconfigured/boot state defaults to enabled, and guarded against spurious background checks (`Laaeo.a`) overwriting the active selection to `false` during boot or keyboard typing sessions.\r\n\r\n---\r\n\r\n## Release Assets\r\n\r\n| File | Size | Description |\r\n| :--- | :--- | :--- |\r\n| **PixelBoard-18.4.1.apk.apk** | ~127 MB | Ready-to-install signed Stable APK (v18.4.1 release base) |\r\n| **PixelBoard.mpp** | ~1.4 MB | Standalone patch bundle (v1.0.5) for Morphe Manager |\r\n\r\n---\r\n\r\n## Installation\r\n\r\n### Option 1: Direct APK Installation (Recommended)\r\n1. Download `PixelBoard-18.4.1.apk` directly to your Android device.\r\n2. Tap the downloaded APK in your file manager or browser downloads.\r\n3. Allow installation from unknown sources if prompted, and complete installation.\r\n4. Enable PixelBoard in **Settings > System > Languages & input > On-screen keyboard**.\r\n\r\n### Option 2: ADB Sideload\r\n```bash\r\nadb install -r PixelBoard-18.4.1.apk\r\nadb shell am force-stop com.akshaykadam.pixelboard\r\n```\r\n\r\n### Option 3: Patch via Morphe Manager\r\nAdd the custom patch source in Morphe Manager:\r\n```text\r\nhttps://raw.githubusercontent.com/Akshayykadam/PixelBoard/main/patches-bundle.json\r\n```\r\nSelect stock Gboard `v18.4.1.985164140-release-arm64-v8a` (or `v18.3.1`) and apply patches.\r\n\r\n---\r\n\r\n## Compatibility\r\n- Target Package: `com.google.android.inputmethod.latin`\r\n- Target Versions:\r\n  - `18.4.1.985164140-release-arm64-v8a` (Primary Stable / Recommended)\r\n  - `18.3.1.977415014-release-arm64-v8a`\r\n- Architecture: `arm64-v8a`\r\n- Minimum Android Version: Android 10 (API 29)+\r\n",
-  "release_tag": "v18.4.1-Stable",
-  "release_date": "2026-10-06T14:03:18Z",
+  "fingerprint": "184115afcfd275b9123a02a1666a86c3f7a5d4d973a7a5969c90b0996e9ca3ff",
+  "release_notes": "**Release Tag:** `1.0.4`  \r\n**Target App:** Google Pixel Camera `11.1.040.982810059.19` (APKM -> https://www.apkmirror.com/apk/google-inc/camera/pixel-camera-11-1-040-982810059-19-release/)  \r\n**Supported Devices:** Google Pixel 6, 7, 8, 9, 10 series (Tensor G1 – G5)\r\n\r\n---\r\n\r\n## What's New in v1.0.4\r\n\r\n### 1. All 13 Camera Looks Unlocked (3 New Looks Added)\r\nIn addition to the 10 original signature Looks, all **3 brand-new Pixel Camera 11.1 Looks** are now fully enabled and integrated directly into the carousel UI:\r\n* **Flat** (`qvd` / *Pesto*): Low-contrast, high dynamic range flat color profile optimized for post-shot color grading.\r\n* **Buffalo** (`qvg` / *Unflat*): Warm, punchy earth tones with balanced contrast and expanded dynamic latitude.\r\n* **Dijon** (`qvi` / *Yellow-Green Faded*): Nostalgic retro analog look with olive-tinted highlights and muted shadows.\r\n* *Total available Looks:* **13** (Original, Natural, Vanilla, Editorial, Shadows, Velvet, Classic, Digi, Black Tie, Minimal, Flat, Buffalo, Dijon).\r\n\r\n---\r\n\r\n### 2. Viewfinder Dual Sliders & Universal Bidirectional Sync\r\n* **Viewfinder Tap-to-Focus Sliders Restored:** Resolved the issue where the dual sliders were missing from the viewfinder. Sliders now reliably appear on tap-to-focus across all modes.\r\n* **Full Dynamic Exposure Range:** Restored full range on both sliders:\r\n  * **Brightness:** -4.0 to +4.0 stops.\r\n  * **Shadow:** Linearized HDR+ shadow boost up to 15.3x.\r\n* **Bidirectional Synchronization:** Viewfinder on-screen knobs and bottom sheet drawers now share the exact same underlying HAL observables—scrubbing either slider updates the other instantly in real time.\r\n* **Camera2 HAL Preview Integration:** Decoupled `DualEvCtrl` from twilight flags (`ptm.g = false`), allowing real-time tone mapping previews directly in the viewfinder.\r\n\r\n---\r\n\r\n### 3. Pixel 10 & Pro 12MP Photo Saving Fix\r\n* Fixed an issue on Pixel 10 / Tensor G5 hardware where 12MP captures failed to save or froze during post-processing.\r\n* Disabled incompatible Tensor G5-exclusive pipelines (`camera.ceftazidime = 0` Flare Removal and `camera.use_eclipse = 0` Eclipse AE).\r\n* Injected fallbacks for binned RAW stream dimensions (`tele_binned_raw_width` = 2016, `tele_binned_raw_height` = 1512, `binned_row_start` = 0) to ensure zero capture drops.\r\n\r\n---\r\n\r\n### 4. Complete Feature Matrix\r\n* **Permanent Portrait Mode Fix:** Pure-TFLite monocular depth routing (`midasnet`, `portrait_matting_mask`) fixing front camera blur and rear camera bokeh drops.\r\n* **Pro Manual Controls:** Unlocks Manual Focus, Shutter Speed, ISO, and Focus Peaking on all supported models.\r\n* **10x Quick Zoom:** Discrete 10x viewfinder zoom toggle in Photo mode.\r\n* **Creator Suite:** Teleprompter HUD (`biotite`), Live Audio VU Meter (`mica`), and Social Framing Guides (`slate`).\r\n* **Non-Root App Clone:** Installable side-by-side with stock Pixel Camera (`com.google.android.GoogleCamera.morphe`).\r\n\r\n---\r\n\r\n##  How to Install via Morphe Manager\r\n\r\n1. Download and install the latest **Morphe Manager** on your device.\r\n2. Download official **Pixel Camera 11.1** APK (`11.1.040.982810059.19`). \r\n3. Download **`morphe-patches-pixelcamera-1.0.4.mpp`** (or `patches-1.0.4.mpp`) from the Assets below.\r\n4. In Morphe Manager:\r\n   * Select the downloaded Pixel Camera APK.\r\n   * Load the patch bundle (`.mpp`).\r\n   * Select your preferred patches and tap **Patch**.\r\n5. Install the generated APK and enjoy!\r\n\r\n---\r\n\r\n## Assets\r\n\r\n* **`morphe-patches-pixelcamera-1.0.4.mpp`** — Morphe patch bundle\r\n* **`patches-1.0.4.mpp`** — Standalone bundle mirror\r\n",
+  "release_tag": "1.0.4",
+  "release_date": "2026-10-09T18:07:20Z",
   "isPreRelease": false
 }

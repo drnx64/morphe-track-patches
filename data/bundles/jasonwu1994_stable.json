@@ -2,14 +2,23 @@
   "bundle": "jasonwu1994",
   "channel": "stable",
   "repo_url": "https://github.com/jasonwu1994/Gboard-patches",
-  "created_at": "2026-10-04T16:37:59",
-  "version": "v3.12.0",
-  "description": "### ✨ New Features\n\n* **Gboard:** add the `Frosted Glass` patch, bringing real-time background blur and customizable theme transparency to the keyboard. 👀\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Frosted Glass` Patch，為鍵盤加入即時背景模糊效果，並支援自訂主題透明度。👀\n",
+  "created_at": "2026-09-01T05:51:23Z",
+  "version": "3.9.0",
+  "description": "### ✨ New Features\n\n* **Gboard:** add the `Frosted Glass` patch, bringing real-time background blur and customizable theme transparency to the keyboard. 👀\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Frosted Glass` Patch，為鍵盤加入即時背景模糊效果，並支援自訂主題透明度。👀",
   "apps": [
     {
       "app_name": "Latin",
       "package": "com.google.android.inputmethod.latin",
       "patches": [
+        {
+          "name": "AI Writing Tools",
+          "description": "啟用 AI 撰寫工具，支援所有語言\nEnable AI writing tools with support for all languages.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
         {
           "name": "Access Points menu style",
           "description": "切換新版或舊版 Access Points 選單樣式\nSwitch between the new and legacy Access Points menu styles.",
@@ -31,15 +40,6 @@
         {
           "name": "Advanced Voice Typing",
           "description": "啟用進階語音輸入（包含自動標點功能），並另外為不支援進階語音輸入的繁體中文語音啟用自動標點\nEnable Advanced Voice Typing with automatic punctuation, and separately enable automatic punctuation for Traditional Chinese voice typing, which does not support Advanced Voice Typing.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "AI Writing Tools",
-          "description": "啟用 AI 撰寫工具，支援所有語言\nEnable AI writing tools with support for all languages.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -128,24 +128,6 @@
           ]
         },
         {
-          "name": "Enable accessibility layout",
-          "description": "啟用無障礙鍵盤配置\nEnable accessibility layout.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "Enable cursor trackpad mode",
-          "description": "長按空白鍵開啟游標觸控板與鎖定模式\nLong-press the space bar to use cursor trackpad and lock modes.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
           "name": "Enable Inline Autofill Suggestions",
           "description": "啟用內嵌自動填入建議\nEnable Inline Autofill Suggestions",
           "use": true,
@@ -157,6 +139,24 @@
         {
           "name": "Enable OCR / Scan Text",
           "description": "啟用 OCR / 掃描文字功能，支援 拉丁、中文、日文、韓文 與 天城文 辨識後端\nEnable the OCR / Scan Text feature with Latin, Chinese, Japanese, Korean, and Devanagari recognition backends.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Enable accessibility layout",
+          "description": "啟用無障礙鍵盤配置\nEnable accessibility layout.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
+          "name": "Enable cursor trackpad mode",
+          "description": "長按空白鍵開啟游標觸控板與鎖定模式\nLong-press the space bar to use cursor trackpad and lock modes.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -182,6 +182,15 @@
           ]
         },
         {
+          "name": "FTP Server",
+          "description": "新增區域網路 FTP 伺服器，支援檔案瀏覽、傳輸與下載續傳\nAdd a LAN FTP server with file browsing, transfers, and download resume.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "18.0.3.954559732-release-arm64-v8a"
+          ]
+        },
+        {
           "name": "Floating Web Search",
           "description": "直接從 Gboard 開啟懸浮網頁，快速搜尋需要的資訊。\nOpen a floating web page directly from Gboard to quickly search for the information you need.",
           "use": true,
@@ -193,15 +202,6 @@
         {
           "name": "Frosted Glass",
           "description": "為鍵盤加入即時背景模糊與自訂主題透明度。\nAdd live background blur and custom-theme opacity to the keyboard.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "18.0.3.954559732-release-arm64-v8a"
-          ]
-        },
-        {
-          "name": "FTP Server",
-          "description": "新增區域網路 FTP 伺服器，支援檔案瀏覽、傳輸與下載續傳\nAdd a LAN FTP server with file browsing, transfers, and download resume.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -407,8 +407,8 @@
   ],
   "patches_name": "Gboard Patches",
   "fingerprint": "82c0fb43065cf52a94e5589a01d54bf9b68f95525565739c043674c10bdfcc07",
-  "release_notes": "### ✨ New Features\n\n* **Gboard:** add the `Frosted Glass` patch, bringing real-time background blur and customizable theme transparency to the keyboard. 👀\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Frosted Glass` Patch，為鍵盤加入即時背景模糊效果，並支援自訂主題透明度。👀\n",
-  "release_tag": "v3.12.0",
-  "release_date": "2026-10-04T16:37:59Z",
+  "release_notes": "### ✨ New Features\n\n* **Gboard:** add the `Simple Calculator` patch. Enter an expression directly to display both the expression and its result in Gboard's suggestion strip.\n\n### ✨ 新功能\n\n* **Gboard:** 新增 `Simple Calculator` Patch；直接輸入算式，即可在 Gboard 推薦列顯示算式與計算結果。\n",
+  "release_tag": "v3.9.0",
+  "release_date": "2026-09-01T05:51:23Z",
   "isPreRelease": false
 }
