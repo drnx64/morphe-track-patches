@@ -1,0 +1,119 @@
+{
+  "bundle": "ggyasin",
+  "channel": "dev",
+  "repo_url": "https://github.com/ggYasin/ggyasin-morphe-patches",
+  "created_at": "2026-09-27T15:14:13Z",
+  "version": "1.6.1-dev.3",
+  "description": "## [1.6.0](https://github.com/ggYasin/ggyasin-morphe-patches/compare/v1.5.0...v1.6.0) (2026-09-27)\n\n### ✨ New Features\n\n* support Offline Games 3.15.3 ARM64 ([6f1811c](https://github.com/ggYasin/ggyasin-morphe-patches/commit/6f1811cab2c06dd419aeaf5313ee0276bda8a539))",
+  "apps": [
+    {
+      "app_name": "Offline Games",
+      "package": "com.jindoblu.offlinegames",
+      "patches": [
+        {
+          "name": "Fast Offline Games startup",
+          "description": "Stops the loading screen waiting for Firebase/Remote Config and country lookup, and initializes ads in the background. Network requests may continue after startup.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.15.3",
+            "3.14.1"
+          ]
+        },
+        {
+          "name": "In-house ad not clickable",
+          "description": "Stops the in-house ad from opening the Play Store when tapped, so an accidental click does not leave the game. The ad and its close button are otherwise unchanged.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.15.3",
+            "3.14.1"
+          ]
+        },
+        {
+          "name": "In-house ad only",
+          "description": "Stops Offline Games from requesting rewarded ads, so the game always falls back to its own in-house ad. Banners and interstitials are untouched.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.15.3",
+            "3.14.1"
+          ]
+        },
+        {
+          "name": "Instant in-house ad close",
+          "description": "Shows the house-ad close button on opening, hides the countdown, and initializes its counter as complete. Loads patched native code for mounted installs.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "3.15.3",
+            "3.14.1"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "9GAG",
+      "package": "com.ninegag.android.app",
+      "patches": [
+        {
+          "name": "Deactivate Firebase Analytics (9GAG 8.23.0)",
+          "description": "Optional: disables Firebase Analytics collection using its documented manifest setting. Does not remove Firebase services.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "8.23.0"
+          ]
+        },
+        {
+          "name": "Remove 9GAG ads, promoted posts and trackers (8.23.0)",
+          "description": "Disables ad gates and bottom-banner initialization, filters promoted feed posts, and blocks listed ad/tracking hosts.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "8.23.0"
+          ]
+        }
+      ]
+    },
+    {
+      "app_name": "ZenSMS",
+      "package": "com.zensms.app",
+      "patches": [
+        {
+          "name": "Expanded OTP detection",
+          "description": "Extends ZenSMS's original OTP extractor with universal and Persian patterns.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.2.04"
+          ]
+        },
+        {
+          "name": "RTL SMS lists",
+          "description": "Adds RTL conversation rows while keeping conversation titles left to right.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.2.04"
+          ]
+        },
+        {
+          "name": "enable premium state",
+          "description": "Makes synchronous and reactive premium checks report true.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "1.2.04"
+          ]
+        }
+      ]
+    }
+  ],
+  "patches_name": "ggyasin-morphe-patches",
+  "fingerprint": "ee0d03ccc4e3c682497f10f0ba4976143de06a995dfea54141dd4bd820a0973e",
+  "release_notes": "## [1.6.1-dev.3](https://github.com/ggYasin/ggyasin-morphe-patches/compare/v1.6.1-dev.2...v1.6.1-dev.3) (2026-09-27)\n\n### 🐛 Bug Fixes\n\n* version native loader classes when upgrading patched APKs ([27b0967](https://github.com/ggYasin/ggyasin-morphe-patches/commit/27b096732fdc2eab3c93285cfd1295d9e0b6408b))\n",
+  "release_tag": "v1.6.1-dev.3",
+  "release_date": "2026-09-27T15:14:13Z",
+  "isPreRelease": true
+}
