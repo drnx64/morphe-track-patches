@@ -2,9 +2,9 @@
   "bundle": "imxeren",
   "channel": "dev",
   "repo_url": "https://gitlab.com/IMXEren/mix-patches",
-  "created_at": "2026-10-30T19:36:07.194Z",
-  "version": "2.0.0-dev.1",
-  "description": "## [2.0.0-dev.1](https://gitlab.com/IMXEren/mix-patches/compare/v1.9.0-dev.15...v2.0.0-dev.1) (2026-10-30)\n\n### ⚠ BREAKING CHANGES\n\n* **morphe:** Morphe patch bundles require the v2 patcher toolchain. This requirement was introduced in 0267050dd without a breaking-change footer.\n\n* **morphe:** upgrade patcher and patches library to 2.1.0 ([12e18ed](https://gitlab.com/IMXEren/mix-patches/commit/12e18ed5c30178c0e0a8d0ddadafa47c55784c1c))\n",
+  "created_at": "2026-10-31T16:49:35.347Z",
+  "version": "2.0.0-dev.4",
+  "description": "## [2.0.0-dev.4](https://gitlab.com/IMXEren/mix-patches/compare/v2.0.0-dev.3...v2.0.0-dev.4) (2026-10-31)\n\n### 🐛 Bug Fixes\n\n* **sync:** recover gallery images with missing sources ([601113a](https://gitlab.com/IMXEren/mix-patches/commit/601113a483cc44ed37bb183c96d50dad7a70eeaf))\n",
   "apps": [
     {
       "app_name": "iPay Sri Lanka",
@@ -54,6 +54,15 @@
           ]
         },
         {
+          "name": "Enable predictive back gesture",
+          "description": "Use Android's predictive back navigation.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "v23.06.30-13:39"
+          ]
+        },
+        {
           "name": "Fix /api/info endpoint",
           "description": "Emulates /api/info.json post lookups via /comments/<id>.json, indirectly fixing Reddit gallery loading.",
           "use": true,
@@ -65,6 +74,15 @@
         {
           "name": "Fix /s/ links",
           "description": "",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "v23.06.30-13:39"
+          ]
+        },
+        {
+          "name": "Fix blocked Reddit API requests",
+          "description": "Retries Reddit's network-security blocks through the matching web session; dedicated endpoint fixes may answer requests first.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -182,6 +200,15 @@
         {
           "name": "Hacker News Feed",
           "description": "Integrates Hacker News (news.ycombinator.com) into Reddit Sync as a custom feed.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "v23.06.30-13:39"
+          ]
+        },
+        {
+          "name": "Keep Reddit web session cookies",
+          "description": "Keeps web sessions when opening links and isolates new account sign-in.",
           "use": true,
           "options": [],
           "compatible_versions": [
@@ -316,10 +343,10 @@
     }
   ],
   "patches_name": "Mix Patches",
-  "fingerprint": "9d7c3aeb3583af29216ef783bd072148fee54a5c39f89796fc5dd96ceeed7824",
-  "release_notes": "## [2.0.0-dev.1](https://gitlab.com/IMXEren/mix-patches/compare/v1.9.0-dev.15...v2.0.0-dev.1) (2026-10-30)\n\n### ⚠ BREAKING CHANGES\n\n* **morphe:** Morphe patch bundles require the v2 patcher toolchain. This requirement was introduced in 0267050dd without a breaking-change footer.\n\n* **morphe:** upgrade patcher and patches library to 2.1.0 ([12e18ed](https://gitlab.com/IMXEren/mix-patches/commit/12e18ed5c30178c0e0a8d0ddadafa47c55784c1c))\n",
-  "release_tag": "v2.0.0-dev.1",
-  "release_date": "2026-10-30T19:36:07.194Z",
+  "fingerprint": "8baf564c4320cbe4408e9478fa03aff42a21b17bd593b96d7c82961427f302e9",
+  "release_notes": "## [2.0.0-dev.4](https://gitlab.com/IMXEren/mix-patches/compare/v2.0.0-dev.3...v2.0.0-dev.4) (2026-10-31)\n\n### 🐛 Bug Fixes\n\n* **sync:** recover gallery images with missing sources ([601113a](https://gitlab.com/IMXEren/mix-patches/commit/601113a483cc44ed37bb183c96d50dad7a70eeaf))\n",
+  "release_tag": "v2.0.0-dev.4",
+  "release_date": "2026-10-31T16:49:35.347Z",
   "isPreRelease": true,
   "stars": 6,
   "avatarUrl": "",

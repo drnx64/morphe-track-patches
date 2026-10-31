@@ -2,9 +2,9 @@
   "bundle": "d-moniak",
   "channel": "dev",
   "repo_url": "https://github.com/SatanMerde/D-moniakPatches",
-  "created_at": "2026-10-31T11:41:29",
-  "version": "1.58.1",
-  "description": "## [1.58.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.58.0...v1.58.1) (2026-10-31)\n\n### 🐛 Bug Fixes\n\n* **virtualmaster:** reverse engineer APK v3.2.86, fix Pro entitlement and AdMob hooks ([8eacf9c](https://github.com/SatanMerde/D-moniakPatches/commit/8eacf9c3d7420d553ab2d5da450bf0fcd6e8e6ff))",
+  "created_at": "2026-10-31T16:08:52",
+  "version": "1.62.1",
+  "description": "## [1.62.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.62.0...v1.62.1) (2026-10-31)\n\n### 🐛 Bug Fixes\n\n* **silt:** fix PAD asset pack resolution to eliminate infinite loading freeze ([bfc1693](https://github.com/SatanMerde/D-moniakPatches/commit/bfc169316dd65a9cc51c9746c3d78e8e6690a13b))",
   "apps": [
     {
       "app_name": "Moises: The Musician's AI App",
@@ -2438,6 +2438,60 @@
       ]
     },
     {
+      "app_name": "CapCut (Alt)",
+      "package": "com.lemon.lv",
+      "patches": [
+        {
+          "name": "Bypass Integrity & Update Dialog - CapCut (Experimental)",
+          "description": "⚠️ [Experimental / Untested] Bypasses CapCut tamper detection, security advisory notice, and force update popups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Disable Ending Watermark & Ad Prompts - CapCut (Experimental)",
+          "description": "⚠️ [Experimental / Untested] Disables default ending clip watermark insertion, strips in-app advertisements, upgrade subscription banners, and paywall popups in CapCut.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Unlock Pro & VIP Effects - CapCut (Experimental)",
+          "description": "⚠️ [Experimental / Untested] Unlocks CapCut Pro filters, VIP transitions, premium audio effects, high-bitrate export settings, and removes default ending watermark prompts by hooking VIP user entitlements and Google Play Billing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
+      "app_name": "CapCut - Video Editor",
+      "package": "com.lemon.lvoverseas",
+      "patches": [
+        {
+          "name": "Bypass Integrity & Update Dialog - CapCut (Experimental)",
+          "description": "⚠️ [Experimental / Untested] Bypasses CapCut tamper detection, security advisory notice, and force update popups.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Disable Ending Watermark & Ad Prompts - CapCut (Experimental)",
+          "description": "⚠️ [Experimental / Untested] Disables default ending clip watermark insertion, strips in-app advertisements, upgrade subscription banners, and paywall popups in CapCut.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        },
+        {
+          "name": "Unlock Pro & VIP Effects - CapCut (Experimental)",
+          "description": "⚠️ [Experimental / Untested] Unlocks CapCut Pro filters, VIP transitions, premium audio effects, high-bitrate export settings, and removes default ending watermark prompts by hooking VIP user entitlements and Google Play Billing.",
+          "use": true,
+          "options": [],
+          "compatible_versions": []
+        }
+      ]
+    },
+    {
       "app_name": "Letterboxd",
       "package": "com.letterboxd.letterboxd",
       "patches": [
@@ -3396,75 +3450,6 @@
       ]
     },
     {
-      "app_name": "Spotify: Music and Podcasts",
-      "package": "com.spotify.music",
-      "patches": [
-        {
-          "name": "Spicetify AMOLED Black Theme - Spotify (Experimental)",
-          "description": "⚠️ [Experimental / Untested] Implements an OLED True Black (#000000) theme for Spotify Mobile, replacing dark-grey backgrounds across Android resources (res/values/colors.xml), Jetpack Compose Encore design system (64-bit literals), obfuscated Dalvik bytecode (32-bit & 24-bit literals), semantic theme methods, and string tables for maximum contrast and battery savings.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.1.84.2231"
-          ]
-        },
-        {
-          "name": "Spicetify AMOLED Black Theme Bytecode (Experimental)",
-          "description": "Bytecode engine for Spicetify AMOLED Black Theme",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.1.84.2231"
-          ]
-        },
-        {
-          "name": "Spicetify Community Addons & Settings - Spotify (Experimental)",
-          "description": "⚠️ [Experimental / Untested] Attempts to expose developer lab flags. NOTE: Spicetify extensions are made for Desktop and cannot run natively on Android without an LSPosed/Xposed framework.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.1.84.2231"
-          ]
-        },
-        {
-          "name": "Spicetify Custom Accent Color - Spotify (Experimental)",
-          "description": "⚠️ [Experimental / Untested] Replaces Spotify brand green (#1DB954 / #1ED760) with custom Cyberpunk Electric Purple (#8A2BE2) across Android resources (res/values/colors.xml), Jetpack Compose Encore design system (64-bit literals), obfuscated Dalvik bytecode (32-bit & 24-bit literals including Lottie float rounding variations and checkmarks), semantic theme methods, and string tables.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.1.84.2231"
-          ]
-        },
-        {
-          "name": "Spicetify Custom Accent Color Bytecode (Experimental)",
-          "description": "Bytecode engine for Spicetify Custom Accent Color",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.1.84.2231"
-          ]
-        },
-        {
-          "name": "Spicetify Declutter UI - Spotify (Experimental)",
-          "description": "⚠️ [Experimental / Untested] Attempts to hide Premium upgrade prompts and promotional elements. NOTE: Spotify uses server-driven UI and code obfuscation; some banners are injected directly from Spotify backend.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.1.84.2231"
-          ]
-        },
-        {
-          "name": "Unlock Spotify Premium & Playback Restrictions - Spotify (Experimental)",
-          "description": "⚠️ [Experimental / Untested] Unlocks Spotify Premium features: unlimited skips, on-demand playback without forced shuffle, seek/scrub bar support, track repeat, and removes audio/visual advertisements.",
-          "use": true,
-          "options": [],
-          "compatible_versions": [
-            "9.1.84.2231"
-          ]
-        }
-      ]
-    },
-    {
       "app_name": "Strava: Run, Bike, Walk",
       "package": "com.strava",
       "patches": [
@@ -4386,10 +4371,10 @@
     }
   ],
   "patches_name": "D-moniak Patches",
-  "fingerprint": "b46cf5890c45b6411e66546565902768b7190e9c1a6a9f7efbf9438ab5181aa8",
-  "release_notes": "## [1.58.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.58.0...v1.58.1) (2026-10-31)\n\n### 🐛 Bug Fixes\n\n* **virtualmaster:** reverse engineer APK v3.2.86, fix Pro entitlement and AdMob hooks ([8eacf9c](https://github.com/SatanMerde/D-moniakPatches/commit/8eacf9c3d7420d553ab2d5da450bf0fcd6e8e6ff))\n",
-  "release_tag": "v1.58.1",
-  "release_date": "2026-10-31T11:42:50Z",
+  "fingerprint": "b91065f62d52d6c5154e3342fbdd6822e05da313e9f881eb6969d2da93cc66d2",
+  "release_notes": "## [1.62.1](https://github.com/SatanMerde/D-moniakPatches/compare/v1.62.0...v1.62.1) (2026-10-31)\n\n### 🐛 Bug Fixes\n\n* **silt:** fix PAD asset pack resolution to eliminate infinite loading freeze ([bfc1693](https://github.com/SatanMerde/D-moniakPatches/commit/bfc169316dd65a9cc51c9746c3d78e8e6690a13b))\n",
+  "release_tag": "v1.62.1",
+  "release_date": "2026-10-31T16:10:06Z",
   "isPreRelease": false,
   "stars": 16,
   "avatarUrl": "https://avatars.githubusercontent.com/u/216173197?v=4",

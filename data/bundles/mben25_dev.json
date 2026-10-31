@@ -2,9 +2,9 @@
   "bundle": "mben25",
   "channel": "dev",
   "repo_url": "https://github.com/mben25/morphe-patches",
-  "created_at": "2026-10-30T09:28:53Z",
-  "version": "1.18.2",
-  "description": "## [1.18.2](https://github.com/mben25/morphe-patches/compare/v1.18.1...v1.18.2) (2026-10-30)\n\n### 🚀 Updated App Support\n\n* **Masareef:** support app version 2.5.2 ([141acd2](https://github.com/mben25/morphe-patches/commit/141acd225a43a4ff77627b3aa8edb2da9cf98548))",
+  "created_at": "2026-10-31T13:37:02Z",
+  "version": "1.19.0",
+  "description": "## [1.19.0](https://github.com/mben25/morphe-patches/compare/v1.18.2...v1.19.0) (2026-10-31)\n\n### ✨ New Features\n\n* **SigStick:** add premium unlock, telemetry removal, settings cleanup, google login removal and amoled theme ([f9d76f6](https://github.com/mben25/morphe-patches/commit/f9d76f6093de7b3fc0b72107897970be9b6e73c7))",
   "apps": [
     {
       "app_name": "AliExpress - Shopping App",
@@ -505,6 +505,66 @@
       ]
     },
     {
+      "app_name": "SigStick Sticker Maker",
+      "package": "com.sigstick.myapp",
+      "patches": [
+        {
+          "name": "AMOLED Dark Theme",
+          "description": "Makes the dark theme pure black: background, cards and surfaces become #000000 instead of the stock #111111 / #222222 grays.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "5.25.0"
+          ]
+        },
+        {
+          "name": "Disable All Telemetry",
+          "description": "Blocks Firebase / Google Analytics events, Crashlytics, Sessions, In-App Messaging and FCM delivery metrics, and removes the Advertising ID and AdServices attribution permissions. Sign-in, Remote Config and push keep working.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.25.0"
+          ]
+        },
+        {
+          "name": "Disable Send Logs to Developer",
+          "description": "Removes \"Send Logs to Developer\" from Settings, stops the app from collecting its in-memory log buffer, and makes the log export a no-op.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.25.0"
+          ]
+        },
+        {
+          "name": "Remove Google Login",
+          "description": "Removes the \"Sign in with Google\" button everywhere it appears. The app keeps working with its anonymous account; anything that needs a Google account (publishing under your name, synced collections) is no longer reachable.",
+          "use": false,
+          "options": [],
+          "compatible_versions": [
+            "5.25.0"
+          ]
+        },
+        {
+          "name": "Remove Settings Links",
+          "description": "Removes Follow Us, Email Us, Terms of Service and Privacy Policy from Settings. Community and Version stay.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.25.0"
+          ]
+        },
+        {
+          "name": "Unlock Premium",
+          "description": "Unlocks SigStick Premium client-side: no ads, 60 stickers per pack, unlimited pack creation and the premium editor features.",
+          "use": true,
+          "options": [],
+          "compatible_versions": [
+            "5.25.0"
+          ]
+        }
+      ]
+    },
+    {
       "app_name": "Windy.com - Weather Forecast",
       "package": "com.windyty.android",
       "patches": [
@@ -799,10 +859,10 @@
     }
   ],
   "patches_name": "Mben Morphe Patches",
-  "fingerprint": "73306feeef7ba5e6976a6b18066e5fccad19392a24700d1e417965c5e2ff3c96",
-  "release_notes": "## [1.18.2](https://github.com/mben25/morphe-patches/compare/v1.18.1...v1.18.2) (2026-10-30)\n\n### 🚀 Updated App Support\n\n* **Masareef:** support app version 2.5.2 ([141acd2](https://github.com/mben25/morphe-patches/commit/141acd225a43a4ff77627b3aa8edb2da9cf98548))\n",
-  "release_tag": "v1.18.2",
-  "release_date": "2026-10-30T09:28:53Z",
+  "fingerprint": "a208d87230b5c5959cec63e217edf9b70f17987f151fef7f7ee23aff595af56d",
+  "release_notes": "## [1.19.0](https://github.com/mben25/morphe-patches/compare/v1.18.2...v1.19.0) (2026-10-31)\n\n### ✨ New Features\n\n* **SigStick:** add premium unlock, telemetry removal, settings cleanup, google login removal and amoled theme ([f9d76f6](https://github.com/mben25/morphe-patches/commit/f9d76f6093de7b3fc0b72107897970be9b6e73c7))\n",
+  "release_tag": "v1.19.0",
+  "release_date": "2026-10-31T13:37:02Z",
   "isPreRelease": false,
   "stars": 0,
   "avatarUrl": "https://avatars.githubusercontent.com/u/182358119?v=4&s=128",
